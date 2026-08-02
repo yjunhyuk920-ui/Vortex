@@ -17,6 +17,9 @@ DEFAULT_RESIDUAL_RESULT = Path(
 DEFAULT_ADJOINT_RESULT = Path(
     "results/tinyllama_1_1b_adjoint_tile_oracle.json"
 )
+DEFAULT_COMBINED_RESULT = Path(
+    "results/tinyllama_1_1b_block_shared_combined_gate.json"
+)
 
 
 def _portable_source(path: Path) -> str:
@@ -25,6 +28,130 @@ def _portable_source(path: Path) -> str:
         index = parts.index("results")
         return Path(*parts[index:]).as_posix()
     return path.as_posix()
+
+
+def _apply_combined_oracle(
+    report: dict[str, Any],
+    source: Path,
+) -> dict[str, Any]:
+    result = json.loads(source.read_text(encoding="utf-8"))
+    best = result["best_combined_candidate"]
+    observed = float(best["traffic_efficiency"])
+    repair_fraction = float(best["repair_fraction"])
+    committed_tokens = int(best["committed_prefix_tokens"])
+    incremental_tokens = int(
+        best["incremental_committed_tokens_over_zero_repair"]
+    )
+
+    required = float(
+        report["mechanism"][
+            "required_tokens_per_full_repair_equivalent"
+        ]
+    )
+    maximum_compute_fraction = float(
+        report["mechanism"]["maximum_compute_repair_fraction"]
+    )
+    traffic_pass = observed >= required
+    compute_pass = repair_fraction <= maximum_compute_fraction
+    logical_pass = (
+        traffic_pass
+        and compute_pass
+        and incremental_tokens > 0
+        and committed_tokens > 0
+    )
+
+    hot_traffic = float(report["traffic"]["hot_gib_per_token"])
+    cold_traffic = float(report["traffic"]["cold_full_repair_gib"])
+    traffic_limit = float(report["traffic"]["limit_gib_per_token"])
+    hot_compute = float(report["compute"]["hot_total_gflop_per_token"])
+    cold_compute = float(report["compute"]["cold_full_repair_gflop"])
+    compute_limit = float(report["compute"]["limit_gflop_per_token"])
+
+    projected_traffic = hot_traffic + cold_traffic / observed
+    projected_compute = hot_compute + cold_compute * repair_fraction
+
+    report["mechanism"].update(
+        {
+            "observed": observed,
+            "observed_repair_fraction": repair_fraction,
+            "observed_committed_tokens": committed_tokens,
+            "observed_incremental_committed_tokens": incremental_tokens,
+            "observed_source": _portable_source(source),
+            "traffic_pass": traffic_pass,
+            "compute_pass": compute_pass,
+            "pass": logical_pass,
+            "traffic_shortfall_factor": (
+                required / observed if observed > 0 else float("inf")
+            ),
+            "compute_excess_factor": (
+                repair_fraction / maximum_compute_fraction
+                if maximum_compute_fraction > 0
+                else float("inf")
+            ),
+            "selector_proven": False,
+            "certificate_proven": False,
+            "managed_model_wide": False,
+        }
+    )
+    report["logical_oracle"] = {
+        "evidence_level": result["evidence_level"],
+        "source": _portable_source(source),
+        "zero_repair_prefix_tokens": int(
+            result["zero_repair_baseline"]["committed_prefix_tokens"]
+        ),
+        "selected_tiles": int(best["selected_tiles"]),
+        "selected_weight_bytes": int(best["selected_weight_bytes"]),
+        "repair_fraction": repair_fraction,
+        "committed_prefix_tokens": committed_tokens,
+        "incremental_committed_tokens": incremental_tokens,
+        "traffic_efficiency": observed,
+        "projected_traffic_gib_per_token": projected_traffic,
+        "projected_compute_gflop_per_token": projected_compute,
+        "traffic_pass": traffic_pass,
+        "compute_pass": compute_pass,
+        "logical_budget_pass": logical_pass,
+        "selector_uses_exact_target_tokens": True,
+        "selector_uses_teacher_gradients": True,
+        "sound_commit_certificate": False,
+        "scope": "TinyLlama 1.1B O/down projections on one disjoint evaluation prompt",
+    }
+    report["gates"]["observed_repair_traffic"] = traffic_pass
+    report["gates"]["observed_repair_compute"] = compute_pass
+    report["gates"]["observed_repair_efficiency"] = logical_pass
+    report["gates"]["logical_combined_oracle"] = logical_pass
+    report["gates"]["target_independent_selector"] = False
+    report["gates"]["sound_commit_certificate"] = False
+
+    report["revised_oracle_envelope"] = {
+        "repair_fraction": repair_fraction,
+        "committed_tokens_per_shared_repair": committed_tokens,
+        "projected_traffic_gib_per_token": projected_traffic,
+        "traffic_limit_gib_per_token": traffic_limit,
+        "traffic_pass": projected_traffic <= traffic_limit,
+        "projected_compute_gflop_per_token": projected_compute,
+        "compute_limit_gflop_per_token": compute_limit,
+        "compute_pass": projected_compute <= compute_limit,
+        "memory_pass": bool(report["memory"]["pass"]),
+    }
+    report["observed_component_decision"] = result["decision"]
+    report["rejected_mechanisms"] = [
+        "exact-span Atlas warm-decode fast path",
+        "rank-32 approximate capsule plus exact layer-suffix repair",
+        "rank-32 approximate capsule plus output-row tile repair",
+        "rank-32 residual-energy 2D tile repair",
+        "rank-32 exact-target adjoint 2D tile repair per token",
+        "the original VORTEX-WAVE-1 25-percent repair design point",
+    ]
+    report["next_candidate"] = (
+        "target-independent block repair selector plus sound causal-prefix "
+        "certificate"
+    )
+    report["status"] = (
+        "original-wave1-rejected-logical-block-oracle-survives"
+        if logical_pass
+        else "block-shared-combined-oracle-rejected"
+    )
+    return report
 
 
 def _apply_observed_efficiency(
@@ -100,8 +227,13 @@ def apply_real_model_observation(
     oracle_path: str | Path = DEFAULT_ORACLE_RESULT,
     residual_path: str | Path = DEFAULT_RESIDUAL_RESULT,
     adjoint_path: str | Path = DEFAULT_ADJOINT_RESULT,
+    combined_path: str | Path = DEFAULT_COMBINED_RESULT,
 ) -> dict[str, Any]:
     """Apply the strongest committed E1 evidence to the Gate 0 report."""
+
+    combined = Path(combined_path)
+    if combined.exists():
+        return _apply_combined_oracle(report, combined)
 
     adjoint = Path(adjoint_path)
     if adjoint.exists():
@@ -137,12 +269,8 @@ def apply_real_model_observation(
     if residual.exists():
         result = json.loads(residual.read_text(encoding="utf-8"))
         first = result["first_repair_match"]
-        observed = float(
-            first["tokens_per_full_repair_equivalent"]
-        )
-        repair = float(
-            first["full_model_repair_fraction_per_token"]
-        )
+        observed = float(first["tokens_per_full_repair_equivalent"])
+        repair = float(first["full_model_repair_fraction_per_token"])
         return _apply_observed_efficiency(
             report,
             observed=observed,
@@ -165,12 +293,8 @@ def apply_real_model_observation(
     if oracle.exists():
         result = json.loads(oracle.read_text(encoding="utf-8"))
         first = result["row_tile_oracle"]["first_repair_match"]
-        observed = float(
-            first["tokens_per_full_repair_equivalent"]
-        )
-        repair = float(
-            first["full_model_repair_fraction_per_token"]
-        )
+        observed = float(first["tokens_per_full_repair_equivalent"])
+        repair = float(first["full_model_repair_fraction_per_token"])
         return _apply_observed_efficiency(
             report,
             observed=observed,
@@ -193,9 +317,7 @@ def apply_real_model_observation(
 
     result = json.loads(exact_span.read_text(encoding="utf-8"))
     warm = result["warm_decode_repair"]
-    observed = float(
-        warm["tokens_per_full_repair_equivalent"]
-    )
+    observed = float(warm["tokens_per_full_repair_equivalent"])
     warm_tokens = float(result["warm_decode_tokens"])
     repair = float(warm["full_model_repair_fraction"]) / warm_tokens
     return _apply_observed_efficiency(
@@ -209,7 +331,5 @@ def apply_real_model_observation(
             result["aggregate"]["warm_decode_fast_fraction"]
         ),
         status="rejected-exact-span-hot-path",
-        rejected_mechanisms=[
-            "exact-span Atlas warm-decode fast path",
-        ],
+        rejected_mechanisms=["exact-span Atlas warm-decode fast path"],
     )
