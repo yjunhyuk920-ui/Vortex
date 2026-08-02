@@ -1,0 +1,192 @@
+name: Decision-proof runtime gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/residual_proof.py"
+      - "scripts/run_lm_head_decision_proof.py"
+      - "tests/test_residual_proof.py"
+      - "docs/EXPERIMENT_020_DECISION_PROOF_RUNTIME.md"
+      - ".github/workflows/decision-proof-runtime.yml"
+
+concurrency:
+  group: decision-proof-runtime-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/decision-proof-runtime'
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        column_block: [16, 64, 256]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate residual proof primitives
+        run: python -m pytest -q tests/test_residual_proof.py
+      - name: Measure LM-head proof block ${{ matrix.column_block }}
+        run: |
+          python scripts/run_lm_head_decision_proof.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --hot-bits 4 \
+            --column-block ${{ matrix.column_block }} \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "decision-proof-${{ matrix.column_block }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: decision-proof-${{ matrix.column_block }}
+          path: decision-proof-${{ matrix.column_block }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: decision-proof-*
+          path: decision-proof-results
+          merge-multiple: true
+      - name: Aggregate decision-proof frontier
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          files = sorted(Path("decision-proof-results").glob("*.json"))
+          if not files:
+              raise SystemExit("no decision-proof results")
+          points = [json.loads(path.read_text(encoding="utf-8")) for path in files]
+          points.sort(key=lambda item: item["column_block"])
+          unsafe = sum(point["unsafe_certificates"] for point in points)
+          best = max(points, key=lambda item: item["certificate_rate"])
+          promoted = [point for point in points if point["qualifies"]]
+          if unsafe:
+              decision = "reject implementation: unsound certificate observed"
+              next_candidate = "fix proof mathematics before any architecture work"
+          elif promoted:
+              decision = "advance decision proof into internal projections"
+              next_candidate = (
+                  "propagate a logit-margin adjoint backward and certify each "
+                  "omitted internal residual with 2-D tile support metadata"
+              )
+          elif best["certificate_rate"] > 0:
+              decision = "retain sound proof; tighten metadata hierarchy"
+              next_candidate = (
+                  "add signed support-function leaves and adaptive block splitting"
+              )
+          else:
+              decision = "reject unsigned row-norm LM-head proof point"
+              next_candidate = (
+                  "replace unsigned norms with directional residual sketches that "
+                  "remain conservative for the observed activation cone"
+              )
+          summary = [
+              {
+                  "column_block": point["column_block"],
+                  "certificate_rate": point["certificate_rate"],
+                  "hot_top1_rate": point["hot_top1_rate"],
+                  "hot_top32_rate": point["hot_top32_rate"],
+                  "unsafe_certificates": point["unsafe_certificates"],
+                  "tiny_metadata_gib": point["tiny_metadata_budget"]["metadata_gib"],
+                  "target_metadata_gib": point[
+                      "projected_405b_lm_head_metadata_budget"
+                  ]["metadata_gib"],
+                  "qualifies": point["qualifies"],
+              }
+              for point in points
+          ]
+          payload = {
+              "evidence_level": "E2 pretrained exact LM-head decision-proof frontier",
+              "points": points,
+              "summary": summary,
+              "best_column_block": best["column_block"],
+              "best_certificate_rate": best["certificate_rate"],
+              "unsafe_certificates": unsafe,
+              "promoted_points": [point["column_block"] for point in promoted],
+              "decision": decision,
+              "next_candidate": next_candidate,
+              "workflow": {
+                  "run_id": int(os.environ["RUN_ID"]),
+                  "head_sha": os.environ["HEAD_SHA"],
+                  "input_sha256": {
+                      path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                      for path in files
+                  },
+              },
+          }
+          output = Path("results/tinyllama_1_1b_decision_proof_runtime.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          Path("decision-proof-comment.md").write_text(
+              "## Decision-proof runtime gate\n\n```json\n"
+              + json.dumps(
+                  {
+                      "summary": summary,
+                      "best_column_block": payload["best_column_block"],
+                      "best_certificate_rate": payload["best_certificate_rate"],
+                      "unsafe_certificates": payload["unsafe_certificates"],
+                      "decision": payload["decision"],
+                      "next_candidate": payload["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file decision-proof-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-decision-proof-runtime
+          path: results/tinyllama_1_1b_decision_proof_runtime.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_decision_proof_runtime.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit decision-proof sweep"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
