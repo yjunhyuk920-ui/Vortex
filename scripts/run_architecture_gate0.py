@@ -38,6 +38,10 @@ def generate_report(root: Path) -> dict[str, object]:
             root
             / "results/tinyllama_1_1b_block_shared_combined_gate.json"
         ),
+        residual_selector_path=(
+            root
+            / "results/tinyllama_1_1b_block_shared_residual_selector.json"
+        ),
     )
 
 
@@ -82,6 +86,7 @@ def main() -> None:
             "observed_incremental_committed_tokens"
         ),
         "logical_oracle": report.get("logical_oracle"),
+        "selector_falsification": report.get("selector_falsification"),
         "revised_oracle_envelope": report.get("revised_oracle_envelope"),
         "observed_component_decision": report.get(
             "observed_component_decision"
