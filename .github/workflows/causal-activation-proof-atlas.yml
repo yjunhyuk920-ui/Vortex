@@ -1,0 +1,211 @@
+name: Causal activation proof atlas gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/activation_proof_atlas.py"
+      - "scripts/run_lm_head_activation_proof_atlas.py"
+      - "tests/test_activation_proof_atlas.py"
+      - "docs/EXPERIMENT_024_CAUSAL_ACTIVATION_PROOF_ATLAS.md"
+      - ".github/workflows/causal-activation-proof-atlas.yml"
+
+concurrency:
+  group: causal-activation-proof-atlas-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/causal-activation-proof-atlas'
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        rank: [4, 8, 16]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate activation proof atlas
+        run: |
+          python -m pytest -q \
+            tests/test_residual_proof.py \
+            tests/test_activation_proof_atlas.py
+      - name: Measure causal proof atlas rank ${{ matrix.rank }}
+        run: |
+          python scripts/run_lm_head_activation_proof_atlas.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --hot-bits 4 \
+            --rank ${{ matrix.rank }} \
+            --build-samples 32 \
+            --output "activation-proof-atlas-${{ matrix.rank }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: activation-proof-atlas-${{ matrix.rank }}
+          path: activation-proof-atlas-${{ matrix.rank }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: activation-proof-atlas-*
+          path: activation-proof-atlas-results
+          merge-multiple: true
+      - name: Aggregate causal proof atlas frontier
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          files = sorted(Path("activation-proof-atlas-results").glob("*.json"))
+          if not files:
+              raise SystemExit("no activation proof atlas results")
+          points = [json.loads(path.read_text(encoding="utf-8")) for path in files]
+          points.sort(key=lambda item: item["rank"])
+          unsafe = sum(point["unsafe_certificates"] for point in points)
+          best = max(
+              points,
+              key=lambda item: (
+                  item["certificate_rate"],
+                  item["refined_top1_rate"],
+                  -item["continuation_perpendicular_ratio"]["mean"],
+              ),
+          )
+          promoted = [point for point in points if point["qualifies"]]
+          if unsafe:
+              decision = "reject implementation: unsafe activation proof atlas"
+              next_candidate = "repair soundness before architecture work"
+          elif promoted:
+              decision = "advance causal proof atlas into internal projections"
+              next_candidate = (
+                  "build prompt-derived residual images for sensitive internal "
+                  "operators and use proof failure to trigger online basis expansion"
+              )
+          elif best["certificate_rate"] > 0:
+              decision = "retain causal atlas; expand prompt coverage selectively"
+              next_candidate = (
+                  "allocate basis rank by continuation perpendicular ratio and "
+                  "combine with adaptive exact residual tiles"
+              )
+          else:
+              decision = "reject tested prompt-only activation atlas ranks"
+              next_candidate = (
+                  "perform proof-triggered online basis expansion and charge each "
+                  "exact residual image against the warm-decode amortization budget"
+              )
+          summary = [
+              {
+                  "rank": point["rank"],
+                  "prompt_tokens": point["prompt_tokens"],
+                  "build_samples": point["build_samples"],
+                  "continuation_perp_mean": point[
+                      "continuation_perpendicular_ratio"
+                  ]["mean"],
+                  "continuation_perp_max": point[
+                      "continuation_perpendicular_ratio"
+                  ]["maximum"],
+                  "hot_top1": point["hot_top1_rate"],
+                  "refined_top1": point["refined_top1_rate"],
+                  "refined_top32": point["refined_top32_rate"],
+                  "certificate_rate": point["certificate_rate"],
+                  "unsafe_certificates": point["unsafe_certificates"],
+                  "target_metadata_gib": point[
+                      "projected_405b_lm_head_metadata_budget"
+                  ]["metadata_gib"],
+                  "qualifies": point["qualifies"],
+              }
+              for point in points
+          ]
+          payload = {
+              "evidence_level": "E2 causal prompt activation proof atlas frontier",
+              "points": points,
+              "summary": summary,
+              "best_rank": best["rank"],
+              "best_certificate_rate": best["certificate_rate"],
+              "unsafe_certificates": unsafe,
+              "promoted_ranks": [point["rank"] for point in promoted],
+              "decision": decision,
+              "next_candidate": next_candidate,
+              "workflow": {
+                  "run_id": int(os.environ["RUN_ID"]),
+                  "head_sha": os.environ["HEAD_SHA"],
+                  "input_sha256": {
+                      path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                      for path in files
+                  },
+              },
+          }
+          output = Path("results/tinyllama_1_1b_causal_activation_proof_atlas.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          Path("activation-proof-atlas-comment.md").write_text(
+              "## Causal activation proof atlas gate\n\n```json\n"
+              + json.dumps(
+                  {
+                      "summary": summary,
+                      "best_rank": payload["best_rank"],
+                      "best_certificate_rate": payload["best_certificate_rate"],
+                      "unsafe_certificates": payload["unsafe_certificates"],
+                      "decision": payload["decision"],
+                      "next_candidate": payload["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file activation-proof-atlas-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-causal-activation-proof-atlas
+          path: results/tinyllama_1_1b_causal_activation_proof_atlas.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_causal_activation_proof_atlas.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit causal activation proof atlas"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
