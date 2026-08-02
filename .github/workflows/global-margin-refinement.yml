@@ -1,0 +1,112 @@
+name: Global margin refinement gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/global_margin_refinement.py"
+      - "scripts/run_global_margin_refinement.py"
+      - "tests/test_global_margin_refinement.py"
+      - "docs/EXPERIMENT_034_GLOBAL_MARGIN_REFINEMENT.md"
+      - ".github/workflows/global-margin-refinement.yml"
+
+concurrency:
+  group: global-margin-refinement-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/global-margin-refinement'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate global refinement
+        run: |
+          test -f tests/test_global_margin_refinement.py
+          python -m pytest -q \
+            tests/test_signed_dual_mlp.py \
+            tests/test_block_signed_residual_code.py \
+            tests/test_global_margin_refinement.py
+      - name: Measure global margin allocation
+        run: |
+          python scripts/run_global_margin_refinement.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --build-prompts experiments/residual_code_build_prompts.json \
+            --eval-prompts experiments/residual_code_eval_prompts.json \
+            --bits 8 \
+            --block-size 1024 \
+            --rank 2 \
+            --margin-share 0.5 \
+            --price-steps 41 \
+            --metadata-limit-gib 6.0 \
+            --device cpu \
+            --output results/tinyllama_1_1b_global_margin_refinement.json
+      - name: Build report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(
+              Path("results/tinyllama_1_1b_global_margin_refinement.json")
+              .read_text(encoding="utf-8")
+          )
+          report = {
+              "evidence_level": payload["evidence_level"],
+              "metadata_gib": payload["metadata_budget"]["total_metadata_gib"],
+              "mean_equal_layer_fraction": payload["summary"]["mean_equal_layer_fraction"],
+              "mean_width_global_fraction": payload["summary"]["mean_width_global_fraction"],
+              "mean_dual_price_fraction": payload["summary"]["mean_dual_price_fraction"],
+              "maximum_dual_price_fraction": payload["summary"]["maximum_dual_price_fraction"],
+              "maximum_exact_gib_per_token": payload["summary"]["maximum_exact_gib_per_token"],
+              "best_prices": [
+                  result["comparison"]["best_dual_price"]
+                  for result in payload["results"]
+              ],
+              "qualifies": payload["qualifies"],
+              "decision": payload["decision"],
+          }
+          Path("global-margin-comment.md").write_text(
+              "## Global margin refinement gate\n\n```json\n"
+              + json.dumps(report, indent=2)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file global-margin-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: global-margin-refinement
+          path: results/tinyllama_1_1b_global_margin_refinement.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_global_margin_refinement.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit global margin refinement"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
