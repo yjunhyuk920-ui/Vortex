@@ -2,6 +2,10 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 
+from torch import nn
+
+from vortex_runtime.mlp_heavy_hitter import OracleHeavyHitterSwiGLU
+
 
 @dataclass(frozen=True)
 class LayerDamagePoint:
@@ -31,6 +35,64 @@ class NonlinearAllocation:
         return payload
 
 
+def uniform_neuron_allocation(
+    *,
+    layers: int,
+    intermediate_neurons: int,
+    total_neurons: int,
+) -> tuple[int, ...]:
+    """Distribute an exact total neuron budget as evenly as possible."""
+
+    if min(layers, intermediate_neurons, total_neurons) <= 0:
+        raise ValueError("allocation dimensions must be positive")
+    if total_neurons > layers * intermediate_neurons:
+        raise ValueError("total_neurons exceeds model capacity")
+    base, remainder = divmod(total_neurons, layers)
+    if base > intermediate_neurons or (base == intermediate_neurons and remainder):
+        raise ValueError("uniform allocation exceeds layer capacity")
+    return tuple(base + int(index < remainder) for index in range(layers))
+
+
+def replace_llama_mlp_with_count_allocation(
+    model: nn.Module,
+    *,
+    layer_counts: tuple[int, ...] | list[int],
+) -> list[OracleHeavyHitterSwiGLU]:
+    """Replace every Llama MLP with an exact-activation original-neuron oracle.
+
+    The helper lives in this module deliberately: research workflows must be
+    branch-standalone and must not import execution primitives from a sibling
+    experiment branch.
+    """
+
+    root = getattr(model, "model", None)
+    layers = getattr(root, "layers", None)
+    if layers is None:
+        raise ValueError("expected a Llama-style model.model.layers stack")
+    if len(layer_counts) != len(layers):
+        raise ValueError("one neuron count is required per decoder layer")
+
+    replacements: list[OracleHeavyHitterSwiGLU] = []
+    for layer, requested_count in zip(layers, layer_counts):
+        mlp = getattr(layer, "mlp", None)
+        if mlp is None:
+            raise ValueError("decoder layer has no mlp module")
+        intermediate = int(mlp.gate_proj.out_features)
+        count = int(requested_count)
+        if count <= 0 or count > intermediate:
+            raise ValueError("each active layer count must be in [1, intermediate]")
+        replacement = OracleHeavyHitterSwiGLU(
+            gate_proj=mlp.gate_proj,
+            up_proj=mlp.up_proj,
+            down_proj=mlp.down_proj,
+            act_fn=mlp.act_fn,
+            selected_fraction=count / intermediate,
+        )
+        layer.mlp = replacement
+        replacements.append(replacement)
+    return replacements
+
+
 def normalize_damage_curves(
     curves: list[list[LayerDamagePoint]],
 ) -> list[list[LayerDamagePoint]]:
@@ -50,10 +112,9 @@ def normalize_damage_curves(
             if current is None or point.damage < current.damage:
                 by_count[point.selected_neurons] = point
         ordered = [by_count[count] for count in sorted(by_count)]
-        # Enforce the feasible monotone lower envelope. At a measured cost c,
-        # the allocator may always reuse the best option observed at a cheaper
-        # or equal cost and leave extra budget unused. It may never borrow the
-        # damage of a more expensive option.
+        # At a measured cost c, the allocator may reuse the best option observed
+        # at a cheaper or equal cost and leave extra budget unused. It may never
+        # borrow the quality of a more expensive point.
         best_point: LayerDamagePoint | None = None
         envelope: list[LayerDamagePoint] = []
         for point in ordered:
@@ -77,7 +138,7 @@ def solve_nonlinear_allocation(
     *,
     total_budget: int,
 ) -> NonlinearAllocation:
-    """Solve a discrete byte-constrained layer allocation exactly.
+    """Solve the measured byte-constrained layer allocation exactly.
 
     Every layer chooses one measured neuron-count option. Costs are counts and
     losses are measured nonlinear final-logit damages. Dynamic programming finds
@@ -91,7 +152,6 @@ def solve_nonlinear_allocation(
     if minimum_required > total_budget:
         raise ValueError("total budget is below the minimum measured allocation")
 
-    # budget -> (damage, counts)
     states: dict[int, tuple[float, tuple[int, ...]]] = {0: (0.0, ())}
     for curve in normalized:
         next_states: dict[int, tuple[float, tuple[int, ...]]] = {}
