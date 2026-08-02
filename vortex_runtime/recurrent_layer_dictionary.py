@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from math import ceil
 
 from vortex_runtime.feasibility import GIB, ModelSpec
 from vortex_runtime.substitute_draft_budget import (
     SubstituteDraftBudget,
+    llama_layer_parameter_count,
     select_layer_indices,
     substitute_draft_budget,
 )
@@ -32,11 +34,18 @@ class RecurrentLayerSchedule:
 @dataclass(frozen=True)
 class RecurrentDraftBudget:
     memory: SubstituteDraftBudget
+    parallel_nodes: int
+    resident_hbm_gib_s: float
+    recurrent_weight_read_gib_per_wave: float
+    resident_weight_seconds_per_node: float
+    minimum_parallel_nodes: int
     effective_tops: float
     operations_per_token: float
     compute_seconds_per_token: float
+    projected_seconds_per_token: float
     baseline_seconds_per_token: float
     allowed_seconds_per_token: float
+    traffic_pass: bool
     compute_pass: bool
     memory_pass: bool
     pass_all: bool
@@ -44,11 +53,22 @@ class RecurrentDraftBudget:
     def to_dict(self) -> dict[str, object]:
         return {
             "memory": self.memory.to_dict(),
+            "parallel_nodes": self.parallel_nodes,
+            "resident_hbm_gib_s": self.resident_hbm_gib_s,
+            "recurrent_weight_read_gib_per_wave": (
+                self.recurrent_weight_read_gib_per_wave
+            ),
+            "resident_weight_seconds_per_node": (
+                self.resident_weight_seconds_per_node
+            ),
+            "minimum_parallel_nodes": self.minimum_parallel_nodes,
             "effective_tops": self.effective_tops,
             "operations_per_token": self.operations_per_token,
             "compute_seconds_per_token": self.compute_seconds_per_token,
+            "projected_seconds_per_token": self.projected_seconds_per_token,
             "baseline_seconds_per_token": self.baseline_seconds_per_token,
             "allowed_seconds_per_token": self.allowed_seconds_per_token,
+            "traffic_pass": self.traffic_pass,
             "compute_pass": self.compute_pass,
             "memory_pass": self.memory_pass,
             "pass_all": self.pass_all,
@@ -140,26 +160,32 @@ def recurrent_draft_budget(
     tie_word_embeddings: bool = False,
     workspace_gib: float = 1.0,
     memory_limit_gib: float = 8.0,
+    parallel_nodes: int = 1,
+    resident_hbm_gib_s: float = 300.0,
     effective_tops: float = 160.0,
     baseline_memory_gib_s: float = 300.0,
     baseline_effective_tflops: float = 40.0,
     target_ratio: float = 1.2,
 ) -> RecurrentDraftBudget:
-    """Budget a full-depth draft backed by a small resident layer dictionary.
+    """Budget a full-depth draft backed by a resident layer dictionary.
 
-    Every target layer position is still executed, so arithmetic remains close
-    to the original dense model. Only `unique_layers` weight sets plus IO are
-    resident, allowing repeated weight reuse to replace host-to-device streams.
+    Storage is reduced to `unique_layers`, but every depth position still reads
+    one complete representative layer from HBM. A wave of `parallel_nodes`
+    shares those weight reads as a GEMM batch. This explicitly rejects the
+    incorrect assumption that resident weights become free after first load.
     """
 
+    if parallel_nodes <= 0:
+        raise ValueError("parallel_nodes must be positive")
     positive = (
+        resident_hbm_gib_s,
         effective_tops,
         baseline_memory_gib_s,
         baseline_effective_tflops,
         target_ratio,
     )
     if any(value <= 0 for value in positive):
-        raise ValueError("throughput and target ratio must be positive")
+        raise ValueError("bandwidth, throughput and target ratio must be positive")
 
     memory = substitute_draft_budget(
         model=target,
@@ -169,6 +195,17 @@ def recurrent_draft_budget(
         workspace_gib=workspace_gib,
         memory_limit_gib=memory_limit_gib,
     )
+
+    per_layer_parameters = llama_layer_parameter_count(target)
+    repeated_layer_bytes = (
+        target.layers * per_layer_parameters * weight_bits / 8
+    )
+    lm_head_bytes = target.vocab_size * target.hidden_size * weight_bits / 8
+    recurrent_weight_read_gib = (repeated_layer_bytes + lm_head_bytes) / GIB
+    resident_weight_seconds_per_node = (
+        recurrent_weight_read_gib / resident_hbm_gib_s / parallel_nodes
+    )
+
     operations = (
         target.dense_linear_flops_per_token
         + target.dense_attention_flops_per_token
@@ -185,17 +222,29 @@ def recurrent_draft_budget(
     )
     baseline_seconds = max(baseline_weight_seconds, baseline_compute_seconds)
     allowed_seconds = target_ratio * baseline_seconds
+    minimum_parallel_nodes = ceil(
+        recurrent_weight_read_gib / resident_hbm_gib_s / allowed_seconds
+    )
+    projected_seconds = max(resident_weight_seconds_per_node, compute_seconds)
+    traffic_pass = resident_weight_seconds_per_node <= allowed_seconds
     compute_pass = compute_seconds <= allowed_seconds
     memory_pass = memory.fits_memory
 
     return RecurrentDraftBudget(
         memory=memory,
+        parallel_nodes=parallel_nodes,
+        resident_hbm_gib_s=resident_hbm_gib_s,
+        recurrent_weight_read_gib_per_wave=recurrent_weight_read_gib,
+        resident_weight_seconds_per_node=resident_weight_seconds_per_node,
+        minimum_parallel_nodes=minimum_parallel_nodes,
         effective_tops=effective_tops,
         operations_per_token=operations,
         compute_seconds_per_token=compute_seconds,
+        projected_seconds_per_token=projected_seconds,
         baseline_seconds_per_token=baseline_seconds,
         allowed_seconds_per_token=allowed_seconds,
+        traffic_pass=traffic_pass,
         compute_pass=compute_pass,
         memory_pass=memory_pass,
-        pass_all=compute_pass and memory_pass,
+        pass_all=traffic_pass and compute_pass and memory_pass,
     )
