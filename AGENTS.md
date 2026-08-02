@@ -45,20 +45,34 @@ Every result must be labeled E0, E1, E2, E3, or E4 as defined in `docs/PROOF_FIR
 
 Only E4 may be described as the target being achieved. Never describe E1 or E2 as proof that the full target is possible.
 
+## Mandatory durable-progress rule
+
+Read and obey `docs/WORK_SESSION_PROTOCOL.md`.
+
+Before a user-facing progress or completion answer after meaningful repository work, commit the current state to GitHub. At minimum:
+
+- append the measured positive or negative result to `docs/RESEARCH_PROGRESS_LEDGER.md`;
+- update `docs/SESSION_HANDOFF.md` with the active branch, PR, head commit, workflow state, exact next command, and unresolved proof obligations;
+- commit raw metrics under `results/` when available;
+- update the experiment document and PR decision when a gate is promoted or rejected.
+
+Do not claim that progress was documented unless the Git commit exists. If repository writing fails, state that failure explicitly in the answer.
+
+This rule is permanent and does not require the user to repeat it in future sessions.
+
 ## Current implementation truth
 
-The repository currently contains E1 research primitives:
+The repository contains a broad E1/E2 research corpus, including:
 
-1. safetensors model/shard discovery without full model construction;
-2. tensor and row-slice access;
-3. byte-bounded tile caching;
-4. a streamed tiny Llama reference decoder;
-5. exact progressive argmax certification for a linear LM head;
-6. disk-backed low-bit base plus lossless residual refinement;
-7. exact Jacobi block decoding on tiny deterministic checkpoints;
-8. exact-on-span `OnlineAtlasLinear` replay for selected tiny-model internal projections.
+1. safetensors model/shard discovery and slice access without full model construction;
+2. byte-bounded tile caching and streamed tiny-Llama reference execution;
+3. exact progressive LM-head refinement and bit-exact residual storage;
+4. decision-certificate, activation-atlas, lossless-entropy/speculation, MLP dictionary, heavy-hitter, and layer-allocation falsification branches;
+5. real TinyLlama all-layer operation replacements on disjoint prompts for multiple candidates.
 
-These primitives do not prove unseen-prompt generalization, a model-wide 405B resource budget, an end-to-end CUDA runtime, 8GiB peak VRAM, or 4B-class wall-clock speed.
+Many candidate families have been rejected. Read `docs/RESEARCH_PROGRESS_LEDGER.md`; do not recreate a rejected architecture under a new name.
+
+None of these results proves a universal end-to-end CUDA runtime, real 8 GiB peak VRAM, 4B-class wall clock, or 405B completion.
 
 ## Required session startup
 
@@ -69,15 +83,18 @@ python -m pytest -q
 python scripts/run_validation.py
 ```
 
-Read:
+Read in this order:
 
-- `docs/PROOF_FIRST_CONTRACT.md`
-- `docs/SESSION_HANDOFF.md`
-- `docs/ROADMAP.md`
-- `docs/VALIDATION_PROTOCOL.md`
-- `validation_results.json`
+1. `AGENTS.md`
+2. `docs/PROOF_FIRST_CONTRACT.md`
+3. `docs/WORK_SESSION_PROTOCOL.md`
+4. `docs/RESEARCH_PROGRESS_LEDGER.md`
+5. `docs/SESSION_HANDOFF.md`
+6. `docs/ROADMAP.md`
+7. `docs/VALIDATION_PROTOCOL.md`
+8. the active experiment document, workflow, PR comments, and result JSON
 
-Inspect the implementation before proposing a replacement architecture. Preserve verified behavior unless a test demonstrates that a change is necessary.
+Then verify the current branch, PR head, CI/workflow conclusion, and latest evidence. Never assume a run mentioned in an earlier chat is still current.
 
 ## Development loop
 
@@ -92,21 +109,18 @@ Every meaningful architecture change follows this order:
 7. Replace the real operation when testing real models; hook-only analysis is not an E2 result.
 8. Use disjoint build and evaluation traces.
 9. Add or update automated tests.
-10. Run the full tests and validation.
-11. Record positive and negative results in machine-readable form.
-12. Update session handoff and architecture documents.
-13. Commit with a message describing the verified evidence level, not the hoped-for outcome.
+10. Ensure the experiment workflow references only files that exist on its branch.
+11. Run the full tests and validation and inspect actual logs.
+12. Record positive and negative results in machine-readable form.
+13. Update the research ledger, session handoff, and architecture documents.
+14. Commit with a message describing the verified evidence level, not the hoped-for outcome.
+15. Only then provide the user-facing progress answer.
 
 ## Immediate engineering priority
 
-Stop extending `OnlineAtlasLinear` as though it were already the final architecture.
+Use `docs/SESSION_HANDOFF.md` as the source of truth for the current active gate. Do not continue a family already rejected in `docs/RESEARCH_PROGRESS_LEDGER.md` without a new measurable mechanism that directly addresses its recorded failure.
 
-The next milestone is Architecture Gate 0:
-
-1. Define one complete model-wide candidate execution path, including embeddings, all attention/MLP projections, nonlinear operations, LM head, KV handling, cold repair, storage, and CUDA scheduling.
-2. Produce a committed 405B feasibility certificate for memory, bytes/token, compute/token, and cold-stream amortization.
-3. Create an executable falsification harness that measures the certificate terms on a real pretrained 1B–3B model with disjoint prompts.
-4. Reject the architecture unless the observed slope remains compatible with the final 405B gate.
+The active candidate must always specify a complete path or a clearly isolated falsification question, including embeddings, attention/MLP projections, nonlinear operations, LM head, KV handling, storage, repair/fallback, and physical scheduling implications.
 
 Do not call a component a core solution merely because it avoids a weight read on a replayed trace.
 
