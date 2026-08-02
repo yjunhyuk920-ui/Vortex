@@ -1,0 +1,83 @@
+name: Gate0 Real Model
+
+on:
+  push:
+    branches: [research/architecture-gate-zero]
+    paths:
+      - ".github/workflows/gate0-real-model.yml"
+      - "scripts/run_gate0_falsification.py"
+      - "vortex_runtime/gated_projected_linear.py"
+      - "vortex_runtime/gate0_budget.py"
+      - "experiments/gate0_ci_build_prompts.json"
+      - "experiments/gate0_ci_eval_prompts.json"
+      - "gate0_budget.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tinyllama-1b-falsification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      HF_HOME: ${{ runner.temp }}/huggingface
+      TOKENIZERS_PARALLELISM: "false"
+      OMP_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install --index-url https://download.pytorch.org/whl/cpu "torch>=2.5,<2.7"
+          pip install -e . --no-deps
+          pip install "transformers>=4.48,<5" "accelerate>=1.2,<2" sentencepiece safetensors
+      - name: Emit Gate 0 budget
+        run: python scripts/run_gate0_budget.py --output gate0_budget.json
+      - name: Run real-operation TinyLlama falsification
+        run: |
+          /usr/bin/time -v python scripts/run_gate0_falsification.py \
+            TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --build-prompts experiments/gate0_ci_build_prompts.json \
+            --eval-prompts experiments/gate0_ci_eval_prompts.json \
+            --gate0-budget gate0_budget.json \
+            --device cpu \
+            --dtype bfloat16 \
+            --rank 16 \
+            --epsilon 0.05 \
+            --max-samples-per-module 32 \
+            --max-new-tokens 8 \
+            --minimum-token-agreement 1.0 \
+            --output gate0_falsification_tinyllama.json
+      - name: Publish result summary
+        if: always()
+        run: |
+          if [ -f gate0_falsification_tinyllama.json ]; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("gate0_falsification_tinyllama.json").read_text())
+          print(json.dumps({
+              "status": data["status"],
+              "evidence_level": data["evidence_level"],
+              "quality": data["quality"],
+              "repair": data["repair"],
+              "coverage": data["coverage"],
+          }, indent=2))
+          PY
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gate0-tinyllama-result
+          path: |
+            gate0_budget.json
+            gate0_falsification_tinyllama.json
+          if-no-files-found: warn
+          retention-days: 14
