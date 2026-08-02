@@ -37,6 +37,7 @@ def test_candidate_coverage_rejects_rank32_hot_representation(
         prefill_compiled_path=tmp_path / "missing-prefill.json",
         candidate_coverage_path=coverage,
         rank_frontier_path=tmp_path / "missing-frontier.json",
+        session_prefill_path=tmp_path / "missing-session.json",
     )
 
     assert report["status"] == "rank32-hot-representation-rejected"
