@@ -1,0 +1,235 @@
+name: Adjoint heavy-hitter allocation gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/adjoint_heavy_hitter.py"
+      - "scripts/run_adjoint_heavy_hitter_allocation.py"
+      - "tests/test_adjoint_heavy_hitter.py"
+      - "docs/EXPERIMENT_028_ADJOINT_HEAVY_HITTER_ALLOCATION.md"
+      - ".github/workflows/adjoint-heavy-hitter-allocation.yml"
+
+concurrency:
+  group: adjoint-heavy-hitter-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/adjoint-heavy-hitter-allocation'
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - total_fraction: 0.001
+            label: 0010
+          - total_fraction: 0.0025
+            label: 0025
+          - total_fraction: 0.005
+            label: 0050
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate adjoint allocator
+        run: |
+          python -m pytest -q \
+            tests/test_mlp_heavy_hitter.py \
+            tests/test_adjoint_heavy_hitter.py
+      - name: Measure total fraction ${{ matrix.total_fraction }}
+        run: |
+          python scripts/run_adjoint_heavy_hitter_allocation.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --total-fraction ${{ matrix.total_fraction }} \
+            --calibration-tokens 4 \
+            --eval-tokens 16 \
+            --minimum-per-layer 1 \
+            --calibration-prompt "Explain how a database transaction preserves consistency when two concurrent services update related records." \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "adjoint-heavy-hitter-${{ matrix.label }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: adjoint-heavy-hitter-${{ matrix.label }}
+          path: adjoint-heavy-hitter-${{ matrix.label }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: adjoint-heavy-hitter-*
+          path: adjoint-heavy-hitter-results
+          merge-multiple: true
+      - name: Aggregate adjoint allocation frontier
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          files = sorted(Path("adjoint-heavy-hitter-results").glob("*.json"))
+          if not files:
+              raise SystemExit("no adjoint heavy-hitter results")
+          points = [json.loads(path.read_text(encoding="utf-8")) for path in files]
+          points.sort(key=lambda item: item["requested_total_fraction"])
+          promoted = [point for point in points if point["qualifies"]]
+          best = max(
+              points,
+              key=lambda item: (
+                  item["adjoint_eval"]["teacher_forced"]["top32_rate"],
+                  item["adjoint_eval"]["autonomous_exact_prefix"],
+                  -item["projected_405b_partial_mlp_budget"][
+                      "selected_weight_gib_per_token"
+                  ],
+              ),
+          )
+          improves_any = any(
+              point["comparison"]["top32_delta"] > 0
+              or point["comparison"]["autonomous_prefix_delta"] > 0
+              for point in points
+          )
+          if promoted:
+              decision = "advance adjoint allocation to a causal selector and tail proof"
+              next_candidate = (
+                  "predict layer counts and neuron identities from resident signatures, "
+                  "then certify omitted signed margin contributions"
+              )
+          elif improves_any:
+              decision = "retain layer nonuniformity but reject tested quality gate"
+              next_candidate = (
+                  "measure exact layerwise nonlinear removal damage and solve a "
+                  "budgeted discrete allocation rather than a first-order utility"
+              )
+          else:
+              decision = "reject adjoint layer allocation as the missing factor"
+              next_candidate = (
+                  "close the exact-neuron heavy-hitter family and return to "
+                  "decision-level execution programs"
+              )
+          summary = [
+              {
+                  "fraction": point["requested_total_fraction"],
+                  "traffic_gib": point["projected_405b_partial_mlp_budget"][
+                      "selected_weight_gib_per_token"
+                  ],
+                  "uniform_top32": point["uniform_eval"]["teacher_forced"][
+                      "top32_rate"
+                  ],
+                  "adjoint_top32": point["adjoint_eval"]["teacher_forced"][
+                      "top32_rate"
+                  ],
+                  "top32_delta": point["comparison"]["top32_delta"],
+                  "uniform_prefix": point["uniform_eval"][
+                      "autonomous_exact_prefix"
+                  ],
+                  "adjoint_prefix": point["adjoint_eval"][
+                      "autonomous_exact_prefix"
+                  ],
+                  "prefix_delta": point["comparison"][
+                      "autonomous_prefix_delta"
+                  ],
+                  "active_layers": point["adjoint_allocation"]["active_layers"],
+                  "minimum_count": point["adjoint_allocation"]["minimum_count"],
+                  "maximum_count": point["adjoint_allocation"]["maximum_count"],
+                  "selected_score_fraction": point["adjoint_allocation"][
+                      "selected_score_fraction"
+                  ],
+                  "traffic_pass": point["projected_405b_partial_mlp_budget"][
+                      "partial_traffic_pass"
+                  ],
+                  "qualifies": point["qualifies"],
+              }
+              for point in points
+          ]
+          payload = {
+              "evidence_level": "E2 disjoint-prompt adjoint heavy-hitter frontier",
+              "points": points,
+              "summary": summary,
+              "promoted_fractions": [
+                  point["requested_total_fraction"] for point in promoted
+              ],
+              "best_fraction": best["requested_total_fraction"],
+              "improves_any": improves_any,
+              "decision": decision,
+              "next_candidate": next_candidate,
+              "workflow": {
+                  "run_id": int(os.environ["RUN_ID"]),
+                  "head_sha": os.environ["HEAD_SHA"],
+                  "input_sha256": {
+                      path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                      for path in files
+                  },
+              },
+          }
+          output = Path("results/tinyllama_1_1b_adjoint_heavy_hitter_allocation.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          Path("adjoint-heavy-hitter-comment.md").write_text(
+              "## Adjoint heavy-hitter allocation gate\n\n```json\n"
+              + json.dumps(
+                  {
+                      "summary": summary,
+                      "promoted_fractions": payload["promoted_fractions"],
+                      "best_fraction": payload["best_fraction"],
+                      "improves_any": payload["improves_any"],
+                      "decision": payload["decision"],
+                      "next_candidate": payload["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file adjoint-heavy-hitter-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-adjoint-heavy-hitter-allocation
+          path: results/tinyllama_1_1b_adjoint_heavy_hitter_allocation.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_adjoint_heavy_hitter_allocation.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit adjoint heavy-hitter allocation"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
