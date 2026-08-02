@@ -1,0 +1,89 @@
+name: Block-shared combined Gate 0
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/adjoint_profiler.py"
+      - "vortex_runtime/block_gate.py"
+      - "vortex_runtime/decision_tile_repair.py"
+      - "scripts/run_oracle_block_shared_gate.py"
+      - ".github/workflows/block-shared-combined-gate.yml"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  tinyllama-combined-gate:
+    if: github.head_ref == 'feat/architecture-gate0-certificate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install transformers sentencepiece
+      - name: Run combined block-shared Gate 0 oracle
+        id: experiment
+        continue-on-error: true
+        run: |
+          python scripts/run_oracle_block_shared_gate.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --block-tokens 64 \
+            --build-new-tokens 1 \
+            --max-rank 32 \
+            --row-tile 128 \
+            --col-tile 128 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output oracle_block_shared_gate.json
+      - name: Build PR report
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("oracle_block_shared_gate.json")
+          if not path.exists():
+              body = "## Block-shared combined Gate 0\n\nNo result JSON was produced."
+          else:
+              data = json.loads(path.read_text(encoding="utf-8"))
+              summary = {
+                  "actual_generated_tokens": data.get("actual_generated_tokens"),
+                  "combined_budget": data.get("combined_budget"),
+                  "best_combined_candidate": data.get("best_combined_candidate"),
+                  "best_efficiency_candidate": data.get("best_efficiency_candidate"),
+                  "decision": data.get("decision"),
+              }
+              body = (
+                  "## Block-shared combined Gate 0\n\n"
+                  "```json\n"
+                  + json.dumps(summary, indent=2, ensure_ascii=False)
+                  + "\n```"
+              )
+          Path("block-combined-comment.md").write_text(body, encoding="utf-8")
+          PY
+      - name: Publish PR report
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file block-combined-comment.md
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tinyllama-block-shared-combined-gate
+          path: oracle_block_shared_gate.json
+          if-no-files-found: warn
+      - name: Enforce experiment success
+        if: steps.experiment.outcome != 'success'
+        run: exit 1
