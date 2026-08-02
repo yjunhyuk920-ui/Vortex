@@ -4,7 +4,8 @@
   "status": "original-wave1-rejected-logical-block-oracle-survives",
   "accounting_contract": {
     "traffic": "selected cold bytes are divided by committed block tokens",
-    "compute": "selected exact arithmetic is charged every token and is not divided by committed block tokens"
+    "compute": "selected exact arithmetic is charged every token and is not divided by committed block tokens",
+    "selector_compute": "proposal-margin backward selection is charged in addition to hot forward compute"
   },
   "target": {
     "parameters": 405849243648,
@@ -100,6 +101,17 @@
     "maximum_selected_weight_gib": 7.690070998852462,
     "projected_gflop_per_token": 214.911853824,
     "analytic_pass": false
+  },
+  "selector_compute": {
+    "backward_linear_gflop_per_token": 2.503032832,
+    "backward_attention_gflop_per_token": 1.056964608,
+    "backward_misc_gflop_per_token": 0.5,
+    "backward_total_gflop_per_token": 4.05999744,
+    "hot_plus_selector_gflop_per_token": 7.591512576,
+    "limit_gflop_per_token": 12.132735283199999,
+    "maximum_repair_fraction": 0.005370914266892745,
+    "maximum_selected_weight_gib": 4.060159424164655,
+    "assumption": "fixed-weight capsule linear backward = 1x linear forward; summarized attention backward = 2x attention forward; misc backward = 1x misc forward"
   },
   "mechanism": {
     "required_tokens_per_full_repair_equivalent": 491.29915997929805,
