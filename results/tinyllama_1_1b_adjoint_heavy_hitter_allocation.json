@@ -1,0 +1,1290 @@
+{
+  "evidence_level": "E2 disjoint-prompt adjoint heavy-hitter frontier",
+  "points": [
+    {
+      "evidence_level": "E2 disjoint-prompt adjoint heavy-hitter allocation oracle",
+      "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "calibration_prompt_tokens": 19,
+      "eval_prompt_tokens": 45,
+      "calibration_tokens": 4,
+      "eval_tokens": 16,
+      "requested_total_fraction": 0.001,
+      "actual_total_fraction": 0.001065340909090909,
+      "total_selected_neurons": 132,
+      "calibration": {
+        "calibration_positions": 4,
+        "mean_exact_top2_margin": 7.629615783691406,
+        "minimum_exact_top2_margin": 2.197477340698242,
+        "maximum_exact_top2_margin": 12.96749496459961,
+        "layers": [
+          {
+            "layer": 0,
+            "neurons": 5632,
+            "score_sum": 95.34968566894531,
+            "score_max": 1.423397421836853,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 192.64572143554688
+          },
+          {
+            "layer": 1,
+            "neurons": 5632,
+            "score_sum": 107.1031265258789,
+            "score_max": 0.9709553718566895,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 159.67367553710938
+          },
+          {
+            "layer": 2,
+            "neurons": 5632,
+            "score_sum": 130.48867797851562,
+            "score_max": 1.0690618753433228,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 125.69384765625
+          },
+          {
+            "layer": 3,
+            "neurons": 5632,
+            "score_sum": 145.75830078125,
+            "score_max": 0.9352487325668335,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 105.91840362548828
+          },
+          {
+            "layer": 4,
+            "neurons": 5632,
+            "score_sum": 142.5254364013672,
+            "score_max": 3.6602895259857178,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 92.6255874633789
+          },
+          {
+            "layer": 5,
+            "neurons": 5632,
+            "score_sum": 147.03350830078125,
+            "score_max": 1.330227017402649,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 78.4526596069336
+          },
+          {
+            "layer": 6,
+            "neurons": 5632,
+            "score_sum": 154.85594177246094,
+            "score_max": 0.9274863600730896,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 69.54338073730469
+          },
+          {
+            "layer": 7,
+            "neurons": 5632,
+            "score_sum": 164.41937255859375,
+            "score_max": 21.179790496826172,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 57.020755767822266
+          },
+          {
+            "layer": 8,
+            "neurons": 5632,
+            "score_sum": 114.81369018554688,
+            "score_max": 1.0259555578231812,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 44.37588882446289
+          },
+          {
+            "layer": 9,
+            "neurons": 5632,
+            "score_sum": 113.01750183105469,
+            "score_max": 0.9412983655929565,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 38.880916595458984
+          },
+          {
+            "layer": 10,
+            "neurons": 5632,
+            "score_sum": 107.53199768066406,
+            "score_max": 1.3192554712295532,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 34.210472106933594
+          },
+          {
+            "layer": 11,
+            "neurons": 5632,
+            "score_sum": 106.52263641357422,
+            "score_max": 0.724579930305481,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 30.913509368896484
+          },
+          {
+            "layer": 12,
+            "neurons": 5632,
+            "score_sum": 99.88699340820312,
+            "score_max": 0.4737479090690613,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 27.589031219482422
+          },
+          {
+            "layer": 13,
+            "neurons": 5632,
+            "score_sum": 101.35208129882812,
+            "score_max": 0.953406572341919,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 24.860614776611328
+          },
+          {
+            "layer": 14,
+            "neurons": 5632,
+            "score_sum": 100.42803955078125,
+            "score_max": 1.041949987411499,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 23.945222854614258
+          },
+          {
+            "layer": 15,
+            "neurons": 5632,
+            "score_sum": 103.01087188720703,
+            "score_max": 0.5334373712539673,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 22.400056838989258
+          },
+          {
+            "layer": 16,
+            "neurons": 5632,
+            "score_sum": 116.94708251953125,
+            "score_max": 1.0966070890426636,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 19.652606964111328
+          },
+          {
+            "layer": 17,
+            "neurons": 5632,
+            "score_sum": 107.5555191040039,
+            "score_max": 1.006497859954834,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 17.107128143310547
+          },
+          {
+            "layer": 18,
+            "neurons": 5632,
+            "score_sum": 109.83916473388672,
+            "score_max": 1.6296417713165283,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 14.648049354553223
+          },
+          {
+            "layer": 19,
+            "neurons": 5632,
+            "score_sum": 96.63487243652344,
+            "score_max": 1.2731103897094727,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 13.231070518493652
+          },
+          {
+            "layer": 20,
+            "neurons": 5632,
+            "score_sum": 91.55731201171875,
+            "score_max": 1.9277952909469604,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 11.05543327331543
+          },
+          {
+            "layer": 21,
+            "neurons": 5632,
+            "score_sum": 111.47545623779297,
+            "score_max": 12.53625202178955,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 8.259747505187988
+          }
+        ]
+      },
+      "adjoint_allocation": {
+        "total_neurons": 132,
+        "minimum_per_layer": 1,
+        "layer_counts": [
+          9,
+          5,
+          2,
+          5,
+          5,
+          6,
+          9,
+          11,
+          4,
+          6,
+          2,
+          2,
+          3,
+          4,
+          2,
+          2,
+          5,
+          5,
+          3,
+          5,
+          12,
+          25
+        ],
+        "active_layers": 22,
+        "minimum_count": 2,
+        "maximum_count": 25,
+        "allocation_entropy_bits": 4.086700782664547,
+        "selected_score_fraction": 0.05425179046543096
+      },
+      "uniform_allocation": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "uniform_eval": {
+        "layer_counts": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "teacher_forced": {
+          "tokens": 16,
+          "top1_rate": 0.0,
+          "top4_rate": 0.0,
+          "top32_rate": 0.0,
+          "mean_exact_token_rank": 12347.75,
+          "maximum_exact_token_rank": 23815,
+          "ranks": [
+            13282,
+            6668,
+            9548,
+            13953,
+            5895,
+            10879,
+            16729,
+            23815,
+            15680,
+            10080,
+            7791,
+            17542,
+            9894,
+            13868,
+            13146,
+            8794
+          ]
+        },
+        "autonomous_exact_prefix": 0,
+        "autonomous_exact_match_rate": 0.0,
+        "oracle_statistics": {
+          "modules": 22,
+          "forward_calls": 374,
+          "activation_vectors": 2640,
+          "intermediate_neurons": 5632,
+          "selected_neurons_per_vector": 6,
+          "selected_fraction": 0.001065340909090909,
+          "mean_score_coverage": 0.02557848914293572,
+          "mean_output_relative_l2_error": 0.8906548973963117,
+          "maximum_output_relative_l2_error": 0.9814004898071289,
+          "mean_unique_neuron_fraction_per_module": 0.011097301019948314
+        }
+      },
+      "adjoint_eval": {
+        "layer_counts": [
+          9,
+          5,
+          2,
+          5,
+          5,
+          6,
+          9,
+          11,
+          4,
+          6,
+          2,
+          2,
+          3,
+          4,
+          2,
+          2,
+          5,
+          5,
+          3,
+          5,
+          12,
+          25
+        ],
+        "teacher_forced": {
+          "tokens": 16,
+          "top1_rate": 0.0,
+          "top4_rate": 0.0,
+          "top32_rate": 0.0,
+          "mean_exact_token_rank": 8661.0625,
+          "maximum_exact_token_rank": 31411,
+          "ranks": [
+            4127,
+            6820,
+            7914,
+            8068,
+            3023,
+            3546,
+            18406,
+            31411,
+            1346,
+            5089,
+            7254,
+            3852,
+            5067,
+            21802,
+            3953,
+            6899
+          ]
+        },
+        "autonomous_exact_prefix": 0,
+        "autonomous_exact_match_rate": 0.0,
+        "oracle_statistics": {
+          "modules": 22,
+          "forward_calls": 374,
+          "activation_vectors": 2640,
+          "intermediate_neurons": 5632,
+          "selected_neurons_per_vector": 9,
+          "selected_fraction": 0.0015980113636363637,
+          "mean_score_coverage": 0.02510077984947147,
+          "mean_output_relative_l2_error": 0.8782455225559798,
+          "maximum_output_relative_l2_error": 0.9991205930709839,
+          "mean_unique_neuron_fraction_per_module": 0.012098075927827846
+        }
+      },
+      "comparison": {
+        "top1_delta": 0.0,
+        "top32_delta": 0.0,
+        "autonomous_prefix_delta": 0,
+        "improves_top32": false,
+        "improves_prefix": false
+      },
+      "projected_405b_partial_mlp_budget": {
+        "selected_fraction": 0.001065340909090909,
+        "selected_neurons_per_layer": 57,
+        "source_bits": 16,
+        "selected_weight_elements": 353009664,
+        "selected_weight_gib_per_token": 0.65753173828125,
+        "selector_metadata_gib": 0.024993896484375,
+        "partial_memory_pass": true,
+        "partial_traffic_pass": true
+      },
+      "contract": "Only layer counts are calibrated. Neuron allocation uses exact top-two margin adjoints from a calibration prompt, while all quality metrics are measured on a disjoint evaluation prompt. The evaluation selector remains the optimistic exact-activation oracle, so the result is an upper bound for a compact causal runtime.",
+      "qualifies": false,
+      "decision": "reject tested adjoint allocation or revise the unit-cost model",
+      "elapsed_seconds": 34.30400886199999
+    },
+    {
+      "evidence_level": "E2 disjoint-prompt adjoint heavy-hitter allocation oracle",
+      "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "calibration_prompt_tokens": 19,
+      "eval_prompt_tokens": 45,
+      "calibration_tokens": 4,
+      "eval_tokens": 16,
+      "requested_total_fraction": 0.0025,
+      "actual_total_fraction": 0.0026633522727272725,
+      "total_selected_neurons": 330,
+      "calibration": {
+        "calibration_positions": 4,
+        "mean_exact_top2_margin": 7.629615783691406,
+        "minimum_exact_top2_margin": 2.197477340698242,
+        "maximum_exact_top2_margin": 12.96749496459961,
+        "layers": [
+          {
+            "layer": 0,
+            "neurons": 5632,
+            "score_sum": 95.34968566894531,
+            "score_max": 1.423397421836853,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 192.64572143554688
+          },
+          {
+            "layer": 1,
+            "neurons": 5632,
+            "score_sum": 107.1031265258789,
+            "score_max": 0.9709553718566895,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 159.67367553710938
+          },
+          {
+            "layer": 2,
+            "neurons": 5632,
+            "score_sum": 130.48867797851562,
+            "score_max": 1.0690618753433228,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 125.69384765625
+          },
+          {
+            "layer": 3,
+            "neurons": 5632,
+            "score_sum": 145.75830078125,
+            "score_max": 0.9352487325668335,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 105.91840362548828
+          },
+          {
+            "layer": 4,
+            "neurons": 5632,
+            "score_sum": 142.5254364013672,
+            "score_max": 3.6602895259857178,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 92.6255874633789
+          },
+          {
+            "layer": 5,
+            "neurons": 5632,
+            "score_sum": 147.03350830078125,
+            "score_max": 1.330227017402649,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 78.4526596069336
+          },
+          {
+            "layer": 6,
+            "neurons": 5632,
+            "score_sum": 154.85594177246094,
+            "score_max": 0.9274863600730896,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 69.54338073730469
+          },
+          {
+            "layer": 7,
+            "neurons": 5632,
+            "score_sum": 164.41937255859375,
+            "score_max": 21.179790496826172,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 57.020755767822266
+          },
+          {
+            "layer": 8,
+            "neurons": 5632,
+            "score_sum": 114.81369018554688,
+            "score_max": 1.0259555578231812,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 44.37588882446289
+          },
+          {
+            "layer": 9,
+            "neurons": 5632,
+            "score_sum": 113.01750183105469,
+            "score_max": 0.9412983655929565,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 38.880916595458984
+          },
+          {
+            "layer": 10,
+            "neurons": 5632,
+            "score_sum": 107.53199768066406,
+            "score_max": 1.3192554712295532,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 34.210472106933594
+          },
+          {
+            "layer": 11,
+            "neurons": 5632,
+            "score_sum": 106.52263641357422,
+            "score_max": 0.724579930305481,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 30.913509368896484
+          },
+          {
+            "layer": 12,
+            "neurons": 5632,
+            "score_sum": 99.88699340820312,
+            "score_max": 0.4737479090690613,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 27.589031219482422
+          },
+          {
+            "layer": 13,
+            "neurons": 5632,
+            "score_sum": 101.35208129882812,
+            "score_max": 0.953406572341919,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 24.860614776611328
+          },
+          {
+            "layer": 14,
+            "neurons": 5632,
+            "score_sum": 100.42803955078125,
+            "score_max": 1.041949987411499,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 23.945222854614258
+          },
+          {
+            "layer": 15,
+            "neurons": 5632,
+            "score_sum": 103.01087188720703,
+            "score_max": 0.5334373712539673,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 22.400056838989258
+          },
+          {
+            "layer": 16,
+            "neurons": 5632,
+            "score_sum": 116.94708251953125,
+            "score_max": 1.0966070890426636,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 19.652606964111328
+          },
+          {
+            "layer": 17,
+            "neurons": 5632,
+            "score_sum": 107.5555191040039,
+            "score_max": 1.006497859954834,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 17.107128143310547
+          },
+          {
+            "layer": 18,
+            "neurons": 5632,
+            "score_sum": 109.83916473388672,
+            "score_max": 1.6296417713165283,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 14.648049354553223
+          },
+          {
+            "layer": 19,
+            "neurons": 5632,
+            "score_sum": 96.63487243652344,
+            "score_max": 1.2731103897094727,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 13.231070518493652
+          },
+          {
+            "layer": 20,
+            "neurons": 5632,
+            "score_sum": 91.55731201171875,
+            "score_max": 1.9277952909469604,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 11.05543327331543
+          },
+          {
+            "layer": 21,
+            "neurons": 5632,
+            "score_sum": 111.47545623779297,
+            "score_max": 12.53625202178955,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 8.259747505187988
+          }
+        ]
+      },
+      "adjoint_allocation": {
+        "total_neurons": 330,
+        "minimum_per_layer": 1,
+        "layer_counts": [
+          15,
+          18,
+          14,
+          13,
+          13,
+          13,
+          17,
+          20,
+          9,
+          10,
+          5,
+          8,
+          7,
+          20,
+          8,
+          12,
+          15,
+          16,
+          16,
+          14,
+          21,
+          46
+        ],
+        "active_layers": 22,
+        "minimum_count": 5,
+        "maximum_count": 46,
+        "allocation_entropy_bits": 4.293885112511247,
+        "selected_score_fraction": 0.07539472434047606
+      },
+      "uniform_allocation": [
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15,
+        15
+      ],
+      "uniform_eval": {
+        "layer_counts": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15
+        ],
+        "teacher_forced": {
+          "tokens": 16,
+          "top1_rate": 0.0625,
+          "top4_rate": 0.25,
+          "top32_rate": 0.4375,
+          "mean_exact_token_rank": 2154.1875,
+          "maximum_exact_token_rank": 23857,
+          "ranks": [
+            4,
+            4,
+            1794,
+            23857,
+            25,
+            1,
+            1155,
+            100,
+            65,
+            5,
+            2,
+            6111,
+            236,
+            860,
+            232,
+            16
+          ]
+        },
+        "autonomous_exact_prefix": 0,
+        "autonomous_exact_match_rate": 0.0625,
+        "oracle_statistics": {
+          "modules": 22,
+          "forward_calls": 374,
+          "activation_vectors": 2640,
+          "intermediate_neurons": 5632,
+          "selected_neurons_per_vector": 15,
+          "selected_fraction": 0.0026633522727272725,
+          "mean_score_coverage": 0.040620750799831566,
+          "mean_output_relative_l2_error": 0.8611424696716395,
+          "maximum_output_relative_l2_error": 1.035911202430725,
+          "mean_unique_neuron_fraction_per_module": 0.05177395435219461
+        }
+      },
+      "adjoint_eval": {
+        "layer_counts": [
+          15,
+          18,
+          14,
+          13,
+          13,
+          13,
+          17,
+          20,
+          9,
+          10,
+          5,
+          8,
+          7,
+          20,
+          8,
+          12,
+          15,
+          16,
+          16,
+          14,
+          21,
+          46
+        ],
+        "teacher_forced": {
+          "tokens": 16,
+          "top1_rate": 0.0,
+          "top4_rate": 0.1875,
+          "top32_rate": 0.5625,
+          "mean_exact_token_rank": 3103.6875,
+          "maximum_exact_token_rank": 24123,
+          "ranks": [
+            5,
+            3,
+            2384,
+            21972,
+            27,
+            5,
+            78,
+            81,
+            4,
+            5,
+            2,
+            24123,
+            716,
+            216,
+            7,
+            31
+          ]
+        },
+        "autonomous_exact_prefix": 0,
+        "autonomous_exact_match_rate": 0.0625,
+        "oracle_statistics": {
+          "modules": 22,
+          "forward_calls": 374,
+          "activation_vectors": 2640,
+          "intermediate_neurons": 5632,
+          "selected_neurons_per_vector": 15,
+          "selected_fraction": 0.0026633522727272725,
+          "mean_score_coverage": 0.0397071477230356,
+          "mean_output_relative_l2_error": 0.8660299643648394,
+          "maximum_output_relative_l2_error": 0.9829689264297485,
+          "mean_unique_neuron_fraction_per_module": 0.04931237095628272
+        }
+      },
+      "comparison": {
+        "top1_delta": -0.0625,
+        "top32_delta": 0.125,
+        "autonomous_prefix_delta": 0,
+        "improves_top32": true,
+        "improves_prefix": false
+      },
+      "projected_405b_partial_mlp_budget": {
+        "selected_fraction": 0.0026633522727272725,
+        "selected_neurons_per_layer": 142,
+        "source_bits": 16,
+        "selected_weight_elements": 879427584,
+        "selected_weight_gib_per_token": 1.6380615234375,
+        "selector_metadata_gib": 0.024993896484375,
+        "partial_memory_pass": true,
+        "partial_traffic_pass": false
+      },
+      "contract": "Only layer counts are calibrated. Neuron allocation uses exact top-two margin adjoints from a calibration prompt, while all quality metrics are measured on a disjoint evaluation prompt. The evaluation selector remains the optimistic exact-activation oracle, so the result is an upper bound for a compact causal runtime.",
+      "qualifies": false,
+      "decision": "reject tested adjoint allocation or revise the unit-cost model",
+      "elapsed_seconds": 34.93053162299998
+    },
+    {
+      "evidence_level": "E2 disjoint-prompt adjoint heavy-hitter allocation oracle",
+      "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "calibration_prompt_tokens": 19,
+      "eval_prompt_tokens": 45,
+      "calibration_tokens": 4,
+      "eval_tokens": 16,
+      "requested_total_fraction": 0.005,
+      "actual_total_fraction": 0.005149147727272727,
+      "total_selected_neurons": 638,
+      "calibration": {
+        "calibration_positions": 4,
+        "mean_exact_top2_margin": 7.629612445831299,
+        "minimum_exact_top2_margin": 2.197474479675293,
+        "maximum_exact_top2_margin": 12.96748161315918,
+        "layers": [
+          {
+            "layer": 0,
+            "neurons": 5632,
+            "score_sum": 95.34967041015625,
+            "score_max": 1.4233965873718262,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 192.64564514160156
+          },
+          {
+            "layer": 1,
+            "neurons": 5632,
+            "score_sum": 107.10311889648438,
+            "score_max": 0.970951497554779,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 159.67367553710938
+          },
+          {
+            "layer": 2,
+            "neurons": 5632,
+            "score_sum": 130.48873901367188,
+            "score_max": 1.0690580606460571,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 125.69386291503906
+          },
+          {
+            "layer": 3,
+            "neurons": 5632,
+            "score_sum": 145.75833129882812,
+            "score_max": 0.9352499842643738,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 105.91841888427734
+          },
+          {
+            "layer": 4,
+            "neurons": 5632,
+            "score_sum": 142.52540588378906,
+            "score_max": 3.6602678298950195,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 92.6255874633789
+          },
+          {
+            "layer": 5,
+            "neurons": 5632,
+            "score_sum": 147.03350830078125,
+            "score_max": 1.3302192687988281,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 78.45269012451172
+          },
+          {
+            "layer": 6,
+            "neurons": 5632,
+            "score_sum": 154.85594177246094,
+            "score_max": 0.9274886846542358,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 69.54338836669922
+          },
+          {
+            "layer": 7,
+            "neurons": 5632,
+            "score_sum": 164.41925048828125,
+            "score_max": 21.17967987060547,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 57.020782470703125
+          },
+          {
+            "layer": 8,
+            "neurons": 5632,
+            "score_sum": 114.81372833251953,
+            "score_max": 1.0259572267532349,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 44.37591552734375
+          },
+          {
+            "layer": 9,
+            "neurons": 5632,
+            "score_sum": 113.01753997802734,
+            "score_max": 0.9412986636161804,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 38.88093566894531
+          },
+          {
+            "layer": 10,
+            "neurons": 5632,
+            "score_sum": 107.53202056884766,
+            "score_max": 1.3192564249038696,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 34.21049118041992
+          },
+          {
+            "layer": 11,
+            "neurons": 5632,
+            "score_sum": 106.52265930175781,
+            "score_max": 0.7245805263519287,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 30.913524627685547
+          },
+          {
+            "layer": 12,
+            "neurons": 5632,
+            "score_sum": 99.88700103759766,
+            "score_max": 0.4737492799758911,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 27.589040756225586
+          },
+          {
+            "layer": 13,
+            "neurons": 5632,
+            "score_sum": 101.35209655761719,
+            "score_max": 0.9534019231796265,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 24.86063003540039
+          },
+          {
+            "layer": 14,
+            "neurons": 5632,
+            "score_sum": 100.42809295654297,
+            "score_max": 1.0419483184814453,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 23.945236206054688
+          },
+          {
+            "layer": 15,
+            "neurons": 5632,
+            "score_sum": 103.01092529296875,
+            "score_max": 0.5334381461143494,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 22.400068283081055
+          },
+          {
+            "layer": 16,
+            "neurons": 5632,
+            "score_sum": 116.94711303710938,
+            "score_max": 1.0966060161590576,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 19.652616500854492
+          },
+          {
+            "layer": 17,
+            "neurons": 5632,
+            "score_sum": 107.55554962158203,
+            "score_max": 1.0064972639083862,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 17.10713768005371
+          },
+          {
+            "layer": 18,
+            "neurons": 5632,
+            "score_sum": 109.8392105102539,
+            "score_max": 1.629639983177185,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 14.64805793762207
+          },
+          {
+            "layer": 19,
+            "neurons": 5632,
+            "score_sum": 96.6349105834961,
+            "score_max": 1.2731093168258667,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 13.231077194213867
+          },
+          {
+            "layer": 20,
+            "neurons": 5632,
+            "score_sum": 91.55728912353516,
+            "score_max": 1.9277801513671875,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 11.055438995361328
+          },
+          {
+            "layer": 21,
+            "neurons": 5632,
+            "score_sum": 111.47533416748047,
+            "score_max": 12.536161422729492,
+            "nonzero_scores": 5632,
+            "mlp_output_gradient_norm": 8.259756088256836
+          }
+        ]
+      },
+      "adjoint_allocation": {
+        "total_neurons": 638,
+        "minimum_per_layer": 1,
+        "layer_counts": [
+          33,
+          29,
+          24,
+          26,
+          21,
+          32,
+          39,
+          37,
+          22,
+          18,
+          16,
+          16,
+          18,
+          32,
+          18,
+          20,
+          33,
+          29,
+          45,
+          24,
+          34,
+          72
+        ],
+        "active_layers": 22,
+        "minimum_count": 16,
+        "maximum_count": 72,
+        "allocation_entropy_bits": 4.348501323999289,
+        "selected_score_fraction": 0.09552146734053509
+      },
+      "uniform_allocation": [
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29,
+        29
+      ],
+      "uniform_eval": {
+        "layer_counts": [
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29
+        ],
+        "teacher_forced": {
+          "tokens": 16,
+          "top1_rate": 0.125,
+          "top4_rate": 0.3125,
+          "top32_rate": 0.5625,
+          "mean_exact_token_rank": 3601.125,
+          "maximum_exact_token_rank": 28362,
+          "ranks": [
+            1,
+            1,
+            239,
+            28362,
+            9,
+            7,
+            28,
+            1447,
+            2,
+            3,
+            2,
+            12530,
+            969,
+            13932,
+            55,
+            31
+          ]
+        },
+        "autonomous_exact_prefix": 2,
+        "autonomous_exact_match_rate": 0.125,
+        "oracle_statistics": {
+          "modules": 22,
+          "forward_calls": 374,
+          "activation_vectors": 2640,
+          "intermediate_neurons": 5632,
+          "selected_neurons_per_vector": 29,
+          "selected_fraction": 0.005149147727272727,
+          "mean_score_coverage": 0.061738423657406005,
+          "mean_output_relative_l2_error": 0.8192096481607719,
+          "maximum_output_relative_l2_error": 0.9867446422576904,
+          "mean_unique_neuron_fraction_per_module": 0.12166677449237216
+        }
+      },
+      "adjoint_eval": {
+        "layer_counts": [
+          33,
+          29,
+          24,
+          26,
+          21,
+          32,
+          39,
+          37,
+          22,
+          18,
+          16,
+          16,
+          18,
+          32,
+          18,
+          20,
+          33,
+          29,
+          45,
+          24,
+          34,
+          72
+        ],
+        "teacher_forced": {
+          "tokens": 16,
+          "top1_rate": 0.125,
+          "top4_rate": 0.25,
+          "top32_rate": 0.4375,
+          "mean_exact_token_rank": 3763.875,
+          "maximum_exact_token_rank": 23129,
+          "ranks": [
+            29,
+            1,
+            2554,
+            23129,
+            11,
+            4,
+            1568,
+            10747,
+            4,
+            13,
+            1,
+            18056,
+            1386,
+            656,
+            1455,
+            608
+          ]
+        },
+        "autonomous_exact_prefix": 0,
+        "autonomous_exact_match_rate": 0.125,
+        "oracle_statistics": {
+          "modules": 22,
+          "forward_calls": 374,
+          "activation_vectors": 2640,
+          "intermediate_neurons": 5632,
+          "selected_neurons_per_vector": 33,
+          "selected_fraction": 0.005859375,
+          "mean_score_coverage": 0.061851902501516495,
+          "mean_output_relative_l2_error": 0.8167588515715165,
+          "maximum_output_relative_l2_error": 0.9583848714828491,
+          "mean_unique_neuron_fraction_per_module": 0.10563016428866169
+        }
+      },
+      "comparison": {
+        "top1_delta": 0.0,
+        "top32_delta": -0.125,
+        "autonomous_prefix_delta": -2,
+        "improves_top32": false,
+        "improves_prefix": false
+      },
+      "projected_405b_partial_mlp_budget": {
+        "selected_fraction": 0.005149147727272727,
+        "selected_neurons_per_layer": 275,
+        "source_bits": 16,
+        "selected_weight_elements": 1703116800,
+        "selected_weight_gib_per_token": 3.17230224609375,
+        "selector_metadata_gib": 0.024993896484375,
+        "partial_memory_pass": true,
+        "partial_traffic_pass": false
+      },
+      "contract": "Only layer counts are calibrated. Neuron allocation uses exact top-two margin adjoints from a calibration prompt, while all quality metrics are measured on a disjoint evaluation prompt. The evaluation selector remains the optimistic exact-activation oracle, so the result is an upper bound for a compact causal runtime.",
+      "qualifies": false,
+      "decision": "reject tested adjoint allocation or revise the unit-cost model",
+      "elapsed_seconds": 28.830243887999984
+    }
+  ],
+  "summary": [
+    {
+      "fraction": 0.001,
+      "traffic_gib": 0.65753173828125,
+      "uniform_top32": 0.0,
+      "adjoint_top32": 0.0,
+      "top32_delta": 0.0,
+      "uniform_prefix": 0,
+      "adjoint_prefix": 0,
+      "prefix_delta": 0,
+      "active_layers": 22,
+      "minimum_count": 2,
+      "maximum_count": 25,
+      "selected_score_fraction": 0.05425179046543096,
+      "traffic_pass": true,
+      "qualifies": false
+    },
+    {
+      "fraction": 0.0025,
+      "traffic_gib": 1.6380615234375,
+      "uniform_top32": 0.4375,
+      "adjoint_top32": 0.5625,
+      "top32_delta": 0.125,
+      "uniform_prefix": 0,
+      "adjoint_prefix": 0,
+      "prefix_delta": 0,
+      "active_layers": 22,
+      "minimum_count": 5,
+      "maximum_count": 46,
+      "selected_score_fraction": 0.07539472434047606,
+      "traffic_pass": false,
+      "qualifies": false
+    },
+    {
+      "fraction": 0.005,
+      "traffic_gib": 3.17230224609375,
+      "uniform_top32": 0.5625,
+      "adjoint_top32": 0.4375,
+      "top32_delta": -0.125,
+      "uniform_prefix": 2,
+      "adjoint_prefix": 0,
+      "prefix_delta": -2,
+      "active_layers": 22,
+      "minimum_count": 16,
+      "maximum_count": 72,
+      "selected_score_fraction": 0.09552146734053509,
+      "traffic_pass": false,
+      "qualifies": false
+    }
+  ],
+  "promoted_fractions": [],
+  "best_fraction": 0.0025,
+  "improves_any": true,
+  "decision": "retain layer nonuniformity but reject tested quality gate",
+  "next_candidate": "measure exact layerwise nonlinear removal damage and solve a budgeted discrete allocation rather than a first-order utility",
+  "workflow": {
+    "run_id": 30762317003,
+    "head_sha": "398b0773ab441f3cb68ca78612a1b00203fb2985",
+    "input_sha256": {
+      "adjoint-heavy-hitter-10.json": "01a68c0e3e8aceec2c75a9c621ab262c4d5915aa939457288c28ce805b063fff",
+      "adjoint-heavy-hitter-25.json": "e89e435df0a86a89cf5153b0cec2ec7d70db045a07959e829e32c2759a420e99",
+      "adjoint-heavy-hitter-50.json": "eedbda2d66d31834ef4a9f632b98b8f950165992c9ec3341e0c50cc4b2d44ff8"
+    }
+  }
+}
