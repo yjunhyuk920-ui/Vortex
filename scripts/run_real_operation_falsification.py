@@ -210,6 +210,9 @@ def main() -> None:
     aggregate_fast = sum(
         int(item["fast_vectors"]) for item in modules.values()
     )
+    promotion_pass = (
+        exact_match and efficiency.full_model_efficiency_for_gate >= 600.0
+    )
     report = {
         "evidence_level": "E1 real-operation falsification",
         "model": args.model,
@@ -248,25 +251,27 @@ def main() -> None:
         "modules": modules,
         "promotion_threshold": {
             "minimum_tokens_per_full_repair_equivalent": 600.0,
-            "pass": (
-                exact_match
-                and efficiency.tokens_per_full_repair_equivalent >= 600.0
-            ),
+            "pass": promotion_pass,
         },
     }
-    args.output.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    args.output.write_text(
+        json.dumps(report, indent=2, allow_nan=False),
+        encoding="utf-8",
+    )
     print(args.output)
     print(
         json.dumps(
             {
                 "exact_token_match": exact_match,
                 "fast_fraction": report["aggregate"]["fast_fraction"],
+                "zero_cold_reads": efficiency.zero_cold_reads,
                 "tokens_per_full_repair_equivalent": (
                     efficiency.tokens_per_full_repair_equivalent
                 ),
-                "promotion_pass": report["promotion_threshold"]["pass"],
+                "promotion_pass": promotion_pass,
             },
             indent=2,
+            allow_nan=False,
         )
     )
 
