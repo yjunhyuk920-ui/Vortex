@@ -49,7 +49,7 @@ jobs:
           pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install -e .
           pip install transformers sentencepiece
-      - name: Run TinyLlama 1.1B operation replacement
+      - name: Run TinyLlama 1.1B exact-span warm decode
         run: |
           python scripts/run_real_operation_falsification.py \
             --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
@@ -59,9 +59,21 @@ jobs:
             --build-prompt "Explain why the sky appears blue." \
             --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
             --output real_operation_falsification.json
+      - name: Run TinyLlama 1.1B approximate oracle repair
+        run: |
+          python scripts/run_oracle_suffix_repair.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --max-new-tokens 4 \
+            --max-rank 32 \
+            --build-prompt "Explain why the sky appears blue." \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output oracle_suffix_repair.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: tinyllama-real-operation-falsification
-          path: real_operation_falsification.json
+          name: tinyllama-gate0-falsification
+          path: |
+            real_operation_falsification.json
+            oracle_suffix_repair.json
           if-no-files-found: warn
