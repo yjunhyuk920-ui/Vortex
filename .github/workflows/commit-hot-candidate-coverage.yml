@@ -17,7 +17,9 @@ permissions:
 
 jobs:
   measure-and-commit:
-    if: github.head_ref == 'feat/architecture-gate0-certificate'
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      github.head_ref == 'feat/architecture-gate0-certificate'
     runs-on: ubuntu-latest
     timeout-minutes: 90
 
