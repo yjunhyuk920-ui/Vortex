@@ -7,10 +7,7 @@ import torch
 from torch import nn
 
 from vortex_runtime.feasibility import GIB, ModelSpec
-from vortex_runtime.kronecker_operator import (
-    KroneckerShape,
-    choose_kronecker_shape,
-)
+from vortex_runtime.kronecker_operator import KroneckerShape, choose_kronecker_shape
 
 BlockMode = Literal["row", "column"]
 
@@ -26,19 +23,11 @@ class BlockKroneckerPlan:
 
     @property
     def factor_elements(self) -> int:
-        return (
-            self.blocks
-            * self.terms_per_block
-            * self.shape.factor_elements_per_term
-        )
+        return self.blocks * self.terms_per_block * self.shape.factor_elements_per_term
 
     @property
     def flops_per_token(self) -> int:
-        return (
-            self.blocks
-            * self.terms_per_block
-            * self.shape.flops_per_term
-        )
+        return self.blocks * self.terms_per_block * self.shape.flops_per_term
 
     def to_dict(self) -> dict[str, object]:
         return {
@@ -72,9 +61,23 @@ class BlockKroneckerBudget:
     plans: tuple[BlockKroneckerPlan, ...]
 
     def to_dict(self) -> dict[str, object]:
-        payload = asdict(self)
-        payload["plans"] = [plan.to_dict() for plan in self.plans]
-        return payload
+        return {
+            "factor_bits": self.factor_bits,
+            "embedding_bits": self.embedding_bits,
+            "active_kv_tokens": self.active_kv_tokens,
+            "factor_elements": self.factor_elements,
+            "factor_gib": self.factor_gib,
+            "total_memory_gib": self.total_memory_gib,
+            "total_traffic_gib_per_token": self.total_traffic_gib_per_token,
+            "total_flops_per_token": self.total_flops_per_token,
+            "projected_seconds_per_token": self.projected_seconds_per_token,
+            "allowed_seconds_per_token": self.allowed_seconds_per_token,
+            "memory_pass": self.memory_pass,
+            "traffic_pass": self.traffic_pass,
+            "latency_pass": self.latency_pass,
+            "pass_all": self.pass_all,
+            "plans": [plan.to_dict() for plan in self.plans],
+        }
 
 
 def make_block_plan(
@@ -124,70 +127,14 @@ def llama_block_kronecker_plans(
     kv = model.kv_dim
     intermediate = model.intermediate_size
     return (
-        make_block_plan(
-            name="q_proj",
-            out_features=hidden,
-            in_features=hidden,
-            mode="row",
-            block_size=head_dim,
-            terms_per_block=attention_terms,
-        ),
-        make_block_plan(
-            name="k_proj",
-            out_features=kv,
-            in_features=hidden,
-            mode="row",
-            block_size=head_dim,
-            terms_per_block=attention_terms,
-        ),
-        make_block_plan(
-            name="v_proj",
-            out_features=kv,
-            in_features=hidden,
-            mode="row",
-            block_size=head_dim,
-            terms_per_block=attention_terms,
-        ),
-        make_block_plan(
-            name="o_proj",
-            out_features=hidden,
-            in_features=hidden,
-            mode="column",
-            block_size=head_dim,
-            terms_per_block=attention_terms,
-        ),
-        make_block_plan(
-            name="gate_proj",
-            out_features=intermediate,
-            in_features=hidden,
-            mode="row",
-            block_size=mlp_block_size,
-            terms_per_block=mlp_terms,
-        ),
-        make_block_plan(
-            name="up_proj",
-            out_features=intermediate,
-            in_features=hidden,
-            mode="row",
-            block_size=mlp_block_size,
-            terms_per_block=mlp_terms,
-        ),
-        make_block_plan(
-            name="down_proj",
-            out_features=hidden,
-            in_features=intermediate,
-            mode="column",
-            block_size=mlp_block_size,
-            terms_per_block=mlp_terms,
-        ),
-        make_block_plan(
-            name="lm_head",
-            out_features=model.vocab_size,
-            in_features=hidden,
-            mode="row",
-            block_size=lm_head_block_size,
-            terms_per_block=lm_head_terms,
-        ),
+        make_block_plan(name="q_proj", out_features=hidden, in_features=hidden, mode="row", block_size=head_dim, terms_per_block=attention_terms),
+        make_block_plan(name="k_proj", out_features=kv, in_features=hidden, mode="row", block_size=head_dim, terms_per_block=attention_terms),
+        make_block_plan(name="v_proj", out_features=kv, in_features=hidden, mode="row", block_size=head_dim, terms_per_block=attention_terms),
+        make_block_plan(name="o_proj", out_features=hidden, in_features=hidden, mode="column", block_size=head_dim, terms_per_block=attention_terms),
+        make_block_plan(name="gate_proj", out_features=intermediate, in_features=hidden, mode="row", block_size=mlp_block_size, terms_per_block=mlp_terms),
+        make_block_plan(name="up_proj", out_features=intermediate, in_features=hidden, mode="row", block_size=mlp_block_size, terms_per_block=mlp_terms),
+        make_block_plan(name="down_proj", out_features=hidden, in_features=intermediate, mode="column", block_size=mlp_block_size, terms_per_block=mlp_terms),
+        make_block_plan(name="lm_head", out_features=model.vocab_size, in_features=hidden, mode="row", block_size=lm_head_block_size, terms_per_block=lm_head_terms),
     )
 
 
@@ -221,66 +168,25 @@ def block_kronecker_budget(
         lm_head_block_size=lm_head_block_size,
     )
     layer_plans = plans[:-1]
-    lm_head_plan = plans[-1]
-    factor_elements = (
-        target.layers * sum(plan.factor_elements for plan in layer_plans)
-        + lm_head_plan.factor_elements
-    )
+    lm_plan = plans[-1]
+    factor_elements = target.layers * sum(p.factor_elements for p in layer_plans) + lm_plan.factor_elements
     factor_gib = factor_elements * factor_bits / 8 / GIB
-    embedding_gib = (
-        target.vocab_size * target.hidden_size * embedding_bits / 8 / GIB
-    )
-    active_kv_gib = (
-        target.layers
-        * active_kv_tokens
-        * 2
-        * target.kv_dim
-        * target.kv_bits
-        / 8
-        / GIB
-    )
-    norm_gib = (
-        (2 * target.layers + 1) * target.hidden_size * 16 / 8 / GIB
-    )
-    total_memory = (
-        factor_gib
-        + embedding_gib
-        + active_kv_gib
-        + norm_gib
-        + workspace_gib
-        + allocator_reserve_gib
-    )
+    embedding_gib = target.vocab_size * target.hidden_size * embedding_bits / 8 / GIB
+    active_kv_gib = target.layers * active_kv_tokens * 2 * target.kv_dim * target.kv_bits / 8 / GIB
+    norm_gib = (2 * target.layers + 1) * target.hidden_size * 16 / 8 / GIB
+    total_memory = factor_gib + embedding_gib + active_kv_gib + norm_gib + workspace_gib + allocator_reserve_gib
     embedding_row_gib = target.hidden_size * embedding_bits / 8 / GIB
-    total_traffic = (
-        factor_gib
-        + active_kv_gib
-        + embedding_row_gib
-        + misc_traffic_gib_per_token
-    )
-    baseline_traffic = baseline.weight_bytes / GIB + baseline.kv_bytes / GIB
-    traffic_limit = traffic_ratio * baseline_traffic
-
-    factor_flops = (
-        target.layers * sum(plan.flops_per_token for plan in layer_plans)
-        + lm_head_plan.flops_per_token
-    )
-    attention_flops = (
-        4.0 * target.layers * target.hidden_size * active_kv_tokens
-    )
+    total_traffic = factor_gib + active_kv_gib + embedding_row_gib + misc_traffic_gib_per_token
+    traffic_limit = traffic_ratio * (baseline.weight_bytes / GIB + baseline.kv_bytes / GIB)
+    factor_flops = target.layers * sum(p.flops_per_token for p in layer_plans) + lm_plan.flops_per_token
+    attention_flops = 4.0 * target.layers * target.hidden_size * active_kv_tokens
     total_flops = factor_flops + attention_flops + misc_flops_per_token
-    hbm_seconds = factor_gib / resident_hbm_gib_s
-    compute_seconds = total_flops / (effective_tops * 1e12)
-    projected_seconds = max(hbm_seconds, compute_seconds)
-
-    baseline_weight_seconds = baseline.weight_bytes / GIB / resident_hbm_gib_s
-    baseline_ops = (
-        baseline.dense_linear_flops_per_token
-        + baseline.dense_attention_flops_per_token
+    projected_seconds = max(factor_gib / resident_hbm_gib_s, total_flops / (effective_tops * 1e12))
+    baseline_seconds = max(
+        baseline.weight_bytes / GIB / resident_hbm_gib_s,
+        (baseline.dense_linear_flops_per_token + baseline.dense_attention_flops_per_token) / (40.0 * 1e12),
     )
-    baseline_compute_seconds = baseline_ops / (40.0 * 1e12)
-    baseline_seconds = max(baseline_weight_seconds, baseline_compute_seconds)
     allowed_seconds = target_ratio * baseline_seconds
-
     memory_pass = total_memory <= 8.0
     traffic_pass = total_traffic <= traffic_limit
     latency_pass = projected_seconds <= allowed_seconds
@@ -304,6 +210,8 @@ def block_kronecker_budget(
 
 
 def _fake_quantize_blocks(tensor: torch.Tensor, *, bits: int) -> torch.Tensor:
+    if not 2 <= bits <= 16:
+        raise ValueError("factor bits must be in [2, 16]")
     levels = (1 << (bits - 1)) - 1
     maximum = tensor.abs().amax(dim=(-2, -1), keepdim=True)
     scale = torch.where(maximum > 0, maximum / levels, torch.ones_like(maximum))
@@ -318,10 +226,9 @@ def _rank_one_block_factors(
     power_iterations: int,
     seed: int,
 ) -> tuple[torch.Tensor, torch.Tensor, float]:
-    """Fit one Kronecker term per block with batched power iteration."""
-
     block_count = blocks.shape[0]
-    rearranged = blocks.to("cpu", torch.float32).reshape(
+    source = blocks.to("cpu", torch.float32)
+    rearranged = source.reshape(
         block_count,
         shape.out_first,
         shape.out_second,
@@ -333,34 +240,22 @@ def _rank_one_block_factors(
         shape.out_second * shape.in_second,
     )
     generator = torch.Generator(device="cpu").manual_seed(seed)
-    right = torch.randn(
-        block_count,
-        rearranged.shape[2],
-        1,
-        generator=generator,
-    )
+    right = torch.randn(block_count, rearranged.shape[2], 1, generator=generator)
     right = right / torch.linalg.vector_norm(right, dim=1, keepdim=True).clamp_min(1e-12)
-    iterations = max(1, power_iterations + 1)
-    for _ in range(iterations):
+    for _ in range(max(1, power_iterations + 1)):
         left = rearranged @ right
         left = left / torch.linalg.vector_norm(left, dim=1, keepdim=True).clamp_min(1e-12)
         right = rearranged.transpose(1, 2) @ left
         right = right / torch.linalg.vector_norm(right, dim=1, keepdim=True).clamp_min(1e-12)
-    signed_value = (
-        left.transpose(1, 2) @ rearranged @ right
-    ).reshape(block_count)
+    signed_value = (left.transpose(1, 2) @ rearranged @ right).reshape(block_count)
     root = torch.sqrt(signed_value.abs().clamp_min(0))
     sign = torch.sign(signed_value)
-    first = (
-        left.squeeze(-1) * root.unsqueeze(1)
-    ).reshape(block_count, 1, shape.out_first, shape.in_first)
-    second = (
-        right.squeeze(-1) * (root * sign).unsqueeze(1)
-    ).reshape(block_count, 1, shape.out_second, shape.in_second)
+    first = (left.squeeze(-1) * root.unsqueeze(1)).reshape(block_count, 1, shape.out_first, shape.in_first)
+    second = (right.squeeze(-1) * (root * sign).unsqueeze(1)).reshape(block_count, 1, shape.out_second, shape.in_second)
     first = _fake_quantize_blocks(first, bits=factor_bits)
     second = _fake_quantize_blocks(second, bits=factor_bits)
-    reconstructed = torch.einsum("btai,btbj->batij", first, second).reshape_as(blocks)
-    relative = torch.linalg.vector_norm(blocks - reconstructed) / torch.linalg.vector_norm(blocks).clamp_min(1e-12)
+    reconstructed = torch.einsum("ptai,ptcj->pacij", first, second).reshape_as(source)
+    relative = torch.linalg.vector_norm(source - reconstructed) / torch.linalg.vector_norm(source).clamp_min(1e-12)
     return first.contiguous(), second.contiguous(), float(relative.item())
 
 
@@ -379,10 +274,7 @@ class BlockKroneckerLinear(nn.Module):
         self.shape = shape
         self.register_buffer("first_factors", first_factors.contiguous())
         self.register_buffer("second_factors", second_factors.contiguous())
-        if bias is None:
-            self.register_buffer("bias", None)
-        else:
-            self.register_buffer("bias", bias.detach().clone())
+        self.register_buffer("bias", None if bias is None else bias.detach().clone())
 
     @property
     def blocks(self) -> int:
@@ -390,15 +282,11 @@ class BlockKroneckerLinear(nn.Module):
 
     @property
     def out_features(self) -> int:
-        if self.mode == "row":
-            return self.blocks * self.shape.out_features
-        return self.shape.out_features
+        return self.blocks * self.shape.out_features if self.mode == "row" else self.shape.out_features
 
     @property
     def in_features(self) -> int:
-        if self.mode == "column":
-            return self.blocks * self.shape.in_features
-        return self.shape.in_features
+        return self.blocks * self.shape.in_features if self.mode == "column" else self.shape.in_features
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         first = self.first_factors.to(device=x.device, dtype=x.dtype)
@@ -406,25 +294,10 @@ class BlockKroneckerLinear(nn.Module):
         leading = x.shape[:-1]
         if self.mode == "row":
             flat = x.reshape(-1, self.shape.in_first, self.shape.in_second)
-            output = torch.einsum(
-                "btai,nij,btcj->nbac",
-                first,
-                flat,
-                second,
-            ).reshape(*leading, self.out_features)
+            output = torch.einsum("ptai,nij,ptcj->npac", first, flat, second).reshape(*leading, self.out_features)
         else:
-            flat = x.reshape(
-                -1,
-                self.blocks,
-                self.shape.in_first,
-                self.shape.in_second,
-            )
-            per_block = torch.einsum(
-                "btai,nbij,btcj->nbac",
-                first,
-                flat,
-                second,
-            )
+            flat = x.reshape(-1, self.blocks, self.shape.in_first, self.shape.in_second)
+            per_block = torch.einsum("ptai,npij,ptcj->npac", first, flat, second)
             output = per_block.sum(dim=1).reshape(*leading, self.out_features)
         if self.bias is not None:
             output = output + self.bias.to(device=output.device, dtype=output.dtype)
@@ -446,11 +319,13 @@ def fit_block_kronecker_linear(
             raise ValueError("row block size must divide output features")
         blocks = weight.reshape(-1, block_size, weight.shape[1])
         shape = choose_kronecker_shape(block_size, weight.shape[1])
-    else:
+    elif mode == "column":
         if weight.shape[1] % block_size:
             raise ValueError("column block size must divide input features")
         blocks = weight.reshape(weight.shape[0], -1, block_size).permute(1, 0, 2).contiguous()
         shape = choose_kronecker_shape(weight.shape[0], block_size)
+    else:
+        raise ValueError(f"unsupported block mode: {mode}")
     first, second, relative_error = _rank_one_block_factors(
         blocks,
         shape=shape,
@@ -465,14 +340,14 @@ def fit_block_kronecker_linear(
         shape=shape,
         bias=linear.bias,
     )
-    stats: dict[str, int | float | str] = {
+    factor_elements = first.numel() + second.numel()
+    return module, {
         "mode": mode,
         "block_size": block_size,
         "blocks": int(blocks.shape[0]),
         "terms_per_block": 1,
         "original_elements": int(weight.numel()),
-        "factor_elements": int(first.numel() + second.numel()),
-        "compression_ratio": weight.numel() / (first.numel() + second.numel()),
+        "factor_elements": int(factor_elements),
+        "compression_ratio": weight.numel() / factor_elements,
         "relative_l2_error": relative_error,
     }
-    return module, stats
