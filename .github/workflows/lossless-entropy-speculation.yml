@@ -1,0 +1,111 @@
+name: Lossless entropy speculation gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/lossless_entropy_speculation.py"
+      - "scripts/run_lossless_entropy_speculation.py"
+      - "tests/test_lossless_entropy_speculation.py"
+      - "docs/EXPERIMENT_026_LOSSLESS_ENTROPY_SPECULATION.md"
+      - ".github/workflows/lossless-entropy-speculation.yml"
+
+concurrency:
+  group: lossless-entropy-speculation-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/lossless-entropy-speculation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate lossless entropy primitives
+        run: python -m pytest -q tests/test_lossless_entropy_speculation.py
+      - name: Measure pretrained exact tile entropy
+        run: |
+          python scripts/run_lossless_entropy_speculation.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --tile-values 65536 \
+            --sample-values 8388608 \
+            --compression-level 6 \
+            --host-to-device-gib-s 24 \
+            --decompression-output-gib-s 1000 \
+            --target-tensor-tflops 160 \
+            --baseline-memory-gib-s 300 \
+            --target-ratio 1.2 \
+            --measured-candidate-depth 12 \
+            --output results/tinyllama_1_1b_lossless_entropy_speculation.json
+      - name: Build PR report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(
+              Path("results/tinyllama_1_1b_lossless_entropy_speculation.json")
+              .read_text(encoding="utf-8")
+          )
+          projection = payload["projected_405b"]
+          summary = {
+              "sampled_values": payload["sampled_values"],
+              "measured_bits_per_weight": payload["measured_bits_per_weight"],
+              "measured_compression_ratio": payload["measured_compression_ratio"],
+              "resident_6gib_max_bits_per_weight": projection[
+                  "resident_6gib_max_bits_per_weight"
+              ],
+              "measured_candidate_depth": projection["measured_candidate_depth"],
+              "minimum_straight_commit_serialized": projection[
+                  "minimum_straight_commit_serialized_at_measured_rate"
+              ],
+              "measured_depth_serialized_seconds_per_token": projection[
+                  "measured_depth_budget"
+              ]["serialized_seconds_per_committed_token"],
+              "qualifies": payload["qualifies"],
+              "decision": payload["decision"],
+              "next_candidate": payload["next_candidate_if_rejected"],
+          }
+          Path("lossless-entropy-comment.md").write_text(
+              "## VORTEX-ZIPTREE entropy gate\n\n```json\n"
+              + json.dumps(summary, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file lossless-entropy-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-lossless-entropy-speculation
+          path: results/tinyllama_1_1b_lossless_entropy_speculation.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_lossless_entropy_speculation.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit lossless entropy speculation gate"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
