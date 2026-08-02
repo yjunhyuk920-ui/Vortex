@@ -1,0 +1,91 @@
+{
+  "evidence_level": "E1 exact weight-stationary fixed-point frontier",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "summary": [
+    {
+      "block_tokens": 16,
+      "initializer": "prompt-tail",
+      "iterations_run": 15,
+      "converged_full_window": true,
+      "best_certified_prefix": 10,
+      "best_certification_iteration": 9,
+      "certified_tokens_per_target_pass": 1.1111111111111112,
+      "best_trajectory_ngram": {"length": 16, "iteration": 14, "start": 0},
+      "qualifies": false
+    },
+    {
+      "block_tokens": 16,
+      "initializer": "repeat-next",
+      "iterations_run": 15,
+      "converged_full_window": true,
+      "best_certified_prefix": 10,
+      "best_certification_iteration": 9,
+      "certified_tokens_per_target_pass": 1.1111111111111112,
+      "best_trajectory_ngram": {"length": 16, "iteration": 14, "start": 0},
+      "qualifies": false
+    },
+    {
+      "block_tokens": 32,
+      "initializer": "prompt-tail",
+      "iterations_run": 24,
+      "converged_full_window": false,
+      "best_certified_prefix": 10,
+      "best_certification_iteration": 9,
+      "certified_tokens_per_target_pass": 1.1111111111111112,
+      "best_trajectory_ngram": {"length": 26, "iteration": 24, "start": 0},
+      "qualifies": false
+    },
+    {
+      "block_tokens": 32,
+      "initializer": "repeat-next",
+      "iterations_run": 24,
+      "converged_full_window": false,
+      "best_certified_prefix": 10,
+      "best_certification_iteration": 9,
+      "certified_tokens_per_target_pass": 1.1111111111111112,
+      "best_trajectory_ngram": {"length": 26, "iteration": 24, "start": 0},
+      "qualifies": false
+    },
+    {
+      "block_tokens": 64,
+      "initializer": "prompt-tail",
+      "iterations_run": 32,
+      "converged_full_window": false,
+      "best_certified_prefix": 31,
+      "best_certification_iteration": 32,
+      "certified_tokens_per_target_pass": 0.96875,
+      "best_trajectory_ngram": {"length": 32, "iteration": 32, "start": 0},
+      "qualifies": false
+    },
+    {
+      "block_tokens": 64,
+      "initializer": "repeat-next",
+      "iterations_run": 32,
+      "converged_full_window": false,
+      "best_certified_prefix": 10,
+      "best_certification_iteration": 9,
+      "certified_tokens_per_target_pass": 1.1111111111111112,
+      "best_trajectory_ngram": {"length": 34, "iteration": 32, "start": 0},
+      "qualifies": false
+    }
+  ],
+  "best_certificate": {
+    "block_tokens": 16,
+    "initializer": "prompt-tail",
+    "certified_prefix": 10,
+    "iteration": 9,
+    "tokens_per_target_pass": 1.1111111111111112
+  },
+  "best_trajectory_ngram": {
+    "block_tokens": 64,
+    "initializer": "repeat-next",
+    "length": 34,
+    "iteration": 32,
+    "start": 0
+  },
+  "qualifying_points": 0,
+  "decision": "reject training-free Jacobi fixed-point execution",
+  "reason": "All tested points propagated the exact causal prefix at roughly one token per full target pass; larger windows did not create parallel certified progress.",
+  "architecture_implication": "A future candidate must remove full checkpoint traffic or dense arithmetic before verification; speculative block construction alone cannot close Gate 0.",
+  "source_workflow_run": 30747846867
+}
