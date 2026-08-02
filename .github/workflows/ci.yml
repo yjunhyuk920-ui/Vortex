@@ -27,3 +27,5 @@ jobs:
         run: python -m pytest -q
       - name: Validation smoke test
         run: python scripts/run_validation.py
+      - name: Architecture Gate 0 certificate
+        run: python scripts/run_architecture_gate0.py
