@@ -4,6 +4,8 @@ from dataclasses import asdict, dataclass
 
 import torch
 
+from vortex_runtime.feasibility import GIB, ModelSpec
+
 
 @dataclass(frozen=True)
 class DiagonalTransportStats:
@@ -30,6 +32,19 @@ class DiagonalTransportStats:
         payload = asdict(self)
         payload["relative_error_reduction"] = self.relative_error_reduction
         return payload
+
+
+@dataclass(frozen=True)
+class DiagonalTransportMetadataBudget:
+    metadata_bits: int
+    scale_elements_per_layer: int
+    exact_vector_elements_per_layer: int
+    total_elements: int
+    metadata_gib: float
+    elementwise_operations_per_token: int
+
+    def to_dict(self) -> dict[str, int | float]:
+        return asdict(self)
 
 
 def _relative_l2(reference: torch.Tensor, estimate: torch.Tensor) -> float:
@@ -150,3 +165,41 @@ def diagonal_transport_linear(
     if bias is not None:
         output = output + bias.to(device=output.device, dtype=output.dtype)
     return output
+
+
+def diagonal_transport_metadata_budget(
+    *,
+    model: ModelSpec,
+    metadata_bits: int = 16,
+    exact_norm_vectors: bool = True,
+) -> DiagonalTransportMetadataBudget:
+    """Budget per-position scales around a small shared layer dictionary."""
+
+    if metadata_bits <= 0:
+        raise ValueError("metadata_bits must be positive")
+    hidden = model.hidden_size
+    intermediate = model.intermediate_size
+    kv = model.kv_dim
+    shapes = (
+        (hidden, hidden),
+        (kv, hidden),
+        (kv, hidden),
+        (hidden, hidden),
+        (intermediate, hidden),
+        (intermediate, hidden),
+        (hidden, intermediate),
+    )
+    scale_elements = sum(rows + cols for rows, cols in shapes)
+    norm_elements = 2 * hidden if exact_norm_vectors else 0
+    per_layer = scale_elements + norm_elements
+    total = model.layers * per_layer
+    metadata_gib = total * metadata_bits / 8 / GIB
+    elementwise_operations = model.layers * (2 * scale_elements + norm_elements)
+    return DiagonalTransportMetadataBudget(
+        metadata_bits=metadata_bits,
+        scale_elements_per_layer=scale_elements,
+        exact_vector_elements_per_layer=norm_elements,
+        total_elements=total,
+        metadata_gib=metadata_gib,
+        elementwise_operations_per_token=elementwise_operations,
+    )
