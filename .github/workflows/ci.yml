@@ -79,6 +79,17 @@ jobs:
             --tile-rows 128 \
             --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
             --output oracle_tile_repair.json
+      - name: Run TinyLlama 1.1B 2D residual tile oracle
+        run: |
+          python scripts/run_oracle_residual_tile_repair.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --max-new-tokens 2 \
+            --max-rank 32 \
+            --row-tile 128 \
+            --col-tile 128 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output oracle_residual_tile_repair.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -87,4 +98,5 @@ jobs:
             real_operation_falsification.json
             oracle_suffix_repair.json
             oracle_tile_repair.json
+            oracle_residual_tile_repair.json
           if-no-files-found: warn
