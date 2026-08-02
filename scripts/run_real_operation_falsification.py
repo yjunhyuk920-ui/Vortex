@@ -172,6 +172,7 @@ def main() -> None:
 
     started = time.perf_counter()
     eval_generated_tokens = 0
+    eval_decode_tokens = 0
     eval_outputs: list[list[int]] = []
     for prompt in eval_prompts:
         tokens, generated = generate(
@@ -183,18 +184,28 @@ def main() -> None:
         )
         eval_outputs.append(tokens)
         eval_generated_tokens += generated
+        eval_decode_tokens += max(0, generated - 1)
     if device.type == "cuda":
         torch.cuda.synchronize(device)
     elapsed = time.perf_counter() - started
 
     after = snapshot_replacements(replacements)
     modules = replacement_delta(after, before)
-    logical_cold_bytes = sum(
+    total_logical_cold_bytes = sum(
         int(metrics["logical_cold_bytes"]) for metrics in modules.values()
     )
-    efficiency = compute_repair_efficiency(
+    decode_logical_cold_bytes = sum(
+        int(metrics["decode_logical_cold_bytes"]) for metrics in modules.values()
+    )
+    total_efficiency = compute_repair_efficiency(
         generated_tokens=eval_generated_tokens,
-        logical_cold_bytes=logical_cold_bytes,
+        logical_cold_bytes=total_logical_cold_bytes,
+        managed_weight_bytes=managed_weight_bytes,
+        full_model_weight_bytes=full_model_bytes,
+    )
+    decode_efficiency = compute_repair_efficiency(
+        generated_tokens=eval_decode_tokens,
+        logical_cold_bytes=decode_logical_cold_bytes,
         managed_weight_bytes=managed_weight_bytes,
         full_model_weight_bytes=full_model_bytes,
     )
@@ -210,8 +221,23 @@ def main() -> None:
     aggregate_fast = sum(
         int(item["fast_vectors"]) for item in modules.values()
     )
+    prefill_vectors = sum(
+        int(item["prefill_vectors"]) for item in modules.values()
+    )
+    prefill_fast = sum(
+        int(item["prefill_fast_vectors"]) for item in modules.values()
+    )
+    decode_vectors = sum(
+        int(item["decode_vectors"]) for item in modules.values()
+    )
+    decode_fast = sum(
+        int(item["decode_fast_vectors"]) for item in modules.values()
+    )
+
     promotion_pass = (
-        exact_match and efficiency.full_model_efficiency_for_gate >= 600.0
+        exact_match
+        and eval_decode_tokens > 0
+        and decode_efficiency.full_model_efficiency_for_gate >= 600.0
     )
     report = {
         "evidence_level": "E1 real-operation falsification",
@@ -226,6 +252,7 @@ def main() -> None:
         "eval_prompts": eval_prompts,
         "build_generated_tokens": build_generated_tokens,
         "eval_generated_tokens": eval_generated_tokens,
+        "eval_decode_tokens": eval_decode_tokens,
         "exact_token_match": exact_match,
         "elapsed_seconds": elapsed,
         "seconds_per_generated_token": (
@@ -240,6 +267,12 @@ def main() -> None:
             "vectors": aggregate_vectors,
             "fast_vectors": aggregate_fast,
             "fast_fraction": aggregate_fast / max(1, aggregate_vectors),
+            "prefill_vectors": prefill_vectors,
+            "prefill_fast_vectors": prefill_fast,
+            "prefill_fast_fraction": prefill_fast / max(1, prefill_vectors),
+            "decode_vectors": decode_vectors,
+            "decode_fast_vectors": decode_fast,
+            "decode_fast_fraction": decode_fast / max(1, decode_vectors),
             "capsule_bytes": sum(
                 int(item["capsule_bytes"]) for item in modules.values()
             ),
@@ -247,10 +280,11 @@ def main() -> None:
                 int(item["rank_growth"]) for item in modules.values()
             ),
         },
-        "repair_efficiency": efficiency.to_dict(),
+        "total_repair_efficiency": total_efficiency.to_dict(),
+        "warm_decode_repair_efficiency": decode_efficiency.to_dict(),
         "modules": modules,
         "promotion_threshold": {
-            "minimum_tokens_per_full_repair_equivalent": 600.0,
+            "minimum_warm_decode_tokens_per_full_repair_equivalent": 600.0,
             "pass": promotion_pass,
         },
     }
@@ -263,10 +297,15 @@ def main() -> None:
         json.dumps(
             {
                 "exact_token_match": exact_match,
-                "fast_fraction": report["aggregate"]["fast_fraction"],
-                "zero_cold_reads": efficiency.zero_cold_reads,
-                "tokens_per_full_repair_equivalent": (
-                    efficiency.tokens_per_full_repair_equivalent
+                "prefill_fast_fraction": report["aggregate"][
+                    "prefill_fast_fraction"
+                ],
+                "decode_fast_fraction": report["aggregate"][
+                    "decode_fast_fraction"
+                ],
+                "decode_zero_cold_reads": decode_efficiency.zero_cold_reads,
+                "warm_decode_tokens_per_full_repair_equivalent": (
+                    decode_efficiency.tokens_per_full_repair_equivalent
                 ),
                 "promotion_pass": promotion_pass,
             },
