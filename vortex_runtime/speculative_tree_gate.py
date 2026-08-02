@@ -44,12 +44,14 @@ def speculative_tree_verification_budget(
     baseline_effective_tflops: float = 40.0,
     target_ratio: float = 1.2,
 ) -> TreeVerificationBudget:
-    """Budget one exact target verification of a speculative token tree.
+    """Budget a target-side lower-bound pass over a speculative token tree.
 
-    The coarse full-rank weights are streamed once. All retained tree nodes are
-    evaluated in the same target pass, while only one contiguous root-to-leaf
-    prefix may be committed. The drafter is deliberately charged zero cost;
-    this is an optimistic upper bound for any substitute-draft implementation.
+    The selected coarse full-rank representation is streamed once and every
+    retained tree node is evaluated in the same pass. Only one contiguous
+    root-to-leaf prefix may be committed. The drafter is deliberately charged
+    zero cost, and higher precision needed for exact verification is omitted.
+    Therefore passing this function is necessary but not sufficient; failing it
+    rejects any more expensive exact progressive verifier for the same tree.
     """
 
     if not 2 <= hot_bits < target.weight_bits:
