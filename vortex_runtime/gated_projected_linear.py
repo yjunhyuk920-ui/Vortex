@@ -120,6 +120,9 @@ class GatedProjectedLinear(nn.Module):
         epsilon: float,
         offload_exact: bool = True,
     ) -> "GatedProjectedLinear":
+        source_device = linear.weight.device
+        source_dtype = linear.weight.dtype
+        bias_dtype = None if linear.bias is None else linear.bias.dtype
         weight_cpu = linear.weight.detach().to(dtype=torch.float32, device="cpu")
         basis_cpu = basis.detach().to(dtype=torch.float32, device="cpu")
         image = weight_cpu @ basis_cpu
@@ -131,12 +134,22 @@ class GatedProjectedLinear(nn.Module):
             epsilon=epsilon,
             offload_exact=offload_exact,
         )
-        module.basis = module.basis.to(
-            device=linear.weight.device, dtype=linear.weight.dtype
-        )
-        module.image = module.image.to(
-            device=linear.weight.device, dtype=linear.weight.dtype
-        )
+        module.basis = module.basis.to(device=source_device, dtype=source_dtype)
+        module.image = module.image.to(device=source_device, dtype=source_dtype)
+
+        if offload_exact:
+            # The caller may still retain a reference to the replaced module.
+            # Empty its parameter storage after the exact CPU copy is secured so
+            # stale references cannot keep the original GPU weights resident.
+            linear.weight = nn.Parameter(
+                torch.empty(0, dtype=source_dtype, device="cpu"),
+                requires_grad=False,
+            )
+            if linear.bias is not None:
+                linear.bias = nn.Parameter(
+                    torch.empty(0, dtype=bias_dtype, device="cpu"),
+                    requires_grad=False,
+                )
         return module
 
     @property
