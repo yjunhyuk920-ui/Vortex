@@ -1,0 +1,59 @@
+{
+  "evidence_level": "E1 real-operation falsification",
+  "experiment": "exact-span Atlas O/down replacement with disjoint build and evaluation prompts",
+  "workflow_run_id": 30734726402,
+  "workflow_artifact_id": 8829163921,
+  "artifact_digest": "sha256:ae594f61d1b6114a3784138c1eab9d288412177377e0584ddb64a4049ed981e0",
+  "head_sha": "e1e6ddcb2b0435229aa02e8d4f9ae36d72d97117",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "managed_projection_suffixes": [
+    "self_attn.o_proj",
+    "mlp.down_proj"
+  ],
+  "matched_modules": 44,
+  "max_rank": 32,
+  "build_prompt": "Explain why the sky appears blue.",
+  "evaluation_prompt": "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘.",
+  "generated_tokens": 8,
+  "warm_decode_tokens": 7,
+  "exact_token_match": true,
+  "elapsed_seconds": 4.320778535000002,
+  "aggregate": {
+    "all_vectors": 2288,
+    "all_fast_vectors": 44,
+    "all_fast_fraction": 0.019230769230769232,
+    "prefill_vectors": 1980,
+    "prefill_fast_vectors": 44,
+    "prefill_fast_fraction": 0.022222222222222223,
+    "warm_decode_vectors": 308,
+    "warm_decode_fast_vectors": 0,
+    "warm_decode_fast_fraction": 0.0,
+    "capsule_bytes": 33161216,
+    "rank_growth": 1012
+  },
+  "warm_decode_repair": {
+    "logical_cold_bytes": 9688842240,
+    "managed_weight_bytes": 1384120320,
+    "full_model_weight_bytes": 4400193536,
+    "managed_repair_fraction": 7.0,
+    "full_model_repair_fraction": 2.2019127478669156,
+    "tokens_per_managed_repair_equivalent": 1.0,
+    "tokens_per_full_repair_equivalent": 3.1790542140151516
+  },
+  "module_distribution": {
+    "modules_with_seven_decode_cold_reads": 44,
+    "modules_with_zero_decode_fast_fraction": 44,
+    "modules_with_rank_growth_23": 44
+  },
+  "gate_comparison": {
+    "required_tokens_per_full_repair_equivalent": 491.29915997929805,
+    "promotion_threshold": 600.0,
+    "observed": 3.1790542140151516,
+    "shortfall_to_minimum": 154.54255476781765,
+    "pass": false
+  },
+  "decision": "reject exact-span Atlas as the steady-state warm-decode mechanism",
+  "scope_note": "This rejects the exact-span fallback mechanism. It does not by itself reject approximate capsules plus selective token-level repair."
+}

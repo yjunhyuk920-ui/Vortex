@@ -1,0 +1,163 @@
+name: Hybrid allocation frontier
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/hybrid_response_basis.py"
+      - "scripts/run_hybrid_session_candidate_coverage.py"
+      - "scripts/run_hybrid_allocation_frontier.py"
+      - "tests/test_hybrid_response_basis.py"
+      - "tests/test_hybrid_allocation_frontier.py"
+      - ".github/workflows/hybrid-allocation-frontier.yml"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  tinyllama-hybrid-frontier:
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      github.head_ref == 'feat/architecture-gate0-certificate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 2
+      - name: Check direct hybrid changes
+        id: changes
+        run: |
+          if git diff --quiet HEAD^ HEAD -- \
+            vortex_runtime/hybrid_response_basis.py \
+            scripts/run_hybrid_session_candidate_coverage.py \
+            scripts/run_hybrid_allocation_frontier.py \
+            tests/test_hybrid_response_basis.py \
+            tests/test_hybrid_allocation_frontier.py \
+            .github/workflows/hybrid-allocation-frontier.yml; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-python@v5
+        if: steps.changes.outputs.run == 'true'
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        if: steps.changes.outputs.run == 'true'
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install transformers sentencepiece
+      - name: Measure causal hybrid allocation frontier
+        if: steps.changes.outputs.run == 'true'
+        run: |
+          python scripts/run_hybrid_allocation_frontier.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --build-new-tokens 1 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output hybrid_allocation_frontier.json
+      - name: Normalize evidence with provenance
+        if: steps.changes.outputs.run == 'true'
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          raw = Path("hybrid_allocation_frontier.json")
+          raw_bytes = raw.read_bytes()
+          payload = json.loads(raw_bytes)
+          payload["workflow"] = {
+              "run_id": int(os.environ["RUN_ID"]),
+              "head_sha": os.environ["HEAD_SHA"],
+              "raw_file_sha256": hashlib.sha256(raw_bytes).hexdigest(),
+          }
+          output = Path("results/tinyllama_1_1b_hybrid_allocation_frontier.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          PY
+      - name: Build PR report
+        if: steps.changes.outputs.run == 'true'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("hybrid_allocation_frontier.json").read_text())
+          rows = [
+              {
+                  "global": point["global_rank_limit"],
+                  "total": point["total_rank_limit"],
+                  "bits": point["capsule_bits"],
+                  "actual_global": point["global_rank_statistics"]["mean"],
+                  "added_session": point[
+                      "added_session_rank_statistics"
+                  ]["mean"],
+                  "actual_final": point["final_rank_statistics"]["mean"],
+                  "top1": point["exact_top1_match_rate"],
+                  "top32": point["coverage_at_k"]["32"],
+                  "mean_exact_rank": point["rank_statistics"]["mean"],
+                  "prompt_output_error": point["prompt_reconstruction"][
+                      "maximum_final_output_relative_error"
+                  ],
+                  "survives": point["qualifies_for_multi_hypothesis"],
+              }
+              for point in data["points"]
+          ]
+          body = (
+              "## Hybrid global + session frontier\n\n"
+              "```json\n"
+              + json.dumps(
+                  {
+                      "points": rows,
+                      "decision": data["decision"],
+                      "next_candidate": data["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```"
+          )
+          Path("hybrid-frontier-comment.md").write_text(body, encoding="utf-8")
+          PY
+      - name: Publish PR report
+        if: steps.changes.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file hybrid-frontier-comment.md
+      - uses: actions/upload-artifact@v4
+        if: steps.changes.outputs.run == 'true'
+        with:
+          name: tinyllama-hybrid-allocation-frontier
+          path: hybrid_allocation_frontier.json
+      - name: Commit evidence when changed
+        if: steps.changes.outputs.run == 'true'
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_hybrid_allocation_frontier.json
+          if [ -z "$(git status --porcelain -- "$path")" ]; then
+            echo "Hybrid frontier evidence is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(hybrid): commit global-session allocation sweep"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"

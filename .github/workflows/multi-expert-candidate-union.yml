@@ -1,0 +1,153 @@
+name: Multi-expert candidate union
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/multi_expert_candidates.py"
+      - "scripts/run_multi_expert_candidate_union.py"
+      - "tests/test_multi_expert_candidates.py"
+      - ".github/workflows/multi-expert-candidate-union.yml"
+
+concurrency:
+  group: multi-expert-candidate-union-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  tinyllama-multi-expert:
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      github.head_ref == 'feat/architecture-gate0-certificate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 2
+      - name: Check direct multi-expert changes
+        id: changes
+        run: |
+          if git diff --quiet HEAD^ HEAD -- \
+            vortex_runtime/multi_expert_candidates.py \
+            scripts/run_multi_expert_candidate_union.py \
+            tests/test_multi_expert_candidates.py \
+            .github/workflows/multi-expert-candidate-union.yml; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-python@v5
+        if: steps.changes.outputs.run == 'true'
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        if: steps.changes.outputs.run == 'true'
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install transformers sentencepiece
+      - name: Measure independent capsule union and margin router
+        if: steps.changes.outputs.run == 'true'
+        run: |
+          python scripts/run_multi_expert_candidate_union.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --build-new-tokens 1 \
+            --generic-rank 56 \
+            --session-rank 45 \
+            --generic-bits 8 \
+            --session-bits 8 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output multi_expert_candidate_union.json
+      - name: Normalize evidence with provenance
+        if: steps.changes.outputs.run == 'true'
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          raw = Path("multi_expert_candidate_union.json")
+          raw_bytes = raw.read_bytes()
+          payload = json.loads(raw_bytes)
+          payload["workflow"] = {
+              "run_id": int(os.environ["RUN_ID"]),
+              "head_sha": os.environ["HEAD_SHA"],
+              "raw_file_sha256": hashlib.sha256(raw_bytes).hexdigest(),
+          }
+          output = Path("results/tinyllama_1_1b_multi_expert_candidate_union.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          PY
+      - name: Build PR report
+        if: steps.changes.outputs.run == 'true'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("multi_expert_candidate_union.json").read_text())
+          summary = {
+              "dictionary_budget": data["dictionary_budget"],
+              "fixed_total_candidate_allocations": data[
+                  "fixed_total_candidate_allocations"
+              ],
+              "equal_per_expert_width_diagnostics": data[
+                  "equal_per_expert_width_diagnostics"
+              ],
+              "best_budget_compatible_router": data[
+                  "best_budget_compatible_router"
+              ],
+              "decision": data["decision"],
+              "next_candidate": data["next_candidate"],
+          }
+          body = (
+              "## Independent multi-capsule candidate union\n\n"
+              "```json\n"
+              + json.dumps(summary, indent=2, ensure_ascii=False)
+              + "\n```"
+          )
+          Path("multi-expert-comment.md").write_text(body, encoding="utf-8")
+          PY
+      - name: Publish PR report
+        if: steps.changes.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file multi-expert-comment.md
+      - uses: actions/upload-artifact@v4
+        if: steps.changes.outputs.run == 'true'
+        with:
+          name: tinyllama-multi-expert-candidate-union
+          path: multi_expert_candidate_union.json
+      - name: Commit evidence when changed
+        if: steps.changes.outputs.run == 'true'
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_multi_expert_candidate_union.json
+          if [ -z "$(git status --porcelain -- "$path")" ]; then
+            echo "Multi-expert evidence is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(expert): commit independent capsule union result"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"

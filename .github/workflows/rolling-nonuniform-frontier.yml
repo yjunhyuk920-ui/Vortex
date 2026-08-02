@@ -1,0 +1,180 @@
+name: Rolling nonuniform frontier
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/nonuniform_rank_allocator.py"
+      - "vortex_runtime/rolling_refresh_budget.py"
+      - "scripts/run_nonuniform_rank_frontier.py"
+      - "scripts/run_rolling_nonuniform_frontier.py"
+      - "scripts/aggregate_rolling_nonuniform_frontier.py"
+      - "tests/test_nonuniform_rank_allocator.py"
+      - "tests/test_rolling_refresh_budget.py"
+      - ".github/workflows/rolling-nonuniform-frontier.yml"
+
+concurrency:
+  group: rolling-nonuniform-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'feat/architecture-gate0-certificate'
+    strategy:
+      fail-fast: false
+      matrix:
+        refresh_interval: [16, 32, 64]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Run rolling budget and allocator tests
+        run: |
+          python -m pytest -q \
+            tests/test_nonuniform_rank_allocator.py \
+            tests/test_rolling_refresh_budget.py
+      - name: Measure interval ${{ matrix.refresh_interval }}
+        run: |
+          python scripts/run_rolling_nonuniform_frontier.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 64 \
+            --refresh-interval ${{ matrix.refresh_interval }} \
+            --anchor-window 16 \
+            --uniform-equivalent-rank 72 \
+            --profile-max-rank 192 \
+            --minimum-rank 1 \
+            --capsule-bits 8 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "rolling-${{ matrix.refresh_interval }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rolling-nonuniform-${{ matrix.refresh_interval }}
+          path: rolling-${{ matrix.refresh_interval }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: rolling-nonuniform-*
+          path: rolling-results
+          merge-multiple: true
+      - name: Aggregate frontier
+        run: |
+          mapfile -t files < <(find rolling-results -type f -name '*.json' | sort)
+          python scripts/aggregate_rolling_nonuniform_frontier.py \
+            "${files[@]}" \
+            --output rolling_nonuniform_frontier.json
+      - name: Normalize evidence with provenance
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          raw = Path("rolling_nonuniform_frontier.json")
+          raw_bytes = raw.read_bytes()
+          payload = json.loads(raw_bytes)
+          payload["workflow"] = {
+              "run_id": int(os.environ["RUN_ID"]),
+              "head_sha": os.environ["HEAD_SHA"],
+              "raw_file_sha256": hashlib.sha256(raw_bytes).hexdigest(),
+          }
+          output = Path("results/tinyllama_1_1b_rolling_nonuniform_frontier.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          PY
+      - name: Build PR report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("rolling_nonuniform_frontier.json").read_text())
+          rows = []
+          for point in data["points"]:
+              managed = point["refresh_budget"]["managed_o_down_lower_bound"]
+              full = point["refresh_budget"]["full_model_anchor"]
+              rows.append({
+                  "interval": point["refresh_interval"],
+                  "anchors": point["decode_anchor_count"],
+                  "overall_candidate_top1": point["overall_candidate_top1_match_rate"],
+                  "hot_top1": point["hot_only_top1_match_rate"],
+                  "hot_top32": point["hot_only_coverage_at_k"]["32"],
+                  "first_hot_divergence_rank": None if point["first_hot_divergence"] is None else point["first_hot_divergence"]["exact_token_rank"],
+                  "managed_minimum_interval": managed["minimum_integer_interval"],
+                  "managed_budget_pass": managed["pass_all"],
+                  "full_minimum_interval": full["minimum_integer_interval"],
+                  "full_budget_pass": full["pass_all"],
+                  "accuracy_pass": point["accuracy_pass"],
+                  "final_gate_compatible": point["final_gate_compatible"],
+              })
+          body = (
+              "## Causal rolling nonuniform frontier\n\n"
+              "```json\n"
+              + json.dumps({
+                  "minimum_refresh_intervals": data["minimum_refresh_intervals"],
+                  "points": rows,
+                  "decision": data["decision"],
+                  "next_candidate": data["next_candidate"],
+              }, indent=2, ensure_ascii=False)
+              + "\n```"
+          )
+          Path("rolling-nonuniform-comment.md").write_text(body, encoding="utf-8")
+          PY
+      - name: Publish PR report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file rolling-nonuniform-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-rolling-nonuniform-frontier
+          path: rolling_nonuniform_frontier.json
+      - name: Commit evidence when changed
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_rolling_nonuniform_frontier.json
+          if [ -z "$(git status --porcelain -- "$path")" ]; then
+            echo "Rolling evidence is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit rolling nonuniform sweep"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"

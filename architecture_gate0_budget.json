@@ -1,0 +1,723 @@
+{
+  "evidence_level": "E0/E1",
+  "candidate": "VORTEX-WAVE-1",
+  "status": "uniform-precision-hybrid-insufficient",
+  "accounting_contract": {
+    "traffic": "selected cold bytes are divided by committed block tokens",
+    "compute": "selected exact arithmetic is charged every token and is not divided by committed block tokens",
+    "selector_compute": "proposal-margin backward selection is charged in addition to hot forward compute"
+  },
+  "target": {
+    "parameters": 405849243648,
+    "layers": 126,
+    "hidden_size": 16384,
+    "intermediate_size": 53248,
+    "attention_heads": 128,
+    "kv_heads": 8,
+    "vocab_size": 128256,
+    "context_tokens": 4096,
+    "weight_bits": 16,
+    "kv_bits": 16
+  },
+  "baseline": {
+    "parameters": 4000000000,
+    "layers": 32,
+    "hidden_size": 3072,
+    "intermediate_size": 8192,
+    "attention_heads": 24,
+    "kv_heads": 8,
+    "vocab_size": 128256,
+    "context_tokens": 4096,
+    "weight_bits": 4,
+    "kv_bits": 16
+  },
+  "candidate_parameters": {
+    "linear_rank": 32,
+    "capsule_bits": 8,
+    "attention_rank": 64,
+    "attention_summary_bits": 8,
+    "recent_exact_kv_tokens": 128,
+    "embedding_cache_rows": 4096,
+    "workspace_gib": 1.25,
+    "repair_window_gib": 0.5,
+    "allocator_reserve_gib": 1.0,
+    "certificate_state_gib": 0.25,
+    "misc_hot_traffic_gib": 0.05,
+    "misc_hot_flops": 500000000.0,
+    "repair_fraction": 0.25,
+    "committed_tokens_per_repair": 160.0
+  },
+  "targets": {
+    "memory_limit_gib": 8.0,
+    "traffic_ratio": 1.2,
+    "compute_ratio": 1.2
+  },
+  "memory": {
+    "components_gib": {
+      "linear_capsules": 1.1655654907226562,
+      "attention_summaries": 0.015380859375,
+      "recent_exact_kv": 0.0615234375,
+      "embedding_cache": 0.0625,
+      "workspace": 1.25,
+      "repair_window": 0.5,
+      "allocator_reserve": 1.0,
+      "certificate_state": 0.25
+    },
+    "total_gib": 4.304969787597656,
+    "limit_gib": 8.0,
+    "pass": true
+  },
+  "traffic": {
+    "hot_components_gib_per_token": {
+      "linear_capsule_read": 1.1655654907226562,
+      "attention_summary_read": 0.015380859375,
+      "recent_exact_kv_read": 0.0615234375,
+      "embedding_row_read": 1.52587890625e-05,
+      "misc": 0.05
+    },
+    "hot_gib_per_token": 1.2924850463867188,
+    "baseline_components_gib_per_token": {
+      "weights": 1.862645149230957,
+      "kv": 0.5
+    },
+    "baseline_gib_per_token": 2.362645149230957,
+    "limit_gib_per_token": 2.8351741790771485,
+    "cold_full_repair_gib": 757.921875,
+    "required_tokens_per_full_repair_equivalent": 491.29915997929805,
+    "candidate_tokens_per_full_repair_equivalent": 640.0,
+    "candidate_minimum_committed_tokens": 122.82478999482451,
+    "projected_gib_per_token": 2.4767379760742188,
+    "analytic_pass": true
+  },
+  "compute": {
+    "hot_linear_gflop_per_token": 2.503032832,
+    "hot_attention_gflop_per_token": 0.528482304,
+    "hot_total_gflop_per_token": 3.531515136,
+    "baseline_gflop_per_token": 10.110612736,
+    "limit_gflop_per_token": 12.132735283199999,
+    "cold_full_repair_gflop": 845.521354752,
+    "candidate_repair_fraction": 0.25,
+    "maximum_repair_fraction": 0.010172682332456079,
+    "maximum_selected_weight_gib": 7.690070998852462,
+    "projected_gflop_per_token": 214.911853824,
+    "analytic_pass": false
+  },
+  "selector_compute": {
+    "backward_linear_gflop_per_token": 2.503032832,
+    "backward_attention_gflop_per_token": 1.056964608,
+    "backward_misc_gflop_per_token": 0.5,
+    "backward_total_gflop_per_token": 4.05999744,
+    "hot_plus_selector_gflop_per_token": 7.591512576,
+    "limit_gflop_per_token": 12.132735283199999,
+    "maximum_repair_fraction": 0.005370914266892745,
+    "maximum_selected_weight_gib": 4.060159424164655,
+    "assumption": "fixed-weight capsule linear backward = 1x linear forward; summarized attention backward = 2x attention forward; misc backward = 1x misc forward"
+  },
+  "mechanism": {
+    "required_tokens_per_full_repair_equivalent": 491.29915997929805,
+    "maximum_compute_repair_fraction": 0.010172682332456079,
+    "candidate_target": 640.0,
+    "candidate_repair_fraction": 0.25,
+    "observed": 1049.087890625,
+    "observed_repair_fraction": 0.001906417963521139,
+    "observed_source": "results/tinyllama_1_1b_block_shared_combined_gate.json",
+    "traffic_pass": true,
+    "compute_pass": true,
+    "pass": true,
+    "traffic_shortfall_factor": 0.46831077202368987,
+    "compute_excess_factor": 0.18740563218401965,
+    "observed_committed_tokens": 2,
+    "observed_incremental_committed_tokens": 1,
+    "selector_proven": false,
+    "certificate_proven": false,
+    "managed_model_wide": false
+  },
+  "gates": {
+    "memory": true,
+    "analytic_traffic": true,
+    "analytic_compute": false,
+    "observed_repair_traffic": true,
+    "observed_repair_compute": true,
+    "observed_repair_efficiency": true,
+    "logical_combined_oracle": true,
+    "target_independent_selector": false,
+    "sound_commit_certificate": false,
+    "residual_energy_selector": false,
+    "proposal_adjoint_full_weight_scan": false,
+    "proposal_margin_metadata_bound": false,
+    "causal_prefill_compiler": false,
+    "rank32_topk_coverage": false,
+    "feasible_rank_frontier_8bit": false,
+    "session_prefill_response_basis": false,
+    "precision_rank_frontier": false,
+    "hybrid_allocation_frontier": false
+  },
+  "logical_oracle": {
+    "evidence_level": "E1 exact-target block-shared combined oracle",
+    "source": "results/tinyllama_1_1b_block_shared_combined_gate.json",
+    "zero_repair_prefix_tokens": 1,
+    "selected_tiles": 128,
+    "selected_weight_bytes": 8388608,
+    "repair_fraction": 0.001906417963521139,
+    "committed_prefix_tokens": 2,
+    "incremental_committed_tokens": 1,
+    "traffic_efficiency": 1049.087890625,
+    "projected_traffic_gib_per_token": 2.0149429851095304,
+    "projected_compute_gflop_per_token": 5.143432235239942,
+    "traffic_pass": true,
+    "compute_pass": true,
+    "logical_budget_pass": true,
+    "selector_uses_exact_target_tokens": true,
+    "selector_uses_teacher_gradients": true,
+    "sound_commit_certificate": false,
+    "scope": "TinyLlama 1.1B O/down projections on one disjoint evaluation prompt"
+  },
+  "revised_oracle_envelope": {
+    "repair_fraction": 0.001906417963521139,
+    "committed_tokens_per_shared_repair": 2,
+    "projected_traffic_gib_per_token": 2.0149429851095304,
+    "traffic_limit_gib_per_token": 2.8351741790771485,
+    "traffic_pass": true,
+    "projected_compute_gflop_per_token": 5.143432235239942,
+    "compute_limit_gflop_per_token": 12.132735283199999,
+    "compute_pass": true,
+    "memory_pass": true
+  },
+  "observed_component_decision": "The causal hybrid improved the best top-32 coverage to 0.687500, but remained below 0.95.",
+  "rejected_mechanisms": [
+    "exact-span Atlas warm-decode fast path",
+    "rank-32 approximate capsule plus exact layer-suffix repair",
+    "rank-32 approximate capsule plus output-row tile repair",
+    "rank-32 residual-energy 2D tile repair",
+    "rank-32 exact-target adjoint 2D tile repair per token",
+    "the original VORTEX-WAVE-1 25-percent repair design point",
+    "block-shared residual-energy target-independent selector",
+    "block-shared proposal-token signed-adjoint selector",
+    "block-shared proposal-margin metadata-bound selector",
+    "causal exact-prompt-prefill adjoint compiler",
+    "rank-32 O/down hot representation for small top-K uncertainty",
+    "generic-build-prompt 8-bit O/down capsule through rank 72",
+    "prompt-only rank-45 session response basis without adaptive growth",
+    "independently quantized generic global O/down capsules at the tested 8/6/4-bit precision-rank frontier",
+    "uniform-precision global plus exact-prompt residual hybrid at the tested 6/4-bit allocations"
+  ],
+  "next_candidate": "preserve session residual columns at higher precision than the generic prior, then allocate session directions non-uniformly by module benefit per packed byte",
+  "selector_falsification": {
+    "residual_energy": {
+      "evidence_level": "E1 target-independent block selector falsification",
+      "source": "results/tinyllama_1_1b_block_shared_residual_selector.json",
+      "zero_repair_prefix_tokens": 1,
+      "combined_budget_tile_count": 683,
+      "boundary_selected_tiles": 683,
+      "boundary_selected_weight_bytes": 44761088,
+      "boundary_committed_prefix_tokens": 1,
+      "boundary_incremental_committed_tokens": 0,
+      "pass": false,
+      "decision": "target-independent residual-energy selector fails the E1 combined gate",
+      "rejection_scope": "Reject residual-energy ranking for the tested rank-32 O/down block-shared selector. This does not reject proposal-margin gradients or all target-independent selectors."
+    },
+    "proposal_adjoint_full_weight_scan": {
+      "selector": "proposal_adjoint_full_weight_scan",
+      "evidence_level": "E1 proposal-adjoint full-weight-scan oracle",
+      "source": "results/tinyllama_1_1b_block_shared_proposal_adjoint_oracle.json",
+      "zero_repair_prefix_tokens": 1,
+      "combined_budget_tile_count": 360,
+      "pass": false,
+      "best_selector_candidate": null,
+      "decision": "proposal-token adjoint oracle fails the combined gate",
+      "rejection_scope": "Reject proposal-token signed-adjoint ranking for the tested rank-32 O/down block-shared repair family. The selector used no exact target continuation, but it was still an optimistic full-weight-scan oracle."
+    },
+    "proposal_margin_metadata_bound": {
+      "selector": "proposal_margin_metadata_bound",
+      "evidence_level": "E1 target-independent proposal-margin bound selector",
+      "source": "results/tinyllama_1_1b_block_shared_margin_bound_selector.json",
+      "zero_repair_prefix_tokens": 1,
+      "combined_budget_tile_count": 360,
+      "pass": false,
+      "best_selector_candidate": null,
+      "decision": "proposal-margin bound selector fails the E1 combined gate",
+      "rejection_scope": "Reject the tested Cauchy-bound ranking based on hot proposal margins and per-tile norm metadata. It did not extend the exact prefix within the corrected selector-compute budget."
+    },
+    "causal_prefill_compiler": {
+      "selector": "causal_prefill_compiler",
+      "evidence_level": "E1 causal prefill-compiled repair oracle",
+      "source": "results/tinyllama_1_1b_prefill_compiled_adjoint_oracle.json",
+      "zero_repair_prefix_tokens": 1,
+      "combined_budget_tile_count": 683,
+      "pass": false,
+      "best_selector_candidate": null,
+      "decision": "exact prompt prefill decision selector fails the combined gate",
+      "rejection_scope": "Reject the tested causal prefill signed-adjoint compiler for rank-32 O/down capsules. Exact decisions available before the continuation did not identify a budget-compatible tile set that corrected the first future error."
+    }
+  },
+  "family_decision": {
+    "family": "rank-32 O/down capsule plus fixed block-shared exact-tile repair",
+    "exact_target_logical_oracle_pass": true,
+    "causal_selector_results_complete": true,
+    "causal_selectors_tested": 4,
+    "causal_selectors_passing": 0,
+    "future_information_dependency": "The only passing tile set was selected with exact future target tokens and teacher-forced continuation gradients.",
+    "rejected": true
+  },
+  "hot_representation_coverage": {
+    "evidence_level": "E1 exact-prefix candidate-coverage diagnostic",
+    "source": "results/tinyllama_1_1b_hot_candidate_coverage.json",
+    "max_rank": 32,
+    "evaluated_tokens": 32,
+    "exact_top1_match_rate": 0.15625,
+    "coverage_at_k": {
+      "1": 0.15625,
+      "2": 0.25,
+      "4": 0.28125,
+      "8": 0.3125,
+      "16": 0.34375,
+      "32": 0.40625,
+      "64": 0.4375,
+      "128": 0.5,
+      "256": 0.59375
+    },
+    "rank_statistics": {
+      "minimum": 1,
+      "maximum": 17533,
+      "mean": 2942.9375
+    },
+    "first_divergence": {
+      "position": 1,
+      "exact_token": 239,
+      "hot_token": 13,
+      "exact_token_rank": 2,
+      "hot_top1_margin": 3.1504335403442383,
+      "exact_logit_gap_from_hot_top1": 3.1504335403442383
+    },
+    "advance_multi_hypothesis": false,
+    "decision": "reject rank-32 hot representation for top-K uncertainty coverage",
+    "rejection_scope": "Reject the tested rank-32 O/down hot representation as the basis of a small top-K uncertainty certificate. First-divergence rank was 2, but top-32 coverage was only 40.625 percent and exact-token mean rank was 2942.9375."
+  },
+  "hot_rank_frontier": {
+    "evidence_level": "E1 exact-prefix feasible-rank frontier diagnostic",
+    "source": "results/tinyllama_1_1b_hot_rank_frontier.json",
+    "capsule_precision_bits": 8,
+    "binding_budget": "hot capsule traffic per token",
+    "fixed_405b_aligned_maximum_rank": 72,
+    "tested_ranks": [
+      32,
+      40,
+      48,
+      56,
+      64,
+      72
+    ],
+    "points": [
+      {
+        "rank": 32,
+        "memory_gib": 4.304969787597656,
+        "hot_traffic_gib_per_token": 1.2924850463867188,
+        "hot_compute_gflop_per_token": 3.531515136,
+        "exact_top1_match_rate": 0.15625,
+        "top32_coverage": 0.40625,
+        "mean_exact_token_rank": 2942.9375,
+        "qualifies": false
+      },
+      {
+        "rank": 40,
+        "memory_gib": 4.59636116027832,
+        "hot_traffic_gib_per_token": 1.5838764190673829,
+        "hot_compute_gflop_per_token": 4.157273344,
+        "exact_top1_match_rate": 0.09375,
+        "top32_coverage": 0.5625,
+        "mean_exact_token_rank": 329.8125,
+        "qualifies": false
+      },
+      {
+        "rank": 48,
+        "memory_gib": 4.887752532958984,
+        "hot_traffic_gib_per_token": 1.875267791748047,
+        "hot_compute_gflop_per_token": 4.783031552,
+        "exact_top1_match_rate": 0.09375,
+        "top32_coverage": 0.5625,
+        "mean_exact_token_rank": 364.78125,
+        "qualifies": false
+      },
+      {
+        "rank": 56,
+        "memory_gib": 5.179143905639648,
+        "hot_traffic_gib_per_token": 2.1666591644287108,
+        "hot_compute_gflop_per_token": 5.40878976,
+        "exact_top1_match_rate": 0.125,
+        "top32_coverage": 0.65625,
+        "mean_exact_token_rank": 340.15625,
+        "qualifies": false
+      },
+      {
+        "rank": 64,
+        "memory_gib": 5.4705352783203125,
+        "hot_traffic_gib_per_token": 2.458050537109375,
+        "hot_compute_gflop_per_token": 6.034547968,
+        "exact_top1_match_rate": 0.125,
+        "top32_coverage": 0.5625,
+        "mean_exact_token_rank": 414.40625,
+        "qualifies": false
+      },
+      {
+        "rank": 72,
+        "memory_gib": 5.761926651000977,
+        "hot_traffic_gib_per_token": 2.749441909790039,
+        "hot_compute_gflop_per_token": 6.660306176,
+        "exact_top1_match_rate": 0.21875,
+        "top32_coverage": 0.625,
+        "mean_exact_token_rank": 388.71875,
+        "qualifies": false
+      }
+    ],
+    "surviving_ranks": [],
+    "pass": false,
+    "decision": "reject global low-rank O/down capsule through rank 72",
+    "next_candidate": "replace the global activation-subspace capsule with a block-local trajectory or operator-structured representation"
+  },
+  "session_prefill_response_basis": {
+    "evidence_level": "E1 causal exact-prompt session-basis diagnostic",
+    "source": "results/tinyllama_1_1b_session_prefill_candidate_coverage.json",
+    "prompt_tokens": 45,
+    "evaluated_continuation_tokens": 32,
+    "requested_max_rank": 72,
+    "compiled_rank_statistics": {
+      "minimum": 45,
+      "maximum": 45,
+      "mean": 45.0
+    },
+    "capsule_bytes": 46632960,
+    "prompt_reconstruction": {
+      "maximum_input_relative_error": 2.252639660582645e-06,
+      "maximum_output_relative_error": 4.104726940568071e-07
+    },
+    "exact_top1_match_rate": 0.375,
+    "coverage_at_k": {
+      "1": 0.375,
+      "2": 0.40625,
+      "4": 0.4375,
+      "8": 0.5,
+      "16": 0.53125,
+      "32": 0.625,
+      "64": 0.75,
+      "128": 0.8125,
+      "256": 0.84375
+    },
+    "rank_statistics": {
+      "minimum": 1,
+      "maximum": 15544,
+      "mean": 901.375
+    },
+    "first_divergence": {
+      "position": 2,
+      "exact_token": 155,
+      "hot_token": 152,
+      "exact_token_rank": 6,
+      "hot_top1_margin": 1.5400123596191406,
+      "exact_logit_gap_from_hot_top1": 2.353372573852539
+    },
+    "pass": false,
+    "decision": "reject prompt-only session response basis at this rank",
+    "compiler_contract": "Only exact prompt-prefill module inputs and outputs are used to recover U and WU. No continuation token, continuation logit, continuation gradient, or second exact weight scan is used."
+  },
+  "precision_rank_frontier": {
+    "evidence_level": "E1 quantized exact-prefix precision-rank frontier",
+    "source": "results/tinyllama_1_1b_precision_rank_frontier.json",
+    "precision_aligned_maximum_ranks": {
+      "8": 72,
+      "6": 96,
+      "4": 136
+    },
+    "maximum_built_rank": 93,
+    "quantization_contract": "U and WU are symmetrically quantized per response-basis column. The packed payload and fp16 column scales are charged to storage and traffic; values are dequantized before the existing matmul to isolate representation error from packed-kernel performance.",
+    "points": [
+      {
+        "requested_rank": 72,
+        "capsule_bits": 8,
+        "built_rank_statistics": {
+          "minimum": 72,
+          "maximum": 72,
+          "mean": 72.0
+        },
+        "memory_gib": 5.761926651000977,
+        "hot_traffic_gib_per_token": 2.749441909790039,
+        "hot_compute_gflop_per_token": 6.660306176,
+        "maximum_quantized_relative_l2_error": 0.07492019236087799,
+        "exact_top1_match_rate": 0.21875,
+        "top32_coverage": 0.625,
+        "mean_exact_token_rank": 359.875,
+        "maximum_exact_token_rank": 9859,
+        "first_divergence_exact_token_rank": 8,
+        "qualifies": false
+      },
+      {
+        "requested_rank": 88,
+        "capsule_bits": 6,
+        "built_rank_statistics": {
+          "minimum": 88,
+          "maximum": 88,
+          "mean": 88.0
+        },
+        "memory_gib": 5.5277581214904785,
+        "hot_traffic_gib_per_token": 2.530894565582275,
+        "hot_compute_gflop_per_token": 7.911822592,
+        "maximum_quantized_relative_l2_error": 0.2283323109149933,
+        "exact_top1_match_rate": 0.1875,
+        "top32_coverage": 0.53125,
+        "mean_exact_token_rank": 364.34375,
+        "maximum_exact_token_rank": 6121,
+        "first_divergence_exact_token_rank": 3,
+        "qualifies": false
+      },
+      {
+        "requested_rank": 96,
+        "capsule_bits": 6,
+        "built_rank_statistics": {
+          "minimum": 93,
+          "maximum": 93,
+          "mean": 93.0
+        },
+        "memory_gib": 5.746301651000977,
+        "hot_traffic_gib_per_token": 2.7494380950927733,
+        "hot_compute_gflop_per_token": 8.5375808,
+        "maximum_quantized_relative_l2_error": 0.22781223058700562,
+        "exact_top1_match_rate": 0.1875,
+        "top32_coverage": 0.53125,
+        "mean_exact_token_rank": 355.625,
+        "maximum_exact_token_rank": 6235,
+        "first_divergence_exact_token_rank": 3,
+        "qualifies": false
+      },
+      {
+        "requested_rank": 112,
+        "capsule_bits": 4,
+        "built_rank_statistics": {
+          "minimum": 93,
+          "maximum": 93,
+          "mean": 93.0
+        },
+        "memory_gib": 5.147893905639648,
+        "hot_traffic_gib_per_token": 2.1666515350341795,
+        "hot_compute_gflop_per_token": 9.789097216,
+        "maximum_quantized_relative_l2_error": 0.5992518663406372,
+        "exact_top1_match_rate": 0.25,
+        "top32_coverage": 0.5625,
+        "mean_exact_token_rank": 850.90625,
+        "maximum_exact_token_rank": 13361,
+        "first_divergence_exact_token_rank": 23,
+        "qualifies": false
+      },
+      {
+        "requested_rank": 128,
+        "capsule_bits": 4,
+        "built_rank_statistics": {
+          "minimum": 93,
+          "maximum": 93,
+          "mean": 93.0
+        },
+        "memory_gib": 5.4392852783203125,
+        "hot_traffic_gib_per_token": 2.4580429077148436,
+        "hot_compute_gflop_per_token": 11.040613632,
+        "maximum_quantized_relative_l2_error": 0.5992518663406372,
+        "exact_top1_match_rate": 0.25,
+        "top32_coverage": 0.5625,
+        "mean_exact_token_rank": 850.90625,
+        "maximum_exact_token_rank": 13361,
+        "first_divergence_exact_token_rank": 23,
+        "qualifies": false
+      },
+      {
+        "requested_rank": 136,
+        "capsule_bits": 4,
+        "built_rank_statistics": {
+          "minimum": 93,
+          "maximum": 93,
+          "mean": 93.0
+        },
+        "memory_gib": 5.5849809646606445,
+        "hot_traffic_gib_per_token": 2.6037385940551756,
+        "hot_compute_gflop_per_token": 11.66637184,
+        "maximum_quantized_relative_l2_error": 0.5992518663406372,
+        "exact_top1_match_rate": 0.25,
+        "top32_coverage": 0.5625,
+        "mean_exact_token_rank": 850.90625,
+        "maximum_exact_token_rank": 13361,
+        "first_divergence_exact_token_rank": 23,
+        "qualifies": false
+      }
+    ],
+    "best_observed_point": {
+      "requested_rank": 72,
+      "capsule_bits": 8,
+      "built_rank_statistics": {
+        "minimum": 72,
+        "maximum": 72,
+        "mean": 72.0
+      },
+      "memory_gib": 5.761926651000977,
+      "hot_traffic_gib_per_token": 2.749441909790039,
+      "hot_compute_gflop_per_token": 6.660306176,
+      "maximum_quantized_relative_l2_error": 0.07492019236087799,
+      "exact_top1_match_rate": 0.21875,
+      "top32_coverage": 0.625,
+      "mean_exact_token_rank": 359.875,
+      "maximum_exact_token_rank": 9859,
+      "first_divergence_exact_token_rank": 8,
+      "qualifies": false
+    },
+    "surviving_points": [],
+    "pass": false,
+    "decision": "reject tested quantized global capsule frontier",
+    "next_candidate": "combine the best quantized global prior with prompt-specific session directions, then test block-local adaptive growth"
+  },
+  "hybrid_allocation_frontier": {
+    "evidence_level": "E1 causal quantized hybrid allocation frontier",
+    "source": "results/tinyllama_1_1b_hybrid_allocation_frontier.json",
+    "causal_contract": "The generic global prior uses only fixed disjoint build prompts. Session residual directions use only exact user-prompt prefill inputs and outputs. Unseen continuation targets are evaluation-only.",
+    "points": [
+      {
+        "global_rank_limit": 56,
+        "total_rank_limit": 96,
+        "capsule_bits": 6,
+        "global_rank_statistics": {
+          "minimum": 56,
+          "maximum": 56,
+          "mean": 56.0
+        },
+        "added_session_rank_statistics": {
+          "minimum": 39,
+          "maximum": 40,
+          "mean": 39.54545454545455
+        },
+        "final_rank_statistics": {
+          "minimum": 95,
+          "maximum": 96,
+          "mean": 95.54545454545455
+        },
+        "maximum_final_prompt_output_relative_error": 0.2848438620567322,
+        "maximum_quantized_relative_l2_error": 0.20639196038246155,
+        "exact_top1_match_rate": 0.375,
+        "top32_coverage": 0.6875,
+        "mean_exact_token_rank": 290.09375,
+        "maximum_exact_token_rank": 8410,
+        "first_divergence_exact_token_rank": 5,
+        "qualifies": false
+      },
+      {
+        "global_rank_limit": 64,
+        "total_rank_limit": 136,
+        "capsule_bits": 4,
+        "global_rank_statistics": {
+          "minimum": 64,
+          "maximum": 64,
+          "mean": 64.0
+        },
+        "added_session_rank_statistics": {
+          "minimum": 39,
+          "maximum": 43,
+          "mean": 39.84090909090909
+        },
+        "final_rank_statistics": {
+          "minimum": 103,
+          "maximum": 107,
+          "mean": 103.8409090909091
+        },
+        "maximum_final_prompt_output_relative_error": 0.2830730080604553,
+        "maximum_quantized_relative_l2_error": 0.5704038143157959,
+        "exact_top1_match_rate": 0.375,
+        "top32_coverage": 0.6875,
+        "mean_exact_token_rank": 215.46875,
+        "maximum_exact_token_rank": 6012,
+        "first_divergence_exact_token_rank": 7,
+        "qualifies": false
+      },
+      {
+        "global_rank_limit": 88,
+        "total_rank_limit": 136,
+        "capsule_bits": 4,
+        "global_rank_statistics": {
+          "minimum": 88,
+          "maximum": 88,
+          "mean": 88.0
+        },
+        "added_session_rank_statistics": {
+          "minimum": 39,
+          "maximum": 43,
+          "mean": 40.20454545454545
+        },
+        "final_rank_statistics": {
+          "minimum": 127,
+          "maximum": 131,
+          "mean": 128.20454545454547
+        },
+        "maximum_final_prompt_output_relative_error": 0.5883564949035645,
+        "maximum_quantized_relative_l2_error": 0.567952036857605,
+        "exact_top1_match_rate": 0.34375,
+        "top32_coverage": 0.6875,
+        "mean_exact_token_rank": 444.15625,
+        "maximum_exact_token_rank": 11993,
+        "first_divergence_exact_token_rank": 22,
+        "qualifies": false
+      },
+      {
+        "global_rank_limit": 96,
+        "total_rank_limit": 136,
+        "capsule_bits": 4,
+        "global_rank_statistics": {
+          "minimum": 93,
+          "maximum": 93,
+          "mean": 93.0
+        },
+        "added_session_rank_statistics": {
+          "minimum": 39,
+          "maximum": 43,
+          "mean": 40.27272727272727
+        },
+        "final_rank_statistics": {
+          "minimum": 132,
+          "maximum": 136,
+          "mean": 133.27272727272728
+        },
+        "maximum_final_prompt_output_relative_error": 0.5794512033462524,
+        "maximum_quantized_relative_l2_error": 0.5686726570129395,
+        "exact_top1_match_rate": 0.375,
+        "top32_coverage": 0.625,
+        "mean_exact_token_rank": 617.25,
+        "maximum_exact_token_rank": 14557,
+        "first_divergence_exact_token_rank": 7,
+        "qualifies": false
+      }
+    ],
+    "best_observed_point": {
+      "global_rank_limit": 64,
+      "total_rank_limit": 136,
+      "capsule_bits": 4,
+      "global_rank_statistics": {
+        "minimum": 64,
+        "maximum": 64,
+        "mean": 64.0
+      },
+      "added_session_rank_statistics": {
+        "minimum": 39,
+        "maximum": 43,
+        "mean": 39.84090909090909
+      },
+      "final_rank_statistics": {
+        "minimum": 103,
+        "maximum": 107,
+        "mean": 103.8409090909091
+      },
+      "maximum_final_prompt_output_relative_error": 0.2830730080604553,
+      "maximum_quantized_relative_l2_error": 0.5704038143157959,
+      "exact_top1_match_rate": 0.375,
+      "top32_coverage": 0.6875,
+      "mean_exact_token_rank": 215.46875,
+      "maximum_exact_token_rank": 6012,
+      "first_divergence_exact_token_rank": 7,
+      "qualifies": false
+    },
+    "surviving_points": [],
+    "pass": false,
+    "decision": "reject tested global-plus-session allocations",
+    "next_candidate": "allocate prompt residual directions non-uniformly by module benefit per byte, then test online state-conditional capsules"
+  }
+}

@@ -1,0 +1,176 @@
+name: Nonuniform rank frontier
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/nonuniform_rank_allocator.py"
+      - "scripts/run_nonuniform_rank_frontier.py"
+      - "scripts/aggregate_nonuniform_rank_frontier.py"
+      - "tests/test_nonuniform_rank_allocator.py"
+      - ".github/workflows/nonuniform-rank-frontier.yml"
+
+concurrency:
+  group: nonuniform-rank-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'feat/architecture-gate0-certificate'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: rank72-bits8
+            rank: 72
+            bits: 8
+          - name: rank96-bits6
+            rank: 96
+            bits: 6
+          - name: rank136-bits4
+            rank: 136
+            bits: 4
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Run unit tests
+        run: python -m pytest -q tests/test_nonuniform_rank_allocator.py
+      - name: Measure ${{ matrix.name }}
+        run: |
+          python scripts/run_nonuniform_rank_frontier.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --uniform-equivalent-rank ${{ matrix.rank }} \
+            --profile-max-rank 192 \
+            --minimum-rank 1 \
+            --capsule-bits ${{ matrix.bits }} \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "${{ matrix.name }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nonuniform-rank-${{ matrix.name }}
+          path: ${{ matrix.name }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nonuniform-rank-*
+          path: nonuniform-results
+          merge-multiple: true
+      - name: Aggregate frontier
+        run: |
+          mapfile -t files < <(find nonuniform-results -type f -name '*.json' | sort)
+          python scripts/aggregate_nonuniform_rank_frontier.py \
+            "${files[@]}" \
+            --output nonuniform_rank_frontier.json
+      - name: Normalize evidence with provenance
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          raw = Path("nonuniform_rank_frontier.json")
+          raw_bytes = raw.read_bytes()
+          payload = json.loads(raw_bytes)
+          payload["workflow"] = {
+              "run_id": int(os.environ["RUN_ID"]),
+              "head_sha": os.environ["HEAD_SHA"],
+              "raw_file_sha256": hashlib.sha256(raw_bytes).hexdigest(),
+          }
+          output = Path("results/tinyllama_1_1b_nonuniform_rank_frontier.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          PY
+      - name: Build PR report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("nonuniform_rank_frontier.json").read_text())
+          rows = []
+          for point in data["points"]:
+              rows.append({
+                  "uniform_rank": point["uniform_equivalent"]["rank"],
+                  "bits": point["uniform_equivalent"]["capsule_bits"],
+                  "allocated_min": point["allocation"]["minimum_rank"],
+                  "allocated_max": point["allocation"]["maximum_rank"],
+                  "allocated_mean": point["allocation"]["mean_rank"],
+                  "estimated_prompt_output_capture": point["allocation"]["estimated_captured_output_fraction"],
+                  "top1": point["exact_top1_match_rate"],
+                  "top32": point["coverage_at_k"]["32"],
+                  "first_divergence_rank": None if point["first_divergence"] is None else point["first_divergence"]["exact_token_rank"],
+                  "qualifies": point["qualifies"],
+              })
+          body = (
+              "## Prompt-valued nonuniform rank frontier\n\n"
+              "```json\n"
+              + json.dumps({
+                  "points": rows,
+                  "decision": data["decision"],
+                  "next_candidate": data["next_candidate"],
+              }, indent=2, ensure_ascii=False)
+              + "\n```"
+          )
+          Path("nonuniform-rank-comment.md").write_text(body, encoding="utf-8")
+          PY
+      - name: Publish PR report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file nonuniform-rank-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-nonuniform-rank-frontier
+          path: nonuniform_rank_frontier.json
+      - name: Commit evidence when changed
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_nonuniform_rank_frontier.json
+          if [ -z "$(git status --porcelain -- "$path")" ]; then
+            echo "Nonuniform rank evidence is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit nonuniform rank sweep"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
