@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import sys
 import time
+import traceback
 from typing import Any
 
 import torch
@@ -239,10 +240,9 @@ def evaluate_ranking(
     }
 
 
-def main() -> None:
-    args = parse_args()
+def run(args: argparse.Namespace) -> dict[str, Any]:
     if args.row_tile <= 0 or args.col_tile <= 0:
-        raise SystemExit("tile dimensions must be positive")
+        raise ValueError("tile dimensions must be positive")
 
     AutoModelForCausalLM, AutoTokenizer = require_transformers()
     device = torch.device(args.device)
@@ -371,7 +371,8 @@ def main() -> None:
     else:
         decision = "adjoint tile oracle did not restore the sequence"
 
-    result = {
+    return {
+        "status": "ok",
         "evidence_level": "E1 exact-target adjoint tile oracle",
         "model": args.model,
         "device": str(device),
@@ -403,6 +404,19 @@ def main() -> None:
             "runtime would have to infer this information without the answer."
         ),
     }
+
+
+def output_path_from_argv(default: Path) -> Path:
+    try:
+        index = sys.argv.index("--output")
+        return Path(sys.argv[index + 1])
+    except (ValueError, IndexError):
+        return default
+
+
+def main() -> None:
+    args = parse_args()
+    result = run(args)
     args.output.write_text(
         json.dumps(result, indent=2, allow_nan=False),
         encoding="utf-8",
@@ -411,13 +425,18 @@ def main() -> None:
     print(
         json.dumps(
             {
+                "status": result["status"],
                 "rank_min": result["rank_min"],
                 "rank_max": result["rank_max"],
-                "missing_gradient_modules": profile.missing_gradient_modules,
-                "non_differentiable_modules": profile.non_differentiable_modules,
-                "gate_budget_match": gate_match,
-                "best_first_repair_match": best_first_match,
-                "decision": decision,
+                "missing_gradient_modules": result["adjoint"][
+                    "missing_gradient_modules"
+                ],
+                "non_differentiable_modules": result["adjoint"][
+                    "non_differentiable_modules"
+                ],
+                "gate_budget_match": result["gate_budget_match"],
+                "best_first_repair_match": result["best_first_repair_match"],
+                "decision": result["decision"],
             },
             indent=2,
             allow_nan=False,
@@ -426,4 +445,19 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except BaseException as exc:
+        output = output_path_from_argv(Path("oracle_adjoint_tile_repair.json"))
+        diagnostic = {
+            "status": "error",
+            "error_type": type(exc).__name__,
+            "error_message": str(exc),
+            "traceback": traceback.format_exc(),
+        }
+        output.write_text(
+            json.dumps(diagnostic, indent=2, allow_nan=False),
+            encoding="utf-8",
+        )
+        print(json.dumps(diagnostic, indent=2, allow_nan=False))
+        raise
