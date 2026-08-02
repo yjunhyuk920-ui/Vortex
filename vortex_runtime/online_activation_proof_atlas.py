@@ -125,19 +125,35 @@ class OnlineActivationProofAtlas:
             build_samples=self.rank,
             build_max_perpendicular_ratio=0.0,
             build_mean_perpendicular_ratio=0.0,
-            relative_residual_remainder_l2=float("nan"),
+            relative_residual_remainder_l2=0.0,
         )
 
     def project(
         self,
         activation: torch.Tensor,
     ) -> tuple[torch.Tensor, torch.Tensor, float, float]:
+        """Project with two modified-Gram-Schmidt cleanup passes.
+
+        Float32 QR bases are only approximately orthonormal. Reorthogonalizing
+        the residual prevents a repeated activation from being mistaken for a
+        fresh direction and incorrectly charged as another weight stream.
+        """
+
         x = activation.detach().to("cpu", torch.float32)
         coordinates = self.basis.T @ x
         perpendicular = x - self.basis @ coordinates
+        for _ in range(2):
+            leakage = self.basis.T @ perpendicular
+            coordinates = coordinates + leakage
+            perpendicular = perpendicular - self.basis @ leakage
         perpendicular_norm = float(torch.linalg.vector_norm(perpendicular).item())
         total_norm = float(torch.linalg.vector_norm(x).clamp_min(1e-24).item())
-        return coordinates, perpendicular, perpendicular_norm, perpendicular_norm / total_norm
+        return (
+            coordinates,
+            perpendicular,
+            perpendicular_norm,
+            perpendicular_norm / total_norm,
+        )
 
     def apply(
         self,
@@ -183,6 +199,7 @@ class OnlineActivationProofAtlas:
         activation: torch.Tensor,
         residual: torch.Tensor,
         minimum_perpendicular_norm: float = 1e-7,
+        relative_tolerance: float = 1e-6,
     ) -> bool:
         if residual.ndim != 2:
             raise ValueError("residual must have shape [rows, columns]")
@@ -191,10 +208,27 @@ class OnlineActivationProofAtlas:
             self.basis.shape[0],
         ):
             raise ValueError("residual shape does not match atlas")
-        _, perpendicular, perpendicular_norm, _ = self.project(activation)
-        if perpendicular_norm <= minimum_perpendicular_norm:
+        if minimum_perpendicular_norm < 0 or relative_tolerance < 0:
+            raise ValueError("expansion tolerances cannot be negative")
+
+        x = activation.detach().to("cpu", torch.float32)
+        _, perpendicular, perpendicular_norm, _ = self.project(x)
+        total_norm = float(torch.linalg.vector_norm(x).clamp_min(1e-24).item())
+        threshold = max(
+            minimum_perpendicular_norm,
+            relative_tolerance * total_norm,
+        )
+        if perpendicular_norm <= threshold:
             return False
+
         direction = perpendicular / perpendicular_norm
+        for _ in range(2):
+            direction = direction - self.basis @ (self.basis.T @ direction)
+        direction_norm = float(torch.linalg.vector_norm(direction).item())
+        if direction_norm <= relative_tolerance:
+            return False
+        direction = direction / direction_norm
+
         image = residual.detach().to("cpu", torch.float32) @ direction
         self.basis = torch.cat((self.basis, direction[:, None]), dim=1).contiguous()
         self.residual_images = torch.cat(
