@@ -36,16 +36,19 @@ class RecurrentDraftBudget:
     memory: SubstituteDraftBudget
     parallel_nodes: int
     resident_hbm_gib_s: float
-    recurrent_weight_read_gib_per_wave: float
-    resident_weight_seconds_per_node: float
-    minimum_parallel_nodes: int
+    recurrent_weight_read_gib_per_decode_step: float
+    single_stream_weight_seconds_per_token: float
+    throughput_weight_seconds_per_node: float
+    minimum_parallel_nodes_for_throughput: int
     effective_tops: float
     operations_per_token: float
     compute_seconds_per_token: float
-    projected_seconds_per_token: float
+    single_stream_projected_seconds_per_token: float
+    throughput_projected_seconds_per_node: float
     baseline_seconds_per_token: float
     allowed_seconds_per_token: float
-    traffic_pass: bool
+    latency_pass: bool
+    throughput_pass: bool
     compute_pass: bool
     memory_pass: bool
     pass_all: bool
@@ -55,20 +58,31 @@ class RecurrentDraftBudget:
             "memory": self.memory.to_dict(),
             "parallel_nodes": self.parallel_nodes,
             "resident_hbm_gib_s": self.resident_hbm_gib_s,
-            "recurrent_weight_read_gib_per_wave": (
-                self.recurrent_weight_read_gib_per_wave
+            "recurrent_weight_read_gib_per_decode_step": (
+                self.recurrent_weight_read_gib_per_decode_step
             ),
-            "resident_weight_seconds_per_node": (
-                self.resident_weight_seconds_per_node
+            "single_stream_weight_seconds_per_token": (
+                self.single_stream_weight_seconds_per_token
             ),
-            "minimum_parallel_nodes": self.minimum_parallel_nodes,
+            "throughput_weight_seconds_per_node": (
+                self.throughput_weight_seconds_per_node
+            ),
+            "minimum_parallel_nodes_for_throughput": (
+                self.minimum_parallel_nodes_for_throughput
+            ),
             "effective_tops": self.effective_tops,
             "operations_per_token": self.operations_per_token,
             "compute_seconds_per_token": self.compute_seconds_per_token,
-            "projected_seconds_per_token": self.projected_seconds_per_token,
+            "single_stream_projected_seconds_per_token": (
+                self.single_stream_projected_seconds_per_token
+            ),
+            "throughput_projected_seconds_per_node": (
+                self.throughput_projected_seconds_per_node
+            ),
             "baseline_seconds_per_token": self.baseline_seconds_per_token,
             "allowed_seconds_per_token": self.allowed_seconds_per_token,
-            "traffic_pass": self.traffic_pass,
+            "latency_pass": self.latency_pass,
+            "throughput_pass": self.throughput_pass,
             "compute_pass": self.compute_pass,
             "memory_pass": self.memory_pass,
             "pass_all": self.pass_all,
@@ -167,12 +181,13 @@ def recurrent_draft_budget(
     baseline_effective_tflops: float = 40.0,
     target_ratio: float = 1.2,
 ) -> RecurrentDraftBudget:
-    """Budget a full-depth draft backed by a resident layer dictionary.
+    """Budget full-depth reuse of a small resident layer dictionary.
 
-    Storage is reduced to `unique_layers`, but every depth position still reads
-    one complete representative layer from HBM. A wave of `parallel_nodes`
-    shares those weight reads as a GEMM batch. This explicitly rejects the
-    incorrect assumption that resident weights become free after first load.
+    Storage is reduced to `unique_layers`, but one autoregressive depth step
+    still reads one complete representative matrix set at every original layer
+    position. Parallel branches improve aggregate throughput only; they do not
+    reduce latency of the single committed path because the next depth cannot be
+    constructed until the current depth finishes.
     """
 
     if parallel_nodes <= 0:
@@ -202,8 +217,11 @@ def recurrent_draft_budget(
     )
     lm_head_bytes = target.vocab_size * target.hidden_size * weight_bits / 8
     recurrent_weight_read_gib = (repeated_layer_bytes + lm_head_bytes) / GIB
-    resident_weight_seconds_per_node = (
-        recurrent_weight_read_gib / resident_hbm_gib_s / parallel_nodes
+    single_stream_weight_seconds = (
+        recurrent_weight_read_gib / resident_hbm_gib_s
+    )
+    throughput_weight_seconds = (
+        single_stream_weight_seconds / parallel_nodes
     )
 
     operations = (
@@ -222,11 +240,12 @@ def recurrent_draft_budget(
     )
     baseline_seconds = max(baseline_weight_seconds, baseline_compute_seconds)
     allowed_seconds = target_ratio * baseline_seconds
-    minimum_parallel_nodes = ceil(
-        recurrent_weight_read_gib / resident_hbm_gib_s / allowed_seconds
-    )
-    projected_seconds = max(resident_weight_seconds_per_node, compute_seconds)
-    traffic_pass = resident_weight_seconds_per_node <= allowed_seconds
+    minimum_parallel_nodes = ceil(single_stream_weight_seconds / allowed_seconds)
+
+    single_stream_projected = max(single_stream_weight_seconds, compute_seconds)
+    throughput_projected = max(throughput_weight_seconds, compute_seconds)
+    latency_pass = single_stream_projected <= allowed_seconds
+    throughput_pass = throughput_projected <= allowed_seconds
     compute_pass = compute_seconds <= allowed_seconds
     memory_pass = memory.fits_memory
 
@@ -234,17 +253,20 @@ def recurrent_draft_budget(
         memory=memory,
         parallel_nodes=parallel_nodes,
         resident_hbm_gib_s=resident_hbm_gib_s,
-        recurrent_weight_read_gib_per_wave=recurrent_weight_read_gib,
-        resident_weight_seconds_per_node=resident_weight_seconds_per_node,
-        minimum_parallel_nodes=minimum_parallel_nodes,
+        recurrent_weight_read_gib_per_decode_step=recurrent_weight_read_gib,
+        single_stream_weight_seconds_per_token=single_stream_weight_seconds,
+        throughput_weight_seconds_per_node=throughput_weight_seconds,
+        minimum_parallel_nodes_for_throughput=minimum_parallel_nodes,
         effective_tops=effective_tops,
         operations_per_token=operations,
         compute_seconds_per_token=compute_seconds,
-        projected_seconds_per_token=projected_seconds,
+        single_stream_projected_seconds_per_token=single_stream_projected,
+        throughput_projected_seconds_per_node=throughput_projected,
         baseline_seconds_per_token=baseline_seconds,
         allowed_seconds_per_token=allowed_seconds,
-        traffic_pass=traffic_pass,
+        latency_pass=latency_pass,
+        throughput_pass=throughput_pass,
         compute_pass=compute_pass,
         memory_pass=memory_pass,
-        pass_all=traffic_pass and compute_pass and memory_pass,
+        pass_all=latency_pass and compute_pass and memory_pass,
     )
