@@ -11,6 +11,12 @@ DEFAULT_EXACT_SPAN_RESULT = Path(
 DEFAULT_ORACLE_RESULT = Path(
     "results/tinyllama_1_1b_rank32_repair_oracles.json"
 )
+DEFAULT_RESIDUAL_RESULT = Path(
+    "results/tinyllama_1_1b_residual_tile_oracle.json"
+)
+DEFAULT_ADJOINT_RESULT = Path(
+    "results/tinyllama_1_1b_adjoint_tile_oracle.json"
+)
 
 
 def _portable_source(path: Path) -> str:
@@ -31,6 +37,7 @@ def _apply_observed_efficiency(
     warm_decode_fast_fraction: float | None,
     status: str,
     rejected_mechanisms: list[str],
+    next_candidate: str | None = None,
 ) -> dict[str, Any]:
     required = float(
         report["mechanism"][
@@ -50,6 +57,8 @@ def _apply_observed_efficiency(
     report["gates"]["observed_repair_efficiency"] = observed >= required
     report["observed_component_decision"] = decision
     report["rejected_mechanisms"] = rejected_mechanisms
+    if next_candidate is not None:
+        report["next_candidate"] = next_candidate
     report["status"] = status if observed < required else (
         "gate0-candidate-ready-for-e2-falsification"
     )
@@ -60,8 +69,59 @@ def apply_real_model_observation(
     report: dict[str, Any],
     exact_span_path: str | Path = DEFAULT_EXACT_SPAN_RESULT,
     oracle_path: str | Path = DEFAULT_ORACLE_RESULT,
+    residual_path: str | Path = DEFAULT_RESIDUAL_RESULT,
+    adjoint_path: str | Path = DEFAULT_ADJOINT_RESULT,
 ) -> dict[str, Any]:
     """Apply the strongest committed E1 evidence to the Gate 0 report."""
+
+    adjoint = Path(adjoint_path)
+    if adjoint.exists():
+        result = json.loads(adjoint.read_text(encoding="utf-8"))
+        observed = float(
+            result["best_observed_tokens_per_full_repair_equivalent"]
+        )
+        return _apply_observed_efficiency(
+            report,
+            observed=observed,
+            source=adjoint,
+            decision=str(result["decision"]),
+            exact_token_match=True,
+            warm_decode_fast_fraction=0.0,
+            status="rejected-per-token-rank32-local-repair",
+            rejected_mechanisms=[
+                "exact-span Atlas warm-decode fast path",
+                "rank-32 approximate capsule plus exact layer-suffix repair",
+                "rank-32 approximate capsule plus output-row tile repair",
+                "rank-32 residual-energy 2D tile repair",
+                "rank-32 exact-target adjoint 2D tile repair per token",
+            ],
+            next_candidate="64-token block-shared adjoint repair",
+        )
+
+    residual = Path(residual_path)
+    if residual.exists():
+        result = json.loads(residual.read_text(encoding="utf-8"))
+        observed = float(
+            result["first_repair_match"][
+                "tokens_per_full_repair_equivalent"
+            ]
+        )
+        return _apply_observed_efficiency(
+            report,
+            observed=observed,
+            source=residual,
+            decision=str(result["decision"]),
+            exact_token_match=True,
+            warm_decode_fast_fraction=0.0,
+            status="rejected-residual-energy-tile-selector",
+            rejected_mechanisms=[
+                "exact-span Atlas warm-decode fast path",
+                "rank-32 approximate capsule plus exact layer-suffix repair",
+                "rank-32 approximate capsule plus output-row tile repair",
+                "rank-32 residual-energy 2D tile repair",
+            ],
+            next_candidate="final-token adjoint 2D tile repair",
+        )
 
     oracle = Path(oracle_path)
     if oracle.exists():
