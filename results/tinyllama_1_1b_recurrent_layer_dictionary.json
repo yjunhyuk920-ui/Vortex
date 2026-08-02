@@ -235,7 +235,7 @@
       "contract": "Only existing target layers are stored. The selected dictionary is reused across every original depth position without learned adapters. Target verification remains a Q4 cost lower bound and omits exact Q6/Q8 precision.",
       "qualifies": false,
       "decision": "reject tested recurrent layer dictionary tree point",
-      "elapsed_seconds": 429.36105017399996
+      "elapsed_seconds": 513.336935687
     },
     {
       "evidence_level": "E2 causal full-depth recurrent layer dictionary plus target lower bound",
@@ -346,8 +346,8 @@
           "unique_tree_nodes": 32,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -4.348992347717285,
-          "worst_retained_log_probability": -6.137972354888916
+          "best_log_probability": -4.348991870880127,
+          "worst_retained_log_probability": -6.137973308563232
         },
         {
           "depth": 2,
@@ -355,8 +355,8 @@
           "unique_tree_nodes": 88,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -8.278697729110718,
-          "worst_retained_log_probability": -10.002691268920898
+          "best_log_probability": -8.278698444366455,
+          "worst_retained_log_probability": -10.002685785293579
         },
         {
           "depth": 3,
@@ -364,8 +364,8 @@
           "unique_tree_nodes": 117,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -10.710657119750977,
-          "worst_retained_log_probability": -13.166236400604248
+          "best_log_probability": -10.710659146308899,
+          "worst_retained_log_probability": -13.166238069534302
         },
         {
           "depth": 4,
@@ -373,8 +373,8 @@
           "unique_tree_nodes": 133,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -14.434210538864136,
-          "worst_retained_log_probability": -16.158840656280518
+          "best_log_probability": -14.434210300445557,
+          "worst_retained_log_probability": -16.158841133117676
         },
         {
           "depth": 5,
@@ -382,8 +382,8 @@
           "unique_tree_nodes": 157,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -17.45618510246277,
-          "worst_retained_log_probability": -19.417117595672607
+          "best_log_probability": -17.45618963241577,
+          "worst_retained_log_probability": -19.417120456695557
         },
         {
           "depth": 6,
@@ -391,8 +391,8 @@
           "unique_tree_nodes": 158,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -19.393238067626953,
-          "worst_retained_log_probability": -22.465187549591064
+          "best_log_probability": -19.393240928649902,
+          "worst_retained_log_probability": -22.465189933776855
         },
         {
           "depth": 7,
@@ -400,8 +400,8 @@
           "unique_tree_nodes": 143,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -22.794471740722656,
-          "worst_retained_log_probability": -25.405864715576172
+          "best_log_probability": -22.794475317001343,
+          "worst_retained_log_probability": -25.40586566925049
         },
         {
           "depth": 8,
@@ -409,8 +409,8 @@
           "unique_tree_nodes": 123,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -25.720531463623047,
-          "worst_retained_log_probability": -28.117856979370117
+          "best_log_probability": -25.72053062915802,
+          "worst_retained_log_probability": -28.11785888671875
         },
         {
           "depth": 9,
@@ -418,8 +418,8 @@
           "unique_tree_nodes": 152,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -28.102067589759827,
-          "worst_retained_log_probability": -30.93937861919403
+          "best_log_probability": -28.10206627845764,
+          "worst_retained_log_probability": -30.939384698867798
         },
         {
           "depth": 10,
@@ -427,8 +427,8 @@
           "unique_tree_nodes": 135,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -30.624661087989807,
-          "worst_retained_log_probability": -33.54620027542114
+          "best_log_probability": -30.624661445617676,
+          "worst_retained_log_probability": -33.54619872570038
         },
         {
           "depth": 11,
@@ -436,8 +436,8 @@
           "unique_tree_nodes": 147,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -34.27560818195343,
-          "worst_retained_log_probability": -36.28226399421692
+          "best_log_probability": -34.27560591697693,
+          "worst_retained_log_probability": -36.28225767612457
         },
         {
           "depth": 12,
@@ -445,8 +445,8 @@
           "unique_tree_nodes": 155,
           "longest_exact_reference_prefix": 0,
           "exact_path_alive": false,
-          "best_log_probability": -38.13926637172699,
-          "worst_retained_log_probability": -39.46152687072754
+          "best_log_probability": -38.13927674293518,
+          "worst_retained_log_probability": -39.46152448654175
         }
       ],
       "405b_q4_target_side_lower_bound": {
@@ -471,7 +471,7 @@
       "contract": "Only existing target layers are stored. The selected dictionary is reused across every original depth position without learned adapters. Target verification remains a Q4 cost lower bound and omits exact Q6/Q8 precision.",
       "qualifies": false,
       "decision": "reject tested recurrent layer dictionary tree point",
-      "elapsed_seconds": 422.278066987
+      "elapsed_seconds": 267.31687715
     },
     {
       "evidence_level": "E2 causal full-depth recurrent layer dictionary plus target lower bound",
@@ -707,7 +707,7 @@
       "contract": "Only existing target layers are stored. The selected dictionary is reused across every original depth position without learned adapters. Target verification remains a Q4 cost lower bound and omits exact Q6/Q8 precision.",
       "qualifies": false,
       "decision": "reject tested recurrent layer dictionary tree point",
-      "elapsed_seconds": 421.785446309
+      "elapsed_seconds": 508.594412465
     },
     {
       "evidence_level": "E2 causal full-depth recurrent layer dictionary plus target lower bound",
@@ -943,7 +943,7 @@
       "contract": "Only existing target layers are stored. The selected dictionary is reused across every original depth position without learned adapters. Target verification remains a Q4 cost lower bound and omits exact Q6/Q8 precision.",
       "qualifies": false,
       "decision": "reject tested recurrent layer dictionary tree point",
-      "elapsed_seconds": 435.648137823
+      "elapsed_seconds": 426.90706815000004
     }
   ],
   "best_point": {
@@ -963,13 +963,13 @@
   "surviving_points": 0,
   "decision": "reject tested recurrent layer dictionary frontier",
   "workflow": {
-    "run_id": 30757015207,
-    "head_sha": "d59ab586c27adb6290c087c7b3d292678557704e",
+    "run_id": 30757015339,
+    "head_sha": "b090e05f8af3665e62e5ce9387aa3fb2f94a86a8",
     "input_sha256": {
-      "recurrent-tree-edge-nearest.json": "19f229de6a7f27f520458493978195047ba4f287f52eae8e4cbd68d9b0b4c567",
-      "recurrent-tree-front-cyclic.json": "b7c470358d400d5f53a646122eceaac7ef626b3fd097da5e361c8936cd30339c",
-      "recurrent-tree-uniform-cyclic.json": "602f2e239c591dd5ced22d01f5129b4be5d31b23e45bb1501470ee8f6a55101e",
-      "recurrent-tree-uniform-nearest.json": "9183e89e4cd00b5a2ba989759b340c713d8fa8db218a8d43c01efc50a82ab9bf"
+      "recurrent-tree-edge-nearest.json": "cfe489d1a489062accf66c36858719ab33d2e0c09ce9f5c7bfbfcb9074b6842c",
+      "recurrent-tree-front-cyclic.json": "093e8f72a4bb999ed00d19c7a8ae9b04b574f143363a3d60137cfb6eba09b930",
+      "recurrent-tree-uniform-cyclic.json": "993eb96b5d62418472d79ae18c3bd55d7b07af68bda863c4773391428b69b140",
+      "recurrent-tree-uniform-nearest.json": "7c522dc4f40e0ed24c55ad6b8486dc10e752165e95d456c47f8db551bfaff378"
     }
   }
 }
