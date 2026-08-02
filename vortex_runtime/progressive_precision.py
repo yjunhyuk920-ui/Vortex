@@ -36,7 +36,7 @@ class ModelPrecisionStats:
     original_gib: float
     hot_gib: float
     residual_bitplane_gib: float
-    weighted_relative_l2_error: float
+    element_weighted_relative_l2_error: float
     maximum_absolute_error: float
     weighted_mean_absolute_error: float
 
@@ -51,16 +51,17 @@ class FullRankHotBudget:
     hot_weight_gib: float
     hot_transfer_seconds_per_block: float
     hot_compute_seconds_per_block: float
+    hot_compute_seconds_per_token: float
     ideal_seconds_per_token_at_full_commit: float
     serialized_seconds_per_token_at_full_commit: float
     baseline_seconds_per_token: float
     target_ratio: float
-    minimum_full_commit_block_ideal: int
-    minimum_full_commit_block_serialized: int
+    minimum_full_commit_block_ideal: int | None
+    minimum_full_commit_block_serialized: int | None
     ideal_pass: bool
     serialized_pass: bool
 
-    def to_dict(self) -> dict[str, int | float | bool]:
+    def to_dict(self) -> dict[str, int | float | bool | None]:
         return asdict(self)
 
 
@@ -163,15 +164,13 @@ def fake_quantize_full_rank_modules(
     if not per_tensor:
         raise RuntimeError("no eligible full-rank weights were found")
     total_elements = sum(item.elements for item in per_tensor)
-    squared_source = 0.0
-    squared_residual = 0.0
+    squared_source_proxy = 0.0
+    squared_residual_proxy = 0.0
     weighted_mae = 0.0
     maximum_error = 0.0
     for item in per_tensor:
-        # Recover residual/source norm ratio weighting without retaining tensors.
-        # Using element count is a stable aggregate diagnostic across modules.
-        squared_source += item.elements
-        squared_residual += item.elements * item.relative_l2_error**2
+        squared_source_proxy += item.elements
+        squared_residual_proxy += item.elements * item.relative_l2_error**2
         weighted_mae += item.elements * item.mean_absolute_error
         maximum_error = max(maximum_error, item.maximum_absolute_error)
     aggregate = ModelPrecisionStats(
@@ -182,7 +181,9 @@ def fake_quantize_full_rank_modules(
         original_gib=total_elements * source_bits / 8 / GIB,
         hot_gib=total_elements * bits / 8 / GIB,
         residual_bitplane_gib=total_elements * (source_bits - bits) / 8 / GIB,
-        weighted_relative_l2_error=(squared_residual / squared_source) ** 0.5,
+        element_weighted_relative_l2_error=(
+            squared_residual_proxy / squared_source_proxy
+        ) ** 0.5,
         maximum_absolute_error=maximum_error,
         weighted_mean_absolute_error=weighted_mae / total_elements,
     )
@@ -222,11 +223,12 @@ def full_rank_hot_budget(
         target.dense_linear_flops_per_token
         + target.dense_attention_flops_per_token
     )
-    compute_seconds = (
-        target_operations_per_token * block_positions / (hot_effective_tops * 1e12)
+    compute_seconds_per_token = target_operations_per_token / (
+        hot_effective_tops * 1e12
     )
+    compute_seconds = compute_seconds_per_token * block_positions
     ideal_per_token = max(transfer_seconds, compute_seconds) / block_positions
-    serialized_per_token = (transfer_seconds + compute_seconds) / block_positions
+    serialized_per_token = transfer_seconds / block_positions + compute_seconds_per_token
 
     baseline_weight_seconds = baseline.weight_bytes / GIB / baseline_memory_gib_s
     baseline_flops = (
@@ -237,23 +239,30 @@ def full_rank_hot_budget(
     baseline_seconds = max(baseline_weight_seconds, baseline_compute_seconds)
     allowed = target_ratio * baseline_seconds
 
+    if compute_seconds_per_token <= allowed:
+        minimum_ideal = ceil(transfer_seconds / allowed)
+    else:
+        minimum_ideal = None
+    if compute_seconds_per_token < allowed:
+        minimum_serialized = ceil(
+            transfer_seconds / (allowed - compute_seconds_per_token)
+        )
+    else:
+        minimum_serialized = None
+
     return FullRankHotBudget(
         hot_bits=hot_bits,
         block_positions=block_positions,
         hot_weight_gib=hot_weight_gib,
         hot_transfer_seconds_per_block=transfer_seconds,
         hot_compute_seconds_per_block=compute_seconds,
+        hot_compute_seconds_per_token=compute_seconds_per_token,
         ideal_seconds_per_token_at_full_commit=ideal_per_token,
         serialized_seconds_per_token_at_full_commit=serialized_per_token,
         baseline_seconds_per_token=baseline_seconds,
         target_ratio=target_ratio,
-        minimum_full_commit_block_ideal=ceil(
-            max(transfer_seconds, target_operations_per_token / (hot_effective_tops * 1e12))
-            / allowed
-        ),
-        minimum_full_commit_block_serialized=ceil(
-            transfer_seconds / max(allowed - target_operations_per_token / (hot_effective_tops * 1e12), 1e-30)
-        ),
+        minimum_full_commit_block_ideal=minimum_ideal,
+        minimum_full_commit_block_serialized=minimum_serialized,
         ideal_pass=ideal_per_token <= allowed,
         serialized_pass=serialized_per_token <= allowed,
     )
