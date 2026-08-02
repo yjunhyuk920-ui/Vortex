@@ -34,6 +34,10 @@ def generate_report(root: Path) -> dict[str, object]:
         adjoint_path=(
             root / "results/tinyllama_1_1b_adjoint_tile_oracle.json"
         ),
+        combined_path=(
+            root
+            / "results/tinyllama_1_1b_block_shared_combined_gate.json"
+        ),
     )
 
 
@@ -49,19 +53,19 @@ def main() -> None:
     summary = {
         "status": report["status"],
         "memory_total_gib": report["memory"]["total_gib"],
-        "projected_traffic_gib_per_token": report["traffic"][
+        "original_design_projected_traffic_gib_per_token": report["traffic"][
             "projected_gib_per_token"
         ],
         "traffic_limit_gib_per_token": report["traffic"][
             "limit_gib_per_token"
         ],
-        "projected_compute_gflop_per_token": report["compute"][
+        "original_design_projected_compute_gflop_per_token": report["compute"][
             "projected_gflop_per_token"
         ],
         "compute_limit_gflop_per_token": report["compute"][
             "limit_gflop_per_token"
         ],
-        "candidate_repair_fraction": report["compute"][
+        "original_design_repair_fraction": report["compute"][
             "candidate_repair_fraction"
         ],
         "maximum_compute_repair_fraction": report["compute"][
@@ -74,12 +78,11 @@ def main() -> None:
         "observed_repair_fraction": report["mechanism"][
             "observed_repair_fraction"
         ],
-        "traffic_shortfall_factor": report["mechanism"][
-            "traffic_shortfall_factor"
-        ],
-        "compute_excess_factor": report["mechanism"][
-            "compute_excess_factor"
-        ],
+        "observed_incremental_committed_tokens": report["mechanism"].get(
+            "observed_incremental_committed_tokens"
+        ),
+        "logical_oracle": report.get("logical_oracle"),
+        "revised_oracle_envelope": report.get("revised_oracle_envelope"),
         "observed_component_decision": report.get(
             "observed_component_decision"
         ),
