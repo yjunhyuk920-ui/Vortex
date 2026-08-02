@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from vortex_runtime.feasibility import default_gate0_report
 from vortex_runtime.gate0_observations import apply_real_model_observation
+from vortex_runtime.gate0_precision_results import apply_precision_frontier
 from vortex_runtime.gate0_selector_results import apply_selector_falsifications
 
 
@@ -44,7 +45,7 @@ def generate_report(root: Path) -> dict[str, object]:
             / "results/tinyllama_1_1b_block_shared_residual_selector.json"
         ),
     )
-    return apply_selector_falsifications(
+    report = apply_selector_falsifications(
         report,
         proposal_adjoint_path=(
             root
@@ -68,6 +69,10 @@ def generate_report(root: Path) -> dict[str, object]:
             root
             / "results/tinyllama_1_1b_session_prefill_candidate_coverage.json"
         ),
+    )
+    return apply_precision_frontier(
+        report,
+        root / "results/tinyllama_1_1b_precision_rank_frontier.json",
     )
 
 
@@ -119,6 +124,7 @@ def main() -> None:
         "session_prefill_response_basis": report.get(
             "session_prefill_response_basis"
         ),
+        "precision_rank_frontier": report.get("precision_rank_frontier"),
         "revised_oracle_envelope": report.get("revised_oracle_envelope"),
         "observed_component_decision": report.get(
             "observed_component_decision"
