@@ -2,12 +2,14 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from math import inf
-from typing import Iterable
+from typing import Iterable, Literal
 
 import torch
 from torch import nn
 
 from vortex_runtime.atlas_linear import OnlineAtlasLinear
+
+ExecutionMode = Literal["learn_exact", "project", "exact"]
 
 
 @dataclass(frozen=True)
@@ -53,12 +55,17 @@ class RepairEfficiency:
 
 
 class AtlasLinearModule(nn.Module):
-    """Drop-in nn.Linear falsification wrapper with phase counters.
+    """Drop-in linear wrapper for falsification and oracle repair profiling.
 
-    Inputs inside the atlas span use the cached operator image. Span misses use
-    the original exact weight and expand the atlas. Prefill and one-token decode
-    calls are counted separately so warm-decode repair cannot be hidden by a
-    large prompt prefill.
+    Modes:
+
+    - ``learn_exact``: exact fallback plus online basis expansion;
+    - ``project``: use only the stored ``U/WU`` capsule, with no fallback;
+    - ``exact``: bypass the capsule and invoke the original linear module.
+
+    The mode boundary lets the oracle profiler test how much exact projection
+    weight must be restored for an approximate generated sequence to match the
+    original model.
     """
 
     def __init__(
@@ -80,6 +87,7 @@ class AtlasLinearModule(nn.Module):
             rtol=rtol,
             basis_dtype=torch.float32,
         )
+        self.mode: ExecutionMode = "learn_exact"
         self.prefill_vectors = 0
         self.prefill_fast_vectors = 0
         self.prefill_cold_weight_reads = 0
@@ -94,7 +102,45 @@ class AtlasLinearModule(nn.Module):
         weight = self.exact.weight
         return weight.numel() * weight.element_size()
 
+    def set_mode(self, mode: ExecutionMode) -> None:
+        if mode not in {"learn_exact", "project", "exact"}:
+            raise ValueError(f"unsupported execution mode: {mode}")
+        self.mode = mode
+
+    def _project(self, x: torch.Tensor) -> torch.Tensor:
+        original_shape = x.shape[:-1]
+        flat = x.detach().reshape(-1, self.exact.in_features)
+        rank = self.atlas.rank
+        if rank == 0:
+            output = torch.zeros(
+                (flat.shape[0], self.exact.out_features),
+                dtype=x.dtype,
+                device=x.device,
+            )
+        else:
+            basis = self.atlas.input_basis.to(
+                dtype=x.dtype,
+                device=x.device,
+            )
+            image = self.atlas.output_image.to(
+                dtype=x.dtype,
+                device=x.device,
+            )
+            output = (flat @ basis) @ image.T
+        output = output.reshape(*original_shape, self.exact.out_features)
+        if self.exact.bias is not None:
+            output = output + self.exact.bias.to(
+                dtype=output.dtype,
+                device=output.device,
+            )
+        return output
+
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        if self.mode == "exact":
+            return self.exact(x)
+        if self.mode == "project":
+            return self._project(x)
+
         stats = self.atlas.stats
         before = (
             stats.vectors,
@@ -151,6 +197,14 @@ class AtlasLinearModule(nn.Module):
             decode_cold_weight_reads=self.decode_cold_weight_reads,
             decode_weight_bytes_read=self.decode_weight_bytes_read,
         )
+
+
+def set_replacement_modes(
+    replacements: dict[str, AtlasLinearModule],
+    mode: ExecutionMode,
+) -> None:
+    for module in replacements.values():
+        module.set_mode(mode)
 
 
 def _resolve_parent(model: nn.Module, qualified_name: str) -> tuple[nn.Module, str]:
