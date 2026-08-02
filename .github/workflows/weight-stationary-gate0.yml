@@ -1,0 +1,104 @@
+name: Weight-stationary Gate 0 lower bound
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/weight_stationary_block.py"
+      - "scripts/run_weight_stationary_gate0_frontier.py"
+      - "tests/test_weight_stationary_block.py"
+      - ".github/workflows/weight-stationary-gate0.yml"
+
+concurrency:
+  group: weight-stationary-gate0-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  gate0:
+    if: github.head_ref == 'research/weight-stationary-fixed-point'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest
+      - name: Validate exact tiled memory and roofline
+        run: python -m pytest -q tests/test_weight_stationary_block.py
+      - name: Map hardware and block frontier
+        run: |
+          python scripts/run_weight_stationary_gate0_frontier.py \
+            --maximum-block 8192 \
+            --host-bandwidths 24,32,64,128 \
+            --target-throughputs 80,120,160,240 \
+            --operator-tile-gib 1.5 \
+            --target-ratio 1.2 \
+            --output results/weight_stationary_gate0_frontier.json
+      - name: Add provenance
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          path = Path("results/weight_stationary_gate0_frontier.json")
+          payload = json.loads(path.read_text(encoding="utf-8"))
+          payload["workflow"] = {
+              "run_id": int(os.environ["RUN_ID"]),
+              "head_sha": os.environ["HEAD_SHA"],
+          }
+          path.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          default = payload["default_hardware"]
+          body = {
+              "target": payload["target"],
+              "default_hardware": default,
+              "decision": payload["decision"],
+              "architecture_implication": payload["architecture_implication"],
+          }
+          Path("gate0-comment.md").write_text(
+              "## Exact dense weight-streaming lower bound\n\n```json\n"
+              + json.dumps(body, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish PR report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file gate0-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: weight-stationary-gate0-frontier
+          path: results/weight_stationary_gate0_frontier.json
+      - name: Commit evidence when changed
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/weight_stationary_gate0_frontier.json
+          if [ -z "$(git status --porcelain -- "$path")" ]; then
+            echo "Gate 0 evidence is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(gate0): commit exact streaming lower bound"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
