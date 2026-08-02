@@ -40,3 +40,37 @@ def test_streaming_budget_is_respected_with_eviction(tmp_path: Path) -> None:
     assert len(output) == 2
     assert model.cache.stats.peak_bytes <= model.cache.stats.budget_bytes
     assert model.cache.stats.evictions > 0
+
+
+def test_persistent_internal_atlas_replays_without_cold_weight_reads(
+    tmp_path: Path,
+) -> None:
+    model_dir = create_tiny_llama(tmp_path / "atlas-model", seed=123)
+    prompt = torch.tensor([[2, 7, 11, 13]], dtype=torch.long)
+    suffixes = ("self_attn.o_proj.weight", "mlp.down_proj.weight")
+
+    builder = StreamingLlama(
+        model_dir,
+        tensor_budget_bytes=2 * 1024 * 1024,
+        atlas_suffixes=suffixes,
+        atlas_max_rank=64,
+    )
+    expected = builder.generate(prompt, max_new_tokens=12)
+    first_report = builder.atlas_report()
+    assert first_report["cold_weight_reads"] > 0
+    atlas_dir = builder.save_atlas(tmp_path / "atlas")
+
+    replay = StreamingLlama(
+        model_dir,
+        tensor_budget_bytes=2 * 1024 * 1024,
+        atlas_suffixes=suffixes,
+        atlas_max_rank=64,
+    )
+    replay.load_atlas(atlas_dir)
+    actual = replay.generate(prompt, max_new_tokens=12)
+    replay_report = replay.atlas_report()
+
+    assert actual == expected
+    assert replay_report["cold_weight_reads"] == 0
+    assert replay_report["cold_vectors"] == 0
+    assert replay_report["fast_vectors"] > 0
