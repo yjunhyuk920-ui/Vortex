@@ -15,17 +15,17 @@ HuggingFaceLayout
 TensorLocator
   - loads one tensor, one layer, or one slice
         |
-        +----------------------+
-        |                      |
-        v                      v
-StreamingLlama           transcode_hf_linear
-  - row-sliced embedding   - low-bit base
-  - byte-budget cache      - lossless residual
-  - exact projections      - per-tile norms
-  - KV cache               - disk manifest
-        |                      |
-        v                      v
-exact hidden state       DiskProgressiveLinear
+        +----------------------+----------------------+
+        |                      |                      |
+        v                      v                      v
+StreamingLlama           transcode_hf_linear     OnlineAtlasLinear
+  - row-sliced embedding   - low-bit base         - input basis U
+  - byte-budget cache      - lossless residual    - operator image WU
+  - operator routing       - per-tile norms       - exact cold fallback
+  - KV cache               - disk manifest        - persistent capsule
+        |                      |                      |
+        v                      v                      v
+internal hidden state    DiskProgressiveLinear   base-free span execution
         |                  - base logits
         +----------------->- residual bounds
                            - selective refinement
@@ -44,9 +44,15 @@ exact hidden state       DiskProgressiveLinear
 
 ### `vortex_runtime/llama.py`
 
-`StreamingLlama` is a reference implementation for Llama-style checkpoints. It performs exact layer execution while retrieving tensors through the bounded cache. It also contains exact sequential generation and Jacobi-style block generation for equality testing.
+`StreamingLlama` is a reference implementation for Llama-style checkpoints. It performs exact layer execution while retrieving tensors through the bounded cache. Selected projection suffixes can now be routed through `OnlineAtlasLinear`. The module also contains exact sequential generation and Jacobi-style block generation for equality testing.
 
 This module is not yet an optimized CUDA backend.
+
+### `vortex_runtime/atlas_linear.py`
+
+`OnlineAtlasLinear` is the first base-free internal fast path. It stores an orthonormal input basis `U` and exact operator image `WU`. Inputs in the cached span execute as `(WU) @ (U.T @ x)` without loading the original matrix. Span misses invoke the exact weight loader and expand the atlas. Capsules are persistable through safetensors.
+
+The validated milestone routes attention O and MLP down projections through this operator.
 
 ### `vortex_runtime/progressive.py`
 
@@ -75,38 +81,40 @@ Creates deterministic tiny Hugging Face-compatible Llama checkpoints. Tests do n
 
 ## Planned model-wide path
 
-The next architecture extends VTX progressive execution into every projection:
+The preferred normal path is now AtlasLinear rather than full-base progressive evaluation:
+
+```text
+activation -> atlas gate -> cached U/WU execution
+                       \-> exact cold stream on miss -> atlas expansion
+```
+
+Disk progressive execution remains useful for final decision certification and cold fallback formats. Additional projections are added only after real-model trace validation demonstrates bounded rank growth and declining cold streams.
+
+A future model-wide path may combine:
 
 ```text
 input state
-  -> progressive RMSNorm input handling
-  -> progressive Q/K/V
-  -> attention with propagated uncertainty/correction
-  -> progressive O
+  -> atlas or exact Q/K/V
+  -> attention
+  -> atlas or exact O
   -> residual merge
-  -> progressive gate/up
-  -> nonlinear uncertainty/refinement
-  -> progressive down
+  -> atlas or exact gate/up
+  -> SiLU and elementwise product
+  -> atlas or exact down
   -> residual merge
   -> progressive LM-head proof
 ```
-
-Three execution modes are expected:
-
-1. **Base path:** low-bit, tile-streamed evaluation.
-2. **Refinement path:** selectively reads lossless correction planes/tiles.
-3. **Exact path:** streams all required residuals when certification cannot close.
 
 ## Backend boundary
 
 The Python implementation establishes semantics and metrics. A production backend will require:
 
-- packed 2–6 bit kernels;
-- fused base-plus-refinement GEMM/GEMV;
-- asynchronous CPU/RAM/NVMe staging;
+- FP16/BF16 or packed atlas capsule storage;
+- fused basis projection and operator-image kernels;
+- asynchronous exact-weight fallback staging;
 - pinned-memory and CUDA stream scheduling;
+- compressed/offloaded KV policy;
 - CUDA graph or persistent-kernel execution;
-- compact residual metadata;
 - real GPU memory accounting.
 
 Backend optimization must not alter the exactness contract without explicit validation modes and recorded quality measurements.

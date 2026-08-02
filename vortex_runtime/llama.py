@@ -9,6 +9,7 @@ from typing import Any
 import torch
 import torch.nn.functional as F
 
+from .atlas_linear import OnlineAtlasLinear
 from .hf_loader import HuggingFaceLayout, TensorLocator
 from .progressive import CertificationResult
 from .vtx_linear import transcode_hf_linear, DiskProgressiveLinear, DiskCertificationResult
@@ -105,6 +106,10 @@ class StreamingLlama:
         device: str | torch.device = "cpu",
         tensor_budget_bytes: int = 8 * 1024**3,
         lm_head_base_bits: int = 4,
+        atlas_suffixes: tuple[str, ...] = (),
+        atlas_max_rank: int = 256,
+        atlas_atol: float = 1e-6,
+        atlas_rtol: float = 1e-6,
     ) -> None:
         self.layout = HuggingFaceLayout(model_dir)
         if self.layout.config.get("model_type") != "llama":
@@ -114,6 +119,11 @@ class StreamingLlama:
         self.device = torch.device(device)
         self.cache = ByteBudgetLRU(tensor_budget_bytes)
         self.layer_cache = [LayerCache() for _ in range(self.config.num_hidden_layers)]
+        self.atlas_suffixes = frozenset(atlas_suffixes)
+        self.atlas_max_rank = int(atlas_max_rank)
+        self.atlas_atol = float(atlas_atol)
+        self.atlas_rtol = float(atlas_rtol)
+        self.atlas_operators: dict[str, OnlineAtlasLinear] = {}
 
         self.embedding_name = "model.embed_tokens.weight"
         self.final_norm = self._load_global("model.norm.weight")
@@ -160,6 +170,103 @@ class StreamingLlama:
             self.cache.put(name, cached)
         return cached
 
+    def _atlas_operator(self, layer: int, suffix: str) -> OnlineAtlasLinear:
+        name = self._short(layer, suffix)
+        operator = self.atlas_operators.get(name)
+        if operator is not None:
+            return operator
+        shape = self.locator.shape(name)
+        if len(shape) != 2:
+            raise ValueError(f"atlas linear tensor must be 2D: {name}")
+        out_features, in_features = shape
+        operator = OnlineAtlasLinear(
+            in_features=in_features,
+            out_features=out_features,
+            weight_loader=lambda tensor_name=name: self.locator.load(
+                tensor_name, device="cpu"
+            ),
+            max_rank=min(self.atlas_max_rank, in_features),
+            atol=self.atlas_atol,
+            rtol=self.atlas_rtol,
+        )
+        self.atlas_operators[name] = operator
+        return operator
+
+    def _linear(
+        self,
+        x: torch.Tensor,
+        layer: int,
+        suffix: str,
+    ) -> torch.Tensor:
+        if suffix in self.atlas_suffixes:
+            return self._atlas_operator(layer, suffix)(x)
+        weight = self._weight(layer, suffix)
+        result = F.linear(x, weight)
+        del weight
+        return result
+
+    def save_atlas(self, directory: str | Path) -> Path:
+        output = Path(directory)
+        output.mkdir(parents=True, exist_ok=True)
+        manifest: dict[str, dict[str, object]] = {}
+        for name, operator in self.atlas_operators.items():
+            folder = name.replace(".", "__")
+            operator.save(output / folder)
+            manifest[name] = {
+                "folder": folder,
+                "rank": operator.rank,
+                "in_features": operator.in_features,
+                "out_features": operator.out_features,
+            }
+        (output / "manifest.json").write_text(
+            json.dumps(manifest, indent=2), encoding="utf-8"
+        )
+        return output
+
+    def load_atlas(self, directory: str | Path) -> None:
+        root = Path(directory)
+        manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+        for name, entry in manifest.items():
+            parts = name.split(".")
+            if len(parts) < 5 or parts[0:2] != ["model", "layers"]:
+                raise ValueError(f"invalid atlas operator name: {name}")
+            layer = int(parts[2])
+            suffix = ".".join(parts[3:])
+            operator = self._atlas_operator(layer, suffix)
+            operator.load(root / str(entry["folder"]))
+
+    def atlas_report(self) -> dict[str, object]:
+        operators = {
+            name: {
+                **operator.stats.to_dict(),
+                "rank": operator.rank,
+                "capsule_bytes": operator.capsule_bytes,
+            }
+            for name, operator in self.atlas_operators.items()
+        }
+        return {
+            "operators": operators,
+            "cold_weight_reads": sum(
+                operator.stats.cold_weight_reads
+                for operator in self.atlas_operators.values()
+            ),
+            "weight_bytes_read": sum(
+                operator.stats.weight_bytes_read
+                for operator in self.atlas_operators.values()
+            ),
+            "fast_vectors": sum(
+                operator.stats.fast_vectors
+                for operator in self.atlas_operators.values()
+            ),
+            "cold_vectors": sum(
+                operator.stats.cold_vectors
+                for operator in self.atlas_operators.values()
+            ),
+            "capsule_bytes": sum(
+                operator.capsule_bytes for operator in self.atlas_operators.values()
+            ),
+        }
+
     def _layer_forward(
         self,
         hidden: torch.Tensor,
@@ -173,15 +280,9 @@ class StreamingLlama:
         del input_norm
 
         bsz, seq_len, _ = x.shape
-        q_weight = self._weight(layer_index, "self_attn.q_proj.weight")
-        q = F.linear(x, q_weight)
-        del q_weight
-        k_weight = self._weight(layer_index, "self_attn.k_proj.weight")
-        k = F.linear(x, k_weight)
-        del k_weight
-        v_weight = self._weight(layer_index, "self_attn.v_proj.weight")
-        v = F.linear(x, v_weight)
-        del v_weight
+        q = self._linear(x, layer_index, "self_attn.q_proj.weight")
+        k = self._linear(x, layer_index, "self_attn.k_proj.weight")
+        v = self._linear(x, layer_index, "self_attn.v_proj.weight")
 
         q = q.view(bsz, seq_len, cfg.num_attention_heads, cfg.head_dim).transpose(1, 2)
         k = k.view(bsz, seq_len, cfg.num_key_value_heads, cfg.head_dim).transpose(1, 2)
@@ -209,23 +310,19 @@ class StreamingLlama:
         probs = torch.softmax(scores.to(torch.float32), dim=-1).to(x.dtype)
         attn = torch.matmul(probs, v_full)
         attn = attn.transpose(1, 2).contiguous().view(bsz, seq_len, cfg.hidden_size)
-        o_weight = self._weight(layer_index, "self_attn.o_proj.weight")
-        hidden = residual + F.linear(attn, o_weight)
-        del o_weight
+        hidden = residual + self._linear(
+            attn, layer_index, "self_attn.o_proj.weight"
+        )
 
         residual = hidden
         post_norm = self._weight(layer_index, "post_attention_layernorm.weight")
         x = rms_norm(hidden, post_norm, cfg.rms_norm_eps)
         del post_norm
-        gate_weight = self._weight(layer_index, "mlp.gate_proj.weight")
-        gate = F.silu(F.linear(x, gate_weight))
-        del gate_weight
-        up_weight = self._weight(layer_index, "mlp.up_proj.weight")
-        up = F.linear(x, up_weight)
-        del up_weight
-        down_weight = self._weight(layer_index, "mlp.down_proj.weight")
-        hidden = residual + F.linear(gate * up, down_weight)
-        del down_weight
+        gate = F.silu(self._linear(x, layer_index, "mlp.gate_proj.weight"))
+        up = self._linear(x, layer_index, "mlp.up_proj.weight")
+        hidden = residual + self._linear(
+            gate * up, layer_index, "mlp.down_proj.weight"
+        )
         return hidden
 
     @torch.inference_mode()

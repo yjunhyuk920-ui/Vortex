@@ -2,74 +2,75 @@
 
 Last updated: 2026-08-02 (Asia/Seoul)
 
-## What was done
+## Current verified result
 
-The initial executable VORTEX prototype was assembled and validated locally before the repository upload.
+The repository now contains two execution experiments:
 
-Local verification command:
+1. disk-backed progressive LM-head certification;
+2. a base-free internal projection fast path named `OnlineAtlasLinear`.
+
+Validation command:
 
 ```bash
 python -m pytest -q
 python scripts/run_validation.py
 ```
 
-Observed result at handoff:
+Observed result:
 
 ```text
-7 passed
+10 passed
 validation script completed successfully
 ```
 
-The committed validation report records:
+## New milestone completed
 
-- exact progressive LM-head certification for all recorded synthetic trials;
-- exact disk-backed LM-head certification for all recorded tiny-checkpoint trials;
-- exact Jacobi/sequential greedy sequence equality for all recorded tiny-checkpoint trials;
-- a Llama 3.1 405B tensor-size plan;
-- approximately 4.9 seconds total validation time on the handoff environment.
+`OnlineAtlasLinear` caches an input basis `U` and exact operator image `WU`. Inputs inside the learned span execute without loading the original weight. Inputs outside the span use exact cold fallback and expand the atlas.
+
+Validated results:
+
+- synthetic rank-8 trace: 93.75% fast path after eight cold reads;
+- tiny Llama O/down projection atlas persistence;
+- fresh-runtime replay with identical generated tokens;
+- zero cold reads for the managed internal projections on replay;
+- 84,480-byte persisted capsule for the validated tiny trace.
+
+See `docs/ATLAS_FAST_PATH_2026-08-02.md` and `validation_results.json`.
 
 ## Current code boundary
 
-Working path:
-
 ```text
-HF safetensors -> tensor discovery/slicing -> bounded cache
--> exact streamed tiny Llama -> progressive disk LM head
--> exact token certification
+HF safetensors -> exact cold linear operator
+                    | miss
+                    v
+              learn U and WU
+                    |
+                    v
+         persistent AtlasLinear capsule
+                    |
+                    v
+       base-free exact-on-span fast path
 ```
 
-Not yet implemented:
+Integrated projection suffixes in the validation run:
 
 ```text
-progressive internal Q/K/V/O and MLP projection execution
--> nonlinear bound/refinement propagation
--> fused GPU backend
--> real 8GB hardware benchmark
--> real 405B run
+self_attn.o_proj.weight
+mlp.down_proj.weight
 ```
 
 ## Exact next task
 
-Do not begin with a new speculative architecture document. Begin in code.
+Do not return to the full-base progressive design as the default internal path.
 
-1. Define a linear operator interface in the runtime.
-2. Refactor the exact Llama path so each projection can be supplied by an operator.
-3. Add an instrumented progressive operator for one internal projection, starting with `o_proj` or `down_proj` because their output directly returns to residual width.
-4. Run exact-versus-progressive comparisons on the tiny checkpoint.
-5. Record per-layer residual fractions and final-token equality.
-6. Expand to gate/up and then Q/K/V, adding nonlinear repair logic only after the linear measurements exist.
+1. Add a real-model trace runner for a small pretrained Llama-family checkpoint.
+2. Capture per-layer O/down inputs during prompt prefill and continuation.
+3. Build atlases from the first trace segment.
+4. Test continued generation and neighboring prompts without rebuilding.
+5. Record rank curves, cold streams/token, hit rate, capsule bytes, token equality, and wall-clock.
+6. Add Q/K/V and gate/up only after O/down pass the real-trace falsification gate.
+7. Add an FP16/BF16 capsule mode and compare numerical/token behavior.
 
-## Important observations
+## Decisive unknown
 
-- A low-bit coarse LM head often selected the same token in the recorded tests, but certification cost varied significantly by bit width.
-- Six-bit base precision produced far lower residual refinement than four-bit in the recorded synthetic run.
-- Exact Jacobi decoding worked, but committed blocks were small; it is not yet the required hundred-token amortization mechanism.
-- Fitting tensor windows under 8GB is only the residency problem. The project remains blocked on reducing or amortizing internal model traffic and compute.
-
-## Files to update in the next session
-
-- code and tests for the implemented milestone;
-- `validation_results.json` if metrics change;
-- this handoff file;
-- `docs/ARCHITECTURE.md` for structural changes;
-- `docs/ROADMAP.md` when a milestone gate is passed.
+The project now has a real base-free path. The next measurement determines whether real-model activation reachable sets remain low-rank enough across new tokens and prompts for cold reads to become rare.
