@@ -20,6 +20,12 @@ from vortex_runtime.falsification import (
 
 
 LAYER_PATTERN = re.compile(r"(?:^|\.)layers\.(\d+)(?:\.|$)")
+DEFAULT_BUILD_PROMPTS = [
+    "Explain why the sky appears blue and why sunsets appear red.",
+    "Write Python code for merge sort and explain its complexity.",
+    "한국어로 PLM BOM 변경 검증 절차와 오류 처리 방법을 설명해줘.",
+    "Solve a probability problem using conditional probability step by step.",
+]
 
 
 def parse_args() -> argparse.Namespace:
@@ -36,7 +42,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-rank", type=int, default=32)
     parser.add_argument(
         "--build-prompt",
-        default="Explain why the sky appears blue.",
+        action="append",
+        dest="build_prompts",
     )
     parser.add_argument(
         "--eval-prompt",
@@ -191,14 +198,16 @@ def main() -> None:
         args.max_new_tokens,
     )
 
+    build_prompts = args.build_prompts or DEFAULT_BUILD_PROMPTS
     set_replacement_modes(replacements, "learn_exact")
-    generate(
-        model,
-        tokenizer,
-        args.build_prompt,
-        device,
-        args.max_new_tokens,
-    )
+    for prompt in build_prompts:
+        generate(
+            model,
+            tokenizer,
+            prompt,
+            device,
+            args.max_new_tokens,
+        )
 
     full_model_bytes = model_parameter_bytes(model)
     managed_weight_bytes = sum(
@@ -302,12 +311,13 @@ def main() -> None:
         "matched_modules": len(replacements),
         "total_layers": total_layers,
         "max_rank": args.max_rank,
-        "build_prompt": args.build_prompt,
+        "build_prompts": build_prompts,
         "eval_prompt": args.eval_prompt,
         "max_new_tokens": args.max_new_tokens,
         "capsule_bytes": capsule_bytes,
         "rank_min": min(ranks.values()),
         "rank_max": max(ranks.values()),
+        "rank_mean": sum(ranks.values()) / len(ranks),
         "full_model_weight_bytes": full_model_bytes,
         "managed_weight_bytes": managed_weight_bytes,
         "all_project_sequence_match": all_project_match,
@@ -339,6 +349,8 @@ def main() -> None:
     print(
         json.dumps(
             {
+                "rank_min": result["rank_min"],
+                "rank_max": result["rank_max"],
                 "all_project_sequence_match": all_project_match,
                 "minimal_exact_suffix_layers": minimal_size,
                 "zero_exact_repair": minimal["zero_exact_repair"],
