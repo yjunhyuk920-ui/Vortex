@@ -10,6 +10,13 @@ DEFAULT_RESULT_PATH = Path(
 )
 
 
+def _portable_source(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(Path.cwd().resolve()).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
 def apply_real_model_observation(
     report: dict[str, Any],
     result_path: str | Path = DEFAULT_RESULT_PATH,
@@ -35,7 +42,7 @@ def apply_real_model_observation(
     report["mechanism"].update(
         {
             "observed": observed,
-            "observed_source": str(path),
+            "observed_source": _portable_source(path),
             "pass": observed >= required,
             "shortfall_factor": required / observed,
             "observed_exact_token_match": bool(
