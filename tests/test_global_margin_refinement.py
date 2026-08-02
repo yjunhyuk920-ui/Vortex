@@ -68,15 +68,22 @@ def test_dual_price_sweep_is_never_worse_than_width_global() -> None:
     assert not comparison.dual_price_certificate.unsafe_certificate
 
 
-def test_global_budget_can_reuse_slack_across_layers() -> None:
+def test_global_budget_can_strictly_reuse_slack_across_layers() -> None:
+    # Equal per-layer targets are 0.75. The difficult first layer needs both
+    # exact refinements, while the easy second layer needs one because its
+    # initial uncertainty is 1.2. Under one global 1.5 budget, refining only the
+    # difficult layer leaves the easy layer's full 1.2 uncertainty admissible.
     layers = [
-        _terms([10.0, 9.0], [10.0, 9.0]),
-        _terms([0.1, 0.1], [0.1, 0.1]),
+        _terms([3.0, 3.0], [3.0, 3.0]),
+        _terms([0.6, 0.6], [0.6, 0.6]),
     ]
     comparison = compare_equal_layer_and_global_refinement(
         layers,
-        total_absolute_error=1.0,
+        total_absolute_error=1.5,
         price_steps=21,
     )
+    assert comparison.equal_layer_refined_neurons == 3
+    assert comparison.dual_price_refined_neurons == 2
     assert comparison.dual_price_refined_neurons < comparison.equal_layer_refined_neurons
     assert comparison.dual_price_certificate.target_error_met
+    assert not comparison.dual_price_certificate.unsafe_certificate
