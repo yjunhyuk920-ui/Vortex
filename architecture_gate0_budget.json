@@ -1,7 +1,7 @@
 {
   "evidence_level": "E0/E1",
   "candidate": "VORTEX-WAVE-1",
-  "status": "rejected-exact-span-hot-path",
+  "status": "rejected-rank32-layer-and-row-tile-repair",
   "target": {
     "parameters": 405849243648,
     "layers": 126,
@@ -99,7 +99,7 @@
     "required_tokens_per_full_repair_equivalent": 491.29915997929805,
     "candidate_target": 640.0,
     "observed": 3.1790542140151516,
-    "observed_source": "results/tinyllama_1_1b_exact_span_warm_decode.json",
+    "observed_source": "results/tinyllama_1_1b_rank32_repair_oracles.json",
     "pass": false,
     "shortfall_factor": 154.54255476781765,
     "observed_exact_token_match": true,
@@ -111,5 +111,10 @@
     "analytic_compute": true,
     "observed_repair_efficiency": false
   },
-  "observed_component_decision": "reject exact-span Atlas as the steady-state warm-decode mechanism"
+  "observed_component_decision": "reject exact-span, exact layer-suffix, and output-row tile repair as VORTEX-WAVE-1 steady-state mechanisms",
+  "rejected_mechanisms": [
+    "exact-span Atlas warm-decode fast path",
+    "rank-32 approximate capsule plus exact layer-suffix repair",
+    "rank-32 approximate capsule plus output-row tile repair"
+  ]
 }
