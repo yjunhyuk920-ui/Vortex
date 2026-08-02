@@ -19,7 +19,9 @@ permissions:
 
 jobs:
   tinyllama-rank-frontier:
-    if: github.head_ref == 'feat/architecture-gate0-certificate'
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      github.head_ref == 'feat/architecture-gate0-certificate'
     runs-on: ubuntu-latest
     timeout-minutes: 120
 
@@ -84,6 +86,9 @@ jobs:
               {
                   "rank": point["rank"],
                   "memory_gib": point["budget"]["memory_gib"],
+                  "hot_traffic_gib": point["budget"][
+                      "hot_traffic_gib_per_token"
+                  ],
                   "hot_gflop": point["budget"]["hot_compute_gflop_per_token"],
                   "top1": point["exact_top1_match_rate"],
                   "top32": point["coverage_at_k"]["32"],
@@ -100,6 +105,7 @@ jobs:
                       "maximum_feasible_rank": data[
                           "fixed_405b_aligned_maximum_rank"
                       ],
+                      "binding_budget": data["binding_budget"],
                       "points": rows,
                       "decision": data["decision"],
                       "next_candidate": data["next_candidate"],
