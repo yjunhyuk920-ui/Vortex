@@ -54,7 +54,7 @@ jobs:
           python scripts/run_real_operation_falsification.py \
             --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
             --device cpu \
-            --max-new-tokens 1 \
+            --max-new-tokens 8 \
             --max-rank 32 \
             --build-prompt "Explain why the sky appears blue." \
             --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
