@@ -1,0 +1,92 @@
+{
+  "evidence_level": "E1 optimistic repair oracles",
+  "workflow": {
+    "run_id": 30735367797,
+    "artifact_id": 8829390233,
+    "artifact_digest": "sha256:7e2c74f8925c1adfd4a348d98af4601421a5f70b18bebf4d50c5f4e68f3bcb38",
+    "head_sha": "32889f6d57256723e228a9d16bc64bb4a51f3017",
+    "raw_file_sha256": {
+      "oracle_suffix_repair.json": "da196aa64ed842e8b7a3c26ef1ff6745146be030412fa53346316a17c3700ef2",
+      "oracle_tile_repair.json": "6d9892be50607564fcfc5b280f8bbb25d23930ffcc690cb442e5546f411d2b7a",
+      "real_operation_falsification.json": "e23cdba3d56fb9cb92446dbf4e2776e127ce4a291dbf3eb55821f271af3a07e1"
+    }
+  },
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "managed_suffixes": [
+    "self_attn.o_proj",
+    "mlp.down_proj"
+  ],
+  "matched_modules": 44,
+  "total_layers": 22,
+  "max_rank": 32,
+  "rank_min": 32,
+  "rank_max": 32,
+  "rank_mean": 32.0,
+  "full_model_weight_bytes": 4400193536,
+  "managed_weight_bytes": 1384120320,
+  "gate": {
+    "minimum_tokens_per_full_repair_equivalent": 491.29915997929805,
+    "promotion_threshold": 600.0,
+    "rejection_threshold": 300.0
+  },
+  "layer_suffix_oracle": {
+    "all_project_sequence_match": false,
+    "minimal_exact_suffix_layers": 22,
+    "minimal_exact_bytes_per_token": 1384120320,
+    "minimal_full_model_repair_fraction_per_token": 0.3145589639809879,
+    "oracle_tokens_per_full_repair_equivalent": 3.1790542140151516,
+    "gate_pass": false,
+    "tested_suffixes": [
+      {"exact_suffix_layers": 0, "exact_bytes_per_token": 0, "tokens_per_full_repair_equivalent": null, "exact_sequence_match": false},
+      {"exact_suffix_layers": 1, "exact_bytes_per_token": 62914560, "tokens_per_full_repair_equivalent": 69.93919270833334, "exact_sequence_match": false},
+      {"exact_suffix_layers": 2, "exact_bytes_per_token": 125829120, "tokens_per_full_repair_equivalent": 34.96959635416667, "exact_sequence_match": false},
+      {"exact_suffix_layers": 4, "exact_bytes_per_token": 251658240, "tokens_per_full_repair_equivalent": 17.484798177083334, "exact_sequence_match": false},
+      {"exact_suffix_layers": 8, "exact_bytes_per_token": 503316480, "tokens_per_full_repair_equivalent": 8.742399088541667, "exact_sequence_match": false},
+      {"exact_suffix_layers": 16, "exact_bytes_per_token": 1006632960, "tokens_per_full_repair_equivalent": 4.371199544270834, "exact_sequence_match": false},
+      {"exact_suffix_layers": 17, "exact_bytes_per_token": 1069547520, "tokens_per_full_repair_equivalent": 4.114070159313726, "exact_sequence_match": false},
+      {"exact_suffix_layers": 18, "exact_bytes_per_token": 1132462080, "tokens_per_full_repair_equivalent": 3.8855107060185183, "exact_sequence_match": false},
+      {"exact_suffix_layers": 19, "exact_bytes_per_token": 1195376640, "tokens_per_full_repair_equivalent": 3.6810101425438595, "exact_sequence_match": false},
+      {"exact_suffix_layers": 20, "exact_bytes_per_token": 1258291200, "tokens_per_full_repair_equivalent": 3.4969596354166668, "exact_sequence_match": false},
+      {"exact_suffix_layers": 21, "exact_bytes_per_token": 1321205760, "tokens_per_full_repair_equivalent": 3.330437748015873, "exact_sequence_match": false},
+      {"exact_suffix_layers": 22, "exact_bytes_per_token": 1384120320, "tokens_per_full_repair_equivalent": 3.1790542140151516, "exact_sequence_match": true}
+    ],
+    "decision": "reject rank-32 approximate capsule plus exact layer-suffix repair"
+  },
+  "row_tile_oracle": {
+    "tile_rows": 128,
+    "candidate_tiles": 704,
+    "all_project_sequence_match": false,
+    "gate_budget_match": null,
+    "decision": "top-error row-tile oracle fails within E>=300 rejection budget",
+    "first_repair_match": {
+      "selected_tiles": 704,
+      "exact_weight_bytes_per_token": 1384120320,
+      "full_model_repair_fraction_per_token": 0.3145589639809879,
+      "tokens_per_full_repair_equivalent": 3.1790542140151516,
+      "exact_sequence_match": true
+    },
+    "tested_prefixes": [
+      {"selected_tiles": 0, "exact_weight_bytes_per_token": 0, "tokens_per_full_repair_equivalent": null, "exact_sequence_match": false},
+      {"selected_tiles": 1, "exact_weight_bytes_per_token": 2883584, "tokens_per_full_repair_equivalent": 1525.9460227272727, "exact_sequence_match": false},
+      {"selected_tiles": 2, "exact_weight_bytes_per_token": 3932160, "tokens_per_full_repair_equivalent": 1119.0270833333334, "exact_sequence_match": false},
+      {"selected_tiles": 3, "exact_weight_bytes_per_token": 4980736, "tokens_per_full_repair_equivalent": 883.4424342105264, "exact_sequence_match": false},
+      {"selected_tiles": 4, "exact_weight_bytes_per_token": 6029312, "tokens_per_full_repair_equivalent": 729.8002717391304, "exact_sequence_match": false},
+      {"selected_tiles": 5, "exact_weight_bytes_per_token": 7077888, "tokens_per_full_repair_equivalent": 621.6817129629629, "exact_sequence_match": false},
+      {"selected_tiles": 6, "exact_weight_bytes_per_token": 9961472, "tokens_per_full_repair_equivalent": 441.7212171052632, "exact_sequence_match": false},
+      {"selected_tiles": 7, "exact_weight_bytes_per_token": 11010048, "tokens_per_full_repair_equivalent": 399.65252976190476, "exact_sequence_match": false},
+      {"selected_tiles": 8, "exact_weight_bytes_per_token": 13893632, "tokens_per_full_repair_equivalent": 316.70577830188677, "exact_sequence_match": false},
+      {"selected_tiles": 16, "exact_weight_bytes_per_token": 27787264, "tokens_per_full_repair_equivalent": 158.35288915094338, "exact_sequence_match": false},
+      {"selected_tiles": 32, "exact_weight_bytes_per_token": 62914560, "tokens_per_full_repair_equivalent": 69.93919270833334, "exact_sequence_match": false},
+      {"selected_tiles": 64, "exact_weight_bytes_per_token": 155189248, "tokens_per_full_repair_equivalent": 28.35372677364865, "exact_sequence_match": false},
+      {"selected_tiles": 128, "exact_weight_bytes_per_token": 339738624, "tokens_per_full_repair_equivalent": 12.951702353395062, "exact_sequence_match": false},
+      {"selected_tiles": 256, "exact_weight_bytes_per_token": 637272064, "tokens_per_full_repair_equivalent": 6.904733134512546, "exact_sequence_match": false},
+      {"selected_tiles": 512, "exact_weight_bytes_per_token": 1043333120, "tokens_per_full_repair_equivalent": 4.217438756281407, "exact_sequence_match": false},
+      {"selected_tiles": 704, "exact_weight_bytes_per_token": 1384120320, "tokens_per_full_repair_equivalent": 3.1790542140151516, "exact_sequence_match": true}
+    ],
+    "decision_final": "reject rank-32 approximate capsule plus output-row tile repair"
+  },
+  "overall_decision": "reject exact-span, exact layer-suffix, and output-row tile repair as VORTEX-WAVE-1 steady-state mechanisms",
+  "remaining_candidate": "two-dimensional residual contribution tiles with final-token-directed selection and block amortization"
+}
