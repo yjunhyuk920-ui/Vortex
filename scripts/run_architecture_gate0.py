@@ -64,6 +64,10 @@ def generate_report(root: Path) -> dict[str, object]:
         rank_frontier_path=(
             root / "results/tinyllama_1_1b_hot_rank_frontier.json"
         ),
+        session_prefill_path=(
+            root
+            / "results/tinyllama_1_1b_session_prefill_candidate_coverage.json"
+        ),
     )
 
 
@@ -112,6 +116,9 @@ def main() -> None:
         "family_decision": report.get("family_decision"),
         "hot_representation_coverage": report.get("hot_representation_coverage"),
         "hot_rank_frontier": report.get("hot_rank_frontier"),
+        "session_prefill_response_basis": report.get(
+            "session_prefill_response_basis"
+        ),
         "revised_oracle_envelope": report.get("revised_oracle_envelope"),
         "observed_component_decision": report.get(
             "observed_component_decision"
