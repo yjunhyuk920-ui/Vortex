@@ -1,0 +1,93 @@
+name: Layer-subset precision oracle
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/progressive_precision.py"
+      - "vortex_runtime/precision_consensus.py"
+      - "vortex_runtime/layer_precision_oracle.py"
+      - "scripts/run_layer_local_precision_oracle.py"
+      - "scripts/run_layer_subset_precision_oracle.py"
+      - "tests/test_progressive_precision.py"
+      - "tests/test_precision_consensus.py"
+      - "tests/test_layer_precision_oracle.py"
+      - ".github/workflows/layer-subset-precision-oracle.yml"
+
+concurrency:
+  group: layer-subset-precision-oracle-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  oracle:
+    if: github.head_ref == 'research/full-rank-progressive-precision'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate precision contracts
+        run: |
+          python -m pytest -q \
+            tests/test_progressive_precision.py \
+            tests/test_precision_consensus.py \
+            tests/test_layer_precision_oracle.py
+      - name: Exhaust top-six group subsets
+        run: |
+          python scripts/run_layer_subset_precision_oracle.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --layers-per-group 2 \
+            --row-chunk 128 \
+            --runtime-refinement-fraction 0.25 \
+            --output layer_subset_precision_oracle.json
+      - name: Build report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(
+              Path("layer_subset_precision_oracle.json").read_text(encoding="utf-8")
+          )
+          summary = {
+              "subsets_evaluated": payload["subsets_evaluated"],
+              "exact_subset_count": len(payload["exact_subsets"]),
+              "minimum_exact_subset": payload["minimum_exact_subset"],
+              "best_partial_subset": payload["best_partial_subset"],
+              "qualifies": payload["qualifies"],
+              "decision": payload["decision"],
+          }
+          Path("layer-subset-comment.md").write_text(
+              "## Exhaustive Q6-to-Q8 layer subset oracle\n\n```json\n"
+              + json.dumps(summary, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish PR report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          gh pr comment "$PR_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --body-file layer-subset-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: layer-subset-precision-oracle
+          path: layer_subset_precision_oracle.json
