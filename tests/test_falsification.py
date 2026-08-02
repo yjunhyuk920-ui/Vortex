@@ -92,6 +92,40 @@ def test_project_mode_is_exact_inside_span_and_exact_mode_bypasses_capsule() -> 
     torch.testing.assert_close(model(outside), exact)
 
 
+def test_tile_profile_and_selected_row_repair() -> None:
+    torch.manual_seed(17)
+    model = TinyProjectionModel()
+    weight = model.o_proj.weight.detach().clone()
+    bias = model.o_proj.bias.detach().clone()
+    replacements = replace_linear_modules(
+        model,
+        suffixes=("o_proj",),
+        max_rank=2,
+    )
+    module = replacements["o_proj"]
+    basis = torch.randn(8, 2)
+    model(torch.randn(12, 2) @ basis.T)
+    outside = torch.randn(3, 8)
+    exact = outside @ weight.T + bias
+
+    module.reset_tile_profile(tile_rows=4)
+    module.set_mode("profile")
+    profiled = model(outside)
+    tiles = module.profiled_row_tiles()
+    assert len(tiles) == 2
+    assert sum(float(tile["error_sum"]) for tile in tiles) > 0
+    assert not torch.allclose(profiled, exact)
+
+    module.configure_row_tile_repair(tile_rows=4, tile_indices=(0,))
+    module.set_mode("project_repair")
+    repaired = model(outside)
+    torch.testing.assert_close(repaired[..., :4], exact[..., :4])
+    assert module.selected_repair_bytes == 4 * 8 * weight.element_size()
+
+    module.configure_row_tile_repair(tile_rows=4, tile_indices=(0, 1))
+    torch.testing.assert_close(model(outside), exact)
+
+
 def test_phase_counters_separate_prefill_and_decode() -> None:
     torch.manual_seed(9)
     model = TinyProjectionModel()
