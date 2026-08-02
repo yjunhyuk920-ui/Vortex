@@ -1,0 +1,51 @@
+name: Sync Gate 0 budget
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/feasibility.py"
+      - "vortex_runtime/gate0_observations.py"
+      - "vortex_runtime/gate0_selector_results.py"
+      - "scripts/run_architecture_gate0.py"
+      - "results/tinyllama_1_1b_block_shared_combined_gate.json"
+      - "results/tinyllama_1_1b_block_shared_residual_selector.json"
+      - "results/tinyllama_1_1b_block_shared_proposal_adjoint_oracle.json"
+      - "results/tinyllama_1_1b_block_shared_margin_bound_selector.json"
+      - "results/tinyllama_1_1b_prefill_compiled_adjoint_oracle.json"
+      - ".github/workflows/sync-gate0-budget.yml"
+
+concurrency:
+  group: sync-gate0-budget-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    if: github.head_ref == 'feat/architecture-gate0-certificate'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Regenerate source-of-truth budget
+        run: python scripts/run_architecture_gate0.py
+      - name: Commit generated budget when changed
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          if git diff --quiet -- architecture_gate0_budget.json; then
+            echo "Gate 0 budget is already synchronized."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add architecture_gate0_budget.json
+          git commit -m "data(gate0): synchronize generated family verdict"
+          git push origin "HEAD:${BRANCH}"
