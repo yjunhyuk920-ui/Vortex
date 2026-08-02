@@ -5,6 +5,14 @@ description = "Executable prototype for tiled Hugging Face inference and exact p
 requires-python = ">=3.10"
 dependencies = ["torch>=2.2", "safetensors>=0.4", "numpy>=1.26"]
 
+[project.optional-dependencies]
+experiments = [
+  "transformers>=4.50,<6",
+  "accelerate>=1.0",
+  "sentencepiece>=0.2",
+  "protobuf>=4",
+]
+
 [project.scripts]
 vortex-proto = "vortex_runtime.cli:main"
 
