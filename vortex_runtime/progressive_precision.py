@@ -71,40 +71,53 @@ def symmetric_per_row_fake_quantize(
     bits: int,
     source_bits: int = 16,
     name: str = "tensor",
+    row_chunk: int = 256,
 ) -> tuple[torch.Tensor, TensorPrecisionStats]:
     """Return a full-rank per-row symmetric fake-quantized tensor.
 
-    The returned tensor remains floating point for portable diagnostics. The
-    storage accounting treats the representation as a coarse `bits`-wide
-    component plus the remaining exact source bitplanes. No row, column, or
-    singular direction is removed.
+    Rows are processed in bounded chunks so the diagnostic can transform a
+    billion-parameter CPU model without retaining a second full residual model.
+    No row, column, or singular direction is removed.
     """
 
     if tensor.ndim < 2:
         raise ValueError("full-rank quantization expects at least two dimensions")
     if not 2 <= bits < source_bits:
         raise ValueError("bits must be in [2, source_bits)")
-    if source_bits <= 0:
-        raise ValueError("source_bits must be positive")
+    if source_bits <= 0 or row_chunk <= 0:
+        raise ValueError("source_bits and row_chunk must be positive")
 
     source = tensor.detach().to("cpu", torch.float32)
     flat = source.reshape(source.shape[0], -1)
+    restored_flat = torch.empty_like(flat)
     qmax = (1 << (bits - 1)) - 1
-    row_maximum = flat.abs().amax(dim=1, keepdim=True)
-    scale = torch.where(
-        row_maximum > 0,
-        row_maximum / qmax,
-        torch.ones_like(row_maximum),
-    )
-    quantized = torch.round(flat / scale).clamp(-qmax, qmax)
-    restored = (quantized * scale).reshape_as(source)
-    residual = source - restored
-    source_norm = torch.linalg.vector_norm(source)
-    residual_norm = torch.linalg.vector_norm(residual)
-    relative_error = float(
-        (residual_norm / torch.clamp(source_norm, min=1e-12)).item()
-    )
+    source_square_sum = 0.0
+    residual_square_sum = 0.0
+    residual_absolute_sum = 0.0
+    maximum_error = 0.0
+
+    for start in range(0, flat.shape[0], row_chunk):
+        end = min(start + row_chunk, flat.shape[0])
+        chunk = flat[start:end]
+        row_maximum = chunk.abs().amax(dim=1, keepdim=True)
+        scale = torch.where(
+            row_maximum > 0,
+            row_maximum / qmax,
+            torch.ones_like(row_maximum),
+        )
+        quantized = torch.round(chunk / scale).clamp(-qmax, qmax)
+        restored = quantized * scale
+        residual = chunk - restored
+        restored_flat[start:end].copy_(restored)
+        source_square_sum += float(chunk.square().sum().item())
+        residual_square_sum += float(residual.square().sum().item())
+        residual_absolute_sum += float(residual.abs().sum().item())
+        maximum_error = max(maximum_error, float(residual.abs().amax().item()))
+
     elements = source.numel()
+    relative_error = (
+        residual_square_sum / max(source_square_sum, 1e-24)
+    ) ** 0.5
     stats = TensorPrecisionStats(
         name=name,
         elements=elements,
@@ -114,10 +127,10 @@ def symmetric_per_row_fake_quantize(
         hot_bytes=elements * bits / 8,
         residual_bitplane_bytes=elements * (source_bits - bits) / 8,
         relative_l2_error=relative_error,
-        maximum_absolute_error=float(residual.abs().amax().item()),
-        mean_absolute_error=float(residual.abs().mean().item()),
+        maximum_absolute_error=maximum_error,
+        mean_absolute_error=residual_absolute_sum / elements,
     )
-    return restored, stats
+    return restored_flat.reshape_as(source), stats
 
 
 def fake_quantize_full_rank_modules(
@@ -125,6 +138,7 @@ def fake_quantize_full_rank_modules(
     *,
     bits: int,
     source_bits: int = 16,
+    row_chunk: int = 256,
     module_types: Iterable[type[nn.Module]] = (nn.Linear, nn.Embedding),
 ) -> tuple[ModelPrecisionStats, list[TensorPrecisionStats]]:
     """Fake-quantize unique Linear/Embedding weights in place.
@@ -157,9 +171,11 @@ def fake_quantize_full_rank_modules(
                 bits=bits,
                 source_bits=source_bits,
                 name=f"{name}.weight" if name else "weight",
+                row_chunk=row_chunk,
             )
             weight.copy_(restored.to(device=weight.device, dtype=weight.dtype))
             per_tensor.append(stats)
+            del restored
 
     if not per_tensor:
         raise RuntimeError("no eligible full-rank weights were found")
