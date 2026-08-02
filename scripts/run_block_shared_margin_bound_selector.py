@@ -163,7 +163,17 @@ def main() -> None:
             "required_tokens_per_full_repair_equivalent"
         ]
     )
-    hot_gflop = float(target_report["compute"]["hot_total_gflop_per_token"])
+    base_hot_gflop = float(
+        target_report["compute"]["hot_total_gflop_per_token"]
+    )
+    selector_backward_gflop = float(
+        target_report["selector_compute"]["backward_total_gflop_per_token"]
+    )
+    hot_plus_selector_gflop = float(
+        target_report["selector_compute"][
+            "hot_plus_selector_gflop_per_token"
+        ]
+    )
     full_repair_gflop = float(
         target_report["compute"]["cold_full_repair_gflop"]
     )
@@ -172,7 +182,7 @@ def main() -> None:
     )
     compute_max_bytes = maximum_selected_bytes_for_compute(
         full_model_weight_bytes=full_model_bytes,
-        hot_gflop_per_token=hot_gflop,
+        hot_gflop_per_token=hot_plus_selector_gflop,
         full_exact_repair_gflop_per_token=full_repair_gflop,
         compute_limit_gflop_per_token=compute_limit_gflop,
     )
@@ -180,7 +190,7 @@ def main() -> None:
         committed_tokens=actual_block_tokens,
         full_model_weight_bytes=full_model_bytes,
         minimum_traffic_efficiency=minimum_traffic_efficiency,
-        hot_gflop_per_token=hot_gflop,
+        hot_gflop_per_token=hot_plus_selector_gflop,
         full_exact_repair_gflop_per_token=full_repair_gflop,
         compute_limit_gflop_per_token=compute_limit_gflop,
     )
@@ -241,7 +251,7 @@ def main() -> None:
             selected_weight_bytes=selected_bytes,
             full_model_weight_bytes=full_model_bytes,
             minimum_traffic_efficiency=minimum_traffic_efficiency,
-            hot_gflop_per_token=hot_gflop,
+            hot_gflop_per_token=hot_plus_selector_gflop,
             full_exact_repair_gflop_per_token=full_repair_gflop,
             compute_limit_gflop_per_token=compute_limit_gflop,
         )
@@ -300,6 +310,12 @@ def main() -> None:
             "exact target token margins during ranking",
             "full exact weight scan during ranking",
         ],
+        "selector_compute": {
+            "base_hot_gflop_per_token": base_hot_gflop,
+            "backward_gflop_per_token": selector_backward_gflop,
+            "hot_plus_selector_gflop_per_token": hot_plus_selector_gflop,
+            "compute_limit_gflop_per_token": compute_limit_gflop,
+        },
         "combined_budget": {
             "minimum_traffic_efficiency": minimum_traffic_efficiency,
             "compute_max_selected_bytes": compute_max_bytes,
@@ -313,7 +329,8 @@ def main() -> None:
         "scope_note": (
             "The exact continuation is generated only after proposal-based tile "
             "scores are fixed and is used only for offline causal-prefix "
-            "measurement. The margin bound is first-order and is not yet a "
+            "measurement. Proposal-margin backward compute is charged in the "
+            "combined gate. The margin bound is first-order and is not yet a "
             "sound end-to-end token certificate."
         ),
     }
@@ -327,6 +344,7 @@ def main() -> None:
             {
                 "zero_repair_prefix_tokens": zero_repair_prefix,
                 "metadata_bytes": profile.metadata_bytes,
+                "selector_compute": result["selector_compute"],
                 "combined_budget_tile_count": combined_count,
                 "best_selector_candidate": best_selector_candidate,
                 "decision": decision,
