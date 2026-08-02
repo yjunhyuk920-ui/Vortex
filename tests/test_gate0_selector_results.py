@@ -44,4 +44,4 @@ def test_candidate_coverage_rejects_rank32_hot_representation(
         report["hot_representation_coverage"]["coverage_at_k"]["32"]
         == 0.40625
     )
-    assert "rank 128" in report["next_candidate"]
+    assert "rank 72" in report["next_candidate"]
