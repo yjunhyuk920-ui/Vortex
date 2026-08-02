@@ -14,10 +14,11 @@ DEFAULT_ORACLE_RESULT = Path(
 
 
 def _portable_source(path: Path) -> str:
-    try:
-        return path.resolve().relative_to(Path.cwd().resolve()).as_posix()
-    except ValueError:
-        return path.as_posix()
+    parts = path.parts
+    if "results" in parts:
+        index = parts.index("results")
+        return Path(*parts[index:]).as_posix()
+    return path.as_posix()
 
 
 def _apply_observed_efficiency(
