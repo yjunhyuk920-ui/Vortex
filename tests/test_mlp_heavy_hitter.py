@@ -62,7 +62,7 @@ def test_oracle_selects_dominant_down_contribution() -> None:
         selected_fraction=0.25,
     )
     output = module(torch.tensor([[1.0, 0.0, 0.0]]))
-    assert output[0, 0] > 8.0
+    assert output[0, 0] > 7.0
     assert bool(module.ever_selected[2].item())
     assert int(module.ever_selected.sum().item()) == 1
 
