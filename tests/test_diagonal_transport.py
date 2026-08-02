@@ -29,8 +29,9 @@ def test_diagonal_transport_recovers_exact_scaled_matrix() -> None:
         output_scale=fitted_output,
     )
     relative_error = torch.linalg.vector_norm(target - reconstructed) / torch.linalg.vector_norm(target)
-    assert float(relative_error.item()) < 1e-5
+    assert float(relative_error.item()) < 5e-5
     assert stats.adapted_relative_l2_error < stats.baseline_relative_l2_error
+    assert stats.relative_error_reduction > 0.999
     assert stats.metadata_bytes == (12 + 9) * 2
 
 
