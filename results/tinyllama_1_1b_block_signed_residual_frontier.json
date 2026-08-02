@@ -1,0 +1,56 @@
+{
+  "evidence_level": "E2 disjoint block signed residual code frontier",
+  "points": [
+    {
+      "block_size": 512,
+      "rank": 1,
+      "metadata_gib": 4.814208984375,
+      "mean_refined_fraction": 0.9441139914772727,
+      "maximum_refined_fraction": 0.9539401472107438,
+      "maximum_exact_gib_per_token": 585.964599609375,
+      "activation_perpendicular_ratio": 0.8414826837744458,
+      "dual_perpendicular_ratio": 0.8249417498342035,
+      "gate_radius_ratio": 0.8366575274830733,
+      "up_radius_ratio": 0.8366554286547849,
+      "directional_radius_ratio": 0.8236655380438401,
+      "unsafe_certificates": 0,
+      "interval_failures": 0,
+      "qualifies": false
+    },
+    {
+      "block_size": 1024,
+      "rank": 1,
+      "metadata_gib": 2.414794921875,
+      "mean_refined_fraction": 0.9444408574380165,
+      "maximum_refined_fraction": 0.9542549070247934,
+      "maximum_exact_gib_per_token": 586.1607055664062,
+      "activation_perpendicular_ratio": 0.8418783056134683,
+      "dual_perpendicular_ratio": 0.8255149233758621,
+      "gate_radius_ratio": 0.8401930083571895,
+      "up_radius_ratio": 0.8401925458919631,
+      "directional_radius_ratio": 0.8249608759692416,
+      "unsafe_certificates": 0,
+      "interval_failures": 0,
+      "qualifies": false
+    },
+    {
+      "block_size": 1024,
+      "rank": 2,
+      "metadata_gib": 3.6298828125,
+      "mean_refined_fraction": 0.9239491864669421,
+      "maximum_refined_fraction": 0.9536818827479339,
+      "maximum_exact_gib_per_token": 585.8031005859375,
+      "activation_perpendicular_ratio": 0.6936474886441635,
+      "dual_perpendicular_ratio": 0.8189118368531685,
+      "gate_radius_ratio": 0.6921297871182445,
+      "up_radius_ratio": 0.6921295260651926,
+      "directional_radius_ratio": 0.8179592461178263,
+      "unsafe_certificates": 0,
+      "interval_failures": 0,
+      "qualifies": false
+    }
+  ],
+  "promoted_configurations": [],
+  "decision": "reject static disjoint block signed residual codes",
+  "next_candidate": "key signed residual programs by online semantic state"
+}
