@@ -71,7 +71,11 @@ class BlockSharedGate:
 
     @property
     def pass_all(self) -> bool:
-        return self.traffic_pass and self.compute_pass
+        return (
+            self.committed_tokens > 0
+            and self.traffic_pass
+            and self.compute_pass
+        )
 
     def to_dict(self) -> dict[str, int | float | bool | None]:
         return {
@@ -84,6 +88,7 @@ class BlockSharedGate:
             ),
             "traffic_pass": self.traffic_pass,
             "compute_pass": self.compute_pass,
+            "nonempty_commit_pass": self.committed_tokens > 0,
             "pass_all": self.pass_all,
         }
 
