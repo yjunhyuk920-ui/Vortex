@@ -1,0 +1,660 @@
+{
+  "evidence_level": "E2 executable semantic block Kronecker replacement",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "factor_bits": 8,
+  "embedding_bits": 4,
+  "tiny_mlp_block_size": 64,
+  "tiny_lm_head_block_size": 64,
+  "embedding_quantization": {
+    "name": "model.embed_tokens.weight",
+    "elements": 65536000,
+    "hot_bits": 4,
+    "source_bits": 16,
+    "original_bytes": 131072000.0,
+    "hot_bytes": 32768000.0,
+    "residual_bitplane_bytes": 98304000.0,
+    "relative_l2_error": 0.155101564694817,
+    "maximum_absolute_error": 0.010672435164451599,
+    "mean_absolute_error": 0.0019765628839377315
+  },
+  "fit": {
+    "operators": 155,
+    "original_elements": 1034420224,
+    "factor_elements": 6061056,
+    "factor_density": 0.005859375,
+    "compression_ratio": 170.66666666666666,
+    "element_weighted_relative_l2_error": 0.9946173259103835,
+    "modes": {
+      "row": 111,
+      "column": 44
+    },
+    "worst_operators": [
+      {
+        "name": "model.layers.11.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9953828454017639
+      },
+      {
+        "name": "model.layers.17.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9953525066375732
+      },
+      {
+        "name": "model.layers.8.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9953455924987793
+      },
+      {
+        "name": "model.layers.4.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9953216314315796
+      },
+      {
+        "name": "model.layers.6.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9952642321586609
+      },
+      {
+        "name": "model.layers.12.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.995263397693634
+      },
+      {
+        "name": "model.layers.14.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9952224493026733
+      },
+      {
+        "name": "model.layers.9.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9952184557914734
+      },
+      {
+        "name": "model.layers.3.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9952154159545898
+      },
+      {
+        "name": "model.layers.0.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9952030181884766
+      },
+      {
+        "name": "model.layers.2.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9952025413513184
+      },
+      {
+        "name": "model.layers.1.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9951993823051453
+      },
+      {
+        "name": "model.layers.7.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9951493144035339
+      },
+      {
+        "name": "model.layers.5.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.995148241519928
+      },
+      {
+        "name": "model.layers.21.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9951453804969788
+      },
+      {
+        "name": "model.layers.13.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9951262474060059
+      },
+      {
+        "name": "model.layers.20.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9951087236404419
+      },
+      {
+        "name": "model.layers.19.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9950960278511047
+      },
+      {
+        "name": "model.layers.10.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9950803518295288
+      },
+      {
+        "name": "model.layers.16.self_attn.v_proj",
+        "mode": "row",
+        "block_size": 64,
+        "blocks": 4,
+        "terms_per_block": 1,
+        "original_elements": 524288,
+        "factor_elements": 3072,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9950765371322632
+      },
+      {
+        "name": "model.layers.12.self_attn.o_proj",
+        "mode": "column",
+        "block_size": 64,
+        "blocks": 32,
+        "terms_per_block": 1,
+        "original_elements": 4194304,
+        "factor_elements": 24576,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9950745701789856
+      },
+      {
+        "name": "model.layers.9.self_attn.o_proj",
+        "mode": "column",
+        "block_size": 64,
+        "blocks": 32,
+        "terms_per_block": 1,
+        "original_elements": 4194304,
+        "factor_elements": 24576,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9950606226921082
+      },
+      {
+        "name": "model.layers.20.self_attn.o_proj",
+        "mode": "column",
+        "block_size": 64,
+        "blocks": 32,
+        "terms_per_block": 1,
+        "original_elements": 4194304,
+        "factor_elements": 24576,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9950507283210754
+      },
+      {
+        "name": "model.layers.18.self_attn.o_proj",
+        "mode": "column",
+        "block_size": 64,
+        "blocks": 32,
+        "terms_per_block": 1,
+        "original_elements": 4194304,
+        "factor_elements": 24576,
+        "compression_ratio": 170.66666666666666,
+        "relative_l2_error": 0.9950228929519653
+      }
+    ]
+  },
+  "fit_seconds": 9.5639031259999,
+  "density_comparison": {
+    "tiny_factor_density": 0.005859375,
+    "projected_405b_factor_density": 0.004618552640757736,
+    "tiny_over_target_density_ratio": 1.2686604345032844
+  },
+  "teacher_forced_exact_reference": {
+    "tokens": 32,
+    "top1_rate": 1.0,
+    "top4_rate": 1.0,
+    "top32_rate": 1.0,
+    "mean_exact_token_rank": 1.0,
+    "maximum_exact_token_rank": 1,
+    "ranks": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "teacher_forced_factorized": {
+    "tokens": 32,
+    "top1_rate": 0.0,
+    "top4_rate": 0.0,
+    "top32_rate": 0.0,
+    "mean_exact_token_rank": 14633.5,
+    "maximum_exact_token_rank": 31437,
+    "ranks": [
+      15237,
+      4050,
+      7049,
+      28664,
+      18556,
+      20248,
+      26630,
+      31437,
+      8568,
+      4585,
+      4033,
+      1488,
+      786,
+      15456,
+      12771,
+      15833,
+      30992,
+      199,
+      19355,
+      10816,
+      4070,
+      7649,
+      9431,
+      27689,
+      29959,
+      23057,
+      24418,
+      15971,
+      5112,
+      3083,
+      22468,
+      18612
+    ]
+  },
+  "autoregressive_exact_prefix": 0,
+  "tree": {
+    "requested_depth": 12,
+    "top_k": 32,
+    "beam_width": 64,
+    "node_budget": 1024,
+    "retained_tree_nodes": 138,
+    "optimistic_committed_exact_prefix": 0,
+    "exact_path_last_alive_depth": 0,
+    "depth_rows": [
+      {
+        "depth": 1,
+        "retained_branches": 32,
+        "unique_tree_nodes": 32,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      },
+      {
+        "depth": 2,
+        "retained_branches": 64,
+        "unique_tree_nodes": 76,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      },
+      {
+        "depth": 3,
+        "retained_branches": 64,
+        "unique_tree_nodes": 73,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      },
+      {
+        "depth": 4,
+        "retained_branches": 64,
+        "unique_tree_nodes": 78,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      },
+      {
+        "depth": 5,
+        "retained_branches": 64,
+        "unique_tree_nodes": 95,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      },
+      {
+        "depth": 6,
+        "retained_branches": 64,
+        "unique_tree_nodes": 85,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      },
+      {
+        "depth": 7,
+        "retained_branches": 64,
+        "unique_tree_nodes": 92,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      },
+      {
+        "depth": 8,
+        "retained_branches": 64,
+        "unique_tree_nodes": 84,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      },
+      {
+        "depth": 9,
+        "retained_branches": 64,
+        "unique_tree_nodes": 92,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      },
+      {
+        "depth": 10,
+        "retained_branches": 64,
+        "unique_tree_nodes": 89,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      },
+      {
+        "depth": 11,
+        "retained_branches": 64,
+        "unique_tree_nodes": 107,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      },
+      {
+        "depth": 12,
+        "retained_branches": 64,
+        "unique_tree_nodes": 138,
+        "longest_exact_reference_prefix": 0,
+        "exact_path_alive": false
+      }
+    ]
+  },
+  "405b_budget": {
+    "factor_bits": 8,
+    "embedding_bits": 4,
+    "active_kv_tokens": 256,
+    "factor_elements": 1874436096,
+    "factor_gib": 1.7457046508789062,
+    "total_memory_gib": 5.354988098144531,
+    "total_traffic_gib_per_token": 1.9187591552734375,
+    "total_flops_per_token": 183256795648.0,
+    "projected_seconds_per_token": 0.005819015502929688,
+    "allowed_seconds_per_token": 0.007450580596923828,
+    "memory_pass": true,
+    "traffic_pass": true,
+    "latency_pass": true,
+    "pass_all": true,
+    "plans": [
+      {
+        "name": "q_proj",
+        "mode": "row",
+        "block_size": 128,
+        "terms_per_block": 4,
+        "blocks": 128,
+        "shape": {
+          "out_first": 8,
+          "out_second": 16,
+          "in_first": 128,
+          "in_second": 128,
+          "out_features": 128,
+          "in_features": 16384,
+          "factor_elements_per_term": 3072,
+          "flops_per_term": 294912
+        },
+        "factor_elements": 1572864,
+        "flops_per_token": 150994944
+      },
+      {
+        "name": "k_proj",
+        "mode": "row",
+        "block_size": 128,
+        "terms_per_block": 4,
+        "blocks": 8,
+        "shape": {
+          "out_first": 8,
+          "out_second": 16,
+          "in_first": 128,
+          "in_second": 128,
+          "out_features": 128,
+          "in_features": 16384,
+          "factor_elements_per_term": 3072,
+          "flops_per_term": 294912
+        },
+        "factor_elements": 98304,
+        "flops_per_token": 9437184
+      },
+      {
+        "name": "v_proj",
+        "mode": "row",
+        "block_size": 128,
+        "terms_per_block": 4,
+        "blocks": 8,
+        "shape": {
+          "out_first": 8,
+          "out_second": 16,
+          "in_first": 128,
+          "in_second": 128,
+          "out_features": 128,
+          "in_features": 16384,
+          "factor_elements_per_term": 3072,
+          "flops_per_term": 294912
+        },
+        "factor_elements": 98304,
+        "flops_per_token": 9437184
+      },
+      {
+        "name": "o_proj",
+        "mode": "column",
+        "block_size": 128,
+        "terms_per_block": 4,
+        "blocks": 128,
+        "shape": {
+          "out_first": 128,
+          "out_second": 128,
+          "in_first": 16,
+          "in_second": 8,
+          "out_features": 16384,
+          "in_features": 128,
+          "factor_elements_per_term": 3072,
+          "flops_per_term": 294912
+        },
+        "factor_elements": 1572864,
+        "flops_per_token": 150994944
+      },
+      {
+        "name": "gate_proj",
+        "mode": "row",
+        "block_size": 128,
+        "terms_per_block": 3,
+        "blocks": 416,
+        "shape": {
+          "out_first": 8,
+          "out_second": 16,
+          "in_first": 128,
+          "in_second": 128,
+          "out_features": 128,
+          "in_features": 16384,
+          "factor_elements_per_term": 3072,
+          "flops_per_term": 294912
+        },
+        "factor_elements": 3833856,
+        "flops_per_token": 368050176
+      },
+      {
+        "name": "up_proj",
+        "mode": "row",
+        "block_size": 128,
+        "terms_per_block": 3,
+        "blocks": 416,
+        "shape": {
+          "out_first": 8,
+          "out_second": 16,
+          "in_first": 128,
+          "in_second": 128,
+          "out_features": 128,
+          "in_features": 16384,
+          "factor_elements_per_term": 3072,
+          "flops_per_term": 294912
+        },
+        "factor_elements": 3833856,
+        "flops_per_token": 368050176
+      },
+      {
+        "name": "down_proj",
+        "mode": "column",
+        "block_size": 128,
+        "terms_per_block": 3,
+        "blocks": 416,
+        "shape": {
+          "out_first": 128,
+          "out_second": 128,
+          "in_first": 16,
+          "in_second": 8,
+          "out_features": 16384,
+          "in_features": 128,
+          "factor_elements_per_term": 3072,
+          "flops_per_term": 294912
+        },
+        "factor_elements": 3833856,
+        "flops_per_token": 368050176
+      },
+      {
+        "name": "lm_head",
+        "mode": "row",
+        "block_size": 256,
+        "terms_per_block": 2,
+        "blocks": 501,
+        "shape": {
+          "out_first": 16,
+          "out_second": 16,
+          "in_first": 128,
+          "in_second": 128,
+          "out_features": 256,
+          "in_features": 16384,
+          "factor_elements_per_term": 4096,
+          "flops_per_term": 589824
+        },
+        "factor_elements": 4104192,
+        "flops_per_token": 591003648
+      }
+    ]
+  },
+  "contract": "Every target linear is independently replaced. Attention heads, MLP neuron blocks and vocabulary blocks are never mixed across the factor fit. No activation calibration or learned correction is used.",
+  "qualifies": false,
+  "decision": "reject tested semantic block Kronecker point",
+  "elapsed_seconds": 237.65395740099996
+}
