@@ -193,7 +193,7 @@
     "causal exact-prompt-prefill adjoint compiler",
     "rank-32 O/down hot representation for small top-K uncertainty"
   ],
-  "next_candidate": "sweep the complete 405B-feasible capsule-rank frontier through rank 128; if coverage remains below threshold, reject the global low-rank O/down representation family",
+  "next_candidate": "sweep the complete 405B-feasible capsule-rank frontier through rank 72; hot capsule traffic, not memory or arithmetic, is the binding rank constraint",
   "selector_falsification": {
     "residual_energy": {
       "evidence_level": "E1 target-independent block selector falsification",
