@@ -1,0 +1,213 @@
+name: Mixed precision hybrid frontier
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/capsule_quantization.py"
+      - "vortex_runtime/hybrid_response_basis.py"
+      - "vortex_runtime/rank_frontier.py"
+      - "scripts/run_mixed_precision_hybrid_candidate_coverage.py"
+      - "scripts/aggregate_mixed_precision_hybrid_frontier.py"
+      - "tests/test_mixed_capsule_quantization.py"
+      - "tests/test_mixed_rank_budget.py"
+      - "tests/test_mixed_precision_hybrid_frontier.py"
+      - ".github/workflows/mixed-precision-hybrid-frontier.yml"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  prepare:
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      github.head_ref == 'feat/architecture-gate0-certificate'
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.changes.outputs.run }}
+      matrix: ${{ steps.changes.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 2
+      - name: Check direct mixed-hybrid changes
+        id: changes
+        run: |
+          if git diff --quiet HEAD^ HEAD -- \
+            vortex_runtime/capsule_quantization.py \
+            vortex_runtime/hybrid_response_basis.py \
+            vortex_runtime/rank_frontier.py \
+            scripts/run_mixed_precision_hybrid_candidate_coverage.py \
+            scripts/aggregate_mixed_precision_hybrid_frontier.py \
+            tests/test_mixed_capsule_quantization.py \
+            tests/test_mixed_rank_budget.py \
+            tests/test_mixed_precision_hybrid_frontier.py \
+            .github/workflows/mixed-precision-hybrid-frontier.yml; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo 'matrix={"include":[]}' >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo 'matrix={"include":[{"name":"g58-s45-g4-s8","global_rank":58,"session_rank":45,"global_bits":4,"session_bits":8},{"name":"g80-s45-g4-s6","global_rank":80,"session_rank":45,"global_bits":4,"session_bits":6},{"name":"g92-s45-g4-s5","global_rank":92,"session_rank":45,"global_bits":4,"session_bits":5},{"name":"g74-s45-g5-s5","global_rank":74,"session_rank":45,"global_bits":5,"session_bits":5}]}' >> "$GITHUB_OUTPUT"
+          fi
+
+  measure:
+    needs: prepare
+    if: needs.prepare.outputs.run == 'true'
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install transformers sentencepiece
+      - name: Measure ${{ matrix.name }}
+        run: |
+          python scripts/run_mixed_precision_hybrid_candidate_coverage.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --build-new-tokens 1 \
+            --global-rank ${{ matrix.global_rank }} \
+            --session-rank ${{ matrix.session_rank }} \
+            --global-bits ${{ matrix.global_bits }} \
+            --session-bits ${{ matrix.session_bits }} \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "${{ matrix.name }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mixed-hybrid-${{ matrix.name }}
+          path: ${{ matrix.name }}.json
+
+  aggregate:
+    needs: [prepare, measure]
+    if: >-
+      needs.prepare.outputs.run == 'true' &&
+      needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: mixed-hybrid-*
+          path: mixed-results
+          merge-multiple: true
+      - name: Aggregate frontier
+        run: |
+          mapfile -t files < <(find mixed-results -type f -name '*.json' | sort)
+          python scripts/aggregate_mixed_precision_hybrid_frontier.py \
+            "${files[@]}" \
+            --output mixed_precision_hybrid_frontier.json
+      - name: Normalize evidence with provenance
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          raw = Path("mixed_precision_hybrid_frontier.json")
+          raw_bytes = raw.read_bytes()
+          payload = json.loads(raw_bytes)
+          payload["workflow"] = {
+              "run_id": int(os.environ["RUN_ID"]),
+              "head_sha": os.environ["HEAD_SHA"],
+              "raw_file_sha256": hashlib.sha256(raw_bytes).hexdigest(),
+          }
+          output = Path(
+              "results/tinyllama_1_1b_mixed_precision_hybrid_frontier.json"
+          )
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          PY
+      - name: Build PR report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(
+              Path("mixed_precision_hybrid_frontier.json").read_text()
+          )
+          rows = [
+              {
+                  "global": point["global_rank_limit"],
+                  "session": point["session_rank_limit"],
+                  "global_bits": point["global_bits"],
+                  "session_bits": point["session_bits"],
+                  "actual_final": point["final_rank_statistics"]["mean"],
+                  "weighted_bit_rank": point["budget"]["weighted_bit_rank"],
+                  "post_quant_prompt_error": point[
+                      "prompt_reconstruction_after_quantization"
+                  ]["maximum_module_output_relative_error"],
+                  "top1": point["exact_top1_match_rate"],
+                  "top32": point["coverage_at_k"]["32"],
+                  "mean_exact_rank": point["rank_statistics"]["mean"],
+                  "survives": point["qualifies_for_multi_hypothesis"],
+              }
+              for point in data["points"]
+          ]
+          body = (
+              "## Mixed-precision global + session frontier\n\n"
+              "```json\n"
+              + json.dumps(
+                  {
+                      "points": rows,
+                      "decision": data["decision"],
+                      "next_candidate": data["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```"
+          )
+          Path("mixed-hybrid-comment.md").write_text(body, encoding="utf-8")
+          PY
+      - name: Publish PR report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file mixed-hybrid-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-mixed-precision-hybrid-frontier
+          path: mixed_precision_hybrid_frontier.json
+      - name: Commit evidence when changed
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_mixed_precision_hybrid_frontier.json
+          if [ -z "$(git status --porcelain -- "$path")" ]; then
+            echo "Mixed-precision hybrid evidence is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(hybrid): commit mixed-precision frontier"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
