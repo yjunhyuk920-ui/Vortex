@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ko_networking",
+    "text": "한국어로 TCP 혼잡 제어가 필요한 이유와 패킷 손실 후 전송률이 어떻게 변하는지 설명해줘."
+  },
+  {
+    "id": "en_economics",
+    "text": "Explain opportunity cost with a concrete household example and one common misconception."
+  },
+  {
+    "id": "javascript_code",
+    "text": "Write a JavaScript function that limits asynchronous tasks to three concurrent executions and explain the control flow."
+  },
+  {
+    "id": "combinatorics",
+    "text": "How many distinct arrangements are there of the letters in MISSISSIPPI? Show the calculation."
+  },
+  {
+    "id": "security_summary",
+    "text": "Compare authentication, authorization, and auditing in a compact table followed by one practical example."
+  },
+  {
+    "id": "incident_reasoning",
+    "text": "An API returns stale data only in one region. Propose a step-by-step investigation that distinguishes cache, replication, and routing faults."
+  }
+]
