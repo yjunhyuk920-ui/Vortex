@@ -35,7 +35,7 @@ def parse_args() -> argparse.Namespace:
         description=(
             "Select one block-shared repair set using only projected activation "
             "residual energy and precomputed weight-tile norms. Exact target "
-            "tokens are used only for offline evaluation."
+            "tokens are generated only after selector scores are fixed."
         )
     )
     parser.add_argument("--model", required=True)
@@ -141,19 +141,6 @@ def main() -> None:
     encoded = tokenizer(args.eval_prompt, return_tensors="pt")
     prompt_length = int(encoded["input_ids"].shape[-1])
 
-    set_residual_replacement_modes(replacements, "exact")
-    exact_sequence = generate(
-        model,
-        tokenizer,
-        args.eval_prompt,
-        device,
-        args.block_tokens,
-    )
-    exact_generated = exact_sequence[prompt_length:]
-    actual_block_tokens = len(exact_generated)
-    if actual_block_tokens <= 0:
-        raise RuntimeError("model generated no evaluation tokens")
-
     build_prompts = args.build_prompts or DEFAULT_BUILD_PROMPTS
     set_residual_replacement_modes(replacements, "learn_exact")
     for prompt in build_prompts:
@@ -181,10 +168,9 @@ def main() -> None:
         args.block_tokens,
     )
     zero_repair_generated = zero_repair_sequence[prompt_length:]
-    zero_repair_prefix = longest_common_prefix(
-        exact_generated,
-        zero_repair_generated,
-    )
+    actual_block_tokens = len(zero_repair_generated)
+    if actual_block_tokens <= 0:
+        raise RuntimeError("hot path proposed no evaluation tokens")
 
     candidates: list[dict[str, Any]] = []
     for name, module in replacements.items():
@@ -243,13 +229,30 @@ def main() -> None:
     )
     combined_count = count_within_bytes(cumulative, combined_max_bytes)
 
-    tested: list[dict[str, Any]] = []
-    best_selector_candidate: dict[str, Any] | None = None
-    for count in selector_probe_counts(
+    # Selector scores and tested counts are frozen before exact output exists.
+    ordered_counts = selector_probe_counts(
         candidate_count=len(candidates),
         combined_count=combined_count,
         cumulative_bytes=cumulative,
-    ):
+    )
+
+    set_residual_replacement_modes(replacements, "exact")
+    exact_sequence = generate(
+        model,
+        tokenizer,
+        args.eval_prompt,
+        device,
+        args.block_tokens,
+    )
+    exact_generated = exact_sequence[prompt_length:]
+    zero_repair_prefix = longest_common_prefix(
+        exact_generated,
+        zero_repair_generated,
+    )
+
+    tested: list[dict[str, Any]] = []
+    best_selector_candidate: dict[str, Any] | None = None
+    for count in ordered_counts:
         if count == 0:
             selected_bytes = 0
             candidate_sequence = zero_repair_sequence
@@ -290,7 +293,7 @@ def main() -> None:
             "zero_repair_prefix_tokens": zero_repair_prefix,
             "incremental_committed_tokens": incremental,
             "selector_pass": selector_pass,
-            "full_block_match": committed_prefix == actual_block_tokens,
+            "full_block_match": committed_prefix == len(exact_generated),
             **gate.to_dict(),
         }
         tested.append(item)
@@ -330,7 +333,7 @@ def main() -> None:
             "precomputed exact weight-tile Frobenius norms",
         ],
         "selector_forbidden_inputs": [
-            "exact target continuation tokens",
+            "exact target continuation tokens during ranking",
             "teacher-forced gradients",
             "exact target logit margins",
         ],
@@ -345,9 +348,10 @@ def main() -> None:
         "decision": decision,
         "elapsed_seconds": time.perf_counter() - started,
         "scope_note": (
-            "Exact target tokens are generated only to measure the causal-prefix "
-            "agreement after selection. They do not influence tile scores or the "
-            "selected set. A sound online commit certificate is still absent."
+            "The selector scores, ranking, and probe counts are fixed before the "
+            "exact continuation is generated. Exact output is used only for "
+            "offline causal-prefix evaluation. A sound online commit certificate "
+            "is still absent."
         ),
     }
     args.output.write_text(
