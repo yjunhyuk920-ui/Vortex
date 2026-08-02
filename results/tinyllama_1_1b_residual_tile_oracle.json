@@ -1,0 +1,68 @@
+{
+  "evidence_level": "E1 optimistic 2D residual tile oracle",
+  "workflow": {
+    "run_id": 30735625509,
+    "artifact_id": 8829493866,
+    "artifact_digest": "sha256:04872a8779c6e63c01477743c754e80cbd268b602c78278ff29e56414128a04f",
+    "head_sha": "417c902901b313444839778fc08ed54f2c02c8ac",
+    "raw_file_sha256": {
+      "oracle_residual_tile_repair.json": "5e215e1e14f5c4681f036cca934a20975755bf93f1cfcbe835d87fb74adf6490"
+    }
+  },
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "managed_suffixes": [
+    "self_attn.o_proj",
+    "mlp.down_proj"
+  ],
+  "matched_modules": 44,
+  "max_rank": 32,
+  "rank_min": 32,
+  "rank_max": 32,
+  "rank_mean": 32.0,
+  "row_tile": 128,
+  "col_tile": 128,
+  "candidate_tiles": 21120,
+  "full_model_weight_bytes": 4400193536,
+  "managed_weight_bytes": 1384120320,
+  "all_project_sequence_match": false,
+  "gate": {
+    "minimum_tokens_per_full_repair_equivalent": 491.29915997929805,
+    "promotion_threshold": 600.0,
+    "rejection_threshold": 300.0,
+    "promotion_budget_tile_count": 111,
+    "gate_budget_tile_count": 136,
+    "rejection_budget_tile_count": 223
+  },
+  "boundary_observations": [
+    {
+      "selected_tiles": 111,
+      "exact_weight_bytes_per_token": 7274496,
+      "tokens_per_full_repair_equivalent": 604.8795045045046,
+      "exact_sequence_match": false
+    },
+    {
+      "selected_tiles": 136,
+      "exact_weight_bytes_per_token": 8912896,
+      "tokens_per_full_repair_equivalent": 493.6884191176471,
+      "exact_sequence_match": false
+    },
+    {
+      "selected_tiles": 223,
+      "exact_weight_bytes_per_token": 14614528,
+      "tokens_per_full_repair_equivalent": 301.0835201793722,
+      "exact_sequence_match": false
+    }
+  ],
+  "first_repair_match": {
+    "selected_tiles": 8192,
+    "exact_weight_bytes_per_token": 536870912,
+    "full_model_repair_fraction_per_token": 0.1220107496653529,
+    "tokens_per_full_repair_equivalent": 8.195999145507812,
+    "exact_sequence_match": true
+  },
+  "decision": "reject residual-energy-ranked 2D tile selection as the VORTEX-WAVE-1 repair selector",
+  "scope_note": "The experiment ranks nested tile prefixes using a local residual-energy proxy. It does not reject a final-token-directed adjoint selector or all possible non-prefix tile subsets.",
+  "next_candidate": "final-token logit-margin adjoint tile ranking"
+}
