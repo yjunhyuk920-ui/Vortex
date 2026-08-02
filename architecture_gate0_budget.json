@@ -1,7 +1,7 @@
 {
   "evidence_level": "E0/E1",
   "candidate": "VORTEX-WAVE-1",
-  "status": "blocked-mechanism-unproven",
+  "status": "rejected-exact-span-hot-path",
   "target": {
     "parameters": 405849243648,
     "layers": 126,
@@ -98,15 +98,18 @@
   "mechanism": {
     "required_tokens_per_full_repair_equivalent": 491.29915997929805,
     "candidate_target": 640.0,
-    "observed": 1.2751790996462853,
-    "observed_source": "validation_results.json:jacobi.mean_committed_block; full-repair equivalent",
+    "observed": 3.1790542140151516,
+    "observed_source": "results/tinyllama_1_1b_exact_span_warm_decode.json",
     "pass": false,
-    "shortfall_factor": 385.27855429529603
+    "shortfall_factor": 154.54255476781765,
+    "observed_exact_token_match": true,
+    "observed_warm_decode_fast_fraction": 0.0
   },
   "gates": {
     "memory": true,
     "analytic_traffic": true,
     "analytic_compute": true,
     "observed_repair_efficiency": false
-  }
+  },
+  "observed_component_decision": "reject exact-span Atlas as the steady-state warm-decode mechanism"
 }
