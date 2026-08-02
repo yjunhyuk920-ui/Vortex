@@ -169,7 +169,7 @@ def main() -> None:
         module.logical_weight_bytes for module in replacements.values()
     )
 
-    target_report = default_gate0_report(observed_repair_efficiency=0.0)
+    target_report = default_gate0_report(1.0)
     target_hot_gflop = float(target_report["compute"]["hot_total_gflop_per_token"])
     target_full_repair_gflop = float(
         target_report["compute"]["cold_full_repair_gflop"]
