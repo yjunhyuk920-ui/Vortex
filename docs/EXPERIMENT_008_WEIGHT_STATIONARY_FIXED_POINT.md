@@ -18,8 +18,8 @@ The next candidate does not approximate target weights at all.
 ## Candidate
 
 ```text
-exact target weights outside VRAM
-        ↓ layer-by-layer stream
+original 16-bit target weights outside VRAM
+        ↓ exact sub-operator tiled stream
 K draft positions evaluated together
         ↓ deterministic causal Jacobi update
 unchanged prefix = exact greedy certificate
@@ -27,9 +27,9 @@ unchanged prefix = exact greedy certificate
 commit only certified tokens
 ```
 
-One target-model pass streams each layer once and evaluates all `K` draft
-positions as matrix-matrix operations. The target model and tokenizer are not
-modified, trained, distilled, or sparsified.
+One target-model pass streams each exact matrix tile once and evaluates all `K`
+draft positions as matrix-matrix operations. The target model and tokenizer are
+not modified, quantized, trained, distilled, or sparsified.
 
 ## Exactness contract
 
@@ -43,6 +43,23 @@ prefix:
 No reference continuation is required for the runtime certificate. The exact
 reference is used only as an experiment diagnostic.
 
+## Memory contract
+
+The official target specification is 405,849,243,648 parameters at 16-bit,
+approximately 756 GiB. A complete layer is too large for safe double buffering,
+so the runtime uses exact sub-operator tiles. The Gate 0 memory model charges:
+
+```text
+2 × resident exact operator tile
++ full target KV state
++ K-position activation workspace
++ fixed kernel/allocator workspace
+<= 8 GiB
+```
+
+The default resident tile is 1.5 GiB, giving a 3 GiB double buffer without
+changing any weight value.
+
 ## Resource correction
 
 Earlier Gate 0 work compared raw target FLOPs directly with a 4B decode FLOP
@@ -53,7 +70,7 @@ high-throughput tensor-core GEMM.
 This experiment therefore reports a roofline time bound:
 
 ```text
-T_transfer/pass = target_weight_bytes / host_to_device_bandwidth
+T_transfer/pass = original_target_weight_bytes / host_to_device_bandwidth
 T_compute/pass  = target_block_FLOPs / effective_tensor_TFLOPS
 T_ideal/pass    = max(T_transfer, T_compute)
 T_serial/pass   = T_transfer + T_compute
@@ -61,7 +78,10 @@ T/token         = passes × T/pass / certified_tokens
 ```
 
 Both ideal-overlap and conservative serialized bounds must be visible. Passing
-the conservative bound is required for promotion.
+the conservative bound and the 8 GiB bound is required for promotion. The
+report also emits the minimum tensor throughput and host-link bandwidth needed
+at full block commitment, making a hardware impossibility explicit rather than
+hiding it in a proxy FLOP ratio.
 
 ## Diagnostics for the next stage
 
@@ -77,7 +97,8 @@ multi-candidate verification and rejection recycling?
 - block sizes: 16, 32, 64
 - initializers: exact prompt-next repetition and prompt-tail repetition
 - maximum iterations: 16, 24, 32 respectively
-- target projection: 405B dense, 4-bit external weights, 8 GiB device target
+- target projection: 405B dense, original 16-bit weights, exact 1.5 GiB tiles
+- device target: 8 GiB
 - baseline: native 4B, 4-bit resident decode
 
 ## Promotion rule
@@ -86,6 +107,7 @@ Advance the fixed-point block decoder only when:
 
 ```text
 certified prefix matches exact greedy reference
+and peak device memory <= 8 GiB
 and conservative serialized roofline <= 1.2 × native-4B time
 ```
 
