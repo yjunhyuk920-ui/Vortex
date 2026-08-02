@@ -20,6 +20,9 @@ DEFAULT_ADJOINT_RESULT = Path(
 DEFAULT_COMBINED_RESULT = Path(
     "results/tinyllama_1_1b_block_shared_combined_gate.json"
 )
+DEFAULT_RESIDUAL_SELECTOR_RESULT = Path(
+    "results/tinyllama_1_1b_block_shared_residual_selector.json"
+)
 
 
 def _portable_source(path: Path) -> str:
@@ -28,6 +31,47 @@ def _portable_source(path: Path) -> str:
         index = parts.index("results")
         return Path(*parts[index:]).as_posix()
     return path.as_posix()
+
+
+def _attach_residual_selector_falsification(
+    report: dict[str, Any],
+    source: Path,
+) -> dict[str, Any]:
+    result = json.loads(source.read_text(encoding="utf-8"))
+    boundary = result["tested_boundary"]
+    passed = result.get("best_selector_candidate") is not None
+    report.setdefault("selector_falsification", {})["residual_energy"] = {
+        "evidence_level": result["evidence_level"],
+        "source": _portable_source(source),
+        "zero_repair_prefix_tokens": int(result["zero_repair_prefix_tokens"]),
+        "combined_budget_tile_count": int(
+            result["combined_budget"]["combined_budget_tile_count"]
+        ),
+        "boundary_selected_tiles": int(boundary["selected_tiles"]),
+        "boundary_selected_weight_bytes": int(
+            boundary["selected_weight_bytes"]
+        ),
+        "boundary_committed_prefix_tokens": int(
+            boundary["committed_prefix_tokens"]
+        ),
+        "boundary_incremental_committed_tokens": int(
+            boundary["incremental_committed_tokens"]
+        ),
+        "pass": passed,
+        "decision": result["decision"],
+        "rejection_scope": result["rejection_scope"],
+    }
+    report["gates"]["residual_energy_selector"] = passed
+    if not passed:
+        rejected = report.setdefault("rejected_mechanisms", [])
+        name = "block-shared residual-energy target-independent selector"
+        if name not in rejected:
+            rejected.append(name)
+        report["next_candidate"] = (
+            "proposal-adjoint diagnostic oracle and proposal-margin "
+            "metadata-bound selector"
+        )
+    return report
 
 
 def _apply_combined_oracle(
@@ -228,12 +272,17 @@ def apply_real_model_observation(
     residual_path: str | Path = DEFAULT_RESIDUAL_RESULT,
     adjoint_path: str | Path = DEFAULT_ADJOINT_RESULT,
     combined_path: str | Path = DEFAULT_COMBINED_RESULT,
+    residual_selector_path: str | Path = DEFAULT_RESIDUAL_SELECTOR_RESULT,
 ) -> dict[str, Any]:
     """Apply the strongest committed E1 evidence to the Gate 0 report."""
 
     combined = Path(combined_path)
     if combined.exists():
-        return _apply_combined_oracle(report, combined)
+        report = _apply_combined_oracle(report, combined)
+        selector = Path(residual_selector_path)
+        if selector.exists():
+            report = _attach_residual_selector_falsification(report, selector)
+        return report
 
     adjoint = Path(adjoint_path)
     if adjoint.exists():
