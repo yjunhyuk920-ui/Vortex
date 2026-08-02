@@ -154,7 +154,17 @@ def main() -> None:
             "required_tokens_per_full_repair_equivalent"
         ]
     )
-    hot_gflop = float(target_report["compute"]["hot_total_gflop_per_token"])
+    base_hot_gflop = float(
+        target_report["compute"]["hot_total_gflop_per_token"]
+    )
+    selector_backward_gflop = float(
+        target_report["selector_compute"]["backward_total_gflop_per_token"]
+    )
+    hot_plus_selector_gflop = float(
+        target_report["selector_compute"][
+            "hot_plus_selector_gflop_per_token"
+        ]
+    )
     full_repair_gflop = float(
         target_report["compute"]["cold_full_repair_gflop"]
     )
@@ -163,7 +173,7 @@ def main() -> None:
     )
     compute_max_bytes = maximum_selected_bytes_for_compute(
         full_model_weight_bytes=full_model_bytes,
-        hot_gflop_per_token=hot_gflop,
+        hot_gflop_per_token=hot_plus_selector_gflop,
         full_exact_repair_gflop_per_token=full_repair_gflop,
         compute_limit_gflop_per_token=compute_limit_gflop,
     )
@@ -171,7 +181,7 @@ def main() -> None:
         committed_tokens=len(proposal_generated),
         full_model_weight_bytes=full_model_bytes,
         minimum_traffic_efficiency=minimum_traffic_efficiency,
-        hot_gflop_per_token=hot_gflop,
+        hot_gflop_per_token=hot_plus_selector_gflop,
         full_exact_repair_gflop_per_token=full_repair_gflop,
         compute_limit_gflop_per_token=compute_limit_gflop,
     )
@@ -232,7 +242,7 @@ def main() -> None:
             selected_weight_bytes=selected_bytes,
             full_model_weight_bytes=full_model_bytes,
             minimum_traffic_efficiency=minimum_traffic_efficiency,
-            hot_gflop_per_token=hot_gflop,
+            hot_gflop_per_token=hot_plus_selector_gflop,
             full_exact_repair_gflop_per_token=full_repair_gflop,
             compute_limit_gflop_per_token=compute_limit_gflop,
         )
@@ -272,6 +282,12 @@ def main() -> None:
         "eval_prompt": args.eval_prompt,
         "zero_repair_prefix_tokens": zero_repair_prefix,
         "selector_profile": profile.metadata(),
+        "selector_compute": {
+            "base_hot_gflop_per_token": base_hot_gflop,
+            "backward_gflop_per_token": selector_backward_gflop,
+            "hot_plus_selector_gflop_per_token": hot_plus_selector_gflop,
+            "compute_limit_gflop_per_token": compute_limit_gflop,
+        },
         "candidate_tiles": len(candidates),
         "combined_budget": {
             "minimum_traffic_efficiency": minimum_traffic_efficiency,
@@ -287,7 +303,8 @@ def main() -> None:
             "No exact target continuation influences the teacher sequence or "
             "margin objective. This remains a non-deployable diagnostic oracle "
             "because scoring calculates signed contributions by scanning all "
-            "managed exact weight tiles."
+            "managed exact weight tiles. Proposal-margin backward compute is "
+            "charged in the combined gate."
         ),
     }
     args.output.write_text(
@@ -299,6 +316,7 @@ def main() -> None:
         json.dumps(
             {
                 "zero_repair_prefix_tokens": zero_repair_prefix,
+                "selector_compute": result["selector_compute"],
                 "combined_budget_tile_count": combined_count,
                 "best_selector_candidate": best_candidate,
                 "decision": decision,
