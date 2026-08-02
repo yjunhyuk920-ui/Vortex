@@ -1,0 +1,216 @@
+name: Top-K row decision-proof gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/topk_row_proof.py"
+      - "scripts/run_lm_head_topk_row_proof.py"
+      - "tests/test_topk_row_proof.py"
+      - "docs/EXPERIMENT_022_TOPK_ROW_DECISION_PROOF.md"
+      - ".github/workflows/topk-row-decision-proof.yml"
+
+concurrency:
+  group: topk-row-decision-proof-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/topk-row-decision-proof'
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        top_k: [1, 4, 16, 32]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate exact top-K proof primitives
+        run: |
+          python -m pytest -q \
+            tests/test_residual_proof.py \
+            tests/test_topk_row_proof.py
+      - name: Measure exact top-${{ matrix.top_k }} row proof
+        run: |
+          python scripts/run_lm_head_topk_row_proof.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --hot-bits 4 \
+            --top-k ${{ matrix.top_k }} \
+            --column-block 16 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "topk-row-proof-${{ matrix.top_k }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: topk-row-proof-${{ matrix.top_k }}
+          path: topk-row-proof-${{ matrix.top_k }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: topk-row-proof-*
+          path: topk-row-proof-results
+          merge-multiple: true
+      - name: Aggregate top-K proof frontier
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          files = sorted(Path("topk-row-proof-results").glob("*.json"))
+          if not files:
+              raise SystemExit("no top-K row proof results")
+          points = [json.loads(path.read_text(encoding="utf-8")) for path in files]
+          points.sort(key=lambda item: item["top_k"])
+          unsafe = sum(point["unsafe_certificates"] for point in points)
+          best = max(
+              points,
+              key=lambda item: (
+                  item["certificate_rate"],
+                  -item["projected_405b_exact_refinement_budget"][
+                      "exact_residual_gib_per_token"
+                  ],
+              ),
+          )
+          promoted = [point for point in points if point["qualifies"]]
+          monotone = all(
+              points[index]["certificate_rate"]
+              <= points[index + 1]["certificate_rate"] + 1e-12
+              for index in range(len(points) - 1)
+          )
+          if unsafe:
+              decision = "reject implementation: unsafe exact-row certificate"
+              next_candidate = "repair soundness before architecture work"
+          elif promoted:
+              decision = "advance exact top-K proof into internal adjoint refinement"
+              next_candidate = (
+                  "compute exact top-two LM margin, propagate a backward adjoint, "
+                  "and read only residual tiles whose bound can still flip it"
+              )
+          elif monotone and best["certificate_rate"] > 0:
+              decision = "retain exact-row proof and tighten outside-row bounds"
+              next_candidate = (
+                  "combine exact top-K rows with orthogonal or signed support "
+                  "metadata for unread vocabulary rows"
+              )
+          else:
+              decision = "reject tested exact-row/outside-norm combination"
+              next_candidate = (
+                  "use adaptive top-K plus a hierarchical support-function tree"
+              )
+          summary = [
+              {
+                  "top_k": point["top_k"],
+                  "hot_top1": point["hot_top1_rate"],
+                  "hot_top32": point["hot_top32_rate"],
+                  "winner_in_topk": point["exact_winner_in_hot_topk_rate"],
+                  "certificate_rate": point["certificate_rate"],
+                  "unsafe_certificates": point["unsafe_certificates"],
+                  "target_exact_residual_gib": point[
+                      "projected_405b_exact_refinement_budget"
+                  ]["exact_residual_gib_per_token"],
+                  "target_metadata_gib": point[
+                      "projected_405b_outside_metadata_budget"
+                  ]["metadata_gib"],
+                  "qualifies": point["qualifies"],
+              }
+              for point in points
+          ]
+          payload = {
+              "evidence_level": "E2 pretrained exact top-K row proof frontier",
+              "points": points,
+              "summary": summary,
+              "best_top_k": best["top_k"],
+              "best_certificate_rate": best["certificate_rate"],
+              "certificate_rate_monotone": monotone,
+              "unsafe_certificates": unsafe,
+              "promoted_top_k": [point["top_k"] for point in promoted],
+              "decision": decision,
+              "next_candidate": next_candidate,
+              "workflow": {
+                  "run_id": int(os.environ["RUN_ID"]),
+                  "head_sha": os.environ["HEAD_SHA"],
+                  "input_sha256": {
+                      path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                      for path in files
+                  },
+              },
+          }
+          output = Path("results/tinyllama_1_1b_topk_row_decision_proof.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          Path("topk-row-proof-comment.md").write_text(
+              "## Exact top-K row decision-proof gate\n\n```json\n"
+              + json.dumps(
+                  {
+                      "summary": summary,
+                      "best_top_k": payload["best_top_k"],
+                      "best_certificate_rate": payload["best_certificate_rate"],
+                      "certificate_rate_monotone": payload[
+                          "certificate_rate_monotone"
+                      ],
+                      "unsafe_certificates": payload["unsafe_certificates"],
+                      "decision": payload["decision"],
+                      "next_candidate": payload["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file topk-row-proof-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-topk-row-decision-proof
+          path: results/tinyllama_1_1b_topk_row_decision_proof.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_topk_row_decision_proof.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit exact top-K row proof sweep"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
