@@ -1,0 +1,426 @@
+{
+  "evidence_level": "E1 causal quantized hybrid allocation frontier",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "tokens_per_point": 32,
+  "tested_points": [
+    {
+      "global_rank": 56,
+      "total_rank": 96,
+      "capsule_bits": 6
+    },
+    {
+      "global_rank": 64,
+      "total_rank": 136,
+      "capsule_bits": 4
+    },
+    {
+      "global_rank": 88,
+      "total_rank": 136,
+      "capsule_bits": 4
+    },
+    {
+      "global_rank": 96,
+      "total_rank": 136,
+      "capsule_bits": 4
+    }
+  ],
+  "causal_contract": "The generic global prior uses only fixed disjoint build prompts. Session residual directions use only exact user-prompt prefill inputs and outputs. Unseen continuation targets are evaluation-only.",
+  "decision_rule": "advance only when the fixed 405B budget passes, first-divergence exact-token rank is at most 32, and top-32 coverage is at least 0.95",
+  "points": [
+    {
+      "global_rank_limit": 56,
+      "total_rank_limit": 96,
+      "capsule_bits": 6,
+      "global_rank_statistics": {
+        "minimum": 56,
+        "maximum": 56,
+        "mean": 56.0
+      },
+      "added_session_rank_statistics": {
+        "minimum": 39,
+        "maximum": 40,
+        "mean": 39.54545454545455
+      },
+      "final_rank_statistics": {
+        "minimum": 95,
+        "maximum": 96,
+        "mean": 95.54545454545455
+      },
+      "prompt_reconstruction": {
+        "maximum_global_output_relative_error": 0.8585472702980042,
+        "maximum_final_output_relative_error": 0.2848438620567322,
+        "maximum_final_input_relative_error": 1.8106309198628878e-06
+      },
+      "quantization": {
+        "bits": 6,
+        "modules": 44,
+        "tensors": 88,
+        "elements": 24778240,
+        "logical_payload_bytes": 18583680,
+        "scale_bytes": 16816,
+        "maximum_absolute_error": 0.022815676406025887,
+        "maximum_relative_l2_error": 0.20639196038246155,
+        "logical_total_bytes": 18600496
+      },
+      "budget": {
+        "rank": 96,
+        "capsule_bits": 6,
+        "memory_gib": 5.746301651000977,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.7494380950927733,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 8.5375808,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "exact_top1_match_rate": 0.375,
+      "coverage_at_k": {
+        "1": 0.375,
+        "2": 0.4375,
+        "4": 0.4375,
+        "8": 0.5625,
+        "16": 0.6875,
+        "32": 0.6875,
+        "64": 0.8125,
+        "128": 0.9375,
+        "256": 0.96875
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 8410,
+        "mean": 290.09375
+      },
+      "first_divergence": {
+        "position": 2,
+        "exact_token": 155,
+        "hot_token": 161,
+        "exact_token_rank": 5,
+        "hot_top1_margin": 0.1320934295654297,
+        "exact_logit_gap_from_hot_top1": 1.4887256622314453
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 80.959584733
+    },
+    {
+      "global_rank_limit": 64,
+      "total_rank_limit": 136,
+      "capsule_bits": 4,
+      "global_rank_statistics": {
+        "minimum": 64,
+        "maximum": 64,
+        "mean": 64.0
+      },
+      "added_session_rank_statistics": {
+        "minimum": 39,
+        "maximum": 43,
+        "mean": 39.84090909090909
+      },
+      "final_rank_statistics": {
+        "minimum": 103,
+        "maximum": 107,
+        "mean": 103.8409090909091
+      },
+      "prompt_reconstruction": {
+        "maximum_global_output_relative_error": 0.8517507910728455,
+        "maximum_final_output_relative_error": 0.28407081961631775,
+        "maximum_final_input_relative_error": 1.537273419671692e-06
+      },
+      "quantization": {
+        "bits": 4,
+        "modules": 44,
+        "tensors": 88,
+        "elements": 26950656,
+        "logical_payload_bytes": 13475328,
+        "scale_bytes": 18276,
+        "maximum_absolute_error": 0.1006736010313034,
+        "maximum_relative_l2_error": 0.5704038143157959,
+        "logical_total_bytes": 13493604
+      },
+      "budget": {
+        "rank": 136,
+        "capsule_bits": 4,
+        "memory_gib": 5.5849809646606445,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.6037385940551756,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 11.66637184,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "exact_top1_match_rate": 0.34375,
+      "coverage_at_k": {
+        "1": 0.34375,
+        "2": 0.34375,
+        "4": 0.46875,
+        "8": 0.53125,
+        "16": 0.59375,
+        "32": 0.65625,
+        "64": 0.75,
+        "128": 0.96875,
+        "256": 0.96875
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 9634,
+        "mean": 327.59375
+      },
+      "first_divergence": {
+        "position": 2,
+        "exact_token": 155,
+        "hot_token": 161,
+        "exact_token_rank": 8,
+        "hot_top1_margin": 0.025136947631835938,
+        "exact_logit_gap_from_hot_top1": 1.7486152648925781
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 71.74357142600002
+    },
+    {
+      "global_rank_limit": 88,
+      "total_rank_limit": 136,
+      "capsule_bits": 4,
+      "global_rank_statistics": {
+        "minimum": 88,
+        "maximum": 88,
+        "mean": 88.0
+      },
+      "added_session_rank_statistics": {
+        "minimum": 39,
+        "maximum": 43,
+        "mean": 40.20454545454545
+      },
+      "final_rank_statistics": {
+        "minimum": 127,
+        "maximum": 131,
+        "mean": 128.20454545454547
+      },
+      "prompt_reconstruction": {
+        "maximum_global_output_relative_error": 0.7211032509803772,
+        "maximum_final_output_relative_error": 0.5755978226661682,
+        "maximum_final_input_relative_error": 1.7026475234160898e-06
+      },
+      "quantization": {
+        "bits": 4,
+        "modules": 44,
+        "tensors": 88,
+        "elements": 33280512,
+        "logical_payload_bytes": 16640256,
+        "scale_bytes": 22564,
+        "maximum_absolute_error": 0.1006736010313034,
+        "maximum_relative_l2_error": 0.567952036857605,
+        "logical_total_bytes": 16662820
+      },
+      "budget": {
+        "rank": 136,
+        "capsule_bits": 4,
+        "memory_gib": 5.5849809646606445,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.6037385940551756,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 11.66637184,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "exact_top1_match_rate": 0.34375,
+      "coverage_at_k": {
+        "1": 0.34375,
+        "2": 0.375,
+        "4": 0.46875,
+        "8": 0.46875,
+        "16": 0.5,
+        "32": 0.65625,
+        "64": 0.6875,
+        "128": 0.8125,
+        "256": 0.84375
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 13264,
+        "mean": 518.0625
+      },
+      "first_divergence": {
+        "position": 2,
+        "exact_token": 155,
+        "hot_token": 152,
+        "exact_token_rank": 21,
+        "hot_top1_margin": 1.2884769439697266,
+        "exact_logit_gap_from_hot_top1": 4.763443946838379
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 72.97506216399998
+    },
+    {
+      "global_rank_limit": 96,
+      "total_rank_limit": 136,
+      "capsule_bits": 4,
+      "global_rank_statistics": {
+        "minimum": 93,
+        "maximum": 93,
+        "mean": 93.0
+      },
+      "added_session_rank_statistics": {
+        "minimum": 39,
+        "maximum": 43,
+        "mean": 40.27272727272727
+      },
+      "final_rank_statistics": {
+        "minimum": 132,
+        "maximum": 136,
+        "mean": 133.27272727272728
+      },
+      "prompt_reconstruction": {
+        "maximum_global_output_relative_error": 0.7155218720436096,
+        "maximum_final_output_relative_error": 0.28800317645072937,
+        "maximum_final_input_relative_error": 1.2082721241313266e-06
+      },
+      "quantization": {
+        "bits": 4,
+        "modules": 44,
+        "tensors": 88,
+        "elements": 34598912,
+        "logical_payload_bytes": 17299456,
+        "scale_bytes": 23456,
+        "maximum_absolute_error": 0.1006736010313034,
+        "maximum_relative_l2_error": 0.5686726570129395,
+        "logical_total_bytes": 17322912
+      },
+      "budget": {
+        "rank": 136,
+        "capsule_bits": 4,
+        "memory_gib": 5.5849809646606445,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.6037385940551756,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 11.66637184,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "exact_top1_match_rate": 0.34375,
+      "coverage_at_k": {
+        "1": 0.34375,
+        "2": 0.40625,
+        "4": 0.4375,
+        "8": 0.5,
+        "16": 0.53125,
+        "32": 0.625,
+        "64": 0.75,
+        "128": 0.84375,
+        "256": 0.875
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 14804,
+        "mean": 562.5625
+      },
+      "first_divergence": {
+        "position": 2,
+        "exact_token": 155,
+        "hot_token": 152,
+        "exact_token_rank": 7,
+        "hot_top1_margin": 2.185894012451172,
+        "exact_logit_gap_from_hot_top1": 5.0701093673706055
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 73.10816623
+    }
+  ],
+  "best_observed_point": {
+    "global_rank_limit": 56,
+    "total_rank_limit": 96,
+    "capsule_bits": 6,
+    "global_rank_statistics": {
+      "minimum": 56,
+      "maximum": 56,
+      "mean": 56.0
+    },
+    "added_session_rank_statistics": {
+      "minimum": 39,
+      "maximum": 40,
+      "mean": 39.54545454545455
+    },
+    "final_rank_statistics": {
+      "minimum": 95,
+      "maximum": 96,
+      "mean": 95.54545454545455
+    },
+    "prompt_reconstruction": {
+      "maximum_global_output_relative_error": 0.8585472702980042,
+      "maximum_final_output_relative_error": 0.2848438620567322,
+      "maximum_final_input_relative_error": 1.8106309198628878e-06
+    },
+    "quantization": {
+      "bits": 6,
+      "modules": 44,
+      "tensors": 88,
+      "elements": 24778240,
+      "logical_payload_bytes": 18583680,
+      "scale_bytes": 16816,
+      "maximum_absolute_error": 0.022815676406025887,
+      "maximum_relative_l2_error": 0.20639196038246155,
+      "logical_total_bytes": 18600496
+    },
+    "budget": {
+      "rank": 96,
+      "capsule_bits": 6,
+      "memory_gib": 5.746301651000977,
+      "memory_limit_gib": 8.0,
+      "memory_pass": true,
+      "hot_traffic_gib_per_token": 2.7494380950927733,
+      "traffic_limit_gib_per_token": 2.8351741790771485,
+      "traffic_pass": true,
+      "hot_compute_gflop_per_token": 8.5375808,
+      "compute_limit_gflop_per_token": 12.132735283199999,
+      "compute_pass": true,
+      "pass_all": true
+    },
+    "exact_top1_match_rate": 0.375,
+    "coverage_at_k": {
+      "1": 0.375,
+      "2": 0.4375,
+      "4": 0.4375,
+      "8": 0.5625,
+      "16": 0.6875,
+      "32": 0.6875,
+      "64": 0.8125,
+      "128": 0.9375,
+      "256": 0.96875
+    },
+    "rank_statistics": {
+      "minimum": 1,
+      "maximum": 8410,
+      "mean": 290.09375
+    },
+    "first_divergence": {
+      "position": 2,
+      "exact_token": 155,
+      "hot_token": 161,
+      "exact_token_rank": 5,
+      "hot_top1_margin": 0.1320934295654297,
+      "exact_logit_gap_from_hot_top1": 1.4887256622314453
+    },
+    "qualifies_for_multi_hypothesis": false,
+    "elapsed_seconds": 80.959584733
+  },
+  "surviving_points": [],
+  "decision": "reject tested global-plus-session allocations",
+  "next_candidate": "allocate prompt residual directions non-uniformly by module benefit per byte, then test online state-conditional capsules",
+  "elapsed_seconds": 298.787313426,
+  "workflow": {
+    "run_id": 30743237049,
+    "head_sha": "62bfc86df18828f94d512a6b6252575dacbdbd02",
+    "raw_file_sha256": "cb55119f184fbd79fdc7806e01749fa9f3afd6a8de6f7b71135a72f5f2b85e8a"
+  }
+}
