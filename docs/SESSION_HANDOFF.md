@@ -6,84 +6,75 @@ Last updated: 2026-08-02 (Asia/Seoul)
 
 Read `docs/PROOF_FIRST_CONTRACT.md`, `AGENTS.md`, and `docs/ARCHITECTURE_GATE0_CASCADE_CAPSULE.md` before changing the architecture.
 
-The target remains an unmodified 405B-class Hugging Face dense model under 8 GiB VRAM with original-model quality and same-machine 4B-class wall-clock behavior. No E0/E1 result may be promoted into a final feasibility claim.
+The fixed target remains an unmodified 405B-class Hugging Face dense model under 8 GiB VRAM with original-model quality and same-machine 4B-class wall-clock behavior. No E0/E1 result may be promoted into a feasibility claim.
 
 ## Main baseline
 
-Architecture Gate 0 foundation was merged to `main` through PR #6.
+Architecture Gate 0 foundation was merged through PR #6.
 
 ```text
 merge commit: be46308bc662c9a193bfc912840a795f9eb9c998
 ```
 
-The merged change passed GitHub Actions on Python 3.10 and 3.12. Both jobs completed package installation, the full pytest suite, and `scripts/run_validation.py` successfully.
+The merge passed GitHub Actions on Python 3.10 and 3.12. Both jobs completed installation, the full pytest suite, and `scripts/run_validation.py` successfully.
 
-## Current verified evidence
+## Current evidence
 
-The repository contains the previous E1 primitives:
+Existing E1 primitives:
 
 1. disk-backed progressive LM-head certification;
 2. tiny-model streamed Llama execution;
-3. tiny-model Jacobi sequence equivalence;
+3. tiny-model Jacobi equivalence;
 4. exact-on-span `OnlineAtlasLinear` replay;
-5. tiny-Llama O/down projection replay with persisted atlas state.
+5. tiny-Llama O/down replay with persisted atlas state.
 
-The Gate 0 merge adds E0/E1 infrastructure, not a real-model pass:
+Gate 0 adds E0/E1 infrastructure:
 
-- `vortex_runtime/gate0_budget.py` calculates the 405B memory, traffic, and compute equations;
-- `scripts/run_gate0_budget.py` emits a machine-readable certificate;
-- `gate0_budget.json` records the current conditional candidate;
-- `vortex_runtime/gated_projected_linear.py` replaces a real `Linear` operation with projected and exact cold paths;
-- replaced source modules release their original parameter storage so stale references do not retain GPU weights;
-- `scripts/run_gate0_falsification.py` builds bases on one prompt set and evaluates replacement generation on a disjoint set;
-- `experiments/gate0_build_prompts.json` and `experiments/gate0_eval_prompts.json` define the split;
-- budget and operator unit tests are committed and included in the green CI suite.
+- `vortex_runtime/gate0_budget.py`: 405B memory, traffic, and compute equations;
+- `scripts/run_gate0_budget.py`: machine-readable certificate generation;
+- `gate0_budget.json`: committed conditional candidate;
+- `vortex_runtime/gated_projected_linear.py`: projected fast path plus exact CPU cold path;
+- source-module storage release after replacement so stale references do not retain GPU weights;
+- `scripts/run_gate0_falsification.py`: disjoint-prompt, real-operation replacement harness;
+- fixed Korean/English/code/math/JSON build and evaluation prompt sets;
+- budget and operator tests included in green CI.
 
-No pretrained 1B–3B falsification result has been committed yet. Evidence remains E0 architecture / E1 calculator and local operator semantics.
+No pretrained 1B–3B falsification result has been committed. Evidence remains E0 architecture / E1 calculator and operator semantics.
 
-## Candidate architecture
+## Candidate
 
 Name: **Cascade Capsule v0**
 
-Normal warm path:
-
 ```text
-activation
+warm activation
   -> domain basis coordinates
   -> low-bit projected operator images
   -> bounded active-token attention
   -> progressive/projected LM head
-```
 
-Cold path:
-
-```text
 basis or token-set miss
   -> exact original layer/tile repair
-  -> account bytes and compute
-  -> optional online capsule expansion
+  -> measured bytes and compute
+  -> optional capsule expansion
 ```
 
-Budgeted activation domains per layer:
+Per-layer activation domains:
 
 1. pre-attention input shared by Q/K/V;
 2. attention output input to O;
 3. pre-MLP input shared by gate/up;
 4. MLP product input to down.
 
-Budget assumptions:
+Current assumptions:
 
-- ranks: 64 / 48 / 64 / 48, LM-head rank 64;
-- basis: 8 bits;
-- projected image: 3 bits;
-- active attention positions: 256;
-- compact KV: 2 bits;
-- cold original model: 4-bit equivalent;
-- target cold-stream amortization: `A=512`.
+- ranks 64 / 48 / 64 / 48 and LM-head rank 64;
+- basis 8-bit, projected image 3-bit;
+- active attention positions 256;
+- compact KV 2-bit;
+- cold original model 4-bit equivalent;
+- target cold-stream amortization `A=512`.
 
-## Conditional Gate 0 result
-
-The committed proxy calculation produces:
+## Conditional budget
 
 ```text
 M_hot    = 1.365 GiB
@@ -92,30 +83,30 @@ M_work   = 1.750 GiB
 M_repair = 0.750 GiB
 M_total  = 3.881 GiB <= 8 GiB
 
-B_hot = 1.281 GiB/token
-B_cold = 188.988 GiB/full stream
 B_total(A=512) = 1.650 GiB/token <= 2.400 proxy limit
-
-C_hot = 6.312 GFLOP/token
-C_repair = 811.698 GFLOP/full stream
 C_total(A=512) = 7.898 GFLOP/token <= 9.600 proxy limit
 ```
 
-The stricter falsification threshold is:
+Decisive threshold:
 
 ```text
 A >= 246.889 tokens per full-model-equivalent repair
 full-model-equivalent repairs/token <= 0.0040504
 ```
 
-The status is **conditional_pass**, not a passed Architecture Gate 0. The 4B comparison values are unmeasured proxies, the low-bit kernels do not exist, bounded active-token attention is not implemented, and real 8 GiB peak VRAM has not been measured.
+Status: **conditional_pass**, not a passed Architecture Gate 0. The 4B values are unmeasured proxies; low-bit kernels and bounded active-token attention are unimplemented; real 8 GiB peak VRAM is unmeasured.
 
 ## Exact next task
 
-Run the real-operation harness on a pretrained 1B–3B Llama-family model on hardware with enough RAM and preferably an NVIDIA GPU:
+Use hardware with enough RAM and preferably an NVIDIA GPU. Install the reproducible experiment environment:
 
 ```bash
-pip install transformers
+python -m pip install -e '.[experiments]'
+```
+
+Run a pretrained 1B–3B Llama-family checkpoint:
+
+```bash
 python scripts/run_gate0_budget.py --output gate0_budget.json
 python scripts/run_gate0_falsification.py \
   <model-id-or-local-path> \
@@ -129,29 +120,29 @@ python scripts/run_gate0_falsification.py \
   --output gate0_falsification.json
 ```
 
-The harness uses hooks only to collect build activations. During evaluation it replaces actual Q/K/V/O and gate/up/down modules with `GatedProjectedLinear`, retains exact matrices only on the CPU cold path, and records actual cold-path invocations.
+The harness uses hooks only to collect build activations. Evaluation replaces actual Q/K/V/O and gate/up/down modules with `GatedProjectedLinear`, retains exact matrices on the CPU cold path, and records cold-path invocations.
 
 ## Decision rule
 
-Promote the hidden-axis candidate only if the real pretrained result has:
+Promote the hidden-axis candidate only when all are true:
 
 - disjoint build/evaluation prompts;
 - real-operation replacement;
 - declared token agreement;
 - observed `A >= 246.889`;
-- bounded rank/capsule growth;
+- bounded rank and capsule growth;
 - reproducible raw JSON metrics.
 
-If it fails, do not tune indefinitely on the same prompts. Record the failure, identify which weighted projection groups dominate repair traffic, revise the architecture, and rerun on a new held-out split.
+On failure, record it, identify the projection groups dominating repair traffic, revise the mechanism, and rerun on a new held-out split. Do not tune indefinitely on the same prompts.
 
-Do not begin full CUDA kernel implementation or universal graph lowering until this repair-rate gate survives. Attention compression remains a separate required gate even if hidden-axis projection succeeds.
+Do not begin the full CUDA backend or universal graph lowering until this repair-rate gate survives. Attention compression remains a separate gate.
 
 ## Communication rule
 
-Correct current statement:
+Correct:
 
-> E0/E1: Cascade Capsule v0 closes the symbolic 405B budget only under explicit proxy and amortization assumptions. A real-model operation-replacement test is executable; no pretrained result has passed yet.
+> E0/E1: Cascade Capsule v0 closes the symbolic 405B budget only under explicit proxy and amortization assumptions. A real-model operation-replacement test is executable; no pretrained result has passed.
 
-Forbidden statement:
+Forbidden:
 
-> The 405B target is now feasible or solved.
+> The 405B target is feasible or solved.
