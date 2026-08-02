@@ -1,0 +1,1794 @@
+{
+  "evidence_level": "E2 sampled pretrained lossless tile entropy; E0 405B projection",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "source_precision_bits": 16,
+  "unique_matrix_tensors": 156,
+  "sampled_values": 8388588,
+  "sampled_raw_bytes": 16777176,
+  "sampled_encoded_bytes": 11883489,
+  "measured_bits_per_weight": 11.333005268586323,
+  "measured_compression_ratio": 1.411805573262196,
+  "empirical_zero_order_bounds": {
+    "byte_plane_bits_per_weight": 10.53873874940414,
+    "uint16_symbol_bits_per_weight": 10.404905754348682,
+    "xor_uint16_symbol_bits_per_weight": 10.935781976312551
+  },
+  "transform_tiles": {
+    "byte_shuffle": 468
+  },
+  "per_tensor": [
+    {
+      "name": "model.layers.18.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.287300318003458,
+      "compression_ratio": 1.4175223081891155,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.19.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.287746638647649,
+      "compression_ratio": 1.4174662589624631,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.21.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.287746638647649,
+      "compression_ratio": 1.4174662589624631,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.3.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.28923437412828,
+      "compression_ratio": 1.4172794602145435,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.4.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.289829468320532,
+      "compression_ratio": 1.4172047545001714,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.20.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.290424562512785,
+      "compression_ratio": 1.4171300566609566,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.18.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.290722109608911,
+      "compression_ratio": 1.4170927106941442,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.17.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.293697580570175,
+      "compression_ratio": 1.4167193592580882,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.4.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.293846354118237,
+      "compression_ratio": 1.416700696850342,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.5.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.293995127666301,
+      "compression_ratio": 1.4166820349342677,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.8.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.29444144831049,
+      "compression_ratio": 1.4166260521358853,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.17.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.29444144831049,
+      "compression_ratio": 1.4166260521358853,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.19.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.29444144831049,
+      "compression_ratio": 1.4166260521358853,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.5.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.294738995406616,
+      "compression_ratio": 1.4165887327283024,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.17.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.295185316050807,
+      "compression_ratio": 1.4165327573035484,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.10.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.295631636694996,
+      "compression_ratio": 1.416476786302272,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.2.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.297119372175628,
+      "compression_ratio": 1.416290248238625,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.0.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.298160787012069,
+      "compression_ratio": 1.4161597008243132,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.6.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.298160787012069,
+      "compression_ratio": 1.4161597008243132,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.1.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.298458334108195,
+      "compression_ratio": 1.4161224059833561,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.3.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.298458334108195,
+      "compression_ratio": 1.4161224059833561,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.5.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.298458334108195,
+      "compression_ratio": 1.4161224059833561,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.12.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.298458334108195,
+      "compression_ratio": 1.4161224059833561,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.20.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.299648522492701,
+      "compression_ratio": 1.4159732462607963,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.5.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.300243616684954,
+      "compression_ratio": 1.4158986781821055,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.18.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.300838710877207,
+      "compression_ratio": 1.4158241179568194,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.8.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.300987484425269,
+      "compression_ratio": 1.415805479127447,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.15.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.30202889926171,
+      "compression_ratio": 1.4156750210614997,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.7.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.302177672809774,
+      "compression_ratio": 1.4156563861575115,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.16.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.302177672809774,
+      "compression_ratio": 1.4156563861575115,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.4.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.302326446357837,
+      "compression_ratio": 1.4156377517441094,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.9.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.3024752199059,
+      "compression_ratio": 1.4156191178212738,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.2.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.30292154055009,
+      "compression_ratio": 1.4155632189959724,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.10.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.303070314098154,
+      "compression_ratio": 1.415544587035209,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.2.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.304706823126848,
+      "compression_ratio": 1.4153396678335484,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.19.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.304855596674912,
+      "compression_ratio": 1.4153210417571427,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.16.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.305004370222974,
+      "compression_ratio": 1.4153024161709744,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.20.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.3053019173191,
+      "compression_ratio": 1.4152651664692724,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.3.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.305599464415227,
+      "compression_ratio": 1.4152279187282872,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.6.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.305599464415227,
+      "compression_ratio": 1.4152279187282872,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.8.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.306045785059416,
+      "compression_ratio": 1.4151720507928154,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.9.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.306640879251669,
+      "compression_ratio": 1.415097567073251,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.3.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.306789652799733,
+      "compression_ratio": 1.415078947368421,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.11.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.306789652799733,
+      "compression_ratio": 1.415078947368421,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.14.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.306789652799733,
+      "compression_ratio": 1.415078947368421,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.1.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.307087199895859,
+      "compression_ratio": 1.4150417094286993,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.9.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.307087199895859,
+      "compression_ratio": 1.4150417094286993,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.11.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.307235973443921,
+      "compression_ratio": 1.4150230911937687,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.16.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.307384746991985,
+      "compression_ratio": 1.415004473448766,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.21.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.307682294088112,
+      "compression_ratio": 1.4149672394284663,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.4.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.307979841184238,
+      "compression_ratio": 1.4149300073676454,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.9.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.307979841184238,
+      "compression_ratio": 1.4149300073676454,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.15.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.308277388280363,
+      "compression_ratio": 1.4148927772661493,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.1.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.308872482472616,
+      "compression_ratio": 1.414818322940511,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.12.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.308872482472616,
+      "compression_ratio": 1.414818322940511,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.11.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.309467576664868,
+      "compression_ratio": 1.4147438764503144,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.21.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.309616350212933,
+      "compression_ratio": 1.414725266051908,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.6.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.310360217953248,
+      "compression_ratio": 1.4146322214037672,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.20.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.310360217953248,
+      "compression_ratio": 1.4146322214037672,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.21.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.310806538597438,
+      "compression_ratio": 1.4145764004892998,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.2.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.3109553121455,
+      "compression_ratio": 1.4145577944967644,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.20.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.311252859241627,
+      "compression_ratio": 1.414520583980008,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.18.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.311550406337753,
+      "compression_ratio": 1.4144833754208754,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.8.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.311699179885816,
+      "compression_ratio": 1.41446477187537,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.13.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.311699179885816,
+      "compression_ratio": 1.41446477187537,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.12.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.311996726981942,
+      "compression_ratio": 1.4144275662523838,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.7.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.312145500530006,
+      "compression_ratio": 1.4144089641748645,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.10.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.312145500530006,
+      "compression_ratio": 1.4144089641748645,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.15.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.312443047626132,
+      "compression_ratio": 1.4143717614876772,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.13.mlp.up_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.312740594722259,
+      "compression_ratio": 1.414334560757496,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.18.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.31422833020289,
+      "compression_ratio": 1.4141485864562788,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.16.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.314525877299015,
+      "compression_ratio": 1.4141113974648925,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.10.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.316013612779647,
+      "compression_ratio": 1.413925481843759,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.316311159875774,
+      "compression_ratio": 1.413888304585612,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.9.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.31705502761609,
+      "compression_ratio": 1.4137953699930326,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.5.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.317203801164153,
+      "compression_ratio": 1.4137767845405547,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.2.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.31750134826028,
+      "compression_ratio": 1.4137396151014827,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.13.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.319137857288974,
+      "compression_ratio": 1.4135352181170564,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.6.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.319286630837038,
+      "compression_ratio": 1.4135166395037064,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.12.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.319286630837038,
+      "compression_ratio": 1.4135166395037064,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.21.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.3194354043851,
+      "compression_ratio": 1.4134980613787211,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.13.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.320774366317668,
+      "compression_ratio": 1.4133308802270876,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.14.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.320774366317668,
+      "compression_ratio": 1.4133308802270876,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.4.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.321071913413794,
+      "compression_ratio": 1.4132937342304457,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.0.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.321667007606047,
+      "compression_ratio": 1.4132194480946123,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.21.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.322410875346364,
+      "compression_ratio": 1.4131266014059523,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.17.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.323749837278932,
+      "compression_ratio": 1.4129595081062616,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.11.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.323898610826994,
+      "compression_ratio": 1.4129409446232675,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.13.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.324344931471185,
+      "compression_ratio": 1.4128852571008172,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.16.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.324344931471185,
+      "compression_ratio": 1.4128852571008172,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.12.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.325832666951817,
+      "compression_ratio": 1.412699663724254,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.326278987596005,
+      "compression_ratio": 1.4126439952187677,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.19.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.326874081788258,
+      "compression_ratio": 1.412569777369147,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.17.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.328213043720826,
+      "compression_ratio": 1.4124028157175876,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.10.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.328659364365016,
+      "compression_ratio": 1.412347170604226,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.12.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.32925445855727,
+      "compression_ratio": 1.4122729839398038,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.14.mlp.gate_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.329403232105332,
+      "compression_ratio": 1.4122544384914382,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.7.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.329700779201458,
+      "compression_ratio": 1.4122173490558605,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.17.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.329998326297584,
+      "compression_ratio": 1.4121802615683596,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.19.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.329998326297584,
+      "compression_ratio": 1.4121802615683596,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.331039741134026,
+      "compression_ratio": 1.4120504707009967,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.13.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.33118851468209,
+      "compression_ratio": 1.4120319310960558,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.6.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.332825023710784,
+      "compression_ratio": 1.4118280275680997,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.14.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.332973797258848,
+      "compression_ratio": 1.4118094938038228,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.3335688914511,
+      "compression_ratio": 1.4117353636124967,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.10.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.334461532739478,
+      "compression_ratio": 1.4116241829207465,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.15.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.334461532739478,
+      "compression_ratio": 1.4116241829207465,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.16.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.335056626931731,
+      "compression_ratio": 1.4115500721879513,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.12.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.335354174027858,
+      "compression_ratio": 1.4115130197396053,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.7.mlp.down_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.335651721123984,
+      "compression_ratio": 1.4114759692364227,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.9.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.33594926822011,
+      "compression_ratio": 1.4114389206782507,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.17.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.33594926822011,
+      "compression_ratio": 1.4114389206782507,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.8.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.336098041768174,
+      "compression_ratio": 1.4114203971284958,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.336246815316237,
+      "compression_ratio": 1.4114018740649361,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.5.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.336693135960425,
+      "compression_ratio": 1.4113463077912363,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.10.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.338032097892995,
+      "compression_ratio": 1.4111796352184753,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.9.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.339817380469752,
+      "compression_ratio": 1.4109574663482984,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.3.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.341453889498448,
+      "compression_ratio": 1.410753872994635,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.18.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.34160266304651,
+      "compression_ratio": 1.4107353674213605,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.4.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.341900210142636,
+      "compression_ratio": 1.4106983577312555,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.21.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.342792851431016,
+      "compression_ratio": 1.4105873403111147,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.16.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.344578134007774,
+      "compression_ratio": 1.4103653578828652,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.6.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.344726907555836,
+      "compression_ratio": 1.4103468625008195,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.6.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.345173228200027,
+      "compression_ratio": 1.4102913792651264,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.18.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.345619548844216,
+      "compression_ratio": 1.4102359003946972,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.8.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.346214643036468,
+      "compression_ratio": 1.410161935356979,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.11.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.346809737228721,
+      "compression_ratio": 1.4100879780775937,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "lm_head.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.34725605787291,
+      "compression_ratio": 1.4100325152087267,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.8.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.349785208189983,
+      "compression_ratio": 1.4097183080129507,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.11.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.35142171721868,
+      "compression_ratio": 1.4095150720838794,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.19.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.35142171721868,
+      "compression_ratio": 1.4095150720838794,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.20.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.351570490766742,
+      "compression_ratio": 1.4094965989960813,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.13.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.353504546891562,
+      "compression_ratio": 1.4092564929108682,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.2.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.35424841463188,
+      "compression_ratio": 1.4091641661971461,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.19.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.354694735276068,
+      "compression_ratio": 1.4091087759754723,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.7.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.354992282372194,
+      "compression_ratio": 1.409071851580106,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.3.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.358711621073773,
+      "compression_ratio": 1.4086104598619498,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.14.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.363026053967605,
+      "compression_ratio": 1.4080756238707481,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.1.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.363174827515667,
+      "compression_ratio": 1.4080571884942197,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.2.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.365703977832741,
+      "compression_ratio": 1.4077438609351276,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.5.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.367638033957562,
+      "compression_ratio": 1.40750435158162,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.embed_tokens.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.367786807505626,
+      "compression_ratio": 1.4074859311608428,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.7.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.367786807505626,
+      "compression_ratio": 1.4074859311608428,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.4.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.388466330686404,
+      "compression_ratio": 1.4049301754431802,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.3.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.392780763580236,
+      "compression_ratio": 1.4043981300112305,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.15.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.395756234541498,
+      "compression_ratio": 1.4040314368521372,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.1.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.4014096293679,
+      "compression_ratio": 1.4033352471423353,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.14.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.417923493202908,
+      "compression_ratio": 1.4013055884920582,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.15.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.43027169769215,
+      "compression_ratio": 1.3997917480150983,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.0.self_attn.v_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.437115280903056,
+      "compression_ratio": 1.3989541599458868,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.20.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.45050490022874,
+      "compression_ratio": 1.3973182963906141,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.0.self_attn.o_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.48963234336935,
+      "compression_ratio": 1.3925597897162982,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.0.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.513436111059454,
+      "compression_ratio": 1.3896807039760173,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.1.self_attn.q_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.562977702564485,
+      "compression_ratio": 1.3837266153727388,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.1.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.604187975377977,
+      "compression_ratio": 1.3788125488788319,
+      "dominant_transform": "byte_shuffle"
+    },
+    {
+      "name": "model.layers.0.self_attn.k_proj.weight",
+      "sampled_values": 53773,
+      "bits_per_value": 11.736745206702249,
+      "compression_ratio": 1.3632399543668399,
+      "dominant_transform": "byte_shuffle"
+    }
+  ],
+  "hardware": {
+    "host_to_device_gib_s": 24.0,
+    "decompression_output_gib_s": 1000.0,
+    "target_tensor_tflops": 160.0,
+    "baseline_memory_gib_s": 300.0,
+    "target_ratio": 1.2
+  },
+  "projected_405b": {
+    "resident_6gib_max_bits_per_weight": 0.12699200099212501,
+    "measured_candidate_depth": 12,
+    "measured_depth_budget": {
+      "compressed_bits_per_weight": 11.333005268586323,
+      "exact_source_bits": 16,
+      "compressed_stream_gib": 535.451296776831,
+      "uncompressed_stream_gib": 755.953125,
+      "resident_limit_gib": 8.0,
+      "compressed_stream_fits_resident": false,
+      "verified_positions": 12,
+      "committed_tokens": 12,
+      "verification_expansion": 1.0,
+      "transfer_seconds_per_pass": 22.310470699034624,
+      "decompression_seconds_per_pass": 0.755953125,
+      "compute_seconds_per_pass": 0.0634141016064,
+      "ideal_seconds_per_committed_token": 1.8592058915862186,
+      "serialized_seconds_per_committed_token": 1.9274864938034189,
+      "baseline_seconds_per_token": 0.00620881716410319,
+      "target_ratio": 1.2,
+      "ideal_pass": false,
+      "serialized_pass": false,
+      "minimum_straight_commit_ideal": 2995,
+      "minimum_straight_commit_serialized": 10649
+    },
+    "minimum_straight_commit_serialized_at_measured_rate": 10649,
+    "measured_frontier": [
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 12,
+        "committed_tokens": 12,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.0634141016064,
+        "ideal_seconds_per_committed_token": 1.8592058915862186,
+        "serialized_seconds_per_committed_token": 1.9274864938034189,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 32,
+        "committed_tokens": 32,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.1691042709504,
+        "ideal_seconds_per_committed_token": 0.697202209344832,
+        "serialized_seconds_per_committed_token": 0.726110252968282,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 64,
+        "committed_tokens": 64,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.3382085419008,
+        "ideal_seconds_per_committed_token": 0.348601104672416,
+        "serialized_seconds_per_committed_token": 0.36569738071774105,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 128,
+        "committed_tokens": 128,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.6764170838016,
+        "ideal_seconds_per_committed_token": 0.174300552336208,
+        "serialized_seconds_per_committed_token": 0.1854909445924705,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 256,
+        "committed_tokens": 256,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 1.3528341676032,
+        "ideal_seconds_per_committed_token": 0.087150276168104,
+        "serialized_seconds_per_committed_token": 0.09538772652983525,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 512,
+        "committed_tokens": 512,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 2.7056683352064,
+        "ideal_seconds_per_committed_token": 0.043575138084052,
+        "serialized_seconds_per_committed_token": 0.05033611749851763,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 1024,
+        "committed_tokens": 1024,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 5.4113366704128,
+        "ideal_seconds_per_committed_token": 0.021787569042026,
+        "serialized_seconds_per_committed_token": 0.027810312982858815,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 24,
+        "committed_tokens": 12,
+        "verification_expansion": 2.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.1268282032128,
+        "ideal_seconds_per_committed_token": 1.8592058915862186,
+        "serialized_seconds_per_committed_token": 1.9327710022706188,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 64,
+        "committed_tokens": 32,
+        "verification_expansion": 2.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.3382085419008,
+        "ideal_seconds_per_committed_token": 0.697202209344832,
+        "serialized_seconds_per_committed_token": 0.7313947614354821,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 128,
+        "committed_tokens": 64,
+        "verification_expansion": 2.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.6764170838016,
+        "ideal_seconds_per_committed_token": 0.348601104672416,
+        "serialized_seconds_per_committed_token": 0.370981889184941,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 256,
+        "committed_tokens": 128,
+        "verification_expansion": 2.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 1.3528341676032,
+        "ideal_seconds_per_committed_token": 0.174300552336208,
+        "serialized_seconds_per_committed_token": 0.1907754530596705,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 512,
+        "committed_tokens": 256,
+        "verification_expansion": 2.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 2.7056683352064,
+        "ideal_seconds_per_committed_token": 0.087150276168104,
+        "serialized_seconds_per_committed_token": 0.10067223499703526,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 1024,
+        "committed_tokens": 512,
+        "verification_expansion": 2.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 5.4113366704128,
+        "ideal_seconds_per_committed_token": 0.043575138084052,
+        "serialized_seconds_per_committed_token": 0.05562062596571763,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 2048,
+        "committed_tokens": 1024,
+        "verification_expansion": 2.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 10.8226733408256,
+        "ideal_seconds_per_committed_token": 0.021787569042026,
+        "serialized_seconds_per_committed_token": 0.03309482145005881,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 48,
+        "committed_tokens": 12,
+        "verification_expansion": 4.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.2536564064256,
+        "ideal_seconds_per_committed_token": 1.8592058915862186,
+        "serialized_seconds_per_committed_token": 1.9433400192050188,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 128,
+        "committed_tokens": 32,
+        "verification_expansion": 4.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.6764170838016,
+        "ideal_seconds_per_committed_token": 0.697202209344832,
+        "serialized_seconds_per_committed_token": 0.741963778369882,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 256,
+        "committed_tokens": 64,
+        "verification_expansion": 4.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 1.3528341676032,
+        "ideal_seconds_per_committed_token": 0.348601104672416,
+        "serialized_seconds_per_committed_token": 0.381550906119341,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 512,
+        "committed_tokens": 128,
+        "verification_expansion": 4.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 2.7056683352064,
+        "ideal_seconds_per_committed_token": 0.174300552336208,
+        "serialized_seconds_per_committed_token": 0.20134446999407052,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 1024,
+        "committed_tokens": 256,
+        "verification_expansion": 4.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 5.4113366704128,
+        "ideal_seconds_per_committed_token": 0.087150276168104,
+        "serialized_seconds_per_committed_token": 0.11124125193143526,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 2048,
+        "committed_tokens": 512,
+        "verification_expansion": 4.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 10.8226733408256,
+        "ideal_seconds_per_committed_token": 0.043575138084052,
+        "serialized_seconds_per_committed_token": 0.06618964290011763,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      },
+      {
+        "compressed_bits_per_weight": 11.333005268586323,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 535.451296776831,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 4096,
+        "committed_tokens": 1024,
+        "verification_expansion": 4.0,
+        "transfer_seconds_per_pass": 22.310470699034624,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 21.6453466816512,
+        "ideal_seconds_per_committed_token": 0.021787569042026,
+        "serialized_seconds_per_committed_token": 0.043663838384458815,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2995,
+        "minimum_straight_commit_serialized": 10649
+      }
+    ],
+    "theoretical_bit_rate_frontier_at_measured_depth": [
+      {
+        "compressed_bits_per_weight": 0.125,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 5.9058837890625,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": true,
+        "verified_positions": 12,
+        "committed_tokens": 12,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 0.2460784912109375,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.0634141016064,
+        "ideal_seconds_per_committed_token": 0.06299609375,
+        "serialized_seconds_per_committed_token": 0.0887871431514448,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 102,
+        "minimum_straight_commit_serialized": 463
+      },
+      {
+        "compressed_bits_per_weight": 0.25,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 11.811767578125,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 12,
+        "committed_tokens": 12,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 0.492156982421875,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.0634141016064,
+        "ideal_seconds_per_committed_token": 0.06299609375,
+        "serialized_seconds_per_committed_token": 0.10929368408568958,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 102,
+        "minimum_straight_commit_serialized": 577
+      },
+      {
+        "compressed_bits_per_weight": 0.5,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 23.62353515625,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 12,
+        "committed_tokens": 12,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 0.98431396484375,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.0634141016064,
+        "ideal_seconds_per_committed_token": 0.08202616373697917,
+        "serialized_seconds_per_committed_token": 0.15030676595417916,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 133,
+        "minimum_straight_commit_serialized": 804
+      },
+      {
+        "compressed_bits_per_weight": 1.0,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 47.2470703125,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 12,
+        "committed_tokens": 12,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 1.9686279296875,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.0634141016064,
+        "ideal_seconds_per_committed_token": 0.16405232747395834,
+        "serialized_seconds_per_committed_token": 0.23233292969115835,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 265,
+        "minimum_straight_commit_serialized": 1258
+      },
+      {
+        "compressed_bits_per_weight": 2.0,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 94.494140625,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 12,
+        "committed_tokens": 12,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 3.937255859375,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.0634141016064,
+        "ideal_seconds_per_committed_token": 0.3281046549479167,
+        "serialized_seconds_per_committed_token": 0.3963852571651166,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 529,
+        "minimum_straight_commit_serialized": 2167
+      },
+      {
+        "compressed_bits_per_weight": 4.0,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 188.98828125,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 12,
+        "committed_tokens": 12,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 7.87451171875,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.0634141016064,
+        "ideal_seconds_per_committed_token": 0.6562093098958334,
+        "serialized_seconds_per_committed_token": 0.7244899121130333,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 1057,
+        "minimum_straight_commit_serialized": 3985
+      },
+      {
+        "compressed_bits_per_weight": 8.0,
+        "exact_source_bits": 16,
+        "compressed_stream_gib": 377.9765625,
+        "uncompressed_stream_gib": 755.953125,
+        "resident_limit_gib": 8.0,
+        "compressed_stream_fits_resident": false,
+        "verified_positions": 12,
+        "committed_tokens": 12,
+        "verification_expansion": 1.0,
+        "transfer_seconds_per_pass": 15.7490234375,
+        "decompression_seconds_per_pass": 0.755953125,
+        "compute_seconds_per_pass": 0.0634141016064,
+        "ideal_seconds_per_committed_token": 1.3124186197916667,
+        "serialized_seconds_per_committed_token": 1.380699222008867,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "target_ratio": 1.2,
+        "ideal_pass": false,
+        "serialized_pass": false,
+        "minimum_straight_commit_ideal": 2114,
+        "minimum_straight_commit_serialized": 7620
+      }
+    ],
+    "best_tested_point": {
+      "compressed_bits_per_weight": 11.333005268586323,
+      "exact_source_bits": 16,
+      "compressed_stream_gib": 535.451296776831,
+      "uncompressed_stream_gib": 755.953125,
+      "resident_limit_gib": 8.0,
+      "compressed_stream_fits_resident": false,
+      "verified_positions": 1024,
+      "committed_tokens": 1024,
+      "verification_expansion": 1.0,
+      "transfer_seconds_per_pass": 22.310470699034624,
+      "decompression_seconds_per_pass": 0.755953125,
+      "compute_seconds_per_pass": 5.4113366704128,
+      "ideal_seconds_per_committed_token": 0.021787569042026,
+      "serialized_seconds_per_committed_token": 0.027810312982858815,
+      "baseline_seconds_per_token": 0.00620881716410319,
+      "target_ratio": 1.2,
+      "ideal_pass": false,
+      "serialized_pass": false,
+      "minimum_straight_commit_ideal": 2995,
+      "minimum_straight_commit_serialized": 10649
+    }
+  },
+  "contract": "Every sampled tile is bit-exact after decode. The 405B projection charges compressed host transfer, exact FP16 decompression output, all verified target positions and only actually committed tokens.",
+  "qualifies": false,
+  "decision": "retain entropy codec as a systems optimization, not a Gate 0 solution",
+  "next_candidate_if_rejected": "measure a real resident drafter's accepted straight-run length; lossless compression can only promote when that length exceeds the calculated minimum without a large verification tree expansion",
+  "elapsed_seconds": 2.611882073000004
+}
