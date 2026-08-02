@@ -29,10 +29,18 @@ class RepairEfficiency:
     full_model_weight_bytes: int
     managed_repair_fraction: float
     full_model_repair_fraction: float
-    tokens_per_managed_repair_equivalent: float
-    tokens_per_full_repair_equivalent: float
+    zero_cold_reads: bool
+    tokens_per_managed_repair_equivalent: float | None
+    tokens_per_full_repair_equivalent: float | None
 
-    def to_dict(self) -> dict[str, int | float]:
+    @property
+    def full_model_efficiency_for_gate(self) -> float:
+        if self.zero_cold_reads:
+            return inf
+        assert self.tokens_per_full_repair_equivalent is not None
+        return self.tokens_per_full_repair_equivalent
+
+    def to_dict(self) -> dict[str, int | float | bool | None]:
         return asdict(self)
 
 
@@ -182,6 +190,7 @@ def compute_repair_efficiency(
 
     managed_fraction = logical_cold_bytes / managed_weight_bytes
     full_fraction = logical_cold_bytes / full_model_weight_bytes
+    zero_cold_reads = logical_cold_bytes == 0
     return RepairEfficiency(
         generated_tokens=generated_tokens,
         logical_cold_bytes=logical_cold_bytes,
@@ -189,10 +198,11 @@ def compute_repair_efficiency(
         full_model_weight_bytes=full_model_weight_bytes,
         managed_repair_fraction=managed_fraction,
         full_model_repair_fraction=full_fraction,
+        zero_cold_reads=zero_cold_reads,
         tokens_per_managed_repair_equivalent=(
-            generated_tokens / managed_fraction if managed_fraction > 0 else inf
+            None if zero_cold_reads else generated_tokens / managed_fraction
         ),
         tokens_per_full_repair_equivalent=(
-            generated_tokens / full_fraction if full_fraction > 0 else inf
+            None if zero_cold_reads else generated_tokens / full_fraction
         ),
     )
