@@ -12,24 +12,53 @@ The target must not be silently changed into any of the following:
 - fine-tuning, LoRA, or model-specific calibration performed by the user;
 - requiring a user-authored adapter for each architecture;
 - merely making 405B fit while accepting unusably slow token generation;
-- reporting theoretical FLOPs, compression ratio, or weight-equivalent speed as final success without wall-clock measurement;
-- claiming final success from tiny-model or synthetic validation alone.
+- reporting theoretical FLOPs, compression ratio, projected traffic, or weight-equivalent speed as final success without wall-clock measurement;
+- claiming final feasibility or success from tiny-model, synthetic, same-prompt, or replay validation.
 
 Automatic first-run runtime-format generation is allowed, provided it is initiated transparently by the runtime and requires no model-specific user work.
 
+## Mandatory proof-first rule
+
+Read `docs/PROOF_FIRST_CONTRACT.md` before proposing or implementing a model-wide architecture.
+
+No architecture becomes the main path until its committed feasibility certificate shows a plausible closure of all three flagship inequalities:
+
+```text
+M_hot + M_kv + M_work + M_repair <= 8 GiB
+B_hot + B_cold / A <= 1.2 * B_4B
+C_hot + C_repair / A <= 1.2 * C_4B
+```
+
+The certificate must define every term, use measured values where available, use conservative bounds otherwise, and include a fast falsification experiment.
+
+Do not implement a large backend first and calculate 405B scaling afterward.
+
+## Evidence language
+
+Every result must be labeled E0, E1, E2, E3, or E4 as defined in `docs/PROOF_FIRST_CONTRACT.md`.
+
+- E0: idea only.
+- E1: local synthetic/tiny primitive.
+- E2: real-model operation replacement on disjoint traces.
+- E3: measured scaling trajectory across multiple model sizes.
+- E4: real 405B flagship completion.
+
+Only E4 may be described as the target being achieved. Never describe E1 or E2 as proof that the full target is possible.
+
 ## Current implementation truth
 
-The repository currently proves these runtime primitives:
+The repository currently contains E1 research primitives:
 
 1. safetensors model/shard discovery without full model construction;
 2. tensor and row-slice access;
 3. byte-bounded tile caching;
-4. a streamed Llama reference decoder;
+4. a streamed tiny Llama reference decoder;
 5. exact progressive argmax certification for a linear LM head;
 6. disk-backed low-bit base plus lossless residual refinement;
-7. exact Jacobi block decoding on tiny deterministic checkpoints.
+7. exact Jacobi block decoding on tiny deterministic checkpoints;
+8. exact-on-span `OnlineAtlasLinear` replay for selected tiny-model internal projections.
 
-It does not yet prove fast internal Transformer projections or the final 405B wall-clock target.
+These primitives do not prove unseen-prompt generalization, a model-wide 405B resource budget, an end-to-end CUDA runtime, 8GiB peak VRAM, or 4B-class wall-clock speed.
 
 ## Required session startup
 
@@ -42,6 +71,7 @@ python scripts/run_validation.py
 
 Read:
 
+- `docs/PROOF_FIRST_CONTRACT.md`
 - `docs/SESSION_HANDOFF.md`
 - `docs/ROADMAP.md`
 - `docs/VALIDATION_PROTOCOL.md`
@@ -51,36 +81,37 @@ Inspect the implementation before proposing a replacement architecture. Preserve
 
 ## Development loop
 
-Every meaningful change follows this loop:
+Every meaningful architecture change follows this order:
 
 1. State one measurable hypothesis.
-2. Implement the smallest executable version.
-3. Add or update an automated test.
-4. Run the full tests.
-5. Run `scripts/run_validation.py` when performance or certification behavior changes.
-6. Record both positive and negative results.
-7. Update `docs/SESSION_HANDOFF.md` and, when architecture changes, `docs/ARCHITECTURE.md`.
-8. Commit with a message describing the verified change, not the hoped-for outcome.
+2. Write its correctness or declared-quality contract.
+3. Derive 405B memory, traffic, and compute equations.
+4. Demonstrate on paper that the flagship inequalities can close.
+5. Define a falsification test and rejection threshold.
+6. Implement the smallest executable version.
+7. Replace the real operation when testing real models; hook-only analysis is not an E2 result.
+8. Use disjoint build and evaluation traces.
+9. Add or update automated tests.
+10. Run the full tests and validation.
+11. Record positive and negative results in machine-readable form.
+12. Update session handoff and architecture documents.
+13. Commit with a message describing the verified evidence level, not the hoped-for outcome.
 
 ## Immediate engineering priority
 
-Extend progressive refinement from the final LM head to internal Llama projections:
+Stop extending `OnlineAtlasLinear` as though it were already the final architecture.
 
-- `q_proj`, `k_proj`, `v_proj`, `o_proj`
-- `gate_proj`, `up_proj`, `down_proj`
+The next milestone is Architecture Gate 0:
 
-The first experiment must be executable on the generated tiny checkpoint and must compare every progressive layer output or final token against the exact streamed path. It must measure:
+1. Define one complete model-wide candidate execution path, including embeddings, all attention/MLP projections, nonlinear operations, LM head, KV handling, cold repair, storage, and CUDA scheduling.
+2. Produce a committed 405B feasibility certificate for memory, bytes/token, compute/token, and cold-stream amortization.
+3. Create an executable falsification harness that measures the certificate terms on a real pretrained 1B–3B model with disjoint prompts.
+4. Reject the architecture unless the observed slope remains compatible with the final 405B gate.
 
-- base bytes read;
-- residual bytes read;
-- residual fraction read;
-- additional compute;
-- exact output/token match;
-- peak cache bytes;
-- wall-clock time.
+Do not call a component a core solution merely because it avoids a weight read on a replayed trace.
 
 ## Evidence rules
 
-A result is accepted only when it is reproducible from committed code. Keep raw metrics in machine-readable JSON. Never rewrite a failed result as success; failed hypotheses are useful project data.
+A result is accepted only when reproducible from committed code. Keep raw metrics in machine-readable JSON. Never rewrite a failed result as success; failed hypotheses are project data.
 
 The final target may be declared achieved only after the real-hardware gates in `docs/VALIDATION_PROTOCOL.md` pass.
