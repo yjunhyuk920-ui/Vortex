@@ -1,3 +1,5 @@
+import json
+
 import torch
 from torch import nn
 
@@ -67,5 +69,20 @@ def test_repair_efficiency_uses_full_model_equivalent_fraction() -> None:
     )
     assert result.managed_repair_fraction == 0.25
     assert result.full_model_repair_fraction == 0.025
+    assert result.zero_cold_reads is False
     assert result.tokens_per_managed_repair_equivalent == 640
     assert result.tokens_per_full_repair_equivalent == 6400
+
+
+def test_zero_cold_reads_are_strict_json_and_infinite_for_gate() -> None:
+    result = compute_repair_efficiency(
+        generated_tokens=12,
+        logical_cold_bytes=0,
+        managed_weight_bytes=100,
+        full_model_weight_bytes=1000,
+    )
+    payload = result.to_dict()
+    assert payload["zero_cold_reads"] is True
+    assert payload["tokens_per_full_repair_equivalent"] is None
+    assert result.full_model_efficiency_for_gate == float("inf")
+    json.dumps(payload, allow_nan=False)
