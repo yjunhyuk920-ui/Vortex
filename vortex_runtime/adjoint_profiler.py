@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Callable
+from typing import Any, Callable, Sequence
 
 import torch
 from torch import nn
@@ -47,26 +47,37 @@ class AdjointProfile:
         }
 
 
-def profile_teacher_sequence_margin_tiles(
+def profile_position_target_margin_tiles(
     *,
     model: nn.Module,
-    tokenizer: Any,
-    eval_prompt: str,
-    teacher_sequence: list[int],
+    input_ids: torch.Tensor,
+    target_rows: Sequence[tuple[int, int]],
     teacher_source: str,
     replacements: dict[str, DecisionResidualTileAtlasLinearModule],
-    device: torch.device,
     row_tile: int,
     col_tile: int,
-    encode_prompt: Callable[[Any, str, torch.device], dict[str, torch.Tensor]],
 ) -> AdjointProfile:
-    """Profile first-order margin influence for a supplied teacher sequence.
+    """Profile residual-tile influence for targets on a fixed causal input.
 
-    The teacher may be the exact target continuation for an optimistic oracle or
-    the hot path's own proposal for a target-independent selector. Gradients are
-    requested from the scalar proposed-token margin objective to every captured
-    projection output. Exact evaluation output is not required by this function.
+    ``target_rows`` contains ``(logit_position, target_token)`` pairs. This is
+    used both for future-token diagnostic oracles and for causal prefill
+    compilation where exact decisions on the already available prompt are
+    authoritative but future continuation tokens remain unknown.
     """
+
+    if input_ids.ndim != 2 or input_ids.shape[0] != 1:
+        raise ValueError("input_ids must have shape [1, sequence]")
+    if not target_rows:
+        raise ValueError("target_rows must not be empty")
+    if row_tile <= 0 or col_tile <= 0:
+        raise ValueError("tile dimensions must be positive")
+
+    sequence_tokens = int(input_ids.shape[-1])
+    for position, target in target_rows:
+        if not 0 <= position < sequence_tokens:
+            raise ValueError(f"target position {position} is outside input")
+        if target < 0:
+            raise ValueError("target token IDs must be non-negative")
 
     for parameter in model.parameters():
         parameter.requires_grad_(False)
@@ -101,37 +112,24 @@ def profile_teacher_sequence_margin_tiles(
         handles.append(module.register_forward_pre_hook(pre_hook))
         handles.append(module.register_forward_hook(output_hook))
 
+    objective: torch.Tensor
+    margin_rows: list[MarginRow] = []
     try:
-        encoded = encode_prompt(tokenizer, eval_prompt, device)
-        prompt_ids = encoded["input_ids"][0].detach().cpu().tolist()
-        if teacher_sequence[: len(prompt_ids)] != prompt_ids:
-            raise RuntimeError("teacher sequence does not preserve prompt prefix")
-        if len(teacher_sequence) <= len(prompt_ids):
-            raise RuntimeError("teacher sequence contains no generated targets")
-
-        teacher_ids = torch.tensor(
-            [teacher_sequence[:-1]],
-            dtype=torch.long,
-            device=device,
-        )
-        embeddings = model.get_input_embeddings()(teacher_ids).detach()
+        embeddings = model.get_input_embeddings()(input_ids).detach()
         embeddings.requires_grad_(True)
-        attention_mask = torch.ones_like(teacher_ids)
         outputs = model(
             inputs_embeds=embeddings,
-            attention_mask=attention_mask,
+            attention_mask=torch.ones_like(input_ids),
             use_cache=False,
             return_dict=True,
         )
         logits = outputs.logits
 
         margin_terms: list[torch.Tensor] = []
-        margin_rows: list[MarginRow] = []
-        generated_count = len(teacher_sequence) - len(prompt_ids)
-        for offset in range(generated_count):
-            position = len(prompt_ids) - 1 + offset
-            target = int(teacher_sequence[len(prompt_ids) + offset])
+        for position, target in target_rows:
             row = logits[0, position]
+            if target >= row.shape[0]:
+                raise ValueError(f"target token {target} is outside vocabulary")
             competitor_scores = row.clone()
             competitor_scores[target] = float("-inf")
             competitor = int(torch.argmax(competitor_scores).item())
@@ -196,7 +194,7 @@ def profile_teacher_sequence_margin_tiles(
 
     return AdjointProfile(
         candidates=candidates,
-        teacher_sequence_tokens=len(teacher_sequence),
+        teacher_sequence_tokens=sequence_tokens,
         generated_targets=len(margin_rows),
         approximate_margin_sum=float(objective.detach().item()),
         margin_rows=margin_rows,
@@ -204,6 +202,51 @@ def profile_teacher_sequence_margin_tiles(
         non_differentiable_modules=sorted(set(non_differentiable)),
         signed_full_residual_linearized_contribution=signed_total,
         teacher_source=teacher_source,
+    )
+
+
+def profile_teacher_sequence_margin_tiles(
+    *,
+    model: nn.Module,
+    tokenizer: Any,
+    eval_prompt: str,
+    teacher_sequence: list[int],
+    teacher_source: str,
+    replacements: dict[str, DecisionResidualTileAtlasLinearModule],
+    device: torch.device,
+    row_tile: int,
+    col_tile: int,
+    encode_prompt: Callable[[Any, str, torch.device], dict[str, torch.Tensor]],
+) -> AdjointProfile:
+    """Profile first-order margins for a supplied continuation sequence."""
+
+    encoded = encode_prompt(tokenizer, eval_prompt, device)
+    prompt_ids = encoded["input_ids"][0].detach().cpu().tolist()
+    if teacher_sequence[: len(prompt_ids)] != prompt_ids:
+        raise RuntimeError("teacher sequence does not preserve prompt prefix")
+    if len(teacher_sequence) <= len(prompt_ids):
+        raise RuntimeError("teacher sequence contains no generated targets")
+
+    input_ids = torch.tensor(
+        [teacher_sequence[:-1]],
+        dtype=torch.long,
+        device=device,
+    )
+    target_rows = [
+        (
+            len(prompt_ids) - 1 + offset,
+            int(teacher_sequence[len(prompt_ids) + offset]),
+        )
+        for offset in range(len(teacher_sequence) - len(prompt_ids))
+    ]
+    return profile_position_target_margin_tiles(
+        model=model,
+        input_ids=input_ids,
+        target_rows=target_rows,
+        teacher_source=teacher_source,
+        replacements=replacements,
+        row_tile=row_tile,
+        col_tile=col_tile,
     )
 
 
