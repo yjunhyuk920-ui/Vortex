@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import torch
 
-from vortex_runtime.feasibility import ModelSpec
+from vortex_runtime.feasibility import ModelSpec, default_specs
 from vortex_runtime.weight_stationary_block import (
     StreamedBlockHardware,
     certified_fixed_prefix,
@@ -77,3 +77,18 @@ def test_roofline_budget_rewards_committed_block_tokens() -> None:
     assert long.ideal_seconds_per_committed_token < short.ideal_seconds_per_committed_token
     assert long.minimum_committed_tokens_ideal > 0
     assert long.target_weight_gib > 180
+
+
+def test_default_405b_layer_stream_fits_eight_gib_memory_envelope() -> None:
+    target, baseline = default_specs()
+    point = streamed_exact_block_budget(
+        target=target,
+        baseline=baseline,
+        draft_positions=64,
+        committed_tokens=1,
+        target_passes=1,
+    )
+    assert point.largest_layer_weight_gib > 1.0
+    assert point.weight_buffer_gib > point.largest_layer_weight_gib
+    assert point.peak_device_gib <= point.device_memory_limit_gib
+    assert point.memory_pass
