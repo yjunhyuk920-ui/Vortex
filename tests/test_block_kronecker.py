@@ -11,6 +11,7 @@ from vortex_runtime.block_kronecker import (
 from vortex_runtime.feasibility import default_specs
 from vortex_runtime.kronecker_operator import (
     KroneckerShape,
+    choose_kronecker_shape,
     materialize_kronecker_sum,
 )
 
@@ -120,14 +121,21 @@ def test_column_block_forward_matches_materialized_weight() -> None:
 
 def test_rank_one_semantic_blocks_are_recovered() -> None:
     generator = torch.Generator().manual_seed(107)
-    shape = KroneckerShape(
-        out_first=2,
-        out_second=4,
-        in_first=2,
-        in_second=3,
+    shape = choose_kronecker_shape(8, 6)
+    first = torch.randn(
+        3,
+        1,
+        shape.out_first,
+        shape.in_first,
+        generator=generator,
     )
-    first = torch.randn(3, 1, 2, 2, generator=generator)
-    second = torch.randn(3, 1, 4, 3, generator=generator)
+    second = torch.randn(
+        3,
+        1,
+        shape.out_second,
+        shape.in_second,
+        generator=generator,
+    )
     weight = _row_weight(first, second, shape)
     linear = nn.Linear(6, 24, bias=False)
     with torch.no_grad():
