@@ -8,17 +8,19 @@ Read `docs/PROOF_FIRST_CONTRACT.md`, `AGENTS.md`, and `docs/ARCHITECTURE_GATE0_C
 
 The target remains an unmodified 405B-class Hugging Face dense model under 8 GiB VRAM with original-model quality and same-machine 4B-class wall-clock behavior. No E0/E1 result may be promoted into a final feasibility claim.
 
-## Active branch
+## Main baseline
+
+Architecture Gate 0 foundation was merged to `main` through PR #6.
 
 ```text
-research/architecture-gate-zero
+merge commit: be46308bc662c9a193bfc912840a795f9eb9c998
 ```
 
-This branch contains the first complete model-wide candidate budget and its executable falsification harness.
+The merged change passed GitHub Actions on Python 3.10 and 3.12. Both jobs completed package installation, the full pytest suite, and `scripts/run_validation.py` successfully.
 
 ## Current verified evidence
 
-The previous repository state remains E1:
+The repository contains the previous E1 primitives:
 
 1. disk-backed progressive LM-head certification;
 2. tiny-model streamed Llama execution;
@@ -26,17 +28,18 @@ The previous repository state remains E1:
 4. exact-on-span `OnlineAtlasLinear` replay;
 5. tiny-Llama O/down projection replay with persisted atlas state.
 
-New branch work is also limited to E0/E1 until a real pretrained model run is committed:
+The Gate 0 merge adds E0/E1 infrastructure, not a real-model pass:
 
 - `vortex_runtime/gate0_budget.py` calculates the 405B memory, traffic, and compute equations;
 - `scripts/run_gate0_budget.py` emits a machine-readable certificate;
 - `gate0_budget.json` records the current conditional candidate;
 - `vortex_runtime/gated_projected_linear.py` replaces a real `Linear` operation with projected and exact cold paths;
+- replaced source modules release their original parameter storage so stale references do not retain GPU weights;
 - `scripts/run_gate0_falsification.py` builds bases on one prompt set and evaluates replacement generation on a disjoint set;
 - `experiments/gate0_build_prompts.json` and `experiments/gate0_eval_prompts.json` define the split;
-- new isolated tests passed locally: `8 passed`.
+- budget and operator unit tests are committed and included in the green CI suite.
 
-The full repository test and validation workflow must still pass through the pull request CI before merge.
+No pretrained 1B–3B falsification result has been committed yet. Evidence remains E0 architecture / E1 calculator and local operator semantics.
 
 ## Candidate architecture
 
@@ -105,13 +108,11 @@ A >= 246.889 tokens per full-model-equivalent repair
 full-model-equivalent repairs/token <= 0.0040504
 ```
 
-The status is **conditional_pass**, not a passed Architecture Gate 0. The 4B comparison values are unmeasured proxies, the low-bit kernels do not exist, and active-token attention is not implemented.
+The status is **conditional_pass**, not a passed Architecture Gate 0. The 4B comparison values are unmeasured proxies, the low-bit kernels do not exist, bounded active-token attention is not implemented, and real 8 GiB peak VRAM has not been measured.
 
 ## Exact next task
 
-First, merge only after pull request CI passes.
-
-Then run the real-operation harness on a pretrained 1B–3B Llama-family model:
+Run the real-operation harness on a pretrained 1B–3B Llama-family model on hardware with enough RAM and preferably an NVIDIA GPU:
 
 ```bash
 pip install transformers
@@ -128,7 +129,7 @@ python scripts/run_gate0_falsification.py \
   --output gate0_falsification.json
 ```
 
-The harness uses hooks only to collect build activations. During evaluation it replaces actual Q/K/V/O and gate/up/down modules with `GatedProjectedLinear`, moves exact matrices to CPU, and records actual cold-path invocations.
+The harness uses hooks only to collect build activations. During evaluation it replaces actual Q/K/V/O and gate/up/down modules with `GatedProjectedLinear`, retains exact matrices only on the CPU cold path, and records actual cold-path invocations.
 
 ## Decision rule
 
@@ -143,13 +144,13 @@ Promote the hidden-axis candidate only if the real pretrained result has:
 
 If it fails, do not tune indefinitely on the same prompts. Record the failure, identify which weighted projection groups dominate repair traffic, revise the architecture, and rerun on a new held-out split.
 
-Do not begin CUDA kernel implementation or universal graph lowering until this repair-rate gate survives. Attention compression remains a separate required gate even if hidden-axis projection succeeds.
+Do not begin full CUDA kernel implementation or universal graph lowering until this repair-rate gate survives. Attention compression remains a separate required gate even if hidden-axis projection succeeds.
 
 ## Communication rule
 
 Correct current statement:
 
-> E0/E1: Cascade Capsule v0 closes the symbolic 405B budget only under explicit proxy and amortization assumptions. A real-model operation-replacement test is now executable; no pretrained result has passed yet.
+> E0/E1: Cascade Capsule v0 closes the symbolic 405B budget only under explicit proxy and amortization assumptions. A real-model operation-replacement test is executable; no pretrained result has passed yet.
 
 Forbidden statement:
 
