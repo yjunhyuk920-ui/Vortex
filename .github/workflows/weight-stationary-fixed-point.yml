@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write
+  contents: read
   pull-requests: write
 
 jobs:
@@ -92,24 +92,15 @@ jobs:
     if: needs.measure.result == 'success'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
-          fetch-depth: 0
       - uses: actions/download-artifact@v4
         with:
           pattern: fixed-point-*
           path: fixed-point-results
           merge-multiple: true
       - name: Aggregate exact block frontier
-        env:
-          RUN_ID: ${{ github.run_id }}
-          HEAD_SHA: ${{ github.sha }}
         run: |
           python - <<'PY'
-          import hashlib
           import json
-          import os
           from pathlib import Path
 
           files = sorted(Path("fixed-point-results").glob("*.json"))
@@ -130,16 +121,17 @@ jobs:
               decision = "advance exact weight-stationary fixed-point block decoder"
               next_candidate = "implement tiled layer streaming and cache-prefix retention"
           elif best_ngram["best_trajectory_reference_ngram"]["length"] >= 4:
-              decision = "reject tested fixed-point points; retain weight-stationary execution"
+              decision = "reject tested fixed-point points; retain trajectory fragments"
               next_candidate = (
-                  "verify a union of trajectory n-grams in one exact weight stream "
-                  "with rejection recycling across adjacent blocks"
+                  "test whether trajectory fragments permit a sub-full-weight "
+                  "decision verifier; full checkpoint verification is already "
+                  "rejected on default hardware"
               )
           else:
               decision = "reject training-free fixed-point initialization at tested points"
               next_candidate = (
-                  "construct a stronger runtime-only draft from exact early-exit "
-                  "signals before another weight-stationary verification pass"
+                  "construct a full-rank progressive-bit execution path that "
+                  "can stop before reading all exact residual bitplanes"
               )
           payload = {
               "evidence_level": "E1 exact weight-stationary fixed-point frontier",
@@ -161,17 +153,8 @@ jobs:
               "qualifying_points": len(qualifiers),
               "decision": decision,
               "next_candidate": next_candidate,
-              "workflow": {
-                  "run_id": int(os.environ["RUN_ID"]),
-                  "head_sha": os.environ["HEAD_SHA"],
-                  "input_sha256": {
-                      path.name: hashlib.sha256(path.read_bytes()).hexdigest()
-                      for path in files
-                  },
-              },
           }
-          output = Path("results/tinyllama_1_1b_weight_stationary_fixed_point.json")
-          output.parent.mkdir(parents=True, exist_ok=True)
+          output = Path("tinyllama_weight_stationary_fixed_point.json")
           output.write_text(
               json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
               encoding="utf-8",
@@ -201,19 +184,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: tinyllama-weight-stationary-fixed-point
-          path: results/tinyllama_1_1b_weight_stationary_fixed_point.json
-      - name: Commit evidence when changed
-        env:
-          BRANCH: ${{ github.head_ref }}
-        run: |
-          path=results/tinyllama_1_1b_weight_stationary_fixed_point.json
-          if [ -z "$(git status --porcelain -- "$path")" ]; then
-            echo "Fixed-point evidence is already current."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$path"
-          git commit -m "data(frontier): commit weight-stationary fixed-point sweep"
-          git pull --rebase origin "${BRANCH}"
-          git push origin "HEAD:${BRANCH}"
+          path: tinyllama_weight_stationary_fixed_point.json
