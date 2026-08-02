@@ -8,6 +8,10 @@ on:
       - "scripts/run_block_shared_residual_selector.py"
       - ".github/workflows/block-shared-residual-selector.yml"
 
+concurrency:
+  group: block-shared-residual-selector-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pull-requests: write
