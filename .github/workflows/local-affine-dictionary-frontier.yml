@@ -1,0 +1,204 @@
+name: Local affine dictionary frontier
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/local_affine_dictionary.py"
+      - "scripts/run_local_affine_dictionary_point.py"
+      - "scripts/aggregate_local_affine_dictionary_frontier.py"
+      - "tests/test_local_affine_dictionary.py"
+      - "tests/test_local_affine_dictionary_frontier.py"
+      - ".github/workflows/local-affine-dictionary-frontier.yml"
+
+concurrency:
+  group: local-affine-dictionary-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  prepare:
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      github.head_ref == 'feat/architecture-gate0-certificate'
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.changes.outputs.run }}
+      matrix: ${{ steps.changes.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 2
+      - name: Check direct local dictionary changes
+        id: changes
+        run: |
+          if git diff --quiet HEAD^ HEAD -- \
+            vortex_runtime/local_affine_dictionary.py \
+            scripts/run_local_affine_dictionary_point.py \
+            scripts/aggregate_local_affine_dictionary_frontier.py \
+            tests/test_local_affine_dictionary.py \
+            tests/test_local_affine_dictionary_frontier.py \
+            .github/workflows/local-affine-dictionary-frontier.yml; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo 'matrix={"include":[]}' >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo 'matrix={"include":[{"name":"k4-r8-b8","clusters":4,"local_rank":8,"bits":8},{"name":"k8-r8-b8","clusters":8,"local_rank":8,"bits":8},{"name":"k12-r8-b8","clusters":12,"local_rank":8,"bits":8},{"name":"k16-r6-b8","clusters":16,"local_rank":6,"bits":8},{"name":"k8-r16-b4","clusters":8,"local_rank":16,"bits":4},{"name":"k12-r10-b4","clusters":12,"local_rank":10,"bits":4}]}' >> "$GITHUB_OUTPUT"
+          fi
+
+  measure:
+    needs: prepare
+    if: needs.prepare.outputs.run == 'true'
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install transformers sentencepiece
+      - name: Measure ${{ matrix.name }}
+        run: |
+          python scripts/run_local_affine_dictionary_point.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --clusters ${{ matrix.clusters }} \
+            --local-rank ${{ matrix.local_rank }} \
+            --capsule-bits ${{ matrix.bits }} \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "${{ matrix.name }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: local-affine-${{ matrix.name }}
+          path: ${{ matrix.name }}.json
+
+  aggregate:
+    needs: [prepare, measure]
+    if: >-
+      needs.prepare.outputs.run == 'true' &&
+      needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: local-affine-*
+          path: local-affine-results
+          merge-multiple: true
+      - name: Aggregate local dictionary frontier
+        run: |
+          mapfile -t files < <(find local-affine-results -type f -name '*.json' | sort)
+          python scripts/aggregate_local_affine_dictionary_frontier.py \
+            "${files[@]}" \
+            --output local_affine_dictionary_frontier.json
+      - name: Normalize evidence with provenance
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          raw = Path("local_affine_dictionary_frontier.json")
+          raw_bytes = raw.read_bytes()
+          payload = json.loads(raw_bytes)
+          payload["workflow"] = {
+              "run_id": int(os.environ["RUN_ID"]),
+              "head_sha": os.environ["HEAD_SHA"],
+              "raw_file_sha256": hashlib.sha256(raw_bytes).hexdigest(),
+          }
+          output = Path("results/tinyllama_1_1b_local_affine_dictionary_frontier.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          PY
+      - name: Build PR report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("local_affine_dictionary_frontier.json").read_text())
+          rows = [
+              {
+                  "clusters": point["clusters"],
+                  "local_rank": point["local_rank"],
+                  "bits": point["capsule_bits"],
+                  "stored_rank": point["stored_equivalent_rank"],
+                  "active_rank": point["active_equivalent_rank"],
+                  "training_error": point[
+                      "post_quantization_training_reconstruction"
+                  ]["maximum_module_output_relative_error"],
+                  "top1": point["exact_top1_match_rate"],
+                  "top32": point["coverage_at_k"]["32"],
+                  "mean_exact_rank": point["rank_statistics"]["mean"],
+                  "survives": point["qualifies"],
+              }
+              for point in data["points"]
+          ]
+          body = (
+              "## Routed local affine dictionary frontier\n\n"
+              "```json\n"
+              + json.dumps(
+                  {
+                      "points": rows,
+                      "decision": data["decision"],
+                      "next_candidate": data["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```"
+          )
+          Path("local-affine-comment.md").write_text(body, encoding="utf-8")
+          PY
+      - name: Publish PR report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file local-affine-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-local-affine-dictionary-frontier
+          path: local_affine_dictionary_frontier.json
+      - name: Commit evidence when changed
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_local_affine_dictionary_frontier.json
+          if [ -z "$(git status --porcelain -- "$path")" ]; then
+            echo "Local affine evidence is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(dictionary): commit local affine frontier"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
