@@ -1,0 +1,130 @@
+{
+  "evidence_level": "E2 fixed-dual global margin refinement",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "bits": 8,
+  "block_size": 1024,
+  "rank": 2,
+  "price_steps": 41,
+  "metadata_budget": {
+    "block_size": 1024,
+    "rank": 2,
+    "blocks_per_hidden_vector": 16,
+    "coefficient_bits": 32,
+    "remainder_bits": 32,
+    "basis_bits": 32,
+    "coefficient_and_remainder_gib": 3.59912109375,
+    "basis_gib": 0.03076171875,
+    "total_metadata_gib": 3.6298828125,
+    "metadata_limit_gib": 6.0,
+    "metadata_pass": true
+  },
+  "results": [
+    {
+      "prompt": "Write a Python function that returns the first duplicated integer in a list without changing the input.",
+      "exact_margin": 5.2832536697387695,
+      "target_error": 2.6416268348693848,
+      "comparison": {
+        "layers": 22,
+        "neurons": 123904,
+        "target_absolute_error": 2.6416268348693848,
+        "equal_layer_refined_neurons": 118165,
+        "equal_layer_refined_fraction": 0.9536818827479339,
+        "width_global_refined_neurons": 115655,
+        "width_global_refined_fraction": 0.933424263946281,
+        "dual_price_refined_neurons": 115651,
+        "dual_price_refined_fraction": 0.9333919808884298,
+        "best_dual_price": 0.5249999761581421,
+        "saved_vs_equal_layer": 2514,
+        "saved_vs_width_global": 4,
+        "relative_to_equal_layer": 0.9787246646638176,
+        "dual_price_certificate": {
+          "exact_scalar": -2.756735059723217,
+          "approximate_scalar": -2.7564500363649382,
+          "lower_bound": -5.386923432730269,
+          "upper_bound": -0.11522760687483125,
+          "uncertainty_radius": 2.641222429490107,
+          "refined_neurons": 115651,
+          "total_neurons": 123904,
+          "selected_fraction": 0.9333919882774353,
+          "certified_sign": true,
+          "exact_sign": -1,
+          "certified_sign_value": -1,
+          "target_absolute_error": 2.6416268348693848,
+          "target_error_met": true,
+          "interval_contains_exact": true,
+          "unsafe_certificate": false
+        }
+      },
+      "mean_activation_perpendicular_ratio": 0.9565816019663576,
+      "mean_dual_perpendicular_ratio": 0.9978275558310183,
+      "projected_405b_exact_refinement": {
+        "selected_fraction": 0.9334059495192307,
+        "selected_neurons_per_layer": 49702,
+        "source_bits": 16,
+        "exact_refinement_gib_per_token": 573.3446044921875,
+        "partial_limit_gib": 1.6,
+        "partial_traffic_pass": false
+      },
+      "qualifies": false
+    },
+    {
+      "prompt": "Given x^2 - 5x + 6 = 0, derive both roots and verify them by substitution.",
+      "exact_margin": 9.034492492675781,
+      "target_error": 4.517246246337891,
+      "comparison": {
+        "layers": 22,
+        "neurons": 123904,
+        "target_absolute_error": 4.517246246337891,
+        "equal_layer_refined_neurons": 110797,
+        "equal_layer_refined_fraction": 0.8942164901859504,
+        "width_global_refined_neurons": 109218,
+        "width_global_refined_fraction": 0.8814727530991735,
+        "dual_price_refined_neurons": 109218,
+        "dual_price_refined_fraction": 0.8814727530991735,
+        "best_dual_price": 0.5,
+        "saved_vs_equal_layer": 1579,
+        "saved_vs_width_global": 0,
+        "relative_to_equal_layer": 0.985748711607715,
+        "dual_price_certificate": {
+          "exact_scalar": 1.5623565910514037,
+          "approximate_scalar": 1.5623566098959532,
+          "lower_bound": -2.9465175215255357,
+          "upper_bound": 6.079600789515792,
+          "uncertainty_radius": 4.517244179619839,
+          "refined_neurons": 109218,
+          "total_neurons": 123904,
+          "selected_fraction": 0.8814727663993835,
+          "certified_sign": false,
+          "exact_sign": 1,
+          "certified_sign_value": 0,
+          "target_absolute_error": 4.517246246337891,
+          "target_error_met": true,
+          "interval_contains_exact": true,
+          "unsafe_certificate": false
+        }
+      },
+      "mean_activation_perpendicular_ratio": 0.43071335584644344,
+      "mean_dual_perpendicular_ratio": 0.6399956064849742,
+      "projected_405b_exact_refinement": {
+        "selected_fraction": 0.8814791165865384,
+        "selected_neurons_per_layer": 46937,
+        "source_bits": 16,
+        "exact_refinement_gib_per_token": 541.4485473632812,
+        "partial_limit_gib": 1.6,
+        "partial_traffic_pass": false
+      },
+      "qualifies": false
+    }
+  ],
+  "summary": {
+    "mean_equal_layer_fraction": 0.9239491864669421,
+    "mean_width_global_fraction": 0.9074485085227273,
+    "mean_dual_price_fraction": 0.9074323669938016,
+    "maximum_dual_price_fraction": 0.9333919808884298,
+    "maximum_exact_gib_per_token": 573.3446044921875,
+    "qualifies": false
+  },
+  "elapsed_seconds": 15.71503493599998,
+  "qualifies": false,
+  "decision": "reject global allocation as insufficient for signed residual codes"
+}
