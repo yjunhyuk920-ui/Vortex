@@ -14,7 +14,7 @@ on:
       max_new_tokens:
         description: Generated tokens per prompt
         required: true
-        default: "1"
+        default: "8"
 
 jobs:
   real-model-cpu:
