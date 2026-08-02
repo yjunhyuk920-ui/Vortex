@@ -41,7 +41,7 @@ def test_uniform_nearest_schedule_for_tinyllama_depth() -> None:
     assert schedule.assignment[-1] == 21
 
 
-def test_three_layer_recurrent_draft_closes_memory_and_compute_proxy() -> None:
+def test_single_node_recurrent_draft_fails_hbm_gate() -> None:
     target, baseline = default_specs()
     budget = recurrent_draft_budget(
         target=target,
@@ -51,10 +51,34 @@ def test_three_layer_recurrent_draft_closes_memory_and_compute_proxy() -> None:
         tie_word_embeddings=False,
         workspace_gib=1.0,
         memory_limit_gib=8.0,
+        parallel_nodes=1,
+        resident_hbm_gib_s=300.0,
         effective_tops=160.0,
     )
     assert budget.memory_pass
     assert budget.compute_pass
+    assert not budget.traffic_pass
+    assert not budget.pass_all
+    assert budget.minimum_parallel_nodes == 85
+    assert budget.recurrent_weight_read_gib_per_wave > 180
+
+
+def test_parallel_wave_can_amortize_recurrent_hbm_reads() -> None:
+    target, baseline = default_specs()
+    budget = recurrent_draft_budget(
+        target=target,
+        baseline=baseline,
+        unique_layers=3,
+        weight_bits=4,
+        tie_word_embeddings=False,
+        workspace_gib=1.0,
+        memory_limit_gib=8.0,
+        parallel_nodes=128,
+        resident_hbm_gib_s=300.0,
+        effective_tops=160.0,
+    )
+    assert budget.memory_pass
+    assert budget.compute_pass
+    assert budget.traffic_pass
     assert budget.pass_all
-    assert budget.memory.total_gib <= 8.0
-    assert budget.compute_seconds_per_token <= budget.allowed_seconds_per_token
+    assert budget.projected_seconds_per_token <= budget.allowed_seconds_per_token
