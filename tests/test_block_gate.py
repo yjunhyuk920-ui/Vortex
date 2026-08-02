@@ -56,3 +56,19 @@ def test_combined_gate_uses_compute_limit_for_64_token_block() -> None:
         compute_limit_gflop_per_token=COMPUTE_LIMIT_GFLOP,
     )
     assert maximum == compute_maximum
+
+
+def test_zero_committed_prefix_never_passes_combined_gate() -> None:
+    gate = BlockSharedGate(
+        committed_tokens=0,
+        selected_weight_bytes=0,
+        full_model_weight_bytes=FULL_MODEL_BYTES,
+        minimum_traffic_efficiency=TRAFFIC_EFFICIENCY,
+        hot_gflop_per_token=HOT_GFLOP,
+        full_exact_repair_gflop_per_token=FULL_REPAIR_GFLOP,
+        compute_limit_gflop_per_token=COMPUTE_LIMIT_GFLOP,
+    )
+    assert gate.traffic_pass
+    assert gate.compute_pass
+    assert not gate.pass_all
+    assert gate.to_dict()["nonempty_commit_pass"] is False
