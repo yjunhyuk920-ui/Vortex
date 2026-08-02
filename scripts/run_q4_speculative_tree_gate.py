@@ -27,7 +27,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Build a causal Q4 top-k beam tree and measure the optimistic exact "
-            "target prefix that one offloaded-model verification could commit."
+            "target prefix against a target-side Q4 cost lower bound."
         )
     )
     parser.add_argument("--model", required=True)
@@ -221,13 +221,13 @@ def main() -> None:
         host_to_device_gib_s=args.host_to_device_gib_s,
         hot_effective_tops=args.hot_effective_tops,
     )
-    qualifies = bool(
+    lower_bound_survives = bool(
         optimistic_committed == args.depth
         and budget.observed_serialized_pass
     )
 
     payload = {
-        "evidence_level": "E2 causal Q4 tree plus optimistic free-draft resource gate",
+        "evidence_level": "E2 causal Q4 tree plus free-draft target-side lower bound",
         "model": args.model,
         "device": str(device),
         "dtype": str(dtype),
@@ -243,18 +243,19 @@ def main() -> None:
         "exact_path_last_alive_depth": exact_path_last_alive_depth,
         "precision": precision_stats.to_dict(),
         "depth_rows": depth_rows,
-        "405b_free_draft_upper_bound": budget.to_dict(),
+        "405b_free_draft_q4_lower_bound": budget.to_dict(),
         "contract": (
-            "The Q4 drafter is charged zero time and zero VRAM. The exact target "
-            "verification streams one Q4 full-rank target representation and "
-            "evaluates every retained tree node. This is strictly more favorable "
-            "than any deployable 8 GiB substitute draft."
+            "The Q4 drafter is charged zero time and zero VRAM. Target-side "
+            "verification is charged only one Q4 full-rank pass over the tree; "
+            "the Q6/Q8 precision required for exact verification is omitted. "
+            "Passing is necessary but not sufficient, while failure rejects any "
+            "more expensive progressive verifier for the same tree."
         ),
-        "qualifies": qualifies,
+        "qualifies": lower_bound_survives,
         "decision": (
-            "advance Q4 speculative tree into exact verifier implementation"
-            if qualifies
-            else "reject tested Q4 speculative tree point"
+            "survive Q4 lower bound; require full Q6/Q8 exact verifier gate"
+            if lower_bound_survives
+            else "reject tested Q4 speculative tree point at the cost lower bound"
         ),
         "next_candidate_if_rejected": (
             "retain tree verification only if a much smaller target-derived "
