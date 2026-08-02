@@ -7,10 +7,10 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from vortex_runtime.feasibility import default_gate0_report
+from vortex_runtime.gate0_observations import apply_real_model_observation
 
 
-def main() -> None:
-    root = Path(__file__).resolve().parents[1]
+def generate_report(root: Path) -> dict[str, object]:
     validation_path = root / "validation_results.json"
     observed = 1.2751790996462853
     if validation_path.exists():
@@ -20,8 +20,20 @@ def main() -> None:
         )
 
     report = default_gate0_report(observed)
+    return apply_real_model_observation(
+        report,
+        root / "results/tinyllama_1_1b_exact_span_warm_decode.json",
+    )
+
+
+def main() -> None:
+    root = Path(__file__).resolve().parents[1]
+    report = generate_report(root)
     output = root / "architecture_gate0_budget.json"
-    output.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    output.write_text(
+        json.dumps(report, indent=2, allow_nan=False),
+        encoding="utf-8",
+    )
 
     summary = {
         "status": report["status"],
@@ -37,9 +49,12 @@ def main() -> None:
         ],
         "observed_repair_efficiency": report["mechanism"]["observed"],
         "shortfall_factor": report["mechanism"]["shortfall_factor"],
+        "observed_component_decision": report.get(
+            "observed_component_decision"
+        ),
     }
     print(output)
-    print(json.dumps(summary, indent=2))
+    print(json.dumps(summary, indent=2, allow_nan=False))
 
 
 if __name__ == "__main__":
