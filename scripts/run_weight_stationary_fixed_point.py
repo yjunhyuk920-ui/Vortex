@@ -142,6 +142,32 @@ def jacobi_logits(
     return prompt_next_logits, draft_logits
 
 
+def longest_reference_match_from_any_position(
+    *,
+    candidate: torch.Tensor,
+    reference: torch.Tensor,
+) -> tuple[int, int]:
+    """Return the longest reference-prefix n-gram found inside a trajectory row."""
+
+    candidate_flat = candidate.reshape(-1)
+    reference_flat = reference.reshape(-1)
+    best_length = 0
+    best_start = 0
+    for start in range(candidate_flat.numel()):
+        limit = min(reference_flat.numel(), candidate_flat.numel() - start)
+        if limit <= best_length:
+            continue
+        unequal = torch.nonzero(
+            candidate_flat[start : start + limit] != reference_flat[:limit],
+            as_tuple=False,
+        )
+        length = limit if unequal.numel() == 0 else int(unequal[0, 0].item())
+        if length > best_length:
+            best_length = length
+            best_start = start
+    return best_length, best_start
+
+
 def main() -> None:
     args = parse_args()
     if args.block_tokens <= 0 or args.max_iterations <= 0:
@@ -183,6 +209,7 @@ def main() -> None:
     best_iteration = 0
     best_rate = 0.0
     converged = False
+    best_trajectory_match = {"length": 0, "iteration": 0, "start": 0}
     for iteration in range(1, args.max_iterations + 1):
         prompt_logits, draft_logits = jacobi_logits(
             model=model,
@@ -197,6 +224,16 @@ def main() -> None:
         certified = certified_fixed_prefix(draft, updated)
         exact_prefix = longest_common_prefix(updated, reference)
         exact_matches = int(torch.count_nonzero(updated == reference).item())
+        trajectory_length, trajectory_start = longest_reference_match_from_any_position(
+            candidate=updated,
+            reference=reference,
+        )
+        if trajectory_length > int(best_trajectory_match["length"]):
+            best_trajectory_match = {
+                "length": trajectory_length,
+                "iteration": iteration,
+                "start": trajectory_start,
+            }
         rate = certified / iteration
         if certified > 0 and rate > best_rate:
             best_prefix = certified
@@ -208,9 +245,13 @@ def main() -> None:
                 "certified_fixed_prefix": certified,
                 "diagnostic_exact_prefix": exact_prefix,
                 "diagnostic_exact_matches": exact_matches,
+                "diagnostic_longest_reference_ngram": trajectory_length,
+                "diagnostic_reference_ngram_start": trajectory_start,
                 "certified_tokens_per_target_pass": rate,
                 "full_window_stable": certified == args.block_tokens,
-                "full_window_matches_reference": bool(torch.equal(updated, reference)),
+                "full_window_matches_reference": bool(
+                    torch.equal(updated, reference)
+                ),
             }
         )
         draft = updated
@@ -257,16 +298,16 @@ def main() -> None:
         best_prefix == 0
         or bool(torch.equal(draft[:, :best_prefix], reference[:, :best_prefix]))
     )
-    qualifies = bool(
-        best_budget is not None
-        and certificate_matches_reference
-        and best_budget["serialized_pass"]
-    )
-    decision = (
-        "advance exact weight-stationary fixed-point block decoder"
-        if qualifies
-        else "reject tested fixed-point block point"
-    )
+    decision = "reject tested fixed-point block point"
+    qualifies = False
+    if best_budget is not None:
+        qualifies = bool(
+            certificate_matches_reference
+            and best_budget["serialized_pass"]
+            and best_prefix >= best_budget["minimum_committed_tokens_serialized"]
+        )
+        if qualifies:
+            decision = "advance exact weight-stationary fixed-point block decoder"
 
     payload = {
         "evidence_level": "E1 exact weight-stationary fixed-point block frontier",
@@ -283,6 +324,8 @@ def main() -> None:
         "best_certification_iteration": best_iteration,
         "best_certified_tokens_per_target_pass": best_rate,
         "certificate_matches_exact_reference": certificate_matches_reference,
+        "best_trajectory_reference_ngram": best_trajectory_match,
+        "trajectory_candidate_tokens_examined": len(iterations) * args.block_tokens,
         "iterations": iterations,
         "hardware": {
             "host_to_device_gib_s": args.host_to_device_gib_s,
