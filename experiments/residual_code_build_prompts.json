@@ -1,0 +1,4 @@
+[
+  "Explain why a database transaction needs atomicity when two services update related rows.",
+  "한국어로 병합 정렬의 시간 복잡도와 안정성을 설명해줘."
+]
