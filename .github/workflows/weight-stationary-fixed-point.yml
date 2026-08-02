@@ -1,0 +1,219 @@
+name: Weight-stationary fixed-point frontier
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/weight_stationary_block.py"
+      - "scripts/run_weight_stationary_fixed_point.py"
+      - "tests/test_weight_stationary_block.py"
+      - "docs/EXPERIMENT_008_WEIGHT_STATIONARY_FIXED_POINT.md"
+      - ".github/workflows/weight-stationary-fixed-point.yml"
+
+concurrency:
+  group: weight-stationary-fixed-point-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/weight-stationary-fixed-point'
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - block_tokens: 16
+            max_iterations: 16
+            initializer: repeat-next
+            label: 16-repeat-next
+          - block_tokens: 16
+            max_iterations: 16
+            initializer: prompt-tail
+            label: 16-prompt-tail
+          - block_tokens: 32
+            max_iterations: 24
+            initializer: repeat-next
+            label: 32-repeat-next
+          - block_tokens: 32
+            max_iterations: 24
+            initializer: prompt-tail
+            label: 32-prompt-tail
+          - block_tokens: 64
+            max_iterations: 32
+            initializer: repeat-next
+            label: 64-repeat-next
+          - block_tokens: 64
+            max_iterations: 32
+            initializer: prompt-tail
+            label: 64-prompt-tail
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate fixed-point runtime
+        run: python -m pytest -q tests/test_weight_stationary_block.py
+      - name: Measure ${{ matrix.label }}
+        run: |
+          python scripts/run_weight_stationary_fixed_point.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --block-tokens ${{ matrix.block_tokens }} \
+            --max-iterations ${{ matrix.max_iterations }} \
+            --initializer ${{ matrix.initializer }} \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --host-to-device-gib-s 24 \
+            --target-tensor-tflops 80 \
+            --baseline-memory-gib-s 300 \
+            --baseline-tensor-tflops 40 \
+            --target-ratio 1.2 \
+            --output "fixed-point-${{ matrix.label }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fixed-point-${{ matrix.label }}
+          path: fixed-point-${{ matrix.label }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: fixed-point-*
+          path: fixed-point-results
+          merge-multiple: true
+      - name: Aggregate exact block frontier
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          files = sorted(Path("fixed-point-results").glob("*.json"))
+          if not files:
+              raise SystemExit("no fixed-point result files")
+          points = [json.loads(path.read_text(encoding="utf-8")) for path in files]
+          points.sort(key=lambda item: (item["block_tokens"], item["initializer"]))
+          best_certificate = max(
+              points,
+              key=lambda item: item["best_certified_tokens_per_target_pass"],
+          )
+          best_ngram = max(
+              points,
+              key=lambda item: item["best_trajectory_reference_ngram"]["length"],
+          )
+          qualifiers = [point for point in points if point["qualifies"]]
+          if qualifiers:
+              decision = "advance exact weight-stationary fixed-point block decoder"
+              next_candidate = "implement tiled layer streaming and cache-prefix retention"
+          elif best_ngram["best_trajectory_reference_ngram"]["length"] >= 4:
+              decision = "reject tested fixed-point points; retain weight-stationary execution"
+              next_candidate = (
+                  "verify a union of trajectory n-grams in one exact weight stream "
+                  "with rejection recycling across adjacent blocks"
+              )
+          else:
+              decision = "reject training-free fixed-point initialization at tested points"
+              next_candidate = (
+                  "construct a stronger runtime-only draft from exact early-exit "
+                  "signals before another weight-stationary verification pass"
+              )
+          payload = {
+              "evidence_level": "E1 exact weight-stationary fixed-point frontier",
+              "points": points,
+              "best_certificate": {
+                  "block_tokens": best_certificate["block_tokens"],
+                  "initializer": best_certificate["initializer"],
+                  "certified_prefix": best_certificate["best_certified_prefix"],
+                  "iteration": best_certificate["best_certification_iteration"],
+                  "tokens_per_target_pass": best_certificate[
+                      "best_certified_tokens_per_target_pass"
+                  ],
+              },
+              "best_trajectory_ngram": {
+                  "block_tokens": best_ngram["block_tokens"],
+                  "initializer": best_ngram["initializer"],
+                  **best_ngram["best_trajectory_reference_ngram"],
+              },
+              "qualifying_points": len(qualifiers),
+              "decision": decision,
+              "next_candidate": next_candidate,
+              "workflow": {
+                  "run_id": int(os.environ["RUN_ID"]),
+                  "head_sha": os.environ["HEAD_SHA"],
+                  "input_sha256": {
+                      path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                      for path in files
+                  },
+              },
+          }
+          output = Path("results/tinyllama_1_1b_weight_stationary_fixed_point.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          Path("fixed-point-comment.md").write_text(
+              "## Exact weight-stationary fixed-point frontier\n\n```json\n"
+              + json.dumps(
+                  {
+                      "best_certificate": payload["best_certificate"],
+                      "best_trajectory_ngram": payload["best_trajectory_ngram"],
+                      "qualifying_points": payload["qualifying_points"],
+                      "decision": payload["decision"],
+                      "next_candidate": payload["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish PR report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file fixed-point-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-weight-stationary-fixed-point
+          path: results/tinyllama_1_1b_weight_stationary_fixed_point.json
+      - name: Commit evidence when changed
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_weight_stationary_fixed_point.json
+          if [ -z "$(git status --porcelain -- "$path")" ]; then
+            echo "Fixed-point evidence is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit weight-stationary fixed-point sweep"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
