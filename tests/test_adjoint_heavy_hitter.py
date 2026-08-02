@@ -19,7 +19,9 @@ def test_global_allocator_prefers_high_utility_layers() -> None:
         total_neurons=6,
         minimum_per_layer=1,
     )
-    assert allocation.layer_counts == (4, 1, 1)
+    # Reserve the largest item in every layer: 10, 2, 0.4. The remaining
+    # unit-cost global winners are 9, 8 and 1, yielding counts 3, 2 and 1.
+    assert allocation.layer_counts == (3, 2, 1)
     assert allocation.total_neurons == 6
     assert allocation.selected_score_fraction > 0.8
 
