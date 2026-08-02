@@ -113,9 +113,12 @@ jobs:
                   -item["retained_tree_nodes"],
               ),
           )
-          qualifiers = [point for point in points if point["qualifies"]]
+          survivors = [point for point in points if point["qualifies"]]
+          lower_bound = best["405b_free_draft_q4_lower_bound"]
           payload = {
-              "evidence_level": "E2 causal Q4 tree plus free-draft upper bound",
+              "evidence_level": (
+                  "E2 causal Q4 tree plus free-draft target-side lower bound"
+              ),
               "points": points,
               "best_point": {
                   "top_k": best["top_k"],
@@ -124,18 +127,18 @@ jobs:
                   "tree_nodes": best["retained_tree_nodes"],
                   "exact_prefix": best["optimistic_committed_exact_prefix"],
                   "last_alive_depth": best["exact_path_last_alive_depth"],
-                  "minimum_commit_ideal": best["405b_free_draft_upper_bound"][
+                  "minimum_commit_ideal": lower_bound[
                       "minimum_committed_tokens_ideal"
                   ],
-                  "minimum_commit_serialized": best["405b_free_draft_upper_bound"][
+                  "minimum_commit_serialized": lower_bound[
                       "minimum_committed_tokens_serialized"
                   ],
               },
-              "qualifying_points": len(qualifiers),
+              "surviving_lower_bound_points": len(survivors),
               "decision": (
-                  "advance Q4 speculative tree into exact verifier"
-                  if qualifiers
-                  else "reject tested causal Q4 speculative-tree frontier"
+                  "survive Q4 lower bound; require full Q6/Q8 exact verifier"
+                  if survivors
+                  else "reject tested causal Q4 tree at the target-side cost lower bound"
               ),
               "architecture_consequence": (
                   "Teacher-forced Q4/Q6 precision routing is not an executable "
@@ -157,11 +160,13 @@ jobs:
               encoding="utf-8",
           )
           Path("q4-tree-comment.md").write_text(
-              "## Causal Q4 speculative-tree upper bound\n\n```json\n"
+              "## Causal Q4 speculative-tree cost lower bound\n\n```json\n"
               + json.dumps(
                   {
                       "best_point": payload["best_point"],
-                      "qualifying_points": payload["qualifying_points"],
+                      "surviving_lower_bound_points": payload[
+                          "surviving_lower_bound_points"
+                      ],
                       "decision": payload["decision"],
                       "architecture_consequence": payload[
                           "architecture_consequence"
