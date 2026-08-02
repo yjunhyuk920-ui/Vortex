@@ -5,6 +5,10 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -91,6 +95,8 @@ jobs:
             --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
             --output oracle_residual_tile_repair.json
       - name: Run TinyLlama 1.1B exact-target adjoint tile oracle
+        id: adjoint
+        continue-on-error: true
         run: |
           python scripts/run_oracle_adjoint_tile_repair.py \
             --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
@@ -101,6 +107,47 @@ jobs:
             --col-tile 128 \
             --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
             --output oracle_adjoint_tile_repair.json
+      - name: Publish adjoint diagnostic
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("oracle_adjoint_tile_repair.json")
+          if not path.exists():
+              text = "## Gate 0 adjoint diagnostic\n\nNo result file was produced."
+          else:
+              data = json.loads(path.read_text(encoding="utf-8"))
+              if data.get("status") == "error":
+                  text = (
+                      "## Gate 0 adjoint diagnostic\n\n"
+                      f"- Error: `{data.get('error_type')}: {data.get('error_message')}`\n\n"
+                      "```text\n"
+                      + data.get("traceback", "")[-6000:]
+                      + "\n```"
+                  )
+              else:
+                  summary = {
+                      "status": data.get("status"),
+                      "decision": data.get("decision"),
+                      "gate_budget_match": data.get("gate_budget_match"),
+                      "best_first_repair_match": data.get("best_first_repair_match"),
+                      "missing_gradient_modules": data.get("adjoint", {}).get("missing_gradient_modules"),
+                      "non_differentiable_modules": data.get("adjoint", {}).get("non_differentiable_modules"),
+                  }
+                  text = (
+                      "## Gate 0 adjoint diagnostic\n\n"
+                      "```json\n"
+                      + json.dumps(summary, indent=2)
+                      + "\n```"
+                  )
+          Path("adjoint-comment.md").write_text(text, encoding="utf-8")
+          PY
+          gh pr comment "$PR_NUMBER" --body-file adjoint-comment.md
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -112,3 +159,6 @@ jobs:
             oracle_residual_tile_repair.json
             oracle_adjoint_tile_repair.json
           if-no-files-found: warn
+      - name: Enforce adjoint success
+        if: steps.adjoint.outcome != 'success'
+        run: exit 1
