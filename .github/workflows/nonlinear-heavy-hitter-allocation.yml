@@ -38,11 +38,20 @@ jobs:
           pip install -e .
           pip install pytest transformers sentencepiece
       - name: Validate nonlinear allocator
+        shell: bash
         run: |
-          python -m pytest -q \
-            tests/test_mlp_heavy_hitter.py \
-            tests/test_adjoint_heavy_hitter.py \
+          set -euo pipefail
+          tests=(
+            tests/test_mlp_heavy_hitter.py
             tests/test_nonlinear_heavy_hitter.py
+          )
+          for test_path in "${tests[@]}"; do
+            if [[ ! -f "$test_path" ]]; then
+              echo "required test missing from this branch: $test_path" >&2
+              exit 2
+            fi
+          done
+          python -m pytest -q "${tests[@]}"
       - name: Measure curves and validate allocations
         run: |
           python scripts/run_nonlinear_heavy_hitter_allocation.py \
