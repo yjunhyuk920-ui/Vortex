@@ -31,6 +31,7 @@ def _apply_observed_efficiency(
     report: dict[str, Any],
     *,
     observed: float,
+    repair_fraction_per_token: float,
     source: Path,
     decision: str,
     exact_token_match: bool,
@@ -44,24 +45,52 @@ def _apply_observed_efficiency(
             "required_tokens_per_full_repair_equivalent"
         ]
     )
+    maximum_compute_fraction = float(
+        report["mechanism"]["maximum_compute_repair_fraction"]
+    )
+    traffic_pass = observed >= required
+    compute_pass = repair_fraction_per_token <= maximum_compute_fraction
+    mechanism_pass = traffic_pass and compute_pass
+
     report["mechanism"].update(
         {
             "observed": observed,
+            "observed_repair_fraction": repair_fraction_per_token,
             "observed_source": _portable_source(source),
-            "pass": observed >= required,
-            "shortfall_factor": required / observed,
+            "traffic_pass": traffic_pass,
+            "compute_pass": compute_pass,
+            "pass": mechanism_pass,
+            "traffic_shortfall_factor": (
+                required / observed if observed > 0 else float("inf")
+            ),
+            "compute_excess_factor": (
+                repair_fraction_per_token / maximum_compute_fraction
+                if maximum_compute_fraction > 0
+                else float("inf")
+            ),
             "observed_exact_token_match": exact_token_match,
             "observed_warm_decode_fast_fraction": warm_decode_fast_fraction,
         }
     )
-    report["gates"]["observed_repair_efficiency"] = observed >= required
+    report["gates"]["observed_repair_traffic"] = traffic_pass
+    report["gates"]["observed_repair_compute"] = compute_pass
+    report["gates"]["observed_repair_efficiency"] = mechanism_pass
     report["observed_component_decision"] = decision
     report["rejected_mechanisms"] = rejected_mechanisms
     if next_candidate is not None:
         report["next_candidate"] = next_candidate
-    report["status"] = status if observed < required else (
-        "gate0-candidate-ready-for-e2-falsification"
+
+    analytic_pass = (
+        bool(report["gates"]["memory"])
+        and bool(report["gates"]["analytic_traffic"])
+        and bool(report["gates"]["analytic_compute"])
     )
+    if not analytic_pass:
+        report["status"] = "rejected-vortex-wave-1-analytic-envelope"
+    elif not mechanism_pass:
+        report["status"] = status
+    else:
+        report["status"] = "gate0-candidate-ready-for-e2-falsification"
     return report
 
 
@@ -80,9 +109,15 @@ def apply_real_model_observation(
         observed = float(
             result["best_observed_tokens_per_full_repair_equivalent"]
         )
+        repair = float(
+            result["positive_signed_margin_ranking"][
+                "first_repair_match"
+            ]["full_model_repair_fraction_per_token"]
+        )
         return _apply_observed_efficiency(
             report,
             observed=observed,
+            repair_fraction_per_token=repair,
             source=adjoint,
             decision=str(result["decision"]),
             exact_token_match=True,
@@ -95,20 +130,23 @@ def apply_real_model_observation(
                 "rank-32 residual-energy 2D tile repair",
                 "rank-32 exact-target adjoint 2D tile repair per token",
             ],
-            next_candidate="64-token block-shared adjoint repair",
+            next_candidate="block-shared combined traffic/compute oracle",
         )
 
     residual = Path(residual_path)
     if residual.exists():
         result = json.loads(residual.read_text(encoding="utf-8"))
+        first = result["first_repair_match"]
         observed = float(
-            result["first_repair_match"][
-                "tokens_per_full_repair_equivalent"
-            ]
+            first["tokens_per_full_repair_equivalent"]
+        )
+        repair = float(
+            first["full_model_repair_fraction_per_token"]
         )
         return _apply_observed_efficiency(
             report,
             observed=observed,
+            repair_fraction_per_token=repair,
             source=residual,
             decision=str(result["decision"]),
             exact_token_match=True,
@@ -126,14 +164,17 @@ def apply_real_model_observation(
     oracle = Path(oracle_path)
     if oracle.exists():
         result = json.loads(oracle.read_text(encoding="utf-8"))
+        first = result["row_tile_oracle"]["first_repair_match"]
         observed = float(
-            result["row_tile_oracle"]["first_repair_match"][
-                "tokens_per_full_repair_equivalent"
-            ]
+            first["tokens_per_full_repair_equivalent"]
+        )
+        repair = float(
+            first["full_model_repair_fraction_per_token"]
         )
         return _apply_observed_efficiency(
             report,
             observed=observed,
+            repair_fraction_per_token=repair,
             source=oracle,
             decision=str(result["overall_decision"]),
             exact_token_match=True,
@@ -151,14 +192,16 @@ def apply_real_model_observation(
         return report
 
     result = json.loads(exact_span.read_text(encoding="utf-8"))
+    warm = result["warm_decode_repair"]
     observed = float(
-        result["warm_decode_repair"][
-            "tokens_per_full_repair_equivalent"
-        ]
+        warm["tokens_per_full_repair_equivalent"]
     )
+    warm_tokens = float(result["warm_decode_tokens"])
+    repair = float(warm["full_model_repair_fraction"]) / warm_tokens
     return _apply_observed_efficiency(
         report,
         observed=observed,
+        repair_fraction_per_token=repair,
         source=exact_span,
         decision=str(result["decision"]),
         exact_token_match=bool(result["exact_token_match"]),
