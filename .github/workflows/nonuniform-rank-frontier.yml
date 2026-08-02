@@ -48,7 +48,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install -e .
-          pip install transformers sentencepiece
+          pip install pytest transformers sentencepiece
       - name: Run unit tests
         run: python -m pytest -q tests/test_nonuniform_rank_allocator.py
       - name: Measure ${{ matrix.name }}
