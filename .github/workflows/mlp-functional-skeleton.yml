@@ -1,0 +1,227 @@
+name: MLP functional skeleton gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/mlp_functional_skeleton.py"
+      - "scripts/run_mlp_functional_skeleton_point.py"
+      - "tests/test_mlp_functional_skeleton.py"
+      - "docs/EXPERIMENT_019_MLP_FUNCTIONAL_SKELETON.md"
+      - ".github/workflows/mlp-functional-skeleton.yml"
+
+concurrency:
+  group: mlp-functional-skeleton-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/mlp-functional-skeleton'
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - tiny_prototypes: 16
+            target_prototypes: 128
+          - tiny_prototypes: 32
+            target_prototypes: 256
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate functional skeleton primitives
+        run: |
+          python -m pytest -q \
+            tests/test_mlp_gauge_dictionary.py \
+            tests/test_mlp_functional_skeleton.py
+      - name: Measure functional skeleton ${{ matrix.tiny_prototypes }}
+        run: |
+          python scripts/run_mlp_functional_skeleton_point.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tiny-prototypes ${{ matrix.tiny_prototypes }} \
+            --target-prototypes ${{ matrix.target_prototypes }} \
+            --projection-dim 64 \
+            --cluster-iterations 5 \
+            --factor-bits 8 \
+            --seed 4049 \
+            --tokens 32 \
+            --tree-depth 12 \
+            --top-k 32 \
+            --beam-width 64 \
+            --node-budget 1024 \
+            --eval-batch-size 8 \
+            --probe-count 256 \
+            --heldout-probe-count 128 \
+            --ridge-millionths 10 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "mlp-skeleton-${{ matrix.tiny_prototypes }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mlp-skeleton-${{ matrix.tiny_prototypes }}
+          path: mlp-skeleton-${{ matrix.tiny_prototypes }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: mlp-skeleton-*
+          path: mlp-skeleton-results
+          merge-multiple: true
+      - name: Aggregate functional skeleton frontier
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          files = sorted(Path("mlp-skeleton-results").glob("*.json"))
+          if not files:
+              raise SystemExit("no functional skeleton results")
+          points = [json.loads(path.read_text(encoding="utf-8")) for path in files]
+          points.sort(key=lambda item: item["tiny_prototypes_per_layer"])
+          best = max(
+              points,
+              key=lambda item: (
+                  item["tree"]["exact_path_last_alive_depth"],
+                  item["teacher_forced_compiled"]["top32_rate"],
+                  item["teacher_forced_compiled"]["top1_rate"],
+              ),
+          )
+          promoted = [point for point in points if point["qualifies"]]
+          summary = [
+              {
+                  "tiny_prototypes": point["tiny_prototypes_per_layer"],
+                  "target_prototypes": point[
+                      "projected_405b_prototypes_per_layer"
+                  ],
+                  "heldout_activation_error": point["functional_skeleton"][
+                      "neuron_weighted_heldout_activation_error"
+                  ],
+                  "heldout_output_error": point["functional_skeleton"][
+                      "neuron_weighted_heldout_output_error"
+                  ],
+                  "teacher_top1": point["teacher_forced_compiled"]["top1_rate"],
+                  "teacher_top32": point["teacher_forced_compiled"]["top32_rate"],
+                  "autoregressive_prefix": point[
+                      "autoregressive_exact_prefix"
+                  ],
+                  "tree_prefix": point["tree"][
+                      "optimistic_committed_exact_prefix"
+                  ],
+                  "last_alive_depth": point["tree"][
+                      "exact_path_last_alive_depth"
+                  ],
+                  "promoted": point["qualifies"],
+              }
+              for point in points
+          ]
+          if promoted:
+              decision = "advance SwiGLU functional skeleton"
+              next_candidate = "complete attention and LM-head structured programs"
+          elif best["functional_skeleton"][
+              "neuron_weighted_heldout_output_error"
+          ] <= 0.1:
+              decision = "retain functional skeleton; add layerwise certificates"
+              next_candidate = (
+                  "measure exact residual correction per layer because synthetic "
+                  "function fit is good but model errors accumulate"
+              )
+          else:
+              decision = "reject tested functional skeleton collapse ratios"
+              next_candidate = (
+                  "increase nonlinear basis expressivity with paired or tensorized "
+                  "prototype functions under the same executed-byte Gate"
+              )
+          payload = {
+              "evidence_level": "E2 executable SwiGLU functional skeleton frontier",
+              "points": points,
+              "summary": summary,
+              "best_tiny_prototypes": best["tiny_prototypes_per_layer"],
+              "promoted_points": [
+                  point["tiny_prototypes_per_layer"] for point in promoted
+              ],
+              "decision": decision,
+              "next_candidate": next_candidate,
+              "workflow": {
+                  "run_id": int(os.environ["RUN_ID"]),
+                  "head_sha": os.environ["HEAD_SHA"],
+                  "input_sha256": {
+                      path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                      for path in files
+                  },
+              },
+          }
+          output = Path("results/tinyllama_1_1b_mlp_functional_skeleton.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          Path("mlp-skeleton-comment.md").write_text(
+              "## SwiGLU functional skeleton gate\n\n```json\n"
+              + json.dumps(
+                  {
+                      "summary": summary,
+                      "best_tiny_prototypes": payload[
+                          "best_tiny_prototypes"
+                      ],
+                      "promoted_points": payload["promoted_points"],
+                      "decision": payload["decision"],
+                      "next_candidate": payload["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file mlp-skeleton-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-mlp-functional-skeleton
+          path: results/tinyllama_1_1b_mlp_functional_skeleton.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_mlp_functional_skeleton.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit MLP functional skeleton sweep"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
