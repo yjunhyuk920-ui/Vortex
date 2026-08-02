@@ -6,10 +6,17 @@ from typing import Iterable, Literal
 
 import torch
 from torch import nn
+from torch.nn import functional as F
 
 from vortex_runtime.atlas_linear import OnlineAtlasLinear
 
-ExecutionMode = Literal["learn_exact", "project", "exact"]
+ExecutionMode = Literal[
+    "learn_exact",
+    "project",
+    "profile",
+    "project_repair",
+    "exact",
+]
 
 
 @dataclass(frozen=True)
@@ -60,12 +67,15 @@ class AtlasLinearModule(nn.Module):
     Modes:
 
     - ``learn_exact``: exact fallback plus online basis expansion;
-    - ``project``: use only the stored ``U/WU`` capsule, with no fallback;
-    - ``exact``: bypass the capsule and invoke the original linear module.
+    - ``project``: use only the stored ``U/WU`` capsule;
+    - ``profile``: return projected output while measuring exact row-tile error;
+    - ``project_repair``: project, then replace selected output-row tiles with
+      exact linear results;
+    - ``exact``: invoke the original linear module.
 
-    The mode boundary lets the oracle profiler test how much exact projection
-    weight must be restored for an approximate generated sequence to match the
-    original model.
+    Profiling is intentionally oracle-only. It reads exact weights to identify
+    the most valuable row tiles but does not count that profiling traffic as a
+    candidate runtime result.
     """
 
     def __init__(
@@ -88,6 +98,10 @@ class AtlasLinearModule(nn.Module):
             basis_dtype=torch.float32,
         )
         self.mode: ExecutionMode = "learn_exact"
+        self.repair_tile_rows = 128
+        self.exact_row_tiles: set[int] = set()
+        self.profile_tile_rows = 128
+        self.tile_error_sums: dict[int, float] = {}
         self.prefill_vectors = 0
         self.prefill_fast_vectors = 0
         self.prefill_cold_weight_reads = 0
@@ -102,10 +116,72 @@ class AtlasLinearModule(nn.Module):
         weight = self.exact.weight
         return weight.numel() * weight.element_size()
 
+    @property
+    def selected_repair_bytes(self) -> int:
+        element_size = self.exact.weight.element_size()
+        rows = 0
+        for tile_index in self.exact_row_tiles:
+            start = tile_index * self.repair_tile_rows
+            end = min(start + self.repair_tile_rows, self.exact.out_features)
+            if start < self.exact.out_features:
+                rows += end - start
+        return rows * self.exact.in_features * element_size
+
     def set_mode(self, mode: ExecutionMode) -> None:
-        if mode not in {"learn_exact", "project", "exact"}:
+        if mode not in {
+            "learn_exact",
+            "project",
+            "profile",
+            "project_repair",
+            "exact",
+        }:
             raise ValueError(f"unsupported execution mode: {mode}")
         self.mode = mode
+
+    def configure_row_tile_repair(
+        self,
+        *,
+        tile_rows: int,
+        tile_indices: Iterable[int],
+    ) -> None:
+        if tile_rows <= 0:
+            raise ValueError("tile_rows must be positive")
+        max_tiles = (self.exact.out_features + tile_rows - 1) // tile_rows
+        selected = {int(index) for index in tile_indices}
+        if any(index < 0 or index >= max_tiles for index in selected):
+            raise ValueError("row tile index out of range")
+        self.repair_tile_rows = int(tile_rows)
+        self.exact_row_tiles = selected
+
+    def clear_row_tile_repair(self) -> None:
+        self.exact_row_tiles.clear()
+
+    def reset_tile_profile(self, *, tile_rows: int) -> None:
+        if tile_rows <= 0:
+            raise ValueError("tile_rows must be positive")
+        self.profile_tile_rows = int(tile_rows)
+        self.tile_error_sums = {}
+
+    def profiled_row_tiles(self) -> list[dict[str, int | float]]:
+        element_size = self.exact.weight.element_size()
+        rows: list[dict[str, int | float]] = []
+        for tile_index, error_sum in self.tile_error_sums.items():
+            start = tile_index * self.profile_tile_rows
+            end = min(start + self.profile_tile_rows, self.exact.out_features)
+            tile_bytes = (
+                (end - start) * self.exact.in_features * element_size
+            )
+            rows.append(
+                {
+                    "tile_index": tile_index,
+                    "row_start": start,
+                    "row_end": end,
+                    "weight_bytes": tile_bytes,
+                    "error_sum": error_sum,
+                    "error_per_byte": error_sum / max(1, tile_bytes),
+                }
+            )
+        return sorted(rows, key=lambda item: int(item["tile_index"]))
 
     def _project(self, x: torch.Tensor) -> torch.Tensor:
         original_shape = x.shape[:-1]
@@ -135,11 +211,49 @@ class AtlasLinearModule(nn.Module):
             )
         return output
 
+    def _profile_projected_error(self, x: torch.Tensor) -> torch.Tensor:
+        projected = self._project(x)
+        exact = self.exact(x)
+        squared = (exact - projected).detach().to("cpu", torch.float32).square()
+        flat = squared.reshape(-1, self.exact.out_features)
+        tile_count = (
+            self.exact.out_features + self.profile_tile_rows - 1
+        ) // self.profile_tile_rows
+        for tile_index in range(tile_count):
+            start = tile_index * self.profile_tile_rows
+            end = min(start + self.profile_tile_rows, self.exact.out_features)
+            value = float(flat[:, start:end].sum().item())
+            self.tile_error_sums[tile_index] = (
+                self.tile_error_sums.get(tile_index, 0.0) + value
+            )
+        return projected
+
+    def _project_with_row_repairs(self, x: torch.Tensor) -> torch.Tensor:
+        output = self._project(x).clone()
+        if not self.exact_row_tiles:
+            return output
+        weight = self.exact.weight
+        bias = self.exact.bias
+        for tile_index in sorted(self.exact_row_tiles):
+            start = tile_index * self.repair_tile_rows
+            end = min(start + self.repair_tile_rows, self.exact.out_features)
+            exact_rows = F.linear(
+                x,
+                weight[start:end],
+                None if bias is None else bias[start:end],
+            )
+            output[..., start:end] = exact_rows
+        return output
+
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         if self.mode == "exact":
             return self.exact(x)
         if self.mode == "project":
             return self._project(x)
+        if self.mode == "profile":
+            return self._profile_projected_error(x)
+        if self.mode == "project_repair":
+            return self._project_with_row_repairs(x)
 
         stats = self.atlas.stats
         before = (
