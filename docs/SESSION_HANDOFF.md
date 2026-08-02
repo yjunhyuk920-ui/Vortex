@@ -9,6 +9,7 @@ Read:
 - `docs/PROOF_FIRST_CONTRACT.md`
 - `AGENTS.md`
 - `docs/ARCHITECTURE_GATE0_CERTIFICATE.md`
+- `docs/REAL_OPERATION_FALSIFICATION.md`
 - `architecture_gate0_budget.json`
 
 The project no longer promotes local prototype behavior into a full-target claim.
@@ -21,7 +22,8 @@ The repository has E1 primitives:
 2. tiny-model streamed Llama execution;
 3. tiny-model Jacobi sequence equivalence;
 4. exact-on-span `OnlineAtlasLinear` replay;
-5. tiny-Llama O/down projection replay with persisted atlas state.
+5. tiny-Llama O/down projection replay with persisted atlas state;
+6. a drop-in `nn.Linear` replacement wrapper with logical repair accounting.
 
 Validation commands:
 
@@ -49,8 +51,6 @@ The correctness path is proposed but not implemented. The certificate is an anal
 
 ## Populated gate result
 
-Generated result:
-
 ```text
 status: blocked-mechanism-unproven
 memory total: 4.30497 GiB / 8 GiB
@@ -74,48 +74,62 @@ shortfall: 385.2786x
 
 The design target uses `A=160`, `rho=0.25`. Those are threshold values, not observations.
 
-## Exact next task
+## Real-operation falsification phase A
 
-Implement the smallest real-operation falsification harness for `VORTEX-WAVE-1`.
+Implemented:
 
-The harness must replace actual operations during generation and record, per repair batch:
+- `AtlasLinearModule`, a real `nn.Linear` replacement;
+- model traversal and replacement by projection suffix;
+- disjoint build/evaluation snapshots;
+- exact output checks in tests;
+- logical cold-weight byte accounting;
+- managed and full-model repair fractions;
+- `E=A/rho` calculation;
+- optional Hugging Face runner.
 
-```text
-proposed positions
-committed causal-prefix tokens A
-exact weight bytes read
-exact KV bytes read
-rho
-E = A / rho
-hot bytes/token
-peak device memory
-wall-clock/token
-exact-token agreement
+Run on a local or downloadable pretrained model:
+
+```bash
+pip install transformers
+
+python scripts/run_real_operation_falsification.py \
+  --model <local-path-or-hf-repo> \
+  --device cpu \
+  --max-new-tokens 16 \
+  --max-rank 256
 ```
 
-Requirements:
+The runner compares greedy token sequences before and after replacement, uses disjoint build and evaluation prompts, records rank growth and repair efficiency, and writes `real_operation_falsification.json`.
 
-1. real pretrained 1B–3B causal model;
-2. disjoint build and evaluation prompts;
-3. actual operation replacement, not hooks alone;
-4. exact committed-token agreement;
-5. machine-readable raw output;
-6. reject the candidate if measured `E < 300` after planned repair sweeps;
-7. promote toward E2 only if measured `E >= 600` with the other resource gates intact.
+Important boundary: the Transformers model remains physically resident. Reported cold bytes are logical exact-weight uses, not measured NVMe/PCIe traffic. This phase can reject activation-span reuse, but cannot pass the final 8 GiB or wall-clock gate.
 
-## Files added for Gate 0
+## Exact next task
+
+1. Run phase A on a real pretrained 1B–3B Llama-family model.
+2. Replace O/down first, then all seven projection families only when exact token agreement holds.
+3. Record the generated JSON in the repository.
+4. Reject `VORTEX-WAVE-1` if full-model-equivalent `E < 300`, rank saturates, or unseen prompts require near-full repair.
+5. Continue only when `E >= 600` with bounded representation growth.
+6. Then replace resident exact weights with safetensors-backed cold loaders so logical repair bytes become physical host/storage traffic.
+7. Add block proposal and causal-prefix commit measurement; phase A currently measures generated tokens over cumulative repair rather than block-level `A`.
+
+## Gate 0 files
 
 - `vortex_runtime/feasibility.py`
+- `vortex_runtime/falsification.py`
 - `scripts/run_architecture_gate0.py`
+- `scripts/run_real_operation_falsification.py`
 - `tests/test_feasibility.py`
 - `tests/test_gate0_budget_file.py`
+- `tests/test_falsification.py`
 - `architecture_gate0_budget.json`
 - `docs/ARCHITECTURE_GATE0_CERTIFICATE.md`
+- `docs/REAL_OPERATION_FALSIFICATION.md`
 
 ## Communication rule
 
 Current status must be described as:
 
-> E0/E1: VORTEX-WAVE-1 has a model-wide analytic envelope whose memory, traffic, and compute equations close only at a repair-efficiency threshold that is not yet measured. The observed mechanism is currently 385x below that threshold.
+> E0/E1: VORTEX-WAVE-1 has a model-wide analytic envelope and a real-operation logical-repair falsification runner. The required repair efficiency remains unmeasured on a real 1B–3B model, and the currently observed tiny-model mechanism is 385x below the gate.
 
 Do not describe the target as feasible until the required evidence gates pass.
