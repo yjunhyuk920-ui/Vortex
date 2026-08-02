@@ -1,7 +1,7 @@
 {
   "evidence_level": "E0/E1",
   "candidate": "VORTEX-WAVE-1",
-  "status": "original-wave1-rejected-logical-block-oracle-survives",
+  "status": "rank32-hot-representation-rejected",
   "accounting_contract": {
     "traffic": "selected cold bytes are divided by committed block tokens",
     "compute": "selected exact arithmetic is charged every token and is not divided by committed block tokens",
@@ -120,14 +120,14 @@
     "candidate_repair_fraction": 0.25,
     "observed": 1049.087890625,
     "observed_repair_fraction": 0.001906417963521139,
-    "observed_committed_tokens": 2,
-    "observed_incremental_committed_tokens": 1,
     "observed_source": "results/tinyllama_1_1b_block_shared_combined_gate.json",
     "traffic_pass": true,
     "compute_pass": true,
     "pass": true,
     "traffic_shortfall_factor": 0.46831077202368987,
     "compute_excess_factor": 0.18740563218401965,
+    "observed_committed_tokens": 2,
+    "observed_incremental_committed_tokens": 1,
     "selector_proven": false,
     "certificate_proven": false,
     "managed_model_wide": false
@@ -142,7 +142,11 @@
     "logical_combined_oracle": true,
     "target_independent_selector": false,
     "sound_commit_certificate": false,
-    "residual_energy_selector": false
+    "residual_energy_selector": false,
+    "proposal_adjoint_full_weight_scan": false,
+    "proposal_margin_metadata_bound": false,
+    "causal_prefill_compiler": false,
+    "rank32_topk_coverage": false
   },
   "logical_oracle": {
     "evidence_level": "E1 exact-target block-shared combined oracle",
@@ -175,7 +179,7 @@
     "compute_pass": true,
     "memory_pass": true
   },
-  "observed_component_decision": "The rank-32 block-shared repair family survives the corrected E1 logical budget oracle with an 8 MiB tile set and a two-token exact prefix, one token longer than the zero-repair baseline.",
+  "observed_component_decision": "Reject the rank-32 O/down hot representation as a small top-K certificate basis: first-divergence rank was 2, but top-32 exact-token coverage was 0.406250.",
   "rejected_mechanisms": [
     "exact-span Atlas warm-decode fast path",
     "rank-32 approximate capsule plus exact layer-suffix repair",
@@ -183,9 +187,13 @@
     "rank-32 residual-energy 2D tile repair",
     "rank-32 exact-target adjoint 2D tile repair per token",
     "the original VORTEX-WAVE-1 25-percent repair design point",
-    "block-shared residual-energy target-independent selector"
+    "block-shared residual-energy target-independent selector",
+    "block-shared proposal-token signed-adjoint selector",
+    "block-shared proposal-margin metadata-bound selector",
+    "causal exact-prompt-prefill adjoint compiler",
+    "rank-32 O/down hot representation for small top-K uncertainty"
   ],
-  "next_candidate": "proposal-adjoint diagnostic oracle and proposal-margin metadata-bound selector",
+  "next_candidate": "sweep the complete 405B-feasible capsule-rank frontier through rank 128; if coverage remains below threshold, reject the global low-rank O/down representation family",
   "selector_falsification": {
     "residual_energy": {
       "evidence_level": "E1 target-independent block selector falsification",
@@ -199,6 +207,82 @@
       "pass": false,
       "decision": "target-independent residual-energy selector fails the E1 combined gate",
       "rejection_scope": "Reject residual-energy ranking for the tested rank-32 O/down block-shared selector. This does not reject proposal-margin gradients or all target-independent selectors."
+    },
+    "proposal_adjoint_full_weight_scan": {
+      "selector": "proposal_adjoint_full_weight_scan",
+      "evidence_level": "E1 proposal-adjoint full-weight-scan oracle",
+      "source": "results/tinyllama_1_1b_block_shared_proposal_adjoint_oracle.json",
+      "zero_repair_prefix_tokens": 1,
+      "combined_budget_tile_count": 360,
+      "pass": false,
+      "best_selector_candidate": null,
+      "decision": "proposal-token adjoint oracle fails the combined gate",
+      "rejection_scope": "Reject proposal-token signed-adjoint ranking for the tested rank-32 O/down block-shared repair family. The selector used no exact target continuation, but it was still an optimistic full-weight-scan oracle."
+    },
+    "proposal_margin_metadata_bound": {
+      "selector": "proposal_margin_metadata_bound",
+      "evidence_level": "E1 target-independent proposal-margin bound selector",
+      "source": "results/tinyllama_1_1b_block_shared_margin_bound_selector.json",
+      "zero_repair_prefix_tokens": 1,
+      "combined_budget_tile_count": 360,
+      "pass": false,
+      "best_selector_candidate": null,
+      "decision": "proposal-margin bound selector fails the E1 combined gate",
+      "rejection_scope": "Reject the tested Cauchy-bound ranking based on hot proposal margins and per-tile norm metadata. It did not extend the exact prefix within the corrected selector-compute budget."
+    },
+    "causal_prefill_compiler": {
+      "selector": "causal_prefill_compiler",
+      "evidence_level": "E1 causal prefill-compiled repair oracle",
+      "source": "results/tinyllama_1_1b_prefill_compiled_adjoint_oracle.json",
+      "zero_repair_prefix_tokens": 1,
+      "combined_budget_tile_count": 683,
+      "pass": false,
+      "best_selector_candidate": null,
+      "decision": "exact prompt prefill decision selector fails the combined gate",
+      "rejection_scope": "Reject the tested causal prefill signed-adjoint compiler for rank-32 O/down capsules. Exact decisions available before the continuation did not identify a budget-compatible tile set that corrected the first future error."
     }
+  },
+  "family_decision": {
+    "family": "rank-32 O/down capsule plus fixed block-shared exact-tile repair",
+    "exact_target_logical_oracle_pass": true,
+    "causal_selector_results_complete": true,
+    "causal_selectors_tested": 4,
+    "causal_selectors_passing": 0,
+    "future_information_dependency": "The only passing tile set was selected with exact future target tokens and teacher-forced continuation gradients.",
+    "rejected": true
+  },
+  "hot_representation_coverage": {
+    "evidence_level": "E1 exact-prefix candidate-coverage diagnostic",
+    "source": "results/tinyllama_1_1b_hot_candidate_coverage.json",
+    "max_rank": 32,
+    "evaluated_tokens": 32,
+    "exact_top1_match_rate": 0.15625,
+    "coverage_at_k": {
+      "1": 0.15625,
+      "2": 0.25,
+      "4": 0.28125,
+      "8": 0.3125,
+      "16": 0.34375,
+      "32": 0.40625,
+      "64": 0.4375,
+      "128": 0.5,
+      "256": 0.59375
+    },
+    "rank_statistics": {
+      "minimum": 1,
+      "maximum": 17533,
+      "mean": 2942.9375
+    },
+    "first_divergence": {
+      "position": 1,
+      "exact_token": 239,
+      "hot_token": 13,
+      "exact_token_rank": 2,
+      "hot_top1_margin": 3.1504335403442383,
+      "exact_logit_gap_from_hot_top1": 3.1504335403442383
+    },
+    "advance_multi_hypothesis": false,
+    "decision": "reject rank-32 hot representation for top-K uncertainty coverage",
+    "rejection_scope": "Reject the tested rank-32 O/down hot representation as the basis of a small top-K uncertainty certificate. First-divergence rank was 2, but top-32 coverage was only 40.625 percent and exact-token mean rank was 2942.9375."
   }
 }
