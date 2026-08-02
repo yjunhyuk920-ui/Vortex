@@ -58,15 +58,31 @@ def aggregate_results(results: Iterable[dict[str, Any]]) -> dict[str, Any]:
     full_session_survivors = [
         point for point in points if point["full_session_4096_pass"]
     ]
-    best = max(
-        points,
-        key=lambda point: (
-            float(point["coverage_at_k"]["32"]),
-            float(point["exact_top1_match_rate"]),
-            -int(point["exact_burnin_tokens"]),
-            -float(point["rank_statistics"]["mean"]),
-        ),
-    )
+
+    # A passing frontier point is an engineering minimum, not a leaderboard.
+    # Prefer the smallest fully passing burn-in because every extra exact token
+    # raises startup traffic and latency. If no point passes, retain the best
+    # diagnostic quality point to guide the next mechanism.
+    if full_session_survivors:
+        best = min(
+            full_session_survivors,
+            key=lambda point: int(point["exact_burnin_tokens"]),
+        )
+    elif warm_survivors:
+        best = min(
+            warm_survivors,
+            key=lambda point: int(point["exact_burnin_tokens"]),
+        )
+    else:
+        best = max(
+            points,
+            key=lambda point: (
+                float(point["coverage_at_k"]["32"]),
+                float(point["exact_top1_match_rate"]),
+                -int(point["exact_burnin_tokens"]),
+                -float(point["rank_statistics"]["mean"]),
+            ),
+        )
     return {
         "evidence_level": "E1 causal exact-burnin local trajectory frontier",
         "model": loaded[0]["model"],
