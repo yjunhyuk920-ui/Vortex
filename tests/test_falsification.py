@@ -7,6 +7,7 @@ from vortex_runtime.falsification import (
     compute_repair_efficiency,
     replace_linear_modules,
     replacement_delta,
+    set_replacement_modes,
     snapshot_replacements,
 )
 
@@ -57,6 +58,38 @@ def test_real_module_replacement_preserves_output_and_measures_hits() -> None:
     assert delta["decode_fast_fraction"] == 1.0
     assert delta["decode_cold_weight_reads"] == 0
     assert delta["rank_growth"] == 0
+
+
+def test_project_mode_is_exact_inside_span_and_exact_mode_bypasses_capsule() -> None:
+    torch.manual_seed(5)
+    model = TinyProjectionModel()
+    weight = model.o_proj.weight.detach().clone()
+    bias = model.o_proj.bias.detach().clone()
+    replacements = replace_linear_modules(
+        model,
+        suffixes=("o_proj",),
+        max_rank=2,
+    )
+    basis = torch.randn(8, 2)
+    build = torch.randn(10, 2) @ basis.T
+    model(build)
+
+    set_replacement_modes(replacements, "project")
+    inside = torch.randn(4, 2) @ basis.T
+    torch.testing.assert_close(
+        model(inside),
+        inside @ weight.T + bias,
+        atol=1e-4,
+        rtol=1e-4,
+    )
+
+    outside = torch.randn(4, 8)
+    projected = model(outside)
+    exact = outside @ weight.T + bias
+    assert not torch.allclose(projected, exact, atol=1e-5, rtol=1e-5)
+
+    set_replacement_modes(replacements, "exact")
+    torch.testing.assert_close(model(outside), exact)
 
 
 def test_phase_counters_separate_prefill_and_decode() -> None:
