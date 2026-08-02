@@ -4,98 +4,118 @@ Last updated: 2026-08-02 (Asia/Seoul)
 
 ## Mandatory first read
 
-Read `docs/PROOF_FIRST_CONTRACT.md` and `AGENTS.md` before proposing or implementing a new architecture.
+Read:
 
-The project previously promoted local prototype successes too aggressively. That process has been corrected. No component result may be described as proof of the 405B/8GiB/4B-speed target unless the evidence level and flagship resource equations justify it.
+- `docs/PROOF_FIRST_CONTRACT.md`
+- `AGENTS.md`
+- `docs/ARCHITECTURE_GATE0_CERTIFICATE.md`
+- `architecture_gate0_budget.json`
+
+The project no longer promotes local prototype behavior into a full-target claim.
 
 ## Current verified evidence level
 
-The repository currently has E1 primitives only:
+The repository has E1 primitives:
 
 1. disk-backed progressive LM-head certification;
 2. tiny-model streamed Llama execution;
 3. tiny-model Jacobi sequence equivalence;
-4. `OnlineAtlasLinear`, which exactly replays inputs inside a cached span using `U` and `WU`;
+4. exact-on-span `OnlineAtlasLinear` replay;
 5. tiny-Llama O/down projection replay with persisted atlas state.
 
-Validation command:
+Validation commands:
 
 ```bash
 python -m pytest -q
 python scripts/run_validation.py
+python scripts/run_architecture_gate0.py
 ```
 
-Last observed result:
+## Architecture Gate 0 analytic candidate
+
+The first complete candidate is `VORTEX-WAVE-1`.
+
+Its model-wide path contains:
+
+- rank-32 INT8 session capsules for every attention/MLP projection and LM head;
+- a row-level embedding cache;
+- rank-64 INT8 summaries for old attention context;
+- an exact BF16 recent KV window;
+- a weight-stationary multi-position proposal block;
+- selective exact BF16 weight/KV repair;
+- final token certification and full exact fallback.
+
+The correctness path is proposed but not implemented. The certificate is an analytic envelope, not an E2 result.
+
+## Populated gate result
+
+Generated result:
 
 ```text
-10 passed
-validation script completed successfully
+status: blocked-mechanism-unproven
+memory total: 4.30497 GiB / 8 GiB
+hot traffic: 1.29249 GiB/token
+projected traffic at design threshold: 2.47674 GiB/token
+traffic gate: 2.83517 GiB/token
+hot compute: 3.53152 GFLOP/token
+projected compute at design threshold: 4.85264 GFLOP/token
+compute gate: 12.13274 GFLOP/token
 ```
 
-These results prove their local tested properties only. They do not prove unseen-prompt generalization, model-wide scaling, a CUDA runtime, 8GiB peak VRAM, or native-4B-class wall-clock behavior.
-
-## Why the previous next task was cancelled
-
-The previous handoff proposed extending Atlas to more projections before establishing the full 405B resource budget. That order is no longer allowed.
-
-An exact-span atlas may grow toward the input dimension, and a model-wide collection of FP32 `U/WU` capsules may exceed the VRAM budget. Hook-based activation analysis also does not measure actual end-to-end replacement speed. Therefore adding Q/K/V and gate/up first would repeat the same implementation-before-proof error.
-
-## Exact next task — Architecture Gate 0
-
-Do not begin by adding more operators.
-
-Produce a complete model-wide candidate execution path and a committed feasibility certificate containing:
+The controlling quantity is repair efficiency:
 
 ```text
-M_hot + M_kv + M_work + M_repair <= 8 GiB
-B_hot + B_cold / A <= 1.2 * B_4B
-C_hot + C_repair / A <= 1.2 * C_4B
+E = committed tokens A / full-model-equivalent repair fraction rho
+required E: 491.29916
+candidate design target: 640
+current observed E: 1.27518
+shortfall: 385.2786x
 ```
 
-The candidate must account for:
+The design target uses `A=160`, `rho=0.25`. Those are threshold values, not observations.
 
-- embeddings and LM head;
-- Q/K/V/O and gate/up/down;
-- RMSNorm, RoPE, attention, softmax, SiLU, residuals;
-- KV storage/offload/compression;
-- persistent runtime representation;
-- cold exact fallback or repair;
-- host/storage/GPU transfer scheduling;
-- CUDA workspaces and allocator reserve;
-- prefill and decode separately;
-- build time, cold start, and warm decode.
+## Exact next task
 
-The certificate must define `A`, the number of committed tokens amortized per cold stream, and show where that number comes from rather than assuming it.
+Implement the smallest real-operation falsification harness for `VORTEX-WAVE-1`.
 
-## Required falsification harness
+The harness must replace actual operations during generation and record, per repair batch:
 
-After the equations are committed, implement only the smallest experiment that measures their unknown terms on a real pretrained 1B–3B model.
+```text
+proposed positions
+committed causal-prefix tokens A
+exact weight bytes read
+exact KV bytes read
+rho
+E = A / rho
+hot bytes/token
+peak device memory
+wall-clock/token
+exact-token agreement
+```
 
-The test must:
+Requirements:
 
-1. replace the real operation during generation rather than use hooks alone;
-2. use disjoint build and evaluation prompts;
-3. record actual bytes/token, compute/token, fallback rate, representation growth, peak memory, token agreement, and wall-clock;
-4. compare against the exact target path and a native 4B-class baseline where applicable;
-5. reject the architecture when the measured scaling slope cannot close the flagship inequalities.
+1. real pretrained 1B–3B causal model;
+2. disjoint build and evaluation prompts;
+3. actual operation replacement, not hooks alone;
+4. exact committed-token agreement;
+5. machine-readable raw output;
+6. reject the candidate if measured `E < 300` after planned repair sweeps;
+7. promote toward E2 only if measured `E >= 600` with the other resource gates intact.
+
+## Files added for Gate 0
+
+- `vortex_runtime/feasibility.py`
+- `scripts/run_architecture_gate0.py`
+- `tests/test_feasibility.py`
+- `tests/test_gate0_budget_file.py`
+- `architecture_gate0_budget.json`
+- `docs/ARCHITECTURE_GATE0_CERTIFICATE.md`
 
 ## Communication rule
 
-Until E4 completion, report only the exact evidence level and tested scope.
+Current status must be described as:
 
-Correct example:
+> E0/E1: VORTEX-WAVE-1 has a model-wide analytic envelope whose memory, traffic, and compute equations close only at a repair-efficiency threshold that is not yet measured. The observed mechanism is currently 385x below that threshold.
 
-> E1: Atlas replayed selected tiny-model projections on a previously built activation span. Full-target feasibility is not established.
-
-Forbidden example:
-
-> The core solution works and will make 405B run at 4B speed.
-
-## Files that must change in the next architecture session
-
-- a new feasibility-certificate document with formulas and populated budgets;
-- a machine-readable budget JSON;
-- a falsification script for the unknown terms;
-- tests for the budget calculations;
-- this handoff document after the experiment;
-- `docs/ARCHITECTURE.md` only after the candidate passes Architecture Gate 0.
+Do not describe the target as feasible until the required evidence gates pass.
