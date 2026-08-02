@@ -28,6 +28,12 @@ def generate_report(root: Path) -> dict[str, object]:
         oracle_path=(
             root / "results/tinyllama_1_1b_rank32_repair_oracles.json"
         ),
+        residual_path=(
+            root / "results/tinyllama_1_1b_residual_tile_oracle.json"
+        ),
+        adjoint_path=(
+            root / "results/tinyllama_1_1b_adjoint_tile_oracle.json"
+        ),
     )
 
 
@@ -49,15 +55,36 @@ def main() -> None:
         "traffic_limit_gib_per_token": report["traffic"][
             "limit_gib_per_token"
         ],
+        "projected_compute_gflop_per_token": report["compute"][
+            "projected_gflop_per_token"
+        ],
+        "compute_limit_gflop_per_token": report["compute"][
+            "limit_gflop_per_token"
+        ],
+        "candidate_repair_fraction": report["compute"][
+            "candidate_repair_fraction"
+        ],
+        "maximum_compute_repair_fraction": report["compute"][
+            "maximum_repair_fraction"
+        ],
         "required_repair_efficiency": report["mechanism"][
             "required_tokens_per_full_repair_equivalent"
         ],
         "observed_repair_efficiency": report["mechanism"]["observed"],
-        "shortfall_factor": report["mechanism"]["shortfall_factor"],
+        "observed_repair_fraction": report["mechanism"][
+            "observed_repair_fraction"
+        ],
+        "traffic_shortfall_factor": report["mechanism"][
+            "traffic_shortfall_factor"
+        ],
+        "compute_excess_factor": report["mechanism"][
+            "compute_excess_factor"
+        ],
         "observed_component_decision": report.get(
             "observed_component_decision"
         ),
         "rejected_mechanisms": report.get("rejected_mechanisms", []),
+        "next_candidate": report.get("next_candidate"),
     }
     print(output)
     print(json.dumps(summary, indent=2, allow_nan=False))
