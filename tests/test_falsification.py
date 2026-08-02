@@ -31,17 +31,15 @@ def test_real_module_replacement_preserves_output_and_measures_hits() -> None:
         max_rank=4,
     )
     basis = torch.randn(8, 2)
-    build = torch.randn(16, 2) @ basis.T
+    build = torch.randn(1, 16, 2) @ basis.T
     eval_rows = torch.randn(12, 2) @ basis.T
 
-    for row in build:
-        expected = reference_weight @ row + reference_bias
-        torch.testing.assert_close(
-            model(row),
-            expected,
-            atol=1e-5,
-            rtol=1e-5,
-        )
+    torch.testing.assert_close(
+        model(build),
+        build @ reference_weight.T + reference_bias,
+        atol=1e-5,
+        rtol=1e-5,
+    )
 
     before = snapshot_replacements(replacements)
     for row in eval_rows:
@@ -56,8 +54,28 @@ def test_real_module_replacement_preserves_output_and_measures_hits() -> None:
     delta = replacement_delta(after, before)["o_proj"]
 
     assert delta["fast_fraction"] == 1.0
-    assert delta["cold_weight_reads"] == 0
+    assert delta["decode_fast_fraction"] == 1.0
+    assert delta["decode_cold_weight_reads"] == 0
     assert delta["rank_growth"] == 0
+
+
+def test_phase_counters_separate_prefill_and_decode() -> None:
+    torch.manual_seed(9)
+    model = TinyProjectionModel()
+    replacements = replace_linear_modules(
+        model,
+        suffixes=("o_proj",),
+        max_rank=8,
+    )
+
+    model(torch.randn(1, 3, 8))
+    model(torch.randn(1, 1, 8))
+    snapshot = snapshot_replacements(replacements)["o_proj"]
+
+    assert snapshot.prefill_vectors == 3
+    assert snapshot.decode_vectors == 1
+    assert snapshot.prefill_cold_weight_reads == 1
+    assert snapshot.decode_cold_weight_reads == 1
 
 
 def test_repair_efficiency_uses_full_model_equivalent_fraction() -> None:
