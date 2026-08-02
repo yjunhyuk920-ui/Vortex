@@ -39,6 +39,17 @@ class MarginBoundProfile:
         }
 
 
+def cauchy_margin_bound(
+    *,
+    weight_energy: float,
+    gradient_energy: float,
+    residual_energy: float,
+) -> float:
+    if min(weight_energy, gradient_energy, residual_energy) < 0:
+        raise ValueError("energies must be non-negative")
+    return sqrt(weight_energy * gradient_energy * residual_energy)
+
+
 def _tile_energy(
     tensor: torch.Tensor,
     *,
@@ -221,7 +232,11 @@ def profile_proposal_margin_bounds(
                 weight_sq = float(weight_energy[row_index, col_index].item())
                 grad_sq = float(gradient_energy[row_index].item())
                 residual_sq = float(residual_energy[col_index].item())
-                bound = sqrt(max(0.0, weight_sq * grad_sq * residual_sq))
+                bound = cauchy_margin_bound(
+                    weight_energy=weight_sq,
+                    gradient_energy=grad_sq,
+                    residual_energy=residual_sq,
+                )
                 candidates.append(
                     {
                         "module": name,
