@@ -1,0 +1,10 @@
+[
+  "Design a thread-safe least recently used cache in C# and explain the synchronization choices.",
+  "한국어로 PLM 시스템에서 BOM 정합성을 검증하는 절차를 단계별로 설명해줘.",
+  "Solve 3x + 7 = 25, then verify the answer by substitution.",
+  "Return only JSON matching this schema: {name: string, priority: integer, blocked: boolean}.",
+  "Explain why memory bandwidth limits batch-one transformer decoding even when arithmetic throughput is high.",
+  "Translate into English: 신규 배포 이후 오류율이 증가하면 즉시 이전 버전으로 복구해야 합니다.",
+  "Write a SQL query that finds duplicate item numbers and returns each duplicate count.",
+  "Plan a migration from a monolith to services while preserving rollback capability and auditability."
+]

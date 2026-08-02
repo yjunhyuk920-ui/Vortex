@@ -1,0 +1,10 @@
+[
+  "Explain how a hash table resolves collisions and compare chaining with open addressing.",
+  "다음 요구사항을 만족하는 재고 관리 API의 데이터 모델을 설계해줘.",
+  "Write a Python function that topologically sorts a directed acyclic graph and explain its complexity.",
+  "A train travels 180 km in 2.5 hours. Derive its average speed and show each calculation.",
+  "Translate this sentence into natural Korean: The deployment was rolled back because the new cache policy increased tail latency.",
+  "Create a valid JSON object describing a software release with version, risks, mitigations, and owners.",
+  "Explain the difference between optimistic and pessimistic database locking with a concrete transaction example.",
+  "Summarize the causes and consequences of the industrial revolution without using bullet points."
+]
