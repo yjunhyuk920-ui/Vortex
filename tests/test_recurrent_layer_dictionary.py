@@ -41,7 +41,7 @@ def test_uniform_nearest_schedule_for_tinyllama_depth() -> None:
     assert schedule.assignment[-1] == 21
 
 
-def test_single_node_recurrent_draft_fails_hbm_gate() -> None:
+def test_single_stream_recurrent_draft_fails_latency_gate() -> None:
     target, baseline = default_specs()
     budget = recurrent_draft_budget(
         target=target,
@@ -57,13 +57,15 @@ def test_single_node_recurrent_draft_fails_hbm_gate() -> None:
     )
     assert budget.memory_pass
     assert budget.compute_pass
-    assert not budget.traffic_pass
+    assert not budget.latency_pass
+    assert not budget.throughput_pass
     assert not budget.pass_all
-    assert budget.minimum_parallel_nodes == 85
-    assert budget.recurrent_weight_read_gib_per_wave > 180
+    assert budget.minimum_parallel_nodes_for_throughput == 85
+    assert budget.recurrent_weight_read_gib_per_decode_step > 180
+    assert budget.single_stream_projected_seconds_per_token > 0.6
 
 
-def test_parallel_wave_can_amortize_recurrent_hbm_reads() -> None:
+def test_parallel_wave_improves_throughput_not_single_user_latency() -> None:
     target, baseline = default_specs()
     budget = recurrent_draft_budget(
         target=target,
@@ -79,6 +81,8 @@ def test_parallel_wave_can_amortize_recurrent_hbm_reads() -> None:
     )
     assert budget.memory_pass
     assert budget.compute_pass
-    assert budget.traffic_pass
-    assert budget.pass_all
-    assert budget.projected_seconds_per_token <= budget.allowed_seconds_per_token
+    assert budget.throughput_pass
+    assert not budget.latency_pass
+    assert not budget.pass_all
+    assert budget.throughput_projected_seconds_per_node <= budget.allowed_seconds_per_token
+    assert budget.single_stream_projected_seconds_per_token > budget.allowed_seconds_per_token
