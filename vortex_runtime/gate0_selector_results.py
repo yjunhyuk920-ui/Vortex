@@ -17,6 +17,9 @@ DEFAULT_PREFILL_COMPILED = Path(
 DEFAULT_CANDIDATE_COVERAGE = Path(
     "results/tinyllama_1_1b_hot_candidate_coverage.json"
 )
+DEFAULT_RANK_FRONTIER = Path(
+    "results/tinyllama_1_1b_hot_rank_frontier.json"
+)
 
 
 def _portable_source(path: Path) -> str:
@@ -88,8 +91,78 @@ def _attach_candidate_coverage(
         )
         report["next_candidate"] = (
             "sweep the complete 405B-feasible capsule-rank frontier through "
-            "rank 128; if coverage remains below threshold, reject the global "
-            "low-rank O/down representation family"
+            "rank 72; hot capsule traffic, not memory or arithmetic, is the "
+            "binding rank constraint"
+        )
+    return report
+
+
+def _attach_rank_frontier(
+    report: dict[str, Any],
+    source: Path,
+) -> dict[str, Any]:
+    if not source.exists():
+        return report
+    result = json.loads(source.read_text(encoding="utf-8"))
+    survivors = result.get("surviving_points", [])
+    passed = bool(survivors)
+    points = [
+        {
+            "rank": int(point["rank"]),
+            "memory_gib": float(point["budget"]["memory_gib"]),
+            "hot_traffic_gib_per_token": float(
+                point["budget"]["hot_traffic_gib_per_token"]
+            ),
+            "hot_compute_gflop_per_token": float(
+                point["budget"]["hot_compute_gflop_per_token"]
+            ),
+            "exact_top1_match_rate": float(point["exact_top1_match_rate"]),
+            "top32_coverage": float(point["coverage_at_k"]["32"]),
+            "mean_exact_token_rank": float(point["rank_statistics"]["mean"]),
+            "qualifies": bool(point["qualifies_for_multi_hypothesis"]),
+        }
+        for point in result["points"]
+    ]
+    report["hot_rank_frontier"] = {
+        "evidence_level": result["evidence_level"],
+        "source": _portable_source(source),
+        "binding_budget": result.get("binding_budget"),
+        "fixed_405b_aligned_maximum_rank": int(
+            result["fixed_405b_aligned_maximum_rank"]
+        ),
+        "tested_ranks": result["tested_ranks"],
+        "points": points,
+        "surviving_ranks": [int(point["rank"]) for point in survivors],
+        "pass": passed,
+        "decision": result["decision"],
+        "next_candidate": result["next_candidate"],
+    }
+    report["gates"]["feasible_rank_frontier"] = passed
+
+    if passed:
+        lowest = min(int(point["rank"]) for point in survivors)
+        report["status"] = "feasible-rank-multihypothesis-candidate"
+        report["observed_component_decision"] = (
+            f"A 405B-budget-compatible rank {lowest} capsule preserves the exact "
+            "token inside the required top-32 candidate set."
+        )
+        report["next_candidate"] = (
+            f"build and falsify a causal multi-hypothesis certificate at rank {lowest}"
+        )
+    else:
+        rejected = report.setdefault("rejected_mechanisms", [])
+        name = "global low-rank O/down capsule through traffic-feasible rank 72"
+        if name not in rejected:
+            rejected.append(name)
+        report["status"] = "global-low-rank-o-down-representation-rejected"
+        report["observed_component_decision"] = (
+            "Reject the global low-rank O/down activation-subspace capsule: no "
+            "rank through the hot-traffic-bound 405B maximum of 72 preserved "
+            "the exact token with the required top-32 coverage."
+        )
+        report["next_candidate"] = (
+            "test a block-local trajectory basis against the simultaneous "
+            "traffic requirement A >= 492 and compute requirement A/r >= 73"
         )
     return report
 
@@ -101,6 +174,7 @@ def apply_selector_falsifications(
     margin_bound_path: str | Path = DEFAULT_MARGIN_BOUND,
     prefill_compiled_path: str | Path = DEFAULT_PREFILL_COMPILED,
     candidate_coverage_path: str | Path = DEFAULT_CANDIDATE_COVERAGE,
+    rank_frontier_path: str | Path = DEFAULT_RANK_FRONTIER,
 ) -> dict[str, Any]:
     """Attach causal selector and hot-representation falsification evidence."""
 
@@ -172,4 +246,5 @@ def apply_selector_falsifications(
             "multi-hypothesis uncertainty certificate"
         )
 
-    return _attach_candidate_coverage(report, Path(candidate_coverage_path))
+    report = _attach_candidate_coverage(report, Path(candidate_coverage_path))
+    return _attach_rank_frontier(report, Path(rank_frontier_path))
