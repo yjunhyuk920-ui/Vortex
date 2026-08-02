@@ -1,0 +1,127 @@
+name: Recurrent diagonal transport gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/diagonal_transport.py"
+      - "scripts/run_diagonal_transport_gate.py"
+      - "tests/test_diagonal_transport.py"
+      - "docs/EXPERIMENT_013_RECURRENT_DIAGONAL_TRANSPORT.md"
+      - ".github/workflows/recurrent-diagonal-transport.yml"
+
+concurrency:
+  group: recurrent-diagonal-transport-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/recurrent-diagonal-transport'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate diagonal transport primitives
+        run: |
+          python -m pytest -q \
+            tests/test_diagonal_transport.py \
+            tests/test_recurrent_layer_dictionary.py \
+            tests/test_substitute_draft_budget.py \
+            tests/test_speculative_tree_gate.py
+      - name: Measure uniform-nearest transport
+        run: |
+          python scripts/run_diagonal_transport_gate.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --bits 4 \
+            --unique-layers 3 \
+            --representative-strategy uniform \
+            --assignment-strategy nearest \
+            --fit-iterations 2 \
+            --scale-limit 16 \
+            --metadata-bits 16 \
+            --tokens 32 \
+            --tree-depth 12 \
+            --top-k 32 \
+            --beam-width 64 \
+            --node-budget 1024 \
+            --eval-batch-size 8 \
+            --row-chunk 128 \
+            --workspace-gib 1 \
+            --memory-limit-gib 8 \
+            --draft-effective-tops 160 \
+            --host-to-device-gib-s 24 \
+            --target-hot-effective-tops 160 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output diagonal-transport.json
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("diagonal-transport.json").read_text())
+          report = {
+              "schedule": data["schedule"]["strategy"],
+              "weight_error_before": data["transport_fit"][
+                  "element_weighted_baseline_relative_error"
+              ],
+              "weight_error_after": data["transport_fit"][
+                  "element_weighted_adapted_relative_error"
+              ],
+              "teacher_top1": data["teacher_forced_adapted"]["top1_rate"],
+              "teacher_top32": data["teacher_forced_adapted"]["top32_rate"],
+              "autoregressive_prefix": data["autoregressive_exact_prefix"],
+              "tree_exact_prefix": data["tree"][
+                  "optimistic_committed_exact_prefix"
+              ],
+              "projected_total_gib": data["405b_projection"][
+                  "total_gib_including_workspace"
+              ],
+              "qualifies": data["qualifies"],
+              "decision": data["decision"],
+          }
+          Path("diagonal-transport-comment.md").write_text(
+              "## Recurrent diagonal transport gate\n\n```json\n"
+              + json.dumps(report, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+          gh pr comment "$PR_NUMBER" --body-file diagonal-transport-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-recurrent-diagonal-transport
+          path: diagonal-transport.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_recurrent_diagonal_transport.json
+          mkdir -p results
+          cp diagonal-transport.json "$path"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(gate): commit recurrent diagonal transport result"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
