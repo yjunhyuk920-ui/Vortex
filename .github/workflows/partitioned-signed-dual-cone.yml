@@ -1,0 +1,156 @@
+name: Partitioned signed dual cone gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/partitioned_signed_dual.py"
+      - "vortex_runtime/decision_trace.py"
+      - "scripts/run_partitioned_signed_dual_cone.py"
+      - "tests/test_partitioned_signed_dual.py"
+      - "experiments/signed_dual_prompts.json"
+      - "docs/EXPERIMENT_032_PARTITIONED_SIGNED_DUAL_CONE.md"
+      - ".github/workflows/partitioned-signed-dual-cone.yml"
+
+concurrency:
+  group: partitioned-signed-dual-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/partitioned-signed-dual-cone'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix:
+        block_size: [128, 256, 512]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate partitioned cone
+        run: |
+          test -f tests/test_signed_dual_mlp.py
+          test -f tests/test_partitioned_signed_dual.py
+          python -m pytest -q \
+            tests/test_signed_dual_mlp.py \
+            tests/test_partitioned_signed_dual.py
+      - name: Measure block frontier point
+        run: |
+          python scripts/run_partitioned_signed_dual_cone.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --prompts experiments/signed_dual_prompts.json \
+            --bits 8 \
+            --block-size ${{ matrix.block_size }} \
+            --metadata-bits 8 \
+            --metadata-limit-gib 2.5 \
+            --margin-share 0.5 \
+            --device cpu \
+            --output results/tinyllama_1_1b_partitioned_signed_dual_b${{ matrix.block_size }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: partitioned-signed-dual-${{ matrix.block_size }}
+          path: results/tinyllama_1_1b_partitioned_signed_dual_b${{ matrix.block_size }}.json
+
+  aggregate:
+    if: github.head_ref == 'research/partitioned-signed-dual-cone'
+    needs: measure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: partitioned-signed-dual-*
+          path: downloaded
+          merge-multiple: true
+      - name: Aggregate frontier
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          points = []
+          for path in sorted(Path("downloaded").glob("*.json")):
+              payload = json.loads(path.read_text(encoding="utf-8"))
+              summary = payload["summary"]
+              points.append(
+                  {
+                      "block_size": payload["block_size"],
+                      "metadata_gib": payload["metadata_budget"]["metadata_gib"],
+                      "mean_refined_fraction": summary["mean_refined_fraction"],
+                      "maximum_refined_fraction": summary["maximum_refined_fraction"],
+                      "maximum_exact_gib_per_token": summary["maximum_exact_gib_per_token"],
+                      "gate_radius_ratio": summary["mean_gate_radius_ratio"],
+                      "up_radius_ratio": summary["mean_up_radius_ratio"],
+                      "directional_radius_ratio": summary["mean_directional_radius_ratio"],
+                      "unsafe_certificates": summary["unsafe_certificates"],
+                      "interval_failures": summary["interval_failures"],
+                      "qualifies": payload["qualifies"],
+                  }
+              )
+          points.sort(key=lambda point: point["block_size"])
+          promoted = [point["block_size"] for point in points if point["qualifies"]]
+          combined = {
+              "evidence_level": "E1/E2 optimistic partitioned signed dual frontier",
+              "points": points,
+              "promoted_block_sizes": promoted,
+              "decision": (
+                  "advance partitioned cone to runtime dual transport"
+                  if promoted
+                  else "reject norm-only partitioned residual metadata"
+              ),
+              "next_candidate": (
+                  "construct signed residual projection codes per block"
+                  if not promoted
+                  else "replace exact oracle duals with causal interval transport"
+              ),
+          }
+          output = Path("results/tinyllama_1_1b_partitioned_signed_dual_frontier.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(json.dumps(combined, indent=2), encoding="utf-8")
+          Path("partitioned-comment.md").write_text(
+              "## Partitioned signed dual cone gate\n\n```json\n"
+              + json.dumps(combined, indent=2)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file partitioned-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: partitioned-signed-dual-frontier
+          path: results/tinyllama_1_1b_partitioned_signed_dual_frontier.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_partitioned_signed_dual_frontier.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit partitioned signed dual cone"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
