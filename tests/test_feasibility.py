@@ -20,6 +20,19 @@ def test_default_candidate_is_rejected_by_corrected_compute_accounting() -> None
     assert report["compute"]["maximum_repair_fraction"] < 0.011
 
 
+def test_proposal_margin_selector_compute_reduces_repair_headroom() -> None:
+    report = default_gate0_report()
+    selector = report["selector_compute"]
+    assert selector["backward_total_gflop_per_token"] > 4.0
+    assert selector["hot_plus_selector_gflop_per_token"] > 7.5
+    assert (
+        selector["maximum_repair_fraction"]
+        < report["compute"]["maximum_repair_fraction"]
+    )
+    assert 0.005 < selector["maximum_repair_fraction"] < 0.006
+    assert 4.0 < selector["maximum_selected_weight_gib"] < 4.1
+
+
 def test_memory_gate_rejects_large_capsule_rank() -> None:
     target, baseline = default_specs()
     report = architecture_gate0_report(
