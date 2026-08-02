@@ -9,6 +9,10 @@ on:
       - "scripts/run_oracle_block_shared_gate.py"
       - ".github/workflows/block-shared-combined-gate.yml"
 
+concurrency:
+  group: block-shared-combined-gate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pull-requests: write
