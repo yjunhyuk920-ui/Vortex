@@ -1,7 +1,7 @@
 {
   "evidence_level": "E0/E1",
   "candidate": "VORTEX-WAVE-1",
-  "status": "quantized-global-frontier-insufficient",
+  "status": "uniform-precision-hybrid-insufficient",
   "accounting_contract": {
     "traffic": "selected cold bytes are divided by committed block tokens",
     "compute": "selected exact arithmetic is charged every token and is not divided by committed block tokens",
@@ -149,7 +149,8 @@
     "rank32_topk_coverage": false,
     "feasible_rank_frontier_8bit": false,
     "session_prefill_response_basis": false,
-    "precision_rank_frontier": false
+    "precision_rank_frontier": false,
+    "hybrid_allocation_frontier": false
   },
   "logical_oracle": {
     "evidence_level": "E1 exact-target block-shared combined oracle",
@@ -182,7 +183,7 @@
     "compute_pass": true,
     "memory_pass": true
   },
-  "observed_component_decision": "No tested quantized global capsule reached the 95-percent top-32 coverage gate. The largest actually constructed rank was 93, so requested ranks above it are not treated as independent falsification points.",
+  "observed_component_decision": "The causal hybrid improved the best top-32 coverage to 0.687500, but remained below 0.95.",
   "rejected_mechanisms": [
     "exact-span Atlas warm-decode fast path",
     "rank-32 approximate capsule plus exact layer-suffix repair",
@@ -197,9 +198,10 @@
     "rank-32 O/down hot representation for small top-K uncertainty",
     "generic-build-prompt 8-bit O/down capsule through rank 72",
     "prompt-only rank-45 session response basis without adaptive growth",
-    "independently quantized generic global O/down capsules at the tested 8/6/4-bit precision-rank frontier"
+    "independently quantized generic global O/down capsules at the tested 8/6/4-bit precision-rank frontier",
+    "uniform-precision global plus exact-prompt residual hybrid at the tested 6/4-bit allocations"
   ],
-  "next_candidate": "augment a 4-bit global prior with exact-prompt residual directions inside the rank-136 Gate, then measure unseen continuation coverage",
+  "next_candidate": "preserve session residual columns at higher precision than the generic prior, then allocate session directions non-uniformly by module benefit per packed byte",
   "selector_falsification": {
     "residual_energy": {
       "evidence_level": "E1 target-independent block selector falsification",
@@ -566,5 +568,156 @@
     "pass": false,
     "decision": "reject tested quantized global capsule frontier",
     "next_candidate": "combine the best quantized global prior with prompt-specific session directions, then test block-local adaptive growth"
+  },
+  "hybrid_allocation_frontier": {
+    "evidence_level": "E1 causal quantized hybrid allocation frontier",
+    "source": "results/tinyllama_1_1b_hybrid_allocation_frontier.json",
+    "causal_contract": "The generic global prior uses only fixed disjoint build prompts. Session residual directions use only exact user-prompt prefill inputs and outputs. Unseen continuation targets are evaluation-only.",
+    "points": [
+      {
+        "global_rank_limit": 56,
+        "total_rank_limit": 96,
+        "capsule_bits": 6,
+        "global_rank_statistics": {
+          "minimum": 56,
+          "maximum": 56,
+          "mean": 56.0
+        },
+        "added_session_rank_statistics": {
+          "minimum": 39,
+          "maximum": 40,
+          "mean": 39.54545454545455
+        },
+        "final_rank_statistics": {
+          "minimum": 95,
+          "maximum": 96,
+          "mean": 95.54545454545455
+        },
+        "maximum_final_prompt_output_relative_error": 0.2848438620567322,
+        "maximum_quantized_relative_l2_error": 0.20639196038246155,
+        "exact_top1_match_rate": 0.375,
+        "top32_coverage": 0.6875,
+        "mean_exact_token_rank": 290.09375,
+        "maximum_exact_token_rank": 8410,
+        "first_divergence_exact_token_rank": 5,
+        "qualifies": false
+      },
+      {
+        "global_rank_limit": 64,
+        "total_rank_limit": 136,
+        "capsule_bits": 4,
+        "global_rank_statistics": {
+          "minimum": 64,
+          "maximum": 64,
+          "mean": 64.0
+        },
+        "added_session_rank_statistics": {
+          "minimum": 39,
+          "maximum": 43,
+          "mean": 39.84090909090909
+        },
+        "final_rank_statistics": {
+          "minimum": 103,
+          "maximum": 107,
+          "mean": 103.8409090909091
+        },
+        "maximum_final_prompt_output_relative_error": 0.28407081961631775,
+        "maximum_quantized_relative_l2_error": 0.5704038143157959,
+        "exact_top1_match_rate": 0.34375,
+        "top32_coverage": 0.65625,
+        "mean_exact_token_rank": 327.59375,
+        "maximum_exact_token_rank": 9634,
+        "first_divergence_exact_token_rank": 8,
+        "qualifies": false
+      },
+      {
+        "global_rank_limit": 88,
+        "total_rank_limit": 136,
+        "capsule_bits": 4,
+        "global_rank_statistics": {
+          "minimum": 88,
+          "maximum": 88,
+          "mean": 88.0
+        },
+        "added_session_rank_statistics": {
+          "minimum": 39,
+          "maximum": 43,
+          "mean": 40.20454545454545
+        },
+        "final_rank_statistics": {
+          "minimum": 127,
+          "maximum": 131,
+          "mean": 128.20454545454547
+        },
+        "maximum_final_prompt_output_relative_error": 0.5755978226661682,
+        "maximum_quantized_relative_l2_error": 0.567952036857605,
+        "exact_top1_match_rate": 0.34375,
+        "top32_coverage": 0.65625,
+        "mean_exact_token_rank": 518.0625,
+        "maximum_exact_token_rank": 13264,
+        "first_divergence_exact_token_rank": 21,
+        "qualifies": false
+      },
+      {
+        "global_rank_limit": 96,
+        "total_rank_limit": 136,
+        "capsule_bits": 4,
+        "global_rank_statistics": {
+          "minimum": 93,
+          "maximum": 93,
+          "mean": 93.0
+        },
+        "added_session_rank_statistics": {
+          "minimum": 39,
+          "maximum": 43,
+          "mean": 40.27272727272727
+        },
+        "final_rank_statistics": {
+          "minimum": 132,
+          "maximum": 136,
+          "mean": 133.27272727272728
+        },
+        "maximum_final_prompt_output_relative_error": 0.28800317645072937,
+        "maximum_quantized_relative_l2_error": 0.5686726570129395,
+        "exact_top1_match_rate": 0.34375,
+        "top32_coverage": 0.625,
+        "mean_exact_token_rank": 562.5625,
+        "maximum_exact_token_rank": 14804,
+        "first_divergence_exact_token_rank": 7,
+        "qualifies": false
+      }
+    ],
+    "best_observed_point": {
+      "global_rank_limit": 56,
+      "total_rank_limit": 96,
+      "capsule_bits": 6,
+      "global_rank_statistics": {
+        "minimum": 56,
+        "maximum": 56,
+        "mean": 56.0
+      },
+      "added_session_rank_statistics": {
+        "minimum": 39,
+        "maximum": 40,
+        "mean": 39.54545454545455
+      },
+      "final_rank_statistics": {
+        "minimum": 95,
+        "maximum": 96,
+        "mean": 95.54545454545455
+      },
+      "maximum_final_prompt_output_relative_error": 0.2848438620567322,
+      "maximum_quantized_relative_l2_error": 0.20639196038246155,
+      "exact_top1_match_rate": 0.375,
+      "top32_coverage": 0.6875,
+      "mean_exact_token_rank": 290.09375,
+      "maximum_exact_token_rank": 8410,
+      "first_divergence_exact_token_rank": 5,
+      "qualifies": false
+    },
+    "surviving_points": [],
+    "pass": false,
+    "decision": "reject tested global-plus-session allocations",
+    "next_candidate": "allocate prompt residual directions non-uniformly by module benefit per byte, then test online state-conditional capsules"
   }
 }
