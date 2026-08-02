@@ -56,7 +56,7 @@ def select_stable_precision_stage(
         expected_stage += 1
         previous_fraction = observation.cumulative_layer_fraction
 
-    for previous, current in zip(observations, observations[1:], strict=True):
+    for previous, current in zip(observations, observations[1:]):
         if previous.token == current.token and current.margin >= margin_threshold:
             return PrecisionRouteDecision(
                 accepted=True,
