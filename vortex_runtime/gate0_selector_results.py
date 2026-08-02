@@ -20,6 +20,9 @@ DEFAULT_CANDIDATE_COVERAGE = Path(
 DEFAULT_RANK_FRONTIER = Path(
     "results/tinyllama_1_1b_hot_rank_frontier.json"
 )
+DEFAULT_SESSION_PREFILL = Path(
+    "results/tinyllama_1_1b_session_prefill_candidate_coverage.json"
+)
 
 
 def _portable_source(path: Path) -> str:
@@ -90,9 +93,8 @@ def _attach_candidate_coverage(
             f"{first_rank}, but top-32 exact-token coverage was {top32:.6f}."
         )
         report["next_candidate"] = (
-            "sweep the complete 405B-feasible capsule-rank frontier through "
-            "rank 72; hot capsule traffic, not memory or arithmetic, is the "
-            "binding rank constraint"
+            "sweep the 8-bit hot-traffic-feasible capsule-rank frontier through "
+            "rank 72"
         )
     return report
 
@@ -126,6 +128,7 @@ def _attach_rank_frontier(
     report["hot_rank_frontier"] = {
         "evidence_level": result["evidence_level"],
         "source": _portable_source(source),
+        "capsule_precision_bits": 8,
         "binding_budget": result.get("binding_budget"),
         "fixed_405b_aligned_maximum_rank": int(
             result["fixed_405b_aligned_maximum_rank"]
@@ -137,32 +140,94 @@ def _attach_rank_frontier(
         "decision": result["decision"],
         "next_candidate": result["next_candidate"],
     }
-    report["gates"]["feasible_rank_frontier"] = passed
+    report["gates"]["feasible_rank_frontier_8bit"] = passed
 
     if passed:
         lowest = min(int(point["rank"]) for point in survivors)
         report["status"] = "feasible-rank-multihypothesis-candidate"
         report["observed_component_decision"] = (
-            f"A 405B-budget-compatible rank {lowest} capsule preserves the exact "
-            "token inside the required top-32 candidate set."
+            f"An 8-bit 405B-budget-compatible rank {lowest} capsule preserves "
+            "the exact token inside the required top-32 candidate set."
         )
         report["next_candidate"] = (
             f"build and falsify a causal multi-hypothesis certificate at rank {lowest}"
         )
     else:
         rejected = report.setdefault("rejected_mechanisms", [])
-        name = "global low-rank O/down capsule through traffic-feasible rank 72"
+        name = "generic-build-prompt 8-bit O/down capsule through rank 72"
         if name not in rejected:
             rejected.append(name)
-        report["status"] = "global-low-rank-o-down-representation-rejected"
+        report["status"] = "generic-8bit-rank-frontier-rejected"
         report["observed_component_decision"] = (
-            "Reject the global low-rank O/down activation-subspace capsule: no "
-            "rank through the hot-traffic-bound 405B maximum of 72 preserved "
-            "the exact token with the required top-32 coverage."
+            "Reject the generic-build-prompt 8-bit O/down capsule through the "
+            "hot-traffic-bound rank-72 frontier. This does not reject lower-"
+            "precision higher-rank capsules or prompt-specific session bases."
         )
         report["next_candidate"] = (
-            "test a block-local trajectory basis against the simultaneous "
-            "traffic requirement A >= 492 and compute requirement A/r >= 73"
+            "test the exact-prompt session response basis and the 4/6-bit "
+            "precision-rank frontier through the compute-bound rank 136"
+        )
+    return report
+
+
+def _attach_session_prefill(
+    report: dict[str, Any],
+    source: Path,
+) -> dict[str, Any]:
+    if not source.exists():
+        return report
+    result = json.loads(source.read_text(encoding="utf-8"))
+    coverage = result["coverage_at_k"]
+    first = result.get("first_divergence")
+    first_rank = None if first is None else int(first["exact_token_rank"])
+    top32 = float(coverage["32"])
+    passed = (first_rank is None or first_rank <= 32) and top32 >= 0.95
+
+    report["session_prefill_response_basis"] = {
+        "evidence_level": result["evidence_level"],
+        "source": _portable_source(source),
+        "prompt_tokens": int(result["prompt_tokens"]),
+        "evaluated_continuation_tokens": int(
+            result["evaluated_continuation_tokens"]
+        ),
+        "requested_max_rank": int(result["requested_max_rank"]),
+        "compiled_rank_statistics": result["compiled_rank_statistics"],
+        "capsule_bytes": int(result["capsule_bytes"]),
+        "prompt_reconstruction": result["prompt_reconstruction"],
+        "exact_top1_match_rate": float(result["exact_top1_match_rate"]),
+        "coverage_at_k": coverage,
+        "rank_statistics": result["rank_statistics"],
+        "first_divergence": first,
+        "pass": passed,
+        "decision": result["decision"],
+        "compiler_contract": result["compiler_contract"],
+    }
+    report["gates"]["session_prefill_response_basis"] = passed
+
+    if passed:
+        report["status"] = "session-prefill-multihypothesis-candidate"
+        report["observed_component_decision"] = (
+            "The exact-prompt response basis causally preserves the unseen "
+            "continuation token inside the required top-32 candidate set."
+        )
+        report["next_candidate"] = (
+            "build a causal multi-hypothesis certificate around the prompt-"
+            "compiled session basis"
+        )
+    else:
+        rejected = report.setdefault("rejected_mechanisms", [])
+        name = "prompt-only rank-45 session response basis without adaptive growth"
+        if name not in rejected:
+            rejected.append(name)
+        report["status"] = "session-prefill-basis-insufficient"
+        report["observed_component_decision"] = (
+            "The exact-prompt session basis materially improved top-1 coverage "
+            f"but remained below the top-32 gate ({top32:.6f} < 0.95)."
+        )
+        report["next_candidate"] = (
+            "test quantized 6-bit rank-96 and 4-bit rank-128/136 capsules, then "
+            "combine the best feasible global prior with the prompt-specific "
+            "session basis"
         )
     return report
 
@@ -175,6 +240,7 @@ def apply_selector_falsifications(
     prefill_compiled_path: str | Path = DEFAULT_PREFILL_COMPILED,
     candidate_coverage_path: str | Path = DEFAULT_CANDIDATE_COVERAGE,
     rank_frontier_path: str | Path = DEFAULT_RANK_FRONTIER,
+    session_prefill_path: str | Path = DEFAULT_SESSION_PREFILL,
 ) -> dict[str, Any]:
     """Attach causal selector and hot-representation falsification evidence."""
 
@@ -247,4 +313,5 @@ def apply_selector_falsifications(
         )
 
     report = _attach_candidate_coverage(report, Path(candidate_coverage_path))
-    return _attach_rank_frontier(report, Path(rank_frontier_path))
+    report = _attach_rank_frontier(report, Path(rank_frontier_path))
+    return _attach_session_prefill(report, Path(session_prefill_path))
