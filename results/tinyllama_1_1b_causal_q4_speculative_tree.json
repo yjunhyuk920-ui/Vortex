@@ -1,0 +1,513 @@
+{
+  "evidence_level": "E2 causal Q4 tree plus free-draft target-side lower bound",
+  "points": [
+    {
+      "evidence_level": "E2 causal Q4 tree plus free-draft target-side lower bound",
+      "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "bits": 4,
+      "prompt_tokens": 45,
+      "requested_depth": 12,
+      "top_k": 8,
+      "beam_width": 16,
+      "node_budget": 256,
+      "retained_tree_nodes": 90,
+      "reached_depth": 12,
+      "optimistic_committed_exact_prefix": 12,
+      "exact_path_last_alive_depth": 12,
+      "precision": {
+        "tensors": 156,
+        "elements": 1099956224,
+        "hot_bits": 4,
+        "source_bits": 16,
+        "original_gib": 2.048828125,
+        "hot_gib": 0.51220703125,
+        "residual_bitplane_gib": 1.53662109375,
+        "element_weighted_relative_l2_error": 0.17559237114122117,
+        "maximum_absolute_error": 0.2205636203289032,
+        "weighted_mean_absolute_error": 0.002795927936674115
+      },
+      "depth_rows": [
+        {
+          "depth": 1,
+          "retained_branches": 8,
+          "unique_tree_nodes": 8,
+          "longest_exact_reference_prefix": 1,
+          "exact_path_alive": true,
+          "best_log_probability": -0.7119234800338745,
+          "worst_retained_log_probability": -5.763593673706055
+        },
+        {
+          "depth": 2,
+          "retained_branches": 16,
+          "unique_tree_nodes": 22,
+          "longest_exact_reference_prefix": 2,
+          "exact_path_alive": true,
+          "best_log_probability": -2.0867490944219753,
+          "worst_retained_log_probability": -7.062282085418701
+        },
+        {
+          "depth": 3,
+          "retained_branches": 16,
+          "unique_tree_nodes": 26,
+          "longest_exact_reference_prefix": 3,
+          "exact_path_alive": true,
+          "best_log_probability": -2.086854350687645,
+          "worst_retained_log_probability": -6.816457986831665
+        },
+        {
+          "depth": 4,
+          "retained_branches": 16,
+          "unique_tree_nodes": 36,
+          "longest_exact_reference_prefix": 4,
+          "exact_path_alive": true,
+          "best_log_probability": -5.6122629046440125,
+          "worst_retained_log_probability": -7.370008707046509
+        },
+        {
+          "depth": 5,
+          "retained_branches": 16,
+          "unique_tree_nodes": 42,
+          "longest_exact_reference_prefix": 5,
+          "exact_path_alive": true,
+          "best_log_probability": -6.138422928750515,
+          "worst_retained_log_probability": -7.685811400413513
+        },
+        {
+          "depth": 6,
+          "retained_branches": 16,
+          "unique_tree_nodes": 50,
+          "longest_exact_reference_prefix": 6,
+          "exact_path_alive": true,
+          "best_log_probability": -6.455549329519272,
+          "worst_retained_log_probability": -7.988361096475273
+        },
+        {
+          "depth": 7,
+          "retained_branches": 16,
+          "unique_tree_nodes": 63,
+          "longest_exact_reference_prefix": 7,
+          "exact_path_alive": true,
+          "best_log_probability": -6.600733295083046,
+          "worst_retained_log_probability": -9.080382198095322
+        },
+        {
+          "depth": 8,
+          "retained_branches": 16,
+          "unique_tree_nodes": 70,
+          "longest_exact_reference_prefix": 8,
+          "exact_path_alive": true,
+          "best_log_probability": -6.829511940479279,
+          "worst_retained_log_probability": -9.690391473472118
+        },
+        {
+          "depth": 9,
+          "retained_branches": 16,
+          "unique_tree_nodes": 75,
+          "longest_exact_reference_prefix": 9,
+          "exact_path_alive": true,
+          "best_log_probability": -7.160858917981386,
+          "worst_retained_log_probability": -10.21370242536068
+        },
+        {
+          "depth": 10,
+          "retained_branches": 16,
+          "unique_tree_nodes": 68,
+          "longest_exact_reference_prefix": 10,
+          "exact_path_alive": true,
+          "best_log_probability": -7.514940048851713,
+          "worst_retained_log_probability": -10.51368623971939
+        },
+        {
+          "depth": 11,
+          "retained_branches": 16,
+          "unique_tree_nodes": 81,
+          "longest_exact_reference_prefix": 11,
+          "exact_path_alive": true,
+          "best_log_probability": -7.51986483559449,
+          "worst_retained_log_probability": -10.839355755597353
+        },
+        {
+          "depth": 12,
+          "retained_branches": 16,
+          "unique_tree_nodes": 90,
+          "longest_exact_reference_prefix": 12,
+          "exact_path_alive": true,
+          "best_log_probability": -7.589503564689949,
+          "worst_retained_log_probability": -11.185071349143982
+        }
+      ],
+      "405b_free_draft_q4_lower_bound": {
+        "hot_bits": 4,
+        "tree_nodes": 90,
+        "tree_depth": 12,
+        "committed_tokens": 12,
+        "hot_weight_gib": 188.98828125,
+        "transfer_seconds_per_tree": 7.87451171875,
+        "compute_seconds_per_tree": 0.475605762048,
+        "ideal_seconds_per_committed_token": 0.6562093098958334,
+        "serialized_seconds_per_committed_token": 0.6958431233998333,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "allowed_seconds_per_token": 0.007450580596923828,
+        "minimum_committed_tokens_ideal": 1057,
+        "minimum_committed_tokens_serialized": 1121,
+        "depth_can_meet_ideal": false,
+        "depth_can_meet_serialized": false,
+        "observed_ideal_pass": false,
+        "observed_serialized_pass": false
+      },
+      "contract": "The Q4 drafter is charged zero time and zero VRAM. Target-side verification is charged only one Q4 full-rank pass over the tree; the Q6/Q8 precision required for exact verification is omitted. Passing is necessary but not sufficient, while failure rejects any more expensive progressive verifier for the same tree.",
+      "qualifies": false,
+      "decision": "reject tested Q4 speculative tree point at the cost lower bound",
+      "next_candidate_if_rejected": "retain tree verification only if a much smaller target-derived substitute preserves a path thousands of tokens deep; otherwise the 405B PCIe stream cannot be amortized to native-4B latency",
+      "elapsed_seconds": 111.273539242
+    },
+    {
+      "evidence_level": "E2 causal Q4 tree plus free-draft target-side lower bound",
+      "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "bits": 4,
+      "prompt_tokens": 45,
+      "requested_depth": 12,
+      "top_k": 16,
+      "beam_width": 32,
+      "node_budget": 512,
+      "retained_tree_nodes": 175,
+      "reached_depth": 12,
+      "optimistic_committed_exact_prefix": 12,
+      "exact_path_last_alive_depth": 12,
+      "precision": {
+        "tensors": 156,
+        "elements": 1099956224,
+        "hot_bits": 4,
+        "source_bits": 16,
+        "original_gib": 2.048828125,
+        "hot_gib": 0.51220703125,
+        "residual_bitplane_gib": 1.53662109375,
+        "element_weighted_relative_l2_error": 0.17559237114122117,
+        "maximum_absolute_error": 0.2205636203289032,
+        "weighted_mean_absolute_error": 0.002795927936674115
+      },
+      "depth_rows": [
+        {
+          "depth": 1,
+          "retained_branches": 16,
+          "unique_tree_nodes": 16,
+          "longest_exact_reference_prefix": 1,
+          "exact_path_alive": true,
+          "best_log_probability": -0.7119234800338745,
+          "worst_retained_log_probability": -6.569947242736816
+        },
+        {
+          "depth": 2,
+          "retained_branches": 32,
+          "unique_tree_nodes": 44,
+          "longest_exact_reference_prefix": 2,
+          "exact_path_alive": true,
+          "best_log_probability": -2.0867490944219753,
+          "worst_retained_log_probability": -7.272007942199707
+        },
+        {
+          "depth": 3,
+          "retained_branches": 32,
+          "unique_tree_nodes": 51,
+          "longest_exact_reference_prefix": 3,
+          "exact_path_alive": true,
+          "best_log_probability": -2.086854350687645,
+          "worst_retained_log_probability": -7.144891858100891
+        },
+        {
+          "depth": 4,
+          "retained_branches": 32,
+          "unique_tree_nodes": 73,
+          "longest_exact_reference_prefix": 4,
+          "exact_path_alive": true,
+          "best_log_probability": -5.6122629046440125,
+          "worst_retained_log_probability": -7.764159619808197
+        },
+        {
+          "depth": 5,
+          "retained_branches": 32,
+          "unique_tree_nodes": 82,
+          "longest_exact_reference_prefix": 5,
+          "exact_path_alive": true,
+          "best_log_probability": -6.138422928750515,
+          "worst_retained_log_probability": -8.019432038068771
+        },
+        {
+          "depth": 6,
+          "retained_branches": 32,
+          "unique_tree_nodes": 105,
+          "longest_exact_reference_prefix": 6,
+          "exact_path_alive": true,
+          "best_log_probability": -6.455549329519272,
+          "worst_retained_log_probability": -8.645215153694153
+        },
+        {
+          "depth": 7,
+          "retained_branches": 32,
+          "unique_tree_nodes": 116,
+          "longest_exact_reference_prefix": 7,
+          "exact_path_alive": true,
+          "best_log_probability": -6.600733295083046,
+          "worst_retained_log_probability": -9.15865259617567
+        },
+        {
+          "depth": 8,
+          "retained_branches": 32,
+          "unique_tree_nodes": 134,
+          "longest_exact_reference_prefix": 8,
+          "exact_path_alive": true,
+          "best_log_probability": -6.712107884697616,
+          "worst_retained_log_probability": -9.883673518896103
+        },
+        {
+          "depth": 9,
+          "retained_branches": 32,
+          "unique_tree_nodes": 144,
+          "longest_exact_reference_prefix": 9,
+          "exact_path_alive": true,
+          "best_log_probability": -6.7188055901788175,
+          "worst_retained_log_probability": -10.414355330169201
+        },
+        {
+          "depth": 10,
+          "retained_branches": 32,
+          "unique_tree_nodes": 131,
+          "longest_exact_reference_prefix": 10,
+          "exact_path_alive": true,
+          "best_log_probability": -6.85126625886187,
+          "worst_retained_log_probability": -10.372863076627254
+        },
+        {
+          "depth": 11,
+          "retained_branches": 32,
+          "unique_tree_nodes": 151,
+          "longest_exact_reference_prefix": 11,
+          "exact_path_alive": true,
+          "best_log_probability": -6.853749402333051,
+          "worst_retained_log_probability": -10.721156939864159
+        },
+        {
+          "depth": 12,
+          "retained_branches": 32,
+          "unique_tree_nodes": 175,
+          "longest_exact_reference_prefix": 12,
+          "exact_path_alive": true,
+          "best_log_probability": -6.854760381975211,
+          "worst_retained_log_probability": -11.21143597131595
+        }
+      ],
+      "405b_free_draft_q4_lower_bound": {
+        "hot_bits": 4,
+        "tree_nodes": 175,
+        "tree_depth": 12,
+        "committed_tokens": 12,
+        "hot_weight_gib": 188.98828125,
+        "transfer_seconds_per_tree": 7.87451171875,
+        "compute_seconds_per_tree": 0.92478898176,
+        "ideal_seconds_per_committed_token": 0.6562093098958334,
+        "serialized_seconds_per_committed_token": 0.7332750583758334,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "allowed_seconds_per_token": 0.007450580596923828,
+        "minimum_committed_tokens_ideal": 1057,
+        "minimum_committed_tokens_serialized": 1182,
+        "depth_can_meet_ideal": false,
+        "depth_can_meet_serialized": false,
+        "observed_ideal_pass": false,
+        "observed_serialized_pass": false
+      },
+      "contract": "The Q4 drafter is charged zero time and zero VRAM. Target-side verification is charged only one Q4 full-rank pass over the tree; the Q6/Q8 precision required for exact verification is omitted. Passing is necessary but not sufficient, while failure rejects any more expensive progressive verifier for the same tree.",
+      "qualifies": false,
+      "decision": "reject tested Q4 speculative tree point at the cost lower bound",
+      "next_candidate_if_rejected": "retain tree verification only if a much smaller target-derived substitute preserves a path thousands of tokens deep; otherwise the 405B PCIe stream cannot be amortized to native-4B latency",
+      "elapsed_seconds": 220.958134036
+    },
+    {
+      "evidence_level": "E2 causal Q4 tree plus free-draft target-side lower bound",
+      "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "bits": 4,
+      "prompt_tokens": 45,
+      "requested_depth": 12,
+      "top_k": 32,
+      "beam_width": 64,
+      "node_budget": 1024,
+      "retained_tree_nodes": 289,
+      "reached_depth": 12,
+      "optimistic_committed_exact_prefix": 12,
+      "exact_path_last_alive_depth": 12,
+      "precision": {
+        "tensors": 156,
+        "elements": 1099956224,
+        "hot_bits": 4,
+        "source_bits": 16,
+        "original_gib": 2.048828125,
+        "hot_gib": 0.51220703125,
+        "residual_bitplane_gib": 1.53662109375,
+        "element_weighted_relative_l2_error": 0.17559237114122117,
+        "maximum_absolute_error": 0.2205636203289032,
+        "weighted_mean_absolute_error": 0.002795927936674115
+      },
+      "depth_rows": [
+        {
+          "depth": 1,
+          "retained_branches": 32,
+          "unique_tree_nodes": 32,
+          "longest_exact_reference_prefix": 1,
+          "exact_path_alive": true,
+          "best_log_probability": -0.7119234800338745,
+          "worst_retained_log_probability": -6.961498260498047
+        },
+        {
+          "depth": 2,
+          "retained_branches": 64,
+          "unique_tree_nodes": 84,
+          "longest_exact_reference_prefix": 2,
+          "exact_path_alive": true,
+          "best_log_probability": -2.0867490944219753,
+          "worst_retained_log_probability": -7.744184374809265
+        },
+        {
+          "depth": 3,
+          "retained_branches": 64,
+          "unique_tree_nodes": 100,
+          "longest_exact_reference_prefix": 3,
+          "exact_path_alive": true,
+          "best_log_probability": -2.086854350687645,
+          "worst_retained_log_probability": -7.60867440700531
+        },
+        {
+          "depth": 4,
+          "retained_branches": 64,
+          "unique_tree_nodes": 141,
+          "longest_exact_reference_prefix": 4,
+          "exact_path_alive": true,
+          "best_log_probability": -5.6122629046440125,
+          "worst_retained_log_probability": -8.088736593723297
+        },
+        {
+          "depth": 5,
+          "retained_branches": 64,
+          "unique_tree_nodes": 170,
+          "longest_exact_reference_prefix": 5,
+          "exact_path_alive": true,
+          "best_log_probability": -6.138422928750515,
+          "worst_retained_log_probability": -8.589229494333267
+        },
+        {
+          "depth": 6,
+          "retained_branches": 64,
+          "unique_tree_nodes": 201,
+          "longest_exact_reference_prefix": 6,
+          "exact_path_alive": true,
+          "best_log_probability": -6.455549329519272,
+          "worst_retained_log_probability": -9.246650755405426
+        },
+        {
+          "depth": 7,
+          "retained_branches": 64,
+          "unique_tree_nodes": 225,
+          "longest_exact_reference_prefix": 7,
+          "exact_path_alive": true,
+          "best_log_probability": -6.600733295083046,
+          "worst_retained_log_probability": -9.610615067183971
+        },
+        {
+          "depth": 8,
+          "retained_branches": 64,
+          "unique_tree_nodes": 247,
+          "longest_exact_reference_prefix": 8,
+          "exact_path_alive": true,
+          "best_log_probability": -6.712107884697616,
+          "worst_retained_log_probability": -10.429943464696407
+        },
+        {
+          "depth": 9,
+          "retained_branches": 64,
+          "unique_tree_nodes": 253,
+          "longest_exact_reference_prefix": 9,
+          "exact_path_alive": true,
+          "best_log_probability": -6.7188055901788175,
+          "worst_retained_log_probability": -10.927615627646446
+        },
+        {
+          "depth": 10,
+          "retained_branches": 64,
+          "unique_tree_nodes": 249,
+          "longest_exact_reference_prefix": 10,
+          "exact_path_alive": true,
+          "best_log_probability": -6.85126625886187,
+          "worst_retained_log_probability": -11.064861478516832
+        },
+        {
+          "depth": 11,
+          "retained_branches": 64,
+          "unique_tree_nodes": 247,
+          "longest_exact_reference_prefix": 11,
+          "exact_path_alive": true,
+          "best_log_probability": -6.853749402333051,
+          "worst_retained_log_probability": -11.20013078066404
+        },
+        {
+          "depth": 12,
+          "retained_branches": 64,
+          "unique_tree_nodes": 289,
+          "longest_exact_reference_prefix": 12,
+          "exact_path_alive": true,
+          "best_log_probability": -6.854760381975211,
+          "worst_retained_log_probability": -11.676876263227314
+        }
+      ],
+      "405b_free_draft_q4_lower_bound": {
+        "hot_bits": 4,
+        "tree_nodes": 289,
+        "tree_depth": 12,
+        "committed_tokens": 12,
+        "hot_weight_gib": 188.98828125,
+        "transfer_seconds_per_tree": 7.87451171875,
+        "compute_seconds_per_tree": 1.5272229470208,
+        "ideal_seconds_per_committed_token": 0.6562093098958334,
+        "serialized_seconds_per_committed_token": 0.7834778888142333,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "allowed_seconds_per_token": 0.007450580596923828,
+        "minimum_committed_tokens_ideal": 1057,
+        "minimum_committed_tokens_serialized": 1262,
+        "depth_can_meet_ideal": false,
+        "depth_can_meet_serialized": false,
+        "observed_ideal_pass": false,
+        "observed_serialized_pass": false
+      },
+      "contract": "The Q4 drafter is charged zero time and zero VRAM. Target-side verification is charged only one Q4 full-rank pass over the tree; the Q6/Q8 precision required for exact verification is omitted. Passing is necessary but not sufficient, while failure rejects any more expensive progressive verifier for the same tree.",
+      "qualifies": false,
+      "decision": "reject tested Q4 speculative tree point at the cost lower bound",
+      "next_candidate_if_rejected": "retain tree verification only if a much smaller target-derived substitute preserves a path thousands of tokens deep; otherwise the 405B PCIe stream cannot be amortized to native-4B latency",
+      "elapsed_seconds": 425.259461772
+    }
+  ],
+  "best_point": {
+    "top_k": 8,
+    "beam_width": 16,
+    "node_budget": 256,
+    "tree_nodes": 90,
+    "exact_prefix": 12,
+    "last_alive_depth": 12,
+    "minimum_commit_ideal": 1057,
+    "minimum_commit_serialized": 1121
+  },
+  "surviving_lower_bound_points": 0,
+  "decision": "reject tested causal Q4 tree at the target-side cost lower bound",
+  "architecture_consequence": "Teacher-forced Q4/Q6 precision routing is not an executable decode path unless a causal candidate mechanism closes this gate.",
+  "workflow": {
+    "run_id": 30757015319,
+    "head_sha": "b090e05f8af3665e62e5ce9387aa3fb2f94a86a8",
+    "input_sha256": {
+      "q4-tree-k16-b32.json": "8772bd8544a487d41c4c529349ed4724eff7fc363c8522acd0d05c5fa03c324f",
+      "q4-tree-k32-b64.json": "49bf7a865726c546ed3231db45358cdcb1e56b59003f781413a0ca3a7caf0bd7",
+      "q4-tree-k8-b16.json": "90a2be3a81295739ebbdd04df8ee00b4edd46360bdd1a14700abc2474e3795d1"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+name: Token-routed precision oracle
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/progressive_precision.py"
+      - "vortex_runtime/precision_consensus.py"
+      - "vortex_runtime/layer_precision_oracle.py"
+      - "vortex_runtime/token_routed_precision.py"
+      - "scripts/run_layer_local_precision_oracle.py"
+      - "scripts/run_token_routed_precision_oracle.py"
+      - "tests/test_progressive_precision.py"
+      - "tests/test_precision_consensus.py"
+      - "tests/test_layer_precision_oracle.py"
+      - "tests/test_token_routed_precision.py"
+      - ".github/workflows/token-routed-precision-oracle.yml"
+
+concurrency:
+  group: token-routed-precision-oracle-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  oracle:
+    if: github.head_ref == 'research/full-rank-progressive-precision'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate token-routed precision contracts
+        run: |
+          python -m pytest -q \
+            tests/test_progressive_precision.py \
+            tests/test_precision_consensus.py \
+            tests/test_layer_precision_oracle.py \
+            tests/test_token_routed_precision.py
+      - name: Optimize exact-future token routes
+        run: |
+          python scripts/run_token_routed_precision_oracle.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --layers-per-group 2 \
+            --row-chunk 128 \
+            --margin-threshold 0.4 \
+            --output token_routed_precision_oracle.json
+      - name: Build report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(
+              Path("token_routed_precision_oracle.json").read_text(encoding="utf-8")
+          )
+          summary = {
+              "flagged_positions": payload["flagged_positions"],
+              "q6_error_positions": payload["q6_error_positions"],
+              "all_flagged_errors_routable": payload["all_flagged_errors_routable"],
+              "feasible_union_count": payload["feasible_union_count"],
+              "best_token_routed_point": payload["best_token_routed_point"],
+              "qualifies": payload["qualifies"],
+              "decision": payload["decision"],
+          }
+          Path("token-route-comment.md").write_text(
+              "## Token-routed Q6-to-Q8 residual oracle\n\n```json\n"
+              + json.dumps(summary, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish PR report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          gh pr comment "$PR_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --body-file token-route-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: token-routed-precision-oracle
+          path: token_routed_precision_oracle.json

@@ -1,0 +1,97 @@
+name: Layer-local precision oracle
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/progressive_precision.py"
+      - "vortex_runtime/precision_consensus.py"
+      - "vortex_runtime/layer_precision_oracle.py"
+      - "scripts/run_layer_local_precision_oracle.py"
+      - "tests/test_progressive_precision.py"
+      - "tests/test_precision_consensus.py"
+      - "tests/test_layer_precision_oracle.py"
+      - ".github/workflows/layer-local-precision-oracle.yml"
+
+concurrency:
+  group: layer-local-precision-oracle-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  oracle:
+    if: github.head_ref == 'research/full-rank-progressive-precision'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate precision oracle contracts
+        run: |
+          python -m pytest -q \
+            tests/test_progressive_precision.py \
+            tests/test_precision_consensus.py \
+            tests/test_layer_precision_oracle.py
+      - name: Measure Q6-to-Q8 layer-local oracle
+        run: |
+          python scripts/run_layer_local_precision_oracle.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --base-bits 6 \
+            --upgrade-bits 8 \
+            --layers-per-group 2 \
+            --row-chunk 128 \
+            --runtime-refinement-fraction 0.25 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output layer_local_precision_oracle.json
+      - name: Build report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(
+              Path("layer_local_precision_oracle.json").read_text(encoding="utf-8")
+          )
+          minimum = payload["minimum_exact_cumulative_point"]
+          summary = {
+              "base_error_positions": payload["base_error_positions"],
+              "ranked_groups": [
+                  item["group"] for item in payload["individual_effects_ranked"]
+              ],
+              "minimum_exact": minimum,
+              "qualifies": payload["qualifies"],
+              "decision": payload["decision"],
+          }
+          Path("layer-oracle-comment.md").write_text(
+              "## Q6-to-Q8 layer-local precision oracle\n\n```json\n"
+              + json.dumps(summary, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish PR report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          gh pr comment "$PR_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --body-file layer-oracle-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: layer-local-precision-oracle
+          path: layer_local_precision_oracle.json

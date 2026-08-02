@@ -1,0 +1,656 @@
+{
+  "evidence_level": "E2 causal 8GiB target-derived substitute tree lower bound",
+  "points": [
+    {
+      "evidence_level": "E2 causal target-derived 8GiB substitute tree plus target-side lower bound",
+      "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "bits": 4,
+      "strategy": "edge",
+      "original_layers": 22,
+      "retained_layers": 3,
+      "retained_indices": [
+        0,
+        1,
+        21
+      ],
+      "relative_layer_fraction_tinyllama": 0.13636363636363635,
+      "relative_layer_fraction_405b": 0.023809523809523808,
+      "optimism_warning": "Retaining three of 22 TinyLlama layers is proportionally much stronger than retaining three of 126 target layers.",
+      "prompt_tokens": 45,
+      "requested_depth": 12,
+      "top_k": 32,
+      "beam_width": 64,
+      "node_budget": 1024,
+      "retained_tree_nodes": 217,
+      "reached_depth": 12,
+      "optimistic_committed_exact_prefix": 0,
+      "exact_path_last_alive_depth": 0,
+      "tinyllama_draft": {
+        "unique_parameters": 263206912,
+        "projected_q_weight_gib": 0.12256526947021484,
+        "precision": {
+          "tensors": 23,
+          "elements": 263192576,
+          "hot_bits": 4,
+          "source_bits": 16,
+          "original_gib": 0.490234375,
+          "hot_gib": 0.12255859375,
+          "residual_bitplane_gib": 0.36767578125,
+          "element_weighted_relative_l2_error": 0.19244823558282795,
+          "maximum_absolute_error": 0.2205636203289032,
+          "weighted_mean_absolute_error": 0.0030355316547253
+        }
+      },
+      "405b_substitute_memory": {
+        "maximum_untied_layers": 3,
+        "untied": {
+          "retained_layers": 3,
+          "total_layers": 126,
+          "weight_bits": 4,
+          "tie_word_embeddings": false,
+          "per_layer_parameters": 3187703808,
+          "io_parameters": 4202708992,
+          "retained_parameters": 13765820416,
+          "weight_gib": 6.410209655761719,
+          "workspace_gib": 1.0,
+          "total_gib": 7.410209655761719,
+          "memory_limit_gib": 8.0,
+          "fits_memory": true,
+          "average_bits_per_target_parameter": 0.13567422516070357
+        },
+        "tied": {
+          "retained_layers": 3,
+          "total_layers": 126,
+          "weight_bits": 4,
+          "tie_word_embeddings": true,
+          "per_layer_parameters": 3187703808,
+          "io_parameters": 2101362688,
+          "retained_parameters": 11664474112,
+          "weight_gib": 5.431694030761719,
+          "workspace_gib": 1.0,
+          "total_gib": 6.431694030761719,
+          "memory_limit_gib": 8.0,
+          "fits_memory": true,
+          "average_bits_per_target_parameter": 0.11496361562390195
+        }
+      },
+      "depth_rows": [
+        {
+          "depth": 1,
+          "retained_branches": 32,
+          "unique_tree_nodes": 32,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -2.4412994384765625,
+          "worst_retained_log_probability": -6.044180393218994
+        },
+        {
+          "depth": 2,
+          "retained_branches": 64,
+          "unique_tree_nodes": 91,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -5.516584157943726,
+          "worst_retained_log_probability": -8.695751190185547
+        },
+        {
+          "depth": 3,
+          "retained_branches": 64,
+          "unique_tree_nodes": 133,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -9.107405424118042,
+          "worst_retained_log_probability": -11.496508598327637
+        },
+        {
+          "depth": 4,
+          "retained_branches": 64,
+          "unique_tree_nodes": 125,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -11.718190014362335,
+          "worst_retained_log_probability": -15.04625129699707
+        },
+        {
+          "depth": 5,
+          "retained_branches": 64,
+          "unique_tree_nodes": 137,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -15.798377811908722,
+          "worst_retained_log_probability": -17.909269154071808
+        },
+        {
+          "depth": 6,
+          "retained_branches": 64,
+          "unique_tree_nodes": 170,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -18.73404824733734,
+          "worst_retained_log_probability": -21.154021859169006
+        },
+        {
+          "depth": 7,
+          "retained_branches": 64,
+          "unique_tree_nodes": 185,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -20.200902104377747,
+          "worst_retained_log_probability": -23.84928822517395
+        },
+        {
+          "depth": 8,
+          "retained_branches": 64,
+          "unique_tree_nodes": 168,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -22.537798285484314,
+          "worst_retained_log_probability": -26.356358647346497
+        },
+        {
+          "depth": 9,
+          "retained_branches": 64,
+          "unique_tree_nodes": 161,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -25.079486966133118,
+          "worst_retained_log_probability": -28.57167088985443
+        },
+        {
+          "depth": 10,
+          "retained_branches": 64,
+          "unique_tree_nodes": 171,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -27.730095982551575,
+          "worst_retained_log_probability": -30.96178638935089
+        },
+        {
+          "depth": 11,
+          "retained_branches": 64,
+          "unique_tree_nodes": 196,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -30.40988051891327,
+          "worst_retained_log_probability": -33.384793400764465
+        },
+        {
+          "depth": 12,
+          "retained_branches": 64,
+          "unique_tree_nodes": 217,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -32.97826325893402,
+          "worst_retained_log_probability": -35.70130228996277
+        }
+      ],
+      "405b_q4_target_side_lower_bound": {
+        "hot_bits": 4,
+        "tree_nodes": 217,
+        "tree_depth": 12,
+        "committed_tokens": 0,
+        "hot_weight_gib": 188.98828125,
+        "transfer_seconds_per_tree": 7.87451171875,
+        "compute_seconds_per_tree": 1.1467383373824,
+        "ideal_seconds_per_committed_token": 7.87451171875,
+        "serialized_seconds_per_committed_token": 9.0212500561324,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "allowed_seconds_per_token": 0.007450580596923828,
+        "minimum_committed_tokens_ideal": 1057,
+        "minimum_committed_tokens_serialized": 1211,
+        "depth_can_meet_ideal": false,
+        "depth_can_meet_serialized": false,
+        "observed_ideal_pass": false,
+        "observed_serialized_pass": false
+      },
+      "contract": "The draft is built only by selecting existing target layers and quantizing them; no training or learned adapter is used. Draft runtime cost is omitted from latency, and Q6/Q8 exact verification precision is omitted, so this remains an optimistic necessary gate.",
+      "qualifies": false,
+      "decision": "reject tested 8GiB thinned substitute tree point",
+      "elapsed_seconds": 84.43601554
+    },
+    {
+      "evidence_level": "E2 causal target-derived 8GiB substitute tree plus target-side lower bound",
+      "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "bits": 4,
+      "strategy": "front",
+      "original_layers": 22,
+      "retained_layers": 3,
+      "retained_indices": [
+        0,
+        1,
+        2
+      ],
+      "relative_layer_fraction_tinyllama": 0.13636363636363635,
+      "relative_layer_fraction_405b": 0.023809523809523808,
+      "optimism_warning": "Retaining three of 22 TinyLlama layers is proportionally much stronger than retaining three of 126 target layers.",
+      "prompt_tokens": 45,
+      "requested_depth": 12,
+      "top_k": 32,
+      "beam_width": 64,
+      "node_budget": 1024,
+      "retained_tree_nodes": 107,
+      "reached_depth": 12,
+      "optimistic_committed_exact_prefix": 0,
+      "exact_path_last_alive_depth": 0,
+      "tinyllama_draft": {
+        "unique_parameters": 263206912,
+        "projected_q_weight_gib": 0.12256526947021484,
+        "precision": {
+          "tensors": 23,
+          "elements": 263192576,
+          "hot_bits": 4,
+          "source_bits": 16,
+          "original_gib": 0.490234375,
+          "hot_gib": 0.12255859375,
+          "residual_bitplane_gib": 0.36767578125,
+          "element_weighted_relative_l2_error": 0.19091662034796458,
+          "maximum_absolute_error": 0.2205636203289032,
+          "weighted_mean_absolute_error": 0.0029703600589437336
+        }
+      },
+      "405b_substitute_memory": {
+        "maximum_untied_layers": 3,
+        "untied": {
+          "retained_layers": 3,
+          "total_layers": 126,
+          "weight_bits": 4,
+          "tie_word_embeddings": false,
+          "per_layer_parameters": 3187703808,
+          "io_parameters": 4202708992,
+          "retained_parameters": 13765820416,
+          "weight_gib": 6.410209655761719,
+          "workspace_gib": 1.0,
+          "total_gib": 7.410209655761719,
+          "memory_limit_gib": 8.0,
+          "fits_memory": true,
+          "average_bits_per_target_parameter": 0.13567422516070357
+        },
+        "tied": {
+          "retained_layers": 3,
+          "total_layers": 126,
+          "weight_bits": 4,
+          "tie_word_embeddings": true,
+          "per_layer_parameters": 3187703808,
+          "io_parameters": 2101362688,
+          "retained_parameters": 11664474112,
+          "weight_gib": 5.431694030761719,
+          "workspace_gib": 1.0,
+          "total_gib": 6.431694030761719,
+          "memory_limit_gib": 8.0,
+          "fits_memory": true,
+          "average_bits_per_target_parameter": 0.11496361562390195
+        }
+      },
+      "depth_rows": [
+        {
+          "depth": 1,
+          "retained_branches": 32,
+          "unique_tree_nodes": 32,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -3.2380199432373047,
+          "worst_retained_log_probability": -6.209167957305908
+        },
+        {
+          "depth": 2,
+          "retained_branches": 64,
+          "unique_tree_nodes": 84,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -6.68952751159668,
+          "worst_retained_log_probability": -9.417551040649414
+        },
+        {
+          "depth": 3,
+          "retained_branches": 64,
+          "unique_tree_nodes": 95,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -9.056465148925781,
+          "worst_retained_log_probability": -12.135320663452148
+        },
+        {
+          "depth": 4,
+          "retained_branches": 64,
+          "unique_tree_nodes": 103,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -12.924324750900269,
+          "worst_retained_log_probability": -14.977095603942871
+        },
+        {
+          "depth": 5,
+          "retained_branches": 64,
+          "unique_tree_nodes": 124,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -15.088596642017365,
+          "worst_retained_log_probability": -18.30993390083313
+        },
+        {
+          "depth": 6,
+          "retained_branches": 64,
+          "unique_tree_nodes": 119,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -17.654077112674713,
+          "worst_retained_log_probability": -21.339494705200195
+        },
+        {
+          "depth": 7,
+          "retained_branches": 64,
+          "unique_tree_nodes": 113,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -21.5440371632576,
+          "worst_retained_log_probability": -23.95540887117386
+        },
+        {
+          "depth": 8,
+          "retained_branches": 64,
+          "unique_tree_nodes": 122,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -23.201384603977203,
+          "worst_retained_log_probability": -26.915593922138214
+        },
+        {
+          "depth": 9,
+          "retained_branches": 64,
+          "unique_tree_nodes": 115,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -24.464260280132294,
+          "worst_retained_log_probability": -29.646373093128204
+        },
+        {
+          "depth": 10,
+          "retained_branches": 64,
+          "unique_tree_nodes": 105,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -27.78997939825058,
+          "worst_retained_log_probability": -32.04030328989029
+        },
+        {
+          "depth": 11,
+          "retained_branches": 64,
+          "unique_tree_nodes": 97,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -29.389328062534332,
+          "worst_retained_log_probability": -33.52864497900009
+        },
+        {
+          "depth": 12,
+          "retained_branches": 64,
+          "unique_tree_nodes": 107,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -32.03804486989975,
+          "worst_retained_log_probability": -35.94663566350937
+        }
+      ],
+      "405b_q4_target_side_lower_bound": {
+        "hot_bits": 4,
+        "tree_nodes": 107,
+        "tree_depth": 12,
+        "committed_tokens": 0,
+        "hot_weight_gib": 188.98828125,
+        "transfer_seconds_per_tree": 7.87451171875,
+        "compute_seconds_per_tree": 0.5654424059904,
+        "ideal_seconds_per_committed_token": 7.87451171875,
+        "serialized_seconds_per_committed_token": 8.4399541247404,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "allowed_seconds_per_token": 0.007450580596923828,
+        "minimum_committed_tokens_ideal": 1057,
+        "minimum_committed_tokens_serialized": 1133,
+        "depth_can_meet_ideal": false,
+        "depth_can_meet_serialized": false,
+        "observed_ideal_pass": false,
+        "observed_serialized_pass": false
+      },
+      "contract": "The draft is built only by selecting existing target layers and quantizing them; no training or learned adapter is used. Draft runtime cost is omitted from latency, and Q6/Q8 exact verification precision is omitted, so this remains an optimistic necessary gate.",
+      "qualifies": false,
+      "decision": "reject tested 8GiB thinned substitute tree point",
+      "elapsed_seconds": 100.71587420600002
+    },
+    {
+      "evidence_level": "E2 causal target-derived 8GiB substitute tree plus target-side lower bound",
+      "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "bits": 4,
+      "strategy": "uniform",
+      "original_layers": 22,
+      "retained_layers": 3,
+      "retained_indices": [
+        0,
+        10,
+        21
+      ],
+      "relative_layer_fraction_tinyllama": 0.13636363636363635,
+      "relative_layer_fraction_405b": 0.023809523809523808,
+      "optimism_warning": "Retaining three of 22 TinyLlama layers is proportionally much stronger than retaining three of 126 target layers.",
+      "prompt_tokens": 45,
+      "requested_depth": 12,
+      "top_k": 32,
+      "beam_width": 64,
+      "node_budget": 1024,
+      "retained_tree_nodes": 326,
+      "reached_depth": 12,
+      "optimistic_committed_exact_prefix": 0,
+      "exact_path_last_alive_depth": 0,
+      "tinyllama_draft": {
+        "unique_parameters": 263206912,
+        "projected_q_weight_gib": 0.12256526947021484,
+        "precision": {
+          "tensors": 23,
+          "elements": 263192576,
+          "hot_bits": 4,
+          "source_bits": 16,
+          "original_gib": 0.490234375,
+          "hot_gib": 0.12255859375,
+          "residual_bitplane_gib": 0.36767578125,
+          "element_weighted_relative_l2_error": 0.19103364612479082,
+          "maximum_absolute_error": 0.2205636203289032,
+          "weighted_mean_absolute_error": 0.0030285282692091866
+        }
+      },
+      "405b_substitute_memory": {
+        "maximum_untied_layers": 3,
+        "untied": {
+          "retained_layers": 3,
+          "total_layers": 126,
+          "weight_bits": 4,
+          "tie_word_embeddings": false,
+          "per_layer_parameters": 3187703808,
+          "io_parameters": 4202708992,
+          "retained_parameters": 13765820416,
+          "weight_gib": 6.410209655761719,
+          "workspace_gib": 1.0,
+          "total_gib": 7.410209655761719,
+          "memory_limit_gib": 8.0,
+          "fits_memory": true,
+          "average_bits_per_target_parameter": 0.13567422516070357
+        },
+        "tied": {
+          "retained_layers": 3,
+          "total_layers": 126,
+          "weight_bits": 4,
+          "tie_word_embeddings": true,
+          "per_layer_parameters": 3187703808,
+          "io_parameters": 2101362688,
+          "retained_parameters": 11664474112,
+          "weight_gib": 5.431694030761719,
+          "workspace_gib": 1.0,
+          "total_gib": 6.431694030761719,
+          "memory_limit_gib": 8.0,
+          "fits_memory": true,
+          "average_bits_per_target_parameter": 0.11496361562390195
+        }
+      },
+      "depth_rows": [
+        {
+          "depth": 1,
+          "retained_branches": 32,
+          "unique_tree_nodes": 32,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -6.319925785064697,
+          "worst_retained_log_probability": -7.661370277404785
+        },
+        {
+          "depth": 2,
+          "retained_branches": 64,
+          "unique_tree_nodes": 74,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -13.031963348388672,
+          "worst_retained_log_probability": -14.137552261352539
+        },
+        {
+          "depth": 3,
+          "retained_branches": 64,
+          "unique_tree_nodes": 94,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -19.768788814544678,
+          "worst_retained_log_probability": -20.740811347961426
+        },
+        {
+          "depth": 4,
+          "retained_branches": 64,
+          "unique_tree_nodes": 110,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -26.445348739624023,
+          "worst_retained_log_probability": -27.37723159790039
+        },
+        {
+          "depth": 5,
+          "retained_branches": 64,
+          "unique_tree_nodes": 131,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -33.04637956619263,
+          "worst_retained_log_probability": -33.99439811706543
+        },
+        {
+          "depth": 6,
+          "retained_branches": 64,
+          "unique_tree_nodes": 153,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -39.58575916290283,
+          "worst_retained_log_probability": -40.56865072250366
+        },
+        {
+          "depth": 7,
+          "retained_branches": 64,
+          "unique_tree_nodes": 179,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -46.079917907714844,
+          "worst_retained_log_probability": -47.07772207260132
+        },
+        {
+          "depth": 8,
+          "retained_branches": 64,
+          "unique_tree_nodes": 194,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -52.5407977104187,
+          "worst_retained_log_probability": -53.5669059753418
+        },
+        {
+          "depth": 9,
+          "retained_branches": 64,
+          "unique_tree_nodes": 221,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -58.975340843200684,
+          "worst_retained_log_probability": -59.96880578994751
+        },
+        {
+          "depth": 10,
+          "retained_branches": 64,
+          "unique_tree_nodes": 254,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -65.38350486755371,
+          "worst_retained_log_probability": -66.34957551956177
+        },
+        {
+          "depth": 11,
+          "retained_branches": 64,
+          "unique_tree_nodes": 291,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -71.76227760314941,
+          "worst_retained_log_probability": -72.71028995513916
+        },
+        {
+          "depth": 12,
+          "retained_branches": 64,
+          "unique_tree_nodes": 326,
+          "longest_exact_reference_prefix": 0,
+          "exact_path_alive": false,
+          "best_log_probability": -78.11331033706665,
+          "worst_retained_log_probability": -79.02122688293457
+        }
+      ],
+      "405b_q4_target_side_lower_bound": {
+        "hot_bits": 4,
+        "tree_nodes": 326,
+        "tree_depth": 12,
+        "committed_tokens": 0,
+        "hot_weight_gib": 188.98828125,
+        "transfer_seconds_per_tree": 7.87451171875,
+        "compute_seconds_per_tree": 1.7227497603072,
+        "ideal_seconds_per_committed_token": 7.87451171875,
+        "serialized_seconds_per_committed_token": 9.5972614790572,
+        "baseline_seconds_per_token": 0.00620881716410319,
+        "allowed_seconds_per_token": 0.007450580596923828,
+        "minimum_committed_tokens_ideal": 1057,
+        "minimum_committed_tokens_serialized": 1289,
+        "depth_can_meet_ideal": false,
+        "depth_can_meet_serialized": false,
+        "observed_ideal_pass": false,
+        "observed_serialized_pass": false
+      },
+      "contract": "The draft is built only by selecting existing target layers and quantizing them; no training or learned adapter is used. Draft runtime cost is omitted from latency, and Q6/Q8 exact verification precision is omitted, so this remains an optimistic necessary gate.",
+      "qualifies": false,
+      "decision": "reject tested 8GiB thinned substitute tree point",
+      "elapsed_seconds": 87.383770915
+    }
+  ],
+  "best_point": {
+    "strategy": "front",
+    "retained_indices": [
+      0,
+      1,
+      2
+    ],
+    "tree_nodes": 107,
+    "exact_prefix": 0,
+    "last_alive_depth": 0,
+    "untied_total_gib": 7.410209655761719,
+    "minimum_commit_serialized": 1133
+  },
+  "surviving_points": 0,
+  "decision": "reject tested 8GiB thinned substitute tree frontier",
+  "workflow": {
+    "run_id": 30757015348,
+    "head_sha": "b090e05f8af3665e62e5ce9387aa3fb2f94a86a8",
+    "input_sha256": {
+      "thinned-tree-edge.json": "8761e2a830510d6826186c3216e850a1046d68de97daac600c212eebe035c998",
+      "thinned-tree-front.json": "83c3c680ddb6f1cf56eec18389511ea85216e5ba6dffa112089a4c463189f84b",
+      "thinned-tree-uniform.json": "990c8930d4eeacea04bd4f95e61ecec8b7193f610e478c9399a0731577416564"
+    }
+  }
+}

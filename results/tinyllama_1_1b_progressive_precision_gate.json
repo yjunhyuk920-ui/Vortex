@@ -1,0 +1,103 @@
+{
+  "evidence_level": "E2 held-out consensus plus E1 exact-future token-route oracle",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "objective": "Preserve the unchanged target checkpoint while projecting a 405B-class runtime onto an 8 GiB device and a 1.2x native-4B warm-decode envelope.",
+  "heldout_consensus": {
+    "fixed_rule": "q4_token == q6_token and q6_top1_margin >= 0.4",
+    "prompts": 6,
+    "tokens": 288,
+    "accepted_tokens": 198,
+    "accepted_errors": 0,
+    "accepted_precision": 1.0,
+    "refinement_tokens": 90,
+    "refinement_fraction": 0.3125,
+    "worst_prompt_refinement_fraction": 0.4375,
+    "q4_errors": 76,
+    "q4_errors_flagged": 76,
+    "q6_errors": 12,
+    "q6_errors_flagged": 12,
+    "failed_prompts": [],
+    "decision": "survive the pre-registered held-out falsification set",
+    "source_workflow_run": 30748845765
+  },
+  "uniform_layer_subset_oracle": {
+    "subsets_evaluated": 63,
+    "exact_subsets": 6,
+    "minimum_exact_groups": [
+      "io",
+      "layers_002_003",
+      "layers_010_011",
+      "layers_018_019"
+    ],
+    "layer_fraction": 0.3593898951382269,
+    "q8_residual_gib_405b": 33.96023929039561,
+    "assumed_refinement_fraction": 0.25,
+    "ideal_ratio_to_native_4b": 1.1730754771931724,
+    "required_overlap_fraction": 0.9482318334139976,
+    "ideal_pass": true,
+    "serialized_pass": false,
+    "decision": "corrective subset exists but has insufficient implementation headroom",
+    "source_workflow_run": 30748845807
+  },
+  "token_routed_layer_oracle": {
+    "candidate_groups": [
+      "io",
+      "layers_002_003",
+      "layers_010_011",
+      "layers_000_001",
+      "layers_018_019",
+      "layers_006_007"
+    ],
+    "subsets_evaluated": 63,
+    "feasible_unions": 8,
+    "flagged_positions": [0, 1, 10, 13, 15, 17, 18, 29],
+    "q6_error_positions": [1, 13, 15, 29],
+    "all_flagged_errors_routable": true,
+    "best_union_groups": [
+      "io",
+      "layers_002_003",
+      "layers_010_011",
+      "layers_006_007"
+    ],
+    "union_layer_fraction": 0.3593898951382269,
+    "mean_token_layer_fraction": 0.021240467111534794,
+    "routes": {
+      "0": [],
+      "1": ["layers_002_003", "layers_010_011", "layers_006_007"],
+      "10": [],
+      "13": ["layers_002_003", "layers_010_011"],
+      "15": ["io", "layers_002_003"],
+      "17": [],
+      "18": [],
+      "29": ["layers_002_003"]
+    },
+    "405b_budget": {
+      "q6_consensus_weight_gib": 283.482421875,
+      "union_q8_residual_weight_gib": 33.96023929039561,
+      "transfer_seconds_per_4096_token_block": 13.226777548558152,
+      "q6_compute_seconds_per_block": 28.8604622422016,
+      "routed_residual_compute_seconds_per_block": 0.22987863715469056,
+      "total_compute_seconds_per_block": 29.09034087935629,
+      "ideal_seconds_per_token": 0.007102134003749094,
+      "native_4b_seconds_per_token": 0.00620881716410319,
+      "ideal_ratio_to_native_4b": 1.143877132755125,
+      "allowed_ratio": 1.2,
+      "required_overlap_fraction": 0.8920948628338207,
+      "ideal_pass": true,
+      "serialized_pass": false
+    },
+    "decision": "advance token-routed precision into causal route prediction",
+    "source_workflow_run": 30749208263
+  },
+  "non_negotiable_limitations": [
+    "Exact-future labels selected the corrective routes; this is an existence proof, not a deployable selector.",
+    "Q4/Q6 measurements use authoritative exact prefixes and therefore do not solve causal candidate-block generation.",
+    "The 405B timing numbers are roofline projections, not measured 8 GiB GPU wall-clock results.",
+    "The 0.4 consensus rule survived 288 held-out tokens but is not a mathematical correctness certificate."
+  ],
+  "next_gate": {
+    "name": "causal staged residual routing",
+    "requirement": "Select and stop Q6-to-Q8 residual layer stages using only current-prefix Q4/Q6 logits, margins, and stage-to-stage stability, then pass a second held-out prompt set without unsafe accepts.",
+    "separate_unsolved_gate": "Generate a multi-token candidate block without authoritative future target tokens while avoiding a full target-weight pass per committed token."
+  }
+}
