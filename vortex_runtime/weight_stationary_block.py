@@ -10,13 +10,12 @@ from vortex_runtime.feasibility import GIB, ModelSpec
 
 @dataclass(frozen=True)
 class StreamedBlockHardware:
-    """Hardware parameters for a layer-streamed exact block verifier.
+    """Hardware parameters for a tiled exact block verifier.
 
-    The target weights are assumed to live outside the 8 GiB device and to be
-    streamed through the host-to-device link once per target-model pass. A
-    pass evaluates every draft position as a batched matrix operation. Layer
-    transfer and tensor-core work may overlap, so both an ideal-overlap and a
-    conservative serialized bound are reported.
+    Original target weights remain outside the 8 GiB device and are streamed
+    as exact sub-operator tiles. A pass evaluates every draft position as a
+    batched matrix operation. Transfer and tensor-core work may overlap, so
+    both an ideal-overlap and a conservative serialized bound are reported.
     """
 
     host_to_device_gib_s: float = 24.0
@@ -24,6 +23,7 @@ class StreamedBlockHardware:
     baseline_gpu_memory_gib_s: float = 300.0
     baseline_tensor_tflops: float = 40.0
     device_memory_gib: float = 8.0
+    operator_tile_gib: float = 1.5
     weight_buffers: int = 2
     activation_bits: int = 16
     fixed_workspace_gib: float = 1.5
@@ -35,11 +35,12 @@ class StreamedBlockHardware:
             self.baseline_gpu_memory_gib_s,
             self.baseline_tensor_tflops,
             self.device_memory_gib,
+            self.operator_tile_gib,
             self.fixed_workspace_gib,
         )
         if any(value <= 0 for value in values):
             raise ValueError(
-                "hardware bandwidth, throughput, and memory values must be positive"
+                "hardware bandwidth, throughput, tile, and memory values must be positive"
             )
         if self.weight_buffers <= 0 or self.activation_bits <= 0:
             raise ValueError("weight_buffers and activation_bits must be positive")
@@ -52,6 +53,8 @@ class StreamedBlockBudget:
     target_passes: int
     target_weight_gib: float
     largest_layer_weight_gib: float
+    operator_tile_gib: float
+    tiles_per_largest_layer: int
     weight_buffer_gib: float
     kv_cache_gib: float
     activation_workspace_gib: float
@@ -74,6 +77,8 @@ class StreamedBlockBudget:
     serialized_pass: bool
     minimum_committed_tokens_ideal: int
     minimum_committed_tokens_serialized: int
+    required_target_tensor_tflops_at_full_commit: float
+    required_host_to_device_gib_s_at_full_commit: float
 
     def to_dict(self) -> dict[str, int | float | bool]:
         return asdict(self)
@@ -89,13 +94,12 @@ def streamed_exact_block_budget(
     hardware: StreamedBlockHardware = StreamedBlockHardware(),
     target_ratio: float = 1.2,
 ) -> StreamedBlockBudget:
-    """Return a roofline time bound for exact weight-stationary block decoding.
+    """Return memory and roofline bounds for exact tiled block decoding.
 
-    Unlike the earlier Gate 0 arithmetic-ratio proxy, this model allows batched
-    target computation to use tensor cores while the 4B single-token baseline
-    remains memory-bandwidth bound. No target weight approximation is assumed.
-    The result is still a lower bound: tokenizer work, kernel launches, KV
-    movement, dequantization, and draft construction are omitted.
+    The target checkpoint keeps its declared precision. Sub-operator tiling is
+    purely an execution transformation; it neither quantizes nor changes the
+    weights. The time model is a lower bound because tokenizer work, launches,
+    dequantization, and draft construction are omitted.
     """
 
     hardware.validate()
@@ -118,7 +122,9 @@ def streamed_exact_block_budget(
     largest_layer_weight_gib = (
         largest_operator_elements * target.weight_bits / 8 / GIB
     )
-    weight_buffer_gib = largest_layer_weight_gib * hardware.weight_buffers
+    resident_tile_gib = min(largest_layer_weight_gib, hardware.operator_tile_gib)
+    tiles_per_largest_layer = ceil(largest_layer_weight_gib / resident_tile_gib)
+    weight_buffer_gib = resident_tile_gib * hardware.weight_buffers
     kv_cache_gib = target.kv_bytes / GIB
     activation_elements = draft_positions * (4 * h + 2 * m + 4 * kv)
     activation_workspace_gib = (
@@ -154,13 +160,23 @@ def streamed_exact_block_budget(
     )
     baseline_seconds = max(baseline_weight_seconds, baseline_compute_seconds)
 
-    ideal_seconds_per_token = (
-        ideal_pass_seconds * target_passes / committed_tokens
-    )
+    ideal_seconds_per_token = ideal_pass_seconds * target_passes / committed_tokens
     serialized_seconds_per_token = (
         serialized_pass_seconds * target_passes / committed_tokens
     )
     allowed_seconds = target_ratio * baseline_seconds
+    ideal_time_pass = ideal_seconds_per_token <= allowed_seconds
+    serialized_time_pass = serialized_seconds_per_token <= allowed_seconds
+
+    required_target_tensor_tflops = (
+        target_flops_per_pass * target_passes
+        / (draft_positions * allowed_seconds)
+        / 1e12
+    )
+    required_host_to_device_gib_s = (
+        target_weight_gib * target_passes
+        / (draft_positions * allowed_seconds)
+    )
 
     return StreamedBlockBudget(
         draft_positions=draft_positions,
@@ -168,6 +184,8 @@ def streamed_exact_block_budget(
         target_passes=target_passes,
         target_weight_gib=target_weight_gib,
         largest_layer_weight_gib=largest_layer_weight_gib,
+        operator_tile_gib=resident_tile_gib,
+        tiles_per_largest_layer=tiles_per_largest_layer,
         weight_buffer_gib=weight_buffer_gib,
         kv_cache_gib=kv_cache_gib,
         activation_workspace_gib=activation_workspace_gib,
@@ -184,18 +202,18 @@ def streamed_exact_block_budget(
         serialized_seconds_per_committed_token=serialized_seconds_per_token,
         baseline_seconds_per_token=baseline_seconds,
         ideal_speed_ratio_to_baseline=ideal_seconds_per_token / baseline_seconds,
-        serialized_speed_ratio_to_baseline=(
-            serialized_seconds_per_token / baseline_seconds
-        ),
+        serialized_speed_ratio_to_baseline=serialized_seconds_per_token / baseline_seconds,
         target_ratio=target_ratio,
-        ideal_pass=ideal_seconds_per_token <= allowed_seconds,
-        serialized_pass=serialized_seconds_per_token <= allowed_seconds,
+        ideal_pass=memory_pass and ideal_time_pass,
+        serialized_pass=memory_pass and serialized_time_pass,
         minimum_committed_tokens_ideal=ceil(
             ideal_pass_seconds * target_passes / allowed_seconds
         ),
         minimum_committed_tokens_serialized=ceil(
             serialized_pass_seconds * target_passes / allowed_seconds
         ),
+        required_target_tensor_tflops_at_full_commit=required_target_tensor_tflops,
+        required_host_to_device_gib_s_at_full_commit=required_host_to_device_gib_s,
     )
 
 
@@ -205,12 +223,7 @@ def jacobi_token_update(
     prompt_next_token: torch.Tensor,
     draft_logits: torch.Tensor,
 ) -> torch.Tensor:
-    """Apply one causal Jacobi token update to a fixed draft window.
-
-    ``draft_logits[:, i]`` predicts the token after ``draft_tokens[:, i]``.
-    Therefore the prompt logit fixes position zero and logits from positions
-    ``0..K-2`` update positions ``1..K-1`` in parallel.
-    """
+    """Apply one causal Jacobi token update to a fixed draft window."""
 
     if draft_tokens.ndim != 2:
         raise ValueError("draft_tokens must have shape [batch, positions]")
