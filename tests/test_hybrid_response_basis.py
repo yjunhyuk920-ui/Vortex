@@ -17,15 +17,21 @@ def _wrapper() -> DecisionResidualTileAtlasLinearModule:
     )
 
 
+def _orthogonal_global_and_prompt(
+    module: DecisionResidualTileAtlasLinearModule,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    global_basis = torch.eye(8)[:, :3].contiguous()
+    module.atlas.input_basis = global_basis
+    module.atlas.output_image = module.exact.weight.detach() @ global_basis
+    prompt_inputs = torch.eye(8)[3:].reshape(1, 5, 8).contiguous()
+    return prompt_inputs, module.exact(prompt_inputs)
+
+
 def test_full_hybrid_span_reconstructs_prompt_output() -> None:
     torch.manual_seed(307)
     module = _wrapper()
-    global_basis, _ = torch.linalg.qr(torch.randn(8, 3))
-    module.atlas.input_basis = global_basis
-    module.atlas.output_image = module.exact.weight.detach() @ global_basis
+    prompt_inputs, exact_outputs = _orthogonal_global_and_prompt(module)
 
-    prompt_inputs = torch.randn(1, 5, 8)
-    exact_outputs = module.exact(prompt_inputs)
     stats = augment_response_basis_from_prompt_io(
         module,
         input_tensor=prompt_inputs,
@@ -49,12 +55,8 @@ def test_full_hybrid_span_reconstructs_prompt_output() -> None:
 def test_truncated_session_augmentation_reduces_prompt_output_error() -> None:
     torch.manual_seed(311)
     module = _wrapper()
-    global_basis, _ = torch.linalg.qr(torch.randn(8, 3))
-    module.atlas.input_basis = global_basis
-    module.atlas.output_image = module.exact.weight.detach() @ global_basis
+    prompt_inputs, exact_outputs = _orthogonal_global_and_prompt(module)
 
-    prompt_inputs = torch.randn(1, 5, 8)
-    exact_outputs = module.exact(prompt_inputs)
     stats = augment_response_basis_from_prompt_io(
         module,
         input_tensor=prompt_inputs,
