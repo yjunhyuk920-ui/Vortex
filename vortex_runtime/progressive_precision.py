@@ -77,17 +77,35 @@ def symmetric_per_row_fake_quantize(
 
     Rows are processed in bounded chunks so the diagnostic can transform a
     billion-parameter CPU model without retaining a second full residual model.
-    No row, column, or singular direction is removed.
+    No row, column, or singular direction is removed. Requesting ``bits`` equal
+    to ``source_bits`` is a deliberate lossless no-op used by exactness tests
+    and source-precision compiler diagnostics.
     """
 
     if tensor.ndim < 2:
         raise ValueError("full-rank quantization expects at least two dimensions")
-    if not 2 <= bits < source_bits:
-        raise ValueError("bits must be in [2, source_bits)")
     if source_bits <= 0 or row_chunk <= 0:
         raise ValueError("source_bits and row_chunk must be positive")
+    if not 2 <= bits <= source_bits:
+        raise ValueError("bits must be in [2, source_bits]")
 
     source = tensor.detach().to("cpu", torch.float32)
+    elements = source.numel()
+    if bits == source_bits:
+        stats = TensorPrecisionStats(
+            name=name,
+            elements=elements,
+            hot_bits=bits,
+            source_bits=source_bits,
+            original_bytes=elements * source_bits / 8,
+            hot_bytes=elements * bits / 8,
+            residual_bitplane_bytes=0.0,
+            relative_l2_error=0.0,
+            maximum_absolute_error=0.0,
+            mean_absolute_error=0.0,
+        )
+        return source.clone(), stats
+
     flat = source.reshape(source.shape[0], -1)
     restored_flat = torch.empty_like(flat)
     qmax = (1 << (bits - 1)) - 1
@@ -114,7 +132,6 @@ def symmetric_per_row_fake_quantize(
         residual_absolute_sum += float(residual.abs().sum().item())
         maximum_error = max(maximum_error, float(residual.abs().amax().item()))
 
-    elements = source.numel()
     relative_error = (
         residual_square_sum / max(source_square_sum, 1e-24)
     ) ** 0.5
