@@ -25,7 +25,7 @@ def _model(parameters: int, *, weight_bits: int) -> ModelSpec:
 
 def test_unique_prefix_nodes_share_common_roots() -> None:
     sequences = [(1, 2, 3), (1, 2, 4), (1, 5, 6)]
-    assert unique_prefix_node_count(sequences) == 7
+    assert unique_prefix_node_count(sequences) == 6
 
 
 def test_longest_reference_prefix_across_branches() -> None:
