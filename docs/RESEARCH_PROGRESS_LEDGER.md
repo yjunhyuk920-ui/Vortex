@@ -2,72 +2,46 @@
 
 Last updated: 2026-08-03 (Asia/Seoul)
 
-This is the durable chronological record of architecture hypotheses, executable gates, measured evidence, and rejection reasons. New sessions must read this file before creating another candidate.
+This is the durable chronological record of architecture hypotheses, executable gates, measured evidence, and rejection reasons. Every new session must read this file before creating another candidate.
 
 ## Fixed target
 
-Execute an unmodified arbitrary Hugging Face 405B-class dense model on one 8 GiB VRAM GPU, preserve original-model quality, require no user training or model-specific adapter work, and reach p50 warm decode within 1.2x of a native 4B Q4 baseline on the same machine.
+Execute an arbitrary unmodified Hugging Face 405B-class dense model on one 8 GiB VRAM GPU, preserve original-model quality, require no user training/distillation/fine-tuning/model-specific adapter work, and reach p50 warm decode within 1.2x of a native 4B Q4 baseline on the same machine.
 
-Current project evidence remains below E4. No result below may be described as target completion.
+Current evidence remains below E4. Nothing below is target completion.
 
-## Research ledger
+## Permanent workflow rule
 
-### Gate 0 Cascade Capsule
+`docs/WORK_SESSION_PROTOCOL.md` is mandatory. After meaningful repository work and before a user-facing progress/completion answer, update this ledger, `docs/SESSION_HANDOFF.md`, the experiment document, PR decision, and raw result JSON when available.
 
-- Evidence: E0/E1 symbolic budget plus executable falsification harness.
-- Projected memory: about 3.881 GiB.
-- Projected traffic: about 1.650 GiB/token.
-- Projected compute: about 7.898 GFLOP/token.
+## Earlier decisive gates
+
+### Cascade Capsule Gate 0
+
+- E0/E1 symbolic budget and executable operation-replacement falsification harness.
+- Projected memory about 3.881 GiB, traffic about 1.650 GiB/token, compute about 7.898 GFLOP/token.
 - Critical cold-repair requirement: at least 246.889 tokens per full-stream-equivalent repair.
-- Status: conditional hypothesis only. Real disjoint-prompt amortization, rank sufficiency, quantization quality, bounded attention, CUDA wall clock, and architecture universality remain unproven.
+- Decision: conditional hypothesis only; rank sufficiency, quality, attention, universality, physical bytes, CUDA, and wall clock remain unproven.
 
-### MLP dictionary, gauge, and functional-skeleton family
+### Dictionary, functional skeleton, and global proof families
 
-- Real TinyLlama all-layer MLP replacement was executed.
-- Exact gauge transform error was about `4.6e-7`, but 16/32 prototype collapse produced teacher top-32 and causal prefix of zero.
-- Functional skeleton reached only about 9.4% teacher top-32 at 16 prototypes, output error about 0.972, and one exact causal step.
-- Decision: reject centroid/dictionary/function-skeleton compression as the primary execution family.
+- Exact gauge transform error about `4.6e-7`, but 16/32 prototype gauge dictionaries produced teacher top-32 and causal prefix zero.
+- Functional skeleton at 16 prototypes reached about 9.4% teacher top-32, output error about 0.972, and one exact causal step.
+- Q4 LM head retained exact top-1 on 93.75% and exact target within top-32 on 100%, but unsigned norms, exact top-K rows, adaptive branch-and-bound, and global orthogonal sketches produced zero useful certificates.
+- Decision: reject centroid/function dictionaries and magnitude-only global exclusion proofs.
 
-### Decision-Proof LM-head family
+### Activation atlas and ZIPTREE
 
-- Q4 LM head preserved exact top-1 on 93.75% and exact target within top-32 on 100% of the tested positions.
-- Unsigned residual norm, fixed exact top-K rows, adaptive row branch-and-bound, and global orthogonal residual sketches all produced zero unsafe certificates but zero useful certificates.
-- Rank-64 global residual sketch removed only about 2.7% of residual energy.
-- Decision: candidate discovery is not the limiting issue; exclusion bounds for all unread vocabulary rows are too loose.
+- Static prompt atlas ranks 4/8/16: continuation perpendicular means about 0.956/0.947/0.934; certificate rate 0%.
+- Online atlas: 32 exact residual expansions for 32 tokens, reuse 1 token/expansion, projected LM-head residual traffic 2.935546875 GiB/token.
+- ZIPTREE: 8,388,588 exact TinyLlama FP16 values, 11.3330 bits/weight, 1.4118x compression, 10,649-token straight acceptance required.
+- Decision: activation subspace caching and whole-model lossless compression do not close Gate 0.
 
-### Static and online activation proof atlas
+### Exact-neuron heavy-hitter family
 
-Static prompt-only atlas:
+Uniform optimistic oracle:
 
-- ranks 4/8/16;
-- continuation perpendicular mean about 0.956/0.947/0.934;
-- certificate rate 0% at every rank;
-- unsafe certificates 0.
-
-Online expansion:
-
-- 32 continuation tokens required 32 exact residual-image expansions;
-- reuse was exactly 1 token per expansion;
-- post-expansion certificate rate 100%;
-- projected 405B LM-head residual traffic 2.935546875 GiB/token.
-
-Decision: reject static and online activation-subspace caching. It reproduces tokenwise residual streaming rather than amortizing it.
-
-### VORTEX-ZIPTREE lossless entropy plus speculation
-
-- Sampled 8,388,588 exact TinyLlama FP16 values with byte-exact codec round trips.
-- Measured bit rate: 11.3330 bits/weight.
-- Measured compression ratio: 1.4118x.
-- 405B target threshold for 6 GiB resident target state: 0.12699 bits/weight.
-- At candidate depth 12, projected serialized latency: about 1.9275 seconds/token.
-- Minimum straight accepted run at measured rate: 10,649 tokens per target pass.
-- Decision: retain codec as an I/O/storage optimization only; reject as Gate 0 solution.
-
-### Uniform exact MLP heavy-hitter oracle
-
-This oracle computed full exact gate/up activations and then retained the highest original-neuron contribution scores. It is an optimistic quality upper bound, not a fast selector.
-
-| Requested fraction | Projected 405B MLP traffic | Teacher top-32 | Autonomous exact prefix |
+| Fraction | Projected MLP traffic | Teacher top-32 | Exact prefix |
 |---:|---:|---:|---:|
 | 0.10% | 0.623 GiB/token | 0% | 0 |
 | 0.25% | 1.546 GiB/token | 43.75% | 0 |
@@ -75,52 +49,149 @@ This oracle computed full exact gate/up activations and then retained the highes
 | 1.00% | 6.148 GiB/token | 50% | 0 |
 | 2.00% | 12.285 GiB/token | 50% | 0 |
 
-At 2%, the selected neurons covered only about 14.55% of the oracle contribution score and mean MLP output error remained about 0.703.
+First-order adjoint allocation:
 
-Decision: reject uniform tokenwise exact-neuron allocation.
+- 0.25% improved top-32 from 43.75% to 56.25%, but top-1 fell to 0% and prefix remained 0.
+- 0.50% worsened top-32 and prefix.
 
-### First-order adjoint layer allocation
+Nonlinear measured allocation, PR #29:
 
-A disjoint calibration prompt backpropagated exact top-one versus runner-up logit margins. The same total original-neuron count was assigned nonuniformly across layers and tested on a disjoint Korean prompt.
+- measured 22 layers × 6 counts = 132 single-layer damage points;
+- 0.10%: uniform/nonlinear top-32 0%;
+- 0.25%: uniform 43.75%, nonlinear 18.75%, traffic 1.6381 GiB/token;
+- 0.50%: uniform 56.25%, nonlinear 50%, traffic 3.1608 GiB/token.
 
-- 0.10%: uniform and adjoint top-32 both 0%, prefixes 0.
-- 0.25%: top-32 improved 43.75% to 56.25%, but top-1 fell to 0% and prefix stayed 0; projected traffic 1.638 GiB/token.
-- 0.50%: top-32 worsened 56.25% to 43.75%; prefix fell 2 to 0; projected traffic 3.172 GiB/token.
+Decision: close uniform, adjoint, and nonlinear independent exact-neuron allocation. Single-layer damage is not additive under simultaneous replacement.
 
-Decision: layer sensitivity is nonuniform, but first-order margin utility does not preserve nonlinear multilayer behavior. Reject the tested allocator.
+## Signed decision-certificate sequence
 
-### Nonlinear layer-damage allocation — active
+### PR #31 — Global-bound Signed Dual Cone — rejected
 
-Branch: `research/nonlinear-heavy-hitter-allocation`
+For one MLP input `x`, output dual `q`, and neuron `i`:
 
-Draft PR: `#29`
+```text
+a_i = SiLU(wg_i x) (wu_i x)
+s_i = d_i^T q
+c_i = a_i s_i
+q^T y = sum_i c_i
+```
 
-Hypothesis:
+The low-bit interval used global Cauchy residual-dot bounds, global `L_silu = 1+1/e`, and exact four-corner product hulls.
 
-- measure actual final-token cross-entropy damage when one MLP layer at a time is replaced by exact original-neuron subsets at counts 1/4/8/16/32/64;
-- solve a discrete byte-constrained allocation over the measured nonlinear curves;
-- validate all 22 replaced MLPs simultaneously on a disjoint prompt against an equal-cost uniform allocation.
+Measured TinyLlama warm decode:
 
-The initial workflow failed before measurement because it referenced `tests/test_adjoint_heavy_hitter.py`, a sibling-branch file absent from the branch. This is infrastructure failure, not candidate evidence.
+| Hot precision | Mean exact refinement | Maximum refinement | Maximum projected traffic |
+|---:|---:|---:|---:|
+| 4-bit | 100% | 100% | 614.25 GiB/token |
+| 8-bit | 97.9333% | 99.4116% | 610.6393 GiB/token |
 
-Fix commit: `b7ad7aefb8ef8a64cc1979735e1c9ba487e944ac`
+All intervals were sound: zero unsafe certificates and zero containment failures.
 
-The workflow now explicitly validates only branch-owned test files and checks they exist before pytest.
+Decision: signed scalar projection is insufficient with global magnitude bounds.
 
-Promotion thresholds remain:
+### PR #32 — Partitioned Residual Signed Dual Cone — rejected
 
-- projected partial MLP traffic at or below 1.6 GiB/token;
-- disjoint teacher top-32 at least 95%;
-- autonomous exact prefix at least 4 tokens;
-- no hidden full-activation or exact-target cost omitted from accounting.
+Replaced global Cauchy with:
+
+```text
+|r_i^T x| <= sum_k ||r_i[B_k]||_2 ||x[B_k]||_2
+```
+
+and used interval-local SiLU slopes. Residual block norms were executed as upward-safe 8-bit codes with 16-bit row scales, including scale memory.
+
+| Block | Metadata | Mean refinement | Maximum refinement | Maximum exact traffic |
+|---:|---:|---:|---:|---:|
+| 128 | 2.4369 GiB | 96.4416% | 98.9080% | 607.5478 GiB/token |
+| 256 | 1.2372 GiB | 96.4628% | 98.9177% | 607.6055 GiB/token |
+| 512 | 0.6373 GiB | 96.4703% | 98.9217% | 607.6285 GiB/token |
+
+At block 128, gate/up radii remained about 99.54% and directional radii about 99.87% of global.
+
+Decision: norm partitioning preserves almost none of the signed cancellation.
+
+### PR #33 — Block Signed Residual Code — rejected
+
+For each block and shared orthonormal basis `U_b`:
+
+```text
+r_b^T x_b
+= (r_b^T U_b)(U_b^T x_b)
+  + r_b,perp^T x_b,perp
+```
+
+Stored the first term as signed center and bounded only the orthogonal remainder. Build and evaluation prompts were disjoint.
+
+| Block/rank | Metadata | Mean refinement | Maximum refinement | Maximum traffic |
+|---:|---:|---:|---:|---:|
+| 512/1 | 4.8142 GiB | 94.4114% | 95.3940% | 585.9646 GiB/token |
+| 1024/1 | 2.4148 GiB | 94.4441% | 95.4255% | 586.1607 GiB/token |
+| 1024/2 | 3.6299 GiB | 92.3949% | 95.3682% | 585.8031 GiB/token |
+
+Rank2 reduced gate/up radius to about 69.2%, but evaluation activations retained about 69.4% perpendicular energy and duals about 81.9%.
+
+Decision: signed cancellation is real, but static build-prompt codebooks do not transfer sufficiently.
+
+### PR #34 — Global Margin Refinement — rejected
+
+Removed equal per-layer error shares. For each interval:
+
+```text
+l_i = a_i - L_i
+u_i = U_i - a_i
+```
+
+and required globally:
+
+```text
+sum unrefined l_i <= tau
+sum unrefined u_i <= tau
+```
+
+A 41-point dual-price sweep ordered neurons by:
+
+```text
+lambda l_i + (1-lambda) u_i
+```
+
+using the strongest PR #33 representation.
+
+Measured:
+
+- metadata 3.6299 GiB;
+- equal-layer mean refinement 92.3949%;
+- global-width mean refinement 90.7449%;
+- dual-price mean refinement 90.7432%;
+- maximum dual-price refinement 93.3392%;
+- maximum projected traffic 573.3446 GiB/token.
+
+Decision: global allocation recovers only about 1.65 percentage points. Equal layer allocation was a secondary inefficiency, not the core failure.
 
 ## Current interpretation
 
-The accumulated failures show that the tested activations and MLP functions are not reusable in a sufficiently low-dimensional static basis, and that tokenwise exact-neuron sparsity is far weaker than required under a uniform or first-order layer budget. The remaining open question is whether actual nonlinear layer damage is sufficiently concentrated that a discrete allocation can preserve behavior within the same byte budget.
+The project has now falsified:
+
+- static low-dimensional activation reuse;
+- magnitude-only residual bounds;
+- static signed residual codebooks built from disjoint prompts;
+- independent exact-neuron subsets;
+- equal-layer and global interval ordering as sufficient remedies;
+- whole-model lossless compression plus speculative amortization as the primary path.
+
+The consistent signal is that signed residual cancellation matters, but the relevant activation and output-dual state changes strongly across prompts and tokens. A viable next representation must be keyed to online semantic state or must amortize an exact decision program across multiple future tokens. Another static build-prompt basis, norm partition, or neuron-ordering variation is prohibited unless it introduces a new measurable reuse mechanism.
+
+## Current frontier
+
+No research PR remains promoted. PRs #29, #31, #32, #33, and #34 are closed with raw evidence committed on their branch heads.
+
+The next architecture must begin with a new proof-first certificate for one of these two mechanisms:
+
+1. **Semantic-state-keyed signed residual programs** — select or construct a small signed program from current hidden/dual state before exact weight reads, and prove its program-build cost amortizes across tokens.
+2. **Multi-token decision program** — one exact target interaction produces a certified program that commits or bounds several future token decisions without tokenwise full residual images.
 
 ## Mandatory next step
 
-1. Complete PR #29 after the workflow-isolation fix.
-2. Commit its raw result JSON.
-3. Close or promote the exact-neuron family from measured disjoint results.
-4. If rejected, move to an execution representation whose reusable object is a certified multi-layer decision influence cone rather than an activation basis, whole residual image, or independent-neuron subset.
+1. Derive 405B memory/traffic/compute equations for both frontier mechanisms before implementation.
+2. Reject any design whose program construction requires tokenwise full residual streaming.
+3. Define a measurable reuse factor and minimum amortization threshold.
+4. Implement the cheaper falsification first on disjoint multi-token TinyLlama traces.
+5. Update this ledger and `docs/SESSION_HANDOFF.md` before the next user-facing progress answer.
