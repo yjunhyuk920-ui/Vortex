@@ -23,7 +23,7 @@
       "rank": 32,
       "budget": {
         "rank": 32,
-        "capsule_bits": 8,
+        "capsule_bits": 8.0,
         "memory_gib": 4.304969787597656,
         "memory_limit_gib": 8.0,
         "memory_pass": true,
@@ -62,13 +62,13 @@
         "exact_logit_gap_from_hot_top1": 3.150425910949707
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 77.38621785599999
+      "elapsed_seconds": 76.494449308
     },
     {
       "rank": 40,
       "budget": {
         "rank": 40,
-        "capsule_bits": 8,
+        "capsule_bits": 8.0,
         "memory_gib": 4.59636116027832,
         "memory_limit_gib": 8.0,
         "memory_pass": true,
@@ -107,13 +107,13 @@
         "exact_logit_gap_from_hot_top1": 1.4207868576049805
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 68.63436104500002
+      "elapsed_seconds": 67.90112822700002
     },
     {
       "rank": 48,
       "budget": {
         "rank": 48,
-        "capsule_bits": 8,
+        "capsule_bits": 8.0,
         "memory_gib": 4.887752532958984,
         "memory_limit_gib": 8.0,
         "memory_pass": true,
@@ -152,13 +152,13 @@
         "exact_logit_gap_from_hot_top1": 3.0043296813964844
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 69.66897068499998
+      "elapsed_seconds": 69.095100557
     },
     {
       "rank": 56,
       "budget": {
         "rank": 56,
-        "capsule_bits": 8,
+        "capsule_bits": 8.0,
         "memory_gib": 5.179143905639648,
         "memory_limit_gib": 8.0,
         "memory_pass": true,
@@ -197,13 +197,13 @@
         "exact_logit_gap_from_hot_top1": 2.5474853515625
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 70.05579720600002
+      "elapsed_seconds": 69.83320361399996
     },
     {
       "rank": 64,
       "budget": {
         "rank": 64,
-        "capsule_bits": 8,
+        "capsule_bits": 8.0,
         "memory_gib": 5.4705352783203125,
         "memory_limit_gib": 8.0,
         "memory_pass": true,
@@ -242,13 +242,13 @@
         "exact_logit_gap_from_hot_top1": 1.2474699020385742
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 70.69596716699999
+      "elapsed_seconds": 69.48642179699999
     },
     {
       "rank": 72,
       "budget": {
         "rank": 72,
-        "capsule_bits": 8,
+        "capsule_bits": 8.0,
         "memory_gib": 5.761926651000977,
         "memory_limit_gib": 8.0,
         "memory_pass": true,
@@ -287,7 +287,7 @@
         "exact_logit_gap_from_hot_top1": 1.9585151672363281
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 71.08269458300003
+      "elapsed_seconds": 69.784548815
     }
   ],
   "top32_coverage_monotonic": false,
@@ -295,7 +295,7 @@
     "rank": 56,
     "budget": {
       "rank": 56,
-      "capsule_bits": 8,
+      "capsule_bits": 8.0,
       "memory_gib": 5.179143905639648,
       "memory_limit_gib": 8.0,
       "memory_pass": true,
@@ -334,15 +334,15 @@
       "exact_logit_gap_from_hot_top1": 2.5474853515625
     },
     "qualifies_for_multi_hypothesis": false,
-    "elapsed_seconds": 70.05579720600002
+    "elapsed_seconds": 69.83320361399996
   },
   "surviving_points": [],
   "decision": "reject global low-rank O/down capsule through rank 72",
   "next_candidate": "replace the global activation-subspace capsule with a block-local trajectory or operator-structured representation",
-  "elapsed_seconds": 427.524907914,
+  "elapsed_seconds": 422.595738131,
   "workflow": {
-    "run_id": 30742780101,
-    "head_sha": "519ea649652e9a626af014ebd76cead8208a9968",
-    "raw_file_sha256": "5a943c1fb5cee6f6da9c8098673e8897bf32111acb3785b6510233894b682a6c"
+    "run_id": 30744931889,
+    "head_sha": "cd5d269ab1f54ece76a97ec1cf29d6198fd4910e",
+    "raw_file_sha256": "1fed439dab07dc47af9767e6c8351b9f0e00842d9a96b11bba869f1ee522cf33"
   }
 }
