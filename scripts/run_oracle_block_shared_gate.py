@@ -105,6 +105,25 @@ def probe_counts(
     return sorted(count for count in counts if 0 <= count <= candidate_count)
 
 
+def _is_better_combined(
+    candidate: dict[str, Any],
+    current: dict[str, Any] | None,
+) -> bool:
+    if current is None:
+        return True
+    candidate_key = (
+        int(candidate["incremental_committed_tokens"]),
+        int(candidate["committed_prefix_tokens"]),
+        -int(candidate["selected_weight_bytes"]),
+    )
+    current_key = (
+        int(current["incremental_committed_tokens"]),
+        int(current["committed_prefix_tokens"]),
+        -int(current["selected_weight_bytes"]),
+    )
+    return candidate_key > current_key
+
+
 def main() -> None:
     args = parse_args()
     if args.block_tokens <= 0 or args.build_new_tokens <= 0:
@@ -234,8 +253,10 @@ def main() -> None:
     combined_count = count_within_bytes(cumulative, combined_max_bytes)
 
     tested: list[dict[str, Any]] = []
+    zero_repair_prefix: int | None = None
     best_combined: dict[str, Any] | None = None
     best_efficiency: dict[str, Any] | None = None
+
     for count in probe_counts(
         candidate_count=len(candidates),
         combined_count=combined_count,
@@ -260,6 +281,12 @@ def main() -> None:
             exact_generated,
             candidate_sequence[prompt_length:],
         )
+        if count == 0:
+            zero_repair_prefix = committed_prefix
+        if zero_repair_prefix is None:
+            raise RuntimeError("zero-repair baseline must be evaluated first")
+
+        incremental = max(0, committed_prefix - zero_repair_prefix)
         gate = BlockSharedGate(
             committed_tokens=committed_prefix,
             selected_weight_bytes=selected_bytes,
@@ -269,32 +296,39 @@ def main() -> None:
             full_exact_repair_gflop_per_token=target_full_repair_gflop,
             compute_limit_gflop_per_token=target_compute_limit,
         )
+        repair_gain_pass = count > 0 and incremental > 0
+        logical_oracle_pass = gate.pass_all and repair_gain_pass
         item = {
             "selected_tiles": count,
             "selected_weight_bytes": selected_bytes,
             "committed_prefix_tokens": committed_prefix,
+            "zero_repair_prefix_tokens": zero_repair_prefix,
+            "incremental_committed_tokens": incremental,
+            "repair_gain_pass": repair_gain_pass,
+            "logical_oracle_pass": logical_oracle_pass,
             "full_block_match": committed_prefix == actual_block_tokens,
             **gate.to_dict(),
         }
         tested.append(item)
+
         efficiency = gate.traffic_efficiency
-        if gate.pass_all and (
-            best_combined is None
-            or committed_prefix > int(best_combined["committed_prefix_tokens"])
-        ):
+        if logical_oracle_pass and _is_better_combined(item, best_combined):
             best_combined = item
-        if efficiency is not None and (
+        if repair_gain_pass and efficiency is not None and (
             best_efficiency is None
             or float(efficiency) > float(best_efficiency["traffic_efficiency"])
         ):
             best_efficiency = item
 
     if best_combined is not None:
-        decision = "block-shared repair passes combined traffic and compute gate"
+        decision = (
+            "block-shared repair survives the E1 combined oracle; "
+            "selector and certificate remain unproven"
+        )
     elif best_efficiency is not None and bool(best_efficiency["traffic_pass"]):
-        decision = "block-shared repair passes traffic but fails compute"
+        decision = "repair increases the prefix but fails the compute gate"
     else:
-        decision = "block-shared repair fails the combined Gate 0 envelope"
+        decision = "block-shared repair fails the combined Gate 0 oracle"
 
     result = {
         "evidence_level": "E1 exact-target block-shared combined oracle",
@@ -318,6 +352,7 @@ def main() -> None:
         "test_model_weight_bytes": test_model_bytes,
         "managed_weight_bytes": managed_weight_bytes,
         "candidate_tiles": len(candidates),
+        "zero_repair_prefix_tokens": zero_repair_prefix,
         "adjoint": profile.metadata(),
         "target_compute": {
             "hot_gflop_per_token": target_hot_gflop,
@@ -340,8 +375,10 @@ def main() -> None:
         "elapsed_seconds": time.perf_counter() - started,
         "scope_note": (
             "Extremely optimistic oracle: exact target tokens and gradients rank "
-            "one shared tile set. Weight traffic is charged once per block, but "
-            "selected exact tile arithmetic is correctly charged every token."
+            "one shared tile set. A pass only means the logical byte/compute "
+            "envelope survives and the repair increases the exact prefix beyond "
+            "the zero-repair baseline. No deployable selector or certificate is "
+            "proved."
         ),
     }
     args.output.write_text(
@@ -353,6 +390,7 @@ def main() -> None:
         json.dumps(
             {
                 "actual_generated_tokens": actual_block_tokens,
+                "zero_repair_prefix_tokens": zero_repair_prefix,
                 "combined_budget_tile_count": combined_count,
                 "compute_max_selected_bytes": compute_max_bytes,
                 "best_combined_candidate": best_combined,
