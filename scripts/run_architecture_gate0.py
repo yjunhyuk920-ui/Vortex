@@ -22,7 +22,12 @@ def generate_report(root: Path) -> dict[str, object]:
     report = default_gate0_report(observed)
     return apply_real_model_observation(
         report,
-        root / "results/tinyllama_1_1b_exact_span_warm_decode.json",
+        exact_span_path=(
+            root / "results/tinyllama_1_1b_exact_span_warm_decode.json"
+        ),
+        oracle_path=(
+            root / "results/tinyllama_1_1b_rank32_repair_oracles.json"
+        ),
     )
 
 
@@ -52,6 +57,7 @@ def main() -> None:
         "observed_component_decision": report.get(
             "observed_component_decision"
         ),
+        "rejected_mechanisms": report.get("rejected_mechanisms", []),
     }
     print(output)
     print(json.dumps(summary, indent=2, allow_nan=False))
