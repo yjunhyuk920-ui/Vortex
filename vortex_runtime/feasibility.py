@@ -227,6 +227,28 @@ def architecture_gate0_report(
         else 0.0
     )
 
+    # A proposal-margin selector requires one backward pass through the hot
+    # representation. Fixed-weight capsule linear backward costs approximately
+    # one forward linear pass; summarized attention backward is conservatively
+    # charged at two forward attention passes; nonlinear/certificate work is
+    # charged once again. This selector cost is not free and reduces repair
+    # headroom.
+    selector_backward_linear_flops = hot_linear_flops
+    selector_backward_attention_flops = 2.0 * hot_attention_flops
+    selector_backward_misc_flops = candidate.misc_hot_flops
+    selector_backward_flops = (
+        selector_backward_linear_flops
+        + selector_backward_attention_flops
+        + selector_backward_misc_flops
+    )
+    selector_hot_flops = hot_flops_per_token + selector_backward_flops
+    selector_compute_headroom = compute_limit - selector_hot_flops
+    selector_maximum_repair_fraction = (
+        max(0.0, selector_compute_headroom / cold_repair_flops)
+        if cold_repair_flops > 0
+        else 0.0
+    )
+
     target_efficiency = (
         candidate.committed_tokens_per_repair / candidate.repair_fraction
     )
@@ -278,6 +300,10 @@ def architecture_gate0_report(
                 "selected exact arithmetic is charged every token and is not "
                 "divided by committed block tokens"
             ),
+            "selector_compute": (
+                "proposal-margin backward selection is charged in addition to "
+                "hot forward compute"
+            ),
         },
         "target": asdict(target),
         "baseline": asdict(baseline),
@@ -327,6 +353,29 @@ def architecture_gate0_report(
             ),
             "projected_gflop_per_token": projected_flops_per_token / 1e9,
             "analytic_pass": analytic_compute_pass,
+        },
+        "selector_compute": {
+            "backward_linear_gflop_per_token": (
+                selector_backward_linear_flops / 1e9
+            ),
+            "backward_attention_gflop_per_token": (
+                selector_backward_attention_flops / 1e9
+            ),
+            "backward_misc_gflop_per_token": (
+                selector_backward_misc_flops / 1e9
+            ),
+            "backward_total_gflop_per_token": selector_backward_flops / 1e9,
+            "hot_plus_selector_gflop_per_token": selector_hot_flops / 1e9,
+            "limit_gflop_per_token": compute_limit / 1e9,
+            "maximum_repair_fraction": selector_maximum_repair_fraction,
+            "maximum_selected_weight_gib": gib(
+                target.weight_bytes * selector_maximum_repair_fraction
+            ),
+            "assumption": (
+                "fixed-weight capsule linear backward = 1x linear forward; "
+                "summarized attention backward = 2x attention forward; "
+                "misc backward = 1x misc forward"
+            ),
         },
         "mechanism": {
             "required_tokens_per_full_repair_equivalent": (
