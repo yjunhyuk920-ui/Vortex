@@ -1,0 +1,94 @@
+name: MLP function-only diagnostic
+
+on:
+  pull_request:
+    paths:
+      - "scripts/run_mlp_function_only_diagnostic.py"
+      - ".github/workflows/mlp-function-only-diagnostic.yml"
+
+concurrency:
+  group: mlp-function-only-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  diagnose:
+    if: github.head_ref == 'research/mlp-function-only-diagnostic'
+    strategy:
+      fail-fast: false
+      matrix:
+        prototypes: [16, 32]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate skeleton math
+        run: python -m pytest -q tests/test_mlp_functional_skeleton.py
+      - name: Diagnose layer 10 with ${{ matrix.prototypes }} prototypes
+        run: |
+          python scripts/run_mlp_function_only_diagnostic.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --layer-index 10 \
+            --prototypes ${{ matrix.prototypes }} \
+            --probe-count 128 \
+            --heldout-probe-count 128 \
+            --factor-bits 8 \
+            --seed 8081 \
+            --output "function-only-${{ matrix.prototypes }}.json"
+      - name: Publish function-space result
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = next(Path('.').glob('function-only-*.json'))
+          data = json.loads(path.read_text())
+          report = {
+              'prototypes': data['prototypes'],
+              'probe_activation_error': data['functional_skeleton'][
+                  'probe_activation_relative_l2_error'
+              ],
+              'heldout_activation_error': data['functional_skeleton'][
+                  'heldout_activation_relative_l2_error'
+              ],
+              'probe_output_error': data['functional_skeleton'][
+                  'probe_output_relative_l2_error'
+              ],
+              'heldout_output_error': data['functional_skeleton'][
+                  'heldout_output_relative_l2_error'
+              ],
+              'condition_number': data['functional_skeleton'][
+                  'selected_response_condition_number'
+              ],
+              'decision': data['decision'],
+          }
+          Path('function-comment.md').write_text(
+              '## MLP function-only diagnostic\n\n```json\n'
+              + json.dumps(report, indent=2, ensure_ascii=False)
+              + '\n```',
+              encoding='utf-8',
+          )
+          PY
+          gh pr comment "$PR_NUMBER" --body-file function-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mlp-function-only-${{ matrix.prototypes }}
+          path: function-only-${{ matrix.prototypes }}.json
