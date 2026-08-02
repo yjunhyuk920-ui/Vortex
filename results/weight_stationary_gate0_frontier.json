@@ -352,7 +352,7 @@
   "decision": "exact full-weight streaming has a serialized feasible region in the tested grid",
   "architecture_implication": "If the default point has no ideal range, a target pass must avoid either full checkpoint traffic or full dense arithmetic; improving the token proposal alone cannot close Gate 0.",
   "workflow": {
-    "run_id": 30747714893,
-    "head_sha": "863c657971ed9dfaf173fb165ba3faaa29ccb9bf"
+    "run_id": 30747794810,
+    "head_sha": "d633e39ba958b693d28bf6946a9261cc5d200771"
   }
 }
