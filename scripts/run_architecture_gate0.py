@@ -7,6 +7,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from vortex_runtime.feasibility import default_gate0_report
+from vortex_runtime.gate0_hybrid_results import apply_hybrid_frontier
 from vortex_runtime.gate0_observations import apply_real_model_observation
 from vortex_runtime.gate0_precision_results import apply_precision_frontier
 from vortex_runtime.gate0_selector_results import apply_selector_falsifications
@@ -70,9 +71,13 @@ def generate_report(root: Path) -> dict[str, object]:
             / "results/tinyllama_1_1b_session_prefill_candidate_coverage.json"
         ),
     )
-    return apply_precision_frontier(
+    report = apply_precision_frontier(
         report,
         root / "results/tinyllama_1_1b_precision_rank_frontier.json",
+    )
+    return apply_hybrid_frontier(
+        report,
+        root / "results/tinyllama_1_1b_hybrid_allocation_frontier.json",
     )
 
 
@@ -125,6 +130,9 @@ def main() -> None:
             "session_prefill_response_basis"
         ),
         "precision_rank_frontier": report.get("precision_rank_frontier"),
+        "hybrid_allocation_frontier": report.get(
+            "hybrid_allocation_frontier"
+        ),
         "revised_oracle_envelope": report.get("revised_oracle_envelope"),
         "observed_component_decision": report.get(
             "observed_component_decision"
