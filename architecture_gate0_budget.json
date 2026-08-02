@@ -1,7 +1,7 @@
 {
   "evidence_level": "E0/E1",
   "candidate": "VORTEX-WAVE-1",
-  "status": "rejected-vortex-wave-1-analytic-envelope",
+  "status": "original-wave1-rejected-logical-block-oracle-survives",
   "accounting_contract": {
     "traffic": "selected cold bytes are divided by committed block tokens",
     "compute": "selected exact arithmetic is charged every token and is not divided by committed block tokens"
@@ -106,32 +106,70 @@
     "maximum_compute_repair_fraction": 0.010172682332456079,
     "candidate_target": 640.0,
     "candidate_repair_fraction": 0.25,
-    "observed": 8.195999145507812,
-    "observed_repair_fraction": 0.1220107496653529,
-    "observed_source": "results/tinyllama_1_1b_adjoint_tile_oracle.json",
-    "traffic_pass": false,
-    "compute_pass": false,
-    "pass": false,
-    "traffic_shortfall_factor": 59.9437788190323,
-    "compute_excess_factor": 11.993960459777258,
-    "observed_exact_token_match": true,
-    "observed_warm_decode_fast_fraction": 0.0
+    "observed": 1049.087890625,
+    "observed_repair_fraction": 0.001906417963521139,
+    "observed_committed_tokens": 2,
+    "observed_incremental_committed_tokens": 1,
+    "observed_source": "results/tinyllama_1_1b_block_shared_combined_gate.json",
+    "traffic_pass": true,
+    "compute_pass": true,
+    "pass": true,
+    "traffic_shortfall_factor": 0.46831077202368987,
+    "compute_excess_factor": 0.18740563218401965,
+    "selector_proven": false,
+    "certificate_proven": false,
+    "managed_model_wide": false
   },
   "gates": {
     "memory": true,
     "analytic_traffic": true,
     "analytic_compute": false,
-    "observed_repair_traffic": false,
-    "observed_repair_compute": false,
-    "observed_repair_efficiency": false
+    "observed_repair_traffic": true,
+    "observed_repair_compute": true,
+    "observed_repair_efficiency": true,
+    "logical_combined_oracle": true,
+    "target_independent_selector": false,
+    "sound_commit_certificate": false
   },
-  "observed_component_decision": "reject per-token rank-32 residual tile repair even with exact target tokens and exact evaluation gradients",
+  "logical_oracle": {
+    "evidence_level": "E1 exact-target block-shared combined oracle",
+    "source": "results/tinyllama_1_1b_block_shared_combined_gate.json",
+    "zero_repair_prefix_tokens": 1,
+    "selected_tiles": 128,
+    "selected_weight_bytes": 8388608,
+    "repair_fraction": 0.001906417963521139,
+    "committed_prefix_tokens": 2,
+    "incremental_committed_tokens": 1,
+    "traffic_efficiency": 1049.087890625,
+    "projected_traffic_gib_per_token": 2.0149429851095304,
+    "projected_compute_gflop_per_token": 5.143432235239942,
+    "traffic_pass": true,
+    "compute_pass": true,
+    "logical_budget_pass": true,
+    "selector_uses_exact_target_tokens": true,
+    "selector_uses_teacher_gradients": true,
+    "sound_commit_certificate": false,
+    "scope": "TinyLlama 1.1B O/down projections on one disjoint evaluation prompt"
+  },
+  "revised_oracle_envelope": {
+    "repair_fraction": 0.001906417963521139,
+    "committed_tokens_per_shared_repair": 2,
+    "projected_traffic_gib_per_token": 2.0149429851095304,
+    "traffic_limit_gib_per_token": 2.8351741790771485,
+    "traffic_pass": true,
+    "projected_compute_gflop_per_token": 5.143432235239942,
+    "compute_limit_gflop_per_token": 12.132735283199999,
+    "compute_pass": true,
+    "memory_pass": true
+  },
+  "observed_component_decision": "The rank-32 block-shared repair family survives the corrected E1 logical budget oracle with an 8 MiB tile set and a two-token exact prefix, one token longer than the zero-repair baseline.",
   "rejected_mechanisms": [
     "exact-span Atlas warm-decode fast path",
     "rank-32 approximate capsule plus exact layer-suffix repair",
     "rank-32 approximate capsule plus output-row tile repair",
     "rank-32 residual-energy 2D tile repair",
-    "rank-32 exact-target adjoint 2D tile repair per token"
+    "rank-32 exact-target adjoint 2D tile repair per token",
+    "the original VORTEX-WAVE-1 25-percent repair design point"
   ],
-  "next_candidate": "block-shared combined traffic/compute oracle"
+  "next_candidate": "target-independent block repair selector plus sound causal-prefix certificate"
 }
