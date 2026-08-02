@@ -60,7 +60,7 @@ jobs:
             --build-prompt "Explain why the sky appears blue." \
             --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
             --output real_operation_falsification.json
-      - name: Run TinyLlama 1.1B approximate oracle repair
+      - name: Run TinyLlama 1.1B approximate layer-suffix oracle
         run: |
           python scripts/run_oracle_suffix_repair.py \
             --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
@@ -69,6 +69,16 @@ jobs:
             --max-rank 32 \
             --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
             --output oracle_suffix_repair.json
+      - name: Run TinyLlama 1.1B output-row tile oracle
+        run: |
+          python scripts/run_oracle_tile_repair.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --max-new-tokens 2 \
+            --max-rank 32 \
+            --tile-rows 128 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output oracle_tile_repair.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -76,4 +86,5 @@ jobs:
           path: |
             real_operation_falsification.json
             oracle_suffix_repair.json
+            oracle_tile_repair.json
           if-no-files-found: warn
