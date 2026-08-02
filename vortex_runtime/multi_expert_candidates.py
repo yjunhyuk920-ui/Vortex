@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from math import inf
-from typing import Iterable, Mapping, Sequence
+from typing import Iterable, Sequence
 
 import torch
 
@@ -94,10 +93,19 @@ def summarize_fixed_union(
 
 
 def margin_thresholds(rows: Sequence[ExpertCandidateRow]) -> list[float]:
+    """Return finite thresholds covering zero through all secondary calls.
+
+    Strict evidence JSON rejects ``NaN`` and infinities. The lower and upper
+    sentinels are therefore placed one finite scale unit outside the observed
+    margin range rather than using ``-inf`` and ``inf``.
+    """
+
     if not rows:
         raise ValueError("at least one candidate row is required")
     margins = sorted({float(row.primary_margin) for row in rows})
-    return [-inf, *margins, inf]
+    scale = max(1.0, *(abs(value) for value in margins))
+    epsilon = max(1e-9, scale * 1e-9)
+    return [margins[0] - epsilon, *margins, margins[-1] + epsilon]
 
 
 def summarize_margin_fallback(
