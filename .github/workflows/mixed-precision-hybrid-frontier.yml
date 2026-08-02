@@ -13,6 +13,10 @@ on:
       - "tests/test_mixed_precision_hybrid_frontier.py"
       - ".github/workflows/mixed-precision-hybrid-frontier.yml"
 
+concurrency:
+  group: mixed-precision-hybrid-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
   pull-requests: write
