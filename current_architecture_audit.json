@@ -1,0 +1,94 @@
+{
+  "audit_date": "2026-08-02",
+  "source_revision": "3c486625ecea4e4692e1e5e4bcc22d3a59bf6e15",
+  "verified_local_tests": 7,
+  "prototype_test_model": {
+    "parameters": 197312,
+    "parameters_million": 0.197312,
+    "scale_gap_to_405_85b": 2056890.8310087577,
+    "layers": 4,
+    "hidden_size": 64,
+    "vocab_size": 257
+  },
+  "current_vtx_format": {
+    "quant_storage": "int8 even when base_bits is 4, 5, or 6",
+    "residual_storage": "float32",
+    "scale_storage": "float32 per output-row/input-tile",
+    "bound_storage": "three float32 values per output-row/input-tile",
+    "tile_cols": 128
+  },
+  "projected_405b_vtx_if_applied_to_all_internal_linears_and_lm_head": {
+    "int8_base_gib": 376.01953125,
+    "fp32_residual_gib": 1504.078125,
+    "fp32_scales_gib": 11.7506103515625,
+    "fp32_bounds_gib": 35.2518310546875,
+    "total_vtx_storage_gib_excluding_embedding": 1927.10009765625,
+    "minimum_base_plus_metadata_read_per_target_pass_gib": 423.02197265625,
+    "minimum_read_assumes_zero_residual_tiles": true
+  },
+  "traffic_gate": {
+    "native_4b_q4_weight_bytes_gib": 1.862645149230957,
+    "minimum_tokens_needed_per_405b_weight_stream": 227.108192256,
+    "observed_tiny_jacobi_mean_committed_block": 1.2751790996462853,
+    "amortization_gap_factor": 178.0990547280741,
+    "note": "Compute, KV, residual reads, and I/O inefficiency are excluded, so this is optimistic."
+  },
+  "kv_cache_bf16": {
+    "bytes_per_token": 516096,
+    "gib_2k": 0.984375,
+    "gib_4k": 1.96875,
+    "gib_8k": 3.9375,
+    "gib_16k": 7.875,
+    "gib_128k": 63.0
+  },
+  "per_matrix_per_layer_vtx_gib": {
+    "q_proj": {
+      "int8_base": 0.25,
+      "fp32_residual": 1.0,
+      "fp32_scales": 0.0078125,
+      "fp32_bounds": 0.0234375
+    },
+    "k_proj": {
+      "int8_base": 0.015625,
+      "fp32_residual": 0.0625,
+      "fp32_scales": 0.00048828125,
+      "fp32_bounds": 0.00146484375
+    },
+    "v_proj": {
+      "int8_base": 0.015625,
+      "fp32_residual": 0.0625,
+      "fp32_scales": 0.00048828125,
+      "fp32_bounds": 0.00146484375
+    },
+    "o_proj": {
+      "int8_base": 0.25,
+      "fp32_residual": 1.0,
+      "fp32_scales": 0.0078125,
+      "fp32_bounds": 0.0234375
+    },
+    "gate_proj": {
+      "int8_base": 0.8125,
+      "fp32_residual": 3.25,
+      "fp32_scales": 0.025390625,
+      "fp32_bounds": 0.076171875
+    },
+    "up_proj": {
+      "int8_base": 0.8125,
+      "fp32_residual": 3.25,
+      "fp32_scales": 0.025390625,
+      "fp32_bounds": 0.076171875
+    },
+    "down_proj": {
+      "int8_base": 0.8125,
+      "fp32_residual": 3.25,
+      "fp32_scales": 0.025390625,
+      "fp32_bounds": 0.076171875
+    }
+  },
+  "engineering_verdict": {
+    "8gb_residency_plumbing": "prototype only; CPU simulation, not measured CUDA residency",
+    "405b_end_to_end": "not implemented",
+    "4b_class_wall_clock": "not demonstrated and cannot be reached by scaling the current full-base VTX format unchanged",
+    "required_architecture_change": "avoid reading the complete base matrix on normal tokens; add a smaller cached operator path plus measured exact fallback and block amortization"
+  }
+}
