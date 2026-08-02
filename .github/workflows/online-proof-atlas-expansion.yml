@@ -1,0 +1,225 @@
+name: Online proof atlas expansion gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/online_activation_proof_atlas.py"
+      - "scripts/run_lm_head_online_proof_atlas.py"
+      - "tests/test_online_activation_proof_atlas.py"
+      - "docs/EXPERIMENT_025_ONLINE_PROOF_ATLAS_EXPANSION.md"
+      - ".github/workflows/online-proof-atlas-expansion.yml"
+
+concurrency:
+  group: online-proof-atlas-expansion-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/online-proof-atlas-expansion'
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        initial_rank: [4, 8, 16]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate online proof atlas
+        run: |
+          python -m pytest -q \
+            tests/test_residual_proof.py \
+            tests/test_activation_proof_atlas.py \
+            tests/test_online_activation_proof_atlas.py
+      - name: Measure online atlas rank ${{ matrix.initial_rank }}
+        run: |
+          python scripts/run_lm_head_online_proof_atlas.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --hot-bits 4 \
+            --initial-rank ${{ matrix.initial_rank }} \
+            --build-samples 32 \
+            --output "online-proof-atlas-${{ matrix.initial_rank }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: online-proof-atlas-${{ matrix.initial_rank }}
+          path: online-proof-atlas-${{ matrix.initial_rank }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: online-proof-atlas-*
+          path: online-proof-atlas-results
+          merge-multiple: true
+      - name: Aggregate online atlas frontier
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          files = sorted(Path("online-proof-atlas-results").glob("*.json"))
+          if not files:
+              raise SystemExit("no online proof atlas results")
+          points = [json.loads(path.read_text(encoding="utf-8")) for path in files]
+          points.sort(key=lambda item: item["initial_rank"])
+          unsafe = sum(point["unsafe_certificates"] for point in points)
+          best = max(
+              points,
+              key=lambda item: (
+                  item["post_expansion_certificate_rate"],
+                  -item["projected_405b_lm_head_expansion_traffic"][
+                      "amortized_residual_gib_per_token"
+                  ],
+                  -item["expansions"],
+              ),
+          )
+          promoted = [point for point in points if point["qualifies"]]
+          if unsafe:
+              decision = "reject implementation: unsafe online proof atlas"
+              next_candidate = "repair proof update before architecture work"
+          elif promoted:
+              decision = "advance online proof atlas under measured amortization"
+              next_candidate = (
+                  "apply proof-triggered exact images to selected internal "
+                  "projections and charge every image to the complete 405B gate"
+              )
+          elif all(point["expansions"] >= point["tokens"] - 1 for point in points):
+              decision = "reject online Atlas family: near-tokenwise residual streams"
+              next_candidate = (
+                  "leave activation-subspace caching and pursue a representation "
+                  "whose exact decision evidence is reusable without full residual images"
+              )
+          else:
+              decision = "retain online Atlas diagnostic but fail current traffic gate"
+              next_candidate = (
+                  "measure longer warm sessions and introduce bounded eviction only "
+                  "if expansion reuse grows materially"
+              )
+          summary = [
+              {
+                  "initial_rank": point["initial_rank"],
+                  "final_rank": point["final_rank"],
+                  "pre_certificate_rate": point[
+                      "pre_expansion_certificate_rate"
+                  ],
+                  "post_certificate_rate": point[
+                      "post_expansion_certificate_rate"
+                  ],
+                  "expansions": point["expansions"],
+                  "reuse_tokens_per_expansion": point[
+                      "reuse_tokens_per_expansion"
+                  ],
+                  "amortized_405b_residual_gib_per_token": point[
+                      "projected_405b_lm_head_expansion_traffic"
+                  ]["amortized_residual_gib_per_token"],
+                  "unsafe_certificates": point["unsafe_certificates"],
+                  "qualifies": point["qualifies"],
+              }
+              for point in points
+          ]
+          payload = {
+              "evidence_level": "E2 pretrained online proof atlas amortization frontier",
+              "points": points,
+              "summary": summary,
+              "best_initial_rank": best["initial_rank"],
+              "best_expansions": best["expansions"],
+              "best_reuse_tokens_per_expansion": best[
+                  "reuse_tokens_per_expansion"
+              ],
+              "best_amortized_405b_residual_gib_per_token": best[
+                  "projected_405b_lm_head_expansion_traffic"
+              ]["amortized_residual_gib_per_token"],
+              "unsafe_certificates": unsafe,
+              "promoted_ranks": [point["initial_rank"] for point in promoted],
+              "decision": decision,
+              "next_candidate": next_candidate,
+              "workflow": {
+                  "run_id": int(os.environ["RUN_ID"]),
+                  "head_sha": os.environ["HEAD_SHA"],
+                  "input_sha256": {
+                      path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                      for path in files
+                  },
+              },
+          }
+          output = Path("results/tinyllama_1_1b_online_proof_atlas_expansion.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          Path("online-proof-atlas-comment.md").write_text(
+              "## Online proof atlas expansion gate\n\n```json\n"
+              + json.dumps(
+                  {
+                      "summary": summary,
+                      "best_initial_rank": payload["best_initial_rank"],
+                      "best_expansions": payload["best_expansions"],
+                      "best_reuse_tokens_per_expansion": payload[
+                          "best_reuse_tokens_per_expansion"
+                      ],
+                      "best_amortized_405b_residual_gib_per_token": payload[
+                          "best_amortized_405b_residual_gib_per_token"
+                      ],
+                      "unsafe_certificates": payload["unsafe_certificates"],
+                      "decision": payload["decision"],
+                      "next_candidate": payload["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file online-proof-atlas-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-online-proof-atlas-expansion
+          path: results/tinyllama_1_1b_online_proof_atlas_expansion.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_online_proof_atlas_expansion.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit online proof atlas amortization"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
