@@ -1,0 +1,358 @@
+{
+  "evidence_level": "E0 exact dense full-stream lower bound",
+  "target": {
+    "parameters": 405849243648,
+    "weight_bits": 16,
+    "weight_gib": 755.953125,
+    "context_tokens": 4096
+  },
+  "baseline": {
+    "parameters": 4000000000,
+    "weight_bits": 4
+  },
+  "device_memory_gib": 8.0,
+  "operator_tile_gib": 1.5,
+  "target_ratio": 1.2,
+  "points": [
+    {
+      "host_to_device_gib_s": 24.0,
+      "target_tensor_tflops": 80.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": null,
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 24.0,
+      "target_tensor_tflops": 120.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        4228,
+        4667
+      ],
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 24.0,
+      "target_tensor_tflops": 160.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        4228,
+        4667
+      ],
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 24.0,
+      "target_tensor_tflops": 240.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        4228,
+        4667
+      ],
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 32.0,
+      "target_tensor_tflops": 80.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": null,
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 32.0,
+      "target_tensor_tflops": 120.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        3171,
+        4667
+      ],
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 32.0,
+      "target_tensor_tflops": 160.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        3171,
+        4667
+      ],
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 32.0,
+      "target_tensor_tflops": 240.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        3171,
+        4667
+      ],
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 64.0,
+      "target_tensor_tflops": 80.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": null,
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 64.0,
+      "target_tensor_tflops": 120.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        1586,
+        4667
+      ],
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 64.0,
+      "target_tensor_tflops": 160.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        1586,
+        4667
+      ],
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 64.0,
+      "target_tensor_tflops": 240.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        1586,
+        4667
+      ],
+      "serialized_feasible_range": [
+        3008,
+        4667
+      ],
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 128.0,
+      "target_tensor_tflops": 80.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": null,
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 128.0,
+      "target_tensor_tflops": 120.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        793,
+        4667
+      ],
+      "serialized_feasible_range": null,
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 128.0,
+      "target_tensor_tflops": 160.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        793,
+        4667
+      ],
+      "serialized_feasible_range": [
+        2727,
+        4667
+      ],
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    },
+    {
+      "host_to_device_gib_s": 128.0,
+      "target_tensor_tflops": 240.0,
+      "maximum_memory_block": 4667,
+      "ideal_feasible_range": [
+        793,
+        4667
+      ],
+      "serialized_feasible_range": [
+        1504,
+        4667
+      ],
+      "memory_at_maximum_block": {
+        "peak_device_gib": 7.999824523925781,
+        "weight_buffer_gib": 3.0,
+        "kv_cache_gib": 1.96875,
+        "activation_workspace_gib": 1.5310745239257812
+      },
+      "one_pass_requirements_at_maximum_block": {
+        "required_target_tensor_tflops": 113.48395521029543,
+        "required_host_to_device_gib_s": 21.740370883222628
+      }
+    }
+  ],
+  "default_hardware": {
+    "host_to_device_gib_s": 24.0,
+    "target_tensor_tflops": 80.0,
+    "maximum_memory_block": 4667,
+    "ideal_feasible_range": null,
+    "serialized_feasible_range": null,
+    "memory_at_maximum_block": {
+      "peak_device_gib": 7.999824523925781,
+      "weight_buffer_gib": 3.0,
+      "kv_cache_gib": 1.96875,
+      "activation_workspace_gib": 1.5310745239257812
+    },
+    "one_pass_requirements_at_maximum_block": {
+      "required_target_tensor_tflops": 113.48395521029543,
+      "required_host_to_device_gib_s": 21.740370883222628
+    }
+  },
+  "decision": "exact full-weight streaming has a serialized feasible region in the tested grid",
+  "architecture_implication": "If the default point has no ideal range, a target pass must avoid either full checkpoint traffic or full dense arithmetic; improving the token proposal alone cannot close Gate 0.",
+  "workflow": {
+    "run_id": 30747714893,
+    "head_sha": "863c657971ed9dfaf173fb165ba3faaa29ccb9bf"
+  }
+}
