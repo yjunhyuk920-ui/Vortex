@@ -14,7 +14,7 @@ from vortex_runtime.feasibility import (
 @dataclass(frozen=True)
 class RankBudgetPoint:
     rank: int
-    capsule_bits: int
+    capsule_bits: float
     memory_gib: float
     memory_limit_gib: float
     hot_traffic_gib_per_token: float
@@ -55,9 +55,54 @@ class RankBudgetPoint:
         }
 
 
+@dataclass(frozen=True)
+class MixedRankBudgetPoint:
+    global_rank: int
+    session_rank: int
+    global_bits: int
+    session_bits: int
+    total_rank: int
+    weighted_bit_rank: int
+    effective_capsule_bits: float
+    uniform_equivalent: RankBudgetPoint
+
+    @property
+    def pass_all(self) -> bool:
+        return self.uniform_equivalent.pass_all
+
+    def to_dict(self) -> dict[str, int | float | bool | dict[str, object]]:
+        return {
+            "global_rank": self.global_rank,
+            "session_rank": self.session_rank,
+            "global_bits": self.global_bits,
+            "session_bits": self.session_bits,
+            "total_rank": self.total_rank,
+            "weighted_bit_rank": self.weighted_bit_rank,
+            "effective_capsule_bits": self.effective_capsule_bits,
+            "memory_gib": self.uniform_equivalent.memory_gib,
+            "memory_limit_gib": self.uniform_equivalent.memory_limit_gib,
+            "memory_pass": self.uniform_equivalent.memory_pass,
+            "hot_traffic_gib_per_token": (
+                self.uniform_equivalent.hot_traffic_gib_per_token
+            ),
+            "traffic_limit_gib_per_token": (
+                self.uniform_equivalent.traffic_limit_gib_per_token
+            ),
+            "traffic_pass": self.uniform_equivalent.traffic_pass,
+            "hot_compute_gflop_per_token": (
+                self.uniform_equivalent.hot_compute_gflop_per_token
+            ),
+            "compute_limit_gflop_per_token": (
+                self.uniform_equivalent.compute_limit_gflop_per_token
+            ),
+            "compute_pass": self.uniform_equivalent.compute_pass,
+            "pass_all": self.pass_all,
+        }
+
+
 def rank_budget_point(
     rank: int,
-    capsule_bits: int = 8,
+    capsule_bits: float = 8,
 ) -> RankBudgetPoint:
     if rank <= 0:
         raise ValueError("rank must be positive")
@@ -81,7 +126,7 @@ def rank_budget_point(
     )
     return RankBudgetPoint(
         rank=rank,
-        capsule_bits=capsule_bits,
+        capsule_bits=float(capsule_bits),
         memory_gib=float(report["memory"]["total_gib"]),
         memory_limit_gib=float(report["memory"]["limit_gib"]),
         hot_traffic_gib_per_token=float(report["traffic"]["hot_gib_per_token"]),
@@ -95,10 +140,45 @@ def rank_budget_point(
     )
 
 
+def mixed_rank_budget_point(
+    *,
+    global_rank: int,
+    session_rank: int,
+    global_bits: int,
+    session_bits: int,
+) -> MixedRankBudgetPoint:
+    if global_rank < 0 or session_rank < 0:
+        raise ValueError("mixed ranks must be non-negative")
+    if global_rank + session_rank <= 0:
+        raise ValueError("mixed total rank must be positive")
+    if global_bits <= 0 or session_bits <= 0:
+        raise ValueError("mixed precision must be positive")
+
+    total_rank = global_rank + session_rank
+    weighted_bit_rank = (
+        global_rank * global_bits + session_rank * session_bits
+    )
+    effective_bits = weighted_bit_rank / total_rank
+    equivalent = rank_budget_point(
+        total_rank,
+        capsule_bits=effective_bits,
+    )
+    return MixedRankBudgetPoint(
+        global_rank=global_rank,
+        session_rank=session_rank,
+        global_bits=global_bits,
+        session_bits=session_bits,
+        total_rank=total_rank,
+        weighted_bit_rank=weighted_bit_rank,
+        effective_capsule_bits=effective_bits,
+        uniform_equivalent=equivalent,
+    )
+
+
 def rank_frontier(
     ranks: Iterable[int],
     *,
-    capsule_bits: int = 8,
+    capsule_bits: float = 8,
 ) -> list[RankBudgetPoint]:
     points = [
         rank_budget_point(int(rank), capsule_bits=capsule_bits)
@@ -111,7 +191,7 @@ def rank_frontier(
 
 def maximum_feasible_rank(
     *,
-    capsule_bits: int = 8,
+    capsule_bits: float = 8,
     step: int = 8,
     maximum_rank: int = 512,
 ) -> int:
