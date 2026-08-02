@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from math import inf
 
 
 @dataclass(frozen=True)
@@ -51,23 +50,25 @@ def normalize_damage_curves(
             if current is None or point.damage < current.damage:
                 by_count[point.selected_neurons] = point
         ordered = [by_count[count] for count in sorted(by_count)]
-        # Enforce a monotone lower envelope: more neurons can never be assigned
-        # a worse predicted damage than a cheaper point because the cheaper
-        # subset could always be retained and the extra budget ignored.
-        best = inf
-        monotone_reversed: list[LayerDamagePoint] = []
-        for point in reversed(ordered):
-            best = min(best, point.damage)
-            monotone_reversed.append(
+        # Enforce the feasible monotone lower envelope. At a measured cost c,
+        # the allocator may always reuse the best option observed at a cheaper
+        # or equal cost and leave extra budget unused. It may never borrow the
+        # damage of a more expensive option.
+        best_point: LayerDamagePoint | None = None
+        envelope: list[LayerDamagePoint] = []
+        for point in ordered:
+            if best_point is None or point.damage < best_point.damage:
+                best_point = point
+            envelope.append(
                 LayerDamagePoint(
                     selected_neurons=point.selected_neurons,
-                    damage=best,
-                    top1_rate=point.top1_rate,
-                    top32_rate=point.top32_rate,
-                    output_error=point.output_error,
+                    damage=best_point.damage,
+                    top1_rate=best_point.top1_rate,
+                    top32_rate=best_point.top32_rate,
+                    output_error=best_point.output_error,
                 )
             )
-        normalized.append(list(reversed(monotone_reversed)))
+        normalized.append(envelope)
     return normalized
 
 
