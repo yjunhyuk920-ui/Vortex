@@ -40,10 +40,12 @@ def test_allocator_can_leave_budget_unused_when_damage_is_equal() -> None:
     assert allocation.layer_counts == (4, 4)
 
 
-def test_normalization_builds_monotone_lower_envelope() -> None:
+def test_normalization_builds_feasible_monotone_lower_envelope() -> None:
     curves = [[_point(1, 3.0), _point(2, 4.0), _point(4, 1.0)]]
     normalized = normalize_damage_curves(curves)[0]
-    assert [point.damage for point in normalized] == [1.0, 1.0, 1.0]
+    # The count-2 point may reuse the cheaper count-1 option, but it cannot
+    # borrow the count-4 damage before paying for four neurons.
+    assert [point.damage for point in normalized] == [3.0, 3.0, 1.0]
 
 
 def test_infeasible_budget_is_rejected() -> None:
