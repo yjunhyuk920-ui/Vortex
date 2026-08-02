@@ -55,6 +55,29 @@ def test_adjoint_tile_scores_sum_to_linearized_full_residual() -> None:
     assert abs(signed_sum - expected) <= 1e-4
 
 
+def test_inference_built_capsule_can_enter_autograd_graph() -> None:
+    torch.manual_seed(57)
+    model = TinyDecisionModel()
+    replacements = replace_with_decision_tile_modules(
+        model,
+        suffixes=("o_proj",),
+        max_rank=2,
+    )
+    module = replacements["o_proj"]
+
+    with torch.inference_mode():
+        model(torch.randn(12, 8))
+    assert module.atlas.input_basis.is_inference()
+    assert module.atlas.output_image.is_inference()
+
+    x = torch.randn(3, 8, requires_grad=True)
+    module.set_mode("project")
+    loss = model(x).square().sum()
+    gradient = torch.autograd.grad(loss, x)[0]
+    assert torch.isfinite(gradient).all()
+    assert torch.linalg.vector_norm(gradient) > 0
+
+
 def test_all_decision_residual_tiles_restore_exact_output() -> None:
     torch.manual_seed(59)
     model = TinyDecisionModel()
