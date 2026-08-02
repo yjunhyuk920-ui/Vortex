@@ -72,7 +72,8 @@ class BlockSharedGate:
     @property
     def pass_all(self) -> bool:
         return (
-            self.committed_tokens > 0
+            self.selected_weight_bytes > 0
+            and self.committed_tokens > 0
             and self.traffic_pass
             and self.compute_pass
         )
@@ -88,6 +89,7 @@ class BlockSharedGate:
             ),
             "traffic_pass": self.traffic_pass,
             "compute_pass": self.compute_pass,
+            "nonempty_repair_pass": self.selected_weight_bytes > 0,
             "nonempty_commit_pass": self.committed_tokens > 0,
             "pass_all": self.pass_all,
         }
