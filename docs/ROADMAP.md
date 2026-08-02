@@ -20,23 +20,27 @@ Status: **complete at prototype scale**
 - disk-backed VTX matrix format;
 - selective safetensors residual reads.
 
-## Milestone 2 — Progressive internal projections
+## Milestone 2 — Base-free internal operator path
 
-Status: **next active milestone**
+Status: **prototype path implemented; real-model gate pending**
 
-1. Introduce a common linear-operator protocol used by `StreamingLlama`.
-2. Support `ExactLinear`, `DiskProgressiveLinear`, and instrumentation wrappers.
-3. Add progressive Q/K/V/O execution on the tiny checkpoint.
-4. Add progressive gate/up/down execution.
-5. Propagate or repair nonlinear error through RMSNorm, RoPE, softmax, SiLU, and elementwise multiplication.
-6. Compare final tokens against the exact path for every test seed.
-7. Record bytes, residual fraction, compute, wall-clock, and peak memory per projection type.
+Completed:
 
-Exit gate:
+1. Added `OnlineAtlasLinear`, storing input basis `U` and exact operator image `WU`.
+2. Added exact cold fallback and online basis expansion.
+3. Routed selected `StreamingLlama` projections through a common `_linear` operator boundary.
+4. Integrated O and down projections.
+5. Added persistent safetensors atlas save/load.
+6. Verified token-identical tiny-Llama replay with zero managed-projection cold reads.
+7. Added machine-readable rank, hit, cold-read, byte, and capsule metrics.
 
-- exact token equality across the committed test matrix;
-- machine-readable internal-projection metrics;
-- no regression in the existing seven tests.
+Next gate:
+
+- run real pretrained 1B–3B activation traces;
+- measure rank growth and hit rate on unseen continuations/prompts;
+- verify exact token agreement;
+- reject the path if cold streams/token do not rapidly decline;
+- implement FP16/BF16 capsules and real wall-clock instrumentation.
 
 ## Milestone 3 — Batched target-weight amortization
 
