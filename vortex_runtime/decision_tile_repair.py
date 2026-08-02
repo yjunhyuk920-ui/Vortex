@@ -11,7 +11,24 @@ from vortex_runtime.residual_tile_repair import (
 
 
 class DecisionResidualTileAtlasLinearModule(ResidualTileAtlasLinearModule):
-    """Residual-tile module whose projected path keeps the autograd graph."""
+    """Residual-tile module whose projected path keeps the autograd graph.
+
+    Atlas capsules may be populated while generation runs under
+    ``torch.inference_mode``. Such tensors cannot be saved by autograd. The
+    adjoint path therefore materializes ordinary cloned tensors before using
+    the capsule in differentiable operations.
+    """
+
+    def _differentiable_capsule(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        basis = self.atlas.input_basis.to(
+            dtype=x.dtype,
+            device=x.device,
+        ).clone()
+        image = self.atlas.output_image.to(
+            dtype=x.dtype,
+            device=x.device,
+        ).clone()
+        return basis, image
 
     def _project(self, x: torch.Tensor) -> torch.Tensor:
         original_shape = x.shape[:-1]
@@ -24,14 +41,7 @@ class DecisionResidualTileAtlasLinearModule(ResidualTileAtlasLinearModule):
                 device=x.device,
             )
         else:
-            basis = self.atlas.input_basis.to(
-                dtype=x.dtype,
-                device=x.device,
-            )
-            image = self.atlas.output_image.to(
-                dtype=x.dtype,
-                device=x.device,
-            )
+            basis, image = self._differentiable_capsule(x)
             output = (flat @ basis) @ image.T
         output = output.reshape(*original_shape, self.exact.out_features)
         if self.exact.bias is not None:
@@ -46,7 +56,7 @@ class DecisionResidualTileAtlasLinearModule(ResidualTileAtlasLinearModule):
         flat = x.reshape(-1, self.exact.in_features)
         if self.atlas.rank == 0:
             return flat.reshape(original_shape)
-        basis = self.atlas.input_basis.to(dtype=x.dtype, device=x.device)
+        basis, _ = self._differentiable_capsule(x)
         coordinates = flat @ basis
         projected = coordinates @ basis.T
         return (flat - projected).reshape(original_shape)
