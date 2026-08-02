@@ -1,7 +1,7 @@
 {
   "evidence_level": "E0/E1",
   "candidate": "VORTEX-WAVE-1",
-  "status": "global-low-rank-o-down-representation-rejected",
+  "status": "session-prefill-basis-insufficient",
   "accounting_contract": {
     "traffic": "selected cold bytes are divided by committed block tokens",
     "compute": "selected exact arithmetic is charged every token and is not divided by committed block tokens",
@@ -147,7 +147,8 @@
     "proposal_margin_metadata_bound": false,
     "causal_prefill_compiler": false,
     "rank32_topk_coverage": false,
-    "feasible_rank_frontier": false
+    "feasible_rank_frontier_8bit": false,
+    "session_prefill_response_basis": false
   },
   "logical_oracle": {
     "evidence_level": "E1 exact-target block-shared combined oracle",
@@ -180,7 +181,7 @@
     "compute_pass": true,
     "memory_pass": true
   },
-  "observed_component_decision": "Reject the global low-rank O/down activation-subspace capsule: no rank through the hot-traffic-bound 405B maximum of 72 preserved the exact token with the required top-32 coverage.",
+  "observed_component_decision": "The exact-prompt session basis materially improved top-1 coverage but remained below the top-32 gate (0.625000 < 0.95).",
   "rejected_mechanisms": [
     "exact-span Atlas warm-decode fast path",
     "rank-32 approximate capsule plus exact layer-suffix repair",
@@ -193,9 +194,10 @@
     "block-shared proposal-margin metadata-bound selector",
     "causal exact-prompt-prefill adjoint compiler",
     "rank-32 O/down hot representation for small top-K uncertainty",
-    "global low-rank O/down capsule through traffic-feasible rank 72"
+    "generic-build-prompt 8-bit O/down capsule through rank 72",
+    "prompt-only rank-45 session response basis without adaptive growth"
   ],
-  "next_candidate": "test a block-local trajectory basis against the simultaneous traffic requirement A >= 492 and compute requirement A/r >= 73",
+  "next_candidate": "test quantized 6-bit rank-96 and 4-bit rank-128/136 capsules, then combine the best feasible global prior with the prompt-specific session basis",
   "selector_falsification": {
     "residual_energy": {
       "evidence_level": "E1 target-independent block selector falsification",
@@ -290,6 +292,7 @@
   "hot_rank_frontier": {
     "evidence_level": "E1 exact-prefix feasible-rank frontier diagnostic",
     "source": "results/tinyllama_1_1b_hot_rank_frontier.json",
+    "capsule_precision_bits": 8,
     "binding_budget": "hot capsule traffic per token",
     "fixed_405b_aligned_maximum_rank": 72,
     "tested_ranks": [
@@ -366,5 +369,50 @@
     "pass": false,
     "decision": "reject global low-rank O/down capsule through rank 72",
     "next_candidate": "replace the global activation-subspace capsule with a block-local trajectory or operator-structured representation"
+  },
+  "session_prefill_response_basis": {
+    "evidence_level": "E1 causal exact-prompt session-basis diagnostic",
+    "source": "results/tinyllama_1_1b_session_prefill_candidate_coverage.json",
+    "prompt_tokens": 45,
+    "evaluated_continuation_tokens": 32,
+    "requested_max_rank": 72,
+    "compiled_rank_statistics": {
+      "minimum": 45,
+      "maximum": 45,
+      "mean": 45.0
+    },
+    "capsule_bytes": 46632960,
+    "prompt_reconstruction": {
+      "maximum_input_relative_error": 2.252639660582645e-06,
+      "maximum_output_relative_error": 4.104726940568071e-07
+    },
+    "exact_top1_match_rate": 0.375,
+    "coverage_at_k": {
+      "1": 0.375,
+      "2": 0.40625,
+      "4": 0.4375,
+      "8": 0.5,
+      "16": 0.53125,
+      "32": 0.625,
+      "64": 0.75,
+      "128": 0.8125,
+      "256": 0.84375
+    },
+    "rank_statistics": {
+      "minimum": 1,
+      "maximum": 15544,
+      "mean": 901.375
+    },
+    "first_divergence": {
+      "position": 2,
+      "exact_token": 155,
+      "hot_token": 152,
+      "exact_token_rank": 6,
+      "hot_top1_margin": 1.5400123596191406,
+      "exact_logit_gap_from_hot_top1": 2.353372573852539
+    },
+    "pass": false,
+    "decision": "reject prompt-only session response basis at this rank",
+    "compiler_contract": "Only exact prompt-prefill module inputs and outputs are used to recover U and WU. No continuation token, continuation logit, continuation gradient, or second exact weight scan is used."
   }
 }
