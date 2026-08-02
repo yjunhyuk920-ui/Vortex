@@ -14,6 +14,9 @@ DEFAULT_MARGIN_BOUND = Path(
 DEFAULT_PREFILL_COMPILED = Path(
     "results/tinyllama_1_1b_prefill_compiled_adjoint_oracle.json"
 )
+DEFAULT_CANDIDATE_COVERAGE = Path(
+    "results/tinyllama_1_1b_hot_candidate_coverage.json"
+)
 
 
 def _portable_source(path: Path) -> str:
@@ -44,19 +47,62 @@ def _load_failure(path: Path, selector_name: str) -> dict[str, Any] | None:
     }
 
 
+def _attach_candidate_coverage(
+    report: dict[str, Any],
+    source: Path,
+) -> dict[str, Any]:
+    if not source.exists():
+        return report
+    result = json.loads(source.read_text(encoding="utf-8"))
+    coverage = result["coverage_at_k"]
+    first = result.get("first_divergence")
+    first_rank = None if first is None else int(first["exact_token_rank"])
+    top32 = float(coverage["32"])
+    advance = (first_rank is None or first_rank <= 32) and top32 >= 0.95
+
+    report["hot_representation_coverage"] = {
+        "evidence_level": result["evidence_level"],
+        "source": _portable_source(source),
+        "max_rank": int(result["max_rank"]),
+        "evaluated_tokens": int(result["evaluated_tokens"]),
+        "exact_top1_match_rate": float(result["exact_top1_match_rate"]),
+        "coverage_at_k": coverage,
+        "rank_statistics": result["rank_statistics"],
+        "first_divergence": first,
+        "advance_multi_hypothesis": advance,
+        "decision": result["decision"],
+        "rejection_scope": result["rejection_scope"],
+    }
+    report["gates"]["rank32_topk_coverage"] = advance
+
+    if not advance:
+        rejected = report.setdefault("rejected_mechanisms", [])
+        name = "rank-32 O/down hot representation for small top-K uncertainty"
+        if name not in rejected:
+            rejected.append(name)
+        report["status"] = "rank32-hot-representation-rejected"
+        report["observed_component_decision"] = (
+            "Reject the rank-32 O/down hot representation as a small top-K "
+            "certificate basis: first-divergence rank was "
+            f"{first_rank}, but top-32 exact-token coverage was {top32:.6f}."
+        )
+        report["next_candidate"] = (
+            "sweep the complete 405B-feasible capsule-rank frontier through "
+            "rank 128; if coverage remains below threshold, reject the global "
+            "low-rank O/down representation family"
+        )
+    return report
+
+
 def apply_selector_falsifications(
     report: dict[str, Any],
     *,
     proposal_adjoint_path: str | Path = DEFAULT_PROPOSAL_ADJOINT,
     margin_bound_path: str | Path = DEFAULT_MARGIN_BOUND,
     prefill_compiled_path: str | Path = DEFAULT_PREFILL_COMPILED,
+    candidate_coverage_path: str | Path = DEFAULT_CANDIDATE_COVERAGE,
 ) -> dict[str, Any]:
-    """Attach causal selector evidence and reject the family when all fail.
-
-    The exact-target block oracle is retained as a logical upper bound. It does
-    not keep the family active when every tested selector available before the
-    future continuation fails to recover any additional exact token.
-    """
+    """Attach causal selector and hot-representation falsification evidence."""
 
     selectors = report.setdefault("selector_falsification", {})
     specifications = (
@@ -122,7 +168,8 @@ def apply_selector_falsifications(
             "to extend the exact prefix."
         )
         report["next_candidate"] = (
-            "multi-hypothesis uncertainty certificate with a redesigned hot "
-            "representation; do not add more single-proposal selector heuristics"
+            "measure exact-token candidate coverage before attempting a "
+            "multi-hypothesis uncertainty certificate"
         )
-    return report
+
+    return _attach_candidate_coverage(report, Path(candidate_coverage_path))
