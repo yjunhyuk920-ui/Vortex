@@ -129,7 +129,8 @@
     "observed_repair_efficiency": true,
     "logical_combined_oracle": true,
     "target_independent_selector": false,
-    "sound_commit_certificate": false
+    "sound_commit_certificate": false,
+    "residual_energy_selector": false
   },
   "logical_oracle": {
     "evidence_level": "E1 exact-target block-shared combined oracle",
@@ -169,7 +170,23 @@
     "rank-32 approximate capsule plus output-row tile repair",
     "rank-32 residual-energy 2D tile repair",
     "rank-32 exact-target adjoint 2D tile repair per token",
-    "the original VORTEX-WAVE-1 25-percent repair design point"
+    "the original VORTEX-WAVE-1 25-percent repair design point",
+    "block-shared residual-energy target-independent selector"
   ],
-  "next_candidate": "target-independent block repair selector plus sound causal-prefix certificate"
+  "next_candidate": "proposal-adjoint diagnostic oracle and proposal-margin metadata-bound selector",
+  "selector_falsification": {
+    "residual_energy": {
+      "evidence_level": "E1 target-independent block selector falsification",
+      "source": "results/tinyllama_1_1b_block_shared_residual_selector.json",
+      "zero_repair_prefix_tokens": 1,
+      "combined_budget_tile_count": 683,
+      "boundary_selected_tiles": 683,
+      "boundary_selected_weight_bytes": 44761088,
+      "boundary_committed_prefix_tokens": 1,
+      "boundary_incremental_committed_tokens": 0,
+      "pass": false,
+      "decision": "target-independent residual-energy selector fails the E1 combined gate",
+      "rejection_scope": "Reject residual-energy ranking for the tested rank-32 O/down block-shared selector. This does not reject proposal-margin gradients or all target-independent selectors."
+    }
+  }
 }
