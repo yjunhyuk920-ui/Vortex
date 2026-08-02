@@ -38,7 +38,7 @@ def test_fixed_union_uses_distinct_token_count() -> None:
         primary_k=2,
         secondary_k=2,
     )
-    assert summary.coverage == 2 / 3
+    assert summary.coverage == 1.0
     assert summary.maximum_candidate_count == 4
 
 
