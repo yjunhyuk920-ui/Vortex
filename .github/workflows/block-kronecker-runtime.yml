@@ -1,0 +1,124 @@
+name: Semantic block Kronecker gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/block_kronecker.py"
+      - "scripts/run_block_kronecker_point.py"
+      - "tests/test_block_kronecker.py"
+      - "docs/EXPERIMENT_016_SEMANTIC_BLOCK_KRONECKER.md"
+      - ".github/workflows/block-kronecker-runtime.yml"
+
+concurrency:
+  group: block-kronecker-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/block-kronecker-runtime'
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate semantic block operators
+        run: |
+          python -m pytest -q \
+            tests/test_kronecker_operator.py \
+            tests/test_block_kronecker.py
+      - name: Measure semantic block point
+        run: |
+          python scripts/run_block_kronecker_point.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --factor-bits 8 \
+            --embedding-bits 4 \
+            --power-iterations 3 \
+            --seed 3031 \
+            --mlp-block-size 64 \
+            --lm-head-block-size 64 \
+            --tokens 32 \
+            --tree-depth 12 \
+            --top-k 32 \
+            --beam-width 64 \
+            --node-budget 1024 \
+            --eval-batch-size 8 \
+            --embedding-row-chunk 128 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output block-kronecker.json
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("block-kronecker.json").read_text())
+          report = {
+              "tiny_factor_density": data["density_comparison"][
+                  "tiny_factor_density"
+              ],
+              "target_factor_density": data["density_comparison"][
+                  "projected_405b_factor_density"
+              ],
+              "density_ratio": data["density_comparison"][
+                  "tiny_over_target_density_ratio"
+              ],
+              "factor_gib_405b": data["405b_budget"]["factor_gib"],
+              "projected_ms_405b": 1000 * data["405b_budget"][
+                  "projected_seconds_per_token"
+              ],
+              "weight_error": data["fit"][
+                  "element_weighted_relative_l2_error"
+              ],
+              "teacher_top1": data["teacher_forced_factorized"]["top1_rate"],
+              "teacher_top32": data["teacher_forced_factorized"]["top32_rate"],
+              "autoregressive_prefix": data["autoregressive_exact_prefix"],
+              "tree_prefix": data["tree"]["optimistic_committed_exact_prefix"],
+              "last_alive_depth": data["tree"]["exact_path_last_alive_depth"],
+              "qualifies": data["qualifies"],
+              "decision": data["decision"],
+          }
+          Path("block-kronecker-comment.md").write_text(
+              "## Semantic block Kronecker gate\n\n```json\n"
+              + json.dumps(report, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+          gh pr comment "$PR_NUMBER" --body-file block-kronecker-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-semantic-block-kronecker
+          path: block-kronecker.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_semantic_block_kronecker.json
+          mkdir -p results
+          cp block-kronecker.json "$path"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(gate): commit semantic block Kronecker result"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
