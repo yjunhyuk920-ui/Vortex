@@ -1,0 +1,76 @@
+{
+  "evidence_level": "E1 exact-target adjoint tile oracle",
+  "workflow": {
+    "run_id": 30736519112,
+    "artifact_id": 8829806716,
+    "artifact_digest": "sha256:cde8f8d05c485ac27429a0f15686b1bfff281d676bcd9bef3e42a1bb48e33302",
+    "head_sha": "b2966bcf53db7e86b9ad39db6958d64ed41ed976",
+    "raw_file_sha256": "ec7ef7f229d7b55c137fe82ff85c89b6352440dfe7c5fb6296f7d65a0fb9a420"
+  },
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "managed_suffixes": [
+    "self_attn.o_proj",
+    "mlp.down_proj"
+  ],
+  "matched_modules": 44,
+  "max_rank": 32,
+  "rank_min": 32,
+  "rank_max": 32,
+  "row_tile": 128,
+  "col_tile": 128,
+  "teacher_sequence_tokens": 47,
+  "generated_targets": 2,
+  "approximate_margin_sum": -2.533644676208496,
+  "margin_rows": [
+    {
+      "position": 44,
+      "target_token": 29871,
+      "competitor_token": 13,
+      "approximate_margin": 0.6167812347412109
+    },
+    {
+      "position": 45,
+      "target_token": 239,
+      "competitor_token": 13,
+      "approximate_margin": -3.150425910949707
+    }
+  ],
+  "missing_gradient_modules": [],
+  "non_differentiable_modules": [],
+  "signed_full_residual_linearized_contribution": 13.239703418832505,
+  "gate": {
+    "minimum_tokens_per_full_repair_equivalent": 491.29915997929805,
+    "promotion_threshold": 600.0,
+    "rejection_threshold": 300.0,
+    "promotion_budget_tile_count": 111,
+    "gate_budget_tile_count": 136,
+    "rejection_budget_tile_count": 223
+  },
+  "positive_signed_margin_ranking": {
+    "gate_budget_match": null,
+    "first_repair_match": {
+      "selected_tiles": 8192,
+      "exact_weight_bytes_per_token": 536870912,
+      "full_model_repair_fraction_per_token": 0.1220107496653529,
+      "tokens_per_full_repair_equivalent": 8.195999145507812,
+      "exact_sequence_match": true
+    }
+  },
+  "absolute_margin_ranking": {
+    "gate_budget_match": null,
+    "first_repair_match": {
+      "selected_tiles": 16384,
+      "exact_weight_bytes_per_token": 1073741824,
+      "full_model_repair_fraction_per_token": 0.2440214993307058,
+      "tokens_per_full_repair_equivalent": 4.097999572753906,
+      "exact_sequence_match": true
+    }
+  },
+  "best_observed_tokens_per_full_repair_equivalent": 8.195999145507812,
+  "shortfall_to_gate": 59.941362212614646,
+  "decision": "reject per-token rank-32 residual tile repair even with exact target tokens and exact evaluation gradients",
+  "scope_note": "This rejects per-token nested tile-prefix repair for the tested O/down capsule. It does not reject sharing one selected tile set across a long proposed token block.",
+  "next_candidate": "64-token block-shared adjoint repair"
+}

@@ -1,0 +1,204 @@
+name: Causal burnin local trajectory frontier
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/burnin_budget.py"
+      - "scripts/run_causal_burnin_session_point.py"
+      - "scripts/aggregate_causal_burnin_frontier.py"
+      - "tests/test_burnin_budget.py"
+      - "tests/test_causal_burnin_frontier.py"
+      - ".github/workflows/causal-burnin-frontier.yml"
+
+concurrency:
+  group: causal-burnin-frontier-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  prepare:
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      github.head_ref == 'feat/architecture-gate0-certificate'
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.changes.outputs.run }}
+      matrix: ${{ steps.changes.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 2
+      - name: Check direct burn-in changes
+        id: changes
+        run: |
+          if git diff --quiet HEAD^ HEAD -- \
+            vortex_runtime/burnin_budget.py \
+            scripts/run_causal_burnin_session_point.py \
+            scripts/aggregate_causal_burnin_frontier.py \
+            tests/test_burnin_budget.py \
+            tests/test_causal_burnin_frontier.py \
+            .github/workflows/causal-burnin-frontier.yml; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo 'matrix={"include":[]}' >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo 'matrix={"include":[{"name":"n0","burnin":0},{"name":"n1","burnin":1},{"name":"n2","burnin":2},{"name":"n4","burnin":4},{"name":"n8","burnin":8},{"name":"n16","burnin":16}]}' >> "$GITHUB_OUTPUT"
+          fi
+
+  measure:
+    needs: prepare
+    if: needs.prepare.outputs.run == 'true'
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install transformers sentencepiece
+      - name: Measure causal burn-in ${{ matrix.burnin }}
+        run: |
+          python scripts/run_causal_burnin_session_point.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --burnin-tokens ${{ matrix.burnin }} \
+            --eval-tokens 32 \
+            --rank-limit 72 \
+            --capsule-bits 8 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "burnin-${{ matrix.name }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: causal-burnin-${{ matrix.name }}
+          path: burnin-${{ matrix.name }}.json
+
+  aggregate:
+    needs: [prepare, measure]
+    if: >-
+      needs.prepare.outputs.run == 'true' &&
+      needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: causal-burnin-*
+          path: burnin-results
+          merge-multiple: true
+      - name: Aggregate causal frontier
+        run: |
+          mapfile -t files < <(find burnin-results -type f -name '*.json' | sort)
+          python scripts/aggregate_causal_burnin_frontier.py \
+            "${files[@]}" \
+            --output causal_burnin_frontier.json
+      - name: Normalize evidence with provenance
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          raw = Path("causal_burnin_frontier.json")
+          raw_bytes = raw.read_bytes()
+          payload = json.loads(raw_bytes)
+          payload["workflow"] = {
+              "run_id": int(os.environ["RUN_ID"]),
+              "head_sha": os.environ["HEAD_SHA"],
+              "raw_file_sha256": hashlib.sha256(raw_bytes).hexdigest(),
+          }
+          output = Path("results/tinyllama_1_1b_causal_burnin_frontier.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          PY
+      - name: Build PR report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("causal_burnin_frontier.json").read_text())
+          rows = [
+              {
+                  "burnin": point["exact_burnin_tokens"],
+                  "rank": point["compiled_rank_statistics"]["maximum"],
+                  "top1": point["exact_top1_match_rate"],
+                  "top32": point["coverage_at_k"]["32"],
+                  "mean_exact_rank": point["rank_statistics"]["mean"],
+                  "minimum_traffic_horizon": point[
+                      "startup_exact_cost"
+                  ]["minimum_traffic_amortization_horizon"],
+                  "horizon_4096_pass": point[
+                      "startup_exact_cost"
+                  ]["horizon_4096_pass"],
+                  "warm_survives": point["warm_decode_candidate_pass"],
+              }
+              for point in data["points"]
+          ]
+          body = (
+              "## Causal burn-in local trajectory frontier\n\n"
+              "```json\n"
+              + json.dumps(
+                  {
+                      "points": rows,
+                      "decision": data["decision"],
+                      "next_candidate": data["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```"
+          )
+          Path("burnin-frontier-comment.md").write_text(body, encoding="utf-8")
+          PY
+      - name: Publish PR report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file burnin-frontier-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-causal-burnin-frontier
+          path: causal_burnin_frontier.json
+      - name: Commit evidence when changed
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_causal_burnin_frontier.json
+          if [ -z "$(git status --porcelain -- "$path")" ]; then
+            echo "Causal burn-in evidence is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(burnin): commit causal local trajectory frontier"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"

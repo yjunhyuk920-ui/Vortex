@@ -1,0 +1,485 @@
+{
+  "evidence_level": "E1 quantized exact-prefix precision-rank frontier",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "tokens_per_point": 32,
+  "precision_aligned_maximum_ranks": {
+    "8": 72,
+    "6": 96,
+    "4": 136
+  },
+  "tested_points": [
+    {
+      "rank": 72,
+      "capsule_bits": 8
+    },
+    {
+      "rank": 88,
+      "capsule_bits": 6
+    },
+    {
+      "rank": 96,
+      "capsule_bits": 6
+    },
+    {
+      "rank": 112,
+      "capsule_bits": 4
+    },
+    {
+      "rank": 128,
+      "capsule_bits": 4
+    },
+    {
+      "rank": 136,
+      "capsule_bits": 4
+    }
+  ],
+  "quantization_contract": "U and WU are symmetrically quantized per response-basis column. The packed payload and fp16 column scales are charged to storage and traffic; values are dequantized before the existing matmul to isolate representation error from packed-kernel performance.",
+  "same_context_contract": "Every point is evaluated with exact and quantized-hot logits on the same authoritative exact prefix at every token position.",
+  "decision_rule": "advance only when the point fits memory/traffic/compute, first-divergence exact-token rank is at most 32, and top-32 coverage is at least 0.95",
+  "points": [
+    {
+      "rank": 72,
+      "capsule_bits": 8,
+      "budget": {
+        "rank": 72,
+        "capsule_bits": 8,
+        "memory_gib": 5.761926651000977,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.749441909790039,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 6.660306176,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "built_rank_statistics": {
+        "minimum": 72,
+        "maximum": 72,
+        "mean": 72.0
+      },
+      "quantization": {
+        "bits": 8,
+        "modules": 44,
+        "tensors": 88,
+        "elements": 18653184,
+        "logical_payload_bytes": 18653184,
+        "scale_bytes": 12672,
+        "maximum_absolute_error": 0.005704267881810665,
+        "maximum_relative_l2_error": 0.07492019236087799,
+        "logical_total_bytes": 18665856
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.21875,
+      "coverage_at_k": {
+        "1": 0.21875,
+        "2": 0.25,
+        "4": 0.3125,
+        "8": 0.40625,
+        "16": 0.46875,
+        "32": 0.625,
+        "64": 0.71875,
+        "128": 0.84375,
+        "256": 0.9375
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 9859,
+        "mean": 359.875
+      },
+      "first_divergence": {
+        "position": 2,
+        "exact_token": 155,
+        "hot_token": 161,
+        "exact_token_rank": 8,
+        "hot_top1_margin": 0.8800220489501953,
+        "exact_logit_gap_from_hot_top1": 2.202230453491211
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 79.52728301500002
+    },
+    {
+      "rank": 88,
+      "capsule_bits": 6,
+      "budget": {
+        "rank": 88,
+        "capsule_bits": 6,
+        "memory_gib": 5.5277581214904785,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.530894565582275,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 7.911822592,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "built_rank_statistics": {
+        "minimum": 88,
+        "maximum": 88,
+        "mean": 88.0
+      },
+      "quantization": {
+        "bits": 6,
+        "modules": 44,
+        "tensors": 88,
+        "elements": 22798336,
+        "logical_payload_bytes": 17098752,
+        "scale_bytes": 15488,
+        "maximum_absolute_error": 0.022815676406025887,
+        "maximum_relative_l2_error": 0.2283323109149933,
+        "logical_total_bytes": 17114240
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.1875,
+      "coverage_at_k": {
+        "1": 0.1875,
+        "2": 0.25,
+        "4": 0.34375,
+        "8": 0.375,
+        "16": 0.40625,
+        "32": 0.53125,
+        "64": 0.6875,
+        "128": 0.84375,
+        "256": 0.90625
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 6121,
+        "mean": 364.34375
+      },
+      "first_divergence": {
+        "position": 0,
+        "exact_token": 29871,
+        "hot_token": 2,
+        "exact_token_rank": 3,
+        "hot_top1_margin": 0.4888801574707031,
+        "exact_logit_gap_from_hot_top1": 0.9504671096801758
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 71.11790719300001
+    },
+    {
+      "rank": 96,
+      "capsule_bits": 6,
+      "budget": {
+        "rank": 96,
+        "capsule_bits": 6,
+        "memory_gib": 5.746301651000977,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.7494380950927733,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 8.5375808,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "built_rank_statistics": {
+        "minimum": 93,
+        "maximum": 93,
+        "mean": 93.0
+      },
+      "quantization": {
+        "bits": 6,
+        "modules": 44,
+        "tensors": 88,
+        "elements": 24093696,
+        "logical_payload_bytes": 18070272,
+        "scale_bytes": 16368,
+        "maximum_absolute_error": 0.022815676406025887,
+        "maximum_relative_l2_error": 0.22781223058700562,
+        "logical_total_bytes": 18086640
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.1875,
+      "coverage_at_k": {
+        "1": 0.1875,
+        "2": 0.25,
+        "4": 0.34375,
+        "8": 0.375,
+        "16": 0.40625,
+        "32": 0.53125,
+        "64": 0.71875,
+        "128": 0.84375,
+        "256": 0.875
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 6235,
+        "mean": 355.625
+      },
+      "first_divergence": {
+        "position": 0,
+        "exact_token": 29871,
+        "hot_token": 2,
+        "exact_token_rank": 3,
+        "hot_top1_margin": 0.4108877182006836,
+        "exact_logit_gap_from_hot_top1": 0.7826862335205078
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 72.065403221
+    },
+    {
+      "rank": 112,
+      "capsule_bits": 4,
+      "budget": {
+        "rank": 112,
+        "capsule_bits": 4,
+        "memory_gib": 5.147893905639648,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.1666515350341795,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 9.789097216,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "built_rank_statistics": {
+        "minimum": 93,
+        "maximum": 93,
+        "mean": 93.0
+      },
+      "quantization": {
+        "bits": 4,
+        "modules": 44,
+        "tensors": 88,
+        "elements": 24093696,
+        "logical_payload_bytes": 12046848,
+        "scale_bytes": 16368,
+        "maximum_absolute_error": 0.1006736010313034,
+        "maximum_relative_l2_error": 0.5992518663406372,
+        "logical_total_bytes": 12063216
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.25,
+      "coverage_at_k": {
+        "1": 0.25,
+        "2": 0.25,
+        "4": 0.34375,
+        "8": 0.375,
+        "16": 0.40625,
+        "32": 0.5625,
+        "64": 0.59375,
+        "128": 0.75,
+        "256": 0.8125
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 13361,
+        "mean": 850.90625
+      },
+      "first_divergence": {
+        "position": 2,
+        "exact_token": 155,
+        "hot_token": 152,
+        "exact_token_rank": 23,
+        "hot_top1_margin": 0.9162178039550781,
+        "exact_logit_gap_from_hot_top1": 4.033437728881836
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 70.51807344399998
+    },
+    {
+      "rank": 128,
+      "capsule_bits": 4,
+      "budget": {
+        "rank": 128,
+        "capsule_bits": 4,
+        "memory_gib": 5.4392852783203125,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.4580429077148436,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 11.040613632,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "built_rank_statistics": {
+        "minimum": 93,
+        "maximum": 93,
+        "mean": 93.0
+      },
+      "quantization": {
+        "bits": 4,
+        "modules": 44,
+        "tensors": 88,
+        "elements": 24093696,
+        "logical_payload_bytes": 12046848,
+        "scale_bytes": 16368,
+        "maximum_absolute_error": 0.1006736010313034,
+        "maximum_relative_l2_error": 0.5992518663406372,
+        "logical_total_bytes": 12063216
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.25,
+      "coverage_at_k": {
+        "1": 0.25,
+        "2": 0.25,
+        "4": 0.34375,
+        "8": 0.375,
+        "16": 0.40625,
+        "32": 0.5625,
+        "64": 0.59375,
+        "128": 0.75,
+        "256": 0.8125
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 13361,
+        "mean": 850.90625
+      },
+      "first_divergence": {
+        "position": 2,
+        "exact_token": 155,
+        "hot_token": 152,
+        "exact_token_rank": 23,
+        "hot_top1_margin": 0.9162178039550781,
+        "exact_logit_gap_from_hot_top1": 4.033437728881836
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 70.70140263100001
+    },
+    {
+      "rank": 136,
+      "capsule_bits": 4,
+      "budget": {
+        "rank": 136,
+        "capsule_bits": 4,
+        "memory_gib": 5.5849809646606445,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.6037385940551756,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 11.66637184,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "built_rank_statistics": {
+        "minimum": 93,
+        "maximum": 93,
+        "mean": 93.0
+      },
+      "quantization": {
+        "bits": 4,
+        "modules": 44,
+        "tensors": 88,
+        "elements": 24093696,
+        "logical_payload_bytes": 12046848,
+        "scale_bytes": 16368,
+        "maximum_absolute_error": 0.1006736010313034,
+        "maximum_relative_l2_error": 0.5992518663406372,
+        "logical_total_bytes": 12063216
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.25,
+      "coverage_at_k": {
+        "1": 0.25,
+        "2": 0.25,
+        "4": 0.34375,
+        "8": 0.375,
+        "16": 0.40625,
+        "32": 0.5625,
+        "64": 0.59375,
+        "128": 0.75,
+        "256": 0.8125
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 13361,
+        "mean": 850.90625
+      },
+      "first_divergence": {
+        "position": 2,
+        "exact_token": 155,
+        "hot_token": 152,
+        "exact_token_rank": 23,
+        "hot_top1_margin": 0.9162178039550781,
+        "exact_logit_gap_from_hot_top1": 4.033437728881836
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 70.485457236
+    }
+  ],
+  "best_observed_point": {
+    "rank": 72,
+    "capsule_bits": 8,
+    "budget": {
+      "rank": 72,
+      "capsule_bits": 8,
+      "memory_gib": 5.761926651000977,
+      "memory_limit_gib": 8.0,
+      "memory_pass": true,
+      "hot_traffic_gib_per_token": 2.749441909790039,
+      "traffic_limit_gib_per_token": 2.8351741790771485,
+      "traffic_pass": true,
+      "hot_compute_gflop_per_token": 6.660306176,
+      "compute_limit_gflop_per_token": 12.132735283199999,
+      "compute_pass": true,
+      "pass_all": true
+    },
+    "built_rank_statistics": {
+      "minimum": 72,
+      "maximum": 72,
+      "mean": 72.0
+    },
+    "quantization": {
+      "bits": 8,
+      "modules": 44,
+      "tensors": 88,
+      "elements": 18653184,
+      "logical_payload_bytes": 18653184,
+      "scale_bytes": 12672,
+      "maximum_absolute_error": 0.005704267881810665,
+      "maximum_relative_l2_error": 0.07492019236087799,
+      "logical_total_bytes": 18665856
+    },
+    "evaluated_tokens": 32,
+    "exact_top1_match_rate": 0.21875,
+    "coverage_at_k": {
+      "1": 0.21875,
+      "2": 0.25,
+      "4": 0.3125,
+      "8": 0.40625,
+      "16": 0.46875,
+      "32": 0.625,
+      "64": 0.71875,
+      "128": 0.84375,
+      "256": 0.9375
+    },
+    "rank_statistics": {
+      "minimum": 1,
+      "maximum": 9859,
+      "mean": 359.875
+    },
+    "first_divergence": {
+      "position": 2,
+      "exact_token": 155,
+      "hot_token": 161,
+      "exact_token_rank": 8,
+      "hot_top1_margin": 0.8800220489501953,
+      "exact_logit_gap_from_hot_top1": 2.202230453491211
+    },
+    "qualifies_for_multi_hypothesis": false,
+    "elapsed_seconds": 79.52728301500002
+  },
+  "surviving_points": [],
+  "decision": "reject tested quantized global capsule frontier",
+  "next_candidate": "combine the best quantized global prior with prompt-specific session directions, then test block-local adaptive growth",
+  "elapsed_seconds": 434.417119929,
+  "workflow": {
+    "run_id": 30742780121,
+    "head_sha": "519ea649652e9a626af014ebd76cead8208a9968",
+    "raw_file_sha256": "c9c349c7b5626fa4455e17e918b431de7f9b9ae3a52ada034788fd073958cc20"
+  }
+}

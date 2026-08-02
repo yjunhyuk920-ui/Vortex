@@ -8,5 +8,8 @@ dependencies = ["torch>=2.2", "safetensors>=0.4", "numpy>=1.26"]
 [project.scripts]
 vortex-proto = "vortex_runtime.cli:main"
 
+[tool.setuptools]
+packages = ["vortex_runtime"]
+
 [tool.pytest.ini_options]
 pythonpath = ["."]

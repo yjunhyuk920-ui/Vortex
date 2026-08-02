@@ -1,0 +1,348 @@
+{
+  "evidence_level": "E1 exact-prefix feasible-rank frontier diagnostic",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "tokens_per_rank": 32,
+  "tested_ranks": [
+    32,
+    40,
+    48,
+    56,
+    64,
+    72
+  ],
+  "fixed_405b_aligned_maximum_rank": 72,
+  "binding_budget": "hot capsule traffic per token",
+  "same_context_contract": "Every rank is measured with exact and hot logits on the same authoritative exact prefix at every token position.",
+  "decision_rule": {
+    "advance": "rank fits memory/traffic/compute, first divergence exact-token rank is at most 32, and top-32 coverage is at least 0.95",
+    "reject_family": "no tested rank through the maximum 405B-feasible aligned rank satisfies the advance rule"
+  },
+  "points": [
+    {
+      "rank": 32,
+      "budget": {
+        "rank": 32,
+        "capsule_bits": 8.0,
+        "memory_gib": 4.304969787597656,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 1.2924850463867188,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 3.531515136,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.15625,
+      "coverage_at_k": {
+        "1": 0.15625,
+        "2": 0.25,
+        "4": 0.28125,
+        "8": 0.3125,
+        "16": 0.34375,
+        "32": 0.40625,
+        "64": 0.4375,
+        "128": 0.5,
+        "256": 0.59375
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 17533,
+        "mean": 2942.9375
+      },
+      "first_divergence": {
+        "position": 1,
+        "exact_token": 239,
+        "hot_token": 13,
+        "exact_token_rank": 2,
+        "hot_top1_margin": 3.150425910949707,
+        "exact_logit_gap_from_hot_top1": 3.150425910949707
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 76.494449308
+    },
+    {
+      "rank": 40,
+      "budget": {
+        "rank": 40,
+        "capsule_bits": 8.0,
+        "memory_gib": 4.59636116027832,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 1.5838764190673829,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 4.157273344,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.09375,
+      "coverage_at_k": {
+        "1": 0.09375,
+        "2": 0.15625,
+        "4": 0.21875,
+        "8": 0.3125,
+        "16": 0.40625,
+        "32": 0.5625,
+        "64": 0.75,
+        "128": 0.9375,
+        "256": 0.96875
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 9307,
+        "mean": 329.8125
+      },
+      "first_divergence": {
+        "position": 0,
+        "exact_token": 29871,
+        "hot_token": 239,
+        "exact_token_rank": 4,
+        "hot_top1_margin": 0.6664218902587891,
+        "exact_logit_gap_from_hot_top1": 1.4207868576049805
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 67.90112822700002
+    },
+    {
+      "rank": 48,
+      "budget": {
+        "rank": 48,
+        "capsule_bits": 8.0,
+        "memory_gib": 4.887752532958984,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 1.875267791748047,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 4.783031552,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.09375,
+      "coverage_at_k": {
+        "1": 0.09375,
+        "2": 0.125,
+        "4": 0.1875,
+        "8": 0.21875,
+        "16": 0.375,
+        "32": 0.5625,
+        "64": 0.6875,
+        "128": 0.84375,
+        "256": 0.90625
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 9270,
+        "mean": 364.78125
+      },
+      "first_divergence": {
+        "position": 0,
+        "exact_token": 29871,
+        "hot_token": 239,
+        "exact_token_rank": 12,
+        "hot_top1_margin": 0.8587779998779297,
+        "exact_logit_gap_from_hot_top1": 3.0043296813964844
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 69.095100557
+    },
+    {
+      "rank": 56,
+      "budget": {
+        "rank": 56,
+        "capsule_bits": 8.0,
+        "memory_gib": 5.179143905639648,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.1666591644287108,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 5.40878976,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.125,
+      "coverage_at_k": {
+        "1": 0.125,
+        "2": 0.1875,
+        "4": 0.28125,
+        "8": 0.375,
+        "16": 0.4375,
+        "32": 0.65625,
+        "64": 0.8125,
+        "128": 0.875,
+        "256": 0.9375
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 9682,
+        "mean": 340.15625
+      },
+      "first_divergence": {
+        "position": 2,
+        "exact_token": 155,
+        "hot_token": 161,
+        "exact_token_rank": 9,
+        "hot_top1_margin": 0.7428817749023438,
+        "exact_logit_gap_from_hot_top1": 2.5474853515625
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 69.83320361399996
+    },
+    {
+      "rank": 64,
+      "budget": {
+        "rank": 64,
+        "capsule_bits": 8.0,
+        "memory_gib": 5.4705352783203125,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.458050537109375,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 6.034547968,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.125,
+      "coverage_at_k": {
+        "1": 0.125,
+        "2": 0.125,
+        "4": 0.21875,
+        "8": 0.34375,
+        "16": 0.4375,
+        "32": 0.5625,
+        "64": 0.65625,
+        "128": 0.84375,
+        "256": 0.9375
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 10059,
+        "mean": 414.40625
+      },
+      "first_divergence": {
+        "position": 0,
+        "exact_token": 29871,
+        "hot_token": 239,
+        "exact_token_rank": 5,
+        "hot_top1_margin": 0.4827299118041992,
+        "exact_logit_gap_from_hot_top1": 1.2474699020385742
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 69.48642179699999
+    },
+    {
+      "rank": 72,
+      "budget": {
+        "rank": 72,
+        "capsule_bits": 8.0,
+        "memory_gib": 5.761926651000977,
+        "memory_limit_gib": 8.0,
+        "memory_pass": true,
+        "hot_traffic_gib_per_token": 2.749441909790039,
+        "traffic_limit_gib_per_token": 2.8351741790771485,
+        "traffic_pass": true,
+        "hot_compute_gflop_per_token": 6.660306176,
+        "compute_limit_gflop_per_token": 12.132735283199999,
+        "compute_pass": true,
+        "pass_all": true
+      },
+      "evaluated_tokens": 32,
+      "exact_top1_match_rate": 0.21875,
+      "coverage_at_k": {
+        "1": 0.21875,
+        "2": 0.25,
+        "4": 0.3125,
+        "8": 0.40625,
+        "16": 0.4375,
+        "32": 0.625,
+        "64": 0.75,
+        "128": 0.84375,
+        "256": 0.9375
+      },
+      "rank_statistics": {
+        "minimum": 1,
+        "maximum": 10908,
+        "mean": 388.71875
+      },
+      "first_divergence": {
+        "position": 2,
+        "exact_token": 155,
+        "hot_token": 161,
+        "exact_token_rank": 7,
+        "hot_top1_margin": 0.8202056884765625,
+        "exact_logit_gap_from_hot_top1": 1.9585151672363281
+      },
+      "qualifies_for_multi_hypothesis": false,
+      "elapsed_seconds": 69.784548815
+    }
+  ],
+  "top32_coverage_monotonic": false,
+  "best_observed_point": {
+    "rank": 56,
+    "budget": {
+      "rank": 56,
+      "capsule_bits": 8.0,
+      "memory_gib": 5.179143905639648,
+      "memory_limit_gib": 8.0,
+      "memory_pass": true,
+      "hot_traffic_gib_per_token": 2.1666591644287108,
+      "traffic_limit_gib_per_token": 2.8351741790771485,
+      "traffic_pass": true,
+      "hot_compute_gflop_per_token": 5.40878976,
+      "compute_limit_gflop_per_token": 12.132735283199999,
+      "compute_pass": true,
+      "pass_all": true
+    },
+    "evaluated_tokens": 32,
+    "exact_top1_match_rate": 0.125,
+    "coverage_at_k": {
+      "1": 0.125,
+      "2": 0.1875,
+      "4": 0.28125,
+      "8": 0.375,
+      "16": 0.4375,
+      "32": 0.65625,
+      "64": 0.8125,
+      "128": 0.875,
+      "256": 0.9375
+    },
+    "rank_statistics": {
+      "minimum": 1,
+      "maximum": 9682,
+      "mean": 340.15625
+    },
+    "first_divergence": {
+      "position": 2,
+      "exact_token": 155,
+      "hot_token": 161,
+      "exact_token_rank": 9,
+      "hot_top1_margin": 0.7428817749023438,
+      "exact_logit_gap_from_hot_top1": 2.5474853515625
+    },
+    "qualifies_for_multi_hypothesis": false,
+    "elapsed_seconds": 69.83320361399996
+  },
+  "surviving_points": [],
+  "decision": "reject global low-rank O/down capsule through rank 72",
+  "next_candidate": "replace the global activation-subspace capsule with a block-local trajectory or operator-structured representation",
+  "elapsed_seconds": 422.595738131,
+  "workflow": {
+    "run_id": 30744931889,
+    "head_sha": "cd5d269ab1f54ece76a97ec1cf29d6198fd4910e",
+    "raw_file_sha256": "1fed439dab07dc47af9767e6c8351b9f0e00842d9a96b11bba869f1ee522cf33"
+  }
+}

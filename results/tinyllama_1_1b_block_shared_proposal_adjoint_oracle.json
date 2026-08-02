@@ -1,0 +1,54 @@
+{
+  "evidence_level": "E1 proposal-adjoint full-weight-scan oracle",
+  "workflow": {
+    "run_id": 30740301008,
+    "artifact_id": 8831096546,
+    "artifact_digest": "sha256:8af3d2857ca55e35b8f2570a074d4c26b974cf975769be5e6aad586b5097a11f",
+    "head_sha": "693aad5468ff0c75bef7329e795c24369c95c1a0",
+    "raw_file_sha256": "d515c08544cfdbbe7a2db706d0a5332cd3e9c7ef5acb61bf6719e8905ce88284"
+  },
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "managed_suffixes": [
+    "self_attn.o_proj",
+    "mlp.down_proj"
+  ],
+  "matched_modules": 44,
+  "max_rank": 32,
+  "row_tile": 128,
+  "col_tile": 128,
+  "requested_block_tokens": 64,
+  "actual_proposal_tokens": 64,
+  "zero_repair_prefix_tokens": 1,
+  "candidate_tiles": 21120,
+  "selector_profile": {
+    "teacher_source": "hot_path_proposal",
+    "generated_targets": 64,
+    "approximate_margin_sum": 45.791908264160156,
+    "missing_gradient_modules": [],
+    "non_differentiable_modules": []
+  },
+  "selector_compute": {
+    "base_hot_gflop_per_token": 3.531515136,
+    "backward_gflop_per_token": 4.05999744,
+    "hot_plus_selector_gflop_per_token": 7.591512576,
+    "compute_limit_gflop_per_token": 12.132735283199999
+  },
+  "combined_budget": {
+    "minimum_traffic_efficiency": 491.29915997929805,
+    "compute_max_selected_bytes": 23632987.264111407,
+    "combined_max_selected_bytes": 23632987.264111407,
+    "combined_budget_tile_count": 360
+  },
+  "observed_prefix_behavior": {
+    "selected_tiles_1_to_64": "exact prefix remained 1 token; no incremental gain",
+    "selected_tiles_128": "exact prefix dropped to 0 tokens",
+    "selected_tiles_360": "exact prefix remained 0 tokens at the selector-compute boundary"
+  },
+  "best_selector_candidate": null,
+  "decision": "proposal-token adjoint oracle fails the combined gate",
+  "rejection_scope": "Reject proposal-token signed-adjoint ranking for the tested rank-32 O/down block-shared repair family. The selector used no exact target continuation, but it was still an optimistic full-weight-scan oracle.",
+  "implication": "Even after scanning every managed exact weight tile, the hot proposal's own signed margin objective could not identify a budget-compatible set that extended the exact prefix. Metadata approximations of the same signed objective are therefore not promoted.",
+  "next_candidate": "multi-hypothesis uncertainty selection or a redesigned hot representation"
+}

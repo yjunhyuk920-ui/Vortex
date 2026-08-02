@@ -1,0 +1,51 @@
+name: Real model falsification
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: Hugging Face repo ID or local model path
+        required: true
+        default: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+      max_rank:
+        description: Maximum Atlas rank per replaced projection
+        required: true
+        default: "32"
+      max_new_tokens:
+        description: Generated tokens per prompt
+        required: true
+        default: "8"
+
+jobs:
+  real-model-cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install transformers sentencepiece
+      - name: Run real-model operation replacement
+        run: |
+          python scripts/run_real_operation_falsification.py \
+            --model "${{ inputs.model }}" \
+            --device cpu \
+            --max-new-tokens "${{ inputs.max_new_tokens }}" \
+            --max-rank "${{ inputs.max_rank }}" \
+            --build-prompt "Explain why the sky appears blue." \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output real_operation_falsification.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: real-operation-falsification
+          path: real_operation_falsification.json
+          if-no-files-found: warn

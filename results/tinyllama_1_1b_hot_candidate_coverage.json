@@ -1,0 +1,54 @@
+{
+  "evidence_level": "E1 exact-prefix candidate-coverage diagnostic",
+  "workflow": {
+    "run_id": 30740914227,
+    "artifact_id": 8831274617,
+    "artifact_digest": "sha256:c143d2e25a661cc0a4215ec6b2a099942841ed235d807053143c55a79913b8df",
+    "head_sha": "5dda0db10bbafd44e9cbd81bfccbe06e79ca7f9d",
+    "raw_file_sha256": "e1292476ede7890534d4e1d872b246ff2c7edd949bd46a4887840e3665e85f08"
+  },
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "managed_suffixes": [
+    "self_attn.o_proj",
+    "mlp.down_proj"
+  ],
+  "matched_modules": 44,
+  "max_rank": 32,
+  "prompt_tokens": 45,
+  "evaluated_tokens": 32,
+  "same_context_contract": "Exact and hot paths were evaluated on the same authoritative exact prefix at every position. Exact targets were used only for coverage measurement.",
+  "exact_top1_match_rate": 0.15625,
+  "coverage_at_k": {
+    "1": 0.15625,
+    "2": 0.25,
+    "4": 0.28125,
+    "8": 0.3125,
+    "16": 0.34375,
+    "32": 0.40625,
+    "64": 0.4375,
+    "128": 0.5,
+    "256": 0.59375
+  },
+  "rank_statistics": {
+    "minimum": 1,
+    "maximum": 17533,
+    "mean": 2942.9375
+  },
+  "first_divergence": {
+    "position": 1,
+    "exact_token": 239,
+    "hot_token": 13,
+    "exact_token_rank": 2,
+    "hot_top1_margin": 3.1504335403442383,
+    "exact_logit_gap_from_hot_top1": 3.1504335403442383
+  },
+  "decision_rule": {
+    "advance_top_k_uncertainty": "first divergence exact-token rank <= 32 and top-32 coverage >= 0.95",
+    "reject_current_hot_representation": "first divergence exact-token rank > 32 or top-32 coverage < 0.95"
+  },
+  "decision": "reject rank-32 hot representation for top-K uncertainty coverage",
+  "rejection_scope": "Reject the tested rank-32 O/down hot representation as the basis of a small top-K uncertainty certificate. First-divergence rank was 2, but top-32 coverage was only 40.625 percent and exact-token mean rank was 2942.9375.",
+  "next_candidate": "sweep the complete 405B-feasible linear-rank frontier through rank 128 before rejecting the low-rank O/down representation family"
+}

@@ -1,0 +1,54 @@
+{
+  "evidence_level": "E1 target-independent proposal-margin bound selector",
+  "workflow": {
+    "run_id": 30740301018,
+    "artifact_id": 8831097929,
+    "artifact_digest": "sha256:1f9bab4f116dc61ccab89f031ad0db58072e9861bf228b82b5f8e13dc1bd17a0",
+    "head_sha": "693aad5468ff0c75bef7329e795c24369c95c1a0",
+    "raw_file_sha256": "f292cdd515ab58a9f620c9cfbfde65f70ca10f43d9b05435751585f6d21d3c34"
+  },
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "managed_suffixes": [
+    "self_attn.o_proj",
+    "mlp.down_proj"
+  ],
+  "matched_modules": 44,
+  "max_rank": 32,
+  "row_tile": 128,
+  "col_tile": 128,
+  "requested_block_tokens": 64,
+  "actual_proposal_tokens": 64,
+  "zero_repair_prefix_tokens": 1,
+  "candidate_tiles": 21120,
+  "selector_profile": {
+    "generated_targets": 64,
+    "approximate_margin_sum": 45.791908264160156,
+    "missing_gradient_modules": [],
+    "metadata_bytes": 84480,
+    "selector_contract": "tile score uses precomputed ||W_tile||_F and runtime proposal input-residual/output-gradient energies; no exact target token or full runtime weight scan"
+  },
+  "selector_compute": {
+    "base_hot_gflop_per_token": 3.531515136,
+    "backward_gflop_per_token": 4.05999744,
+    "hot_plus_selector_gflop_per_token": 7.591512576,
+    "compute_limit_gflop_per_token": 12.132735283199999
+  },
+  "combined_budget": {
+    "minimum_traffic_efficiency": 491.29915997929805,
+    "compute_max_selected_bytes": 23632987.264111407,
+    "combined_max_selected_bytes": 23632987.264111407,
+    "combined_budget_tile_count": 360
+  },
+  "observed_prefix_behavior": {
+    "selected_tiles_1_to_64": "exact prefix remained 1 token; no incremental gain",
+    "selected_tiles_128": "exact prefix dropped to 0 tokens",
+    "selected_tiles_360": "exact prefix remained 0 tokens at the selector-compute boundary"
+  },
+  "best_selector_candidate": null,
+  "decision": "proposal-margin bound selector fails the E1 combined gate",
+  "rejection_scope": "Reject the tested Cauchy-bound ranking based on hot proposal margins and per-tile norm metadata. It did not extend the exact prefix within the corrected selector-compute budget.",
+  "implication": "A runtime-cheap metadata bound did not reproduce the future-target oracle's useful tile set and became actively harmful for larger prefixes.",
+  "next_candidate": "multi-hypothesis uncertainty certificate or a redesigned hot representation"
+}

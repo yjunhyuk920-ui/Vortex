@@ -1,0 +1,53 @@
+{
+  "evidence_level": "E1 target-independent block selector falsification",
+  "workflow": {
+    "run_id": 30739408428,
+    "artifact_id": 8830820155,
+    "artifact_digest": "sha256:0b883222a8d7cfd533a0481a227a908542a858273772f37aa447a6f35095e220",
+    "head_sha": "29b50e0a9e99f6bb54a9277e68b10d5f20d70254",
+    "raw_file_sha256": "601159ac16e95daeef7026447120bfcfcc508e327cfc4b14b5d52d1239d5a54e"
+  },
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "managed_suffixes": [
+    "self_attn.o_proj",
+    "mlp.down_proj"
+  ],
+  "matched_modules": 44,
+  "max_rank": 32,
+  "row_tile": 128,
+  "col_tile": 128,
+  "requested_block_tokens": 64,
+  "actual_generated_tokens": 64,
+  "zero_repair_prefix_tokens": 1,
+  "selector_inputs": [
+    "approximate autoregressive activation residuals",
+    "precomputed exact weight-tile Frobenius norms"
+  ],
+  "selector_forbidden_inputs": [
+    "exact target continuation tokens",
+    "teacher-forced gradients",
+    "exact target logit margins"
+  ],
+  "combined_budget": {
+    "minimum_traffic_efficiency": 491.29915997929805,
+    "compute_max_selected_bytes": 44761771.04305464,
+    "combined_max_selected_bytes": 44761771.04305464,
+    "combined_budget_tile_count": 683
+  },
+  "tested_boundary": {
+    "selected_tiles": 683,
+    "selected_weight_bytes": 44761088,
+    "committed_prefix_tokens": 1,
+    "incremental_committed_tokens": 0,
+    "selector_pass": false
+  },
+  "best_selector_candidate": null,
+  "decision": "target-independent residual-energy selector fails the E1 combined gate",
+  "rejection_scope": "Reject residual-energy ranking for the tested rank-32 O/down block-shared selector. This does not reject proposal-margin gradients or all target-independent selectors.",
+  "next_candidate": [
+    "proposal-token adjoint full-weight-scan diagnostic oracle",
+    "proposal-margin Cauchy-bound selector using only tile-norm metadata"
+  ]
+}
