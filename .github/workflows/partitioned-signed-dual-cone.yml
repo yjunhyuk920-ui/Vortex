@@ -4,9 +4,12 @@ on:
   pull_request:
     paths:
       - "vortex_runtime/partitioned_signed_dual.py"
+      - "vortex_runtime/quantized_partition_metadata.py"
       - "vortex_runtime/decision_trace.py"
       - "scripts/run_partitioned_signed_dual_cone.py"
+      - "scripts/run_quantized_partitioned_signed_dual_cone.py"
       - "tests/test_partitioned_signed_dual.py"
+      - "tests/test_quantized_partition_metadata.py"
       - "experiments/signed_dual_prompts.json"
       - "docs/EXPERIMENT_032_PARTITIONED_SIGNED_DUAL_CONE.md"
       - ".github/workflows/partitioned-signed-dual-cone.yml"
@@ -47,12 +50,14 @@ jobs:
         run: |
           test -f tests/test_signed_dual_mlp.py
           test -f tests/test_partitioned_signed_dual.py
+          test -f tests/test_quantized_partition_metadata.py
           python -m pytest -q \
             tests/test_signed_dual_mlp.py \
-            tests/test_partitioned_signed_dual.py
+            tests/test_partitioned_signed_dual.py \
+            tests/test_quantized_partition_metadata.py
       - name: Measure block frontier point
         run: |
-          python scripts/run_partitioned_signed_dual_cone.py \
+          python scripts/run_quantized_partitioned_signed_dual_cone.py \
             --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
             --prompts experiments/signed_dual_prompts.json \
             --bits 8 \
