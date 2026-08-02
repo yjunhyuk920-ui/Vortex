@@ -1,7 +1,11 @@
 {
   "evidence_level": "E0/E1",
   "candidate": "VORTEX-WAVE-1",
-  "status": "rejected-rank32-layer-and-row-tile-repair",
+  "status": "rejected-vortex-wave-1-analytic-envelope",
+  "accounting_contract": {
+    "traffic": "selected cold bytes are divided by committed block tokens",
+    "compute": "selected exact arithmetic is charged every token and is not divided by committed block tokens"
+  },
   "target": {
     "parameters": 405849243648,
     "layers": 126,
@@ -80,6 +84,7 @@
     "cold_full_repair_gib": 757.921875,
     "required_tokens_per_full_repair_equivalent": 491.29915997929805,
     "candidate_tokens_per_full_repair_equivalent": 640.0,
+    "candidate_minimum_committed_tokens": 122.82478999482451,
     "projected_gib_per_token": 2.4767379760742188,
     "analytic_pass": true
   },
@@ -90,31 +95,43 @@
     "baseline_gflop_per_token": 10.110612736,
     "limit_gflop_per_token": 12.132735283199999,
     "cold_full_repair_gflop": 845.521354752,
-    "required_tokens_per_full_repair_equivalent": 98.3024896795889,
-    "candidate_tokens_per_full_repair_equivalent": 640.0,
-    "projected_gflop_per_token": 4.8526422528,
-    "analytic_pass": true
+    "candidate_repair_fraction": 0.25,
+    "maximum_repair_fraction": 0.010172682332456079,
+    "maximum_selected_weight_gib": 7.690070998852462,
+    "projected_gflop_per_token": 214.911853824,
+    "analytic_pass": false
   },
   "mechanism": {
     "required_tokens_per_full_repair_equivalent": 491.29915997929805,
+    "maximum_compute_repair_fraction": 0.010172682332456079,
     "candidate_target": 640.0,
-    "observed": 3.1790542140151516,
-    "observed_source": "results/tinyllama_1_1b_rank32_repair_oracles.json",
+    "candidate_repair_fraction": 0.25,
+    "observed": 8.195999145507812,
+    "observed_repair_fraction": 0.1220107496653529,
+    "observed_source": "results/tinyllama_1_1b_adjoint_tile_oracle.json",
+    "traffic_pass": false,
+    "compute_pass": false,
     "pass": false,
-    "shortfall_factor": 154.54255476781765,
+    "traffic_shortfall_factor": 59.9437788190323,
+    "compute_excess_factor": 11.993960459777258,
     "observed_exact_token_match": true,
     "observed_warm_decode_fast_fraction": 0.0
   },
   "gates": {
     "memory": true,
     "analytic_traffic": true,
-    "analytic_compute": true,
+    "analytic_compute": false,
+    "observed_repair_traffic": false,
+    "observed_repair_compute": false,
     "observed_repair_efficiency": false
   },
-  "observed_component_decision": "reject exact-span, exact layer-suffix, and output-row tile repair as VORTEX-WAVE-1 steady-state mechanisms",
+  "observed_component_decision": "reject per-token rank-32 residual tile repair even with exact target tokens and exact evaluation gradients",
   "rejected_mechanisms": [
     "exact-span Atlas warm-decode fast path",
     "rank-32 approximate capsule plus exact layer-suffix repair",
-    "rank-32 approximate capsule plus output-row tile repair"
-  ]
+    "rank-32 approximate capsule plus output-row tile repair",
+    "rank-32 residual-energy 2D tile repair",
+    "rank-32 exact-target adjoint 2D tile repair per token"
+  ],
+  "next_candidate": "block-shared combined traffic/compute oracle"
 }
