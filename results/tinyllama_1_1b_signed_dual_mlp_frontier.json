@@ -1,0 +1,25 @@
+{
+  "evidence_level": "E1/E2 optimistic signed dual local MLP frontier",
+  "points": [
+    {
+      "bits": 4,
+      "mean_refined_fraction": 1.0,
+      "maximum_refined_fraction": 1.0,
+      "maximum_projected_405b_exact_gib_per_token": 614.25,
+      "unsafe_certificates": 0,
+      "interval_failures": 0,
+      "qualifies": false
+    },
+    {
+      "bits": 8,
+      "mean_refined_fraction": 0.9793327899018596,
+      "maximum_refined_fraction": 0.9941164127066116,
+      "maximum_projected_405b_exact_gib_per_token": 610.6393432617188,
+      "unsafe_certificates": 0,
+      "interval_failures": 0,
+      "qualifies": false
+    }
+  ],
+  "promoted_bits": [],
+  "decision": "reject tested signed local interval density"
+}
