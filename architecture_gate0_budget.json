@@ -1,7 +1,7 @@
 {
   "evidence_level": "E0/E1",
   "candidate": "VORTEX-WAVE-1",
-  "status": "rank32-hot-representation-rejected",
+  "status": "global-low-rank-o-down-representation-rejected",
   "accounting_contract": {
     "traffic": "selected cold bytes are divided by committed block tokens",
     "compute": "selected exact arithmetic is charged every token and is not divided by committed block tokens",
@@ -146,7 +146,8 @@
     "proposal_adjoint_full_weight_scan": false,
     "proposal_margin_metadata_bound": false,
     "causal_prefill_compiler": false,
-    "rank32_topk_coverage": false
+    "rank32_topk_coverage": false,
+    "feasible_rank_frontier": false
   },
   "logical_oracle": {
     "evidence_level": "E1 exact-target block-shared combined oracle",
@@ -179,7 +180,7 @@
     "compute_pass": true,
     "memory_pass": true
   },
-  "observed_component_decision": "Reject the rank-32 O/down hot representation as a small top-K certificate basis: first-divergence rank was 2, but top-32 exact-token coverage was 0.406250.",
+  "observed_component_decision": "Reject the global low-rank O/down activation-subspace capsule: no rank through the hot-traffic-bound 405B maximum of 72 preserved the exact token with the required top-32 coverage.",
   "rejected_mechanisms": [
     "exact-span Atlas warm-decode fast path",
     "rank-32 approximate capsule plus exact layer-suffix repair",
@@ -191,9 +192,10 @@
     "block-shared proposal-token signed-adjoint selector",
     "block-shared proposal-margin metadata-bound selector",
     "causal exact-prompt-prefill adjoint compiler",
-    "rank-32 O/down hot representation for small top-K uncertainty"
+    "rank-32 O/down hot representation for small top-K uncertainty",
+    "global low-rank O/down capsule through traffic-feasible rank 72"
   ],
-  "next_candidate": "sweep the complete 405B-feasible capsule-rank frontier through rank 72; hot capsule traffic, not memory or arithmetic, is the binding rank constraint",
+  "next_candidate": "test a block-local trajectory basis against the simultaneous traffic requirement A >= 492 and compute requirement A/r >= 73",
   "selector_falsification": {
     "residual_energy": {
       "evidence_level": "E1 target-independent block selector falsification",
@@ -284,5 +286,85 @@
     "advance_multi_hypothesis": false,
     "decision": "reject rank-32 hot representation for top-K uncertainty coverage",
     "rejection_scope": "Reject the tested rank-32 O/down hot representation as the basis of a small top-K uncertainty certificate. First-divergence rank was 2, but top-32 coverage was only 40.625 percent and exact-token mean rank was 2942.9375."
+  },
+  "hot_rank_frontier": {
+    "evidence_level": "E1 exact-prefix feasible-rank frontier diagnostic",
+    "source": "results/tinyllama_1_1b_hot_rank_frontier.json",
+    "binding_budget": "hot capsule traffic per token",
+    "fixed_405b_aligned_maximum_rank": 72,
+    "tested_ranks": [
+      32,
+      40,
+      48,
+      56,
+      64,
+      72
+    ],
+    "points": [
+      {
+        "rank": 32,
+        "memory_gib": 4.304969787597656,
+        "hot_traffic_gib_per_token": 1.2924850463867188,
+        "hot_compute_gflop_per_token": 3.531515136,
+        "exact_top1_match_rate": 0.15625,
+        "top32_coverage": 0.40625,
+        "mean_exact_token_rank": 2942.9375,
+        "qualifies": false
+      },
+      {
+        "rank": 40,
+        "memory_gib": 4.59636116027832,
+        "hot_traffic_gib_per_token": 1.5838764190673829,
+        "hot_compute_gflop_per_token": 4.157273344,
+        "exact_top1_match_rate": 0.09375,
+        "top32_coverage": 0.5625,
+        "mean_exact_token_rank": 329.8125,
+        "qualifies": false
+      },
+      {
+        "rank": 48,
+        "memory_gib": 4.887752532958984,
+        "hot_traffic_gib_per_token": 1.875267791748047,
+        "hot_compute_gflop_per_token": 4.783031552,
+        "exact_top1_match_rate": 0.09375,
+        "top32_coverage": 0.5625,
+        "mean_exact_token_rank": 364.78125,
+        "qualifies": false
+      },
+      {
+        "rank": 56,
+        "memory_gib": 5.179143905639648,
+        "hot_traffic_gib_per_token": 2.1666591644287108,
+        "hot_compute_gflop_per_token": 5.40878976,
+        "exact_top1_match_rate": 0.125,
+        "top32_coverage": 0.65625,
+        "mean_exact_token_rank": 340.15625,
+        "qualifies": false
+      },
+      {
+        "rank": 64,
+        "memory_gib": 5.4705352783203125,
+        "hot_traffic_gib_per_token": 2.458050537109375,
+        "hot_compute_gflop_per_token": 6.034547968,
+        "exact_top1_match_rate": 0.125,
+        "top32_coverage": 0.5625,
+        "mean_exact_token_rank": 414.40625,
+        "qualifies": false
+      },
+      {
+        "rank": 72,
+        "memory_gib": 5.761926651000977,
+        "hot_traffic_gib_per_token": 2.749441909790039,
+        "hot_compute_gflop_per_token": 6.660306176,
+        "exact_top1_match_rate": 0.21875,
+        "top32_coverage": 0.625,
+        "mean_exact_token_rank": 388.71875,
+        "qualifies": false
+      }
+    ],
+    "surviving_ranks": [],
+    "pass": false,
+    "decision": "reject global low-rank O/down capsule through rank 72",
+    "next_candidate": "replace the global activation-subspace capsule with a block-local trajectory or operator-structured representation"
   }
 }
