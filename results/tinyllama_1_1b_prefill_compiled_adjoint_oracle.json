@@ -1,0 +1,62 @@
+{
+  "evidence_level": "E1 causal prefill-compiled repair oracle",
+  "workflow": {
+    "run_id": 30740301033,
+    "artifact_id": 8831092578,
+    "artifact_digest": "sha256:90d194abe1516ca1bd7bbd2285302b61a0f46ecdd7f17f28a474e5a7a070c0a6",
+    "head_sha": "693aad5468ff0c75bef7329e795c24369c95c1a0",
+    "raw_file_sha256": "46752f75edc593788b33ba56b1ce503ac82f7bd4d27e97b9a0cbd7857a9d9d19"
+  },
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "managed_suffixes": [
+    "self_attn.o_proj",
+    "mlp.down_proj"
+  ],
+  "matched_modules": 44,
+  "max_rank": 32,
+  "row_tile": 128,
+  "col_tile": 128,
+  "prompt_tokens": 45,
+  "prefill_positions": 16,
+  "requested_block_tokens": 64,
+  "actual_generated_tokens": 64,
+  "zero_repair_prefix_tokens": 1,
+  "candidate_tiles": 21120,
+  "selector_profile": {
+    "teacher_source": "exact_user_prompt_prefill_decisions",
+    "generated_targets": 16,
+    "approximate_margin_sum": 1.8378779888153076,
+    "missing_gradient_modules": [],
+    "non_differentiable_modules": []
+  },
+  "causal_information_contract": {
+    "allowed": [
+      "user prompt tokens",
+      "exact model logits and argmax decisions produced during prompt prefill",
+      "prefill activation gradients",
+      "exact weights streamed during automatic session compilation"
+    ],
+    "forbidden": [
+      "exact continuation tokens after the prompt boundary",
+      "continuation gradients",
+      "future target logit margins"
+    ]
+  },
+  "combined_budget": {
+    "minimum_traffic_efficiency": 491.29915997929805,
+    "compute_max_selected_bytes": 44761771.04305464,
+    "combined_max_selected_bytes": 44761771.04305464,
+    "combined_budget_tile_count": 683
+  },
+  "observed_prefix_behavior": {
+    "selected_tiles_1_to_683": "exact continuation prefix remained 1 token; no incremental gain within the combined budget",
+    "selected_tiles_21120": "full managed O/down repair restored all 64 tokens but used 1.384 GB and failed traffic and compute gates"
+  },
+  "best_selector_candidate": null,
+  "decision": "exact prompt prefill decision selector fails the combined gate",
+  "rejection_scope": "Reject the tested causal prefill signed-adjoint compiler for rank-32 O/down capsules. Exact decisions available before the continuation did not identify a budget-compatible tile set that corrected the first future error.",
+  "implication": "The exact-target block oracle's useful 8 MiB set depends on future continuation-specific information that was not recoverable from the tested prompt-prefill decisions.",
+  "next_candidate": "multi-hypothesis uncertainty certificate or a redesigned hot representation"
+}
