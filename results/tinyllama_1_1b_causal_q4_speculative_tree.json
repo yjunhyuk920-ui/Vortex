@@ -35,8 +35,8 @@
           "unique_tree_nodes": 8,
           "longest_exact_reference_prefix": 1,
           "exact_path_alive": true,
-          "best_log_probability": -0.7119287252426147,
-          "worst_retained_log_probability": -5.7636027336120605
+          "best_log_probability": -0.7119234800338745,
+          "worst_retained_log_probability": -5.763593673706055
         },
         {
           "depth": 2,
@@ -44,8 +44,8 @@
           "unique_tree_nodes": 22,
           "longest_exact_reference_prefix": 2,
           "exact_path_alive": true,
-          "best_log_probability": -2.086756603908725,
-          "worst_retained_log_probability": -7.062292098999023
+          "best_log_probability": -2.0867490944219753,
+          "worst_retained_log_probability": -7.062282085418701
         },
         {
           "depth": 3,
@@ -53,8 +53,8 @@
           "unique_tree_nodes": 26,
           "longest_exact_reference_prefix": 3,
           "exact_path_alive": true,
-          "best_log_probability": -2.0868618601743947,
-          "worst_retained_log_probability": -6.816482663154602
+          "best_log_probability": -2.086854350687645,
+          "worst_retained_log_probability": -6.816457986831665
         },
         {
           "depth": 4,
@@ -62,8 +62,8 @@
           "unique_tree_nodes": 36,
           "longest_exact_reference_prefix": 4,
           "exact_path_alive": true,
-          "best_log_probability": -5.612299054861069,
-          "worst_retained_log_probability": -7.370050549507141
+          "best_log_probability": -5.6122629046440125,
+          "worst_retained_log_probability": -7.370008707046509
         },
         {
           "depth": 5,
@@ -71,8 +71,8 @@
           "unique_tree_nodes": 42,
           "longest_exact_reference_prefix": 5,
           "exact_path_alive": true,
-          "best_log_probability": -6.13844358175993,
-          "worst_retained_log_probability": -7.685844123363495
+          "best_log_probability": -6.138422928750515,
+          "worst_retained_log_probability": -7.685811400413513
         },
         {
           "depth": 6,
@@ -80,8 +80,8 @@
           "unique_tree_nodes": 50,
           "longest_exact_reference_prefix": 6,
           "exact_path_alive": true,
-          "best_log_probability": -6.45559087395668,
-          "worst_retained_log_probability": -7.988389646750875
+          "best_log_probability": -6.455549329519272,
+          "worst_retained_log_probability": -7.988361096475273
         },
         {
           "depth": 7,
@@ -89,8 +89,8 @@
           "unique_tree_nodes": 63,
           "longest_exact_reference_prefix": 7,
           "exact_path_alive": true,
-          "best_log_probability": -6.600775569677353,
-          "worst_retained_log_probability": -9.08042361214757
+          "best_log_probability": -6.600733295083046,
+          "worst_retained_log_probability": -9.080382198095322
         },
         {
           "depth": 8,
@@ -98,8 +98,8 @@
           "unique_tree_nodes": 70,
           "longest_exact_reference_prefix": 8,
           "exact_path_alive": true,
-          "best_log_probability": -6.829554781317711,
-          "worst_retained_log_probability": -9.690427802503109
+          "best_log_probability": -6.829511940479279,
+          "worst_retained_log_probability": -9.690391473472118
         },
         {
           "depth": 9,
@@ -107,8 +107,8 @@
           "unique_tree_nodes": 75,
           "longest_exact_reference_prefix": 9,
           "exact_path_alive": true,
-          "best_log_probability": -7.160911404527724,
-          "worst_retained_log_probability": -10.213759452104568
+          "best_log_probability": -7.160858917981386,
+          "worst_retained_log_probability": -10.21370242536068
         },
         {
           "depth": 10,
@@ -116,8 +116,8 @@
           "unique_tree_nodes": 68,
           "longest_exact_reference_prefix": 10,
           "exact_path_alive": true,
-          "best_log_probability": -7.5149994147177495,
-          "worst_retained_log_probability": -10.513728484511375
+          "best_log_probability": -7.514940048851713,
+          "worst_retained_log_probability": -10.51368623971939
         },
         {
           "depth": 11,
@@ -125,8 +125,8 @@
           "unique_tree_nodes": 81,
           "longest_exact_reference_prefix": 11,
           "exact_path_alive": true,
-          "best_log_probability": -7.519925862474338,
-          "worst_retained_log_probability": -10.839406096376479
+          "best_log_probability": -7.51986483559449,
+          "worst_retained_log_probability": -10.839355755597353
         },
         {
           "depth": 12,
@@ -134,8 +134,8 @@
           "unique_tree_nodes": 90,
           "longest_exact_reference_prefix": 12,
           "exact_path_alive": true,
-          "best_log_probability": -7.589578047318355,
-          "worst_retained_log_probability": -11.185129210352898
+          "best_log_probability": -7.589503564689949,
+          "worst_retained_log_probability": -11.185071349143982
         }
       ],
       "405b_free_draft_q4_lower_bound": {
@@ -161,7 +161,7 @@
       "qualifies": false,
       "decision": "reject tested Q4 speculative tree point at the cost lower bound",
       "next_candidate_if_rejected": "retain tree verification only if a much smaller target-derived substitute preserves a path thousands of tokens deep; otherwise the 405B PCIe stream cannot be amortized to native-4B latency",
-      "elapsed_seconds": 74.03604426799998
+      "elapsed_seconds": 111.273539242
     },
     {
       "evidence_level": "E2 causal Q4 tree plus free-draft target-side lower bound",
@@ -323,7 +323,7 @@
       "qualifies": false,
       "decision": "reject tested Q4 speculative tree point at the cost lower bound",
       "next_candidate_if_rejected": "retain tree verification only if a much smaller target-derived substitute preserves a path thousands of tokens deep; otherwise the 405B PCIe stream cannot be amortized to native-4B latency",
-      "elapsed_seconds": 221.79815307299998
+      "elapsed_seconds": 220.958134036
     },
     {
       "evidence_level": "E2 causal Q4 tree plus free-draft target-side lower bound",
@@ -485,7 +485,7 @@
       "qualifies": false,
       "decision": "reject tested Q4 speculative tree point at the cost lower bound",
       "next_candidate_if_rejected": "retain tree verification only if a much smaller target-derived substitute preserves a path thousands of tokens deep; otherwise the 405B PCIe stream cannot be amortized to native-4B latency",
-      "elapsed_seconds": 422.89238626100007
+      "elapsed_seconds": 425.259461772
     }
   ],
   "best_point": {
@@ -502,12 +502,12 @@
   "decision": "reject tested causal Q4 tree at the target-side cost lower bound",
   "architecture_consequence": "Teacher-forced Q4/Q6 precision routing is not an executable decode path unless a causal candidate mechanism closes this gate.",
   "workflow": {
-    "run_id": 30757015211,
-    "head_sha": "d59ab586c27adb6290c087c7b3d292678557704e",
+    "run_id": 30757015319,
+    "head_sha": "b090e05f8af3665e62e5ce9387aa3fb2f94a86a8",
     "input_sha256": {
-      "q4-tree-k16-b32.json": "dc29a4b70f641e3de0627e45c0183dc68980e3af88bc03bed2a1a60b4463e412",
-      "q4-tree-k32-b64.json": "44a0a31b374200711a3f43062d4d7676127463797eb4fd05a5e05db7618c425b",
-      "q4-tree-k8-b16.json": "e35e61fed143f0c7f2b67328fc5c8ac62a2fbccfd567fbac89bbec485168f7a3"
+      "q4-tree-k16-b32.json": "8772bd8544a487d41c4c529349ed4724eff7fc363c8522acd0d05c5fa03c324f",
+      "q4-tree-k32-b64.json": "49bf7a865726c546ed3231db45358cdcb1e56b59003f781413a0ca3a7caf0bd7",
+      "q4-tree-k8-b16.json": "90a2be3a81295739ebbdd04df8ee00b4edd46360bdd1a14700abc2474e3795d1"
     }
   }
 }
