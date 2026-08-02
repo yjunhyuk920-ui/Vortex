@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ko_explanation",
+    "text": "한국어로 운영체제의 가상 메모리가 왜 필요한지 예시와 함께 설명해줘."
+  },
+  {
+    "id": "en_reasoning",
+    "text": "Explain why a binary search requires sorted input, then give one counterexample."
+  },
+  {
+    "id": "python_code",
+    "text": "Write a Python function that merges overlapping intervals and explain its time complexity."
+  },
+  {
+    "id": "math_derivation",
+    "text": "Derive the closed form of the sum 1 + 2 + ... + n without using induction."
+  },
+  {
+    "id": "structured_summary",
+    "text": "Summarize the trade-offs among latency, throughput, and memory bandwidth in LLM inference in four concise bullet points."
+  },
+  {
+    "id": "causal_analysis",
+    "text": "A service becomes slow only after several hours. List the most likely causes in diagnostic order and justify each step."
+  }
+]
