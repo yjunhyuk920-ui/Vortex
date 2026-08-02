@@ -62,7 +62,7 @@
         "exact_logit_gap_from_hot_top1": 3.150425910949707
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 76.494449308
+      "elapsed_seconds": 80.38169230999999
     },
     {
       "rank": 40,
@@ -107,7 +107,7 @@
         "exact_logit_gap_from_hot_top1": 1.4207868576049805
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 67.90112822700002
+      "elapsed_seconds": 71.54762340600001
     },
     {
       "rank": 48,
@@ -152,7 +152,7 @@
         "exact_logit_gap_from_hot_top1": 3.0043296813964844
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 69.095100557
+      "elapsed_seconds": 71.91048651
     },
     {
       "rank": 56,
@@ -197,7 +197,7 @@
         "exact_logit_gap_from_hot_top1": 2.5474853515625
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 69.83320361399996
+      "elapsed_seconds": 72.0231867
     },
     {
       "rank": 64,
@@ -242,7 +242,7 @@
         "exact_logit_gap_from_hot_top1": 1.2474699020385742
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 69.48642179699999
+      "elapsed_seconds": 72.843123161
     },
     {
       "rank": 72,
@@ -287,7 +287,7 @@
         "exact_logit_gap_from_hot_top1": 1.9585151672363281
       },
       "qualifies_for_multi_hypothesis": false,
-      "elapsed_seconds": 69.784548815
+      "elapsed_seconds": 73.30346959000002
     }
   ],
   "top32_coverage_monotonic": false,
@@ -334,15 +334,15 @@
       "exact_logit_gap_from_hot_top1": 2.5474853515625
     },
     "qualifies_for_multi_hypothesis": false,
-    "elapsed_seconds": 69.83320361399996
+    "elapsed_seconds": 72.0231867
   },
   "surviving_points": [],
   "decision": "reject global low-rank O/down capsule through rank 72",
   "next_candidate": "replace the global activation-subspace capsule with a block-local trajectory or operator-structured representation",
-  "elapsed_seconds": 422.595738131,
+  "elapsed_seconds": 442.010543958,
   "workflow": {
-    "run_id": 30744931889,
-    "head_sha": "cd5d269ab1f54ece76a97ec1cf29d6198fd4910e",
-    "raw_file_sha256": "1fed439dab07dc47af9767e6c8351b9f0e00842d9a96b11bba869f1ee522cf33"
+    "run_id": 30746943351,
+    "head_sha": "367569e44277529c6f12c6c868940a00173043eb",
+    "raw_file_sha256": "d3fdf7776963531e6cd6579640298547fc6a912dff5efe76d05db4c18839490f"
   }
 }
