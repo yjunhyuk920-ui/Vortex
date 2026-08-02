@@ -44,7 +44,8 @@ jobs:
             --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
             --output real_operation_falsification.json
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: real-operation-falsification
           path: real_operation_falsification.json
-          if-no-files-found: error
+          if-no-files-found: warn
