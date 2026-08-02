@@ -79,7 +79,7 @@ def test_roofline_budget_rewards_committed_block_tokens() -> None:
     assert long.target_weight_gib > 180
 
 
-def test_default_405b_layer_stream_fits_eight_gib_memory_envelope() -> None:
+def test_default_405b_exact_tiles_fit_eight_gib_memory_envelope() -> None:
     target, baseline = default_specs()
     point = streamed_exact_block_budget(
         target=target,
@@ -88,7 +88,10 @@ def test_default_405b_layer_stream_fits_eight_gib_memory_envelope() -> None:
         committed_tokens=1,
         target_passes=1,
     )
-    assert point.largest_layer_weight_gib > 1.0
-    assert point.weight_buffer_gib > point.largest_layer_weight_gib
+    assert target.weight_bits == 16
+    assert point.target_weight_gib > 750
+    assert point.largest_layer_weight_gib > point.operator_tile_gib
+    assert point.tiles_per_largest_layer >= 4
+    assert point.weight_buffer_gib == 3.0
     assert point.peak_device_gib <= point.device_memory_limit_gib
     assert point.memory_pass
