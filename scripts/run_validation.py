@@ -11,6 +11,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from vortex_runtime.atlas_linear import OnlineAtlasLinear
 from vortex_runtime.hf_loader import HuggingFaceLayout, TensorLocator
 from vortex_runtime.llama import StreamingLlama
 from vortex_runtime.planner import llama_memory_plan
@@ -76,6 +77,71 @@ def main() -> None:
             r.coarse_token_id == r.token_id for r in disk_rows
         ),
         "manifest": disk_op.manifest,
+    }
+
+    atlas_generator = torch.Generator().manual_seed(404)
+    atlas_weight = torch.randn(96, 64, generator=atlas_generator)
+    trace_basis = torch.linalg.qr(
+        torch.randn(64, 8, generator=atlas_generator)
+    ).Q[:, :8]
+    atlas_loader_calls = 0
+
+    def load_atlas_weight() -> torch.Tensor:
+        nonlocal atlas_loader_calls
+        atlas_loader_calls += 1
+        return atlas_weight
+
+    atlas = OnlineAtlasLinear(
+        in_features=64,
+        out_features=96,
+        weight_loader=load_atlas_weight,
+        max_rank=16,
+    )
+    for _ in range(128):
+        x = trace_basis @ torch.randn(8, generator=atlas_generator)
+        actual = atlas(x)
+        torch.testing.assert_close(
+            actual, atlas_weight @ x, atol=2e-5, rtol=2e-5
+        )
+    report["online_atlas_low_rank"] = {
+        "exact_allclose": True,
+        "rank": atlas.rank,
+        "cold_weight_reads": atlas_loader_calls,
+        "fast_fraction": atlas.stats.fast_fraction,
+        "weight_bytes_read": atlas.stats.weight_bytes_read,
+        "capsule_bytes": atlas.capsule_bytes,
+    }
+
+    atlas_checkpoint = create_tiny_llama(root / "atlas-replay", seed=123)
+    atlas_prompt = torch.tensor([[2, 7, 11, 13]], dtype=torch.long)
+    atlas_suffixes = ("self_attn.o_proj.weight", "mlp.down_proj.weight")
+    atlas_builder = StreamingLlama(
+        atlas_checkpoint,
+        tensor_budget_bytes=2 * 1024 * 1024,
+        atlas_suffixes=atlas_suffixes,
+        atlas_max_rank=64,
+    )
+    atlas_expected = atlas_builder.generate(atlas_prompt, max_new_tokens=12)
+    builder_report = atlas_builder.atlas_report()
+    atlas_store = atlas_builder.save_atlas(root / "persistent-atlas")
+    atlas_replay = StreamingLlama(
+        atlas_checkpoint,
+        tensor_budget_bytes=2 * 1024 * 1024,
+        atlas_suffixes=atlas_suffixes,
+        atlas_max_rank=64,
+    )
+    atlas_replay.load_atlas(atlas_store)
+    atlas_actual = atlas_replay.generate(atlas_prompt, max_new_tokens=12)
+    replay_report = atlas_replay.atlas_report()
+    assert atlas_actual == atlas_expected
+    assert replay_report["cold_weight_reads"] == 0
+    report["internal_atlas_replay"] = {
+        "exact_token_match": True,
+        "managed_suffixes": list(atlas_suffixes),
+        "build_cold_weight_reads": builder_report["cold_weight_reads"],
+        "replay_cold_weight_reads": replay_report["cold_weight_reads"],
+        "replay_fast_vectors": replay_report["fast_vectors"],
+        "capsule_bytes": replay_report["capsule_bytes"],
     }
 
     jacobi_rows = []
