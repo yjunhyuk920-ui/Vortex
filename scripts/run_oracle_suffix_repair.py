@@ -130,6 +130,26 @@ def candidate_suffix_sizes(total_layers: int) -> list[int]:
     return sorted(sizes)
 
 
+def repair_metrics(
+    *,
+    exact_bytes: int,
+    full_model_bytes: int,
+    matches: bool,
+) -> dict[str, int | float | bool | None]:
+    zero_repair = exact_bytes == 0
+    return {
+        "exact_bytes_per_token": exact_bytes,
+        "full_model_repair_fraction_per_token": (
+            exact_bytes / full_model_bytes
+        ),
+        "zero_exact_repair": zero_repair,
+        "tokens_per_full_repair_equivalent": (
+            None if zero_repair else full_model_bytes / exact_bytes
+        ),
+        "exact_sequence_match": matches,
+    }
+
+
 def main() -> None:
     args = parse_args()
     AutoModelForCausalLM, AutoTokenizer = require_transformers()
@@ -189,7 +209,7 @@ def main() -> None:
     )
     ranks = {name: module.atlas.rank for name, module in replacements.items()}
 
-    tested: list[dict[str, int | float | bool]] = []
+    tested: list[dict[str, int | float | bool | None]] = []
     first_passing_size: int | None = None
     previous_size = 0
     started = time.perf_counter()
@@ -211,16 +231,11 @@ def main() -> None:
         tested.append(
             {
                 "exact_suffix_layers": size,
-                "exact_bytes_per_token": exact_bytes,
-                "full_model_repair_fraction_per_token": (
-                    exact_bytes / full_model_bytes
+                **repair_metrics(
+                    exact_bytes=exact_bytes,
+                    full_model_bytes=full_model_bytes,
+                    matches=matches,
                 ),
-                "tokens_per_full_repair_equivalent": (
-                    full_model_bytes / exact_bytes
-                    if exact_bytes > 0
-                    else 0.0
-                ),
-                "exact_sequence_match": matches,
             }
         )
         if matches:
@@ -250,16 +265,11 @@ def main() -> None:
             tested.append(
                 {
                     "exact_suffix_layers": size,
-                    "exact_bytes_per_token": exact_bytes,
-                    "full_model_repair_fraction_per_token": (
-                        exact_bytes / full_model_bytes
+                    **repair_metrics(
+                        exact_bytes=exact_bytes,
+                        full_model_bytes=full_model_bytes,
+                        matches=matches,
                     ),
-                    "tokens_per_full_repair_equivalent": (
-                        full_model_bytes / exact_bytes
-                        if exact_bytes > 0
-                        else 0.0
-                    ),
-                    "exact_sequence_match": matches,
                 }
             )
             if matches:
@@ -270,6 +280,17 @@ def main() -> None:
         item
         for item in tested
         if item["exact_suffix_layers"] == minimal_size
+    )
+    all_project_match = bool(
+        next(
+            item["exact_sequence_match"]
+            for item in tested
+            if item["exact_suffix_layers"] == 0
+        )
+    )
+    efficiency_value = minimal["tokens_per_full_repair_equivalent"]
+    gate_pass = all_project_match or (
+        efficiency_value is not None and float(efficiency_value) >= 600.0
     )
     elapsed = time.perf_counter() - started
     result = {
@@ -289,26 +310,17 @@ def main() -> None:
         "rank_max": max(ranks.values()),
         "full_model_weight_bytes": full_model_bytes,
         "managed_weight_bytes": managed_weight_bytes,
-        "all_project_sequence_match": bool(
-            next(
-                item["exact_sequence_match"]
-                for item in tested
-                if item["exact_suffix_layers"] == 0
-            )
-        ),
+        "all_project_sequence_match": all_project_match,
         "minimal_exact_suffix_layers": minimal_size,
         "minimal_exact_bytes_per_token": minimal["exact_bytes_per_token"],
         "minimal_full_model_repair_fraction_per_token": minimal[
             "full_model_repair_fraction_per_token"
         ],
-        "oracle_tokens_per_full_repair_equivalent": minimal[
-            "tokens_per_full_repair_equivalent"
-        ],
+        "zero_exact_repair": minimal["zero_exact_repair"],
+        "oracle_tokens_per_full_repair_equivalent": efficiency_value,
         "gate_minimum": 491.29915997929805,
         "promotion_threshold": 600.0,
-        "gate_pass": bool(
-            minimal["tokens_per_full_repair_equivalent"] >= 600.0
-        ),
+        "gate_pass": gate_pass,
         "tested_suffixes": sorted(
             tested,
             key=lambda item: int(item["exact_suffix_layers"]),
@@ -327,16 +339,14 @@ def main() -> None:
     print(
         json.dumps(
             {
-                "all_project_sequence_match": result[
-                    "all_project_sequence_match"
-                ],
+                "all_project_sequence_match": all_project_match,
                 "minimal_exact_suffix_layers": minimal_size,
-                "oracle_tokens_per_full_repair_equivalent": result[
-                    "oracle_tokens_per_full_repair_equivalent"
-                ],
-                "gate_pass": result["gate_pass"],
+                "zero_exact_repair": minimal["zero_exact_repair"],
+                "oracle_tokens_per_full_repair_equivalent": efficiency_value,
+                "gate_pass": gate_pass,
             },
             indent=2,
+            allow_nan=False,
         )
     )
 
