@@ -1,0 +1,47 @@
+{
+  "evidence_level": "E1/E2 optimistic partitioned signed dual frontier",
+  "points": [
+    {
+      "block_size": 128,
+      "metadata_gib": 2.4369049072265625,
+      "mean_refined_fraction": 0.9644159994834711,
+      "maximum_refined_fraction": 0.9890802556818182,
+      "maximum_exact_gib_per_token": 607.5477905273438,
+      "gate_radius_ratio": 0.9954354964578942,
+      "up_radius_ratio": 0.9954407555098106,
+      "directional_radius_ratio": 0.9986524789499343,
+      "unsafe_certificates": 0,
+      "interval_failures": 0,
+      "qualifies": false
+    },
+    {
+      "block_size": 256,
+      "metadata_gib": 1.2371978759765625,
+      "mean_refined_fraction": 0.9646278570506198,
+      "maximum_refined_fraction": 0.9891771048553719,
+      "maximum_exact_gib_per_token": 607.60546875,
+      "gate_radius_ratio": 0.9985911550642402,
+      "up_radius_ratio": 0.9985922839855869,
+      "directional_radius_ratio": 1.000460264187527,
+      "unsafe_certificates": 0,
+      "interval_failures": 0,
+      "qualifies": false
+    },
+    {
+      "block_size": 512,
+      "metadata_gib": 0.6373443603515625,
+      "mean_refined_fraction": 0.9647025116219008,
+      "maximum_refined_fraction": 0.989217458677686,
+      "maximum_exact_gib_per_token": 607.6285400390625,
+      "gate_radius_ratio": 1.0000320769916362,
+      "up_radius_ratio": 1.0000304759725922,
+      "directional_radius_ratio": 1.0008805214833394,
+      "unsafe_certificates": 0,
+      "interval_failures": 0,
+      "qualifies": false
+    }
+  ],
+  "promoted_block_sizes": [],
+  "decision": "reject norm-only partitioned residual metadata",
+  "next_candidate": "construct signed residual projection codes per block"
+}
