@@ -1,0 +1,97 @@
+{
+  "baseline": {
+    "compute_gflops_per_token": 8.0,
+    "name": "native-4B-Q4 proxy",
+    "p50_ms_per_token": null,
+    "p95_ms_per_token": null,
+    "source": "conservative_proxy_not_measured",
+    "traffic_gib_per_token": 2.0
+  },
+  "candidate": {
+    "active_attention_tokens": 256,
+    "allocator_reserve_gib": 0.5,
+    "attention_output_rank": 48,
+    "basis_bits": 8.0,
+    "capsule_metadata_fraction": 0.05,
+    "cold_weight_bits": 4.0,
+    "compute_ratio_limit": 1.2,
+    "down_projection_rank": 48,
+    "embedding_cache_gib": 0.125,
+    "image_bits": 3.0,
+    "kv_bits": 2.0,
+    "lm_head_rank": 64,
+    "memory_limit_gib": 8.0,
+    "name": "vortex-cascade-capsule-v0",
+    "other_hot_compute_gflops_per_token": 0.4,
+    "other_hot_traffic_gib_per_token": 0.15,
+    "pre_attention_rank": 64,
+    "pre_mlp_rank": 64,
+    "repair_tile_gib": 0.75,
+    "runtime_state_gib": 0.125,
+    "target_amortized_tokens_per_full_stream": 512.0,
+    "traffic_ratio_limit": 1.2,
+    "workspace_gib": 1.25
+  },
+  "compute": {
+    "C_4B_gflops_per_token": 8.0,
+    "C_hot_gflops_per_token": 6.312297472,
+    "C_repair_gflops_per_full_stream": 811.698487296,
+    "compressed_attention_gflops_per_token": 2.113929216,
+    "limit_gflops_per_token": 9.6,
+    "passes_at_target_A": true,
+    "projected_linear_gflops_per_token": 3.798368256,
+    "projected_total_gflops_per_token_at_target_A": 7.89764608,
+    "required_A_from_compute": 246.88927309666872,
+    "target_A": 512.0
+  },
+  "decisive_unknowns": [
+    "weighted cold-repair rate on disjoint real-model decode traces",
+    "quality and token agreement at the declared ranks and bit widths",
+    "whether active attention can remain bounded at the declared token budget",
+    "measured native 4B traffic, compute, and wall-clock on the flagship machine",
+    "real CUDA kernel efficiency and overlap of storage, host, and device transfers"
+  ],
+  "evidence_level": "E0-budget/E1-calculator",
+  "falsification_thresholds": {
+    "maximum_compute_ratio_to_4b": 1.2,
+    "maximum_full_stream_equivalents_per_token": 0.004050398737285168,
+    "maximum_peak_vram_gib": 8.0,
+    "maximum_traffic_ratio_to_4b": 1.2,
+    "minimum_amortized_tokens_per_full_stream": 246.88927309666872
+  },
+  "memory": {
+    "M_hot_gib": 1.3653346061706544,
+    "M_kv_gib": 0.015380859375,
+    "M_repair_gib": 0.75,
+    "M_work_gib": 1.75,
+    "basis_gib": 0.6383056640625,
+    "capsule_gib": 1.1153346061706544,
+    "limit_gib": 8.0,
+    "metadata_gib": 0.053111171722412115,
+    "passes": true,
+    "projected_image_gib": 0.4239177703857422,
+    "total_gib": 3.8807154655456544
+  },
+  "model": {
+    "head_dim": 128,
+    "hidden_size": 16384,
+    "intermediate_size": 53248,
+    "layers": 126,
+    "name": "Llama-3.1-405B-class",
+    "num_attention_heads": 128,
+    "num_key_value_heads": 8,
+    "parameter_count": 405849243648,
+    "vocab_size": 128256
+  },
+  "status": "conditional_pass",
+  "traffic": {
+    "B_4B_gib_per_token": 2.0,
+    "B_cold_gib_per_full_stream": 188.98828125,
+    "B_hot_gib_per_token": 1.280775547027588,
+    "limit_gib_per_token": 2.4,
+    "passes_at_target_A": true,
+    "projected_total_gib_per_token_at_target_A": 1.6498932838439941,
+    "required_A_from_bandwidth": 168.85646194388357,
+    "target_A": 512.0
+  }
+}
