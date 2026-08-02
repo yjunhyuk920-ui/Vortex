@@ -4,9 +4,11 @@ import torch
 
 from vortex_runtime.diagonal_transport import (
     diagonal_transport_linear,
+    diagonal_transport_metadata_budget,
     fit_diagonal_transport,
     materialize_diagonal_transport,
 )
+from vortex_runtime.feasibility import default_specs
 
 
 def test_diagonal_transport_recovers_exact_scaled_matrix() -> None:
@@ -54,6 +56,14 @@ def test_factorized_linear_matches_materialized_weight() -> None:
         bias=bias,
     )
     assert torch.allclose(actual, expected, atol=1e-5, rtol=1e-5)
+
+
+def test_405b_transport_metadata_is_small_relative_to_dictionary() -> None:
+    target, _ = default_specs()
+    budget = diagonal_transport_metadata_budget(model=target, metadata_bits=16)
+    assert budget.metadata_gib < 0.1
+    assert budget.total_elements > 0
+    assert budget.scale_elements_per_layer > budget.exact_vector_elements_per_layer
 
 
 def test_transport_rejects_shape_mismatch() -> None:
