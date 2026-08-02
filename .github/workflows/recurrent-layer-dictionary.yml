@@ -1,0 +1,208 @@
+name: Recurrent layer dictionary gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/recurrent_layer_dictionary.py"
+      - "scripts/run_recurrent_layer_dictionary_tree.py"
+      - "tests/test_recurrent_layer_dictionary.py"
+      - "docs/EXPERIMENT_012_RECURRENT_LAYER_DICTIONARY.md"
+      - ".github/workflows/recurrent-layer-dictionary.yml"
+
+concurrency:
+  group: recurrent-layer-dictionary-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/full-rank-progressive-precision'
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - representative: uniform
+            assignment: nearest
+            label: uniform-nearest
+          - representative: uniform
+            assignment: cyclic
+            label: uniform-cyclic
+          - representative: edge
+            assignment: nearest
+            label: edge-nearest
+          - representative: front
+            assignment: cyclic
+            label: front-cyclic
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate recurrent dictionary runtime
+        run: |
+          python -m pytest -q \
+            tests/test_substitute_draft_budget.py \
+            tests/test_recurrent_layer_dictionary.py \
+            tests/test_speculative_tree_gate.py
+      - name: Measure ${{ matrix.label }}
+        run: |
+          python scripts/run_recurrent_layer_dictionary_tree.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --bits 4 \
+            --unique-layers 3 \
+            --representative-strategy ${{ matrix.representative }} \
+            --assignment-strategy ${{ matrix.assignment }} \
+            --depth 12 \
+            --top-k 32 \
+            --beam-width 64 \
+            --node-budget 1024 \
+            --eval-batch-size 8 \
+            --row-chunk 128 \
+            --workspace-gib 1 \
+            --memory-limit-gib 8 \
+            --draft-effective-tops 160 \
+            --host-to-device-gib-s 24 \
+            --target-hot-effective-tops 160 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "recurrent-tree-${{ matrix.label }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recurrent-tree-${{ matrix.label }}
+          path: recurrent-tree-${{ matrix.label }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: recurrent-tree-*
+          path: recurrent-tree-results
+          merge-multiple: true
+      - name: Aggregate recurrent dictionary gate
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          files = sorted(Path("recurrent-tree-results").glob("*.json"))
+          if not files:
+              raise SystemExit("no recurrent dictionary results")
+          points = [json.loads(path.read_text(encoding="utf-8")) for path in files]
+          points.sort(key=lambda item: item["schedule"]["strategy"])
+          best = max(
+              points,
+              key=lambda item: (
+                  item["optimistic_committed_exact_prefix"],
+                  -item["retained_tree_nodes"],
+              ),
+          )
+          survivors = [point for point in points if point["qualifies"]]
+          payload = {
+              "evidence_level": (
+                  "E2 causal full-depth recurrent layer dictionary lower bound"
+              ),
+              "points": points,
+              "best_point": {
+                  "strategy": best["schedule"]["strategy"],
+                  "representatives": best["schedule"]["representative_indices"],
+                  "tree_nodes": best["retained_tree_nodes"],
+                  "exact_prefix": best["optimistic_committed_exact_prefix"],
+                  "last_alive_depth": best["exact_path_last_alive_depth"],
+                  "draft_total_gib": best["405b_recurrent_draft_budget"]["memory"][
+                      "total_gib"
+                  ],
+                  "draft_compute_seconds_per_token": best[
+                      "405b_recurrent_draft_budget"
+                  ]["compute_seconds_per_token"],
+                  "minimum_commit_serialized": best[
+                      "405b_q4_target_side_lower_bound"
+                  ]["minimum_committed_tokens_serialized"],
+              },
+              "surviving_points": len(survivors),
+              "decision": (
+                  "survive recurrent dictionary lower bound; build layer residuals"
+                  if survivors
+                  else "reject tested recurrent layer dictionary frontier"
+              ),
+              "workflow": {
+                  "run_id": int(os.environ["RUN_ID"]),
+                  "head_sha": os.environ["HEAD_SHA"],
+                  "input_sha256": {
+                      path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                      for path in files
+                  },
+              },
+          }
+          output = Path("results/tinyllama_1_1b_recurrent_layer_dictionary.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          Path("recurrent-tree-comment.md").write_text(
+              "## Recurrent layer dictionary gate\n\n```json\n"
+              + json.dumps(
+                  {
+                      "best_point": payload["best_point"],
+                      "surviving_points": payload["surviving_points"],
+                      "decision": payload["decision"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish PR report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file recurrent-tree-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-recurrent-layer-dictionary
+          path: results/tinyllama_1_1b_recurrent_layer_dictionary.json
+      - name: Commit evidence when changed
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_recurrent_layer_dictionary.json
+          if [ -z "$(git status --porcelain -- "$path")" ]; then
+            echo "Recurrent dictionary evidence is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(gate): commit recurrent layer dictionary frontier"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
