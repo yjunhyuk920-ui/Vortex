@@ -19,6 +19,14 @@ class ReplacementSnapshot:
     cold_vectors: int
     cold_weight_reads: int
     weight_bytes_read: int
+    prefill_vectors: int
+    prefill_fast_vectors: int
+    prefill_cold_weight_reads: int
+    prefill_weight_bytes_read: int
+    decode_vectors: int
+    decode_fast_vectors: int
+    decode_cold_weight_reads: int
+    decode_weight_bytes_read: int
 
 
 @dataclass(frozen=True)
@@ -45,11 +53,12 @@ class RepairEfficiency:
 
 
 class AtlasLinearModule(nn.Module):
-    """Drop-in nn.Linear falsification wrapper.
+    """Drop-in nn.Linear falsification wrapper with phase counters.
 
     Inputs inside the atlas span use the cached operator image. Span misses use
-    the original exact weight and expand the atlas. The wrapper replaces the
-    actual model operation, while its counters expose logical cold-weight use.
+    the original exact weight and expand the atlas. Prefill and one-token decode
+    calls are counted separately so warm-decode repair cannot be hidden by a
+    large prompt prefill.
     """
 
     def __init__(
@@ -71,6 +80,14 @@ class AtlasLinearModule(nn.Module):
             rtol=rtol,
             basis_dtype=torch.float32,
         )
+        self.prefill_vectors = 0
+        self.prefill_fast_vectors = 0
+        self.prefill_cold_weight_reads = 0
+        self.prefill_weight_bytes_read = 0
+        self.decode_vectors = 0
+        self.decode_fast_vectors = 0
+        self.decode_cold_weight_reads = 0
+        self.decode_weight_bytes_read = 0
 
     @property
     def logical_weight_bytes(self) -> int:
@@ -78,7 +95,36 @@ class AtlasLinearModule(nn.Module):
         return weight.numel() * weight.element_size()
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        stats = self.atlas.stats
+        before = (
+            stats.vectors,
+            stats.fast_vectors,
+            stats.cold_weight_reads,
+            stats.weight_bytes_read,
+        )
         output = self.atlas(x)
+        after = (
+            stats.vectors,
+            stats.fast_vectors,
+            stats.cold_weight_reads,
+            stats.weight_bytes_read,
+        )
+        vectors, fast, cold_reads, cold_bytes = (
+            right - left for left, right in zip(before, after)
+        )
+
+        is_prefill = x.ndim >= 3 and x.shape[-2] > 1
+        if is_prefill:
+            self.prefill_vectors += vectors
+            self.prefill_fast_vectors += fast
+            self.prefill_cold_weight_reads += cold_reads
+            self.prefill_weight_bytes_read += cold_bytes
+        else:
+            self.decode_vectors += vectors
+            self.decode_fast_vectors += fast
+            self.decode_cold_weight_reads += cold_reads
+            self.decode_weight_bytes_read += cold_bytes
+
         if self.exact.bias is not None:
             output = output + self.exact.bias.to(
                 dtype=output.dtype,
@@ -96,6 +142,14 @@ class AtlasLinearModule(nn.Module):
             cold_vectors=stats.cold_vectors,
             cold_weight_reads=stats.cold_weight_reads,
             weight_bytes_read=stats.weight_bytes_read,
+            prefill_vectors=self.prefill_vectors,
+            prefill_fast_vectors=self.prefill_fast_vectors,
+            prefill_cold_weight_reads=self.prefill_cold_weight_reads,
+            prefill_weight_bytes_read=self.prefill_weight_bytes_read,
+            decode_vectors=self.decode_vectors,
+            decode_fast_vectors=self.decode_fast_vectors,
+            decode_cold_weight_reads=self.decode_cold_weight_reads,
+            decode_weight_bytes_read=self.decode_weight_bytes_read,
         )
 
 
@@ -147,14 +201,18 @@ def replacement_delta(
     after: dict[str, ReplacementSnapshot],
     before: dict[str, ReplacementSnapshot],
 ) -> dict[str, dict[str, int | float]]:
+    zero = ReplacementSnapshot(*([0] * 15))
     result: dict[str, dict[str, int | float]] = {}
     for name, current in after.items():
-        previous = before.get(
-            name,
-            ReplacementSnapshot(0, 0, 0, 0, 0, 0, 0),
-        )
+        previous = before.get(name, zero)
         vectors = current.vectors - previous.vectors
         fast = current.fast_vectors - previous.fast_vectors
+        prefill_vectors = current.prefill_vectors - previous.prefill_vectors
+        prefill_fast = (
+            current.prefill_fast_vectors - previous.prefill_fast_vectors
+        )
+        decode_vectors = current.decode_vectors - previous.decode_vectors
+        decode_fast = current.decode_fast_vectors - previous.decode_fast_vectors
         result[name] = {
             "rank_before": previous.rank,
             "rank_after": current.rank,
@@ -170,6 +228,27 @@ def replacement_delta(
                 current.weight_bytes_read - previous.weight_bytes_read
             ),
             "fast_fraction": fast / max(1, vectors),
+            "prefill_vectors": prefill_vectors,
+            "prefill_fast_vectors": prefill_fast,
+            "prefill_fast_fraction": prefill_fast / max(1, prefill_vectors),
+            "prefill_cold_weight_reads": (
+                current.prefill_cold_weight_reads
+                - previous.prefill_cold_weight_reads
+            ),
+            "prefill_logical_cold_bytes": (
+                current.prefill_weight_bytes_read
+                - previous.prefill_weight_bytes_read
+            ),
+            "decode_vectors": decode_vectors,
+            "decode_fast_vectors": decode_fast,
+            "decode_fast_fraction": decode_fast / max(1, decode_vectors),
+            "decode_cold_weight_reads": (
+                current.decode_cold_weight_reads - previous.decode_cold_weight_reads
+            ),
+            "decode_logical_cold_bytes": (
+                current.decode_weight_bytes_read
+                - previous.decode_weight_bytes_read
+            ),
         }
     return result
 
