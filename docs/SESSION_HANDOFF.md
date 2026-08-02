@@ -14,7 +14,7 @@ Build a universal runtime for arbitrary unmodified Hugging Face dense transforme
 
 Current evidence is below E4. Do not claim the target is solved or proven feasible.
 
-## Mandatory startup
+## Mandatory startup and persistence
 
 Read in this order:
 
@@ -23,137 +23,139 @@ Read in this order:
 3. `docs/WORK_SESSION_PROTOCOL.md`
 4. `docs/RESEARCH_PROGRESS_LEDGER.md`
 5. this file
-6. the active experiment document, branch, workflow, PR comments, and result JSON
+6. active experiment documents, branch, workflow, PR comments, and result JSON
 
-Before editing, verify the current PR head and workflow state from GitHub. Do not trust an older chat status.
+Before a user-facing progress/completion answer after meaningful work, commit the research ledger and this handoff. This rule is permanent and is already merged into `main` through PR #30.
 
-## Durable progress rule
+## Current state
 
-After meaningful repository work and before a user-facing progress answer:
-
-- update `docs/RESEARCH_PROGRESS_LEDGER.md`;
-- update this file;
-- commit raw evidence when available;
-- record the active branch, PR, commit, workflow result, rejection reason, and exact next step.
-
-This rule is permanent and does not require the user to repeat it.
-
-## Current research frontier
-
-Active family: nonlinear exact-neuron MLP allocation.
-
-Active branch:
+There is no promoted research PR. The latest experimental sequence is closed with raw evidence:
 
 ```text
-research/nonlinear-heavy-hitter-allocation
+PR #29  nonlinear exact-neuron allocation              rejected
+PR #31  global-bound Signed Dual Cone                  rejected
+PR #32  partitioned norm-only Signed Dual Cone         rejected
+PR #33  disjoint Block Signed Residual Code            rejected
+PR #34  cross-layer Global Margin Refinement           rejected
 ```
 
-Draft PR:
+Latest evidence head:
 
 ```text
-#29 research: nonlinear layer-damage heavy-hitter allocation
+research/global-margin-refinement
+b6c6bb25bfe8e93e630293b561c7dcb442e81320
 ```
 
-Current code head after workflow-isolation fix:
+Latest successful workflow:
 
 ```text
-b7ad7aefb8ef8a64cc1979735e1c9ba487e944ac
+Global margin refinement gate run 30766038116
+conclusion: success
 ```
 
-The initial workflow run `30762648684` failed before pretrained measurement because it referenced `tests/test_adjoint_heavy_hitter.py`, which exists only on a sibling branch. Full repository CI passed. This is an infrastructure failure, not experimental evidence.
+## Latest measured result
 
-The workflow now:
-
-- validates only `tests/test_mlp_heavy_hitter.py` and `tests/test_nonlinear_heavy_hitter.py`;
-- asserts required test paths exist before pytest;
-- remains isolated to its own branch and concurrency group.
-
-## Active hypothesis
-
-Uniform exact-neuron fractions and first-order adjoint allocation failed. However, their results showed layer sensitivity is nonuniform.
-
-The active gate therefore measures the actual nonlinear damage of replacing one MLP layer at a time.
-
-For each TinyLlama MLP layer and count:
+Using 8-bit hot MLP weights and the strongest static signed residual code from PR #33:
 
 ```text
-counts = {1, 4, 8, 16, 32, 64}
+block size: 1024
+signed rank: 2
+metadata: 3.6298828125 GiB
 ```
 
-it performs a real model forward with only that layer replaced by the optimistic exact-activation original-neuron oracle and records the final exact-token cross-entropy damage.
-
-A discrete dynamic program chooses one measured count per layer under total budgets corresponding to:
+PR #34 compared three exact-refinement policies on disjoint TinyLlama warm-decode traces:
 
 ```text
-0.10%, 0.25%, 0.50% of intermediate neurons
+equal per-layer mean refinement: 92.39491864669421%
+global interval-width refinement: 90.74485085227273%
+dual-price two-sided refinement: 90.74323669938016%
+maximum dual-price refinement: 93.33919808884298%
+maximum projected 405B exact traffic: 573.3446044921875 GiB/token
 ```
 
-The chosen nonlinear allocation and an equal-total uniform allocation are then evaluated with all 22 TinyLlama MLPs replaced simultaneously on a disjoint Korean prompt.
-
-## Promotion conditions
-
-The exact-neuron family advances only when a disjoint point satisfies all of:
+The dual-price rule was:
 
 ```text
-projected 405B partial MLP traffic <= 1.6 GiB/token
-teacher-forced top-32 >= 95%
-autonomous exact prefix >= 4 tokens
+lower uncertainty l_i = a_i - L_i
+upper uncertainty u_i = U_i - a_i
+score_i(lambda) = lambda l_i + (1-lambda) u_i
 ```
 
-The experiment remains an optimistic upper bound because it computes full exact gate/up activations before selecting neurons. A pass would still require a causal pre-load selector and a sound omitted-tail certificate.
-
-## Prior decisive rejections
-
-Read `docs/RESEARCH_PROGRESS_LEDGER.md` for details. Do not recreate these under new names:
-
-- MLP centroid, gauge dictionary, and functional skeleton;
-- unsigned residual decision bounds;
-- global orthogonal residual proof sketches;
-- fixed/adaptive exact LM-head row proofs;
-- static prompt activation atlas;
-- online proof atlas expansion;
-- lossless entropy plus speculative ZIPTREE as the primary solution;
-- uniform exact-neuron heavy hitters;
-- first-order adjoint layer allocation.
-
-Key measured constraints:
+with 41 prices in `[0,1]` and global constraints:
 
 ```text
-online atlas: 32 expansions / 32 tokens, 2.9355 GiB/token LM-head residual traffic
-ZIPTREE: 11.333 bits/weight, 10,649-token required straight acceptance
-uniform 0.25% MLP oracle: 1.546 GiB/token, top-32 43.75%, prefix 0
-adjoint 0.25%: top-32 56.25%, prefix 0, traffic about 1.638 GiB/token
+sum unrefined l_i <= 0.5 * exact top-two margin
+sum unrefined u_i <= 0.5 * exact top-two margin
 ```
 
-## Exact next actions
+The global formulation was sound and recovered some layer slack, but only about 1.65 percentage points. It remained more than two orders of magnitude outside the partial MLP traffic gate.
 
-1. Confirm that the workflow triggered from commit `b7ad7aef...`.
-2. Inspect the branch-owned tests and actual workflow logs.
-3. Complete all 132 single-layer damage measurements.
-4. Commit `results/tinyllama_1_1b_nonlinear_heavy_hitter_allocation.json`.
-5. Read the PR report and close or promote PR #29 with factual measured values.
-6. Update the research ledger and this file before replying to the user.
+## Decisive interpretation
 
-If the nonlinear allocator fails without a traffic-compatible quality point, close the exact-neuron heavy-hitter family. The next candidate must not be another static activation basis or independent-neuron subset. It should test a reusable certified multi-layer decision influence cone or another representation that directly addresses cross-layer interaction.
+The tested static representations are closed:
 
-## Validation commands
+- magnitude-only global or block bounds;
+- static activation or dual subspaces;
+- static signed residual codebooks built from disjoint prompts;
+- uniform, adjoint, nonlinear, or globally reordered independent-neuron refinement.
 
-```bash
-python -m pytest -q
-python scripts/run_validation.py
-python -m pytest -q tests/test_mlp_heavy_hitter.py tests/test_nonlinear_heavy_hitter.py
-python scripts/run_nonlinear_heavy_hitter_allocation.py \
-  --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
-  --device cpu \
-  --count-options 1,4,8,16,32,64 \
-  --total-fractions 0.001,0.0025,0.005 \
-  --calibration-tokens 4 \
-  --eval-tokens 16 \
-  --output results/tinyllama_1_1b_nonlinear_heavy_hitter_allocation.json
+Signed cancellation is a real useful signal: PR #33 reduced gate/up residual radii to about 69.2% of global. However, the disjoint activation and dual state remained mostly outside the static build span, leaving exact refinement above 90% even after globally optimalized error allocation.
+
+Do not create another candidate that only changes:
+
+- static basis rank;
+- static block size;
+- norm metadata precision;
+- neuron ordering;
+- per-layer versus global budget;
+- build-prompt dictionary size;
+
+unless it introduces and charges a fundamentally new multi-token reuse mechanism.
+
+## Next architecture frontier
+
+Derive both candidates on paper before choosing one.
+
+### Candidate A — Semantic-state-keyed signed residual program
+
+At token `t`, use a small resident state signature to select or compose a signed residual program before exact weight reads.
+
+Required proof obligations:
+
+```text
+M_program + M_index + M_KV + M_work <= 8 GiB
+B_program_build / A + B_exact_refine <= 1.2 * B_4B
+C_program_build / A + C_hot <= 1.2 * C_4B
 ```
+
+`A` must be measured as the number of future tokens reusing the same program. Tokenwise full residual construction is immediate rejection.
+
+### Candidate B — Multi-token decision program
+
+One exact target interaction produces a certified program for several future token decisions or a verified token tree.
+
+Required measurements:
+
+```text
+accepted/committed tokens per exact target interaction
+verified positions per committed token
+exact target bytes per interaction
+program memory and construction compute
+```
+
+ZIPTREE already proved that whole-model FP16 streaming would require an unrealistic 10,649-token straight run at measured lossless entropy. The new program must avoid whole-model exact streaming.
+
+## Exact next steps
+
+1. Create a fresh proof-first branch from `main` after this documentation update is merged.
+2. Write one architecture certificate comparing Candidate A and Candidate B.
+3. Calculate the minimum reuse factor for each at 405B.
+4. Implement only the candidate with a plausible symbolic closure.
+5. Use disjoint multi-token TinyLlama traces and charge every program-build read.
+6. Persist raw JSON, PR decision, ledger, and this file before reporting progress.
 
 ## Correct communication
 
 Use wording equivalent to:
 
-> E1/E2 research: several low-dimensional, proof-bound, entropy, and exact-neuron candidates have been falsified on real TinyLlama replacements. The active nonlinear layer-damage gate is being rerun after fixing a branch-isolation workflow error. No 405B completion or end-to-end speed proof exists.
+> E2 research has falsified static activation, residual-bound, signed-codebook, and exact-neuron families on real TinyLlama operations. Signed cancellation reduces bounds but static programs do not transfer enough; even global refinement projects to 573 GiB/token. The objective remains unchanged and no 405B end-to-end proof exists. The next work is a proof-first comparison of semantic-state-keyed versus multi-token decision programs.
