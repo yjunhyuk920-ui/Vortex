@@ -1,0 +1,44 @@
+name: Real model falsification
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/architecture-gate0-certificate]
+    paths:
+      - "vortex_runtime/falsification.py"
+      - "vortex_runtime/atlas_linear.py"
+      - "scripts/run_real_operation_falsification.py"
+      - ".github/workflows/real-model-falsification.yml"
+
+jobs:
+  tinyllama-1b-cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install transformers sentencepiece
+      - name: Run TinyLlama 1.1B operation replacement
+        run: |
+          python scripts/run_real_operation_falsification.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --max-new-tokens 1 \
+            --max-rank 32 \
+            --build-prompt "Explain why the sky appears blue." \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output real_operation_falsification.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-real-operation-falsification
+          path: real_operation_falsification.json
+          if-no-files-found: error
