@@ -1,0 +1,12 @@
+[project]
+name = "vortex-runtime-prototype"
+version = "0.1.0"
+description = "Executable prototype for tiled Hugging Face inference and exact progressive token certification"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.2", "safetensors>=0.4"]
+
+[project.scripts]
+vortex-proto = "vortex_runtime.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
