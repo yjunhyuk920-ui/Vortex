@@ -10,6 +10,10 @@ on:
       - "scripts/run_oracle_block_shared_adjoint.py"
       - ".github/workflows/block-shared-repair.yml"
 
+concurrency:
+  group: block-shared-gate0-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pull-requests: write
