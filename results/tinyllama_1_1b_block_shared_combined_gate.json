@@ -1,0 +1,98 @@
+{
+  "evidence_level": "E1 exact-target block-shared combined oracle",
+  "workflow": {
+    "run_id": 30738817896,
+    "artifact_id": 8830640577,
+    "artifact_digest": "sha256:26eb56a58911aec98e714d0433e5b078343acf54df2cd35b9f30fa33891e2832",
+    "head_sha": "593033f97f16c32632e90df5d732f28775ca63f0",
+    "raw_file_sha256": "df84dc0e1a5b343d36717b8e8fa6d4e692e1d32f04552e7f8d65f03d9afeabd6"
+  },
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "managed_suffixes": [
+    "self_attn.o_proj",
+    "mlp.down_proj"
+  ],
+  "matched_modules": 44,
+  "max_rank": 32,
+  "row_tile": 128,
+  "col_tile": 128,
+  "requested_block_tokens": 64,
+  "actual_generated_tokens": 64,
+  "build_new_tokens": 1,
+  "build_prompts": [
+    "Explain why the sky appears blue and why sunsets appear red.",
+    "Write Python code for merge sort and explain its complexity.",
+    "한국어로 PLM BOM 변경 검증 절차와 오류 처리 방법을 설명해줘.",
+    "Solve a probability problem using conditional probability step by step."
+  ],
+  "eval_prompt": "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘.",
+  "rank_min": 32,
+  "rank_max": 32,
+  "rank_mean": 32.0,
+  "capsule_bytes": 33161216,
+  "test_model_weight_bytes": 4400193536,
+  "managed_weight_bytes": 1384120320,
+  "candidate_tiles": 21120,
+  "combined_budget": {
+    "minimum_traffic_efficiency": 491.29915997929805,
+    "traffic_max_shared_bytes": 573199405.2582266,
+    "compute_max_selected_bytes": 44761771.04305464,
+    "combined_max_selected_bytes": 44761771.04305464,
+    "traffic_budget_tile_count": 8746,
+    "compute_budget_tile_count": 683,
+    "combined_budget_tile_count": 683
+  },
+  "zero_repair_baseline": {
+    "selected_tiles": 0,
+    "selected_weight_bytes": 0,
+    "committed_prefix_tokens": 1,
+    "note": "Exact-target oracle observation only; no deployable certificate exists."
+  },
+  "best_combined_candidate": {
+    "selected_tiles": 128,
+    "selected_weight_bytes": 8388608,
+    "committed_prefix_tokens": 2,
+    "incremental_committed_tokens_over_zero_repair": 1,
+    "repair_fraction": 0.001906417963521139,
+    "traffic_efficiency": 1049.087890625,
+    "exact_repair_gflop_per_token": 1.6119170992399423,
+    "projected_total_gflop_per_token": 5.143432235239942,
+    "traffic_pass": true,
+    "compute_pass": true,
+    "logical_oracle_pass": true
+  },
+  "compute_boundary_candidate": {
+    "selected_tiles": 683,
+    "selected_weight_bytes": 44761088,
+    "committed_prefix_tokens": 1,
+    "incremental_committed_tokens_over_zero_repair": 0,
+    "repair_fraction": 0.010172527102226079,
+    "traffic_efficiency": 98.30398975109809,
+    "projected_total_gflop_per_token": 12.13260403272563,
+    "traffic_pass": false,
+    "compute_pass": true,
+    "logical_oracle_pass": false
+  },
+  "full_managed_repair": {
+    "selected_tiles": 21120,
+    "selected_weight_bytes": 1384120320,
+    "committed_prefix_tokens": 64,
+    "repair_fraction": 0.3145589639809879,
+    "traffic_efficiency": 203.4594696969697,
+    "projected_total_gflop_per_token": 269.49783651059045,
+    "traffic_pass": false,
+    "compute_pass": false,
+    "logical_oracle_pass": false
+  },
+  "decision": "The rank-32 block-shared repair family survives the corrected E1 logical budget oracle with an 8 MiB tile set and a two-token exact prefix, one token longer than the zero-repair baseline.",
+  "promotion_interpretation": "This is not an E2 result. Exact target tokens and teacher-forced gradients selected the tiles, only O/down projections were managed, one prompt was evaluated, and no sound runtime commit certificate exists.",
+  "next_gate": [
+    "select the repair set without exact target tokens or teacher gradients",
+    "prove a sound token commit certificate",
+    "repeat across disjoint prompt families and seeds",
+    "replace all relevant model operations rather than O/down only",
+    "measure physical bytes, peak VRAM, and wall-clock"
+  ]
+}
