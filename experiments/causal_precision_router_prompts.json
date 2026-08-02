@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ko_database_design",
+    "text": "한국어로 데이터베이스 인덱스가 조회 속도를 높이는 원리와 쓰기 성능에 미치는 영향을 설명해줘."
+  },
+  {
+    "id": "en_science_reasoning",
+    "text": "Explain why seasons are caused by Earth's axial tilt rather than its distance from the Sun."
+  },
+  {
+    "id": "sql_generation",
+    "text": "Write a SQL query that returns the second highest salary in each department and explain edge cases."
+  },
+  {
+    "id": "probability_reasoning",
+    "text": "A fair coin is tossed until two consecutive heads appear. Derive the expected number of tosses."
+  },
+  {
+    "id": "architecture_summary",
+    "text": "Summarize the differences among caching, batching, and speculative decoding in exactly three numbered paragraphs."
+  },
+  {
+    "id": "debugging_plan",
+    "text": "A distributed job occasionally writes duplicate records. Give a causal debugging plan ordered by the evidence to collect first."
+  }
+]
