@@ -1,10 +1,8 @@
-# Architecture Gate 0 certificate — corrected VORTEX-WAVE-1
+# Architecture Gate 0 certificate — corrected VORTEX-WAVE family
 
 Evidence level: **E0 architecture + E1 observed mechanism inputs**
 
-This certificate evaluates one complete candidate against the fixed 405B/8GiB/4B-speed target before native backend work. The machine-readable source of truth is `architecture_gate0_budget.json`.
-
-Generate it with:
+This certificate evaluates the fixed 405B/8GiB/4B-speed target before native backend work. The machine-readable source of truth is `architecture_gate0_budget.json`.
 
 ```bash
 python scripts/run_architecture_gate0.py
@@ -12,200 +10,169 @@ python scripts/run_architecture_gate0.py
 
 ## Fixed target
 
-Target envelope:
+- unmodified 405B-class dense Hugging Face model;
+- peak GPU VRAM at or below 8 GiB;
+- no user training, distillation, fine-tuning, or manual model-specific conversion;
+- declared original-model quality preserved;
+- p50 warm-decode time/token at or below 1.2x a native 4B Q4 baseline on the same machine.
 
-- 405,849,243,648 parameters;
-- 126 layers;
-- hidden size 16,384;
-- intermediate size 53,248;
-- 128 attention heads and 8 KV heads;
-- 128,256 vocabulary;
-- 4,096-token decode context;
-- BF16 exact cold weights and KV.
+The analytic baseline is only a Gate 0 bound. Same-machine hardware measurement is mandatory at E3/E4.
 
-Comparison envelope:
-
-- native 4B-class model;
-- Q4 weights;
-- BF16 KV;
-- same-machine wall-clock measurement required at E3/E4.
-
-The current baseline is analytic. It is a Gate 0 bound, not final performance evidence.
-
-## Candidate summary
-
-`VORTEX-WAVE-1` combines:
-
-1. rank-32 INT8 session capsules for model-wide linear operators;
-2. rank-64 old-context attention summaries;
-3. a 128-token exact recent KV window;
-4. block proposals;
-5. selective exact weight/KV repair;
-6. exact final token certification and full fallback.
-
-The quality contract remains:
-
-```text
-hot path proposes
-certificate commits
-cold exact state resolves uncertainty
-full exact fallback remains authoritative
-```
-
-## Corrected resource equations
+## Corrected equations
 
 Let:
 
-- `A` be committed causal-prefix tokens produced from one shared repair set;
-- `rho` be the selected exact repair fraction of a full target pass;
+- `A` be committed causal-prefix tokens from one shared repair set;
+- `rho` be the selected exact repair fraction;
 - `B_cold` be bytes in one full exact cold pass;
 - `C_cold` be arithmetic in one full exact target pass.
 
-Storage traffic can be shared:
-
 ```text
 B/token = B_hot + rho * B_cold / A
-```
-
-Exact arithmetic cannot be shared merely because the weights stay resident:
-
-```text
 C/token = C_hot + rho * C_cold
 ```
 
-The previous equation `C_hot + C_cold / E`, where `E=A/rho`, was incorrect for selected exact weights applied to every token. It is no longer used by the generator or tests.
+Storage traffic can be shared across the block. Exact arithmetic with selected weights is performed for every token and is not divided by `A`.
 
-## Memory envelope
-
-| Component | GiB |
-|---|---:|
-| Rank-32 INT8 linear capsules | 1.16557 |
-| Rank-64 attention summaries | 0.01538 |
-| Exact recent KV | 0.06152 |
-| Embedding cache | 0.06250 |
-| Workspace | 1.25000 |
-| Repair window | 0.50000 |
-| Allocator reserve | 1.00000 |
-| Certificate state | 0.25000 |
-| **Total** | **4.30497** |
-| **Limit** | **8.00000** |
-
-Analytic memory result: **pass**.
-
-This remains an estimate until measured with a real CUDA allocator.
-
-## Traffic envelope
+## Fixed analytic envelope
 
 ```text
-hot traffic:      1.292485 GiB/token
-4B baseline:      2.362645 GiB/token
-1.2x limit:       2.835174 GiB/token
-full cold repair: 757.921875 GiB
-required E:       491.299160
+memory estimate:                 4.304970 GiB
+memory limit:                    8.000000 GiB
+hot traffic:                     1.292485 GiB/token
+traffic limit:                   2.835174 GiB/token
+hot compute:                     3.531515 GFLOP/token
+compute limit:                  12.132735 GFLOP/token
+full exact repair traffic:     757.921875 GiB
+full exact repair compute:     845.521355 GFLOP/token
+required traffic efficiency E: 491.299160
+maximum exact repair fraction:   1.017268%
 ```
 
-For the original design point:
+## Original VORTEX-WAVE-1 point — rejected
+
+The original point assumed:
 
 ```text
-rho = 0.25
+rho = 25%
 A   = 160
 E   = 640
 ```
 
-Projected traffic is:
+Its traffic projection fits, but corrected compute is:
 
 ```text
-2.476738 GiB/token
+214.911854 GFLOP/token
 ```
 
-Analytic traffic result: **pass**.
+Therefore the original 25%-repair design point is rejected.
 
-## Corrected compute envelope
+## Per-token repair family — rejected
+
+The strongest per-token exact-target adjoint oracle on TinyLlama 1.1B reached:
 
 ```text
-hot compute:             3.531515 GFLOP/token
-4B baseline:            10.110613 GFLOP/token
-1.2x limit:             12.132735 GFLOP/token
-full exact repair:     845.521355 GFLOP/token
-maximum allowed rho:     0.01017268
+E:                         8.195999
+repair fraction:          12.201075%
+traffic shortfall:        59.94x
+compute excess:           11.99x
 ```
 
-The compute-limited exact fraction is approximately:
+This rejects exact-span, layer-suffix, row-tile, residual-energy tile, and per-token adjoint repair as steady-state paths.
+
+## Block-shared logical oracle — survives E1 budget
+
+Workflow evidence:
 
 ```text
-1.01727%
+model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+managed operations: all O/down projections
+build prompts: four mixed English/Korean task prompts
+evaluation: disjoint Korean prompt
+proposed continuation: 64 tokens
+selector: exact target tokens plus teacher-forced gradients
 ```
 
-For the original 25% design point:
+Observed zero-repair prefix:
 
 ```text
-C/token = 3.531515 + 0.25 * 845.521355
-        = 214.911854 GFLOP/token
+1 exact token
 ```
 
-Analytic compute result: **fail**.
-
-Therefore the original `VORTEX-WAVE-1` design point is rejected before backend implementation.
-
-## Strongest observed E1 result
-
-The exact-target adjoint tile oracle on TinyLlama 1.1B required:
+Best repaired prefix inside the corrected combined envelope:
 
 ```text
-observed E:                  8.195999
-required E:                491.299160
-observed repair fraction:    0.12201075
-maximum compute fraction:    0.01017268
+selected tiles:                    128
+selected exact bytes:            8 MiB
+rho:                           0.190642%
+committed prefix A:                 2 tokens
+incremental prefix:                 1 token
+E = A/rho:                    1049.087891
+projected traffic:              2.014943 GiB/token
+projected compute:              5.143432 GFLOP/token
 ```
 
-Consequences:
+Both analytic traffic and compute limits pass at this observed point.
 
-- traffic efficiency is short by about 59.94x;
-- exact arithmetic is about 11.99x above the compute allowance;
-- the per-token rank-32 local-repair family is rejected even under an optimistic oracle that knows exact target tokens and gradients.
+This does **not** establish feasibility. It proves only that the rank-32 block-shared family is not eliminated by the logical byte/compute budget when an oracle chooses the repair set.
 
-## Rejected paths
+Source:
 
-The following are not active steady-state solutions:
+- `results/tinyllama_1_1b_block_shared_combined_gate.json`
+- workflow run `30738817896`
+- artifact digest `sha256:26eb56a58911aec98e714d0433e5b078343acf54df2cd35b9f30fa33891e2832`
 
-- exact-span Atlas warm decode;
-- exact layer-suffix repair;
-- output-row tile repair;
-- residual-energy-ranked 2D tiles;
-- exact-target adjoint 2D tiles applied per token;
-- the original 25%-repair `VORTEX-WAVE-1` design point.
+## Why this remains E1
 
-## Active candidate
+The passing selector used information unavailable to a real runtime:
 
-The remaining experiment is block-shared combined traffic/compute repair.
+- exact future target tokens;
+- teacher-forced gradients;
+- exact target logit margins.
 
-A fixed selected subset may advance only when:
+Additional limitations:
+
+- only O/down projections were replaced;
+- only one evaluation prompt was measured;
+- the repair improved the prefix by one token;
+- no sound certificate can decide online that the prefix is safe;
+- physical storage traffic, peak VRAM, and wall-clock were not measured.
+
+## Active Gate 0 continuation
+
+`scripts/run_block_shared_residual_selector.py` removes exact target and gradient information from selection.
+
+Allowed selector inputs:
+
+- approximate autoregressive activation residuals;
+- precomputed weight-tile Frobenius norms.
+
+Exact output is used only afterward to evaluate the resulting prefix.
+
+The selector advances only when:
 
 ```text
+incremental exact prefix > 0
 rho <= 0.01017268
 A / rho >= 491.299160
-exact causal prefix committed > 0
-traffic gate = pass
-compute gate = pass
+traffic pass = true
+compute pass = true
 ```
 
-Passing the oracle is still only E1 because exact target tokens and gradients may select the subset. A deployable mechanism must later provide:
+After that, the next mandatory gate is a sound causal-prefix certificate that does not know the exact continuation.
 
-- target-independent selection;
-- sound token commit certification;
-- disjoint-prompt generalization;
-- real operation replacement;
-- measured device memory and wall-clock.
-
-## Gate result
+## Current Gate result
 
 | Gate | Result |
 |---|---|
 | Analytic memory | Pass |
-| Analytic traffic at original design point | Pass |
-| Analytic compute at original design point | **Fail** |
-| Observed repair traffic | **Fail** |
-| Observed repair compute | **Fail** |
-| Architecture Gate 0 | **Rejected for current design point** |
+| Original 25% traffic point | Pass |
+| Original 25% compute point | **Fail** |
+| Per-token repair family | **Fail** |
+| Exact-target block-shared logical oracle | **Pass at E1** |
+| Target-independent selector | Pending experiment |
+| Sound commit certificate | Not implemented |
+| Model-wide real-operation replacement | Not implemented |
+| Architecture Gate 0 overall | **Blocked, not rejected** |
 
-The project does not proceed to physical NVMe/CUDA streaming for this repair family unless the combined oracle finds a subset inside the corrected compute and traffic envelope.
+No CUDA/NVMe production backend is justified until target-independent selection and certification preserve the combined envelope.
