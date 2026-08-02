@@ -1,0 +1,123 @@
+name: Nonlinear heavy-hitter allocation gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/nonlinear_heavy_hitter.py"
+      - "scripts/run_nonlinear_heavy_hitter_allocation.py"
+      - "tests/test_nonlinear_heavy_hitter.py"
+      - "docs/EXPERIMENT_029_NONLINEAR_HEAVY_HITTER_ALLOCATION.md"
+      - ".github/workflows/nonlinear-heavy-hitter-allocation.yml"
+
+concurrency:
+  group: nonlinear-heavy-hitter-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/nonlinear-heavy-hitter-allocation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate nonlinear allocator
+        run: |
+          python -m pytest -q \
+            tests/test_mlp_heavy_hitter.py \
+            tests/test_adjoint_heavy_hitter.py \
+            tests/test_nonlinear_heavy_hitter.py
+      - name: Measure curves and validate allocations
+        run: |
+          python scripts/run_nonlinear_heavy_hitter_allocation.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --count-options 1,4,8,16,32,64 \
+            --total-fractions 0.001,0.0025,0.005 \
+            --calibration-tokens 4 \
+            --eval-tokens 16 \
+            --calibration-prompt "Explain how a database transaction preserves consistency when two concurrent services update related records." \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output results/tinyllama_1_1b_nonlinear_heavy_hitter_allocation.json
+      - name: Build PR report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(
+              Path("results/tinyllama_1_1b_nonlinear_heavy_hitter_allocation.json")
+              .read_text(encoding="utf-8")
+          )
+          summary = [
+              {
+                  "fraction": point["requested_fraction"],
+                  "used_neurons": point["allocation"]["used_neurons"],
+                  "traffic_gib": point["projected_405b_partial_mlp_budget"][
+                      "selected_weight_gib_per_token"
+                  ],
+                  "uniform_top32": point["uniform"]["teacher_forced"]["top32_rate"],
+                  "nonlinear_top32": point["nonlinear"]["teacher_forced"]["top32_rate"],
+                  "top32_delta": point["comparison"]["top32_delta"],
+                  "uniform_prefix": point["uniform"]["autonomous_exact_prefix"],
+                  "nonlinear_prefix": point["nonlinear"]["autonomous_exact_prefix"],
+                  "prefix_delta": point["comparison"]["autonomous_prefix_delta"],
+                  "minimum_count": point["allocation"]["minimum_count"],
+                  "maximum_count": point["allocation"]["maximum_count"],
+                  "qualifies": point["qualifies"],
+              }
+              for point in payload["budgets"]
+          ]
+          Path("nonlinear-heavy-hitter-comment.md").write_text(
+              "## Nonlinear heavy-hitter allocation gate\n\n```json\n"
+              + json.dumps(
+                  {
+                      "summary": summary,
+                      "promoted_fractions": payload["promoted_fractions"],
+                      "improves_any": payload["improves_any"],
+                      "decision": payload["decision"],
+                      "next_candidate": payload["next_candidate_if_rejected"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file nonlinear-heavy-hitter-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-nonlinear-heavy-hitter-allocation
+          path: results/tinyllama_1_1b_nonlinear_heavy_hitter_allocation.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_nonlinear_heavy_hitter_allocation.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit nonlinear heavy-hitter allocation"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
