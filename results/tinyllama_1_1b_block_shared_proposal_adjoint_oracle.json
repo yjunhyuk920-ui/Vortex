@@ -1,0 +1,48 @@
+{
+  "evidence_level": "E1 proposal-adjoint full-weight-scan oracle",
+  "workflow": {
+    "run_id": 30739637057,
+    "artifact_id": 8830879276,
+    "artifact_digest": "sha256:339244b777aef472a0f4f6988d57f4c8bc7de538ff2870da7e1e3dab31909df4",
+    "head_sha": "6bf0bf42cd30e4b84f8551f1170e7a2ef0426dd8",
+    "raw_file_sha256": "c1ee1b6e24a56955f9721ff2475ceb51909cf2594359adf9132bd36fb4ddea15"
+  },
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "managed_suffixes": [
+    "self_attn.o_proj",
+    "mlp.down_proj"
+  ],
+  "matched_modules": 44,
+  "max_rank": 32,
+  "row_tile": 128,
+  "col_tile": 128,
+  "requested_block_tokens": 64,
+  "actual_proposal_tokens": 64,
+  "zero_repair_prefix_tokens": 1,
+  "candidate_tiles": 21120,
+  "selector_profile": {
+    "teacher_source": "hot_path_proposal",
+    "generated_targets": 64,
+    "approximate_margin_sum": 45.791908264160156,
+    "missing_gradient_modules": [],
+    "non_differentiable_modules": []
+  },
+  "combined_budget": {
+    "minimum_traffic_efficiency": 491.29915997929805,
+    "compute_max_selected_bytes": 44761771.04305464,
+    "combined_max_selected_bytes": 44761771.04305464,
+    "combined_budget_tile_count": 683
+  },
+  "observed_prefix_behavior": {
+    "selected_tiles_1_to_64": "exact prefix remained 1 token; no incremental gain",
+    "selected_tiles_128": "exact prefix dropped to 0 tokens",
+    "selected_tiles_683": "exact prefix remained 0 tokens at the compute boundary"
+  },
+  "best_selector_candidate": null,
+  "decision": "proposal-token adjoint oracle fails the combined gate",
+  "rejection_scope": "Reject proposal-token signed-adjoint ranking for the tested rank-32 O/down block-shared repair family. The selector used no exact target continuation, but it was still an optimistic full-weight-scan oracle.",
+  "implication": "Because even a full exact-weight contribution scan cannot extend the zero-repair prefix, metadata approximations of the same proposal-margin objective are not promoted as the primary path without contrary evidence.",
+  "next_candidate": "test whether proposal-margin Cauchy metadata bounds provide independent ranking evidence; otherwise redesign the hot representation rather than adding selector heuristics"
+}
