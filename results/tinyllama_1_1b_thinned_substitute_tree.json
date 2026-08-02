@@ -208,7 +208,7 @@
       "contract": "The draft is built only by selecting existing target layers and quantizing them; no training or learned adapter is used. Draft runtime cost is omitted from latency, and Q6/Q8 exact verification precision is omitted, so this remains an optimistic necessary gate.",
       "qualifies": false,
       "decision": "reject tested 8GiB thinned substitute tree point",
-      "elapsed_seconds": 85.78341492000001
+      "elapsed_seconds": 99.857739302
     },
     {
       "evidence_level": "E2 causal target-derived 8GiB substitute tree plus target-side lower bound",
@@ -417,7 +417,7 @@
       "contract": "The draft is built only by selecting existing target layers and quantizing them; no training or learned adapter is used. Draft runtime cost is omitted from latency, and Q6/Q8 exact verification precision is omitted, so this remains an optimistic necessary gate.",
       "qualifies": false,
       "decision": "reject tested 8GiB thinned substitute tree point",
-      "elapsed_seconds": 99.195556622
+      "elapsed_seconds": 86.51989400400001
     },
     {
       "evidence_level": "E2 causal target-derived 8GiB substitute tree plus target-side lower bound",
@@ -626,7 +626,7 @@
       "contract": "The draft is built only by selecting existing target layers and quantizing them; no training or learned adapter is used. Draft runtime cost is omitted from latency, and Q6/Q8 exact verification precision is omitted, so this remains an optimistic necessary gate.",
       "qualifies": false,
       "decision": "reject tested 8GiB thinned substitute tree point",
-      "elapsed_seconds": 83.827208811
+      "elapsed_seconds": 86.21068321700001
     }
   ],
   "best_point": {
@@ -645,12 +645,12 @@
   "surviving_points": 0,
   "decision": "reject tested 8GiB thinned substitute tree frontier",
   "workflow": {
-    "run_id": 30756191799,
-    "head_sha": "e27d4d16b5dfc4f9b50c5044fda9ac57eb60c034",
+    "run_id": 30757015209,
+    "head_sha": "d59ab586c27adb6290c087c7b3d292678557704e",
     "input_sha256": {
-      "thinned-tree-edge.json": "dbe1d17a44a9c567dbba9ce4914853af0786fa07e2580ca4b744c6cd7b078157",
-      "thinned-tree-front.json": "ebf810d653fd332717cc3de45e25e02d4feac402580198e97707ae9049d49f5f",
-      "thinned-tree-uniform.json": "ec8aa58bc93b3da69ef9e070aefa0071b52b1aab032a6161ce0c50063863a70f"
+      "thinned-tree-edge.json": "3c456501e2d185c653f737128e0e8a20276882e233552eff2752e8834131bed3",
+      "thinned-tree-front.json": "3c7edbc59f76551b27b27361a6695a5f68314dbbc4c6e5a7f153d0992a822ca8",
+      "thinned-tree-uniform.json": "f078d944e83056c8265b99e99d98472d2e7c7953b9fc21f28504e44a43962b6b"
     }
   }
 }
