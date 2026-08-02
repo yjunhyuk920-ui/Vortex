@@ -1,0 +1,226 @@
+name: Kronecker operator frontier
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/kronecker_operator.py"
+      - "scripts/run_kronecker_operator_point.py"
+      - "tests/test_kronecker_operator.py"
+      - "docs/EXPERIMENT_015_KRONECKER_OPERATOR_RUNTIME.md"
+      - ".github/workflows/kronecker-operator-frontier.yml"
+
+concurrency:
+  group: kronecker-operator-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/kronecker-operator-runtime'
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - tiny_rank: 2
+            target_rank: 16
+          - tiny_rank: 4
+            target_rank: 32
+          - tiny_rank: 8
+            target_rank: 64
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate Kronecker operator primitives
+        run: python -m pytest -q tests/test_kronecker_operator.py
+      - name: Measure Tiny rank ${{ matrix.tiny_rank }}
+        run: |
+          python scripts/run_kronecker_operator_point.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tiny-rank ${{ matrix.tiny_rank }} \
+            --target-rank ${{ matrix.target_rank }} \
+            --factor-bits 8 \
+            --embedding-bits 4 \
+            --oversample 4 \
+            --power-iterations 1 \
+            --seed 2026 \
+            --tokens 32 \
+            --tree-depth 12 \
+            --top-k 32 \
+            --beam-width 64 \
+            --node-budget 1024 \
+            --eval-batch-size 8 \
+            --embedding-row-chunk 128 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "kronecker-${{ matrix.tiny_rank }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kronecker-${{ matrix.tiny_rank }}
+          path: kronecker-${{ matrix.tiny_rank }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: kronecker-*
+          path: kronecker-results
+          merge-multiple: true
+      - name: Aggregate Kronecker frontier
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          files = sorted(Path("kronecker-results").glob("*.json"))
+          if not files:
+              raise SystemExit("no Kronecker results")
+          points = [json.loads(path.read_text(encoding="utf-8")) for path in files]
+          points.sort(key=lambda item: item["tiny_rank"])
+          promoted = [point for point in points if point["qualifies_for_next_rank"]]
+          best = max(
+              points,
+              key=lambda item: (
+                  item["tree"]["exact_path_last_alive_depth"],
+                  item["teacher_forced_factorized"]["top32_rate"],
+                  item["teacher_forced_factorized"]["top1_rate"],
+              ),
+          )
+          summary = [
+              {
+                  "tiny_rank": point["tiny_rank"],
+                  "target_rank": point["projected_405b_rank"],
+                  "factor_gib": point["405b_budget"]["factor_gib"],
+                  "projected_ms": 1000 * point["405b_budget"][
+                      "projected_seconds_per_token"
+                  ],
+                  "weight_error": point["fit"][
+                      "element_weighted_relative_l2_error"
+                  ],
+                  "teacher_top1": point["teacher_forced_factorized"][
+                      "top1_rate"
+                  ],
+                  "teacher_top32": point["teacher_forced_factorized"][
+                      "top32_rate"
+                  ],
+                  "autoregressive_prefix": point[
+                      "autoregressive_exact_prefix"
+                  ],
+                  "tree_prefix": point["tree"][
+                      "optimistic_committed_exact_prefix"
+                  ],
+                  "last_alive_depth": point["tree"][
+                      "exact_path_last_alive_depth"
+                  ],
+                  "budget_pass": point["405b_budget"]["pass_all"],
+                  "promoted": point["qualifies_for_next_rank"],
+              }
+              for point in points
+          ]
+          if promoted:
+              decision = "advance Kronecker operator to held-out and CUDA gates"
+              next_candidate = (
+                  "evaluate best rank on held-out prompts, then implement fused "
+                  "factor kernels and active-KV selection"
+              )
+          elif best["teacher_forced_factorized"]["top32_rate"] >= 0.5:
+              decision = "retain Kronecker operator and add structured residual terms"
+              next_candidate = (
+                  "allocate remaining memory to sparse or diagonal residuals "
+                  "without exceeding rank-64 executed-byte envelope"
+              )
+          else:
+              decision = "reject tested balanced Kronecker frontier"
+              next_candidate = (
+                  "test butterfly/tensor-train operator programs with the same "
+                  "2 GiB executed-byte Gate"
+              )
+          payload = {
+              "evidence_level": "E2 executable all-linear Kronecker frontier",
+              "points": points,
+              "summary": summary,
+              "best_tiny_rank": best["tiny_rank"],
+              "promoted_ranks": [point["tiny_rank"] for point in promoted],
+              "decision": decision,
+              "next_candidate": next_candidate,
+              "workflow": {
+                  "run_id": int(os.environ["RUN_ID"]),
+                  "head_sha": os.environ["HEAD_SHA"],
+                  "input_sha256": {
+                      path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                      for path in files
+                  },
+              },
+          }
+          output = Path("results/tinyllama_1_1b_kronecker_operator_frontier.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          Path("kronecker-comment.md").write_text(
+              "## Executable Kronecker operator frontier\n\n```json\n"
+              + json.dumps(
+                  {
+                      "summary": summary,
+                      "best_tiny_rank": payload["best_tiny_rank"],
+                      "promoted_ranks": payload["promoted_ranks"],
+                      "decision": payload["decision"],
+                      "next_candidate": payload["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file kronecker-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-kronecker-operator-frontier
+          path: results/tinyllama_1_1b_kronecker_operator_frontier.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_kronecker_operator_frontier.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit Kronecker operator sweep"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
