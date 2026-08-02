@@ -1,0 +1,146 @@
+name: Signed dual MLP certificate gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/signed_dual_mlp.py"
+      - "scripts/run_signed_dual_mlp_certificate.py"
+      - "tests/test_signed_dual_mlp.py"
+      - "experiments/signed_dual_prompts.json"
+      - "docs/EXPERIMENT_031_SIGNED_DUAL_MLP_CERTIFICATE.md"
+      - ".github/workflows/signed-dual-mlp-certificate.yml"
+
+concurrency:
+  group: signed-dual-mlp-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/signed-dual-mlp-certificate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        bits: [4, 8]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate signed dual primitive
+        run: |
+          test -f tests/test_signed_dual_mlp.py
+          python -m pytest -q tests/test_signed_dual_mlp.py
+      - name: Measure signed dual precision point
+        run: |
+          python scripts/run_signed_dual_mlp_certificate.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --prompts experiments/signed_dual_prompts.json \
+            --bits ${{ matrix.bits }} \
+            --device cpu \
+            --margin-share 0.5 \
+            --output results/tinyllama_1_1b_signed_dual_mlp_${{ matrix.bits }}bit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: signed-dual-${{ matrix.bits }}bit
+          path: results/tinyllama_1_1b_signed_dual_mlp_${{ matrix.bits }}bit.json
+
+  aggregate:
+    if: github.head_ref == 'research/signed-dual-mlp-certificate'
+    needs: measure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: signed-dual-*
+          path: downloaded
+          merge-multiple: true
+      - name: Aggregate frontier
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          points = []
+          for path in sorted(Path("downloaded").glob("*.json")):
+              payload = json.loads(path.read_text(encoding="utf-8"))
+              prompt_traffic = [
+                  item["projected_405b_exact_refinement"]["exact_refinement_gib_per_token"]
+                  for item in payload["prompts"]
+              ]
+              points.append(
+                  {
+                      "bits": payload["bits"],
+                      "mean_refined_fraction": payload["summary"]["mean_error_refined_fraction"],
+                      "maximum_refined_fraction": payload["summary"]["maximum_error_refined_fraction"],
+                      "maximum_projected_405b_exact_gib_per_token": max(prompt_traffic),
+                      "unsafe_certificates": payload["summary"]["unsafe_certificates"],
+                      "interval_failures": payload["summary"]["interval_failures"],
+                      "qualifies": payload["qualifies"],
+                  }
+              )
+          points.sort(key=lambda point: point["bits"])
+          promoted = [point["bits"] for point in points if point["qualifies"]]
+          combined = {
+              "evidence_level": "E1/E2 optimistic signed dual local MLP frontier",
+              "points": points,
+              "promoted_bits": promoted,
+              "decision": (
+                  "advance signed dual cone to multi-layer interval transport"
+                  if promoted
+                  else "reject tested signed local interval density"
+              ),
+          }
+          output = Path("results/tinyllama_1_1b_signed_dual_mlp_frontier.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(combined, indent=2, ensure_ascii=False),
+              encoding="utf-8",
+          )
+          Path("signed-dual-comment.md").write_text(
+              "## Signed dual MLP certificate gate\n\n```json\n"
+              + json.dumps(combined, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file signed-dual-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: signed-dual-frontier
+          path: results/tinyllama_1_1b_signed_dual_mlp_frontier.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_signed_dual_mlp_frontier.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit signed dual MLP certificate"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
