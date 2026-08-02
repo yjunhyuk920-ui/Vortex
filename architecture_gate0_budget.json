@@ -1,0 +1,112 @@
+{
+  "evidence_level": "E0/E1",
+  "candidate": "VORTEX-WAVE-1",
+  "status": "blocked-mechanism-unproven",
+  "target": {
+    "parameters": 405849243648,
+    "layers": 126,
+    "hidden_size": 16384,
+    "intermediate_size": 53248,
+    "attention_heads": 128,
+    "kv_heads": 8,
+    "vocab_size": 128256,
+    "context_tokens": 4096,
+    "weight_bits": 16,
+    "kv_bits": 16
+  },
+  "baseline": {
+    "parameters": 4000000000,
+    "layers": 32,
+    "hidden_size": 3072,
+    "intermediate_size": 8192,
+    "attention_heads": 24,
+    "kv_heads": 8,
+    "vocab_size": 128256,
+    "context_tokens": 4096,
+    "weight_bits": 4,
+    "kv_bits": 16
+  },
+  "candidate_parameters": {
+    "linear_rank": 32,
+    "capsule_bits": 8,
+    "attention_rank": 64,
+    "attention_summary_bits": 8,
+    "recent_exact_kv_tokens": 128,
+    "embedding_cache_rows": 4096,
+    "workspace_gib": 1.25,
+    "repair_window_gib": 0.5,
+    "allocator_reserve_gib": 1.0,
+    "certificate_state_gib": 0.25,
+    "misc_hot_traffic_gib": 0.05,
+    "misc_hot_flops": 500000000.0,
+    "repair_fraction": 0.25,
+    "committed_tokens_per_repair": 160.0
+  },
+  "targets": {
+    "memory_limit_gib": 8.0,
+    "traffic_ratio": 1.2,
+    "compute_ratio": 1.2
+  },
+  "memory": {
+    "components_gib": {
+      "linear_capsules": 1.1655654907226562,
+      "attention_summaries": 0.015380859375,
+      "recent_exact_kv": 0.0615234375,
+      "embedding_cache": 0.0625,
+      "workspace": 1.25,
+      "repair_window": 0.5,
+      "allocator_reserve": 1.0,
+      "certificate_state": 0.25
+    },
+    "total_gib": 4.304969787597656,
+    "limit_gib": 8.0,
+    "pass": true
+  },
+  "traffic": {
+    "hot_components_gib_per_token": {
+      "linear_capsule_read": 1.1655654907226562,
+      "attention_summary_read": 0.015380859375,
+      "recent_exact_kv_read": 0.0615234375,
+      "embedding_row_read": 1.52587890625e-05,
+      "misc": 0.05
+    },
+    "hot_gib_per_token": 1.2924850463867188,
+    "baseline_components_gib_per_token": {
+      "weights": 1.862645149230957,
+      "kv": 0.5
+    },
+    "baseline_gib_per_token": 2.362645149230957,
+    "limit_gib_per_token": 2.8351741790771485,
+    "cold_full_repair_gib": 757.921875,
+    "required_tokens_per_full_repair_equivalent": 491.29915997929805,
+    "candidate_tokens_per_full_repair_equivalent": 640.0,
+    "projected_gib_per_token": 2.4767379760742188,
+    "analytic_pass": true
+  },
+  "compute": {
+    "hot_linear_gflop_per_token": 2.503032832,
+    "hot_attention_gflop_per_token": 0.528482304,
+    "hot_total_gflop_per_token": 3.531515136,
+    "baseline_gflop_per_token": 10.110612736,
+    "limit_gflop_per_token": 12.132735283199999,
+    "cold_full_repair_gflop": 845.521354752,
+    "required_tokens_per_full_repair_equivalent": 98.3024896795889,
+    "candidate_tokens_per_full_repair_equivalent": 640.0,
+    "projected_gflop_per_token": 4.8526422528,
+    "analytic_pass": true
+  },
+  "mechanism": {
+    "required_tokens_per_full_repair_equivalent": 491.29915997929805,
+    "candidate_target": 640.0,
+    "observed": 1.2751790996462853,
+    "observed_source": "validation_results.json:jacobi.mean_committed_block; full-repair equivalent",
+    "pass": false,
+    "shortfall_factor": 385.27855429529603
+  },
+  "gates": {
+    "memory": true,
+    "analytic_traffic": true,
+    "analytic_compute": true,
+    "observed_repair_efficiency": false
+  }
+}
