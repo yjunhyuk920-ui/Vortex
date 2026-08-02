@@ -134,6 +134,13 @@ def architecture_gate0_report(
     observed: ObservedMechanism,
     targets: GateTargets = GateTargets(),
 ) -> dict[str, Any]:
+    """Build the Gate 0 budget using non-negotiable traffic/compute accounting.
+
+    Cold storage traffic may be shared across a committed token block. Exact
+    arithmetic performed with the selected cold weights is still charged for
+    every token and therefore scales with repair_fraction, not 1/E.
+    """
+
     candidate.validate()
 
     capsule_elements = linear_capsule_elements(target, candidate.linear_rank)
@@ -214,11 +221,10 @@ def architecture_gate0_report(
         target.dense_linear_flops_per_token
         + target.dense_attention_flops_per_token
     )
-    required_efficiency_compute = (
-        cold_repair_flops / compute_headroom if compute_headroom > 0 else inf
-    )
-    required_efficiency = max(
-        required_efficiency_bytes, required_efficiency_compute
+    maximum_compute_repair_fraction = (
+        max(0.0, compute_headroom / cold_repair_flops)
+        if cold_repair_flops > 0
+        else 0.0
     )
 
     target_efficiency = (
@@ -234,20 +240,24 @@ def architecture_gate0_report(
     )
     projected_flops_per_token = (
         hot_flops_per_token
-        + cold_repair_flops
-        * candidate.repair_fraction
-        / candidate.committed_tokens_per_repair
+        + cold_repair_flops * candidate.repair_fraction
     )
 
     memory_pass = memory_total <= targets.memory_limit_gib * GIB
     analytic_traffic_pass = projected_bytes_per_token <= traffic_limit
     analytic_compute_pass = projected_flops_per_token <= compute_limit
-    observed_mechanism_pass = observed_efficiency >= required_efficiency
+    observed_traffic_pass = observed_efficiency >= required_efficiency_bytes
+    observed_compute_pass = (
+        observed.repair_fraction <= maximum_compute_repair_fraction
+    )
+    observed_mechanism_pass = observed_traffic_pass and observed_compute_pass
 
     if not memory_pass:
         status = "rejected-memory"
-    elif not analytic_traffic_pass or not analytic_compute_pass:
-        status = "rejected-analytic-envelope"
+    elif not analytic_traffic_pass:
+        status = "rejected-analytic-traffic"
+    elif not analytic_compute_pass:
+        status = "rejected-analytic-compute"
     elif not observed_mechanism_pass:
         status = "blocked-mechanism-unproven"
     else:
@@ -260,6 +270,15 @@ def architecture_gate0_report(
         "evidence_level": "E0/E1",
         "candidate": "VORTEX-WAVE-1",
         "status": status,
+        "accounting_contract": {
+            "traffic": (
+                "selected cold bytes are divided by committed block tokens"
+            ),
+            "compute": (
+                "selected exact arithmetic is charged every token and is not "
+                "divided by committed block tokens"
+            ),
+        },
         "target": asdict(target),
         "baseline": asdict(baseline),
         "candidate_parameters": asdict(candidate),
@@ -288,6 +307,9 @@ def architecture_gate0_report(
                 required_efficiency_bytes
             ),
             "candidate_tokens_per_full_repair_equivalent": target_efficiency,
+            "candidate_minimum_committed_tokens": (
+                required_efficiency_bytes * candidate.repair_fraction
+            ),
             "projected_gib_per_token": gib(projected_bytes_per_token),
             "analytic_pass": analytic_traffic_pass,
         },
@@ -298,22 +320,37 @@ def architecture_gate0_report(
             "baseline_gflop_per_token": baseline_flops_per_token / 1e9,
             "limit_gflop_per_token": compute_limit / 1e9,
             "cold_full_repair_gflop": cold_repair_flops / 1e9,
-            "required_tokens_per_full_repair_equivalent": (
-                required_efficiency_compute
+            "candidate_repair_fraction": candidate.repair_fraction,
+            "maximum_repair_fraction": maximum_compute_repair_fraction,
+            "maximum_selected_weight_gib": (
+                gib(target.weight_bytes * maximum_compute_repair_fraction)
             ),
-            "candidate_tokens_per_full_repair_equivalent": target_efficiency,
             "projected_gflop_per_token": projected_flops_per_token / 1e9,
             "analytic_pass": analytic_compute_pass,
         },
         "mechanism": {
-            "required_tokens_per_full_repair_equivalent": required_efficiency,
+            "required_tokens_per_full_repair_equivalent": (
+                required_efficiency_bytes
+            ),
+            "maximum_compute_repair_fraction": (
+                maximum_compute_repair_fraction
+            ),
             "candidate_target": target_efficiency,
+            "candidate_repair_fraction": candidate.repair_fraction,
             "observed": observed_efficiency,
+            "observed_repair_fraction": observed.repair_fraction,
             "observed_source": observed.source,
+            "traffic_pass": observed_traffic_pass,
+            "compute_pass": observed_compute_pass,
             "pass": observed_mechanism_pass,
-            "shortfall_factor": (
-                required_efficiency / observed_efficiency
+            "traffic_shortfall_factor": (
+                required_efficiency_bytes / observed_efficiency
                 if observed_efficiency > 0
+                else inf
+            ),
+            "compute_excess_factor": (
+                observed.repair_fraction / maximum_compute_repair_fraction
+                if maximum_compute_repair_fraction > 0
                 else inf
             ),
         },
@@ -321,14 +358,14 @@ def architecture_gate0_report(
             "memory": memory_pass,
             "analytic_traffic": analytic_traffic_pass,
             "analytic_compute": analytic_compute_pass,
+            "observed_repair_traffic": observed_traffic_pass,
+            "observed_repair_compute": observed_compute_pass,
             "observed_repair_efficiency": observed_mechanism_pass,
         },
     }
 
 
-def default_gate0_report(
-    observed_committed_block: float = 1.2751790996462853,
-) -> dict[str, Any]:
+def default_specs() -> tuple[ModelSpec, ModelSpec]:
     target = ModelSpec(
         parameters=405_849_243_648,
         layers=126,
@@ -353,6 +390,13 @@ def default_gate0_report(
         weight_bits=4,
         kv_bits=16,
     )
+    return target, baseline
+
+
+def default_gate0_report(
+    observed_committed_block: float = 1.2751790996462853,
+) -> dict[str, Any]:
+    target, baseline = default_specs()
     return architecture_gate0_report(
         target=target,
         baseline=baseline,
