@@ -67,7 +67,6 @@ jobs:
             --device cpu \
             --max-new-tokens 4 \
             --max-rank 32 \
-            --build-prompt "Explain why the sky appears blue." \
             --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
             --output oracle_suffix_repair.json
       - uses: actions/upload-artifact@v4
