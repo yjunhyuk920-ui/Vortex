@@ -76,7 +76,7 @@ jobs:
         env:
           BRANCH: ${{ github.head_ref }}
         run: |
-          if git diff --quiet -- results/tinyllama_1_1b_hot_candidate_coverage.json; then
+          if [ -z "$(git status --porcelain -- results/tinyllama_1_1b_hot_candidate_coverage.json)" ]; then
             echo "Candidate coverage evidence is already current."
             exit 0
           fi
@@ -84,4 +84,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add results/tinyllama_1_1b_hot_candidate_coverage.json
           git commit -m "data(candidate): commit exact-token top-K coverage"
+          git pull --rebase origin "${BRANCH}"
           git push origin "HEAD:${BRANCH}"
