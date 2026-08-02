@@ -14,6 +14,7 @@ from vortex_runtime.feasibility import (
 @dataclass(frozen=True)
 class RankBudgetPoint:
     rank: int
+    capsule_bits: int
     memory_gib: float
     memory_limit_gib: float
     hot_traffic_gib_per_token: float
@@ -40,6 +41,7 @@ class RankBudgetPoint:
     def to_dict(self) -> dict[str, int | float | bool]:
         return {
             "rank": self.rank,
+            "capsule_bits": self.capsule_bits,
             "memory_gib": self.memory_gib,
             "memory_limit_gib": self.memory_limit_gib,
             "memory_pass": self.memory_pass,
@@ -53,26 +55,33 @@ class RankBudgetPoint:
         }
 
 
-def rank_budget_point(rank: int) -> RankBudgetPoint:
+def rank_budget_point(
+    rank: int,
+    capsule_bits: int = 8,
+) -> RankBudgetPoint:
     if rank <= 0:
         raise ValueError("rank must be positive")
+    if capsule_bits <= 0:
+        raise ValueError("capsule_bits must be positive")
     target, baseline = default_specs()
     report = architecture_gate0_report(
         target=target,
         baseline=baseline,
         candidate=WaveCandidate(
             linear_rank=rank,
+            capsule_bits=capsule_bits,
             repair_fraction=1e-12,
             committed_tokens_per_repair=1.0,
         ),
         observed=ObservedMechanism(
             committed_tokens_per_repair=1.0,
             repair_fraction=1e-12,
-            source="rank-frontier hot-path budget",
+            source="precision-rank frontier hot-path budget",
         ),
     )
     return RankBudgetPoint(
         rank=rank,
+        capsule_bits=capsule_bits,
         memory_gib=float(report["memory"]["total_gib"]),
         memory_limit_gib=float(report["memory"]["limit_gib"]),
         hot_traffic_gib_per_token=float(report["traffic"]["hot_gib_per_token"]),
@@ -86,8 +95,15 @@ def rank_budget_point(rank: int) -> RankBudgetPoint:
     )
 
 
-def rank_frontier(ranks: Iterable[int]) -> list[RankBudgetPoint]:
-    points = [rank_budget_point(int(rank)) for rank in ranks]
+def rank_frontier(
+    ranks: Iterable[int],
+    *,
+    capsule_bits: int = 8,
+) -> list[RankBudgetPoint]:
+    points = [
+        rank_budget_point(int(rank), capsule_bits=capsule_bits)
+        for rank in ranks
+    ]
     if not points:
         raise ValueError("at least one rank is required")
     return points
@@ -95,14 +111,20 @@ def rank_frontier(ranks: Iterable[int]) -> list[RankBudgetPoint]:
 
 def maximum_feasible_rank(
     *,
+    capsule_bits: int = 8,
     step: int = 8,
     maximum_rank: int = 512,
 ) -> int:
+    if capsule_bits <= 0:
+        raise ValueError("capsule_bits must be positive")
     if step <= 0 or maximum_rank <= 0:
         raise ValueError("step and maximum_rank must be positive")
     feasible = [
         point.rank
-        for point in rank_frontier(range(step, maximum_rank + 1, step))
+        for point in rank_frontier(
+            range(step, maximum_rank + 1, step),
+            capsule_bits=capsule_bits,
+        )
         if point.pass_all
     ]
     if not feasible:
