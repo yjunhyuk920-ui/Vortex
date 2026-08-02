@@ -621,13 +621,13 @@
           "maximum": 107,
           "mean": 103.8409090909091
         },
-        "maximum_final_prompt_output_relative_error": 0.28407081961631775,
+        "maximum_final_prompt_output_relative_error": 0.2830730080604553,
         "maximum_quantized_relative_l2_error": 0.5704038143157959,
-        "exact_top1_match_rate": 0.34375,
-        "top32_coverage": 0.65625,
-        "mean_exact_token_rank": 327.59375,
-        "maximum_exact_token_rank": 9634,
-        "first_divergence_exact_token_rank": 8,
+        "exact_top1_match_rate": 0.375,
+        "top32_coverage": 0.6875,
+        "mean_exact_token_rank": 215.46875,
+        "maximum_exact_token_rank": 6012,
+        "first_divergence_exact_token_rank": 7,
         "qualifies": false
       },
       {
@@ -649,13 +649,13 @@
           "maximum": 131,
           "mean": 128.20454545454547
         },
-        "maximum_final_prompt_output_relative_error": 0.5755978226661682,
+        "maximum_final_prompt_output_relative_error": 0.5883564949035645,
         "maximum_quantized_relative_l2_error": 0.567952036857605,
         "exact_top1_match_rate": 0.34375,
-        "top32_coverage": 0.65625,
-        "mean_exact_token_rank": 518.0625,
-        "maximum_exact_token_rank": 13264,
-        "first_divergence_exact_token_rank": 21,
+        "top32_coverage": 0.6875,
+        "mean_exact_token_rank": 444.15625,
+        "maximum_exact_token_rank": 11993,
+        "first_divergence_exact_token_rank": 22,
         "qualifies": false
       },
       {
@@ -677,42 +677,42 @@
           "maximum": 136,
           "mean": 133.27272727272728
         },
-        "maximum_final_prompt_output_relative_error": 0.28800317645072937,
+        "maximum_final_prompt_output_relative_error": 0.5794512033462524,
         "maximum_quantized_relative_l2_error": 0.5686726570129395,
-        "exact_top1_match_rate": 0.34375,
+        "exact_top1_match_rate": 0.375,
         "top32_coverage": 0.625,
-        "mean_exact_token_rank": 562.5625,
-        "maximum_exact_token_rank": 14804,
+        "mean_exact_token_rank": 617.25,
+        "maximum_exact_token_rank": 14557,
         "first_divergence_exact_token_rank": 7,
         "qualifies": false
       }
     ],
     "best_observed_point": {
-      "global_rank_limit": 56,
-      "total_rank_limit": 96,
-      "capsule_bits": 6,
+      "global_rank_limit": 64,
+      "total_rank_limit": 136,
+      "capsule_bits": 4,
       "global_rank_statistics": {
-        "minimum": 56,
-        "maximum": 56,
-        "mean": 56.0
+        "minimum": 64,
+        "maximum": 64,
+        "mean": 64.0
       },
       "added_session_rank_statistics": {
         "minimum": 39,
-        "maximum": 40,
-        "mean": 39.54545454545455
+        "maximum": 43,
+        "mean": 39.84090909090909
       },
       "final_rank_statistics": {
-        "minimum": 95,
-        "maximum": 96,
-        "mean": 95.54545454545455
+        "minimum": 103,
+        "maximum": 107,
+        "mean": 103.8409090909091
       },
-      "maximum_final_prompt_output_relative_error": 0.2848438620567322,
-      "maximum_quantized_relative_l2_error": 0.20639196038246155,
+      "maximum_final_prompt_output_relative_error": 0.2830730080604553,
+      "maximum_quantized_relative_l2_error": 0.5704038143157959,
       "exact_top1_match_rate": 0.375,
       "top32_coverage": 0.6875,
-      "mean_exact_token_rank": 290.09375,
-      "maximum_exact_token_rank": 8410,
-      "first_divergence_exact_token_rank": 5,
+      "mean_exact_token_rank": 215.46875,
+      "maximum_exact_token_rank": 6012,
+      "first_divergence_exact_token_rank": 7,
       "qualifies": false
     },
     "surviving_points": [],
