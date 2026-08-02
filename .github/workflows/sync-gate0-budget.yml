@@ -6,6 +6,7 @@ on:
       - "vortex_runtime/feasibility.py"
       - "vortex_runtime/gate0_observations.py"
       - "vortex_runtime/gate0_selector_results.py"
+      - "vortex_runtime/rank_frontier.py"
       - "scripts/run_architecture_gate0.py"
       - "results/tinyllama_1_1b_block_shared_combined_gate.json"
       - "results/tinyllama_1_1b_block_shared_residual_selector.json"
@@ -13,6 +14,7 @@ on:
       - "results/tinyllama_1_1b_block_shared_margin_bound_selector.json"
       - "results/tinyllama_1_1b_prefill_compiled_adjoint_oracle.json"
       - "results/tinyllama_1_1b_hot_candidate_coverage.json"
+      - "results/tinyllama_1_1b_hot_rank_frontier.json"
       - ".github/workflows/sync-gate0-budget.yml"
 
 concurrency:
