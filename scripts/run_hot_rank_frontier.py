@@ -17,15 +17,15 @@ from vortex_runtime.rank_frontier import (
 )
 
 
-DEFAULT_RANKS = (32, 48, 64, 80, 96, 112, 128)
+DEFAULT_RANKS = (32, 40, 48, 56, 64, 72)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Run the exact-prefix top-K coverage diagnostic across every "
-            "representative capsule rank that fits the fixed 405B Gate 0 "
-            "memory and hot-compute envelope."
+            "Run the exact-prefix top-K coverage diagnostic across capsule "
+            "ranks that fit the fixed 405B Gate 0 memory, hot-traffic, and "
+            "hot-compute envelope."
         )
     )
     parser.add_argument("--model", required=True)
@@ -149,6 +149,7 @@ def main() -> None:
         "tokens_per_rank": args.tokens,
         "tested_ranks": ranks,
         "fixed_405b_aligned_maximum_rank": fixed_maximum,
+        "binding_budget": "hot capsule traffic per token",
         "same_context_contract": (
             "Every rank is measured with exact and hot logits on the same "
             "authoritative exact prefix at every token position."
@@ -170,14 +171,14 @@ def main() -> None:
         "decision": (
             "advance feasible-rank multi-hypothesis certificate"
             if survivors
-            else "reject global low-rank O/down capsule through rank 128"
+            else "reject global low-rank O/down capsule through rank 72"
         ),
         "next_candidate": (
             "build a multi-hypothesis certificate at the lowest surviving rank"
             if survivors
             else (
                 "replace the global activation-subspace capsule with a "
-                "state-conditional or operator-structured representation"
+                "block-local trajectory or operator-structured representation"
             )
         ),
         "elapsed_seconds": time.perf_counter() - started,
