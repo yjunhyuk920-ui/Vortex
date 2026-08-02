@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from vortex_runtime.feasibility import default_gate0_report
 from vortex_runtime.gate0_observations import apply_real_model_observation
+from vortex_runtime.gate0_selector_results import apply_selector_falsifications
 
 
 def generate_report(root: Path) -> dict[str, object]:
@@ -20,7 +21,7 @@ def generate_report(root: Path) -> dict[str, object]:
         )
 
     report = default_gate0_report(observed)
-    return apply_real_model_observation(
+    report = apply_real_model_observation(
         report,
         exact_span_path=(
             root / "results/tinyllama_1_1b_exact_span_warm_decode.json"
@@ -41,6 +42,24 @@ def generate_report(root: Path) -> dict[str, object]:
         residual_selector_path=(
             root
             / "results/tinyllama_1_1b_block_shared_residual_selector.json"
+        ),
+    )
+    return apply_selector_falsifications(
+        report,
+        proposal_adjoint_path=(
+            root
+            / "results/tinyllama_1_1b_block_shared_proposal_adjoint_oracle.json"
+        ),
+        margin_bound_path=(
+            root
+            / "results/tinyllama_1_1b_block_shared_margin_bound_selector.json"
+        ),
+        prefill_compiled_path=(
+            root
+            / "results/tinyllama_1_1b_prefill_compiled_adjoint_oracle.json"
+        ),
+        candidate_coverage_path=(
+            root / "results/tinyllama_1_1b_hot_candidate_coverage.json"
         ),
     )
 
@@ -87,6 +106,8 @@ def main() -> None:
         ),
         "logical_oracle": report.get("logical_oracle"),
         "selector_falsification": report.get("selector_falsification"),
+        "family_decision": report.get("family_decision"),
+        "hot_representation_coverage": report.get("hot_representation_coverage"),
         "revised_oracle_envelope": report.get("revised_oracle_envelope"),
         "observed_component_decision": report.get(
             "observed_component_decision"
