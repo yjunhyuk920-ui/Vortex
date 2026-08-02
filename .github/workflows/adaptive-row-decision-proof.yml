@@ -1,0 +1,208 @@
+name: Adaptive row decision-proof gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/adaptive_row_proof.py"
+      - "scripts/run_lm_head_adaptive_row_proof.py"
+      - "tests/test_adaptive_row_proof.py"
+      - "docs/EXPERIMENT_023_ADAPTIVE_ROW_DECISION_PROOF.md"
+      - ".github/workflows/adaptive-row-decision-proof.yml"
+
+concurrency:
+  group: adaptive-row-decision-proof-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/adaptive-row-decision-proof'
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        column_block: [16, 64, 256]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate adaptive proof primitives
+        run: |
+          python -m pytest -q \
+            tests/test_residual_proof.py \
+            tests/test_adaptive_row_proof.py
+      - name: Measure adaptive proof block ${{ matrix.column_block }}
+        run: |
+          python scripts/run_lm_head_adaptive_row_proof.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tokens 32 \
+            --hot-bits 4 \
+            --column-block ${{ matrix.column_block }} \
+            --initial-top-k 32 \
+            --refinement-batch 32 \
+            --max-refined-rows 4096 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "adaptive-row-proof-${{ matrix.column_block }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: adaptive-row-proof-${{ matrix.column_block }}
+          path: adaptive-row-proof-${{ matrix.column_block }}.json
+
+  aggregate:
+    needs: measure
+    if: needs.measure.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: adaptive-row-proof-*
+          path: adaptive-row-proof-results
+          merge-multiple: true
+      - name: Aggregate adaptive proof frontier
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          files = sorted(Path("adaptive-row-proof-results").glob("*.json"))
+          if not files:
+              raise SystemExit("no adaptive row proof results")
+          points = [json.loads(path.read_text(encoding="utf-8")) for path in files]
+          points.sort(key=lambda item: item["column_block"])
+          unsafe = sum(point["unsafe_certificates"] for point in points)
+          best = max(
+              points,
+              key=lambda item: (
+                  item["certificate_rate"],
+                  -item["refined_rows"]["p95"],
+                  -item["projected_405b_metadata_budget"]["metadata_gib"],
+              ),
+          )
+          promoted = [point for point in points if point["qualifies"]]
+          if unsafe:
+              decision = "reject implementation: unsafe adaptive proof"
+              next_candidate = "repair soundness before architecture work"
+          elif promoted:
+              decision = "advance adaptive branch-and-bound into internal tiles"
+              next_candidate = (
+                  "propagate the exact top-two LM margin backward and refine only "
+                  "internal residual tiles whose bounds can still flip it"
+              )
+          elif best["certificate_rate"] > 0:
+              decision = "retain adaptive proof; tighten row support bounds"
+              next_candidate = (
+                  "add signed support-function metadata for ambiguous rows and "
+                  "rerun under the same 0.1 GiB p95 residual budget"
+              )
+          else:
+              decision = "reject tested adaptive row bounds"
+              next_candidate = (
+                  "replace row norms with row-specific directional residual codes"
+              )
+          summary = [
+              {
+                  "column_block": point["column_block"],
+                  "certificate_rate": point["certificate_rate"],
+                  "unsafe_certificates": point["unsafe_certificates"],
+                  "mean_rows": point["refined_rows"]["mean"],
+                  "p95_rows": point["refined_rows"]["p95"],
+                  "maximum_rows": point["refined_rows"]["maximum"],
+                  "target_p95_residual_gib": point[
+                      "projected_405b_p95_residual_budget"
+                  ]["residual_gib"],
+                  "target_metadata_gib": point[
+                      "projected_405b_metadata_budget"
+                  ]["metadata_gib"],
+                  "qualifies": point["qualifies"],
+              }
+              for point in points
+          ]
+          payload = {
+              "evidence_level": "E2 pretrained adaptive row proof frontier",
+              "points": points,
+              "summary": summary,
+              "best_column_block": best["column_block"],
+              "best_certificate_rate": best["certificate_rate"],
+              "unsafe_certificates": unsafe,
+              "promoted_blocks": [point["column_block"] for point in promoted],
+              "decision": decision,
+              "next_candidate": next_candidate,
+              "workflow": {
+                  "run_id": int(os.environ["RUN_ID"]),
+                  "head_sha": os.environ["HEAD_SHA"],
+                  "input_sha256": {
+                      path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                      for path in files
+                  },
+              },
+          }
+          output = Path("results/tinyllama_1_1b_adaptive_row_decision_proof.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False),
+              encoding="utf-8",
+          )
+          Path("adaptive-row-proof-comment.md").write_text(
+              "## Adaptive row decision-proof gate\n\n```json\n"
+              + json.dumps(
+                  {
+                      "summary": summary,
+                      "best_column_block": payload["best_column_block"],
+                      "best_certificate_rate": payload["best_certificate_rate"],
+                      "unsafe_certificates": payload["unsafe_certificates"],
+                      "decision": payload["decision"],
+                      "next_candidate": payload["next_candidate"],
+                  },
+                  indent=2,
+                  ensure_ascii=False,
+              )
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file adaptive-row-proof-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tinyllama-adaptive-row-decision-proof
+          path: results/tinyllama_1_1b_adaptive_row_decision_proof.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_adaptive_row_decision_proof.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(frontier): commit adaptive row proof sweep"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
