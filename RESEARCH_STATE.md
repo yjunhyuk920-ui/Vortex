@@ -1,140 +1,183 @@
 # VORTEX Research State
 
-Last updated: 2026-08-03 15:15 Asia/Seoul
+Last updated: 2026-08-03 Asia/Seoul
 
 ## Fixed final objective
 
 Execute an arbitrary publicly released, unmodified Hugging Face dense Transformer by replacing only the runtime:
 
-- flagship: 405B-class dense model;
-- peak GPU VRAM: 8 GiB;
-- no retraining, distillation, fine-tuning, LoRA, or model-specific user-authored adapter;
+- flagship: real 405B-class dense model;
+- peak GPU VRAM <=8 GiB;
+- no retraining, distillation, fine-tuning, LoRA, or user-authored model-specific adapter;
 - original-model ability and declared output contract preserved;
-- final user-perceived performance near a native 4B-class model on the same target machine;
-- independently reproducible evidence.
+- p50 warm time/token <=1.2x native 4B Q4 on the same target machine;
+- independent reproduction from pinned code and checkpoint hashes.
 
-The target is not reduced by current hardware limitations or failed experiments.
+The target has not been reduced.
 
-## Current execution environment
+## Current environment
 
-MEASURED environment capability:
+MEASURED capability:
 
 - GitHub repository and GitHub Actions CPU runners;
-- no dedicated 8 GiB VRAM target GPU;
-- no local storage or access suitable for a 405B checkpoint;
-- no real 405B execution;
-- no target CUDA, PCIe, SSD-bandwidth, power, or tokens/second profiling;
-- small downloadable Hugging Face checkpoints may be used for Phase C falsification only.
+- Python 3.10/3.12 CI;
+- small downloadable Hugging Face checkpoints when storage/time permit.
 
-## Validation phases
+Unavailable:
 
-- **Phase A — theory and structure:** equations, correctness contracts, causal conditions, lower bounds, fallback safety, and 405B resource models.
-- **Phase B — synthetic/reference:** independent reference implementations, randomized/property tests, fault injection, deterministic replay, and scaling trends.
-- **Phase C — small real-model falsification:** unmodified small checkpoints, held-out prompts, real forward counts, logits/tokens, fallback, CPU time, and RAM.
-- **Phase D — target hardware:** real 8 GiB GPU plus 70B/405B checkpoints and hardware profilers. Current status: **NOT TESTED**.
+- target 8 GiB GPU;
+- 405B checkpoint storage/download/execution;
+- target CUDA, PCIe, SSD, power, TTFT, tokens/second, and peak-VRAM profiling.
 
-## Evidence scale
+Phase D status: **NOT TESTED**.
 
-- E0: idea or equation.
-- E1: synthetic/reference validation.
-- E2: real small-model operation replacement.
-- E3: held-out generalization with measured causal coverage.
-- E4: measured improvement on currently accessible representative hardware.
-- E5: medium/large model scaling validation.
-- E6: target model runs under 8 GiB VRAM.
-- E7: 405B reaches the declared 4B-class user-perceived target.
+## Validation and evidence
 
-Current project ceiling reached: **E2 for bounded auxiliary decision-index compilation; E1/E2 for several component experiments. E6/E7 are NOT TESTED.**
+- Phase A: theory/structure.
+- Phase B: synthetic/reference.
+- Phase C: small real-model falsification.
+- Phase D: actual target hardware, currently NOT TESTED.
+
+Evidence scale: E0 idea, E1 synthetic/reference, E2 real small-model operation replacement, E3 held-out causal generalization, E4 accessible representative-hardware improvement, E5 medium/large scaling, E6 target model under 8 GiB, E7 405B at declared 4B-class performance.
+
+Every result separates MEASURED, DERIVED, PROJECTED, and UNVERIFIED.
 
 ## Strongest actual achievements
 
 MEASURED:
 
-- A portable mmap exact pointer VM with checksums, atomic build, deterministic replay, and bounded cache.
-- A bounded unmodified TinyLlama decision-index compiler replayed 72/72 checked tokens for its declared finite grammar.
-- An exact finite-horizon future-suffix DAG reduced 64 raw records to 38 nodes on the compiled traces.
+- exact/checksummed mmap pointer VM;
+- bounded unmodified TinyLlama decision-index compiler with 72/72 checked token replay inside its declared grammar;
+- exact future-suffix DAG compressed 64 bounded trace records to 38 nodes;
+- EXP-047 Phase-B certificate passed 10 tests and 525 generated cases with zero wrong accepts, zero fallback mismatches, and zero independent-bound mismatches.
 
 DERIVED:
 
-- Constructed end-to-end Llama-style decision families require more than 8 GiB of complete resident decision metadata.
-- An explicit pointer-table family can force near-one serial host probe per token while requiring only a few logical bytes per probe.
+- constructed Llama-style complete decision metadata can exceed 8 GiB;
+- explicit pointer families can force serial host probes without forcing large logical bytes/token;
+- simple Q4 traffic comparison requires a 405B evaluated-weight fraction near 1.185% before selector/fallback overhead to fit 1.2x a 4B Q4 stream.
 
-These achievements are **auxiliary**. They do not solve unseen-prompt Transformer operation skipping.
+The mmap/index/DAG achievements remain auxiliary. They do not solve unseen-prompt Transformer operation skipping.
+
+## EXP-047 authoritative result
+
+Source branch: `research/governance-exp047-cptc`
+
+PR: `#56`
+
+Authoritative workflow: `30791851508`
+
+Authoritative source head recorded by the run: `d395d0eada15fd7ef9b09ce5ccb561a921bb6b7b`
+
+Raw evidence is committed under `results/exp_047/`.
+
+### MEASURED
+
+```text
+phase: A/B
+evidence: E1
+cases: 525
+certified: 4
+fallback: 521 = 99.238%
+wrong certified accepts: 0
+fallback/reference mismatches: 0
+independent-bound mismatches: 0
+adversarial cases: 15/15 exact fallback
+Phase D: NOT TESTED
+```
+
+Largest positive cancellation control:
+
+```text
+population tiles: 1,024
+sampled before certificate: 107
+sample fraction: 10.449%
+decision agreement: pass
+```
+
+General synthetic scaling:
+
+```text
+N=64/128/256: 100% fallback, 100% tiles evaluated
+N=512: mean evaluated fraction 98.519%
+N=1024: mean evaluated fraction 98.294%
+```
+
+Python optimized-path time was roughly 8.8–9.1x the simple full-sum reference in the measured buckets. This is implementation/CPU evidence only, not accelerator projection.
+
+### PROJECTED
+
+```text
+405B Q4 full stream: 188.593 GiB
+4B Q4 full stream: 1.863 GiB
+1.2x allowance: 2.235 GiB/token
+required target fraction before overhead: 1.185%
+positive-control fraction / target fraction: 8.817x
+```
+
+### Scientific decision
+
+- **ACCEPT E1 correctness primitive:** the alpha-spending Serfling implementation, independent check, causal sampling, and exact fallback passed the committed Phase-B Gate.
+- **REVISE core architecture:** global-range CPTC-v1 certified only 4/525 cases and evaluated about 98% of tiles overall. It is not approved for Phase-C performance promotion.
+- **NOT TESTED:** sound bounds derived from real checkpoint weights/activations, real operation replacement, held-out prompts, 70B/405B trend, GPU selector cost, 8 GiB execution, PCIe/SSD, TTFT, or tokens/second.
+
+Required wording:
+
+> Phase B, E1: the finite-population certificate and exact fallback were correct on the committed synthetic corpus. The current global-range form did not provide a useful general skip rate; real-model and target-hardware performance remain unverified.
 
 ## Primary unresolved bottleneck
 
-Find a causal, verifiable execution principle that avoids reading or applying most 405B weights on an unseen prompt while preserving the original model's decision contract and providing a safe exact fallback.
-
-Every core experiment must answer:
-
-1. which original operations are skipped or replaced;
-2. how the skip is decided without future tokens;
-3. decision cost;
-4. wrong-skip detection;
-5. fallback path;
-6. worst-case correctness;
-7. scaling behavior;
-8. reason a next token can be decided without reading all weights;
-9. RAM/SSD/VRAM movement;
-10. 405B minimum bandwidth and compute;
-11. distance from the 4B target;
-12. strongest falsification test.
-
-## Current core hypothesis
-
-**EXP-047 — Causal Probabilistic Tile Certificate (CPTC).**
-
-Partition a linear operator into input-dimension tiles. Evaluate tiles in a causal randomized order. Use finite-population/martingale confidence bounds to certify that omitted tile contributions cannot change a declared decision. If the certificate fails, evaluate all remaining tiles and return the exact baseline result.
-
-The first Gate is Phase A/B only. It must determine whether statistically exploiting cancellation can beat previously failed worst-case residual bounds without ever silently returning an uncertified result.
+Find a causal and verifiable way to bound decision-relevant omitted weight-tile contributions tightly enough to approach an average evaluated fraction near 1.185%, while charging selector metadata and exact fallback.
 
 ## Verified claims
 
-- Current environment cannot perform Phase D measurements.
-- Existing mmap/DAG mechanisms are auxiliary replay/index structures, not a universal runtime.
-- Raw exact-prefix memoization showed linear node growth and zero held-out start coverage on the measured TinyLlama grammar.
-- Exact future-suffix sharing exists on bounded traces but requires a separate causal start mechanism.
+- Current environment cannot execute Phase D.
+- Existing replay/index work is auxiliary.
+- Raw prefix memoization did not generalize on measured TinyLlama grammar.
+- CPTC-v1 correctness/fallback implementation passed Phase B.
+- CPTC-v1 broad synthetic skip rate is currently insufficient.
 
 ## Refuted claims
 
-- Static low-rank/dictionary/factorized representations alone preserve useful autonomous model behavior under the target traffic envelope.
-- Raw prefix enumeration provides broad unseen-prompt generalization.
-- One small host probe per token alone proves the target impossible.
-- Synthetic or TinyLlama success constitutes 405B/8 GiB performance evidence.
+- Static compression/dictionary families alone close quality and traffic.
+- Raw prefix enumeration is a broad unseen-prompt runtime.
+- Total metadata equals per-token traffic.
+- One host probe/token alone proves latency failure.
+- The global `[-1,1]` range Serfling certificate is presently a useful primary executor.
+- Tiny/synthetic evidence proves 405B success.
 
 ## Unverified claims
 
-- CPTC can certify useful tile omission rates in real Transformer layers.
-- Probabilistic certification overhead remains below the savings.
-- Small-model certified skip rates persist or improve with model size.
-- Any current architecture can run a real 405B model in 8 GiB VRAM.
-- 4B-class TTFT or tokens/second can be achieved.
+- Real Transformer tile distributions permit useful causal certificates.
+- Checkpoint-derived stratified/tile-norm bounds are tight enough.
+- A probabilistic union budget remains usable model-wide.
+- Skip fractions persist or improve with model size.
+- Any current architecture reaches E6 or E7.
 
-## Active repository state
+## Current branch state
 
 - branch: `research/governance-exp047-cptc`
-- latest base main commit: `3f3ee348e8a72070b3e43cf7af56c078fc4d83c7`
-- active experiment: `EXP-047`
-- Phase D: `NOT TESTED`
+- PR: `#56` draft until final documentation and CI complete
+- active research: EXP-047 revision Gate
+- Phase D: NOT TESTED
 
-This file must be updated again before the branch is merged, with the actual head commit, PR, workflows, results, and exact reproduction command.
-
-## Reproduction entry points
+## Reproduction
 
 ```bash
 python -m pytest -q
 python scripts/run_validation.py
-bash experiments/exp_047/run_current_env.sh
+bash experiments/exp_047/reproduce.sh
 ```
 
-## Next session mandatory reading
+## Next-session mandatory reading
 
 1. `AGENTS.md`
-2. `RESEARCH_STATE.md`
+2. this file
 3. `FAILED_APPROACHES.md`
 4. `DECISION_LOG.md`
 5. `ASSUMPTION_REGISTER.md`
 6. `VALIDATION_MATRIX.md`
 7. `NEXT_EXPERIMENT.md`
 8. `docs/research/EXPERIMENT_047_CAUSAL_PROBABILISTIC_TILE_CERTIFICATE.md`
-9. latest workflow logs and `results/exp_047/summary.json`
+9. `results/exp_047/summary.json`
+10. PR #56 and workflow `30791851508` logs
