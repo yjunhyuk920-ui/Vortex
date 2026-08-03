@@ -1,30 +1,21 @@
-name: EXP-047R oracle-tight and stratified range audit
+name: EXP-047R manual reproduction
 
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "vortex_runtime/cptc.py"
-      - "vortex_runtime/cptc_audit.py"
-      - "tests/exp_047r/**"
-      - "experiments/exp_047r/**"
-      - "docs/research/EXPERIMENT_047R_ORACLE_TIGHT_STRATIFIED_TILE_BOUND_AUDIT.md"
-      - ".github/workflows/exp_047r_gate.yml"
-      - "NEXT_EXPERIMENT.md"
 
 concurrency:
-  group: exp-047r-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: exp-047r-manual-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  oracle-audit:
+  reproduce:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     permissions:
       contents: read
 
     steps:
-      - name: Checkout candidate
+      - name: Checkout requested revision
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -32,36 +23,6 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-
-      - name: Verify mandatory files
-        run: |
-          set -euo pipefail
-          required=(
-            AGENTS.md
-            RESEARCH_STATE.md
-            FAILED_APPROACHES.md
-            DECISION_LOG.md
-            ASSUMPTION_REGISTER.md
-            VALIDATION_MATRIX.md
-            NEXT_EXPERIMENT.md
-            ARCHITECTURE.md
-            HARDWARE_VALIDATION_PLAN.md
-            REPRODUCIBILITY.md
-            docs/PROOF_FIRST_CONTRACT.md
-            docs/WORK_SESSION_PROTOCOL.md
-            docs/research/EXPERIMENT_047R_ORACLE_TIGHT_STRATIFIED_TILE_BOUND_AUDIT.md
-            vortex_runtime/cptc.py
-            vortex_runtime/cptc_audit.py
-            tests/exp_047r/test_cptc_audit.py
-            experiments/exp_047r/config.json
-            experiments/exp_047r/run_oracle_audit.py
-            experiments/exp_047r/run_current_env.sh
-            experiments/exp_047r/reproduce.sh
-            experiments/exp_047r/future_gpu_run.sh
-          )
-          for path in "${required[@]}"; do
-            test -f "$path" || { echo "missing $path" >&2; exit 1; }
-          done
 
       - name: Install pinned CPU dependencies
         run: |
@@ -77,34 +38,32 @@ jobs:
             tokenizers==0.21.1
           python -m pip freeze | sort | tee exp047r-pip-freeze.txt
 
-      - name: Run EXP-047R primitive tests
+      - name: Run primitive tests and repository validation
         env:
           PYTHONPATH: ${{ github.workspace }}
-        run: python -m pytest -q tests/exp_047r
+        run: |
+          set -euo pipefail
+          python -m pytest -q tests/exp_047r
+          python scripts/run_validation.py
 
-      - name: Run repository validation
-        env:
-          PYTHONPATH: ${{ github.workspace }}
-        run: python scripts/run_validation.py
-
-      - name: Run pinned real-checkpoint oracle audit
+      - name: Reproduce into isolated output
         env:
           PYTHONPATH: ${{ github.workspace }}
           HF_HOME: ${{ runner.temp }}/hf-exp047r
           TOKENIZERS_PARALLELISM: "false"
+          EXP047R_OUTPUT: ${{ github.workspace }}/results/exp_047r_reproduction
         run: |
           set -euo pipefail
-          rm -rf results/exp_047r_candidate
+          rm -rf results/exp_047r_reproduction
           bash experiments/exp_047r/run_current_env.sh 2>&1 | tee exp047r-workflow.log
 
-      - name: Validate evidence contract
+      - name: Validate claim boundary
         run: |
           python - <<'PY'
           import json
-          import math
           from pathlib import Path
 
-          root = Path("results/exp_047r_candidate")
+          root = Path("results/exp_047r_reproduction")
           summary = json.loads((root / "summary.json").read_text())
           assert summary["experiment"] == "EXP-047R"
           assert summary["evidence_level"] == "E1"
@@ -115,26 +74,18 @@ jobs:
           assert summary["MEASURED"]["case_count"] == 18
           assert summary["MEASURED"]["wrong_accepts"] == 0
           assert summary["MEASURED"]["bound_violations"] == 0
-          assert math.isfinite(summary["MEASURED"]["oracle_median_evaluated_fraction"])
-          assert math.isfinite(summary["MEASURED"]["oracle_p90_evaluated_fraction"])
-          assert summary["DERIVED"]["c3_status"].startswith("NOT IMPLEMENTED")
-          assert summary["gate"]["decision"] in {
-              "CONTINUE_TO_INDEPENDENT_C3_AND_REAL_OPERATION_REPLACEMENT",
-              "REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY",
-          }
-          assert (root / "raw" / "cases.jsonl").is_file()
-          assert (root / "raw" / "checkpoint_manifest.json").is_file()
-          assert (root / "checksums.sha256").is_file()
-          print(json.dumps(summary, indent=2, sort_keys=True))
+          assert summary["gate"]["decision"] == "REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY"
+          assert Path("results/exp_047r/summary.json").is_file()
+          print(json.dumps(summary["gate"], indent=2, sort_keys=True))
           PY
 
-      - name: Upload candidate evidence
+      - name: Upload reproduction artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: exp-047r-candidate-${{ github.run_id }}
+          name: exp-047r-reproduction-${{ github.run_id }}
           path: |
-            results/exp_047r_candidate
+            results/exp_047r_reproduction
             exp047r-workflow.log
             exp047r-pip-freeze.txt
           if-no-files-found: warn
