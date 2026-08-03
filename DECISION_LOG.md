@@ -1,6 +1,6 @@
 # VORTEX Decision Log
 
-Append-only decisions; authoritative run identity is read from committed result JSON when available.
+Append-only decisions. Authoritative run identities are read from committed result JSON.
 
 ## D-001 — Final target fixed
 
@@ -10,7 +10,7 @@ Status: ACTIVE.
 
 ## D-002 — Current environment is not Phase D
 
-GitHub Actions CPU cannot be labeled target GPU, 405B, CUDA, PCIe, SSD, TTFT, tokens/second, or peak-VRAM evidence.
+GitHub Actions CPU cannot be labeled target GPU, 405B, CUDA, PCIe, SSD, TTFT, tokens/second, power, or peak-VRAM evidence.
 
 Status: ACTIVE. Phase D NOT TESTED.
 
@@ -54,59 +54,39 @@ Status: EXECUTED.
 
 ## D-011 — EXP-047 correctness primitive accepted at E1
 
-Authoritative source `results/exp_047/summary.json` records workflow `30793232558`, source SHA `74ac92e9b1c8fffbc50a2322d9b36dd3c05f0d79`, 525 cases, zero wrong accepts, zero fallback/reference mismatch, zero independent-bound mismatch, and 15/15 adversarial exact fallbacks.
+`results/exp_047/summary.json` records workflow `30793232558`, 525 cases, zero wrong accepts, zero fallback/reference mismatch, zero independent-bound mismatch, and 15/15 adversarial exact fallbacks.
 
 Status: ACCEPTED E1 PRIMITIVE ONLY.
 
 ## D-012 — Global-range CPTC-v1 not promoted
 
-MEASURED: 4/525 certified, 99.238% fallback, N=1024 mean evaluated 98.294%, positive control 10.449%, Python reference path about 8.6–9.1x slower than full summation.
+MEASURED: 4/525 certified, 99.238% fallback, N=1024 mean evaluated 98.294%, positive control 10.449%, Python reference about 8.6–9.1x full summation.
 
-PROJECTED: required target fraction before overhead 1.185%; positive control remained 8.817x above it.
+PROJECTED: required target fraction 1.185%; positive control remained 8.817x above it.
 
 Status: REVISE.
 
 ## D-013 — Oracle-tight/stratified audit required before further CPTC backend work
 
-Status at registration: ACTIVE NEXT GATE.
+Status at registration: EXECUTED BY EXP-047R.
 
 ## D-014 — Freeze completed experiment measurements
 
-Completed experiment workflows must not silently overwrite frozen evidence. Reproduction writes to isolated output.
+Completed workflows must not silently overwrite frozen evidence. Reproduction writes to isolated output.
 
 Status: ACTIVE REPRODUCIBILITY RULE.
 
 ## D-015 — EXP-047R completed with valid E1 evidence
 
-Authoritative source:
+Authority: `results/exp_047r/summary.json`, workflow `30795946233`, artifact `8848886335`.
 
-```text
-results/exp_047r/summary.json
-workflow 30795946233
-source head SHA 0beb068e9679c9f4d51d1b210b0eee7fbc325214
-artifact 8848886335
-artifact SHA-256 6c9a4fdca80d29964eca02d16f8b36f5ca8e211653f6fb9ddfe548a729c6e12d
-```
-
-MEASURED:
-
-```text
-3 pinned trained dense checkpoints
-18 held-out current-token states
-wrong accepts 0
-bound violations 0
-C1 exact-state oracle median 100%
-C1 exact-state oracle p90 100%
-C2 median 100%
-C2 p90 100%
-C2 best 99.21875%
-```
+MEASURED: three pinned checkpoints, 18 states, zero wrong accepts/bound violations, C1 oracle median/p90 100%, C2 median/p90 100%, C2 best 99.21875%.
 
 Status: EXECUTED, E1.
 
 ## D-016 — Range-based CPTC rejected as core
 
-The pre-registered C1 oracle threshold was median <=10% and p90 <=25%. The exact realized min/max oracle evaluated 100% at both median and p90. Because C1 is more favorable than any deployable state range, further C2 metadata tuning or C3 variance adaptation cannot rescue the declared range-only core mechanism without changing mechanism class.
+The exact realized min/max oracle evaluated 100% at median and p90 versus pre-registered limits 10%/25%. Further range metadata or C3 variance adaptation cannot rescue the declared mechanism without changing class.
 
 Decision:
 
@@ -114,75 +94,33 @@ Decision:
 REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY
 ```
 
-The certificate/fallback primitive remains auxiliary. C3 is not implemented as a continuation of EXP-047R.
-
 Status: REJECTED AS CORE; AUXILIARY PRIMITIVE RETAINED.
 
-## D-017 — Next core Gate changes from weight skipping to block amortization
+## D-017 — Next core Gate changed from weight skipping to block amortization
 
-EXP-048 will test whether one exact full-target weight stream can be amortized across a long causally proposed token block using training-free partial-layer self-speculation and exact prefix verification.
-
-A zero-cost perfect proposal still requires at least 85 accepted tokens per full target pass to meet the projected 1.185% target-equivalent stream fraction. Future-token oracle proposals are upper-bound controls only and never deployable evidence.
+A zero-cost perfect proposal requires at least 85 exact tokens/full target pass to meet the projected 1.185% target-equivalent fraction.
 
 Status: EXECUTED BY EXP-048.
 
 ## D-018 — EXP-048 exact block verifier accepted at E1
 
-Authoritative source:
+Authority: `results/exp_048/summary.json`, workflow `30798936320`, artifact `8850040445`, ZIP SHA-256 `67c1e6d8965f7535020ecd4c02bb8a2af1156a234564f3cdf74d10c882fd7eb9`.
 
-```text
-results/exp_048/summary.json
-workflow 30798936320
-source head SHA 484a1f0f313d88733d2f7210f2a24d3904bf1373
-workflow merge SHA d60e392d66d694fc020f2cfe2435e47e5f5a22ca
-artifact 8850040445
-artifact SHA-256 67c1e6d8965f7535020ecd4c02bb8a2af1156a234564f3cdf74d10c882fd7eb9
-```
-
-The longest-matching-prefix plus first-mismatch correction verifier preserved exact greedy output in model-independent tests and all committed small-checkpoint cases. Predictions after the first mismatch were never committed.
+The longest-prefix plus first-mismatch correction verifier preserved exact greedy output in reference tests and committed cases. Predictions after first mismatch were never committed.
 
 Status: ACCEPTED E1 AUXILIARY PRIMITIVE.
 
-## D-019 — Perfect block proposal proves verifier arithmetic is sufficient but is non-deployable
+## D-019 — Perfect block proposal proves arithmetic only
 
-B1 used the exact future 96-token continuation and one exact target block pass.
-
-MEASURED:
-
-```text
-18/18 exact
-96 committed tokens per target pass
-target-equivalent stream fraction 1.0416667%
-future information used true
-deployable false
-```
-
-PROJECTED target fraction was 1.185185%. B1 crossed that arithmetic threshold, but it is an oracle upper bound and never runtime evidence.
+B1: 96 future-aware exact tokens/one target pass, fraction 1.0416667%, exact 18/18, deployable false.
 
 Status: ACCEPTED NON-DEPLOYABLE UPPER BOUND ONLY.
 
 ## D-020 — Hard Jacobi and partial-layer self-draft rejected as core
 
-B2 hard Jacobi:
+B2 hard Jacobi p50 58 target passes/32 exact tokens, p50 181.25%, p90 193.75%.
 
-```text
-p50 58 target passes for 32 exact tokens
-p50 target-equivalent fraction 181.25%
-p90 193.75%
-maximum matching prefix 3
-```
-
-B3 causal early-layer self-draft:
-
-```text
-18 cases, 54 fixed variants
-exact mismatches 0
-future information uses 0
-p50 committed tokens per target verification 1
-maximum matching prefix 1
-minimum fully accounted fraction 1333.463%
-p90 fully accounted fraction 2893.843%
-```
+B3 partial-layer self-draft p50 committed tokens 1, maximum matching prefix 1, minimum accounted fraction 1333.463%, p90 2893.843%.
 
 Decision:
 
@@ -190,14 +128,99 @@ Decision:
 REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER
 ```
 
-The B4 proposal tree is not continued from a B3 mechanism that failed its mandatory early Gate.
-
 Status: B2/B3 REJECTED AS CORE; VERIFIER RETAINED.
 
-## D-021 — Next Gate removes the sequential draft loop
+## D-021 — Next Gate removed the sequential draft loop
 
-EXP-049 will test continuous soft-token block fixed points using damped Picard and bounded Anderson acceleration. It will execute a small number of full target block passes, harden the state, and use the retained exact verifier.
+EXP-049 tested continuous soft-token block states, damped Picard, bounded Anderson acceleration, exact hardening/verification, and an adversarial triangular dependency audit.
 
-A separate adversarial lower-bound audit will test whether arbitrary causal models impose a worst-case one-new-exact-position-per-target-round barrier. Any universal acceleration claim must survive that proof obligation.
+Status: EXECUTED BY EXP-049.
 
-Status: ACTIVE NEXT GATE.
+## D-022 — EXP-049 reference solvers and lower-bound harness accepted at E1
+
+Authority:
+
+```text
+results/exp_049/summary.json
+workflow 30803672059
+source head SHA 91d0caa86d784c663bc520d36d9b512f0cc526e9
+workflow merge SHA 173dd3477e2a6f5ecb0d55b58375ec18dfe774dd
+artifact 8851957250
+artifact ZIP SHA-256 4cd6c8c4afb833562438a97f052d45d331f3691362472fb08e594bd0c5585b9e
+```
+
+MEASURED correctness/safety:
+
+```text
+9 EXP-049 tests passed
+repository validation passed
+18 checkpoint cases
+selected exact mismatches 0
+selected future-information uses 0
+unhandled numerical failures 0
+S3 alignment failures 0
+```
+
+Status: PICARD/ANDERSON REFERENCE AND FAIL-CLOSED NUMERICAL MACHINERY ACCEPTED E1 AUXILIARY.
+
+## D-023 — Target-only continuous fixed-point generation rejected as core
+
+EXP-049 allowed the exact reference to select the best pre-registered S1/S2 variant, block size, and pass count per case.
+
+MEASURED:
+
+```text
+oracle-best p50 exact proposal prefix 4.5
+oracle-best maximum prefix 6
+oracle-best p90 target-equivalent fraction 168.778596%
+S0 hard Jacobi p50 prefix after four passes 4
+S2 Anderson p50 prefix after four passes 1
+S2/S0 improvement 0.25x
+model medians 4.5 / 5.0 / 4.0
+```
+
+The favorable selector failed the 16-token and 10% early thresholds.
+
+Status: PERFORMANCE GATE FAILED.
+
+## D-024 — Hidden triangular target-round barrier accepted within declared interface
+
+Two adversarial causal chains recorded Picard prefixes `1,2,3,4` and Anderson prefixes `1,2,3,3`. Two targets with different hidden suffixes produced indistinguishable suffix transcripts before predecessor resolution.
+
+Claim scope:
+
+- one synchronous black-box causal target block evaluation per round;
+- exact prefix, fixed initialization, all prior states/outputs, and arbitrary continuous/Anderson arithmetic allowed;
+- no external future information.
+
+Within this scope, a solver cannot universally guarantee more than one newly resolved exact token per target round for every arbitrary causal target.
+
+Status: ACCEPTED E1 ADVERSARIAL LOWER-BOUND CONSTRUCTION; NOT A CLAIM ABOUT EVERY AVERAGE CHECKPOINT PROMPT.
+
+## D-025 — EXP-049 core decision
+
+Decision:
+
+```text
+REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY
+```
+
+Exactness, causality, numerical safety, and model-size trend passed. Prefix, traffic, Anderson-improvement, and universal-barrier Gates failed.
+
+Status: REJECTED AS CORE.
+
+## D-026 — Next Gate imports target-independent external advice
+
+EXP-050 will use other already published, unmodified checkpoints as causal draft models and retain exact block verification. It will charge one complete draft stream per proposed token and one target verification stream per block.
+
+Universal boundary: a target-independent draft can be contradicted at the first token by an arbitrary target. Practical fixed-pool evidence is therefore separate from the universal claim.
+
+PROJECTED 4B-draft/405B-target arithmetic:
+
+```text
+draft cost per token = 4/405 target streams
+required total fraction = 0.01185185185
+minimum completely correct proposal length after draft cost = 507 tokens
+```
+
+Status: ACTIVE NEXT GATE — EXP-050.
