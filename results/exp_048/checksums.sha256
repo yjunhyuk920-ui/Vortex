@@ -1,0 +1,8 @@
+# Byte-identical durable files and lossless raw-case transport.
+# Exact original workflow artifact ZIP SHA-256:
+# 67c587da36b968f9c38e0a7774ea03cecd2ad2d7d274d3e83c833c56529c3443
+5a77871235c232fd7eebdbb55c591588b1ea80b1b23c0ecf03bc40e2b04530f9  artifacts/contract.txt
+b5a1ec3fe3205b9fb24d907fd8913d115c8e2ce03992c5635cdd610d399705bb  artifacts/pip_freeze.txt
+fd43394e8f9343c75fbb1c250aa8ad2d244c4cce7e81ac34de97e382d9cd1bfc  logs/run.log
+8158e33a541f8f6395fc8ad754ae45d4139c01aecb52fb3f9dbef57c5fdd402d  processed/aggregate.json
+37ce8554f99082fc19681081364e113619ca67b6ab6c72c0b4c0775568aad519  raw/cases.jsonl.gz.b64
