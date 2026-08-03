@@ -335,3 +335,8 @@ Authority: workflow `30840432745`, artifact `8866573958`, ZIP SHA-256 `61d0c24cc
 ## EXP-060 closed — Exact Q4 zero-sparsity streaming
 
 Authority: workflow `30841671707`, artifact `8867145590`, ZIP SHA-256 `5e5255dbedd779b734876faa027cd2bf5e4a1b00ece7f28cbf35f428fb9a0b05`. The 144 real-Q4 dense projections had p50/p90 exact zero fractions 17.76%/20.37%. Exact sparse execution retained p50/p90 82.22%/85.06% operations and 150.93%/200.86% query bytes. Decision: `REJECT_REAL_Q4_EXACT_ZERO_SPARSITY_STREAMING_AS_CORE_RETAIN_SPARSE_AUXILIARY`. Q4 output preservation, physical sparse kernels, 405B, 8 GiB, and target hardware remain NOT TESTED. Current frontier: EXP-061 causal exact activation sparsity.
+
+<!-- EXP-061-AUTHORITATIVE-FINAL -->
+## EXP-061 closed — Causal exact activation sparsity
+
+Authority: workflow `30843404056`, artifact `8867731496`, ZIP SHA-256 `a01d31b012badd7d06087df576279b852db07813a0c7fb50d65c3a7283e9ca65`. Hooked and unhooked generation matched for all 1,152 tokens. Exact zero count was 0 over 56,448 projection calls; warm-decode p50/p90 fully accounted work was 100.002%/100.391% and bytes 100.004%/101.566%. Decision: `REJECT_CAUSAL_EXACT_ACTIVATION_SPARSITY_AS_CORE_RETAIN_RUNTIME_SPARSE_AUXILIARY`. Physical sparse kernels, 405B activation statistics, 405B, 8 GiB, and target hardware remain NOT TESTED. Current frontier: EXP-062 exact non-mask attention-probability sparsity.

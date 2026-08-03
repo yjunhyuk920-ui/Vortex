@@ -164,3 +164,8 @@ No transform kernel was promoted because favorable query work already equals den
 ## EXP-060 hardware status
 
 No sparse GPU kernel was promoted because logical work remained above 69% even for the best matrix and metadata exceeded dense Q4 bytes. CUDA sparse kernels, PCIe, SSD, TTFT, tokens/sec, power, and 8 GiB residency remain NOT TESTED.
+
+<!-- EXP-061-AUTHORITATIVE-FINAL -->
+## EXP-061 hardware status
+
+No activation-sparse kernel was promoted because exact-zero density was zero and logical accounting exceeded dense execution. CUDA sparse projection kernels, PCIe, SSD, TTFT, tokens/sec, power, 405B activation statistics, and 8 GiB residency remain NOT TESTED.

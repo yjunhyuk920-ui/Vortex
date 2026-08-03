@@ -1,0 +1,5 @@
+{"control": "all_zero_vector", "fully_accounted_operation_fraction": 0.015625, "passed": true, "sparse_operation_fraction": 0.0}
+{"control": "relu_exact_zeros", "passed": true}
+{"control": "gelu_no_false_zeros", "passed": true}
+{"control": "positive_negative_zero", "passed": true}
+{"control": "zero_skipped_dot", "passed": true}

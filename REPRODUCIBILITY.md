@@ -214,3 +214,8 @@ Workflow `30840432745`; source head `cdae6160cd87b537e2f318c16430619736c7c9d9`; 
 ## EXP-060 authority
 
 Workflow `30841671707`; source head `bf89d087343a4790202126c34562ca0344ebe452`; workflow merge `5f2af394180beaf3e5b5b8c7386d2becdf7eb8e7`; artifact `8867145590` (58039 bytes); ZIP SHA-256 `5e5255dbedd779b734876faa027cd2bf5e4a1b00ece7f28cbf35f428fb9a0b05`; config SHA-256 `82254fd1177bcce6b788199ed92bbc122d97f04783f0bc02d056c090ba043a29`. Reproduce with `experiments/exp_060/reproduce.sh` and verify `results/exp_060/checksums.sha256`.
+
+<!-- EXP-061-AUTHORITATIVE-FINAL -->
+## EXP-061 authority
+
+Workflow `30843404056`; source head `15097a9b0323aa992679214173aaac0e7a98821c`; workflow merge `44c3d6691d78714dc975e46e19bb8fdfe97a22cf`; artifact `8867731496` (662994 bytes); ZIP SHA-256 `a01d31b012badd7d06087df576279b852db07813a0c7fb50d65c3a7283e9ca65`; config SHA-256 `b5635e3cd57dae39bc66c7939ef75ea7c79d6dab2a22d634c1441f0a9d930e82`. Reproduce with `experiments/exp_061/reproduce.sh` and verify `results/exp_061/checksums.sha256`.
