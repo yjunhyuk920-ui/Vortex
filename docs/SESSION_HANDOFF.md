@@ -41,27 +41,30 @@ PR #44  metadata-aware direct/operator top-1 bound        accepted/merged
 PR #46  end-to-end Llama final-token metadata bound       accepted/merged
 PR #48  host-indexed cell-probe Gate                      accepted/merged
 PR #50  mmap-backed host-indexed decision VM              accepted/merged
+PR #52  bounded TinyLlama decision-index compiler         implementation accepted; raw prefix scaling rejected
 ```
 
 Latest main merge:
 
 ```text
-PR #50 merge: a4a0e9b693184c9d5ea248822393998357df40db
+PR #52 merge: 657667095bd23271ba34e1b705aea587ba7e102e
 ```
 
-Authoritative Experiment 044 evidence:
+Authoritative Experiment 045 evidence:
 
 ```text
-branch: research/host-indexed-decision-vm
-head: 8f029dde63984a3cf24f9ec2e9629c9e060d9352
-certificate workflow: 30785924201
-Python 3.10/3.12 CI + validation: 30785924118
-raw JSON: results/host_indexed_decision_vm_gate.json
+branch: research/decision-index-compiler-gate
+head: 5fb32b30ceda3e362da7b6ee9ed2dee0c93231e5
+compiler workflow: 30786618783
+Python 3.10/3.12 CI + validation: 30786618729
+raw JSON: results/decision_index_compiler_gate.json
+manifest: results/decision_index_compiler_manifest.json
+VM artifact: decision_index_compiler_compact40.vtx
 ```
 
-## Accepted lower-bound path
+## Accepted representation and lookup path
 
-### Experiment 042
+### Experiment 042 — end-to-end final-token metadata bound
 
 An actual bias-free Llama-style family exposed signed Q4 coefficients through final next-token winners.
 
@@ -71,11 +74,9 @@ minimum winner margin: 0.24951063086132308
 projected complete final-decision metadata: 26.158586645498872 GiB
 ```
 
-This closed an all-resident 8 GiB exact-decision representation for the constructed family, but not sparse host lookup.
+This closed an all-resident 8 GiB exact-decision representation for the constructed family, not sparse host lookup.
 
-### Experiment 043
-
-An explicit pointer-table representation proved:
+### Experiment 043 — explicit host cell probes
 
 ```text
 serial host misses: at least 249 / 256 tokens
@@ -84,181 +85,167 @@ explicit pointer host storage: 261.5858664549887 GiB
 nonrepresentative packed CPU median: 224.27377 ns/probe
 ```
 
-Decision: one serial host probe/token does not itself prove target failure. Advance to a constructive host VM.
+Decision: one serial host probe/token does not itself prove target failure.
 
-## Accepted Experiment 044 result
+### Experiment 044 — mmap exact-decision VM
 
-### Binary format and atomic builder
-
-The VM implements:
+Implemented compact40/aligned64 files, atomic build, checksums, strict mmap reading, exact pointer replay, LRU caching, and access benchmarks.
 
 ```text
-64-byte versioned header
-compact40 5-byte records
-aligned64 8-byte records
-Q4 value + exact next-address semantics
-payload CRC32 and header CRC32
-unique temporary build file
-file fsync
-atomic destination replace
-parent-directory fsync attempt
+compact40 dependent p50 / p99: 1,473 / 1,806.5 ns
+aligned64 dependent p50 / p99: 1,502 / 1,833.45 ns
+compact40 storage saving: about 37.4%
+second 256-token replay: 256 cache hits / 0 mmap reads
 ```
 
-Tests verify that a failed rebuild preserves an older valid destination and removes the temporary file.
+Compact40 is the v1 default. CI timing is not target evidence.
 
-### Reader and integrity
+## Accepted Experiment 045 implementation
 
-The mmap reader rejects:
+### Finite grammar
 
 ```text
-bad magic
-unsupported or inconsistent format
-truncation or trailing bytes
-bad header checksum
-bad payload checksum
-out-of-range starts
-out-of-range pointers
+model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+training or fine-tuning: none
+symbols: A, B, C
+counts: 8, 12
+templates: 2
+full grammar combinations: 12
+compiled A/B combinations: 8
+held-out C combinations: 4
+duplicate exact prompt control: 1
+horizons: 2, 4, 8
 ```
 
-Exact replay matches the source pointer table. A 256-record LRU cache changes a repeated 256-token chain from 256 misses/256 mmap reads to 256 hits/0 mmap reads.
-
-### Nonrepresentative CI benchmark
-
-Workload:
+The sound v1 state key was:
 
 ```text
-records: 262,144
-chains: 1,024
-steps/chain: 256
-address samples/format: 20,000
+exact chat prompt token IDs || boundary marker || exact generated prefix IDs
 ```
 
-Files:
+No hidden-state similarity, semantic routing, or approximate merge was used.
+
+### Build accounting
 
 ```text
-compact40: 1,318,976 bytes
-aligned64: 2,105,408 bytes
-compact saving: about 37.4%
+compiled model forward calls: 64
+held-out ground-truth forward calls: 32
+duplicate-control forward calls: 0
+trace collection: 25.302875082 seconds on CI CPU
+graph build: 1.073571 ms
+compact40 export: 2.263952 ms
+VM file: 456 bytes
+manifest: 1,491 bytes
 ```
 
-Dependent reads:
+The compiled continuations contained nine distinct TinyLlama token IDs, fitting the sixteen-entry compact40 codebook.
+
+### Exact replay
 
 ```text
-compact40 p50 / p99: 1,473 ns / 1,806.5 ns
-aligned64 p50 / p99: 1,502 ns / 1,833.45 ns
+graph nodes: 64
+VM starts: 9
+compiled and duplicate paths: 9
+exact paths without model: 9 / 9
+exact tokens: 72 / 72
+mmap record reads: 72
 ```
 
-Warm cached replay:
+The duplicate control shared the same start address as its source and reused every 2/4/8-node path at the corresponding horizon.
+
+## Rejected Experiment 045 scaling mechanism
+
+Excluding the intentional duplicate:
 
 ```text
-compact40: 535.140625 ns/token
-aligned64: 468.16796875 ns/token
+horizon 2: 16 path records, 16 unique nodes, 0% reuse
+horizon 4: 32 path records, 32 unique nodes, 0% reuse
+horizon 8: 64 path records, 64 unique nodes, 0% reuse
 ```
 
-A single compact first-replay sample was 22.56 µs/token versus 2.07 µs/token aligned. OS cache state was not controlled, so this outlier is not a format or target-hardware conclusion.
-
-Decision: compact40 is the default v1 format because dependent mmap latency was effectively equal while storage was substantially smaller. Keep aligned64 as an alignment diagnostic.
-
-### Target host-storage projection
+Held-out C combinations:
 
 ```text
-records: 56,175,137,076
-starts: 219,434,129
-compact40 records: 261.5858664549887 GiB
-aligned64 records: 418.53738632798195 GiB
-start table: 1.6349116638302803 GiB
-compact40 total: 263.22077817842364 GiB
-aligned64 total: 420.1722980514169 GiB
+state denominator: 32
+compiled hits: 0
+fallback tokens: 32
+coverage: 0%
+first miss: position 0 on all four prompts
 ```
 
-Timing was not projected to those sizes.
+Decision:
+
+> Accept the bounded real-checkpoint compiler and VM integration. Reject full-token-prefix identity as a broad execution mechanism. It is exact memoization with linear state growth and no held-out compositional coverage.
+
+The principal build cost was original-model transition generation, not graph construction or VM lookup.
 
 ## Critical scope boundary
 
 ```text
-portable mmap exact pointer VM: proven
-atomicity and corruption handling: proven
-exact replay and cache accounting: proven
-CI timing target representative: false
-pinned-memory/GPU lookup bridge: absent
-released-model decision-index compiler: absent
-real 405B execution: absent
-physical runtime target: unsolved
+bounded grammar completeness: proven
+compiled replay without model: proven
+exact duplicate reuse: proven
+nontrivial reuse among distinct prompts: absent
+held-out grammar generalization: absent
+arbitrary prompt coverage: not proven
+405B index construction: not performed
+GPU integration and target wall clock: not proven
 ```
 
-The VM proves the representation is executable. It does not prove that arbitrary model behavior can be compiled into a finite decision index without enumerating an intractable context space.
+Do not report bounded grammar coverage as universal coverage or duplicate prompt reuse as semantic generalization.
 
 ## Current classification
 
 ```text
 all-resident exact-decision metadata: contradicted for constructed family
-host-indexed pointer representation: implemented on CPU mmap
-lookup mechanism: functionally viable
-real model decision-index construction: unsolved
-GPU integration: unsolved
+host-indexed VM: implemented and exact for explicit records
+bounded real-model index compiler: implemented
+raw exact-prefix state space: linear on measured grammar/horizon
+held-out start routing: 0% coverage
+sound behavior quotient and general start router: unsolved
 405B/8 GiB/quality/wall-clock target: unsolved
 ```
 
-## Prohibited overclaims
+## Prohibited repeats and overclaims
 
 Do not:
 
-- project CI nanoseconds to target hardware or 263 GiB files;
-- treat mmap VM success as a model compiler;
-- claim released model quality preservation;
-- treat one deterministic pointer chain as arbitrary language-model behavior;
-- hide decision-index build time or coverage;
-- claim final success without real checkpoint and hardware evidence.
+- scale raw prefix enumeration and call it a universal compiler;
+- merge approximate hidden states without a sound exact-decision certificate;
+- treat the 456-byte bounded VM as evidence for arbitrary prompts;
+- omit the 64 original-model calls needed for compiled transitions;
+- project TinyLlama CI build time to 405B;
+- claim model quality or hardware success outside the grammar.
 
-## Current frontier — Experiment 045 Decision-Index Compiler Gate
+## Current frontier — Experiment 046 Exact Future-Behavior DAG Quotient
 
-The bottleneck has moved from lookup to construction.
+Experiment 045 showed that exact state identity does not deduplicate distinct prompt paths. The next Gate separates graph-body compressibility from the start-router barrier.
 
-The next Gate asks:
+### Candidate
 
-> Can an exact or certifiably safe host decision index be generated automatically from an unmodified Hugging Face checkpoint without enumerating the entire token-context state space?
-
-### First candidate
-
-Compile a bounded exact decision graph from a real TinyLlama checkpoint:
+Given exact compiled continuations, build the minimal deterministic acyclic decision graph by interning nodes backward on:
 
 ```text
-node key: exact token-prefix identity or exact KV/state fingerprint
-record: next token + successor node
-build source: original checkpoint execution only
-training: none
+node_signature = (exact next token ID, exact successor node address)
 ```
 
-Use a declared finite prompt grammar and horizon to make completeness measurable. The compiler must report:
+Two compiled states merge only when their complete remaining exact token suffixes are identical. This is a sound finite-horizon behavioral quotient and requires no approximate state assumption.
 
-```text
-possible input prefixes
-visited unique states
-exact records generated
-build model calls
-duplicate-state reuse
-file bytes
-build time
-coverage
-held-out grammar paths
-fallback frequency
-```
+### Required Experiment 046 work
 
-### Required Experiment 045 sequence
-
-1. Create `research/decision-index-compiler-gate`.
-2. Add `docs/EXPERIMENT_045_DECISION_INDEX_COMPILER_GATE.md`.
-3. Define a finite prompt grammar and exact completeness denominator.
-4. Compile exact greedy transitions from TinyLlama without training.
-5. Deduplicate only when exact state/token behavior is proven identical.
-6. Export records into the Experiment 044 compact40 VM.
-7. Replay every compiled path without the model and require exact tokens.
-8. Evaluate held-out grammar compositions and count fallback model calls.
-9. Charge build calls, build time, index bytes, coverage, and fallback.
-10. Reject any claim of universality outside the declared grammar/horizon.
-11. Decide whether compilation growth is sublinear enough to justify a broader adaptive compiler.
+1. Create `research/exact-future-behavior-dag` from updated `main`.
+2. Add `docs/EXPERIMENT_046_EXACT_FUTURE_BEHAVIOR_DAG.md`.
+3. Consume authoritative Experiment 045 traces without new model calls for the first Gate.
+4. Build minimal suffix DAGs at horizons 2, 4, and 8.
+5. Compare raw prefix nodes, quotient nodes, start entries, VM bytes, and exact replay.
+6. Keep each prompt's start address explicit; do not hide start-router storage.
+7. Evaluate held-out prompts separately: a compressed graph body does not supply a sound start address.
+8. Report how much compression comes from identical future strings, exact duplicate prompts, repeated single tokens, and terminal suffixes.
+9. Export the quotient to compact40 and replay all compiled paths exactly.
+10. Decide whether graph-body compression is meaningful enough to pursue a certified start router.
+11. If body compression is high but held-out routing remains zero, identify the start-router/generalization barrier as the primary blocker.
 12. Commit tests, workflow, raw JSON, PR decision, ledger, and handoff.
 
 ## Correct communication
 
-> Experiment 044 produced a functioning mmap-backed exact pointer VM. On a nonrepresentative CI CPU, compact40 and aligned64 dependent reads were both about 1.5 µs median, while compact40 used 37.4% less storage. This proves lookup is implementable, not that arbitrary model decisions can be compiled. The next Gate compiles a bounded exact decision graph from a real unmodified TinyLlama checkpoint, measures complete grammar coverage and fallback, and exports it to the VM.
+> Experiment 045 successfully compiled eight TinyLlama grammar paths into compact40 and replayed all 72 checked tokens without the model. However, distinct prompts produced 64 path records and 64 unique exact-prefix nodes, while all four held-out compositions missed at position zero. The bounded compiler is real, but raw prefix memoization does not scale. Experiment 046 now tests the strongest sound finite-horizon graph quotient—merging only states with identical complete future decision suffixes—and isolates the unresolved start-router barrier.
