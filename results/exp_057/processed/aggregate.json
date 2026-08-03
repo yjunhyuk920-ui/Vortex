@@ -1,0 +1,116 @@
+{
+  "DERIVED": {
+    "byte_gate_pass": false,
+    "candidate_search_scope": "deterministic exact candidates capped at 32 unique columns; a failure is conservative, while a pass would require stronger search",
+    "compile_amortization_gate_pass": true,
+    "control_gate_pass": true,
+    "decision": "REJECT_REAL_WEIGHT_EXACT_GROUPING_DICTIONARY_AS_CORE_RETAIN_MEASURED_AUXILIARY_ONLY",
+    "model_size_trend_gate_pass": true,
+    "operation_gate_pass": false,
+    "primary_gate_population": "all named dense_projection 2-D tensors under deterministic per-output-row Q4; embeddings and output heads are reported but excluded from the dense-operation percentile",
+    "real_weight_structure_survives_gate": false,
+    "reconstruction_gate_pass": true,
+    "registration_gate_pass": true,
+    "storage_gate_pass": true
+  },
+  "MEASURED": {
+    "analysed_2d_parameter_count": 54205312,
+    "analysed_2d_tensor_count": 153,
+    "control_failures": 0,
+    "control_row_count": 3,
+    "dense_projection_matrices_with_exact_repeated_or_sign_columns": {
+      "fp32_exact_bits": 0,
+      "q4_row_symmetric": 0,
+      "q8_row_symmetric": 0
+    },
+    "elapsed_ns": 21840798551,
+    "infinite_amortization_matrix_count": 0,
+    "maximum_dense_projection_exact_repeated_coverage_fraction": {
+      "fp32_exact_bits": 0.0,
+      "q4_row_symmetric": 0.0,
+      "q8_row_symmetric": 0.0
+    },
+    "maximum_projected_405b_q4_storage_bytes": 1022579269409.1797,
+    "maximum_projected_405b_q4_storage_tib": 0.9300304276704807,
+    "maximum_required_compile_amortization_queries": 377.0,
+    "model_count": 3,
+    "peak_rss_kib": 963180,
+    "q4_dense_projection_matrix_count": 144,
+    "q4_dense_projection_median_residual_scalar_fraction": 0.8140869140625,
+    "q4_dense_projection_minimum_operation_fraction": 0.7028656005859375,
+    "q4_dense_projection_minimum_operation_model": "roneneldan/TinyStories-8M",
+    "q4_dense_projection_minimum_operation_tensor": "transformer.h.2.attn.attention.k_proj.weight",
+    "q4_dense_projection_model_p50_operation_fraction": {
+      "roneneldan/TinyStories-1M": 0.8515625,
+      "roneneldan/TinyStories-3M": 0.83148193359375,
+      "roneneldan/TinyStories-8M": 0.8134002685546875
+    },
+    "q4_dense_projection_p50_operation_fraction": 0.82891845703125,
+    "q4_dense_projection_p50_query_byte_fraction": 3.290243902439024,
+    "q4_dense_projection_p90_operation_fraction": 0.8583984375,
+    "q4_dense_projection_p90_query_byte_fraction": 4.906844947522577,
+    "q4_dense_projection_p90_residual_scalar_fraction": 0.84283447265625,
+    "q4_maximum_absolute_quantization_error": 0.07247672975063324,
+    "q4_median_mean_absolute_quantization_error": 0.002471283543854952,
+    "q4_model_size_degradation_fraction": 0.0,
+    "q4_selected_mechanism_distribution": {
+      "prototype_residual:frequency:k1": 82,
+      "prototype_residual:frequency:k2": 4,
+      "prototype_residual:greedy:k2": 42,
+      "prototype_residual:greedy:k4": 16
+    },
+    "q8_maximum_absolute_quantization_error": 0.004042699933052063,
+    "q8_median_mean_absolute_quantization_error": 0.0001369511883240193,
+    "quantization_clipped_value_count": 0,
+    "reconstruction_mismatches": 0,
+    "representation_row_count": 459,
+    "state_dict_tensor_count": 327,
+    "unregistered_2d_tensor_count": 0
+  },
+  "PROJECTED": {
+    "maximum_storage_bytes": 1099511627776,
+    "target_parameters": 405000000000,
+    "target_q4_bytes": 202500000000
+  },
+  "UNVERIFIED": [
+    "Q8/Q4 model output preservation",
+    "actual Transformer operation replacement",
+    "70B or 405B weight structure",
+    "405B execution",
+    "8 GiB total runtime state",
+    "physical kernel bytes and latency",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_REAL_WEIGHT_EXACT_GROUPING_DICTIONARY_AS_CORE_RETAIN_MEASURED_AUXILIARY_ONLY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "q4_output_preservation": "NOT TESTED",
+    "real_transformer_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-057",
+  "name": "pinned_real_checkpoint_weight_structure_extraction_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-observation"
+  ],
+  "provenance": {
+    "artifact_id": 8860450501,
+    "artifact_name": "exp-057-candidate-30824957941",
+    "artifact_size_bytes": 197667,
+    "artifact_zip_sha256": "7e2d91fb1af2d77c7cb87732557e8c42c22e23771264cfb000d29536d76172f0",
+    "config_sha256": "e99e13b3c912f1567d010c1c60fa0c8ade0b2350bd8ce6cacc49e244c4df334e",
+    "frozen_date": "2026-08-03",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "0c70c5547a68ce3db4a584ac32fb0cbf9873d861",
+    "source_head_sha": "cf9d7099dc11b22ce24ba6e096712d5da1bc3729",
+    "torch": "2.6.0+cpu",
+    "workflow_merge_sha": "0c70c5547a68ce3db4a584ac32fb0cbf9873d861",
+    "workflow_run": 30824957941
+  },
+  "real_transformer_operation_replacement": false
+}

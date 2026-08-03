@@ -1,82 +1,76 @@
 # Next Experiment
 
-## Closed Gate — EXP-056
+## Closed Gate — EXP-057
 
-Authority: `results/exp_056/summary.json`; workflow `30823042599`; source head `73655fc216340d9bd1d452d779951c28ac1b3d3b`; artifact `8859665874`; ZIP SHA-256 `9fa7816c124069590aadf6746923b4ca1103800b333c110c30a74c3fb7b4c9e8`.
+Authority: `results/exp_057/summary.json`; workflow `30824957941`; source head `cf9d7099dc11b22ce24ba6e096712d5da1bc3729`; artifact `8860450501`; ZIP SHA-256 `7e2d91fb1af2d77c7cb87732557e8c42c22e23771264cfb000d29536d76172f0`.
 
-Exact prototype-residual plans were correct, but p50/p90 logical work was 62.5%/131.25%, p50/p90 bytes 62.115%/169.643%, and dense/unique p50 123.4375%. Decision:
-
-```text
-REJECT_EXACT_PROTOTYPE_RESIDUAL_DICTIONARY_AS_CORE_RETAIN_DICTIONARY_REFERENCE_AUXILIARY
-```
-
-## EXP-057 — Pinned Real-Checkpoint Weight-Structure Extraction Gate
-
-### Why this changes the evidence class
-
-EXP-055 and EXP-056 found exact savings only when weight columns truly repeat or differ by very sparse exact residuals. Continuing with invented matrices would not answer whether public Transformer weights contain that structure. EXP-057 therefore moves from synthetic construction to Phase C observation on unchanged pinned checkpoints.
-
-### Pinned models
-
-```text
-roneneldan/TinyStories-1M @ 77f1b168e219585646439073245fe87e56b3023e
-roneneldan/TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
-roneneldan/TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
-```
-
-### Matrix scope
-
-Enumerate every 2-D learned weight tensor used by Transformer linear/embedding projections. Record model, module path, shape, dtype, parameter count, and checksum. Biases and 1-D normalization weights are excluded from column-structure claims but remain in the manifest.
-
-### Representations
-
-1. exact stored floating-point bit patterns;
-2. deterministic symmetric per-output-row Q8;
-3. deterministic symmetric per-output-row Q4.
-
-Quantization is an execution representation only; checkpoints remain unchanged. Scale, zero handling, clipping, packing, and dequantization error are recorded separately. No quality or output-preservation claim is made by this structural Gate.
-
-### Analyses
-
-For each matrix and representation:
-
-- exact identical and sign-canonical column groups;
-- exact group coverage and largest group;
-- EXP-055 logical operation/byte fraction;
-- EXP-056 frequency/greedy prototype counts 1/2/4/8;
-- exact residual scalar/column density;
-- best fully accounted logical operation/byte/storage fraction;
-- compile search and amortization;
-- layer/type/model-size trends.
-
-### Controls
-
-- shuffled-column order control, which must preserve structure counts;
-- element-permuted adversary, which should destroy column structure;
-- synthetic repeated and sparse-residual positive controls;
-- exact reconstruction checks for every compiled plan;
-- checksum-pinned model and tensor manifests.
-
-### Early Gate
-
-Promotion to an actual small-model operation-replacement kernel requires all of:
-
-```text
-zero reconstruction mismatch
-zero unregistered tensors
-real-matrix p50 operations <=10%, p90 <=25%
-real-matrix p50 bytes <=10%, p90 <=25%
-no model-size degradation beyond 25%
-projected storage <=1 TiB
-compile amortization <=1,000,000 queries
-```
-
-Failure decision:
+All 144 real dense projections had zero exact repeated/sign-related columns in FP32, Q8, and Q4. Q4 p50/p90 operations were 82.8918%/85.8398% and query bytes 329.0244%/490.6845%. Decision:
 
 ```text
 REJECT_REAL_WEIGHT_EXACT_GROUPING_DICTIONARY_AS_CORE_RETAIN_MEASURED_AUXILIARY_ONLY
 ```
 
+## EXP-058 — Pinned Real-Q4 Exact Algebraic-Rank Certificate Gate
+
+### Mechanism change
+
+Test whether deterministic row-symmetric Q4 projection matrices admit an exact low-rank factorization:
+
+```text
+W = A @ B
+W x = A @ (B x)
+```
+
+No approximation or truncated SVD is allowed. Instead of assuming rank, compute exact modular-rank certificates. A full-rank minor modulo any registered prime proves the integer/rational rank is full and rules out a lower exact factorization rank.
+
+### Pinned evidence
+
+Use the same unchanged TinyStories-1M/3M/8M revisions and the exact EXP-057 Q4 rule. Analyze every named dense-projection matrix. Embeddings/output heads are reported separately.
+
+### Registered primes
+
+```text
+251, 257, 263
+```
+
+Stop after the first full-rank certificate; test all primes only when a matrix remains deficient. Record pivot rows/columns, certificate prime, rank lower bound, minimum dimension, and checksums.
+
+### Fully accounted lower bounds
+
+For certified rank `r`, any conventional exact two-factor path must perform at least:
+
+```text
+r*n + m*r scalar multiply/add terms
+```
+
+and store at least `r*(m+n)` factor scalars before metadata. Compare this with the direct `m*n` matrix path. Calculate the maximum rank that could meet 10% and 25% operation budgets, and determine whether the certified lower bound already exceeds them.
+
+### Controls
+
+- known exact low-rank products with registered ranks;
+- full-rank identity and random integer controls;
+- row/column permutation rank invariance;
+- duplicate-row rank-deficient control;
+- deterministic Q4 checksum agreement with EXP-057 rules.
+
+### Promotion Gate
+
+```text
+zero certificate/control mismatch
+zero unregistered dense projections
+real-matrix p50 exact-factor operation lower bound <=10%
+real-matrix p90 exact-factor operation lower bound <=25%
+real-matrix p50 factor-storage lower bound <=10%
+real-matrix p90 factor-storage lower bound <=25%
+no model-size degradation >25%
+```
+
+Failure decision:
+
+```text
+REJECT_REAL_Q4_EXACT_LOW_RANK_FACTORIZATION_AS_CORE_RETAIN_RANK_CERTIFICATES
+```
+
 ### Claim boundary
 
-Phase C observation at most. It does not execute a replacement Transformer operation and does not test 405B, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, or tokens/sec.
+Phase C observation only. Q4 output preservation, factor-kernel execution, actual Transformer operation replacement, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.

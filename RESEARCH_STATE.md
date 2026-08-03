@@ -311,3 +311,12 @@ Authority: `results/exp_056/summary.json`; workflow `30823042599`; artifact `885
 MEASURED E1: 56 cases, 448 plans, 1,161,216 scalar validations, zero exact mismatches, zero runtime tables. Repeated n=64 reached 7.8125%, exact sparse prototype perturbations 10.9375%, and sign clusters 15.625%. General p50/p90 work was 62.5%/131.25%; bytes 62.115%/169.643%; dense/unique p50 123.4375%; 24 cases did not amortize. Projected logical storage maximum 0.6791 TiB passed only storage.
 
 Decision: `REJECT_EXACT_PROTOTYPE_RESIDUAL_DICTIONARY_AS_CORE_RETAIN_DICTIONARY_REFERENCE_AUXILIARY`. Current frontier is EXP-057 pinned real-checkpoint weight-structure extraction. 405B, 8 GiB, actual operation replacement, and target hardware remain NOT TESTED.
+
+<!-- EXP-057-AUTHORITATIVE-FINAL -->
+## EXP-057 closed — Pinned real-checkpoint exact weight structure
+
+Authority: `results/exp_057/summary.json`; workflow `30824957941`; artifact `8860450501`; ZIP SHA-256 `7e2d91fb1af2d77c7cb87732557e8c42c22e23771264cfb000d29536d76172f0`.
+
+MEASURED Phase C observation: 3 pinned unchanged models, 327 tensors, 153 two-dimensional tensors, 54,205,312 named 2-D scalars, and zero unregistered matrices. All 144 dense projections had zero exact repeated/sign-related columns in FP32, Q8, and Q4. Q4 p50/p90 operations were 82.8918%/85.8398%; bytes 329.0244%/490.6845%; median residual density 81.4087%; best matrix 70.2866%. Reconstruction and controls passed; projected storage was 0.9300 TiB.
+
+Decision: `REJECT_REAL_WEIGHT_EXACT_GROUPING_DICTIONARY_AS_CORE_RETAIN_MEASURED_AUXILIARY_ONLY`. Q4 output preservation, actual operation replacement, 405B, 8 GiB, and hardware remain NOT TESTED. Current frontier: EXP-058 pinned real-Q4 exact algebraic-rank certificates.
