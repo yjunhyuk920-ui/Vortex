@@ -291,3 +291,14 @@ Authority: `results/exp_054/summary.json`; workflow `30816333096`; source head `
 24 operators were compiled in natural and weight-magnitude orders: 48 completed diagrams, zero ceiling/fallback, zero mismatches across 9,013,248 validations, and zero truth-table representations. Selected global p50/p90 path fractions were 35%/95%. Dense-random growth was 1.6872587x per added input bit, maximum projected storage was 202.2479 TiB, and maximum order-search amortization was 1,185,055 queries. Late-bit controls reached 5–12.5% paths, but dense, low-rank, and sparse families failed the universal Gate.
 
 Decision: `REJECT_EXACT_REDUCED_DECISION_DIAGRAM_AS_CORE_RETAIN_BDD_REFERENCE_AUXILIARY`. Exact reduced diagrams remain E1 auxiliary reference machinery. The active frontier is `EXP-055 — Exact Column-Signature Popcount Aggregation Gate`, a word-level compiler that groups identical or sign-related weight columns and computes group activation counts rather than evaluating bit-level gates or paths. Real Transformer operation replacement, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, tokens/second, Phase D, E6, and E7 remain NOT TESTED.
+
+<!-- EXP-055-AUTHORITATIVE-FINAL -->
+## EXP-055 closed — Exact column-signature popcount aggregation
+
+Authority: `results/exp_055/summary.json`; workflow `30820909775`; artifact `8858805996`; ZIP SHA-256 `983962faf329f2ccef2bd3f52c33116b146b0070fd350b1edee6c0f99923c6a8`.
+
+MEASURED E1: 48 cases, 96 plans, 248,832 scalar validations, zero exact mismatches, zero runtime tables. Repeated/sign-related n=64 controls reached 7.8125%/9.375% logical work, proving a real exact compression fragment under strong repetition. The universal Gate failed: p50/p90 operations 62.5%/250%, p50/p90 bytes 63.64%/200%, dense/unique p50 250%, and 21 non-amortizing cases. Projected logical storage maximum 0.7597 TiB passed only the storage Gate.
+
+Decision: `REJECT_EXACT_COLUMN_SIGNATURE_AGGREGATION_AS_CORE_RETAIN_GROUPING_REFERENCE_AUXILIARY`. Real Transformer extraction, operation replacement, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.
+
+Current frontier: EXP-056 exact prototype-plus-sparse-residual dictionary Gate.
