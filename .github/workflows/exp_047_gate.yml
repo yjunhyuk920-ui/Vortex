@@ -1,0 +1,108 @@
+name: EXP-047 causal probabilistic tile certificate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "AGENTS.md"
+      - "RESEARCH_STATE.md"
+      - "NEXT_EXPERIMENT.md"
+      - "DECISION_LOG.md"
+      - "FAILED_APPROACHES.md"
+      - "ARCHITECTURE.md"
+      - "ASSUMPTION_REGISTER.md"
+      - "VALIDATION_MATRIX.md"
+      - "HARDWARE_VALIDATION_PLAN.md"
+      - "REPRODUCIBILITY.md"
+      - "docs/PROOF_FIRST_CONTRACT.md"
+      - "docs/WORK_SESSION_PROTOCOL.md"
+      - "docs/research/EXPERIMENT_047_CAUSAL_PROBABILISTIC_TILE_CERTIFICATE.md"
+      - "vortex_runtime/cptc.py"
+      - "experiments/exp_047/**"
+      - "tests/exp_047/**"
+      - ".github/workflows/exp_047_gate.yml"
+
+concurrency:
+  group: exp-047-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  phase-b-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify branch-contained files
+        run: |
+          set -euo pipefail
+          required=(
+            AGENTS.md
+            RESEARCH_STATE.md
+            NEXT_EXPERIMENT.md
+            DECISION_LOG.md
+            FAILED_APPROACHES.md
+            ARCHITECTURE.md
+            ASSUMPTION_REGISTER.md
+            VALIDATION_MATRIX.md
+            HARDWARE_VALIDATION_PLAN.md
+            REPRODUCIBILITY.md
+            docs/research/EXPERIMENT_047_CAUSAL_PROBABILISTIC_TILE_CERTIFICATE.md
+            vortex_runtime/cptc.py
+            experiments/exp_047/config.json
+            experiments/exp_047/run_current_env.sh
+            experiments/exp_047/reproduce.sh
+            experiments/exp_047/future_gpu_run.sh
+            tests/exp_047/test_cptc.py
+          )
+          for path in "${required[@]}"; do
+            test -f "$path" || { echo "missing $path" >&2; exit 1; }
+          done
+
+      - name: Install test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Run EXP-047 current-environment gate
+        run: |
+          set -euo pipefail
+          mkdir -p results/exp_047/logs
+          bash experiments/exp_047/run_current_env.sh \
+            2>&1 | tee results/exp_047/logs/workflow_stdout.log
+
+      - name: Validate provenance and gate output
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("results/exp_047/summary.json")
+          data = json.loads(path.read_text())
+          assert data["phase"] == ["A", "B"]
+          assert data["evidence_level"] == "E1"
+          assert data["phase_d_status"] == "NOT TESTED"
+          assert data["future_information_used"] is False
+          assert data["gate"]["passes"] is True
+          assert data["MEASURED"]["wrong_accepts"] == 0
+          assert data["MEASURED"]["fallback_mismatches"] == 0
+          assert data["MEASURED"]["independent_bound_mismatches"] == 0
+          assert data["UNVERIFIED"]
+          for key in ["MEASURED", "DERIVED", "PROJECTED", "UNVERIFIED"]:
+              assert key in data
+          print("EXP-047 provenance and gate validation passed")
+          PY
+
+      - name: Upload Phase-B evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-047-phase-b-evidence
+          path: results/exp_047
+          if-no-files-found: error
+          retention-days: 30
