@@ -6,6 +6,7 @@ on:
       - "vortex_runtime/hankel_decision_program.py"
       - "vortex_runtime/final_hidden_trace.py"
       - "scripts/run_prompt_hankel_decision_program.py"
+      - "scripts/run_prompt_hankel_decision_program_safe.py"
       - "tests/test_hankel_decision_program.py"
       - "experiments/hankel_decision_prompts.json"
       - "docs/EXPERIMENT_037_PROMPT_HANKEL_DECISION_PROGRAM.md"
@@ -51,10 +52,11 @@ jobs:
           test -f tests/test_hankel_decision_program.py
           test -f vortex_runtime/hankel_decision_program.py
           test -f vortex_runtime/final_hidden_trace.py
+          test -f scripts/run_prompt_hankel_decision_program_safe.py
           python -m pytest -q tests/test_hankel_decision_program.py
       - name: Measure 256-token decision horizon
         run: |
-          python scripts/run_prompt_hankel_decision_program.py \
+          python scripts/run_prompt_hankel_decision_program_safe.py \
             --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
             --prompts experiments/hankel_decision_prompts.json \
             --prompt-id "${{ matrix.prompt_id }}" \
