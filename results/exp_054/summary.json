@@ -1,0 +1,110 @@
+{
+  "DERIVED": {
+    "adversarial_growth_gate_pass": false,
+    "ceiling_fallback_gate_pass": true,
+    "decision": "REJECT_EXACT_REDUCED_DECISION_DIAGRAM_AS_CORE_RETAIN_BDD_REFERENCE_AUXILIARY",
+    "exact_gate_pass": true,
+    "order_search_amortization_gate_pass": false,
+    "query_fraction_scope": "root-to-terminal input probes divided by declared binary activation width; not a real Transformer parameter-byte or hardware latency fraction",
+    "query_probe_gate_pass": false,
+    "reduced_decision_diagram_survives_gate": false,
+    "representation_gate_pass": true,
+    "storage_projection_gate_pass": false
+  },
+  "MEASURED": {
+    "case_count": 24,
+    "ceiling_hit_order_rows": 0,
+    "completed_order_validations": 48,
+    "exact_mismatches": 0,
+    "fallback_case_count": 0,
+    "fallback_case_rate": 0.0,
+    "growth_by_family": {
+      "dense_random": {
+        "log2_intercept": -2.466477609614504,
+        "log2_slope_per_input_bit": 0.7546811733875141,
+        "multiplicative_growth_per_added_input_bit": 1.6872586774037033
+      },
+      "late_bit": {
+        "log2_intercept": 1.0,
+        "log2_slope_per_input_bit": 0.0,
+        "multiplicative_growth_per_added_input_bit": 1.0
+      },
+      "low_rank_structured": {
+        "log2_intercept": 2.9451708176212046,
+        "log2_slope_per_input_bit": 0.19763282813262054,
+        "multiplicative_growth_per_added_input_bit": 1.1468151178814
+      },
+      "sparse_structured": {
+        "log2_intercept": 5.247927513443585,
+        "log2_slope_per_input_bit": 0.0,
+        "multiplicative_growth_per_added_input_bit": 1.0
+      }
+    },
+    "maximum_adversarial_growth_per_added_input_bit": 1.6872586774037033,
+    "maximum_projected_405b_diagram_bytes": 222373928571428.56,
+    "maximum_projected_405b_diagram_tib": 202.24790984814587,
+    "maximum_required_order_search_queries": 1185055,
+    "order_row_count": 48,
+    "peak_rss_kib": 171088,
+    "selected_global_p50_path_probes": 7.0,
+    "selected_global_p50_query_probe_fraction": 0.35,
+    "selected_global_p90_path_probes": 19.0,
+    "selected_global_p90_query_probe_fraction": 0.95,
+    "selected_order_distribution": {
+      "natural": 16,
+      "weight_magnitude": 8
+    },
+    "total_exhaustively_validated_assignments": 9013248,
+    "truth_table_representations": 0
+  },
+  "PROJECTED": {
+    "allowed_1_2x_baseline_gib_per_token": 2.2351741790771484,
+    "baseline_q4_full_weight_gib_per_stream": 1.862645149230957,
+    "required_target_equivalent_fraction": 0.011851851851851851,
+    "target_q4_full_weight_gib_per_stream": 188.5928213596344
+  },
+  "UNVERIFIED": [
+    "real quantized Transformer decision-diagram compilation",
+    "real small-checkpoint operation replacement",
+    "physical diagram lookup and storage traffic",
+    "70B and 405B diagram scaling",
+    "8 GiB total hot state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_EXACT_REDUCED_DECISION_DIAGRAM_AS_CORE_RETAIN_BDD_REFERENCE_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "real_transformer_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-054",
+  "name": "exact_reduced_ordered_decision_diagram_gate",
+  "phase": [
+    "A",
+    "B"
+  ],
+  "phase_d_status": "NOT TESTED",
+  "provenance": {
+    "artifact_id": 8856906303,
+    "artifact_name": "exp-054-candidate-30816333096",
+    "artifact_size_bytes": 95207,
+    "artifact_zip_sha256": "0dc642f306cea99ce01095758a5f49151092d530efb94d36985553e408596edf",
+    "config_sha256": "51bbfecee5e5ab4c4def13d7d97c3f97fab4bd3de034c81e80239c8f8478b2a2",
+    "created_utc": "2026-08-03T13:06:27Z",
+    "frozen_date": "2026-08-03",
+    "source_commit": "a0737685411c2168ab5423994f6f299bb4c912ad",
+    "source_head_sha": "2c63da85050afcedad6a00698a6f8fddd3bc99d2",
+    "workflow_run": "30816333096"
+  },
+  "raw_evidence": {
+    "artifact_provenance": "raw/artifact_provenance.json",
+    "cases": "raw/cases.jsonl",
+    "diagrams": "raw/diagrams/*.mtddbin",
+    "order_rows": "raw/order_rows.jsonl",
+    "workflow_checksums": "artifacts/workflow_checksums.sha256",
+    "workflow_summary": "raw/workflow_summary.json"
+  },
+  "real_transformer_operation_replacement": false
+}

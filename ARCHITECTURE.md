@@ -193,3 +193,8 @@ EXP-052 exact witnessed tables are `exact hit OR exact target fallback` auxiliar
 ## Closed EXP-053 and active EXP-054 architecture
 
 EXP-053 exact AIGs are auxiliary bit-level reference machinery. EXP-054 compiles immutable weights into a reduced ordered multi-terminal decision diagram using Shannon branching, exact residual arithmetic states, unique-table reduction, and a fixed weight-derived variable order. Runtime evaluates one root-to-terminal path; compile-state visits, nodes, bytes, query probes, order-search cost, and fallback are mandatory.
+
+<!-- EXP-054-AUTHORITATIVE-FINAL -->
+## Closed EXP-054 and active EXP-055 architecture
+
+EXP-054 ROMTDD/ROBDD-like diagrams are auxiliary exact decision references. EXP-055 keeps signed modular score arithmetic at word level: compile input columns into exact vector signatures, group identical and optional exact-negated signatures, compute group popcounts, and add scaled score vectors. Group build, bit scans/popcounts, vector arithmetic, bytes, selector metadata, and fallback are mandatory.

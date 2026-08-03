@@ -1,0 +1,55 @@
+{
+  "experiment": "EXP-054",
+  "seed": 202608038,
+  "compile_state_ceiling_per_order": 2000000,
+  "validation_batch_size": 65536,
+  "families": [
+    "sparse_structured",
+    "low_rank_structured",
+    "dense_random",
+    "late_bit"
+  ],
+  "scaling_cases": [
+    {"input_bits": 8, "class_count": 4, "accumulator_bits": 8},
+    {"input_bits": 12, "class_count": 4, "accumulator_bits": 12},
+    {"input_bits": 16, "class_count": 4, "accumulator_bits": 16},
+    {"input_bits": 20, "class_count": 4, "accumulator_bits": 16}
+  ],
+  "class_sweep_cases": [
+    {"input_bits": 12, "class_count": 2, "accumulator_bits": 12},
+    {"input_bits": 12, "class_count": 8, "accumulator_bits": 12}
+  ],
+  "variable_orders": ["natural", "weight_magnitude"],
+  "operator_contract": {
+    "inputs": "binary activation vector",
+    "weights": "signed integer constants",
+    "accumulator": "two-complement modular arithmetic",
+    "output": "strict signed top-1 with lower-class tie break",
+    "representation": "weight-derived reduced ordered multi-terminal decision diagram",
+    "truth_table_as_representation": false
+  },
+  "early_gate": {
+    "exact_mismatch_limit": 0,
+    "truth_table_representation_limit": 0,
+    "maximum_p50_query_probe_fraction": 0.10,
+    "maximum_p90_query_probe_fraction": 0.25,
+    "maximum_projected_diagram_bytes": 1099511627776,
+    "maximum_adversarial_growth_per_added_bit": 1.5,
+    "maximum_required_order_search_queries": 1000000,
+    "maximum_ceiling_or_fallback_rate": 0.0,
+    "decision_on_failure": "REJECT_EXACT_REDUCED_DECISION_DIAGRAM_AS_CORE_RETAIN_BDD_REFERENCE_AUXILIARY"
+  },
+  "promotion_gate": {
+    "maximum_p90_fully_accounted_target_fraction": 0.011851851851851851,
+    "real_small_checkpoint_operation_replacement_required": true
+  },
+  "projection": {
+    "target_source_parameters": 405000000000,
+    "baseline_parameters": 4000000000,
+    "bits_per_weight": 4,
+    "target_traffic_multiplier": 1.2,
+    "required_target_equivalent_fraction": 0.011851851851851851
+  },
+  "evidence_ceiling": "E1 because only bounded synthetic quantized linear top-1 operators are compiled; no real Transformer operation is replaced",
+  "phase_d_status": "NOT TESTED"
+}

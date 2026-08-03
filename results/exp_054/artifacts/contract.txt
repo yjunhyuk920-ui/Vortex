@@ -1,0 +1,1 @@
+EXP-054 E1 bounded synthetic reduced decision-diagram audit. No real Transformer operation, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, or tokens/s measured.

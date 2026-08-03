@@ -89,3 +89,17 @@ Every experiment PR must update at least one row using commit-backed evidence. P
 | EXP-053 dense-random p50 <=25% | E1: 92.4521% | REJECTED |
 | EXP-053 projected storage <=1 TiB | PROJECTED: max 255.5966 TiB | REJECTED |
 | EXP-054 reduced decision diagram | E0 | NEXT GATE |
+
+<!-- EXP-054-AUTHORITATIVE-FINAL -->
+## EXP-054 addendum
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| EXP-054 exact equality | E1: 0 mismatch / 9,013,248 | PASS reference |
+| EXP-054 no truth table | E1: 0 cases | PASS |
+| EXP-054 p50 path <=10% | E1: 35% | REJECTED |
+| EXP-054 p90 path <=25% | E1: 95% | REJECTED |
+| EXP-054 no ceiling/fallback | E1: 0/48 | PASS |
+| EXP-054 storage <=1 TiB | PROJECTED: 202.2479 TiB | REJECTED |
+| EXP-054 adversarial growth <=1.5 | E1: 1.6873x/bit | REJECTED |
+| EXP-055 word-level grouping | E0 | NEXT GATE |

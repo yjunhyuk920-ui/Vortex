@@ -1,0 +1,1 @@
+{"case_count": 24, "decision": "REJECT_EXACT_REDUCED_DECISION_DIAGRAM_AS_CORE_RETAIN_BDD_REFERENCE_AUXILIARY", "fallback_rate": 0.0, "maximum_projected_tib": 202.24790984814587, "mismatches": 0, "p50_probe_fraction": 0.35, "p90_probe_fraction": 0.95}

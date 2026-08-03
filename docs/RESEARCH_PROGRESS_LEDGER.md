@@ -131,3 +131,8 @@ Enumerative exact advice is rejected. Read `results/exp_052/summary.json` and `N
 ## EXP-053 handoff
 
 Bit-exact AIG structural hashing is rejected as core. Read `results/exp_053/summary.json` and continue with EXP-054 reduced decision diagrams or a materially new mechanism only.
+
+<!-- EXP-054-AUTHORITATIVE-FINAL -->
+## EXP-054 handoff
+
+Reduced decision diagrams are rejected as core. Continue with EXP-055 word-level column-signature/popcount aggregation or a materially new mechanism only.
