@@ -1,0 +1,3 @@
+EXP-057 pinned unchanged real-checkpoint structure observation.
+Q8/Q4 model-output preservation and operation replacement: NOT TESTED.
+405B, 8 GiB, CUDA, PCIe, SSD, TTFT, tokens/sec: NOT TESTED.

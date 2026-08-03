@@ -233,3 +233,8 @@ Exact grouping preserved every registered decision and ideal repeated/sign-relat
 ## F-024 — Exact prototype plus sparse-residual dictionaries as universal core
 
 The compiler exactly reconstructed all registered columns, and favorable repeated/sparsely perturbed controls improved with width. General dense and unique columns retained too many residuals: p50/p90 logical work was 62.5%/131.25%, query bytes 62.115%/169.643%, dense/unique p50 123.4375%, and 24 cases never beat baseline. Do not continue by adding synthetic prototype counts, hiding residual activation/index costs, or presenting favorable repeated matrices as arbitrary-model evidence. Further use requires measured real-checkpoint structure.
+
+<!-- EXP-057-AUTHORITATIVE-FINAL -->
+## F-025 — Exact column grouping/dictionaries on measured real checkpoint weights
+
+No analyzed dense projection in three pinned TinyStories checkpoints contained even one exactly repeated or sign-related column under FP32, Q8, or Q4. Prototype residuals remained dense: Q4 median/p90 residual scalar density was 81.41%/84.28%; p50/p90 operations were 82.89%/85.84%; query bytes were 3.29x/4.91x baseline. Do not continue by increasing prototype search, quoting only the 70.29% best matrix, or treating Q4 structural results as model-output preservation. Retain the analyzers only for conditional measurement on future models.

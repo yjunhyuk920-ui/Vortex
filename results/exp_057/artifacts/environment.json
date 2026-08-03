@@ -1,0 +1,7 @@
+{
+  "config_sha256": "e99e13b3c912f1567d010c1c60fa0c8ade0b2350bd8ce6cacc49e244c4df334e",
+  "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+  "python": "3.11.15",
+  "source_commit": "0c70c5547a68ce3db4a584ac32fb0cbf9873d861",
+  "torch": "2.6.0+cpu"
+}

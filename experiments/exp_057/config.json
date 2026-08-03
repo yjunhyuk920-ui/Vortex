@@ -1,0 +1,41 @@
+{
+  "experiment": "EXP-057",
+  "seed": 570057,
+  "torch_num_threads": 2,
+  "models": [
+    {
+      "model_id": "roneneldan/TinyStories-1M",
+      "revision": "77f1b168e219585646439073245fe87e56b3023e"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-3M",
+      "revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-8M",
+      "revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af"
+    }
+  ],
+  "representations": ["fp32_exact_bits", "q8_row_symmetric", "q4_row_symmetric"],
+  "prototype_counts": [1, 2, 4, 8],
+  "prototype_candidate_cap": 32,
+  "control_matrix_per_model": 1,
+  "projection": {
+    "target_parameters": 405000000000,
+    "target_q4_bytes": 202500000000,
+    "maximum_storage_bytes": 1099511627776
+  },
+  "early_gate": {
+    "maximum_reconstruction_mismatches": 0,
+    "maximum_unregistered_2d_tensors": 0,
+    "maximum_q4_p50_operation_fraction": 0.10,
+    "maximum_q4_p90_operation_fraction": 0.25,
+    "maximum_q4_p50_byte_fraction": 0.10,
+    "maximum_q4_p90_byte_fraction": 0.25,
+    "maximum_model_size_degradation": 0.25,
+    "maximum_projected_storage_bytes": 1099511627776,
+    "maximum_compile_amortization_queries": 1000000
+  },
+  "failure_decision": "REJECT_REAL_WEIGHT_EXACT_GROUPING_DICTIONARY_AS_CORE_RETAIN_MEASURED_AUXILIARY_ONLY",
+  "evidence_ceiling": "Phase C observation: unchanged pinned real checkpoints are measured, but no Transformer operation is replaced and no model-output preservation is claimed for Q8/Q4 structural representations"
+}
