@@ -1,0 +1,192 @@
+name: Prompt Hankel decision program gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/hankel_decision_program.py"
+      - "vortex_runtime/final_hidden_trace.py"
+      - "scripts/run_prompt_hankel_decision_program.py"
+      - "tests/test_hankel_decision_program.py"
+      - "experiments/hankel_decision_prompts.json"
+      - "docs/EXPERIMENT_037_PROMPT_HANKEL_DECISION_PROGRAM.md"
+      - ".github/workflows/prompt-hankel-decision-program.yml"
+
+concurrency:
+  group: prompt-hankel-decision-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/prompt-hankel-decision-program'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix:
+        prompt_id:
+          - distributed-database
+          - korean-plm-governance
+          - algorithm-runtime
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate Hankel program
+        run: |
+          test -f tests/test_hankel_decision_program.py
+          test -f vortex_runtime/hankel_decision_program.py
+          test -f vortex_runtime/final_hidden_trace.py
+          python -m pytest -q tests/test_hankel_decision_program.py
+      - name: Measure 256-token decision horizon
+        run: |
+          python scripts/run_prompt_hankel_decision_program.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --prompts experiments/hankel_decision_prompts.json \
+            --prompt-id "${{ matrix.prompt_id }}" \
+            --steps 256 \
+            --configs 8:8:1:linear,16:8:2:linear,16:16:2:full,32:16:2:full,32:16:4:full,64:16:2:full \
+            --ridge 0.0001 \
+            --device cpu \
+            --output "results/tinyllama_1_1b_hankel_${{ matrix.prompt_id }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hankel-${{ matrix.prompt_id }}
+          path: results/tinyllama_1_1b_hankel_${{ matrix.prompt_id }}.json
+
+  aggregate:
+    if: github.head_ref == 'research/prompt-hankel-decision-program'
+    needs: measure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: hankel-*
+          path: downloaded
+          merge-multiple: true
+      - name: Aggregate frontier
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          prompt_payloads = []
+          config_passes = {}
+          for path in sorted(Path("downloaded").glob("*.json")):
+              payload = json.loads(path.read_text(encoding="utf-8"))
+              points = []
+              for item in payload["configurations"]:
+                  key = (
+                      item["state_rank"],
+                      item["control_rank"],
+                      item["order"],
+                      item["lift"],
+                  )
+                  config_passes.setdefault(key, []).append(bool(item["qualifies"]))
+                  points.append(
+                      {
+                          "state_rank": item["state_rank"],
+                          "control_rank": item["control_rank"],
+                          "order": item["order"],
+                          "lift": item["lift"],
+                          "program_gib": item["budget"]["total_program_gib"],
+                          "training_relative_l2": item["fit"]["training_relative_l2_error"],
+                          "autonomous_prefix": item["autonomous"]["exact_prefix"],
+                          "autonomous_match": item["autonomous"]["exact_match_rate"],
+                          "teacher_top1": item["teacher_forced"]["top1_rate"],
+                          "teacher_top32": item["teacher_forced"]["top32_rate"],
+                          "hidden_cosine_p95": item["teacher_forced"]["hidden_cosine_error_p95"],
+                          "eos_position": item["exact_continuation"]["eos_position"],
+                          "maximum_identical_run": item["exact_continuation"]["maximum_identical_token_run"],
+                          "unique_token_fraction": item["exact_continuation"]["unique_token_fraction"],
+                          "qualifies": item["qualifies"],
+                      }
+                  )
+              prompt_payloads.append(
+                  {
+                      "prompt_id": payload["prompt_id"],
+                      "prompt_tokens": payload["prompt_tokens"],
+                      "best_configuration": payload["best_configuration"],
+                      "points": points,
+                  }
+              )
+
+          promoted = []
+          for key, passes in sorted(config_passes.items()):
+              if len(passes) == len(prompt_payloads) and all(passes):
+                  promoted.append(
+                      {
+                          "state_rank": key[0],
+                          "control_rank": key[1],
+                          "order": key[2],
+                          "lift": key[3],
+                      }
+                  )
+          combined = {
+              "evidence_level": "E1/E2 prompt-compiled Hankel decision frontier",
+              "prompts": prompt_payloads,
+              "promoted_on_every_prompt": promoted,
+              "qualifies": bool(promoted),
+              "decision": (
+                  "advance Hankel decision program to sound error certification"
+                  if promoted
+                  else "reject prompt-compiled low-rank Hankel decision programs"
+              ),
+              "next_candidate": (
+                  "add a sound sparse exact repair mechanism or a fundamentally nonlocal memory program"
+                  if not promoted
+                  else "derive a causal sound interval around recurrence and projected LM decisions"
+              ),
+          }
+          output = Path("results/tinyllama_1_1b_hankel_frontier.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(combined, indent=2, ensure_ascii=False),
+              encoding="utf-8",
+          )
+          Path("hankel-comment.md").write_text(
+              "## Prompt Hankel decision program gate\n\n```json\n"
+              + json.dumps(combined, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file hankel-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hankel-frontier
+          path: results/tinyllama_1_1b_hankel_frontier.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_hankel_frontier.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(gate): commit prompt Hankel decision frontier"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
