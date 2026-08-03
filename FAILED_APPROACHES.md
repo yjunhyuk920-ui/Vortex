@@ -58,9 +58,9 @@ Forbidden. Synthetic/small-checkpoint work does not measure target VRAM, 405B, P
 
 ## F-013 — Global-range Serfling CPTC-v1 as primary executor
 
-Authoritative source: `results/exp_047/summary.json`.
+Authority: `results/exp_047/summary.json`.
 
-Correctness passed at E1: 525 cases, zero wrong accepts, zero fallback mismatch, zero independent-bound mismatch, and 15/15 adversarial fallback.
+Correctness passed at E1: 525 cases, zero wrong accepts, zero fallback mismatch, zero independent-bound mismatch, 15/15 adversarial fallback.
 
 Performance failure: 4/525 certificates, 99.238% fallback, N=1024 mean evaluated 98.294%, positive control 10.449%, Python path about 8.6–9.1x full summation, projected target fraction 1.185%.
 
@@ -68,95 +68,146 @@ Decision: retain certificate/fallback reference; reject one global range plus ba
 
 ## F-014 — Range-based CPTC as core, including oracle-tight and stratified rescue
 
-Authoritative source:
+Authority: `results/exp_047r/summary.json`, workflow `30795946233`.
 
 ```text
-results/exp_047r/summary.json
-workflow 30795946233
-source head SHA 0beb068e9679c9f4d51d1b210b0eee7fbc325214
-artifact SHA-256 6c9a4fdca80d29964eca02d16f8b36f5ca8e211653f6fb9ddfe548a729c6e12d
-```
-
-Strongest favorable control:
-
-```text
-C1 exact per-state min/max range
-3 pinned trained dense checkpoints
-18 held-out current-token states
-median evaluated fraction 100%
-p90 evaluated fraction 100%
+C1 exact per-state range median 100%
+C1 p90 100%
+C2 median/p90 100%
+C2 best 254/256 = 99.21875%
 wrong accepts 0
-```
-
-Deployable candidate control:
-
-```text
-C2 checkpoint-span stratified bound
-median 100%
-p90 100%
-best case 254/256 = 99.21875%
 bound violations 0
 ```
 
-The pre-registered rejection thresholds were C1 median <=10% and p90 <=25%. C1 used the realized exact contribution range and still read the complete population in every case. This falsifies the claim that merely tightening sound range metadata or adding variance adaptation can close the core gap.
+The pre-registered limits were 10%/25%. The exact realized range oracle still read the complete population.
 
 Permanent decision:
 
-- reject range-based CPTC as a primary execution architecture;
-- do not continue C3 empirical-Bernstein/variance tuning as a rescue of EXP-047R;
-- retain only the E1 certificate, fault rejection, and exact fallback as auxiliary safety machinery;
-- revisit only if a new mechanism independently changes the decision object or amortizes/avoids the full operation before the certificate is applied.
+- reject range-based CPTC as primary execution architecture;
+- do not continue C3 empirical-Bernstein/variance tuning as rescue;
+- retain only certificate, fault rejection, and exact fallback;
+- revisit only after another mechanism changes the decision object or amortizes the operation first.
 
 ## F-015 — Hard Jacobi target-only block decoding as core
 
-Authoritative source:
+Authority: `results/exp_048/summary.json`, workflow `30798936320`.
 
 ```text
-results/exp_048/summary.json
-workflow 30798936320
-artifact SHA-256 67c1e6d8965f7535020ecd4c02bb8a2af1156a234564f3cdf74d10c882fd7eb9
-```
-
-EXP-048 B2 used 32-token blocks, fill token zero, and at most four exact target iterations per cycle. Every target pass was charged.
-
-MEASURED:
-
-```text
-exact output mismatches 0
-p50 target passes per 32 exact tokens 58
-p50 accepted tokens per target pass 0.551724
-p50 target-equivalent stream fraction 181.25%
-p90 target-equivalent stream fraction 193.75%
+exact mismatches 0
+p50 target passes / 32 tokens 58
+p50 accepted tokens per pass 0.551724
+p50 fraction 181.25%
+p90 fraction 193.75%
 maximum matching prefix 3
 ```
 
-Failure: target-only hard Jacobi consumed more full target streams than exact sequential generation. Do not repeat by changing only fill token, block length, or iteration cap while hiding every failed target pass.
+Failure: more full target streams than exact sequential generation. Do not repeat by changing only fill token, block length, or iteration cap while hiding failed passes.
 
-Classification: exact control only. Revisit only with a mechanism that changes convergence information per target pass and survives the triangular dependency audit.
+Classification: exact control only.
 
 ## F-016 — Sequential partial-layer self-draft with target LM head as core
 
-EXP-048 B3 used the same unmodified checkpoint's first 1, 2, or 4 layers, final normalization, and full target LM head to generate 32 causal proposal tokens sequentially. All draft layer/head/embedding-equivalent streams, one exact verification stream, rejected positions, and correction were charged.
-
-MEASURED:
+EXP-048 B3 used the same target's first 1/2/4 layers, final norm, and full LM head to generate 32 tokens sequentially. All draft and verification costs were charged.
 
 ```text
-3 models × 6 families = 18 cases
-54 fixed variants
+18 cases, 54 variants
 exact mismatches 0
-future information uses 0
-best cases with any matching proposal token 4/18
-maximum matching proposal prefix 1
-p50 committed tokens per target verification 1
-minimum fully accounted fraction 1333.463%
-p90 fully accounted fraction 2893.843%
+future information 0
+cases with any matching proposal token 4/18
+maximum matching prefix 1
+p50 committed tokens 1
+minimum accounted fraction 1333.463%
+p90 fraction 2893.843%
 ```
-
-Failure: early target layers did not predict a useful exact prefix, while the full LM head was reread for every proposed token. The B4 proposal tree is not a valid rescue because it multiplies a failed proposal source and must charge every branch/head evaluation.
 
 Permanent decision:
 
-- reject sequential early-layer self-drafting as the primary runtime;
-- reject unrestricted layer-count, temperature, or tree-width tuning as a continuation of EXP-048;
-- retain only the exact block verifier;
-- revisit proposal generation only when the mechanism avoids per-token sequential target-head cost and supplies a stronger falsification.
+- reject sequential early-layer self-draft as primary runtime;
+- reject unrestricted layer/temperature/tree tuning as continuation;
+- retain exact block verifier;
+- revisit only when proposal generation avoids per-token target-head cost and supplies a stronger information source.
+
+## F-017 — Target-only continuous Picard/Anderson fixed-point generation as core
+
+Authority:
+
+```text
+results/exp_049/summary.json
+workflow 30803672059
+source head SHA 91d0caa86d784c663bc520d36d9b512f0cc526e9
+artifact 8851957250
+artifact ZIP SHA-256 4cd6c8c4afb833562438a97f052d45d331f3691362472fb08e594bd0c5585b9e
+```
+
+EXP-049 tested:
+
+- hard synchronous Jacobi;
+- fixed damped Picard with top-k 1/8, damping 0.5/1.0, zero/last/next-repeat initialization;
+- bounded Anderson histories 2/4/8 with float64 solve, regularization, clipping, condition checks, and fail-closed Picard fallback;
+- blocks 64/128/256 and target-pass checkpoints 1/2/4;
+- three pinned TinyStories targets and six held-out families;
+- exact-reference selection of the best pre-registered S1/S2 trajectory per case;
+- two hidden triangular causal chains.
+
+MEASURED favorable checkpoint result:
+
+```text
+18 cases
+1,458 trajectory rows
+exact mismatches 0
+future target uses in S1/S2 0
+unhandled numerical failures 0
+oracle-best p50 matching prefix 4.5
+oracle-best maximum prefix 6
+oracle-best p90 target-equivalent fraction 168.778596%
+model medians 4.5 / 5.0 / 4.0
+all selected rows used 4 target passes and K=64
+17/18 selected hard top-1 Picard; no Anderson selected
+```
+
+MEASURED controls:
+
+```text
+hard Jacobi p50 prefix after 4 passes 4
+Anderson p50 prefix after 4 passes 1
+Anderson/Jacobi improvement 0.25x
+```
+
+MEASURED adversarial result:
+
+```text
+Picard prefixes by round 1,2,3,4
+Anderson prefixes by round 1,2,3,3
+hidden suffix transcript indistinguishability true
+one-new-exact-position-per-round barrier observed true
+```
+
+Failure:
+
+- the strongest non-deployable reference-selected upper bound missed the 16-token early prefix Gate;
+- p90 logical traffic was 168.78%, not <=10%;
+- Anderson was worse than Jacobi, not >=4x better;
+- continuous mixing did not reveal adversarial hidden predecessor information.
+
+Permanent decision:
+
+```text
+REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY
+```
+
+Allowed reuse:
+
+- numerical reference/fault tests;
+- Picard/Anderson positive controls;
+- exact block verifier;
+- triangular adversarial family for future universal claims.
+
+Forbidden continuation:
+
+- tuning only top-k, temperature, damping, initialization, Anderson history, block size, or iteration count;
+- claiming average real-model prefixes override the arbitrary-model adversarial barrier;
+- hiding the exact-reference variant selector;
+- counting soft residual convergence as exact token acceptance;
+- implementing a GPU backend from this negative Gate.
+
+Revisit only if a new mechanism imports future information not present in target-only synchronous transcripts, or explicitly changes the universal/exact mission contract.

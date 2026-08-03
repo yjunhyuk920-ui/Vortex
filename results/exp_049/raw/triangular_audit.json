@@ -1,0 +1,43 @@
+{
+  "declared_interface": "one synchronous black-box causal block evaluation per target round; arbitrary history arithmetic but no external future information",
+  "one_position_per_round_barrier_observed": true,
+  "records": [
+    {
+      "anderson_numerical_fallbacks": 0,
+      "anderson_prefixes_by_round": [
+        1,
+        2,
+        3,
+        3
+      ],
+      "length": 64,
+      "name": "copy_chain",
+      "one_position_per_round_barrier_observed": true,
+      "picard_prefixes_by_round": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "anderson_numerical_fallbacks": 0,
+      "anderson_prefixes_by_round": [
+        1,
+        2,
+        3,
+        3
+      ],
+      "length": 64,
+      "name": "permuted_chain",
+      "one_position_per_round_barrier_observed": true,
+      "picard_prefixes_by_round": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "transcript_indistinguishability_observed": true
+}

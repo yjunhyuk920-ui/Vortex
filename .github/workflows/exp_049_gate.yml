@@ -1,16 +1,16 @@
-name: EXP-048 causal block amortization Gate
+name: EXP-049 Anderson continuous fixed-point Gate
 
 on:
   workflow_dispatch:
 
 concurrency:
-  group: exp-048-${{ github.workflow }}-${{ github.ref }}
+  group: exp-049-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  block-amortization-audit:
+  fixed-point-audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     permissions:
       contents: read
 
@@ -40,14 +40,15 @@ jobs:
             REPRODUCIBILITY.md
             docs/PROOF_FIRST_CONTRACT.md
             docs/WORK_SESSION_PROTOCOL.md
-            docs/research/EXPERIMENT_048_CAUSAL_BLOCK_VERIFICATION_AMORTIZATION.md
+            docs/research/EXPERIMENT_049_ANDERSON_CONTINUOUS_FIXED_POINT.md
             vortex_runtime/block_verify.py
-            tests/exp_048/test_block_verify.py
-            experiments/exp_048/config.json
-            experiments/exp_048/run_experiment.py
-            experiments/exp_048/run_current_env.sh
-            experiments/exp_048/reproduce.sh
-            experiments/exp_048/future_gpu_run.sh
+            vortex_runtime/fixed_point.py
+            tests/exp_049/test_fixed_point.py
+            experiments/exp_049/config.json
+            experiments/exp_049/run_experiment.py
+            experiments/exp_049/run_current_env.sh
+            experiments/exp_049/reproduce.sh
+            experiments/exp_049/future_gpu_run.sh
           )
           for path in "${required[@]}"; do
             test -f "$path" || { echo "missing $path" >&2; exit 1; }
@@ -56,7 +57,7 @@ jobs:
       - name: Install pinned CPU dependencies
         run: |
           set -euo pipefail
-          python -m pip install --disable-pip-version-check pytest==8.3.5
+          python -m pip install --disable-pip-version-check pytest==8.3.5 numpy==2.1.3
           python -m pip install --disable-pip-version-check \
             --index-url https://download.pytorch.org/whl/cpu \
             torch==2.6.0
@@ -65,41 +66,42 @@ jobs:
             huggingface_hub==0.29.3 \
             safetensors==0.5.3 \
             tokenizers==0.21.1
-          python -m pip freeze | sort | tee exp048-pip-freeze.txt
+          python -m pip freeze | sort | tee exp049-pip-freeze.txt
 
-      - name: Run EXP-048 exactness tests
+      - name: Run EXP-049 solver and lower-bound tests
         env:
           PYTHONPATH: ${{ github.workspace }}
-        run: python -m pytest -q tests/exp_048
+        run: python -m pytest -q tests/exp_049
 
       - name: Run repository validation
         env:
           PYTHONPATH: ${{ github.workspace }}
         run: python scripts/run_validation.py
 
-      - name: Run pinned real-checkpoint reproduction
+      - name: Run pinned real-checkpoint Gate in isolated output
         env:
           PYTHONPATH: ${{ github.workspace }}
-          HF_HOME: ${{ runner.temp }}/hf-exp048
+          HF_HOME: ${{ runner.temp }}/hf-exp049
           TOKENIZERS_PARALLELISM: "false"
-          VORTEX_EXP048_OUTPUT_DIR: ${{ runner.temp }}/exp_048_reproduction
+          VORTEX_EXP049_OUTPUT_DIR: ${{ runner.temp }}/exp_049_reproduction
         run: |
           set -euo pipefail
-          rm -rf "${VORTEX_EXP048_OUTPUT_DIR}"
-          bash experiments/exp_048/run_current_env.sh 2>&1 | tee exp048-workflow.log
+          rm -rf "${VORTEX_EXP049_OUTPUT_DIR}"
+          bash experiments/exp_049/run_current_env.sh 2>&1 | tee exp049-workflow.log
 
-      - name: Validate evidence contract
+      - name: Validate reproduction contract
         env:
-          REPRO_ROOT: ${{ runner.temp }}/exp_048_reproduction
+          REPRO_ROOT: ${{ runner.temp }}/exp_049_reproduction
         run: |
           python - <<'PY'
           import json
+          import math
           import os
           from pathlib import Path
 
           root = Path(os.environ["REPRO_ROOT"])
           summary = json.loads((root / "summary.json").read_text())
-          assert summary["experiment"] == "EXP-048"
+          assert summary["experiment"] == "EXP-049"
           assert summary["evidence_level"] == "E1"
           assert summary["complete_real_operation_replacement"] is False
           assert summary["phase_d_status"] == "NOT TESTED"
@@ -107,16 +109,19 @@ jobs:
           assert measured["model_count"] == 3
           assert measured["case_count"] == 18
           assert measured["prompt_family_count"] == 6
-          assert measured["exact_output_mismatches_b1"] == 0
-          assert measured["exact_output_mismatches_b2"] == 0
-          assert measured["exact_output_mismatches_b3"] == 0
-          assert measured["deployable_future_information_uses"] == 0
-          assert measured["b1_oracle_block_size"] == 96
-          assert measured["b1_oracle_target_equivalent_stream_fraction"] == 1 / 96
-          assert summary["DERIVED"]["b1_is_non_deployable_future_oracle"] is True
-          assert summary["gate"]["decision"] == "REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER"
+          assert measured["selected_exact_output_mismatches"] == 0
+          assert measured["selected_deployable_future_information_uses"] == 0
+          assert measured["unhandled_numerical_failures"] == 0
+          assert measured["s3_oracle_exact_failures"] == 0
+          assert measured["triangular_one_position_per_round_barrier_observed"] is True
+          assert measured["triangular_transcript_indistinguishability_observed"] is True
+          assert math.isfinite(measured["oracle_best_s1s2_p50_matching_prefix"])
+          assert math.isfinite(measured["oracle_best_s1s2_p90_target_equivalent_stream_fraction"])
+          assert summary["DERIVED"]["variant_selection_uses_reference"] is True
+          assert summary["DERIVED"]["decision"] == "REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY"
           assert (root / "raw" / "cases.jsonl").is_file()
           assert (root / "raw" / "checkpoint_manifest.json").is_file()
+          assert (root / "raw" / "triangular_audit.json").is_file()
           assert (root / "checksums.sha256").is_file()
           print(json.dumps(summary, indent=2, sort_keys=True))
           PY
@@ -125,10 +130,10 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: exp-048-reproduction-${{ github.run_id }}
+          name: exp-049-reproduction-${{ github.run_id }}
           path: |
-            ${{ runner.temp }}/exp_048_reproduction
-            exp048-workflow.log
-            exp048-pip-freeze.txt
+            ${{ runner.temp }}/exp_049_reproduction
+            exp049-workflow.log
+            exp049-pip-freeze.txt
           if-no-files-found: warn
           retention-days: 30

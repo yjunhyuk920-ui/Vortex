@@ -1,0 +1,41 @@
+{
+  "DERIVED": {
+    "anderson_improvement_gate_pass": false,
+    "causal_gate_pass": true,
+    "decision": "REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY",
+    "exact_gate_pass": true,
+    "model_size_trend_gate_pass": true,
+    "numerical_gate_pass": true,
+    "prefix_gate_pass": false,
+    "target_only_continuous_fixed_point_survives_early_gate": false,
+    "traffic_gate_pass": false,
+    "universal_claim_scope": "rejected when hidden triangular barrier is observed; empirical checkpoint rows remain average-case evidence only",
+    "universal_round_barrier_absent_gate_pass": false,
+    "variant_selection_uses_reference": true
+  },
+  "MEASURED": {
+    "case_count": 18,
+    "excluded_state_count": 0,
+    "model_count": 3,
+    "model_median_matching_prefix": {
+      "roneneldan/TinyStories-1M": 4.5,
+      "roneneldan/TinyStories-3M": 5.0,
+      "roneneldan/TinyStories-8M": 4.0
+    },
+    "oracle_best_s1s2_max_matching_prefix": 6.0,
+    "oracle_best_s1s2_p50_matching_prefix": 4.5,
+    "oracle_best_s1s2_p90_target_equivalent_stream_fraction": 1.6877859595769764,
+    "peak_rss_kib": 684684,
+    "prompt_family_count": 6,
+    "s0_p50_matching_prefix_after_4_passes": 4.0,
+    "s2_improvement_over_s0": 0.25,
+    "s2_p50_matching_prefix_after_4_passes": 1.0,
+    "s3_oracle_exact_failures": 0,
+    "selected_deployable_future_information_uses": 0,
+    "selected_exact_output_mismatches": 0,
+    "selected_numerical_fallbacks": 0,
+    "triangular_one_position_per_round_barrier_observed": true,
+    "triangular_transcript_indistinguishability_observed": true,
+    "unhandled_numerical_failures": 0
+  }
+}

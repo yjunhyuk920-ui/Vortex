@@ -2,30 +2,29 @@
 
 ## Mission boundary
 
-VORTEX is a runtime, not a retrained model. It ingests an unmodified supported Hugging Face dense checkpoint and automatically constructs runtime metadata.
+VORTEX is a runtime, not a retrained target model. It ingests an unmodified supported Hugging Face dense checkpoint and automatically constructs runtime state/metadata.
 
-## Target execution stack
+## Fixed target execution stack
 
 ```text
-Hugging Face checkpoint
+unmodified Hugging Face target checkpoint
         |
         v
-checkpoint/shard inspector
-        |
-        +--> automatic checksummed runtime-format compiler
+checkpoint/shard inspector and automatic runtime compiler
         |
         v
-causal token executor
+causal executor
         |
-        +--> causal proposal, continuous block state, or exact baseline
-        +--> exact/probabilistic certificate or exact target verification
-        +--> certified commit OR declared exact/safe correction
+        +--> proposal/information source
+        +--> exact or declared probabilistic certificate/verifier
+        +--> safe commit OR exact correction/fallback
         |
         v
 memory scheduler
-        - VRAM hot state <=8 GiB
+        - target/draft hot state
+        - KV and work buffers
         - RAM/SSD cold state
-        - charged transfers, solver, proposal, verification, rejection, fallback
+        - every proposal, verification, rejection, and fallback charged
         |
         v
 original-model-compatible output contract
@@ -33,236 +32,254 @@ original-model-compatible output contract
 
 ## Core requirement
 
-The primary runtime must causally reduce or amortize original 405B weight traffic and arithmetic on unseen prompts. A component is core only when it participates in that measured cost reduction.
+The primary runtime must causally reduce or amortize original 405B weight traffic and arithmetic on unseen prompts. A component is core only when it participates in that measured cost reduction. Correctness-only components are auxiliary.
 
 ## Mandatory interfaces
 
-### Proposal or solver
+### Proposal or information source
 
-Produces candidate tokens, soft block states, an operation result, interval, or execution capsule without future generated tokens. Reports every target stream, draft/solver operation, state byte, construction cost, rejected position, and numerical fallback.
+Produces candidate tokens, soft states, decision metadata, or an execution capsule. It must report:
+
+- causal inputs;
+- target/draft/solver pass counts;
+- target-specific training or compilation, if any;
+- parameter and state bytes;
+- future-information use;
+- rejected positions and numerical fallback;
+- selector cost.
 
 ### Certificate or verifier
 
-Declares one explicit contract:
+Declares exactly one contract:
 
 - deterministic exact;
 - deterministic top-1;
 - bounded-logit error;
-- probabilistic top-1 with declared union-accounted `delta`;
+- probabilistic top-1 with union-accounted delta;
 - exact target block verification with longest-prefix plus first-mismatch correction.
 
-Probabilistic certification is not deterministic exactness. Future-token oracle controls are not deployable.
+Future-token oracle controls are never deployable evidence.
 
-### Fallback/correction
+### Correction/fallback
 
-When certification, proposal matching, or numerical solving fails, execute the exact omitted target work required by the reference contract. No silent approximation and no uncharged fallback/correction stream.
+When proposal matching, certification, metadata, or numerical solving fails, execute the exact target work required by the declared reference contract. No silent approximation and no uncharged correction stream.
 
 ### Memory virtualization
 
-Separate GPU hot metadata, KV cache, work buffers, proposal/soft-state history, verification state, fallback tile, RAM cache, and SSD format.
+Separate:
+
+```text
+M_total = M_target_hot + M_draft_hot + M_kv_target + M_kv_draft
+          + M_work + M_metadata + M_verify + M_fallback
+```
+
+The final target requires `M_total <=8 GiB`; this remains UNVERIFIED.
 
 ### Evidence
 
-Every run emits phase/evidence/provenance, exact revisions, target/draft/solver pass counts, logical/physical bytes where measured, proposal acceptance, rejected positions, fallback/correction, numerical failures, memory, timing distribution, and output agreement.
+Every run emits exact revisions, phase/evidence/provenance, target/draft/solver passes, logical and physical bytes where available, exact-prefix distribution, correction/fallback, future-information audit, numerical failures, memory, timing, and output agreement.
 
-## Component classification
-
-### Auxiliary accepted
+## Auxiliary accepted components
 
 - safetensors discovery/slice access;
-- compact40/aligned64 mmap pointer VM;
-- atomic/checksummed format builder;
-- bounded exact decision-index compiler;
-- exact finite-horizon suffix DAG as body compression;
-- CPTC causal certificate, metadata fault rejection, and exact fallback at E1;
-- `vortex_runtime/block_verify.py` exact longest-prefix plus correction verifier at E1.
+- compact/checksummed mmap pointer VM;
+- atomic runtime-format builder;
+- bounded exact decision-index and finite-horizon DAG components;
+- CPTC certificate, metadata fault rejection, and exact fallback at E1;
+- `vortex_runtime/block_verify.py` exact longest-prefix plus correction verifier at E1;
+- `vortex_runtime/fixed_point.py` Picard/Anderson reference and fail-closed numerical machinery at E1;
+- hidden triangular adversarial models for universal target-round claims.
 
-These are not the core cost-reduction principle.
+None currently supplies the core proposal information required by the final runtime.
 
-### Rejected core families
+## Rejected core mechanisms
 
-See `FAILED_APPROACHES.md`, including:
+See `FAILED_APPROACHES.md`.
+
+Closed families include:
 
 - global/oracle-tight/stratified range-based CPTC;
-- hard target-only Jacobi under the tested stream accounting;
-- sequential partial-layer self-draft with repeated target LM-head evaluation;
-- proposal-tree expansion from the failed B3 source.
+- hard target-only Jacobi;
+- sequential partial-target-layer self-draft with repeated target LM-head work;
+- target-only continuous Picard/Anderson block solving;
+- proposal-tree expansion from a failed single-path source.
 
-### Active core research
-
-`EXP-049 — Anderson-Accelerated Continuous Block Fixed-Point Gate`.
-
-## Closed CPTC architecture
-
-EXP-047/047R correctness passed at E1, while the exact realized range oracle evaluated 100% at median and p90. Range-based CPTC is auxiliary only; no C3 rescue or GPU backend is justified.
-
-## Closed EXP-048 architecture
-
-### Retained verifier
+## Retained exact block verifier
 
 ```text
-exact committed prefix + proposed block
+exact target prefix + proposed block
         |
         v
 one exact causal target block pass
         |
         v
-compare proposal and target left to right
+left-to-right comparison
         |
-        +--> commit every exact matching token
+        +--> commit every matching proposal token
         +--> commit exact target token at first mismatch
-        +--> discard all later positions/state
+        +--> discard every later position/state
 ```
 
-MEASURED verifier result:
+EXP-048/049 committed-output mismatches: zero in their tested scopes.
+
+Verifier arithmetic positive control:
 
 ```text
-9 reference tests passed
-B1/B2/B3 committed-output mismatches 0
-future information in deployable B3 0
+96 perfect future tokens / one target pass = 1.0416667%
 ```
 
-### B1 perfect future oracle
+The verifier is not the proposal source.
+
+## Closed EXP-049 target-only solver architecture
+
+### Tested map
 
 ```text
-96 exact tokens / one target pass
-logical target-equivalent fraction 1.0416667%
-future information true
-deployable false
+exact prefix embeddings || continuous future block Z
+        |
+        v
+full causal target pass
+        |
+        v
+aligned logits -> top-k soft projection through target embedding
+        |
+        v
+F(Z), residual F(Z)-Z
+        |
+        +--> damped Picard
+        +--> bounded Anderson history
+        |
+        v
+hard proposal -> exact block verifier
 ```
 
-This proves the verifier arithmetic is sufficient if a nearly perfect long proposal already exists.
-
-### Rejected proposal sources
-
-B2 hard Jacobi:
+MEASURED favorable result:
 
 ```text
-p50 58 target passes / 32 exact tokens
-p50 fraction 181.25%
-p90 fraction 193.75%
+exact-reference-selected p50 prefix 4.5
+maximum prefix 6
+p90 target-equivalent fraction 168.778596%
+Anderson p50 prefix after four passes 1
+hard Jacobi p50 prefix after four passes 4
 ```
 
-B3 partial-layer self-draft:
+Triangular adversarial result:
 
 ```text
-p50 committed tokens / target verification 1
-maximum proposal matching prefix 1
-minimum fully accounted fraction 1333.463%
-p90 fully accounted fraction 2893.843%
+Picard round prefixes 1,2,3,4
+Anderson round prefixes 1,2,3,3
+hidden suffix indistinguishability true
 ```
 
 Decision:
 
-- retain the exact block verifier;
-- reject B2/B3 as core proposal mechanisms;
-- do not continue B4 tree expansion from failed B3;
-- complete real operation replacement remains NOT TESTED.
+- retain solver/numerical reference only;
+- reject target-only fixed-point proposal as core;
+- do not tune only top-k/temperature/damping/history/iterations;
+- do not build a target-only fixed-point GPU backend from this evidence.
 
-## Active EXP-049 architecture
+## Active EXP-050 external-draft architecture
 
-### Continuous future block state
-
-Represent `K` unknown future positions as soft token embeddings `Z`.
+EXP-050 changes the information source:
 
 ```text
-exact prefix embeddings || soft future embeddings Z
+exact prompt
+   |                         unmodified external draft checkpoint
+   +------------------------> cached sequential draft generation
+                                      |
+                                      v
+                              K-token causal proposal
+                                      |
+exact target prefix + proposal ------+
         |
         v
-unmodified target model, full causal batched pass
+one exact target block verification pass
         |
-        v
-aligned future logits L(Z)
-        |
-        v
-top-k sparse softmax projection through original token embedding
-        |
-        v
-F(Z), residual R(Z)=F(Z)-Z
+        +--> longest exact proposal prefix
+        +--> first-mismatch exact target correction
 ```
 
-No target weight is modified. The deployable path may use only the exact current prefix, fixed initialization metadata, previous solver iterates, and current target outputs.
+The target remains unmodified and untrained. The external draft is already published and fixed independently of target future tokens.
 
-### S0 — hard Jacobi control
+### Draft pool
 
-Reuse EXP-048 B2 and charge every target pass.
-
-### S1 — damped Picard
+For the initial falsification Gate:
 
 ```text
-Z_next = (1 - lambda) Z + lambda F(Z)
+Target TinyStories-1M <- Drafts 3M, 8M
+Target TinyStories-3M <- Drafts 1M, 8M
+Target TinyStories-8M <- Drafts 1M, 3M
 ```
 
-Top-k, temperature, damping, block length, and iteration count are pre-registered.
+A reference-selected best draft is an explicitly non-deployable favorable upper bound. A deployable selector remains a separate obligation.
 
-### S2 — bounded Anderson acceleration
+### Universal boundary
 
-Maintain a small history of states/residuals, solve the residual least-squares system in float64, regularize and clip coefficients, reject NaN/Inf/ill-conditioning, and fail closed to S1.
+A fixed target-independent draft cannot guarantee a nonzero exact prefix for every arbitrary target: for the same prompt, an adversarial target can choose a first greedy token different from the draft.
 
-### S3 — exact future-state oracle
+Therefore EXP-050 reports separately:
 
-Use exact future embeddings only to validate alignment, hardening, and upper-bound behavior. S3 is non-deployable and excluded from causal aggregates.
+- universal exact claim: tested by the first-token counterexample;
+- practical restricted-family acceptance: tested by cross-checkpoint proposals.
 
-### S4 — adversarial triangular models
+### Accounting equations
 
-Construct causal finite models where position `i` reveals only a transformation of the exact predecessor. These test the worst-case one-new-exact-position-per-target-round barrier and prevent average-case extrapolation into a universal arbitrary-model claim.
-
-### Hardening and exact commit
-
-After the pre-registered solver iterations:
+For target parameter bytes `P_t`, draft bytes `P_d`, proposal length `K`, and exact committed tokens `A`:
 
 ```text
-soft state Z
-   -> hard token proposal
-   -> retained exact block verifier
-   -> exact longest prefix + correction
+S_actual/token = (K * P_d/P_t + 1 target verification stream) / A
 ```
 
-All solver target streams, exact verification streams, projection operations/bytes, Anderson history, rejected positions, and corrections are charged.
+Final 4B-draft/405B-target normalization:
+
+```text
+S_projected/token = (K * 4/405 + 1) / A
+```
+
+Required target condition:
+
+```text
+S_projected/token <=0.01185185185
+```
+
+Even with a completely correct proposal:
+
+```text
+4/405 + 1/K <=0.01185185185
+K >=507
+```
+
+Thus an actual 4B draft requires at least 507 consecutive exact proposal tokens before other overhead. The older 85-token minimum applies only to a zero-cost proposal.
+
+### Tree expansion
+
+A proposal tree is forbidden until the single-path fixed pool survives its early Gate. Every branch and target-scored node must be charged. A tree cannot be used to hide position-zero divergence.
 
 ## Resource equations
 
 ```text
-M_total = M_hot + M_kv + M_work + M_soft_block
-          + M_anderson_history + M_verify + M_fallback <= 8 GiB
+B_total/token = B_draft + B_target_verify/A + B_selector
+                + B_correction + B_metadata
 
-S_target_equiv/token =
-    (S_solver_target
-     + S_exact_verify
-     + S_target_correction
-     + normalized_projection_and_solver_cost)
-    / exact_committed_tokens
+C_total/token = C_draft + C_target_verify/A + C_selector
+                + C_correction
 
-T_token >= max(B_total / effective_bandwidth,
-               C_total / effective_throughput,
+T_token >= max(B_total/effective_bandwidth,
+               C_total/effective_throughput,
                serial_latency_floor)
 ```
 
-PROJECTED same-bit traffic comparison:
+PROJECTED same-bit target comparison:
 
 ```text
-405B Q4 stream: 188.592821 GiB
-1.2x 4B Q4 allowance: 2.235174 GiB/token
-required target-equivalent stream fraction: 1.185185%
+405B Q4 target stream: 188.592821 GiB
+4B Q4 draft/baseline stream: 1.862645 GiB
+1.2x allowance: 2.235174 GiB/token
+required target-equivalent fraction: 1.185185%
 ```
 
-Dynamic exact-commit requirement before other overhead:
-
-```text
-required_committed_tokens = ceil(total_target_equivalent_streams / 0.01185185)
-2 streams ->169
-3 ->254
-4 ->338
-5 ->422
-6 ->507
-```
-
-These are projections, not measured target performance.
-
-## Theoretical claim boundary
-
-EXP-049 may not claim universal arbitrary-model acceleration without resolving the causal triangular lower-bound question. A proof that black-box target-only rounds can guarantee at most one new exact position in the worst case rejects the universal mechanism even if average checkpoint prompts improve.
+Hardware terms remain `NOT TESTED` until Phase D.
 
 ## Safety rule
 
-No optimized path commits outside its declared exact verifier or certificate. Invalid metadata, numerical failure, ill-conditioned Anderson solve, proposal mismatch, absent proof, or corrupt state triggers exact correction/fallback or abort.
+No path commits outside its declared exact verifier or certificate. Invalid revision, metadata, proposal, numerical state, selector, or accounting triggers exact correction/fallback or abort.

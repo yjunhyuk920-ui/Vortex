@@ -1,0 +1,87 @@
+{
+  "experiment": "EXP-049",
+  "seed": 202608033,
+  "torch_num_threads": 2,
+  "max_input_tokens": 64,
+  "block_sizes": [64, 128, 256],
+  "solver_pass_checkpoints": [1, 2, 4],
+  "max_solver_passes": 4,
+  "projection": {
+    "primary_top_k": 8,
+    "hard_control_top_k": 1,
+    "temperature": 1.0
+  },
+  "picard_variants": [
+    {"name": "S1_last_k8_l1", "initialization": "last", "top_k": 8, "damping": 1.0},
+    {"name": "S1_last_k8_l05", "initialization": "last", "top_k": 8, "damping": 0.5},
+    {"name": "S1_zero_k8_l1", "initialization": "zero", "top_k": 8, "damping": 1.0},
+    {"name": "S1_last_k1_l1", "initialization": "last", "top_k": 1, "damping": 1.0},
+    {"name": "S1_next_repeat_k8_l1", "initialization": "next_repeat", "top_k": 8, "damping": 1.0}
+  ],
+  "anderson_variants": [
+    {"name": "S2_last_k8_m2", "initialization": "last", "top_k": 8, "damping": 1.0, "history_size": 2},
+    {"name": "S2_last_k8_m4", "initialization": "last", "top_k": 8, "damping": 1.0, "history_size": 4},
+    {"name": "S2_last_k8_m8", "initialization": "last", "top_k": 8, "damping": 1.0, "history_size": 8}
+  ],
+  "anderson": {
+    "regularization": 1e-8,
+    "coefficient_clip": 10.0,
+    "condition_limit": 1000000000000.0
+  },
+  "hard_jacobi_fill_token": 0,
+  "triangular_controls": [
+    {"name": "copy_chain", "length": 64, "vocab_size": 80, "decoy_token": 0},
+    {"name": "permuted_chain", "length": 64, "vocab_size": 131, "decoy_token": 0}
+  ],
+  "tokenizer": {
+    "model_id": "EleutherAI/gpt-neo-125M",
+    "revision": "21def0189f5705e2521767faed922f1f15e7d7db"
+  },
+  "models": [
+    {
+      "model_id": "roneneldan/TinyStories-1M",
+      "revision": "77f1b168e219585646439073245fe87e56b3023e"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-3M",
+      "revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-8M",
+      "revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af"
+    }
+  ],
+  "held_out_prompts": [
+    {"family": "english_narrative", "text": "Once there was a small blue bird who wanted to cross the river."},
+    {"family": "korean", "text": "작은 로봇은 비가 오는 밤에 길을 잃은 강아지를 발견했다."},
+    {"family": "code", "text": "def binary_search(values, target):\n    left, right = 0, len(values) - 1\n"},
+    {"family": "mathematics", "text": "A box contains 12 red balls and 7 blue balls. After removing 5 red balls,"},
+    {"family": "structured_json", "text": "Return only JSON: {\"name\": \"Mina\", \"items\": ["},
+    {"family": "identifier_boundary", "text": "The exact deployment identifier is VTX-405B-RUNTIME-000173 and the next identifier is"}
+  ],
+  "early_gate": {
+    "minimum_p50_matching_prefix": 16,
+    "maximum_p90_target_equivalent_stream_fraction": 0.10,
+    "minimum_anderson_improvement_over_jacobi": 4.0,
+    "maximum_relative_largest_model_prefix_drop": 0.25,
+    "exact_mismatch_limit": 0,
+    "deployable_future_information_limit": 0,
+    "unhandled_numerical_failure_limit": 0,
+    "universal_round_barrier_must_be_absent": true,
+    "decision_on_failure": "REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY"
+  },
+  "promotion_gate": {
+    "maximum_p90_target_equivalent_stream_fraction": 0.011851851851851851,
+    "exact_mismatch_limit": 0,
+    "deployable_future_information_limit": 0,
+    "unhandled_numerical_failure_limit": 0
+  },
+  "projection_target": {
+    "target_parameters": 405000000000,
+    "baseline_parameters": 4000000000,
+    "bits_per_weight": 4,
+    "target_traffic_multiplier": 1.2
+  },
+  "evidence_ceiling": "E1 because fixed variants are audited with an offline reference selector and no complete operation-replacement generation loop exists",
+  "phase_d_status": "NOT TESTED"
+}
