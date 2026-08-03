@@ -10,6 +10,7 @@ from vortex_runtime.attention_probability_sparsity import (
     account_attention_probabilities,
     causal_eligible_mask,
     combine_whole_model_accounting,
+    structural_eligible_mask,
     zero_skipped_value_accumulation,
 )
 
@@ -19,6 +20,17 @@ def causal_probabilities(length: int) -> torch.Tensor:
     for query in range(length):
         row = torch.zeros(length, dtype=torch.float32)
         row[: query + 1] = 1.0 / (query + 1)
+        rows.append(row)
+    return torch.stack(rows).reshape(1, 1, length, length)
+
+
+def local_probabilities(length: int, window: int) -> torch.Tensor:
+    rows = []
+    for query in range(length):
+        row = torch.zeros(length, dtype=torch.float32)
+        start = max(0, query - window + 1)
+        count = query - start + 1
+        row[start : query + 1] = 1.0 / count
         rows.append(row)
     return torch.stack(rows).reshape(1, 1, length, length)
 
@@ -35,6 +47,36 @@ def test_causal_mask_shape_and_population() -> None:
     )
     assert tuple(mask.shape) == (1, 2, 3, 3)
     assert int(mask.sum().item()) == 12
+
+
+def test_local_window_excludes_old_structural_entries() -> None:
+    mask = structural_eligible_mask(
+        torch=torch,
+        batch_size=1,
+        head_count=1,
+        query_length=4,
+        key_length=4,
+        past_length=0,
+        device=torch.device("cpu"),
+        local_window_size=2,
+    )
+    assert int(mask.sum().item()) == 7
+    probabilities = local_probabilities(4, 2)
+    row = account_attention_probabilities(
+        probabilities,
+        model_id="m",
+        prompt_family="local",
+        phase="prefill",
+        decode_step=0,
+        layer_index=0,
+        head_dimension=8,
+        past_length=0,
+        attention_kind="local",
+        local_window_size=2,
+    )
+    assert row.eligible_probability_count == 7
+    assert row.structural_masked_probability_count == 9
+    assert row.exact_nonmask_zero_count == 0
 
 
 def test_rejects_malformed_key_and_past_lengths() -> None:
@@ -62,7 +104,7 @@ def test_mask_zeros_are_excluded_from_savings() -> None:
         head_dimension=8,
         past_length=0,
     )
-    assert row.masked_probability_count == 6
+    assert row.structural_masked_probability_count == 6
     assert row.eligible_probability_count == 10
     assert row.exact_nonmask_zero_count == 0
 
@@ -129,7 +171,7 @@ def test_negative_or_nonfinite_probability_is_rejected() -> None:
         )
 
 
-def test_nonzero_masked_entry_is_rejected() -> None:
+def test_nonzero_structurally_masked_entry_is_rejected() -> None:
     probabilities = causal_probabilities(2)
     probabilities[0, 0, 0, 1] = 0.1
     with pytest.raises(AttentionProbabilitySparsityError):
