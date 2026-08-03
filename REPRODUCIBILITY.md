@@ -1,19 +1,19 @@
 # Reproducibility
 
-## Reproducibility objective
+## Objective
 
-A new session or independent researcher must be able to determine exactly what was run, what was not run, and how every result was produced using only the repository and declared external checkpoints.
+An independent researcher or new session must determine exactly what ran, what did not run, and how every result was produced using only the repository and declared external checkpoints.
 
-## Required provenance labels
+## Provenance labels
 
-Every summary must separate:
+Every result separates:
 
-- **MEASURED:** produced by an actual command in the declared environment;
-- **DERIVED:** calculated from measured values or exact formulas;
-- **PROJECTED:** extrapolated to another model/hardware scale;
-- **UNVERIFIED:** not tested in the current environment.
+- MEASURED — actual declared-environment run;
+- DERIVED — formula/calculation from measured or exact inputs;
+- PROJECTED — extrapolation to another model/machine;
+- UNVERIFIED — not tested.
 
-## Per-experiment required files
+## Required experiment layout
 
 ```text
 docs/research/EXPERIMENT_XXX_<NAME>.md
@@ -33,11 +33,7 @@ tests/exp_xxx/
 .github/workflows/exp_xxx_gate.yml
 ```
 
-Git does not preserve empty directories. Use a scoped README or generated file only when necessary; do not fabricate raw results before a run.
-
-## Run identity
-
-Every `summary.json` must contain:
+## Required summary identity
 
 ```json
 {
@@ -45,12 +41,10 @@ Every `summary.json` must contain:
   "phase": ["A", "B"],
   "evidence_level": "E1",
   "git_commit": "...",
-  "workflow_run": null,
-  "environment": "...",
+  "workflow_run": "...",
+  "environment": {},
   "config_sha256": "...",
   "checkpoint": null,
-  "checkpoint_revision": null,
-  "checkpoint_sha256": null,
   "future_information_used": false,
   "phase_d_status": "NOT TESTED",
   "MEASURED": {},
@@ -60,96 +54,116 @@ Every `summary.json` must contain:
 }
 ```
 
-Fields unavailable before a run must be `null` or explicitly `NOT TESTED`, never invented.
+Unavailable fields are null or `NOT TESTED`, never invented.
+
+## EXP-047 authoritative run
+
+```text
+PR: #56
+workflow: 30791851508
+source head: d395d0eada15fd7ef9b09ce5ccb561a921bb6b7b
+workflow conclusion: success
+full tests in experiment workflow: 10 passed
+phase: A/B
+evidence: E1
+Phase D: NOT TESTED
+```
+
+The workflow checked out the source research branch, removed stale `results/exp_047`, reran tests and measurement, normalized source provenance, regenerated checksums, uploaded an artifact, and committed the complete result directory back to the branch.
+
+Committed authoritative evidence:
+
+```text
+results/exp_047/raw/cases.jsonl
+results/exp_047/processed/scaling.json
+results/exp_047/summary.json
+results/exp_047/logs/run.log
+results/exp_047/logs/workflow_stdout.log
+results/exp_047/artifacts/certificate_contract.txt
+results/exp_047/checksums.sha256
+```
+
+## EXP-047 reproduction
+
+```bash
+git checkout research/governance-exp047-cptc
+python -m pytest -q tests/exp_047
+bash experiments/exp_047/reproduce.sh
+sha256sum -c results/exp_047/checksums.sha256
+```
+
+Note: `reproduce.sh` regenerates timing fields, so checksums match only the authoritative committed run, not a new machine's rerun. Logical decisions, counts, and provenance contracts must match; timing is compared as a distribution, not bitwise.
 
 ## Determinism
 
-Where feasible, record:
+Record:
 
-- Python, NumPy, and framework seeds;
+- Python/framework seeds;
 - tile permutation seed;
-- thread counts;
-- deterministic-algorithm flags;
-- decoding parameters;
-- input corpus hash;
-- model revision and tokenizer revision.
+- threads;
+- deterministic flags;
+- decode parameters;
+- prompt/corpus hashes;
+- model/tokenizer revision.
 
-A fixed seed must reproduce the same logical decisions and summary fields. Timing may vary and must be reported as a distribution.
+EXP-047 uses committed config seed `20260803` and deterministic per-case permutation seeds. Fixed-seed logical results are tested.
 
 ## Independent implementations
 
 Phase B requires:
 
-- a slow, clear reference implementation;
-- an optimized implementation;
-- cross-checks on the same generated cases;
-- fault injection proving the verifier rejects corruption or invalid state.
+- slow reference;
+- optimized candidate;
+- independently computed critical formula/bound;
+- cross-checks;
+- malformed-state fault injection.
 
-Shared helper code must not make both implementations repeat the same critical formula without an independent test oracle.
+EXP-047 independently recomputes accepted interval endpoints and records mismatches; authoritative mismatches were zero.
 
 ## Logs and checksums
 
-The workflow must save:
+Workflow saves stdout/stderr, environment, raw measurements, summary, artifacts, and SHA-256 list.
 
-- stdout/stderr;
-- test report;
-- environment inventory;
-- raw measurements;
-- processed summary;
-- artifact manifest;
-- SHA-256 checksum list.
-
-Example:
+Canonical generation:
 
 ```bash
 find results/exp_xxx -type f ! -name checksums.sha256 -print0 \
   | sort -z \
-  | xargs -0 sha256sum > results/exp_xxx/checksums.sha256
-```
-
-## Current-environment commands
-
-```bash
-python -m pytest -q
-python scripts/run_validation.py
-bash experiments/exp_047/run_current_env.sh
-bash experiments/exp_047/reproduce.sh
+  | xargs -0 sha256sum \
+  | sed 's#  results/exp_xxx/#  #' \
+  > results/exp_xxx/checksums.sha256
 ```
 
 ## External checkpoints
 
-A real-model experiment must pin:
-
-- repository/model ID;
-- exact revision/commit;
-- file list;
-- file hashes where license and tooling allow;
-- tokenizer revision;
-- download command;
-- cache path policy;
-- license/access requirements.
-
-Do not use a moving `main` revision as authoritative evidence.
+Real-model experiments pin model ID, revision, file list/hashes, tokenizer revision, download command, cache policy, and access/license state. Moving `main` is not authoritative.
 
 ## Workflow rules
 
-Each experiment workflow must:
+Each experiment workflow:
 
-- verify all referenced files exist;
-- install pinned dependencies;
-- run experiment-specific tests before the experiment;
-- fail on NaN, missing metrics, wrong accepts, or provenance violations;
-- upload artifacts;
-- commit raw evidence only after all gates pass;
-- use branch-specific concurrency;
-- never report a synthetic/CPU run as Phase D.
+- verifies paths;
+- pins dependencies;
+- runs experiment tests first;
+- fails on NaN, missing metrics, wrong accepts, future leakage, or provenance violations;
+- uploads artifacts;
+- commits evidence only after the Gate passes;
+- avoids recursive runs from result-only commits;
+- never labels CPU runs as Phase D.
 
-## Reproduction failure
+## Infrastructure failures
 
-If reproduction fails:
+EXP-047 recorded two corrected infrastructure failures before the authoritative run:
 
-1. classify infrastructure failure separately from hypothesis failure;
+1. eager package import required optional `safetensors` for a standard-library primitive;
+2. script execution lacked repository root on `PYTHONPATH`.
+
+Neither was scientific evidence. Lazy imports and explicit `PYTHONPATH` fixed them. Only workflow `30791851508` is authoritative.
+
+## Reproduction failure procedure
+
+1. classify infrastructure versus scientific failure;
 2. preserve logs;
-3. do not interpret missing checkpoints or runner timeouts as scientific evidence;
-4. update `RESEARCH_STATE.md` and the experiment document;
-5. rerun only after the failure mode is corrected.
+3. do not interpret missing checkpoints/timeouts as hypothesis evidence;
+4. update durable state;
+5. rerun only after correction.
