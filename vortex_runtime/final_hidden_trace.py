@@ -24,6 +24,33 @@ class PromptContinuationTrace:
         return int(self.continuation_hidden_states.shape[0])
 
 
+def continuation_queries_after_anchor(
+    trace: PromptContinuationTrace,
+    *,
+    steps: int,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Return exact block-boundary queries after one exact anchor token.
+
+    `continuation_token_ids[0]` is the exact token emitted by prompt prefill and
+    is charged as the block-boundary interaction. `continuation_hidden_states[0]`
+    is the final hidden state after consuming that anchor and predicts
+    `continuation_token_ids[1]`. This matches Experiments 037–038 and avoids
+    treating the anchor itself as a replayed token.
+    """
+
+    if steps <= 0:
+        raise ValueError("steps must be positive")
+    if trace.continuation_hidden_states.shape[0] < steps:
+        raise ValueError("not enough continuation hidden states")
+    if trace.continuation_token_ids.numel() < steps + 1:
+        raise ValueError("not enough continuation tokens after the anchor")
+    queries = trace.continuation_hidden_states[:steps].contiguous()
+    targets = trace.continuation_token_ids[1 : steps + 1].contiguous()
+    if queries.shape[0] != targets.numel():
+        raise RuntimeError("anchored query/target alignment mismatch")
+    return queries, targets
+
+
 def encode_prompt(
     tokenizer: Any,
     prompt: str,
