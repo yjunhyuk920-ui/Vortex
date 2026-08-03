@@ -2,164 +2,134 @@
 
 No unverified assumption may be used as a success condition.
 
-## A-001 — Signed tile cancellation is broadly exploitable
+## A-001 — Signed tile cancellation is broadly exploitable by range certification
 
-Assumption:
+Assumption: real Transformer pair-margin tile contributions permit valid early range-based certification under causal randomized order.
 
-Real Transformer decision-tile contributions permit valid early certification under causal randomized order.
+Evidence:
 
-Current evidence:
+- deterministic residual work required roughly 90–98% refinement;
+- EXP-047 global-range synthetic run evaluated about 98% overall;
+- EXP-047R exact per-state range oracle evaluated 100% at median and p90 across 18 states from three pinned trained checkpoints.
 
-- Prior deterministic residual work observed cancellation but needed 90–98% refinement.
-- EXP-047 global-range synthetic run certified 4/525 cases and evaluated about 98% of tiles overall.
-- A strong synthetic positive control certified after 10.449% tiles.
+Status: CONTRADICTED FOR RANGE-BASED CPTC AS CORE.
 
-Status: WEAKENED / UNVERIFIED ON REAL MODELS.
-
-Contradiction test:
-
-EXP-047R oracle-tight held-out real-checkpoint audit. Reject range-only CPTC if oracle-tight median evaluated fraction >10% or p90 >25%.
-
-Dependencies: EXP-047R.
+The existence of cancellation is not enough; range-only certification did not expose it early enough.
 
 ## A-002 — Alpha-spending Serfling implementation is valid under declared assumptions
 
-Assumption:
+Evidence: EXP-047 and EXP-047R unit/property/adversarial checks, zero wrong accepts in committed corpora, zero bound violations in EXP-047R, deterministic replay, and exact fallback.
 
-Sampling without replacement plus fixed-step Serfling intervals and `delta_n = delta*6/(pi^2 n^2)` is valid under adaptive stopping when every contribution lies in the declared range.
+Status: SUPPORTED AT PHASE A/B, E1, WITHIN DECLARED FINITE-POPULATION ASSUMPTIONS.
 
-Current evidence:
-
-10 unit/property tests; 525 cases; zero independent-bound mismatches; zero wrong accepts in the corpus; adversarial exact fallback 15/15.
-
-Status: SUPPORTED AT PHASE B / E1. Mathematical and implementation scope only.
-
-Remaining risk:
-
-A real checkpoint must derive sound ranges without reading all skipped tiles.
-
-Dependencies: EXP-047R.
+This does not establish useful savings or model-wide correctness.
 
 ## A-003 — Certificate overhead is smaller than skipped work
 
-Assumption:
+Evidence:
 
-Selector/statistics cost is materially smaller than evaluated dense work.
+- EXP-047 Python reference was about 8.6–9.1x simple full summation;
+- EXP-047R C2 materialized-contribution CPU primitive/full-sum median was 2165.057x;
+- EXP-047R evaluated essentially all contributions.
 
-Current evidence:
+Status: CONTRADICTED FOR CURRENT REFERENCE IMPLEMENTATIONS.
 
-Python Phase-B optimized path was about 8.8–9.1x slower than simple full summation in measured buckets, while fallback was 99.238%.
-
-Status: CONTRADICTED FOR CURRENT PYTHON CPTC-v1; UNVERIFIED FOR VECTORIZED ACCELERATOR IMPLEMENTATION.
-
-Contradiction/promotion test:
-
-Charge selector operations and real-operation wall clock. No hardware projection may override current measured CPU evidence.
-
-Dependencies: EXP-047R and later real replacement.
+The EXP-047R ratio is not an optimized lower bound and is not GPU evidence. The range family was already rejected by C1 oracle coverage independently of timing.
 
 ## A-004 — A decision-relevant low-dimensional projection is sufficient
 
-Assumption:
-
-A token/operator decision can be certified without reconstructing every omitted output coordinate.
-
-Current evidence:
-
-LM-head top-1 certificate primitives and constructed decision bounds exist, but model-wide nonlinear propagation is unresolved.
+Current evidence: pairwise LM-head decision reconstruction is exact, but model-wide nonlinear propagation and candidate selection remain unresolved.
 
 Status: PARTIALLY SUPPORTED / UNVERIFIED MODEL-WIDE.
 
-Contradiction test:
-
-Real operation replacement requires near-complete hidden-vector precision before final certification.
-
 ## A-005 — Probabilistic certification is acceptable
 
-Assumption:
-
-A union-bounded wrong-commit mode is acceptable alongside strict exact fallback mode.
-
-Current evidence:
-
-No final product acceptance criterion. EXP-047 uses `delta=1e-8` per synthetic decision and observed zero wrong accepts, but this is not model-wide union accounting.
+Current evidence: no final product acceptance criterion. Exact fallback exists; model-wide delta accounting does not.
 
 Status: UNVERIFIED REQUIREMENT.
 
-Contradiction test:
+## A-006 — Small-model trends predict larger models
 
-Strict bitwise exactness is mandatory or usable model-wide delta makes all certificates ineffective.
+Current evidence: three small checkpoints only.
 
-## A-006 — Small-model certification trends predict larger models
-
-Current evidence: none.
-
-Status: UNVERIFIED FOR LARGE MODELS.
-
-Contradiction test: same held-out protocol across at least three sizes, then 30B/70B/405B in later phases.
+Status: UNVERIFIED FOR 70B/405B.
 
 ## A-007 — Target RAM/SSD capacity and bandwidth are sufficient
-
-Current evidence: small mmap tests and formulas only.
 
 Status: UNVERIFIED; Phase D NOT TESTED.
 
 ## A-008 — Full hot state fits 8 GiB including KV/buffers/fallback
 
-Current evidence: no complete architecture and no target GPU measurement.
-
-Status: UNVERIFIED; E0.
+Status: UNVERIFIED; E0; Phase D NOT TESTED.
 
 ## A-009 — 4B-class speed can coexist with exact fallback
 
-Current evidence:
+Current evidence: prior repair mechanisms and CPTC fallback/coverage failed. Same-bit traffic requires about 1.185% average target-equivalent stream fraction before overhead.
 
-Prior repair mechanisms failed; CPTC-v1 fallback was 99.238% in synthetic cases.
+Status: HIGH-RISK AND UNSUPPORTED.
 
-Status: HIGH-RISK AND CURRENTLY UNSUPPORTED.
+## A-010 — Auxiliary DAG/VM/certificate components aid the final runtime
 
-Contradiction test:
+Status: OPTIONAL. They may be reused only after a new core mechanism independently changes cost.
 
-Measured fallback/cold bytes exceed target budget. A simple same-bit comparison requires about 1.185% average target weight evaluation before overhead.
+## A-011 — Loose global metadata, not intrinsic range behavior, caused CPTC-v1 failure
 
-## A-010 — Auxiliary DAG/VM components aid the final runtime
+EXP-047R contradiction test:
 
-Current evidence: bounded functional components only.
+```text
+C1 exact realized min/max oracle median 100%
+C1 p90 100%
+pre-registered limits 10% / 25%
+```
 
-Status: OPTIONAL/UNVERIFIED. They must not constrain core research.
+Status: CONTRADICTED.
 
-## A-011 — Loose range metadata, not intrinsic tile behavior, caused CPTC-v1 failure
+Decision: reject range-only CPTC; do not tune C2/C3 to rescue it.
 
-Assumption:
+## A-012 — Sound static tile metadata can be computed automatically and be useful
 
-Per-state oracle-tight or deployable stratified bounds materially reduce certificate sample fractions.
+Evidence:
 
-Current evidence:
+- checkpoint output-weight column spans were computed automatically without training;
+- zero bound violations across EXP-047R;
+- C2 median and p90 still 100%, best 99.21875%.
 
-Not tested. Current global range was deliberately broad `[-1,1]`.
+Status: SOUNDNESS SUPPORTED AT E1; USEFULNESS CONTRADICTED FOR THE TESTED CORE ROLE.
 
-Status: ACTIVE UNVERIFIED ASSUMPTION.
-
-Contradiction test:
-
-EXP-047R compares global, oracle-tight, and deployable stratified ranges on held-out real-checkpoint tile contributions.
-
-Decision:
-
-If oracle-tight C1 remains above rejection thresholds, reject range-only CPTC rather than tuning sample fractions.
-
-## A-012 — Sound static tile metadata can be computed automatically
+## A-013 — One full target stream can be amortized across many exact accepted tokens
 
 Assumption:
 
-Checkpoint-derived tile norms or tighter bounds can be precomputed without training/model modification, stored compactly, and combined with the current activation without reading skipped weights.
+A causal training-free proposal mechanism can supply a long block, one exact teacher-forced target pass can verify it, and the longest matching prefix can preserve exact greedy output.
 
-Current evidence: formula candidates only.
+Known arithmetic:
 
-Status: UNVERIFIED.
+```text
+required target-equivalent stream fraction 0.01185185
+zero-cost perfect-proposal minimum accepted block 85 tokens
+real draft cost raises the requirement
+```
+
+Current evidence:
+
+- exact causal block evaluation is structurally possible;
+- an existing Jacobi implementation exists as a control;
+- no committed training-free partial-layer self-draft evidence yet meets the accounting target.
+
+Status: ACTIVE UNVERIFIED ASSUMPTION FOR EXP-048.
 
 Contradiction test:
 
-Metadata is too large, runtime activation bounds too loose, or construction requires forbidden calibration/training.
+- exact mismatch or future information;
+- p50 accepted tokens per verification <16 at the early Gate;
+- p90 target-equivalent stream fraction >10%;
+- cost not lower than exact sequential decoding;
+- non-degrading 85-token acceptance cannot be approached across checkpoint sizes/tasks.
 
-Dependencies: EXP-047R C2.
+## A-014 — Early target layers can act as a useful training-free draft
+
+Assumption: the same checkpoint's partial-layer hidden state plus its own output head predicts enough final-layer tokens to amortize exact block verification without an adapter.
+
+Status: ACTIVE UNVERIFIED ASSUMPTION FOR EXP-048 B3.
+
+All partial-layer reads, sequential proposal steps, output-head work, rejected positions, and correction passes must be charged.
