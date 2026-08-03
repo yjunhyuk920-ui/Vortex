@@ -7,16 +7,16 @@ Last updated: 2026-08-03 (Asia/Seoul)
 Build a universal runtime for arbitrary unmodified Hugging Face dense transformers with:
 
 - one 8 GiB VRAM GPU;
-- no user training, distillation, fine-tuning, LoRA, or architecture-specific adapter authoring;
+- no user training, distillation, fine-tuning, LoRA, or model-specific adapter authoring;
 - original-model decisions and quality preserved;
 - p50 warm decode at or below 1.2x a native 4B Q4 baseline on the same machine;
 - flagship validation on a real 405B-class model.
 
-Current evidence remains below E4. Do not claim the runtime target is solved.
+Current evidence remains below E4. Do not claim the physical runtime target is solved or impossible from metadata size alone.
 
-## Mandatory startup
+## Mandatory startup and persistence
 
-Read:
+Read in this order:
 
 1. `AGENTS.md`
 2. `docs/PROOF_FIRST_CONTRACT.md`
@@ -25,188 +25,193 @@ Read:
 5. this file
 6. active experiment documents, workflows, PR comments, and raw JSON
 
-Before a user-facing progress/completion answer after meaningful work, commit the ledger and this handoff.
+Before a user-facing progress/completion answer after meaningful work, update and commit the ledger and this handoff.
 
 ## Current repository state
 
-Latest decisions:
+Latest research decisions:
 
 ```text
 PR #36  semantic-state program routing                    rejected
 PR #37  prompt-compiled Hankel decision program           rejected
 PR #38  perfect-oracle sparse repair                      rejected
 PR #40  prompt-only nonlocal exact decision memory        rejected
-PR #42  exact dense-operator lower-bound certificate      accepted/merged
-PR #44  metadata-aware exact top-1 function bound         accepted/merged
+PR #42  exact dense-operator information bound            accepted/merged
+PR #44  metadata-aware direct/operator top-1 bound        accepted/merged
+PR #46  end-to-end Llama final-token metadata bound       accepted/merged
 ```
 
-Latest main merge:
+Latest merge:
 
 ```text
-PR #44 merge: aca6657578b0decb58adbf98bcd22555169a6847
+PR #46 main merge: 038d3fa72dbfe91f4d9837d482b9f9c10719a00f
 ```
 
-Authoritative Experiment 041 evidence:
+Authoritative Experiment 042 evidence:
 
 ```text
-branch: research/top1-function-information-bound
-head: 95e202da8a31e564a80db509ad0b9b97bd71403d
-certificate workflow: 30782192795
-Python 3.10/3.12 CI + validation: 30782192768
+branch: research/llama-final-decision-routing-bound
+head: 7f1385b2585477d1557f50823047e41604803cb0
+certificate workflow: 30784848053
+Python 3.10/3.12 CI + validation: 30784848049
+raw JSON: results/llama_final_decision_routing_bound.json
 ```
 
-## Accepted Experiment 040 result
+Earlier Experiment 042 workflow comments before the scope correction are not authoritative. Use the raw JSON above.
 
-For arbitrary Q4 405B exact dense operator output:
+## Accepted Experiment 042 result
+
+### Executable Llama-style family
+
+The micro-model uses actual:
 
 ```text
-exact checkpoint information: 188.98828125 GiB
+token embeddings
+RMSNorm
+causal grouped-query attention
+residual connections
+SwiGLU MLP
+final RMSNorm
+linear LM head
+```
+
+A legal four-token prompt selects a variable layer/group, payload coordinate, output channel, and query carrier. Two GQA loader layers copy controls into the final query position. Two variable layers carry signed Q4 codes in `up_proj`. The fixed LM head decodes the selected code from the final next-token winner.
+
+Executable certificate:
+
+```text
+hidden size: 8
+attention heads / KV heads: 4 / 1
+KV dimension: 2
+total layers: 4
+loader layers: 2
+variable layers: 2
+independent Q4 coefficients: 2
+expected functions: 256
+observed functions: 256
+exact code recovery: true
+minimum winner margin: 0.24951063086132308
+```
+
+Six primitive tests and full repository CI passed. The tests include nonzero causal GQA loading, exact inactivity of an unselected variable layer, two-layer additivity, final-token recovery, and target projection constants.
+
+### Llama-405B-shaped projection
+
+The projection charges the 1,024-dimensional GQA KV bottleneck and consumes loader layers:
+
+```text
+hidden size: 16,384
+intermediate size: 53,248
+total layers: 126
+loader layers: 15
+variable layers: 111
+groups/layer: 31
+neurons/group: 1,717
+payload coordinates: 9,508
+active intermediate neurons/layer: 53,227
+control coordinates: 14,666
+vocabulary rows: 42,139
+independent signed-Q4 coefficients: 56,175,137,076
+```
+
+Complete exact final-decision metadata lower bound for the constructed family:
+
+```text
+224,700,548,304 bits
+26.158586645498872 GiB
 resident allowance: 8 GiB
-minimum external information: 180.98828125 GiB
-optimistic dense arithmetic: 811.698487296 GFLOP
-ratio to 4B dense arithmetic: 101.462310912x
+excess: 18.158586645498872 GiB
 ```
 
-The injectivity/cardinality theorem proves the exact-output representation needs `N*b` bits in the worst case. The skipped-coordinate gate produced 115/115 indistinguishable-observation adversaries with different exact outputs and top-1 winners.
+Accepted theorem:
 
-Scope:
-
-```text
-exact-output N*b bound: proven
-coordinate omission can flip top-1: proven
-metadata-aware complete top-1 N*b bound: not proven by Experiment 040
-```
-
-## Accepted Experiment 041 result
-
-### Direct classifier theorem
-
-For an `m x d` dense classifier:
-
-```text
-p = min(floor(m/2), floor(d/2))
-q = d - p
-K = p q
-```
-
-The selector/payload family encodes `K` independent bits. Each bit has one query whose unique top-1 winner reveals it. Therefore the family has `2^K` distinct top-1 decision functions and any exact checkpoint-specific metadata for the family needs at least `K` bits.
-
-Exhaustive certificate:
-
-| Shape | K | Expected functions | Observed | Minimum margin |
-|---|---:|---:|---:|---:|
-| 2x2 | 1 | 2 | 2 | 1.0 |
-| 4x4 | 4 | 16 | 16 | 1.0 |
-| 4x5 | 6 | 64 | 64 | 1.0 |
-| 6x6 | 9 | 512 | 512 | 1.0 |
-
-All encoded bit tables decoded exactly from the winner signatures.
-
-### Llama-405B-shaped independently callable operator collection
-
-Per decoder layer:
-
-```text
-Q:    67,108,864 bits
-K:     8,126,464 bits
-V:     8,126,464 bits
-O:    67,108,864 bits
-gate: 67,108,864 bits
-up:   67,108,864 bits
-down:369,098,752 bits
-sum: 653,787,136 bits = 77.9375 MiB
-```
-
-Projection:
-
-```text
-126-layer stack: 9.5899658203125 GiB
-directly callable LM head: 8 MiB
-total: 9.5977783203125 GiB
-excess over 8 GiB: 1.5977783203125 GiB
-```
-
-Accepted conclusion:
-
-> Arbitrary checkpoint-specific exact top-1 metadata for the constructed independently callable Llama-shaped operator collection is lower-bounded above 8 GiB.
+> A complete checkpoint-specific representation preserving every final next-token decision for the constructed arbitrary Q4 Llama-style family cannot fit entirely inside an 8 GiB resident checkpoint-information allowance.
 
 ## Critical scope boundary
 
-Experiment 041 did not prove:
+The authoritative JSON explicitly records:
 
 ```text
-full end-to-end Transformer final-token bound
-real 405B execution
-measured GPU wall clock
+actual Llama-style final-token routing: proven for the family
+256/256 end-to-end functions: proven
+complete exact decision metadata fits in 8 GiB resident: false
+per-query external traffic lower bound: not proven
+host-indexed random-access escape: not closed
+fixed physical runtime target fully contradicted: false
+released 405B checkpoint maximum complexity: not proven
+real 405B execution: not performed
+GPU wall clock: not measured
 ```
 
-Layerwise/operator bounds cannot be summed into a final language-model theorem until one explicit Llama-like construction exposes their independent bits through final token winners.
+Metadata total size is not per-token traffic. In the Experiment 042 family one legal query selects one Q4 coefficient, so a host-resident indexed table could in principle return a sparse answer. Do not claim that 26.16 GiB must cross PCIe each token.
 
 Current classification:
 
 ```text
-arbitrary dense exact output with 8 GiB only: contradicted
-metadata-aware exact top-1 for direct dense classifiers: lower-bounded
-independently callable Llama-shaped operator collection: >8 GiB lower bound
-full Transformer final-token metadata bound: open
-405B/8 GiB/4B-speed runtime: unsolved
+all-resident arbitrary exact-decision metadata in 8 GiB: contradicted
+host-indexed exact-decision representation: open
+per-token cell-probe / communication lower bound: open
+405B/8 GiB/4B-speed physical runtime: unsolved
 ```
 
 ## Accumulated execution evidence
 
 ```text
-semantic program reuse: about 1 token
+semantic-state program reuse: about 1 token
 prompt recurrence: maximum 2 exact tokens
 perfect-token repair: exact target on 68%–89% of tokens
 future-aware prompt suffix oracle: 75 / 28 / 5 tokens
-required full-interaction reuse: about 247 tokens
+required full-stream amortization: about 247 tokens
+exact-output Q4 information: 188.9883 GiB
+end-to-end final-decision metadata family: 26.1586 GiB total
 ```
 
-## Prohibited repeats
+## Prohibited repeats and overclaims
 
-Do not continue by only changing static rank, recurrence order, repair thresholds, ANN settings, speculative block length, or uncharged lossless metadata. Do not report the operator-collection bound as a full Transformer theorem.
+Do not continue by only changing static rank, recurrence order, repair thresholds, ANN settings, speculative block length, or uncharged metadata. Do not:
 
-## Current frontier — Experiment 042 End-to-End Llama Decision Routing Bound
+- relabel metadata size as traffic;
+- cite the invalid pre-correction Experiment 042 conclusion;
+- claim a released checkpoint has worst-case complexity without measuring it;
+- claim physical impossibility without a traffic/latency lower bound;
+- claim runtime success without real hardware evidence.
 
-The next Gate must embed independent selector/payload decision bits inside an actual Llama-like residual/attention/MLP composition and expose them through final vocabulary top-1 decisions.
+## Current frontier — Experiment 043 Host-Indexed Exact-Decision Probe Gate
 
-### Proof target
+The remaining escape is an external checkpoint-specific decision index. Experiment 043 must determine what exact autoregressive execution requires from that index.
 
-Construct a quantized Llama-style family with:
+### First proof target
 
-- RMSNorm;
-- causal self-attention;
-- residual connections;
-- SwiGLU MLP;
-- final norm and LM head;
-- multiple layers carrying independent bit tables.
+Construct an adaptive pointer-chasing decision family:
 
-For every encoded layer/operator bit, provide a legal token sequence/query whose final next-token winner reveals that bit with a strictly positive margin.
+```text
+address_(t+1) = transition[address_t, value_t]
+value_t       = host_table[address_t]
+```
 
-If `K_total` independent layerwise bits are exposed through final token decisions, the family has `2^K_total` distinct language-model decision functions and any exact checkpoint-specific metadata needs at least `K_total` bits.
+The next address is unavailable until the current exact value is returned. This prevents parallel look-ahead for the constructed trace and gives a serial cell-probe count.
 
-### Required work
+Required distinctions:
 
-1. Start with a minimal exact Llama-like micro-model, not a generic operator collection.
-2. Construct selector channels and payload channels that survive RMSNorm with known scale.
-3. Either:
-   - route bits through attention values and output projection, or
-   - route through a SwiGLU configuration with a rigorously bounded positive margin.
-4. Make unselected layers/operators contribute a checkpoint-independent constant.
-5. Verify all small bit tables exhaustively against final vocabulary winners.
-6. Prove additivity across at least two layers before scaling the symbolic count.
-7. Extend the count to target hidden/intermediate/layer shapes only after the small end-to-end construction passes.
-8. Keep runtime success, information theorem, and hardware measurement separate.
+```text
+serial probes/token: algorithmic property
+bytes/probe: representation property
+host/PCIe latency: measured hardware property
+4B-speed failure: not proven until the above are jointly charged
+```
 
-## Exact next steps
+### Experiment 043 required work
 
-1. Merge this documentation update after full CI.
-2. Create `research/llama-final-decision-routing-bound`.
-3. Add `docs/EXPERIMENT_042_LLAMA_FINAL_DECISION_ROUTING_BOUND.md`.
-4. Implement a deterministic Llama-like micro-model and exhaustive function counter.
-5. Add tests, workflow, and raw JSON.
-6. Update the ledger and handoff before reporting further progress.
+1. Add `docs/EXPERIMENT_043_HOST_INDEXED_CELL_PROBE_GATE.md`.
+2. Implement a deterministic adaptive Q4 decision table and exact pointer-chasing decoder.
+3. Construct indistinguishable table pairs proving that skipping the current addressed cell can change the next token and every later address.
+4. Verify serial adaptivity over multiple steps and reject prefetch strategies that do not know the current value.
+5. Derive memory, address, probe, and transferred-byte equations.
+6. Add a host-memory prototype using explicit random accesses and record functional probe counts separately from machine-specific timing.
+7. If timing is measured in CI, label it nonrepresentative and do not project it to the target GPU.
+8. State whether the Gate proves only one serial probe/token, a stronger number of probes, or no useful latency lower bound.
+9. Commit tests, workflow, raw JSON, PR decision, ledger, and handoff.
 
 ## Correct communication
 
-> Experiment 041 proved a metadata-aware exact top-1 lower bound of 9.5978 GiB for an independently callable Llama-405B-shaped operator collection, but not yet for final Transformer token decisions. The runtime objective remains unsolved. Experiment 042 must expose independent layerwise bits through an actual Llama-like final-token winner before the lower bound can be promoted to the full model.
+> Experiment 042 proved an end-to-end final-token metadata lower bound of 26.1586 GiB for a constructed Q4 Llama-style family and therefore closed an all-resident 8 GiB exact-decision representation for that family. It did not prove 26.1586 GiB of traffic per token. A sparse host-indexed representation remains open, so the physical 405B/8 GiB/4B-speed objective remains unsolved. Experiment 043 now tests unavoidable serial host probes and their charged communication path.
