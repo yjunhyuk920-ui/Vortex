@@ -124,4 +124,80 @@ EXP-048 will test whether one exact full-target weight stream can be amortized a
 
 A zero-cost perfect proposal still requires at least 85 accepted tokens per full target pass to meet the projected 1.185% target-equivalent stream fraction. Future-token oracle proposals are upper-bound controls only and never deployable evidence.
 
+Status: EXECUTED BY EXP-048.
+
+## D-018 — EXP-048 exact block verifier accepted at E1
+
+Authoritative source:
+
+```text
+results/exp_048/summary.json
+workflow 30798936320
+source head SHA 484a1f0f313d88733d2f7210f2a24d3904bf1373
+workflow merge SHA d60e392d66d694fc020f2cfe2435e47e5f5a22ca
+artifact 8850040445
+artifact SHA-256 67c1e6d8965f7535020ecd4c02bb8a2af1156a234564f3cdf74d10c882fd7eb9
+```
+
+The longest-matching-prefix plus first-mismatch correction verifier preserved exact greedy output in model-independent tests and all committed small-checkpoint cases. Predictions after the first mismatch were never committed.
+
+Status: ACCEPTED E1 AUXILIARY PRIMITIVE.
+
+## D-019 — Perfect block proposal proves verifier arithmetic is sufficient but is non-deployable
+
+B1 used the exact future 96-token continuation and one exact target block pass.
+
+MEASURED:
+
+```text
+18/18 exact
+96 committed tokens per target pass
+target-equivalent stream fraction 1.0416667%
+future information used true
+deployable false
+```
+
+PROJECTED target fraction was 1.185185%. B1 crossed that arithmetic threshold, but it is an oracle upper bound and never runtime evidence.
+
+Status: ACCEPTED NON-DEPLOYABLE UPPER BOUND ONLY.
+
+## D-020 — Hard Jacobi and partial-layer self-draft rejected as core
+
+B2 hard Jacobi:
+
+```text
+p50 58 target passes for 32 exact tokens
+p50 target-equivalent fraction 181.25%
+p90 193.75%
+maximum matching prefix 3
+```
+
+B3 causal early-layer self-draft:
+
+```text
+18 cases, 54 fixed variants
+exact mismatches 0
+future information uses 0
+p50 committed tokens per target verification 1
+maximum matching prefix 1
+minimum fully accounted fraction 1333.463%
+p90 fully accounted fraction 2893.843%
+```
+
+Decision:
+
+```text
+REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER
+```
+
+The B4 proposal tree is not continued from a B3 mechanism that failed its mandatory early Gate.
+
+Status: B2/B3 REJECTED AS CORE; VERIFIER RETAINED.
+
+## D-021 — Next Gate removes the sequential draft loop
+
+EXP-049 will test continuous soft-token block fixed points using damped Picard and bounded Anderson acceleration. It will execute a small number of full target block passes, harden the state, and use the retained exact verifier.
+
+A separate adversarial lower-bound audit will test whether arbitrary causal models impose a worst-case one-new-exact-position-per-target-round barrier. Any universal acceleration claim must survive that proof obligation.
+
 Status: ACTIVE NEXT GATE.
