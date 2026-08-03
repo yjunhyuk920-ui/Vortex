@@ -2,167 +2,182 @@
 
 No unverified assumption may be used as a success condition.
 
-## A-001 — Signed tile cancellation is broadly exploitable by range certification
+## A-001 — Range-certified signed cancellation is broadly exploitable
 
-Evidence: deterministic residual required 90–98% refinement; EXP-047 evaluated about 98%; EXP-047R exact-state range oracle evaluated 100% at median and p90.
+EXP-047/047R evaluated about 98–100% of contributions even under exact realized ranges.
 
 Status: CONTRADICTED FOR RANGE-BASED CPTC AS CORE.
 
-## A-002 — Alpha-spending Serfling implementation is valid under declared assumptions
+## A-002 — Alpha-spending Serfling implementation is valid in declared scope
 
-Evidence: EXP-047/047R reference/property/adversarial tests, zero committed-corpus wrong accepts, zero bound violations, deterministic replay, exact fallback.
+Reference/property/adversarial checks, zero committed-corpus wrong accepts, zero bound violations, deterministic replay, exact fallback.
 
-Status: SUPPORTED AT PHASE A/B, E1, WITHIN DECLARED FINITE-POPULATION ASSUMPTIONS.
-
-This does not establish useful savings or model-wide correctness.
+Status: SUPPORTED PHASE A/B E1; DOES NOT ESTABLISH SAVINGS.
 
 ## A-003 — Certificate overhead is smaller than skipped work
 
-Evidence: EXP-047 Python path about 8.6–9.1x full sum; EXP-047R materialized C2 primitive/full-sum median 2165.057x; nearly all contributions evaluated.
+EXP-047 Python path about 8.6–9.1x full sum; EXP-047R C2 reference much slower while reading nearly all contributions.
 
-Status: CONTRADICTED FOR TESTED REFERENCE IMPLEMENTATIONS.
+Status: CONTRADICTED FOR TESTED IMPLEMENTATIONS.
 
-## A-004 — A decision-relevant low-dimensional projection is sufficient
+## A-004 — Low-dimensional decision projection is sufficient model-wide
 
-Pairwise LM-head reconstruction is exact; model-wide nonlinear propagation and candidate selection remain unresolved.
+Pairwise LM-head reconstruction is exact; nonlinear model-wide propagation remains unresolved.
 
-Status: PARTIALLY SUPPORTED / UNVERIFIED MODEL-WIDE.
+Status: PARTIAL / UNVERIFIED MODEL-WIDE.
 
-## A-005 — Probabilistic certification is acceptable
+## A-005 — Probabilistic certification is product-acceptable
 
-No final product acceptance criterion or model-wide delta accounting exists.
+No final model-wide delta or product requirement exists.
 
-Status: UNVERIFIED REQUIREMENT.
+Status: UNVERIFIED.
 
-## A-006 — Small-model trends predict larger models
+## A-006 — Tiny-model trends predict 70B/405B
 
-Current evidence is three very small checkpoints only.
+Three tiny checkpoints only.
 
-Status: UNVERIFIED FOR 70B/405B.
+Status: UNVERIFIED.
 
 ## A-007 — Target RAM/SSD capacity and bandwidth are sufficient
 
 Status: UNVERIFIED; Phase D NOT TESTED.
 
-## A-008 — Full hot state fits 8 GiB including KV/buffers/fallback
+## A-008 — Target/draft/KV/work state fits 8 GiB
 
 Status: UNVERIFIED; E0; Phase D NOT TESTED.
 
-## A-009 — 4B-class speed can coexist with exact fallback
+## A-009 — 4B-class speed coexists with exact fallback
 
-Same-bit arithmetic requires about 1.185185% average target-equivalent stream fraction before overhead. All deployable proposal mechanisms tested through EXP-049 remain far above it.
+All deployable proposal mechanisms through EXP-050 remain far above 1.185185% target-equivalent traffic.
 
 Status: HIGH-RISK AND UNSUPPORTED.
 
-## A-010 — Auxiliary DAG/VM/certificate/verifier components aid the final runtime
+## A-010 — Auxiliary VM/DAG/certificate/verifier components aid final runtime
 
-Status: OPTIONAL. They may be reused only after a new core information/cost mechanism survives its own Gate.
+Status: OPTIONAL. Reuse only after a new core mechanism survives its own Gate.
 
-## A-011 — Loose global metadata, not intrinsic range behavior, caused CPTC-v1 failure
+## A-011 — Loose range metadata caused CPTC failure
 
-EXP-047R exact realized range oracle median/p90 100% versus limits 10%/25%.
+EXP-047R exact realized range median/p90 100%.
 
 Status: CONTRADICTED.
 
-## A-012 — Sound static tile metadata can be automatically useful
+## A-012 — Sound static tile metadata is useful
 
-Column-span metadata was sound with zero violations but C2 median/p90 remained 100%.
+Soundness passed; usefulness failed with median/p90 100%.
 
-Status: SOUNDNESS SUPPORTED E1; USEFULNESS CONTRADICTED FOR TESTED CORE ROLE.
+Status: SOUND E1, NOT USEFUL FOR TESTED CORE.
 
-## A-013 — One full target stream can be amortized across many exact accepted tokens
+## A-013 — One target stream can verify many exact tokens
 
-EXP-048 perfect future oracle: 96 exact tokens / one target pass =1.0416667%, exact 18/18.
+EXP-048 future oracle verified 96 exact tokens/one pass =1.0416667%.
 
-Status: ARITHMETIC AND EXACT VERIFIER SUPPORTED E1 UNDER A NON-DEPLOYABLE PERFECT PROPOSAL. CAUSAL PROPOSAL SOURCE UNSOLVED.
+Status: VERIFIER ARITHMETIC SUPPORTED E1; CAUSAL PROPOSAL SOURCE UNSOLVED.
 
-## A-014 — Early target layers can act as a useful training-free draft
+## A-014 — Early target layers provide useful recursive draft tokens
 
-EXP-048: maximum matching proposal prefix 1, p50 committed 1, minimum fraction 1333.463%, p90 2893.843%.
+EXP-048 max matching prefix 1, p50 committed 1, p90 2893.843%.
 
-Status: CONTRADICTED FOR SAME-CHECKPOINT PARTIAL-LAYER + FULL-LM-HEAD MECHANISM.
+Status: CONTRADICTED FOR TESTED PARTIAL-LAYER DRAFT.
 
-## A-015 — Hard target-only Jacobi can provide cheap long exact blocks
+## A-015 — Hard Jacobi provides cheap long exact blocks
 
-EXP-048 complete-generation control p50 58 target passes/32 tokens, p50 181.25%, p90 193.75%, maximum prefix 3.
+EXP-048 p50 58 target passes/32 tokens.
 
-Status: CONTRADICTED FOR TESTED HARD JACOBI CONTROL.
+Status: CONTRADICTED.
 
-## A-016 — Continuous soft states and Anderson propagate useful causal information faster than hard Jacobi
+## A-016 — Continuous Picard/Anderson propagates exact causal information faster
 
-EXP-049 favorable checkpoint evidence:
+EXP-049 favorable p50 4.5, maximum 6, p90 168.778596%; Anderson/Jacobi 0.25x.
+
+Status: CONTRADICTED FOR TESTED TARGET-ONLY FAMILY.
+
+## A-017 — Arbitrary causal target permits universal >1 exact position/round target-only solving
+
+Hidden triangular transcripts remained indistinguishable before predecessor resolution.
+
+Status: CONTRADICTED WITHIN DECLARED BLACK-BOX ROUND INTERFACE.
+
+## A-018 — Fixed target-independent external draft provides long exact prefixes across arbitrary targets
+
+EXP-050 universal first-token counterexample produced matching prefix zero.
+
+Status: CONTRADICTED FOR UNIVERSAL ARBITRARY-TARGET GUARANTEE.
+
+## A-019 — Tested fixed external draft pool is practically useful
+
+EXP-050 favorable exact-reference selection:
 
 ```text
-oracle-best S1/S2 p50 prefix 4.5
-maximum prefix 6
-p90 fraction 168.778596%
-S0 p50 prefix after four passes 4
-S2 Anderson p50 prefix after four passes 1
-S2/S0 improvement 0.25x
+p50 prefix 0.5
+maximum prefix 3
+p90 normalized fraction 163.20987654%
+Korean and structured JSON coverage false
 ```
 
-The reference was allowed to choose the best fixed S1/S2 trajectory per case.
+Status: CONTRADICTED FOR TINYSTORIES 1M/3M/8M FIXED POOL.
 
-Status: CONTRADICTED FOR THE TESTED TARGET-ONLY CONTINUOUS/ANDERSON FAMILY.
+## A-020 — A 4B external draft can satisfy final budget if exact prefixes are long
 
-Changing only solver hyperparameters does not address the missing causal future information.
-
-## A-017 — An arbitrary causal target permits universal faster-than-one-position-per-round target-only solving
-
-EXP-049 adversarial evidence:
+PROJECTED:
 
 ```text
-Picard prefixes by round 1,2,3,4
-Anderson prefixes by round 1,2,3,3
-hidden suffix transcript indistinguishability true
+4/405 + 1/K <=0.01185185185
+K >=507
 ```
 
-Interface: one synchronous black-box causal target block evaluation per round; exact prefix, fixed initialization, all prior states/outputs, arbitrary continuous arithmetic/history; no external future information.
+Status: ARITHMETICALLY DERIVED; 507-TOKEN CROSS-MODEL EXACT PREFIX CONTRADICTED BY CURRENT POOL AND UNVERIFIED GENERALLY.
 
-Status: CONTRADICTED WITHIN THE DECLARED INTERFACE.
+## A-021 — A causal target-independent selector can choose a useful external draft
 
-This is a worst-case universal result, not a statement that every real prompt advances exactly one position.
+The EXP-050 selector used exact reference and still failed. No deployable selector exists.
 
-## A-018 — A fixed target-independent external draft can provide long exact prefixes across arbitrary targets
+Status: UNVERIFIED GENERALLY; IRRELEVANT FOR TESTED POOL AFTER FAVORABLE ORACLE FAILURE.
+
+## A-022 — Final next-token decision becomes suffix-stable after very few target layers
 
 Assumption:
 
-An already published, unmodified small draft model can generate a long causal proposal for an arbitrary target, while exact block verification preserves target output and draft cost remains compatible with the 4B-class budget.
+With the exact target greedy prefix fixed, the intermediate hidden state after a shallow block prefix, passed through the original final norm and LM head, already yields the final target token and no later block changes it.
 
-Universal risk:
+This is different from recursive partial-layer drafting because the input prefix remains exact for every token state.
 
-For any fixed target-independent draft first token `a`, an arbitrary target can choose greedy token `b != a` on the same prompt. Therefore no fixed external draft can guarantee a nonzero exact prefix for every arbitrary target.
-
-Status: ACTIVE FOR EXP-050 PRACTICAL FIXED-POOL AUDIT; UNIVERSAL GUARANTEE ALREADY HIGH-RISK.
+Status: ACTIVE FOR EXP-051.
 
 Contradiction tests:
 
-- executable first-token adversarial target;
-- cross-checkpoint draft pool among TinyStories-1M/3M/8M;
-- exact-reference favorable draft selection;
-- p50 exact prefix <16 or p90 normalized fraction >10%;
-- any required family with zero proposal acceptance;
-- worsening target-size trend.
+- non-deployable suffix-stable oracle median logical fraction >10%;
+- p90 >25%;
+- median block-depth fraction >10%;
+- any required family median stable depth >50%;
+- worsening depth with model size;
+- output head alone consumes excessive fraction;
+- late-decision adversarial residual chain finalizes only at last block.
 
-## A-019 — A 4B draft can satisfy the final target traffic budget if proposals are sufficiently long
+## A-023 — A sound causal selector can know suffix stability without executing omitted layers
 
-PROJECTED same-bit arithmetic:
-
-```text
-draft/target ratio = 4/405 = 0.0098765432
-required total fraction = 0.01185185185
-fraction with perfect K-token proposal = 4/405 + 1/K
-minimum K = 507
-```
-
-Status: ARITHMETICALLY DERIVED; EXACT 507-TOKEN CROSS-MODEL PREFIX IS UNVERIFIED AND EXPECTED TO BE DIFFICULT.
-
-A shorter 85-token threshold applies only to a zero-cost proposal and may not be used for an actual 4B draft.
-
-## A-020 — A causal target-independent draft selector can choose the useful external model without target future information
-
-Current evidence: none. EXP-050 permits exact-reference oracle selection only as a favorable falsification upper bound.
+Current evidence: none. Exact-reference suffix-stable depth uses later target outputs and is non-deployable.
 
 Status: UNVERIFIED.
 
-A positive pool oracle does not establish a deployable selector. A negative pool oracle eliminates selector engineering for that pool.
+A shallow oracle depth is necessary but not sufficient. A deployable tail certificate must bound all omitted nonlinear attention/MLP residual effects without executing them.
+
+## A-024 — One LM-head probe plus shallow block prefix can approach 4B-class traffic
+
+Assumption:
+
+The target LM head and final norm, combined with a small prefix of block weights, fit below 1.185185% of the full 405B target stream.
+
+Current evidence: no 405B architecture-specific measurement. EXP-051 will measure actual logical head/layer shares only on pinned tiny checkpoints.
+
+Status: UNVERIFIED / PROJECTED ONLY.
+
+A large tied output embedding may set a nonzero traffic floor even at depth zero.
+
+## A-025 — A fixed early-exit depth works for every arbitrary target
+
+Universal risk:
+
+An arbitrary residual network can keep token `a` dominant through every early layer and flip to `b` only in the final layer.
+
+Status: ACTIVE ADVERSARIAL CONTRADICTION TEST FOR EXP-051; EXPECTED UNSUPPORTED UNIVERSALLY.
