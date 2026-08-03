@@ -1,132 +1,196 @@
-# VORTEX proof-first contract
+# VORTEX Proof-First Contract
 
-This document prevents a local prototype result from being promoted into a claim about the flagship target.
+## Purpose
+
+Prevent local, synthetic, replay, small-model, projected, or CPU-only evidence from being promoted into claims about the real 405B/8 GiB/4B-class target.
 
 ## Fixed target
 
-VORTEX is complete only when an unmodified 405B-class Hugging Face dense model runs end-to-end with:
+VORTEX is complete only at E7, after a real unmodified 405B-class dense Hugging Face model runs end-to-end with:
 
-- peak GPU VRAM at or below 8 GiB;
-- no user training, distillation, fine-tuning, or model-specific calibration;
-- declared original-model quality/correctness mode preserved;
-- p50 time/token at or below 1.2x a native 4B Q4 baseline on the same machine;
-- p95 time/token at or below 1.5x that baseline;
-- a one-command runtime interface.
+- peak GPU VRAM <=8 GiB;
+- no retraining, distillation, fine-tuning, LoRA, or user-authored model-specific adapter;
+- original declared output/quality contract preserved;
+- p50 warm time/token <=1.2x native 4B Q4 baseline on the same target machine;
+- p95 <=1.5x baseline;
+- pinned code/checkpoint and independent reproduction.
 
-The target is not reduced when an intermediate design fails.
+## Current environment boundary
 
-## What went wrong before this contract
+GitHub Actions CPU runners cannot measure:
 
-Previous work validated useful local properties, then described them too strongly:
+- real 405B execution;
+- real target VRAM;
+- CUDA kernels;
+- PCIe traffic;
+- target SSD behavior;
+- target TTFT or tokens/second.
 
-- tiny-model correctness was treated as evidence of 405B scalability;
-- same-trace replay was treated as evidence of unseen-prompt generalization;
-- a component that avoided one weight read was treated as a sufficient model-wide architecture;
-- 405B memory and traffic projection was performed after implementation instead of before it;
-- phrases such as `core solution`, `works`, or `can reach the goal` were used before the final resource inequalities were satisfied.
+Those fields remain `NOT TESTED` and `UNVERIFIED` until Phase D.
 
-Those promotions are prohibited from this point onward.
+## Validation phases
 
-## Evidence levels
+### Phase A — theory and structure
 
-Every result must use exactly one of these labels.
+Required:
 
-### E0 — idea
+- mathematical statement;
+- causal inputs;
+- correctness/error contract;
+- fallback proof;
+- memory/traffic/compute equations;
+- failure conditions and counterexamples;
+- 405B symbolic resource model;
+- explicit unverified assumptions.
 
-A proposed mechanism with no executable evidence.
+No actual large-model performance claim is permitted.
 
-### E1 — local primitive
+### Phase B — synthetic/reference
 
-Executable unit behavior on synthetic or tiny inputs. It proves only the tested local property.
+Required:
 
-### E2 — real-model component
+- independent slow reference;
+- optimized implementation;
+- randomized/property tests;
+- boundary/adversarial cases;
+- fault injection;
+- deterministic replay;
+- measured scaling trend;
+- raw logs and checksums.
 
-A component replaces the corresponding operation in a real pretrained model and is tested on disjoint build/evaluation traces.
+### Phase C — small real-model falsification
 
-### E3 — scaling trajectory
+Required:
 
-Measured bytes/token, compute/token, memory, quality, and fallback rates across at least three model sizes show a trajectory compatible with the 405B gate.
+- unmodified downloadable real checkpoints;
+- real operation replacement, not offline hook-only observation for E2;
+- disjoint build/evaluation prompts;
+- held-out prompts and task families;
+- future-information audit;
+- forward/layer/tile call counts;
+- token/logit agreement;
+- fallback;
+- CPU time and RAM;
+- at least three model sizes before a scaling claim.
 
-### E4 — flagship completion
+Purpose: early falsification only.
 
-All gates in `docs/VALIDATION_PROTOCOL.md` pass on a real 405B-class model and the same-machine 4B baseline.
+### Phase D — target hardware
 
-Only E4 may be described as the target being achieved. E1 or E2 must never be described as proof that the full target is feasible.
+Required:
 
-## Architecture Gate 0 — prove the budget before building the backend
+- real target GPU constrained to <=8 GiB;
+- actual target checkpoints including 70B/405B;
+- same-machine 4B baseline;
+- CUDA/PCIe/SSD/power profilers;
+- raw reproducible wall-clock and quality evidence.
 
-A proposed model-wide architecture may not become the main implementation path until it has a committed feasibility certificate containing the following quantities.
+Current status: NOT TESTED.
 
-Let:
+## Evidence scale
 
-- `M_hot` be persistent GPU-resident runtime state;
-- `M_kv` be KV state at the declared benchmark context;
-- `M_work` be activations, temporary tensors, kernels, and allocator reserve;
-- `M_repair` be the largest cold repair tile or streamed weight window;
-- `B_hot` be normal-path bytes transferred per generated token;
-- `B_cold` be bytes transferred by one cold model-weight stream;
-- `A` be committed generated tokens amortized by one cold stream;
-- `B_4B` be measured native 4B Q4 weight/storage traffic per generated token on the same machine;
-- `C_hot` and `C_4B` be corresponding useful compute per token.
+- E0 idea/equation;
+- E1 synthetic/reference validation;
+- E2 small real-model operation replacement;
+- E3 held-out generalization with measured causal coverage;
+- E4 measured accessible representative-hardware improvement;
+- E5 medium/large scaling validation;
+- E6 target model under 8 GiB VRAM;
+- E7 405B at declared 4B-class performance.
 
-The architecture must satisfy, with measured or conservatively bounded values:
+## Provenance
+
+Every result separates:
 
 ```text
-M_hot + M_kv + M_work + M_repair <= 8 GiB
-B_hot + B_cold / A <= 1.2 * B_4B
-C_hot + C_repair / A <= 1.2 * C_4B
+MEASURED
+DERIVED
+PROJECTED
+UNVERIFIED
 ```
 
-When transfer and compute overlap is claimed, the certificate must use a measured roofline model:
+A projected 405B byte count is not a measured byte count. A CPU lookup is not a measured PCIe latency. A TinyLlama token match is not 405B quality evidence.
+
+## Architecture Gate A0 — direct objective connection
+
+Before implementation, answer:
+
+1. What original Transformer operation is skipped/replaced?
+2. How is that decided without future tokens?
+3. What does the selector cost?
+4. How are wrong skips detected?
+5. What is the fallback?
+6. Why is the declared output contract never silently violated?
+7. How does the saving scale?
+8. Why can the next decision be made without all weights?
+9. What moves between SSD/RAM/VRAM?
+10. What are the 405B minimum bytes/operations?
+11. What gap remains to the 4B target?
+12. What is the strongest falsification?
+
+A proposal failing this gate is auxiliary, not core.
+
+## Architecture Gate A1 — resource closure equations
+
+Define:
 
 ```text
-time/token >= max(bytes/token / measured_bandwidth,
-                  operations/token / measured_throughput)
+M_total = M_hot + M_kv + M_work + M_fallback
+B_total/token = B_selector + B_normal + r_fallback * B_fallback
+C_total/token = C_selector + C_normal + r_fallback * C_fallback
 ```
 
-A design that fails these inequalities is recorded as a rejected experiment. It is not extended merely because its unit tests pass.
+Required target conditions:
 
-## Architecture Gate 1 — unseen-trace generalization
+```text
+M_total <= 8 GiB
+B_total/token <= 1.2 * B_4B
+C_total/token <= 1.2 * C_4B
+```
 
-Any learned, cached, compiled, or atlas-like runtime representation must be built and evaluated on disjoint data.
+When overlap is claimed:
 
-Required split:
+```text
+T_token >= max(B_total / effective_bandwidth,
+               C_total / effective_throughput,
+               serial_latency_floor)
+```
 
-- build prompts and continuations;
-- unseen prompts from different task families;
-- unseen continuations after the build boundary;
-- adversarial or distribution-shift prompts;
-- Korean and English;
-- code, mathematics, structured output, tool calls, and long-form text.
+Use measured hardware terms only in Phase D. Before then label them PROJECTED/UNVERIFIED.
 
-Required measurements:
+## Architecture Gate B — correctness and falsification
 
-- exact-token or declared-quality agreement;
-- representation growth per token;
-- normal-path hit rate;
-- cold streams per token;
-- bytes and compute per token;
-- peak host and device memory;
-- wall-clock relative to exact streamed target and native 4B.
+Before Phase C:
 
-Replaying the same prompt or the same activation trace is only E1 evidence.
+- independent reference agrees with exact fallback;
+- randomized and adversarial tests pass;
+- malformed state and fault injection trigger fallback or rejection;
+- future information is absent;
+- selector and metadata costs are charged;
+- success and rejection thresholds were committed before the run;
+- no silent wrong accepts occur in the test corpus.
 
-## Architecture Gate 2 — real operation replacement
+For probabilistic certification, report mathematical `delta` and empirical wrong accepts separately.
 
-Hook-based offline analysis is insufficient. The candidate operator must replace the real model operation during generation.
+## Architecture Gate C — real operation replacement
 
-A gate result must include:
+A real-model result must replace the actual operation during generation. It must report:
 
-- end-to-end generated output;
-- exact baseline output or quality baseline;
-- actual peak VRAM;
-- actual token latency;
-- actual storage/host/GPU traffic where measurable;
-- fallback and repair counts.
+- checkpoint revision;
+- held-out prompts;
+- output tokens/logits;
+- forward/layer/tile counts;
+- accepted certificates;
+- fallback counts;
+- CPU/RAM measurements;
+- model-size trend;
+- build/compile cost.
 
-## Architecture Gate 3 — scaling ladder
+Replay of stored traces alone remains auxiliary evidence.
 
-A candidate advances only after passing the same executable protocol on:
+## Architecture Gate D — scaling ladder
+
+Required sequence when resources permit:
 
 1. 1B–3B;
 2. 7B–8B;
@@ -134,43 +198,26 @@ A candidate advances only after passing the same executable protocol on:
 4. 70B;
 5. 405B.
 
-Each stage must publish raw metrics and compare the observed scaling slope with the flagship inequalities. A later size must not be inferred solely from a tiny checkpoint.
-
-## Required workflow for every new architecture
-
-1. Write the mechanism and its exact correctness/quality contract.
-2. Derive its 405B memory, traffic, and compute equations.
-3. Insert conservative values and show the flagship inequalities can close.
-4. Define a falsification test that can reject the mechanism quickly.
-5. Implement only the minimum code needed for that test.
-6. Run disjoint-trace, real-operation measurements.
-7. Promote, revise, or reject the mechanism based on committed evidence.
-
-Implementation starts only after steps 1–4 are committed.
+Each rung must execute the same protocol and publish raw evidence. No larger rung may be inferred solely from a smaller checkpoint.
 
 ## Communication rules
 
-The following statements are forbidden before E4:
+Forbidden before the corresponding evidence:
 
-- `the target is possible`;
-- `this is the final solution`;
-- `the core problem is solved`;
-- `405B will run at 4B speed`;
-- any equivalent wording based only on synthetic, tiny-model, same-trace, theoretical FLOP, or projected-byte results.
+- `405B runs in 8 GiB` before E6;
+- `405B reaches 4B speed` before E7;
+- `the final solution is complete` before E7;
+- `measured` for projected or unverified values;
+- `exact` for a probabilistic contract without qualification;
+- `generalizes` from duplicate or same-trace replay.
 
-Allowed wording must state the evidence level and exact scope, for example:
+Allowed example:
 
-> E1: the operator reproduced one tiny-model projection on a replayed trace without a cold read. Unseen-trace and model-wide scaling remain unproven.
+> E1, Phase B: the optimized tile certificate matched the independent reference on the tested synthetic cases and fell back exactly on adversarial cases. Real-model coverage, 405B scaling, and target hardware performance remain unverified.
 
-## Current status under this contract
+## Current classification
 
-The repository currently contains E1 primitives:
-
-- streamed safetensors access;
-- exact LM-head decision refinement;
-- tiny-model Jacobi equivalence;
-- an exact-on-span `OnlineAtlasLinear` replay path.
-
-No current component has passed E2 on a real operation with disjoint traces, and no architecture has passed Architecture Gate 0 for the full 405B/8GiB/4B-speed target.
-
-The next task is not to add more Atlas features. It is to produce the first model-wide feasibility certificate and a falsification experiment whose measured outputs directly populate the flagship inequalities.
+- Existing mmap/DAG/index work: auxiliary E1/E2 bounded components.
+- Raw exact-prefix scaling: rejected.
+- EXP-047 CPTC: E0, Phase A/B active.
+- Phase D target validation: NOT TESTED.

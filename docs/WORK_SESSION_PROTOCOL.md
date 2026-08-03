@@ -1,99 +1,194 @@
-# VORTEX work-session protocol
+# VORTEX Work-Session Protocol
 
-Last updated: 2026-08-03 (Asia/Seoul)
+Last updated: 2026-08-03 Asia/Seoul
 
-This protocol is mandatory for every AI or human session that performs meaningful VORTEX work. It exists so that progress, failures, evidence, and next actions survive chat boundaries without relying on conversational memory.
+This protocol is mandatory for every meaningful research session.
 
-## Startup contract
+## Startup checklist
 
-Before proposing architecture changes or editing code, read in this order:
+Read and verify in this order:
 
 1. `AGENTS.md`
-2. `docs/PROOF_FIRST_CONTRACT.md`
-3. `docs/WORK_SESSION_PROTOCOL.md`
-4. `docs/RESEARCH_PROGRESS_LEDGER.md`
-5. `docs/SESSION_HANDOFF.md`
-6. `docs/ROADMAP.md`
-7. the active experiment document and workflow
-8. the latest open research PR, workflow run, comments, and committed result JSON
+2. `RESEARCH_STATE.md`
+3. `FAILED_APPROACHES.md`
+4. `DECISION_LOG.md`
+5. `ASSUMPTION_REGISTER.md`
+6. `VALIDATION_MATRIX.md`
+7. `NEXT_EXPERIMENT.md`
+8. `ARCHITECTURE.md`
+9. `HARDWARE_VALIDATION_PLAN.md`
+10. `REPRODUCIBILITY.md`
+11. `docs/PROOF_FIRST_CONTRACT.md`
+12. this file;
+13. active experiment document, code, config, tests, workflow, latest result JSON, PR, and workflow logs.
 
-Then verify the active branch, head commit, PR state, CI state, and the most recent machine-readable evidence. Never assume a previously mentioned run is still current.
+Verify:
 
-## Mandatory work loop
+- current branch;
+- head SHA;
+- open PR;
+- latest CI/workflow state;
+- authoritative result commit;
+- whether current hardware permits the declared phase.
 
-For every meaningful hypothesis or implementation step:
+Never rely on chat memory as the source of truth.
 
-1. State the measurable hypothesis.
-2. Write the correctness or declared-quality contract.
-3. Derive memory, traffic, compute, and amortization equations at the 405B target.
-4. Define explicit promotion and rejection thresholds.
-5. Implement the smallest real-operation falsification.
-6. Add tests and an isolated workflow that references only files present on its branch.
-7. Run the workflow and inspect actual logs, not only status badges.
-8. Commit raw evidence as JSON when the workflow succeeds.
-9. Record both positive and negative results in `docs/RESEARCH_PROGRESS_LEDGER.md`.
-10. Update `docs/SESSION_HANDOFF.md` with the exact current frontier and next executable step.
+## Mandatory experiment lifecycle
 
-Failed hypotheses are permanent project data. Do not delete, soften, or rewrite a negative result as partial success.
+### 1. Reuse prior evidence
 
-## Mandatory response-completion rule
+Before selecting a hypothesis:
 
-Before giving the user a progress or completion answer after meaningful repository work, update the repository first.
+- read `FAILED_APPROACHES.md`;
+- identify reusable code/data;
+- identify the exact previous failure being addressed;
+- reject a renamed repetition.
 
-At minimum, the repository update must record:
+### 2. Select one core hypothesis
 
-- timestamp in Asia/Seoul;
-- active branch and PR number;
-- latest head commit;
-- workflow run and conclusion, or that it is still running;
-- implemented files and equations;
-- measured results and evidence level;
-- rejected assumptions and why they failed;
-- the one next decisive experiment;
-- exact commands or workflow needed to continue.
+The hypothesis must directly answer the core twelve questions in `RESEARCH_STATE.md`. Auxiliary work must be labeled auxiliary.
 
-The durable locations are:
+### 3. Pre-register the Gate
 
-- chronological research results: `docs/RESEARCH_PROGRESS_LEDGER.md`;
-- current state and immediate continuation: `docs/SESSION_HANDOFF.md`;
-- experiment-specific derivation and thresholds: `docs/EXPERIMENT_*.md`;
-- raw reproducible metrics: `results/*.json`.
+Commit before interpreting results:
 
-A chat answer must not claim that progress was recorded unless the Git commit actually exists. If repository writing fails, report that failure explicitly.
+- phase;
+- evidence ceiling;
+- correctness/error contract;
+- future-information policy;
+- success thresholds;
+- rejection thresholds;
+- strongest counterexample;
+- 405B equations;
+- unverified assumptions.
 
-## Branch and workflow isolation
+### 4. Implement independently
 
-Research branches may be based on different rejected or active candidates. A workflow must never assume sibling-branch files exist.
+For Phase B:
 
-Each experiment workflow must:
+- slow reference;
+- optimized candidate;
+- independent bound/oracle where possible;
+- randomized/property tests;
+- boundary and adversarial cases;
+- fault injection;
+- deterministic replay.
 
-- list its required test files explicitly;
-- verify each required path exists before running pytest;
-- avoid importing helper modules that exist only in a sibling branch unless those helpers are copied or the branch base contains them;
-- checkout the intended branch head;
-- commit evidence only after all correctness checks and measurements succeed;
-- use a branch-specific concurrency group.
+For Phase C:
 
-A missing file is an infrastructure failure, not experimental evidence. Fix it and rerun before interpreting the candidate.
+- unmodified pinned real checkpoint;
+- real operation replacement;
+- disjoint prompts;
+- future-information audit;
+- exact forward/layer/tile accounting.
 
-## Evidence and communication
+### 5. Run only valid phases
 
-Use the E0–E4 evidence scale from `docs/PROOF_FIRST_CONTRACT.md`.
+Current GitHub environment may run Phase A/B and available small-model Phase C. Phase D is `NOT TESTED` until target hardware exists.
 
-- Do not describe E1/E2 results as proving the 405B objective.
-- Separate exact measurements from 405B projections.
-- State all proxy hardware assumptions.
-- Distinguish a component optimization from a complete runtime path.
-- Never hide full exact gate/up, teacher gradients, future target tokens, or fallback streams from the accounting.
+Never emulate a GPU, PCIe measurement, 405B run, TTFT, or tokens/second result with a CPU projection.
 
-## Session shutdown checklist
+### 6. Save evidence
 
-A session is not complete until all applicable items are done:
+Use the experiment layout:
 
-- tests/workflow inspected;
-- raw evidence committed or failure logged;
-- experiment PR updated or closed with a factual decision;
-- research ledger updated;
-- session handoff updated;
-- next decisive command documented;
-- user-facing answer matches the committed repository state.
+```text
+docs/research/EXPERIMENT_XXX_<NAME>.md
+experiments/exp_xxx/
+results/exp_xxx/
+tests/exp_xxx/
+.github/workflows/exp_xxx_gate.yml
+```
+
+Save:
+
+- raw stdout/stderr;
+- environment inventory;
+- config;
+- raw metrics;
+- processed summary;
+- artifacts;
+- checksums.
+
+Separate `MEASURED`, `DERIVED`, `PROJECTED`, and `UNVERIFIED` in machine-readable results.
+
+### 7. Interpret conservatively
+
+- Infrastructure failures are not scientific failures.
+- Synthetic success is not real-model success.
+- Small-model success is not 405B success.
+- Future-token oracle results are not causal execution.
+- A probabilistic certificate is not deterministic exactness.
+- A fallback-heavy path is not a speedup.
+
+### 8. Update durable state
+
+Before a progress response, update all applicable files:
+
+```text
+RESEARCH_STATE.md
+NEXT_EXPERIMENT.md
+DECISION_LOG.md
+FAILED_APPROACHES.md
+ARCHITECTURE.md
+ASSUMPTION_REGISTER.md
+VALIDATION_MATRIX.md
+HARDWARE_VALIDATION_PLAN.md
+REPRODUCIBILITY.md
+```
+
+Also update experiment docs/results, the older chronological ledger/session handoff when still used, PR decision, and workflow references.
+
+### 9. Commit and validate
+
+Required current-environment commands:
+
+```bash
+python -m pytest -q
+python scripts/run_validation.py
+bash experiments/exp_xxx/run_current_env.sh
+```
+
+Inspect actual logs. A status badge alone is insufficient.
+
+### 10. Decide
+
+Use one explicit decision:
+
+- PROMOTE;
+- REVISE;
+- REJECT CORE / RETAIN AUXILIARY;
+- REJECT;
+- INFRASTRUCTURE FAILURE — NO SCIENTIFIC DECISION.
+
+Record why and which assumption changed.
+
+## Workflow isolation
+
+Every experiment workflow must:
+
+- verify referenced paths exist;
+- pin dependencies;
+- run experiment-specific tests first;
+- use branch-specific concurrency;
+- fail on missing metrics, NaN, wrong accepts, future-information leakage, or provenance violations;
+- upload artifacts;
+- commit evidence only after the Gate passes;
+- never label current CPU runs as Phase D.
+
+## Completion checklist
+
+A session is not complete until:
+
+- prior state/failures/decisions were read;
+- one hypothesis and thresholds were committed;
+- code/reference/tests were implemented;
+- valid current-environment execution was attempted;
+- raw logs and checksums were saved, or infrastructure failure documented;
+- provenance labels were checked;
+- evidence level was assigned;
+- failed assumptions were recorded;
+- all durable root documents were updated;
+- future GPU script and hardware plan were updated when applicable;
+- next session can continue using GitHub alone;
+- user-facing wording matches committed evidence.

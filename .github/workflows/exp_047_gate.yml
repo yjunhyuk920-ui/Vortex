@@ -1,0 +1,82 @@
+name: EXP-047 causal probabilistic tile certificate
+
+# EXP-047 is a completed/frozen Phase-B measurement.  Automatic PR execution
+# caused documentation-only commits to regenerate timing and commit new evidence.
+# Reproduction is therefore explicit and never mutates the repository.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: exp-047-manual-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  phase-b-reproduction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout selected ref
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify experiment files
+        run: |
+          set -euo pipefail
+          required=(
+            AGENTS.md
+            RESEARCH_STATE.md
+            NEXT_EXPERIMENT.md
+            docs/research/EXPERIMENT_047_CAUSAL_PROBABILISTIC_TILE_CERTIFICATE.md
+            vortex_runtime/cptc.py
+            experiments/exp_047/config.json
+            experiments/exp_047/run_current_env.sh
+            experiments/exp_047/reproduce.sh
+            experiments/exp_047/future_gpu_run.sh
+            tests/exp_047/test_cptc.py
+          )
+          for path in "${required[@]}"; do
+            test -f "$path" || { echo "missing $path" >&2; exit 1; }
+          done
+
+      - name: Install test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Reproduce EXP-047 in isolated output
+        run: |
+          set -euo pipefail
+          rm -rf results/exp_047_reproduction
+          bash experiments/exp_047/reproduce.sh
+          mv results/exp_047 results/exp_047_reproduction
+
+      - name: Validate provenance
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("results/exp_047_reproduction/summary.json")
+          data = json.loads(path.read_text())
+          assert data["phase"] == ["A", "B"]
+          assert data["evidence_level"] == "E1"
+          assert data["phase_d_status"] == "NOT TESTED"
+          assert data["future_information_used"] is False
+          assert data["gate"]["passes"] is True
+          assert data["MEASURED"]["wrong_accepts"] == 0
+          assert data["MEASURED"]["fallback_mismatches"] == 0
+          assert data["MEASURED"]["independent_bound_mismatches"] == 0
+          print("EXP-047 manual reproduction passed")
+          PY
+
+      - name: Upload reproduction evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-047-manual-reproduction-${{ github.run_id }}
+          path: results/exp_047_reproduction
+          if-no-files-found: error
+          retention-days: 30

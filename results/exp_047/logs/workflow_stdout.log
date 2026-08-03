@@ -1,0 +1,141 @@
+..........                                                               [100%]
+10 passed in 0.10s
+{
+  "DERIVED": {
+    "alpha_spending_total_upper_bound": 1e-08,
+    "certificate_contract": "fixed-n Serfling intervals plus alpha-spending union bound over adaptive stops",
+    "exact_fallback_contract": "all remaining tiles evaluated before commit",
+    "synthetic_positive_fraction_over_required_405b_fraction": 8.8165283203125
+  },
+  "MEASURED": {
+    "adversarial_case_count": 15,
+    "adversarial_fallback_pass": true,
+    "case_count": 525,
+    "certified_count": 4,
+    "fallback_count": 521,
+    "fallback_mismatches": 0,
+    "independent_bound_mismatches": 0,
+    "max_size_positive_control": {
+      "certified": true,
+      "decision": 1,
+      "delta_at_stop": 5.309870747262003e-13,
+      "evaluated_fraction": 0.1044921875,
+      "fallback": false,
+      "fallback_mismatch": false,
+      "independent_bound_match": true,
+      "lower_bound": 0.6283462401263478,
+      "name": "positive_cancellation",
+      "optimized_elapsed_ns": 775772,
+      "population_size": 1024,
+      "reference_decision": 1,
+      "reference_elapsed_ns": 137618,
+      "reference_total": 716.7999999999884,
+      "sampled_before_decision": 107,
+      "sampled_fraction_before_decision": 0.1044921875,
+      "seed": 20261827,
+      "total_tiles_evaluated": 107,
+      "upper_bound": 1427.2295976851065,
+      "wrong_accept": false
+    },
+    "scaling": [
+      {
+        "cases": 105,
+        "certified_fraction": 0.0,
+        "fallback_fraction": 1.0,
+        "mean_evaluated_fraction": 1.0,
+        "mean_optimized_elapsed_ns": 56764.20952380952,
+        "mean_reference_elapsed_ns": 6427.8761904761905,
+        "population_size": 64
+      },
+      {
+        "cases": 105,
+        "certified_fraction": 0.0,
+        "fallback_fraction": 1.0,
+        "mean_evaluated_fraction": 1.0,
+        "mean_optimized_elapsed_ns": 92366.35238095238,
+        "mean_reference_elapsed_ns": 10749.971428571429,
+        "population_size": 128
+      },
+      {
+        "cases": 105,
+        "certified_fraction": 0.0,
+        "fallback_fraction": 1.0,
+        "mean_evaluated_fraction": 1.0,
+        "mean_optimized_elapsed_ns": 168164.52380952382,
+        "mean_reference_elapsed_ns": 19041.885714285716,
+        "population_size": 256
+      },
+      {
+        "cases": 105,
+        "certified_fraction": 0.01904761904761905,
+        "fallback_fraction": 0.9809523809523809,
+        "mean_evaluated_fraction": 0.9851934523809524,
+        "mean_optimized_elapsed_ns": 415062.9142857143,
+        "mean_reference_elapsed_ns": 45646.038095238095,
+        "population_size": 512
+      },
+      {
+        "cases": 105,
+        "certified_fraction": 0.01904761904761905,
+        "fallback_fraction": 0.9809523809523809,
+        "mean_evaluated_fraction": 0.9829427083333333,
+        "mean_optimized_elapsed_ns": 723747.3714285714,
+        "mean_reference_elapsed_ns": 81185.65714285715,
+        "population_size": 1024
+      }
+    ],
+    "wrong_accepts": 0
+  },
+  "PROJECTED": {
+    "allowed_1_2x_baseline_weight_gib_per_token": 2.2351741790771484,
+    "baseline_parameters": 4000000000,
+    "baseline_q4_full_weight_gib_per_full_pass": 1.862645149230957,
+    "bits_per_weight": 4,
+    "required_average_target_weight_fraction_before_selector_and_fallback": 0.011851851851851851,
+    "symbolic_weight_gib_by_fraction": {
+      "0.01": 1.885928213596344,
+      "0.01185": 2.2348249331116676,
+      "0.025": 4.71482053399086,
+      "0.25": 47.1482053399086,
+      "0.5": 94.2964106798172,
+      "1.0": 188.5928213596344
+    },
+    "target_parameters": 405000000000,
+    "target_q4_full_weight_gib_per_full_pass": 188.5928213596344
+  },
+  "UNVERIFIED": [
+    "sound per-tile bounds derived from real Transformer weights and activations",
+    "real-model certified tile omission",
+    "model-wide nonlinear error propagation",
+    "held-out prompt coverage",
+    "selector overhead on accelerator hardware",
+    "70B/405B scaling",
+    "8 GiB VRAM execution",
+    "PCIe and SSD traffic",
+    "4B-class TTFT or tokens per second"
+  ],
+  "checkpoint": null,
+  "config_sha256": "229edee33f6ded3b935256de686633b4ac7d50cee489e654b8ff017b267d0f5b",
+  "environment": {
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "python": "3.12.13 (main, Jun 16 2026, 22:05:08) [GCC 13.3.0]"
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-047",
+  "future_information_used": false,
+  "gate": {
+    "decision": "PROMOTE_TO_PHASE_C_DESIGN",
+    "passes": true,
+    "positive_control_threshold": 0.25,
+    "wrong_accept_limit": 0
+  },
+  "git_commit": "74ac92e9b1c8fffbc50a2322d9b36dd3c05f0d79",
+  "name": "causal_probabilistic_tile_certificate",
+  "phase": [
+    "A",
+    "B"
+  ],
+  "phase_d_status": "NOT TESTED",
+  "workflow_run": "30793232558"
+}
