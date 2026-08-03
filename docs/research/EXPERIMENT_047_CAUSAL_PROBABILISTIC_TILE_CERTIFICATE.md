@@ -1,255 +1,108 @@
 # EXP-047 — Causal Probabilistic Tile Certificate
 
-## Status
+## Final decision for this Gate
 
-- core research;
-- Phase A/B active;
-- evidence ceiling in this branch: E1;
-- Phase C: NOT TESTED;
-- Phase D: NOT TESTED.
+```text
+Phase: A/B
+Evidence: E1
+Correctness primitive: ACCEPT
+Global-range CPTC-v1 core architecture: REVISE
+Real-model operation replacement: NOT TESTED
+Phase D: NOT TESTED
+```
+
+Authoritative evidence:
+
+```text
+PR: #56
+workflow: 30791851508
+source head: d395d0eada15fd7ef9b09ce5ccb561a921bb6b7b
+results: results/exp_047/
+```
 
 ## Motivation
 
-Prior deterministic signed residual certificates observed real cancellation but remained too conservative: roughly 90–98% of residual work still had to be refined, producing projected traffic hundreds of GiB/token.
+Prior deterministic signed-residual certificates observed cancellation but still required roughly 90–98% refinement. EXP-047 tested a materially different correctness regime:
 
-EXP-047 does not change only the partition size or norm. It tests a different correctness regime:
+> sample weight-tile decision contributions without replacement in a causal random order, use an anytime-valid finite-population confidence interval, and exact-fallback when the interval does not certify the decision.
 
-> evaluate weight tiles in a causal random order and use an anytime-valid finite-population confidence sequence to exploit observed cancellation. If confidence does not close, evaluate every remaining tile and return the exact result.
+## Direct connection to the target
 
-## Direct objective connection
-
-Original operation:
+For a linear operation:
 
 ```text
 y = W x
-```
-
-Partition by input dimension:
-
-```text
 W = [W_1 ... W_N]
 x = [x_1 ... x_N]
 y = sum_i W_i x_i
 ```
 
-For a declared scalar decision projection `q`, tile `i` contributes:
+For decision projection `q`:
 
 ```text
 z_i = q^T W_i x_i
-```
-
-The decision margin is:
-
-```text
 M = M_base + sum_i z_i
 ```
 
-EXP-047 attempts to decide the sign of `M` after reading only a subset of `W_i`, thereby skipping original dense tile reads and multiply-accumulates.
+If the sign of `M` can be certified after evaluating a small subset of tiles, the runtime can skip the omitted original weight reads and arithmetic. If not, it evaluates every remaining tile and returns the full reference decision.
 
-The Phase-B primitive receives synthetic `z_i` values. A later Phase-C implementation must derive them from an actual unmodified Transformer operation and must account for how `q`, `M_base`, and sound tile bounds are obtained.
+Phase B receives synthetic scalar contributions. It does not prove that sound real-checkpoint bounds or useful skip fractions exist.
 
-## Causal information contract
+## Causal and fallback contract
 
-Permitted before token commit:
+Permitted:
 
 - current activation/state;
-- current candidate decision projection;
-- checksummed static tile-bound metadata;
-- current random tile permutation seed;
-- contributions from tiles already evaluated;
-- accumulated confidence state.
+- current decision projection;
+- checksummed static tile metadata;
+- current random permutation;
+- observed tile contributions;
+- confidence state.
 
 Forbidden:
 
 - future generated tokens;
 - target continuation;
 - future hidden states;
-- full exact result used secretly to select or validate the early stop.
+- secretly computing the exact answer before the optimized stop.
 
-The Phase-B validator computes the exact reference separately only after the optimized logical decision has been produced.
+Invalid bounds, non-finite state, or failure to certify cause rejection or exact full-tile fallback.
 
-## Phase-A theorem used by the reference implementation
+## Implemented Phase-A certificate
 
-Assume a finite population of `N` scalar tile contributions:
-
-```text
-z_1, ..., z_N in [a, b]
-```
-
-Sample uniformly without replacement. At fixed sample count `n`, let `mean_n` be the sample mean and `mu` the population mean.
-
-The implemented two-sided Serfling form uses:
-
-```text
-P(|mean_n - mu| >= epsilon)
-  <= 2 exp(-2 n epsilon^2 / ((1 - (n-1)/N) (b-a)^2))
-```
-
-For fixed-step failure probability `delta_n`, the total-sum radius is:
+For finite population `z_1,...,z_N in [a,b]`, sampled uniformly without replacement, the reference uses a two-sided Serfling total radius:
 
 ```text
 R_n = N (b-a)
       sqrt((1 - (n-1)/N) log(2/delta_n) / (2n))
 ```
 
-and therefore:
-
-```text
-sum_i z_i in [N mean_n - R_n, N mean_n + R_n]
-```
-
-To allow adaptive stopping, allocate:
+Adaptive stopping uses alpha spending:
 
 ```text
 delta_n = delta_total * 6 / (pi^2 n^2)
-```
-
-Since:
-
-```text
 sum_n delta_n <= delta_total
 ```
 
-a union bound makes all fixed-step intervals jointly valid with probability at least `1-delta_total`.
-
-The implementation accepts positive when:
+Accept positive when:
 
 ```text
 M_base + N mean_n - R_n > 0
 ```
 
-and negative when:
+Accept negative when:
 
 ```text
 M_base + N mean_n + R_n < 0
 ```
 
-Otherwise it continues until the configured early-stop limit, then evaluates every remaining tile exactly.
+Otherwise evaluate all remaining tiles exactly.
 
-## Correctness classification
+This is a probabilistic certificate under the declared range and random-sampling assumptions, not deterministic exactness. Exact fallback is deterministic under the reference floating-point contract.
 
-### Probabilistic certified commit
+## Phase-B implementation
 
-If the declared range is sound and random sampling assumptions hold, the wrong-commit probability for one decision is bounded by `delta_total` through alpha spending.
-
-This is not deterministic exactness.
-
-### Exact fallback
-
-When no certificate closes, every unsampled tile is evaluated. The returned sign equals the full reference sum, subject only to the declared floating-point reference contract.
-
-### Invalid metadata or numeric state
-
-Non-finite values, invalid bounds, out-of-range observed values, or malformed configuration cause rejection. They are not accepted as approximate results.
-
-## Unresolved sound-bound problem
-
-The Phase-B experiment receives a declared `[a,b]`. A real linear operator must derive a valid bound without reading every tile weight.
-
-One conservative future candidate is:
-
-```text
-|q^T W_i x_i|
-  <= ||q||_2 ||W_i||_F ||x_i||_2
-```
-
-where `||W_i||_F` is precomputed and checksummed. This may be too loose. No Phase-C success is claimed until a real bound derivation, metadata cost, and actual operation replacement pass.
-
-This dependency is registered as A-001 through A-004.
-
-## Selector and metadata accounting
-
-For `n` sampled tiles before certification:
-
-```text
-weight reads: n tiles
-sample updates: O(n)
-state: sampled sum, n, range, delta schedule, permutation state
-static metadata: at least tile-bound data plus integrity metadata
-fallback: N-n additional tile reads and exact accumulation
-```
-
-Full expected cost:
-
-```text
-B/token = B_selector + E[f_certified] B_sampled
-          + P(fallback) B_full_remaining
-```
-
-No selector, metadata, permutation, or fallback work may be omitted from later accounting.
-
-## 405B traffic gap
-
-Using the Phase-B config:
-
-```text
-target parameters: 405,000,000,000
-baseline parameters: 4,000,000,000
-bits/weight: 4
-```
-
-DERIVED full sequential Q4 streams:
-
-```text
-405B: about 188.59 GiB
-4B:   about   1.86 GiB
-1.2x 4B allowance: about 2.24 GiB/token
-```
-
-Before selector and fallback, the target average evaluated-weight fraction must satisfy approximately:
-
-```text
-fraction <= 1.2 * 4B / 405B ~= 1.185%
-```
-
-Therefore the Phase-B <=25% positive-control threshold is only a primitive sanity check. It remains roughly twenty-one times above the ultimate traffic fraction and is not a target-performance claim.
-
-## Pre-registered Phase-B cases
-
-- positive signed cancellation;
-- negative signed cancellation;
-- exact zero margin;
-- one dominant tile;
-- a misleading positive sample prefix with negative exact total;
-- randomized bounded populations;
-- increasing population sizes 64–1024;
-- invalid range/configuration and NaN/Inf fault injection;
-- deterministic fixed-seed replay.
-
-## Promotion criteria
-
-All are required:
-
-- zero silent wrong accepts in the committed corpus;
-- zero fallback/reference mismatches;
-- independent formula implementation matches every accepted interval;
-- largest positive control certifies after <=25% tiles;
-- zero-margin, dominant, and misleading-prefix adversaries fall back to all tiles;
-- result JSON separates MEASURED/DERIVED/PROJECTED/UNVERIFIED;
-- Phase D remains `NOT TESTED`;
-- workflow and raw checksums are committed.
-
-A pass promotes only to Phase-C design, not to target feasibility.
-
-## Rejection criteria
-
-Reject or revise when:
-
-- the independent bound disagrees;
-- a wrong certified accept occurs in the Gate corpus;
-- adversarial cases are silently accepted incorrectly;
-- certificate overhead exceeds saved work even synthetically;
-- positive controls cannot close substantially before full evaluation;
-- the real-bound dependency cannot be made sound without reading most weights;
-- Phase-C real operations require nearly every tile at useful error budgets.
-
-## Strongest falsification
-
-The most dangerous case is an adaptive-looking stable partial mean whose unseen bounded tiles collectively flip the exact sign. The misleading-prefix test constructs this explicitly under the fixed permutation. A valid confidence sequence must refuse early commitment and exact-fallback.
-
-Future real-model falsification must search held-out states for late aligning tile contributions and record the full certificate trajectory.
-
-## Files
+Files:
 
 ```text
 vortex_runtime/cptc.py
@@ -259,8 +112,116 @@ experiments/exp_047/
 results/exp_047/
 ```
 
-## Required communication after the Gate
+Tests cover:
 
-Use wording equivalent to:
+- independent alpha/radius calculation;
+- positive and negative controls;
+- exact zero margin;
+- one dominant tile;
+- misleading positive sample prefix with negative exact total;
+- 200 randomized property cases in unit tests;
+- deterministic replay;
+- invalid bound/configuration and NaN/Inf rejection.
 
-> Phase B, E1: the finite-population certificate matched the independent reference on the tested synthetic cases and exact-fallback handled adversarial cases. Real Transformer operation skipping, sound checkpoint-derived bounds, 405B scaling, 8 GiB execution, and target speed remain unverified.
+The experiment runner adds 525 measured cases across populations 64–1024, raw case logs, scaling output, stdout, summary, and checksums.
+
+## Authoritative MEASURED result
+
+```text
+unit/property tests: 10 passed
+cases: 525
+certified decisions: 4
+exact fallbacks: 521 = 99.238%
+wrong certified accepts: 0
+fallback/reference mismatches: 0
+independent-bound mismatches: 0
+adversarial exact fallback: 15/15
+future generated tokens used: false
+Phase D: NOT TESTED
+```
+
+Largest positive cancellation control:
+
+```text
+population: 1,024 tiles
+certificate after: 107 tiles
+sample fraction: 10.449%
+reference decision agreement: pass
+```
+
+Broad scaling:
+
+| Tiles | Certified fraction | Fallback fraction | Mean evaluated fraction |
+|---:|---:|---:|---:|
+| 64 | 0% | 100% | 100% |
+| 128 | 0% | 100% | 100% |
+| 256 | 0% | 100% | 100% |
+| 512 | 1.905% | 98.095% | 98.519% |
+| 1,024 | 1.905% | 98.095% | 98.294% |
+
+Measured Python optimized/reference mean time was roughly 8.8–9.1x in the size buckets. This is current CPU implementation evidence only.
+
+## DERIVED and PROJECTED target gap
+
+For 405B Q4 versus 4B Q4:
+
+```text
+405B full Q4 stream: 188.593 GiB
+4B full Q4 stream: 1.863 GiB
+1.2x allowance: 2.235 GiB/token
+required average evaluated fraction before selector/fallback: 1.185%
+```
+
+The positive-control 10.449% fraction is 8.817x above that simple pre-overhead target. The broad corpus mean near 98% is far worse.
+
+These values are PROJECTED from parameter counts, not measured target traffic.
+
+## Interpretation
+
+### Accepted
+
+- causal sample order;
+- fixed-step Serfling plus alpha-spending implementation;
+- independent interval verification;
+- deterministic replay;
+- invalid-state rejection;
+- exact fallback correctness in the synthetic corpus.
+
+### Not accepted
+
+- useful general skip coverage;
+- selector performance advantage;
+- real Transformer operation skipping;
+- model-wide nonlinear correctness;
+- 405B scaling;
+- 8 GiB execution;
+- target PCIe/SSD or wall clock.
+
+## Decision
+
+> Phase B, E1: the finite-population certificate and exact fallback were correct on the committed synthetic corpus. The current global-range form certified only 4/525 cases and evaluated about 98% of tiles overall, so it is not promoted as the core executor.
+
+The pre-registered primitive Gate passed because the positive control certified below 25% and correctness checks passed. The architecture-level interpretation is stricter: **REVISE**, not performance promotion.
+
+## Next decisive Gate
+
+`EXP-047R — Oracle-Tight and Stratified Tile-Bound Audit`, defined in `NEXT_EXPERIMENT.md`.
+
+It will use available unmodified small checkpoints and held-out prompts to compare:
+
+- current global range;
+- non-deployable exact per-state oracle range;
+- deployable static stratified checkpoint-derived bounds;
+- independently justified variance-adaptive bounds.
+
+If even the oracle-tight certificate requires high tile fractions, range-only CPTC is rejected rather than tuned.
+
+## Reproduction
+
+```bash
+git checkout research/governance-exp047-cptc
+python -m pytest -q tests/exp_047
+bash experiments/exp_047/reproduce.sh
+```
+
+Authoritative raw files and hashes are in `results/exp_047/`.
