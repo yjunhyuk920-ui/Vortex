@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-03 (Asia/Seoul)
 
-This is the durable chronological index of hypotheses, executable Gates, measurements, accepted proof constraints, and rejection reasons. Detailed experiment documents, PRs, workflows, raw JSON, and Git history remain permanent authoritative data.
+This is the durable index of hypotheses, executable Gates, measurements, accepted constraints, and rejection reasons. Experiment documents, PRs, workflows, raw JSON, and Git history remain authoritative permanent evidence.
 
 ## Fixed target
 
@@ -13,13 +13,13 @@ Current evidence remains below E4. Nothing below is final physical runtime compl
 ## Permanent rules
 
 - `docs/WORK_SESSION_PROTOCOL.md` is mandatory.
-- Negative experiments remain permanent project data.
-- Accepted proofs are guardrails, not runtime completion.
-- Separate exact output, top-1 functions, final Transformer decisions, metadata size, logical bytes, physical transactions, and wall clock.
-- Charge build, storage, host state, lookup, transfer, validation, cache, and fallback.
-- Metadata size is not per-token traffic.
-- Serial probes are not latency.
-- CPU mmap success is not a model decision compiler.
+- Failed experiments remain permanent data.
+- Accepted proofs are guardrails, not runtime success.
+- Separate exact output, final decisions, metadata, logical bytes, physical transactions, and wall clock.
+- Charge model calls, build, storage, lookup, transfer, cache, coverage, and fallback.
+- Metadata size is not traffic; probe count is not latency.
+- Bounded grammar coverage is not arbitrary-prompt coverage.
+- Duplicate prompt reuse is not semantic generalization.
 - Before reporting meaningful work, update this ledger and `docs/SESSION_HANDOFF.md`.
 
 ## Foundational envelope
@@ -31,34 +31,32 @@ projected compute: about 7.898 GFLOP/token
 minimum full-stream repair reuse: 246.889 tokens
 ```
 
-This was a conditional E0/E1 target envelope only.
+This was only a conditional E0/E1 target envelope.
 
-## Rejected representation families
+## Rejected model-execution representations
 
 ### Static dictionaries, factorization, activation atlases, and entropy
 
-- Progressive Q2/Q3 failed quality; Q4 speculation needed more than one thousand accepted tokens to amortize a full target stream.
+- Q2/Q3 progressive precision failed quality; Q4 speculation needed more than one thousand accepted tokens to amortize a full target stream.
 - Recurrent layer dictionaries fit storage but still read about 188 GiB/committed token.
-- Global and semantic Kronecker approximations passed some memory projections but produced near-unit error and zero causal prefix.
+- Global and semantic Kronecker approximations produced near-unit error and zero useful causal prefix.
 - Gauge dictionaries and functional skeletons passed primitives but failed full-model decisions.
 - Static activation ranks left continuation perpendicular energy near one.
 - Online expansion became exact/tokenwise.
 - ZIPTREE measured 11.3330 bits/weight and required about 10,649 accepted tokens.
 
-Decision: reject static low-rank, generic factorization, activation-subspace caching, and ordinary whole-model lossless streaming as primary mechanisms.
+Decision: reject generic static compression and low-rank execution as primary mechanisms.
 
 ### Exact-neuron and signed-residual sequence
 
-- Optimistic neuron subsets reached at most two exact tokens while MLP traffic rose from about 0.623 to 12.285 GiB/token.
+- Optimistic neuron subsets reached at most two exact tokens while traffic rose from about 0.623 to 12.285 GiB/token.
 - PR #29 measured 132 single-layer damage points; nonlinear allocation still produced no useful prefix.
-- PR #31 global Signed Dual Cone: about 97.93% mean refinement, 610.64 GiB/token.
+- PR #31 global Signed Dual Cone: about 97.93% refinement, 610.64 GiB/token.
 - PR #32 partitioned residual bounds: about 96.46%, 607.6 GiB/token.
 - PR #33 block signed residual code: 92.39%, 585.8 GiB/token.
-- PR #34 global dual-price allocation: 90.74%, maximum 573.34 GiB/token.
+- PR #34 global allocation: 90.74%, maximum 573.34 GiB/token.
 
-Decision: signed cancellation exists, but exact refinement remains dominant.
-
-## Rejected dynamic and prompt-derived programs
+Decision: exact refinement remains dominant.
 
 ### PR #36 — Semantic-State Program Routing
 
@@ -67,7 +65,7 @@ head: 499e5001c21d782adf79fba69ce6f2d445c0cb5e
 workflow: 30778002226
 ```
 
-Best mean reuse 1.364 tokens; switch traffic 0.7261 GiB/token; activation/dual perpendicular p95 near 100%. Rejected.
+Best mean reuse 1.364 tokens; switch traffic 0.7261 GiB/token; perpendicular p95 near 100%. Rejected.
 
 ### PR #37 — Prompt-Compiled Hankel Program
 
@@ -92,10 +90,9 @@ The impossible oracle still repaired 174–229 of 256 tokens, projecting 128.45�
 ```text
 head: 91b3e3f062d33087005ae38bbf94b357012f0ccd
 corrected workflow: 30780847944
-corrected CI: 30780847954
 ```
 
-The initial boundary-misaligned run is invalid. Corrected future-aware global suffix maxima were 75, 28, and 5 versus required 247. Rejected independent of ANN configuration.
+Initial boundary-misaligned evidence is invalid. Corrected future-aware global suffix maxima were 75, 28, and 5 versus required 247. Rejected independent of ANN configuration.
 
 ## Accepted proof guardrails
 
@@ -103,8 +100,7 @@ The initial boundary-misaligned run is invalid. Corrected future-aware global su
 
 ```text
 head: 7733aa6b8ba1193ed64c20fddcfc643a3d43ed7c
-certificate: 30781557141
-full CI: 30781557096
+certificate/full CI: 30781557141 / 30781557096
 merge: 663dd3d02095f19be269ef60a7c16959f6e16f2f
 ```
 
@@ -113,199 +109,182 @@ merge: 663dd3d02095f19be269ef60a7c16959f6e16f2f
 resident allowance: 8 GiB
 minimum external information: 180.98828125 GiB
 optimistic dense arithmetic: 811.698487296 GFLOP
-4B arithmetic ratio: 101.462310912x
+4B ratio: 101.462310912x
 ```
 
-115/115 skipped-coordinate adversaries changed exact output and unique top-1. Scope: exact-output theorem and coordinate relevance.
+115/115 skipped-coordinate adversaries changed exact output and unique top-1.
 
 ### PR #44 — Metadata-Aware Top-1 Function Bound
 
 ```text
 head: 95e202da8a31e564a80db509ad0b9b97bd71403d
-certificate: 30782192795
-full CI: 30782192768
+certificate/full CI: 30782192795 / 30782192768
 merge: aca6657578b0decb58adbf98bcd22555169a6847
 ```
 
-Selector/payload family implements `2^K` distinct functions for `K=p(d-p)`. Exhaustive 2/16/64/512-function families were injective. Independently callable Llama-shaped operator collection lower bound: 9.5977783203125 GiB.
+Selector/payload families implemented `2^K` distinct functions for `K=p(d-p)`. Independently callable Llama-shaped operator collection lower bound: 9.5977783203125 GiB.
 
 ### PR #46 — End-to-End Llama Final-Decision Metadata Bound
 
 ```text
 head: 7f1385b2585477d1557f50823047e41604803cb0
-certificate: 30784848053
-full CI: 30784848049
+certificate/full CI: 30784848053 / 30784848049
 merge: 038d3fa72dbfe91f4d9837d482b9f9c10719a00f
-raw JSON: results/llama_final_decision_routing_bound.json
 ```
-
-Actual Llama-style family:
 
 ```text
 micro functions: 256 / 256
-exact Q4 recovery: true
 minimum winner margin: 0.24951063086132308
-projected Q4 decision coefficients: 56,175,137,076
-complete final-decision metadata: 26.158586645498872 GiB
+projected exact-decision metadata: 26.158586645498872 GiB
 ```
 
-Scope: all-resident 8 GiB complete representation contradicted for the family; sparse host lookup remained open. Pre-correction whole-target impossibility language is invalid.
+Scope: all-resident 8 GiB representation contradicted for the constructed family; sparse host lookup remained open. Pre-correction whole-target impossibility language is invalid.
 
 ### PR #48 — Host-Indexed Cell-Probe Gate
 
 ```text
 head: 2705613f943f36adc041a6a4bedd7eba5c42f2ac
-certificate: 30785452594
-full CI: 30785452584
+certificate/full CI: 30785452594 / 30785452584
 merge: 4ca9d2c2d4876d1266b2ad5527e2350585c7db7c
-raw JSON: results/host_indexed_cell_probe_gate.json
 ```
-
-Explicit pointer theorem:
-
-```text
-worst-chain misses >= T - floor(C/S)
-```
-
-Target projection:
 
 ```text
 serial host misses: at least 249 / 256
 logical host bytes/token: 4.86328125
 explicit pointer table: 261.5858664549887 GiB
+CI packed pointer median: 224.27377 ns/probe
 ```
 
-Packed nonrepresentative CPU pointer chase median: 224.27377 ns/probe. Decision: reject probe count alone as an impossibility argument; build the host VM.
+Decision: reject probe count alone as an impossibility argument.
 
-## Accepted constructive implementation
+## Accepted constructive implementations
 
-### PR #50 — mmap-Backed Host-Indexed Decision VM
+### PR #50 — mmap Host-Indexed Decision VM
 
 ```text
 head: 8f029dde63984a3cf24f9ec2e9629c9e060d9352
-certificate workflow: 30785924201
-full CI: 30785924118
+certificate/full CI: 30785924201 / 30785924118
 merge: a4a0e9b693184c9d5ea248822393998357df40db
-raw JSON: results/host_indexed_decision_vm_gate.json
 ```
 
-Implemented:
+Implemented compact40/aligned64 records, versioned header, CRCs, atomic build, mmap replay, strict corruption rejection, LRU caching, and benchmarks.
 
 ```text
-64-byte versioned header
-compact40 5-byte records
-aligned64 8-byte records
-payload and header CRC32
-atomic temporary build and replace
-file and parent fsync
-mmap reader
-strict corruption rejection
-exact pointer replay
-bounded LRU record cache
-sequential/random/dependent/reopen benchmarks
-```
-
-Functional Gate:
-
-```text
-records: 262,144
-chains / steps: 1,024 / 256
-atomic replace: pass
-failed rebuild preserves valid destination: pass
-bad magic/truncation/corruption/invalid pointer: rejected
-second cached replay: 256 hits / 0 mmap reads
-```
-
-Nonrepresentative CI format comparison:
-
-```text
-compact40 file: 1,318,976 bytes
-aligned64 file: 2,105,408 bytes
+compact40 dependent p50/p99: 1,473 / 1,806.5 ns
+aligned64 dependent p50/p99: 1,502 / 1,833.45 ns
 compact storage saving: about 37.4%
-
-compact dependent p50 / p99: 1,473 ns / 1,806.5 ns
-aligned dependent p50 / p99: 1,502 ns / 1,833.45 ns
-
-compact warm cached replay: 535.14 ns/token
-aligned warm cached replay: 468.17 ns/token
+second replay: 256 hits / 0 mmap reads
 ```
 
-One compact first-replay sample was 22.56 µs/token and aligned was 2.07 µs/token. OS cache state was uncontrolled; this single outlier is not used for format or target-hardware conclusions.
+Compact40 is the default. CI timing is nonrepresentative.
 
-Decision: compact40 is the default v1 format. Aligned64 remains a diagnostic option.
-
-Target host/disk projection:
+### PR #52 — Bounded TinyLlama Decision-Index Compiler
 
 ```text
-compact40 records: 261.5858664549887 GiB
-aligned64 records: 418.53738632798195 GiB
-start table: 1.6349116638302803 GiB
-compact40 total: 263.22077817842364 GiB
-aligned64 total: 420.1722980514169 GiB
+head: 5fb32b30ceda3e362da7b6ee9ed2dee0c93231e5
+compiler/full CI: 30786618783 / 30786618729
+merge: 657667095bd23271ba34e1b705aea587ba7e102e
+raw JSON: results/decision_index_compiler_gate.json
+manifest: results/decision_index_compiler_manifest.json
 ```
 
-Scope:
+Finite domain:
 
 ```text
-portable CPU mmap pointer VM: proven
-exact replay, integrity, and cache accounting: proven
-CI timing target representative: false
-released-model decision-index compiler: absent
-GPU/pinned-memory integration: absent
-real 405B execution: absent
+unmodified TinyLlama
+training: none
+full grammar: 12 prompts
+compiled A/B prompts: 8
+held-out C prompts: 4
+duplicate control: 1
+horizons: 2, 4, 8
 ```
+
+Build and replay:
+
+```text
+compiled model calls: 64
+held-out ground-truth calls: 32
+trace collection: 25.302875082 s on CI CPU
+graph build: 1.073571 ms
+VM export: 2.263952 ms
+codebook: 9 / 16 tokens
+VM: 456 bytes
+manifest: 1,491 bytes
+exact paths: 9 / 9
+exact tokens: 72 / 72
+```
+
+Accepted implementation: original-checkpoint trace compiler and compact40 integration are real and exact for the declared domain.
+
+## Rejected PR #52 scaling mechanism
+
+Excluding the intentional duplicate:
+
+| Horizon | Path records | Unique exact-prefix nodes | Reuse |
+|---:|---:|---:|---:|
+| 2 | 16 | 16 | 0% |
+| 4 | 32 | 32 | 0% |
+| 8 | 64 | 64 | 0% |
+
+The duplicate control reused exactly its 2/4/8 nodes and shared the source start address.
+
+Held-out C prompts:
+
+```text
+states: 32
+hits: 0
+fallbacks: 32
+coverage: 0%
+first miss: step 0 on every prompt
+```
+
+Decision: accept the bounded compiler implementation; reject complete token-prefix identity as a general execution mechanism. It is linear exact memoization with no measured compositional generalization.
 
 ## Current classification
 
 ```text
 all-resident exact-decision metadata: contradicted for constructed family
-host-indexed representation: functionally implemented on CPU mmap
-lookup mechanism: no longer a purely theoretical blocker
-exact decision-index compiler from arbitrary checkpoint: unsolved
-GPU-facing lookup: unsolved
-405B/8 GiB/quality/wall-clock target: unsolved
+host-indexed exact pointer VM: implemented
+bounded real-model compiler: implemented
+raw exact-prefix graph: linear growth on measured domain
+held-out start routing: zero coverage
+sound behavioral quotient: not yet tested
+certified start router/generalization: unsolved
+GPU integration and real 405B target: unsolved
 ```
 
 ## Prohibited repeats and overclaims
 
 Do not:
 
-- relabel metadata as traffic;
-- relabel probes as latency;
-- project CI nanoseconds to target hardware or 263 GiB files;
-- treat the pointer VM as a language-model decision compiler;
-- hide index build cost, grammar coverage, or fallback;
-- claim released-model quality preservation;
+- scale raw prefix enumeration and call it universal;
+- treat exact duplicate reuse as semantic reuse;
+- merge approximate states without a sound decision certificate;
+- omit model calls and build coverage;
+- project TinyLlama/CI measurements to 405B hardware;
 - claim physical success or impossibility without real evidence.
 
-## Current frontier — Experiment 045 Decision-Index Compiler Gate
+## Current frontier — Experiment 046 Exact Future-Behavior DAG
 
-Lookup is now implemented. Construction is the primary unknown.
-
-First bounded compiler target:
+The strongest sound finite-horizon quotient interns states backward by:
 
 ```text
-model: unmodified TinyLlama checkpoint
-training: none
-input domain: declared finite prompt grammar
-horizon: explicit and finite
-node key: exact prefix identity or exact state fingerprint
-record: exact greedy token + successor node
-output: Experiment 044 compact40 VM
+signature = (exact next token, exact successor signature)
 ```
 
-### Mandatory Experiment 045 work
+States merge only if their complete remaining exact decision suffixes are identical. This future-aware quotient is an optimistic compression upper bound for already compiled paths. It does not provide a deployable start router for unseen prompts.
 
-1. Create `research/decision-index-compiler-gate`.
-2. Add `docs/EXPERIMENT_045_DECISION_INDEX_COMPILER_GATE.md`.
-3. Define a finite prompt grammar with an exact completeness denominator.
-4. Compile greedy transitions using only original checkpoint calls.
-5. Deduplicate only with exact identity or a sound equivalence proof.
-6. Export the compiled graph to compact40.
-7. Replay every compiled path without model execution and require exact tokens.
-8. Evaluate held-out grammar compositions and count fallback calls.
-9. Record model calls, unique states, duplicate reuse, build time, index bytes, coverage, fallback, and growth by horizon.
-10. Fit growth models but do not extrapolate beyond measured horizons as proof.
-11. Reject universality claims outside the declared grammar.
-12. Decide whether state growth is sufficiently sublinear to justify adaptive compilation.
-13. Commit tests, workflow, raw JSON, PR decision, this ledger, and handoff.
+### Mandatory work
+
+1. Create `research/exact-future-behavior-dag`.
+2. Add `docs/EXPERIMENT_046_EXACT_FUTURE_BEHAVIOR_DAG.md`.
+3. Consume Experiment 045 traces without new model calls for the first Gate.
+4. Build minimal suffix DAGs at horizons 2, 4, and 8.
+5. Compare raw nodes, quotient nodes, start entries, VM bytes, and exact replay.
+6. Attribute compression to identical suffixes, duplicate prompts, repeated tokens, and terminal merging.
+7. Keep explicit prompt-to-start routing storage and held-out start coverage separate.
+8. Export compact40 and replay all compiled paths exactly.
+9. Decide whether graph-body compression is meaningful enough to justify a certified start router.
+10. If body compression is high but held-out routing remains zero, record the start-router barrier as the primary blocker.
+11. Commit tests, workflow, raw JSON, PR decision, ledger, and handoff.
