@@ -1,0 +1,114 @@
+{
+  "DERIVED": {
+    "c2_bound_contract": "per-dimension output-weight column span times absolute current hidden activation, aggregated by tile and union-accounted strata",
+    "c3_status": "NOT IMPLEMENTED pending independent proof",
+    "correctness_gate_pass": true,
+    "decision": "REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY",
+    "materialized_primitive_cost_gate_pass": false,
+    "oracle_fraction_gate_pass": false,
+    "range_family_survives_gate": false
+  },
+  "MEASURED": {
+    "bound_violations": 0,
+    "c2_best_evaluated_fraction": 0.9921875,
+    "c2_materialized_cpu_elapsed_over_full_sum_median": 2165.056897860546,
+    "c2_median_evaluated_fraction": 1.0,
+    "c2_p90_evaluated_fraction": 1.0,
+    "case_count": 18,
+    "model_count": 3,
+    "models": [
+      {
+        "column_span_metadata_bytes": 256,
+        "hidden_size": 64,
+        "layer_count": 8,
+        "lm_head_weight_bytes": 12865792,
+        "model_id": "roneneldan/TinyStories-1M",
+        "parameter_count": 3745984,
+        "resolved_revision": "77f1b168e219585646439073245fe87e56b3023e",
+        "vocab_size": 50257
+      },
+      {
+        "column_span_metadata_bytes": 512,
+        "hidden_size": 128,
+        "layer_count": 8,
+        "lm_head_weight_bytes": 25731584,
+        "model_id": "roneneldan/TinyStories-3M",
+        "parameter_count": 8278400,
+        "resolved_revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894",
+        "vocab_size": 50257
+      },
+      {
+        "column_span_metadata_bytes": 1024,
+        "hidden_size": 256,
+        "layer_count": 8,
+        "lm_head_weight_bytes": 51463168,
+        "model_id": "roneneldan/TinyStories-8M",
+        "parameter_count": 19702528,
+        "resolved_revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af",
+        "vocab_size": 50257
+      }
+    ],
+    "oracle_median_evaluated_fraction": 1.0,
+    "oracle_p90_evaluated_fraction": 1.0,
+    "peak_rss_kib": 649808,
+    "tokenizer": {
+      "model_id": "EleutherAI/gpt-neo-125M",
+      "resolved_revision": "21def0189f5705e2521767faed922f1f15e7d7db"
+    },
+    "wrong_accepts": 0
+  },
+  "PROJECTED": {
+    "allowed_1_2x_baseline_weight_gib_per_token": 2.2351741790771484,
+    "baseline_q4_full_weight_gib_per_full_pass": 1.862645149230957,
+    "oracle_median_over_required_target_fraction": 84.375,
+    "required_average_target_weight_fraction_before_overhead": 0.011851851851851851,
+    "target_q4_full_weight_gib_per_full_pass": 188.5928213596344
+  },
+  "UNVERIFIED": [
+    "variance-adaptive finite-population C3 certificate",
+    "real LM-head operation replacement",
+    "model-wide nonlinear propagation",
+    "accelerator selector cost",
+    "70B and 405B behavior",
+    "8 GiB peak VRAM",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "real_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-047R",
+  "future_information_used": false,
+  "gate": {
+    "decision": "REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY",
+    "passes": false,
+    "pre_registered_materialized_selector_max_full_sum_ratio": 1.0,
+    "pre_registered_oracle_median_max_fraction": 0.1,
+    "pre_registered_oracle_p90_max_fraction": 0.25,
+    "pre_registered_wrong_accept_limit": 0
+  },
+  "name": "oracle_tight_and_stratified_tile_bound_audit",
+  "phase": ["A", "B", "C-observation"],
+  "phase_c_operation_replacement": false,
+  "phase_d_status": "NOT TESTED",
+  "provenance": {
+    "artifact_id": 8848886335,
+    "artifact_name": "exp-047r-candidate-30795946233",
+    "artifact_zip_sha256": "6c9a4fdca80d29964eca02d16f8b36f5ca8e211653f6fb9ddfe548a729c6e12d",
+    "frozen_date": "2026-08-03",
+    "source_head_sha": "0beb068e9679c9f4d51d1b210b0eee7fbc325214",
+    "workflow_merge_sha": "213e69a54c4d2b5c2d4102f8651cab847ade312f",
+    "workflow_run": "30795946233",
+    "workflow_summary_sha256": "d047ae49789ef46926cadf193d77b1a8284d5f89a8d7bd178930d712b5d38ce8"
+  },
+  "raw_evidence": {
+    "artifact_provenance": "raw/artifact_provenance.json",
+    "cases": "raw/cases.jsonl",
+    "checkpoint_manifest": "raw/checkpoint_manifest.json",
+    "workflow_summary": "raw/workflow_summary.json"
+  }
+}
