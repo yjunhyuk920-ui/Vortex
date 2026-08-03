@@ -2,15 +2,6 @@ name: EXP-049 Anderson continuous fixed-point Gate
 
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "vortex_runtime/fixed_point.py"
-      - "vortex_runtime/block_verify.py"
-      - "tests/exp_049/**"
-      - "experiments/exp_049/**"
-      - "docs/research/EXPERIMENT_049_ANDERSON_CONTINUOUS_FIXED_POINT.md"
-      - ".github/workflows/exp_049_gate.yml"
-      - "NEXT_EXPERIMENT.md"
 
 concurrency:
   group: exp-049-${{ github.workflow }}-${{ github.ref }}
@@ -87,24 +78,28 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}
         run: python scripts/run_validation.py
 
-      - name: Run pinned real-checkpoint Gate
+      - name: Run pinned real-checkpoint Gate in isolated output
         env:
           PYTHONPATH: ${{ github.workspace }}
           HF_HOME: ${{ runner.temp }}/hf-exp049
           TOKENIZERS_PARALLELISM: "false"
+          VORTEX_EXP049_OUTPUT_DIR: ${{ runner.temp }}/exp_049_reproduction
         run: |
           set -euo pipefail
-          rm -rf results/exp_049_candidate
+          rm -rf "${VORTEX_EXP049_OUTPUT_DIR}"
           bash experiments/exp_049/run_current_env.sh 2>&1 | tee exp049-workflow.log
 
-      - name: Validate evidence contract
+      - name: Validate reproduction contract
+        env:
+          REPRO_ROOT: ${{ runner.temp }}/exp_049_reproduction
         run: |
           python - <<'PY'
           import json
           import math
+          import os
           from pathlib import Path
 
-          root = Path("results/exp_049_candidate")
+          root = Path(os.environ["REPRO_ROOT"])
           summary = json.loads((root / "summary.json").read_text())
           assert summary["experiment"] == "EXP-049"
           assert summary["evidence_level"] == "E1"
@@ -118,15 +113,12 @@ jobs:
           assert measured["selected_deployable_future_information_uses"] == 0
           assert measured["unhandled_numerical_failures"] == 0
           assert measured["s3_oracle_exact_failures"] == 0
-          assert isinstance(measured["triangular_one_position_per_round_barrier_observed"], bool)
-          assert isinstance(measured["triangular_transcript_indistinguishability_observed"], bool)
+          assert measured["triangular_one_position_per_round_barrier_observed"] is True
+          assert measured["triangular_transcript_indistinguishability_observed"] is True
           assert math.isfinite(measured["oracle_best_s1s2_p50_matching_prefix"])
           assert math.isfinite(measured["oracle_best_s1s2_p90_target_equivalent_stream_fraction"])
           assert summary["DERIVED"]["variant_selection_uses_reference"] is True
-          assert summary["DERIVED"]["decision"] in {
-              "CONTINUE_TARGET_ONLY_CONTINUOUS_FIXED_POINT_TO_COMPLETE_PHASE_C",
-              "REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY",
-          }
+          assert summary["DERIVED"]["decision"] == "REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY"
           assert (root / "raw" / "cases.jsonl").is_file()
           assert (root / "raw" / "checkpoint_manifest.json").is_file()
           assert (root / "raw" / "triangular_audit.json").is_file()
@@ -134,13 +126,13 @@ jobs:
           print(json.dumps(summary, indent=2, sort_keys=True))
           PY
 
-      - name: Upload candidate evidence
+      - name: Upload isolated reproduction
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: exp-049-candidate-${{ github.run_id }}
+          name: exp-049-reproduction-${{ github.run_id }}
           path: |
-            results/exp_049_candidate
+            ${{ runner.temp }}/exp_049_reproduction
             exp049-workflow.log
             exp049-pip-freeze.txt
           if-no-files-found: warn
