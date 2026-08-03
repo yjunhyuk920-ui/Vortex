@@ -1,0 +1,49 @@
+name: Retry finalize EXP-052 durable state
+
+on:
+  push:
+    paths:
+      - ".github/workflows/retry_finalize_exp_052_state.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: retry-finalize-exp-052-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  finalize:
+    if: github.ref == 'refs/heads/research/exp-052-exact-advice-tradeoff'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: research/exp-052-exact-advice-tradeoff
+          fetch-depth: 0
+
+      - name: Finalize documents
+        run: python scripts/finalize_exp_052_minimal.py
+
+      - name: Validate evidence and repository
+        run: |
+          set -euo pipefail
+          (cd results/exp_052 && sha256sum -c checksums.sha256)
+          grep -q "EXP-053" NEXT_EXPERIMENT.md
+          grep -q "REJECT_ENUMERATIVE_EXACT_ADVICE" RESEARCH_STATE.md
+          python -m pytest -q tests/exp_052
+          python scripts/run_validation.py
+
+      - name: Commit durable state
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "state already finalized"
+            exit 0
+          fi
+          git commit -m "research(exp052): finalize decision and register EXP-053"
+          git push origin HEAD:research/exp-052-exact-advice-tradeoff
