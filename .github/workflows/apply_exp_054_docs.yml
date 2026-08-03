@@ -1,0 +1,62 @@
+name: Apply EXP-054 durable documents
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/apply_exp_054_docs.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-exp-054-docs-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  apply:
+    if: github.head_ref == 'research/exp-054-reduced-decision-diagram'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned validation dependencies
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check \
+            pytest==8.3.5 numpy==2.1.3
+          python -m pip install --disable-pip-version-check \
+            --index-url https://download.pytorch.org/whl/cpu torch==2.6.0
+          python -m pip install --disable-pip-version-check \
+            transformers==4.50.3 huggingface_hub==0.29.3 \
+            safetensors==0.5.3 tokenizers==0.21.1
+
+      - name: Apply durable state
+        run: python scripts/finalize_exp_054.py
+
+      - name: Validate
+        run: |
+          set -euo pipefail
+          (cd results/exp_054 && sha256sum -c checksums.sha256)
+          grep -q "EXP-055" NEXT_EXPERIMENT.md
+          grep -q "REJECT_EXACT_REDUCED_DECISION_DIAGRAM" RESEARCH_STATE.md
+          python -m pytest -q tests/exp_054
+          python scripts/run_validation.py
+
+      - name: Commit and push
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "research(exp054): finalize decision and register EXP-055"
+          git push origin HEAD:${{ github.head_ref }}
