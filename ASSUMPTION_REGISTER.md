@@ -211,3 +211,8 @@ Status: ACTIVE FOR EXP-060 ONLY. Ordinary rank and displacement rank do not meas
 ## A-036 — Causal dense-projection inputs may contain useful exact zeros
 
 Status: ACTIVE FOR EXP-061 ONLY. Static weight zeros failed, but runtime activations could skip complete weight columns. EXP-061 must measure exact IEEE zero at every registered dense-projection input, separate prefill from warm decode, exclude causal-mask zeros already handled by standard attention, preserve held-out prompt families, and charge activation-index metadata. Near-zero thresholds are approximation and are forbidden.
+
+<!-- EXP-061-AUTHORITATIVE-FINAL -->
+## A-037 — Non-mask causal attention probabilities may underflow to exact zero
+
+Status: ACTIVE FOR EXP-062 ONLY. EXP-061 found no exact zeros at dense inputs, but softmax can theoretically underflow for sufficiently negative unmasked scores. EXP-062 must exclude causal-mask and padding entries, use exact returned probabilities, compare hooked/attention-output-enabled tokens with reference generation, and charge QK, softmax, Value accumulation, probability scanning, indexes, and the unchanged non-attention model work.

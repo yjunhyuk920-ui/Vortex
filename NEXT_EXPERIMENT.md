@@ -1,81 +1,73 @@
 # Next Experiment
 
-## Closed Gate — EXP-060
+## Closed Gate — EXP-061
 
-Pinned real-Q4 dense projections contained p50 17.76% exact zeros. Exact row-run streaming retained p50/p90 82.22%/85.06% operations and required 150.93%/200.86% query bytes.
+No exact positive or negative zero was observed in 56,448 projection calls. Mandatory zero discovery made warm-decode logical work and bytes exceed dense execution.
 
 ```text
-REJECT_REAL_Q4_EXACT_ZERO_SPARSITY_STREAMING_AS_CORE_RETAIN_SPARSE_AUXILIARY
+REJECT_CAUSAL_EXACT_ACTIVATION_SPARSITY_AS_CORE_RETAIN_RUNTIME_SPARSE_AUXILIARY
 ```
 
-## EXP-061 — Pinned Causal Exact Activation-Sparsity Gate
+## EXP-062 — Pinned Causal Exact Non-Mask Attention-Probability Sparsity Gate
 
 ### Mechanism
 
-For every causal forward pass, an exact-zero input coordinate to a dense projection allows the corresponding weight column to be skipped for every output row. Measure exact IEEE zeros at the input of every registered `torch.nn.Linear`/equivalent learned 2-D projection during:
+Request exact attention probabilities during causal generation and measure entries equal to positive or negative zero only after excluding positions that are zero solely because of causal or padding masks. An exact zero probability permits skipping the corresponding Value-vector multiply/add for that query/head without changing output.
 
-```text
-prompt prefill
-first decode token
-decode tokens 2..64
-```
+### Pinned population
 
-Causal-attention mask zeros and padding positions are excluded; they are already standard structural sparsity. Only actual projection-input scalar values equal to positive or negative zero count.
-
-### Pinned models and prompts
-
-Use unchanged TinyStories-1M/3M/8M revisions and the pinned GPT-Neo tokenizer from EXP-050. Use the six held-out families: English narrative, Korean, code, mathematics, structured JSON, and identifier boundary. Generate 64 greedy tokens with KV cache for each model/prompt pair.
+Use unchanged TinyStories-1M/3M/8M revisions, the pinned GPT-Neo tokenizer, six held-out prompt families, prompt prefill, first decode, and 64-token KV-cached generation. Run a standard reference and an `output_attentions=True` observation path; all committed tokens must match.
 
 ### Registration
 
-- enumerate every learned 2-D projection module before execution;
-- record module name, weight shape/checksum, input feature width, calls, tokens, and phase;
-- fail on unhooked or shape-mismatched dense projections;
-- deduplicate tied modules only by object identity while preserving named aliases;
-- do not count embeddings or causal attention masks as projection-input sparsity.
+- enumerate every attention layer and head count;
+- record query/key/value lengths, unmasked entry population, exact non-mask zero count, phase, token, model, prompt family, and layer;
+- fail on missing attention tensors, shape mismatch, NaN, negative probability, or row-sum violation beyond the pinned numerical tolerance;
+- causal-mask and padding zeros are excluded from both numerator and eligible population.
 
 ### Accounting
 
-For input width `n`, output width `m`, and `z` exact-zero input coordinates:
+For each head/query with key length `L`, charge:
 
 ```text
-dense operations = m*n
-sparse operations = m*(n-z)
-weight bytes = Q4 columns for n-z coordinates
-activation metadata = nonzero-coordinate indexes + vector row pointer
+QK score terms               = head_dim * L
+softmax terms                = L
+Value dense terms            = head_dim * L
+Value sparse terms           = head_dim * nonzero_probability_count
+probability zero scan        = L
+nonzero-key indexes/pointers = exact metadata bytes
 ```
 
-Report operation and query-byte fractions per call, weighted by original dense scalar terms. Charge scanning every activation coordinate to discover zeros as a separate runtime operation count. Selection by prompt, model, module, or token is forbidden; aggregate the full registered population.
+Total Transformer accounting must also include all unchanged dense-projection and MLP terms from the registered architecture. Report both attention-only and whole-model operation/query-byte fractions. Skipping QK or softmax is forbidden because zero status is known only afterward.
 
 ### Controls
 
-- injected all-zero vector: zero operation fraction and exact dense fallback equivalence;
-- ReLU negative control input: registered exact zeros detected;
-- GELU random input: no false zero creation;
-- positive-zero and negative-zero counted identically;
-- column-skipped mathematical reference equals dense reference for exact-zero coordinates;
-- hook registration and call accounting are deterministic;
-- greedy committed tokens match an unhooked reference run exactly.
+- explicit masked logits: mask zeros excluded;
+- extreme unmasked logits that underflow: exact zeros detected;
+- moderate logits: no false zeros;
+- positive/negative zero equivalence;
+- dense versus zero-skipped Value accumulation equality in fixed scalar order;
+- probability rows finite, nonnegative, and normalized;
+- reference and observation generation tokens identical.
 
 ### Promotion Gate
 
 ```text
-zero output-token mismatch
-zero hook/registration/control mismatch
-p50 warm-decode operation fraction <=10%
-p90 warm-decode operation fraction <=25%
-p50 warm-decode query-byte fraction <=10%
-p90 warm-decode query-byte fraction <=25%
-all six prompt families represented
+zero token/registration/control mismatch
+all six families represented
+p50 whole-model warm-decode operation fraction <=10%
+p90 whole-model warm-decode operation fraction <=25%
+p50 whole-model query-byte fraction <=10%
+p90 whole-model query-byte fraction <=25%
 no largest-model degradation >25%
 ```
 
 Failure decision:
 
 ```text
-REJECT_CAUSAL_EXACT_ACTIVATION_SPARSITY_AS_CORE_RETAIN_RUNTIME_SPARSE_AUXILIARY
+REJECT_CAUSAL_EXACT_ATTENTION_PROBABILITY_SPARSITY_AS_CORE_RETAIN_ATTENTION_AUXILIARY
 ```
 
 ### Claim boundary
 
-Phase C observation only. Actual sparse projection kernels, 405B activation statistics, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.
+Phase C observation only. Physical attention-sparse kernels, 405B attention statistics, actual Transformer operation replacement, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.

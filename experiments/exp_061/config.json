@@ -1,0 +1,45 @@
+{
+  "experiment": "EXP-061",
+  "seed": 610061,
+  "torch_num_threads": 2,
+  "max_input_tokens": 64,
+  "max_new_tokens": 64,
+  "tokenizer": {
+    "model_id": "EleutherAI/gpt-neo-125M",
+    "revision": "21def0189f5705e2521767faed922f1f15e7d7db"
+  },
+  "models": [
+    {
+      "model_id": "roneneldan/TinyStories-1M",
+      "revision": "77f1b168e219585646439073245fe87e56b3023e"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-3M",
+      "revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-8M",
+      "revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af"
+    }
+  ],
+  "held_out_prompts": [
+    {"family": "english_narrative", "text": "Once there was a small blue bird who wanted to cross the river."},
+    {"family": "korean", "text": "작은 로봇은 비가 오는 밤에 길을 잃은 강아지를 발견했다."},
+    {"family": "code", "text": "def binary_search(values, target):\n    left, right = 0, len(values) - 1\n"},
+    {"family": "mathematics", "text": "A box contains 12 red balls and 7 blue balls. After removing 5 red balls,"},
+    {"family": "structured_json", "text": "Return only JSON: {\"name\": \"Mina\", \"items\": ["},
+    {"family": "identifier_boundary", "text": "The exact deployment identifier is VTX-405B-RUNTIME-000173 and the next identifier is"}
+  ],
+  "early_gate": {
+    "maximum_output_token_mismatches": 0,
+    "maximum_hook_registration_control_mismatches": 0,
+    "maximum_p50_warm_decode_operation_fraction": 0.10,
+    "maximum_p90_warm_decode_operation_fraction": 0.25,
+    "maximum_p50_warm_decode_query_byte_fraction": 0.10,
+    "maximum_p90_warm_decode_query_byte_fraction": 0.25,
+    "maximum_largest_model_degradation": 0.25,
+    "required_prompt_family_count": 6
+  },
+  "failure_decision": "REJECT_CAUSAL_EXACT_ACTIVATION_SPARSITY_AS_CORE_RETAIN_RUNTIME_SPARSE_AUXILIARY",
+  "evidence_ceiling": "Phase C observation only: actual sparse projection kernels, 405B activation statistics, 405B execution and target hardware are not tested"
+}

@@ -1,0 +1,107 @@
+{
+  "DERIVED": {
+    "accounting_scope": "exact +/- zero projection-input coordinates only; Q4 skipped weight columns, nonzero-coordinate indexes, vector pointers, and a full activation zero scan charged",
+    "causal_exact_activation_sparsity_survives_gate": false,
+    "decision": "REJECT_CAUSAL_EXACT_ACTIVATION_SPARSITY_AS_CORE_RETAIN_RUNTIME_SPARSE_AUXILIARY",
+    "hook_registration_control_gate_pass": true,
+    "model_size_trend_gate_pass": true,
+    "output_token_gate_pass": true,
+    "prompt_family_gate_pass": true,
+    "warm_decode_operation_gate_pass": false,
+    "warm_decode_query_byte_gate_pass": false
+  },
+  "MEASURED": {
+    "activation_call_count": 56448,
+    "case_count": 18,
+    "elapsed_ns": 27749384290,
+    "generated_tokens_per_case": 64,
+    "hook_registration_or_control_mismatches": 0,
+    "largest_model_degradation_fraction": 0.0,
+    "maximum_warm_decode_exact_zero_fraction": 0.0,
+    "model_count": 3,
+    "model_p50_warm_decode_operation_fraction": {
+      "roneneldan/TinyStories-1M": 1.00001989772569,
+      "roneneldan/TinyStories-3M": 1.00001989772569,
+      "roneneldan/TinyStories-8M": 1.00001989772569
+    },
+    "output_token_mismatches": 0,
+    "p50_warm_decode_exact_zero_fraction": 0.0,
+    "p50_warm_decode_operation_fraction": 1.00001989772569,
+    "p50_warm_decode_query_byte_fraction": 1.0000404172553077,
+    "p90_warm_decode_exact_zero_fraction": 0.0,
+    "p90_warm_decode_operation_fraction": 1.00390625,
+    "p90_warm_decode_query_byte_fraction": 1.015655517578125,
+    "peak_rss_kib": 761248,
+    "phase_totals": {
+      "first_decode": {
+        "aggregate_exact_zero_fraction": 0.0,
+        "aggregate_fully_accounted_operation_fraction": 1.001062761140794,
+        "aggregate_query_byte_fraction": 1.002951709880767,
+        "call_count": 882,
+        "exact_zero_count": 0,
+        "input_scalar_count": 196224
+      },
+      "prefill": {
+        "aggregate_exact_zero_fraction": 0.0,
+        "aggregate_fully_accounted_operation_fraction": 1.001062761140794,
+        "aggregate_query_byte_fraction": 1.002944200340887,
+        "call_count": 882,
+        "exact_zero_count": 0,
+        "input_scalar_count": 5167232
+      },
+      "warm_decode": {
+        "aggregate_exact_zero_fraction": 0.0,
+        "aggregate_fully_accounted_operation_fraction": 1.001062761140794,
+        "aggregate_query_byte_fraction": 1.002951709880767,
+        "call_count": 54684,
+        "exact_zero_count": 0,
+        "input_scalar_count": 12165888
+      }
+    },
+    "prompt_family_count": 6,
+    "registration_row_count": 147,
+    "warm_decode_call_count": 54684
+  },
+  "UNVERIFIED": [
+    "physical activation-sparse projection kernels",
+    "405B activation sparsity",
+    "actual Transformer operation replacement",
+    "405B execution",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_CAUSAL_EXACT_ACTIVATION_SPARSITY_AS_CORE_RETAIN_RUNTIME_SPARSE_AUXILIARY",
+  "claim_boundary": {
+    "405b_activation_statistics": "NOT TESTED",
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "physical_sparse_kernel": "NOT TESTED",
+    "real_transformer_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-061",
+  "name": "pinned_causal_exact_activation_sparsity_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-observation"
+  ],
+  "provenance": {
+    "artifact_id": 8867731496,
+    "artifact_name": "exp-061-candidate-30843404056",
+    "artifact_size_bytes": 662994,
+    "artifact_zip_sha256": "a01d31b012badd7d06087df576279b852db07813a0c7fb50d65c3a7283e9ca65",
+    "config_sha256": "b5635e3cd57dae39bc66c7939ef75ea7c79d6dab2a22d634c1441f0a9d930e82",
+    "frozen_date": "2026-08-04",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "44c3d6691d78714dc975e46e19bb8fdfe97a22cf",
+    "source_head_sha": "15097a9b0323aa992679214173aaac0e7a98821c",
+    "tokenizer_id": "EleutherAI/gpt-neo-125M",
+    "tokenizer_revision": "21def0189f5705e2521767faed922f1f15e7d7db",
+    "torch": "2.6.0+cpu",
+    "workflow_merge_sha": "44c3d6691d78714dc975e46e19bb8fdfe97a22cf",
+    "workflow_run": 30843404056
+  }
+}

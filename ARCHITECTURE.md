@@ -213,3 +213,8 @@ The runtime must not promote the tested zero-fill/cyclic diagonal/anti-diagonal 
 ## Static-zero sparsity boundary
 
 The runtime must not promote static CSR/run/BSR streaming for the measured Q4 population. Exact sparse formats remain conditional auxiliaries. The next permitted sparsity route is causal activation-column skipping based only on exact runtime zeros and fail-closed dense fallback.
+
+<!-- EXP-061-AUTHORITATIVE-FINAL -->
+## Activation-zero boundary
+
+The runtime must not scan ordinary dense-projection inputs for exact zeros on the measured architecture because the observed population is empty and scanning adds work. Observation hooks remain auxiliary for architectures with explicit hard-zero nonlinearities. EXP-062 is restricted to post-softmax attention probabilities, excluding mask zeros.

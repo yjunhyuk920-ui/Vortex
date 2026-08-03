@@ -253,3 +253,8 @@ All 144 pinned real-Q4 dense projections retained full displacement rank under t
 ## F-028 — Static exact-zero sparse streaming on measured real Q4 projections
 
 Real Q4 weights contained only 17.76% median exact zeros. Skipping them left 82.22% median work and required 150.93% median query bytes after exact run metadata. Even the best matrix remained at 69.90% work and 190.12% bytes. Do not revisit using more CSR/BSR block sizes, zero clustering, or index compression: scalar nonzero density itself is already above the 25% Gate. Retain exact sparse formats only as conditional auxiliaries.
+
+<!-- EXP-061-AUTHORITATIVE-FINAL -->
+## F-029 — Causal exact-zero activation-column skipping
+
+No exact projection-input zero occurred in 56,448 calls or 17,529,344 observed input scalars across prefill and decode. Warm-decode work and query bytes slightly exceeded dense execution after mandatory zero discovery and metadata. Do not revisit with more zero scanners, module selectors, or near-zero thresholds: near-zero is approximate and exact zero population was empty. Retain the hook/accounting machinery only for architectures with explicit exact-zero activations.
