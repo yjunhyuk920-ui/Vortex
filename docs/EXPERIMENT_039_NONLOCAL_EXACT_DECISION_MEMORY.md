@@ -27,11 +27,13 @@ block_i = prompt_token_ids[i+1 : i+1+L]
 
 where `P` is built only from prompt hidden states. No continuation token or continuation hidden state is used to build keys, blocks, centering statistics, or the projection.
 
-At a held-out continuation position `t`, an optimistic block-boundary oracle supplies the exact causal hidden state `q_t` produced by the previous committed token. The lookup key is:
+At a held-out block boundary, one exact target interaction emits an anchor token and its exact final hidden state. That interaction is charged to the block. The lookup key is then:
 
 ```text
 query_t = normalize(P^T (q_t - mean_prompt_hidden))
 ```
+
+where `q_t` is the exact hidden state after consuming the anchor or a later exact committed token. Replayed targets begin strictly after the anchor.
 
 The deployable diagnostic returns the nearest prompt entry by cosine similarity. Stronger upper bounds are also measured:
 
@@ -42,7 +44,15 @@ The global token oracle sees the future continuation only for evaluation. It is 
 
 ## Alignment contract
 
-`h_i` is the final hidden state after prompt token `i` and predicts token `i+1` through the original LM head. The first continuation query uses the final prompt hidden state, but that final prompt position is not a memory entry because its following token belongs to evaluation. Later continuation queries use exact continuation hidden states only as held-out query evidence.
+`h_i` is the final hidden state after prompt token `i` and predicts token `i+1` through the original LM head. The final prompt state produces `continuation_token_ids[0]`, which is the exact boundary anchor and is not counted as replay. `continuation_hidden_states[0]` is the final hidden state after consuming that anchor and predicts `continuation_token_ids[1]`, the first replay target. Therefore the 256 evaluation pairs are:
+
+```text
+query_t  = continuation_hidden_states[t]
+target_t = continuation_token_ids[t+1]
+for t = 0..255
+```
+
+The final prompt position remains excluded from memory because its following token is the held-out anchor.
 
 ## 405B memory and lookup equations
 
@@ -84,7 +94,7 @@ C_lookup = 20.97 MFLOP/query = 0.02097 GFLOP/query
 
 Thus this family is not rejected by metadata size or lookup arithmetic. It lives or dies on exact future-block recurrence.
 
-One optimistic exact block-boundary interaction is still charged as the previously established 405B lower-bound proxy:
+One optimistic exact block-boundary interaction is charged as the previously established 405B lower-bound proxy:
 
 ```text
 B_boundary = 188.9883 GiB
@@ -94,12 +104,12 @@ C_boundary = 811.6985 GFLOP
 The inherited strong amortization requirement is:
 
 ```text
-accepted exact block length >= 247 tokens
+accepted exact block length >= 247 tokens after the anchor
 ```
 
 ## Real-model gate
 
-Use the same three long TinyLlama prompts as Experiments 037–038 and collect 256 greedy continuation tokens.
+Use the same three long TinyLlama prompts as Experiments 037–038. Charge the exact first continuation token as the boundary anchor, then evaluate the following 256 greedy decisions.
 
 For key ranks `8, 16, 32, 64, 128, 256`, measure:
 
@@ -107,7 +117,7 @@ For key ranks `8, 16, 32, 64, 128, 256`, measure:
 - top-4, top-16, and top-64 oracle exact-prefix lengths;
 - global future-token-oracle exact-prefix lengths;
 - first-query, maximum, mean, p95, and coverage at lengths 1/4/16/64/247;
-- continuation EOS position, maximum identical-token run, and unique-token fraction;
+- post-anchor EOS position, maximum identical-token run, and unique-token fraction;
 - actual-prompt and 65,536-entry projected memory/lookup budgets.
 
 ## Promotion and rejection
@@ -116,7 +126,7 @@ Representation capacity advances only if, on every prompt:
 
 ```text
 global oracle maximum exact prefix >= 247
-no trivial EOS before token 247
+no trivial post-anchor EOS before token 247
 maximum identical-token run <= 16
 unique-token fraction >= 0.05
 ```
@@ -133,6 +143,7 @@ Immediate rejection:
 
 - the global oracle fails 247 on any prompt;
 - a result depends on continuation data during memory build;
+- the boundary anchor is incorrectly counted as replay;
 - success comes only from EOS or a repeated-token loop;
 - reported storage omits blocks or index overhead.
 
