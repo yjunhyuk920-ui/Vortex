@@ -1,0 +1,226 @@
+{
+  "experiment": "043_host_indexed_cell_probe_gate",
+  "evidence_level": "E1 explicit-pointer cell-probe theorem and nonrepresentative host prototype",
+  "micro_table": {
+    "chains": 64,
+    "steps": 256,
+    "cells": 16384,
+    "address_bits": 14,
+    "record_bits": 18
+  },
+  "balanced_cache_frontier": [
+    {
+      "cache_capacity_records": 0,
+      "theorem_host_miss_lower_bound": 256,
+      "worst_chain": 0,
+      "measured_worst_chain_misses": 256,
+      "measured_worst_chain_hits": 0,
+      "theorem_pass": true
+    },
+    {
+      "cache_capacity_records": 64,
+      "theorem_host_miss_lower_bound": 255,
+      "worst_chain": 0,
+      "measured_worst_chain_misses": 255,
+      "measured_worst_chain_hits": 1,
+      "theorem_pass": true
+    },
+    {
+      "cache_capacity_records": 640,
+      "theorem_host_miss_lower_bound": 246,
+      "worst_chain": 0,
+      "measured_worst_chain_misses": 246,
+      "measured_worst_chain_hits": 10,
+      "theorem_pass": true
+    },
+    {
+      "cache_capacity_records": 4096,
+      "theorem_host_miss_lower_bound": 192,
+      "worst_chain": 0,
+      "measured_worst_chain_misses": 192,
+      "measured_worst_chain_hits": 64,
+      "theorem_pass": true
+    },
+    {
+      "cache_capacity_records": 8192,
+      "theorem_host_miss_lower_bound": 128,
+      "worst_chain": 0,
+      "measured_worst_chain_misses": 128,
+      "measured_worst_chain_hits": 128,
+      "theorem_pass": true
+    },
+    {
+      "cache_capacity_records": 16384,
+      "theorem_host_miss_lower_bound": 0,
+      "worst_chain": 0,
+      "measured_worst_chain_misses": 0,
+      "measured_worst_chain_hits": 256,
+      "theorem_pass": true
+    }
+  ],
+  "sampled_cache_frontier": [
+    {
+      "cache_capacity_records": 4097,
+      "theorem_host_miss_lower_bound": 192,
+      "worst_chain": 23,
+      "measured_worst_chain_misses": 207,
+      "measured_worst_chain_hits": 49,
+      "theorem_pass": true,
+      "seed": 0
+    },
+    {
+      "cache_capacity_records": 4097,
+      "theorem_host_miss_lower_bound": 192,
+      "worst_chain": 59,
+      "measured_worst_chain_misses": 208,
+      "measured_worst_chain_hits": 48,
+      "theorem_pass": true,
+      "seed": 1
+    },
+    {
+      "cache_capacity_records": 4097,
+      "theorem_host_miss_lower_bound": 192,
+      "worst_chain": 24,
+      "measured_worst_chain_misses": 204,
+      "measured_worst_chain_hits": 52,
+      "theorem_pass": true,
+      "seed": 2
+    },
+    {
+      "cache_capacity_records": 4097,
+      "theorem_host_miss_lower_bound": 192,
+      "worst_chain": 39,
+      "measured_worst_chain_misses": 205,
+      "measured_worst_chain_hits": 51,
+      "theorem_pass": true,
+      "seed": 3
+    },
+    {
+      "cache_capacity_records": 4097,
+      "theorem_host_miss_lower_bound": 192,
+      "worst_chain": 15,
+      "measured_worst_chain_misses": 208,
+      "measured_worst_chain_hits": 48,
+      "theorem_pass": true,
+      "seed": 4
+    },
+    {
+      "cache_capacity_records": 4097,
+      "theorem_host_miss_lower_bound": 192,
+      "worst_chain": 32,
+      "measured_worst_chain_misses": 209,
+      "measured_worst_chain_hits": 47,
+      "theorem_pass": true,
+      "seed": 5
+    },
+    {
+      "cache_capacity_records": 4097,
+      "theorem_host_miss_lower_bound": 192,
+      "worst_chain": 25,
+      "measured_worst_chain_misses": 206,
+      "measured_worst_chain_hits": 50,
+      "theorem_pass": true,
+      "seed": 6
+    },
+    {
+      "cache_capacity_records": 4097,
+      "theorem_host_miss_lower_bound": 192,
+      "worst_chain": 34,
+      "measured_worst_chain_misses": 209,
+      "measured_worst_chain_hits": 47,
+      "theorem_pass": true,
+      "seed": 7
+    }
+  ],
+  "indistinguishable_record_adversaries": [
+    {
+      "chain": 17,
+      "step": 0,
+      "changed_address": 4352,
+      "prefix_addresses_identical": true,
+      "prefix_tokens_identical": true,
+      "current_token_differs": true,
+      "next_address_differs": true,
+      "only_one_record_differs": true,
+      "passes": true
+    },
+    {
+      "chain": 17,
+      "step": 127,
+      "changed_address": 4479,
+      "prefix_addresses_identical": true,
+      "prefix_tokens_identical": true,
+      "current_token_differs": true,
+      "next_address_differs": true,
+      "only_one_record_differs": true,
+      "passes": true
+    },
+    {
+      "chain": 17,
+      "step": 255,
+      "changed_address": 4607,
+      "prefix_addresses_identical": true,
+      "prefix_tokens_identical": true,
+      "current_token_differs": true,
+      "next_address_differs": true,
+      "only_one_record_differs": true,
+      "passes": true
+    }
+  ],
+  "host_prototype": {
+    "cells": 262144,
+    "steps_per_repeat": 200000,
+    "repeats": 5,
+    "record_storage_bits": 64,
+    "logical_probes_per_step": 1,
+    "median_ns_per_probe": 224.27377,
+    "minimum_ns_per_probe": 222.98837,
+    "maximum_ns_per_probe": 224.94671,
+    "checksum": 219741,
+    "timing_is_target_representative": false
+  },
+  "target_projection": {
+    "q4_cells": 56175137076,
+    "chain_steps": 256,
+    "complete_chains": 219434129,
+    "ignored_tail_cells": 52,
+    "address_bits": 36,
+    "q4_bits": 4,
+    "explicit_record_bits": 40,
+    "explicit_record_bytes": 5.0,
+    "q4_only_metadata_gib": 26.158586645498872,
+    "explicit_pointer_table_gib": 261.5858664549887,
+    "pointer_overhead_gib": 235.42727980948985,
+    "resident_cache_gib": 8.0,
+    "resident_raw_record_capacity": 1717986918,
+    "cached_records_per_chain_floor": 7,
+    "worst_chain_host_miss_lower_bound": 249,
+    "worst_chain_host_miss_fraction": 0.97265625,
+    "logical_host_bytes_per_chain_lower_bound": 1245.0,
+    "logical_host_bytes_per_token_lower_bound": 4.86328125
+  },
+  "scope_separation": {
+    "explicit_pointer_serial_dependency_proven": true,
+    "raw_complete_record_cache_lower_bound_proven": true,
+    "one_logical_record_probe_per_token_is_sufficient_for_model": true,
+    "arbitrary_compressed_cache_lower_bound_proven": false,
+    "minimum_physical_transaction_bytes_proven": false,
+    "target_host_or_pcie_latency_proven": false,
+    "ci_timing_is_target_representative": false,
+    "host_indexed_escape_closed": false,
+    "fixed_runtime_target_fully_contradicted": false,
+    "real_405b_execution_performed": false
+  },
+  "conclusion": {
+    "certificate_passes": true,
+    "target_worst_chain_serial_host_misses": 249,
+    "target_chain_tokens": 256,
+    "target_host_miss_fraction": 0.97265625,
+    "target_logical_host_bytes_per_token": 4.86328125,
+    "explicit_pointer_host_storage_gib": 261.5858664549887,
+    "resident_cache_gib": 8.0,
+    "cell_probe_interpretation": "near-one serial host miss per token is unavoidable for the explicit raw-record pointer representation on a worst-case prompt, but only about 4.86 logical bytes/token are forced; probe count alone does not violate the 4B-class latency target",
+    "fixed_target_status": "unsolved: the host-indexed path remains algorithmically possible and requires real construction plus CPU/GPU latency and locality measurements"
+  },
+  "next_obligation": "build a charged host-indexed exact-decision VM prototype with mmap or pinned host memory and GPU-facing asynchronous lookup, or derive a stronger family requiring many information probes per generated token rather than one small dependent record"
+}
