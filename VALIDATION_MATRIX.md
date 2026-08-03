@@ -123,3 +123,8 @@ Q4 checksum agreement PASS; dense registration 144/144; formats 1224; reconstruc
 ## EXP-061 closure
 
 Reference/hooked output tokens 1,152/1,152 exact; projection registrations 147; calls 56,448; warm calls 54,684; hook/control mismatches 0; exact-zero count 0; warm p50/p90 operation fraction 100.002%/100.391%; query bytes 100.004%/101.566%. 405B and hardware remain NOT TESTED.
+
+<!-- EXP-062-AUTHORITATIVE-FINAL -->
+## EXP-062 closure
+
+Cases 18; forwards 1,152; attention rows 9,216; token/registration/control mismatches 0; warm eligible probabilities 8,404,224; exact non-mask zeros 2,564; whole-model p50/p90 operations 100.048%/100.154%; bytes 100.093%/100.303%. 405B and hardware remain NOT TESTED.

@@ -1,0 +1,1 @@
+Phase C observation only. Physical attention-sparse kernels, 405B statistics, 405B execution, 8 GiB, and target hardware are NOT TESTED.

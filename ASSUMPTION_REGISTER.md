@@ -216,3 +216,8 @@ Status: ACTIVE FOR EXP-061 ONLY. Static weight zeros failed, but runtime activat
 ## A-037 — Non-mask causal attention probabilities may underflow to exact zero
 
 Status: ACTIVE FOR EXP-062 ONLY. EXP-061 found no exact zeros at dense inputs, but softmax can theoretically underflow for sufficiently negative unmasked scores. EXP-062 must exclude causal-mask and padding entries, use exact returned probabilities, compare hooked/attention-output-enabled tokens with reference generation, and charge QK, softmax, Value accumulation, probability scanning, indexes, and the unchanged non-attention model work.
+
+<!-- EXP-062-AUTHORITATIVE-FINAL -->
+## A-038 — Cached Keys or Key-Value pairs may repeat exactly across positions
+
+Status: ACTIVE FOR EXP-063 ONLY. Identical Key vectors permit one QK score to be copied for every duplicate position. Identical Key-Value pairs additionally permit one probability-times-Value product to be reused when the copied scores produce identical probabilities. EXP-063 must compare exact tensor bit patterns, exclude structurally ineligible local positions, charge cache scanning/hashing/group metadata/copies/additions, and preserve all reference tokens. Approximate vector similarity is forbidden.

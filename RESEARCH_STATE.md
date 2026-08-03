@@ -340,3 +340,8 @@ Authority: workflow `30841671707`, artifact `8867145590`, ZIP SHA-256 `5e5255dbe
 ## EXP-061 closed — Causal exact activation sparsity
 
 Authority: workflow `30843404056`, artifact `8867731496`, ZIP SHA-256 `a01d31b012badd7d06087df576279b852db07813a0c7fb50d65c3a7283e9ca65`. Hooked and unhooked generation matched for all 1,152 tokens. Exact zero count was 0 over 56,448 projection calls; warm-decode p50/p90 fully accounted work was 100.002%/100.391% and bytes 100.004%/101.566%. Decision: `REJECT_CAUSAL_EXACT_ACTIVATION_SPARSITY_AS_CORE_RETAIN_RUNTIME_SPARSE_AUXILIARY`. Physical sparse kernels, 405B activation statistics, 405B, 8 GiB, and target hardware remain NOT TESTED. Current frontier: EXP-062 exact non-mask attention-probability sparsity.
+
+<!-- EXP-062-AUTHORITATIVE-FINAL -->
+## EXP-062 closed — Exact non-mask attention probability sparsity
+
+Authority: workflow `30844873182`, artifact `8868287407`, ZIP SHA-256 `497816dcca7e6b8c40e9222ed8511efa266fe2358aab847a93795d7c04637390`. Warm decode had 2,564 exact eligible zeros among 8,404,224 probabilities. Whole-model p50/p90 work was 100.048%/100.154% and bytes 100.093%/100.303%. Decision: `REJECT_CAUSAL_EXACT_ATTENTION_PROBABILITY_SPARSITY_AS_CORE_RETAIN_ATTENTION_AUXILIARY`. Physical kernels, 405B statistics, 405B, 8 GiB and target hardware remain NOT TESTED. Current frontier: EXP-063 exact cached KV equivalence.
