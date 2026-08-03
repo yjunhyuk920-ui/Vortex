@@ -59,7 +59,10 @@
     "final_vocabulary_winner_decodes_every_q4_code": true,
     "two_layer_additivity_exhaustively_proven": true,
     "metadata_aware_final_token_bound_proven_for_constructed_family": true,
-    "arbitrary_checkpoint_universality_contradicted_at_8gib": true,
+    "complete_exact_decision_metadata_fits_in_8gib_resident": false,
+    "per_query_external_traffic_lower_bound_proven": false,
+    "host_indexed_random_access_escape_closed": false,
+    "fixed_runtime_target_fully_contradicted": false,
     "released_405b_checkpoint_maximum_complexity_proven": false,
     "real_405b_execution_performed": false,
     "measured_gpu_wall_clock_proven": false
@@ -71,7 +74,8 @@
     "projected_metadata_gib": 26.158586645498872,
     "resident_limit_gib": 8.0,
     "excess_gib": 18.158586645498872,
-    "fixed_target_status": "contradicted for arbitrary exact-decision Q4 Llama-style checkpoints under an 8 GiB complete checkpoint-information allowance"
+    "resident_only_path_status": "contradicted for the constructed arbitrary exact-decision Q4 Llama-style family",
+    "fixed_target_status": "unsolved: an external host-indexed representation could store the 26.16 GiB function metadata and serve sparse queries; its traffic, latency, construction, and autoregressive access complexity remain unbounded"
   },
-  "next_obligation": "separate the now-contradicted arbitrary worst-case target from a narrower empirical runtime target for released checkpoints, then charge quality relaxation, host traffic, and measured wall clock explicitly"
+  "next_obligation": "derive a cell-probe or communication lower bound for the autoregressive query sequence, or build and benchmark a charged host-indexed exact-decision runtime; metadata size alone must not be reported as per-token traffic"
 }
