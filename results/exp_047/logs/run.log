@@ -1,0 +1,8 @@
+{
+  "bound_mismatches": 0,
+  "case_count": 525,
+  "fallback_mismatches": 0,
+  "gate_passes": true,
+  "phase_d_status": "NOT TESTED",
+  "wrong_accepts": 0
+}
