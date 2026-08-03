@@ -1,0 +1,1 @@
+EXP-050 E1 CPU reference only. E1/E2 external drafts use no target future tokens or target-specific training. Favorable draft selection uses the exact reference and is non-deployable. E3 is future-aware. 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, tokens/second, combined hot-state fit, and physical overlap are NOT TESTED.

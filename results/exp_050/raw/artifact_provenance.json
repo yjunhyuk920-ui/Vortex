@@ -1,0 +1,10 @@
+{
+  "artifact_id": 8852817664,
+  "artifact_name": "exp-050-candidate-30806015309",
+  "artifact_size_bytes": 34225,
+  "artifact_zip_sha256": "a32ffe8dbfc201c6d70ca8dac660164d8400691ad4d8fe3593d688e7754f6159",
+  "frozen_date": "2026-08-03",
+  "source_head_sha": "1388c780abea11067c66cd666ed0a313ec2f682c",
+  "workflow_merge_sha": "6bdd0a20334e394ec5252a6c0e676c1f62b608d0",
+  "workflow_run": "30806015309"
+}

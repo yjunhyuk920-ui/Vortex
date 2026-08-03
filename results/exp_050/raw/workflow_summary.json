@@ -1,0 +1,93 @@
+{
+  "DERIVED": {
+    "causal_gate_pass": true,
+    "decision": "REJECT_TARGET_INDEPENDENT_EXTERNAL_DRAFT_AS_UNIVERSAL_CORE",
+    "draft_selection_uses_reference": true,
+    "exact_gate_pass": true,
+    "family_coverage_gate_pass": false,
+    "fixed_external_draft_pool_survives_early_gate": false,
+    "prefix_gate_pass": false,
+    "projected_dynamic_minimum_exact_prefix_for_4b_draft": 507,
+    "target_size_trend_gate_pass": false,
+    "traffic_gate_pass": false,
+    "universal_claim_scope": "fixed target-independent external drafting is rejected for the arbitrary-target exact mission when the first-token counterexample succeeds",
+    "universal_counterexample_absent_gate_pass": false
+  },
+  "MEASURED": {
+    "E3_exact_future_oracle_failures": 0,
+    "all_families_useful": false,
+    "all_pair_exact_output_mismatches": 0,
+    "all_pair_target_future_information_uses": 0,
+    "excluded_state_count": 0,
+    "family_useful_proposal_acceptance": {
+      "code": true,
+      "english_narrative": true,
+      "identifier_boundary": true,
+      "korean": false,
+      "mathematics": true,
+      "structured_json": false
+    },
+    "favorable_pool_maximum_matching_prefix": 3.0,
+    "favorable_pool_p50_matching_prefix": 0.5,
+    "favorable_pool_p90_normalized_4b_405b_fraction": 1.6320987654320986,
+    "favorable_pool_selected_block_distribution": {
+      "64": 18
+    },
+    "favorable_pool_selected_draft_distribution": {
+      "roneneldan/TinyStories-1M": 12,
+      "roneneldan/TinyStories-3M": 4,
+      "roneneldan/TinyStories-8M": 2
+    },
+    "model_count": 3,
+    "pair_block_row_count": 108,
+    "peak_rss_kib": 871824,
+    "prompt_family_count": 6,
+    "target_draft_pair_count": 36,
+    "target_median_matching_prefix": {
+      "roneneldan/TinyStories-1M": 1.0,
+      "roneneldan/TinyStories-3M": 0.0,
+      "roneneldan/TinyStories-8M": 0.5
+    },
+    "target_prompt_case_count": 18,
+    "universal_counterexample_matching_prefix": 0,
+    "universal_first_token_counterexample_succeeds": true
+  },
+  "PROJECTED": {
+    "allowed_1_2x_baseline_gib_per_token": 2.2351741790771484,
+    "draft_q4_full_weight_gib_per_stream": 1.862645149230957,
+    "draft_target_parameter_ratio": 0.009876543209876543,
+    "favorable_pool_p90_fraction_over_required": 137.70833333333334,
+    "perfect_4b_draft_minimum_exact_prefix": 507,
+    "required_target_equivalent_stream_fraction": 0.011851851851851851,
+    "target_q4_full_weight_gib_per_stream": 188.5928213596344
+  },
+  "UNVERIFIED": [
+    "causal deployable external draft selector",
+    "complete multi-cycle target operation replacement",
+    "combined target draft and KV hot state under 8 GiB",
+    "physical target/draft residency and overlap",
+    "70B and 405B cross-model exact-prefix behavior",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "complete_real_operation_replacement": false,
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED"
+  },
+  "complete_real_operation_replacement": false,
+  "evidence_level": "E1",
+  "experiment": "EXP-050",
+  "name": "target_independent_external_draft_advice_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-observation"
+  ],
+  "phase_d_status": "NOT TESTED",
+  "provenance": {
+    "config_sha256": "bf71119cbd8708478eb63c51fed619f2dfd2d55e8b32bc20fd883a58f2ab3781",
+    "created_utc": "2026-08-03T10:34:34Z",
+    "source_commit": "6bdd0a20334e394ec5252a6c0e676c1f62b608d0"
+  }
+}
