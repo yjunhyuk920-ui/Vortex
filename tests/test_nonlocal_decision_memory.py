@@ -4,6 +4,10 @@ import math
 
 import torch
 
+from vortex_runtime.final_hidden_trace import (
+    PromptContinuationTrace,
+    continuation_queries_after_anchor,
+)
 from vortex_runtime.nonlocal_decision_memory import (
     build_nonlocal_decision_memory,
     decision_memory_budget,
@@ -31,6 +35,23 @@ def test_405b_scaled_budget_is_small_and_explicit() -> None:
     )
     assert budget.memory_pass
     assert budget.lookup_pass
+
+
+def test_evaluation_starts_after_one_exact_boundary_anchor() -> None:
+    trace = PromptContinuationTrace(
+        prompt="synthetic",
+        prompt_token_ids=torch.tensor([10, 20]),
+        prompt_hidden_states=torch.tensor([[1.0, 0.0], [0.0, 1.0]]),
+        first_generated_token=99,
+        continuation_token_ids=torch.tensor([99, 30, 40, 50]),
+        continuation_hidden_states=torch.tensor(
+            [[3.0, 0.0], [4.0, 0.0], [5.0, 0.0]]
+        ),
+    )
+    queries, targets = continuation_queries_after_anchor(trace, steps=3)
+    assert queries.tolist() == [[3.0, 0.0], [4.0, 0.0], [5.0, 0.0]]
+    assert targets.tolist() == [30, 40, 50]
+    assert int(trace.continuation_token_ids[0].item()) == trace.first_generated_token
 
 
 def test_memory_contains_prompt_only_following_blocks() -> None:
