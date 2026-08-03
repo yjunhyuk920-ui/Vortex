@@ -12,7 +12,7 @@ Build a universal runtime for arbitrary unmodified Hugging Face dense transforme
 - p50 warm decode at or below 1.2x a native 4B Q4 baseline on the same machine;
 - flagship validation on a real 405B-class model.
 
-Current evidence remains below E4. Do not claim the physical runtime target is solved or impossible.
+Current evidence remains below E4. Do not claim the final runtime is solved.
 
 ## Mandatory startup and persistence
 
@@ -25,7 +25,7 @@ Read in this order:
 5. this file
 6. active experiment documents, workflows, PR comments, and raw JSON
 
-Before a user-facing progress/completion answer after meaningful work, update and commit the ledger and this handoff.
+Before reporting meaningful work, update and commit the ledger and this handoff.
 
 ## Current repository state
 
@@ -39,170 +39,226 @@ PR #40  prompt-only nonlocal exact decision memory        rejected
 PR #42  exact dense-operator information bound            accepted/merged
 PR #44  metadata-aware direct/operator top-1 bound        accepted/merged
 PR #46  end-to-end Llama final-token metadata bound       accepted/merged
-PR #48  host-indexed exact-decision cell-probe Gate       accepted/merged
+PR #48  host-indexed cell-probe Gate                      accepted/merged
+PR #50  mmap-backed host-indexed decision VM              accepted/merged
 ```
 
 Latest main merge:
 
 ```text
-PR #48 merge: 4ca9d2c2d4876d1266b2ad5527e2350585c7db7c
+PR #50 merge: a4a0e9b693184c9d5ea248822393998357df40db
 ```
 
-Authoritative Experiment 043 evidence:
+Authoritative Experiment 044 evidence:
 
 ```text
-branch: research/host-indexed-cell-probe-gate
-head: 2705613f943f36adc041a6a4bedd7eba5c42f2ac
-certificate workflow: 30785452594
-Python 3.10/3.12 CI + validation: 30785452584
-raw JSON: results/host_indexed_cell_probe_gate.json
+branch: research/host-indexed-decision-vm
+head: 8f029dde63984a3cf24f9ec2e9629c9e060d9352
+certificate workflow: 30785924201
+Python 3.10/3.12 CI + validation: 30785924118
+raw JSON: results/host_indexed_decision_vm_gate.json
 ```
 
-## Accepted Experiment 042 guardrail
+## Accepted lower-bound path
 
-Experiment 042 constructed an actual bias-free Llama-style family using embeddings, RMSNorm, causal GQA, residuals, SwiGLU, final RMSNorm, and an LM head. A legal prompt selected signed-Q4 `up_proj` codes and final next-token winners decoded them.
+### Experiment 042
+
+An actual bias-free Llama-style family exposed signed Q4 coefficients through final next-token winners.
 
 ```text
 micro functions: 256 / 256
 minimum winner margin: 0.24951063086132308
-projected independent Q4 coefficients: 56,175,137,076
-complete final-decision metadata: 26.158586645498872 GiB
-resident allowance: 8 GiB
+projected complete final-decision metadata: 26.158586645498872 GiB
 ```
 
-Accepted scope:
+This closed an all-resident 8 GiB exact-decision representation for the constructed family, but not sparse host lookup.
+
+### Experiment 043
+
+An explicit pointer-table representation proved:
 
 ```text
-all-resident complete exact-decision representation: contradicted for the family
-per-token external traffic: not proven
-host-indexed sparse lookup: open
+serial host misses: at least 249 / 256 tokens
+logical host bytes/token: 4.86328125
+explicit pointer host storage: 261.5858664549887 GiB
+nonrepresentative packed CPU median: 224.27377 ns/probe
+```
+
+Decision: one serial host probe/token does not itself prove target failure. Advance to a constructive host VM.
+
+## Accepted Experiment 044 result
+
+### Binary format and atomic builder
+
+The VM implements:
+
+```text
+64-byte versioned header
+compact40 5-byte records
+aligned64 8-byte records
+Q4 value + exact next-address semantics
+payload CRC32 and header CRC32
+unique temporary build file
+file fsync
+atomic destination replace
+parent-directory fsync attempt
+```
+
+Tests verify that a failed rebuild preserves an older valid destination and removes the temporary file.
+
+### Reader and integrity
+
+The mmap reader rejects:
+
+```text
+bad magic
+unsupported or inconsistent format
+truncation or trailing bytes
+bad header checksum
+bad payload checksum
+out-of-range starts
+out-of-range pointers
+```
+
+Exact replay matches the source pointer table. A 256-record LRU cache changes a repeated 256-token chain from 256 misses/256 mmap reads to 256 hits/0 mmap reads.
+
+### Nonrepresentative CI benchmark
+
+Workload:
+
+```text
+records: 262,144
+chains: 1,024
+steps/chain: 256
+address samples/format: 20,000
+```
+
+Files:
+
+```text
+compact40: 1,318,976 bytes
+aligned64: 2,105,408 bytes
+compact saving: about 37.4%
+```
+
+Dependent reads:
+
+```text
+compact40 p50 / p99: 1,473 ns / 1,806.5 ns
+aligned64 p50 / p99: 1,502 ns / 1,833.45 ns
+```
+
+Warm cached replay:
+
+```text
+compact40: 535.140625 ns/token
+aligned64: 468.16796875 ns/token
+```
+
+A single compact first-replay sample was 22.56 µs/token versus 2.07 µs/token aligned. OS cache state was not controlled, so this outlier is not a format or target-hardware conclusion.
+
+Decision: compact40 is the default v1 format because dependent mmap latency was effectively equal while storage was substantially smaller. Keep aligned64 as an alignment diagnostic.
+
+### Target host-storage projection
+
+```text
+records: 56,175,137,076
+starts: 219,434,129
+compact40 records: 261.5858664549887 GiB
+aligned64 records: 418.53738632798195 GiB
+start table: 1.6349116638302803 GiB
+compact40 total: 263.22077817842364 GiB
+aligned64 total: 420.1722980514169 GiB
+```
+
+Timing was not projected to those sizes.
+
+## Critical scope boundary
+
+```text
+portable mmap exact pointer VM: proven
+atomicity and corruption handling: proven
+exact replay and cache accounting: proven
+CI timing target representative: false
+pinned-memory/GPU lookup bridge: absent
+released-model decision-index compiler: absent
+real 405B execution: absent
 physical runtime target: unsolved
 ```
 
-## Accepted Experiment 043 result
-
-### Explicit adaptive representation
-
-```text
-record[address] = (q4_value, next_address)
-next_token_t = q4_value
-address_(t+1) = next_address
-```
-
-For `S` disjoint chains of length `T` and a resident cache of `C` complete records, some chain contains at most `floor(C/S)` cached records and forces:
-
-```text
-host misses >= T - floor(C/S)
-```
-
-Balanced cache placements attained the bound exactly. Ten sampled cache placements never violated it. Early, middle, and late indistinguishable-table adversaries changed only the addressed record while preserving the entire prior trace, then changed the current token and next address.
-
-### Target projection
-
-```text
-Q4 cells: 56,175,137,076
-chain length: 256
-complete chains: 219,434,129
-address bits: 36
-record bits: 40
-explicit pointer table: 261.5858664549887 GiB
-pointer overhead over Q4-only metadata: 235.42727980948985 GiB
-8 GiB raw-record cache capacity: 1,717,986,918
-cached records per worst-chain bound: 7
-minimum serial host misses: 249 / 256
-host-miss fraction: 97.265625%
-logical host bytes/token: 4.86328125
-```
-
-### Nonrepresentative prototype
-
-The packed 64-bit host pointer chase executed one dependent probe per step:
-
-```text
-cells: 262,144
-steps/repeat: 200,000
-repeats: 5
-median: 224.27377 ns/probe
-minimum: 222.98837 ns/probe
-maximum: 224.94671 ns/probe
-```
-
-This timing is CI-machine evidence only and must not be projected to a target CPU, pinned memory, PCIe, or GPU.
-
-### Decisive interpretation
-
-```text
-near-one serial host miss/token: proven for explicit pointer records
-one logical record probe/token is sufficient: demonstrated
-logical data volume: only 4.86 bytes/token
-arbitrary compressed host index lower bound: not proven
-physical transaction granularity: not proven
-target lookup latency: not measured
-host-indexed escape: open
-```
-
-Therefore “one serial host probe per token proves impossibility” is rejected. Cell-probe count alone does not violate the 4B-class latency target.
+The VM proves the representation is executable. It does not prove that arbitrary model behavior can be compiled into a finite decision index without enumerating an intractable context space.
 
 ## Current classification
 
 ```text
-all-resident arbitrary exact-decision metadata in 8 GiB: contradicted for the constructed family
-explicit host pointer representation: nearly one serial miss/token
-bandwidth-only impossibility: not proven
-latency impossibility: not proven
-constructive host-indexed exact-decision runtime: not yet built
-405B/8 GiB/4B-speed physical runtime: unsolved
+all-resident exact-decision metadata: contradicted for constructed family
+host-indexed pointer representation: implemented on CPU mmap
+lookup mechanism: functionally viable
+real model decision-index construction: unsolved
+GPU integration: unsolved
+405B/8 GiB/quality/wall-clock target: unsolved
 ```
 
-## Prohibited repeats and overclaims
+## Prohibited overclaims
 
 Do not:
 
-- relabel metadata size as traffic;
-- relabel serial probe count as latency;
-- use the 224ns CI result as target hardware proof;
-- claim arbitrary compressed indexes obey the raw-record cache theorem;
-- claim a released checkpoint admits the constructed decision table;
-- claim success without real 405B/8-GiB/quality/wall-clock evidence.
+- project CI nanoseconds to target hardware or 263 GiB files;
+- treat mmap VM success as a model compiler;
+- claim released model quality preservation;
+- treat one deterministic pointer chain as arbitrary language-model behavior;
+- hide decision-index build time or coverage;
+- claim final success without real checkpoint and hardware evidence.
 
-## Current frontier — Experiment 044 Host-Indexed Exact-Decision VM
+## Current frontier — Experiment 045 Decision-Index Compiler Gate
 
-The next work changes from impossibility search to constructive execution.
+The bottleneck has moved from lookup to construction.
 
-### Required prototype
+The next Gate asks:
 
-Build a host-indexed decision virtual machine with:
+> Can an exact or certifiably safe host decision index be generated automatically from an unmodified Hugging Face checkpoint without enumerating the entire token-context state space?
+
+### First candidate
+
+Compile a bounded exact decision graph from a real TinyLlama checkpoint:
 
 ```text
-packed records
-mmap-backed storage
-explicit index format and versioning
-resident hot cache
-sequential and dependent-random traces
-optional software prefetch for known addresses
-checksums and exact replay validation
-build time and output size
-cold/warm lookup latency distributions
-logical versus physical bytes
+node key: exact token-prefix identity or exact KV/state fingerprint
+record: next token + successor node
+build source: original checkpoint execution only
+training: none
 ```
 
-The first implementation must remain CPU-only and portable. It establishes the representation and measurement contract before GPU/pinned-memory integration.
+Use a declared finite prompt grammar and horizon to make completeness measurable. The compiler must report:
 
-### Experiment 044 Gates
+```text
+possible input prefixes
+visited unique states
+exact records generated
+build model calls
+duplicate-state reuse
+file bytes
+build time
+coverage
+held-out grammar paths
+fallback frequency
+```
 
-1. Create `research/host-indexed-decision-vm`.
-2. Add `docs/EXPERIMENT_044_HOST_INDEXED_DECISION_VM.md`.
-3. Implement a packed fixed-width record format with exact Q4 token and next address.
-4. Build files atomically and validate header, size, checksum, and deterministic replay.
-5. Use `mmap` for cold and warm dependent pointer chasing.
-6. Measure p50/p95/p99 lookup latency and total decode latency separately.
-7. Compare sequential, random, dependent, cached, and prefetched access patterns.
-8. Report page faults and OS-cache state only when measurable; do not invent them.
-9. Keep CI timing explicitly nonrepresentative.
-10. Project only storage and logical operations to the 405B target; do not project timing.
-11. Decide whether the host-indexed VM is functionally viable enough to justify pinned-memory/GPU integration.
+### Required Experiment 045 sequence
+
+1. Create `research/decision-index-compiler-gate`.
+2. Add `docs/EXPERIMENT_045_DECISION_INDEX_COMPILER_GATE.md`.
+3. Define a finite prompt grammar and exact completeness denominator.
+4. Compile exact greedy transitions from TinyLlama without training.
+5. Deduplicate only when exact state/token behavior is proven identical.
+6. Export records into the Experiment 044 compact40 VM.
+7. Replay every compiled path without the model and require exact tokens.
+8. Evaluate held-out grammar compositions and count fallback model calls.
+9. Charge build calls, build time, index bytes, coverage, and fallback.
+10. Reject any claim of universality outside the declared grammar/horizon.
+11. Decide whether compilation growth is sublinear enough to justify a broader adaptive compiler.
 12. Commit tests, workflow, raw JSON, PR decision, ledger, and handoff.
 
 ## Correct communication
 
-> Experiment 043 proved that an explicit pointer-table representation can force 249 serial host misses in 256 tokens under an 8 GiB raw-record cache, but only about 4.86 logical bytes/token are required. A nonrepresentative CPU prototype measured roughly 224ns per dependent probe. This does not prove target latency, but it rejects cell-probe count alone as an impossibility argument. The host-indexed path remains open, so Experiment 044 now builds the first fully charged mmap-backed exact-decision VM.
+> Experiment 044 produced a functioning mmap-backed exact pointer VM. On a nonrepresentative CI CPU, compact40 and aligned64 dependent reads were both about 1.5 µs median, while compact40 used 37.4% less storage. This proves lookup is implementable, not that arbitrary model decisions can be compiled. The next Gate compiles a bounded exact decision graph from a real unmodified TinyLlama checkpoint, measures complete grammar coverage and fallback, and exports it to the VM.
