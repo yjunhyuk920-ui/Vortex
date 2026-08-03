@@ -1,0 +1,956 @@
+{
+  "evidence_level": "E1/E2 causal semantic-state routing capacity gate",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "build_prompts": [
+    {
+      "id": "build-transaction",
+      "prompt_tokens": 18,
+      "steps": 5,
+      "winner_tokens": [
+        29871,
+        13,
+        29966,
+        29989,
+        465
+      ],
+      "minimum_margin": 4.710565567016602,
+      "mean_margin": 9.427183151245117,
+      "maximum_margin": 12.855213165283203
+    },
+    {
+      "id": "build-korean-plm",
+      "prompt_tokens": 71,
+      "steps": 5,
+      "winner_tokens": [
+        29871,
+        13,
+        29966,
+        29989,
+        465
+      ],
+      "minimum_margin": 1.049957275390625,
+      "mean_margin": 7.241908836364746,
+      "maximum_margin": 11.048233032226562
+    },
+    {
+      "id": "build-python",
+      "prompt_tokens": 18,
+      "steps": 5,
+      "winner_tokens": [
+        740,
+        881,
+        2125,
+        1023,
+        18747
+      ],
+      "minimum_margin": 0.649989128112793,
+      "mean_margin": 2.3791547775268556,
+      "maximum_margin": 4.562963485717773
+    },
+    {
+      "id": "build-math",
+      "prompt_tokens": 17,
+      "steps": 5,
+      "winner_tokens": [
+        29871,
+        13,
+        29966,
+        29989,
+        465
+      ],
+      "minimum_margin": 3.161886215209961,
+      "mean_margin": 7.761762428283691,
+      "maximum_margin": 11.304563522338867
+    },
+    {
+      "id": "build-story",
+      "prompt_tokens": 20,
+      "steps": 5,
+      "winner_tokens": [
+        7182,
+        471,
+        24732,
+        29892,
+        541
+      ],
+      "minimum_margin": 0.21261119842529297,
+      "mean_margin": 0.9409175872802734,
+      "maximum_margin": 2.5059385299682617
+    }
+  ],
+  "eval_prompts": [
+    {
+      "id": "eval-sql",
+      "prompt_tokens": 22,
+      "steps": 5,
+      "winner_tokens": [
+        29871,
+        13,
+        29966,
+        29989,
+        465
+      ],
+      "minimum_margin": 1.40863037109375,
+      "mean_margin": 7.413323402404785,
+      "maximum_margin": 11.949310302734375
+    },
+    {
+      "id": "eval-korean-algorithm",
+      "prompt_tokens": 65,
+      "steps": 5,
+      "winner_tokens": [
+        29871,
+        13,
+        29966,
+        29989,
+        1792
+      ],
+      "minimum_margin": 3.0261783599853516,
+      "mean_margin": 7.86253604888916,
+      "maximum_margin": 11.23058032989502
+    },
+    {
+      "id": "eval-translation",
+      "prompt_tokens": 23,
+      "steps": 5,
+      "winner_tokens": [
+        13,
+        29906,
+        29889,
+        376,
+        1576
+      ],
+      "minimum_margin": 0.2686491012573242,
+      "mean_margin": 1.3283073425292968,
+      "maximum_margin": 3.3470535278320312
+    }
+  ],
+  "build_trace_count": 25,
+  "eval_trace_count": 15,
+  "decode_steps_per_prompt": 5,
+  "model_hidden_size": 2048,
+  "decoder_layers": 22,
+  "signature_size": 64,
+  "block_size": 1024,
+  "configurations": [
+    {
+      "states": 4,
+      "rank": 2,
+      "block_size": 1024,
+      "budget": {
+        "block_size": 1024,
+        "rank": 2,
+        "blocks_per_hidden_vector": 16,
+        "coefficient_bits": 4,
+        "remainder_bits": 8,
+        "scale_bits": 16,
+        "basis_bits": 8,
+        "coefficient_gib": 0.2999267578125,
+        "remainder_gib": 0.2999267578125,
+        "scale_gib": 0.074981689453125,
+        "basis_gib": 0.0076904296875,
+        "active_program_gib": 0.682525634765625,
+        "active_program_limit_gib": 2.0,
+        "active_program_pass": true,
+        "switch_traffic_limit_gib_per_token": 0.4,
+        "minimum_mean_run_length": 1.7063140869140625
+      },
+      "host_bank_storage_gib": 2.7301025390625,
+      "signature_and_routing_compute_gflop_per_token": 0.002097664,
+      "build_state_occupancy": [
+        10,
+        6,
+        6,
+        3
+      ],
+      "eval_state_occupancy": [
+        11,
+        0,
+        2,
+        2
+      ],
+      "router_cosine_distance": {
+        "count": 15,
+        "mean": 0.33062814474105834,
+        "p50": 0.30675750970840454,
+        "p95": 0.6089929163455963,
+        "maximum": 0.6389927268028259
+      },
+      "routing": {
+        "sequences": 3,
+        "tokens": 15,
+        "program_loads": 9,
+        "transitions": 12,
+        "transition_switches": 6,
+        "load_fraction_per_token": 0.6,
+        "transition_switch_fraction": 0.5,
+        "mean_run_length": 1.6666666666666667,
+        "median_run_length": 1,
+        "p10_run_length": 1.0,
+        "p90_run_length": 2.6000000000000005,
+        "maximum_run_length": 5,
+        "projected_switch_traffic_gib_per_token": 0.409515380859375
+      },
+      "activation_perpendicular": {
+        "count": 330,
+        "mean": 0.5782143163186764,
+        "p50": 0.3733356955172372,
+        "p95": 0.9958888533753466,
+        "maximum": 0.9997525369473571
+      },
+      "dual_perpendicular": {
+        "count": 330,
+        "mean": 0.6687759146553875,
+        "p50": 0.5892989705925631,
+        "p95": 0.999523973072848,
+        "maximum": 0.9999939971685744
+      },
+      "per_prompt": [
+        {
+          "prompt": "Design an SQL query strategy for detecting inconsistent parent-child BOM quantities without producing duplicate rows.",
+          "routed_states": [
+            0,
+            2,
+            0,
+            0,
+            3
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.3784545574367464,
+            "p50": 0.2651356631057641,
+            "p95": 0.9926713520244876,
+            "maximum": 0.9996423750597155
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.5209398888299521,
+            "p50": 0.45325504147210327,
+            "p95": 0.9985516718285492,
+            "maximum": 0.9992615200976914
+          }
+        },
+        {
+          "prompt": "한국어로 병합 정렬과 퀵 정렬의 장단점을 비교하고 실제 선택 기준을 설명해줘.",
+          "routed_states": [
+            0,
+            2,
+            0,
+            0,
+            3
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.3857160755120416,
+            "p50": 0.2915919661037865,
+            "p95": 0.992823077959812,
+            "maximum": 0.9996823623825385
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.48826719892168186,
+            "p50": 0.41959723781903124,
+            "p95": 0.9986259377257907,
+            "maximum": 0.9992281559122944
+          }
+        },
+        {
+          "prompt": "Translate into natural Korean and explain the nuance: The system remained available even though one replica failed.",
+          "routed_states": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.9704723160072412,
+            "p50": 0.9861027164366023,
+            "p95": 0.99687324233772,
+            "maximum": 0.9997525369473571
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.9971206562145285,
+            "p50": 0.9986072531820546,
+            "p95": 0.9996988895786947,
+            "maximum": 0.9999939971685744
+          }
+        }
+      ],
+      "qualifies": false
+    },
+    {
+      "states": 8,
+      "rank": 2,
+      "block_size": 1024,
+      "budget": {
+        "block_size": 1024,
+        "rank": 2,
+        "blocks_per_hidden_vector": 16,
+        "coefficient_bits": 4,
+        "remainder_bits": 8,
+        "scale_bits": 16,
+        "basis_bits": 8,
+        "coefficient_gib": 0.2999267578125,
+        "remainder_gib": 0.2999267578125,
+        "scale_gib": 0.074981689453125,
+        "basis_gib": 0.0076904296875,
+        "active_program_gib": 0.682525634765625,
+        "active_program_limit_gib": 2.0,
+        "active_program_pass": true,
+        "switch_traffic_limit_gib_per_token": 0.4,
+        "minimum_mean_run_length": 1.7063140869140625
+      },
+      "host_bank_storage_gib": 5.460205078125,
+      "signature_and_routing_compute_gflop_per_token": 0.002098176,
+      "build_state_occupancy": [
+        4,
+        3,
+        3,
+        3,
+        6,
+        2,
+        3,
+        1
+      ],
+      "eval_state_occupancy": [
+        5,
+        0,
+        0,
+        2,
+        6,
+        0,
+        2,
+        0
+      ],
+      "router_cosine_distance": {
+        "count": 15,
+        "mean": 0.271289587020874,
+        "p50": 0.2208268642425537,
+        "p95": 0.5885372579097747,
+        "maximum": 0.6395568251609802
+      },
+      "routing": {
+        "sequences": 3,
+        "tokens": 15,
+        "program_loads": 11,
+        "transitions": 12,
+        "transition_switches": 8,
+        "load_fraction_per_token": 0.7333333333333333,
+        "transition_switch_fraction": 0.6666666666666666,
+        "mean_run_length": 1.3636363636363635,
+        "median_run_length": 1,
+        "p10_run_length": 1.0,
+        "p90_run_length": 2.0,
+        "maximum_run_length": 2,
+        "projected_switch_traffic_gib_per_token": 0.500518798828125
+      },
+      "activation_perpendicular": {
+        "count": 330,
+        "mean": 0.44608105761679706,
+        "p50": 0.259117521853653,
+        "p95": 0.9954172456898687,
+        "maximum": 0.9996552102576398
+      },
+      "dual_perpendicular": {
+        "count": 330,
+        "mean": 0.5881300138010848,
+        "p50": 0.46286488348930666,
+        "p95": 0.9994852845087785,
+        "maximum": 0.9999456630454915
+      },
+      "per_prompt": [
+        {
+          "prompt": "Design an SQL query strategy for detecting inconsistent parent-child BOM quantities without producing duplicate rows.",
+          "routed_states": [
+            0,
+            6,
+            4,
+            4,
+            3
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.18498845385429946,
+            "p50": 0.22863637649087143,
+            "p95": 0.3161955125465108,
+            "maximum": 0.3361440034787834
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.411129308696085,
+            "p50": 0.405959226184571,
+            "p95": 0.6360421415589622,
+            "maximum": 0.9990920785102541
+          }
+        },
+        {
+          "prompt": "한국어로 병합 정렬과 퀵 정렬의 장단점을 비교하고 실제 선택 기준을 설명해줘.",
+          "routed_states": [
+            0,
+            6,
+            4,
+            4,
+            3
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.174612951903185,
+            "p50": 0.1750140428963578,
+            "p95": 0.3439682651756337,
+            "maximum": 0.39964792589788983
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.3552532770431421,
+            "p50": 0.33800498715813326,
+            "p95": 0.7019226753505947,
+            "maximum": 0.9990599218039548
+          }
+        },
+        {
+          "prompt": "Translate into natural Korean and explain the nuance: The system remained available even though one replica failed.",
+          "routed_states": [
+            0,
+            4,
+            4,
+            0,
+            0
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.9786417670929066,
+            "p50": 0.9882275286248402,
+            "p95": 0.9989703914295655,
+            "maximum": 0.9996552102576398
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.9980074556640273,
+            "p50": 0.9987039353808366,
+            "p95": 0.999715892165375,
+            "maximum": 0.9999456630454915
+          }
+        }
+      ],
+      "qualifies": false
+    },
+    {
+      "states": 8,
+      "rank": 4,
+      "block_size": 1024,
+      "budget": {
+        "block_size": 1024,
+        "rank": 4,
+        "blocks_per_hidden_vector": 16,
+        "coefficient_bits": 4,
+        "remainder_bits": 8,
+        "scale_bits": 16,
+        "basis_bits": 8,
+        "coefficient_gib": 0.599853515625,
+        "remainder_gib": 0.2999267578125,
+        "scale_gib": 0.074981689453125,
+        "basis_gib": 0.015380859375,
+        "active_program_gib": 0.990142822265625,
+        "active_program_limit_gib": 2.0,
+        "active_program_pass": true,
+        "switch_traffic_limit_gib_per_token": 0.4,
+        "minimum_mean_run_length": 2.4753570556640625
+      },
+      "host_bank_storage_gib": 7.921142578125,
+      "signature_and_routing_compute_gflop_per_token": 0.002098176,
+      "build_state_occupancy": [
+        4,
+        3,
+        3,
+        3,
+        6,
+        2,
+        3,
+        1
+      ],
+      "eval_state_occupancy": [
+        5,
+        0,
+        0,
+        2,
+        6,
+        0,
+        2,
+        0
+      ],
+      "router_cosine_distance": {
+        "count": 15,
+        "mean": 0.271289587020874,
+        "p50": 0.2208268642425537,
+        "p95": 0.5885372579097747,
+        "maximum": 0.6395568251609802
+      },
+      "routing": {
+        "sequences": 3,
+        "tokens": 15,
+        "program_loads": 11,
+        "transitions": 12,
+        "transition_switches": 8,
+        "load_fraction_per_token": 0.7333333333333333,
+        "transition_switch_fraction": 0.6666666666666666,
+        "mean_run_length": 1.3636363636363635,
+        "median_run_length": 1,
+        "p10_run_length": 1.0,
+        "p90_run_length": 2.0,
+        "maximum_run_length": 2,
+        "projected_switch_traffic_gib_per_token": 0.726104736328125
+      },
+      "activation_perpendicular": {
+        "count": 330,
+        "mean": 0.42283706907884455,
+        "p50": 0.22677023092098234,
+        "p95": 0.9950493302792275,
+        "maximum": 0.9994629357970033
+      },
+      "dual_perpendicular": {
+        "count": 330,
+        "mean": 0.5390825884138346,
+        "p50": 0.4103049557927266,
+        "p95": 0.9983615344898621,
+        "maximum": 0.9996176268131527
+      },
+      "per_prompt": [
+        {
+          "prompt": "Design an SQL query strategy for detecting inconsistent parent-child BOM quantities without producing duplicate rows.",
+          "routed_states": [
+            0,
+            6,
+            4,
+            4,
+            3
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.17736080036672502,
+            "p50": 0.22136780284416638,
+            "p95": 0.3075284869169962,
+            "maximum": 0.33401124917140973
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.3601651593283576,
+            "p50": 0.37889321469162696,
+            "p95": 0.6002104496954735,
+            "maximum": 0.6107009283456803
+          }
+        },
+        {
+          "prompt": "한국어로 병합 정렬과 퀵 정렬의 장단점을 비교하고 실제 선택 기준을 설명해줘.",
+          "routed_states": [
+            0,
+            6,
+            4,
+            4,
+            3
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.11640527196048481,
+            "p50": 0.1317910475793601,
+            "p95": 0.2021828047823315,
+            "maximum": 0.2511255674752284
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.26055098205140237,
+            "p50": 0.2834136378930096,
+            "p95": 0.4189758649268189,
+            "maximum": 0.45250003036028696
+          }
+        },
+        {
+          "prompt": "Translate into natural Korean and explain the nuance: The system remained available even though one replica failed.",
+          "routed_states": [
+            0,
+            4,
+            4,
+            0,
+            0
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.9747451349093239,
+            "p50": 0.9861525805416185,
+            "p95": 0.9988500538702227,
+            "maximum": 0.9994629357970033
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.996531623861744,
+            "p50": 0.9973470746822141,
+            "p95": 0.9991492666543628,
+            "maximum": 0.9996176268131527
+          }
+        }
+      ],
+      "qualifies": false
+    },
+    {
+      "states": 16,
+      "rank": 4,
+      "block_size": 1024,
+      "budget": {
+        "block_size": 1024,
+        "rank": 4,
+        "blocks_per_hidden_vector": 16,
+        "coefficient_bits": 4,
+        "remainder_bits": 8,
+        "scale_bits": 16,
+        "basis_bits": 8,
+        "coefficient_gib": 0.599853515625,
+        "remainder_gib": 0.2999267578125,
+        "scale_gib": 0.074981689453125,
+        "basis_gib": 0.015380859375,
+        "active_program_gib": 0.990142822265625,
+        "active_program_limit_gib": 2.0,
+        "active_program_pass": true,
+        "switch_traffic_limit_gib_per_token": 0.4,
+        "minimum_mean_run_length": 2.4753570556640625
+      },
+      "host_bank_storage_gib": 15.84228515625,
+      "signature_and_routing_compute_gflop_per_token": 0.0020992,
+      "build_state_occupancy": [
+        1,
+        1,
+        1,
+        3,
+        3,
+        1,
+        3,
+        1,
+        1,
+        1,
+        3,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "eval_state_occupancy": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        2,
+        0,
+        1,
+        0,
+        4,
+        0,
+        0,
+        0,
+        3,
+        1
+      ],
+      "router_cosine_distance": {
+        "count": 15,
+        "mean": 0.18106899062792461,
+        "p50": 0.07448238134384155,
+        "p95": 0.4351311057806013,
+        "maximum": 0.5620010197162628
+      },
+      "routing": {
+        "sequences": 3,
+        "tokens": 15,
+        "program_loads": 14,
+        "transitions": 12,
+        "transition_switches": 11,
+        "load_fraction_per_token": 0.9333333333333333,
+        "transition_switch_fraction": 0.9166666666666666,
+        "mean_run_length": 1.0714285714285714,
+        "median_run_length": 1.0,
+        "p10_run_length": 1.0,
+        "p90_run_length": 1.0,
+        "maximum_run_length": 2,
+        "projected_switch_traffic_gib_per_token": 0.92413330078125
+      },
+      "activation_perpendicular": {
+        "count": 330,
+        "mean": 0.4343898962636498,
+        "p50": 0.229012073889873,
+        "p95": 0.9974468284779263,
+        "maximum": 0.9999485143949028
+      },
+      "dual_perpendicular": {
+        "count": 330,
+        "mean": 0.5412828327493446,
+        "p50": 0.422387627632156,
+        "p95": 0.9998705381518567,
+        "maximum": 0.9999990983327478
+      },
+      "per_prompt": [
+        {
+          "prompt": "Design an SQL query strategy for detecting inconsistent parent-child BOM quantities without producing duplicate rows.",
+          "routed_states": [
+            15,
+            6,
+            4,
+            10,
+            3
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.20060120640664292,
+            "p50": 0.22772574828823555,
+            "p95": 0.40975283334779117,
+            "maximum": 0.46178567484815636
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.3794677278236279,
+            "p50": 0.4016393189541626,
+            "p95": 0.7431420062797344,
+            "maximum": 0.8045423503466984
+          }
+        },
+        {
+          "prompt": "한국어로 병합 정렬과 퀵 정렬의 장단점을 비교하고 실제 선택 기준을 설명해줘.",
+          "routed_states": [
+            14,
+            6,
+            4,
+            10,
+            3
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.11515452592995884,
+            "p50": 0.13145893574646833,
+            "p95": 0.20807780248911661,
+            "maximum": 0.2511449073011793
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.24610510636071958,
+            "p50": 0.2898453572176646,
+            "p95": 0.42102314707863203,
+            "maximum": 0.4611693613409844
+          }
+        },
+        {
+          "prompt": "Translate into natural Korean and explain the nuance: The system remained available even though one replica failed.",
+          "routed_states": [
+            14,
+            10,
+            10,
+            14,
+            8
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.9874139564543479,
+            "p50": 0.9913236617667351,
+            "p95": 0.9991921509834952,
+            "maximum": 0.9999485143949028
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.9982756640636862,
+            "p50": 0.9989941930734378,
+            "p95": 0.9999282580035684,
+            "maximum": 0.9999990983327478
+          }
+        }
+      ],
+      "qualifies": false
+    },
+    {
+      "states": 16,
+      "rank": 8,
+      "block_size": 1024,
+      "budget": {
+        "block_size": 1024,
+        "rank": 8,
+        "blocks_per_hidden_vector": 16,
+        "coefficient_bits": 4,
+        "remainder_bits": 8,
+        "scale_bits": 16,
+        "basis_bits": 8,
+        "coefficient_gib": 1.19970703125,
+        "remainder_gib": 0.2999267578125,
+        "scale_gib": 0.074981689453125,
+        "basis_gib": 0.03076171875,
+        "active_program_gib": 1.605377197265625,
+        "active_program_limit_gib": 2.0,
+        "active_program_pass": true,
+        "switch_traffic_limit_gib_per_token": 0.4,
+        "minimum_mean_run_length": 4.0134429931640625
+      },
+      "host_bank_storage_gib": 25.68603515625,
+      "signature_and_routing_compute_gflop_per_token": 0.0020992,
+      "build_state_occupancy": [
+        1,
+        1,
+        1,
+        3,
+        3,
+        1,
+        3,
+        1,
+        1,
+        1,
+        3,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "eval_state_occupancy": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        2,
+        0,
+        1,
+        0,
+        4,
+        0,
+        0,
+        0,
+        3,
+        1
+      ],
+      "router_cosine_distance": {
+        "count": 15,
+        "mean": 0.18106899062792461,
+        "p50": 0.07448238134384155,
+        "p95": 0.4351311057806013,
+        "maximum": 0.5620010197162628
+      },
+      "routing": {
+        "sequences": 3,
+        "tokens": 15,
+        "program_loads": 14,
+        "transitions": 12,
+        "transition_switches": 11,
+        "load_fraction_per_token": 0.9333333333333333,
+        "transition_switch_fraction": 0.9166666666666666,
+        "mean_run_length": 1.0714285714285714,
+        "median_run_length": 1.0,
+        "p10_run_length": 1.0,
+        "p90_run_length": 1.0,
+        "maximum_run_length": 2,
+        "projected_switch_traffic_gib_per_token": 1.49835205078125
+      },
+      "activation_perpendicular": {
+        "count": 330,
+        "mean": 0.4343898962636498,
+        "p50": 0.229012073889873,
+        "p95": 0.9974468284779263,
+        "maximum": 0.9999485143949028
+      },
+      "dual_perpendicular": {
+        "count": 330,
+        "mean": 0.5412828327493446,
+        "p50": 0.422387627632156,
+        "p95": 0.9998705381518567,
+        "maximum": 0.9999990983327478
+      },
+      "per_prompt": [
+        {
+          "prompt": "Design an SQL query strategy for detecting inconsistent parent-child BOM quantities without producing duplicate rows.",
+          "routed_states": [
+            15,
+            6,
+            4,
+            10,
+            3
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.20060120640664292,
+            "p50": 0.22772574828823555,
+            "p95": 0.40975283334779117,
+            "maximum": 0.46178567484815636
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.3794677278236279,
+            "p50": 0.4016393189541626,
+            "p95": 0.7431420062797344,
+            "maximum": 0.8045423503466984
+          }
+        },
+        {
+          "prompt": "한국어로 병합 정렬과 퀵 정렬의 장단점을 비교하고 실제 선택 기준을 설명해줘.",
+          "routed_states": [
+            14,
+            6,
+            4,
+            10,
+            3
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.11515452592995884,
+            "p50": 0.13145893574646833,
+            "p95": 0.20807780248911661,
+            "maximum": 0.2511449073011793
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.24610510636071958,
+            "p50": 0.2898453572176646,
+            "p95": 0.42102314707863203,
+            "maximum": 0.4611693613409844
+          }
+        },
+        {
+          "prompt": "Translate into natural Korean and explain the nuance: The system remained available even though one replica failed.",
+          "routed_states": [
+            14,
+            10,
+            10,
+            14,
+            8
+          ],
+          "activation": {
+            "count": 110,
+            "mean": 0.9874139564543479,
+            "p50": 0.9913236617667351,
+            "p95": 0.9991921509834952,
+            "maximum": 0.9999485143949028
+          },
+          "dual": {
+            "count": 110,
+            "mean": 0.9982756640636862,
+            "p50": 0.9989941930734378,
+            "p95": 0.9999282580035684,
+            "maximum": 0.9999990983327478
+          }
+        }
+      ],
+      "qualifies": false
+    }
+  ],
+  "promoted_configurations": [],
+  "best_coverage_configuration": {
+    "states": 8,
+    "rank": 4,
+    "activation_mean": 0.42283706907884455,
+    "dual_mean": 0.5390825884138346,
+    "switch_traffic_gib_per_token": 0.726104736328125
+  },
+  "qualifies": false,
+  "decision": "reject tested precompiled semantic-state routing capacity",
+  "next_candidate_if_rejected": "multi-token decision program with an explicit >=247-token compute amortization gate; do not increase static K/rank without a new reuse mechanism",
+  "contract": "Routing uses only the previous completed token's final hidden state. Current MLP activations and exact top-two output duals are optimistic evaluation oracles. Program memory includes 4-bit signed coefficients, 8-bit remainder norms, two 16-bit row scales, and 8-bit bases. Every initial program load and routed state switch is charged.",
+  "elapsed_seconds": 52.794870092
+}
