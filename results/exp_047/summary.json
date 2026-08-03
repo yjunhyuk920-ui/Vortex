@@ -23,10 +23,10 @@
       "independent_bound_match": true,
       "lower_bound": 0.6283462401263478,
       "name": "positive_cancellation",
-      "optimized_elapsed_ns": 479477,
+      "optimized_elapsed_ns": 469761,
       "population_size": 1024,
       "reference_decision": 1,
-      "reference_elapsed_ns": 77616,
+      "reference_elapsed_ns": 84947,
       "reference_total": 716.7999999999884,
       "sampled_before_decision": 107,
       "sampled_fraction_before_decision": 0.1044921875,
@@ -41,8 +41,8 @@
         "certified_fraction": 0.0,
         "fallback_fraction": 1.0,
         "mean_evaluated_fraction": 1.0,
-        "mean_optimized_elapsed_ns": 55091.933333333334,
-        "mean_reference_elapsed_ns": 6363.2,
+        "mean_optimized_elapsed_ns": 54376.29523809524,
+        "mean_reference_elapsed_ns": 6244.371428571429,
         "population_size": 64
       },
       {
@@ -50,8 +50,8 @@
         "certified_fraction": 0.0,
         "fallback_fraction": 1.0,
         "mean_evaluated_fraction": 1.0,
-        "mean_optimized_elapsed_ns": 92000.21904761904,
-        "mean_reference_elapsed_ns": 10202.52380952381,
+        "mean_optimized_elapsed_ns": 91194.65714285715,
+        "mean_reference_elapsed_ns": 11061.657142857142,
         "population_size": 128
       },
       {
@@ -59,8 +59,8 @@
         "certified_fraction": 0.0,
         "fallback_fraction": 1.0,
         "mean_evaluated_fraction": 1.0,
-        "mean_optimized_elapsed_ns": 170847.39047619049,
-        "mean_reference_elapsed_ns": 18926.485714285714,
+        "mean_optimized_elapsed_ns": 168340.54285714286,
+        "mean_reference_elapsed_ns": 20224.409523809525,
         "population_size": 256
       },
       {
@@ -68,8 +68,8 @@
         "certified_fraction": 0.01904761904761905,
         "fallback_fraction": 0.9809523809523809,
         "mean_evaluated_fraction": 0.9851934523809524,
-        "mean_optimized_elapsed_ns": 360852.2761904762,
-        "mean_reference_elapsed_ns": 39818.695238095235,
+        "mean_optimized_elapsed_ns": 355375.1238095238,
+        "mean_reference_elapsed_ns": 43569.37142857143,
         "population_size": 512
       },
       {
@@ -77,8 +77,8 @@
         "certified_fraction": 0.01904761904761905,
         "fallback_fraction": 0.9809523809523809,
         "mean_evaluated_fraction": 0.9829427083333333,
-        "mean_optimized_elapsed_ns": 724856.0190476191,
-        "mean_reference_elapsed_ns": 81044.58095238096,
+        "mean_optimized_elapsed_ns": 707227.6380952381,
+        "mean_reference_elapsed_ns": 85699.34285714285,
         "population_size": 1024
       }
     ],
@@ -128,12 +128,12 @@
     "positive_control_threshold": 0.25,
     "wrong_accept_limit": 0
   },
-  "git_commit": "3e055ea91b4c858197851ddc73f81571c786348d",
+  "git_commit": "2e28931a8547ecc5fc8fd463ccea9c587b104fe9",
   "name": "causal_probabilistic_tile_certificate",
   "phase": [
     "A",
     "B"
   ],
   "phase_d_status": "NOT TESTED",
-  "workflow_run": "30793091878"
+  "workflow_run": "30793145987"
 }
