@@ -2,59 +2,54 @@
 
 Last updated: 2026-08-03 Asia/Seoul
 
-Compatibility ledger. Current authoritative state is `RESEARCH_STATE.md`; permanent failures and decisions are in `FAILED_APPROACHES.md` and `DECISION_LOG.md`.
+Compatibility ledger. Current authority is `RESEARCH_STATE.md`; permanent failures and decisions are in root registers.
 
-## Fixed target
+## Fixed target and environment
 
-Arbitrary public unmodified Hugging Face dense model, runtime replacement only, real 405B, <=8 GiB VRAM, original contract preserved, and 4B-class user-perceived performance.
+Target: arbitrary public unmodified dense Hugging Face model, runtime only, real 405B, <=8 GiB VRAM, original contract preserved, and 4B-class user experience.
 
-Phase D: **NOT TESTED**.
+Current Phase D: **NOT TESTED**. GitHub CPU is not target GPU/405B/CUDA/PCIe/SSD/TTFT/tokens-per-second evidence.
 
-## Governance reset — PR #56
+## Governance — PR #56
 
-Implemented:
+Implemented Phase A–D, E0–E7, provenance labels, nine root research documents, direct unseen-prompt operation-skipping filter, future-information audit, and exact/specified fallback requirements.
 
-- Phase A/B/C/D;
-- E0–E7;
-- MEASURED/DERIVED/PROJECTED/UNVERIFIED;
-- explicit Phase-D NOT TESTED rule;
-- root research state/decision/failure/assumption/validation/hardware/reproducibility files;
-- unseen-prompt operation-skipping requirement for core work.
+Existing mmap/index/DAG work is auxiliary. Raw prefix scaling is rejected.
 
-Existing mmap/index/DAG work is auxiliary. Raw exact-prefix scaling is rejected.
+## Prior milestones
 
-## Prior proof and auxiliary milestones
+- #42 exact dense-operator information lower bound; metadata is not traffic.
+- #44 direct/operator top-1 metadata bound.
+- #46 constructed end-to-end Llama decision metadata 26.1586 GiB; sparse host access open.
+- #48 serial host probe count does not imply latency.
+- #50 atomic/checksummed mmap exact pointer VM.
+- #52 bounded TinyLlama compiler: 72/72 replay, 64/64 distinct raw prefix nodes, held-out start 0%.
+- #54 exact suffix DAG: 64->38 nodes, causal held-out start 0%.
 
-- PR #42: exact dense-operator information lower bound; metadata is not traffic.
-- PR #44: metadata-aware direct/operator top-1 bound.
-- PR #46: constructed end-to-end Llama final-decision metadata 26.1586 GiB; sparse host access remained open.
-- PR #48: near-one host probe/token can still be only a few logical bytes; probe count is not latency.
-- PR #50: checksummed atomic mmap exact pointer VM.
-- PR #52: bounded TinyLlama compiler replayed 72/72 checked tokens but raw distinct prefixes were 64/64 and held-out start coverage 0%.
-- PR #54: exact future-suffix DAG compressed 64 records to 38 nodes but causal held-out start coverage remained 0%.
+Detailed numbers remain in Git history and root registers.
 
-Detailed permanent numbers remain in Git history and root failure/decision registers.
+## EXP-047 frozen evidence
 
-## EXP-047 — Causal Probabilistic Tile Certificate
-
-Final authoritative identity:
+Authoritative files:
 
 ```text
-PR: #56
-workflow: 30792813542
-source SHA: 08e8b35f48b1b616147f22dce046ab93218265c9
-evidence head after workflow: 3359371762c004db3532ebb16872b4eee85accf6
-phase: A/B
-evidence: E1
-Phase D: NOT TESTED
+results/exp_047/summary.json
+results/exp_047/raw/cases.jsonl
+results/exp_047/checksums.sha256
 ```
 
-Mechanism:
+Current frozen summary:
 
-- causal random sampling without replacement of decision-relevant linear tiles;
-- fixed-step Serfling interval;
-- alpha spending `delta_n = delta*6/(pi^2 n^2)` for adaptive stop;
-- exact evaluation of all remaining tiles when no certificate closes.
+```text
+PR #56
+workflow 30793232558
+source SHA 74ac92e9b1c8fffbc50a2322d9b36dd3c05f0d79
+phase A/B
+evidence E1
+Phase D NOT TESTED
+```
+
+Mechanism: causal sample-without-replacement tile contributions, alpha-spending Serfling interval, exact full-tile fallback.
 
 ### MEASURED correctness
 
@@ -65,59 +60,59 @@ wrong accepts 0
 fallback mismatches 0
 independent-bound mismatches 0
 adversarial fallback 15/15
-future generated tokens used false
+future generated tokens false
 ```
 
-Decision: E1 reference certificate/fallback primitive accepted.
+Decision: E1 reference primitive accepted.
 
-### MEASURED architecture signal
+### MEASURED performance
 
 ```text
 certified 4/525
 fallback 99.238%
-mean evaluated fraction N=512 98.519%
-mean evaluated fraction N=1024 98.294%
-positive control 107/1024 = 10.449%
-Python optimized/reference mean time about 9.2–9.7x
+N=512 mean evaluated 98.519%
+N=1024 mean evaluated 98.294%
+positive control 10.449%
+Python optimized/reference about 8.6–9.1x
 ```
 
-Decision: one global-range CPTC-v1 is not promoted; core architecture status REVISE.
+Decision: global-range CPTC-v1 not promoted; architecture REVISE.
 
 ### PROJECTED target gap
 
 ```text
 405B Q4 stream 188.593 GiB
-1.2x 4B Q4 allowance 2.235 GiB/token
-required fraction before selector/fallback 1.185%
-positive-control fraction 8.817x above target fraction
+1.2x 4B allowance 2.235 GiB/token
+required fraction before overhead 1.185%
+positive-control fraction 8.817x above target
 ```
 
 Not measured on target hardware.
 
-## Infrastructure failures excluded from science
+## Corrected infrastructure failures
 
-- `30791055142`: eager optional dependency import;
-- `30791192434`: missing repository root on `PYTHONPATH`.
+- `30791055142`: optional dependency import;
+- `30791192434`: missing `PYTHONPATH`.
 
-Final authoritative success only: `30792813542`.
+Not scientific evidence.
 
 ## Current frontier
 
 `EXP-047R — Oracle-Tight and Stratified Tile-Bound Audit`.
 
-Use held-out current-token states from available unmodified small checkpoints. Compare current global, non-deployable oracle-tight, and deployable stratified bounds. Offline full-contribution analysis remains below E2.
+Use held-out current-token states from available unmodified small checkpoints. Compare global, non-deployable oracle-tight, and deployable stratified bounds. Offline analysis remains below E2.
 
-If even oracle-tight bounds require high tile fractions, reject range-only CPTC rather than tune it.
+If oracle-tight ranges remain high, reject range-only CPTC rather than tune it.
 
 ## Current classification
 
 ```text
 Governance/provenance implemented
-Auxiliary mmap/index/DAG bounded evidence retained
+Auxiliary mmap/index/DAG retained
 EXP-047 correctness E1 PASS
 EXP-047 broad savings FAIL/REVISE
 Real operation replacement NOT TESTED
 70B/405B scaling NOT TESTED
-8 GiB target execution NOT TESTED
+8 GiB target NOT TESTED
 E6/E7 not achieved
 ```
