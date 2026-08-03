@@ -30,7 +30,9 @@ def test_first_match_and_suffix_stable_are_distinct() -> None:
     tokens = (7, 3, 7, 4, 7)
     assert first_match_depth(tokens) == 0
     assert suffix_stable_depth(tokens) == 4
-    assert post_first_match_wrong_depths(tokens) == 3
+    # After the first depth-0 match, only depths 1 and 3 differ from the
+    # full-depth token. The final depth is correct by definition.
+    assert post_first_match_wrong_depths(tokens) == 2
     assert token_changes(tokens) == 4
 
 
