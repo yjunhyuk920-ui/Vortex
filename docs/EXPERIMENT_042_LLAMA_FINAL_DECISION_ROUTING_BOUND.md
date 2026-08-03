@@ -4,7 +4,7 @@ Last updated: 2026-08-03 (Asia/Seoul)
 
 ## Evidence level and fixed objective
 
-This is an E1 formal/executable information certificate. It is not a physical 405B runtime and does not measure GPU wall clock.
+This is an E1 formal/executable information certificate. It is not a physical 405B runtime, does not measure GPU wall clock, and does not by itself prove per-token host traffic.
 
 The fixed project objective remains an arbitrary unmodified Hugging Face dense transformer, one 8 GiB GPU, no user training or checkpoint-specific adapter authoring, original-model decisions preserved, and warm decode within 1.2x of a native 4B Q4 baseline.
 
@@ -154,13 +154,7 @@ B = 1
 Q = 1
 ```
 
-There are two independently selectable Q4 coefficients and therefore:
-
-```text
-16^2 = 256
-```
-
-possible checkpoints/functions. The workflow exhaustively instantiates every checkpoint, evaluates both legal layer queries, and requires:
+There are two independently selectable Q4 coefficients and therefore `16^2 = 256` possible checkpoints/functions. The workflow exhaustively instantiates every checkpoint, evaluates both legal layer queries, and requires:
 
 - 256 distinct final-token winner signatures;
 - exact recovery of both Q4 codes;
@@ -207,7 +201,7 @@ metadata lower bound = 224,700,548,304 bits
                      = 26.1585866455 GiB
 ```
 
-This exceeds the complete 8 GiB resident allowance before KV cache, workspace, embeddings, fixed weights, or runtime state.
+This proves that a complete exact final-decision representation for the constructed family cannot fit entirely inside an 8 GiB resident checkpoint-information allowance.
 
 ## Promotion criteria
 
@@ -219,12 +213,24 @@ The certificate advances only if all of the following pass:
 4. causal GQA loaders are nonzero and respect KV-dimension chunking;
 5. unselected variable layers contribute exactly zero;
 6. the target projection satisfies hidden, intermediate, loader, and vocabulary limits;
-7. the projected metadata lower bound exceeds 8 GiB.
+7. the projected complete metadata lower bound exceeds 8 GiB.
 
 ## Scope and prohibited overclaims
 
-A passing result proves an end-to-end final-token information lower bound for the constructed Llama-style Q4 family. It does not perform a real 405B run, measure wall clock, or prove that every released 405B checkpoint has maximum information complexity.
+A passing result proves an end-to-end final-token **total information-size** lower bound for the constructed Llama-style Q4 family. It closes an all-resident exact decision-table path.
 
-The theorem is a worst-case universality result: a runtime claiming support for arbitrary unmodified checkpoints with exact decisions must also support this legal family. It may not dismiss the family by assuming empirical compressibility, training distribution, or ordinary checkpoint structure unless universality is explicitly relaxed.
+It does **not** prove that every token must transfer or inspect all 26.16 GiB. Each legal query selects one coefficient, so an external host-resident indexed table could in principle answer with a sparse random access. The theorem therefore does not yet close:
 
-Do not report this certificate as hardware completion. The physical runtime objective remains unsolved even if its original arbitrary/exact/8-GiB combination is contradicted by the information bound.
+```text
+host-indexed exact metadata
+per-token cell-probe complexity
+PCIe/CPU latency
+metadata construction cost
+real autoregressive access locality
+```
+
+It also does not perform a real 405B run, measure wall clock, or prove that every released 405B checkpoint has maximum information complexity.
+
+The theorem is a worst-case universality result for representation size: a runtime claiming support for arbitrary exact-decision checkpoints must distinguish this family somewhere in its resident plus external state. The next proof obligation is a cell-probe/communication lower bound for the autoregressive query sequence, or a constructive charged host-indexed runtime.
+
+Do not report metadata size as per-token traffic. The physical 405B/8-GiB/4B-speed runtime objective remains unsolved.
