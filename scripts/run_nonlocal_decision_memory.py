@@ -10,7 +10,10 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from vortex_runtime.final_hidden_trace import collect_prompt_continuation_trace
+from vortex_runtime.final_hidden_trace import (
+    collect_prompt_continuation_trace,
+    continuation_queries_after_anchor,
+)
 from vortex_runtime.nonlocal_decision_memory import (
     build_nonlocal_decision_memory,
     evaluate_nonlocal_decision_memory,
@@ -166,22 +169,10 @@ def main() -> None:
         continuation_steps=args.steps,
         device=device,
     )
-
-    target_tokens = trace.continuation_token_ids[: args.steps].contiguous()
-    if target_tokens.numel() != args.steps:
-        raise RuntimeError("continuation token accounting mismatch")
-    if args.steps == 1:
-        query_hidden = trace.prompt_hidden_states[-1:].contiguous()
-    else:
-        query_hidden = torch.cat(
-            (
-                trace.prompt_hidden_states[-1:],
-                trace.continuation_hidden_states[: args.steps - 1],
-            ),
-            dim=0,
-        ).contiguous()
-    if query_hidden.shape[0] != target_tokens.numel():
-        raise RuntimeError("query/target alignment mismatch")
+    query_hidden, target_tokens = continuation_queries_after_anchor(
+        trace,
+        steps=args.steps,
+    )
 
     continuation_eos = eos_position(target_tokens, tokenizer.eos_token_id)
     maximum_run = maximum_identical_run(target_tokens)
@@ -254,15 +245,18 @@ def main() -> None:
         "memory_entries": trace.prompt_tokens - 1,
         "continuation_steps": args.steps,
         "block_length": args.block_length,
+        "exact_boundary_anchor_token": trace.first_generated_token,
         "build_contract": {
             "prompt_tokens_only": True,
             "prompt_hidden_only": True,
             "continuation_tokens_in_build": False,
             "continuation_hidden_in_build": False,
             "final_prompt_position_excluded_from_memory": True,
+            "first_continuation_token_charged_as_boundary_anchor": True,
+            "replayed_targets_begin_after_anchor": True,
         },
         "continuation_diagnostics": {
-            "eos_position": continuation_eos,
+            "eos_position_after_anchor": continuation_eos,
             "maximum_identical_token_run": maximum_run,
             "unique_token_fraction": unique_fraction,
             "four_gram_repetition_rate": repetition_4gram,
