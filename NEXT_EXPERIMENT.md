@@ -1,258 +1,291 @@
 # Next Experiment
 
-## Closed Gate — EXP-048
+## Closed Gate — EXP-049
 
 Authoritative evidence:
 
 ```text
-results/exp_048/summary.json
-workflow 30798936320
-source head SHA 484a1f0f313d88733d2f7210f2a24d3904bf1373
-artifact 8850040445
-artifact SHA-256 67c587da36b968f9c38e0a7774ea03cecd2ad2d7d274d3e83c833c56529c3443
+results/exp_049/summary.json
+workflow 30803672059
+source head SHA 91d0caa86d784c663bc520d36d9b512f0cc526e9
+workflow merge SHA 173dd3477e2a6f5ecb0d55b58375ec18dfe774dd
+artifact 8851957250
+artifact ZIP SHA-256 4cd6c8c4afb833562438a97f052d45d331f3691362472fb08e594bd0c5585b9e
 ```
 
 MEASURED:
 
 ```text
-B1 perfect future oracle:
-  96 tokens / 1 target pass
-  exact mismatches 0
-  target-equivalent fraction 1.0416667%
-  future information true
-  deployable false
-
-B2 hard Jacobi:
-  p50 58 target passes / 32 exact tokens
-  p50 fraction 181.25%
-  p90 fraction 193.75%
-  max matching prefix 3
-
-B3 partial-layer self-draft:
-  18 cases, 54 fixed variants
-  exact mismatches 0
-  future information uses 0
-  p50 committed tokens / verification 1
-  max matching prefix 1
-  minimum fully accounted fraction 1333.463%
-  p90 fully accounted fraction 2893.843%
+3 models × 6 families = 18 cases
+1,458 fixed trajectory rows
+exact verifier mismatches 0
+future information in S1/S2 0
+unhandled numerical failures 0
+oracle-best S1/S2 p50 exact prefix 4.5
+oracle-best S1/S2 maximum exact prefix 6
+oracle-best S1/S2 p90 target-equivalent fraction 168.778596%
+S0 hard Jacobi p50 prefix after 4 passes 4
+S2 Anderson p50 prefix after 4 passes 1
+S2/S0 improvement 0.25x
+triangular transcript indistinguishability true
+one-new-exact-position-per-round barrier observed true
 ```
 
 Decision:
 
 ```text
-REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER
+REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY
 ```
 
-B1 proves block verification can meet the logical traffic target when a long proposal is already correct. B2/B3 prove that hard Jacobi and sequential early-layer drafting do not produce that proposal cheaply. B4 tree expansion is not continued from failed B3.
+The exact reference was allowed to choose the best fixed S1/S2 trajectory per case. Even this non-deployable favorable upper bound failed the 16-token/10% early Gate. Hidden triangular models also refuted a universal faster-than-one-position-per-round target-only guarantee.
 
-## EXP-049 — Anderson-Accelerated Continuous Block Fixed-Point Gate
+## EXP-050 — Target-Independent External Draft Advice Gate
 
 ### Mechanism change
 
-EXP-049 removes the separate per-token draft loop entirely.
+EXP-050 imports a new causal information source rather than repeatedly querying the target:
 
-Represent a future block of `K` unknown token states as continuous token embeddings `Z`. Execute the unmodified target model over the exact prefix plus all `K` soft positions in one causal batched pass. Convert the resulting future logits into a sparse soft embedding update and solve the causal block fixed point using a small number of damped Picard or Anderson-accelerated iterations. Harden the block to tokens and apply the retained exact longest-prefix-plus-correction verifier.
+> use another already published, unmodified small causal model to generate a long proposal with its own KV cache, then execute one exact target block pass and commit only the longest target-matching prefix plus first-mismatch correction.
 
-No target weights are modified. No training, learned adapter, future generated token, or external draft model is allowed in deployable conditions.
+No target checkpoint is modified or trained. No target-specific LoRA, adapter, distillation, calibration, or future target token is allowed. Draft checkpoints are part of the runtime and their complete sequential compute/weight-stream cost is charged.
 
-### Why this directly addresses EXP-048
+This is different from EXP-048 B3:
 
-- B3 repeatedly executed early layers and a full LM head once per proposed token; EXP-049 executes each target layer/head once per solver iteration across the whole block.
-- B2 hard Jacobi propagated discrete guesses slowly; EXP-049 tests whether continuous residual information and Anderson mixing can move useful information farther than one token per iteration.
-- The exact block verifier remains unchanged, so any incorrect hard proposal is safely truncated and corrected.
+- B3 reused early target layers and reread the target LM head for every proposal token;
+- EXP-050 uses a separate complete draft checkpoint whose weights may remain resident independently of the target stream;
+- the exact target verifier remains unchanged.
 
-### Continuous map
+### Universal claim warning
 
-For exact prefix token embeddings `E(p)` and future soft states `Z_0...Z_{K-1}`:
+For any deterministic target-independent draft rule `D(prompt)`, an arbitrary target model can choose a different first greedy token for the same prompt. Therefore a fixed external draft cannot guarantee even one exact proposal token for every arbitrary target.
 
-```text
-L(Z) = target_logits(E(p) concat Z)
-P_i  = top-k-softmax(L_i / tau)
-F(Z)_i = sum_{v in top-k_i} P_i(v) * token_embedding(v)
-R(Z) = F(Z) - Z
-```
+EXP-050 must keep two claims separate:
 
-Logit alignment remains `prefix_length - 1 + i`.
+1. **universal worst-case claim:** subject to the first-token counterexample;
+2. **average practical checkpoint claim:** measured using a favorable fixed draft pool.
 
-The deployable solver may use only current prefix state, fixed initialization metadata, prior solver iterates, and current target outputs.
+A valid universal counterexample independently rejects fixed target-independent drafting as a universal exact solution. Practical evidence still determines whether the component deserves auxiliary or restricted-family use.
 
 ### Conditions
 
-#### S0 — hard Jacobi baseline
+#### E0 — target-independent first-token counterexample
 
-Reuse EXP-048 B2 with every target pass charged.
-
-#### S1 — damped continuous Picard
+Implement finite deterministic draft and target oracles with the same vocabulary/prompt interface:
 
 ```text
-Z_{r+1} = (1 - lambda) Z_r + lambda F(Z_r)
+draft first token = a
+target first token = b != a
 ```
 
-Pre-register `lambda` values and top-k/temperature settings. No post-hoc unrestricted tuning.
+Extend the target into a valid causal chain. Confirm exact block verification commits only target correction `b` and proposal matching prefix zero.
 
-#### S2 — Anderson acceleration
+Repeat under randomized draft rules by conditioning the adversarial target on a seed-independent token outside the draft's support when possible, or state the probabilistic failure probability explicitly.
 
-Use a bounded history `m` and solve the small residual least-squares problem in float64 on CPU reference code. Apply regularization, coefficient clipping, finite checks, and fail-closed fallback to S1.
+#### E1 — cross-checkpoint single drafts
 
-Pre-register history sizes `m in {2, 4, 8}` and at most four solver iterations for the early Gate.
-
-#### S3 — exact future-state oracle
-
-Initialize `Z` from exact future tokens only to validate map alignment and the theoretical best hardening/verifier path. S3 is future-aware and non-deployable.
-
-#### S4 — adversarial triangular models
-
-Construct finite causal models where token `i` reveals a transformation of exact token `i-1` and arbitrary initialization is wrong. Use them to test the worst-case one-new-guaranteed-position-per-round barrier.
-
-### Initialization
-
-Deployable fixed choices:
-
-- repeated exact next-token embedding obtained from the first solver pass;
-- repeated last-prefix token embedding;
-- fixed zero/mean embedding control.
-
-Initialization may not use reference continuation or held-out target tokens.
-
-### Accounting
-
-For every state/condition record:
+Use the pinned unmodified TinyStories checkpoints as both targets and external drafts, never using a target checkpoint as its own draft:
 
 ```text
-block_size
-solver_iterations
-target_solver_full_streams
-exact_verification_full_streams
-correction_streams
-soft_topk_projection_bytes_and_ops
-anderson_history_bytes
-matching_prefix
-committed_tokens
-rejected_positions
-future_information_used
-numerical_fallbacks
+Target 1M <- drafts {3M, 8M}
+Target 3M <- drafts {1M, 8M}
+Target 8M <- drafts {1M, 3M}
 ```
 
-Primary logical metric:
+All checkpoints share the pinned GPT-Neo tokenizer. Generate draft proposals causally with each draft model's KV cache.
+
+#### E2 — favorable fixed draft-pool oracle
+
+For every target/prompt/block, record every eligible draft and additionally choose the exact-reference-best draft only as a non-deployable upper bound.
+
+Selection order:
+
+1. longest exact target-matching proposal prefix;
+2. lowest fully charged target-equivalent fraction;
+3. smaller draft parameter count;
+4. lexical draft model ID.
+
+A negative result under this favorable selector rejects the fixed pool without building a selector. A positive result does not promote a runtime until a causal target-independent selector is committed.
+
+#### E3 — same-model future oracle
+
+Use exact target future tokens only to validate proposal alignment and exact verifier arithmetic. This condition is future-aware, non-deployable, and excluded from external-draft aggregates.
+
+#### E4 — proposal tree
+
+Forbidden unless E2 survives the early Gate. Every branch, draft token, target-scored node, and tree-selection operation would be charged. Tree expansion may not rescue a pool whose single paths almost always diverge at position zero.
+
+### Pinned corpus
+
+Reuse:
 
 ```text
-target_equivalent_stream_fraction =
-    (solver target streams
-     + exact verification streams
-     + correction streams
-     + separately normalized projection cost)
-    / exact committed tokens
+EleutherAI/gpt-neo-125M tokenizer @ 21def0189f5705e2521767faed922f1f15e7d7db
+roneneldan/TinyStories-1M @ 77f1b168e219585646439073245fe87e56b3023e
+roneneldan/TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
+roneneldan/TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
 ```
 
-Projection/Anderson cost may not be hidden merely because it is smaller than the target model.
+Held-out families remain English narrative, Korean, code, mathematics, structured JSON, and brittle identifier continuation.
 
-### Causal triangular lower-bound audit
-
-EXP-049 must state and test the following worst-case claim:
-
-> For arbitrary causal dense models, a target-only synchronous block solver with no external future information cannot guarantee more than one new exact token position per black-box causal target round in the worst case.
-
-Required work:
-
-1. formalize the target interface and guarantee being claimed;
-2. construct an adversarial finite causal model family;
-3. prove indistinguishability of later positions before predecessor resolution under the declared interface;
-4. show hard Jacobi attains the one-position-per-round bound on the construction;
-5. determine exactly which assumptions continuous embeddings/Anderson violate or do not violate;
-6. keep the theorem separate from empirical average-case checkpoint results.
-
-A valid worst-case impossibility result does not fabricate an empirical failure, but it changes what can be claimed for the fixed “arbitrary model + exact output” objective.
-
-### Small-checkpoint corpus
-
-Use the same three pinned TinyStories checkpoints and six held-out families as EXP-048 for direct comparison. Add at least two deterministic adversarial toy causal models and low/high entropy synthetic controls.
-
-Early block sizes:
+Proposal block sizes:
 
 ```text
 K in {64, 128, 256}
-solver iterations in {1, 2, 4}
 ```
 
-Respect each checkpoint's maximum position length. Record excluded states rather than silently truncating the Gate.
+Generate one 256-token exact target reference and one 256-token continuation from every eligible external draft. Prefix metrics for shorter blocks are derived from the same causal continuation. States exceeding context limits are recorded as excluded.
+
+### Exact correctness contract
+
+For each proposal:
+
+1. generate draft tokens using only the prompt and the external draft's own prior tokens/KV state;
+2. execute one exact target teacher-forced block pass;
+3. compare left to right;
+4. commit only the matching proposal prefix plus the exact target token at first mismatch;
+5. discard all later proposal/target states;
+6. compare committed tokens with exact target greedy reference;
+7. fail the run on any unexplained mismatch, future-target leakage, revision mismatch, malformed proposal, or non-finite accounting.
+
+### Traffic accounting
+
+For target parameter bytes `P_t`, draft parameter bytes `P_d`, proposal length `K`, and exact committed tokens `A`:
+
+```text
+actual_small_model_target_equivalent_fraction =
+    (K * P_d/P_t + 1 exact target verification stream) / A
+```
+
+This counts one logical full draft weight stream per sequential draft token. CPU elapsed time, draft KV bytes, and target verification time are reported separately.
+
+Final-target normalized projection for a 4B draft and 405B target:
+
+```text
+draft ratio = 4/405 = 0.0098765432 target streams/proposal token
+normalized_fraction = (K * 4/405 + 1) / A
+```
+
+PROJECTED target requirement:
+
+```text
+normalized_fraction <=0.01185185185
+```
+
+With a completely correct K-token proposal, the 4B draft itself consumes `4/405` per committed token. The one target verification stream therefore requires:
+
+```text
+K >= ceil(1 / (0.01185185185 - 4/405))
+  = 507 exact proposal tokens
+```
+
+This is stricter than the zero-cost proposal minimum of 85. Proposal blocks up to 256 can only pass the early Gate, not the final promotion Gate.
+
+### Required measurements
+
+MEASURED:
+
+- exact model/tokenizer revisions and file hashes;
+- target/draft parameter counts and bytes;
+- prompt hashes and context limits;
+- exact target and draft token continuations;
+- per-draft matching prefix for K=64/128/256;
+- exact committed tokens and verifier mismatch;
+- draft sequential forward count and CPU time;
+- target verification count and CPU time;
+- draft KV peak estimate and process RSS;
+- actual small-model target-equivalent fraction;
+- future-information audit;
+- model/family trend.
+
+DERIVED:
+
+- favorable-pool p50/p90 exact prefix;
+- draft-selection oracle label;
+- universal first-token counterexample verdict;
+- 4B/405B normalized traffic fraction;
+- dynamic exact-prefix requirement.
+
+PROJECTED:
+
+- 405B Q4 target stream;
+- 4B Q4 draft stream;
+- target-equivalent traffic under measured exact-prefix distributions.
+
+UNVERIFIED:
+
+- a deployable draft selector;
+- physical concurrent residency/overlap;
+- 8 GiB combined target/draft/KV state;
+- 70B/405B exact-prefix behavior;
+- CUDA/PCIe/SSD/TTFT/tokens per second.
 
 ### Pre-registered early rejection Gate
 
-Reject target-only continuous fixed-point proposal generation as the core path if any condition holds:
+Reject the fixed external-draft pool as a core path if any condition holds:
 
 ```text
 exact verifier mismatch >0
-future information in S1/S2 >0
-NaN/Inf or unhandled Anderson instability >0
-best S1/S2 p50 matching prefix after <=4 solver passes <16
-best S1/S2 p90 target-equivalent stream fraction >10%
-S2 does not improve p50 matching prefix over S0 by at least 4x
-best checkpoint acceptance materially worsens with model size
-adversarial triangular model violates any claimed universal >1-position/round guarantee
+future target information in E1/E2 >0
+favorable-pool p50 exact matching prefix <16
+favorable-pool p90 4B/405B-normalized fraction >10%
+any held-out family has zero non-correction proposal acceptance in every case
+draft-pool acceptance materially worsens with target size
+universal first-token counterexample succeeds
 ```
 
-A proved worst-case one-position-per-round barrier rejects universal exact target-only fixed-point acceleration for the declared arbitrary-model contract, even if a few average-case prompts improve.
+The universal counterexample is independently sufficient to reject the mechanism as a solution for the fixed arbitrary-model exact contract. Empirical results may still support auxiliary use in a restricted target family.
+
+Failure decision:
+
+```text
+REJECT_TARGET_INDEPENDENT_EXTERNAL_DRAFT_AS_UNIVERSAL_CORE
+```
 
 ### Promotion Gate
 
-A solver may advance to a complete Phase-C runtime only if:
+A later restricted-family or revised-claim runtime may advance only if:
 
 ```text
-zero exact mismatches
-zero deployable future information
-zero unhandled numerical failures
-p90 target-equivalent stream fraction <=1.185185%
-p50 committed tokens satisfies the dynamic pass-count requirement
-nonzero success across every held-out family
-non-degrading size trend
-no contradiction with the exact claim scope
+zero exact mismatch
+zero target future information
+causal deployable draft selector
+p50 exact proposal prefix >=507 for a 4B-normalized draft
+p90 normalized fraction <=1.185185%
+nonzero useful acceptance in every held-out family
+non-degrading target-size trend
+combined target/draft/KV hot-state plan <=8 GiB before Phase D
+claim explicitly excludes the universal counterexample or supplies target-dependent advice
 ```
 
-Dynamic requirement:
-
-```text
-committed_tokens >= ceil(total_target_equivalent_streams / 0.01185185)
-```
-
-Examples before projection overhead:
-
-```text
-2 total streams -> >=169 tokens
-3 total streams -> >=254 tokens
-4 total streams -> >=338 tokens
-5 total streams -> >=422 tokens
-6 total streams -> >=507 tokens
-```
+Passing restricted-family evidence may not be described as satisfying the current arbitrary-model mission.
 
 ### Strongest counterexamples
 
-- a token-copy chain that reveals exactly one position per round;
-- alternating-token and cryptographic/hash-like predecessor maps;
-- Korean/code/identifier prompts with early mismatch;
-- soft states whose top-k support excludes the exact token;
-- Anderson coefficient explosion or oscillation;
-- a long apparent soft convergence with hard prefix length zero;
-- block lengths near context limits;
-- exact verification mismatch at position zero.
+- target first token deliberately differs from every fixed draft;
+- two targets sharing tokenizer and prompt but opposite greedy continuations;
+- code identifiers and random-looking suffixes;
+- Korean/English domain mismatch;
+- EOS or JSON boundary at proposal position zero;
+- larger draft that is confidently different from the smaller target;
+- pool oracle chooses a different draft for every prompt, exposing selector impossibility;
+- proposal prefix long on narrative but zero on at least one required family.
 
 ### Evidence boundary
 
-Before a complete small-checkpoint solver path is frozen:
-
 ```text
-Phase: A/B
-Evidence ceiling: E1
-complete real operation replacement: false
+Phase: A/B with small-checkpoint observation
+Evidence ceiling: E1 until a fixed causal selector and complete generation replacement exist
 405B / 8 GiB / CUDA / PCIe / SSD / TTFT / tokens/sec: NOT TESTED
+Phase D: NOT TESTED
 ```
 
 ### Next exact action
 
-Create a new branch after PR #58 merges and implement in this order:
+After PR #59 merges:
 
-1. formal triangular lower-bound statement and adversarial toy models;
-2. model-independent S1/S2 solver with numerical fault tests;
-3. exact hardening and retained block verifier integration;
-4. pinned TinyStories runner and raw evidence workflow;
-5. pre-registered Gate decision and durable state update.
+1. create `research/exp-050-external-draft-advice`;
+2. commit the first-token no-free-lunch reference and tests;
+3. implement cached cross-checkpoint proposal generation and exact verifier integration;
+4. run the pinned 18-case fixed-pool Gate;
+5. freeze raw per-target/per-draft evidence and update durable state;
+6. do not implement E4 trees unless E2 survives the early Gate.
