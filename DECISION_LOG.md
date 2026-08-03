@@ -1,118 +1,114 @@
 # VORTEX Decision Log
 
-Append-only architecture decisions. Corrections explicitly supersede prior run identity without deleting scientific history.
+Append-only decisions; authoritative run identity is read from committed result JSON when available.
 
-## D-001 — Final target remains fixed
+## D-001 — Final target fixed
 
-Date: 2026-08-03
-
-Arbitrary public unmodified Hugging Face dense model; runtime replacement only; real 405B; <=8 GiB VRAM; original contract preserved; 4B-class user experience; independent reproduction.
+Arbitrary public unmodified Hugging Face dense model; runtime only; real 405B; <=8 GiB VRAM; original contract preserved; 4B-class user experience; independent reproduction.
 
 Status: ACTIVE.
 
 ## D-002 — Current environment is not Phase D
 
-GitHub Actions CPU results cannot be labeled target GPU, 405B, CUDA, PCIe, SSD, TTFT, tokens/second, or peak-VRAM measurements.
+GitHub Actions CPU cannot be labeled target GPU, 405B, CUDA, PCIe, SSD, TTFT, tokens/second, or peak-VRAM evidence.
 
 Status: ACTIVE. Phase D NOT TESTED.
 
-## D-003 — Adopt Phase A/B/C/D validation separation
+## D-003 — Phase A/B/C/D adopted
 
 Status: ACTIVE.
 
-## D-004 — Adopt E0–E7 evidence scale
-
-E0 idea, E1 synthetic/reference, E2 small real-model operation replacement, E3 held-out causal generalization, E4 accessible representative hardware, E5 medium/large scaling, E6 target under 8 GiB, E7 real 405B at 4B-class performance.
+## D-004 — E0–E7 adopted
 
 Status: ACTIVE.
 
-## D-005 — Separate MEASURED, DERIVED, PROJECTED, UNVERIFIED
+## D-005 — MEASURED/DERIVED/PROJECTED/UNVERIFIED separation adopted
 
 Status: ACTIVE.
 
-## D-006 — Reclassify mmap/index/DAG work as auxiliary
+## D-006 — mmap/index/DAG components are auxiliary
 
 Evidence: PR #50/#52/#54.
 
 Status: ACTIVE.
 
-## D-007 — Reject raw prefix enumeration as core runtime
+## D-007 — Raw prefix enumeration rejected as core
 
 Evidence: 64/64 unique nodes excluding duplicate; held-out start coverage 0%.
 
-Status: REJECTED CORE MECHANISM.
+Status: REJECTED.
 
-## D-008 — Accept exact future-DAG only as body compression
+## D-008 — Exact future-DAG accepted only as body compression
 
-Evidence: 64 records ->38 nodes; causal held-out start coverage 0%.
+Evidence: 64->38 nodes; causal held-out start coverage 0%.
 
-Status: ACCEPTED AUXILIARY COMPONENT.
+Status: AUXILIARY.
 
-## D-009 — Make unseen-prompt causal operation skipping the primary filter
-
-Core work must answer the twelve questions in `RESEARCH_STATE.md`.
+## D-009 — Core research must skip original operations causally on unseen prompts
 
 Status: ACTIVE.
 
-## D-010 — Select EXP-047 CPTC
-
-Test causal sampling-without-replacement finite-population certificates with exact fallback as a materially different response to failed deterministic signed-residual bounds.
+## D-010 — EXP-047 CPTC selected and executed
 
 Status: EXECUTED.
 
-## D-011 — Accept EXP-047 correctness primitive at E1
+## D-011 — EXP-047 correctness primitive accepted at E1
 
-Final authoritative evidence:
+Authoritative source:
 
 ```text
-PR: #56
-workflow: 30792813542
-source implementation SHA: 08e8b35f48b1b616147f22dce046ab93218265c9
-committed result head after workflow: 3359371762c004db3532ebb16872b4eee85accf6
-cases: 525
-wrong accepts: 0
-fallback mismatches: 0
-independent-bound mismatches: 0
-adversarial exact fallback: 15/15
+results/exp_047/summary.json
 ```
 
-Decision: the alpha-spending Serfling implementation, causal randomized order, deterministic replay, validation faults, and exact fallback satisfy Phase B.
+Frozen summary currently records:
+
+```text
+workflow 30793232558
+source SHA 74ac92e9b1c8fffbc50a2322d9b36dd3c05f0d79
+525 cases
+wrong accepts 0
+fallback mismatches 0
+independent-bound mismatches 0
+adversarial fallback 15/15
+```
+
+Decision: certificate/reference/fallback implementation passes Phase B under declared assumptions.
 
 Status: ACCEPTED E1 PRIMITIVE ONLY.
 
-## D-012 — Do not promote global-range CPTC-v1 as core executor
+## D-012 — Global-range CPTC-v1 not promoted
 
 MEASURED:
 
 ```text
-certified: 4/525
-fallback: 521/525 = 99.238%
-mean evaluated fraction N=1024: 98.294%
-positive control: 107/1024 = 10.449%
-Python optimized/reference time: about 9.2–9.7x
+certified 4/525
+fallback 99.238%
+N=1024 mean evaluated 98.294%
+positive control 10.449%
+Python optimized/reference about 8.6–9.1x
 ```
 
 PROJECTED:
 
 ```text
-required simple target fraction before selector/fallback: 1.185%
-positive-control fraction / target fraction: 8.817x
+required simple target fraction before selector/fallback 1.185%
+positive-control gap 8.817x
 ```
 
-Decision: primitive Gate passed, architecture performance did not. No full backend or Phase-C performance claim.
+Decision: primitive correctness passed; architecture savings failed to establish a plausible path.
 
-Status: REVISE CORE ARCHITECTURE.
+Status: REVISE.
 
-## D-013 — Next Gate is oracle-tight/stratified real-checkpoint audit
+## D-013 — Next Gate is oracle-tight/stratified audit
 
-Use held-out current-token states from available unmodified small checkpoints to distinguish intrinsic statistical difficulty from loose global ranges. Compare current global, non-deployable oracle-tight, and deployable stratified bounds before actual operation replacement.
+Use held-out current-token states from available unmodified small checkpoints. Compare global, non-deployable oracle-tight, and deployable stratified bounds before actual operation replacement.
 
-Offline analysis remains below E2. If oracle-tight bounds still require high tile fractions, reject range-only CPTC rather than tune it.
+Offline analysis remains below E2. If oracle-tight bounds remain high, reject range-only CPTC.
 
 Status: ACTIVE NEXT GATE.
 
-## D-014 — Freeze measurement workflow boundary
+## D-014 — Freeze completed experiment measurements
 
-Only implementation/config/tests/workflow changes rerun EXP-047. Result interpretation and root-document changes do not regenerate raw timing. Workflow commits complete raw evidence to the source branch after Gate success.
+EXP-047 workflow is manual `workflow_dispatch` only and never commits on reproduction. The frozen committed result directory is authoritative; documentation changes cannot regenerate timing.
 
 Status: ACTIVE REPRODUCIBILITY RULE.
