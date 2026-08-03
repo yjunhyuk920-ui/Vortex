@@ -1,0 +1,59 @@
+{
+  "family_medians": {
+    "dense_random": {
+      "projected_405b_tib": 179.072510665999,
+      "query_byte_fraction": 0.9245209595084185,
+      "query_node_fraction": 0.9245209595084185
+    },
+    "late_bit": {
+      "projected_405b_tib": 0.0,
+      "query_byte_fraction": 0.0,
+      "query_node_fraction": 0.0
+    },
+    "low_rank_structured": {
+      "projected_405b_tib": 179.01584214996547,
+      "query_byte_fraction": 0.921814915147072,
+      "query_node_fraction": 0.921814915147072
+    },
+    "sparse_structured": {
+      "projected_405b_tib": 4.351808687164216,
+      "query_byte_fraction": 0.7711864406779662,
+      "query_node_fraction": 0.7711864406779662
+    }
+  },
+  "gate": {
+    "adversarial_growth_gate_pass": true,
+    "bit_exact_circuit_compiler_survives_gate": false,
+    "compile_amortization_gate_pass": true,
+    "decision": "REJECT_BIT_EXACT_DECISION_CIRCUIT_COMPILER_AS_CORE_RETAIN_AIG_REFERENCE_AUXILIARY",
+    "exact_gate_pass": true,
+    "query_byte_gate_pass": false,
+    "query_fraction_scope": "relative to the same exact bit-blasted arithmetic before structural hashing; not a real Transformer or hardware byte fraction",
+    "query_node_gate_pass": false,
+    "random_dense_gate_pass": false,
+    "representation_gate_pass": true,
+    "storage_projection_gate_pass": false
+  },
+  "growth_by_family": {
+    "dense_random": {
+      "log2_intercept": 8.745647953561605,
+      "log2_slope_per_input_bit": 0.21673762370263136,
+      "multiplicative_growth_per_added_input_bit": 1.162102742029376
+    },
+    "late_bit": {
+      "log2_intercept": 0.0,
+      "log2_slope_per_input_bit": 0.0,
+      "multiplicative_growth_per_added_input_bit": 1.0
+    },
+    "low_rank_structured": {
+      "log2_intercept": 8.721227379030308,
+      "log2_slope_per_input_bit": 0.21921513672237203,
+      "multiplicative_growth_per_added_input_bit": 1.1641001137129219
+    },
+    "sparse_structured": {
+      "log2_intercept": 6.523561956057013,
+      "log2_slope_per_input_bit": 0.0,
+      "multiplicative_growth_per_added_input_bit": 1.0
+    }
+  }
+}

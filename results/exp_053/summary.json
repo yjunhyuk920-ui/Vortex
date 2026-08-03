@@ -1,0 +1,106 @@
+{
+  "DERIVED": {
+    "adversarial_growth_gate_pass": true,
+    "bit_exact_circuit_compiler_survives_gate": false,
+    "compile_amortization_gate_pass": true,
+    "decision": "REJECT_BIT_EXACT_DECISION_CIRCUIT_COMPILER_AS_CORE_RETAIN_AIG_REFERENCE_AUXILIARY",
+    "exact_gate_pass": true,
+    "query_byte_gate_pass": false,
+    "query_fraction_scope": "relative to the same exact bit-blasted arithmetic before structural hashing; not a real Transformer or hardware byte fraction",
+    "query_node_gate_pass": false,
+    "random_dense_gate_pass": false,
+    "representation_gate_pass": true,
+    "storage_projection_gate_pass": false
+  },
+  "MEASURED": {
+    "case_count": 24,
+    "exact_mismatch_output_bits": 0,
+    "family_count": 4,
+    "growth_by_family": {
+      "dense_random": {
+        "log2_intercept": 8.745647953561605,
+        "log2_slope_per_input_bit": 0.21673762370263136,
+        "multiplicative_growth_per_added_input_bit": 1.162102742029376
+      },
+      "late_bit": {
+        "log2_intercept": 0.0,
+        "log2_slope_per_input_bit": 0.0,
+        "multiplicative_growth_per_added_input_bit": 1.0
+      },
+      "low_rank_structured": {
+        "log2_intercept": 8.721227379030308,
+        "log2_slope_per_input_bit": 0.21921513672237203,
+        "multiplicative_growth_per_added_input_bit": 1.1641001137129219
+      },
+      "sparse_structured": {
+        "log2_intercept": 6.523561956057013,
+        "log2_slope_per_input_bit": 0.0,
+        "multiplicative_growth_per_added_input_bit": 1.0
+      }
+    },
+    "maximum_adversarial_growth_per_added_input_bit": 1.1641001137129219,
+    "maximum_compile_equivalent_queries": 1.5357142857142858,
+    "maximum_projected_405b_circuit_bytes": 281031428571428.6,
+    "maximum_projected_405b_circuit_tib": 255.59659531739143,
+    "maximum_required_compile_reuse": 130,
+    "p50_query_byte_fraction": 0.8416834508224236,
+    "p50_query_node_fraction": 0.8416834508224236,
+    "p90_query_byte_fraction": 0.9410722910964417,
+    "p90_query_node_fraction": 0.9410722910964417,
+    "peak_rss_kib": 44352,
+    "random_dense_p50_query_node_fraction": 0.9245209595084185,
+    "total_exhaustively_validated_assignments": 4506624,
+    "truth_table_representations": 0
+  },
+  "PROJECTED": {
+    "allowed_1_2x_baseline_gib_per_token": 2.2351741790771484,
+    "baseline_q4_full_weight_gib_per_stream": 1.862645149230957,
+    "required_target_equivalent_fraction": 0.011851851851851851,
+    "target_q4_full_weight_gib_per_stream": 188.5928213596344
+  },
+  "UNVERIFIED": [
+    "full quantized Transformer layer circuit compilation",
+    "real small-checkpoint operation replacement",
+    "physical circuit query bytes and latency",
+    "70B and 405B circuit scaling",
+    "8 GiB total hot state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_BIT_EXACT_DECISION_CIRCUIT_COMPILER_AS_CORE_RETAIN_AIG_REFERENCE_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "real_transformer_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-053",
+  "name": "automatic_bit_exact_decision_circuit_compiler_gate",
+  "phase": [
+    "A",
+    "B"
+  ],
+  "phase_d_status": "NOT TESTED",
+  "provenance": {
+    "artifact_id": 8856213147,
+    "artifact_name": "exp-053-candidate-30814648709",
+    "artifact_size_bytes": 232998,
+    "artifact_zip_sha256": "eb7ecf8f284cc974d62e03bee767892666160abfae79a70bb32446f0dfe95178",
+    "config_sha256": "3609308a3aa14016104c1d8fac00b94e9496316d2b511fe7659e69b148c52d2d",
+    "created_utc": "2026-08-03T12:42:53Z",
+    "frozen_date": "2026-08-03",
+    "source_commit": "4ecca6405f549fc9a05d7ad17cfe1d7c3a9c3398",
+    "source_head_sha": "325cc694d4b2e88e34dba5ba8e980e3970c34c66",
+    "workflow_merge_sha": "4ecca6405f549fc9a05d7ad17cfe1d7c3a9c3398",
+    "workflow_run": "30814648709"
+  },
+  "raw_evidence": {
+    "artifact_provenance": "raw/artifact_provenance.json",
+    "cases": "raw/cases.jsonl",
+    "circuit_manifest": "raw/circuit_manifest.json",
+    "circuits": "raw/circuits/*.aigbin",
+    "workflow_checksums": "artifacts/workflow_checksums.sha256",
+    "workflow_summary": "raw/workflow_summary.json"
+  },
+  "real_transformer_operation_replacement": false
+}

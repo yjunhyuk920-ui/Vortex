@@ -1,0 +1,1 @@
+{"case_count": 24, "decision": "REJECT_BIT_EXACT_DECISION_CIRCUIT_COMPILER_AS_CORE_RETAIN_AIG_REFERENCE_AUXILIARY", "maximum_projected_tib": 255.59659531739143, "mismatches": 0, "p50_node_fraction": 0.8416834508224236, "p90_node_fraction": 0.9410722910964417}

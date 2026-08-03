@@ -213,3 +213,8 @@ Allowed reuse:
 ## F-019/F-020 — Tail exit and enumerative exact advice
 
 F-019 rejects fixed/oracle layer-finalization tail skipping as core. F-020 rejects enumerative exact prefix/KV advice as core. Forbidden rescues include larger copies of the same table, hash-width changes presented as compression, replay presented as held-out generalization, and uncharged build/fallback amortization.
+
+<!-- EXP-053-AUTHORITATIVE-FINAL -->
+## F-021 — Structurally hashed bit-exact AIG as core
+
+Bit-exact AIG compilation preserved all registered finite-domain decisions, but p50/p90 query work remained 84.17%/94.11% of the same unreduced exact bit-blast, dense-random p50 was 92.45%, and projected storage reached 255.60 TiB. Forbidden rescues are reporting only late-bit controls, relabeling raw bit blasting as compression, hiding circuit bytes, or extrapolating E1 synthetic exactness into a real Transformer claim.

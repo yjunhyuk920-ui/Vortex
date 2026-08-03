@@ -1,66 +1,91 @@
 # Next Experiment
 
-## Closed Gate — EXP-052
+## Closed Gate — EXP-053
 
-Authority: `results/exp_052/summary.json`; workflow `30811429049`; source head `d4c2328027a5377b997e9ee1d8df0f55190fb652`; artifact `8854946309`; ZIP SHA-256 `1beb137e1ee14fe80ded0a3309c4ed297035d552a46bf901b2e4233ab95549ca`.
+Authority: `results/exp_053/summary.json`; workflow `30814648709`; source head `325cc694d4b2e88e34dba5ba8e980e3970c34c66`; workflow merge `4ecca6405f549fc9a05d7ad17cfe1d7c3a9c3398`; artifact `8856213147`; ZIP SHA-256 `eb7ecf8f284cc974d62e03bee767892666160abfae79a70bb32446f0dfe95178`.
 
-1,152 exact warm states and 36 leave-one-family-out rows produced zero wrong hits and zero build/evaluation leakage, but P0 prefix and S0 KV-state held-out hit rates were 0% in every family. Fallback was 100%, natural exact reuse median/max was 1/1, and p90 fully-accounted target fraction was 6.0 (600%). Same-state replay was 100% exact and required at least 85 repetitions. Under 8 GiB hot index plus 1 TiB cold advice, combined coverage of 2^48 independent states was 6.357828752356909e-7, leaving fallback 0.9999993642171248.
+24 weight-derived circuits were exhaustively checked over 4,506,624 inputs with zero output-bit mismatch and no truth-table representation. Structural hashing left p50/p90 reachable fractions 0.84168345/0.94107229; dense-random p50 was 0.92452096. The maximum 405B source-parameter circuit projection was 255.5966 TiB. Late-bit controls simplified to zero AND nodes, but sparse controls still retained 65–78% of the exact bit-blast and projected 3.17–7.45 TiB. Growth and compile-amortization Gates passed; node, byte, storage, and random-dense Gates failed.
 
 Decision:
 
 ```text
-REJECT_ENUMERATIVE_EXACT_ADVICE_AS_CORE_RETAIN_FAIL_CLOSED_TABLE_AUXILIARY
+REJECT_BIT_EXACT_DECISION_CIRCUIT_COMPILER_AS_CORE_RETAIN_AIG_REFERENCE_AUXILIARY
 ```
 
-## EXP-053 — Automatic Bit-Exact Decision-Circuit Compiler Gate
+## EXP-054 — Exact Reduced Ordered Decision-Diagram Gate
 
 ### Mechanism change
 
-Compile a bounded quantized target operator directly from immutable weights and exact arithmetic semantics into a reduced Boolean/arithmetic decision circuit. Runtime states may not be stored as the representation.
+Compile the same bounded signed modular top-1 operators into a reduced ordered multi-terminal decision diagram (ROMTDD/ROBDD-like representation). Unlike EXP-053 AIGs, runtime evaluates one variable-dependent root-to-terminal path rather than every reachable gate.
+
+The compiler may use exact residual score states and Shannon decomposition, but it may not store an explicit input-to-output truth table.
 
 ### Conditions
 
 ```text
-Q0 independent bit-exact arithmetic reference
-Q1 weight-derived bit-vector/AIG compiler
-Q2 structural hashing and exact reduction
-Q3 structured sparse/low-rank controls
-Q4 adversarial random dense and late-bit operators
-Q5 exact circuit query and exact fallback
+D0 independent arithmetic reference
+D1 natural input-bit variable order
+D2 deterministic weight-magnitude variable order
+D3 exact unique-table reduction: low==high elimination and (var,low,high) sharing
+D4 sparse/low-rank controls
+D5 dense-random and late-bit adversaries
+D6 exact path evaluator and exhaustive finite-domain equivalence
 ```
 
-### Initial domains
+For each operator, compile both registered variable orders. A fixed weight-derived selector may retain the smaller diagram, but compile visits/time for both orders are charged.
+
+### Registered domains
+
+Use the EXP-053 operator families and scaling matrix, with an early safety ceiling:
 
 ```text
 input bits 8, 12, 16, 20
-output classes 2, 4, 8
+classes 2, 4, 8
 accumulator widths 8, 12, 16
-structured and dense-random operator families
+maximum compile states/nodes per order 2,000,000
 ```
 
-### Contract
+A ceiling hit is a scientific failure row with exact fallback, not an infrastructure crash.
 
-- no training, future generated token, or state truth table as the compiled representation;
-- compiler input is weights/config/arithmetic semantics only;
-- exhaustive small-domain enumeration is validation only;
-- bit-exact equality is mandatory;
-- compile time, nodes, bytes, reduction, query touches/bytes, and fallback are charged;
-- structured success cannot erase adversarial/random scaling failure.
+### Accounting
+
+```text
+recursive compile-state visits
+memoized residual states
+unique decision nodes
+terminal count
+serialized bytes
+both-order compile time/bytes
+p50/p90 root-to-terminal input probes
+query probe fraction = path probes / input bits
+fallback on ceiling or corruption
+405B source-parameter storage projection
+node growth per added input bit
+```
 
 ### Early rejection Gate
 
 ```text
 exact mismatch >0
-hidden truth-table representation
-p50 query node/byte fraction >10%
-p90 query node/byte fraction >25%
-1 TiB projection exceeded before target scale
-adversarial node growth doubling exponent >1.5 per added input bit
-compile cost not amortizable under measured reuse
-random dense cases require near-full original arithmetic
+explicit truth table stored as representation
+p50 query probe fraction >10%
+p90 query probe fraction >25%
+any dense-random 20-bit case exceeds 2,000,000 compile states/nodes
+projected diagram storage >1 TiB
+adversarial node-growth multiplier >1.5 per added input bit
+variable-order search cost cannot be amortized within 1,000,000 queries
+fallback/ceiling rate >0
 ```
 
-Promotion still requires real small-checkpoint operation replacement and p90 fully-accounted fraction <=1.185185%.
+Failure decision:
+
+```text
+REJECT_EXACT_REDUCED_DECISION_DIAGRAM_AS_CORE_RETAIN_BDD_REFERENCE_AUXILIARY
+```
+
+### Promotion boundary
+
+Synthetic success still requires real small-checkpoint operation replacement, exact output agreement, p90 fully-accounted target fraction <=1.185185%, non-degrading scale, 8 GiB hot-state closure, and Phase-D measurement.
 
 ### Evidence boundary
 
@@ -72,9 +97,9 @@ real Transformer operation replacement NOT TESTED
 
 ### Next exact action
 
-1. implement bit-vector arithmetic and an exact AIG evaluator;
-2. compile dense linear top-1 decisions from weights without state enumeration;
-3. add structural hashing and reduction;
-4. use exhaustive small-domain evaluation only for equivalence validation;
-5. measure structured versus adversarial node/query scaling;
-6. freeze circuits, checksums, scaling fits, and decision.
+1. implement exact reduced multi-terminal decision diagrams from residual arithmetic states;
+2. add natural and weight-magnitude variable orders;
+3. enforce compile-state/node ceilings with exact fallback;
+4. exhaustively validate all completed finite domains;
+5. measure path probes, storage, growth, and order-selection cost;
+6. freeze diagrams, checksums, raw rows, and decision.
