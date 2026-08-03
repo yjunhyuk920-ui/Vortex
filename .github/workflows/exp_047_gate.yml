@@ -4,19 +4,8 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - "AGENTS.md"
-      - "RESEARCH_STATE.md"
-      - "NEXT_EXPERIMENT.md"
-      - "DECISION_LOG.md"
-      - "FAILED_APPROACHES.md"
-      - "ARCHITECTURE.md"
-      - "ASSUMPTION_REGISTER.md"
-      - "VALIDATION_MATRIX.md"
-      - "HARDWARE_VALIDATION_PLAN.md"
-      - "REPRODUCIBILITY.md"
-      - "docs/PROOF_FIRST_CONTRACT.md"
-      - "docs/WORK_SESSION_PROTOCOL.md"
       - "docs/research/EXPERIMENT_047_CAUSAL_PROBABILISTIC_TILE_CERTIFICATE.md"
+      - "vortex_runtime/__init__.py"
       - "vortex_runtime/cptc.py"
       - "experiments/exp_047/**"
       - "tests/exp_047/**"
@@ -31,10 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
-      contents: read
+      contents: write
     steps:
-      - name: Checkout
+      - name: Checkout research branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -73,9 +64,30 @@ jobs:
       - name: Run EXP-047 current-environment gate
         run: |
           set -euo pipefail
+          rm -rf results/exp_047
           mkdir -p results/exp_047/logs
           bash experiments/exp_047/run_current_env.sh \
             2>&1 | tee results/exp_047/logs/workflow_stdout.log
+
+      - name: Normalize source provenance
+        env:
+          VORTEX_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          path = Path("results/exp_047/summary.json")
+          data = json.loads(path.read_text())
+          data["git_commit"] = os.environ["VORTEX_SOURCE_SHA"]
+          path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
+          PY
+          find results/exp_047 -type f ! -name checksums.sha256 -print0 \
+            | sort -z \
+            | xargs -0 sha256sum \
+            | sed 's#  results/exp_047/#  #' \
+            > results/exp_047/checksums.sha256
 
       - name: Validate provenance and gate output
         run: |
@@ -96,6 +108,15 @@ jobs:
           assert data["UNVERIFIED"]
           for key in ["MEASURED", "DERIVED", "PROJECTED", "UNVERIFIED"]:
               assert key in data
+          required = [
+              "results/exp_047/raw/cases.jsonl",
+              "results/exp_047/processed/scaling.json",
+              "results/exp_047/logs/workflow_stdout.log",
+              "results/exp_047/summary.json",
+              "results/exp_047/checksums.sha256",
+          ]
+          for item in required:
+              assert Path(item).is_file(), item
           print("EXP-047 provenance and gate validation passed")
           PY
 
@@ -106,3 +127,17 @@ jobs:
           path: results/exp_047
           if-no-files-found: error
           retention-days: 30
+
+      - name: Commit complete evidence to research branch
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A results/exp_047
+          if git diff --cached --quiet; then
+            echo "No evidence changes to commit"
+            exit 0
+          fi
+          git commit -m "results(exp-047): commit Phase-B raw evidence"
+          git push origin "HEAD:${{ github.head_ref }}"
