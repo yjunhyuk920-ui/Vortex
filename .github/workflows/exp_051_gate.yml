@@ -2,14 +2,6 @@ name: EXP-051 layer-finalization tail-skip Gate
 
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "vortex_runtime/layer_finalization.py"
-      - "tests/exp_051/**"
-      - "experiments/exp_051/**"
-      - "docs/research/EXPERIMENT_051_LAYER_FINALIZATION_TAIL_SKIP.md"
-      - ".github/workflows/exp_051_gate.yml"
-      - "NEXT_EXPERIMENT.md"
 
 concurrency:
   group: exp-051-${{ github.workflow }}-${{ github.ref }}

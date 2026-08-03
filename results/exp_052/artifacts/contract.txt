@@ -1,0 +1,1 @@
+EXP-052 E1 CPU exact-advice audit; no 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, tokens/s, or real unseen-state operation replacement.

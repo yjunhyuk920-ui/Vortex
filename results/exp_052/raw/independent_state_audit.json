@@ -1,0 +1,90 @@
+{
+  "executable": [
+    {
+      "advice_entries": 0,
+      "expected_hit_fraction": 0.0,
+      "measured_fallbacks": 262144,
+      "measured_hit_fraction": 0.0,
+      "measured_hits": 0,
+      "state_count": 262144,
+      "vocabulary_size": 50257,
+      "wrong_hits": 0
+    },
+    {
+      "advice_entries": 26214,
+      "expected_hit_fraction": 0.09999847412109375,
+      "measured_fallbacks": 235930,
+      "measured_hit_fraction": 0.09999847412109375,
+      "measured_hits": 26214,
+      "state_count": 262144,
+      "vocabulary_size": 50257,
+      "wrong_hits": 0
+    },
+    {
+      "advice_entries": 131072,
+      "expected_hit_fraction": 0.5,
+      "measured_fallbacks": 131072,
+      "measured_hit_fraction": 0.5,
+      "measured_hits": 131072,
+      "state_count": 262144,
+      "vocabulary_size": 50257,
+      "wrong_hits": 0
+    },
+    {
+      "advice_entries": 235930,
+      "expected_hit_fraction": 0.9000015258789062,
+      "measured_fallbacks": 26214,
+      "measured_hit_fraction": 0.9000015258789062,
+      "measured_hits": 235930,
+      "state_count": 262144,
+      "vocabulary_size": 50257,
+      "wrong_hits": 0
+    },
+    {
+      "advice_entries": 259523,
+      "expected_hit_fraction": 0.9900016784667969,
+      "measured_fallbacks": 2621,
+      "measured_hit_fraction": 0.9900016784667969,
+      "measured_hits": 259523,
+      "state_count": 262144,
+      "vocabulary_size": 50257,
+      "wrong_hits": 0
+    },
+    {
+      "advice_entries": 261882,
+      "expected_hit_fraction": 0.9990005493164062,
+      "measured_fallbacks": 262,
+      "measured_hit_fraction": 0.9990005493164062,
+      "measured_hits": 261882,
+      "state_count": 262144,
+      "vocabulary_size": 50257,
+      "wrong_hits": 0
+    },
+    {
+      "advice_entries": 262144,
+      "expected_hit_fraction": 1.0,
+      "measured_fallbacks": 0,
+      "measured_hit_fraction": 1.0,
+      "measured_hits": 262144,
+      "state_count": 262144,
+      "vocabulary_size": 50257,
+      "wrong_hits": 0
+    }
+  ],
+  "storage_adversary": {
+    "cold_capacity": {
+      "budget_bytes": 1099511627776,
+      "entry_bytes": 408,
+      "maximum_coverage_fraction": 9.574142154633591e-06,
+      "maximum_entries": 2694881440,
+      "minimum_fallback_fraction": 0.9999904258578454,
+      "state_count": 281474976710656
+    },
+    "combined_coverage_fraction": 6.357828752356909e-07,
+    "combined_entries": 178956970,
+    "combined_fallback_fraction": 0.9999993642171248,
+    "entry_bytes": 408,
+    "hot_capacity": 178956970,
+    "state_count": 281474976710656
+  }
+}

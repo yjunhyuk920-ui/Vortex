@@ -204,3 +204,8 @@ cd results/exp_049 && sha256sum -c checksums.sha256
 ```
 
 Do not overwrite frozen `results/exp_047*`, `results/exp_048`, or `results/exp_049`. EXP-050 uses a new branch/result directory.
+
+<!-- EXP-052-AUTHORITATIVE-FINAL -->
+## EXP-052 handoff
+
+Enumerative exact advice is rejected. Read `results/exp_052/summary.json` and `NEXT_EXPERIMENT.md`; continue with EXP-053 or a materially new mechanism only.

@@ -181,3 +181,8 @@ Universal risk:
 An arbitrary residual network can keep token `a` dominant through every early layer and flip to `b` only in the final layer.
 
 Status: ACTIVE ADVERSARIAL CONTRADICTION TEST FOR EXP-051; EXPECTED UNSUPPORTED UNIVERSALLY.
+
+<!-- EXP-052-AUTHORITATIVE-FINAL -->
+## A-026/A-027/A-028 — Advice coverage, reuse, circuit compilation
+
+A-026 enumerative exact advice generalizes across unseen families: CONTRADICTED (0% held-out hits). A-027 natural exact states repeat at least 85 times: CONTRADICTED on the corpus (median/max 1/1). A-028 a non-enumerative bit-exact weight-derived circuit remains compact: ACTIVE UNVERIFIED for EXP-053.

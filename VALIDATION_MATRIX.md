@@ -63,3 +63,16 @@ E6/E7: not achieved
 ```
 
 Every experiment PR must update at least one row using commit-backed evidence. PROJECTED or UNVERIFIED fields may not become MEASURED without the matching phase.
+
+<!-- EXP-052-AUTHORITATIVE-FINAL -->
+## EXP-051/052 addendum
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| EXP-051 p90 favorable traffic <=25% | E1: 99.8011% | REJECTED |
+| EXP-052 exact table integrity | E1: wrong hits 0 | AUXILIARY |
+| EXP-052 held-out hit >=98.8148% | E1: 0% all P0/S0 families | REJECTED |
+| EXP-052 natural reuse >=85 | E1: median/max 1/1 | REJECTED |
+| EXP-052 p90 fraction <=1.185185% | E1: 600% | REJECTED |
+| EXP-052 budget fallback <=1.185185% | E1: 99.9999364% | REJECTED |
+| EXP-053 exact circuit compiler | E0 | NEXT GATE |

@@ -1,0 +1,62 @@
+{
+  "family_hit_rates": {
+    "P0_prefix": {
+      "code": 0.0,
+      "english_narrative": 0.0,
+      "identifier_boundary": 0.0,
+      "korean": 0.0,
+      "mathematics": 0.0,
+      "structured_json": 0.0
+    },
+    "S0_state": {
+      "code": 0.0,
+      "english_narrative": 0.0,
+      "identifier_boundary": 0.0,
+      "korean": 0.0,
+      "mathematics": 0.0,
+      "structured_json": 0.0
+    }
+  },
+  "gate": {
+    "claim_scope": "rejects enumerative exact prefix/KV-state advice under the measured and independent-state budgets; not an unconditional lower bound for every symbolic compiler",
+    "cold_one_tib_capacity_entries": 2694881440,
+    "combined_budget_capacity_entries": 178956970,
+    "combined_budget_coverage_fraction_over_2_48_states": 6.357828752356909e-07,
+    "combined_budget_minimum_fallback_fraction": 0.9999993642171248,
+    "decision": "REJECT_ENUMERATIVE_EXACT_ADVICE_AS_CORE_RETAIN_FAIL_CLOSED_TABLE_AUXILIARY",
+    "enumerative_exact_advice_survives_gate": false,
+    "exact_gate_pass": true,
+    "fallback_gate_pass": false,
+    "fully_accounted_fraction_gate_pass": false,
+    "held_out_hit_gate_pass": false,
+    "hot_index_capacity_entries": 178956970,
+    "leakage_gate_pass": true,
+    "maximum_observed_prefix_length": 128,
+    "natural_reuse_gate_pass": false,
+    "prefix_universe_bit_length": 1999,
+    "prefix_universe_decimal_digits": 602,
+    "required_hit_rate_at_85_reuses": 0.999912854030501,
+    "required_hit_rate_infinite_reuse": 0.9881481481481481,
+    "storage_gate_pass": false
+  },
+  "natural_reuse_histogram": {
+    "1": 1152
+  },
+  "storage": {
+    "cold_capacity": {
+      "budget_bytes": 1099511627776,
+      "entry_bytes": 408,
+      "maximum_coverage_fraction": 9.574142154633591e-06,
+      "maximum_entries": 2694881440,
+      "minimum_fallback_fraction": 0.9999904258578454,
+      "state_count": 281474976710656
+    },
+    "combined_coverage": 6.357828752356909e-07,
+    "combined_entries": 178956970,
+    "combined_fallback": 0.9999993642171248,
+    "hot_index_capacity": 178956970,
+    "mean_prefix_entry_bytes": 300,
+    "mean_state_prefix_witness_entry_bytes": 408,
+    "mean_state_raw_witness_entry_bytes": 562698
+  }
+}
