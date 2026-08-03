@@ -3,25 +3,17 @@
   "seed": 202608035,
   "torch_num_threads": 2,
   "max_input_tokens": 64,
-  "max_new_tokens": 64,
+  "warmup_generated_tokens": 1,
+  "measured_new_tokens": 64,
   "fixed_depth_fractions": [0.0, 0.125, 0.25, 0.5, 0.75, 1.0],
   "tokenizer": {
     "model_id": "EleutherAI/gpt-neo-125M",
     "revision": "21def0189f5705e2521767faed922f1f15e7d7db"
   },
   "models": [
-    {
-      "model_id": "roneneldan/TinyStories-1M",
-      "revision": "77f1b168e219585646439073245fe87e56b3023e"
-    },
-    {
-      "model_id": "roneneldan/TinyStories-3M",
-      "revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894"
-    },
-    {
-      "model_id": "roneneldan/TinyStories-8M",
-      "revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af"
-    }
+    {"model_id": "roneneldan/TinyStories-1M", "revision": "77f1b168e219585646439073245fe87e56b3023e"},
+    {"model_id": "roneneldan/TinyStories-3M", "revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894"},
+    {"model_id": "roneneldan/TinyStories-8M", "revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af"}
   ],
   "held_out_prompts": [
     {"family": "english_narrative", "text": "Once there was a small blue bird who wanted to cross the river."},
