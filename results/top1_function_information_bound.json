@@ -1,0 +1,211 @@
+{
+  "experiment": "041_top1_function_information_bound",
+  "evidence_level": "E1 metadata-aware exact top-1 function certificate",
+  "construction": {
+    "family": "selector/payload row-pair classifier",
+    "decision_bits_formula": "K = p * (d - p)",
+    "pair_formula": "p = min(floor(m/2), floor(d/2))",
+    "distinct_functions": "2^K",
+    "minimum_exact_metadata_bits": "K",
+    "proof_reason": "each encoded bit is recovered by one selector/payload query; different bit tables produce different complete top-1 signatures"
+  },
+  "exhaustive_enumerations": [
+    {
+      "shape": {
+        "rows": 2,
+        "columns": 2,
+        "row_pairs": 1,
+        "selector_columns": 1,
+        "payload_columns": 1,
+        "decision_bits": 1,
+        "matrix_parameters": 4,
+        "decision_bits_per_parameter": 0.25,
+        "metadata_mib": 1.1920928955078125e-07
+      },
+      "enumerated_checkpoints": 2,
+      "expected_functions": 2,
+      "observed_functions": 2,
+      "decoded_tables_match": true,
+      "all_winners_unique": true,
+      "minimum_winner_margin": 1.0,
+      "injective": true,
+      "passes": true
+    },
+    {
+      "shape": {
+        "rows": 4,
+        "columns": 4,
+        "row_pairs": 2,
+        "selector_columns": 2,
+        "payload_columns": 2,
+        "decision_bits": 4,
+        "matrix_parameters": 16,
+        "decision_bits_per_parameter": 0.25,
+        "metadata_mib": 4.76837158203125e-07
+      },
+      "enumerated_checkpoints": 16,
+      "expected_functions": 16,
+      "observed_functions": 16,
+      "decoded_tables_match": true,
+      "all_winners_unique": true,
+      "minimum_winner_margin": 1.0,
+      "injective": true,
+      "passes": true
+    },
+    {
+      "shape": {
+        "rows": 4,
+        "columns": 5,
+        "row_pairs": 2,
+        "selector_columns": 2,
+        "payload_columns": 3,
+        "decision_bits": 6,
+        "matrix_parameters": 20,
+        "decision_bits_per_parameter": 0.3,
+        "metadata_mib": 7.152557373046875e-07
+      },
+      "enumerated_checkpoints": 64,
+      "expected_functions": 64,
+      "observed_functions": 64,
+      "decoded_tables_match": true,
+      "all_winners_unique": true,
+      "minimum_winner_margin": 1.0,
+      "injective": true,
+      "passes": true
+    },
+    {
+      "shape": {
+        "rows": 6,
+        "columns": 6,
+        "row_pairs": 3,
+        "selector_columns": 3,
+        "payload_columns": 3,
+        "decision_bits": 9,
+        "matrix_parameters": 36,
+        "decision_bits_per_parameter": 0.25,
+        "metadata_mib": 1.0728836059570312e-06
+      },
+      "enumerated_checkpoints": 512,
+      "expected_functions": 512,
+      "observed_functions": 512,
+      "decoded_tables_match": true,
+      "all_winners_unique": true,
+      "minimum_winner_margin": 1.0,
+      "injective": true,
+      "passes": true
+    }
+  ],
+  "square_hidden_classifier": {
+    "rows": 16384,
+    "columns": 16384,
+    "row_pairs": 8192,
+    "selector_columns": 8192,
+    "payload_columns": 8192,
+    "decision_bits": 67108864,
+    "matrix_parameters": 268435456,
+    "decision_bits_per_parameter": 0.25,
+    "metadata_mib": 8.0
+  },
+  "llama_405b_operator_collection": {
+    "hidden_size": 16384,
+    "intermediate_size": 53248,
+    "kv_projection_size": 1024,
+    "layers": 126,
+    "vocabulary_size": 128256,
+    "include_lm_head": true,
+    "matrix_bounds": [
+      {
+        "name": "q_proj",
+        "rows": 16384,
+        "columns": 16384,
+        "copies": 126,
+        "bits_per_copy": 67108864,
+        "total_bits": 8455716864,
+        "total_mib": 1008.0
+      },
+      {
+        "name": "k_proj",
+        "rows": 1024,
+        "columns": 16384,
+        "copies": 126,
+        "bits_per_copy": 8126464,
+        "total_bits": 1023934464,
+        "total_mib": 122.0625
+      },
+      {
+        "name": "v_proj",
+        "rows": 1024,
+        "columns": 16384,
+        "copies": 126,
+        "bits_per_copy": 8126464,
+        "total_bits": 1023934464,
+        "total_mib": 122.0625
+      },
+      {
+        "name": "o_proj",
+        "rows": 16384,
+        "columns": 16384,
+        "copies": 126,
+        "bits_per_copy": 67108864,
+        "total_bits": 8455716864,
+        "total_mib": 1008.0
+      },
+      {
+        "name": "gate_proj",
+        "rows": 53248,
+        "columns": 16384,
+        "copies": 126,
+        "bits_per_copy": 67108864,
+        "total_bits": 8455716864,
+        "total_mib": 1008.0
+      },
+      {
+        "name": "up_proj",
+        "rows": 53248,
+        "columns": 16384,
+        "copies": 126,
+        "bits_per_copy": 67108864,
+        "total_bits": 8455716864,
+        "total_mib": 1008.0
+      },
+      {
+        "name": "down_proj",
+        "rows": 16384,
+        "columns": 53248,
+        "copies": 126,
+        "bits_per_copy": 369098752,
+        "total_bits": 46506442752,
+        "total_mib": 5544.0
+      }
+    ],
+    "decoder_layer_bits": 653787136,
+    "decoder_layer_mib": 77.9375,
+    "decoder_stack_bits": 82377179136,
+    "decoder_stack_gib": 9.5899658203125,
+    "lm_head_bits": 67108864,
+    "lm_head_mib": 8.0,
+    "total_bits": 82444288000,
+    "total_gib": 9.5977783203125,
+    "resident_limit_gib": 8.0,
+    "exceeds_resident_limit": true,
+    "direct_classifier_bound_proven": true,
+    "independent_operator_collection_bound_proven": true,
+    "full_transformer_top1_bound_proven": false
+  },
+  "scope_separation": {
+    "direct_dense_classifier_top1_metadata_bound_proven": true,
+    "independently_callable_operator_collection_bound_proven": true,
+    "full_transformer_final_token_bound_proven": false,
+    "real_405b_execution_performed": false,
+    "measured_gpu_wall_clock_proven": false
+  },
+  "conclusion": {
+    "certificate_passes": true,
+    "direct_classifier_minimum_metadata_bits": "p*(d-p) for the constructed family",
+    "operator_collection_total_gib": 9.5977783203125,
+    "operator_collection_exceeds_8gib": true,
+    "operator_collection_excess_gib": 1.5977783203125,
+    "fixed_target_status": "metadata-aware exact top-1 compression is lower-bounded above 8 GiB for the independently callable Llama-shaped operator collection; an end-to-end Transformer routing theorem remains open"
+  },
+  "next_proof_obligation": "construct a Llama-like residual/attention/MLP routing family whose final token winners independently expose the layerwise selector/payload bits, or show why architectural composition prevents the operator-collection bounds from adding"
+}
