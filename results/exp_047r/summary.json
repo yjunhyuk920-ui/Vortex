@@ -17,44 +17,14 @@
     "case_count": 18,
     "model_count": 3,
     "models": [
-      {
-        "column_span_metadata_bytes": 256,
-        "hidden_size": 64,
-        "layer_count": 8,
-        "lm_head_weight_bytes": 12865792,
-        "model_id": "roneneldan/TinyStories-1M",
-        "parameter_count": 3745984,
-        "resolved_revision": "77f1b168e219585646439073245fe87e56b3023e",
-        "vocab_size": 50257
-      },
-      {
-        "column_span_metadata_bytes": 512,
-        "hidden_size": 128,
-        "layer_count": 8,
-        "lm_head_weight_bytes": 25731584,
-        "model_id": "roneneldan/TinyStories-3M",
-        "parameter_count": 8278400,
-        "resolved_revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894",
-        "vocab_size": 50257
-      },
-      {
-        "column_span_metadata_bytes": 1024,
-        "hidden_size": 256,
-        "layer_count": 8,
-        "lm_head_weight_bytes": 51463168,
-        "model_id": "roneneldan/TinyStories-8M",
-        "parameter_count": 19702528,
-        "resolved_revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af",
-        "vocab_size": 50257
-      }
+      {"column_span_metadata_bytes": 256, "hidden_size": 64, "layer_count": 8, "lm_head_weight_bytes": 12865792, "model_id": "roneneldan/TinyStories-1M", "parameter_count": 3745984, "resolved_revision": "77f1b168e219585646439073245fe87e56b3023e", "vocab_size": 50257},
+      {"column_span_metadata_bytes": 512, "hidden_size": 128, "layer_count": 8, "lm_head_weight_bytes": 25731584, "model_id": "roneneldan/TinyStories-3M", "parameter_count": 8278400, "resolved_revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894", "vocab_size": 50257},
+      {"column_span_metadata_bytes": 1024, "hidden_size": 256, "layer_count": 8, "lm_head_weight_bytes": 51463168, "model_id": "roneneldan/TinyStories-8M", "parameter_count": 19702528, "resolved_revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af", "vocab_size": 50257}
     ],
     "oracle_median_evaluated_fraction": 1.0,
     "oracle_p90_evaluated_fraction": 1.0,
     "peak_rss_kib": 649808,
-    "tokenizer": {
-      "model_id": "EleutherAI/gpt-neo-125M",
-      "resolved_revision": "21def0189f5705e2521767faed922f1f15e7d7db"
-    },
+    "tokenizer": {"model_id": "EleutherAI/gpt-neo-125M", "resolved_revision": "21def0189f5705e2521767faed922f1f15e7d7db"},
     "wrong_accepts": 0
   },
   "PROJECTED": {
@@ -107,8 +77,9 @@
   },
   "raw_evidence": {
     "artifact_provenance": "raw/artifact_provenance.json",
-    "cases": "raw/cases.jsonl",
+    "cases_parts": ["raw/cases_part_01.jsonl", "raw/cases_part_02.jsonl", "raw/cases_part_03.jsonl"],
+    "cases_reconstruction": "concatenate parts in numeric order without modification",
     "checkpoint_manifest": "raw/checkpoint_manifest.json",
-    "workflow_summary": "raw/workflow_summary.json"
+    "workflow_summary_sha256_in_artifact": "d047ae49789ef46926cadf193d77b1a8284d5f89a8d7bd178930d712b5d38ce8"
   }
 }
