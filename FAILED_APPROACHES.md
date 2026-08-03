@@ -54,51 +54,55 @@ False. Small serial probes can be cheap; hardware evidence or a valid lower boun
 
 ## F-012 — Small-model evidence promoted to 405B success
 
-Forbidden. Synthetic/TinyLlama work does not measure target VRAM, 405B, PCIe, SSD, CUDA, TTFT, or tokens/second.
+Forbidden. Synthetic/small-checkpoint work does not measure target VRAM, 405B, PCIe, SSD, CUDA, TTFT, or tokens/second.
 
 ## F-013 — Global-range Serfling CPTC-v1 as primary executor
+
+Authoritative source: `results/exp_047/summary.json`.
+
+Correctness passed at E1: 525 cases, zero wrong accepts, zero fallback mismatch, zero independent-bound mismatch, and 15/15 adversarial fallback.
+
+Performance failure: 4/525 certificates, 99.238% fallback, N=1024 mean evaluated 98.294%, positive control 10.449%, Python path about 8.6–9.1x full summation, projected target fraction 1.185%.
+
+Decision: retain certificate/fallback reference; reject one global range plus basic Serfling as primary runtime.
+
+## F-014 — Range-based CPTC as core, including oracle-tight and stratified rescue
 
 Authoritative source:
 
 ```text
-results/exp_047/summary.json
+results/exp_047r/summary.json
+workflow 30795946233
+source head SHA 0beb068e9679c9f4d51d1b210b0eee7fbc325214
+artifact SHA-256 6c9a4fdca80d29964eca02d16f8b36f5ca8e211653f6fb9ddfe548a729c6e12d
 ```
 
-Frozen summary currently records workflow `30793232558` and source SHA `74ac92e9b1c8fffbc50a2322d9b36dd3c05f0d79`.
-
-Correctness:
+Strongest favorable control:
 
 ```text
-525 cases
+C1 exact per-state min/max range
+3 pinned trained dense checkpoints
+18 held-out current-token states
+median evaluated fraction 100%
+p90 evaluated fraction 100%
 wrong accepts 0
-fallback mismatches 0
-independent-bound mismatches 0
-adversarial fallback 15/15
 ```
 
-Performance failure:
+Deployable candidate control:
 
 ```text
-certified 4/525
-fallback 99.238%
-N=64/128/256 mean evaluated 100%
-N=512 mean evaluated 98.519%
-N=1024 mean evaluated 98.294%
-positive control 10.449%
-Python optimized/reference about 8.6–9.1x
-simple projected target fraction before overhead 1.185%
+C2 checkpoint-span stratified bound
+median 100%
+p90 100%
+best case 254/256 = 99.21875%
+bound violations 0
 ```
 
-Decision:
+The pre-registered rejection thresholds were C1 median <=10% and p90 <=25%. C1 used the realized exact contribution range and still read the complete population in every case. This falsifies the claim that merely tightening sound range metadata or adding variance adaptation can close the core gap.
 
-- retain certificate/fallback code as E1 reference;
-- reject one global range plus basic Serfling alpha spending as primary runtime;
-- do not build a full backend from CPTC-v1.
+Permanent decision:
 
-Allowed next work:
-
-- non-deployable oracle-tight real-state range audit;
-- deployable checkpoint-derived stratified bounds;
-- independently proven variance-adaptive finite-population bounds.
-
-If oracle-tight held-out real-checkpoint contributions still require high tile fractions, reject range-only CPTC entirely rather than tune sample limits or delta.
+- reject range-based CPTC as a primary execution architecture;
+- do not continue C3 empirical-Bernstein/variance tuning as a rescue of EXP-047R;
+- retain only the E1 certificate, fault rejection, and exact fallback as auxiliary safety machinery;
+- revisit only if a new mechanism independently changes the decision object or amortizes/avoids the full operation before the certificate is applied.
