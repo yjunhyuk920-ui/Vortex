@@ -1,0 +1,21 @@
+{
+  "experiment": "EXP-047",
+  "name": "causal_probabilistic_tile_certificate",
+  "phase": ["A", "B"],
+  "evidence_ceiling": "E1",
+  "seed": 20260803,
+  "delta_per_decision": 1e-08,
+  "min_samples": 2,
+  "max_sample_fraction": 0.25,
+  "population_sizes": [64, 128, 256, 512, 1024],
+  "random_cases_per_size": 100,
+  "declared_value_min": -1.0,
+  "declared_value_max": 1.0,
+  "positive_control_max_fraction": 0.25,
+  "wrong_accept_limit": 0,
+  "target_parameters": 405000000000,
+  "baseline_parameters": 4000000000,
+  "bits_per_weight": 4,
+  "target_traffic_multiplier": 1.2,
+  "phase_d_status": "NOT TESTED"
+}
