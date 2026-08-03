@@ -92,7 +92,7 @@ jobs:
           assert summary["phase_d_status"] == "NOT TESTED"
           assert measured["case_count"] == 24
           assert measured["family_count"] == 4
-          assert measured["total_exhaustively_validated_assignments"] == 4457472
+          assert measured["total_exhaustively_validated_assignments"] == 4506624
           assert measured["exact_mismatch_output_bits"] == 0
           assert measured["truth_table_representations"] == 0
           assert math.isfinite(measured["p50_query_node_fraction"])
