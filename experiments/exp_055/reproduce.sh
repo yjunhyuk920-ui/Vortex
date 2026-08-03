@@ -7,4 +7,4 @@ python -m pytest -q tests/exp_055/test_column_signature.py
 PYTHONPATH="${ROOT}" python experiments/exp_055/run_experiment.py \
   --config experiments/exp_055/config.json \
   --output-dir "${OUTPUT_DIR}"
-python scripts/validate_repo.py
+python scripts/run_validation.py
