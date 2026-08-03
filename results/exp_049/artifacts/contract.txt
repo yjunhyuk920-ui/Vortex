@@ -1,0 +1,1 @@
+EXP-049 E1 CPU reference only. S3 is future-aware. S1/S2 fixed trajectories use no future tokens. Offline best-variant selection uses the exact reference only as a favorable falsification upper bound. 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, tokens/second, and physical block weight reuse are NOT TESTED.

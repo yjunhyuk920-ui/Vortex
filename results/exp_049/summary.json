@@ -1,0 +1,99 @@
+{
+  "DERIVED": {
+    "anderson_improvement_gate_pass": false,
+    "causal_gate_pass": true,
+    "decision": "REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY",
+    "exact_gate_pass": true,
+    "model_size_trend_gate_pass": true,
+    "numerical_gate_pass": true,
+    "prefix_gate_pass": false,
+    "target_only_continuous_fixed_point_survives_early_gate": false,
+    "traffic_gate_pass": false,
+    "universal_claim_scope": "rejected when hidden triangular barrier is observed; empirical checkpoint rows remain average-case evidence only",
+    "universal_round_barrier_absent_gate_pass": false,
+    "variant_selection_uses_reference": true
+  },
+  "MEASURED": {
+    "case_count": 18,
+    "excluded_state_count": 0,
+    "model_count": 3,
+    "model_median_matching_prefix": {
+      "roneneldan/TinyStories-1M": 4.5,
+      "roneneldan/TinyStories-3M": 5.0,
+      "roneneldan/TinyStories-8M": 4.0
+    },
+    "oracle_best_s1s2_max_matching_prefix": 6.0,
+    "oracle_best_s1s2_p50_matching_prefix": 4.5,
+    "oracle_best_s1s2_p90_target_equivalent_stream_fraction": 1.6877859595769764,
+    "peak_rss_kib": 684684,
+    "prompt_family_count": 6,
+    "s0_p50_matching_prefix_after_4_passes": 4.0,
+    "s2_improvement_over_s0": 0.25,
+    "s2_p50_matching_prefix_after_4_passes": 1.0,
+    "s3_oracle_exact_failures": 0,
+    "selected_deployable_future_information_uses": 0,
+    "selected_exact_output_mismatches": 0,
+    "selected_numerical_fallbacks": 0,
+    "triangular_one_position_per_round_barrier_observed": true,
+    "triangular_transcript_indistinguishability_observed": true,
+    "unhandled_numerical_failures": 0
+  },
+  "PROJECTED": {
+    "allowed_1_2x_baseline_gib_per_token": 2.2351741790771484,
+    "baseline_q4_full_weight_gib_per_stream": 1.862645149230957,
+    "required_target_equivalent_stream_fraction": 0.011851851851851851,
+    "target_q4_full_weight_gib_per_stream": 188.5928213596344
+  },
+  "UNVERIFIED": [
+    "complete multi-cycle real operation-replacement generator",
+    "causal deployable fixed variant selector",
+    "physical target-weight reuse across block positions",
+    "accelerator continuous projection and Anderson kernels",
+    "KV and memory-transfer cost on target hardware",
+    "70B and 405B behavior",
+    "8 GiB peak VRAM",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "complete_real_operation_replacement": false,
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED"
+  },
+  "complete_real_operation_replacement": false,
+  "evidence_level": "E1",
+  "experiment": "EXP-049",
+  "future_information_policy": {
+    "S0_S1_S2": false,
+    "S3_oracle": true
+  },
+  "name": "anderson_accelerated_continuous_block_fixed_point_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-observation"
+  ],
+  "phase_d_status": "NOT TESTED",
+  "provenance": {
+    "artifact_id": 8851957250,
+    "artifact_name": "exp-049-candidate-30803672059",
+    "artifact_size_bytes": 105493,
+    "artifact_zip_sha256": "4cd6c8c4afb833562438a97f052d45d331f3691362472fb08e594bd0c5585b9e",
+    "config_sha256": "bc2234ecb25569f5b7941bb7dd25e51520ec7b1e019e3c373aeb50db8f65c7db",
+    "created_utc": "2026-08-03T10:02:50Z",
+    "frozen_date": "2026-08-03",
+    "source_commit": "173dd3477e2a6f5ecb0d55b58375ec18dfe774dd",
+    "source_head_sha": "91d0caa86d784c663bc520d36d9b512f0cc526e9",
+    "workflow_merge_sha": "173dd3477e2a6f5ecb0d55b58375ec18dfe774dd",
+    "workflow_run": "30803672059"
+  },
+  "raw_evidence": {
+    "artifact_provenance": "raw/artifact_provenance.json",
+    "cases": "raw/cases.jsonl",
+    "checkpoint_manifest": "raw/checkpoint_manifest.json",
+    "triangular_audit": "raw/triangular_audit.json",
+    "workflow_checksums": "artifacts/workflow_checksums.sha256",
+    "workflow_summary": "raw/workflow_summary.json"
+  }
+}
