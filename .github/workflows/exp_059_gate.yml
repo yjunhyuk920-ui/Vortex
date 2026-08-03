@@ -1,17 +1,10 @@
 name: EXP-059 real-Q4 displacement-rank Gate
 
 on:
-  pull_request:
-    paths:
-      - "vortex_runtime/displacement_rank.py"
-      - "tests/exp_059/**"
-      - "experiments/exp_059/**"
-      - "scripts/finalize_exp_059.py"
-      - ".github/workflows/exp_059_gate.yml"
   workflow_dispatch:
 
 concurrency:
-  group: exp-059-${{ github.ref }}
+  group: exp-059-manual-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -40,69 +33,16 @@ jobs:
       - name: Run EXP-059 reproduction
         env:
           PYTHONPATH: ${{ github.workspace }}
-          EXP059_OUTPUT_DIR: ${{ runner.temp }}/exp_059_candidate
+          EXP059_OUTPUT_DIR: ${{ runner.temp }}/exp_059_reproduction
           EXP059_CACHE_DIR: ${{ runner.temp }}/exp_059_huggingface
           HF_HUB_DISABLE_TELEMETRY: "1"
           TOKENIZERS_PARALLELISM: "false"
         run: bash experiments/exp_059/reproduce.sh
-      - name: Upload EXP-059 candidate evidence
+      - name: Upload EXP-059 reproduction
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: exp-059-candidate-${{ github.run_id }}
-          path: ${{ runner.temp }}/exp_059_candidate
+          name: exp-059-manual-reproduction-${{ github.run_id }}
+          path: ${{ runner.temp }}/exp_059_reproduction
           if-no-files-found: error
           retention-days: 30
-
-  finalize:
-    if: github.event_name == 'pull_request' && github.head_ref == 'research/exp-059-real-q4-displacement-rank'
-    needs: gate
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    permissions:
-      actions: read
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: research/exp-059-real-q4-displacement-rank
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: pip
-      - name: Install repository validation environment
-        run: |
-          set -euo pipefail
-          python -m pip install --disable-pip-version-check pytest==8.3.5 numpy==2.1.3
-          python -m pip install --disable-pip-version-check --index-url https://download.pytorch.org/whl/cpu torch==2.6.0
-          python -m pip install --disable-pip-version-check safetensors==0.5.3
-      - name: Download authority and finalize
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PYTHONPATH: ${{ github.workspace }}
-        run: |
-          set -euo pipefail
-          rm -rf results/exp_059 "${RUNNER_TEMP}/exp059"
-          mkdir -p results/exp_059 "${RUNNER_TEMP}/exp059"
-          gh run download 30840432745 \
-            --repo "${GITHUB_REPOSITORY}" \
-            --name exp-059-candidate-30840432745 \
-            --dir "${RUNNER_TEMP}/exp059"
-          cp -a "${RUNNER_TEMP}/exp059/." results/exp_059/
-          python scripts/finalize_exp_059.py
-          (cd results/exp_059 && sha256sum -c checksums.sha256)
-          python -m pytest -q tests/exp_059/test_displacement_rank.py
-          python scripts/run_validation.py
-      - name: Commit frozen evidence
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add results/exp_059 RESEARCH_STATE.md DECISION_LOG.md FAILED_APPROACHES.md NEXT_EXPERIMENT.md ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md ARCHITECTURE.md HARDWARE_VALIDATION_PLAN.md REPRODUCIBILITY.md docs/research/EXPERIMENT_059_REAL_Q4_DISPLACEMENT_RANK.md
-          if git diff --cached --quiet; then
-            echo "No finalization changes"
-            exit 0
-          fi
-          git commit -m "research(exp059): freeze evidence and register EXP-060"
-          git push origin HEAD:research/exp-059-real-q4-displacement-rank
