@@ -1,8 +1,8 @@
 {
   "artifact_id": 8850040445,
   "artifact_name": "exp-048-candidate-30798936320",
-  "artifact_size_bytes": 16075,
-  "artifact_zip_sha256": "67c587da36b968f9c38e0a7774ea03cecd2ad2d7d274d3e83c833c56529c3443",
+  "artifact_size_bytes": 17689,
+  "artifact_zip_sha256": "67c1e6d8965f7535020ecd4c02bb8a2af1156a234564f3cdf74d10c882fd7eb9",
   "scientific_decision": "REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER",
   "scientific_gate_passes": false,
   "source_head_sha": "484a1f0f313d88733d2f7210f2a24d3904bf1373",
