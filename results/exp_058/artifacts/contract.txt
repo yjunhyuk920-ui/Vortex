@@ -1,0 +1,3 @@
+EXP-058 exact modular-rank observation on pinned real Q4 matrices.
+Q4 output preservation, factor kernel, operation replacement: NOT TESTED.
+405B, 8 GiB, CUDA, PCIe, SSD, TTFT, tokens/sec: NOT TESTED.

@@ -1,76 +1,69 @@
 # Next Experiment
 
-## Closed Gate — EXP-057
+## Closed Gate — EXP-058
 
-Authority: `results/exp_057/summary.json`; workflow `30824957941`; source head `cf9d7099dc11b22ce24ba6e096712d5da1bc3729`; artifact `8860450501`; ZIP SHA-256 `7e2d91fb1af2d77c7cb87732557e8c42c22e23771264cfb000d29536d76172f0`.
-
-All 144 real dense projections had zero exact repeated/sign-related columns in FP32, Q8, and Q4. Q4 p50/p90 operations were 82.8918%/85.8398% and query bytes 329.0244%/490.6845%. Decision:
+All 144 pinned real-Q4 dense projections were proven full integer/rational rank. Favorable conventional exact two-factor operation and storage lower bounds were 200% at p50 and p90.
 
 ```text
-REJECT_REAL_WEIGHT_EXACT_GROUPING_DICTIONARY_AS_CORE_RETAIN_MEASURED_AUXILIARY_ONLY
+REJECT_REAL_Q4_EXACT_LOW_RANK_FACTORIZATION_AS_CORE_RETAIN_RANK_CERTIFICATES
 ```
 
-## EXP-058 — Pinned Real-Q4 Exact Algebraic-Rank Certificate Gate
+## EXP-059 — Pinned Real-Q4 Exact Shift-Displacement Rank Gate
 
-### Mechanism change
+### Mechanism
 
-Test whether deterministic row-symmetric Q4 projection matrices admit an exact low-rank factorization:
+Full-rank Toeplitz-, Hankel-, and circulant-like matrices can still admit fast exact transforms. For every registered Q4 dense projection `W`, certify the exact integer rank of four displacement matrices:
 
 ```text
-W = A @ B
-W x = A @ (B x)
+D_zero_diag  = W - shift_zero_down_right(W)
+D_zero_anti  = reverse_columns(W) - shift_zero_down_right(reverse_columns(W))
+D_cycle_diag = W - shift_cycle_down_right(W)
+D_cycle_anti = reverse_columns(W) - shift_cycle_down_right(reverse_columns(W))
 ```
 
-No approximation or truncated SVD is allowed. Instead of assuming rank, compute exact modular-rank certificates. A full-rank minor modulo any registered prime proves the integer/rational rank is full and rules out a lower exact factorization rank.
+Use primes 251, 257, and 263. Record every operator certificate and select the most favorable operator only after all four searches are charged.
 
-### Pinned evidence
+### Pinned population
 
-Use the same unchanged TinyStories-1M/3M/8M revisions and the exact EXP-057 Q4 rule. Analyze every named dense-projection matrix. Embeddings/output heads are reported separately.
+Use the unchanged TinyStories-1M/3M/8M revisions, the exact EXP-057 Q4 rule, and all 144 named dense projections. Q4 checksums must match frozen EXP-057 evidence.
 
-### Registered primes
+### Favorable lower bounds
+
+For displacement rank `r` and shape `m x n`:
 
 ```text
-251, 257, 263
+query:   r * max(m, n) frequency-domain products
+storage: r * (m + n) generator scalars
 ```
 
-Stop after the first full-rank certificate; test all primes only when a matrix remains deficient. Record pivot rows/columns, certificate prime, rank lower bound, minimum dimension, and checksums.
-
-### Fully accounted lower bounds
-
-For certified rank `r`, any conventional exact two-factor path must perform at least:
-
-```text
-r*n + m*r scalar multiply/add terms
-```
-
-and store at least `r*(m+n)` factor scalars before metadata. Compare this with the direct `m*n` matrix path. Calculate the maximum rank that could meet 10% and 25% operation budgets, and determine whether the certified lower bound already exceeds them.
+These omit transforms, boundary terms, metadata, bitwidth expansion, and operator-search runtime, so they favor the candidate.
 
 ### Controls
 
-- known exact low-rank products with registered ranks;
-- full-rank identity and random integer controls;
-- row/column permutation rank invariance;
-- duplicate-row rank-deficient control;
-- deterministic Q4 checksum agreement with EXP-057 rules.
+- random exact Toeplitz: zero-fill diagonal displacement rank <=2;
+- random exact Hankel: zero-fill anti-diagonal displacement rank <=2;
+- exact circulant: cyclic diagonal displacement rank 0;
+- deterministic dense-random negative control;
+- transpose, column-reversal, and cyclic-shift equivalence controls;
+- exact EXP-057 Q4 checksum agreement.
 
 ### Promotion Gate
 
 ```text
 zero certificate/control mismatch
-zero unregistered dense projections
-real-matrix p50 exact-factor operation lower bound <=10%
-real-matrix p90 exact-factor operation lower bound <=25%
-real-matrix p50 factor-storage lower bound <=10%
-real-matrix p90 factor-storage lower bound <=25%
+zero Q4 checksum mismatch
+zero unregistered dense projection
+p50 query lower-bound fraction <=10%
+p90 query lower-bound fraction <=25%
+p50 generator-storage lower-bound fraction <=10%
+p90 generator-storage lower-bound fraction <=25%
 no model-size degradation >25%
 ```
 
 Failure decision:
 
 ```text
-REJECT_REAL_Q4_EXACT_LOW_RANK_FACTORIZATION_AS_CORE_RETAIN_RANK_CERTIFICATES
+REJECT_REAL_Q4_EXACT_SHIFT_DISPLACEMENT_STRUCTURE_AS_CORE_RETAIN_CERTIFICATES
 ```
 
-### Claim boundary
-
-Phase C observation only. Q4 output preservation, factor-kernel execution, actual Transformer operation replacement, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.
+Phase C observation only. Q4 output preservation, constructive generators, exact transform kernels, real Transformer operation replacement, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.

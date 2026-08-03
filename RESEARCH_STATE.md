@@ -320,3 +320,8 @@ Authority: `results/exp_057/summary.json`; workflow `30824957941`; artifact `886
 MEASURED Phase C observation: 3 pinned unchanged models, 327 tensors, 153 two-dimensional tensors, 54,205,312 named 2-D scalars, and zero unregistered matrices. All 144 dense projections had zero exact repeated/sign-related columns in FP32, Q8, and Q4. Q4 p50/p90 operations were 82.8918%/85.8398%; bytes 329.0244%/490.6845%; median residual density 81.4087%; best matrix 70.2866%. Reconstruction and controls passed; projected storage was 0.9300 TiB.
 
 Decision: `REJECT_REAL_WEIGHT_EXACT_GROUPING_DICTIONARY_AS_CORE_RETAIN_MEASURED_AUXILIARY_ONLY`. Q4 output preservation, actual operation replacement, 405B, 8 GiB, and hardware remain NOT TESTED. Current frontier: EXP-058 pinned real-Q4 exact algebraic-rank certificates.
+
+<!-- EXP-058-AUTHORITATIVE-FINAL -->
+## EXP-058 closed — Exact algebraic rank of pinned real Q4 matrices
+
+Authority: workflow `30826618962`, artifact `8861905858`, ZIP SHA-256 `851582a616412e7e078b7c05ddb64883b972cec895847b6df3d7d75dc615bfae`. All 144 registered dense projections were proven full integer/rational rank. Favorable exact two-factor operation/storage lower bounds were 2.0x at p50 and p90. Decision: `REJECT_REAL_Q4_EXACT_LOW_RANK_FACTORIZATION_AS_CORE_RETAIN_RANK_CERTIFICATES`. Q4 output preservation, constructive factor kernels, 405B, 8 GiB, and target hardware remain NOT TESTED. Current frontier: EXP-059 exact shift-displacement rank.

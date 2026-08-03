@@ -238,3 +238,8 @@ The compiler exactly reconstructed all registered columns, and favorable repeate
 ## F-025 — Exact column grouping/dictionaries on measured real checkpoint weights
 
 No analyzed dense projection in three pinned TinyStories checkpoints contained even one exactly repeated or sign-related column under FP32, Q8, or Q4. Prototype residuals remained dense: Q4 median/p90 residual scalar density was 81.41%/84.28%; p50/p90 operations were 82.89%/85.84%; query bytes were 3.29x/4.91x baseline. Do not continue by increasing prototype search, quoting only the 70.29% best matrix, or treating Q4 structural results as model-output preservation. Retain the analyzers only for conditional measurement on future models.
+
+<!-- EXP-058-AUTHORITATIVE-FINAL -->
+## F-026 — Conventional exact low-rank factorization of measured real Q4 projections
+
+All 144 pinned real-Q4 dense projections had certified rank `min(rows, columns)`. Conventional exact `W=A@B` therefore has favorable operation and factor-storage lower bounds of 200% before factor bitwidth, metadata, and kernel overhead. Do not revive this using approximate SVD energy, selected matrices, or a new factor optimizer while claiming exact output preservation. Retain modular rank certificates only as falsification infrastructure.

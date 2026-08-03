@@ -198,3 +198,8 @@ EXP-053 exact AIGs are auxiliary bit-level reference machinery. EXP-054 compiles
 ## Closed EXP-054 and active EXP-055 architecture
 
 EXP-054 ROMTDD/ROBDD-like diagrams are auxiliary exact decision references. EXP-055 keeps signed modular score arithmetic at word level: compile input columns into exact vector signatures, group identical and optional exact-negated signatures, compute group popcounts, and add scaled score vectors. Group build, bit scans/popcounts, vector arithmetic, bytes, selector metadata, and fallback are mandatory.
+
+<!-- EXP-058-AUTHORITATIVE-FINAL -->
+## Exact-rank boundary
+
+Modular rank certification is retained as an offline structural audit. Conventional exact low-rank factors are prohibited for matrices certified full rank. The next permitted algebraic route is a different full-rank structured representation, beginning with EXP-059 shift-displacement operators.

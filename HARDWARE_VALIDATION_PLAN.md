@@ -149,3 +149,8 @@ EXP-053 has no Phase-D promotion route as core. EXP-054 hardware work is forbidd
 ## EXP-054/055 hardware boundary
 
 EXP-054 has no Phase-D route as core. EXP-055 hardware work is forbidden until a real small-checkpoint linear operation is replaced exactly and grouped signature bytes/operations close the 8 GiB and 1.185185% equations. Phase D remains NOT TESTED.
+
+<!-- EXP-058-AUTHORITATIVE-FINAL -->
+## EXP-058 hardware status
+
+No factor kernel was promoted because the favorable structural lower bound is already 2.0x on every measured matrix. CUDA, factor bytes, PCIe, SSD, TTFT, tokens/sec, power, and 8 GiB residency are NOT TESTED. EXP-059 remains a CPU structural Gate unless its exact displacement-rank thresholds survive.

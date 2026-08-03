@@ -196,3 +196,8 @@ A-029 structural hashing alone makes exact dense arithmetic cheap: CONTRADICTED 
 ## A-031/A-032 — Decision paths and word-level column aggregation
 
 A-031 an exact reduced ordered diagram yields a universally short path: CONTRADICTED for the registered operator family. A-032 quantized target weight columns contain enough exact repeated/sign-related structure for word-level grouped popcount aggregation to close query and storage costs: ACTIVE UNVERIFIED for EXP-055.
+
+<!-- EXP-058-AUTHORITATIVE-FINAL -->
+## A-034 — Full-rank real Q4 matrices may still have low exact shift-displacement rank
+
+Status: ACTIVE FOR EXP-059 ONLY. EXP-058 ruled out ordinary exact low rank, not Toeplitz-, Hankel-, or circulant-like full-rank structure. EXP-059 must use exact registered displacement operators and modular certificates; visual banding and approximate spectral decay are not evidence.
