@@ -1,0 +1,292 @@
+{
+  "experiment": "040_exact_operator_lower_bound",
+  "evidence_level": "E1 formal and executable worst-case certificate",
+  "target": {
+    "parameter_count": 405849243648,
+    "resident_gib": 8.0,
+    "native_baseline_parameter_count": 4000000000
+  },
+  "exact_output_information_theorem": {
+    "checkpoint_cardinality_log2": {
+      "q4": 1623396974592,
+      "q8": 3246793949184,
+      "fp16": 6493587898368
+    },
+    "minimum_lossless_representation_bits_equals_parameter_codes": true,
+    "proof_method": "injectivity/cardinality: 2^(N*b) arbitrary checkpoints require at least N*b bits in the worst-case exact representation",
+    "budgets": {
+      "q4": {
+        "parameter_count": 405849243648,
+        "bits_per_parameter": 4,
+        "exact_information_bits": 1623396974592,
+        "exact_information_gib": 188.98828125,
+        "resident_gib": 8.0,
+        "resident_information_bits": 68719476736,
+        "resident_fraction": 0.042330666997375005,
+        "minimum_external_information_bits": 1554677497856,
+        "minimum_external_information_gib": 180.98828125,
+        "dense_compute_gflop": 811.698487296,
+        "baseline_parameter_count": 4000000000,
+        "baseline_dense_compute_gflop": 8.0,
+        "compute_ratio_to_baseline": 101.462310912,
+        "exact_information_exceeds_resident": true
+      },
+      "q8": {
+        "parameter_count": 405849243648,
+        "bits_per_parameter": 8,
+        "exact_information_bits": 3246793949184,
+        "exact_information_gib": 377.9765625,
+        "resident_gib": 8.0,
+        "resident_information_bits": 68719476736,
+        "resident_fraction": 0.021165333498687502,
+        "minimum_external_information_bits": 3178074472448,
+        "minimum_external_information_gib": 369.9765625,
+        "dense_compute_gflop": 811.698487296,
+        "baseline_parameter_count": 4000000000,
+        "baseline_dense_compute_gflop": 8.0,
+        "compute_ratio_to_baseline": 101.462310912,
+        "exact_information_exceeds_resident": true
+      },
+      "fp16": {
+        "parameter_count": 405849243648,
+        "bits_per_parameter": 16,
+        "exact_information_bits": 6493587898368,
+        "exact_information_gib": 755.953125,
+        "resident_gib": 8.0,
+        "resident_information_bits": 68719476736,
+        "resident_fraction": 0.010582666749343751,
+        "minimum_external_information_bits": 6424868421632,
+        "minimum_external_information_gib": 747.953125,
+        "dense_compute_gflop": 811.698487296,
+        "baseline_parameter_count": 4000000000,
+        "baseline_dense_compute_gflop": 8.0,
+        "compute_ratio_to_baseline": 101.462310912,
+        "exact_information_exceeds_resident": true
+      }
+    },
+    "passes": true
+  },
+  "skipped_coordinate_top1_adversary": {
+    "model": "coordinate-query runtime with one checkpoint coordinate neither inspected nor represented by available checkpoint metadata",
+    "shapes": [
+      {
+        "rows": 2,
+        "columns": 4,
+        "total_coordinates": 8,
+        "passing_coordinates": 8,
+        "coverage": 1.0,
+        "all_observations_equal": true,
+        "all_outputs_differ": true,
+        "all_winners_flip": true,
+        "passes": true
+      },
+      {
+        "rows": 3,
+        "columns": 5,
+        "total_coordinates": 15,
+        "passing_coordinates": 15,
+        "coverage": 1.0,
+        "all_observations_equal": true,
+        "all_outputs_differ": true,
+        "all_winners_flip": true,
+        "passes": true
+      },
+      {
+        "rows": 4,
+        "columns": 7,
+        "total_coordinates": 28,
+        "passing_coordinates": 28,
+        "coverage": 1.0,
+        "all_observations_equal": true,
+        "all_outputs_differ": true,
+        "all_winners_flip": true,
+        "passes": true
+      },
+      {
+        "rows": 8,
+        "columns": 8,
+        "total_coordinates": 64,
+        "passing_coordinates": 64,
+        "coverage": 1.0,
+        "all_observations_equal": true,
+        "all_outputs_differ": true,
+        "all_winners_flip": true,
+        "passes": true
+      }
+    ],
+    "tested_coordinates": 115,
+    "passing_coordinates": 115,
+    "coverage": 1.0,
+    "example_cases": [
+      {
+        "rows": 2,
+        "columns": 4,
+        "skipped_row": 1,
+        "skipped_column": 3,
+        "competitor_row": 0,
+        "inspected_coordinates": 7,
+        "total_coordinates": 8,
+        "input_vector": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "baseline_output": [
+          1.0,
+          0.0
+        ],
+        "alternate_output": [
+          1.0,
+          2.0
+        ],
+        "baseline_winner": 0,
+        "alternate_winner": 1,
+        "observations_equal": true,
+        "outputs_differ": true,
+        "winner_flips": true,
+        "changed_coordinates": 1,
+        "changed_coordinate_is_uninspected": true,
+        "passes": true
+      },
+      {
+        "rows": 3,
+        "columns": 5,
+        "skipped_row": 2,
+        "skipped_column": 4,
+        "competitor_row": 0,
+        "inspected_coordinates": 14,
+        "total_coordinates": 15,
+        "input_vector": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "baseline_output": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "alternate_output": [
+          1.0,
+          0.0,
+          2.0
+        ],
+        "baseline_winner": 0,
+        "alternate_winner": 2,
+        "observations_equal": true,
+        "outputs_differ": true,
+        "winner_flips": true,
+        "changed_coordinates": 1,
+        "changed_coordinate_is_uninspected": true,
+        "passes": true
+      },
+      {
+        "rows": 4,
+        "columns": 7,
+        "skipped_row": 3,
+        "skipped_column": 6,
+        "competitor_row": 0,
+        "inspected_coordinates": 27,
+        "total_coordinates": 28,
+        "input_vector": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "baseline_output": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "alternate_output": [
+          1.0,
+          0.0,
+          0.0,
+          2.0
+        ],
+        "baseline_winner": 0,
+        "alternate_winner": 3,
+        "observations_equal": true,
+        "outputs_differ": true,
+        "winner_flips": true,
+        "changed_coordinates": 1,
+        "changed_coordinate_is_uninspected": true,
+        "passes": true
+      },
+      {
+        "rows": 8,
+        "columns": 8,
+        "skipped_row": 7,
+        "skipped_column": 7,
+        "competitor_row": 0,
+        "inspected_coordinates": 63,
+        "total_coordinates": 64,
+        "input_vector": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "baseline_output": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "alternate_output": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.0
+        ],
+        "baseline_winner": 0,
+        "alternate_winner": 7,
+        "observations_equal": true,
+        "outputs_differ": true,
+        "winner_flips": true,
+        "changed_coordinates": 1,
+        "changed_coordinate_is_uninspected": true,
+        "passes": true
+      }
+    ],
+    "passes": true
+  },
+  "scope_separation": {
+    "exact_output_nb_bit_lower_bound_proven": true,
+    "every_unrepresented_coordinate_can_flip_top1_proven": true,
+    "metadata_aware_top1_nb_bit_lower_bound_proven": false,
+    "measured_gpu_wall_clock_proven": false,
+    "real_405b_execution_performed": false
+  },
+  "conclusion": {
+    "certificate_passes": true,
+    "arbitrary_dense_exact_output_with_only_8gib_information_compatible": false,
+    "arbitrary_coordinate_omission_safe_for_universal_exact_top1": false,
+    "top1_only_with_checkpoint_specific_compressed_metadata": "not closed by this gate; requires a metadata-aware decision-function information bound or a constructive exact representation",
+    "q4_minimum_external_information_gib": 180.98828125,
+    "q4_dense_compute_gflop": 811.698487296,
+    "q4_compute_ratio_to_4b": 101.462310912,
+    "fixed_target_status": "contradicted for arbitrary dense exact operator output; exact top-1-only remains conditionally open only through a charged checkpoint-specific decision representation"
+  },
+  "next_proof_obligation": "derive a metadata-aware information lower bound for the complete top-1 decision function of quantized dense transformers, or narrow universality to a measured structured checkpoint family"
+}

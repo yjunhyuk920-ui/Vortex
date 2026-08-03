@@ -1,0 +1,101 @@
+name: Exact operator lower-bound certificate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/exact_operator_lower_bound.py"
+      - "scripts/run_exact_operator_lower_bound.py"
+      - "tests/test_exact_operator_lower_bound.py"
+      - "docs/EXPERIMENT_040_EXACT_OPERATOR_LOWER_BOUND.md"
+      - ".github/workflows/exact-operator-lower-bound.yml"
+
+concurrency:
+  group: exact-operator-lower-bound-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  certify:
+    if: github.head_ref == 'research/exact-operator-lower-bound'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest
+      - name: Validate lower-bound implementation
+        run: |
+          test -f vortex_runtime/exact_operator_lower_bound.py
+          test -f scripts/run_exact_operator_lower_bound.py
+          test -f tests/test_exact_operator_lower_bound.py
+          python -m pytest -q tests/test_exact_operator_lower_bound.py
+      - name: Generate certificate
+        run: |
+          python scripts/run_exact_operator_lower_bound.py \
+            --resident-gib 8 \
+            --output results/exact_operator_lower_bound.json
+      - name: Build PR report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(
+              Path("results/exact_operator_lower_bound.json").read_text(
+                  encoding="utf-8"
+              )
+          )
+          report = {
+              "evidence_level": payload["evidence_level"],
+              "q4": payload["exact_output_information_theorem"]["budgets"]["q4"],
+              "coordinate_adversary": {
+                  "tested_coordinates": payload["skipped_coordinate_top1_adversary"]["tested_coordinates"],
+                  "passing_coordinates": payload["skipped_coordinate_top1_adversary"]["passing_coordinates"],
+                  "coverage": payload["skipped_coordinate_top1_adversary"]["coverage"],
+              },
+              "scope_separation": payload["scope_separation"],
+              "conclusion": payload["conclusion"],
+              "next_proof_obligation": payload["next_proof_obligation"],
+          }
+          Path("exact-operator-comment.md").write_text(
+              "## Exact operator lower-bound certificate\n\n```json\n"
+              + json.dumps(report, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file exact-operator-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-operator-lower-bound
+          path: results/exact_operator_lower_bound.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/exact_operator_lower_bound.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(gate): commit exact operator lower-bound certificate"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
