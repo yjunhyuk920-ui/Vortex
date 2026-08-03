@@ -12,7 +12,7 @@ Build a universal runtime for arbitrary unmodified Hugging Face dense transforme
 - p50 warm decode at or below 1.2x a native 4B Q4 baseline on the same machine;
 - flagship validation on a real 405B-class model.
 
-Current evidence remains below E4. Do not claim the target is solved or proven feasible.
+Current evidence remains below E4. Do not claim the target is solved.
 
 ## Mandatory startup and persistence
 
@@ -23,191 +23,204 @@ Read in this order:
 3. `docs/WORK_SESSION_PROTOCOL.md`
 4. `docs/RESEARCH_PROGRESS_LEDGER.md`
 5. this file
-6. active experiment documents, branch, workflow, PR comments, and raw result JSON
+6. active experiment documents, workflows, PR comments, and raw result JSON
 
-Before a user-facing progress/completion answer after meaningful work, commit the ledger and this handoff. This rule is permanent.
+Before a user-facing progress/completion answer after meaningful work, commit the ledger and this handoff.
 
 ## Current repository state
 
-No research PR is promoted. The latest closed sequence is:
+Latest research decisions:
 
 ```text
-PR #36  causal semantic-state signed program routing       rejected
+PR #36  causal semantic-state program routing             rejected
 PR #37  prompt-compiled Hankel decision program            rejected
 PR #38  perfect-oracle sparse Hankel repair                rejected
 PR #40  prompt-only nonlocal exact decision memory         rejected
+PR #42  exact dense-operator lower-bound certificate       accepted and merged
 ```
 
-Authoritative evidence heads:
+Main merge for PR #42:
 
 ```text
-PR #36 research/semantic-state-program-routing
-       499e5001c21d782adf79fba69ce6f2d445c0cb5e
-
-PR #37 research/prompt-hankel-decision-program
-       12f859e4ec288f0d38b29d8b71e494bdc29f6586
-
-PR #38 research/oracle-sparse-hankel-repair
-       13e3f60876199e4b06577ca51e9fd71f575cb134
-
-PR #40 research/nonlocal-exact-decision-memory
-       91b3e3f062d33087005ae38bbf94b357012f0ccd
+663dd3d02095f19be269ef60a7c16959f6e16f2f
 ```
 
-Authoritative successful workflows:
+Authoritative PR #42 evidence:
 
 ```text
-PR #36 Semantic state program routing gate  30778002226
-PR #37 Prompt Hankel decision program gate   30778715832
-PR #38 Oracle sparse Hankel repair gate      30779062125
-PR #40 Nonlocal exact decision memory gate   30780847944
-PR #40 corrected full CI                     30780847954
+branch: research/exact-operator-lower-bound
+head:   7733aa6b8ba1193ed64c20fddcfc643a3d43ed7c
+certificate workflow: 30781557141
+Python 3.10/3.12 CI + validation: 30781557096
 ```
 
-## Latest decisive result — PR #40
+The bot evidence commit triggered follow-up `action_required` runs with no jobs. Those are not test failures.
 
-Experiment 039 stored prompt-only exact decision blocks:
+## Experiment 040 accepted result
+
+### Exact-output information theorem
+
+For `N` independently selectable `b`-bit parameter codes, the arbitrary checkpoint family has size:
 
 ```text
-key_i   = normalize(P^T (h_i - mean_prompt_hidden))
-block_i = prompt_token_ids[i+1 : i+1+L]
+2^(N b)
 ```
 
-No continuation token or hidden state entered memory construction. Evaluation charged one exact first continuation token as the block-boundary anchor. Replay began after the anchor:
+Any checkpoint-specific representation supporting every exact dense operator output must be injective, so its worst-case size is at least:
 
 ```text
-query_t  = continuation_hidden_states[t]
-target_t = continuation_token_ids[t+1]
+N b bits
 ```
 
-The first workflow attempt incorrectly counted the anchor as replay. It is invalid evidence. The anchored alignment was corrected, locked by a unit test, and rerun. Only workflow `30780847944` and evidence head `91b3e3f062d33087005ae38bbf94b357012f0ccd` are authoritative.
-
-The experiment measured:
-
-- nearest hidden-state retrieval;
-- top-4/top-16/top-64 future-token oracle among nearest entries;
-- an impossible global future-token oracle that ignored hidden retrieval and searched every prompt suffix.
-
-Corrected frontier over 256 post-anchor decisions:
-
-| Prompt | Best rank | Nearest max | Top-64 oracle max | Global oracle max | Global first |
-|---|---:|---:|---:|---:|---:|
-| algorithm-runtime | 32 | 74 | 75 | 75 | 0 |
-| distributed-database | 16 | 27 | 28 | 28 | 0 |
-| korean-plm-governance | 16 | 4 | 5 | 5 | 4 |
-
-Required exact replay horizon:
+For the 405B target at Q4:
 
 ```text
->=247 tokens after the charged boundary anchor
+parameters: 405,849,243,648
+exact information: 1,623,396,974,592 bits
+                 = 188.98828125 GiB
+resident allowance: 8 GiB
+resident fraction: 4.2330667%
+minimum external exact information: 180.98828125 GiB
+optimistic dense arithmetic: 811.698487296 GFLOP
+4B dense arithmetic proxy: 8 GFLOP
+ratio: 101.462310912x
 ```
 
-The global oracle saw the future continuation and searched every stored prompt suffix, yet reached only 75, 28, and 5 tokens. Therefore no key rank, ANN index, distance metric, top-k width, or router can make prompt-only exact suffix memory meet the target.
+Accepted conclusion:
 
-The 405B metadata budget was not the obstruction. At 65,536 entries, rank 128, block length 256, fp16 keys, 32-bit token IDs, and 25% index overhead:
+> Arbitrary dense exact-output execution is incompatible with retaining only 8 GiB of checkpoint information unless the remaining exact information is read or equivalently represented and its transfer/construction cost is charged or amortized.
+
+### Skipped-coordinate exact top-1 adversary
+
+For every tested coordinate, the executable gate constructed `W0/W1` that:
+
+- differ only at one uninspected/unrepresented coordinate;
+- have identical inspected observations;
+- produce different exact outputs for a one-hot input;
+- produce different unique top-1 winners.
+
+Coverage:
 
 ```text
-keys: 16 MiB
-blocks: 64 MiB
-index: 20 MiB
-total: 100 MiB = 0.09765625 GiB
-full-hidden projection plus brute-force lookup: 0.02097152 GFLOP/query
+2x4, 3x5, 4x7, 8x8 matrices
+115 coordinates tested
+115 adversaries passed
+100% coverage
 ```
 
-Conclusion: prompt-derived exact decision content does not recur at the required horizon.
+Accepted conclusion:
 
-## Decisive interpretation
+> No arbitrary weight coordinate may be declared universally irrelevant to exact top-1 unless its effect is read or represented.
 
-The tested prompt-derived reusable objects are now exhausted:
+## Critical scope boundary
+
+Experiment 040 deliberately did **not** prove all of the following:
 
 ```text
-semantic-state program: mean reuse about 1 token
-prompt recurrence: maximum autonomous exact prefix 2 tokens
+metadata-aware exact top-1 representation requires N*b bits: not proven
+measured 405B GPU wall clock: not performed
+real 405B execution: not performed
+```
+
+The exact-output cardinality theorem must not be misreported as a complete top-1-only information theorem.
+
+Current fixed-target classification:
+
+```text
+arbitrary dense exact operator output + 8 GiB only: contradicted
+coordinate omission without metadata for universal top-1: contradicted
+exact top-1 via charged checkpoint-specific decision metadata: conditionally open
+405B/8 GiB/4B-speed runtime: unsolved
+```
+
+## Accumulated representation evidence
+
+```text
+semantic-state program reuse: about 1 token
+prompt recurrence: at most 2 autonomous exact tokens
 perfect-token recurrence repair: exact target on 68%–89% of tokens
-prompt exact suffix replay: impossible global-oracle maxima 75 / 28 / 5
-required strong reuse: 247 tokens
+prompt suffix global-oracle maxima: 75 / 28 / 5
+required full-interaction reuse: about 247 tokens
 ```
 
-Do not recreate candidates that only change:
+Prompt-derived static, dynamic, repaired, and nonlocal programs are exhausted at the tested scale.
 
-- static basis rank, block size, or semantic state count;
-- norm precision, neuron ordering, or local/global refinement allocation;
-- Hankel rank, order, ridge, or polynomial/bilinear lift;
-- recurrence detector thresholds;
-- nearest-neighbor rank, index, distance metric, or top-k width;
-- speculative block length while dense target arithmetic remains per verified position.
+## Prohibited repeats
 
-## Current frontier — Experiment 040 Exact Dense-Operator Lower Bound
+Do not continue by only changing:
 
-The next work must test the internal consistency of all four fixed requirements together:
+- static rank/block size/state count;
+- norm precision or neuron ordering;
+- Hankel rank/order/ridge/lift;
+- recurrence repair thresholds;
+- ANN rank/index/distance/top-k width;
+- speculative block size while dense target arithmetic remains per position;
+- lossless metadata that omits its exact information content or build/transfer cost.
+
+## Current frontier — Experiment 041 Metadata-Aware Top-1 Function Bound
+
+The remaining loophole is a checkpoint-specific representation that does not reproduce exact internal operators but preserves the complete exact top-1 decision function.
+
+The next Gate must count **distinct top-1 functions**, not distinct weight tensors.
+
+### Candidate injective classifier family
+
+For an `m x d` dense classifier, choose:
 
 ```text
-arbitrary dense checkpoint
-exact original decisions
-8 GiB resident memory
-4B-class warm-decode traffic and compute
+p = min(floor(m/2), floor(d/2))
+q = d - p
 ```
 
-The candidate is an executable information/read lower-bound certificate, not a claim of impossibility without proof.
-
-### Core adversarial lemma
-
-For a dense affine operator:
+Use `p` selector input coordinates and `p` row pairs. For every pair `r` and payload coordinate `j`, encode one independent bit `a[r,j]` by assigning the payload advantage to one row or the other. Query:
 
 ```text
-y = W x
+x_(r,j) = selector_r + payload_j
 ```
 
-consider an exact runtime that neither reads a weight degree of freedom `W[i,j]` nor stores an exact representation from which that degree of freedom's effect can be recovered. If `x[j] != 0`, construct two checkpoints `W` and `W'` that are identical on every observed/stored degree of freedom but differ only at `W[i,j]`. The runtime receives identical observations for both checkpoints, while exact output `y_i` differs. With a suitable downstream logit margin, the exact top-1 token can also differ.
+A large fixed selector margin suppresses every other row, and the exact top-1 winner reveals `a[r,j]`.
 
-Therefore a universal exact runtime must place every decision-relevant degree of freedom into one of:
+This constructs:
 
 ```text
-resident exact information
-cold information read for the interaction
-lossless metadata carrying equivalent information
+K = p q independent decision bits
+2^K distinct exact top-1 functions
+minimum metadata for this family >= K bits
 ```
 
-Compression may change representation but cannot remove arbitrary checkpoint information while preserving exact behavior for every possible checkpoint and input.
-
-### Experiment 040 proof obligations
-
-1. Formalize the indistinguishable-checkpoint adversary for dense matrix-vector multiplication.
-2. Extend it to top-1 decisions through a downstream linear margin.
-3. Implement an executable adversarial checker that constructs `W/W'`, an input `x`, an inspection mask, and two different exact winners while the simulated runtime observations remain identical.
-4. Derive resident/read/lossless-metadata inequalities for the 405B target.
-5. Separate worst-case universality from empirical structure in real checkpoints.
-6. State exactly which fixed assumption must be relaxed if the lower bound closes:
-   - arbitrary checkpoint universality;
-   - bit-exact/original-decision preservation;
-   - 8 GiB residency;
-   - 4B-class latency.
-
-### 405B starting quantities
-
-Use the established optimistic proxies:
+For a square `H x H` classifier with even `H`:
 
 ```text
-full Q4-equivalent target information: about 188.9883 GiB
-full dense interaction compute: about 811.6985 GFLOP
-resident VRAM: 8 GiB before KV/workspace
-required full-interaction amortization: about 247 tokens
+K = H^2 / 4 = N / 4 bits
 ```
 
-Do not hide skipped weights in uncharged metadata. Any automatic first-run representation must be counted by exact information content, host storage, transfer, and construction cost.
+This lower bound already includes arbitrary checkpoint-specific metadata because two checkpoints with different encoded bit tables implement different top-1 functions and therefore cannot share one exact representation.
+
+### Required Experiment 041 work
+
+1. Formalize the selector/payload construction and prove unique winners.
+2. Implement encode/decode queries and exhaustive small-shape tests.
+3. Enumerate all `2^K` functions for small matrices and verify injectivity.
+4. Compute `K=p(d-p)` for target attention/MLP matrix shapes.
+5. Keep three conclusions separate:
+   - direct dense-classifier top-1 metadata lower bound;
+   - independently callable operator-collection bound;
+   - full end-to-end transformer decision-function bound.
+6. Do not sum layerwise bits into a full-transformer theorem until an explicit Llama-like routing construction exposes each layer's independent bits through final token decisions.
+7. Add workflow and raw JSON evidence.
 
 ## Exact next steps
 
-1. Create `research/exact-operator-lower-bound` from the updated `main`.
-2. Add `docs/EXPERIMENT_040_EXACT_OPERATOR_LOWER_BOUND.md` with theorem assumptions and 405B inequalities.
-3. Implement a small adversarial dense-operator simulator and tests.
-4. Add a workflow producing machine-readable counterexample/lower-bound JSON.
-5. Test both exact output and exact top-1 indistinguishability failures.
-6. Record whether the fixed universal target is mathematically compatible, conditionally compatible only under checkpoint structure, or contradicted by the proven worst-case lower bound.
-7. Update the ledger and this handoff before the next progress response.
+1. Merge the documentation update after full CI.
+2. Create `research/top1-function-information-bound` from the new `main`.
+3. Add `docs/EXPERIMENT_041_TOP1_FUNCTION_INFORMATION_BOUND.md`.
+4. Implement the injective top-1 classifier family and tests.
+5. Produce shape-level and 405B operator-shape budgets.
+6. Record exactly whether the result exceeds 8 GiB for a direct operator collection and what remains to extend it to a full transformer.
+7. Update the ledger and handoff before the next progress response.
 
 ## Correct communication
 
 Use wording equivalent to:
 
-> Experiment 039 rejected prompt-only exact decision-block memory even under a future-aware global oracle: maximum reusable blocks were 75, 28, and 5 tokens versus the required 247. Prompt-derived static, dynamic, repaired, and nonlocal execution programs are now exhausted. The 405B objective remains unchanged and unsolved. Experiment 040 now tests, with an executable adversarial proof, whether arbitrary dense checkpoints and exact decisions can coexist with 8 GiB residency and 4B-class traffic.
+> Experiment 040 proved that arbitrary Q4 405B exact operator output carries 188.99 GiB of worst-case checkpoint information and that every unrepresented coordinate can adversarially flip top-1. It did not prove a full metadata-aware top-1 N*b lower bound. The original runtime objective remains unsolved. Experiment 041 now counts distinct exact top-1 decision functions using an injective selector/payload classifier family.
