@@ -1,0 +1,12 @@
+{
+  "artifact_id": 8848886335,
+  "artifact_name": "exp-047r-candidate-30795946233",
+  "artifact_size_bytes": 15335,
+  "artifact_zip_sha256": "6c9a4fdca80d29964eca02d16f8b36f5ca8e211653f6fb9ddfe548a729c6e12d",
+  "scientific_decision": "REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY",
+  "scientific_gate_passes": false,
+  "source_head_sha": "0beb068e9679c9f4d51d1b210b0eee7fbc325214",
+  "workflow_conclusion": "success",
+  "workflow_merge_sha": "213e69a54c4d2b5c2d4102f8651cab847ade312f",
+  "workflow_run": 30795946233
+}
