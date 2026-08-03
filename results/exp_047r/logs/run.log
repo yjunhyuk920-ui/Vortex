@@ -1,0 +1,7 @@
+{
+  "bound_violations": 0,
+  "decision": "REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY",
+  "gate_passes": false,
+  "phase_d_status": "NOT TESTED",
+  "wrong_accepts": 0
+}
