@@ -1,37 +1,43 @@
 # EXP-047R — Oracle-Tight and Stratified Tile-Bound Audit
 
-## Status
-
-Pre-registered implementation branch. No result is authoritative until a workflow run completes, raw artifacts are inspected, checkpoint revisions are frozen, and durable state is updated.
+## Final status
 
 ```text
-Phase: A/B with small-real-checkpoint current-state observation
-Evidence ceiling: E1
+Scientific decision: REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY
+Phase: A/B/C-observation
+Evidence: E1
 Real operation replacement: false
 Phase D: NOT TESTED
 ```
 
-## Previous failure addressed
-
-EXP-047 CPTC-v1 used one broad contribution range and evaluated almost the entire tile population. The unresolved question is whether this failure came from loose metadata or from an intrinsic limitation of range-only finite-population certification.
-
-This experiment does not tune CPTC-v1. It gives the family its strongest favorable oracle test first.
-
-## Exact hypothesis
-
-For current-token LM-head top-1-versus-runner-up margins from unmodified trained small dense checkpoints, an exact per-state min/max contribution range can certify the sign after reading at most:
+Authoritative evidence:
 
 ```text
-median evaluated fraction <=10%
-p90 evaluated fraction <=25%
+results/exp_047r/summary.json
+workflow 30795946233
+source head SHA 0beb068e9679c9f4d51d1b210b0eee7fbc325214
+workflow merge SHA 213e69a54c4d2b5c2d4102f8651cab847ade312f
+artifact 8848886335
+artifact SHA-256 6c9a4fdca80d29964eca02d16f8b36f5ca8e211653f6fb9ddfe548a729c6e12d
+```
+
+## Question tested
+
+EXP-047 CPTC-v1 used one broad contribution range and evaluated almost the entire population. EXP-047R tested whether the failure was mainly loose metadata or an intrinsic limitation of range-only finite-population certification.
+
+Pre-registered favorable oracle Gate:
+
+```text
+C1 exact per-state range median evaluated fraction <=10%
+C1 p90 <=25%
 wrong accepts = 0
 ```
 
-If the non-deployable exact oracle misses either fraction threshold, range-based CPTC is rejected as a core execution path. C2 or C3 may not rescue a family whose exact range oracle already fails.
+If C1 failed, C2/C3 could not rescue the range family because C1 already knew the exact realized min/max contribution range.
 
-## Operation and decision audited
+## Operation audited
 
-For final hidden state `h`, exact LM-head rows `w_top` and `w_runner`, bias margin `b`, and input-dimension tiles `T_i`:
+For final hidden state `h`, exact top and runner-up LM-head rows, bias margin `b`, and input-dimension tiles `T_i`:
 
 ```text
 margin = logit_top - logit_runner
@@ -39,115 +45,124 @@ margin = logit_top - logit_runner
 c_i    = sum_{j in T_i} (w_top,j - w_runner,j) h_j
 ```
 
-The audit certifies only this pairwise sign. Top-1 and runner-up are identified from the fully evaluated reference logits. Therefore this is an offline oracle audit, not a deployable top-1 selector and not E2.
+The top and runner-up were identified from fully evaluated reference logits. Full contributions were materialized for offline validation. Therefore this was not a deployable selector and not E2.
 
-No future generated token is used.
+No future generated token was used.
 
-## Compared conditions
+## Conditions
 
 ### C0 — global checkpoint-derived range
 
-For each hidden dimension, compile the checkpoint output-weight column span:
-
 ```text
 s_j = max_o W[o,j] - min_o W[o,j]
+B_i = sum_{j in T_i} |h_j| s_j
+range = [-max_i B_i, +max_i B_i]
 ```
-
-For tile `T_i`:
-
-```text
-|c_i| <= B_i = sum_{j in T_i} |h_j| s_j
-```
-
-C0 uses one global range `[-max_i B_i, +max_i B_i]`.
 
 ### C1 — exact per-state oracle range
 
-C1 uses the exact minimum and maximum of all materialized `c_i`. This consumes the full contribution population and is explicitly non-deployable. It is the favorable upper bound used for the primary rejection Gate.
+Exact min/max of all realized `c_i`. Non-deployable strongest favorable range-only control.
 
 ### C2 — checkpoint-span stratified range
 
-C2 groups tiles by the magnitude of `B_i`, samples without replacement inside each stratum, and sums per-stratum Serfling intervals. Error probability is union-accounted across both stratum and adaptive sample count:
+Tiles grouped by `B_i`; sampling without replacement inside each stratum; per-stratum Serfling intervals; union accounting over stratum and adaptive sample count:
 
 ```text
 delta_s   = delta * 6 / (pi^2 (s+1)^2)
 delta_s,n = delta_s * 6 / (pi^2 n^2)
 ```
 
-The bound metadata uses only checkpoint column spans and the current hidden state, not the selected skipped output rows. The present implementation is still offline because exact contributions and reference logits are materialized for validation.
+### C3 — variance-adaptive range
 
-### C3 — variance-adaptive bound
+Not implemented. The pre-registered protocol forbade C3 from influencing the decision before an independent proof. C1 failed, so C3 is no longer a valid continuation of this core family.
 
-`NOT IMPLEMENTED` in this branch. C3 is forbidden until a separate independent finite-population proof, reference calculator, property tests, and fault injection are committed. An unverified empirical-Bernstein formula may not influence the Gate.
-
-## Checkpoints and prompts
-
-Candidate trained Dense checkpoints:
+## Frozen checkpoints
 
 ```text
-roneneldan/TinyStories-1M
-roneneldan/TinyStories-3M
-roneneldan/TinyStories-8M
+EleutherAI/gpt-neo-125M tokenizer @ 21def0189f5705e2521767faed922f1f15e7d7db
+roneneldan/TinyStories-1M @ 77f1b168e219585646439073245fe87e56b3023e
+roneneldan/TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
+roneneldan/TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
 ```
 
-The workflow resolves each Hugging Face revision SHA before downloading or executing, loads only that SHA, and saves a file SHA-256 manifest. The first successful run is discovery evidence; exact revisions must then be frozen into the authoritative reproduction state.
+Exact file hashes are in `results/exp_047r/raw/checkpoint_manifest.json`.
 
-Held-out prompts are fixed in `experiments/exp_047r/config.json`. No prompt-derived calibration is used.
-
-## Correctness contract
-
-- reconstruct exact current-token logits from the returned final hidden state and output embedding;
-- reconstruct exact top-1/runner-up margin from tile contributions;
-- validate every C0/C2 bound against materialized contributions in the offline audit;
-- causal random sampling without replacement;
-- union-accounted probabilistic intervals;
-- zero wrong certified accepts in the committed corpus;
-- invalid numbers, malformed strata, uncovered contributions, or reconstruction mismatch abort the run;
-- failed certification evaluates the complete contribution population before returning the exact sign.
-
-Probabilistic certification is not deterministic exactness.
-
-## Pre-registered rejection Gate
-
-Reject range-based CPTC from the core path if any condition holds:
+## MEASURED results
 
 ```text
-C1 oracle median evaluated fraction >10%
-C1 oracle p90 evaluated fraction >25%
-wrong certified accept >0
-sound checkpoint-derived bound violation >0
-C2 materialized-contribution CPU selector/fallback median cost > full materialized sum
+primitive tests: 9 passed
+repository validation: passed
+models: 3
+held-out current-token states: 18
+wrong accepts: 0
+checkpoint-derived bound violations: 0
+future generated tokens used: false
+real operation replacement: false
 ```
 
-The timing comparison is only a CPU primitive measurement after contributions have already been materialized. It is not LM-head, GPU, PCIe, SSD, or 405B timing.
-
-## 405B projection boundary
-
-From the already committed same-bit parameter-count projection:
+Coverage:
 
 ```text
-405B Q4 full stream: 188.593 GiB/token
-1.2x 4B Q4 allowance: 2.235 GiB/token
-required average evaluated weight fraction before overhead: about 1.185%
+C1 exact-state oracle median: 100%
+C1 exact-state oracle p90: 100%
+C1 cases below full evaluation: 0/18
+C2 median: 100%
+C2 p90: 100%
+C2 best: 254/256 = 99.21875%
 ```
 
-These values remain PROJECTED. This experiment cannot measure target traffic or speed.
+CPU reference cost after contributions were already materialized:
 
-## Strongest counterexample
+```text
+C2 certificate/full math.fsum median ratio: 2165.056897860546x
+peak RSS: 649808 KiB
+```
 
-The exact per-state C1 range is the strongest range-only favorable control because no sound global or static range can be tighter than the realized exact minimum and maximum for that state. If C1 still requires high coverage, further range metadata tuning cannot close the core gap.
+The CPU ratio is an implementation measurement, not an intrinsic lower bound and not LM-head/GPU/PCIe/SSD timing. The C1 coverage failure alone is sufficient for rejection.
 
-## Commands
+## PROJECTED target gap
+
+```text
+405B Q4 full stream: 188.592821 GiB
+1.2x 4B Q4 allowance: 2.235174 GiB/token
+required evaluated fraction before overhead: 1.185185%
+C1 oracle median / required fraction: 84.375x
+```
+
+These are parameter-count projections, not target-hardware measurements.
+
+## Decision
+
+C1 missed both pre-registered thresholds maximally: 100% versus 10% median and 100% versus 25% p90. Since C1 used the exact realized range, the result rejects the claim that static bound tightening, additional strata, or variance adaptation can turn this range-only decision primitive into the core 405B execution architecture.
+
+Permanent classification:
+
+- keep causal sampling, fault rejection, probabilistic interval reference, and exact fallback as auxiliary safety machinery;
+- reject global/oracle-tight/stratified range-based CPTC as the primary executor;
+- do not implement C3 as a rescue of EXP-047R;
+- do not claim real operation replacement, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, or tokens/second.
+
+## Raw evidence layout
+
+```text
+results/exp_047r/summary.json
+results/exp_047r/raw/artifact_provenance.json
+results/exp_047r/raw/checkpoint_manifest.json
+results/exp_047r/raw/cases_part_01.jsonl
+results/exp_047r/raw/cases_part_02.jsonl
+results/exp_047r/raw/cases_part_03.jsonl
+results/exp_047r/processed/aggregate.json
+results/exp_047r/logs/run.log
+results/exp_047r/checksums.sha256
+```
+
+Concatenate case parts in numeric order to reconstruct the original 18-row JSONL stream. The exact original GitHub artifact archive is identified by its SHA-256 above.
+
+## Reproduction
 
 ```bash
 python -m pytest -q tests/exp_047r
-bash experiments/exp_047r/run_current_env.sh
+bash experiments/exp_047r/reproduce.sh
 ```
 
-## Result decision vocabulary
-
-```text
-CONTINUE_TO_INDEPENDENT_C3_AND_REAL_OPERATION_REPLACEMENT
-REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY
-INFRASTRUCTURE FAILURE — NO SCIENTIFIC DECISION
-```
+Reproduction writes to an isolated directory and must not overwrite frozen evidence.
