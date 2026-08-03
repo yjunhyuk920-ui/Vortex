@@ -1,6 +1,6 @@
 # EXP-047 — Causal Probabilistic Tile Certificate
 
-## Final decision for this Gate
+## Final Gate classification
 
 ```text
 Phase: A/B
@@ -11,52 +11,38 @@ Real-model operation replacement: NOT TESTED
 Phase D: NOT TESTED
 ```
 
-Authoritative evidence:
+Final authoritative evidence:
 
 ```text
 PR: #56
-workflow: 30791851508
-source head: d395d0eada15fd7ef9b09ce5ccb561a921bb6b7b
+workflow: 30792813542
+source implementation SHA: 08e8b35f48b1b616147f22dce046ab93218265c9
+committed evidence head after workflow: 3359371762c004db3532ebb16872b4eee85accf6
 results: results/exp_047/
 ```
 
-## Motivation
+## Mechanism
 
-Prior deterministic signed-residual certificates observed cancellation but still required roughly 90–98% refinement. EXP-047 tested a materially different correctness regime:
-
-> sample weight-tile decision contributions without replacement in a causal random order, use an anytime-valid finite-population confidence interval, and exact-fallback when the interval does not certify the decision.
-
-## Direct connection to the target
-
-For a linear operation:
+For a linear operation partitioned by input dimension:
 
 ```text
-y = W x
-W = [W_1 ... W_N]
-x = [x_1 ... x_N]
-y = sum_i W_i x_i
-```
-
-For decision projection `q`:
-
-```text
+y = W x = sum_i W_i x_i
 z_i = q^T W_i x_i
 M = M_base + sum_i z_i
 ```
 
-If the sign of `M` can be certified after evaluating a small subset of tiles, the runtime can skip the omitted original weight reads and arithmetic. If not, it evaluates every remaining tile and returns the full reference decision.
+sample scalar decision contributions `z_i` uniformly without replacement in a causal random order. Commit a sign decision only when an anytime-valid interval excludes zero. Otherwise evaluate every remaining tile and return the full reference sign.
 
-Phase B receives synthetic scalar contributions. It does not prove that sound real-checkpoint bounds or useful skip fractions exist.
+This attempts to skip original weight-tile reads and arithmetic. Phase B uses synthetic contributions and does not establish real Transformer bounds or savings.
 
-## Causal and fallback contract
+## Causal and safety contract
 
-Permitted:
+Permitted before commit:
 
 - current activation/state;
 - current decision projection;
 - checksummed static tile metadata;
-- current random permutation;
-- observed tile contributions;
+- current random permutation and observed tiles;
 - confidence state.
 
 Forbidden:
@@ -64,23 +50,23 @@ Forbidden:
 - future generated tokens;
 - target continuation;
 - future hidden states;
-- secretly computing the exact answer before the optimized stop.
+- exact full result used secretly to select early stop.
 
-Invalid bounds, non-finite state, or failure to certify cause rejection or exact full-tile fallback.
+Invalid range, non-finite state, or failure to certify triggers rejection or exact full-tile fallback.
 
-## Implemented Phase-A certificate
+## Implemented confidence sequence
 
-For finite population `z_1,...,z_N in [a,b]`, sampled uniformly without replacement, the reference uses a two-sided Serfling total radius:
+For `N` finite contributions in `[a,b]`, the implemented fixed-step Serfling total radius is:
 
 ```text
 R_n = N (b-a)
       sqrt((1 - (n-1)/N) log(2/delta_n) / (2n))
 ```
 
-Adaptive stopping uses alpha spending:
+Adaptive stopping uses:
 
 ```text
-delta_n = delta_total * 6 / (pi^2 n^2)
+delta_n = delta_total * 6/(pi^2 n^2)
 sum_n delta_n <= delta_total
 ```
 
@@ -96,13 +82,11 @@ Accept negative when:
 M_base + N mean_n + R_n < 0
 ```
 
-Otherwise evaluate all remaining tiles exactly.
+Otherwise exact-fallback.
 
-This is a probabilistic certificate under the declared range and random-sampling assumptions, not deterministic exactness. Exact fallback is deterministic under the reference floating-point contract.
+The early certificate is probabilistic under declared range/random-sampling assumptions. It is not deterministic exactness. The fallback path evaluates all contributions.
 
-## Phase-B implementation
-
-Files:
+## Implementation and evidence files
 
 ```text
 vortex_runtime/cptc.py
@@ -112,26 +96,15 @@ experiments/exp_047/
 results/exp_047/
 ```
 
-Tests cover:
+Raw evidence includes all 525 cases, processed scaling, stdout, summary, logs, artifact contract, and checksums.
 
-- independent alpha/radius calculation;
-- positive and negative controls;
-- exact zero margin;
-- one dominant tile;
-- misleading positive sample prefix with negative exact total;
-- 200 randomized property cases in unit tests;
-- deterministic replay;
-- invalid bound/configuration and NaN/Inf rejection.
-
-The experiment runner adds 525 measured cases across populations 64–1024, raw case logs, scaling output, stdout, summary, and checksums.
-
-## Authoritative MEASURED result
+## Final MEASURED result
 
 ```text
 unit/property tests: 10 passed
 cases: 525
-certified decisions: 4
-exact fallbacks: 521 = 99.238%
+certified: 4
+fallback: 521 = 99.238%
 wrong certified accepts: 0
 fallback/reference mismatches: 0
 independent-bound mismatches: 0
@@ -146,12 +119,12 @@ Largest positive cancellation control:
 population: 1,024 tiles
 certificate after: 107 tiles
 sample fraction: 10.449%
-reference decision agreement: pass
+reference agreement: pass
 ```
 
 Broad scaling:
 
-| Tiles | Certified fraction | Fallback fraction | Mean evaluated fraction |
+| Tiles | Certified | Fallback | Mean evaluated |
 |---:|---:|---:|---:|
 | 64 | 0% | 100% | 100% |
 | 128 | 0% | 100% | 100% |
@@ -159,62 +132,61 @@ Broad scaling:
 | 512 | 1.905% | 98.095% | 98.519% |
 | 1,024 | 1.905% | 98.095% | 98.294% |
 
-Measured Python optimized/reference mean time was roughly 8.8–9.1x in the size buckets. This is current CPU implementation evidence only.
+Measured Python optimized/reference mean time ratio was about 9.2–9.7x across size buckets. This is CPU implementation evidence, not accelerator projection.
 
-## DERIVED and PROJECTED target gap
-
-For 405B Q4 versus 4B Q4:
+## PROJECTED target gap
 
 ```text
-405B full Q4 stream: 188.593 GiB
-4B full Q4 stream: 1.863 GiB
+405B Q4 full stream: 188.593 GiB
+4B Q4 full stream: 1.863 GiB
 1.2x allowance: 2.235 GiB/token
-required average evaluated fraction before selector/fallback: 1.185%
+required average target weight fraction before selector/fallback: 1.185%
+positive-control fraction / target fraction: 8.817x
 ```
 
-The positive-control 10.449% fraction is 8.817x above that simple pre-overhead target. The broad corpus mean near 98% is far worse.
-
-These values are PROJECTED from parameter counts, not measured target traffic.
+These are parameter-count projections, not measured traffic.
 
 ## Interpretation
 
-### Accepted
+Accepted at E1:
 
 - causal sample order;
-- fixed-step Serfling plus alpha-spending implementation;
+- alpha-spending Serfling calculation;
 - independent interval verification;
 - deterministic replay;
 - invalid-state rejection;
-- exact fallback correctness in the synthetic corpus.
+- exact fallback correctness on the corpus.
 
-### Not accepted
+Not accepted:
 
-- useful general skip coverage;
-- selector performance advantage;
-- real Transformer operation skipping;
-- model-wide nonlinear correctness;
-- 405B scaling;
-- 8 GiB execution;
-- target PCIe/SSD or wall clock.
+- useful broad skip coverage;
+- selector speed advantage;
+- real Transformer operation replacement;
+- deployable sound checkpoint-derived ranges;
+- model-wide nonlinear certification;
+- 70B/405B trend;
+- 8 GiB execution or target wall clock.
 
 ## Decision
 
-> Phase B, E1: the finite-population certificate and exact fallback were correct on the committed synthetic corpus. The current global-range form certified only 4/525 cases and evaluated about 98% of tiles overall, so it is not promoted as the core executor.
+> Phase B, E1: the certificate and exact fallback were correct on the committed synthetic corpus. The global-range form certified only 4/525 cases and evaluated about 98% of tiles overall, so it is not promoted as the core executor.
 
-The pre-registered primitive Gate passed because the positive control certified below 25% and correctness checks passed. The architecture-level interpretation is stricter: **REVISE**, not performance promotion.
+The pre-registered primitive Gate passed because correctness checks and the <=25% positive control passed. The architecture-level decision is stricter: **REVISE**.
 
-## Next decisive Gate
+## Next Gate
 
-`EXP-047R — Oracle-Tight and Stratified Tile-Bound Audit`, defined in `NEXT_EXPERIMENT.md`.
+`EXP-047R — Oracle-Tight and Stratified Tile-Bound Audit` in `NEXT_EXPERIMENT.md`.
 
-It will use available unmodified small checkpoints and held-out prompts to compare:
+On held-out current-token states from available unmodified small checkpoints, compare:
 
 - current global range;
-- non-deployable exact per-state oracle range;
-- deployable static stratified checkpoint-derived bounds;
-- independently justified variance-adaptive bounds.
+- exact per-state min/max as a non-deployable oracle upper bound;
+- deployable checkpoint-derived stratified bounds;
+- only independently justified variance-adaptive finite-population bounds.
 
-If even the oracle-tight certificate requires high tile fractions, range-only CPTC is rejected rather than tuned.
+If oracle-tight intervals still require high tile fractions, reject range-only CPTC rather than tune thresholds.
+
+Offline full-contribution analysis remains below E2. Actual operation replacement follows only after a deployable bound shows useful held-out coverage.
 
 ## Reproduction
 
@@ -222,6 +194,5 @@ If even the oracle-tight certificate requires high tile fractions, range-only CP
 git checkout research/governance-exp047-cptc
 python -m pytest -q tests/exp_047
 bash experiments/exp_047/reproduce.sh
+cd results/exp_047 && sha256sum -c checksums.sha256
 ```
-
-Authoritative raw files and hashes are in `results/exp_047/`.
