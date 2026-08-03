@@ -1,0 +1,38 @@
+{
+  "build": [
+    {
+      "id": "build-transaction",
+      "prompt": "Explain how a database transaction preserves consistency when concurrent services update related records."
+    },
+    {
+      "id": "build-korean-plm",
+      "prompt": "PLM 시스템에서 품목, BOM, 변경 이력을 안정적으로 관리하는 방법을 한국어로 설명해줘."
+    },
+    {
+      "id": "build-python",
+      "prompt": "Write a Python function that merges overlapping intervals and explain its time complexity."
+    },
+    {
+      "id": "build-math",
+      "prompt": "Prove that the sum of the first n odd integers equals n squared."
+    },
+    {
+      "id": "build-story",
+      "prompt": "Continue this short story: The observatory received a signal that repeated every seventeen minutes."
+    }
+  ],
+  "eval": [
+    {
+      "id": "eval-sql",
+      "prompt": "Design an SQL query strategy for detecting inconsistent parent-child BOM quantities without producing duplicate rows."
+    },
+    {
+      "id": "eval-korean-algorithm",
+      "prompt": "한국어로 병합 정렬과 퀵 정렬의 장단점을 비교하고 실제 선택 기준을 설명해줘."
+    },
+    {
+      "id": "eval-translation",
+      "prompt": "Translate into natural Korean and explain the nuance: The system remained available even though one replica failed."
+    }
+  ]
+}
