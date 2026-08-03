@@ -100,36 +100,84 @@ Status: SOUNDNESS SUPPORTED AT E1; USEFULNESS CONTRADICTED FOR THE TESTED CORE R
 
 Assumption:
 
-A causal training-free proposal mechanism can supply a long block, one exact teacher-forced target pass can verify it, and the longest matching prefix can preserve exact greedy output.
+A sufficiently accurate block proposal, one exact teacher-forced target pass, and longest-prefix verification can preserve exact greedy output while amortizing target weight traffic.
 
-Known arithmetic:
+EXP-048 evidence:
 
 ```text
-required target-equivalent stream fraction 0.01185185
-zero-cost perfect-proposal minimum accepted block 85 tokens
-real draft cost raises the requirement
+B1 perfect future oracle
+96 exact tokens / 1 target pass
+fraction 1.0416667%
+projected requirement 1.185185%
+exact mismatches 0
 ```
 
-Current evidence:
+Status: ARITHMETIC AND VERIFIER CONTRACT SUPPORTED AT E1 UNDER A PERFECT NON-DEPLOYABLE PROPOSAL; CAUSAL PROPOSAL SOURCE REMAINS UNSOLVED.
 
-- exact causal block evaluation is structurally possible;
-- an existing Jacobi implementation exists as a control;
-- no committed training-free partial-layer self-draft evidence yet meets the accounting target.
-
-Status: ACTIVE UNVERIFIED ASSUMPTION FOR EXP-048.
-
-Contradiction test:
-
-- exact mismatch or future information;
-- p50 accepted tokens per verification <16 at the early Gate;
-- p90 target-equivalent stream fraction >10%;
-- cost not lower than exact sequential decoding;
-- non-degrading 85-token acceptance cannot be approached across checkpoint sizes/tasks.
+B1 is not runtime evidence because it uses future target tokens.
 
 ## A-014 — Early target layers can act as a useful training-free draft
 
-Assumption: the same checkpoint's partial-layer hidden state plus its own output head predicts enough final-layer tokens to amortize exact block verification without an adapter.
+EXP-048 contradiction evidence:
 
-Status: ACTIVE UNVERIFIED ASSUMPTION FOR EXP-048 B3.
+```text
+18 cases, 54 fixed variants
+maximum matching proposal prefix 1
+p50 committed tokens per verification 1
+minimum accounted fraction 1333.463%
+p90 accounted fraction 2893.843%
+```
 
-All partial-layer reads, sequential proposal steps, output-head work, rejected positions, and correction passes must be charged.
+Status: CONTRADICTED FOR THE TESTED SAME-CHECKPOINT PARTIAL-LAYER + FULL-LM-HEAD MECHANISM.
+
+Changing only the selected early-layer count, temperature, or proposal tree does not address the failed exact-prefix prediction and repeated LM-head cost.
+
+## A-015 — Hard target-only Jacobi can provide cheap long exact blocks
+
+EXP-048 evidence:
+
+```text
+p50 58 target passes / 32 exact tokens
+p50 fraction 181.25%
+p90 fraction 193.75%
+maximum matching prefix 3
+```
+
+Status: CONTRADICTED FOR THE TESTED HARD JACOBI CONTROL.
+
+Every target pass and failed iteration was charged.
+
+## A-016 — Continuous soft states and Anderson acceleration propagate useful causal information faster than hard Jacobi
+
+Assumption:
+
+A large block of soft token embeddings, updated by a small number of full target passes and bounded Anderson mixing, can yield a much longer hard exact prefix than discrete Jacobi without future information or training.
+
+Status: ACTIVE UNVERIFIED ASSUMPTION FOR EXP-049.
+
+Contradiction tests:
+
+- exact verifier mismatch or future information;
+- NaN/Inf, coefficient explosion, or unhandled numerical fallback;
+- p50 exact matching prefix <16 after at most four target solver passes;
+- p90 accounted target-equivalent fraction >10%;
+- less than 4x p50 prefix improvement over hard Jacobi;
+- worsening checkpoint-size trend.
+
+## A-017 — An arbitrary causal target permits universal faster-than-one-position-per-round block solving
+
+Risk:
+
+Because token position `i` depends causally on the resolved token at `i-1`, a black-box target-only synchronous solver may be unable to guarantee more than one new exact position per target round in the worst case.
+
+Status: ACTIVE THEORETICAL RISK FOR EXP-049; NOT YET PROVED.
+
+Required contradiction/proof audit:
+
+- formal target interface;
+- adversarial finite causal model family;
+- indistinguishability of later positions before predecessor resolution;
+- exact scope of any average-case versus universal claim;
+- whether continuous embeddings/Anderson actually add information or only extrapolate prior outputs.
+
+A valid one-position-per-round lower bound would reject universal exact target-only fixed-point acceleration for the fixed arbitrary-model objective even if some prompts empirically improve.
