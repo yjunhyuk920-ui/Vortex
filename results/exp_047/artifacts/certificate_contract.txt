@@ -1,0 +1,1 @@
+Phase B only. Fixed-time Serfling total bounds use alpha spending delta_n = delta * 6/(pi^2 n^2). Failure to certify triggers an exact full-tile fallback. Phase D is NOT TESTED.
