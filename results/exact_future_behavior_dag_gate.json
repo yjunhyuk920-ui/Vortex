@@ -1,0 +1,412 @@
+{
+  "experiment": "046_exact_future_behavior_dag",
+  "evidence_level": "E1/E2 future-aware exact finite-horizon graph quotient",
+  "source": {
+    "experiment": "045_bounded_exact_decision_index_compiler",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "grammar_sha256": "ce0fd97dabb40edfb4ff8fd828d24a8967289432bcb890c9298b1b9846360c8e",
+    "compiled_prompt_paths": 8,
+    "duplicate_controls": 1,
+    "heldout_prompt_paths": 4,
+    "new_model_forward_calls": 0,
+    "source_compiler_forward_calls": 64
+  },
+  "frontier_without_duplicate_control": [
+    {
+      "horizon": 2,
+      "prompt_paths": 8,
+      "raw_path_records": 16,
+      "quotient_nodes": 7,
+      "merged_records": 9,
+      "compression_fraction": 0.5625,
+      "unique_full_continuations": 4,
+      "start_router_entries": 8,
+      "depth_frontier": [
+        {
+          "remaining_tokens": 1,
+          "raw_states": 8,
+          "unique_suffixes": 3,
+          "merged_states": 5,
+          "compression_fraction": 0.625
+        },
+        {
+          "remaining_tokens": 2,
+          "raw_states": 8,
+          "unique_suffixes": 4,
+          "merged_states": 4,
+          "compression_fraction": 0.5
+        }
+      ]
+    },
+    {
+      "horizon": 4,
+      "prompt_paths": 8,
+      "raw_path_records": 32,
+      "quotient_nodes": 17,
+      "merged_records": 15,
+      "compression_fraction": 0.46875,
+      "unique_full_continuations": 5,
+      "start_router_entries": 8,
+      "depth_frontier": [
+        {
+          "remaining_tokens": 1,
+          "raw_states": 8,
+          "unique_suffixes": 4,
+          "merged_states": 4,
+          "compression_fraction": 0.5
+        },
+        {
+          "remaining_tokens": 2,
+          "raw_states": 8,
+          "unique_suffixes": 4,
+          "merged_states": 4,
+          "compression_fraction": 0.5
+        },
+        {
+          "remaining_tokens": 3,
+          "raw_states": 8,
+          "unique_suffixes": 4,
+          "merged_states": 4,
+          "compression_fraction": 0.5
+        },
+        {
+          "remaining_tokens": 4,
+          "raw_states": 8,
+          "unique_suffixes": 5,
+          "merged_states": 3,
+          "compression_fraction": 0.375
+        }
+      ]
+    },
+    {
+      "horizon": 8,
+      "prompt_paths": 8,
+      "raw_path_records": 64,
+      "quotient_nodes": 38,
+      "merged_records": 26,
+      "compression_fraction": 0.40625,
+      "unique_full_continuations": 5,
+      "start_router_entries": 8,
+      "depth_frontier": [
+        {
+          "remaining_tokens": 1,
+          "raw_states": 8,
+          "unique_suffixes": 3,
+          "merged_states": 5,
+          "compression_fraction": 0.625
+        },
+        {
+          "remaining_tokens": 2,
+          "raw_states": 8,
+          "unique_suffixes": 5,
+          "merged_states": 3,
+          "compression_fraction": 0.375
+        },
+        {
+          "remaining_tokens": 3,
+          "raw_states": 8,
+          "unique_suffixes": 5,
+          "merged_states": 3,
+          "compression_fraction": 0.375
+        },
+        {
+          "remaining_tokens": 4,
+          "raw_states": 8,
+          "unique_suffixes": 5,
+          "merged_states": 3,
+          "compression_fraction": 0.375
+        },
+        {
+          "remaining_tokens": 5,
+          "raw_states": 8,
+          "unique_suffixes": 5,
+          "merged_states": 3,
+          "compression_fraction": 0.375
+        },
+        {
+          "remaining_tokens": 6,
+          "raw_states": 8,
+          "unique_suffixes": 5,
+          "merged_states": 3,
+          "compression_fraction": 0.375
+        },
+        {
+          "remaining_tokens": 7,
+          "raw_states": 8,
+          "unique_suffixes": 5,
+          "merged_states": 3,
+          "compression_fraction": 0.375
+        },
+        {
+          "remaining_tokens": 8,
+          "raw_states": 8,
+          "unique_suffixes": 5,
+          "merged_states": 3,
+          "compression_fraction": 0.375
+        }
+      ]
+    }
+  ],
+  "frontier_with_duplicate_control": [
+    {
+      "horizon": 2,
+      "prompt_paths": 9,
+      "raw_path_records": 18,
+      "quotient_nodes": 7,
+      "merged_records": 11,
+      "compression_fraction": 0.6111111111111112,
+      "unique_full_continuations": 4,
+      "start_router_entries": 9,
+      "depth_frontier": [
+        {
+          "remaining_tokens": 1,
+          "raw_states": 9,
+          "unique_suffixes": 3,
+          "merged_states": 6,
+          "compression_fraction": 0.6666666666666666
+        },
+        {
+          "remaining_tokens": 2,
+          "raw_states": 9,
+          "unique_suffixes": 4,
+          "merged_states": 5,
+          "compression_fraction": 0.5555555555555556
+        }
+      ]
+    },
+    {
+      "horizon": 4,
+      "prompt_paths": 9,
+      "raw_path_records": 36,
+      "quotient_nodes": 17,
+      "merged_records": 19,
+      "compression_fraction": 0.5277777777777778,
+      "unique_full_continuations": 5,
+      "start_router_entries": 9,
+      "depth_frontier": [
+        {
+          "remaining_tokens": 1,
+          "raw_states": 9,
+          "unique_suffixes": 4,
+          "merged_states": 5,
+          "compression_fraction": 0.5555555555555556
+        },
+        {
+          "remaining_tokens": 2,
+          "raw_states": 9,
+          "unique_suffixes": 4,
+          "merged_states": 5,
+          "compression_fraction": 0.5555555555555556
+        },
+        {
+          "remaining_tokens": 3,
+          "raw_states": 9,
+          "unique_suffixes": 4,
+          "merged_states": 5,
+          "compression_fraction": 0.5555555555555556
+        },
+        {
+          "remaining_tokens": 4,
+          "raw_states": 9,
+          "unique_suffixes": 5,
+          "merged_states": 4,
+          "compression_fraction": 0.4444444444444444
+        }
+      ]
+    },
+    {
+      "horizon": 8,
+      "prompt_paths": 9,
+      "raw_path_records": 72,
+      "quotient_nodes": 38,
+      "merged_records": 34,
+      "compression_fraction": 0.4722222222222222,
+      "unique_full_continuations": 5,
+      "start_router_entries": 9,
+      "depth_frontier": [
+        {
+          "remaining_tokens": 1,
+          "raw_states": 9,
+          "unique_suffixes": 3,
+          "merged_states": 6,
+          "compression_fraction": 0.6666666666666666
+        },
+        {
+          "remaining_tokens": 2,
+          "raw_states": 9,
+          "unique_suffixes": 5,
+          "merged_states": 4,
+          "compression_fraction": 0.4444444444444444
+        },
+        {
+          "remaining_tokens": 3,
+          "raw_states": 9,
+          "unique_suffixes": 5,
+          "merged_states": 4,
+          "compression_fraction": 0.4444444444444444
+        },
+        {
+          "remaining_tokens": 4,
+          "raw_states": 9,
+          "unique_suffixes": 5,
+          "merged_states": 4,
+          "compression_fraction": 0.4444444444444444
+        },
+        {
+          "remaining_tokens": 5,
+          "raw_states": 9,
+          "unique_suffixes": 5,
+          "merged_states": 4,
+          "compression_fraction": 0.4444444444444444
+        },
+        {
+          "remaining_tokens": 6,
+          "raw_states": 9,
+          "unique_suffixes": 5,
+          "merged_states": 4,
+          "compression_fraction": 0.4444444444444444
+        },
+        {
+          "remaining_tokens": 7,
+          "raw_states": 9,
+          "unique_suffixes": 5,
+          "merged_states": 4,
+          "compression_fraction": 0.4444444444444444
+        },
+        {
+          "remaining_tokens": 8,
+          "raw_states": 9,
+          "unique_suffixes": 5,
+          "merged_states": 4,
+          "compression_fraction": 0.4444444444444444
+        }
+      ]
+    }
+  ],
+  "compression_attribution": {
+    "raw_unique_prompt_records": 64,
+    "unique_prompt_quotient_nodes": 38,
+    "cross_distinct_prompt_suffix_savings": 26,
+    "duplicate_raw_records": 8,
+    "duplicate_incremental_nodes": 0,
+    "duplicate_prompt_savings": 8,
+    "full_continuation_equivalence_classes": 5
+  },
+  "dag": {
+    "horizon": 8,
+    "nodes": 38,
+    "starts": 9,
+    "token_codebook_size": 9,
+    "token_codebook_ids": [
+      13,
+      319,
+      350,
+      6466,
+      14388,
+      29901,
+      29907,
+      29909,
+      29933
+    ],
+    "token_codebook_text": {
+      "13": {
+        "tokenizer_token": "<0x0A>",
+        "decoded_text": "\n"
+      },
+      "319": {
+        "tokenizer_token": "▁A",
+        "decoded_text": "A"
+      },
+      "350": {
+        "tokenizer_token": "▁B",
+        "decoded_text": "B"
+      },
+      "6466": {
+        "tokenizer_token": "Output",
+        "decoded_text": "Output"
+      },
+      "14388": {
+        "tokenizer_token": "BB",
+        "decoded_text": "BB"
+      },
+      "29901": {
+        "tokenizer_token": ":",
+        "decoded_text": ":"
+      },
+      "29907": {
+        "tokenizer_token": "C",
+        "decoded_text": "C"
+      },
+      "29909": {
+        "tokenizer_token": "A",
+        "decoded_text": "A"
+      },
+      "29933": {
+        "tokenizer_token": "B",
+        "decoded_text": "B"
+      }
+    },
+    "build_ns": 77896,
+    "vm_export_ns": 1691777,
+    "vm_file_bytes": 326,
+    "manifest_bytes": 1442,
+    "source_raw_prefix_vm_bytes": 456,
+    "vm_byte_reduction": 130,
+    "vm_byte_reduction_fraction": 0.2850877192982456
+  },
+  "duplicate_control": [
+    {
+      "duplicate_prompt_id": "duplicate-control-template0-symbolA-count8",
+      "source_prompt_id": "template0-symbolA-count8",
+      "same_start_address": true,
+      "start_address": 7
+    }
+  ],
+  "compiled_replay": {
+    "paths": 9,
+    "exact_paths": 9,
+    "expected_tokens": 72,
+    "exact_tokens": 72,
+    "mmap_record_reads": 72,
+    "all_exact": true
+  },
+  "heldout": {
+    "prompt_paths": 4,
+    "state_denominator": 32,
+    "future_suffix_hits": 8,
+    "future_suffix_coverage": 0.25,
+    "full_continuation_hits": 0,
+    "causal_start_router_hits": 0,
+    "causal_start_router_coverage": 0.0,
+    "first_future_suffix_hit_positions": {
+      "template0-symbolC-count8": null,
+      "template0-symbolC-count12": null,
+      "template1-symbolC-count8": 4,
+      "template1-symbolC-count12": 4
+    }
+  },
+  "scope_separation": {
+    "complete_future_tokens_used_for_offline_quotient": true,
+    "new_model_calls_used": false,
+    "finite_horizon_exact_equivalence_proven": true,
+    "compiled_paths_replay_exactly": true,
+    "graph_body_compression_proven": true,
+    "future_aware_heldout_body_oracle_deployable": false,
+    "causal_heldout_start_router_proven": false,
+    "arbitrary_prompt_coverage_proven": false,
+    "real_405b_execution_performed": false
+  },
+  "conclusion": {
+    "quotient_implementation_passes": true,
+    "graph_body_compresses_across_distinct_prompts": true,
+    "start_router_barrier_present": true,
+    "max_horizon_raw_records": 64,
+    "max_horizon_quotient_nodes": 38,
+    "max_horizon_compression_fraction": 0.40625,
+    "future_aware_heldout_suffix_coverage": 0.25,
+    "causal_heldout_start_coverage": 0.0,
+    "decision": "accept exact suffix-DAG compression and make the sound start router the primary next Gate",
+    "fixed_target_status": "unsolved: offline future-aware compression does not route unseen prompts, compile 405B behavior, or establish target hardware performance"
+  },
+  "next_obligation": "if the body compresses, construct a causal and exact-certified prompt-to-start router; future-token oracle routing is forbidden. If causal routing cannot exceed zero held-out coverage, the decision-index architecture remains bounded memoization"
+}

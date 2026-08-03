@@ -1,0 +1,61 @@
+{
+  "equivalence": "complete_exact_remaining_token_suffix",
+  "horizon": 8,
+  "metadata": {
+    "experiment": "046_exact_future_behavior_dag",
+    "source_experiment": "045_bounded_exact_decision_index_compiler",
+    "source_grammar_sha256": "ce0fd97dabb40edfb4ff8fd828d24a8967289432bcb890c9298b1b9846360c8e",
+    "source_head": "5fb32b30ceda3e362da7b6ee9ed2dee0c93231e5",
+    "source_model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+  },
+  "node_count": 38,
+  "prompt_order": [
+    "template0-symbolA-count8",
+    "template0-symbolA-count12",
+    "template0-symbolB-count8",
+    "template0-symbolB-count12",
+    "template1-symbolA-count8",
+    "template1-symbolA-count12",
+    "template1-symbolB-count8",
+    "template1-symbolB-count12",
+    "duplicate-control-template0-symbolA-count8"
+  ],
+  "start_addresses": [
+    7,
+    15,
+    23,
+    23,
+    30,
+    30,
+    37,
+    37,
+    7
+  ],
+  "token_codebook": [
+    13,
+    319,
+    350,
+    6466,
+    14388,
+    29901,
+    29907,
+    29909,
+    29933
+  ],
+  "version": 1,
+  "vm": {
+    "atomic_replace": true,
+    "build_ns": 1314601,
+    "chain_steps": 8,
+    "file_bytes": 326,
+    "format_name": "compact40",
+    "header_crc32": 1326904985,
+    "parent_directory_fsync_attempted": true,
+    "path": "results/exact_future_behavior_dag_compact40.vtx",
+    "payload_crc32": 1282702522,
+    "record_bytes": 5,
+    "record_count": 38,
+    "start_count": 9,
+    "temporary_file_removed": true
+  }
+}
