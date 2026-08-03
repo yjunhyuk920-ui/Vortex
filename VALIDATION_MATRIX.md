@@ -76,3 +76,16 @@ Every experiment PR must update at least one row using commit-backed evidence. P
 | EXP-052 p90 fraction <=1.185185% | E1: 600% | REJECTED |
 | EXP-052 budget fallback <=1.185185% | E1: 99.9999364% | REJECTED |
 | EXP-053 exact circuit compiler | E0 | NEXT GATE |
+
+<!-- EXP-053-AUTHORITATIVE-FINAL -->
+## EXP-053 addendum
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| EXP-053 exact circuit equality | E1: 0 mismatch / 4,506,624 inputs | PASS reference |
+| EXP-053 no truth-table representation | E1: 0 cases | PASS |
+| EXP-053 p50 query fraction <=10% | E1: 84.1683% | REJECTED |
+| EXP-053 p90 query fraction <=25% | E1: 94.1072% | REJECTED |
+| EXP-053 dense-random p50 <=25% | E1: 92.4521% | REJECTED |
+| EXP-053 projected storage <=1 TiB | PROJECTED: max 255.5966 TiB | REJECTED |
+| EXP-054 reduced decision diagram | E0 | NEXT GATE |

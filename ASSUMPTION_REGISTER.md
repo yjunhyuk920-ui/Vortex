@@ -186,3 +186,8 @@ Status: ACTIVE ADVERSARIAL CONTRADICTION TEST FOR EXP-051; EXPECTED UNSUPPORTED 
 ## A-026/A-027/A-028 — Advice coverage, reuse, circuit compilation
 
 A-026 enumerative exact advice generalizes across unseen families: CONTRADICTED (0% held-out hits). A-027 natural exact states repeat at least 85 times: CONTRADICTED on the corpus (median/max 1/1). A-028 a non-enumerative bit-exact weight-derived circuit remains compact: ACTIVE UNVERIFIED for EXP-053.
+
+<!-- EXP-053-AUTHORITATIVE-FINAL -->
+## A-029/A-030 — AIG reduction and input-adaptive exact diagrams
+
+A-029 structural hashing alone makes exact dense arithmetic cheap: CONTRADICTED for the registered bounded operators. A-030 a weight-derived reduced ordered decision diagram can trade compile/storage for a short exact input-adaptive query path without exponential growth: ACTIVE UNVERIFIED for EXP-054.

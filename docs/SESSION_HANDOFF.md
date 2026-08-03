@@ -209,3 +209,8 @@ Do not overwrite frozen `results/exp_047*`, `results/exp_048`, or `results/exp_0
 ## EXP-052 handoff
 
 Enumerative exact advice is rejected. Read `results/exp_052/summary.json` and `NEXT_EXPERIMENT.md`; continue with EXP-053 or a materially new mechanism only.
+
+<!-- EXP-053-AUTHORITATIVE-FINAL -->
+## EXP-053 handoff
+
+Bit-exact AIG structural hashing is rejected as core. Read `results/exp_053/summary.json` and continue with EXP-054 reduced decision diagrams or a materially new mechanism only.
