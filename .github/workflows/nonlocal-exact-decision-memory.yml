@@ -1,0 +1,176 @@
+name: Nonlocal exact decision memory gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/nonlocal_decision_memory.py"
+      - "vortex_runtime/final_hidden_trace.py"
+      - "scripts/run_nonlocal_decision_memory.py"
+      - "tests/test_nonlocal_decision_memory.py"
+      - "experiments/nonlocal_decision_memory_prompts.json"
+      - "docs/EXPERIMENT_039_NONLOCAL_EXACT_DECISION_MEMORY.md"
+      - ".github/workflows/nonlocal-exact-decision-memory.yml"
+
+concurrency:
+  group: nonlocal-decision-memory-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/nonlocal-exact-decision-memory'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix:
+        prompt_id:
+          - distributed-database
+          - korean-plm-governance
+          - algorithm-runtime
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate decision memory primitives
+        run: |
+          test -f tests/test_nonlocal_decision_memory.py
+          test -f vortex_runtime/nonlocal_decision_memory.py
+          test -f vortex_runtime/final_hidden_trace.py
+          python -m pytest -q tests/test_nonlocal_decision_memory.py
+      - name: Measure nonlocal exact block reuse
+        run: |
+          python scripts/run_nonlocal_decision_memory.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --prompts experiments/nonlocal_decision_memory_prompts.json \
+            --prompt-id "${{ matrix.prompt_id }}" \
+            --steps 256 \
+            --block-length 256 \
+            --ranks 8,16,32,64,128,256 \
+            --device cpu \
+            --output "results/tinyllama_1_1b_nonlocal_memory_${{ matrix.prompt_id }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nonlocal-memory-${{ matrix.prompt_id }}
+          path: results/tinyllama_1_1b_nonlocal_memory_${{ matrix.prompt_id }}.json
+
+  aggregate:
+    if: github.head_ref == 'research/nonlocal-exact-decision-memory'
+    needs: measure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nonlocal-memory-*
+          path: downloaded
+          merge-multiple: true
+      - name: Aggregate frontier
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          prompts = []
+          for path in sorted(Path("downloaded").glob("*.json")):
+              payload = json.loads(path.read_text(encoding="utf-8"))
+              best = payload["best_nearest_configuration"]
+              prompts.append(
+                  {
+                      "prompt_id": payload["prompt_id"],
+                      "prompt_tokens": payload["prompt_tokens"],
+                      "memory_entries": payload["memory_entries"],
+                      "eos_position": payload["continuation_diagnostics"]["eos_position"],
+                      "maximum_identical_run": payload["continuation_diagnostics"]["maximum_identical_token_run"],
+                      "unique_token_fraction": payload["continuation_diagnostics"]["unique_token_fraction"],
+                      "best_rank": best["requested_rank"],
+                      "nearest_first": best["nearest"]["first"],
+                      "nearest_maximum": best["nearest"]["maximum"],
+                      "nearest_p95": best["nearest"]["p95"],
+                      "top64_maximum": best["top64_oracle"]["maximum"],
+                      "global_first": best["global_oracle"]["first"],
+                      "global_maximum": best["global_oracle"]["maximum"],
+                      "global_p95": best["global_oracle"]["p95"],
+                      "scaled_memory_gib": best["scaled_budget"]["total_gib"],
+                      "scaled_lookup_gflop": best["scaled_budget"]["total_lookup_gflop_per_query"],
+                      "representation_capacity_pass": payload["representation_capacity_pass"],
+                      "promoted_nearest_ranks": payload["promoted_nearest_ranks"],
+                      "qualifies": payload["qualifies"],
+                  }
+              )
+
+          qualifies = bool(prompts) and all(item["qualifies"] for item in prompts)
+          capacity = bool(prompts) and all(
+              item["representation_capacity_pass"] for item in prompts
+          )
+          combined = {
+              "evidence_level": "E1/E2 nonlocal exact decision-memory frontier",
+              "prompts": prompts,
+              "representation_capacity_on_every_prompt": capacity,
+              "qualifies": qualifies,
+              "decision": (
+                  "advance nonlocal exact decision memory"
+                  if qualifies
+                  else (
+                      "token-block recurrence exists but hidden retrieval fails"
+                      if capacity
+                      else "reject prompt-only nonlocal exact token-block memory"
+                  )
+              ),
+              "next_candidate": (
+                  "derive a sound block certificate and physical runtime"
+                  if qualifies
+                  else "confront the full exact operator lower bound; prompt-derived exact programs are exhausted"
+              ),
+          }
+          output = Path("results/tinyllama_1_1b_nonlocal_memory_frontier.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(combined, indent=2, ensure_ascii=False),
+              encoding="utf-8",
+          )
+          Path("nonlocal-memory-comment.md").write_text(
+              "## Nonlocal exact decision memory gate\n\n```json\n"
+              + json.dumps(combined, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file nonlocal-memory-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nonlocal-memory-frontier
+          path: results/tinyllama_1_1b_nonlocal_memory_frontier.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_nonlocal_memory_frontier.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(gate): commit nonlocal decision-memory frontier"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
