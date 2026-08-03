@@ -12,215 +12,201 @@ Build a universal runtime for arbitrary unmodified Hugging Face dense transforme
 - p50 warm decode at or below 1.2x a native 4B Q4 baseline on the same machine;
 - flagship validation on a real 405B-class model.
 
-Current evidence remains below E4. Do not claim the target is solved.
+Current evidence remains below E4. Do not claim the runtime target is solved.
 
-## Mandatory startup and persistence
+## Mandatory startup
 
-Read in this order:
+Read:
 
 1. `AGENTS.md`
 2. `docs/PROOF_FIRST_CONTRACT.md`
 3. `docs/WORK_SESSION_PROTOCOL.md`
 4. `docs/RESEARCH_PROGRESS_LEDGER.md`
 5. this file
-6. active experiment documents, workflows, PR comments, and raw result JSON
+6. active experiment documents, workflows, PR comments, and raw JSON
 
 Before a user-facing progress/completion answer after meaningful work, commit the ledger and this handoff.
 
 ## Current repository state
 
-Latest research decisions:
+Latest decisions:
 
 ```text
-PR #36  causal semantic-state program routing             rejected
-PR #37  prompt-compiled Hankel decision program            rejected
-PR #38  perfect-oracle sparse Hankel repair                rejected
-PR #40  prompt-only nonlocal exact decision memory         rejected
-PR #42  exact dense-operator lower-bound certificate       accepted and merged
+PR #36  semantic-state program routing                    rejected
+PR #37  prompt-compiled Hankel decision program           rejected
+PR #38  perfect-oracle sparse repair                      rejected
+PR #40  prompt-only nonlocal exact decision memory        rejected
+PR #42  exact dense-operator lower-bound certificate      accepted/merged
+PR #44  metadata-aware exact top-1 function bound         accepted/merged
 ```
 
-Main merge for PR #42:
+Latest main merge:
 
 ```text
-663dd3d02095f19be269ef60a7c16959f6e16f2f
+PR #44 merge: aca6657578b0decb58adbf98bcd22555169a6847
 ```
 
-Authoritative PR #42 evidence:
+Authoritative Experiment 041 evidence:
 
 ```text
-branch: research/exact-operator-lower-bound
-head:   7733aa6b8ba1193ed64c20fddcfc643a3d43ed7c
-certificate workflow: 30781557141
-Python 3.10/3.12 CI + validation: 30781557096
+branch: research/top1-function-information-bound
+head: 95e202da8a31e564a80db509ad0b9b97bd71403d
+certificate workflow: 30782192795
+Python 3.10/3.12 CI + validation: 30782192768
 ```
 
-The bot evidence commit triggered follow-up `action_required` runs with no jobs. Those are not test failures.
+## Accepted Experiment 040 result
 
-## Experiment 040 accepted result
-
-### Exact-output information theorem
-
-For `N` independently selectable `b`-bit parameter codes, the arbitrary checkpoint family has size:
+For arbitrary Q4 405B exact dense operator output:
 
 ```text
-2^(N b)
-```
-
-Any checkpoint-specific representation supporting every exact dense operator output must be injective, so its worst-case size is at least:
-
-```text
-N b bits
-```
-
-For the 405B target at Q4:
-
-```text
-parameters: 405,849,243,648
-exact information: 1,623,396,974,592 bits
-                 = 188.98828125 GiB
+exact checkpoint information: 188.98828125 GiB
 resident allowance: 8 GiB
-resident fraction: 4.2330667%
-minimum external exact information: 180.98828125 GiB
+minimum external information: 180.98828125 GiB
 optimistic dense arithmetic: 811.698487296 GFLOP
-4B dense arithmetic proxy: 8 GFLOP
-ratio: 101.462310912x
+ratio to 4B dense arithmetic: 101.462310912x
 ```
 
-Accepted conclusion:
+The injectivity/cardinality theorem proves the exact-output representation needs `N*b` bits in the worst case. The skipped-coordinate gate produced 115/115 indistinguishable-observation adversaries with different exact outputs and top-1 winners.
 
-> Arbitrary dense exact-output execution is incompatible with retaining only 8 GiB of checkpoint information unless the remaining exact information is read or equivalently represented and its transfer/construction cost is charged or amortized.
-
-### Skipped-coordinate exact top-1 adversary
-
-For every tested coordinate, the executable gate constructed `W0/W1` that:
-
-- differ only at one uninspected/unrepresented coordinate;
-- have identical inspected observations;
-- produce different exact outputs for a one-hot input;
-- produce different unique top-1 winners.
-
-Coverage:
+Scope:
 
 ```text
-2x4, 3x5, 4x7, 8x8 matrices
-115 coordinates tested
-115 adversaries passed
-100% coverage
+exact-output N*b bound: proven
+coordinate omission can flip top-1: proven
+metadata-aware complete top-1 N*b bound: not proven by Experiment 040
 ```
 
-Accepted conclusion:
+## Accepted Experiment 041 result
 
-> No arbitrary weight coordinate may be declared universally irrelevant to exact top-1 unless its effect is read or represented.
+### Direct classifier theorem
 
-## Critical scope boundary
-
-Experiment 040 deliberately did **not** prove all of the following:
-
-```text
-metadata-aware exact top-1 representation requires N*b bits: not proven
-measured 405B GPU wall clock: not performed
-real 405B execution: not performed
-```
-
-The exact-output cardinality theorem must not be misreported as a complete top-1-only information theorem.
-
-Current fixed-target classification:
-
-```text
-arbitrary dense exact operator output + 8 GiB only: contradicted
-coordinate omission without metadata for universal top-1: contradicted
-exact top-1 via charged checkpoint-specific decision metadata: conditionally open
-405B/8 GiB/4B-speed runtime: unsolved
-```
-
-## Accumulated representation evidence
-
-```text
-semantic-state program reuse: about 1 token
-prompt recurrence: at most 2 autonomous exact tokens
-perfect-token recurrence repair: exact target on 68%–89% of tokens
-prompt suffix global-oracle maxima: 75 / 28 / 5
-required full-interaction reuse: about 247 tokens
-```
-
-Prompt-derived static, dynamic, repaired, and nonlocal programs are exhausted at the tested scale.
-
-## Prohibited repeats
-
-Do not continue by only changing:
-
-- static rank/block size/state count;
-- norm precision or neuron ordering;
-- Hankel rank/order/ridge/lift;
-- recurrence repair thresholds;
-- ANN rank/index/distance/top-k width;
-- speculative block size while dense target arithmetic remains per position;
-- lossless metadata that omits its exact information content or build/transfer cost.
-
-## Current frontier — Experiment 041 Metadata-Aware Top-1 Function Bound
-
-The remaining loophole is a checkpoint-specific representation that does not reproduce exact internal operators but preserves the complete exact top-1 decision function.
-
-The next Gate must count **distinct top-1 functions**, not distinct weight tensors.
-
-### Candidate injective classifier family
-
-For an `m x d` dense classifier, choose:
+For an `m x d` dense classifier:
 
 ```text
 p = min(floor(m/2), floor(d/2))
 q = d - p
+K = p q
 ```
 
-Use `p` selector input coordinates and `p` row pairs. For every pair `r` and payload coordinate `j`, encode one independent bit `a[r,j]` by assigning the payload advantage to one row or the other. Query:
+The selector/payload family encodes `K` independent bits. Each bit has one query whose unique top-1 winner reveals it. Therefore the family has `2^K` distinct top-1 decision functions and any exact checkpoint-specific metadata for the family needs at least `K` bits.
+
+Exhaustive certificate:
+
+| Shape | K | Expected functions | Observed | Minimum margin |
+|---|---:|---:|---:|---:|
+| 2x2 | 1 | 2 | 2 | 1.0 |
+| 4x4 | 4 | 16 | 16 | 1.0 |
+| 4x5 | 6 | 64 | 64 | 1.0 |
+| 6x6 | 9 | 512 | 512 | 1.0 |
+
+All encoded bit tables decoded exactly from the winner signatures.
+
+### Llama-405B-shaped independently callable operator collection
+
+Per decoder layer:
 
 ```text
-x_(r,j) = selector_r + payload_j
+Q:    67,108,864 bits
+K:     8,126,464 bits
+V:     8,126,464 bits
+O:    67,108,864 bits
+gate: 67,108,864 bits
+up:   67,108,864 bits
+down:369,098,752 bits
+sum: 653,787,136 bits = 77.9375 MiB
 ```
 
-A large fixed selector margin suppresses every other row, and the exact top-1 winner reveals `a[r,j]`.
-
-This constructs:
+Projection:
 
 ```text
-K = p q independent decision bits
-2^K distinct exact top-1 functions
-minimum metadata for this family >= K bits
+126-layer stack: 9.5899658203125 GiB
+directly callable LM head: 8 MiB
+total: 9.5977783203125 GiB
+excess over 8 GiB: 1.5977783203125 GiB
 ```
 
-For a square `H x H` classifier with even `H`:
+Accepted conclusion:
+
+> Arbitrary checkpoint-specific exact top-1 metadata for the constructed independently callable Llama-shaped operator collection is lower-bounded above 8 GiB.
+
+## Critical scope boundary
+
+Experiment 041 did not prove:
 
 ```text
-K = H^2 / 4 = N / 4 bits
+full end-to-end Transformer final-token bound
+real 405B execution
+measured GPU wall clock
 ```
 
-This lower bound already includes arbitrary checkpoint-specific metadata because two checkpoints with different encoded bit tables implement different top-1 functions and therefore cannot share one exact representation.
+Layerwise/operator bounds cannot be summed into a final language-model theorem until one explicit Llama-like construction exposes their independent bits through final token winners.
 
-### Required Experiment 041 work
+Current classification:
 
-1. Formalize the selector/payload construction and prove unique winners.
-2. Implement encode/decode queries and exhaustive small-shape tests.
-3. Enumerate all `2^K` functions for small matrices and verify injectivity.
-4. Compute `K=p(d-p)` for target attention/MLP matrix shapes.
-5. Keep three conclusions separate:
-   - direct dense-classifier top-1 metadata lower bound;
-   - independently callable operator-collection bound;
-   - full end-to-end transformer decision-function bound.
-6. Do not sum layerwise bits into a full-transformer theorem until an explicit Llama-like routing construction exposes each layer's independent bits through final token decisions.
-7. Add workflow and raw JSON evidence.
+```text
+arbitrary dense exact output with 8 GiB only: contradicted
+metadata-aware exact top-1 for direct dense classifiers: lower-bounded
+independently callable Llama-shaped operator collection: >8 GiB lower bound
+full Transformer final-token metadata bound: open
+405B/8 GiB/4B-speed runtime: unsolved
+```
+
+## Accumulated execution evidence
+
+```text
+semantic program reuse: about 1 token
+prompt recurrence: maximum 2 exact tokens
+perfect-token repair: exact target on 68%–89% of tokens
+future-aware prompt suffix oracle: 75 / 28 / 5 tokens
+required full-interaction reuse: about 247 tokens
+```
+
+## Prohibited repeats
+
+Do not continue by only changing static rank, recurrence order, repair thresholds, ANN settings, speculative block length, or uncharged lossless metadata. Do not report the operator-collection bound as a full Transformer theorem.
+
+## Current frontier — Experiment 042 End-to-End Llama Decision Routing Bound
+
+The next Gate must embed independent selector/payload decision bits inside an actual Llama-like residual/attention/MLP composition and expose them through final vocabulary top-1 decisions.
+
+### Proof target
+
+Construct a quantized Llama-style family with:
+
+- RMSNorm;
+- causal self-attention;
+- residual connections;
+- SwiGLU MLP;
+- final norm and LM head;
+- multiple layers carrying independent bit tables.
+
+For every encoded layer/operator bit, provide a legal token sequence/query whose final next-token winner reveals that bit with a strictly positive margin.
+
+If `K_total` independent layerwise bits are exposed through final token decisions, the family has `2^K_total` distinct language-model decision functions and any exact checkpoint-specific metadata needs at least `K_total` bits.
+
+### Required work
+
+1. Start with a minimal exact Llama-like micro-model, not a generic operator collection.
+2. Construct selector channels and payload channels that survive RMSNorm with known scale.
+3. Either:
+   - route bits through attention values and output projection, or
+   - route through a SwiGLU configuration with a rigorously bounded positive margin.
+4. Make unselected layers/operators contribute a checkpoint-independent constant.
+5. Verify all small bit tables exhaustively against final vocabulary winners.
+6. Prove additivity across at least two layers before scaling the symbolic count.
+7. Extend the count to target hidden/intermediate/layer shapes only after the small end-to-end construction passes.
+8. Keep runtime success, information theorem, and hardware measurement separate.
 
 ## Exact next steps
 
-1. Merge the documentation update after full CI.
-2. Create `research/top1-function-information-bound` from the new `main`.
-3. Add `docs/EXPERIMENT_041_TOP1_FUNCTION_INFORMATION_BOUND.md`.
-4. Implement the injective top-1 classifier family and tests.
-5. Produce shape-level and 405B operator-shape budgets.
-6. Record exactly whether the result exceeds 8 GiB for a direct operator collection and what remains to extend it to a full transformer.
-7. Update the ledger and handoff before the next progress response.
+1. Merge this documentation update after full CI.
+2. Create `research/llama-final-decision-routing-bound`.
+3. Add `docs/EXPERIMENT_042_LLAMA_FINAL_DECISION_ROUTING_BOUND.md`.
+4. Implement a deterministic Llama-like micro-model and exhaustive function counter.
+5. Add tests, workflow, and raw JSON.
+6. Update the ledger and handoff before reporting further progress.
 
 ## Correct communication
 
-Use wording equivalent to:
-
-> Experiment 040 proved that arbitrary Q4 405B exact operator output carries 188.99 GiB of worst-case checkpoint information and that every unrepresented coordinate can adversarially flip top-1. It did not prove a full metadata-aware top-1 N*b lower bound. The original runtime objective remains unsolved. Experiment 041 now counts distinct exact top-1 decision functions using an injective selector/payload classifier family.
+> Experiment 041 proved a metadata-aware exact top-1 lower bound of 9.5978 GiB for an independently callable Llama-405B-shaped operator collection, but not yet for final Transformer token decisions. The runtime objective remains unsolved. Experiment 042 must expose independent layerwise bits through an actual Llama-like final-token winner before the lower bound can be promoted to the full model.
