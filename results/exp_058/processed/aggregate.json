@@ -1,0 +1,90 @@
+{
+  "DERIVED": {
+    "certificate_control_gate_pass": true,
+    "decision": "REJECT_REAL_Q4_EXACT_LOW_RANK_FACTORIZATION_AS_CORE_RETAIN_RANK_CERTIFICATES",
+    "factor_accounting_scope": "conventional exact two-factor W=A@B lower bound r*n + m*r scalar terms and r*(m+n) factor scalars; factor scalar bitwidth and metadata can only increase physical cost",
+    "model_size_trend_gate_pass": true,
+    "operation_lower_bound_gate_pass": false,
+    "q4_checksum_gate_pass": true,
+    "rank_logic": "rank modulo a prime is a rigorous lower bound on integer/rational rank; full rank under one prime proves full integer/rational rank",
+    "real_q4_exact_low_rank_survives_gate": false,
+    "registration_gate_pass": true,
+    "storage_lower_bound_gate_pass": false
+  },
+  "MEASURED": {
+    "certificate_or_control_mismatches": 0,
+    "certificate_prime_distribution": {
+      "251": 143,
+      "257": 1
+    },
+    "control_row_count": 3,
+    "dense_projection_matrix_count": 144,
+    "elapsed_ns": 14992114699,
+    "full_integer_rank_proven_count": 144,
+    "full_integer_rank_proven_fraction": 1.0,
+    "leading_minor_fast_path_count": 143,
+    "missing_exp_057_q4_checksum_count": 0,
+    "model_count": 3,
+    "model_p50_exact_factor_operation_lower_bound_fraction": {
+      "roneneldan/TinyStories-1M": 2.0,
+      "roneneldan/TinyStories-3M": 2.0,
+      "roneneldan/TinyStories-8M": 2.0
+    },
+    "model_size_degradation_fraction": 0.0,
+    "p50_exact_factor_operation_lower_bound_fraction": 2.0,
+    "p50_exact_factor_storage_lower_bound_fraction": 2.0,
+    "p90_exact_factor_operation_lower_bound_fraction": 2.0,
+    "p90_exact_factor_storage_lower_bound_fraction": 2.0,
+    "peak_rss_kib": 886572,
+    "q4_checksum_mismatches_against_exp_057": 0,
+    "rank_lower_bound_exceeds_10_percent_budget_count": 144,
+    "rank_lower_bound_exceeds_25_percent_budget_count": 144,
+    "rank_lower_bound_exceeds_break_even_count": 144,
+    "two_dimensional_tensor_count": 153,
+    "unregistered_dense_projection_count": 0
+  },
+  "UNVERIFIED": [
+    "Q4 model output preservation",
+    "constructive exact factor arithmetic and bitwidth",
+    "factor-kernel execution",
+    "actual Transformer operation replacement",
+    "70B or 405B algebraic rank",
+    "405B execution",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_REAL_Q4_EXACT_LOW_RANK_FACTORIZATION_AS_CORE_RETAIN_RANK_CERTIFICATES",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "factor_kernel_execution": "NOT TESTED",
+    "q4_output_preservation": "NOT TESTED",
+    "real_transformer_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-058",
+  "name": "pinned_real_q4_exact_algebraic_rank_certificate_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-observation"
+  ],
+  "provenance": {
+    "artifact_id": 8861905858,
+    "artifact_name": "exp-058-candidate-30826618962",
+    "artifact_size_bytes": 29349,
+    "artifact_zip_sha256": "851582a616412e7e078b7c05ddb64883b972cec895847b6df3d7d75dc615bfae",
+    "config_sha256": "18356731d606c819da29807a98de600c8d4d515ff16b5d06c0b90613ee431906",
+    "exp057_summary_sha256": "2a2c451cc1d508dbf9ea65288e1533274baf97e8bc86b827c16828459ed4bd4a",
+    "frozen_date": "2026-08-04",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "3730d6ce8ca89df347079c366a91bcad4d904a85",
+    "source_head_sha": "8ae03de4cc34317b5536aed42b9b8c22f98c88ea",
+    "torch": "2.6.0+cpu",
+    "workflow_merge_sha": "3730d6ce8ca89df347079c366a91bcad4d904a85",
+    "workflow_run": 30826618962
+  },
+  "real_transformer_operation_replacement": false
+}

@@ -103,3 +103,8 @@ Every experiment PR must update at least one row using commit-backed evidence. P
 | EXP-054 storage <=1 TiB | PROJECTED: 202.2479 TiB | REJECTED |
 | EXP-054 adversarial growth <=1.5 | E1: 1.6873x/bit | REJECTED |
 | EXP-055 word-level grouping | E0 | NEXT GATE |
+
+<!-- EXP-058-AUTHORITATIVE-FINAL -->
+## EXP-058 closure
+
+Q4 checksum agreement 144/144; full integer/rational rank 144/144; certificate/control mismatches 0; p50/p90 exact factor operation lower bound 200%/200%; p50/p90 factor-storage lower bound 200%/200%. 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.
