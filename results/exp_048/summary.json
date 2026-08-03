@@ -75,7 +75,7 @@
   "provenance": {
     "artifact_id": 8850040445,
     "artifact_name": "exp-048-candidate-30798936320",
-    "artifact_zip_sha256": "67c587da36b968f9c38e0a7774ea03cecd2ad2d7d274d3e83c833c56529c3443",
+    "artifact_zip_sha256": "67c1e6d8965f7535020ecd4c02bb8a2af1156a234564f3cdf74d10c882fd7eb9",
     "frozen_date": "2026-08-03",
     "source_head_sha": "484a1f0f313d88733d2f7210f2a24d3904bf1373",
     "workflow_merge_sha": "d60e392d66d694fc020f2cfe2435e47e5f5a22ca",
@@ -83,11 +83,11 @@
   },
   "raw_evidence": {
     "artifact_provenance": "raw/artifact_provenance.json",
-    "cases_original_sha256": "e3278b735217b8ffea737a60578513271f286a58f3180f8109e04005ea734deb",
+    "cases_original_sha256": "b70d56f3e13ab1f39dd8947be468e663d6b5691fb20236b990f20a343bcbe4d2",
     "cases_lossless_gzip_base64": "raw/cases.jsonl.gz.b64",
     "cases_lossless_gzip_base64_sha256": "37ce8554f99082fc19681081364e113619ca67b6ab6c72c0b4c0775568aad519",
     "checkpoint_manifest": "raw/checkpoint_manifest.json",
-    "checkpoint_manifest_original_sha256": "2fac4bf1683119025a7a28eea6a93e5cd5e1f67dd9b1df2581c84aa3345a2478",
-    "workflow_summary_original_sha256": "8cd0d65f3ae77c3fb364e10ebd3f74332ba52a38b9789a7b94fdb6a47ad5186e"
+    "checkpoint_manifest_original_sha256": "8dd7be9a710a7ddd805e0bfebcbbd3f9b8e32410093ae72693722d805cf103b7",
+    "workflow_summary_original_sha256": "46d38301f9fecc21b31e0f8e987dc6a25d42451dc516519ca73cd2011866ea54"
   }
 }
