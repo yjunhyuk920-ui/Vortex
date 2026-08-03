@@ -107,7 +107,11 @@ def test_all_registered_certificates_validate_and_selection_is_deterministic() -
     for certificate in certificates:
         certificate.validate(matrix)
     selected = select_favorable_displacement(certificates)
-    assert selected.operator == "zero_fill_diagonal"
+    repeated = select_favorable_displacement(tuple(reversed(certificates)))
+    assert selected.operator == repeated.operator
+    assert selected.rank_lower_bound == min(
+        item.rank_lower_bound for item in certificates
+    )
     assert selected.rank_lower_bound <= 2
 
 
