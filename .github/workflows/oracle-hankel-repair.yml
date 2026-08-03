@@ -1,0 +1,195 @@
+name: Oracle sparse Hankel repair gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/hankel_decision_program.py"
+      - "vortex_runtime/final_hidden_trace.py"
+      - "vortex_runtime/oracle_hankel_repair.py"
+      - "scripts/run_oracle_hankel_repair.py"
+      - "tests/test_hankel_decision_program.py"
+      - "tests/test_oracle_hankel_repair.py"
+      - "experiments/hankel_decision_prompts.json"
+      - "docs/EXPERIMENT_038_ORACLE_SPARSE_HANKEL_REPAIR.md"
+      - ".github/workflows/oracle-hankel-repair.yml"
+
+concurrency:
+  group: oracle-hankel-repair-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/oracle-sparse-hankel-repair'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix:
+        prompt_id:
+          - distributed-database
+          - korean-plm-governance
+          - algorithm-runtime
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate oracle repair
+        run: |
+          test -f tests/test_oracle_hankel_repair.py
+          test -f vortex_runtime/oracle_hankel_repair.py
+          test -f scripts/run_oracle_hankel_repair.py
+          python -m pytest -q \
+            tests/test_hankel_decision_program.py \
+            tests/test_oracle_hankel_repair.py
+      - name: Measure minimum repair rate
+        run: |
+          python scripts/run_oracle_hankel_repair.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --prompts experiments/hankel_decision_prompts.json \
+            --prompt-id "${{ matrix.prompt_id }}" \
+            --steps 256 \
+            --configs 8:8:1:linear,16:8:2:linear,16:16:2:full,32:16:2:full,32:16:4:full,64:16:2:full \
+            --ridge 0.0001 \
+            --device cpu \
+            --output "results/tinyllama_1_1b_oracle_repair_${{ matrix.prompt_id }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oracle-repair-${{ matrix.prompt_id }}
+          path: results/tinyllama_1_1b_oracle_repair_${{ matrix.prompt_id }}.json
+
+  aggregate:
+    if: github.head_ref == 'research/oracle-sparse-hankel-repair'
+    needs: measure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: oracle-repair-*
+          path: downloaded
+          merge-multiple: true
+      - name: Aggregate repair frontier
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          prompts = []
+          passes = {}
+          for path in sorted(Path("downloaded").glob("*.json")):
+              payload = json.loads(path.read_text(encoding="utf-8"))
+              points = []
+              for item in payload["configurations"]:
+                  key = (
+                      item["state_rank"],
+                      item["control_rank"],
+                      item["order"],
+                      item["lift"],
+                  )
+                  passes.setdefault(key, []).append(bool(item["qualifies"]))
+                  points.append(
+                      {
+                          "state_rank": item["state_rank"],
+                          "control_rank": item["control_rank"],
+                          "order": item["order"],
+                          "lift": item["lift"],
+                          "repairs": item["repair"]["repairs"],
+                          "accepted_fraction": item["repair"]["accepted_fraction"],
+                          "mean_repair_interval": item["repair"]["mean_repair_interval"],
+                          "minimum_repair_interval": item["repair"]["minimum_repair_interval"],
+                          "maximum_repair_interval": item["repair"]["maximum_repair_interval"],
+                          "nonfinite_repairs": item["repair"]["nonfinite_repairs"],
+                          "repair_traffic_gib_per_token": item["repair"]["projected_repair_traffic_gib_per_token"],
+                          "repair_compute_gflop_per_token": item["repair"]["projected_repair_compute_gflop_per_token"],
+                          "total_compute_gflop_per_token": item["amortized_total_compute_gflop_per_token"],
+                          "qualifies": item["qualifies"],
+                      }
+                  )
+              prompts.append(
+                  {
+                      "prompt_id": payload["prompt_id"],
+                      "prompt_tokens": payload["prompt_tokens"],
+                      "best_configuration": payload["best_configuration"],
+                      "points": points,
+                  }
+              )
+
+          promoted = []
+          for key, values in sorted(passes.items()):
+              if len(values) == len(prompts) and all(values):
+                  promoted.append(
+                      {
+                          "state_rank": key[0],
+                          "control_rank": key[1],
+                          "order": key[2],
+                          "lift": key[3],
+                      }
+                  )
+          combined = {
+              "evidence_level": "E2 optimistic oracle sparse Hankel repair frontier",
+              "prompts": prompts,
+              "promoted_on_every_prompt": promoted,
+              "qualifies": bool(promoted),
+              "decision": (
+                  "advance oracle-sparse repair to a sound causal detector"
+                  if promoted
+                  else "close Hankel recurrence plus sparse exact repair"
+              ),
+              "next_candidate": (
+                  "fundamentally nonlocal exact decision memory; the perfect token oracle still repairs too often"
+                  if not promoted
+                  else "derive a pre-decision sound repair certificate"
+              ),
+          }
+          output = Path("results/tinyllama_1_1b_oracle_repair_frontier.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(
+              json.dumps(combined, indent=2, ensure_ascii=False),
+              encoding="utf-8",
+          )
+          Path("oracle-repair-comment.md").write_text(
+              "## Oracle sparse Hankel repair gate\n\n```json\n"
+              + json.dumps(combined, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file oracle-repair-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oracle-repair-frontier
+          path: results/tinyllama_1_1b_oracle_repair_frontier.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_oracle_repair_frontier.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(gate): commit oracle sparse repair frontier"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
