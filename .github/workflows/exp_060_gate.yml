@@ -6,6 +6,7 @@ on:
       - "vortex_runtime/sparse_streaming.py"
       - "tests/exp_060/**"
       - "experiments/exp_060/**"
+      - "scripts/finalize_exp_060.py"
       - ".github/workflows/exp_060_gate.yml"
   workflow_dispatch:
 
@@ -52,3 +53,56 @@ jobs:
           path: ${{ runner.temp }}/exp_060_candidate
           if-no-files-found: error
           retention-days: 30
+
+  finalize:
+    if: github.event_name == 'pull_request' && github.head_ref == 'research/exp-060-real-q4-zero-sparsity'
+    needs: gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/exp-060-real-q4-zero-sparsity
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install repository validation environment
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check pytest==8.3.5 numpy==2.1.3
+          python -m pip install --disable-pip-version-check --index-url https://download.pytorch.org/whl/cpu torch==2.6.0
+          python -m pip install --disable-pip-version-check safetensors==0.5.3
+      - name: Download authority and finalize
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          rm -rf results/exp_060 "${RUNNER_TEMP}/exp060"
+          mkdir -p results/exp_060 "${RUNNER_TEMP}/exp060"
+          gh run download 30841671707 \
+            --repo "${GITHUB_REPOSITORY}" \
+            --name exp-060-candidate-30841671707 \
+            --dir "${RUNNER_TEMP}/exp060"
+          cp -a "${RUNNER_TEMP}/exp060/." results/exp_060/
+          python scripts/finalize_exp_060.py
+          (cd results/exp_060 && sha256sum -c checksums.sha256)
+          python -m pytest -q tests/exp_060/test_sparse_streaming.py
+          python scripts/run_validation.py
+      - name: Commit frozen evidence
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/exp_060 RESEARCH_STATE.md DECISION_LOG.md FAILED_APPROACHES.md NEXT_EXPERIMENT.md ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md ARCHITECTURE.md HARDWARE_VALIDATION_PLAN.md REPRODUCIBILITY.md docs/research/EXPERIMENT_060_REAL_Q4_ZERO_SPARSITY.md
+          if git diff --cached --quiet; then
+            echo "No finalization changes"
+            exit 0
+          fi
+          git commit -m "research(exp060): freeze evidence and register EXP-061"
+          git push origin HEAD:research/exp-060-real-q4-zero-sparsity
