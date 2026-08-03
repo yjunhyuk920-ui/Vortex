@@ -1,0 +1,121 @@
+name: Semantic state program routing gate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/semantic_program_routing.py"
+      - "vortex_runtime/multistep_decision_trace.py"
+      - "scripts/run_semantic_program_routing.py"
+      - "tests/test_semantic_program_routing.py"
+      - "experiments/semantic_program_prompts.json"
+      - "docs/EXPERIMENT_036_SEMANTIC_STATE_PROGRAM_ROUTING.md"
+      - ".github/workflows/semantic-program-routing.yml"
+
+concurrency:
+  group: semantic-program-routing-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  measure:
+    if: github.head_ref == 'research/semantic-state-program-routing'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate routing primitives
+        run: |
+          test -f tests/test_semantic_program_routing.py
+          test -f vortex_runtime/semantic_program_routing.py
+          test -f vortex_runtime/multistep_decision_trace.py
+          python -m pytest -q tests/test_semantic_program_routing.py
+      - name: Measure disjoint semantic routing capacity
+        run: |
+          python scripts/run_semantic_program_routing.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --prompts experiments/semantic_program_prompts.json \
+            --steps 5 \
+            --signature-size 64 \
+            --block-size 1024 \
+            --configs 4:2,8:2,8:4,16:4,16:8 \
+            --device cpu \
+            --output results/tinyllama_1_1b_semantic_program_routing.json
+      - name: Build report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("results/tinyllama_1_1b_semantic_program_routing.json")
+          payload = json.loads(path.read_text(encoding="utf-8"))
+          points = []
+          for item in payload["configurations"]:
+              points.append(
+                  {
+                      "states": item["states"],
+                      "rank": item["rank"],
+                      "active_program_gib": item["budget"]["active_program_gib"],
+                      "host_bank_gib": item["host_bank_storage_gib"],
+                      "mean_run_length": item["routing"]["mean_run_length"],
+                      "switch_traffic_gib_per_token": item["routing"]["projected_switch_traffic_gib_per_token"],
+                      "activation_mean": item["activation_perpendicular"]["mean"],
+                      "activation_p95": item["activation_perpendicular"]["p95"],
+                      "dual_mean": item["dual_perpendicular"]["mean"],
+                      "dual_p95": item["dual_perpendicular"]["p95"],
+                      "qualifies": item["qualifies"],
+                  }
+              )
+          summary = {
+              "evidence_level": payload["evidence_level"],
+              "build_trace_count": payload["build_trace_count"],
+              "eval_trace_count": payload["eval_trace_count"],
+              "points": points,
+              "promoted_configurations": payload["promoted_configurations"],
+              "best_coverage_configuration": payload["best_coverage_configuration"],
+              "decision": payload["decision"],
+              "next_candidate_if_rejected": payload["next_candidate_if_rejected"],
+          }
+          Path("semantic-routing-comment.md").write_text(
+              "## Semantic state program routing gate\n\n```json\n"
+              + json.dumps(summary, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file semantic-routing-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: semantic-program-routing
+          path: results/tinyllama_1_1b_semantic_program_routing.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/tinyllama_1_1b_semantic_program_routing.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(gate): commit semantic program routing evidence"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
