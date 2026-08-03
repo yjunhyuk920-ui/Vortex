@@ -330,3 +330,8 @@ Authority: workflow `30826618962`, artifact `8861905858`, ZIP SHA-256 `851582a61
 ## EXP-059 closed — Exact shift-displacement rank
 
 Authority: workflow `30840432745`, artifact `8866573958`, ZIP SHA-256 `61d0c24ccacd310d7d0e7600cc926a882c74281827d524c4880c6715fad8800d`. All 144 registered real-Q4 dense projections had selected exact displacement-rank fraction 1.0. Favorable query and generator-storage lower bounds were p50/p90 1.0/1.0 and 2.0/2.0. Decision: `REJECT_REAL_Q4_EXACT_SHIFT_DISPLACEMENT_STRUCTURE_AS_CORE_RETAIN_CERTIFICATES`. Q4 output preservation, constructive generators, transform kernels, 405B, 8 GiB, and target hardware remain NOT TESTED. Current frontier: EXP-060 exact zero-sparsity streaming.
+
+<!-- EXP-060-AUTHORITATIVE-FINAL -->
+## EXP-060 closed — Exact Q4 zero-sparsity streaming
+
+Authority: workflow `30841671707`, artifact `8867145590`, ZIP SHA-256 `5e5255dbedd779b734876faa027cd2bf5e4a1b00ece7f28cbf35f428fb9a0b05`. The 144 real-Q4 dense projections had p50/p90 exact zero fractions 17.76%/20.37%. Exact sparse execution retained p50/p90 82.22%/85.06% operations and 150.93%/200.86% query bytes. Decision: `REJECT_REAL_Q4_EXACT_ZERO_SPARSITY_STREAMING_AS_CORE_RETAIN_SPARSE_AUXILIARY`. Q4 output preservation, physical sparse kernels, 405B, 8 GiB, and target hardware remain NOT TESTED. Current frontier: EXP-061 causal exact activation sparsity.

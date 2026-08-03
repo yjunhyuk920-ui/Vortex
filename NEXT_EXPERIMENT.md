@@ -1,72 +1,81 @@
 # Next Experiment
 
-## Closed Gate — EXP-059
+## Closed Gate — EXP-060
 
-All 144 pinned real-Q4 dense projections had full selected shift-displacement rank. Favorable query lower bounds were 100% at p50/p90 and generator storage was 200%.
-
-```text
-REJECT_REAL_Q4_EXACT_SHIFT_DISPLACEMENT_STRUCTURE_AS_CORE_RETAIN_CERTIFICATES
-```
-
-## EXP-060 — Pinned Real-Q4 Exact Zero-Sparsity Streaming Gate
-
-### Mechanism
-
-Measure whether deterministic Q4 matrices contain enough exact zero scalars or completely zero blocks to skip original multiply-adds and weight reads without approximation. Compile and account for:
-
-```text
-dense Q4 baseline
-scalar CSR
-row-wise nonzero-run encoding
-BSR 1x4, 1x8, 4x4, 8x8, and 16x16
-```
-
-Only exact zeros may be skipped. A nonzero BSR block charges every scalar slot in that block, including internal zeros.
-
-### Pinned population
-
-Use the same TinyStories-1M/3M/8M revisions and all 144 named dense projections. Recompute deterministic row-symmetric Q4 and require exact checksum equality with EXP-057.
-
-### Accounting
-
-- dense operations: `m*n` multiply-add terms;
-- CSR/run operations: exact nonzero scalar count;
-- BSR operations: scalar slots in nonzero blocks;
-- packed Q4 value bytes;
-- column/block indexes using the minimum whole-byte width;
-- CSR/BSR row pointers;
-- run start/length metadata;
-- alignment padding and edge blocks;
-- all format compile/search work recorded separately.
-
-Select the best format only after all formats are compiled and charged. Report operation and query-byte fractions independently.
-
-### Controls
-
-- highly sparse synthetic matrix must compress below 10%;
-- dense-random Q4 matrix must not falsely compress;
-- isolated-zero adversary must expose BSR padding waste;
-- block-zero positive control must favor its registered BSR shape;
-- exact reconstruction from every serialized format;
-- row/column permutation changes format statistics but not reconstructed values;
-- EXP-057 Q4 checksum agreement.
-
-### Promotion Gate
-
-```text
-zero reconstruction/control/checksum mismatch
-zero unregistered dense projection
-p50 operation fraction <=10%
-p90 operation fraction <=25%
-p50 query-byte fraction <=10%
-p90 query-byte fraction <=25%
-no model-size degradation >25%
-```
-
-Failure decision:
+Pinned real-Q4 dense projections contained p50 17.76% exact zeros. Exact row-run streaming retained p50/p90 82.22%/85.06% operations and required 150.93%/200.86% query bytes.
 
 ```text
 REJECT_REAL_Q4_EXACT_ZERO_SPARSITY_STREAMING_AS_CORE_RETAIN_SPARSE_AUXILIARY
 ```
 
-Phase C observation only. Q4 model-output preservation, physical sparse kernels, actual Transformer operation replacement, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.
+## EXP-061 — Pinned Causal Exact Activation-Sparsity Gate
+
+### Mechanism
+
+For every causal forward pass, an exact-zero input coordinate to a dense projection allows the corresponding weight column to be skipped for every output row. Measure exact IEEE zeros at the input of every registered `torch.nn.Linear`/equivalent learned 2-D projection during:
+
+```text
+prompt prefill
+first decode token
+decode tokens 2..64
+```
+
+Causal-attention mask zeros and padding positions are excluded; they are already standard structural sparsity. Only actual projection-input scalar values equal to positive or negative zero count.
+
+### Pinned models and prompts
+
+Use unchanged TinyStories-1M/3M/8M revisions and the pinned GPT-Neo tokenizer from EXP-050. Use the six held-out families: English narrative, Korean, code, mathematics, structured JSON, and identifier boundary. Generate 64 greedy tokens with KV cache for each model/prompt pair.
+
+### Registration
+
+- enumerate every learned 2-D projection module before execution;
+- record module name, weight shape/checksum, input feature width, calls, tokens, and phase;
+- fail on unhooked or shape-mismatched dense projections;
+- deduplicate tied modules only by object identity while preserving named aliases;
+- do not count embeddings or causal attention masks as projection-input sparsity.
+
+### Accounting
+
+For input width `n`, output width `m`, and `z` exact-zero input coordinates:
+
+```text
+dense operations = m*n
+sparse operations = m*(n-z)
+weight bytes = Q4 columns for n-z coordinates
+activation metadata = nonzero-coordinate indexes + vector row pointer
+```
+
+Report operation and query-byte fractions per call, weighted by original dense scalar terms. Charge scanning every activation coordinate to discover zeros as a separate runtime operation count. Selection by prompt, model, module, or token is forbidden; aggregate the full registered population.
+
+### Controls
+
+- injected all-zero vector: zero operation fraction and exact dense fallback equivalence;
+- ReLU negative control input: registered exact zeros detected;
+- GELU random input: no false zero creation;
+- positive-zero and negative-zero counted identically;
+- column-skipped mathematical reference equals dense reference for exact-zero coordinates;
+- hook registration and call accounting are deterministic;
+- greedy committed tokens match an unhooked reference run exactly.
+
+### Promotion Gate
+
+```text
+zero output-token mismatch
+zero hook/registration/control mismatch
+p50 warm-decode operation fraction <=10%
+p90 warm-decode operation fraction <=25%
+p50 warm-decode query-byte fraction <=10%
+p90 warm-decode query-byte fraction <=25%
+all six prompt families represented
+no largest-model degradation >25%
+```
+
+Failure decision:
+
+```text
+REJECT_CAUSAL_EXACT_ACTIVATION_SPARSITY_AS_CORE_RETAIN_RUNTIME_SPARSE_AUXILIARY
+```
+
+### Claim boundary
+
+Phase C observation only. Actual sparse projection kernels, 405B activation statistics, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.

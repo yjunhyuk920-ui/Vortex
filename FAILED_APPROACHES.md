@@ -248,3 +248,8 @@ All 144 pinned real-Q4 dense projections had certified rank `min(rows, columns)`
 ## F-027 — Exact shift-displacement structure on measured real Q4 projections
 
 All 144 pinned real-Q4 dense projections retained full displacement rank under the most favorable of zero-fill/cyclic diagonal/anti-diagonal operators. Favorable query lower bounds were 100% at p50 and p90; generator storage was 200%. Do not continue by adding more visually chosen shifts, selecting a tensor subset, or ignoring transform/boundary costs. Retain displacement certificates only as structural falsification tools.
+
+<!-- EXP-060-AUTHORITATIVE-FINAL -->
+## F-028 — Static exact-zero sparse streaming on measured real Q4 projections
+
+Real Q4 weights contained only 17.76% median exact zeros. Skipping them left 82.22% median work and required 150.93% median query bytes after exact run metadata. Even the best matrix remained at 69.90% work and 190.12% bytes. Do not revisit using more CSR/BSR block sizes, zero clustering, or index compression: scalar nonzero density itself is already above the 25% Gate. Retain exact sparse formats only as conditional auxiliaries.

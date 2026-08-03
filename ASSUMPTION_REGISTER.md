@@ -206,3 +206,8 @@ Status: ACTIVE FOR EXP-059 ONLY. EXP-058 ruled out ordinary exact low rank, not 
 ## A-035 — Real Q4 matrices may contain enough exact scalar/block zeros for sparse streaming
 
 Status: ACTIVE FOR EXP-060 ONLY. Ordinary rank and displacement rank do not measure zero sparsity. EXP-060 must account for every stored value, index, row pointer, padded scalar in nonzero blocks, and format search. Q4 model-output preservation remains a separate unverified assumption.
+
+<!-- EXP-060-AUTHORITATIVE-FINAL -->
+## A-036 — Causal dense-projection inputs may contain useful exact zeros
+
+Status: ACTIVE FOR EXP-061 ONLY. Static weight zeros failed, but runtime activations could skip complete weight columns. EXP-061 must measure exact IEEE zero at every registered dense-projection input, separate prefill from warm decode, exclude causal-mask zeros already handled by standard attention, preserve held-out prompt families, and charge activation-index metadata. Near-zero thresholds are approximation and are forbidden.

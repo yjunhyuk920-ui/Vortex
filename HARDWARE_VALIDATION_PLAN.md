@@ -159,3 +159,8 @@ No factor kernel was promoted because the favorable structural lower bound is al
 ## EXP-059 hardware status
 
 No transform kernel was promoted because favorable query work already equals dense work and generator storage exceeds dense storage. FFT/NTT execution, CUDA, PCIe, SSD, TTFT, tokens/sec, power, and 8 GiB residency remain NOT TESTED.
+
+<!-- EXP-060-AUTHORITATIVE-FINAL -->
+## EXP-060 hardware status
+
+No sparse GPU kernel was promoted because logical work remained above 69% even for the best matrix and metadata exceeded dense Q4 bytes. CUDA sparse kernels, PCIe, SSD, TTFT, tokens/sec, power, and 8 GiB residency remain NOT TESTED.

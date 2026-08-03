@@ -1,0 +1,1 @@
+Phase C observation only. Q4 output preservation, physical sparse kernels, 405B, 8 GiB and target hardware are NOT TESTED.
