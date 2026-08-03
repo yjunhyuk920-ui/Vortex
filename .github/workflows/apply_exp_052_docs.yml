@@ -28,8 +28,12 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install validation dependency
-        run: python -m pip install --disable-pip-version-check pytest==8.3.5
+      - name: Install validation dependencies
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check pytest==8.3.5
+          python -m pip install --disable-pip-version-check \
+            --index-url https://download.pytorch.org/whl/cpu torch==2.6.0
 
       - name: Apply durable state
         run: python scripts/finalize_exp_052_minimal.py
