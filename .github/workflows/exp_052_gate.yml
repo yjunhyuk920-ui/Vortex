@@ -14,7 +14,7 @@ on:
 
 concurrency:
   group: exp-052-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   exact-advice-audit:
