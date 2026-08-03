@@ -2,7 +2,7 @@
 
 ## Mission boundary
 
-VORTEX is a runtime, not a retrained model. It must ingest an unmodified supported Hugging Face dense checkpoint and automatically construct any runtime metadata it needs.
+VORTEX is a runtime, not a retrained model. It ingests an unmodified supported Hugging Face dense checkpoint and automatically constructs any runtime metadata.
 
 ## Target execution stack
 
@@ -10,159 +10,180 @@ VORTEX is a runtime, not a retrained model. It must ingest an unmodified support
 Hugging Face checkpoint
         |
         v
-Checkpoint inspector and shard reader
+checkpoint/shard inspector
         |
-        +--> offline/runtime-format compiler
-        |       - no training or model modification
-        |       - checksummed, reproducible metadata
+        +--> automatic checksummed runtime-format compiler
         |
         v
-Causal token executor
+causal token executor
         |
-        +--> cheap proposal or partial evaluation
+        +--> proposal or partial original-operation evaluation
         +--> causal certificate
-        +--> certified commit OR exact fallback
+        +--> certified commit OR declared exact/safe fallback
         |
         v
-Memory scheduler
-        - VRAM hot state <= 8 GiB
+memory scheduler
+        - VRAM hot state <=8 GiB
         - RAM/SSD cold state
-        - asynchronous but causally correct transfer
+        - charged transfers and fallback
         |
         v
-Original-model-compatible tokens/logits contract
+original-model-compatible output contract
 ```
 
-## Core architecture requirement
+## Core requirement
 
 The primary runtime must avoid a substantial fraction of original 405B weight reads and arithmetic on unseen prompts. A component is core only when it participates in that operation-skipping path.
 
-## Mandatory core interfaces
+## Mandatory interfaces
 
-### 1. Proposal interface
+### Proposal
 
-Produces a candidate operation result, hidden-state interval, logit winner, or execution capsule without assuming future generated tokens.
+Produces a candidate operation result, interval, logit decision, or execution capsule without future generated tokens.
 
-Must report:
+Must report bytes, operations, state, construction cost, and causal inputs.
 
-- bytes read;
-- operations performed;
-- state used;
-- construction cost;
-- causal inputs.
+### Certificate
 
-### 2. Certificate interface
-
-Determines whether omitted work can change the declared output contract.
-
-Possible contracts:
+Declares one explicit contract:
 
 - deterministic exact;
 - deterministic top-1;
 - bounded-logit error;
-- probabilistic top-1 with declared `delta`.
+- probabilistic top-1 with declared union-accounted `delta`.
 
-The contract must be explicit. Probabilistic certification is not deterministic exactness.
+Probabilistic certification is not deterministic exactness.
 
-### 3. Fallback interface
+### Fallback
 
-When certification fails, execute all omitted original work needed to reproduce the reference contract.
+When certification fails, execute all omitted original work needed for the reference contract.
 
-Requirements:
+No silent approximation and no uncharged fallback stream.
 
-- no silent approximation;
-- no uncharged fallback stream;
-- fallback counts and bytes recorded;
-- failure of the optimized path cannot produce a worse output than its declared contract.
+### Memory virtualization
 
-### 4. Memory virtualization interface
+Separate:
 
-Separates:
-
-- GPU-resident hot metadata;
+- GPU hot metadata;
 - KV cache;
 - work buffers;
-- repair/fallback tiles;
-- host RAM cache;
-- SSD runtime format.
+- repair/fallback tile;
+- RAM cache;
+- SSD format.
 
-All transfers must be labeled logical and physical where measurable.
+### Evidence
 
-### 5. Evidence interface
+Every run emits phase/evidence/provenance, forward/layer/tile counts, logical/physical bytes where measured, fallback, wrong accepts, memory, timing distribution, and output agreement.
 
-Each run emits machine-readable records containing:
+## Current component classification
 
-```text
-phase
-evidence_level
-MEASURED
-DERIVED
-PROJECTED
-UNVERIFIED
-forward_calls
-layer_calls
-weight_bytes_read
-logical_transfer_bytes
-physical_transfer_bytes_if_measured
-fallback_count
-certificate_accept_count
-wrong_accept_count
-peak_RSS
-peak_VRAM_if_measured
-latency_distribution
-quality/token/logit agreement
-```
+### Auxiliary accepted
 
-## Current component map
+- safetensors discovery/slice access;
+- compact40/aligned64 mmap pointer VM;
+- atomic/checksummed format builder;
+- bounded exact decision-index compiler;
+- exact finite-horizon suffix DAG.
 
-### Core candidates
-
-- EXP-047 Causal Probabilistic Tile Certificate: active E0.
-
-### Auxiliary accepted components
-
-- safetensors discovery and slice access;
-- mmap compact40/aligned64 exact pointer VM;
-- atomic/checksummed runtime-format builder;
-- exact bounded decision-index compiler;
-- exact finite-horizon future-suffix DAG.
-
-These may support future compilers, caches, or metadata storage, but they are not the operation-skipping principle.
+These may store metadata or repeated states but are not the operation-skipping principle.
 
 ### Rejected core families
 
 See `FAILED_APPROACHES.md`.
 
-## EXP-047 planned insertion point
+### Active core research
 
-Initial primitive:
+EXP-047 statistical tile certification.
+
+## EXP-047 v1 insertion point
 
 ```text
-linear operator y = W x
-W partitioned into T input-dimension tiles
-random permutation pi chosen causally
-partial sums observed sequentially
-confidence sequence bounds omitted contribution
-certificate accepts declared decision or triggers exact fallback
+linear y = W x
+W partitioned into input-dimension tiles
+causal random tile permutation
+partial scalar decision contributions observed
+alpha-spending Serfling interval
+accept decision or exact fallback
 ```
 
-Phase B operates on synthetic linear decisions. Phase C must replace a real operation in an unmodified checkpoint. Hook-only analysis cannot promote beyond E1.
+Phase-B correctness passed. Broad skip performance did not.
 
-## Flagship resource equations
+Authoritative MEASURED result:
 
-For every proposed full path define:
+```text
+certified 4/525
+fallback 521/525
+N=1024 mean evaluated fraction 98.294%
+positive control evaluated fraction 10.449%
+wrong accepts 0
+```
+
+Architecture decision:
+
+- retain `vortex_runtime/cptc.py` as reference certificate/fallback machinery;
+- do not use one global range as the main executor;
+- do not build a GPU backend from CPTC-v1 yet.
+
+## Active revision architecture
+
+### Stage R0 — real-checkpoint oracle audit
+
+For current-token small-model states, fully compute exact decision tile contributions only as a non-deployable analysis oracle.
+
+Compare:
+
+- C0 current global range;
+- C1 exact per-state min/max oracle range;
+- C2 deployable static stratified tile bounds;
+- C3 independently proven variance-adaptive finite-population bounds.
+
+This identifies whether failure is intrinsic or caused by loose range metadata.
+
+### Stage R1 — deployable bound compiler
+
+Only if R0 shows a useful upper bound:
+
+- compile checksummed per-layer/per-tile bound metadata from the original checkpoint;
+- derive activation-dependent bounds without reading skipped weights;
+- charge metadata, selector, randomization, and union budget;
+- preserve exact fallback.
+
+### Stage R2 — real operation replacement
+
+Replace a real LM-head or selected projection during generation on unmodified small checkpoints, with held-out prompts and exact forward/tile accounting.
+
+Offline full-contribution analysis is not E2.
+
+### Stage R3 — model-wide propagation
+
+A model-wide path needs either:
+
+- direct final-token certification without reconstructing every hidden coordinate; or
+- compositional operator certificates whose nonlinear propagation remains sound.
+
+This is currently UNVERIFIED.
+
+## Resource equations
 
 ```text
 M_total = M_hot + M_kv + M_work + M_fallback <= 8 GiB
-B_total/token = B_selector + B_normal + fallback_rate * B_fallback
-C_total/token = C_selector + C_normal + fallback_rate * C_fallback
-T_token >= max(B_total / measured_effective_bandwidth,
-               C_total / measured_effective_throughput,
+B_total/token = B_selector + B_normal + r_fallback * B_fallback
+C_total/token = C_selector + C_normal + r_fallback * C_fallback
+T_token >= max(B_total / effective_bandwidth,
+               C_total / effective_throughput,
                serial_latency_floor)
 ```
 
-Current target hardware terms are UNVERIFIED because Phase D is NOT TESTED.
+PROJECTED same-bit traffic comparison:
+
+```text
+405B Q4 stream: 188.593 GiB
+1.2x 4B Q4 allowance: 2.235 GiB/token
+required evaluated fraction before overhead: 1.185%
+```
+
+Phase-D hardware terms remain NOT TESTED.
 
 ## Safety rule
 
-No optimized path may commit a result outside its declared certificate. If the certificate cannot be evaluated soundly, the runtime must fall back or abort rather than silently approximate.
+No optimized path commits outside its declared certificate. Invalid metadata, numerical failure, or absent proof triggers exact fallback or abort.
