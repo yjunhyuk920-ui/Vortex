@@ -1,0 +1,95 @@
+name: Llama final-decision routing certificate
+
+on:
+  pull_request:
+    paths:
+      - "vortex_runtime/llama_final_decision_routing.py"
+      - "tests/test_llama_final_decision_routing.py"
+      - "scripts/run_llama_final_decision_routing_certificate.py"
+      - "docs/EXPERIMENT_042_LLAMA_FINAL_DECISION_ROUTING_BOUND.md"
+      - ".github/workflows/llama-final-decision-routing-bound.yml"
+
+concurrency:
+  group: llama-final-routing-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  certify:
+    if: github.head_ref == 'research/llama-final-decision-routing-bound'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest
+      - name: Validate routing implementation
+        run: |
+          test -f vortex_runtime/llama_final_decision_routing.py
+          test -f tests/test_llama_final_decision_routing.py
+          python -m pytest -q tests/test_llama_final_decision_routing.py
+      - name: Generate certificate
+        run: |
+          python scripts/run_llama_final_decision_routing_certificate.py \
+            --output results/llama_final_decision_routing_bound.json
+      - name: Build PR report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(
+              Path("results/llama_final_decision_routing_bound.json")
+              .read_text(encoding="utf-8")
+          )
+          report = {
+              "evidence_level": payload["evidence_level"],
+              "micro_model": payload["micro_model"],
+              "exhaustive_family": payload["exhaustive_family"],
+              "target_projection": payload["target_projection"],
+              "scope_separation": payload["scope_separation"],
+              "conclusion": payload["conclusion"],
+              "next_obligation": payload["next_obligation"],
+          }
+          Path("llama-final-routing-comment.md").write_text(
+              "## Llama final-decision routing certificate\n\n```json\n"
+              + json.dumps(report, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file llama-final-routing-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: llama-final-decision-routing-bound
+          path: results/llama_final_decision_routing_bound.json
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          path=results/llama_final_decision_routing_bound.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data(gate): commit Llama final-decision routing certificate"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
