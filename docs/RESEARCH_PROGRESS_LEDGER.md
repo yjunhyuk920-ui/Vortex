@@ -6,7 +6,7 @@ This is the durable chronological record of architecture hypotheses, executable 
 
 ## Fixed target
 
-Execute an arbitrary unmodified Hugging Face 405B-class dense model on one 8 GiB VRAM GPU, preserve original-model quality, require no user training/distillation/fine-tuning/model-specific adapter work, and reach p50 warm decode within 1.2x of a native 4B Q4 baseline on the same machine.
+Execute an arbitrary unmodified Hugging Face 405B-class dense model on one 8 GiB VRAM GPU, preserve original-model decisions and quality, require no user training/distillation/fine-tuning/model-specific adapter work, and reach p50 warm decode within 1.2x of a native 4B Q4 baseline on the same machine.
 
 Current evidence remains below E4. Nothing below is target completion.
 
@@ -14,9 +14,11 @@ Current evidence remains below E4. Nothing below is target completion.
 
 `docs/WORK_SESSION_PROTOCOL.md` is mandatory. After meaningful repository work and before a user-facing progress/completion answer, update this ledger, `docs/SESSION_HANDOFF.md`, the experiment document, PR decision, and raw result JSON when available.
 
-## Foundational budget
+Failed hypotheses are permanent project data. Do not delete, soften, or relabel a negative result as success.
 
-The Cascade Capsule Gate 0 symbolic envelope remains the comparison baseline:
+## Foundational Gate 0 budget
+
+The Cascade Capsule symbolic envelope remains the comparison baseline:
 
 ```text
 projected memory: about 3.881 GiB
@@ -141,24 +143,15 @@ Global allocation recovered only about 1.65 percentage points. Equal layer alloc
 
 ### PR #36 — Causal Semantic-State Program Routing — rejected
 
-Branch evidence head:
+Evidence head:
 
 ```text
 research/semantic-state-program-routing
 499e5001c21d782adf79fba69ce6f2d445c0cb5e
+workflow 30778002226
 ```
 
 The router used only the previous completed token's final hidden state. Exact current MLP activations and top-two output duals were evaluation oracles.
-
-An active signed program stored 4-bit coefficients, 8-bit remainder norms, two 16-bit row scales, and 8-bit bases. At block 1024:
-
-```text
-rank2 active program: 0.6825 GiB
-rank4 active program: 0.9901 GiB
-rank8 active program: 1.6054 GiB
-```
-
-Measured held-out frontier:
 
 | States/rank | Mean run | Switch traffic | Activation mean | Dual mean | Activation/dual p95 |
 |---:|---:|---:|---:|---:|---:|
@@ -170,15 +163,16 @@ Measured held-out frontier:
 
 Increasing state count shortened reuse and increased transfer traffic. No configuration approached the <=10% mean and <=20% p95 coverage gate.
 
-Decision: close precompiled semantic-state program banks at the tested scale. Do not increase static state count or rank without a new multi-token reuse mechanism.
+Decision: close precompiled semantic-state program banks at the tested scale.
 
 ### PR #37 — Prompt-Compiled Hankel Decision Program — rejected
 
-Branch evidence head:
+Evidence head:
 
 ```text
 research/prompt-hankel-decision-program
 12f859e4ec288f0d38b29d8b71e494bdc29f6586
+workflow 30778715832
 ```
 
 The exact prompt prefill trajectory was compiled into:
@@ -192,7 +186,7 @@ logits_t = (W_lm U) z_t + W_lm mean_h + b_lm
 
 `phi` included linear, quadratic, bilinear, and full lifts. Only the exact first token from prefill anchored autonomous rollout. Future tokens and hidden states were evaluation-only.
 
-The projected 405B program was symbolically tiny and cheap. For rank32/control16/order2/full:
+For rank32/control16/order2/full:
 
 ```text
 program memory: 0.00673884 GiB
@@ -211,15 +205,16 @@ Real 256-token results:
 
 Higher ranks and lifted orders reduced prompt training residual but did not preserve future decisions; several configurations became non-finite. Non-finite evidence is stored as JSON `null`, never clipped.
 
-Decision: close prompt-only linear/quadratic/bilinear/full-lift Hankel programs at ranks 8–64 and orders 1–4. Do not continue by only increasing rank or order.
+Decision: close prompt-only linear/quadratic/bilinear/full-lift Hankel programs at ranks 8–64 and orders 1–4.
 
 ### PR #38 — Perfect-Oracle Sparse Hankel Repair — rejected
 
-Branch evidence head:
+Evidence head:
 
 ```text
 research/oracle-sparse-hankel-repair
 13e3f60876199e4b06577ca51e9fd71f575cb134
+workflow 30779062125
 ```
 
 The evaluator used an impossible oracle that knew the exact target token before deciding whether to accept the recurrence prediction or charge one full exact repair. This gives a strict lower bound on every deployable detector's repair rate.
@@ -232,77 +227,157 @@ compute: 811.6985 GFLOP
 required mean repair interval: >=247 tokens
 ```
 
-Best measured points over 256 tokens:
-
 | Prompt | Best config | Repairs | Accepted | Mean interval | Max interval | Repair traffic | Repair compute |
 |---|---|---:|---:|---:|---:|---:|---:|
 | algorithm-runtime | r8/q8/p1 linear | 226 | 11.72% | 1.133 | 3 | 166.84 GiB/token | 716.58 GFLOP/token |
 | distributed-database | r16/q8/p2 linear | 229 | 10.55% | 1.118 | 3 | 169.06 GiB/token | 726.09 GFLOP/token |
 | korean-plm-governance | r32/q16/p4 full | 174 | 32.03% | 1.471 | 3 | 128.45 GiB/token | 551.70 GFLOP/token |
 
-The perfect oracle repaired 68%–89% of tokens. No best accepted run exceeded three tokens. The required Gate allowed at most one repair in 256 tokens.
+The perfect oracle repaired 68%–89% of tokens. The required Gate allowed at most one repair in 256 tokens.
 
-Decision: close prompt-Hankel recurrence plus sparse exact repair, including every weaker causal detector. Tokenwise hidden-trajectory extrapolation is not the next path.
+Decision: close prompt-Hankel recurrence plus sparse exact repair, including every weaker causal detector.
+
+### PR #40 — Nonlocal Exact Decision Memory — rejected
+
+Authoritative evidence:
+
+```text
+research/nonlocal-exact-decision-memory
+91b3e3f062d33087005ae38bbf94b357012f0ccd
+corrected workflow 30780847944
+corrected full CI 30780847954
+```
+
+The prompt-only memory stored:
+
+```text
+key_i   = normalize(P^T (h_i - mean_prompt_hidden))
+block_i = prompt_token_ids[i+1 : i+1+L]
+```
+
+No continuation token or hidden state entered memory construction. One exact first continuation token was charged as the block-boundary anchor. Replay began after that anchor:
+
+```text
+query_t  = continuation_hidden_states[t]
+target_t = continuation_token_ids[t+1]
+```
+
+The first workflow attempt incorrectly counted the boundary anchor as replay. It is invalid and must not be cited as evidence. The corrected alignment is locked by a unit test; only workflow `30780847944` and head `91b3e3f...` are authoritative.
+
+The experiment measured nearest hidden retrieval, top-4/top-16/top-64 future-token oracles, and an impossible global future-token oracle that ignored hidden retrieval and searched every prompt suffix.
+
+Corrected 256-token post-anchor frontier:
+
+| Prompt | Best rank | Nearest max | Top-64 max | Global max | Global first | Post-anchor EOS |
+|---|---:|---:|---:|---:|---:|---:|
+| algorithm-runtime | 32 | 74 | 75 | 75 | 0 | absent |
+| distributed-database | 16 | 27 | 28 | 28 | 0 | absent |
+| korean-plm-governance | 16 | 4 | 5 | 5 | 4 | absent |
+
+Required exact replay horizon:
+
+```text
+>=247 tokens after the charged boundary anchor
+```
+
+The future-aware global oracle reached only 75, 28, and 5 tokens. This closes prompt-only exact suffix memory independent of key rank, ANN index, distance metric, or router.
+
+The 405B metadata budget was small and therefore not the failure. At 65,536 entries, rank 128, block length 256, fp16 keys, 32-bit token IDs, and 25% index overhead:
+
+```text
+keys: 16 MiB
+blocks: 64 MiB
+index: 20 MiB
+total: 100 MiB = 0.09765625 GiB
+projection plus brute-force lookup: 0.02097152 GFLOP/query
+```
+
+Decision: close prompt-only nonlocal exact token-block memory. The required future exact content is not present in the prompt at the needed horizon.
 
 ## Current interpretation
 
-The accumulated evidence now falsifies all tested mechanisms whose reusable object is:
+The accumulated evidence now falsifies all tested prompt-derived or low-dimensional reusable objects:
 
-- a static activation or residual basis;
-- a static or semantically routed signed program;
-- an independent exact-neuron subset;
-- a tokenwise low-rank hidden-state recurrence;
-- a recurrence repaired by sparse exact target calls;
-- a whole-model lossless stream amortized by ordinary speculation.
+```text
+static semantic program reuse: about 1 token
+prompt dynamic recurrence: at most 2 exact tokens
+perfect-token recurrence repair: exact execution on 68%–89% of tokens
+prompt suffix global-oracle maxima: 75 / 28 / 5
+required strong reuse: 247 tokens
+```
 
-The consistent obstruction is not only memory. The exact model's decision state changes too quickly for the tested low-dimensional object to remain valid: static program reuse averaged about one token, dynamic recurrence preserved at most two exact tokens, and even a perfect future-token repair oracle needed exact execution on most tokens.
+The obstruction is not merely VRAM. For the tested mechanisms, exact decision information changes too quickly or is absent from the prompt-derived program.
 
 ## Prohibited repeats
 
 Do not create another candidate that only changes:
 
 - static basis rank or block size;
-- state-cluster count;
+- semantic state-cluster count;
 - norm metadata precision;
-- neuron ordering or local/global budget;
-- Hankel rank, order, ridge, or polynomial lift;
-- detector conservatism for recurrence repair;
-- ordinary speculative block size while still paying dense 405B arithmetic per verified position.
+- neuron ordering or local/global error allocation;
+- Hankel rank, order, ridge, or polynomial/bilinear lift;
+- recurrence detector thresholds;
+- nearest-neighbor rank, ANN index, distance metric, or top-k width;
+- ordinary speculative block size while dense target arithmetic remains per verified position.
 
-Any new candidate must introduce a fundamentally different reusable object and charge its construction, storage, lookup, validation, and failure path.
+Any new candidate must introduce a fundamentally different source of exact decision information and charge construction, storage, lookup, validation, and fallback.
 
-## Current frontier — Nonlocal Exact Decision Memory
+## Current frontier — Experiment 040 Exact Dense-Operator Information/Traffic Lower Bound
 
-The next candidate must avoid token-by-token extrapolation. The first proof-first Gate should test whether earlier exact prompt states contain reusable nonlocal decision blocks for held-out continuation.
+Prompt-derived execution programs are exhausted. The next Gate must test the compatibility of the fixed universal target itself.
 
-Candidate outline:
-
-```text
-build memory entries from exact prompt positions only
-key each entry by a causal final-hidden signature
-store the exact following token block for that prompt position
-retrieve nearest prior states for the held-out continuation
-measure exact future-block agreement lengths without recurrence
-```
-
-This is not yet a solution. It is a falsification Gate for whether exact decision reuse exists at all across nonadjacent semantic states.
-
-Required accounting:
+For a dense affine operator:
 
 ```text
-M_keys + M_decision_blocks + M_index + M_KV + M_work <= 8 GiB
-lookup + validation <= 4B-class compute envelope
-accepted exact block length >=247 for the strong target
-no future continuation state or token may enter the memory build
+y = W x
 ```
 
-If prompt-only nonlocal memory produces only one- or two-token reuse, the next architecture must leave prompt-derived execution programs entirely and confront the full exact operator lower bound directly.
+suppose an exact runtime neither reads `W[i,j]` nor retains an exact representation sufficient to recover its effect. For any `x[j] != 0`, construct `W'` identical to `W` on every observed or represented degree of freedom but differing at `W[i,j]`. The runtime's observations are identical for `W` and `W'`, while exact `y_i` differs. A downstream two-logit margin can make the exact top-1 token differ as well.
+
+A universal exact runtime must therefore place each decision-relevant degree of freedom into one of:
+
+```text
+resident exact information
+cold information read for the interaction
+lossless metadata with equivalent information content
+```
+
+Compression can change representation but cannot erase arbitrary checkpoint information while guaranteeing exact behavior for every checkpoint and input.
+
+Experiment 040 must turn this into an executable lower-bound certificate rather than an unsupported impossibility statement.
+
+### Required implementation
+
+1. Formalize the indistinguishable-checkpoint adversary for dense matrix-vector multiplication.
+2. Extend it to exact top-1 decisions through a controlled downstream margin.
+3. Implement a simulator that constructs `W/W'`, an input, an inspection mask, identical runtime observations, different exact outputs, and different exact winners.
+4. Produce machine-readable lower-bound JSON.
+5. Derive resident/read/lossless-metadata inequalities for the 405B target.
+6. Separate worst-case arbitrary-checkpoint universality from empirical structure in specific released models.
+7. State which fixed assumption must change if the theorem closes:
+   - arbitrary checkpoint universality;
+   - exact original decisions;
+   - 8 GiB residency;
+   - 4B-class warm-decode traffic/compute.
+
+### Starting 405B quantities
+
+```text
+full Q4-equivalent target information: about 188.9883 GiB
+full dense interaction compute: about 811.6985 GFLOP
+resident VRAM: 8 GiB before KV/workspace
+required full-interaction amortization: about 247 tokens
+```
+
+Do not hide skipped weights in uncharged metadata. Automatic first-run representations must be charged by exact information content, host storage, transfer, and construction cost.
 
 ## Mandatory next step
 
-1. Create a fresh proof-first branch from `main` after this documentation update is merged.
-2. Derive memory and lookup equations for prompt-only nonlocal decision memory.
-3. Implement an optimistic nearest-state future-block oracle on the same three 256-token TinyLlama traces.
-4. Sweep key rank, neighbor count, and exact stored block length while charging storage.
-5. Require a held-out exact block horizon of at least 247 tokens and reject trivial repeated/EOS continuations.
-6. Commit raw JSON, PR decision, this ledger, and `docs/SESSION_HANDOFF.md` before reporting progress.
+1. Merge this durable documentation update after full CI.
+2. Create `research/exact-operator-lower-bound` from the new `main`.
+3. Add `docs/EXPERIMENT_040_EXACT_OPERATOR_LOWER_BOUND.md`.
+4. Implement the dense-output and top-1 adversarial checker with tests.
+5. Add an isolated workflow and raw JSON evidence commit.
+6. Decide whether the fixed target is mathematically compatible, compatible only under checkpoint structure, or contradicted in the arbitrary dense worst case.
+7. Update this ledger and `docs/SESSION_HANDOFF.md` before the next user-facing progress answer.
