@@ -1,0 +1,1 @@
+B1 is a future-aware non-deployable upper bound. B3 uses only the current exact prefix, same-checkpoint early layers, final norm, and LM head. One exact target block pass verifies the proposal. This is small-checkpoint CPU E1 evidence; Phase D is NOT TESTED.
