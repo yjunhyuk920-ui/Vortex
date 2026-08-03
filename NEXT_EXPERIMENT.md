@@ -1,118 +1,137 @@
 # Next Experiment
 
-## Closed Gate — EXP-049
+## Closed Gate — EXP-050
 
 Authoritative evidence:
 
 ```text
-results/exp_049/summary.json
-workflow 30803672059
-source head SHA 91d0caa86d784c663bc520d36d9b512f0cc526e9
-workflow merge SHA 173dd3477e2a6f5ecb0d55b58375ec18dfe774dd
-artifact 8851957250
-artifact ZIP SHA-256 4cd6c8c4afb833562438a97f052d45d331f3691362472fb08e594bd0c5585b9e
+results/exp_050/summary.json
+workflow 30806015309
+source head SHA 1388c780abea11067c66cd666ed0a313ec2f682c
+workflow merge SHA 6bdd0a20334e394ec5252a6c0e676c1f62b608d0
+artifact 8852817664
+artifact ZIP SHA-256 a32ffe8dbfc201c6d70ca8dac660164d8400691ad4d8fe3593d688e7754f6159
 ```
 
 MEASURED:
 
 ```text
-3 models × 6 families = 18 cases
-1,458 fixed trajectory rows
-exact verifier mismatches 0
-future information in S1/S2 0
-unhandled numerical failures 0
-oracle-best S1/S2 p50 exact prefix 4.5
-oracle-best S1/S2 maximum exact prefix 6
-oracle-best S1/S2 p90 target-equivalent fraction 168.778596%
-S0 hard Jacobi p50 prefix after 4 passes 4
-S2 Anderson p50 prefix after 4 passes 1
-S2/S0 improvement 0.25x
-triangular transcript indistinguishability true
-one-new-exact-position-per-round barrier observed true
+3 pinned models
+18 target/prompt cases
+36 cross-target draft pairs
+108 K=64/128/256 rows
+exact mismatches 0
+target future information uses 0
+favorable-pool p50 exact proposal prefix 0.5
+favorable-pool maximum prefix 3
+favorable-pool p90 normalized fraction 163.20987654%
+matching prefix zero in 72/108 rows
+Korean useful acceptance false
+structured JSON useful acceptance false
+target median prefixes 1.0 / 0.0 / 0.5
+universal first-token counterexample matching prefix 0
 ```
 
 Decision:
 
 ```text
-REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY
+REJECT_TARGET_INDEPENDENT_EXTERNAL_DRAFT_AS_UNIVERSAL_CORE
 ```
 
-The exact reference was allowed to choose the best fixed S1/S2 trajectory per case. Even this non-deployable favorable upper bound failed the 16-token/10% early Gate. Hidden triangular models also refuted a universal faster-than-one-position-per-round target-only guarantee.
+The tested fixed pool also failed every practical early Gate except exactness/causality. Proposal trees are not continued from this pool.
 
-## EXP-050 — Target-Independent External Draft Advice Gate
+## EXP-051 — Oracle Layer-Finalization and Tail-Skip Gate
 
 ### Mechanism change
 
-EXP-050 imports a new causal information source rather than repeatedly querying the target:
+EXP-051 no longer tries to predict many future tokens. It asks whether the **current exact target token** becomes final after only a small prefix of Transformer layers.
 
-> use another already published, unmodified small causal model to generate a long proposal with its own KV cache, then execute one exact target block pass and commit only the longest target-matching prefix plus first-mismatch correction.
+For every exact greedy generation state:
 
-No target checkpoint is modified or trained. No target-specific LoRA, adapter, distillation, calibration, or future target token is allowed. Draft checkpoints are part of the runtime and their complete sequential compute/weight-stream cost is charged.
+```text
+exact committed prefix/current input token
+        |
+        v
+embedding and target blocks 1...L
+        |
+        +--> hidden state h_d after each depth d
+        |
+        v
+target final normalization + target LM head
+        |
+        v
+intermediate token prediction z_d
+```
 
-This is different from EXP-048 B3:
+Let `z_L` be the exact final target token.
 
-- B3 reused early target layers and reread the target LM head for every proposal token;
-- EXP-050 uses a separate complete draft checkpoint whose weights may remain resident independently of the target stream;
-- the exact target verifier remains unchanged.
+Definitions:
 
-### Universal claim warning
+```text
+first_match_depth = min d such that z_d == z_L
+suffix_stable_depth = min d such that z_j == z_L for every j >= d
+```
 
-For any deterministic target-independent draft rule `D(prompt)`, an arbitrary target model can choose a different first greedy token for the same prompt. Therefore a fixed external draft cannot guarantee even one exact proposal token for every arbitrary target.
+`suffix_stable_depth` is the favorable oracle depth relevant to tail skipping. It is non-deployable because it uses all later layers to know that no later flip occurs.
 
-EXP-050 must keep two claims separate:
+### Why this differs from EXP-048 B3
 
-1. **universal worst-case claim:** subject to the first-token counterexample;
-2. **average practical checkpoint claim:** measured using a favorable fixed draft pool.
+EXP-048 B3 recursively used partial layers to generate future proposal tokens. A first draft error changed every subsequent input.
 
-A valid universal counterexample independently rejects fixed target-independent drafting as a universal exact solution. Practical evidence still determines whether the component deserves auxiliary or restricted-family use.
+EXP-051:
+
+- always uses the exact target greedy prefix;
+- analyzes only the current next-token decision;
+- evaluates every target layer depth;
+- separates transient early matches from suffix-stable finalization;
+- measures the strongest possible layer-tail skip before designing a selector or certificate.
 
 ### Conditions
 
-#### E0 — target-independent first-token counterexample
+#### L0 — exact full-depth baseline
 
-Implement finite deterministic draft and target oracles with the same vocabulary/prompt interface:
+Generate 64 exact greedy tokens per held-out target/prompt using the normal target KV cache. Record exact final logits/tokens and full target parameter/CPU accounting.
+
+#### L1 — first-match oracle
+
+At every exact token state, record the earliest block depth whose final-norm/LM-head argmax equals the final target token. This may match, flip away, and return later; it is diagnostic only.
+
+#### L2 — suffix-stable oracle
+
+Record the earliest depth after which every later intermediate argmax equals the final target token. This is the primary favorable non-deployable tail-skip upper bound.
+
+#### L3 — fixed-depth corpus oracle
+
+For each pre-registered fixed depth fraction:
 
 ```text
-draft first token = a
-target first token = b != a
+0%, 12.5%, 25%, 50%, 75%, 100% of target blocks
 ```
 
-Extend the target into a valid causal chain. Confirm exact block verification commits only target correction `b` and proposal matching prefix zero.
+report exact token agreement across every target/family. This shows whether a single target-independent depth selector could work without reference knowledge.
 
-Repeat under randomized draft rules by conditioning the adversarial target on a seed-independent token outside the draft's support when possible, or state the probabilistic failure probability explicitly.
+#### L4 — exact-reference per-state depth selector
 
-#### E1 — cross-checkpoint single drafts
+Choose `suffix_stable_depth` independently per token using the final reference. This selector is non-deployable and deliberately favorable. It supplies the early rejection metric.
 
-Use the pinned unmodified TinyStories checkpoints as both targets and external drafts, never using a target checkpoint as its own draft:
+#### L5 — late-decision residual-chain adversary
+
+Construct a finite residual network whose intermediate logits select token `a` after every layer except the final layer, where a residual update flips the exact token to `b`.
+
+Required properties:
 
 ```text
-Target 1M <- drafts {3M, 8M}
-Target 3M <- drafts {1M, 8M}
-Target 8M <- drafts {1M, 3M}
+first_match_depth = final depth
+suffix_stable_depth = final depth
+all fixed early depths fail
+exact final output remains valid
 ```
 
-All checkpoints share the pinned GPT-Neo tokenizer. Generate draft proposals causally with each draft model's KV cache.
+This demonstrates that no universal target-independent early-exit depth can preserve every arbitrary target exactly.
 
-#### E2 — favorable fixed draft-pool oracle
+#### L6 — sound tail certificate
 
-For every target/prompt/block, record every eligible draft and additionally choose the exact-reference-best draft only as a non-deployable upper bound.
-
-Selection order:
-
-1. longest exact target-matching proposal prefix;
-2. lowest fully charged target-equivalent fraction;
-3. smaller draft parameter count;
-4. lexical draft model ID.
-
-A negative result under this favorable selector rejects the fixed pool without building a selector. A positive result does not promote a runtime until a causal target-independent selector is committed.
-
-#### E3 — same-model future oracle
-
-Use exact target future tokens only to validate proposal alignment and exact verifier arithmetic. This condition is future-aware, non-deployable, and excluded from external-draft aggregates.
-
-#### E4 — proposal tree
-
-Forbidden unless E2 survives the early Gate. Every branch, draft token, target-scored node, and tree-selection operation would be charged. Tree expansion may not rescue a pool whose single paths almost always diverge at position zero.
+Forbidden unless L2 survives the early Gate. A certificate must bound the effect of every omitted nonlinear attention/MLP residual on the final top-1 decision without executing the skipped target layers. Exact-reference suffix stability is not a certificate.
 
 ### Pinned corpus
 
@@ -125,167 +144,155 @@ roneneldan/TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
 roneneldan/TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
 ```
 
-Held-out families remain English narrative, Korean, code, mathematics, structured JSON, and brittle identifier continuation.
+Six held-out families remain English narrative, Korean, code, mathematics, structured JSON, and identifier boundary.
 
-Proposal block sizes:
+Generate exactly 64 target tokens per target/prompt: 3 × 6 × 64 =1,152 exact token states unless a pinned context limit forces an explicit exclusion.
 
-```text
-K in {64, 128, 256}
-```
+### Hidden-state alignment contract
 
-Generate one 256-token exact target reference and one 256-token continuation from every eligible external draft. Prefix metrics for shorter blocks are derived from the same causal continuation. States exceeding context limits are recorded as excluded.
+For GPT-Neo targets:
 
-### Exact correctness contract
+- `outputs.hidden_states[0]` is embedding output;
+- `outputs.hidden_states[d]` for `1 <= d <= L` is output after block `d` before final `ln_f`;
+- apply the original target `transformer.ln_f` and tied/original `lm_head` to the final position of every depth;
+- final-depth probe argmax must equal `outputs.logits[:, -1].argmax` and the exact generated token;
+- abort on mismatch, missing hidden state, non-finite logit, or revision error.
 
-For each proposal:
-
-1. generate draft tokens using only the prompt and the external draft's own prior tokens/KV state;
-2. execute one exact target teacher-forced block pass;
-3. compare left to right;
-4. commit only the matching proposal prefix plus the exact target token at first mismatch;
-5. discard all later proposal/target states;
-6. compare committed tokens with exact target greedy reference;
-7. fail the run on any unexplained mismatch, future-target leakage, revision mismatch, malformed proposal, or non-finite accounting.
+No intermediate hidden state is interpreted as final without the target final norm/head.
 
 ### Traffic accounting
 
-For target parameter bytes `P_t`, draft parameter bytes `P_d`, proposal length `K`, and exact committed tokens `A`:
+For each target checkpoint compile logical bytes:
 
 ```text
-actual_small_model_target_equivalent_fraction =
-    (K * P_d/P_t + 1 exact target verification stream) / A
+B_embed_row       current token and position rows only
+B_blocks[1..L]    all parameters belonging to each target block
+B_final_norm      target final normalization
+B_lm_head         full output projection logical read
+B_full            B_embed_row + sum(B_blocks) + B_final_norm + B_lm_head
 ```
 
-This counts one logical full draft weight stream per sequential draft token. CPU elapsed time, draft KV bytes, and target verification time are reported separately.
-
-Final-target normalized projection for a 4B draft and 405B target:
+Favorable oracle tail-skip fraction at stable depth `d`:
 
 ```text
-draft ratio = 4/405 = 0.0098765432 target streams/proposal token
-normalized_fraction = (K * 4/405 + 1) / A
+(B_embed_row + sum_{j<=d} B_blocks[j] + B_final_norm + B_lm_head) / B_full
 ```
 
-PROJECTED target requirement:
+This assumes the oracle knows the correct depth and pays only one LM-head probe. Actual selector/certificate probes would add cost and can only be worse.
 
-```text
-normalized_fraction <=0.01185185185
-```
+Also report:
 
-With a completely correct K-token proposal, the 4B draft itself consumes `4/405` per committed token. The one target verification stream therefore requires:
-
-```text
-K >= ceil(1 / (0.01185185185 - 4/405))
-  = 507 exact proposal tokens
-```
-
-This is stricter than the zero-cost proposal minimum of 85. Proposal blocks up to 256 can only pass the early Gate, not the final promotion Gate.
+- block-depth fraction `d/L`;
+- LM-head share of full logical bytes;
+- first-match versus suffix-stable gap;
+- transient token flips;
+- CPU time for full exact baseline and offline probes;
+- peak RSS.
 
 ### Required measurements
 
 MEASURED:
 
-- exact model/tokenizer revisions and file hashes;
-- target/draft parameter counts and bytes;
-- prompt hashes and context limits;
-- exact target and draft token continuations;
-- per-draft matching prefix for K=64/128/256;
-- exact committed tokens and verifier mismatch;
-- draft sequential forward count and CPU time;
-- target verification count and CPU time;
-- draft KV peak estimate and process RSS;
-- actual small-model target-equivalent fraction;
-- future-information audit;
-- model/family trend.
+- exact revisions and file hashes;
+- 1,152 token states or explicit exclusions;
+- final-depth/logit reconstruction mismatch;
+- intermediate token at every depth;
+- first-match and suffix-stable depth;
+- token flips after first match;
+- oracle stable-depth logical byte fraction;
+- fixed-depth token agreement by model/family;
+- layer/head parameter bytes;
+- margins at every depth;
+- CPU time and RSS;
+- late-decision adversarial result.
 
 DERIVED:
 
-- favorable-pool p50/p90 exact prefix;
-- draft-selection oracle label;
-- universal first-token counterexample verdict;
-- 4B/405B normalized traffic fraction;
-- dynamic exact-prefix requirement.
+- p50/p90 stable depth and traffic fraction;
+- model/family trend;
+- oracle savings upper bound;
+- universal fixed-depth counterexample verdict;
+- gap to 1.185185% target fraction.
 
 PROJECTED:
 
-- 405B Q4 target stream;
-- 4B Q4 draft stream;
-- target-equivalent traffic under measured exact-prefix distributions.
+- 405B Q4 logical bytes under observed fractions;
+- gap to 4B-class target.
 
 UNVERIFIED:
 
-- a deployable draft selector;
-- physical concurrent residency/overlap;
-- 8 GiB combined target/draft/KV state;
-- 70B/405B exact-prefix behavior;
-- CUDA/PCIe/SSD/TTFT/tokens per second.
+- causal deployable early-exit selector;
+- sound nonlinear tail certificate;
+- real skipped-layer operation replacement;
+- target CUDA/PCIe/SSD/TTFT/tokens per second;
+- 70B/405B finalization depths;
+- 8 GiB execution.
 
 ### Pre-registered early rejection Gate
 
-Reject the fixed external-draft pool as a core path if any condition holds:
+Reject layer-finalization/tail skipping as a core path if any condition holds:
 
 ```text
-exact verifier mismatch >0
-future target information in E1/E2 >0
-favorable-pool p50 exact matching prefix <16
-favorable-pool p90 4B/405B-normalized fraction >10%
-any held-out family has zero non-correction proposal acceptance in every case
-draft-pool acceptance materially worsens with target size
-universal first-token counterexample succeeds
+final-depth reconstruction mismatch >0
+future generated token use >0
+suffix-stable oracle median logical byte fraction >10%
+suffix-stable oracle p90 logical byte fraction >25%
+suffix-stable oracle median block-depth fraction >10%
+any required family has median stable depth >50% of blocks
+largest-model median stable fraction >1.25x smallest-model median
+late-decision adversary succeeds
 ```
 
-The universal counterexample is independently sufficient to reject the mechanism as a solution for the fixed arbitrary-model exact contract. Empirical results may still support auxiliary use in a restricted target family.
+The thresholds are deliberately much looser than the final 1.185185% requirement. A universal late-decision target independently rejects fixed-depth exact early exit for the arbitrary-model mission; empirical oracle results determine whether restricted adaptive certification deserves continuation.
 
 Failure decision:
 
 ```text
-REJECT_TARGET_INDEPENDENT_EXTERNAL_DRAFT_AS_UNIVERSAL_CORE
+REJECT_LAYER_FINALIZATION_TAIL_SKIP_AS_UNIVERSAL_CORE
 ```
 
 ### Promotion Gate
 
-A later restricted-family or revised-claim runtime may advance only if:
+Only if the oracle survives may L6 and actual Phase-C replacement be built. Promotion still requires:
 
 ```text
-zero exact mismatch
-zero target future information
-causal deployable draft selector
-p50 exact proposal prefix >=507 for a 4B-normalized draft
-p90 normalized fraction <=1.185185%
-nonzero useful acceptance in every held-out family
-non-degrading target-size trend
-combined target/draft/KV hot-state plan <=8 GiB before Phase D
-claim explicitly excludes the universal counterexample or supplies target-dependent advice
+zero final reconstruction mismatch
+zero future information
+sound causal selector/certificate
+real skipped target blocks during complete generation
+p90 fully accounted fraction <=0.011851851851851851
+nonzero useful savings in every family
+non-degrading model-size trend
+claim scope consistent with late-decision counterexample
 ```
-
-Passing restricted-family evidence may not be described as satisfying the current arbitrary-model mission.
 
 ### Strongest counterexamples
 
-- target first token deliberately differs from every fixed draft;
-- two targets sharing tokenizer and prompt but opposite greedy continuations;
-- code identifiers and random-looking suffixes;
-- Korean/English domain mismatch;
-- EOS or JSON boundary at proposal position zero;
-- larger draft that is confidently different from the smaller target;
-- pool oracle chooses a different draft for every prompt, exposing selector impossibility;
-- proposal prefix long on narrative but zero on at least one required family.
+- final residual layer flips an otherwise stable token;
+- early token matches, flips multiple times, and returns only at final layer;
+- near-tied logits whose sign changes in late blocks;
+- Korean/code/JSON states finalizing later than narrative;
+- LM-head bytes dominate even depth zero;
+- fixed depth works on one target but fails a larger one;
+- exact-reference depth is very shallow but no sound causal certificate can know it.
 
 ### Evidence boundary
 
 ```text
 Phase: A/B with small-checkpoint observation
-Evidence ceiling: E1 until a fixed causal selector and complete generation replacement exist
+Evidence ceiling: E1 until real target blocks are causally skipped
+complete real operation replacement: false
 405B / 8 GiB / CUDA / PCIe / SSD / TTFT / tokens/sec: NOT TESTED
 Phase D: NOT TESTED
 ```
 
 ### Next exact action
 
-After PR #59 merges:
+After PR #60 merges:
 
-1. create `research/exp-050-external-draft-advice`;
-2. commit the first-token no-free-lunch reference and tests;
-3. implement cached cross-checkpoint proposal generation and exact verifier integration;
-4. run the pinned 18-case fixed-pool Gate;
-5. freeze raw per-target/per-draft evidence and update durable state;
-6. do not implement E4 trees unless E2 survives the early Gate.
+1. create `research/exp-051-layer-finalization-tail-skip`;
+2. implement intermediate-depth reconstruction and late-flip adversary tests;
+3. run pinned 1,152-state oracle audit;
+4. freeze every depth/token/margin row and byte equation;
+5. reject before selector work if L2 misses the lenient Gate;
+6. implement L6 only if the oracle survives.
