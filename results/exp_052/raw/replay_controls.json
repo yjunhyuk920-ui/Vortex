@@ -1,0 +1,128 @@
+[
+  {
+    "build_target_calls": 384,
+    "condition": "P0_prefix",
+    "entry_count": 384,
+    "fallback_fraction": 0.0,
+    "hit_rate": 1.0,
+    "hits": 384,
+    "minimum_repetitions_for_target": 85,
+    "model_id": "roneneldan/TinyStories-1M",
+    "query_count": 384,
+    "reuse_checkpoint_fractions": {
+      "1": 1.0,
+      "1000": 0.001,
+      "16": 0.0625,
+      "169": 0.005917159763313609,
+      "2": 0.5,
+      "4": 0.25,
+      "85": 0.011764705882352941
+    },
+    "wrong_hits": 0
+  },
+  {
+    "build_target_calls": 384,
+    "condition": "S0_state",
+    "entry_count": 384,
+    "fallback_fraction": 0.0,
+    "hit_rate": 1.0,
+    "hits": 384,
+    "minimum_repetitions_for_target": 85,
+    "model_id": "roneneldan/TinyStories-1M",
+    "query_count": 384,
+    "reuse_checkpoint_fractions": {
+      "1": 1.0,
+      "1000": 0.001,
+      "16": 0.0625,
+      "169": 0.005917159763313609,
+      "2": 0.5,
+      "4": 0.25,
+      "85": 0.011764705882352941
+    },
+    "wrong_hits": 0
+  },
+  {
+    "build_target_calls": 384,
+    "condition": "P0_prefix",
+    "entry_count": 384,
+    "fallback_fraction": 0.0,
+    "hit_rate": 1.0,
+    "hits": 384,
+    "minimum_repetitions_for_target": 85,
+    "model_id": "roneneldan/TinyStories-3M",
+    "query_count": 384,
+    "reuse_checkpoint_fractions": {
+      "1": 1.0,
+      "1000": 0.001,
+      "16": 0.0625,
+      "169": 0.005917159763313609,
+      "2": 0.5,
+      "4": 0.25,
+      "85": 0.011764705882352941
+    },
+    "wrong_hits": 0
+  },
+  {
+    "build_target_calls": 384,
+    "condition": "S0_state",
+    "entry_count": 384,
+    "fallback_fraction": 0.0,
+    "hit_rate": 1.0,
+    "hits": 384,
+    "minimum_repetitions_for_target": 85,
+    "model_id": "roneneldan/TinyStories-3M",
+    "query_count": 384,
+    "reuse_checkpoint_fractions": {
+      "1": 1.0,
+      "1000": 0.001,
+      "16": 0.0625,
+      "169": 0.005917159763313609,
+      "2": 0.5,
+      "4": 0.25,
+      "85": 0.011764705882352941
+    },
+    "wrong_hits": 0
+  },
+  {
+    "build_target_calls": 384,
+    "condition": "P0_prefix",
+    "entry_count": 384,
+    "fallback_fraction": 0.0,
+    "hit_rate": 1.0,
+    "hits": 384,
+    "minimum_repetitions_for_target": 85,
+    "model_id": "roneneldan/TinyStories-8M",
+    "query_count": 384,
+    "reuse_checkpoint_fractions": {
+      "1": 1.0,
+      "1000": 0.001,
+      "16": 0.0625,
+      "169": 0.005917159763313609,
+      "2": 0.5,
+      "4": 0.25,
+      "85": 0.011764705882352941
+    },
+    "wrong_hits": 0
+  },
+  {
+    "build_target_calls": 384,
+    "condition": "S0_state",
+    "entry_count": 384,
+    "fallback_fraction": 0.0,
+    "hit_rate": 1.0,
+    "hits": 384,
+    "minimum_repetitions_for_target": 85,
+    "model_id": "roneneldan/TinyStories-8M",
+    "query_count": 384,
+    "reuse_checkpoint_fractions": {
+      "1": 1.0,
+      "1000": 0.001,
+      "16": 0.0625,
+      "169": 0.005917159763313609,
+      "2": 0.5,
+      "4": 0.25,
+      "85": 0.011764705882352941
+    },
+    "wrong_hits": 0
+  }
+]

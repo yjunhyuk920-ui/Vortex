@@ -1,0 +1,111 @@
+{
+  "DERIVED": {
+    "claim_scope": "rejects enumerative exact prefix/KV-state advice under the measured and independent-state budgets; not an unconditional lower bound for every symbolic compiler",
+    "cold_one_tib_capacity_entries": 2694881440,
+    "combined_budget_capacity_entries": 178956970,
+    "combined_budget_coverage_fraction_over_2_48_states": 6.357828752356909e-07,
+    "combined_budget_minimum_fallback_fraction": 0.9999993642171248,
+    "decision": "REJECT_ENUMERATIVE_EXACT_ADVICE_AS_CORE_RETAIN_FAIL_CLOSED_TABLE_AUXILIARY",
+    "enumerative_exact_advice_survives_gate": false,
+    "exact_gate_pass": true,
+    "fallback_gate_pass": false,
+    "fully_accounted_fraction_gate_pass": false,
+    "held_out_hit_gate_pass": false,
+    "hot_index_capacity_entries": 178956970,
+    "leakage_gate_pass": true,
+    "maximum_observed_prefix_length": 128,
+    "natural_reuse_gate_pass": false,
+    "prefix_universe_bit_length": 1999,
+    "prefix_universe_decimal_digits": 602,
+    "required_hit_rate_at_85_reuses": 0.999912854030501,
+    "required_hit_rate_infinite_reuse": 0.9881481481481481,
+    "storage_gate_pass": false
+  },
+  "MEASURED": {
+    "build_eval_prompt_leakage": 0,
+    "excluded_prompt_count": 0,
+    "expected_state_count": 1152,
+    "family_hit_rates": {
+      "P0_prefix": {
+        "code": 0.0,
+        "english_narrative": 0.0,
+        "identifier_boundary": 0.0,
+        "korean": 0.0,
+        "mathematics": 0.0,
+        "structured_json": 0.0
+      },
+      "S0_state": {
+        "code": 0.0,
+        "english_narrative": 0.0,
+        "identifier_boundary": 0.0,
+        "korean": 0.0,
+        "mathematics": 0.0,
+        "structured_json": 0.0
+      }
+    },
+    "fold_row_count": 36,
+    "independent_state_wrong_hits": 0,
+    "maximum_held_out_family_online_fallback_fraction": 1.0,
+    "maximum_natural_exact_reuse": 1,
+    "mean_lookup_probes": 1.0,
+    "mean_prefix_entry_bytes": 300,
+    "mean_state_prefix_witness_entry_bytes": 408,
+    "mean_state_raw_kv_bytes": 562289.7777777778,
+    "mean_state_raw_witness_entry_bytes": 562698,
+    "median_natural_exact_reuse": 1.0,
+    "minimum_held_out_family_hit_rate": 0.0,
+    "model_count": 3,
+    "p90_observed_reuse_fully_accounted_target_fraction": 6.0,
+    "peak_rss_kib": 597664,
+    "peak_state_raw_kv_bytes": 2097152,
+    "physical_corpus_target_forward_calls": 1170,
+    "prompt_case_count": 18,
+    "replay_all_exact": true,
+    "replay_minimum_repetitions": 85,
+    "state_count": 1152,
+    "wrong_advice_hits": 0
+  },
+  "PROJECTED": {
+    "allowed_1_2x_baseline_gib_per_token": 2.2351741790771484,
+    "baseline_q4_full_weight_gib_per_stream": 1.862645149230957,
+    "required_target_equivalent_fraction": 0.011851851851851851,
+    "target_q4_full_weight_gib_per_stream": 188.5928213596344
+  },
+  "UNVERIFIED": [
+    "non-enumerative automatic target program compiler",
+    "real unseen-state target operation replacement",
+    "physical advice lookup latency and SSD behavior",
+    "70B and 405B advice coverage",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_ENUMERATIVE_EXACT_ADVICE_AS_CORE_RETAIN_FAIL_CLOSED_TABLE_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "complete_real_operation_replacement": false,
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED"
+  },
+  "complete_real_operation_replacement": false,
+  "evidence_level": "E1",
+  "experiment": "EXP-052",
+  "name": "runtime_only_exact_advice_tradeoff_and_constraint_closure_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-observation"
+  ],
+  "phase_d_status": "NOT TESTED",
+  "provenance": {
+    "config_sha256": "b2869fb9ac54a76f16dff6b7bf48e48e857cfa32135beb8846ce14f34d1e9e24",
+    "created_utc": "2026-08-03T11:56:20Z",
+    "source_commit": "db6aa2cc434b72865e42f553cdf72b46566e1726"
+  },
+  "raw_evidence": {
+    "checkpoint_manifest": "raw/checkpoint_manifest.json",
+    "fold_rows": "raw/fold_rows.jsonl",
+    "independent_state_audit": "raw/independent_state_audit.json",
+    "replay_controls": "raw/replay_controls.json",
+    "state_records": "raw/state_records.jsonl"
+  }
+}
