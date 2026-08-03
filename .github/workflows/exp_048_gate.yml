@@ -2,14 +2,6 @@ name: EXP-048 causal block amortization Gate
 
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "vortex_runtime/block_verify.py"
-      - "tests/exp_048/**"
-      - "experiments/exp_048/**"
-      - "docs/research/EXPERIMENT_048_CAUSAL_BLOCK_VERIFICATION_AMORTIZATION.md"
-      - ".github/workflows/exp_048_gate.yml"
-      - "NEXT_EXPERIMENT.md"
 
 concurrency:
   group: exp-048-${{ github.workflow }}-${{ github.ref }}
@@ -85,23 +77,27 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}
         run: python scripts/run_validation.py
 
-      - name: Run pinned real-checkpoint Gate
+      - name: Run pinned real-checkpoint reproduction
         env:
           PYTHONPATH: ${{ github.workspace }}
           HF_HOME: ${{ runner.temp }}/hf-exp048
           TOKENIZERS_PARALLELISM: "false"
+          VORTEX_EXP048_OUTPUT_DIR: ${{ runner.temp }}/exp_048_reproduction
         run: |
           set -euo pipefail
-          rm -rf results/exp_048_candidate
+          rm -rf "${VORTEX_EXP048_OUTPUT_DIR}"
           bash experiments/exp_048/run_current_env.sh 2>&1 | tee exp048-workflow.log
 
       - name: Validate evidence contract
+        env:
+          REPRO_ROOT: ${{ runner.temp }}/exp_048_reproduction
         run: |
           python - <<'PY'
           import json
+          import os
           from pathlib import Path
 
-          root = Path("results/exp_048_candidate")
+          root = Path(os.environ["REPRO_ROOT"])
           summary = json.loads((root / "summary.json").read_text())
           assert summary["experiment"] == "EXP-048"
           assert summary["evidence_level"] == "E1"
@@ -118,23 +114,20 @@ jobs:
           assert measured["b1_oracle_block_size"] == 96
           assert measured["b1_oracle_target_equivalent_stream_fraction"] == 1 / 96
           assert summary["DERIVED"]["b1_is_non_deployable_future_oracle"] is True
-          assert summary["gate"]["decision"] in {
-              "CONTINUE_PARTIAL_LAYER_SELF_DRAFT_TO_COMPLETE_GENERATION_PHASE_C",
-              "REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER",
-          }
+          assert summary["gate"]["decision"] == "REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER"
           assert (root / "raw" / "cases.jsonl").is_file()
           assert (root / "raw" / "checkpoint_manifest.json").is_file()
           assert (root / "checksums.sha256").is_file()
           print(json.dumps(summary, indent=2, sort_keys=True))
           PY
 
-      - name: Upload candidate evidence
+      - name: Upload isolated reproduction
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: exp-048-candidate-${{ github.run_id }}
+          name: exp-048-reproduction-${{ github.run_id }}
           path: |
-            results/exp_048_candidate
+            ${{ runner.temp }}/exp_048_reproduction
             exp048-workflow.log
             exp048-pip-freeze.txt
           if-no-files-found: warn
