@@ -199,3 +199,12 @@ Primary oracle: earliest suffix-stable depth whose intermediate final-norm/LM-he
 A late-decision adversarial residual chain tests the universal fixed-depth boundary. No selector/certificate is built unless the non-deployable suffix-stable oracle survives lenient 10%/25% traffic Gates.
 
 Status: ACTIVE NEXT GATE — EXP-051.
+
+<!-- EXP-052-AUTHORITATIVE-FINAL -->
+## D-022/D-023/D-024 — Close EXP-051/052 and select EXP-053
+
+D-022 rejects EXP-051 layer-tail skipping: median suffix-stable depth 25%, p90 37.5%, median/p90 favorable traffic 82.2069%/99.8011%, with a final-layer adversary.
+
+D-023 records EXP-052 authority `results/exp_052/summary.json`; workflow `30811429049`; source head `d4c2328027a5377b997e9ee1d8df0f55190fb652`; artifact `8854946309`; ZIP SHA-256 `1beb137e1ee14fe80ded0a3309c4ed297035d552a46bf901b2e4233ab95549ca`. 1,152 exact warm states and 36 leave-one-family-out rows produced zero wrong hits and zero build/evaluation leakage, but P0 prefix and S0 KV-state held-out hit rates were 0% in every family. Fallback was 100%, natural exact reuse median/max was 1/1, and p90 fully-accounted target fraction was 6.0 (600%). Same-state replay was 100% exact and required at least 85 repetitions. Under 8 GiB hot index plus 1 TiB cold advice, combined coverage of 2^48 independent states was 6.357828752356909e-7, leaving fallback 0.9999993642171248. Decision: `REJECT_ENUMERATIVE_EXACT_ADVICE_AS_CORE_RETAIN_FAIL_CLOSED_TABLE_AUXILIARY`.
+
+D-024 requires the next mechanism to be non-enumerative and weight-derived; EXP-053 is active.

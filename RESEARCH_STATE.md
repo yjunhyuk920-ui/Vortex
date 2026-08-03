@@ -264,3 +264,12 @@ cd results/exp_050 && sha256sum -c checksums.sha256
 9. `REPRODUCIBILITY.md`
 10. EXP-050 document and frozen summary
 11. PR #60
+
+<!-- EXP-052-AUTHORITATIVE-FINAL -->
+## EXP-052 authoritative result and EXP-053 frontier
+
+Authority: `results/exp_052/summary.json`; workflow `30811429049`; source head `d4c2328027a5377b997e9ee1d8df0f55190fb652`; artifact `8854946309`; ZIP SHA-256 `1beb137e1ee14fe80ded0a3309c4ed297035d552a46bf901b2e4233ab95549ca`.
+
+1,152 exact warm states and 36 leave-one-family-out rows produced zero wrong hits and zero build/evaluation leakage, but P0 prefix and S0 KV-state held-out hit rates were 0% in every family. Fallback was 100%, natural exact reuse median/max was 1/1, and p90 fully-accounted target fraction was 6.0 (600%). Same-state replay was 100% exact and required at least 85 repetitions. Under 8 GiB hot index plus 1 TiB cold advice, combined coverage of 2^48 independent states was 6.357828752356909e-7, leaving fallback 0.9999993642171248.
+
+Decision: `REJECT_ENUMERATIVE_EXACT_ADVICE_AS_CORE_RETAIN_FAIL_CLOSED_TABLE_AUXILIARY`. Exact tables are auxiliary only. The active frontier is `EXP-053 — Automatic Bit-Exact Decision-Circuit Compiler Gate`, which compiles bounded quantized operators from weights rather than enumerating states. 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, tokens/second, Phase D, E6, and E7 remain NOT TESTED.

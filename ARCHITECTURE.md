@@ -183,3 +183,8 @@ Hardware terms remain `NOT TESTED`.
 ## Safety rule
 
 No path commits outside its declared exact verifier/certificate. Invalid depth, metadata, proposal, probe, selector, or numerical state triggers exact completion/fallback or abort.
+
+<!-- EXP-052-AUTHORITATIVE-FINAL -->
+## Closed EXP-052 and active EXP-053 architecture
+
+EXP-052 exact witnessed tables are `exact hit OR exact target fallback` auxiliary memoization. EXP-053 compiles bounded quantized target weights and exact arithmetic semantics into a structurally hashed bit-vector/AIG decision circuit. Compile time, nodes, bytes, query touches, reduction, and fallback are mandatory costs.

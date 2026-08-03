@@ -208,3 +208,8 @@ Allowed reuse:
 - external-draft accounting/reference tests;
 - universal first-token counterexample;
 - restricted-domain draft research only with an explicit non-universal claim and a materially different evidence base.
+
+<!-- EXP-052-AUTHORITATIVE-FINAL -->
+## F-019/F-020 — Tail exit and enumerative exact advice
+
+F-019 rejects fixed/oracle layer-finalization tail skipping as core. F-020 rejects enumerative exact prefix/KV advice as core. Forbidden rescues include larger copies of the same table, hash-width changes presented as compression, replay presented as held-out generalization, and uncharged build/fallback amortization.

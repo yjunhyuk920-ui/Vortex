@@ -178,3 +178,10 @@ A suffix-stable oracle depth is non-deployable and below E2. Actual operation re
 3. do not interpret dependency/download/timeout/storage errors as hypothesis evidence;
 4. update durable state;
 5. rerun only after correction.
+
+<!-- EXP-052-AUTHORITATIVE-FINAL -->
+## EXP-052 frozen authority
+
+Authority: `results/exp_052/summary.json`; workflow `30811429049`; source head `d4c2328027a5377b997e9ee1d8df0f55190fb652`; artifact `8854946309`; ZIP SHA-256 `1beb137e1ee14fe80ded0a3309c4ed297035d552a46bf901b2e4233ab95549ca`.
+
+Verify with `cd results/exp_052 && sha256sum -c checksums.sha256`. Original workflow hashes are preserved in `results/exp_052/artifacts/workflow_checksums.sha256`; the original workflow summary is `results/exp_052/raw/workflow_summary.json`.

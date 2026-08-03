@@ -134,3 +134,8 @@ results/exp_xxx/logs/
 results/exp_xxx/artifacts/
 results/exp_xxx/checksums.sha256
 ```
+
+<!-- EXP-052-AUTHORITATIVE-FINAL -->
+## EXP-052/053 hardware boundary
+
+EXP-052 has no Phase-D core route. EXP-053 hardware work is forbidden until a real small-checkpoint operation is replaced exactly and circuit bytes/query work close the 8 GiB and 1.185185% equations. Phase D remains NOT TESTED.

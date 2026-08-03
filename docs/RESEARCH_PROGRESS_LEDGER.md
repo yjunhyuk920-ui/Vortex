@@ -121,3 +121,8 @@ Real operation replacement NOT TESTED
 8 GiB target NOT TESTED
 E6/E7 not achieved
 ```
+
+<!-- EXP-052-AUTHORITATIVE-FINAL -->
+## EXP-052 handoff
+
+Enumerative exact advice is rejected. Read `results/exp_052/summary.json` and `NEXT_EXPERIMENT.md`; continue with EXP-053 or a materially new mechanism only.
