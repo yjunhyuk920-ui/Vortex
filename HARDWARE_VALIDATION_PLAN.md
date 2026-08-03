@@ -154,3 +154,8 @@ EXP-054 has no Phase-D route as core. EXP-055 hardware work is forbidden until a
 ## EXP-058 hardware status
 
 No factor kernel was promoted because the favorable structural lower bound is already 2.0x on every measured matrix. CUDA, factor bytes, PCIe, SSD, TTFT, tokens/sec, power, and 8 GiB residency are NOT TESTED. EXP-059 remains a CPU structural Gate unless its exact displacement-rank thresholds survive.
+
+<!-- EXP-059-AUTHORITATIVE-FINAL -->
+## EXP-059 hardware status
+
+No transform kernel was promoted because favorable query work already equals dense work and generator storage exceeds dense storage. FFT/NTT execution, CUDA, PCIe, SSD, TTFT, tokens/sec, power, and 8 GiB residency remain NOT TESTED.

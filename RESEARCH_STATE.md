@@ -325,3 +325,8 @@ Decision: `REJECT_REAL_WEIGHT_EXACT_GROUPING_DICTIONARY_AS_CORE_RETAIN_MEASURED_
 ## EXP-058 closed — Exact algebraic rank of pinned real Q4 matrices
 
 Authority: workflow `30826618962`, artifact `8861905858`, ZIP SHA-256 `851582a616412e7e078b7c05ddb64883b972cec895847b6df3d7d75dc615bfae`. All 144 registered dense projections were proven full integer/rational rank. Favorable exact two-factor operation/storage lower bounds were 2.0x at p50 and p90. Decision: `REJECT_REAL_Q4_EXACT_LOW_RANK_FACTORIZATION_AS_CORE_RETAIN_RANK_CERTIFICATES`. Q4 output preservation, constructive factor kernels, 405B, 8 GiB, and target hardware remain NOT TESTED. Current frontier: EXP-059 exact shift-displacement rank.
+
+<!-- EXP-059-AUTHORITATIVE-FINAL -->
+## EXP-059 closed — Exact shift-displacement rank
+
+Authority: workflow `30840432745`, artifact `8866573958`, ZIP SHA-256 `61d0c24ccacd310d7d0e7600cc926a882c74281827d524c4880c6715fad8800d`. All 144 registered real-Q4 dense projections had selected exact displacement-rank fraction 1.0. Favorable query and generator-storage lower bounds were p50/p90 1.0/1.0 and 2.0/2.0. Decision: `REJECT_REAL_Q4_EXACT_SHIFT_DISPLACEMENT_STRUCTURE_AS_CORE_RETAIN_CERTIFICATES`. Q4 output preservation, constructive generators, transform kernels, 405B, 8 GiB, and target hardware remain NOT TESTED. Current frontier: EXP-060 exact zero-sparsity streaming.

@@ -201,3 +201,8 @@ A-031 an exact reduced ordered diagram yields a universally short path: CONTRADI
 ## A-034 — Full-rank real Q4 matrices may still have low exact shift-displacement rank
 
 Status: ACTIVE FOR EXP-059 ONLY. EXP-058 ruled out ordinary exact low rank, not Toeplitz-, Hankel-, or circulant-like full-rank structure. EXP-059 must use exact registered displacement operators and modular certificates; visual banding and approximate spectral decay are not evidence.
+
+<!-- EXP-059-AUTHORITATIVE-FINAL -->
+## A-035 — Real Q4 matrices may contain enough exact scalar/block zeros for sparse streaming
+
+Status: ACTIVE FOR EXP-060 ONLY. Ordinary rank and displacement rank do not measure zero sparsity. EXP-060 must account for every stored value, index, row pointer, padded scalar in nonzero blocks, and format search. Q4 model-output preservation remains a separate unverified assumption.

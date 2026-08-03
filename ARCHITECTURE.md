@@ -203,3 +203,8 @@ EXP-054 ROMTDD/ROBDD-like diagrams are auxiliary exact decision references. EXP-
 ## Exact-rank boundary
 
 Modular rank certification is retained as an offline structural audit. Conventional exact low-rank factors are prohibited for matrices certified full rank. The next permitted algebraic route is a different full-rank structured representation, beginning with EXP-059 shift-displacement operators.
+
+<!-- EXP-059-AUTHORITATIVE-FINAL -->
+## Displacement-structure boundary
+
+The runtime must not promote the tested zero-fill/cyclic diagonal/anti-diagonal generator route for matrices with full certified displacement rank. Certificates remain offline audits. The next permitted exact structural path is sparse streaming conditioned on measured Q4 zero scalars or complete zero blocks.

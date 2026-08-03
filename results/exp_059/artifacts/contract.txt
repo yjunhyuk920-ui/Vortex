@@ -1,0 +1,1 @@
+Phase C observation only. 405B, 8 GiB, target hardware and actual Transformer operation replacement are NOT TESTED.
