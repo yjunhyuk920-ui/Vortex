@@ -2,23 +2,24 @@
 
 Last updated: 2026-08-03 (Asia/Seoul)
 
-This is the durable chronological index of hypotheses, executable Gates, measured evidence, accepted proof constraints, and rejection reasons. Detailed experiment documents, PR discussions, workflows, and raw JSON remain permanent authoritative data even when this ledger summarizes them.
+This is the durable chronological index of hypotheses, executable Gates, measurements, accepted proof constraints, and rejection reasons. Detailed experiment documents, PRs, workflows, raw JSON, and Git history remain authoritative permanent data.
 
 ## Fixed target
 
 Execute an arbitrary unmodified Hugging Face 405B-class dense model on one 8 GiB VRAM GPU, preserve original-model decisions and quality, require no user training/distillation/fine-tuning/model-specific adapter work, and reach p50 warm decode within 1.2x of a native 4B Q4 baseline on the same machine.
 
-Current evidence remains below E4. Nothing below is a completed physical runtime.
+Current evidence remains below E4. Nothing below is physical runtime completion.
 
 ## Permanent rules
 
 - `docs/WORK_SESSION_PROTOCOL.md` is mandatory.
-- Failed hypotheses remain permanent project data.
-- Accepted information proofs are guardrails, not runtime implementations.
-- Separate exact output, top-1 functions, final Transformer decisions, total metadata, per-token traffic, and hardware wall clock.
-- Charge checkpoint-specific construction, storage, host state, lookup, transfer, validation, and fallback.
-- Metadata size must never be relabeled as per-token traffic.
-- Before a user-facing progress/completion response after meaningful work, update this ledger and `docs/SESSION_HANDOFF.md`.
+- Negative experiments are permanent data.
+- Accepted proofs are guardrails, not working runtimes.
+- Keep exact output, top-1 functions, final Transformer decisions, metadata size, logical bytes, physical transactions, and wall clock separate.
+- Charge build, storage, host state, lookup, transfer, validation, cache, and fallback.
+- Metadata size is not per-token traffic.
+- Serial probe count is not latency.
+- Before reporting meaningful progress, update this ledger and `docs/SESSION_HANDOFF.md`.
 
 ## Foundational Gate 0 envelope
 
@@ -29,34 +30,34 @@ projected compute: about 7.898 GFLOP/token
 minimum full-stream repair reuse by compute: 246.889 tokens
 ```
 
-This was only a conditional E0/E1 envelope. Quality, attention, universality, CUDA scheduling, physical bytes, and wall clock were not proven.
+Conditional E0/E1 only. Quality, attention, universality, physical bytes, CUDA, and wall clock were unproven.
 
 ## Rejected representation families
 
-### Dictionaries, activation atlases, entropy, and exact-neuron subsets
+### Dictionaries, factorization, activation atlases, and entropy
 
-- Exact gauge transformation error reached about `4.6e-7`, but 16/32 prototype dictionaries produced zero useful causal continuation.
-- A 16-prototype functional skeleton reached about 9.4% teacher top-32, output error about 0.972, and one exact causal step.
-- Static activation ranks 4/8/16 left continuation perpendicular means about 0.956/0.947/0.934.
-- Online activation expansion required one exact expansion per token and projected 2.9355 GiB/token of LM-head residual traffic.
-- ZIPTREE measured 11.3330 bits/weight and required 10,649 straight accepted tokens.
-- Exact-neuron optimistic subsets reached at most two exact tokens while traffic rose from about 0.623 to 12.285 GiB/token.
-- PR #29 measured 132 single-layer damage points; nonlinear allocation still yielded zero useful prefix.
+- Q2/Q3 progressive precision failed quality; Q4 causal tree preserved exact path for 12 levels but needed about 1,057–1,232 accepted tokens to amortize the full stream.
+- Recurrent layer dictionaries fit storage but still read about 188 GiB/committed token.
+- Global/semantic Kronecker approximations passed some memory projections but produced near-unit weight error and zero useful causal prefix.
+- Exact gauge dictionaries and functional skeletons preserved primitives but failed full-model decisions.
+- Static activation ranks left continuation perpendicular energy near one.
+- Online expansion became exact/tokenwise and exceeded the traffic envelope.
+- ZIPTREE measured 11.3330 bits/weight and required about 10,649 accepted tokens.
 
-Decision: reject static dictionaries, activation-subspace caching, ordinary lossless streaming, and independent-neuron selection as primary mechanisms.
+Decision: reject static low-rank dictionaries, global factorization, activation-subspace caching, and ordinary whole-model lossless streaming as primary mechanisms.
 
-### Signed residual proof sequence — PR #31–#34
+### Exact-neuron and signed-residual families
 
-| PR | Mechanism | Decisive result | Decision |
-|---:|---|---|---|
-| 31 | global Signed Dual Cone | 8-bit mean refinement 97.93%; 610.64 GiB/token | reject |
-| 32 | partitioned residual bounds | mean refinement about 96.46%; about 607.6 GiB/token | reject |
-| 33 | block signed residual code | mean refinement 92.39%; 585.80 GiB/token | reject |
-| 34 | global dual-price allocation | mean refinement 90.74%; max 573.34 GiB/token | reject |
+- Exact-neuron optimistic subsets reached at most two exact tokens as MLP traffic rose from about 0.623 to 12.285 GiB/token.
+- PR #29 measured 132 single-layer damage points; nonlinear allocation still produced no useful prefix.
+- PR #31 global Signed Dual Cone: 8-bit mean refinement 97.93%, about 610.64 GiB/token.
+- PR #32 partitioned residual bounds: about 96.46%, about 607.6 GiB/token.
+- PR #33 block signed residual code: 92.39%, about 585.8 GiB/token.
+- PR #34 global dual-price allocation: 90.74%, maximum about 573.34 GiB/token.
 
-Signed cancellation was real, but static bases did not transfer and exact refinement remained dominant.
+Decision: signed cancellation exists, but exact refinement remains dominant. Close these families.
 
-## Rejected dynamic and multi-token programs
+## Rejected dynamic and prompt-derived execution programs
 
 ### PR #36 — Semantic-State Program Routing
 
@@ -65,17 +66,7 @@ head: 499e5001c21d782adf79fba69ce6f2d445c0cb5e
 workflow: 30778002226
 ```
 
-Best point:
-
-```text
-mean program reuse: 1.364 tokens
-switch traffic: 0.7261 GiB/token
-activation perpendicular mean: 42.28%
-dual perpendicular mean: 53.91%
-p95: 99.50% / 99.84%
-```
-
-Decision: reject precompiled semantic-state program banks.
+Best reuse 1.364 tokens; switch traffic 0.7261 GiB/token; activation/dual perpendicular p95 near 100%. Rejected.
 
 ### PR #37 — Prompt-Compiled Hankel Decision Program
 
@@ -84,16 +75,7 @@ head: 12f859e4ec288f0d38b29d8b71e494bdc29f6586
 workflow: 30778715832
 ```
 
-The small projected program failed real autonomous continuation:
-
-```text
-algorithm-runtime exact prefix: 1
-distributed-database exact prefix: 1
-korean-plm-governance exact prefix: 2
-required: 247
-```
-
-Decision: reject prompt-only linear/quadratic/bilinear/full-lift recurrence.
+Autonomous exact prefixes were 1, 1, and 2 versus required 247. Rejected.
 
 ### PR #38 — Perfect-Oracle Sparse Repair
 
@@ -102,13 +84,7 @@ head: 13e3f60876199e4b06577ca51e9fd71f575cb134
 workflow: 30779062125
 ```
 
-| Prompt | Repairs / 256 | Mean interval | Repair traffic | Repair compute |
-|---|---:|---:|---:|---:|
-| algorithm-runtime | 226 | 1.133 | 166.84 GiB/token | 716.58 GFLOP/token |
-| distributed-database | 229 | 1.118 | 169.06 GiB/token | 726.09 GFLOP/token |
-| korean-plm-governance | 174 | 1.471 | 128.45 GiB/token | 551.70 GFLOP/token |
-
-The oracle knew the exact target before deciding to repair. Decision: reject recurrence plus sparse exact repair and every weaker causal detector.
+The impossible oracle still repaired 174–229 of 256 tokens, projecting 128.45–169.06 GiB/token and 551.70–726.09 GFLOP/token. Rejected.
 
 ### PR #40 — Nonlocal Exact Decision Memory
 
@@ -118,15 +94,7 @@ corrected workflow: 30780847944
 corrected CI: 30780847954
 ```
 
-The first continuation token was charged as the exact boundary anchor. The initial misaligned run is invalid. Corrected post-anchor results:
-
-| Prompt | Nearest max | Top-64 max | Future-aware global max | Required |
-|---|---:|---:|---:|---:|
-| algorithm-runtime | 74 | 75 | 75 | 247 |
-| distributed-database | 27 | 28 | 28 | 247 |
-| korean-plm-governance | 4 | 5 | 5 | 247 |
-
-The impossible global oracle searched every prompt suffix using future tokens. Decision: reject prompt-only exact suffix memory independent of ANN, key rank, distance, or router.
+The initial boundary-misaligned run is invalid. Corrected future-aware global suffix maxima were 75, 28, and 5 versus required 247. Rejected independent of key rank, ANN, top-k, or distance.
 
 ## Accepted proof guardrails
 
@@ -134,222 +102,199 @@ The impossible global oracle searched every prompt suffix using future tokens. D
 
 ```text
 head: 7733aa6b8ba1193ed64c20fddcfc643a3d43ed7c
-certificate workflow: 30781557141
+certificate: 30781557141
 full CI: 30781557096
-main merge: 663dd3d02095f19be269ef60a7c16959f6e16f2f
+merge: 663dd3d02095f19be269ef60a7c16959f6e16f2f
 ```
 
-For an arbitrary `N`-parameter `b`-bit checkpoint family, every representation supporting all exact dense operator outputs must distinguish `2^(N b)` checkpoints and needs at least `N b` bits in the worst case.
-
-405B Q4:
+For arbitrary `N`-parameter `b`-bit exact operators, a lossless universal representation needs at least `N*b` bits.
 
 ```text
-exact information: 188.98828125 GiB
-resident allowance: 8 GiB
-minimum external exact information: 180.98828125 GiB
+405B Q4 information: 188.98828125 GiB
+8 GiB resident fraction: 4.2331%
+minimum external information: 180.98828125 GiB
 optimistic dense arithmetic: 811.698487296 GFLOP
-ratio to 4B dense arithmetic: 101.462310912x
+4B arithmetic ratio: 101.462310912x
 ```
 
-Skipped-coordinate adversary:
-
-```text
-matrix shapes: 2x4, 3x5, 4x7, 8x8
-coordinates tested: 115
-winner-flip adversaries: 115
-```
-
-Accepted scope:
-
-```text
-exact-output N*b information bound: proven
-any omitted/unrepresented coordinate can flip top-1: proven
-metadata-aware complete top-1 N*b theorem: not proven by PR #42
-```
+115/115 skipped-coordinate adversaries changed exact output and unique top-1. Scope: exact-output theorem and coordinate relevance, not a complete metadata-aware top-1 theorem.
 
 ### PR #44 — Metadata-Aware Exact Top-1 Function Bound
 
 ```text
 head: 95e202da8a31e564a80db509ad0b9b97bd71403d
-certificate workflow: 30782192795
+certificate: 30782192795
 full CI: 30782192768
-main merge: aca6657578b0decb58adbf98bcd22555169a6847
+merge: aca6657578b0decb58adbf98bcd22555169a6847
 ```
 
-For an `m x d` classifier:
+Selector/payload classifier family:
 
 ```text
 p = min(floor(m/2), floor(d/2))
 K = p(d-p)
+functions = 2^K
 ```
 
-The selector/payload family implements `2^K` distinct complete top-1 functions, so arbitrary exact checkpoint metadata for that family needs at least `K` bits.
-
-Exhaustive certificate:
-
-| Shape | Decision bits | Expected | Observed | Margin |
-|---|---:|---:|---:|---:|
-| 2x2 | 1 | 2 | 2 | 1.0 |
-| 4x4 | 4 | 16 | 16 | 1.0 |
-| 4x5 | 6 | 64 | 64 | 1.0 |
-| 6x6 | 9 | 512 | 512 | 1.0 |
-
-Independently callable Llama-shaped operator collection:
-
-```text
-one decoder layer: 77.9375 MiB
-126 layers: 9.5899658203125 GiB
-LM head: 8 MiB
-total: 9.5977783203125 GiB
-```
-
-Accepted scope:
-
-```text
-direct classifier metadata theorem: proven
-independently callable operator collection: proven
-end-to-end final-token composition: not proven by PR #44
-```
+2, 16, 64, and 512 function families were exhaustively injective. Independently callable Llama-shaped operator collection lower bound: 9.5977783203125 GiB. Scope: direct/operator collection only.
 
 ### PR #46 — End-to-End Llama Final-Decision Metadata Bound
 
 ```text
 head: 7f1385b2585477d1557f50823047e41604803cb0
-certificate workflow: 30784848053
+certificate: 30784848053
 full CI: 30784848049
-main merge: 038d3fa72dbfe91f4d9837d482b9f9c10719a00f
-raw evidence: results/llama_final_decision_routing_bound.json
+merge: 038d3fa72dbfe91f4d9837d482b9f9c10719a00f
+raw JSON: results/llama_final_decision_routing_bound.json
 ```
 
-The executable family uses standard bias-free Llama-style components:
+Actual bias-free Llama-style family with embeddings, RMSNorm, causal GQA, residuals, SwiGLU, final RMSNorm, and LM head:
 
 ```text
-token embeddings
-RMSNorm
-causal grouped-query self-attention
-residual connections
-SwiGLU
-final RMSNorm
-linear LM head
-```
-
-A legal four-token prompt selects a signed Q4 `up_proj` coefficient. The final next-token winner decodes its exact code.
-
-Micro-certificate:
-
-```text
-loader layers: 2
-variable layers: 2
-independent Q4 coefficients: 2
-expected functions: 256
-observed functions: 256
-exact code recovery: true
+micro functions: 256 / 256
+exact signed-Q4 recovery: true
 minimum winner margin: 0.24951063086132308
 ```
 
-Llama-405B-shaped projection, including the 1,024-dimensional GQA KV bottleneck:
+405B-shaped projection:
 
 ```text
-loader layers: 15
-variable layers: 111
+loader / variable layers: 15 / 111
 groups/layer: 31
 neurons/group: 1,717
 payload coordinates: 9,508
-active intermediate/layer: 53,227
-control coordinates: 14,666
-vocabulary rows: 42,139
 independent Q4 coefficients: 56,175,137,076
-metadata bits: 224,700,548,304
-metadata: 26.158586645498872 GiB
-resident allowance: 8 GiB
+complete final-decision metadata: 26.158586645498872 GiB
 ```
 
-Accepted theorem:
-
-> A complete exact final-decision representation for the constructed arbitrary Q4 Llama-style family cannot fit entirely in an 8 GiB resident checkpoint-information allowance.
-
-Critical scope:
+Accepted scope:
 
 ```text
-end-to-end final-token metadata-size bound: proven for the family
-all-resident 8 GiB representation: contradicted for the family
-per-query external traffic lower bound: not proven
-host-indexed sparse random-access escape: open
-fixed physical runtime target fully contradicted: false
-released 405B maximum information complexity: not proven
-real 405B execution and wall clock: not performed
+all-resident 8 GiB complete exact-decision representation: contradicted for the family
+per-token external traffic: not proven
+host-indexed sparse lookup: open
+full physical target: unsolved
 ```
 
-The initial pre-correction PR comment that described the whole target as contradicted is invalid. Use the raw JSON at the authoritative head.
+Pre-correction Experiment 042 comments that claimed the whole target was contradicted are invalid.
+
+### PR #48 — Host-Indexed Exact-Decision Cell-Probe Gate
+
+```text
+head: 2705613f943f36adc041a6a4bedd7eba5c42f2ac
+certificate: 30785452594
+full CI: 30785452584
+merge: 4ca9d2c2d4876d1266b2ad5527e2350585c7db7c
+raw JSON: results/host_indexed_cell_probe_gate.json
+```
+
+Explicit pointer model:
+
+```text
+record[address] = (q4_value, next_address)
+next_token_t = q4_value
+address_(t+1) = next_address
+```
+
+For `S` disjoint chains of length `T` and `C` cached complete records:
+
+```text
+worst-chain host misses >= T - floor(C/S)
+```
+
+Balanced caches attained the bound; sampled caches never violated it. Three one-record adversaries changed the current token and next address after identical prefixes.
+
+Target projection:
+
+```text
+Q4 cells: 56,175,137,076
+chain length: 256
+complete chains: 219,434,129
+address / record bits: 36 / 40
+explicit pointer table: 261.5858664549887 GiB
+pointer overhead: 235.42727980948985 GiB
+8 GiB raw-record cache capacity: 1,717,986,918
+worst-chain cached records floor: 7
+serial host misses: at least 249 / 256
+logical host bytes/token: 4.86328125
+```
+
+Nonrepresentative packed CPU pointer chase:
+
+```text
+median: 224.27377 ns/probe
+minimum: 222.98837 ns/probe
+maximum: 224.94671 ns/probe
+```
+
+Accepted scope and architecture decision:
+
+```text
+explicit pointer serial dependency: proven
+raw complete-record cache theorem: proven
+one logical record probe/token is sufficient for the model: demonstrated
+arbitrary compressed cache theorem: not proven
+physical transfer size and target latency: not proven
+host-indexed escape: open
+```
+
+Decision: reject “one serial host probe/token proves impossibility.” Advance to a constructive host-indexed VM.
 
 ## Current classification
 
 ```text
-arbitrary dense exact output using only 8 GiB total information: contradicted
-arbitrary coordinate omission for universal exact top-1: contradicted
-direct classifier exact top-1 metadata: lower-bounded
-independent Llama-shaped operator collection: >8 GiB total metadata bound
-constructed end-to-end Llama final-decision family: 26.1586 GiB total metadata bound
-all-resident exact-decision representation in 8 GiB: contradicted for that family
-host-indexed exact-decision representation: open
-per-token probe, communication, and latency lower bound: open
-405B/8 GiB/4B-speed physical runtime: unsolved
+all-resident exact-decision metadata in 8 GiB: contradicted for the constructed family
+explicit pointer host representation: nearly one serial miss/token
+logical bytes/token lower bound: small
+bandwidth impossibility: not proven
+latency impossibility: not proven
+host-indexed exact-decision VM: not yet built
+real 405B/8 GiB/quality/wall-clock target: unsolved
 ```
 
 ## Prohibited repeats and overclaims
 
-Do not continue by only changing static rank, block size, state count, recurrence order, repair threshold, ANN parameters, speculative block length, or uncharged metadata. Do not:
+Do not:
 
-- report total metadata as per-token traffic;
-- cite invalid pre-correction Experiment 039 or 042 results;
-- infer released-checkpoint complexity from a worst-case family;
-- claim physical impossibility without a communication/latency theorem;
-- claim runtime success without real 405B/8-GiB/quality/wall-clock evidence.
+- relabel metadata size as traffic;
+- relabel serial probe count as latency;
+- project CI timing to target hardware;
+- apply the raw-record cache theorem to arbitrary compressed indexes;
+- infer released-checkpoint complexity from worst-case constructed families;
+- claim physical success or impossibility without target-relevant evidence.
 
-## Current frontier — Experiment 043 Host-Indexed Exact-Decision Cell-Probe Gate
+## Current frontier — Experiment 044 Host-Indexed Exact-Decision VM
 
-Experiment 042 closes the all-resident path but leaves external sparse lookup open. The next Gate must address adaptive host access without assuming the result.
+The next work is constructive.
 
-Construct an exact pointer-chasing family:
-
-```text
-value_t = table[address_t]
-address_(t+1) = transition[address_t, value_t]
-```
-
-The next address is unknown until the current exact value returns. This can prove serial adaptivity and prevent parallel look-ahead for the constructed trace.
-
-Required accounting:
+Required first VM:
 
 ```text
-table entries and bits
-address bits
-probes/token
-bytes/probe
-serial dependency depth
-resident cache size
-host/PCIe transfers
-lookup construction cost
-fallback path
+portable CPU implementation
+packed fixed-width records
+atomic file builder
+mmap-backed reader
+versioned header
+size and checksum validation
+exact dependent replay
+hot resident cache
+sequential/random/dependent traces
+cold/warm latency distributions
+build time and file size
+logical versus physical I/O separation
 ```
 
-Strict scope:
+### Mandatory Experiment 044 work
 
-```text
-serial probes are an algorithmic result
-latency is hardware evidence
-one small probe/token may still meet the target
-CI timing is not target-GPU timing
-```
-
-### Mandatory Experiment 043 work
-
-1. Create `research/host-indexed-cell-probe-gate` from updated `main`.
-2. Add `docs/EXPERIMENT_043_HOST_INDEXED_CELL_PROBE_GATE.md`.
-3. Implement adaptive Q4 pointer-chasing decision tables.
-4. Construct indistinguishable table pairs showing that skipping the addressed cell can change the token and all later addresses.
-5. Verify exact serial dependency over multiple steps.
-6. Test bounded resident caches and report hit/miss/probe counts.
-7. Implement a host-memory lookup prototype; keep functional counts separate from nonrepresentative timing.
-8. Derive equations before projecting to 405B.
-9. Commit tests, workflow, raw JSON, PR decision, this ledger, and `docs/SESSION_HANDOFF.md`.
+1. Create `research/host-indexed-decision-vm` from updated `main`.
+2. Add `docs/EXPERIMENT_044_HOST_INDEXED_DECISION_VM.md`.
+3. Define and test the on-disk binary format.
+4. Build files atomically and reject truncation, bad magic, wrong version, bad checksum, and out-of-range pointers.
+5. Implement mmap lookup and exact pointer replay.
+6. Add bounded LRU/hot cache and measure hit/miss behavior.
+7. Benchmark sequential, shuffled random, dependent, warm, and reopened-file paths.
+8. Record p50/p95/p99, total decode time, build time, file bytes, logical bytes, and records/second.
+9. Mark CI timing nonrepresentative.
+10. Project storage and logical operations only; do not project latency to 405B hardware.
+11. Decide whether functional and CPU prototype evidence justifies pinned-memory/GPU integration.
+12. Commit tests, workflow, raw JSON, PR decision, this ledger, and handoff.

@@ -12,7 +12,7 @@ Build a universal runtime for arbitrary unmodified Hugging Face dense transforme
 - p50 warm decode at or below 1.2x a native 4B Q4 baseline on the same machine;
 - flagship validation on a real 405B-class model.
 
-Current evidence remains below E4. Do not claim the physical runtime target is solved or impossible from metadata size alone.
+Current evidence remains below E4. Do not claim the physical runtime target is solved or impossible.
 
 ## Mandatory startup and persistence
 
@@ -29,7 +29,7 @@ Before a user-facing progress/completion answer after meaningful work, update an
 
 ## Current repository state
 
-Latest research decisions:
+Latest decisions:
 
 ```text
 PR #36  semantic-state program routing                    rejected
@@ -39,179 +39,170 @@ PR #40  prompt-only nonlocal exact decision memory        rejected
 PR #42  exact dense-operator information bound            accepted/merged
 PR #44  metadata-aware direct/operator top-1 bound        accepted/merged
 PR #46  end-to-end Llama final-token metadata bound       accepted/merged
+PR #48  host-indexed exact-decision cell-probe Gate       accepted/merged
 ```
 
-Latest merge:
+Latest main merge:
 
 ```text
-PR #46 main merge: 038d3fa72dbfe91f4d9837d482b9f9c10719a00f
+PR #48 merge: 4ca9d2c2d4876d1266b2ad5527e2350585c7db7c
 ```
 
-Authoritative Experiment 042 evidence:
+Authoritative Experiment 043 evidence:
 
 ```text
-branch: research/llama-final-decision-routing-bound
-head: 7f1385b2585477d1557f50823047e41604803cb0
-certificate workflow: 30784848053
-Python 3.10/3.12 CI + validation: 30784848049
-raw JSON: results/llama_final_decision_routing_bound.json
+branch: research/host-indexed-cell-probe-gate
+head: 2705613f943f36adc041a6a4bedd7eba5c42f2ac
+certificate workflow: 30785452594
+Python 3.10/3.12 CI + validation: 30785452584
+raw JSON: results/host_indexed_cell_probe_gate.json
 ```
 
-Earlier Experiment 042 workflow comments before the scope correction are not authoritative. Use the raw JSON above.
+## Accepted Experiment 042 guardrail
 
-## Accepted Experiment 042 result
-
-### Executable Llama-style family
-
-The micro-model uses actual:
+Experiment 042 constructed an actual bias-free Llama-style family using embeddings, RMSNorm, causal GQA, residuals, SwiGLU, final RMSNorm, and an LM head. A legal prompt selected signed-Q4 `up_proj` codes and final next-token winners decoded them.
 
 ```text
-token embeddings
-RMSNorm
-causal grouped-query attention
-residual connections
-SwiGLU MLP
-final RMSNorm
-linear LM head
-```
-
-A legal four-token prompt selects a variable layer/group, payload coordinate, output channel, and query carrier. Two GQA loader layers copy controls into the final query position. Two variable layers carry signed Q4 codes in `up_proj`. The fixed LM head decodes the selected code from the final next-token winner.
-
-Executable certificate:
-
-```text
-hidden size: 8
-attention heads / KV heads: 4 / 1
-KV dimension: 2
-total layers: 4
-loader layers: 2
-variable layers: 2
-independent Q4 coefficients: 2
-expected functions: 256
-observed functions: 256
-exact code recovery: true
+micro functions: 256 / 256
 minimum winner margin: 0.24951063086132308
-```
-
-Six primitive tests and full repository CI passed. The tests include nonzero causal GQA loading, exact inactivity of an unselected variable layer, two-layer additivity, final-token recovery, and target projection constants.
-
-### Llama-405B-shaped projection
-
-The projection charges the 1,024-dimensional GQA KV bottleneck and consumes loader layers:
-
-```text
-hidden size: 16,384
-intermediate size: 53,248
-total layers: 126
-loader layers: 15
-variable layers: 111
-groups/layer: 31
-neurons/group: 1,717
-payload coordinates: 9,508
-active intermediate neurons/layer: 53,227
-control coordinates: 14,666
-vocabulary rows: 42,139
-independent signed-Q4 coefficients: 56,175,137,076
-```
-
-Complete exact final-decision metadata lower bound for the constructed family:
-
-```text
-224,700,548,304 bits
-26.158586645498872 GiB
+projected independent Q4 coefficients: 56,175,137,076
+complete final-decision metadata: 26.158586645498872 GiB
 resident allowance: 8 GiB
-excess: 18.158586645498872 GiB
 ```
 
-Accepted theorem:
-
-> A complete checkpoint-specific representation preserving every final next-token decision for the constructed arbitrary Q4 Llama-style family cannot fit entirely inside an 8 GiB resident checkpoint-information allowance.
-
-## Critical scope boundary
-
-The authoritative JSON explicitly records:
+Accepted scope:
 
 ```text
-actual Llama-style final-token routing: proven for the family
-256/256 end-to-end functions: proven
-complete exact decision metadata fits in 8 GiB resident: false
-per-query external traffic lower bound: not proven
-host-indexed random-access escape: not closed
-fixed physical runtime target fully contradicted: false
-released 405B checkpoint maximum complexity: not proven
-real 405B execution: not performed
-GPU wall clock: not measured
+all-resident complete exact-decision representation: contradicted for the family
+per-token external traffic: not proven
+host-indexed sparse lookup: open
+physical runtime target: unsolved
 ```
 
-Metadata total size is not per-token traffic. In the Experiment 042 family one legal query selects one Q4 coefficient, so a host-resident indexed table could in principle return a sparse answer. Do not claim that 26.16 GiB must cross PCIe each token.
+## Accepted Experiment 043 result
 
-Current classification:
+### Explicit adaptive representation
 
 ```text
-all-resident arbitrary exact-decision metadata in 8 GiB: contradicted
-host-indexed exact-decision representation: open
-per-token cell-probe / communication lower bound: open
+record[address] = (q4_value, next_address)
+next_token_t = q4_value
+address_(t+1) = next_address
+```
+
+For `S` disjoint chains of length `T` and a resident cache of `C` complete records, some chain contains at most `floor(C/S)` cached records and forces:
+
+```text
+host misses >= T - floor(C/S)
+```
+
+Balanced cache placements attained the bound exactly. Ten sampled cache placements never violated it. Early, middle, and late indistinguishable-table adversaries changed only the addressed record while preserving the entire prior trace, then changed the current token and next address.
+
+### Target projection
+
+```text
+Q4 cells: 56,175,137,076
+chain length: 256
+complete chains: 219,434,129
+address bits: 36
+record bits: 40
+explicit pointer table: 261.5858664549887 GiB
+pointer overhead over Q4-only metadata: 235.42727980948985 GiB
+8 GiB raw-record cache capacity: 1,717,986,918
+cached records per worst-chain bound: 7
+minimum serial host misses: 249 / 256
+host-miss fraction: 97.265625%
+logical host bytes/token: 4.86328125
+```
+
+### Nonrepresentative prototype
+
+The packed 64-bit host pointer chase executed one dependent probe per step:
+
+```text
+cells: 262,144
+steps/repeat: 200,000
+repeats: 5
+median: 224.27377 ns/probe
+minimum: 222.98837 ns/probe
+maximum: 224.94671 ns/probe
+```
+
+This timing is CI-machine evidence only and must not be projected to a target CPU, pinned memory, PCIe, or GPU.
+
+### Decisive interpretation
+
+```text
+near-one serial host miss/token: proven for explicit pointer records
+one logical record probe/token is sufficient: demonstrated
+logical data volume: only 4.86 bytes/token
+arbitrary compressed host index lower bound: not proven
+physical transaction granularity: not proven
+target lookup latency: not measured
+host-indexed escape: open
+```
+
+Therefore “one serial host probe per token proves impossibility” is rejected. Cell-probe count alone does not violate the 4B-class latency target.
+
+## Current classification
+
+```text
+all-resident arbitrary exact-decision metadata in 8 GiB: contradicted for the constructed family
+explicit host pointer representation: nearly one serial miss/token
+bandwidth-only impossibility: not proven
+latency impossibility: not proven
+constructive host-indexed exact-decision runtime: not yet built
 405B/8 GiB/4B-speed physical runtime: unsolved
-```
-
-## Accumulated execution evidence
-
-```text
-semantic-state program reuse: about 1 token
-prompt recurrence: maximum 2 exact tokens
-perfect-token repair: exact target on 68%–89% of tokens
-future-aware prompt suffix oracle: 75 / 28 / 5 tokens
-required full-stream amortization: about 247 tokens
-exact-output Q4 information: 188.9883 GiB
-end-to-end final-decision metadata family: 26.1586 GiB total
 ```
 
 ## Prohibited repeats and overclaims
 
-Do not continue by only changing static rank, recurrence order, repair thresholds, ANN settings, speculative block length, or uncharged metadata. Do not:
+Do not:
 
 - relabel metadata size as traffic;
-- cite the invalid pre-correction Experiment 042 conclusion;
-- claim a released checkpoint has worst-case complexity without measuring it;
-- claim physical impossibility without a traffic/latency lower bound;
-- claim runtime success without real hardware evidence.
+- relabel serial probe count as latency;
+- use the 224ns CI result as target hardware proof;
+- claim arbitrary compressed indexes obey the raw-record cache theorem;
+- claim a released checkpoint admits the constructed decision table;
+- claim success without real 405B/8-GiB/quality/wall-clock evidence.
 
-## Current frontier — Experiment 043 Host-Indexed Exact-Decision Probe Gate
+## Current frontier — Experiment 044 Host-Indexed Exact-Decision VM
 
-The remaining escape is an external checkpoint-specific decision index. Experiment 043 must determine what exact autoregressive execution requires from that index.
+The next work changes from impossibility search to constructive execution.
 
-### First proof target
+### Required prototype
 
-Construct an adaptive pointer-chasing decision family:
-
-```text
-address_(t+1) = transition[address_t, value_t]
-value_t       = host_table[address_t]
-```
-
-The next address is unavailable until the current exact value is returned. This prevents parallel look-ahead for the constructed trace and gives a serial cell-probe count.
-
-Required distinctions:
+Build a host-indexed decision virtual machine with:
 
 ```text
-serial probes/token: algorithmic property
-bytes/probe: representation property
-host/PCIe latency: measured hardware property
-4B-speed failure: not proven until the above are jointly charged
+packed records
+mmap-backed storage
+explicit index format and versioning
+resident hot cache
+sequential and dependent-random traces
+optional software prefetch for known addresses
+checksums and exact replay validation
+build time and output size
+cold/warm lookup latency distributions
+logical versus physical bytes
 ```
 
-### Experiment 043 required work
+The first implementation must remain CPU-only and portable. It establishes the representation and measurement contract before GPU/pinned-memory integration.
 
-1. Add `docs/EXPERIMENT_043_HOST_INDEXED_CELL_PROBE_GATE.md`.
-2. Implement a deterministic adaptive Q4 decision table and exact pointer-chasing decoder.
-3. Construct indistinguishable table pairs proving that skipping the current addressed cell can change the next token and every later address.
-4. Verify serial adaptivity over multiple steps and reject prefetch strategies that do not know the current value.
-5. Derive memory, address, probe, and transferred-byte equations.
-6. Add a host-memory prototype using explicit random accesses and record functional probe counts separately from machine-specific timing.
-7. If timing is measured in CI, label it nonrepresentative and do not project it to the target GPU.
-8. State whether the Gate proves only one serial probe/token, a stronger number of probes, or no useful latency lower bound.
-9. Commit tests, workflow, raw JSON, PR decision, ledger, and handoff.
+### Experiment 044 Gates
+
+1. Create `research/host-indexed-decision-vm`.
+2. Add `docs/EXPERIMENT_044_HOST_INDEXED_DECISION_VM.md`.
+3. Implement a packed fixed-width record format with exact Q4 token and next address.
+4. Build files atomically and validate header, size, checksum, and deterministic replay.
+5. Use `mmap` for cold and warm dependent pointer chasing.
+6. Measure p50/p95/p99 lookup latency and total decode latency separately.
+7. Compare sequential, random, dependent, cached, and prefetched access patterns.
+8. Report page faults and OS-cache state only when measurable; do not invent them.
+9. Keep CI timing explicitly nonrepresentative.
+10. Project only storage and logical operations to the 405B target; do not project timing.
+11. Decide whether the host-indexed VM is functionally viable enough to justify pinned-memory/GPU integration.
+12. Commit tests, workflow, raw JSON, PR decision, ledger, and handoff.
 
 ## Correct communication
 
-> Experiment 042 proved an end-to-end final-token metadata lower bound of 26.1586 GiB for a constructed Q4 Llama-style family and therefore closed an all-resident 8 GiB exact-decision representation for that family. It did not prove 26.1586 GiB of traffic per token. A sparse host-indexed representation remains open, so the physical 405B/8 GiB/4B-speed objective remains unsolved. Experiment 043 now tests unavoidable serial host probes and their charged communication path.
+> Experiment 043 proved that an explicit pointer-table representation can force 249 serial host misses in 256 tokens under an 8 GiB raw-record cache, but only about 4.86 logical bytes/token are required. A nonrepresentative CPU prototype measured roughly 224ns per dependent probe. This does not prove target latency, but it rejects cell-probe count alone as an impossibility argument. The host-indexed path remains open, so Experiment 044 now builds the first fully charged mmap-backed exact-decision VM.
