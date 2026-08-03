@@ -7,8 +7,8 @@ Last updated: 2026-08-03 Asia/Seoul
 Execute an arbitrary publicly released, unmodified Hugging Face dense Transformer by replacing only the runtime:
 
 - real 405B-class dense flagship;
-- peak GPU VRAM <=8 GiB;
-- no retraining, distillation, fine-tuning, LoRA, or user-authored target-specific adapter;
+- total peak GPU VRAM <=8 GiB;
+- no target retraining, distillation, fine-tuning, LoRA, or user-authored target-specific adapter;
 - original declared ability/output contract preserved;
 - p50 warm time/token <=1.2x native 4B Q4 and p95 <=1.5x on the same target machine;
 - independently reproducible evidence.
@@ -19,207 +19,236 @@ The objective is unchanged.
 
 MEASURED capability: GitHub repository, GitHub Actions CPU, Python, and downloadable small checkpoints.
 
-Unavailable and `NOT TESTED`: target 8 GiB GPU, 405B storage/execution, CUDA, PCIe, target SSD, target power, TTFT, tokens/second, physical block weight reuse, and target peak VRAM.
+Unavailable and `NOT TESTED`: target 8 GiB GPU, 405B storage/execution, CUDA, PCIe, target SSD, target power, TTFT, tokens/second, physical block weight reuse, combined target/draft residency, and target peak VRAM.
 
 Phase D remains `NOT TESTED`. E6/E7 are not achieved.
 
-## Validation and evidence contract
+## Evidence contract
 
 - Phase A: theory and structure;
 - Phase B: synthetic/reference;
-- Phase C: small-real-model falsification or operation replacement;
-- Phase D: actual target hardware.
+- Phase C: small-real-model falsification or actual operation replacement;
+- Phase D: target hardware.
 
-Evidence levels E0–E7 and provenance labels `MEASURED / DERIVED / PROJECTED / UNVERIFIED` are mandatory.
+Evidence E0–E7 and `MEASURED / DERIVED / PROJECTED / UNVERIFIED` labels are mandatory.
 
 ## Component classification
 
 Auxiliary accepted:
 
 - exact/checksummed mmap pointer VM;
-- bounded exact compiler/DAG components in their finite tested domains;
-- CPTC causal certificate, metadata fault rejection, and exact fallback at E1;
+- bounded exact compiler/DAG components in finite tested domains;
+- CPTC certificate, metadata fault rejection, and exact fallback at E1;
 - exact longest-prefix plus first-mismatch block verifier at E1;
-- damped Picard/Anderson reference solvers and numerical fail-closed machinery at E1.
+- damped Picard/Anderson reference and fail-closed numerical machinery at E1;
+- adversarial triangular and first-token constructions for universal-claim audits.
 
 Rejected as core:
 
-- raw prefix/future routing for unseen prompts;
-- prior static compression, residual, recurrent-program, and sparse-repair families;
-- global/oracle-tight/stratified range-based CPTC;
-- hard target-only Jacobi under charged target-pass accounting;
-- sequential same-checkpoint partial-layer self-draft with repeated LM-head work;
-- target-only continuous Picard/Anderson block proposal generation under the declared arbitrary-model exact contract.
+- raw prefix/future routing;
+- static compression, deterministic residual, recurrent-program, and sparse-repair families;
+- global/oracle-tight/stratified range CPTC;
+- hard target-only Jacobi;
+- sequential same-checkpoint partial-layer self-draft;
+- target-only continuous Picard/Anderson generation;
+- target-independent external drafting for the arbitrary-model exact mission;
+- the tested TinyStories fixed external-draft pool even as a restricted practical core.
 
-See `FAILED_APPROACHES.md` for permanent anti-repetition rules.
+See `FAILED_APPROACHES.md`.
 
-## EXP-048 closed evidence
+## EXP-049 closed evidence
 
-Authoritative source:
+Authority:
 
 ```text
-results/exp_048/summary.json
-workflow 30798936320
-artifact 8850040445
-artifact ZIP SHA-256 67c1e6d8965f7535020ecd4c02bb8a2af1156a234564f3cdf74d10c882fd7eb9
+results/exp_049/summary.json
+workflow 30803672059
+artifact 8851957250
+artifact ZIP SHA-256 4cd6c8c4afb833562438a97f052d45d331f3691362472fb08e594bd0c5585b9e
 ```
 
-MEASURED:
+MEASURED favorable target-only solver upper bound:
 
 ```text
-B1 perfect future oracle: 96 exact tokens / one target pass = 1.0416667%
-B2 hard Jacobi p50: 58 target passes / 32 tokens = 181.25%
-B3 partial-layer draft p50 committed tokens: 1
-B3 p90 fully accounted fraction: 2893.843%
-exact committed-output mismatches: 0
-future information in deployable B3: 0
+p50 exact proposal prefix 4.5
+maximum prefix 6
+p90 target-equivalent fraction 168.778596%
+Anderson/Jacobi exact-prefix improvement 0.25x
+hidden triangular round barrier true
 ```
 
 Decision:
 
 ```text
-REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER
+REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY
 ```
 
-## EXP-049 authoritative evidence
+## EXP-050 authoritative evidence
 
 Machine-readable authority:
 
 ```text
-results/exp_049/summary.json
-results/exp_049/raw/cases.jsonl
-results/exp_049/raw/triangular_audit.json
-results/exp_049/checksums.sha256
+results/exp_050/summary.json
+results/exp_050/raw/pair_rows.jsonl
+results/exp_050/raw/case_rows.jsonl
+results/exp_050/checksums.sha256
 ```
 
 Frozen provenance:
 
 ```text
-workflow 30803672059
-source head SHA 91d0caa86d784c663bc520d36d9b512f0cc526e9
-workflow merge SHA 173dd3477e2a6f5ecb0d55b58375ec18dfe774dd
-artifact 8851957250
-artifact size 105493 bytes
-artifact ZIP SHA-256 4cd6c8c4afb833562438a97f052d45d331f3691362472fb08e594bd0c5585b9e
+workflow 30806015309
+source head SHA 1388c780abea11067c66cd666ed0a313ec2f682c
+workflow merge SHA 6bdd0a20334e394ec5252a6c0e676c1f62b608d0
+artifact 8852817664
+artifact size 34225 bytes
+artifact ZIP SHA-256 a32ffe8dbfc201c6d70ca8dac660164d8400691ad4d8fe3593d688e7754f6159
 phase A/B/C-observation
 evidence E1
 ```
 
-Pinned small checkpoints were TinyStories-1M/3M/8M at the revisions recorded in the raw manifest. The corpus contains 3 models × 6 held-out families = 18 cases and 1,458 fixed solver trajectory rows. No context state was excluded.
+Pinned unchanged models were TinyStories-1M/3M/8M with the common GPT-Neo tokenizer. Every model served as target and every other model as draft across six held-out families.
 
-### MEASURED correctness, causality, and numerical safety
+### MEASURED correctness and causal accounting
 
 ```text
-EXP-049 solver/lower-bound tests: 9 passed
+EXP-050 accounting/counterexample tests: 9 passed
 repository validation: passed
-selected exact-output mismatches: 0
-selected deployable future-information uses: 0
-unhandled numerical failures: 0
-selected numerical fallbacks: 0
-S3 exact future-state oracle alignment failures: 0
-peak RSS: 684684 KiB
+3 models
+18 target/prompt cases
+36 target/draft/prompt pairs
+108 pair/K rows for K=64/128/256
+excluded states 0
+all-pair exact committed-output mismatches 0
+all-pair target-future information uses 0
+E3 exact future-target oracle failures 0
+peak RSS 871824 KiB
 ```
 
-### MEASURED favorable upper-bound performance
+Every 256-token draft continuation was generated causally with its own KV cache. Every cross-checkpoint proposal was verified by one exact target block pass; shorter K rows were causal prefixes of the same pass.
 
-The experiment allowed the exact reference to choose the best pre-registered S1/S2 variant, block size, and pass count per case. This selector is non-deployable and deliberately favors the hypothesis.
+### MEASURED favorable fixed-pool upper bound
+
+The exact target reference selected the best eligible draft and K per target/prompt. This selector is non-deployable and deliberately favorable.
 
 ```text
-oracle-best S1/S2 p50 matching prefix: 4.5 tokens
-oracle-best S1/S2 maximum matching prefix: 6 tokens
-oracle-best S1/S2 p90 target-equivalent fraction: 1.68778596
-                                                   = 168.778596%
-model median prefixes: 1M 4.5 / 3M 5.0 / 8M 4.0
+favorable-pool p50 exact proposal prefix 0.5
+favorable-pool maximum exact proposal prefix 3
+favorable-pool p90 4B/405B-normalized fraction 1.6320987654
+                                                     = 163.20987654%
+selected K distribution: K=64 for 18/18 cases
+selected draft distribution: 1M 12 / 3M 4 / 8M 2
 ```
 
-All 18 favorable selections used four target solver passes and a 64-token block. Seventeen selected the hard top-1 Picard control; one selected top-k-8 Picard. No Anderson variant was selected.
-
-Controls after four passes:
+All 108 pair rows:
 
 ```text
-S0 hard Jacobi p50 matching prefix: 4
-S2 Anderson p50 matching prefix: 1
-S2 / S0 improvement: 0.25x
+matching prefix 0: 72 rows
+matching prefix 1: 24 rows
+matching prefix 2: 6 rows
+matching prefix 3: 6 rows
 ```
 
-### MEASURED triangular lower-bound audit
-
-Two hidden-predecessor causal chains produced:
+Required-family coverage:
 
 ```text
-Picard exact prefixes by round:   1, 2, 3, 4
-Anderson exact prefixes by round: 1, 2, 3, 3
-unresolved hidden suffix transcript indistinguishability: true
-one-new-exact-position-per-round barrier observed: true
+English narrative: some acceptance
+Code: some acceptance
+Mathematics: some acceptance
+Identifier boundary: some acceptance
+Korean: zero matching proposal tokens in every selected target case
+Structured JSON: zero matching proposal tokens in every selected target case
 ```
 
-Under the declared black-box target-round interface, continuous arithmetic and Anderson history extrapolate observed outputs but do not reveal an adversarial hidden suffix before its exact predecessor is resolved.
-
-### PROJECTED target comparison
+Target median prefixes:
 
 ```text
-405B Q4 full stream: 188.592821 GiB
-1.2x 4B Q4 allowance: 2.235174 GiB/token
-required target-equivalent fraction: 1.185185%
-EXP-049 favorable p90 fraction: 168.778596%
-EXP-049 favorable p90 / required: about 142.405x
+TinyStories-1M target: 1.0
+TinyStories-3M target: 0.0
+TinyStories-8M target: 0.5
 ```
 
-These are logical same-bit projections, not target-hardware measurements.
+### MEASURED universal first-token audit
 
-## EXP-049 scientific decision
+A fixed draft proposed token 7. An arbitrary causal target chose token 8 for the same prompt.
 
 ```text
-REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY
+matching proposal prefix 0
+exact correction committed 1 token
+exact output match true
+counterexample succeeds true
 ```
 
-Reasons:
+Therefore a fixed target-independent proposal cannot guarantee a nonzero exact prefix for every arbitrary target.
 
-- prefix Gate failed: 4.5 <16;
-- traffic Gate failed: 168.78% >10%;
-- Anderson improvement Gate failed: 0.25x <4x;
-- the hidden triangular family established the pre-registered worst-case round barrier;
-- exactness, causality, numerical-safety, and model-size-trend checks passed, but they do not rescue performance or universality.
+### PROJECTED traffic boundary
+
+```text
+405B Q4 target stream 188.592821 GiB
+4B Q4 draft stream 1.862645 GiB
+required total fraction 1.185185%
+4B/405B draft ratio 0.98765432%
+minimum completely correct proposal after draft cost 507 tokens
+EXP-050 favorable p90 / required fraction 137.7083x
+```
+
+These are parameter-count projections, not target hardware measurements.
+
+## EXP-050 scientific decision
+
+```text
+REJECT_TARGET_INDEPENDENT_EXTERNAL_DRAFT_AS_UNIVERSAL_CORE
+```
+
+The tested fixed TinyStories pool also fails restricted practical continuation:
+
+- prefix Gate: 0.5 <16;
+- traffic Gate: 163.21% >10%;
+- family coverage Gate: Korean and structured JSON fail;
+- target-size trend Gate fails;
+- universal first-token Gate fails;
+- exactness and causality pass but do not rescue usefulness.
 
 Required wording:
 
-> EXP-049, E1: fixed Picard/Anderson block solvers and the exact verifier remained causal, numerically controlled, and exact on the committed small-checkpoint corpus. Even a reference-selected favorable variant achieved only p50 4.5 exact proposal tokens with p90 1.6878 target-equivalent streams per committed token, while adversarial triangular models preserved the one-new-position-per-round barrier. Target-only fixed-point proposal generation is therefore rejected as the core runtime. 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, and tokens/second remain NOT TESTED.
+> EXP-050, E1: every cross-checkpoint proposal was generated causally and exact verification preserved target output, but even exact-reference selection over the fixed draft pool achieved only p50 0.5 matching tokens and maximum 3, with p90 1.6321 normalized target streams per committed token. Korean and structured JSON had zero useful acceptance, and an arbitrary target contradicted a fixed draft at the first token. Target-independent external drafting is rejected as a universal core and the tested pool is rejected as a restricted practical core. 405B and target hardware remain NOT TESTED.
 
 ## Primary unresolved bottleneck
 
-The exact verifier is not the bottleneck. A successful exact block runtime needs future-token information that is not obtainable from a small number of target-only synchronous causal rounds for every arbitrary target.
+No tested proposal source supplies long exact future tokens:
 
-The remaining information sources are:
+- target-only rounds are causally depth-limited;
+- same-checkpoint partial layers diverge immediately;
+- external independent models disagree at or near the first token;
+- perfect future proposals prove verifier arithmetic only.
 
-1. an external target-independent proposal model;
-2. automatically compiled target-specific transition advice/metadata;
-3. a relaxed non-exact behavioral contract;
-4. target hardware capable of retaining or rereading substantially more weights.
-
-Only the first option preserves the current no-training/no-target-modification rule without immediately requiring exponential target-state compilation or relaxing correctness. It must still survive a universal no-free-lunch audit and fully charged practical tests.
+The next direct operation-skipping axis is **Transformer depth** rather than future-token proposal. With the exact target prefix fixed, intermediate layer states can be tested against the final target token without recursive draft drift.
 
 ## Current frontier
 
-`EXP-050 — Target-Independent External Draft Advice Gate`, defined in `NEXT_EXPERIMENT.md`.
+`EXP-051 — Oracle Layer-Finalization and Tail-Skip Gate`, defined in `NEXT_EXPERIMENT.md`.
 
-EXP-050 tests whether a fixed pool of already published, unmodified draft checkpoints can provide long exact target proposals without using target future tokens or target-specific training. It includes:
+For every exact greedy target state on pinned small checkpoints, EXP-051 will:
 
-- a formal first-token counterexample for universal target-independent advice;
-- cross-checkpoint draft proposals among the pinned TinyStories models;
-- a favorable oracle selection over the fixed draft pool;
-- exact block verification and full draft/target-equivalent accounting;
-- an 85-token minimum exact-prefix requirement before real draft overhead, plus the dynamic requirement after charging draft streams.
+1. capture the current token hidden state after every Transformer block;
+2. apply the target final normalization and LM head at every depth;
+3. identify the earliest depth whose token equals the final target and remains equal at every later depth;
+4. compute a favorable non-deployable tail-skip traffic upper bound including one full LM-head probe;
+5. compare first-match versus suffix-stable depth;
+6. test a late-decision adversarial residual chain where only the final layer flips the target token.
 
-A negative favorable-pool result rejects fixed external drafting as a universal core mechanism. A positive result would remain below E2 until a causal fixed selector and complete generation loop are implemented.
+This differs from EXP-048 B3: it uses the exact target prefix at every token and audits current-token layer finalization, rather than recursively generating future tokens with partial layers.
+
+If even suffix-stable oracle depth remains far above the 1.185% budget, layer skipping is rejected before selector/certificate engineering. If the oracle survives, the next Gate must derive a causal sound tail certificate and perform actual operation replacement.
 
 ## Reproduction
 
 ```bash
-git checkout research/exp-049-anderson-continuous-fixed-point
-python -m pytest -q tests/exp_049
+git checkout research/exp-050-external-draft-advice
+python -m pytest -q tests/exp_050
 python scripts/run_validation.py
-bash experiments/exp_049/reproduce.sh
-cd results/exp_049 && sha256sum -c checksums.sha256
+bash experiments/exp_050/reproduce.sh
+cd results/exp_050 && sha256sum -c checksums.sha256
 ```
 
 ## Next-session reading
@@ -233,5 +262,5 @@ cd results/exp_049 && sha256sum -c checksums.sha256
 7. `NEXT_EXPERIMENT.md`
 8. `ARCHITECTURE.md`
 9. `REPRODUCIBILITY.md`
-10. EXP-049 document and frozen summary
-11. PR #59
+10. EXP-050 document and frozen summary
+11. PR #60

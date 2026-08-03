@@ -4,109 +4,97 @@
 
 Phase D is **NOT TESTED**.
 
-No current result measures a real 405B checkpoint, <=8 GiB GPU execution, CUDA kernels, PCIe traffic, target SSD behavior, TTFT, tokens/second, power, physical block weight reuse, or combined target/draft peak VRAM.
+No current result measures real 405B execution, total <=8 GiB GPU state, CUDA kernels, PCIe traffic, target SSD, TTFT, tokens/second, power, or physical skipped-layer traffic.
 
-EXP-047R range CPTC, EXP-048 hard Jacobi/partial-layer draft, and EXP-049 target-only continuous fixed-point generation were rejected before Phase-D promotion. Their correctness/verifier/solver components remain auxiliary only.
+EXP-047R, EXP-048, EXP-049, and EXP-050 core candidates were rejected before hardware promotion. Their correctness/verifier/reference components remain auxiliary.
 
-## Required hardware ladder
+## Required ladder
 
 ```text
-1B–3B small real operation-replacement gate
+1B–3B real operation-replacement gate
 7B–8B representative developer gate
 30B–34B
 70B
 405B dense flagship
 ```
 
-Minimum developer hardware must include a CUDA-capable GPU constrained to <=8 GiB usable VRAM, measured NVMe storage, sufficient host RAM/storage, and reproducible profiler tooling.
+Minimum developer hardware: CUDA GPU constrained to <=8 GiB usable VRAM, measured NVMe, sufficient host RAM/storage, pinned software, and reproducible profilers. Do not substitute MoE for the dense flagship.
 
-Do not substitute MoE for the dense flagship.
+## Pinning
 
-## Checkpoint and software pinning
+Record target model/revision/license/tokenizer/file hashes, VORTEX commit, OS/kernel, driver/CUDA, Python lock, baseline runtime, cache/storage paths, profiler versions, thermal state, and power telemetry.
 
-Before execution record:
-
-- target and draft model IDs;
-- exact revisions and license/access state;
-- tokenizer revision;
-- file manifests and SHA-256;
-- VORTEX commit;
-- OS/kernel, driver, CUDA, Python lock;
-- baseline runtime versions;
-- cache/storage paths;
-- `nvidia-smi`, Nsight or equivalent, `fio`, `iostat`, `pidstat`, `/usr/bin/time -v`;
-- thermal and power state.
-
-Moving `main` is never authoritative.
-
-## Current entry points
+## Current fail-closed entry point
 
 ```bash
-bash experiments/exp_049/future_gpu_run.sh
+bash experiments/exp_050/future_gpu_run.sh
 ```
 
-Expected behavior: fail closed and state that no Phase-D backend exists.
+Expected: state that no Phase-D external-draft backend exists and exit nonzero.
 
-EXP-050 may receive a hardware runner only after a fixed external-draft pool survives its small-checkpoint Gate, a causal deployable selector is implemented, and a complete generation loop replaces sequential target decoding.
+EXP-051 may receive a hardware runner only after:
 
-## Required same-machine baselines
+- suffix-stable layer oracle survives;
+- a sound causal tail certificate is committed;
+- actual target blocks are skipped during complete generation;
+- exact target output is preserved;
+- a full hot-state plan fits <=8 GiB symbolically.
+
+## Same-machine baselines
 
 ```text
 native 4B Q4
-standard exact runtime for every tested target
-VORTEX exact sequential target baseline
-VORTEX external-draft proposal + exact target verification
-future-aware exact proposal oracle, labeled non-deployable
+standard exact target runtime
+VORTEX exact sequential target
+VORTEX certified tail-skip candidate
+full-depth target with intermediate probe instrumentation
 ```
 
-Prompt, tokenizer, context, decode contract, batch size, and cache state must match.
+Prompt, tokenizer, context, decode contract, batch, and cache state must match.
 
 ## Required MEASURED metrics
 
 - cold/warm TTFT;
 - p50/p95/p99 time/token and tokens/second;
-- exact token agreement or declared quality contract;
-- target/draft peak allocated and reserved VRAM;
-- target and draft KV bytes;
+- exact token/logit agreement;
+- peak allocated/reserved VRAM;
+- target KV/work/probe/fallback bytes;
 - host RSS/page faults;
-- target/draft/runtime storage bytes;
-- SSD bytes, IOPS, latency, queue depth;
-- H2D/D2H bytes;
+- disk/runtime bytes;
+- SSD/H2D/D2H traffic;
+- executed and skipped block counts;
+- layer-weight physical bytes;
+- LM-head probe bytes and time;
+- selector/certificate cost;
+- fallback completion bytes;
 - kernel time/occupancy;
-- draft forward count and weight bytes;
-- target verification count and weight bytes;
-- proposal block length and exact-prefix distribution;
-- rejected positions and correction bytes;
-- selector cost;
-- physical target-weight reuse across block positions;
 - energy/power.
 
-## EXP-050-specific obligations
+## EXP-051 hardware obligations
 
-Before any E5/E6/E7 claim:
+Before E4+:
 
-1. prove the external draft uses no target future token, target-specific training, or hidden reference continuation;
-2. charge one complete draft computation per proposed token;
-3. measure whether draft weights remain resident and include them in the <=8 GiB total;
-4. include both target and draft KV caches, verification buffers, and fallback state;
-5. measure exact target verification and correction traffic;
-6. use a causal selector fixed before evaluation;
-7. report exact-prefix distributions for every family/model, not only selected successes;
-8. compare against the 4B-draft/405B-target dynamic requirement;
-9. preserve the universal first-token counterexample boundary;
-10. reject a restricted-family result as evidence for the arbitrary-model mission.
+1. prove intermediate-depth hidden/logit alignment against final target;
+2. separate non-deployable suffix-stable oracle from real selector;
+3. execute omitted target blocks zero times on certified tokens;
+4. charge full LM-head probe and every selector/certificate operation;
+5. measure whether layer weights are actually not transferred/read;
+6. include fallback full-tail execution;
+7. report depth/traffic distributions by model/family;
+8. compare physical bytes against 1.185185% target-equivalent allowance;
+9. preserve late-decision adversarial claim boundary;
+10. reject intermediate multi-layer stability as a certificate without a sound omitted-tail bound.
 
 PROJECTED reference:
 
 ```text
-405B Q4 target stream: 188.592821 GiB
-4B Q4 draft stream: 1.862645 GiB
-1.2x 4B allowance: 2.235174 GiB/token
-required target-equivalent fraction: 0.01185185185
-perfect 4B-draft proposal minimum length: 507 tokens
+405B Q4 full stream 188.592821 GiB
+4B Q4 baseline 1.862645 GiB
+1.2x allowance 2.235174 GiB/token
+required target-equivalent fraction 0.01185185185
 ```
 
-These are parameter-count projections, not hardware measurements.
+These are not hardware measurements.
 
 ## Storage/bandwidth characterization
 
@@ -116,13 +104,13 @@ fio --name=randread4k --filename=/path/to/testfile --rw=randread --bs=4k --iodep
 fio --name=randread64k --filename=/path/to/testfile --rw=randread --bs=64k --iodepth=32 --direct=1 --size=32G
 ```
 
-Record filesystem, mount options, queue depth, cache state, compression, and thermal state.
+Record filesystem, mount options, queue depth, cache/compression, and thermal state.
 
 ## Evidence gates
 
 ### E5
 
-Same protocol passes medium/large targets with measured quality, prefix distribution, target/draft bytes, correction, selector, memory, and non-degrading scaling compatible with target equations.
+Same certified operation-replacement protocol passes medium/large targets with quality, physical bytes, fallback, memory, and scaling compatible with target equations.
 
 ### E6
 
@@ -134,18 +122,7 @@ Real dense 405B, <=8 GiB, original contract preserved, p50 <=1.2x and p95 <=1.5x
 
 ## Stop conditions
 
-Stop and record failure for:
-
-- total VRAM >8 GiB;
-- target/draft storage failure;
-- draft, verification, correction, selector, KV, or cold reads dominate;
-- exact output mismatch outside contract;
-- target-future/reference leakage;
-- target modification/training violation;
-- invalid baseline;
-- logical stream amortization not realized physically;
-- thermal/cache contamination;
-- unreproducible command.
+Stop and record failure for VRAM >8 GiB, storage failure, selector/probe/fallback dominance, exact mismatch, future/reference leakage, target modification/training, invalid baseline, logical savings not realized physically, thermal contamination, or unreproducible command.
 
 ## Result layout
 

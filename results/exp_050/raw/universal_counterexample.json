@@ -1,0 +1,9 @@
+{
+  "adversarial_target_first_token": 8,
+  "correction_used": true,
+  "counterexample_succeeds": true,
+  "draft_first_token": 7,
+  "exact_committed_tokens": 1,
+  "exact_output_match": true,
+  "matching_prefix": 0
+}

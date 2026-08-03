@@ -1,0 +1,101 @@
+{
+  "models": [
+    {
+      "files": [
+        {
+          "path": "config.json",
+          "sha256": "ff74c30d5ebb5ab1da0f2ea479adf7197c504b42b5522a858c334ab91ed4958c",
+          "size_bytes": 1021
+        },
+        {
+          "path": "pytorch_model.bin",
+          "sha256": "07f9609ea882b8163ff3b23d40e2b82cb715d409631beb15c84b164f3877dae7",
+          "size_bytes": 48578813
+        }
+      ],
+      "hidden_size": 64,
+      "layer_count": 8,
+      "model_id": "roneneldan/TinyStories-1M",
+      "parameter_bytes": 14983936,
+      "parameter_count": 3745984,
+      "position_limit": 2048,
+      "resolved_revision": "77f1b168e219585646439073245fe87e56b3023e",
+      "vocab_size": 50257
+    },
+    {
+      "files": [
+        {
+          "path": "config.json",
+          "sha256": "8469786bf5b789056434845b06b8f4e41e2da2dae9405fde85215571ff5063fe",
+          "size_bytes": 1022
+        },
+        {
+          "path": "pytorch_model.bin",
+          "sha256": "0e4f93a86407a3f685520e48481a236c7b5e3a4f8e4fc8d1e58f3a748d97a37c",
+          "size_bytes": 66708541
+        }
+      ],
+      "hidden_size": 128,
+      "layer_count": 8,
+      "model_id": "roneneldan/TinyStories-3M",
+      "parameter_bytes": 33113600,
+      "parameter_count": 8278400,
+      "position_limit": 2048,
+      "resolved_revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894",
+      "vocab_size": 50257
+    },
+    {
+      "files": [
+        {
+          "path": "config.json",
+          "sha256": "5ff16b03beb4466bde520469a815a2d439e16896655d1151c3b44686b387a42d",
+          "size_bytes": 1161
+        },
+        {
+          "path": "pytorch_model.bin",
+          "sha256": "22c355bfabebc1f6c861b3f5d7a801e96c7f6da4af4bb0f7780096ab82ea6716",
+          "size_bytes": 112405309
+        }
+      ],
+      "hidden_size": 256,
+      "layer_count": 8,
+      "model_id": "roneneldan/TinyStories-8M",
+      "parameter_bytes": 78810112,
+      "parameter_count": 19702528,
+      "position_limit": 2048,
+      "resolved_revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af",
+      "vocab_size": 50257
+    }
+  ],
+  "tokenizer": {
+    "files": [
+      {
+        "path": "merges.txt",
+        "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+        "size_bytes": 456318
+      },
+      {
+        "path": "special_tokens_map.json",
+        "sha256": "a00e1f660c842693e7f667898759c24eb538c2dbb09b91c22dbde1b45d4cdee8",
+        "size_bytes": 357
+      },
+      {
+        "path": "tokenizer.json",
+        "sha256": "f6ed3d307010c244c22aeffbde05f419cf277c23e64cf98b673cac5449cfeff5",
+        "size_bytes": 2107652
+      },
+      {
+        "path": "tokenizer_config.json",
+        "sha256": "fd1d9aed595c7ad9e64cf65c74e94bddc9dc1608e178a4f60380c8373813f30f",
+        "size_bytes": 727
+      },
+      {
+        "path": "vocab.json",
+        "sha256": "03087853bc70c618b66e7c7a43e787d2db4c469416beac9a483e53dad1f72f27",
+        "size_bytes": 898669
+      }
+    ],
+    "model_id": "EleutherAI/gpt-neo-125M",
+    "resolved_revision": "21def0189f5705e2521767faed922f1f15e7d7db"
+  }
+}
