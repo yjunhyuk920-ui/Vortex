@@ -1,161 +1,113 @@
 # Failed and Demoted Approaches
 
-This file is a permanent anti-repetition register. A rejected family may be revisited only when a new mechanism directly addresses the recorded failure and defines a stronger falsification test.
+Permanent anti-repetition register. Revisit only with a mechanism that directly addresses the recorded failure and a stronger pre-registered falsification.
 
 ## F-001 — Static low-rank and generic factorization
 
-Includes:
+Includes global/semantic Kronecker, ordinary low rank, activation subspaces, recurrent/gauge dictionaries, and functional skeletons.
 
-- global/semantic Kronecker;
-- ordinary low-rank factorization;
-- activation subspace caching;
-- recurrent dictionaries;
-- gauge dictionaries;
-- functional skeletons.
+Failure: storage sometimes fit a projection, but real decisions failed or executed reads remained close to the full model stream.
 
-Observed failure:
+Do not repeat by changing only rank, block shape, basis, or hiding residual traffic.
 
-Storage sometimes fit a projected envelope, but real-model decision preservation failed or executed reads remained close to the full model stream.
+## F-002 — Progressive low precision as primary path
 
-Do not repeat as:
+Failure: Q2/Q3 quality failure; Q4 autonomous exact prefixes negligible; target verification amortization required more than one thousand accepted tokens.
 
-- a new rank schedule;
-- a different block shape;
-- a renamed basis;
-- an uncharged residual stream.
-
-Revisit condition:
-
-A new exact or certified mechanism must show disjoint-trace operation replacement and explicitly charge residual/fallback traffic.
-
-## F-002 — Progressive low precision as the primary path
-
-Observed failure:
-
-Q2/Q3 failed quality. Q4 retained useful teacher candidates in some tests but autonomous exact prefixes were negligible and full-stream amortization required more than one thousand accepted tokens in the target projection.
-
-Do not repeat as:
-
-- only changing quantization bits;
-- speculative depth without charged target verification;
-- quality claims based on top-k teacher containment.
+Do not repeat with bits/top-k/speculative depth alone.
 
 ## F-003 — Independent exact-neuron selection
 
-Observed failure:
-
-Optimistic neuron subsets produced at most two exact tokens while traffic rapidly exceeded the target envelope. Layer allocation did not recover useful continuation.
-
-Do not repeat as:
-
-- a new neuron score only;
-- a new global percentage;
-- uncharged teacher gradients or adjoints.
+Failure: at most two exact tokens while traffic exceeded the target; layer allocation did not recover continuation.
 
 ## F-004 — Deterministic signed residual refinement
 
 Includes PR #31–#34.
 
-Observed failure:
+Failure: cancellation existed, but sound deterministic bounds required roughly 90–98% refinement and hundreds of GiB/token.
 
-Signed cancellation was real, but worst-case sound residual bounds required roughly 90–98% refinement and hundreds of GiB/token in projections.
-
-Do not repeat as:
-
-- another partition size;
-- another deterministic norm;
-- another static residual code.
-
-Allowed new direction:
-
-EXP-047 tests a materially different assumption: time-uniform probabilistic finite-population bounds that exploit observed random-order cancellation. It must still charge selector cost and exact fallback, and must be rejected if useful confidence requires nearly all tiles.
+Allowed distinction: EXP-047 tested probabilistic finite-population certification, not another deterministic partition norm.
 
 ## F-005 — Prompt-derived recurrent programs
 
-Includes semantic-state routing, Hankel recurrence, and related prompt programs.
-
-Observed failure:
-
-Program reuse was approximately one token; autonomous exact prefixes were one or two tokens, far below the amortization requirement.
-
-Do not repeat as:
-
-- a higher recurrence order;
-- more state clusters;
-- a larger static router bank without a new causal invariant.
+Failure: reuse near one token; exact autonomous prefixes one or two versus required amortization.
 
 ## F-006 — Sparse repair, even with impossible oracles
 
-Observed failure:
+Failure: perfect/future-aware oracles still repaired most tokens, projecting roughly 128–169 GiB/token and 552–726 GFLOP/token.
 
-A future-aware or perfect-token oracle still required repair on most tokens, yielding target projections of roughly 128–169 GiB/token and 552–726 GFLOP/token.
-
-Implication:
-
-Any causal detector weaker than the oracle cannot rescue the same repair architecture.
+Implication: weaker causal detectors cannot rescue the same repair architecture.
 
 ## F-007 — Prompt suffix memory and nonlocal response replay
 
-Observed failure:
+Failure: corrected future-aware suffix reuse far below required amortization.
 
-Corrected future-aware suffix reuse was far below the required amortization on diverse prompts.
-
-Do not repeat as:
-
-- a different ANN index;
-- a different embedding distance;
-- larger prompt-only memory without new behavior equivalence.
+Do not repeat with ANN/index/embedding changes alone.
 
 ## F-008 — Raw exact-prefix decision graph
 
-Observed failure:
+Failure: eight TinyLlama paths produced 64 unique nodes for 64 records; held-out prompts missed at position zero.
 
-On the bounded TinyLlama grammar, eight distinct paths produced 64 unique nodes for 64 records and held-out prompts missed at position zero.
+Classification: auxiliary exact memoization only.
 
-Classification:
+## F-009 — Future-aware suffix DAG as complete runtime
 
-Auxiliary exact memoization only. Not a universal execution mechanism.
+Positive: 64 records ->38 exact nodes.
 
-## F-009 — Future-aware exact suffix DAG as a complete runtime
+Failure as complete runtime: used full future continuation; causal held-out start coverage 0%.
 
-Positive result:
-
-Exact future suffixes compressed 64 records to 38 nodes.
-
-Failure as a complete runtime:
-
-The construction used complete future continuations; causal held-out start coverage was 0%.
-
-Classification:
-
-Accepted graph-body compression, rejected as a standalone unseen-prompt executor.
+Classification: accepted auxiliary body compression.
 
 ## F-010 — Metadata size relabeled as traffic
 
-Failure:
-
-A total metadata lower bound does not imply that the same number of bytes crosses RAM/PCIe per token.
-
-Rule:
-
-Always separate total representation size, logical bytes accessed, physical transaction bytes, and latency.
+Rule: separate total representation, logical bytes accessed, physical transaction bytes, and latency.
 
 ## F-011 — Probe count relabeled as latency
 
-Failure:
-
-One serial host probe per token can still be small. The explicit pointer experiment forced near-one miss per token but only about 4.86 logical bytes/token.
-
-Rule:
-
-Latency claims require target hardware measurement or a valid bandwidth/latency lower bound.
+Rule: a small serial probe can be cheap; latency requires actual hardware or a valid lower bound.
 
 ## F-012 — Small-model evidence promoted to 405B success
 
-Failure:
+Rule: synthetic/TinyLlama results do not measure target VRAM, 405B, PCIe, SSD, CUDA, TTFT, or tokens/second.
 
-TinyLlama and synthetic tests do not measure 8 GiB VRAM, 405B execution, PCIe, SSD, CUDA scheduling, TTFT, or tokens/second.
+## F-013 — Global-range Serfling CPTC-v1 as primary executor
 
-Rule:
+Experiment: EXP-047, workflow `30791851508`.
 
-Such results remain Phase B/C and at most E3 until the required later phases run.
+Correctness result:
+
+```text
+525 cases
+zero wrong accepts
+zero fallback mismatches
+zero independent-bound mismatches
+15/15 adversarial cases exact fallback
+```
+
+Performance failure:
+
+```text
+certified: 4/525
+fallback: 99.238%
+N=64/128/256 mean evaluated tiles: 100%
+N=512 mean evaluated tiles: 98.519%
+N=1024 mean evaluated tiles: 98.294%
+positive control: 10.449% tiles
+simple target fraction before overhead: 1.185%
+```
+
+Decision:
+
+- retain the confidence/fallback implementation as an E1 reference primitive;
+- reject one global declared range plus basic Serfling alpha spending as the primary runtime architecture;
+- do not proceed directly to a full real-operation backend.
+
+Allowed next mechanism:
+
+- oracle-tight range audit to determine the strongest range-only upper bound;
+- deployable checkpoint-derived stratified bounds;
+- independently proven variance-adaptive finite-population confidence sequences.
+
+Rejection condition for the family:
+
+If oracle-tight real-checkpoint contributions still require high tile fractions, reject range-only CPTC entirely rather than tuning sample limits or delta.
