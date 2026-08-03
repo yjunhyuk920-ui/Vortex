@@ -88,9 +88,10 @@ def main() -> None:
             "metadata_aware_final_token_bound_proven_for_constructed_family": (
                 certificate_passes
             ),
-            "arbitrary_checkpoint_universality_contradicted_at_8gib": (
-                certificate_passes
-            ),
+            "complete_exact_decision_metadata_fits_in_8gib_resident": False,
+            "per_query_external_traffic_lower_bound_proven": False,
+            "host_indexed_random_access_escape_closed": False,
+            "fixed_runtime_target_fully_contradicted": False,
             "released_405b_checkpoint_maximum_complexity_proven": False,
             "real_405b_execution_performed": False,
             "measured_gpu_wall_clock_proven": False,
@@ -107,19 +108,24 @@ def main() -> None:
                 projection.metadata_gib
                 - projection.resident_limit_gib
             ),
-            "fixed_target_status": (
-                "contradicted for arbitrary exact-decision Q4 "
-                "Llama-style checkpoints under an 8 GiB complete "
-                "checkpoint-information allowance"
+            "resident_only_path_status": (
+                "contradicted for the constructed arbitrary exact-decision "
+                "Q4 Llama-style family"
                 if certificate_passes
-                else "certificate did not close the target"
+                else "certificate did not close the resident-only path"
+            ),
+            "fixed_target_status": (
+                "unsolved: an external host-indexed representation could "
+                "store the 26.16 GiB function metadata and serve sparse "
+                "queries; its traffic, latency, construction, and "
+                "autoregressive access complexity remain unbounded"
             ),
         },
         "next_obligation": (
-            "separate the now-contradicted arbitrary worst-case target "
-            "from a narrower empirical runtime target for released "
-            "checkpoints, then charge quality relaxation, host traffic, "
-            "and measured wall clock explicitly"
+            "derive a cell-probe or communication lower bound for the "
+            "autoregressive query sequence, or build and benchmark a "
+            "charged host-indexed exact-decision runtime; metadata size "
+            "alone must not be reported as per-token traffic"
         ),
     }
 
