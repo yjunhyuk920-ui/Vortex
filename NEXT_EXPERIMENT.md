@@ -1,298 +1,146 @@
 # Next Experiment
 
-## Closed Gate — EXP-050
+## Closed Gate — EXP-051
 
-Authoritative evidence:
+Authoritative PR and workflow record:
 
 ```text
-results/exp_050/summary.json
-workflow 30806015309
-source head SHA 1388c780abea11067c66cd666ed0a313ec2f682c
-workflow merge SHA 6bdd0a20334e394ec5252a6c0e676c1f62b608d0
-artifact 8852817664
-artifact ZIP SHA-256 a32ffe8dbfc201c6d70ca8dac660164d8400691ad4d8fe3593d688e7754f6159
+PR #61
+workflow 30808285251
+source head SHA 01c2cde4ab6b1122d50392cdfb08ad82923524f8
+workflow merge SHA 8b6b164c80a828aa9827fd6b4ea85cd659917e15
+artifact 8853920561
+artifact ZIP SHA-256 50062060f9f31495ed6b4d96df0f2cb12b38478b1e8583a4ecdd15e621b317d7
+main merge commit 7aad7b3e1b3d783857406ebb6435058a2aecc724
 ```
 
-MEASURED:
+MEASURED in the successful Gate and recorded in PR #61:
 
 ```text
-3 pinned models
-18 target/prompt cases
-36 cross-target draft pairs
-108 K=64/128/256 rows
-exact mismatches 0
-target future information uses 0
-favorable-pool p50 exact proposal prefix 0.5
-favorable-pool maximum prefix 3
-favorable-pool p90 normalized fraction 163.20987654%
-matching prefix zero in 72/108 rows
-Korean useful acceptance false
-structured JSON useful acceptance false
-target median prefixes 1.0 / 0.0 / 0.5
-universal first-token counterexample matching prefix 0
+3 targets * 6 families * 64 warm states = 1,152
+final-depth reconstruction mismatches 0
+future generated token uses 0
+suffix-stable median block fraction 25%
+suffix-stable p90 block fraction 37.5%
+median favorable logical byte fraction 82.2068758%
+p90 favorable logical byte fraction 99.8010577%
+transient first-match failures 428/1,152 =37.1527778%
+late-final-layer adversary stable depth 8/8
 ```
 
 Decision:
 
 ```text
-REJECT_TARGET_INDEPENDENT_EXTERNAL_DRAFT_AS_UNIVERSAL_CORE
+REJECT_LAYER_FINALIZATION_TAIL_SKIP_CORE_RETAIN_ORACLE_AUXILIARY
 ```
 
-The tested fixed pool also failed every practical early Gate except exactness/causality. Proposal trees are not continued from this pool.
+The original EXP-051 artifact is no longer retrievable through the current connector and `results/exp_051/` was not installed before merge. This is a provenance defect, not a change to the recorded scientific decision. EXP-052 must freeze evidence into the repository immediately after the authoritative run.
 
-## EXP-051 — Oracle Layer-Finalization and Tail-Skip Gate
+## EXP-052 — Runtime-Only Exact Advice Tradeoff and Constraint-Closure Gate
 
-### Mechanism change
+### Mechanism
 
-EXP-051 no longer tries to predict many future tokens. It asks whether the **current exact target token** becomes final after only a small prefix of Transformer layers.
-
-For every exact greedy generation state:
+Automatically compile exact target-specific advice from an unmodified checkpoint and a finite set of build states:
 
 ```text
-exact committed prefix/current input token
-        |
-        v
-embedding and target blocks 1...L
-        |
-        +--> hidden state h_d after each depth d
-        |
-        v
-target final normalization + target LM head
-        |
-        v
-intermediate token prediction z_d
+Compile(target revision, decode contract, build states)
+        -> immutable exact prefix/state advice
+
+Query(exact runtime state)
+        -> exact witnessed hit
+        OR one exact target fallback
 ```
 
-Let `z_L` be the exact final target token.
-
-Definitions:
-
-```text
-first_match_depth = min d such that z_d == z_L
-suffix_stable_depth = min d such that z_j == z_L for every j >= d
-```
-
-`suffix_stable_depth` is the favorable oracle depth relevant to tail skipping. It is non-deployable because it uses all later layers to know that no later flip occurs.
-
-### Why this differs from EXP-048 B3
-
-EXP-048 B3 recursively used partial layers to generate future proposal tokens. A first draft error changed every subsequent input.
-
-EXP-051:
-
-- always uses the exact target greedy prefix;
-- analyzes only the current next-token decision;
-- evaluates every target layer depth;
-- separates transient early matches from suffix-stable finalization;
-- measures the strongest possible layer-tail skip before designing a selector or certificate.
+The tested family is enumerative exact advice. Digest-only or approximate matches are forbidden.
 
 ### Conditions
 
-#### L0 — exact full-depth baseline
-
-Generate 64 exact greedy tokens per held-out target/prompt using the normal target KV cache. Record exact final logits/tokens and full target parameter/CPU accounting.
-
-#### L1 — first-match oracle
-
-At every exact token state, record the earliest block depth whose final-norm/LM-head argmax equals the final target token. This may match, flip away, and return later; it is diagnostic only.
-
-#### L2 — suffix-stable oracle
-
-Record the earliest depth after which every later intermediate argmax equals the final target token. This is the primary favorable non-deployable tail-skip upper bound.
-
-#### L3 — fixed-depth corpus oracle
-
-For each pre-registered fixed depth fraction:
-
 ```text
-0%, 12.5%, 25%, 50%, 75%, 100% of target blocks
+P0 exact full-prefix table, six leave-one-family-out folds
+S0 actual KV SHA-256 bucket + SHA-512/full-prefix witness
+R0 same-state replay positive control
+I0 independent-state exact M/N and storage-budget control
 ```
 
-report exact token agreement across every target/family. This shows whether a single target-independent depth selector could work without reference knowledge.
-
-#### L4 — exact-reference per-state depth selector
-
-Choose `suffix_stable_depth` independently per token using the final reference. This selector is non-deployable and deliberately favorable. It supplies the early rejection metric.
-
-#### L5 — late-decision residual-chain adversary
-
-Construct a finite residual network whose intermediate logits select token `a` after every layer except the final layer, where a residual update flips the exact token to `b`.
-
-Required properties:
+Natural corpus:
 
 ```text
-first_match_depth = final depth
-suffix_stable_depth = final depth
-all fixed early depths fail
-exact final output remains valid
+3 pinned TinyStories targets
+6 held-out families
+1 warm-up token
+64 exact incremental states per prompt
+1,152 exact natural states
 ```
 
-This demonstrates that no universal target-independent early-exit depth can preserve every arbitrary target exactly.
+### Exact cost closure
 
-#### L6 — sound tail certificate
-
-Forbidden unless L2 survives the early Gate. A certificate must bound the effect of every omitted nonlinear attention/MLP residual on the final top-1 decision without executing the skipped target layers. Exact-reference suffix stability is not a certificate.
-
-### Pinned corpus
-
-Reuse:
+For hit rate `h`, build calls `B`, query count `Q`, and identical evaluation repetitions `R`:
 
 ```text
-EleutherAI/gpt-neo-125M tokenizer @ 21def0189f5705e2521767faed922f1f15e7d7db
-roneneldan/TinyStories-1M @ 77f1b168e219585646439073245fe87e56b3023e
-roneneldan/TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
-roneneldan/TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
+fully_accounted_target_fraction = B/(Q*R) + (1-h)
 ```
 
-Six held-out families remain English narrative, Korean, code, mathematics, structured JSON, and identifier boundary.
-
-Generate exactly 64 target tokens per target/prompt: 3 × 6 × 64 =1,152 exact token states unless a pinned context limit forces an explicit exclusion.
-
-### Hidden-state alignment contract
-
-For GPT-Neo targets:
-
-- `outputs.hidden_states[0]` is embedding output;
-- `outputs.hidden_states[d]` for `1 <= d <= L` is output after block `d` before final `ln_f`;
-- apply the original target `transformer.ln_f` and tied/original `lm_head` to the final position of every depth;
-- final-depth probe argmax must equal `outputs.logits[:, -1].argmax` and the exact generated token;
-- abort on mismatch, missing hidden state, non-finite logit, or revision error.
-
-No intermediate hidden state is interpreted as final without the target final norm/head.
-
-### Traffic accounting
-
-For each target checkpoint compile logical bytes:
+Required final fraction:
 
 ```text
-B_embed_row       current token and position rows only
-B_blocks[1..L]    all parameters belonging to each target block
-B_final_norm      target final normalization
-B_lm_head         full output projection logical read
-B_full            B_embed_row + sum(B_blocks) + B_final_norm + B_lm_head
+<=0.011851851851851851
 ```
 
-Favorable oracle tail-skip fraction at stable depth `d`:
+Pre-registered consequences:
 
 ```text
-(B_embed_row + sum_{j<=d} B_blocks[j] + B_final_norm + B_lm_head) / B_full
+infinite build reuse requires h >=98.8148148%
+85 repetitions require h >=99.9912854%
+perfect one-build-per-state advice requires at least 85 exact repeats
 ```
 
-This assumes the oracle knows the correct depth and pays only one LM-head probe. Actual selector/certificate probes would add cost and can only be worse.
-
-Also report:
-
-- block-depth fraction `d/L`;
-- LM-head share of full logical bytes;
-- first-match versus suffix-stable gap;
-- transient token flips;
-- CPU time for full exact baseline and offline probes;
-- peak RSS.
-
-### Required measurements
-
-MEASURED:
-
-- exact revisions and file hashes;
-- 1,152 token states or explicit exclusions;
-- final-depth/logit reconstruction mismatch;
-- intermediate token at every depth;
-- first-match and suffix-stable depth;
-- token flips after first match;
-- oracle stable-depth logical byte fraction;
-- fixed-depth token agreement by model/family;
-- layer/head parameter bytes;
-- margins at every depth;
-- CPU time and RSS;
-- late-decision adversarial result.
-
-DERIVED:
-
-- p50/p90 stable depth and traffic fraction;
-- model/family trend;
-- oracle savings upper bound;
-- universal fixed-depth counterexample verdict;
-- gap to 1.185185% target fraction.
-
-PROJECTED:
-
-- 405B Q4 logical bytes under observed fractions;
-- gap to 4B-class target.
-
-UNVERIFIED:
-
-- causal deployable early-exit selector;
-- sound nonlinear tail certificate;
-- real skipped-layer operation replacement;
-- target CUDA/PCIe/SSD/TTFT/tokens per second;
-- 70B/405B finalization depths;
-- 8 GiB execution.
-
-### Pre-registered early rejection Gate
-
-Reject layer-finalization/tail skipping as a core path if any condition holds:
+### Storage closure
 
 ```text
-final-depth reconstruction mismatch >0
-future generated token use >0
-suffix-stable oracle median logical byte fraction >10%
-suffix-stable oracle p90 logical byte fraction >25%
-suffix-stable oracle median block-depth fraction >10%
-any required family has median stable depth >50% of blocks
-largest-model median stable fraction >1.25x smallest-model median
-late-decision adversary succeeds
+hot index budget: 8 GiB
+hot slot: 48 bytes
+cold advice budget: 1 TiB
+independent storage adversary: 2^48 exact states
 ```
 
-The thresholds are deliberately much looser than the final 1.185185% requirement. A universal late-decision target independently rejects fixed-depth exact early exit for the arbitrary-model mission; empirical oracle results determine whether restricted adaptive certification deserves continuation.
+Prefix and actual KV-state serialized sizes, raw KV bytes represented, probes, target build calls, fallback calls, and natural reuse are all charged separately.
+
+### Pre-registered rejection Gate
+
+Reject enumerative exact advice as the primary runtime if any condition holds:
+
+```text
+wrong exact advice hit >0
+build/evaluation family leakage >0
+any held-out family exact hit rate <98.8148148%
+any held-out family online fallback >1.185185%
+median observed natural exact reuse <85
+p90 fully-accounted target fraction >1.185185%
+1 TiB independent-state minimum fallback >1.185185%
+```
 
 Failure decision:
 
 ```text
-REJECT_LAYER_FINALIZATION_TAIL_SKIP_AS_UNIVERSAL_CORE
+REJECT_ENUMERATIVE_EXACT_ADVICE_AS_CORE_RETAIN_FAIL_CLOSED_TABLE_AUXILIARY
 ```
 
-### Promotion Gate
+### Claim limit
 
-Only if the oracle survives may L6 and actual Phase-C replacement be built. Promotion still requires:
-
-```text
-zero final reconstruction mismatch
-zero future information
-sound causal selector/certificate
-real skipped target blocks during complete generation
-p90 fully accounted fraction <=0.011851851851851851
-nonzero useful savings in every family
-non-degrading model-size trend
-claim scope consistent with late-decision counterexample
-```
-
-### Strongest counterexamples
-
-- final residual layer flips an otherwise stable token;
-- early token matches, flips multiple times, and returns only at final layer;
-- near-tied logits whose sign changes in late blocks;
-- Korean/code/JSON states finalizing later than narrative;
-- LM-head bytes dominate even depth zero;
-- fixed depth works on one target but fails a larger one;
-- exact-reference depth is very shallow but no sound causal certificate can know it.
-
-### Evidence boundary
+EXP-052 can reject the implemented enumerative exact-advice family. It does not prove an unconditional lower bound for every conceivable symbolic compiler or program representation.
 
 ```text
-Phase: A/B with small-checkpoint observation
-Evidence ceiling: E1 until real target blocks are causally skipped
-complete real operation replacement: false
-405B / 8 GiB / CUDA / PCIe / SSD / TTFT / tokens/sec: NOT TESTED
-Phase D: NOT TESTED
+Phase A/B with small-checkpoint observation
+Evidence ceiling E1
+complete real operation replacement false
+405B / 8 GiB / CUDA / PCIe / SSD / TTFT / tokens/sec NOT TESTED
 ```
 
 ### Next exact action
 
-After PR #60 merges:
-
-1. create `research/exp-051-layer-finalization-tail-skip`;
-2. implement intermediate-depth reconstruction and late-flip adversary tests;
-3. run pinned 1,152-state oracle audit;
-4. freeze every depth/token/margin row and byte equation;
-5. reject before selector work if L2 misses the lenient Gate;
-6. implement L6 only if the oracle survives.
+1. implement one-pass pinned state-corpus generator with canonical KV hashing;
+2. run P0/S0 six-fold held-out queries and R0 replay controls;
+3. execute I0 M/N and storage closure;
+4. freeze all raw evidence and checksums into `results/exp_052/`;
+5. update all durable research documents;
+6. merge only after Python 3.10/3.12 CI and evidence validation pass.
