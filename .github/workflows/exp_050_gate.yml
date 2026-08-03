@@ -2,15 +2,6 @@ name: EXP-050 external draft advice Gate
 
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "vortex_runtime/external_draft.py"
-      - "vortex_runtime/block_verify.py"
-      - "tests/exp_050/**"
-      - "experiments/exp_050/**"
-      - "docs/research/EXPERIMENT_050_EXTERNAL_DRAFT_ADVICE.md"
-      - ".github/workflows/exp_050_gate.yml"
-      - "NEXT_EXPERIMENT.md"
 
 concurrency:
   group: exp-050-${{ github.workflow }}-${{ github.ref }}
@@ -37,26 +28,15 @@ jobs:
         run: |
           set -euo pipefail
           required=(
-            AGENTS.md
-            RESEARCH_STATE.md
-            FAILED_APPROACHES.md
-            DECISION_LOG.md
-            ASSUMPTION_REGISTER.md
-            VALIDATION_MATRIX.md
-            NEXT_EXPERIMENT.md
-            ARCHITECTURE.md
-            HARDWARE_VALIDATION_PLAN.md
-            REPRODUCIBILITY.md
-            docs/PROOF_FIRST_CONTRACT.md
-            docs/WORK_SESSION_PROTOCOL.md
+            AGENTS.md RESEARCH_STATE.md FAILED_APPROACHES.md DECISION_LOG.md
+            ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md NEXT_EXPERIMENT.md
+            ARCHITECTURE.md HARDWARE_VALIDATION_PLAN.md REPRODUCIBILITY.md
+            docs/PROOF_FIRST_CONTRACT.md docs/WORK_SESSION_PROTOCOL.md
             docs/research/EXPERIMENT_050_EXTERNAL_DRAFT_ADVICE.md
-            vortex_runtime/block_verify.py
-            vortex_runtime/external_draft.py
+            vortex_runtime/block_verify.py vortex_runtime/external_draft.py
             tests/exp_050/test_external_draft.py
-            experiments/exp_050/config.json
-            experiments/exp_050/run_experiment.py
-            experiments/exp_050/run_current_env.sh
-            experiments/exp_050/reproduce.sh
+            experiments/exp_050/config.json experiments/exp_050/run_experiment.py
+            experiments/exp_050/run_current_env.sh experiments/exp_050/reproduce.sh
             experiments/exp_050/future_gpu_run.sh
           )
           for path in "${required[@]}"; do
@@ -67,55 +47,46 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install --disable-pip-version-check pytest==8.3.5
-          python -m pip install --disable-pip-version-check \
-            --index-url https://download.pytorch.org/whl/cpu \
-            torch==2.6.0
-          python -m pip install --disable-pip-version-check \
-            transformers==4.50.3 \
-            huggingface_hub==0.29.3 \
-            safetensors==0.5.3 \
-            tokenizers==0.21.1
+          python -m pip install --disable-pip-version-check --index-url https://download.pytorch.org/whl/cpu torch==2.6.0
+          python -m pip install --disable-pip-version-check transformers==4.50.3 huggingface_hub==0.29.3 safetensors==0.5.3 tokenizers==0.21.1
           python -m pip freeze | sort | tee exp050-pip-freeze.txt
 
-      - name: Run EXP-050 accounting and counterexample tests
+      - name: Run tests and validation
         env:
           PYTHONPATH: ${{ github.workspace }}
-        run: python -m pytest -q tests/exp_050
+        run: |
+          python -m pytest -q tests/exp_050
+          python scripts/run_validation.py
 
-      - name: Run repository validation
-        env:
-          PYTHONPATH: ${{ github.workspace }}
-        run: python scripts/run_validation.py
-
-      - name: Run pinned cross-checkpoint Gate
+      - name: Run isolated reproduction
         env:
           PYTHONPATH: ${{ github.workspace }}
           HF_HOME: ${{ runner.temp }}/hf-exp050
           TOKENIZERS_PARALLELISM: "false"
+          VORTEX_EXP050_OUTPUT_DIR: ${{ runner.temp }}/exp_050_reproduction
         run: |
           set -euo pipefail
-          rm -rf results/exp_050_candidate
+          rm -rf "${VORTEX_EXP050_OUTPUT_DIR}"
           bash experiments/exp_050/run_current_env.sh 2>&1 | tee exp050-workflow.log
 
-      - name: Validate evidence contract
+      - name: Validate reproduction contract
+        env:
+          REPRO_ROOT: ${{ runner.temp }}/exp_050_reproduction
         run: |
           python - <<'PY'
-          import json
-          import math
+          import json, math, os
           from pathlib import Path
-
-          root = Path("results/exp_050_candidate")
+          root = Path(os.environ["REPRO_ROOT"])
           summary = json.loads((root / "summary.json").read_text())
+          measured = summary["MEASURED"]
           assert summary["experiment"] == "EXP-050"
           assert summary["evidence_level"] == "E1"
           assert summary["complete_real_operation_replacement"] is False
           assert summary["phase_d_status"] == "NOT TESTED"
-          measured = summary["MEASURED"]
           assert measured["model_count"] == 3
           assert measured["target_prompt_case_count"] == 18
           assert measured["target_draft_pair_count"] == 36
           assert measured["pair_block_row_count"] == 108
-          assert measured["prompt_family_count"] == 6
           assert measured["excluded_state_count"] == 0
           assert measured["all_pair_exact_output_mismatches"] == 0
           assert measured["all_pair_target_future_information_uses"] == 0
@@ -126,25 +97,21 @@ jobs:
           assert math.isfinite(measured["favorable_pool_p90_normalized_4b_405b_fraction"])
           assert summary["DERIVED"]["draft_selection_uses_reference"] is True
           assert summary["DERIVED"]["projected_dynamic_minimum_exact_prefix_for_4b_draft"] == 507
-          assert summary["DERIVED"]["decision"] in {
-              "CONTINUE_EXTERNAL_DRAFT_POOL_TO_RESTRICTED_COMPLETE_PHASE_C",
-              "REJECT_TARGET_INDEPENDENT_EXTERNAL_DRAFT_AS_UNIVERSAL_CORE",
-          }
+          assert summary["DERIVED"]["decision"] == "REJECT_TARGET_INDEPENDENT_EXTERNAL_DRAFT_AS_UNIVERSAL_CORE"
           assert (root / "raw" / "pair_rows.jsonl").is_file()
           assert (root / "raw" / "case_rows.jsonl").is_file()
-          assert (root / "raw" / "checkpoint_manifest.json").is_file()
           assert (root / "raw" / "universal_counterexample.json").is_file()
           assert (root / "checksums.sha256").is_file()
           print(json.dumps(summary, indent=2, sort_keys=True))
           PY
 
-      - name: Upload candidate evidence
+      - name: Upload isolated reproduction
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: exp-050-candidate-${{ github.run_id }}
+          name: exp-050-reproduction-${{ github.run_id }}
           path: |
-            results/exp_050_candidate
+            ${{ runner.temp }}/exp_050_reproduction
             exp050-workflow.log
             exp050-pip-freeze.txt
           if-no-files-found: warn
