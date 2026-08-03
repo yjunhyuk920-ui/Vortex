@@ -1,0 +1,106 @@
+{
+  "DERIVED": {
+    "accounting_scope": "exact non-mask post-softmax zeros only; causal/local masks excluded; QK, softmax, Value zero scan, indexes, unchanged Linear work, and logical Q4 Linear bytes charged",
+    "attention_probability_sparsity_survives_gate": false,
+    "decision": "REJECT_CAUSAL_EXACT_ATTENTION_PROBABILITY_SPARSITY_AS_CORE_RETAIN_ATTENTION_AUXILIARY",
+    "model_size_trend_gate_pass": true,
+    "prompt_family_gate_pass": true,
+    "token_registration_control_gate_pass": true,
+    "whole_model_operation_gate_pass": false,
+    "whole_model_query_byte_gate_pass": false
+  },
+  "MEASURED": {
+    "attention_row_count": 9216,
+    "case_count": 18,
+    "elapsed_ns": 23393884659,
+    "forward_row_count": 1152,
+    "generated_tokens_per_case": 64,
+    "largest_model_degradation_fraction": 0.0,
+    "maximum_attention_row_exact_nonmask_zero_fraction": 0.07162921348314606,
+    "model_count": 3,
+    "model_p50_whole_model_warm_operation_fraction": {
+      "roneneldan/TinyStories-1M": 1.0020193228305336,
+      "roneneldan/TinyStories-3M": 1.0009129401394594,
+      "roneneldan/TinyStories-8M": 1.0003826362316928
+    },
+    "p50_warm_exact_nonmask_zero_fraction": 0.0,
+    "p50_whole_model_warm_operation_fraction": 1.0004840310831777,
+    "p50_whole_model_warm_query_byte_fraction": 1.000929711899058,
+    "p90_warm_exact_nonmask_zero_fraction": 0.0007530120481927711,
+    "p90_whole_model_warm_operation_fraction": 1.0015413838201408,
+    "p90_whole_model_warm_query_byte_fraction": 1.0030307140919281,
+    "peak_rss_kib": 742548,
+    "phase_totals": {
+      "first_decode": {
+        "aggregate_exact_nonmask_zero_fraction": 9.527439024390244e-05,
+        "aggregate_whole_model_operation_fraction": 1.0003382926636115,
+        "aggregate_whole_model_query_byte_fraction": 1.0007063767032265,
+        "eligible_probability_count": 62976,
+        "exact_nonmask_zero_count": 6,
+        "forward_count": 18
+      },
+      "prefill": {
+        "aggregate_exact_nonmask_zero_fraction": 8.504789897670368e-07,
+        "aggregate_whole_model_operation_fraction": 1.0002406842011833,
+        "aggregate_whole_model_query_byte_fraction": 1.0005232091744216,
+        "eligible_probability_count": 1175808,
+        "exact_nonmask_zero_count": 1,
+        "forward_count": 18
+      },
+      "warm_decode": {
+        "aggregate_exact_nonmask_zero_fraction": 0.00030508468122696395,
+        "aggregate_whole_model_operation_fraction": 1.0007207209096407,
+        "aggregate_whole_model_query_byte_fraction": 1.001409330082015,
+        "eligible_probability_count": 8404224,
+        "exact_nonmask_zero_count": 2564,
+        "forward_count": 1116
+      }
+    },
+    "prompt_family_count": 6,
+    "registration_row_count": 171,
+    "token_registration_or_control_mismatches": 0,
+    "warm_forward_count": 1116
+  },
+  "UNVERIFIED": [
+    "physical attention-sparse kernels",
+    "405B attention probability sparsity",
+    "actual Transformer operation replacement",
+    "405B execution",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_CAUSAL_EXACT_ATTENTION_PROBABILITY_SPARSITY_AS_CORE_RETAIN_ATTENTION_AUXILIARY",
+  "claim_boundary": {
+    "405b_attention_statistics": "NOT TESTED",
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "physical_attention_sparse_kernel": "NOT TESTED",
+    "real_transformer_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-062",
+  "name": "pinned_causal_exact_nonmask_attention_probability_sparsity_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-observation"
+  ],
+  "provenance": {
+    "artifact_id": 8868287407,
+    "artifact_name": "exp-062-candidate-30844873182",
+    "artifact_size_bytes": 523940,
+    "artifact_zip_sha256": "497816dcca7e6b8c40e9222ed8511efa266fe2358aab847a93795d7c04637390",
+    "config_sha256": "c987fc4ab548d08036e7db534b473aa13addc50398cc3492c22222b0fb21d98f",
+    "frozen_date": "2026-08-04",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "891868c186eb22869925ad20cba43ef32d371589",
+    "source_head_sha": "c38baa187e41760ef07676326c6a14f08635acc3",
+    "tokenizer_id": "EleutherAI/gpt-neo-125M",
+    "tokenizer_revision": "21def0189f5705e2521767faed922f1f15e7d7db",
+    "torch": "2.6.0+cpu",
+    "workflow_merge_sha": "891868c186eb22869925ad20cba43ef32d371589",
+    "workflow_run": 30844873182
+  }
+}

@@ -1,73 +1,84 @@
 # Next Experiment
 
-## Closed Gate — EXP-061
+## Closed Gate — EXP-062
 
-No exact positive or negative zero was observed in 56,448 projection calls. Mandatory zero discovery made warm-decode logical work and bytes exceed dense execution.
+Warm decode contained only 0.0305% exact non-mask zero probabilities in aggregate. Fully accounted whole-model work and bytes exceeded dense execution.
 
 ```text
-REJECT_CAUSAL_EXACT_ACTIVATION_SPARSITY_AS_CORE_RETAIN_RUNTIME_SPARSE_AUXILIARY
+REJECT_CAUSAL_EXACT_ATTENTION_PROBABILITY_SPARSITY_AS_CORE_RETAIN_ATTENTION_AUXILIARY
 ```
 
-## EXP-062 — Pinned Causal Exact Non-Mask Attention-Probability Sparsity Gate
+## EXP-063 — Pinned Causal Exact Cached-KV Equivalence Reuse Gate
 
 ### Mechanism
 
-Request exact attention probabilities during causal generation and measure entries equal to positive or negative zero only after excluding positions that are zero solely because of causal or padding masks. An exact zero probability permits skipping the corresponding Value-vector multiply/add for that query/head without changing output.
+During each warm-decode attention step, inspect causally eligible cached vectors per layer and head:
+
+```text
+exact K groups   = bit-identical Key vectors across eligible positions
+exact KV groups  = bit-identical (Key, Value) vector pairs
+```
+
+For an exact K group, compute the query-key score once and copy it to all members. For an exact KV group, copied scores imply bit-identical softmax probabilities; compute the probability-times-Value vector once and reuse the product while retaining source-order output additions. No approximate similarity, clustering, quantization, or reordered reduction is allowed.
 
 ### Pinned population
 
-Use unchanged TinyStories-1M/3M/8M revisions, the pinned GPT-Neo tokenizer, six held-out prompt families, prompt prefill, first decode, and 64-token KV-cached generation. Run a standard reference and an `output_attentions=True` observation path; all committed tokens must match.
+Use unchanged TinyStories-1M/3M/8M revisions, the pinned tokenizer, all six held-out prompt families, and 64-token KV-cached greedy generation. Compare a standard reference against an observation path that returns `past_key_values`; all 1,152 tokens must match.
 
-### Registration
+### Eligibility
 
-- enumerate every attention layer and head count;
-- record query/key/value lengths, unmasked entry population, exact non-mask zero count, phase, token, model, prompt family, and layer;
-- fail on missing attention tensors, shape mismatch, NaN, negative probability, or row-sum violation beyond the pinned numerical tolerance;
-- causal-mask and padding zeros are excluded from both numerator and eligible population.
+- global layers: all causal cache positions;
+- local layers: only the registered local window;
+- prefill is recorded separately but promotion is based on warm decode;
+- tied or repeated tensor storage is not a vector duplicate unless position vectors have identical dtype, shape, and bit pattern.
 
 ### Accounting
 
-For each head/query with key length `L`, charge:
+For each query/head with eligible length `L`, unique Key count `U_K`, unique KV count `U_KV`, and head width `d`:
 
 ```text
-QK score terms               = head_dim * L
-softmax terms                = L
-Value dense terms            = head_dim * L
-Value sparse terms           = head_dim * nonzero_probability_count
-probability zero scan        = L
-nonzero-key indexes/pointers = exact metadata bytes
+dense QK multiplications       = d * L
+candidate QK multiplications   = d * U_K
+score copies                    = L - U_K
+dense Value multiplications    = d * L
+candidate Value multiplications= d * U_KV
+Value additions                = d * L  (unchanged, source order)
+cache equivalence scan/hash     = all K and V scalar bits
+mapping/index metadata          = fully charged
+softmax                         = unchanged
+all Linear/MLP work             = unchanged
 ```
 
-Total Transformer accounting must also include all unchanged dense-projection and MLP terms from the registered architecture. Report both attention-only and whole-model operation/query-byte fractions. Skipping QK or softmax is forbidden because zero status is known only afterward.
+Report K-only, KV-pair, attention-only, and whole-model fractions. A favorable selector may choose no grouping when metadata exceeds savings, but all scan/hash cost remains charged.
 
 ### Controls
 
-- explicit masked logits: mask zeros excluded;
-- extreme unmasked logits that underflow: exact zeros detected;
-- moderate logits: no false zeros;
-- positive/negative zero equivalence;
-- dense versus zero-skipped Value accumulation equality in fixed scalar order;
-- probability rows finite, nonnegative, and normalized;
-- reference and observation generation tokens identical.
+- injected duplicate K vectors: QK reuse detected;
+- injected duplicate KV pairs: QK and product reuse detected;
+- one-bit K or V difference prevents the corresponding group;
+- positive and negative floating zero are distinct bit patterns for grouping;
+- NaN payloads are rejected;
+- group construction invariant to stable position enumeration;
+- reference and observation tokens identical.
 
 ### Promotion Gate
 
 ```text
 zero token/registration/control mismatch
-all six families represented
-p50 whole-model warm-decode operation fraction <=10%
-p90 whole-model warm-decode operation fraction <=25%
-p50 whole-model query-byte fraction <=10%
-p90 whole-model query-byte fraction <=25%
+all six prompt families represented
+p50 whole-model warm operation fraction <=10%
+p90 whole-model warm operation fraction <=25%
+p50 whole-model warm query-byte fraction <=10%
+p90 whole-model warm query-byte fraction <=25%
 no largest-model degradation >25%
 ```
 
 Failure decision:
 
 ```text
-REJECT_CAUSAL_EXACT_ATTENTION_PROBABILITY_SPARSITY_AS_CORE_RETAIN_ATTENTION_AUXILIARY
+REJECT_CAUSAL_EXACT_KV_EQUIVALENCE_REUSE_AS_CORE_RETAIN_KV_AUXILIARY
 ```
 
 ### Claim boundary
 
-Phase C observation only. Physical attention-sparse kernels, 405B attention statistics, actual Transformer operation replacement, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.
+Phase C observation only. Physical grouped-attention kernels, 405B KV equivalence statistics, actual Transformer operation replacement, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.

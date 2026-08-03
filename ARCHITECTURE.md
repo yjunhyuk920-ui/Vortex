@@ -218,3 +218,8 @@ The runtime must not promote static CSR/run/BSR streaming for the measured Q4 po
 ## Activation-zero boundary
 
 The runtime must not scan ordinary dense-projection inputs for exact zeros on the measured architecture because the observed population is empty and scanning adds work. Observation hooks remain auxiliary for architectures with explicit hard-zero nonlinearities. EXP-062 is restricted to post-softmax attention probabilities, excluding mask zeros.
+
+<!-- EXP-062-AUTHORITATIVE-FINAL -->
+## Attention-probability zero boundary
+
+The runtime must not scan post-softmax probabilities for exact zeros on the measured architecture. Structural mask zeros remain a standard attention optimization and are not VORTEX evidence. EXP-063 may inspect cached K/V bit equivalence but must fail closed to ordinary attention when no exact group exists.

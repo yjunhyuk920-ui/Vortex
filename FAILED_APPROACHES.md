@@ -258,3 +258,8 @@ Real Q4 weights contained only 17.76% median exact zeros. Skipping them left 82.
 ## F-029 — Causal exact-zero activation-column skipping
 
 No exact projection-input zero occurred in 56,448 calls or 17,529,344 observed input scalars across prefill and decode. Warm-decode work and query bytes slightly exceeded dense execution after mandatory zero discovery and metadata. Do not revisit with more zero scanners, module selectors, or near-zero thresholds: near-zero is approximate and exact zero population was empty. Retain the hook/accounting machinery only for architectures with explicit exact-zero activations.
+
+<!-- EXP-062-AUTHORITATIVE-FINAL -->
+## F-030 — Exact non-mask attention-probability zero skipping
+
+After excluding causal and local-window structural masks, warm-decode exact-zero probability density was only 0.0305% in aggregate. Whole-model work and bytes exceeded dense execution after QK, softmax, discovery, metadata, and unchanged Linear costs. Do not revive by counting structural mask zeros, reporting the 7.16% maximum row alone, or using near-zero thresholds while claiming exactness. Retain the probability validator/accounting as an auxiliary.
