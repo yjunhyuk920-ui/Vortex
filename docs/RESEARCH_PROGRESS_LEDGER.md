@@ -2,211 +2,122 @@
 
 Last updated: 2026-08-03 Asia/Seoul
 
-This chronological compatibility ledger supplements the root research state files. Authoritative current state is in `RESEARCH_STATE.md`; permanent rejections are in `FAILED_APPROACHES.md`; decisions are in `DECISION_LOG.md`.
+Compatibility ledger. Current authoritative state is `RESEARCH_STATE.md`; permanent failures and decisions are in `FAILED_APPROACHES.md` and `DECISION_LOG.md`.
 
 ## Fixed target
 
-Arbitrary public unmodified Hugging Face dense model, runtime replacement only, real 405B flagship, <=8 GiB GPU VRAM, original declared ability/output contract preserved, and 4B-class user-perceived performance on the same target machine.
+Arbitrary public unmodified Hugging Face dense model, runtime replacement only, real 405B, <=8 GiB VRAM, original contract preserved, and 4B-class user-perceived performance.
 
-Current Phase D status: **NOT TESTED**.
+Phase D: **NOT TESTED**.
 
-## Evidence governance adopted
+## Governance reset — PR #56
 
-PR #56 introduces:
+Implemented:
 
-- Phase A/B/C/D separation;
-- E0–E7 evidence scale;
-- MEASURED/DERIVED/PROJECTED/UNVERIFIED separation;
-- root state, decision, failure, assumption, validation, hardware, and reproducibility documents;
-- prohibition on representing GitHub CPU work as 405B/GPU/PCIe/CUDA evidence;
-- direct unseen-prompt operation-skipping filter for core research.
+- Phase A/B/C/D;
+- E0–E7;
+- MEASURED/DERIVED/PROJECTED/UNVERIFIED;
+- explicit Phase-D NOT TESTED rule;
+- root research state/decision/failure/assumption/validation/hardware/reproducibility files;
+- unseen-prompt operation-skipping requirement for core work.
 
-## Prior negative execution families
+Existing mmap/index/DAG work is auxiliary. Raw exact-prefix scaling is rejected.
 
-Persisted in `FAILED_APPROACHES.md`:
+## Prior proof and auxiliary milestones
 
-- low-rank/factorization/dictionary/activation-subspace families;
-- progressive precision as primary path;
-- exact-neuron selection;
-- deterministic signed residual refinements;
-- prompt recurrent programs;
-- oracle sparse repair;
-- suffix memory/replay;
-- raw exact-prefix graphs;
-- future-aware DAG as standalone runtime.
+- PR #42: exact dense-operator information lower bound; metadata is not traffic.
+- PR #44: metadata-aware direct/operator top-1 bound.
+- PR #46: constructed end-to-end Llama final-decision metadata 26.1586 GiB; sparse host access remained open.
+- PR #48: near-one host probe/token can still be only a few logical bytes; probe count is not latency.
+- PR #50: checksummed atomic mmap exact pointer VM.
+- PR #52: bounded TinyLlama compiler replayed 72/72 checked tokens but raw distinct prefixes were 64/64 and held-out start coverage 0%.
+- PR #54: exact future-suffix DAG compressed 64 records to 38 nodes but causal held-out start coverage remained 0%.
 
-Do not recreate them under new names without addressing the recorded failure.
-
-## Accepted proof guardrails
-
-### PR #42 — exact dense-operator information bound
-
-```text
-405B Q4 exact information: 188.98828125 GiB
-minimum information beyond 8 GiB: 180.98828125 GiB
-115/115 coordinate adversaries flipped exact output/top-1
-```
-
-Scope: exact-output and coordinate relevance; not per-token traffic.
-
-### PR #44 — metadata-aware direct/operator top-1 bound
-
-```text
-independently callable Llama-shaped operator collection: 9.5977783203125 GiB
-```
-
-Scope: direct/operator collection, not full final-token Transformer until PR #46.
-
-### PR #46 — end-to-end Llama final-token metadata bound
-
-```text
-micro functions: 256/256
-minimum winner margin: 0.24951063086132308
-projected complete decision metadata: 26.158586645498872 GiB
-```
-
-Scope: constructed family closes all-resident 8 GiB representation; sparse host lookup remained open. Earlier pre-correction whole-target impossibility language is invalid.
-
-### PR #48 — explicit host cell-probe Gate
-
-```text
-worst-chain misses: at least 249/256
-logical bytes/token: 4.86328125
-nonrepresentative CPU median: 224.27377 ns/probe
-```
-
-Decision: probe count alone does not prove latency failure.
-
-## Accepted auxiliary implementations
-
-### PR #50 — mmap host decision VM
-
-Checksummed/atomic compact40/aligned64 files, strict corruption rejection, exact replay, and LRU cache.
-
-```text
-compact dependent p50/p99: 1,473/1,806.5 ns
-aligned dependent p50/p99: 1,502/1,833.45 ns
-compact storage saving: about 37.4%
-```
-
-CPU CI timing is nonrepresentative.
-
-### PR #52 — bounded TinyLlama decision-index compiler
-
-```text
-compiled paths: 8 + exact duplicate control
-model calls: 64
-exact VM replay: 9/9 paths, 72/72 tokens
-raw distinct-prefix nodes: 64/64
-held-out start coverage: 0%
-```
-
-Implementation accepted; raw prefix scaling rejected.
-
-### PR #54 — exact future-suffix DAG
-
-```text
-64 raw records ->38 exact nodes
-DAG VM 326 bytes vs raw VM 456 bytes
-exact replay 72/72
-causal held-out start coverage 0%
-```
-
-Body compression accepted as auxiliary; future-token routing forbidden.
+Detailed permanent numbers remain in Git history and root failure/decision registers.
 
 ## EXP-047 — Causal Probabilistic Tile Certificate
 
-Branch: `research/governance-exp047-cptc`
-
-PR: `#56`
-
-Authoritative workflow: `30791851508`
-
-Source head recorded by run: `d395d0eada15fd7ef9b09ce5ccb561a921bb6b7b`
-
-Evidence: Phase A/B, E1. Phase D NOT TESTED.
-
-### Mechanism
-
-For decision-relevant tile contributions `z_i`, sample tiles uniformly without replacement in a causal random order. Use fixed-step Serfling intervals with alpha spending:
+Final authoritative identity:
 
 ```text
-delta_n = delta * 6/(pi^2 n^2)
+PR: #56
+workflow: 30792813542
+source SHA: 08e8b35f48b1b616147f22dce046ab93218265c9
+evidence head after workflow: 3359371762c004db3532ebb16872b4eee85accf6
+phase: A/B
+evidence: E1
+Phase D: NOT TESTED
 ```
 
-Commit only when the total interval excludes zero. Otherwise evaluate all remaining tiles exactly.
+Mechanism:
+
+- causal random sampling without replacement of decision-relevant linear tiles;
+- fixed-step Serfling interval;
+- alpha spending `delta_n = delta*6/(pi^2 n^2)` for adaptive stop;
+- exact evaluation of all remaining tiles when no certificate closes.
 
 ### MEASURED correctness
 
 ```text
-unit/property tests: 10 passed
-cases: 525
-wrong accepts: 0
-fallback/reference mismatches: 0
-independent-bound mismatches: 0
-adversarial exact fallback: 15/15
-future generated tokens used: false
+10 tests passed
+525 cases
+wrong accepts 0
+fallback mismatches 0
+independent-bound mismatches 0
+adversarial fallback 15/15
+future generated tokens used false
 ```
 
-Decision: correctness primitive accepted at E1.
+Decision: E1 reference certificate/fallback primitive accepted.
 
-### MEASURED performance signal
+### MEASURED architecture signal
 
 ```text
-certified: 4/525
-fallback: 521/525 = 99.238%
-N=64/128/256 mean evaluated fraction: 100%
-N=512 mean evaluated fraction: 98.519%
-N=1024 mean evaluated fraction: 98.294%
-positive cancellation control: 107/1024 = 10.449%
-Python optimized/reference time: roughly 8.8–9.1x
+certified 4/525
+fallback 99.238%
+mean evaluated fraction N=512 98.519%
+mean evaluated fraction N=1024 98.294%
+positive control 107/1024 = 10.449%
+Python optimized/reference mean time about 9.2–9.7x
 ```
 
-Decision: global-range CPTC-v1 is not promoted as the core executor; architecture status REVISE.
+Decision: one global-range CPTC-v1 is not promoted; core architecture status REVISE.
 
 ### PROJECTED target gap
 
 ```text
-405B Q4 stream: 188.593 GiB
-4B Q4 stream: 1.863 GiB
-1.2x allowance: 2.235 GiB/token
-required fraction before selector/fallback: 1.185%
-positive-control fraction / target: 8.817x
+405B Q4 stream 188.593 GiB
+1.2x 4B Q4 allowance 2.235 GiB/token
+required fraction before selector/fallback 1.185%
+positive-control fraction 8.817x above target fraction
 ```
 
-These are parameter-count projections, not target measurements.
+Not measured on target hardware.
 
-### Infrastructure corrections
+## Infrastructure failures excluded from science
 
-Two prior runs failed before scientific measurement:
+- `30791055142`: eager optional dependency import;
+- `30791192434`: missing repository root on `PYTHONPATH`.
 
-1. eager package import required optional `safetensors`;
-2. runner lacked repository root on `PYTHONPATH`.
-
-Lazy imports and explicit `PYTHONPATH` corrected them. They are infrastructure failures, not hypothesis evidence.
+Final authoritative success only: `30792813542`.
 
 ## Current frontier
 
 `EXP-047R — Oracle-Tight and Stratified Tile-Bound Audit`.
 
-Use available unmodified small checkpoints and held-out prompts to compare:
+Use held-out current-token states from available unmodified small checkpoints. Compare current global, non-deployable oracle-tight, and deployable stratified bounds. Offline full-contribution analysis remains below E2.
 
-- current global range;
-- non-deployable per-state oracle-tight range;
-- deployable checkpoint-derived stratified bounds;
-- independently justified variance-adaptive finite-population bounds.
-
-If even oracle-tight real-state intervals need high tile fractions, reject range-only CPTC instead of tuning it.
+If even oracle-tight bounds require high tile fractions, reject range-only CPTC rather than tune it.
 
 ## Current classification
 
 ```text
-Governance/provenance: implemented
-Auxiliary mmap/index/DAG: bounded functional evidence
-EXP-047 correctness: E1 PASS
-EXP-047 broad execution savings: FAIL/REVISE
-Real operation replacement: NOT TESTED
-70B/405B scaling: NOT TESTED
-8 GiB target execution: NOT TESTED
-E6/E7: not achieved
+Governance/provenance implemented
+Auxiliary mmap/index/DAG bounded evidence retained
+EXP-047 correctness E1 PASS
+EXP-047 broad savings FAIL/REVISE
+Real operation replacement NOT TESTED
+70B/405B scaling NOT TESTED
+8 GiB target execution NOT TESTED
+E6/E7 not achieved
 ```
