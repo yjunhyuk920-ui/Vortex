@@ -1,0 +1,60 @@
+{
+  "experiment": "EXP-047R",
+  "seed": 202608031,
+  "delta_per_decision": 1e-6,
+  "min_samples": 2,
+  "tile_size": 1,
+  "stratum_count": 8,
+  "timing_repetitions": 5,
+  "torch_num_threads": 2,
+  "max_input_tokens": 64,
+  "logit_reconstruction_atol": 1e-5,
+  "margin_reconstruction_rtol": 1e-5,
+  "margin_reconstruction_atol": 1e-5,
+  "bound_validation_atol": 1e-10,
+  "tokenizer": {
+    "model_id": "EleutherAI/gpt-neo-125M",
+    "revision": null,
+    "revision_policy": "resolve SHA before download and execution"
+  },
+  "models": [
+    {
+      "model_id": "roneneldan/TinyStories-1M",
+      "revision": null,
+      "revision_policy": "resolve SHA before download and execution"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-3M",
+      "revision": null,
+      "revision_policy": "resolve SHA before download and execution"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-8M",
+      "revision": null,
+      "revision_policy": "resolve SHA before download and execution"
+    }
+  ],
+  "held_out_prompts": [
+    "Once there was a small blue bird who wanted to cross the river.",
+    "Mina opened the old wooden box and found a silver key inside.",
+    "The puppy heard thunder outside, so the children built it a warm bed.",
+    "At sunrise, the baker discovered that all the flour had disappeared.",
+    "A quiet robot learned why the garden flowers closed at night.",
+    "Leo promised to return the lost red scarf before dinner."
+  ],
+  "gate": {
+    "oracle_median_max_fraction": 0.10,
+    "oracle_p90_max_fraction": 0.25,
+    "materialized_selector_max_full_sum_ratio": 1.0,
+    "wrong_accept_limit": 0,
+    "decision_on_failure": "REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY"
+  },
+  "projection": {
+    "target_parameters": 405000000000,
+    "baseline_parameters": 4000000000,
+    "bits_per_weight": 4,
+    "target_traffic_multiplier": 1.2
+  },
+  "evidence_ceiling": "E1 because this is offline full-contribution observation, not real operation replacement",
+  "phase_d_status": "NOT TESTED"
+}
