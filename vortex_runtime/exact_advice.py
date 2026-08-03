@@ -327,6 +327,22 @@ class AdviceAccounting:
         self.validate()
         return self.target_fallback_calls / self.query_count
 
+    def amortized_target_forward_fraction(self, exact_repetitions: int) -> float:
+        """Charge one-time build calls plus online exact fallbacks per query.
+
+        `exact_repetitions` is the number of times the same evaluation query set
+        is reused without rebuilding the table. No lookup or storage cost is
+        hidden in this logical target-stream component.
+        """
+
+        self.validate()
+        if exact_repetitions <= 0:
+            raise ExactAdviceError("exact_repetitions must be positive")
+        return (
+            self.build_target_calls / (self.query_count * exact_repetitions)
+            + self.online_target_fallback_fraction
+        )
+
 
 def minimum_reuse_for_fraction(allowed_fraction: float) -> int:
     if not math.isfinite(allowed_fraction) or not 0.0 < allowed_fraction < 1.0:
