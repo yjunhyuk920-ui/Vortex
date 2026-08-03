@@ -115,10 +115,12 @@ def test_bad_causal_proposals_still_match_exact_greedy() -> None:
     assert all(cycle.matching_prefix == 0 for cycle in result.cycles)
     assert all(cycle.correction_used for cycle in result.cycles)
     assert result.target_full_streams == 12.0
-    assert result.draft_steps == 72
-    assert result.draft_layer_equivalent_streams == pytest.approx(18.0)
-    assert result.draft_output_head_equivalent_streams == pytest.approx(7.2)
-    assert result.target_equivalent_streams_per_accepted_token > 3.0
+    # Widths are 6 for the first seven one-token commits, then 5,4,3,2,1.
+    assert result.proposed_tokens == 57
+    assert result.draft_steps == 57
+    assert result.draft_layer_equivalent_streams == pytest.approx(14.25)
+    assert result.draft_output_head_equivalent_streams == pytest.approx(5.7)
+    assert result.target_equivalent_streams_per_accepted_token > 2.5
     assert not result.future_information_used
 
 
