@@ -1,0 +1,2 @@
+EXP-055 Phase A/B E1 synthetic exact grouping Gate.
+405B, 8 GiB, CUDA, PCIe, SSD, TTFT, tokens/sec: NOT TESTED.

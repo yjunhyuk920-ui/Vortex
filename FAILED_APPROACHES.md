@@ -223,3 +223,8 @@ Bit-exact AIG compilation preserved all registered finite-domain decisions, but 
 ## F-022 — Exact reduced ordered decision diagrams as core
 
 Reduced diagrams were exact and avoided compile ceilings, but global p50/p90 paths were 35%/95%, dense-random node growth was 1.6873x per input bit, storage projection reached 202.25 TiB, and order-search amortization exceeded one million queries. Do not continue by trying only more variable orders, reporting late-bit controls alone, or hiding both-order compile cost.
+
+<!-- EXP-055-AUTHORITATIVE-FINAL -->
+## F-023 — Exact identical/sign-related column aggregation as universal core
+
+Exact grouping preserved every registered decision and ideal repeated/sign-related controls fell below 10% logical work at n=64. General dense and forced-unique columns did not share that structure: global p50/p90 logical work was 62.5%/250%, query bytes were 63.64%/200%, and dense/unique p50 was 250%. Do not continue by reporting only repeated synthetic columns, hiding membership/popcount/vector-add work, or assuming real Transformer columns repeat without extraction evidence. Classification: auxiliary exact optimization conditioned on measured repetition.

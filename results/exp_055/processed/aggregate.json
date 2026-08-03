@@ -1,0 +1,97 @@
+{
+  "DERIVED": {
+    "accounting_scope": "logical 64-bit membership-mask AND/popcount plus exact per-class multiply/add versus C*n conditional adds; not hardware latency",
+    "byte_gate_pass": false,
+    "column_signature_aggregation_survives_gate": false,
+    "compile_amortization_gate_pass": false,
+    "decision": "REJECT_EXACT_COLUMN_SIGNATURE_AGGREGATION_AS_CORE_RETAIN_GROUPING_REFERENCE_AUXILIARY",
+    "dense_unique_gate_pass": false,
+    "exact_gate_pass": true,
+    "operation_gate_pass": false,
+    "representation_gate_pass": true,
+    "storage_gate_pass": true,
+    "structured_non_degrading_gate_pass": true
+  },
+  "MEASURED": {
+    "case_count": 48,
+    "dense_unique_p50_operation_fraction": 2.5,
+    "elapsed_ns": 4573380002,
+    "exhaustive_scalar_validations": 150528,
+    "family_count": 6,
+    "infinite_amortization_case_count": 21,
+    "maximum_projected_405b_q4_storage_bytes": 835312500000.0,
+    "maximum_projected_405b_q4_storage_tib": 0.7597122930746991,
+    "maximum_required_compile_amortization_queries": Infinity,
+    "p50_operation_fraction": 0.625,
+    "p50_query_byte_fraction": 0.6363636363636364,
+    "p90_operation_fraction": 2.5,
+    "p90_query_byte_fraction": 2.0,
+    "packed_mismatches": 0,
+    "peak_rss_kib": 21888,
+    "plan_count": 96,
+    "sampled_scalar_validations": 98304,
+    "score_mismatches": 0,
+    "structured_scaling_operation_fractions": {
+      "repeated_columns": [
+        0.625,
+        0.4166666666666667,
+        0.3125,
+        0.25,
+        0.15625,
+        0.078125
+      ],
+      "sign_related_columns": [
+        0.75,
+        0.5,
+        0.375,
+        0.3,
+        0.1875,
+        0.09375
+      ]
+    },
+    "top1_mismatches": 0,
+    "total_scalar_validations": 248832,
+    "truth_table_representations": 0
+  },
+  "PROJECTED": {
+    "target_q4_bytes": 202500000000,
+    "target_source_parameters": 405000000000
+  },
+  "UNVERIFIED": [
+    "real checkpoint weight-column repetition",
+    "real Transformer operation replacement",
+    "physical grouped-kernel bytes and latency",
+    "70B and 405B execution",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_EXACT_COLUMN_SIGNATURE_AGGREGATION_AS_CORE_RETAIN_GROUPING_REFERENCE_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "real_transformer_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-055",
+  "name": "exact_column_signature_popcount_aggregation_gate",
+  "phase": [
+    "A",
+    "B"
+  ],
+  "provenance": {
+    "artifact_id": 8858805996,
+    "artifact_name": "exp-055-candidate-30820909775",
+    "artifact_size_bytes": 53989,
+    "artifact_zip_sha256": "983962faf329f2ccef2bd3f52c33116b146b0070fd350b1edee6c0f99923c6a8",
+    "config_sha256": "688e176e57f1a2cabebc55d2907bc6d6198b4536015839f32001d9bf36222ff5",
+    "frozen_date": "2026-08-03",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "58e83895bbc626391cb9ac70397cea14b70c84a4",
+    "source_head_sha": "c15b1bb94496ad629bf8911d30d47a7cbe792595",
+    "workflow_merge_sha": "58e83895bbc626391cb9ac70397cea14b70c84a4",
+    "workflow_run": 30820909775
+  },
+  "real_transformer_operation_replacement": false
+}

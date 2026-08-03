@@ -1,0 +1,11 @@
+{
+  "artifact_id": 8858805996,
+  "artifact_name": "exp-055-candidate-30820909775",
+  "artifact_size_bytes": 53989,
+  "artifact_zip_sha256": "983962faf329f2ccef2bd3f52c33116b146b0070fd350b1edee6c0f99923c6a8",
+  "config_sha256": "688e176e57f1a2cabebc55d2907bc6d6198b4536015839f32001d9bf36222ff5",
+  "frozen_date": "2026-08-03",
+  "source_head_sha": "c15b1bb94496ad629bf8911d30d47a7cbe792595",
+  "workflow_merge_sha": "58e83895bbc626391cb9ac70397cea14b70c84a4",
+  "workflow_run": 30820909775
+}
