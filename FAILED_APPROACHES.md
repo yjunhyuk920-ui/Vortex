@@ -106,3 +106,57 @@ Permanent decision:
 - do not continue C3 empirical-Bernstein/variance tuning as a rescue of EXP-047R;
 - retain only the E1 certificate, fault rejection, and exact fallback as auxiliary safety machinery;
 - revisit only if a new mechanism independently changes the decision object or amortizes/avoids the full operation before the certificate is applied.
+
+## F-015 — Hard Jacobi target-only block decoding as core
+
+Authoritative source:
+
+```text
+results/exp_048/summary.json
+workflow 30798936320
+artifact SHA-256 67c1e6d8965f7535020ecd4c02bb8a2af1156a234564f3cdf74d10c882fd7eb9
+```
+
+EXP-048 B2 used 32-token blocks, fill token zero, and at most four exact target iterations per cycle. Every target pass was charged.
+
+MEASURED:
+
+```text
+exact output mismatches 0
+p50 target passes per 32 exact tokens 58
+p50 accepted tokens per target pass 0.551724
+p50 target-equivalent stream fraction 181.25%
+p90 target-equivalent stream fraction 193.75%
+maximum matching prefix 3
+```
+
+Failure: target-only hard Jacobi consumed more full target streams than exact sequential generation. Do not repeat by changing only fill token, block length, or iteration cap while hiding every failed target pass.
+
+Classification: exact control only. Revisit only with a mechanism that changes convergence information per target pass and survives the triangular dependency audit.
+
+## F-016 — Sequential partial-layer self-draft with target LM head as core
+
+EXP-048 B3 used the same unmodified checkpoint's first 1, 2, or 4 layers, final normalization, and full target LM head to generate 32 causal proposal tokens sequentially. All draft layer/head/embedding-equivalent streams, one exact verification stream, rejected positions, and correction were charged.
+
+MEASURED:
+
+```text
+3 models × 6 families = 18 cases
+54 fixed variants
+exact mismatches 0
+future information uses 0
+best cases with any matching proposal token 4/18
+maximum matching proposal prefix 1
+p50 committed tokens per target verification 1
+minimum fully accounted fraction 1333.463%
+p90 fully accounted fraction 2893.843%
+```
+
+Failure: early target layers did not predict a useful exact prefix, while the full LM head was reread for every proposed token. The B4 proposal tree is not a valid rescue because it multiplies a failed proposal source and must charge every branch/head evaluation.
+
+Permanent decision:
+
+- reject sequential early-layer self-drafting as the primary runtime;
+- reject unrestricted layer-count, temperature, or tree-width tuning as a continuation of EXP-048;
+- retain only the exact block verifier;
+- revisit proposal generation only when the mechanism avoids per-token sequential target-head cost and supplies a stronger falsification.
