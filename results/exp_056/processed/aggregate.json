@@ -1,0 +1,115 @@
+{
+  "DERIVED": {
+    "accounting_scope": "logical membership-mask AND/popcount, nonzero prototype multiply/add, residual-column activation checks and exact residual scalar adds versus C*n conditional adds; not hardware latency",
+    "byte_gate_pass": false,
+    "compile_amortization_gate_pass": false,
+    "decision": "REJECT_EXACT_PROTOTYPE_RESIDUAL_DICTIONARY_AS_CORE_RETAIN_DICTIONARY_REFERENCE_AUXILIARY",
+    "dense_unique_gate_pass": false,
+    "exact_gate_pass": true,
+    "operation_gate_pass": false,
+    "prototype_residual_dictionary_survives_gate": false,
+    "representation_gate_pass": true,
+    "storage_gate_pass": true,
+    "structured_non_degrading_gate_pass": true
+  },
+  "MEASURED": {
+    "case_count": 56,
+    "dense_unique_p50_operation_fraction": 1.234375,
+    "elapsed_ns": 19945290594,
+    "exhaustive_scalar_validations": 702464,
+    "family_count": 7,
+    "infinite_amortization_case_count": 24,
+    "maximum_projected_405b_q4_storage_bytes": 746718750000.0,
+    "maximum_projected_405b_q4_storage_tib": 0.6791367468395038,
+    "maximum_required_compile_amortization_queries": Infinity,
+    "p50_operation_fraction": 0.625,
+    "p50_query_byte_fraction": 0.6211538461538462,
+    "p90_operation_fraction": 1.3125,
+    "p90_query_byte_fraction": 1.6964285714285714,
+    "packed_mismatches": 0,
+    "peak_rss_kib": 23152,
+    "plan_count": 448,
+    "sampled_scalar_validations": 458752,
+    "score_mismatches": 0,
+    "selected_requested_prototype_count_distribution": {
+      "1": 26,
+      "2": 16,
+      "4": 11,
+      "8": 3
+    },
+    "selected_strategy_distribution": {
+      "frequency": 41,
+      "greedy": 15
+    },
+    "structured_scaling_operation_fractions": {
+      "prototype_sparse_residual": [
+        0.6875,
+        0.4166666666666667,
+        0.34375,
+        0.25,
+        0.171875,
+        0.109375
+      ],
+      "repeated_columns": [
+        0.5625,
+        0.4166666666666667,
+        0.3125,
+        0.25,
+        0.15625,
+        0.078125
+      ],
+      "sign_clusters": [
+        1.25,
+        0.8333333333333334,
+        0.625,
+        0.45,
+        0.3125,
+        0.15625
+      ]
+    },
+    "top1_mismatches": 0,
+    "total_scalar_validations": 1161216,
+    "truth_table_representations": 0
+  },
+  "PROJECTED": {
+    "target_q4_bytes": 202500000000,
+    "target_source_parameters": 405000000000
+  },
+  "UNVERIFIED": [
+    "real checkpoint prototype/residual sparsity",
+    "real Transformer operation replacement",
+    "physical dictionary kernel bytes and latency",
+    "70B and 405B execution",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_EXACT_PROTOTYPE_RESIDUAL_DICTIONARY_AS_CORE_RETAIN_DICTIONARY_REFERENCE_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "real_transformer_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-056",
+  "name": "exact_prototype_plus_sparse_residual_dictionary_gate",
+  "phase": [
+    "A",
+    "B"
+  ],
+  "provenance": {
+    "artifact_id": 8859665874,
+    "artifact_name": "exp-056-candidate-30823042599",
+    "artifact_size_bytes": 245256,
+    "artifact_zip_sha256": "9fa7816c124069590aadf6746923b4ca1103800b333c110c30a74c3fb7b4c9e8",
+    "config_sha256": "f75819b0cc6a741fac464d0e2adec2cb9b83612e7a17eed4b95a0cec5c03f151",
+    "frozen_date": "2026-08-03",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "df19bf0dee5e7f42a10378d5bca70d5513697982",
+    "source_head_sha": "73655fc216340d9bd1d452d779951c28ac1b3d3b",
+    "workflow_merge_sha": "df19bf0dee5e7f42a10378d5bca70d5513697982",
+    "workflow_run": 30823042599
+  },
+  "real_transformer_operation_replacement": false
+}

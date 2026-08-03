@@ -228,3 +228,8 @@ Reduced diagrams were exact and avoided compile ceilings, but global p50/p90 pat
 ## F-023 — Exact identical/sign-related column aggregation as universal core
 
 Exact grouping preserved every registered decision and ideal repeated/sign-related controls fell below 10% logical work at n=64. General dense and forced-unique columns did not share that structure: global p50/p90 logical work was 62.5%/250%, query bytes were 63.64%/200%, and dense/unique p50 was 250%. Do not continue by reporting only repeated synthetic columns, hiding membership/popcount/vector-add work, or assuming real Transformer columns repeat without extraction evidence. Classification: auxiliary exact optimization conditioned on measured repetition.
+
+<!-- EXP-056-AUTHORITATIVE-FINAL -->
+## F-024 — Exact prototype plus sparse-residual dictionaries as universal core
+
+The compiler exactly reconstructed all registered columns, and favorable repeated/sparsely perturbed controls improved with width. General dense and unique columns retained too many residuals: p50/p90 logical work was 62.5%/131.25%, query bytes 62.115%/169.643%, dense/unique p50 123.4375%, and 24 cases never beat baseline. Do not continue by adding synthetic prototype counts, hiding residual activation/index costs, or presenting favorable repeated matrices as arbitrary-model evidence. Further use requires measured real-checkpoint structure.

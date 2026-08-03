@@ -1,72 +1,82 @@
 # Next Experiment
 
-## Closed Gate — EXP-055
+## Closed Gate — EXP-056
 
-Authority: `results/exp_055/summary.json`; workflow `30820909775`; source head `c15b1bb94496ad629bf8911d30d47a7cbe792595`; artifact `8858805996`; ZIP SHA-256 `983962faf329f2ccef2bd3f52c33116b146b0070fd350b1edee6c0f99923c6a8`.
+Authority: `results/exp_056/summary.json`; workflow `30823042599`; source head `73655fc216340d9bd1d452d779951c28ac1b3d3b`; artifact `8859665874`; ZIP SHA-256 `9fa7816c124069590aadf6746923b4ca1103800b333c110c30a74c3fb7b4c9e8`.
 
-Exact identical/sign-related grouping was correct and ideal structured cases improved below 10% at n=64, but general p50/p90 operations were 62.5%/250%, query bytes 63.64%/200%, and dense/unique p50 250%. Decision:
-
-```text
-REJECT_EXACT_COLUMN_SIGNATURE_AGGREGATION_AS_CORE_RETAIN_GROUPING_REFERENCE_AUXILIARY
-```
-
-## EXP-056 — Exact Prototype Plus Sparse-Residual Dictionary Gate
-
-### Mechanism change
-
-Generalize exact repetition without changing the model. Automatically compile each exact weight column as:
-
-```text
-column_i = prototype[group_i] + exact_sparse_residual_i
-score = bias + sum_g popcount(active members_g) * prototype_g
-              + sum_active_i residual_i
-```
-
-Prototype selection is deterministic and weight-derived. Every nonzero residual scalar, index, membership mask, prototype read, popcount, multiply/add, compile search, and fallback is charged. No approximation, training, target adapter, or runtime state table is allowed.
-
-### Conditions
-
-```text
-G0 independent signed modular top-1 reference
-G1 deterministic exact prototype construction
-G2 exact sparse residual reconstruction
-G3 scalar and packed evaluator
-G4 repeated/sign-related/sparse/low-rank controls
-G5 dense-random and forced-unique adversaries
-G6 exhaustive small-domain and deterministic larger-domain validation
-```
-
-### Registered search
-
-Test prototype counts 1/2/4/8 and deterministic medoid/most-frequent candidates. Select only by fully accounted operation then byte cost; charge every attempted compilation. Residuals remain exact signed integers.
-
-### Early rejection Gate
-
-```text
-exact mismatch >0
-runtime state table used
-p50 operations >10% or p90 >25%
-p50 bytes >10% or p90 >25%
-dense-random/unique p50 >25%
-projected storage >1 TiB
-compile amortization >1,000,000 queries
-savings degrade with input/classes
-```
-
-Failure decision:
+Exact prototype-residual plans were correct, but p50/p90 logical work was 62.5%/131.25%, p50/p90 bytes 62.115%/169.643%, and dense/unique p50 123.4375%. Decision:
 
 ```text
 REJECT_EXACT_PROTOTYPE_RESIDUAL_DICTIONARY_AS_CORE_RETAIN_DICTIONARY_REFERENCE_AUXILIARY
 ```
 
-### Evidence boundary
+## EXP-057 — Pinned Real-Checkpoint Weight-Structure Extraction Gate
 
-Phase A/B, E1. Real Transformer operation replacement, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.
+### Why this changes the evidence class
 
-### Next exact action
+EXP-055 and EXP-056 found exact savings only when weight columns truly repeat or differ by very sparse exact residuals. Continuing with invented matrices would not answer whether public Transformer weights contain that structure. EXP-057 therefore moves from synthetic construction to Phase C observation on unchanged pinned checkpoints.
 
-1. implement deterministic exact prototype and sparse-residual compiler;
-2. add independent reconstruction/evaluation validators;
-3. execute the registered structured and adversarial matrix;
-4. freeze all accounting, binaries, checksums, and decision;
-5. promote to real checkpoint extraction only if the universal synthetic Gate survives.
+### Pinned models
+
+```text
+roneneldan/TinyStories-1M @ 77f1b168e219585646439073245fe87e56b3023e
+roneneldan/TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
+roneneldan/TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
+```
+
+### Matrix scope
+
+Enumerate every 2-D learned weight tensor used by Transformer linear/embedding projections. Record model, module path, shape, dtype, parameter count, and checksum. Biases and 1-D normalization weights are excluded from column-structure claims but remain in the manifest.
+
+### Representations
+
+1. exact stored floating-point bit patterns;
+2. deterministic symmetric per-output-row Q8;
+3. deterministic symmetric per-output-row Q4.
+
+Quantization is an execution representation only; checkpoints remain unchanged. Scale, zero handling, clipping, packing, and dequantization error are recorded separately. No quality or output-preservation claim is made by this structural Gate.
+
+### Analyses
+
+For each matrix and representation:
+
+- exact identical and sign-canonical column groups;
+- exact group coverage and largest group;
+- EXP-055 logical operation/byte fraction;
+- EXP-056 frequency/greedy prototype counts 1/2/4/8;
+- exact residual scalar/column density;
+- best fully accounted logical operation/byte/storage fraction;
+- compile search and amortization;
+- layer/type/model-size trends.
+
+### Controls
+
+- shuffled-column order control, which must preserve structure counts;
+- element-permuted adversary, which should destroy column structure;
+- synthetic repeated and sparse-residual positive controls;
+- exact reconstruction checks for every compiled plan;
+- checksum-pinned model and tensor manifests.
+
+### Early Gate
+
+Promotion to an actual small-model operation-replacement kernel requires all of:
+
+```text
+zero reconstruction mismatch
+zero unregistered tensors
+real-matrix p50 operations <=10%, p90 <=25%
+real-matrix p50 bytes <=10%, p90 <=25%
+no model-size degradation beyond 25%
+projected storage <=1 TiB
+compile amortization <=1,000,000 queries
+```
+
+Failure decision:
+
+```text
+REJECT_REAL_WEIGHT_EXACT_GROUPING_DICTIONARY_AS_CORE_RETAIN_MEASURED_AUXILIARY_ONLY
+```
+
+### Claim boundary
+
+Phase C observation at most. It does not execute a replacement Transformer operation and does not test 405B, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, or tokens/sec.

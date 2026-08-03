@@ -1,0 +1,44 @@
+{
+  "experiment": "EXP-056",
+  "seed": 560056,
+  "families": [
+    "repeated_columns",
+    "prototype_sparse_residual",
+    "sign_clusters",
+    "sparse_columns",
+    "low_rank_columns",
+    "dense_random",
+    "forced_unique"
+  ],
+  "prototype_counts": [1, 2, 4, 8],
+  "strategies": ["frequency", "greedy"],
+  "scaling_cases": [
+    {"input_bits": 8, "class_count": 4, "accumulator_bits": 8},
+    {"input_bits": 12, "class_count": 4, "accumulator_bits": 12},
+    {"input_bits": 16, "class_count": 4, "accumulator_bits": 16},
+    {"input_bits": 20, "class_count": 4, "accumulator_bits": 16},
+    {"input_bits": 32, "class_count": 4, "accumulator_bits": 16},
+    {"input_bits": 64, "class_count": 4, "accumulator_bits": 16}
+  ],
+  "class_sweep_cases": [
+    {"input_bits": 12, "class_count": 2, "accumulator_bits": 12},
+    {"input_bits": 12, "class_count": 8, "accumulator_bits": 12}
+  ],
+  "exhaustive_max_input_bits": 12,
+  "larger_domain_samples": 2048,
+  "packed_validation_max_input_bits": 8,
+  "projection": {
+    "target_source_parameters": 405000000000,
+    "target_q4_bytes": 202500000000
+  },
+  "early_gate": {
+    "maximum_exact_mismatches": 0,
+    "maximum_p50_operation_fraction": 0.10,
+    "maximum_p90_operation_fraction": 0.25,
+    "maximum_p50_byte_fraction": 0.10,
+    "maximum_p90_byte_fraction": 0.25,
+    "maximum_dense_unique_p50_fraction": 0.25,
+    "maximum_projected_storage_bytes": 1099511627776,
+    "maximum_compile_amortization_queries": 1000000
+  }
+}

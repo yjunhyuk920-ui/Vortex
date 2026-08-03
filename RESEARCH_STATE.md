@@ -302,3 +302,12 @@ MEASURED E1: 48 cases, 96 plans, 248,832 scalar validations, zero exact mismatch
 Decision: `REJECT_EXACT_COLUMN_SIGNATURE_AGGREGATION_AS_CORE_RETAIN_GROUPING_REFERENCE_AUXILIARY`. Real Transformer extraction, operation replacement, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.
 
 Current frontier: EXP-056 exact prototype-plus-sparse-residual dictionary Gate.
+
+<!-- EXP-056-AUTHORITATIVE-FINAL -->
+## EXP-056 closed — Exact prototype plus sparse-residual dictionaries
+
+Authority: `results/exp_056/summary.json`; workflow `30823042599`; artifact `8859665874`; ZIP SHA-256 `9fa7816c124069590aadf6746923b4ca1103800b333c110c30a74c3fb7b4c9e8`.
+
+MEASURED E1: 56 cases, 448 plans, 1,161,216 scalar validations, zero exact mismatches, zero runtime tables. Repeated n=64 reached 7.8125%, exact sparse prototype perturbations 10.9375%, and sign clusters 15.625%. General p50/p90 work was 62.5%/131.25%; bytes 62.115%/169.643%; dense/unique p50 123.4375%; 24 cases did not amortize. Projected logical storage maximum 0.6791 TiB passed only storage.
+
+Decision: `REJECT_EXACT_PROTOTYPE_RESIDUAL_DICTIONARY_AS_CORE_RETAIN_DICTIONARY_REFERENCE_AUXILIARY`. Current frontier is EXP-057 pinned real-checkpoint weight-structure extraction. 405B, 8 GiB, actual operation replacement, and target hardware remain NOT TESTED.
