@@ -1,0 +1,104 @@
+name: Freeze EXP-051 authoritative evidence
+
+on:
+  push:
+    branches:
+      - research/exp-051-layer-finalization-tail-skip
+    paths:
+      - ".github/workflows/freeze_exp_051_evidence.yml"
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: research/exp-051-layer-finalization-tail-skip
+          fetch-depth: 0
+
+      - name: Download and verify authoritative artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_ID: "8853920561"
+          EXPECTED_ZIP_SHA256: "50062060f9f31495ed6b4d96df0f2cb12b38478b1e8583a4ecdd15e621b317d7"
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/exp051-freeze
+          mkdir -p /tmp/exp051-freeze
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}/zip" > /tmp/exp051-freeze/artifact.zip
+          echo "${EXPECTED_ZIP_SHA256}  /tmp/exp051-freeze/artifact.zip" | sha256sum -c -
+          unzip -q /tmp/exp051-freeze/artifact.zip -d /tmp/exp051-freeze/unpacked
+          cd /tmp/exp051-freeze/unpacked/results/exp_051_candidate
+          sha256sum -c checksums.sha256
+
+      - name: Install frozen evidence and provenance
+        env:
+          ARTIFACT_ID: "8853920561"
+          ARTIFACT_NAME: "exp-051-candidate-30808285251"
+          ARTIFACT_SIZE_BYTES: "44586"
+          ARTIFACT_ZIP_SHA256: "50062060f9f31495ed6b4d96df0f2cb12b38478b1e8583a4ecdd15e621b317d7"
+          WORKFLOW_RUN: "30808285251"
+          SOURCE_HEAD_SHA: "01c2cde4ab6b1122d50392cdfb08ad82923524f8"
+          WORKFLOW_MERGE_SHA: "8b6b164c80a828aa9827fd6b4ea85cd659917e15"
+        run: |
+          set -euo pipefail
+          rm -rf results/exp_051
+          cp -a /tmp/exp051-freeze/unpacked/results/exp_051_candidate results/exp_051
+          cp results/exp_051/summary.json results/exp_051/raw/workflow_summary.json
+          cp results/exp_051/checksums.sha256 results/exp_051/artifacts/workflow_checksums.sha256
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path("results/exp_051")
+          summary = json.loads((root / "summary.json").read_text())
+          provenance = {
+              "workflow_run": os.environ["WORKFLOW_RUN"],
+              "source_head_sha": os.environ["SOURCE_HEAD_SHA"],
+              "workflow_merge_sha": os.environ["WORKFLOW_MERGE_SHA"],
+              "artifact_id": int(os.environ["ARTIFACT_ID"]),
+              "artifact_name": os.environ["ARTIFACT_NAME"],
+              "artifact_size_bytes": int(os.environ["ARTIFACT_SIZE_BYTES"]),
+              "artifact_zip_sha256": os.environ["ARTIFACT_ZIP_SHA256"],
+              "frozen_date": "2026-08-03",
+          }
+          (root / "raw" / "artifact_provenance.json").write_text(
+              json.dumps(provenance, indent=2, sort_keys=True) + "\n"
+          )
+          summary["provenance"] = {**summary.get("provenance", {}), **provenance}
+          summary["authoritative_decision"] = summary["DERIVED"]["decision"]
+          summary["raw_evidence"] = {
+              "token_states": "raw/token_states.jsonl",
+              "checkpoint_manifest": "raw/checkpoint_manifest.json",
+              "prompt_runs": "raw/prompt_runs.json",
+              "late_decision_adversary": "raw/late_decision_adversary.json",
+              "traffic_by_model": "raw/traffic_by_model.json",
+              "workflow_summary": "raw/workflow_summary.json",
+              "artifact_provenance": "raw/artifact_provenance.json",
+              "workflow_checksums": "artifacts/workflow_checksums.sha256",
+          }
+          (root / "summary.json").write_text(
+              json.dumps(summary, indent=2, sort_keys=True) + "\n"
+          )
+          PY
+          find results/exp_051 -type f ! -name checksums.sha256 -print0 \
+            | sort -z \
+            | xargs -0 sha256sum \
+            | sed 's#  results/exp_051/#  #' \
+            > results/exp_051/checksums.sha256
+          cd results/exp_051
+          sha256sum -c checksums.sha256
+
+      - name: Commit frozen evidence
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/exp_051
+          git diff --cached --quiet && exit 0
+          git commit -m "results(exp-051): freeze authoritative negative Gate evidence"
+          git push origin HEAD:research/exp-051-layer-finalization-tail-skip
