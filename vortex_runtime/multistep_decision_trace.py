@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 from dataclasses import dataclass
 import gc
 from typing import Any
@@ -53,7 +54,9 @@ def collect_causal_multistep_mlp_traces(
 
     A gradient-enabled decode obtains the exact top-one-versus-runner-up MLP
     output duals. A separate no-grad decode of the same token advances the KV
-    cache without retaining the previous step's autograd graph.
+    cache without retaining the previous step's autograd graph. The gradient
+    decode receives a deep copy of the cache so mutable cache implementations
+    cannot change the progression state.
     """
 
     if steps <= 0:
@@ -97,10 +100,11 @@ def collect_causal_multistep_mlp_traces(
             handles.append(layer.mlp.register_forward_hook(hook))
 
         model.zero_grad(set_to_none=True)
+        gradient_cache = copy.deepcopy(past_key_values)
         try:
             decode = model(
                 input_ids=next_input,
-                past_key_values=past_key_values,
+                past_key_values=gradient_cache,
                 use_cache=False,
             )
         finally:
@@ -147,7 +151,16 @@ def collect_causal_multistep_mlp_traces(
         )
 
         winner_tensor = indices[:, 0].detach()[:, None]
-        del gradients, outputs, captures, decode, logits, values, margin
+        del (
+            gradients,
+            outputs,
+            captures,
+            decode,
+            logits,
+            values,
+            margin,
+            gradient_cache,
+        )
         model.zero_grad(set_to_none=True)
         gc.collect()
 
