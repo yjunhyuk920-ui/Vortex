@@ -4,8 +4,8 @@
     "certified_fraction": 0.0,
     "fallback_fraction": 1.0,
     "mean_evaluated_fraction": 1.0,
-    "mean_optimized_elapsed_ns": 54395.780952380956,
-    "mean_reference_elapsed_ns": 6086.676190476191,
+    "mean_optimized_elapsed_ns": 47483.97142857143,
+    "mean_reference_elapsed_ns": 4891.552380952381,
     "population_size": 64
   },
   {
@@ -13,8 +13,8 @@
     "certified_fraction": 0.0,
     "fallback_fraction": 1.0,
     "mean_evaluated_fraction": 1.0,
-    "mean_optimized_elapsed_ns": 91186.14285714286,
-    "mean_reference_elapsed_ns": 10410.457142857143,
+    "mean_optimized_elapsed_ns": 76008.72380952381,
+    "mean_reference_elapsed_ns": 7716.447619047619,
     "population_size": 128
   },
   {
@@ -22,8 +22,8 @@
     "certified_fraction": 0.0,
     "fallback_fraction": 1.0,
     "mean_evaluated_fraction": 1.0,
-    "mean_optimized_elapsed_ns": 167490.7619047619,
-    "mean_reference_elapsed_ns": 18913.85714285714,
+    "mean_optimized_elapsed_ns": 139287.12380952382,
+    "mean_reference_elapsed_ns": 14469.771428571428,
     "population_size": 256
   },
   {
@@ -31,8 +31,8 @@
     "certified_fraction": 0.01904761904761905,
     "fallback_fraction": 0.9809523809523809,
     "mean_evaluated_fraction": 0.9851934523809524,
-    "mean_optimized_elapsed_ns": 357437.73333333334,
-    "mean_reference_elapsed_ns": 39277.885714285716,
+    "mean_optimized_elapsed_ns": 344973.5619047619,
+    "mean_reference_elapsed_ns": 35095.20952380952,
     "population_size": 512
   },
   {
@@ -40,8 +40,8 @@
     "certified_fraction": 0.01904761904761905,
     "fallback_fraction": 0.9809523809523809,
     "mean_evaluated_fraction": 0.9829427083333333,
-    "mean_optimized_elapsed_ns": 723450.6380952381,
-    "mean_reference_elapsed_ns": 79822.53333333334,
+    "mean_optimized_elapsed_ns": 606633.7333333333,
+    "mean_reference_elapsed_ns": 63279.23809523809,
     "population_size": 1024
   }
 ]
