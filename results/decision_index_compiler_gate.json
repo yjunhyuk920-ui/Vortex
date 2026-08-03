@@ -1,0 +1,458 @@
+{
+  "experiment": "045_bounded_exact_decision_index_compiler",
+  "evidence_level": "E1/E2 real TinyLlama bounded-grammar compiler and exact compact40 replay",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "model_class": "LlamaForCausalLM",
+  "tokenizer_class": "LlamaTokenizer",
+  "transformers_version": "5.14.1",
+  "grammar": {
+    "name": "bounded_repeat_letter_grammar_v1",
+    "sha256": "ce0fd97dabb40edfb4ff8fd828d24a8967289432bcb890c9298b1b9846360c8e",
+    "full_combinations": 12,
+    "compiled_combinations": 8,
+    "heldout_combinations": 4,
+    "duplicate_controls": 1,
+    "horizons": [
+      2,
+      4,
+      8
+    ],
+    "maximum_horizon": 8,
+    "compiled_prompt_ids": [
+      "template0-symbolA-count8",
+      "template0-symbolA-count12",
+      "template0-symbolB-count8",
+      "template0-symbolB-count12",
+      "template1-symbolA-count8",
+      "template1-symbolA-count12",
+      "template1-symbolB-count8",
+      "template1-symbolB-count12"
+    ],
+    "heldout_prompt_ids": [
+      "template0-symbolC-count8",
+      "template0-symbolC-count12",
+      "template1-symbolC-count8",
+      "template1-symbolC-count12"
+    ]
+  },
+  "build_accounting": {
+    "compiled_model_forward_calls": 64,
+    "heldout_ground_truth_forward_calls": 32,
+    "duplicate_control_forward_calls": 0,
+    "trace_collection_elapsed_ns": 25302875082,
+    "graph_build_elapsed_ns": 1073571,
+    "vm_export_elapsed_ns": 2263952,
+    "vm_file_bytes": 456,
+    "manifest_bytes": 1491,
+    "graph_nodes": 64,
+    "graph_starts": 9
+  },
+  "growth_without_duplicate_control": [
+    {
+      "horizon": 2,
+      "prompt_paths": 8,
+      "path_records": 16,
+      "unique_exact_prefix_nodes": 16,
+      "exact_duplicate_records_removed": 0,
+      "deduplication_fraction": 0.0,
+      "nodes_per_prompt": 2.0,
+      "new_nodes_since_previous_horizon": 16
+    },
+    {
+      "horizon": 4,
+      "prompt_paths": 8,
+      "path_records": 32,
+      "unique_exact_prefix_nodes": 32,
+      "exact_duplicate_records_removed": 0,
+      "deduplication_fraction": 0.0,
+      "nodes_per_prompt": 4.0,
+      "new_nodes_since_previous_horizon": 16
+    },
+    {
+      "horizon": 8,
+      "prompt_paths": 8,
+      "path_records": 64,
+      "unique_exact_prefix_nodes": 64,
+      "exact_duplicate_records_removed": 0,
+      "deduplication_fraction": 0.0,
+      "nodes_per_prompt": 8.0,
+      "new_nodes_since_previous_horizon": 32
+    }
+  ],
+  "growth_with_duplicate_control": [
+    {
+      "horizon": 2,
+      "prompt_paths": 9,
+      "path_records": 18,
+      "unique_exact_prefix_nodes": 16,
+      "exact_duplicate_records_removed": 2,
+      "deduplication_fraction": 0.1111111111111111,
+      "nodes_per_prompt": 1.7777777777777777,
+      "new_nodes_since_previous_horizon": 16
+    },
+    {
+      "horizon": 4,
+      "prompt_paths": 9,
+      "path_records": 36,
+      "unique_exact_prefix_nodes": 32,
+      "exact_duplicate_records_removed": 4,
+      "deduplication_fraction": 0.1111111111111111,
+      "nodes_per_prompt": 3.5555555555555554,
+      "new_nodes_since_previous_horizon": 16
+    },
+    {
+      "horizon": 8,
+      "prompt_paths": 9,
+      "path_records": 72,
+      "unique_exact_prefix_nodes": 64,
+      "exact_duplicate_records_removed": 8,
+      "deduplication_fraction": 0.1111111111111111,
+      "nodes_per_prompt": 7.111111111111111,
+      "new_nodes_since_previous_horizon": 32
+    }
+  ],
+  "token_codebook": {
+    "limit": 16,
+    "size": 9,
+    "token_ids": [
+      13,
+      319,
+      350,
+      6466,
+      14388,
+      29901,
+      29907,
+      29909,
+      29933
+    ],
+    "tokenizer_tokens": [
+      "<0x0A>",
+      "▁A",
+      "▁B",
+      "Output",
+      "BB",
+      ":",
+      "C",
+      "A",
+      "B"
+    ],
+    "decoded_text": [
+      "\n",
+      "A",
+      "B",
+      "Output",
+      "BB",
+      ":",
+      "C",
+      "A",
+      "B"
+    ],
+    "compiled_distinct_token_ids": [
+      13,
+      319,
+      350,
+      6466,
+      14388,
+      29901,
+      29907,
+      29909,
+      29933
+    ]
+  },
+  "duplicate_control": [
+    {
+      "duplicate_prompt_id": "duplicate-control-template0-symbolA-count8",
+      "source_prompt_id": "template0-symbolA-count8",
+      "same_start_address": true,
+      "start_address": 8
+    }
+  ],
+  "compiled_vm_replay": {
+    "prompt_paths": 9,
+    "exact_paths": 9,
+    "exact_tokens": 72,
+    "expected_tokens": 72,
+    "all_exact": true,
+    "mmap_record_reads": 72
+  },
+  "heldout_coverage": {
+    "prompt_paths": 4,
+    "state_denominator": 32,
+    "compiled_hits": 0,
+    "fallback_tokens": 32,
+    "coverage": 0.0,
+    "first_miss_positions": {
+      "template0-symbolC-count8": 0,
+      "template0-symbolC-count12": 0,
+      "template1-symbolC-count8": 0,
+      "template1-symbolC-count12": 0
+    }
+  },
+  "trace_diagnostics": [
+    {
+      "prompt_id": "template0-symbolA-count8",
+      "split": "compiled",
+      "prompt_tokens": 55,
+      "continuation_token_ids": [
+        29909,
+        319,
+        319,
+        319,
+        319,
+        319,
+        319,
+        319
+      ],
+      "unique_continuation_tokens": 2,
+      "maximum_identical_run": 7,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2264889538
+    },
+    {
+      "prompt_id": "template0-symbolA-count12",
+      "split": "compiled",
+      "prompt_tokens": 56,
+      "continuation_token_ids": [
+        29909,
+        13,
+        29909,
+        13,
+        29909,
+        13,
+        29909,
+        13
+      ],
+      "unique_continuation_tokens": 2,
+      "maximum_identical_run": 1,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2108188311
+    },
+    {
+      "prompt_id": "template0-symbolB-count8",
+      "split": "compiled",
+      "prompt_tokens": 55,
+      "continuation_token_ids": [
+        6466,
+        29901,
+        350,
+        14388,
+        14388,
+        14388,
+        14388,
+        14388
+      ],
+      "unique_continuation_tokens": 4,
+      "maximum_identical_run": 5,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2182314160
+    },
+    {
+      "prompt_id": "template0-symbolB-count12",
+      "split": "compiled",
+      "prompt_tokens": 56,
+      "continuation_token_ids": [
+        6466,
+        29901,
+        350,
+        14388,
+        14388,
+        14388,
+        14388,
+        14388
+      ],
+      "unique_continuation_tokens": 4,
+      "maximum_identical_run": 5,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2119092549
+    },
+    {
+      "prompt_id": "template1-symbolA-count8",
+      "split": "compiled",
+      "prompt_tokens": 48,
+      "continuation_token_ids": [
+        29909,
+        13,
+        13,
+        29933,
+        13,
+        13,
+        29907,
+        13
+      ],
+      "unique_continuation_tokens": 4,
+      "maximum_identical_run": 2,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2016963509
+    },
+    {
+      "prompt_id": "template1-symbolA-count12",
+      "split": "compiled",
+      "prompt_tokens": 49,
+      "continuation_token_ids": [
+        29909,
+        13,
+        13,
+        29933,
+        13,
+        13,
+        29907,
+        13
+      ],
+      "unique_continuation_tokens": 4,
+      "maximum_identical_run": 2,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2060292553
+    },
+    {
+      "prompt_id": "template1-symbolB-count8",
+      "split": "compiled",
+      "prompt_tokens": 48,
+      "continuation_token_ids": [
+        29933,
+        13,
+        13,
+        29933,
+        13,
+        13,
+        29933,
+        13
+      ],
+      "unique_continuation_tokens": 2,
+      "maximum_identical_run": 2,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2011276469
+    },
+    {
+      "prompt_id": "template1-symbolB-count12",
+      "split": "compiled",
+      "prompt_tokens": 49,
+      "continuation_token_ids": [
+        29933,
+        13,
+        13,
+        29933,
+        13,
+        13,
+        29933,
+        13
+      ],
+      "unique_continuation_tokens": 2,
+      "maximum_identical_run": 2,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2102390432
+    },
+    {
+      "prompt_id": "template0-symbolC-count8",
+      "split": "heldout",
+      "prompt_tokens": 55,
+      "continuation_token_ids": [
+        6466,
+        29901,
+        315,
+        4174,
+        4174,
+        4174,
+        4174,
+        4174
+      ],
+      "unique_continuation_tokens": 4,
+      "maximum_identical_run": 5,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2159485744
+    },
+    {
+      "prompt_id": "template0-symbolC-count12",
+      "split": "heldout",
+      "prompt_tokens": 56,
+      "continuation_token_ids": [
+        6466,
+        29901,
+        315,
+        4174,
+        4174,
+        4174,
+        4174,
+        4174
+      ],
+      "unique_continuation_tokens": 4,
+      "maximum_identical_run": 5,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2119425817
+    },
+    {
+      "prompt_id": "template1-symbolC-count8",
+      "split": "heldout",
+      "prompt_tokens": 48,
+      "continuation_token_ids": [
+        29907,
+        13,
+        13,
+        29907,
+        13,
+        13,
+        29907,
+        13
+      ],
+      "unique_continuation_tokens": 2,
+      "maximum_identical_run": 2,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2012117250
+    },
+    {
+      "prompt_id": "template1-symbolC-count12",
+      "split": "heldout",
+      "prompt_tokens": 49,
+      "continuation_token_ids": [
+        29907,
+        13,
+        13,
+        29907,
+        13,
+        13,
+        29907,
+        13
+      ],
+      "unique_continuation_tokens": 2,
+      "maximum_identical_run": 2,
+      "eos_position": null,
+      "model_forward_calls": 8,
+      "elapsed_ns": 2053580443
+    }
+  ],
+  "scope_separation": {
+    "unmodified_real_checkpoint_used": true,
+    "training_or_finetuning_used": false,
+    "finite_grammar_complete": true,
+    "compiled_paths_replay_without_model": true,
+    "exact_duplicate_prompt_reuse_proven": true,
+    "semantic_or_approximate_state_merging_used": false,
+    "nontrivial_exact_reuse_excluding_duplicate_prompts": false,
+    "heldout_grammar_generalization_proven": false,
+    "universal_prompt_coverage_proven": false,
+    "real_405b_execution_performed": false,
+    "ci_build_time_target_representative": false
+  },
+  "conclusion": {
+    "compiler_implementation_passes": true,
+    "architecture_advances_beyond_exact_memoization": false,
+    "compiled_grammar_coverage": 1.0,
+    "heldout_coverage": 0.0,
+    "unique_graph_nodes_at_max_horizon": 64,
+    "path_records_without_duplicate_control": 64,
+    "nontrivial_exact_nodes_removed": 0,
+    "decision": "accept bounded compiler implementation but reject exact-prefix memoization as a general execution mechanism",
+    "fixed_target_status": "unsolved: bounded TinyLlama trace compilation does not establish arbitrary prompt coverage, 405B construction, or target hardware performance"
+  },
+  "next_obligation": "if exact-prefix reuse and held-out coverage remain zero, test certified state equivalence or adaptive on-demand compilation; do not scale raw prefix enumeration as a universal runtime"
+}
