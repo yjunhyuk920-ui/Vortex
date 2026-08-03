@@ -4,50 +4,51 @@
 
 Phase D is **NOT TESTED** in the current environment.
 
-This plan is prepared so target hardware can immediately produce evidence instead of requiring a new design cycle.
+EXP-047's E1 correctness result does not alter this status. Current measured CPU fallback and tile fractions are negative architecture evidence, not target hardware data.
 
 ## Required hardware ladder
 
 ### Minimum developer gate
 
-- one CUDA-capable GPU with exactly or at most 8 GiB usable VRAM for the constrained run;
+- CUDA-capable GPU constrained to <=8 GiB usable VRAM;
 - 64–128 GiB system RAM preferred;
-- NVMe SSD with measured sustained and random-read behavior;
-- enough disk for runtime, logs, and at least a small/7B checkpoint.
+- measured NVMe SSD;
+- enough storage for checkpoint, runtime format, logs, and profiler output.
 
 ### Scaling gates
 
-- 7B/8B checkpoint: >=20 GiB free disk including temporary formats;
-- 30B/34B: >=100 GiB free disk;
-- 70B: >=250 GiB free disk;
-- 405B Q4-class checkpoint and runtime artifacts: provision at least 1 TiB free NVMe until measured formats establish a lower requirement;
-- host RAM targets must be recorded, not assumed.
+- 1B–3B: current small-checkpoint falsification;
+- 7B–8B: >=20 GiB working storage;
+- 30B–34B: >=100 GiB;
+- 70B: >=250 GiB;
+- 405B Q4-class checkpoint/runtime/profiler scratch: provision >=1 TiB until measured requirements replace this conservative value.
 
-## Checkpoints
+Do not substitute MoE for the dense flagship.
 
-The exact model IDs, revisions, license acceptance, file list, and SHA-256 hashes must be pinned before Phase D execution.
+## Checkpoint requirements
 
-Candidate ladder, subject to availability and license:
+Pin before execution:
 
-```text
-1B–3B: TinyLlama or another public dense causal LM
-7B–8B: one public Llama/Qwen/Mistral-class dense checkpoint
-30B–34B: one public dense checkpoint
-70B: one public dense checkpoint
-405B: one public dense 405B-class checkpoint
-```
+- model ID;
+- exact revision;
+- license/access state;
+- tokenizer revision;
+- file manifest;
+- SHA-256 checksums;
+- cache/storage path.
 
-Do not substitute a MoE checkpoint for the dense flagship.
+No moving `main` revision is authoritative.
 
-## Required software
+## Required software inventory
 
-- pinned Linux distribution and kernel;
-- pinned NVIDIA driver, CUDA toolkit, and runtime;
-- Python lockfile/environment hash;
-- `nvidia-smi`, CUDA profiler, Nsight Systems/Compute where available;
-- `fio`, `iostat`, `pidstat`, `/usr/bin/time -v`, and power telemetry;
-- baseline runtimes pinned by commit/version;
-- VORTEX commit SHA and unmodified checkpoint hashes.
+- OS/kernel;
+- NVIDIA driver/CUDA;
+- Python lock/environment hash;
+- VORTEX commit;
+- baseline runtime versions;
+- `nvidia-smi`, Nsight Systems/Compute or equivalent;
+- `fio`, `iostat`, `pidstat`, `/usr/bin/time -v`;
+- power telemetry where available.
 
 ## Installation skeleton
 
@@ -60,11 +61,27 @@ python -m pytest -q
 python scripts/run_validation.py
 ```
 
-Exact package versions must be generated and committed before the first hardware run.
+A pinned lockfile must be committed before the first Phase-D run.
 
-## Storage and bandwidth characterization
+## EXP-047 current future-hardware entry point
 
-Before model execution:
+```bash
+VORTEX_MODEL_PATH=/absolute/path/to/checkpoint \
+VORTEX_MODEL_REVISION=<pinned-revision> \
+VORTEX_CHECKPOINT_MANIFEST=/absolute/path/to/checksums.sha256 \
+bash experiments/exp_047/future_gpu_run.sh
+```
+
+Current behavior:
+
+- captures strict preflight inventory;
+- writes `results/exp_047/raw/future_gpu_preflight.json`;
+- exits without pretending to run a model because the real-operation runner is not implemented;
+- records Phase D as `NOT TESTED`.
+
+This is intentional. A Phase-D command must fail rather than fabricate a result.
+
+## Storage/bandwidth characterization
 
 ```bash
 fio --name=seqread --filename=/path/to/testfile --rw=read --bs=1M --iodepth=32 --direct=1 --size=32G
@@ -72,92 +89,86 @@ fio --name=randread4k --filename=/path/to/testfile --rw=randread --bs=4k --iodep
 fio --name=randread64k --filename=/path/to/testfile --rw=randread --bs=64k --iodepth=32 --direct=1 --size=32G
 ```
 
-Record filesystem, mount options, queue depth, thermal state, and whether the file is cached.
+Record filesystem, mount options, queue depth, cache state, and thermal state.
 
-## Baseline commands
+## Baselines
 
-Place exact runnable commands in per-experiment `future_gpu_run.sh` files. The final baseline suite must include:
+Same machine and prompt/decode protocol:
 
 ```text
-native 4B Q4 runtime on the same machine
-exact/standard runtime for each tested target size
+native 4B Q4
+exact/standard runtime for each target size
 VORTEX strict fallback mode
 VORTEX probabilistic certified mode, if retained
 ```
 
-All commands must use identical prompt sets, context limits, decoding policy, and stop rules.
+## Required MEASURED metrics
 
-## Required metrics
-
-MEASURED only:
-
-- cold and warm TTFT;
-- p50/p95/p99 time/token;
-- tokens/second;
-- exact token/logit agreement or declared quality metric;
-- peak allocated and reserved VRAM;
-- host RSS and page faults;
-- model/runtime-format disk bytes;
-- SSD read bytes, IOPS, queue depth, and latency;
-- host-to-device and device-to-host bytes;
-- kernel time and occupancy;
+- cold/warm TTFT;
+- p50/p95/p99 time/token and tokens/second;
+- token/logit/quality agreement;
+- peak allocated/reserved VRAM;
+- host RSS/page faults;
+- disk/runtime bytes;
+- SSD bytes/IOPS/latency/queue depth;
+- H2D/D2H bytes;
+- kernel time/occupancy;
 - fallback count and bytes;
-- certificate accept/reject/wrong-accept counts;
-- model forward, layer, and tile execution counts;
+- certificate accepts/rejects/wrong accepts;
+- forward/layer/tile counts;
 - energy/power where available.
 
-## Profiler command skeleton
+## EXP-047-specific hardware obligations
+
+If CPTC survives EXP-047R and real small-model replacement:
+
+- compare certificate selector time against actual dense tile kernel time;
+- measure random versus coalesced tile access;
+- include static bound metadata in VRAM/RAM/SSD totals;
+- account for RNG/permutation state and union-budget bookkeeping;
+- report fallback stream overlap separately from actual elapsed latency;
+- reject if evaluated tile fraction, fallback, or selector overhead cannot plausibly approach the 1.185% pre-overhead traffic fraction.
+
+## Profiler skeleton
 
 ```bash
 /usr/bin/time -v bash experiments/exp_xxx/future_gpu_run.sh
 nvidia-smi --query-compute-apps=pid,used_memory --format=csv -lms 100
-nsys profile --trace=cuda,nvtx,osrt --stats=true -o results/exp_xxx/raw/nsys_report \
+nsys profile --trace=cuda,nvtx,osrt --stats=true \
+  -o results/exp_xxx/raw/nsys_report \
   bash experiments/exp_xxx/future_gpu_run.sh
 ```
 
-Add target-specific CUPTI/Nsight counters only after the basic run is stable.
-
-## Success criteria
+## Evidence gates
 
 ### E5
 
-- same protocol passes at 30B/70B with measured scaling compatible with the target equations;
-- no hidden model modification or retraining;
-- quality contract maintained;
-- all bytes and fallback charged.
+Same protocol passes at medium/large sizes with measured quality, bytes, fallback, and scaling compatible with target equations.
 
 ### E6
 
-- real target model runs end-to-end with peak VRAM <=8 GiB;
-- independently reproducible checkpoint and runtime hashes;
-- no unreported OOM retry or alternate hardware path.
+Real target model executes end-to-end with peak VRAM <=8 GiB and reproducible hashes.
 
 ### E7
 
-- real 405B dense model;
-- peak VRAM <=8 GiB;
-- original declared ability/quality preserved;
-- p50 warm time/token <=1.2x native 4B Q4 baseline on the same machine;
-- p95 <=1.5x baseline;
-- TTFT and user-perceived responsiveness meet the committed acceptance threshold;
-- raw profiler evidence published.
+Real dense 405B, <=8 GiB, original contract preserved, p50 <=1.2x and p95 <=1.5x native 4B Q4, with raw profiler evidence.
 
-## Failure and stop conditions
+## Stop conditions
 
-Stop and record failure when:
+Stop and record failure for:
 
-- peak VRAM exceeds 8 GiB after declared allocator reserve;
-- checkpoint/runtime data do not fit provisioned storage;
-- fallback or cold reads dominate the target budget;
-- wrong certified accepts occur beyond the declared contract;
-- quality agreement fails;
-- the run uses future tokens or an unmodified-checkpoint violation;
-- thermal throttling or cache contamination invalidates measurement;
-- the baseline or VORTEX command is not reproducible.
+- VRAM >8 GiB;
+- storage/capacity failure;
+- fallback/cold reads dominate;
+- wrong certified accepts beyond contract;
+- quality failure;
+- future-token leakage;
+- checkpoint modification/training violation;
+- invalid baseline;
+- thermal/cache contamination;
+- unreproducible command.
 
-Do not tune on the held-out evaluation prompts after a failure; create a new pre-registered experiment.
-
-## Result locations
+## Result layout
 
 ```text
 results/exp_xxx/raw/
@@ -167,5 +178,3 @@ results/exp_xxx/logs/
 results/exp_xxx/artifacts/
 results/exp_xxx/checksums.sha256
 ```
-
-Every hardware result must include machine inventory, command line, environment lock, checkpoint hashes, and provenance labels.
