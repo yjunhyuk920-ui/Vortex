@@ -4,7 +4,7 @@
 
 Phase D is **NOT TESTED** in the current environment.
 
-EXP-047's E1 correctness result does not alter this status. Current measured CPU fallback and tile fractions are negative architecture evidence, not target hardware data.
+EXP-047/047R produced E1 correctness and negative architecture evidence only. Range-based CPTC was rejected as the core path, so it has no active Phase-D promotion route. No current result measures target GPU, 405B, CUDA, PCIe, SSD, TTFT, tokens/second, power, or peak VRAM.
 
 ## Required hardware ladder
 
@@ -17,7 +17,7 @@ EXP-047's E1 correctness result does not alter this status. Current measured CPU
 
 ### Scaling gates
 
-- 1B–3B: current small-checkpoint falsification;
+- 1B–3B: small-real-checkpoint operation-replacement gate;
 - 7B–8B: >=20 GiB working storage;
 - 30B–34B: >=100 GiB;
 - 70B: >=250 GiB;
@@ -63,23 +63,17 @@ python scripts/run_validation.py
 
 A pinned lockfile must be committed before the first Phase-D run.
 
-## EXP-047 current future-hardware entry point
+## Current experiment entry points
+
+EXP-047R deliberately fails closed for unavailable Phase D:
 
 ```bash
-VORTEX_MODEL_PATH=/absolute/path/to/checkpoint \
-VORTEX_MODEL_REVISION=<pinned-revision> \
-VORTEX_CHECKPOINT_MANIFEST=/absolute/path/to/checksums.sha256 \
-bash experiments/exp_047/future_gpu_run.sh
+bash experiments/exp_047r/future_gpu_run.sh
 ```
 
-Current behavior:
+Expected behavior: explain that no real-operation backend exists, retain `Phase D: NOT TESTED`, and exit nonzero rather than fabricate evidence.
 
-- captures strict preflight inventory;
-- writes `results/exp_047/raw/future_gpu_preflight.json`;
-- exits without pretending to run a model because the real-operation runner is not implemented;
-- records Phase D as `NOT TESTED`.
-
-This is intentional. A Phase-D command must fail rather than fabricate a result.
+EXP-048 may receive a real hardware runner only after its B3 partial-layer self-draft survives the small-checkpoint early rejection Gate and replaces sequential target decoding under exact output verification.
 
 ## Storage/bandwidth characterization
 
@@ -89,45 +83,73 @@ fio --name=randread4k --filename=/path/to/testfile --rw=randread --bs=4k --iodep
 fio --name=randread64k --filename=/path/to/testfile --rw=randread --bs=64k --iodepth=32 --direct=1 --size=32G
 ```
 
-Record filesystem, mount options, queue depth, cache state, and thermal state.
+Record filesystem, mount options, queue depth, cache state, thermal state, compressed/uncompressed representation, and page-cache policy.
 
 ## Baselines
 
-Same machine and prompt/decode protocol:
+Same machine, checkpoint revision, prompt set, tokenizer, decoding contract, context length, batch size, and cache state:
 
 ```text
 native 4B Q4
-exact/standard runtime for each target size
-VORTEX strict fallback mode
-VORTEX probabilistic certified mode, if retained
+exact/standard runtime for each tested target size
+VORTEX exact sequential B0
+VORTEX block-verification oracle B1, explicitly non-deployable
+VORTEX charged Jacobi B2
+VORTEX causal partial-layer self-draft B3, only after Phase-C promotion
 ```
+
+Future-aware B1 cannot be reported as deployable performance.
 
 ## Required MEASURED metrics
 
 - cold/warm TTFT;
 - p50/p95/p99 time/token and tokens/second;
-- token/logit/quality agreement;
+- exact token agreement and declared quality contract;
 - peak allocated/reserved VRAM;
 - host RSS/page faults;
 - disk/runtime bytes;
 - SSD bytes/IOPS/latency/queue depth;
 - H2D/D2H bytes;
 - kernel time/occupancy;
-- fallback count and bytes;
-- certificate accepts/rejects/wrong accepts;
-- forward/layer/tile counts;
+- target full streams and bytes;
+- partial-draft layer streams and bytes;
+- proposal block length;
+- accepted-prefix length;
+- rejected scored positions;
+- correction/fallback passes and bytes;
+- KV cache rebuild/copy bytes;
+- target-equivalent streams per accepted token;
 - energy/power where available.
 
-## EXP-047-specific hardware obligations
+## EXP-048-specific hardware obligations
 
-If CPTC survives EXP-047R and real small-model replacement:
+Before any E5/E6/E7 claim:
 
-- compare certificate selector time against actual dense tile kernel time;
-- measure random versus coalesced tile access;
-- include static bound metadata in VRAM/RAM/SSD totals;
-- account for RNG/permutation state and union-budget bookkeeping;
-- report fallback stream overlap separately from actual elapsed latency;
-- reject if evaluated tile fraction, fallback, or selector overhead cannot plausibly approach the 1.185% pre-overhead traffic fraction.
+- prove exact greedy output equality for every committed token;
+- verify the deployable proposal path uses no future generated token or reference continuation;
+- measure draft generation serial latency separately from target block verification;
+- account for all early-layer and output-head reads during draft generation;
+- account for all full-target passes, mismatches, corrections, rejected positions, and KV state reconstruction;
+- measure whether a single target weight stream is physically reused across the proposed block rather than logically counted once while reread per position;
+- report achieved accepted tokens per target stream and target-equivalent stream fraction;
+- compare observed traffic against the PROJECTED requirement `<=0.01185185` before claiming target compatibility;
+- preserve the exact sequential B0 baseline on the same machine and checkpoint;
+- reject the architecture if block verification loses its logical amortization through kernel launches, memory layout, KV traffic, or proposal latency.
+
+Reference projection only:
+
+```text
+405B Q4 full stream: 188.592821 GiB
+1.2x 4B Q4 allowance: 2.235174 GiB/token
+required target-equivalent stream fraction: 1.185185%
+zero-cost perfect-proposal minimum: 85 accepted tokens/full target stream
+```
+
+Real draft cost increases the required accepted block length. These are not hardware measurements.
+
+## Retired CPTC hardware obligations
+
+CPTC selector/tile-access profiling is no longer a core Phase-D requirement because EXP-047R rejected the range family before operation replacement. It may be profiled only if reused as an auxiliary guard inside a different successful mechanism, with its complete cost charged.
 
 ## Profiler skeleton
 
@@ -143,7 +165,7 @@ nsys profile --trace=cuda,nvtx,osrt --stats=true \
 
 ### E5
 
-Same protocol passes at medium/large sizes with measured quality, bytes, fallback, and scaling compatible with target equations.
+Same exact protocol passes at medium/large sizes with measured quality, accepted-block distribution, physical bytes, correction cost, memory, and non-degrading scaling compatible with target equations.
 
 ### E6
 
@@ -159,12 +181,12 @@ Stop and record failure for:
 
 - VRAM >8 GiB;
 - storage/capacity failure;
-- fallback/cold reads dominate;
-- wrong certified accepts beyond contract;
-- quality failure;
-- future-token leakage;
+- draft, verification, correction, KV, or cold reads dominate;
+- exact output mismatch;
+- future-token/reference leakage;
 - checkpoint modification/training violation;
 - invalid baseline;
+- logical stream amortization not realized as physical traffic reduction;
 - thermal/cache contamination;
 - unreproducible command.
 

@@ -1,0 +1,1 @@
+Offline current-token LM-head pair-margin range audit only. No real operation replacement; evidence ceiling E1; Phase D NOT TESTED.

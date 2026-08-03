@@ -12,9 +12,7 @@ Current Phase D: **NOT TESTED**. GitHub CPU is not target GPU/405B/CUDA/PCIe/SSD
 
 ## Governance — PR #56
 
-Implemented Phase A–D, E0–E7, provenance labels, nine root research documents, direct unseen-prompt operation-skipping filter, future-information audit, and exact/specified fallback requirements.
-
-Existing mmap/index/DAG work is auxiliary. Raw prefix scaling is rejected.
+Phase A–D, E0–E7, provenance labels, root research documents, future-information audit, and exact/fallback requirements are enforced.
 
 ## Prior milestones
 
@@ -26,91 +24,97 @@ Existing mmap/index/DAG work is auxiliary. Raw prefix scaling is rejected.
 - #52 bounded TinyLlama compiler: 72/72 replay, 64/64 distinct raw prefix nodes, held-out start 0%.
 - #54 exact suffix DAG: 64->38 nodes, causal held-out start 0%.
 
-Detailed numbers remain in Git history and root registers.
-
 ## EXP-047 frozen evidence
 
-Authoritative files:
-
 ```text
-results/exp_047/summary.json
-results/exp_047/raw/cases.jsonl
-results/exp_047/checksums.sha256
-```
-
-Current frozen summary:
-
-```text
-PR #56
 workflow 30793232558
 source SHA 74ac92e9b1c8fffbc50a2322d9b36dd3c05f0d79
-phase A/B
-evidence E1
-Phase D NOT TESTED
-```
-
-Mechanism: causal sample-without-replacement tile contributions, alpha-spending Serfling interval, exact full-tile fallback.
-
-### MEASURED correctness
-
-```text
-10 tests passed
 525 cases
 wrong accepts 0
-fallback mismatches 0
-independent-bound mismatches 0
-adversarial fallback 15/15
+certified 4
+fallback 99.238%
+N=1024 mean evaluated 98.294%
+positive control 10.449%
+```
+
+Decision: E1 certificate/fallback primitive accepted; global-range CPTC-v1 not promoted.
+
+## EXP-047R frozen evidence — PR #57
+
+```text
+workflow 30795946233
+source head SHA 0beb068e9679c9f4d51d1b210b0eee7fbc325214
+artifact 8848886335
+artifact SHA-256 6c9a4fdca80d29964eca02d16f8b36f5ca8e211653f6fb9ddfe548a729c6e12d
+phase A/B/C-observation
+evidence E1
+```
+
+Pinned checkpoints:
+
+```text
+TinyStories-1M @ 77f1b168e219585646439073245fe87e56b3023e
+TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
+TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
+```
+
+MEASURED correctness:
+
+```text
+9 EXP-047R tests passed
+repository validation passed
+18 held-out states
+wrong accepts 0
+bound violations 0
 future generated tokens false
 ```
 
-Decision: E1 reference primitive accepted.
-
-### MEASURED performance
+MEASURED coverage:
 
 ```text
-certified 4/525
-fallback 99.238%
-N=512 mean evaluated 98.519%
-N=1024 mean evaluated 98.294%
-positive control 10.449%
-Python optimized/reference about 8.6–9.1x
+C1 exact-state oracle median 100%
+C1 p90 100%
+C2 median 100%
+C2 p90 100%
+C2 best 254/256 = 99.21875%
 ```
 
-Decision: global-range CPTC-v1 not promoted; architecture REVISE.
-
-### PROJECTED target gap
+PROJECTED gap:
 
 ```text
-405B Q4 stream 188.593 GiB
-1.2x 4B allowance 2.235 GiB/token
-required fraction before overhead 1.185%
-positive-control fraction 8.817x above target
+required target-equivalent fraction 1.185185%
+C1 oracle median / required 84.375x
 ```
 
-Not measured on target hardware.
+Decision:
 
-## Corrected infrastructure failures
+```text
+REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY
+```
 
-- `30791055142`: optional dependency import;
-- `30791192434`: missing `PYTHONPATH`.
+C3 is not continued as a rescue. Certificate/fallback code remains auxiliary.
 
-Not scientific evidence.
+## Current frontier — EXP-048
 
-## Current frontier
+`Causal Block Verification Amortization Gate` changes the mechanism class from scalar weight skipping to multi-token full-stream amortization.
 
-`EXP-047R — Oracle-Tight and Stratified Tile-Bound Audit`.
+Reference arithmetic:
 
-Use held-out current-token states from available unmodified small checkpoints. Compare global, non-deployable oracle-tight, and deployable stratified bounds. Offline analysis remains below E2.
+```text
+one full target verification stream / 85 accepted tokens
+= 1.17647% before any draft cost
+```
 
-If oracle-tight ranges remain high, reject range-only CPTC rather than tune it.
+The deployable path will use a training-free partial-layer self-draft from the same unmodified checkpoint and exact longest-prefix target verification. Future-token perfect proposals are non-deployable upper-bound controls only. Existing Jacobi work is a charged baseline.
 
 ## Current classification
 
 ```text
 Governance/provenance implemented
 Auxiliary mmap/index/DAG retained
-EXP-047 correctness E1 PASS
-EXP-047 broad savings FAIL/REVISE
+EXP-047/047R correctness E1 PASS in scope
+Range-based CPTC core REJECTED
+EXP-048 pre-registered, NOT TESTED
 Real operation replacement NOT TESTED
 70B/405B scaling NOT TESTED
 8 GiB target NOT TESTED

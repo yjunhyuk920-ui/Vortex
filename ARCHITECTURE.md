@@ -2,7 +2,7 @@
 
 ## Mission boundary
 
-VORTEX is a runtime, not a retrained model. It ingests an unmodified supported Hugging Face dense checkpoint and automatically constructs any runtime metadata.
+VORTEX is a runtime, not a retrained model. It ingests an unmodified supported Hugging Face dense checkpoint and automatically constructs runtime metadata.
 
 ## Target execution stack
 
@@ -17,15 +17,15 @@ checkpoint/shard inspector
         v
 causal token executor
         |
-        +--> proposal or partial original-operation evaluation
-        +--> causal certificate
+        +--> causal proposal or block proposal
+        +--> exact/probabilistic certificate or exact target verification
         +--> certified commit OR declared exact/safe fallback
         |
         v
 memory scheduler
         - VRAM hot state <=8 GiB
         - RAM/SSD cold state
-        - charged transfers and fallback
+        - charged transfers, proposal, verification, rejection, fallback
         |
         v
 original-model-compatible output contract
@@ -33,49 +33,39 @@ original-model-compatible output contract
 
 ## Core requirement
 
-The primary runtime must avoid a substantial fraction of original 405B weight reads and arithmetic on unseen prompts. A component is core only when it participates in that operation-skipping path.
+The primary runtime must causally reduce or amortize original 405B weight traffic and arithmetic on unseen prompts. A component is core only when it participates in that measured cost reduction.
 
 ## Mandatory interfaces
 
 ### Proposal
 
-Produces a candidate operation result, interval, logit decision, or execution capsule without future generated tokens.
+Produces candidate tokens, an operation result, interval, or execution capsule without future generated tokens. Reports every weight stream, operation, state byte, construction cost, and rejected proposal.
 
-Must report bytes, operations, state, construction cost, and causal inputs.
-
-### Certificate
+### Certificate or verifier
 
 Declares one explicit contract:
 
 - deterministic exact;
 - deterministic top-1;
 - bounded-logit error;
-- probabilistic top-1 with declared union-accounted `delta`.
+- probabilistic top-1 with declared union-accounted `delta`;
+- exact target block verification with longest-prefix commit.
 
-Probabilistic certification is not deterministic exactness.
+Probabilistic certification is not deterministic exactness. Future-token oracle controls are not deployable.
 
-### Fallback
+### Fallback/correction
 
-When certification fails, execute all omitted original work needed for the reference contract.
-
-No silent approximation and no uncharged fallback stream.
+When certification or proposal matching fails, execute the exact omitted target work required by the reference contract. No silent approximation and no uncharged fallback/correction stream.
 
 ### Memory virtualization
 
-Separate:
-
-- GPU hot metadata;
-- KV cache;
-- work buffers;
-- repair/fallback tile;
-- RAM cache;
-- SSD format.
+Separate GPU hot metadata, KV cache, work buffers, proposal state, verification state, fallback tile, RAM cache, and SSD format.
 
 ### Evidence
 
-Every run emits phase/evidence/provenance, forward/layer/tile counts, logical/physical bytes where measured, fallback, wrong accepts, memory, timing distribution, and output agreement.
+Every run emits phase/evidence/provenance, exact revisions, forward/layer/tile/pass counts, logical/physical bytes where measured, proposal acceptance, rejected positions, fallback/correction, wrong accepts, memory, timing distribution, and output agreement.
 
-## Current component classification
+## Component classification
 
 ### Auxiliary accepted
 
@@ -83,92 +73,100 @@ Every run emits phase/evidence/provenance, forward/layer/tile counts, logical/ph
 - compact40/aligned64 mmap pointer VM;
 - atomic/checksummed format builder;
 - bounded exact decision-index compiler;
-- exact finite-horizon suffix DAG.
+- exact finite-horizon suffix DAG as body compression;
+- `vortex_runtime/cptc.py` and EXP-047R audit code as E1 certificate/fallback references.
 
-These may store metadata or repeated states but are not the operation-skipping principle.
+These are not the core cost-reduction principle.
 
 ### Rejected core families
 
-See `FAILED_APPROACHES.md`.
+See `FAILED_APPROACHES.md`, including global/oracle-tight/stratified range-based CPTC.
 
 ### Active core research
 
-EXP-047 statistical tile certification.
+`EXP-048 — Causal Block Verification Amortization Gate`.
 
-## EXP-047 v1 insertion point
+## Closed CPTC architecture
+
+EXP-047 and EXP-047R insertion point:
 
 ```text
-linear y = W x
-W partitioned into input-dimension tiles
-causal random tile permutation
-partial scalar decision contributions observed
-alpha-spending Serfling interval
-accept decision or exact fallback
+linear pair margin partitioned by input dimension
+causal random contribution sampling
+range-based finite-population interval
+accept sign or complete exact work
 ```
 
-Phase-B correctness passed. Broad skip performance did not.
+Correctness passed at E1. Savings failed.
 
-Authoritative MEASURED result:
+Authoritative EXP-047R MEASURED result:
 
 ```text
-certified 4/525
-fallback 521/525
-N=1024 mean evaluated fraction 98.294%
-positive control evaluated fraction 10.449%
+18 current-token states from three pinned trained checkpoints
+C1 exact-state oracle median 100%
+C1 oracle p90 100%
+C2 median/p90 100%
+C2 best 254/256 = 99.21875%
 wrong accepts 0
+bound violations 0
 ```
 
-Architecture decision:
+Decision:
 
-- retain `vortex_runtime/cptc.py` as reference certificate/fallback machinery;
-- do not use one global range as the main executor;
-- do not build a GPU backend from CPTC-v1 yet.
+- retain certificate/fallback machinery only as auxiliary safety infrastructure;
+- reject range-based CPTC as the primary executor;
+- do not implement C3 as an EXP-047R rescue;
+- do not build a CPTC GPU backend from these results.
 
-## Active revision architecture
+## Active EXP-048 architecture
 
-### Stage R0 — real-checkpoint oracle audit
+### Stage B0 — sequential exact baseline
 
-For current-token small-model states, fully compute exact decision tile contributions only as a non-deployable analysis oracle.
+Run exact greedy generation and record one target-equivalent full stream per generated token.
 
-Compare:
+### Stage B1 — exact block-verification oracle
 
-- C0 current global range;
-- C1 exact per-state min/max oracle range;
-- C2 deployable static stratified tile bounds;
-- C3 independently proven variance-adaptive finite-population bounds.
+Given a proposed block, execute the exact target over all proposed positions with a causal mask, compare tokens left to right, and commit only the matching prefix plus the exact correction token. Perfect future proposals are allowed only as a non-deployable upper bound and accounting test.
 
-This identifies whether failure is intrinsic or caused by loose range metadata.
+### Stage B2 — Jacobi control
 
-### Stage R1 — deployable bound compiler
+Reuse the existing exact Jacobi decoder. Charge every full target pass and failed iteration. It is a control, not the active mechanism.
 
-Only if R0 shows a useful upper bound:
+### Stage B3 — causal partial-layer self-draft
 
-- compile checksummed per-layer/per-tile bound metadata from the original checkpoint;
-- derive activation-dependent bounds without reading skipped weights;
-- charge metadata, selector, randomization, and union budget;
-- preserve exact fallback.
+```text
+exact committed prefix/KV
+        |
+        v
+same-checkpoint early-layer draft, no training/adapter
+        |
+        v
+K-token causal proposal
+        |
+        v
+one exact full-target teacher-forced block verification
+        |
+        +--> longest exact prefix commit
+        +--> exact target correction at first mismatch
+```
 
-### Stage R2 — real operation replacement
+All partial-layer streams, proposal steps, output-head work, exact verification, rejected scored positions, KV rebuilds, and corrections are charged.
 
-Replace a real LM-head or selected projection during generation on unmodified small checkpoints, with held-out prompts and exact forward/tile accounting.
+### Stage B4 — bounded proposal tree
 
-Offline full-contribution analysis is not E2.
-
-### Stage R3 — model-wide propagation
-
-A model-wide path needs either:
-
-- direct final-token certification without reconstructing every hidden coordinate; or
-- compositional operator certificates whose nonlinear propagation remains sound.
-
-This is currently UNVERIFIED.
+Forbidden until B3 survives its early rejection Gate. Every expanded node and target-scored position must be charged; no future/reference routing.
 
 ## Resource equations
 
 ```text
-M_total = M_hot + M_kv + M_work + M_fallback <= 8 GiB
-B_total/token = B_selector + B_normal + r_fallback * B_fallback
-C_total/token = C_selector + C_normal + r_fallback * C_fallback
+M_total = M_hot + M_kv + M_work + M_proposal + M_verify + M_fallback <= 8 GiB
+
+S_target_equiv/token =
+    (S_target_verify
+     + S_target_correction
+     + S_partial_draft)
+    / accepted_tokens
+
 T_token >= max(B_total / effective_bandwidth,
                C_total / effective_throughput,
                serial_latency_floor)
@@ -177,13 +175,14 @@ T_token >= max(B_total / effective_bandwidth,
 PROJECTED same-bit traffic comparison:
 
 ```text
-405B Q4 stream: 188.593 GiB
-1.2x 4B Q4 allowance: 2.235 GiB/token
-required evaluated fraction before overhead: 1.185%
+405B Q4 stream: 188.592821 GiB
+1.2x 4B Q4 allowance: 2.235174 GiB/token
+required target-equivalent stream fraction: 1.185185%
+zero-cost perfect-proposal minimum: 85 accepted tokens/full target pass
 ```
 
-Phase-D hardware terms remain NOT TESTED.
+The 85-token value is a projection, not measured performance. Phase-D hardware terms remain NOT TESTED.
 
 ## Safety rule
 
-No optimized path commits outside its declared certificate. Invalid metadata, numerical failure, or absent proof triggers exact fallback or abort.
+No optimized path commits outside its declared exact verifier or certificate. Invalid metadata, numerical failure, proposal mismatch, absent proof, or corrupt state triggers exact correction/fallback or abort.
