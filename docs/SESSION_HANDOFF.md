@@ -16,8 +16,8 @@ Read in order:
 8. `ARCHITECTURE.md`
 9. `HARDWARE_VALIDATION_PLAN.md`
 10. `REPRODUCIBILITY.md`
-11. EXP-047R document and `results/exp_047r/summary.json`
-12. PR #57.
+11. EXP-048 document and `results/exp_048/summary.json`
+12. PR #58.
 
 Root files and machine-readable result JSON are authoritative; conversation memory is not.
 
@@ -39,19 +39,28 @@ Phase D NOT TESTED
 
 ```text
 repository yjunhyuk920-ui/Vortex
-branch research/exp-047r-oracle-stratified-audit
-PR #57
+branch research/exp-048-causal-block-amortization
+PR #58
 ```
 
-## EXP-047R authoritative evidence
+## EXP-047/047R closed decision
 
 ```text
-results/exp_047r/summary.json
-workflow 30795946233
-source head SHA 0beb068e9679c9f4d51d1b210b0eee7fbc325214
-workflow merge SHA 213e69a54c4d2b5c2d4102f8651cab847ade312f
-artifact 8848886335
-artifact SHA-256 6c9a4fdca80d29964eca02d16f8b36f5ca8e211653f6fb9ddfe548a729c6e12d
+REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY
+```
+
+The exact per-state range oracle evaluated 100% at median and p90. C3 was not continued. Certificate/fault rejection/exact fallback remain auxiliary.
+
+## EXP-048 authoritative evidence
+
+```text
+results/exp_048/summary.json
+workflow 30798936320
+source head SHA 484a1f0f313d88733d2f7210f2a24d3904bf1373
+workflow merge SHA d60e392d66d694fc020f2cfe2435e47e5f5a22ca
+artifact 8850040445
+artifact size 17689 bytes
+artifact ZIP SHA-256 67c1e6d8965f7535020ecd4c02bb8a2af1156a234564f3cdf74d10c882fd7eb9
 ```
 
 Pinned external revisions:
@@ -63,27 +72,51 @@ TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
 TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
 ```
 
-## EXP-047R MEASURED result
+## EXP-048 MEASURED result
+
+Exactness and causality:
 
 ```text
-9 EXP-047R tests passed
+9 EXP-048 tests passed
 repository validation passed
-3 models
-18 held-out current-token states
-wrong accepts 0
-bound violations 0
-future generated tokens false
-real operation replacement false
-C1 exact-state oracle median 100%
-C1 exact-state oracle p90 100%
-C2 median 100%
-C2 p90 100%
-C2 best 254/256 = 99.21875%
-C2 materialized CPU primitive/full-sum median 2165.057x
-peak RSS 649808 KiB
+3 models × 6 families = 18 cases
+B1 exact mismatches 0
+B2 exact mismatches 0
+B3 exact mismatches 0
+B3 deployable future information uses 0
+peak RSS 682552 KiB
 ```
 
-The CPU ratio is not a GPU or intrinsic lower-bound result. The C1 coverage failure alone decides the Gate.
+B1 perfect future oracle:
+
+```text
+96 exact tokens / 1 target pass
+target-equivalent fraction 1.0416667%
+future information true
+deployable false
+```
+
+B2 hard Jacobi:
+
+```text
+p50 target passes / 32 exact tokens 58
+p50 accepted tokens per target pass 0.551724
+p50 fraction 181.25%
+p90 fraction 193.75%
+maximum matching prefix 3
+```
+
+B3 partial-layer self-draft:
+
+```text
+18 cases, 54 fixed variants
+best cases with nonzero matching prefix 4/18
+maximum matching prefix 1
+p50 committed tokens per target verification 1
+model medians 1 / 1 / 1
+minimum fully accounted fraction 1333.463%
+p90 fully accounted fraction 2893.843%
+```
 
 PROJECTED:
 
@@ -91,92 +124,98 @@ PROJECTED:
 405B Q4 full stream 188.592821 GiB
 1.2x 4B allowance 2.235174 GiB/token
 required target-equivalent fraction 1.185185%
-C1 oracle median / required 84.375x
+zero-cost perfect-proposal minimum 85 tokens/full target pass
+B1 oracle fraction / requirement 0.87890625
+B3 p90 fraction / requirement 2441.6793
 ```
 
 ## Scientific decision
 
 ```text
-EXP-047/047R correctness primitive: ACCEPT E1 in scope
-range-based CPTC core: REJECT
-certificate/fault rejection/exact fallback: AUXILIARY
-C3 variance rescue: DO NOT IMPLEMENT
-real operation replacement: NOT TESTED
+EXP-048 exact block verifier: ACCEPT E1 AUXILIARY
+B1 perfect future proposal: NON-DEPLOYABLE UPPER BOUND ONLY
+B2 hard Jacobi core: REJECT
+B3 partial-layer self-draft core: REJECT
+B4 tree continuation from failed B3: DO NOT IMPLEMENT
+complete real operation replacement: NOT TESTED
 Phase D: NOT TESTED
 E6/E7: not achieved
 ```
 
 Required phrase:
 
-> The exact per-state range oracle evaluated 100% at median and p90 on 18 states from three pinned small checkpoints. Therefore range-based CPTC is rejected as a primary runtime; only its E1 certificate/fallback primitive is retained.
+> The exact block verifier safely preserved greedy output, and a future-aware 96-token oracle reached a logical 1.0417% stream fraction. The causal partial-layer draft matched at most one proposal token and had p50 one committed token with p90 28.9384 target-equivalent streams per token, so partial-layer self-drafting is rejected as the core runtime.
 
 ## Frozen evidence layout
 
 ```text
-results/exp_047r/summary.json
-results/exp_047r/raw/artifact_provenance.json
-results/exp_047r/raw/checkpoint_manifest.json
-results/exp_047r/raw/cases_part_01.jsonl
-results/exp_047r/raw/cases_part_02.jsonl
-results/exp_047r/raw/cases_part_03.jsonl
-results/exp_047r/processed/aggregate.json
-results/exp_047r/logs/run.log
-results/exp_047r/checksums.sha256
+results/exp_048/summary.json
+results/exp_048/raw/artifact_provenance.json
+results/exp_048/raw/checkpoint_manifest.json
+results/exp_048/raw/cases.jsonl.gz.b64
+results/exp_048/processed/aggregate.json
+results/exp_048/logs/run.log
+results/exp_048/artifacts/
+results/exp_048/checksums.sha256
 ```
 
-`.github/workflows/exp_047r_gate.yml` is manual-only and writes reproduction output to `results/exp_047r_reproduction`.
+Restore raw cases:
 
-## Next work — EXP-048
-
-`Causal Block Verification Amortization Gate` changes mechanism class.
-
-Deployable hypothesis:
-
-- use an early-layer prefix of the same unmodified checkpoint as a training-free causal draft;
-- propose a token block;
-- execute one exact full-target teacher-forced causal verification pass;
-- commit only the longest matching prefix plus exact correction;
-- charge every draft layer stream, target pass, rejected position, KV rebuild, and correction.
-
-Controls:
-
-```text
-B0 exact sequential greedy
-B1 future-token perfect-proposal oracle, upper bound only
-B2 existing Jacobi baseline with every pass charged
-B3 causal partial-layer self-draft
-B4 tree only if B3 survives
+```bash
+base64 -d results/exp_048/raw/cases.jsonl.gz.b64 | gunzip > /tmp/exp_048_cases.jsonl
+sha256sum /tmp/exp_048_cases.jsonl
+# b70d56f3e13ab1f39dd8947be468e663d6b5691fb20236b990f20a343bcbe4d2
 ```
 
-Traffic arithmetic:
+## Next work — EXP-049
+
+`Anderson-Accelerated Continuous Block Fixed-Point Gate` removes the sequential per-token draft loop.
 
 ```text
-required target-equivalent fraction 0.01185185
-zero-cost perfect-proposal minimum 85 accepted tokens/full target pass
-real draft cost raises required acceptance
+soft future-token embeddings
+-> 1/2/4 full causal target block passes
+-> damped Picard or bounded Anderson update
+-> hard proposal
+-> retained exact block verifier
+```
+
+Conditions:
+
+```text
+S0 charged hard Jacobi baseline
+S1 damped continuous Picard
+S2 Anderson history m in {2,4,8}
+S3 exact future-state oracle, non-deployable
+S4 adversarial triangular causal models
+K in {64,128,256}
+solver passes in {1,2,4}
 ```
 
 Early rejection:
 
 ```text
-any exact mismatch
-any future information in deployable path
-p50 accepted tokens/verification <16
-p90 target-equivalent fraction >10%
-accounted B3 cost >= exact sequential B0
-materially worsening size/depth trend
+any exact mismatch/future information/unhandled numerical failure
+p50 matching prefix <16 after <=4 solver passes
+p90 accounted fraction >10%
+Anderson p50 improvement <4x over hard Jacobi
+materially worsening model-size trend
+universal >1-position/round claim contradicted by adversarial model
 ```
 
-Promotion still requires p50 accepted block >=85 and p90 target-equivalent fraction <=1.185185% with zero mismatches/future information.
+Theoretical obligation:
+
+> For arbitrary causal dense models, a target-only synchronous black-box solver may be unable to guarantee more than one new exact token position per target round in the worst case.
+
+EXP-049 must formalize and test this before making any universal acceleration claim.
 
 ## Reproduction
 
 ```bash
-git checkout research/exp-047r-oracle-stratified-audit
-python -m pytest -q tests/exp_047r
+git checkout research/exp-048-causal-block-amortization
+python -m pytest -q tests/exp_048
 python scripts/run_validation.py
-bash experiments/exp_047r/reproduce.sh
-cd results/exp_047r && sha256sum -c checksums.sha256
+bash experiments/exp_048/reproduce.sh
+cd results/exp_048 && sha256sum -c checksums.sha256
 ```
 
-Do not overwrite `results/exp_047/` or `results/exp_047r/`. EXP-048 must use a new branch and new result directory.
+Do not overwrite `results/exp_047/`, `results/exp_047r/`, or `results/exp_048/`. EXP-049 must use a new branch and result directory.

@@ -1,208 +1,258 @@
 # Next Experiment
 
-## Closed Gate — EXP-047R
+## Closed Gate — EXP-048
 
 Authoritative evidence:
 
 ```text
-results/exp_047r/summary.json
-workflow 30795946233
-source head SHA 0beb068e9679c9f4d51d1b210b0eee7fbc325214
-artifact 8848886335
-artifact SHA-256 6c9a4fdca80d29964eca02d16f8b36f5ca8e211653f6fb9ddfe548a729c6e12d
+results/exp_048/summary.json
+workflow 30798936320
+source head SHA 484a1f0f313d88733d2f7210f2a24d3904bf1373
+artifact 8850040445
+artifact SHA-256 67c587da36b968f9c38e0a7774ea03cecd2ad2d7d274d3e83c833c56529c3443
 ```
 
 MEASURED:
 
 ```text
-3 pinned trained dense checkpoints
-18 held-out current-token states
-wrong accepts 0
-bound violations 0
-C1 exact-state oracle median 100%
-C1 exact-state oracle p90 100%
-C2 median 100%
-C2 p90 100%
-C2 best 254/256 = 99.21875%
+B1 perfect future oracle:
+  96 tokens / 1 target pass
+  exact mismatches 0
+  target-equivalent fraction 1.0416667%
+  future information true
+  deployable false
+
+B2 hard Jacobi:
+  p50 58 target passes / 32 exact tokens
+  p50 fraction 181.25%
+  p90 fraction 193.75%
+  max matching prefix 3
+
+B3 partial-layer self-draft:
+  18 cases, 54 fixed variants
+  exact mismatches 0
+  future information uses 0
+  p50 committed tokens / verification 1
+  max matching prefix 1
+  minimum fully accounted fraction 1333.463%
+  p90 fully accounted fraction 2893.843%
 ```
 
 Decision:
 
 ```text
-REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY
+REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER
 ```
 
-The strongest favorable range-only oracle failed the pre-registered 10%/25% Gate by a wide margin. C3 variance-adaptive tuning is not the next experiment because it would attempt to rescue a mechanism class already rejected by its exact realized range oracle.
+B1 proves block verification can meet the logical traffic target when a long proposal is already correct. B2/B3 prove that hard Jacobi and sequential early-layer drafting do not produce that proposal cheaply. B4 tree expansion is not continued from failed B3.
 
-## EXP-048 — Causal Block Verification Amortization Gate
+## EXP-049 — Anderson-Accelerated Continuous Block Fixed-Point Gate
 
 ### Mechanism change
 
-EXP-048 does not skip scalar matrix tiles by partial-sum certification. It changes the cost structure:
+EXP-049 removes the separate per-token draft loop entirely.
 
-> stream the target model weights once across a block of proposed future positions, verify all positions in one exact causal target pass, and divide that full target stream by the number of exactly accepted tokens.
+Represent a future block of `K` unknown token states as continuous token embeddings `Z`. Execute the unmodified target model over the exact prefix plus all `K` soft positions in one causal batched pass. Convert the resulting future logits into a sparse soft embedding update and solve the causal block fixed point using a small number of damped Picard or Anderson-accelerated iterations. Harden the block to tokens and apply the retained exact longest-prefix-plus-correction verifier.
 
-The deployable proposal path must be causal and training-free. The target checkpoint remains unmodified.
+No target weights are modified. No training, learned adapter, future generated token, or external draft model is allowed in deployable conditions.
 
-### Exact target traffic requirement
+### Why this directly addresses EXP-048
 
-From the fixed same-bit projection:
+- B3 repeatedly executed early layers and a full LM head once per proposed token; EXP-049 executes each target layer/head once per solver iteration across the whole block.
+- B2 hard Jacobi propagated discrete guesses slowly; EXP-049 tests whether continuous residual information and Anderson mixing can move useful information farther than one token per iteration.
+- The exact block verifier remains unchanged, so any incorrect hard proposal is safely truncated and corrected.
 
-```text
-405B Q4 full target stream: 188.592821 GiB
-1.2x 4B Q4 allowance: 2.235174 GiB/token
-required target-equivalent stream fraction: 0.01185185
-```
+### Continuous map
 
-With a zero-cost perfect proposal, one full target verification pass must accept at least:
+For exact prefix token embeddings `E(p)` and future soft states `Z_0...Z_{K-1}`:
 
 ```text
-ceil(1 / 0.01185185) = 85 tokens
+L(Z) = target_logits(E(p) concat Z)
+P_i  = top-k-softmax(L_i / tau)
+F(Z)_i = sum_{v in top-k_i} P_i(v) * token_embedding(v)
+R(Z) = F(Z) - Z
 ```
 
-Any real draft cost increases the required accepted block length.
+Logit alignment remains `prefix_length - 1 + i`.
 
-### Declared algorithm
-
-For an unmodified causal dense checkpoint:
-
-1. maintain the exact committed prefix and KV state;
-2. use a training-free partial-layer self-draft to propose `K` tokens causally;
-3. concatenate the proposal to the committed prefix;
-4. execute one exact full-target teacher-forced block pass with a causal mask;
-5. compare target argmax tokens with the proposal left to right;
-6. commit only the longest exactly matching prefix;
-7. at the first mismatch, commit the exact target token and discard later proposal state;
-8. preserve exact greedy decoding output by construction.
-
-No future generated token may enter the deployable proposal path.
+The deployable solver may use only current prefix state, fixed initialization metadata, prior solver iterates, and current target outputs.
 
 ### Conditions
 
-#### B0 — exact sequential greedy baseline
+#### S0 — hard Jacobi baseline
 
-One full target pass per token. Correctness control.
+Reuse EXP-048 B2 with every target pass charged.
 
-#### B1 — perfect-proposal oracle upper bound
-
-Use exact future greedy tokens only to prove the maximum possible block-verification amortization and to validate accounting. This is non-deployable, future-aware, and cannot count as evidence for the runtime proposal mechanism.
-
-#### B2 — existing Jacobi baseline
-
-Reuse the existing exact Jacobi implementation as a control. Do not relabel its target passes as one-pass block verification and do not hide failed iterations.
-
-#### B3 — causal partial-layer self-draft
-
-Generate proposals using an early prefix of the same checkpoint layers, the checkpoint's own normalization/output head, and no learned adapter. Sweep a small pre-registered set of layer fractions and block lengths. All draft weight traffic, target verification traffic, rejected positions, KV rebuilds, and correction passes are charged.
-
-#### B4 — causal tree variant only after B3
-
-A bounded proposal tree may be tested only if B3 shows meaningful acceptance. Every expanded node and target-scored position is charged. No future-token or reference-continuation routing is allowed.
-
-### Traffic accounting
-
-For each verification cycle record:
+#### S1 — damped continuous Picard
 
 ```text
-accepted_tokens
-proposed_tokens
-draft_layer_equivalent_streams
-target_full_streams
-correction_target_streams
-rejected_scored_positions
+Z_{r+1} = (1 - lambda) Z_r + lambda F(Z_r)
 ```
 
-Primary derived metric:
+Pre-register `lambda` values and top-k/temperature settings. No post-hoc unrestricted tuning.
+
+#### S2 — Anderson acceleration
+
+Use a bounded history `m` and solve the small residual least-squares problem in float64 on CPU reference code. Apply regularization, coefficient clipping, finite checks, and fail-closed fallback to S1.
+
+Pre-register history sizes `m in {2, 4, 8}` and at most four solver iterations for the early Gate.
+
+#### S3 — exact future-state oracle
+
+Initialize `Z` from exact future tokens only to validate map alignment and the theoretical best hardening/verifier path. S3 is future-aware and non-deployable.
+
+#### S4 — adversarial triangular models
+
+Construct finite causal models where token `i` reveals a transformation of exact token `i-1` and arbitrary initialization is wrong. Use them to test the worst-case one-new-guaranteed-position-per-round barrier.
+
+### Initialization
+
+Deployable fixed choices:
+
+- repeated exact next-token embedding obtained from the first solver pass;
+- repeated last-prefix token embedding;
+- fixed zero/mean embedding control.
+
+Initialization may not use reference continuation or held-out target tokens.
+
+### Accounting
+
+For every state/condition record:
 
 ```text
-target_equivalent_streams_per_accepted_token =
-    (target_full_streams
-     + correction_target_streams
-     + draft_layer_equivalent_streams)
-    / accepted_tokens
+block_size
+solver_iterations
+target_solver_full_streams
+exact_verification_full_streams
+correction_streams
+soft_topk_projection_bytes_and_ops
+anderson_history_bytes
+matching_prefix
+committed_tokens
+rejected_positions
+future_information_used
+numerical_fallbacks
 ```
 
-This is a logical same-bit weight-stream metric, not wall-clock speed. Hardware latency remains Phase D.
+Primary logical metric:
 
-### Phase A/B implementation target
+```text
+target_equivalent_stream_fraction =
+    (solver target streams
+     + exact verification streams
+     + correction streams
+     + separately normalized projection cost)
+    / exact committed tokens
+```
 
-Use at least three pinned small trained dense causal checkpoints with layer access supported by the reference implementation. Use held-out prompts across English, Korean, code, mathematics, structured output, and ordinary narrative when tokenizer/model capability permits.
+Projection/Anderson cost may not be hidden merely because it is smaller than the target model.
 
-The Phase A/B runner must:
+### Causal triangular lower-bound audit
 
-- reproduce exact sequential greedy tokens;
-- prove B1 block verification equals the sequential baseline;
-- implement B3 without training or checkpoint modification;
-- record all proposal/verification passes and positions;
-- save raw per-cycle JSONL, exact revisions, environment, and checksums;
-- keep oracle and deployable results in separate fields;
-- fail closed on any token mismatch not explained by the declared correction rule.
+EXP-049 must state and test the following worst-case claim:
+
+> For arbitrary causal dense models, a target-only synchronous block solver with no external future information cannot guarantee more than one new exact token position per black-box causal target round in the worst case.
+
+Required work:
+
+1. formalize the target interface and guarantee being claimed;
+2. construct an adversarial finite causal model family;
+3. prove indistinguishability of later positions before predecessor resolution under the declared interface;
+4. show hard Jacobi attains the one-position-per-round bound on the construction;
+5. determine exactly which assumptions continuous embeddings/Anderson violate or do not violate;
+6. keep the theorem separate from empirical average-case checkpoint results.
+
+A valid worst-case impossibility result does not fabricate an empirical failure, but it changes what can be claimed for the fixed “arbitrary model + exact output” objective.
+
+### Small-checkpoint corpus
+
+Use the same three pinned TinyStories checkpoints and six held-out families as EXP-048 for direct comparison. Add at least two deterministic adversarial toy causal models and low/high entropy synthetic controls.
+
+Early block sizes:
+
+```text
+K in {64, 128, 256}
+solver iterations in {1, 2, 4}
+```
+
+Respect each checkpoint's maximum position length. Record excluded states rather than silently truncating the Gate.
 
 ### Pre-registered early rejection Gate
 
-Reject partial-layer self-draft block amortization as the core path if any condition holds on held-out generation:
+Reject target-only continuous fixed-point proposal generation as the core path if any condition holds:
 
 ```text
-exact output mismatch >0
-future information in deployable path >0
-p50 accepted tokens per target verification <16
-p90 target-equivalent stream fraction >0.10
-acceptance trend worsens materially with checkpoint depth/size
-accounted B3 cost is not lower than exact sequential B0
+exact verifier mismatch >0
+future information in S1/S2 >0
+NaN/Inf or unhandled Anderson instability >0
+best S1/S2 p50 matching prefix after <=4 solver passes <16
+best S1/S2 p90 target-equivalent stream fraction >10%
+S2 does not improve p50 matching prefix over S0 by at least 4x
+best checkpoint acceptance materially worsens with model size
+adversarial triangular model violates any claimed universal >1-position/round guarantee
 ```
 
-These thresholds are deliberately lenient. Passing them does not establish the final 1.185% requirement; it only permits a stronger Phase-C Gate.
+A proved worst-case one-position-per-round barrier rejects universal exact target-only fixed-point acceleration for the declared arbitrary-model contract, even if a few average-case prompts improve.
 
 ### Promotion Gate
 
-A candidate may advance toward real operation replacement only if:
+A solver may advance to a complete Phase-C runtime only if:
 
 ```text
 zero exact mismatches
-zero future information
-p50 accepted block >=85 after full cost accounting
-p90 target-equivalent stream fraction <=0.01185185
-nonzero success across all declared held-out task families
-model-size trend is non-degrading
+zero deployable future information
+zero unhandled numerical failures
+p90 target-equivalent stream fraction <=1.185185%
+p50 committed tokens satisfies the dynamic pass-count requirement
+nonzero success across every held-out family
+non-degrading size trend
+no contradiction with the exact claim scope
 ```
 
-The `>=85` requirement is not negotiable under the current same-bit traffic objective unless another independently measured mechanism reduces the full target stream cost.
+Dynamic requirement:
+
+```text
+committed_tokens >= ceil(total_target_equivalent_streams / 0.01185185)
+```
+
+Examples before projection overhead:
+
+```text
+2 total streams -> >=169 tokens
+3 total streams -> >=254 tokens
+4 total streams -> >=338 tokens
+5 total streams -> >=422 tokens
+6 total streams -> >=507 tokens
+```
 
 ### Strongest counterexamples
 
-Include:
-
-- low-entropy repetitive text;
-- high-entropy code and identifiers;
-- Korean and English switching;
-- arithmetic with brittle token dependencies;
-- prompts whose early-layer and final-layer argmax disagree immediately;
-- long blocks with a mismatch near the first position;
-- EOS and structured-format boundaries;
-- deliberately bad fill tokens for Jacobi controls.
+- a token-copy chain that reveals exactly one position per round;
+- alternating-token and cryptographic/hash-like predecessor maps;
+- Korean/code/identifier prompts with early mismatch;
+- soft states whose top-k support excludes the exact token;
+- Anderson coefficient explosion or oscillation;
+- a long apparent soft convergence with hard prefix length zero;
+- block lengths near context limits;
+- exact verification mismatch at position zero.
 
 ### Evidence boundary
 
-Before an actual runtime replaces sequential target decoding on a real checkpoint:
+Before a complete small-checkpoint solver path is frozen:
 
 ```text
 Phase: A/B
 Evidence ceiling: E1
-405B: NOT TESTED
-8 GiB VRAM: NOT TESTED
-CUDA/PCIe/SSD/TTFT/tokens/sec: NOT TESTED
+complete real operation replacement: false
+405B / 8 GiB / CUDA / PCIe / SSD / TTFT / tokens/sec: NOT TESTED
 ```
 
 ### Next exact action
 
-Create a new branch and pre-register:
+Create a new branch after PR #58 merges and implement in this order:
 
-```text
-docs/research/EXPERIMENT_048_CAUSAL_BLOCK_VERIFICATION_AMORTIZATION.md
-experiments/exp_048/
-tests/exp_048/
-results/exp_048_candidate/
-.github/workflows/exp_048_gate.yml
-```
-
-First implement B0/B1 accounting and exactness tests, then B2 existing Jacobi control, then the smallest B3 partial-layer self-draft. Do not start B4 before B3 survives its early rejection Gate.
+1. formal triangular lower-bound statement and adversarial toy models;
+2. model-independent S1/S2 solver with numerical fault tests;
+3. exact hardening and retained block verifier integration;
+4. pinned TinyStories runner and raw evidence workflow;
+5. pre-registered Gate decision and durable state update.

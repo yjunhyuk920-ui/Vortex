@@ -1,0 +1,93 @@
+{
+  "DERIVED": {
+    "acceptance_gate_pass": false,
+    "b1_is_non_deployable_future_oracle": true,
+    "causal_gate_pass": true,
+    "cost_below_sequential_gate_pass": false,
+    "decision": "REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER",
+    "exact_gate_pass": true,
+    "model_size_trend_gate_pass": true,
+    "partial_layer_self_draft_survives_early_gate": false,
+    "traffic_gate_pass": false
+  },
+  "MEASURED": {
+    "b0_exact_sequential_target_stream_fraction": 1.0,
+    "b1_exact_output_mismatches": 0,
+    "b1_future_information_used": true,
+    "b1_oracle_block_size": 96,
+    "b1_oracle_target_equivalent_stream_fraction": 0.010416666666666666,
+    "b2_exact_output_mismatches": 0,
+    "b2_max_matching_prefix": 3,
+    "b2_p50_accepted_tokens_per_target_pass": 0.5517241379310345,
+    "b2_p50_target_full_streams_per_32_tokens": 58.0,
+    "b2_p50_target_equivalent_stream_fraction": 1.8125,
+    "b2_p90_target_equivalent_stream_fraction": 1.9375,
+    "b3_best_cases_with_nonzero_matching_prefix": 4,
+    "b3_best_max_matching_prefix": 1,
+    "b3_best_p50_committed_tokens_per_target_verification": 1.0,
+    "b3_best_p90_target_equivalent_stream_fraction": 28.938425791460936,
+    "b3_best_min_target_equivalent_stream_fraction": 13.334634712021648,
+    "b3_deployable_future_information_uses": 0,
+    "b3_exact_output_mismatches": 0,
+    "b3_model_median_committed_tokens": {
+      "roneneldan/TinyStories-1M": 1.0,
+      "roneneldan/TinyStories-3M": 1.0,
+      "roneneldan/TinyStories-8M": 1.0
+    },
+    "b3_partial_layer_variant_count": 54,
+    "case_count": 18,
+    "model_count": 3,
+    "peak_rss_kib": 682552,
+    "prompt_family_count": 6,
+    "tests": "9 passed",
+    "repository_validation": "passed"
+  },
+  "PROJECTED": {
+    "allowed_1_2x_baseline_gib_per_token": 2.2351741790771484,
+    "b1_oracle_fraction_over_required_fraction": 0.87890625,
+    "b3_p90_fraction_over_required_fraction": 2441.6793011548915,
+    "baseline_q4_full_weight_gib_per_stream": 1.862645149230957,
+    "required_target_equivalent_stream_fraction": 0.011851851851851851,
+    "target_q4_full_weight_gib_per_stream": 188.5928213596344,
+    "zero_cost_minimum_accepted_tokens_per_target_stream": 85
+  },
+  "UNVERIFIED": [
+    "complete multi-cycle B3 generation runtime",
+    "physical target-weight reuse across block positions",
+    "accelerator draft and verification kernels",
+    "KV rebuild and memory-transfer cost on target hardware",
+    "70B and 405B behavior",
+    "8 GiB peak VRAM",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "complete_real_operation_replacement": false,
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "phase_d": "NOT TESTED"
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-048",
+  "name": "causal_block_verification_amortization_gate",
+  "phase": ["A", "B", "C-observation"],
+  "provenance": {
+    "artifact_id": 8850040445,
+    "artifact_name": "exp-048-candidate-30798936320",
+    "artifact_zip_sha256": "67c1e6d8965f7535020ecd4c02bb8a2af1156a234564f3cdf74d10c882fd7eb9",
+    "frozen_date": "2026-08-03",
+    "source_head_sha": "484a1f0f313d88733d2f7210f2a24d3904bf1373",
+    "workflow_merge_sha": "d60e392d66d694fc020f2cfe2435e47e5f5a22ca",
+    "workflow_run": "30798936320"
+  },
+  "raw_evidence": {
+    "artifact_provenance": "raw/artifact_provenance.json",
+    "cases_original_sha256": "b70d56f3e13ab1f39dd8947be468e663d6b5691fb20236b990f20a343bcbe4d2",
+    "cases_lossless_gzip_base64": "raw/cases.jsonl.gz.b64",
+    "cases_lossless_gzip_base64_sha256": "37ce8554f99082fc19681081364e113619ca67b6ab6c72c0b4c0775568aad519",
+    "checkpoint_manifest": "raw/checkpoint_manifest.json",
+    "checkpoint_manifest_original_sha256": "8dd7be9a710a7ddd805e0bfebcbbd3f9b8e32410093ae72693722d805cf103b7",
+    "workflow_summary_original_sha256": "46d38301f9fecc21b31e0f8e987dc6a25d42451dc516519ca73cd2011866ea54"
+  }
+}
