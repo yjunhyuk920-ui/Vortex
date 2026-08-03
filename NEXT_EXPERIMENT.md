@@ -1,223 +1,208 @@
 # Next Experiment
 
-## EXP-047R — Oracle-Tight and Stratified Tile-Bound Audit
+## Closed Gate — EXP-047R
 
-### Current status
-
-```text
-Implementation branch: research/exp-047r-oracle-stratified-audit
-Gate registration: COMMITTED
-Primitive tests: NOT YET RUN IN GITHUB ACTIONS
-Real-checkpoint audit: NOT YET RUN
-Scientific decision: PENDING
-Evidence ceiling before real operation replacement: E1
-Phase D: NOT TESTED
-```
-
-No new experiment number is being used to hide CPTC-v1's weak skip rate.
-
-## Previous authoritative evidence
-
-Authoritative EXP-047 evidence:
+Authoritative evidence:
 
 ```text
-PR: #56
-workflow: 30793232558
-source SHA: 74ac92e9b1c8fffbc50a2322d9b36dd3c05f0d79
-phase: A/B
-evidence: E1
+results/exp_047r/summary.json
+workflow 30795946233
+source head SHA 0beb068e9679c9f4d51d1b210b0eee7fbc325214
+artifact 8848886335
+artifact SHA-256 6c9a4fdca80d29964eca02d16f8b36f5ca8e211653f6fb9ddfe548a729c6e12d
 ```
 
 MEASURED:
 
 ```text
-525 cases
-4 certificates
-521 exact fallbacks
-mean evaluated fraction at N=1024: 98.294%
-positive control: 107/1024 tiles = 10.449%
-wrong accepts: 0
+3 pinned trained dense checkpoints
+18 held-out current-token states
+wrong accepts 0
+bound violations 0
+C1 exact-state oracle median 100%
+C1 exact-state oracle p90 100%
+C2 median 100%
+C2 p90 100%
+C2 best 254/256 = 99.21875%
 ```
 
-PROJECTED:
+Decision:
 
 ```text
-required simple 405B Q4 traffic fraction before overhead: about 1.185%
-```
-
-The correctness mechanism passed, but the global-range Serfling form did not earn promotion as an execution architecture.
-
-## Decisive question
-
-> Is CPTC failing because real Transformer decision-tile contributions are intrinsically uncertifiable early, or because one global range bound is too loose?
-
-The next Gate answers this before any deployable Phase-C backend is built.
-
-## Real-checkpoint audit scope
-
-Use three available unmodified trained dense causal checkpoints:
-
-```text
-roneneldan/TinyStories-1M
-roneneldan/TinyStories-3M
-roneneldan/TinyStories-8M
-```
-
-The runner resolves an exact Hugging Face revision SHA before downloading or executing each model, then records a file SHA-256 manifest. The first successful workflow must be inspected and its exact revisions frozen before evidence becomes authoritative.
-
-For fixed held-out prompts and current-token states:
-
-1. execute the exact baseline forward pass;
-2. obtain the exact final hidden state and logits;
-3. select top-1 versus runner-up as the declared scalar decision;
-4. partition that exact pairwise margin into input-dimension tiles;
-5. save exact contributions only as a non-deployable analysis oracle;
-6. compare C0, C1, and C2 under deterministic causal random orders.
-
-This is offline full-contribution observation, not real operation replacement and not E2.
-
-## Certificate families
-
-### C0 — global checkpoint-derived range
-
-For output-weight matrix `W`, compile per-hidden-dimension column spans:
-
-```text
-s_j = max_o W[o,j] - min_o W[o,j]
-```
-
-For current hidden state `h` and tile `T_i`:
-
-```text
-|c_i| <= B_i = sum_{j in T_i} |h_j| s_j
-```
-
-C0 applies one range:
-
-```text
-[-max_i B_i, +max_i B_i]
-```
-
-The metadata is checkpoint-derived and the activation factor is available at the current token. It does not require reading the selected output rows to establish the bound.
-
-### C1 — exact per-state oracle range
-
-Use the exact min/max of the fully materialized current-state contribution vector. This is intentionally non-deployable and is the strongest favorable range-only control.
-
-If C1 misses the rejection thresholds, further C0/C2 range metadata tuning stops.
-
-### C2 — checkpoint-span stratified range
-
-Group tiles by `B_i` magnitude. Sample without replacement inside each stratum and sum per-stratum Serfling intervals.
-
-Union accounting:
-
-```text
-delta_s   = delta * 6 / (pi^2 (s+1)^2)
-delta_s,n = delta_s * 6 / (pi^2 n^2)
-```
-
-Current code validates every bound against exact materialized contributions because this is an offline audit. A later deployable runtime would require checksummed metadata and fail-closed validation without consuming skipped rows.
-
-### C3 — variance-adaptive finite-population bound
-
-Status: `NOT IMPLEMENTED`.
-
-C3 is forbidden from influencing the Gate until an independent proof, slow reference calculator, property tests, adaptive-stopping union accounting, and fault injection are committed. An IID or asymptotic empirical-Bernstein formula may not be imported without a valid sampling-without-replacement proof.
-
-## Required measurements
-
-MEASURED in the valid current environment:
-
-- exact model/tokenizer revision and file hashes;
-- prompt hashes;
-- exact baseline forward states;
-- layer/hidden/vocabulary/tile counts;
-- top-1/runner-up logit margin;
-- LM-head and tile reconstruction errors;
-- C0/C1/C2 evaluated fractions;
-- wrong accepts and bound violations;
-- fallback/full-evaluation behavior;
-- CPU primitive timing after contributions are materialized;
-- peak RSS;
-- metadata bytes and model-size trend.
-
-DERIVED:
-
-- two-dimensional union error budget;
-- Gate booleans;
-- decision classification;
-- 405B fraction gap from measured oracle fractions.
-
-PROJECTED:
-
-- 405B Q4 weight bytes/token under the observed fractions;
-- gap to the 1.185% pre-overhead traffic fraction.
-
-UNVERIFIED:
-
-- C3 correctness;
-- real LM-head operation replacement;
-- model-wide nonlinear propagation;
-- GPU selector cost;
-- PCIe/SSD behavior;
-- 8 GiB execution;
-- 70B/405B quality and wall clock.
-
-## Future-information and deployability fields
-
-Every row records the equivalent of:
-
-```text
-future_generated_tokens_used = false
-real_operation_replacement = false
-offline_full_contribution_oracle = true
-```
-
-C1 is non-deployable by definition. C0/C2 bounds are sound candidates, but the present audit still materializes full logits and contributions for validation and therefore is not a deployable executor.
-
-## Pre-registered decision thresholds
-
-### Reject range-based CPTC core
-
-Reject the range family from the core execution path if any condition holds:
-
-```text
-C1 oracle median evaluated fraction >10%
-C1 oracle p90 evaluated fraction >25%
-wrong certified accept >0
-checkpoint-derived bound violation >0
-C2 materialized-contribution CPU selector/fallback median cost > full materialized sum
-```
-
-The 10% threshold is deliberately lenient and remains far above the final PROJECTED 1.185% requirement.
-
-### Continue only if the oracle survives
-
-Continue to independently proven C3 and then real operation replacement only when all rejection conditions are avoided. Offline observation alone cannot earn E2.
-
-## Strongest falsification
-
-The C1 exact per-state min/max oracle is tighter than any sound state range derived without already knowing every realized contribution. If C1 still requires high coverage, the range-only family is intrinsically too weak for the declared core role and must be retired rather than tuned.
-
-## Active files
-
-```text
-docs/research/EXPERIMENT_047R_ORACLE_TIGHT_STRATIFIED_TILE_BOUND_AUDIT.md
-vortex_runtime/cptc_audit.py
-experiments/exp_047r/
-tests/exp_047r/
-.github/workflows/exp_047r_gate.yml
-```
-
-EXP-047 frozen evidence must not be overwritten.
-
-## Next exact action
-
-Open the branch PR, run `.github/workflows/exp_047r_gate.yml`, inspect the complete logs and uploaded candidate evidence, then classify the outcome as:
-
-```text
-CONTINUE_TO_INDEPENDENT_C3_AND_REAL_OPERATION_REPLACEMENT
 REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY
-INFRASTRUCTURE FAILURE — NO SCIENTIFIC DECISION
 ```
+
+The strongest favorable range-only oracle failed the pre-registered 10%/25% Gate by a wide margin. C3 variance-adaptive tuning is not the next experiment because it would attempt to rescue a mechanism class already rejected by its exact realized range oracle.
+
+## EXP-048 — Causal Block Verification Amortization Gate
+
+### Mechanism change
+
+EXP-048 does not skip scalar matrix tiles by partial-sum certification. It changes the cost structure:
+
+> stream the target model weights once across a block of proposed future positions, verify all positions in one exact causal target pass, and divide that full target stream by the number of exactly accepted tokens.
+
+The deployable proposal path must be causal and training-free. The target checkpoint remains unmodified.
+
+### Exact target traffic requirement
+
+From the fixed same-bit projection:
+
+```text
+405B Q4 full target stream: 188.592821 GiB
+1.2x 4B Q4 allowance: 2.235174 GiB/token
+required target-equivalent stream fraction: 0.01185185
+```
+
+With a zero-cost perfect proposal, one full target verification pass must accept at least:
+
+```text
+ceil(1 / 0.01185185) = 85 tokens
+```
+
+Any real draft cost increases the required accepted block length.
+
+### Declared algorithm
+
+For an unmodified causal dense checkpoint:
+
+1. maintain the exact committed prefix and KV state;
+2. use a training-free partial-layer self-draft to propose `K` tokens causally;
+3. concatenate the proposal to the committed prefix;
+4. execute one exact full-target teacher-forced block pass with a causal mask;
+5. compare target argmax tokens with the proposal left to right;
+6. commit only the longest exactly matching prefix;
+7. at the first mismatch, commit the exact target token and discard later proposal state;
+8. preserve exact greedy decoding output by construction.
+
+No future generated token may enter the deployable proposal path.
+
+### Conditions
+
+#### B0 — exact sequential greedy baseline
+
+One full target pass per token. Correctness control.
+
+#### B1 — perfect-proposal oracle upper bound
+
+Use exact future greedy tokens only to prove the maximum possible block-verification amortization and to validate accounting. This is non-deployable, future-aware, and cannot count as evidence for the runtime proposal mechanism.
+
+#### B2 — existing Jacobi baseline
+
+Reuse the existing exact Jacobi implementation as a control. Do not relabel its target passes as one-pass block verification and do not hide failed iterations.
+
+#### B3 — causal partial-layer self-draft
+
+Generate proposals using an early prefix of the same checkpoint layers, the checkpoint's own normalization/output head, and no learned adapter. Sweep a small pre-registered set of layer fractions and block lengths. All draft weight traffic, target verification traffic, rejected positions, KV rebuilds, and correction passes are charged.
+
+#### B4 — causal tree variant only after B3
+
+A bounded proposal tree may be tested only if B3 shows meaningful acceptance. Every expanded node and target-scored position is charged. No future-token or reference-continuation routing is allowed.
+
+### Traffic accounting
+
+For each verification cycle record:
+
+```text
+accepted_tokens
+proposed_tokens
+draft_layer_equivalent_streams
+target_full_streams
+correction_target_streams
+rejected_scored_positions
+```
+
+Primary derived metric:
+
+```text
+target_equivalent_streams_per_accepted_token =
+    (target_full_streams
+     + correction_target_streams
+     + draft_layer_equivalent_streams)
+    / accepted_tokens
+```
+
+This is a logical same-bit weight-stream metric, not wall-clock speed. Hardware latency remains Phase D.
+
+### Phase A/B implementation target
+
+Use at least three pinned small trained dense causal checkpoints with layer access supported by the reference implementation. Use held-out prompts across English, Korean, code, mathematics, structured output, and ordinary narrative when tokenizer/model capability permits.
+
+The Phase A/B runner must:
+
+- reproduce exact sequential greedy tokens;
+- prove B1 block verification equals the sequential baseline;
+- implement B3 without training or checkpoint modification;
+- record all proposal/verification passes and positions;
+- save raw per-cycle JSONL, exact revisions, environment, and checksums;
+- keep oracle and deployable results in separate fields;
+- fail closed on any token mismatch not explained by the declared correction rule.
+
+### Pre-registered early rejection Gate
+
+Reject partial-layer self-draft block amortization as the core path if any condition holds on held-out generation:
+
+```text
+exact output mismatch >0
+future information in deployable path >0
+p50 accepted tokens per target verification <16
+p90 target-equivalent stream fraction >0.10
+acceptance trend worsens materially with checkpoint depth/size
+accounted B3 cost is not lower than exact sequential B0
+```
+
+These thresholds are deliberately lenient. Passing them does not establish the final 1.185% requirement; it only permits a stronger Phase-C Gate.
+
+### Promotion Gate
+
+A candidate may advance toward real operation replacement only if:
+
+```text
+zero exact mismatches
+zero future information
+p50 accepted block >=85 after full cost accounting
+p90 target-equivalent stream fraction <=0.01185185
+nonzero success across all declared held-out task families
+model-size trend is non-degrading
+```
+
+The `>=85` requirement is not negotiable under the current same-bit traffic objective unless another independently measured mechanism reduces the full target stream cost.
+
+### Strongest counterexamples
+
+Include:
+
+- low-entropy repetitive text;
+- high-entropy code and identifiers;
+- Korean and English switching;
+- arithmetic with brittle token dependencies;
+- prompts whose early-layer and final-layer argmax disagree immediately;
+- long blocks with a mismatch near the first position;
+- EOS and structured-format boundaries;
+- deliberately bad fill tokens for Jacobi controls.
+
+### Evidence boundary
+
+Before an actual runtime replaces sequential target decoding on a real checkpoint:
+
+```text
+Phase: A/B
+Evidence ceiling: E1
+405B: NOT TESTED
+8 GiB VRAM: NOT TESTED
+CUDA/PCIe/SSD/TTFT/tokens/sec: NOT TESTED
+```
+
+### Next exact action
+
+Create a new branch and pre-register:
+
+```text
+docs/research/EXPERIMENT_048_CAUSAL_BLOCK_VERIFICATION_AMORTIZATION.md
+experiments/exp_048/
+tests/exp_048/
+results/exp_048_candidate/
+.github/workflows/exp_048_gate.yml
+```
+
+First implement B0/B1 accounting and exactness tests, then B2 existing Jacobi control, then the smallest B3 partial-layer self-draft. Do not start B4 before B3 survives its early rejection Gate.
