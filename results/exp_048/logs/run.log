@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER",
+  "deployable_future_information_uses": 0,
+  "exact_output_mismatches_b3": 0,
+  "gate_passes": false,
+  "phase_d_status": "NOT TESTED"
+}
