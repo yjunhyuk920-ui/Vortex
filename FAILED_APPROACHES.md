@@ -243,3 +243,8 @@ No analyzed dense projection in three pinned TinyStories checkpoints contained e
 ## F-026 — Conventional exact low-rank factorization of measured real Q4 projections
 
 All 144 pinned real-Q4 dense projections had certified rank `min(rows, columns)`. Conventional exact `W=A@B` therefore has favorable operation and factor-storage lower bounds of 200% before factor bitwidth, metadata, and kernel overhead. Do not revive this using approximate SVD energy, selected matrices, or a new factor optimizer while claiming exact output preservation. Retain modular rank certificates only as falsification infrastructure.
+
+<!-- EXP-059-AUTHORITATIVE-FINAL -->
+## F-027 — Exact shift-displacement structure on measured real Q4 projections
+
+All 144 pinned real-Q4 dense projections retained full displacement rank under the most favorable of zero-fill/cyclic diagonal/anti-diagonal operators. Favorable query lower bounds were 100% at p50 and p90; generator storage was 200%. Do not continue by adding more visually chosen shifts, selecting a tensor subset, or ignoring transform/boundary costs. Retain displacement certificates only as structural falsification tools.

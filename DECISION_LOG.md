@@ -250,3 +250,10 @@ D-034 closes exact column repetition and sparse residual dictionaries as a unive
 EXP-058 authority: `results/exp_058/summary.json`; workflow `30826618962`; source head `8ae03de4cc34317b5536aed42b9b8c22f98c88ea`; workflow merge `3730d6ce8ca89df347079c366a91bcad4d904a85`; artifact `8861905858`; ZIP SHA-256 `851582a616412e7e078b7c05ddb64883b972cec895847b6df3d7d75dc615bfae`. All 144 registered Q4 dense projections were proven full integer/rational rank with zero certificate, control, registration, or EXP-057 checksum mismatch. Prime 251 certified 143 matrices and prime 257 certified one. Favorable conventional exact two-factor operation and storage lower bounds were p50/p90 200%/200%. Decision: `REJECT_REAL_Q4_EXACT_LOW_RANK_FACTORIZATION_AS_CORE_RETAIN_RANK_CERTIFICATES`.
 
 Full rank does not rule out fast full-rank structured transforms. EXP-059 therefore tests exact zero-fill and cyclic diagonal/anti-diagonal shift-displacement rank rather than another factor search.
+
+<!-- EXP-059-AUTHORITATIVE-FINAL -->
+## D-037/D-038 — Reject exact shift-displacement structure and select zero-sparsity Gate
+
+EXP-059 authority: `results/exp_059/summary.json`; workflow `30840432745`; source head `cdae6160cd87b537e2f318c16430619736c7c9d9`; workflow merge `82979e393a87845c4c757ce5dfd3fadc4e701d92`; artifact `8866573958`; ZIP SHA-256 `61d0c24ccacd310d7d0e7600cc926a882c74281827d524c4880c6715fad8800d`. Four registered exact displacement operators were certified for every two-dimensional tensor. For all 144 dense projections, even the favorable selected displacement rank was 100% of the minimum dimension. Favorable query lower bounds were p50/p90 100%/100%, generator storage was 200%/200%, and the best real matrix still required 100% query work and 125% storage. All controls, registration, and EXP-057 Q4 checksums passed. Decision: `REJECT_REAL_Q4_EXACT_SHIFT_DISPLACEMENT_STRUCTURE_AS_CORE_RETAIN_CERTIFICATES`.
+
+D-038 closes the tested Toeplitz/Hankel/circulant-like exact route. EXP-060 measures a simpler orthogonal possibility: exact scalar zeros and all-zero blocks in the same pinned Q4 matrices, with index and byte costs fully charged.

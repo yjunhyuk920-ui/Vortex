@@ -1,0 +1,92 @@
+{
+  "DERIVED": {
+    "accounting_scope": "favorable r*max(m,n) query products and r*(m+n) generator scalars; transforms, boundary terms, metadata, bitwidth growth and operator-search runtime excluded",
+    "certificate_control_gate_pass": true,
+    "decision": "REJECT_REAL_Q4_EXACT_SHIFT_DISPLACEMENT_STRUCTURE_AS_CORE_RETAIN_CERTIFICATES",
+    "model_size_trend_gate_pass": true,
+    "q4_checksum_gate_pass": true,
+    "query_lower_bound_gate_pass": false,
+    "real_q4_exact_shift_displacement_survives_gate": false,
+    "registration_gate_pass": true,
+    "storage_lower_bound_gate_pass": false
+  },
+  "MEASURED": {
+    "best_real_matrix_model": "roneneldan/TinyStories-1M",
+    "best_real_matrix_operator": "cyclic_antidiagonal",
+    "best_real_matrix_query_lower_bound_fraction": 1.0,
+    "best_real_matrix_storage_lower_bound_fraction": 1.25,
+    "best_real_matrix_tensor": "transformer.h.0.mlp.c_fc.weight",
+    "certificate_or_control_mismatches": 0,
+    "control_row_count": 4,
+    "dense_projection_matrix_count": 144,
+    "elapsed_ns": 49816651918,
+    "missing_exp_057_q4_checksum_count": 0,
+    "model_count": 3,
+    "model_p50_query_lower_bound_fraction": {
+      "roneneldan/TinyStories-1M": 1.0,
+      "roneneldan/TinyStories-3M": 1.0,
+      "roneneldan/TinyStories-8M": 1.0
+    },
+    "model_size_degradation_fraction": 0.0,
+    "operator_certificate_row_count": 612,
+    "p50_query_lower_bound_fraction": 1.0,
+    "p50_selected_displacement_rank_fraction": 1.0,
+    "p50_storage_lower_bound_fraction": 2.0,
+    "p90_query_lower_bound_fraction": 1.0,
+    "p90_selected_displacement_rank_fraction": 1.0,
+    "p90_storage_lower_bound_fraction": 2.0,
+    "peak_rss_kib": 1581260,
+    "q4_checksum_mismatches_against_exp_057": 0,
+    "registered_operator_count": 4,
+    "selected_operator_distribution": {
+      "cyclic_antidiagonal": 144
+    },
+    "total_all_operator_certificate_elapsed_ns": 29334051343,
+    "total_prime_certificate_count": 615,
+    "two_dimensional_tensor_count": 153,
+    "unregistered_dense_projection_count": 0
+  },
+  "UNVERIFIED": [
+    "Q4 model output preservation",
+    "constructive exact displacement generators",
+    "exact FFT or NTT transform kernels",
+    "actual Transformer operation replacement",
+    "70B or 405B displacement rank",
+    "405B execution",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_REAL_Q4_EXACT_SHIFT_DISPLACEMENT_STRUCTURE_AS_CORE_RETAIN_CERTIFICATES",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "constructive_generator_execution": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "q4_output_preservation": "NOT TESTED",
+    "real_transformer_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-059",
+  "name": "pinned_real_q4_exact_shift_displacement_rank_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-observation"
+  ],
+  "provenance": {
+    "artifact_id": 8866573958,
+    "artifact_name": "exp-059-candidate-30840432745",
+    "artifact_size_bytes": 68652,
+    "artifact_zip_sha256": "61d0c24ccacd310d7d0e7600cc926a882c74281827d524c4880c6715fad8800d",
+    "config_sha256": "3e318ff909597e8b9ceca9b39b2a02caacc1427ce2b34132baa6ab7456003e62",
+    "exp057_summary_sha256": "2a2c451cc1d508dbf9ea65288e1533274baf97e8bc86b827c16828459ed4bd4a",
+    "frozen_date": "2026-08-04",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "82979e393a87845c4c757ce5dfd3fadc4e701d92",
+    "source_head_sha": "cdae6160cd87b537e2f318c16430619736c7c9d9",
+    "torch": "2.6.0+cpu",
+    "workflow_merge_sha": "82979e393a87845c4c757ce5dfd3fadc4e701d92",
+    "workflow_run": 30840432745
+  }
+}

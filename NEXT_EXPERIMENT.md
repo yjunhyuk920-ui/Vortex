@@ -1,69 +1,72 @@
 # Next Experiment
 
-## Closed Gate — EXP-058
+## Closed Gate — EXP-059
 
-All 144 pinned real-Q4 dense projections were proven full integer/rational rank. Favorable conventional exact two-factor operation and storage lower bounds were 200% at p50 and p90.
+All 144 pinned real-Q4 dense projections had full selected shift-displacement rank. Favorable query lower bounds were 100% at p50/p90 and generator storage was 200%.
 
 ```text
-REJECT_REAL_Q4_EXACT_LOW_RANK_FACTORIZATION_AS_CORE_RETAIN_RANK_CERTIFICATES
+REJECT_REAL_Q4_EXACT_SHIFT_DISPLACEMENT_STRUCTURE_AS_CORE_RETAIN_CERTIFICATES
 ```
 
-## EXP-059 — Pinned Real-Q4 Exact Shift-Displacement Rank Gate
+## EXP-060 — Pinned Real-Q4 Exact Zero-Sparsity Streaming Gate
 
 ### Mechanism
 
-Full-rank Toeplitz-, Hankel-, and circulant-like matrices can still admit fast exact transforms. For every registered Q4 dense projection `W`, certify the exact integer rank of four displacement matrices:
+Measure whether deterministic Q4 matrices contain enough exact zero scalars or completely zero blocks to skip original multiply-adds and weight reads without approximation. Compile and account for:
 
 ```text
-D_zero_diag  = W - shift_zero_down_right(W)
-D_zero_anti  = reverse_columns(W) - shift_zero_down_right(reverse_columns(W))
-D_cycle_diag = W - shift_cycle_down_right(W)
-D_cycle_anti = reverse_columns(W) - shift_cycle_down_right(reverse_columns(W))
+dense Q4 baseline
+scalar CSR
+row-wise nonzero-run encoding
+BSR 1x4, 1x8, 4x4, 8x8, and 16x16
 ```
 
-Use primes 251, 257, and 263. Record every operator certificate and select the most favorable operator only after all four searches are charged.
+Only exact zeros may be skipped. A nonzero BSR block charges every scalar slot in that block, including internal zeros.
 
 ### Pinned population
 
-Use the unchanged TinyStories-1M/3M/8M revisions, the exact EXP-057 Q4 rule, and all 144 named dense projections. Q4 checksums must match frozen EXP-057 evidence.
+Use the same TinyStories-1M/3M/8M revisions and all 144 named dense projections. Recompute deterministic row-symmetric Q4 and require exact checksum equality with EXP-057.
 
-### Favorable lower bounds
+### Accounting
 
-For displacement rank `r` and shape `m x n`:
+- dense operations: `m*n` multiply-add terms;
+- CSR/run operations: exact nonzero scalar count;
+- BSR operations: scalar slots in nonzero blocks;
+- packed Q4 value bytes;
+- column/block indexes using the minimum whole-byte width;
+- CSR/BSR row pointers;
+- run start/length metadata;
+- alignment padding and edge blocks;
+- all format compile/search work recorded separately.
 
-```text
-query:   r * max(m, n) frequency-domain products
-storage: r * (m + n) generator scalars
-```
-
-These omit transforms, boundary terms, metadata, bitwidth expansion, and operator-search runtime, so they favor the candidate.
+Select the best format only after all formats are compiled and charged. Report operation and query-byte fractions independently.
 
 ### Controls
 
-- random exact Toeplitz: zero-fill diagonal displacement rank <=2;
-- random exact Hankel: zero-fill anti-diagonal displacement rank <=2;
-- exact circulant: cyclic diagonal displacement rank 0;
-- deterministic dense-random negative control;
-- transpose, column-reversal, and cyclic-shift equivalence controls;
-- exact EXP-057 Q4 checksum agreement.
+- highly sparse synthetic matrix must compress below 10%;
+- dense-random Q4 matrix must not falsely compress;
+- isolated-zero adversary must expose BSR padding waste;
+- block-zero positive control must favor its registered BSR shape;
+- exact reconstruction from every serialized format;
+- row/column permutation changes format statistics but not reconstructed values;
+- EXP-057 Q4 checksum agreement.
 
 ### Promotion Gate
 
 ```text
-zero certificate/control mismatch
-zero Q4 checksum mismatch
+zero reconstruction/control/checksum mismatch
 zero unregistered dense projection
-p50 query lower-bound fraction <=10%
-p90 query lower-bound fraction <=25%
-p50 generator-storage lower-bound fraction <=10%
-p90 generator-storage lower-bound fraction <=25%
+p50 operation fraction <=10%
+p90 operation fraction <=25%
+p50 query-byte fraction <=10%
+p90 query-byte fraction <=25%
 no model-size degradation >25%
 ```
 
 Failure decision:
 
 ```text
-REJECT_REAL_Q4_EXACT_SHIFT_DISPLACEMENT_STRUCTURE_AS_CORE_RETAIN_CERTIFICATES
+REJECT_REAL_Q4_EXACT_ZERO_SPARSITY_STREAMING_AS_CORE_RETAIN_SPARSE_AUXILIARY
 ```
 
-Phase C observation only. Q4 output preservation, constructive generators, exact transform kernels, real Transformer operation replacement, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.
+Phase C observation only. Q4 model-output preservation, physical sparse kernels, actual Transformer operation replacement, 405B, 8 GiB, CUDA, PCIe, SSD, TTFT, and tokens/sec remain NOT TESTED.
