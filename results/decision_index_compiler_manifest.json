@@ -1,0 +1,64 @@
+{
+  "horizon": 8,
+  "metadata": {
+    "experiment": "045_decision_index_compiler_gate",
+    "grammar": "bounded_repeat_letter_grammar_v1",
+    "grammar_sha256": "ce0fd97dabb40edfb4ff8fd828d24a8967289432bcb890c9298b1b9846360c8e",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "model_class": "LlamaForCausalLM",
+    "tokenizer_class": "LlamaTokenizer",
+    "transformers_version": "5.14.1"
+  },
+  "node_count": 64,
+  "prompt_order": [
+    "template0-symbolA-count8",
+    "template0-symbolA-count12",
+    "template0-symbolB-count8",
+    "template0-symbolB-count12",
+    "template1-symbolA-count8",
+    "template1-symbolA-count12",
+    "template1-symbolB-count8",
+    "template1-symbolB-count12",
+    "duplicate-control-template0-symbolA-count8"
+  ],
+  "prompt_start_addresses": [
+    8,
+    0,
+    24,
+    16,
+    48,
+    32,
+    56,
+    40,
+    8
+  ],
+  "start_count": 9,
+  "state_key": "exact_prompt_and_generated_token_prefix",
+  "token_codebook": [
+    13,
+    319,
+    350,
+    6466,
+    14388,
+    29901,
+    29907,
+    29909,
+    29933
+  ],
+  "version": 1,
+  "vm": {
+    "atomic_replace": true,
+    "build_ns": 1832059,
+    "chain_steps": 8,
+    "file_bytes": 456,
+    "format_name": "compact40",
+    "header_crc32": 2454530522,
+    "parent_directory_fsync_attempted": true,
+    "path": "results/decision_index_compiler_compact40.vtx",
+    "payload_crc32": 1746888489,
+    "record_bytes": 5,
+    "record_count": 64,
+    "start_count": 9,
+    "temporary_file_removed": true
+  }
+}

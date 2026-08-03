@@ -1,0 +1,111 @@
+name: Decision-index compiler gate
+
+on:
+  pull_request:
+    paths:
+      - "experiments/decision_index_compiler_grammar.json"
+      - "vortex_runtime/decision_index_compiler.py"
+      - "tests/test_decision_index_compiler.py"
+      - "scripts/run_decision_index_compiler_gate.py"
+      - "docs/EXPERIMENT_045_DECISION_INDEX_COMPILER_GATE.md"
+      - ".github/workflows/decision-index-compiler-gate.yml"
+
+concurrency:
+  group: decision-index-compiler-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  compile:
+    if: github.head_ref == 'research/decision-index-compiler-gate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate compiler core
+        run: |
+          test -f vortex_runtime/decision_index_compiler.py
+          test -f tests/test_decision_index_compiler.py
+          python -m pytest -q tests/test_decision_index_compiler.py
+      - name: Compile bounded TinyLlama graph
+        run: |
+          python scripts/run_decision_index_compiler_gate.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --grammar experiments/decision_index_compiler_grammar.json \
+            --device cpu \
+            --output results/decision_index_compiler_gate.json \
+            --vm-output results/decision_index_compiler_compact40.vtx \
+            --manifest-output results/decision_index_compiler_manifest.json
+      - name: Build PR report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(
+              Path("results/decision_index_compiler_gate.json")
+              .read_text(encoding="utf-8")
+          )
+          report = {
+              "evidence_level": payload["evidence_level"],
+              "model": payload["model"],
+              "grammar": payload["grammar"],
+              "build_accounting": payload["build_accounting"],
+              "growth_without_duplicate_control": payload["growth_without_duplicate_control"],
+              "growth_with_duplicate_control": payload["growth_with_duplicate_control"],
+              "token_codebook": payload["token_codebook"],
+              "duplicate_control": payload["duplicate_control"],
+              "compiled_vm_replay": payload["compiled_vm_replay"],
+              "heldout_coverage": payload["heldout_coverage"],
+              "scope_separation": payload["scope_separation"],
+              "conclusion": payload["conclusion"],
+              "next_obligation": payload["next_obligation"],
+          }
+          Path("decision-index-compiler-comment.md").write_text(
+              "## Bounded exact decision-index compiler Gate\n\n```json\n"
+              + json.dumps(report, indent=2, ensure_ascii=False)
+              + "\n```",
+              encoding="utf-8",
+          )
+          PY
+      - name: Publish report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file decision-index-compiler-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: decision-index-compiler-gate
+          path: |
+            results/decision_index_compiler_gate.json
+            results/decision_index_compiler_manifest.json
+            results/decision_index_compiler_compact40.vtx
+      - name: Commit evidence
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            results/decision_index_compiler_gate.json \
+            results/decision_index_compiler_manifest.json
+          git commit -m "data(gate): commit bounded decision-index compiler evidence"
+          git pull --rebase origin "${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
