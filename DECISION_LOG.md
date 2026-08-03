@@ -1,56 +1,42 @@
 # VORTEX Decision Log
 
-All architecture decisions are append-only. Later corrections reference prior entries rather than deleting them.
+Append-only architecture decisions. Corrections explicitly supersede prior run identity without deleting scientific history.
 
 ## D-001 — Final target remains fixed
 
 Date: 2026-08-03
 
-Decision: arbitrary public unmodified Hugging Face dense model, runtime replacement only, 405B flagship, <=8 GiB VRAM, original contract preserved, 4B-class user experience, independent reproduction.
+Arbitrary public unmodified Hugging Face dense model; runtime replacement only; real 405B; <=8 GiB VRAM; original contract preserved; 4B-class user experience; independent reproduction.
 
 Status: ACTIVE.
 
 ## D-002 — Current environment is not Phase D
 
-Date: 2026-08-03
+GitHub Actions CPU results cannot be labeled target GPU, 405B, CUDA, PCIe, SSD, TTFT, tokens/second, or peak-VRAM measurements.
 
-Decision: GitHub Actions CPU results cannot be labeled as target GPU, 405B, CUDA, PCIe, SSD, TTFT, tokens/second, or peak-VRAM measurements.
-
-Status: ACTIVE, NON-NEGOTIABLE. Phase D is NOT TESTED.
+Status: ACTIVE. Phase D NOT TESTED.
 
 ## D-003 — Adopt Phase A/B/C/D validation separation
-
-Date: 2026-08-03
 
 Status: ACTIVE.
 
 ## D-004 — Adopt E0–E7 evidence scale
 
-Date: 2026-08-03
+E0 idea, E1 synthetic/reference, E2 small real-model operation replacement, E3 held-out causal generalization, E4 accessible representative hardware, E5 medium/large scaling, E6 target under 8 GiB, E7 real 405B at 4B-class performance.
 
-Decision: E0 idea, E1 synthetic/reference, E2 small real-model replacement, E3 held-out causal generalization, E4 accessible representative hardware, E5 medium/large scaling, E6 target under 8 GiB, E7 405B at 4B-class performance.
-
-Status: ACTIVE; supersedes older E0–E4-only scale.
+Status: ACTIVE.
 
 ## D-005 — Separate MEASURED, DERIVED, PROJECTED, UNVERIFIED
 
-Date: 2026-08-03
+Status: ACTIVE.
+
+## D-006 — Reclassify mmap/index/DAG work as auxiliary
+
+Evidence: PR #50/#52/#54.
 
 Status: ACTIVE.
 
-## D-006 — Reclassify decision-index replay work as auxiliary
-
-Date: 2026-08-03
-
-Evidence: PR #50, #52, #54.
-
-Decision: valid auxiliary representation/replay components, not the unseen-prompt operation-skipping principle.
-
-Status: ACTIVE.
-
-## D-007 — Reject raw prefix enumeration as a core runtime
-
-Date: 2026-08-03
+## D-007 — Reject raw prefix enumeration as core runtime
 
 Evidence: 64/64 unique nodes excluding duplicate; held-out start coverage 0%.
 
@@ -58,38 +44,31 @@ Status: REJECTED CORE MECHANISM.
 
 ## D-008 — Accept exact future-DAG only as body compression
 
-Date: 2026-08-03
-
-Evidence: 64 records ->38 nodes, causal held-out start coverage 0%.
+Evidence: 64 records ->38 nodes; causal held-out start coverage 0%.
 
 Status: ACCEPTED AUXILIARY COMPONENT.
 
 ## D-009 — Make unseen-prompt causal operation skipping the primary filter
 
-Date: 2026-08-03
-
-Decision: core work must answer the twelve questions in `RESEARCH_STATE.md`.
+Core work must answer the twelve questions in `RESEARCH_STATE.md`.
 
 Status: ACTIVE.
 
 ## D-010 — Select EXP-047 CPTC
 
-Date: 2026-08-03
-
-Decision: test sampling-without-replacement finite-population certificates with exact fallback as a materially different response to failed deterministic signed residual bounds.
+Test causal sampling-without-replacement finite-population certificates with exact fallback as a materially different response to failed deterministic signed-residual bounds.
 
 Status: EXECUTED.
 
 ## D-011 — Accept EXP-047 correctness primitive at E1
 
-Date: 2026-08-03
-
-Authoritative evidence:
+Final authoritative evidence:
 
 ```text
 PR: #56
-workflow: 30791851508
-source head: d395d0eada15fd7ef9b09ce5ccb561a921bb6b7b
+workflow: 30792813542
+source implementation SHA: 08e8b35f48b1b616147f22dce046ab93218265c9
+committed result head after workflow: 3359371762c004db3532ebb16872b4eee85accf6
 cases: 525
 wrong accepts: 0
 fallback mismatches: 0
@@ -97,15 +76,11 @@ independent-bound mismatches: 0
 adversarial exact fallback: 15/15
 ```
 
-Decision:
-
-The implemented alpha-spending Serfling interval, causal randomized order, deterministic replay, validation faults, and exact fallback satisfy the Phase-B correctness Gate.
+Decision: the alpha-spending Serfling implementation, causal randomized order, deterministic replay, validation faults, and exact fallback satisfy Phase B.
 
 Status: ACCEPTED E1 PRIMITIVE ONLY.
 
-## D-012 — Do not promote global-range CPTC-v1 as the core executor
-
-Date: 2026-08-03
+## D-012 — Do not promote global-range CPTC-v1 as core executor
 
 MEASURED:
 
@@ -114,32 +89,30 @@ certified: 4/525
 fallback: 521/525 = 99.238%
 mean evaluated fraction N=1024: 98.294%
 positive control: 107/1024 = 10.449%
-Python optimized/reference time ratio: about 8.8–9.1x in measured buckets
+Python optimized/reference time: about 9.2–9.7x
 ```
 
 PROJECTED:
 
 ```text
-simple target evaluated-weight fraction before overhead: 1.185%
+required simple target fraction before selector/fallback: 1.185%
 positive-control fraction / target fraction: 8.817x
 ```
 
-Decision:
-
-The pre-registered positive control passed, but broad skip performance failed to establish a plausible execution path. Do not build a full backend or call this Phase-C performance success.
+Decision: primitive Gate passed, architecture performance did not. No full backend or Phase-C performance claim.
 
 Status: REVISE CORE ARCHITECTURE.
 
-## D-013 — Next decisive Gate is oracle-tight/stratified real-checkpoint audit
+## D-013 — Next Gate is oracle-tight/stratified real-checkpoint audit
 
-Date: 2026-08-03
+Use held-out current-token states from available unmodified small checkpoints to distinguish intrinsic statistical difficulty from loose global ranges. Compare current global, non-deployable oracle-tight, and deployable stratified bounds before actual operation replacement.
 
-Decision:
-
-Use held-out states from available unmodified small checkpoints to distinguish intrinsic statistical difficulty from loose global ranges. Compare current bounds, non-deployable oracle-tight ranges, and deployable stratified checkpoint-derived bounds before actual operation replacement.
-
-Rule:
-
-Offline full-contribution analysis remains below E2. If oracle-tight ranges still require high tile fractions, reject range-only CPTC rather than tuning it.
+Offline analysis remains below E2. If oracle-tight bounds still require high tile fractions, reject range-only CPTC rather than tune it.
 
 Status: ACTIVE NEXT GATE.
+
+## D-014 — Freeze measurement workflow boundary
+
+Only implementation/config/tests/workflow changes rerun EXP-047. Result interpretation and root-document changes do not regenerate raw timing. Workflow commits complete raw evidence to the source branch after Gate success.
+
+Status: ACTIVE REPRODUCIBILITY RULE.
