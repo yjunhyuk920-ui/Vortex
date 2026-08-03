@@ -1,0 +1,23 @@
+{
+  "name": "bounded_repeat_letter_grammar_v1",
+  "description": "Finite chat-prompt grammar for exact TinyLlama decision-index compilation. A/B combinations are compiled; C combinations are held out.",
+  "system_message": "You follow formatting instructions exactly and answer with no explanation.",
+  "symbols": ["A", "B", "C"],
+  "counts": [8, 12],
+  "templates": [
+    "Repeat the capital letter {symbol} exactly {count} times, separated by single spaces. Output only the letters.",
+    "Write only {count} copies of {symbol}, with one space between copies."
+  ],
+  "split": {
+    "compiled_symbols": ["A", "B"],
+    "heldout_symbols": ["C"]
+  },
+  "horizons": [2, 4, 8],
+  "maximum_horizon": 8,
+  "duplicate_control": {
+    "enabled": true,
+    "source_prompt_id": "template0-symbolA-count8",
+    "prompt_id": "duplicate-control-template0-symbolA-count8"
+  },
+  "vm_token_codebook_limit": 16
+}
