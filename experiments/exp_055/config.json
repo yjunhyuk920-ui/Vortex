@@ -21,9 +21,9 @@
     {"input_bits": 12, "class_count": 2, "accumulator_bits": 12},
     {"input_bits": 12, "class_count": 8, "accumulator_bits": 12}
   ],
-  "exhaustive_max_input_bits": 16,
-  "larger_domain_samples": 4096,
-  "packed_validation_max_input_bits": 12,
+  "exhaustive_max_input_bits": 12,
+  "larger_domain_samples": 2048,
+  "packed_validation_max_input_bits": 8,
   "projection": {
     "target_source_parameters": 405000000000,
     "target_q4_bytes": 202500000000
