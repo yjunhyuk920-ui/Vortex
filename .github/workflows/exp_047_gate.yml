@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - "docs/research/EXPERIMENT_047_CAUSAL_PROBABILISTIC_TILE_CERTIFICATE.md"
       - "vortex_runtime/__init__.py"
       - "vortex_runtime/cptc.py"
       - "experiments/exp_047/**"
