@@ -2,20 +2,33 @@
 
 ## EXP-047R — Oracle-Tight and Stratified Tile-Bound Audit
 
-### Classification
+### Current status
 
-- core research: yes;
-- previous EXP-047 Phase-B correctness primitive: accepted E1;
-- current architecture decision: REVISE;
-- next phase: Phase C analysis/falsification on available unmodified small checkpoints;
-- evidence ceiling before real operation replacement: E1, even though real checkpoints are inspected;
-- Phase D: NOT TESTED.
+```text
+Implementation branch: research/exp-047r-oracle-stratified-audit
+Gate registration: COMMITTED
+Primitive tests: NOT YET RUN IN GITHUB ACTIONS
+Real-checkpoint audit: NOT YET RUN
+Scientific decision: PENDING
+Evidence ceiling before real operation replacement: E1
+Phase D: NOT TESTED
+```
 
-No new experiment number is created merely to hide CPTC-v1's weak skip rate.
+No new experiment number is being used to hide CPTC-v1's weak skip rate.
 
-## Why revision is mandatory
+## Previous authoritative evidence
 
-Authoritative EXP-047 run `30791851508` measured:
+Authoritative EXP-047 evidence:
+
+```text
+PR: #56
+workflow: 30793232558
+source SHA: 74ac92e9b1c8fffbc50a2322d9b36dd3c05f0d79
+phase: A/B
+evidence: E1
+```
+
+MEASURED:
 
 ```text
 525 cases
@@ -23,161 +36,188 @@ Authoritative EXP-047 run `30791851508` measured:
 521 exact fallbacks
 mean evaluated fraction at N=1024: 98.294%
 positive control: 107/1024 tiles = 10.449%
-required simple 405B traffic fraction before overhead: about 1.185%
+wrong accepts: 0
 ```
 
-The correctness mechanism passed, but the global-range Serfling form is not a plausible primary executor.
+PROJECTED:
+
+```text
+required simple 405B Q4 traffic fraction before overhead: about 1.185%
+```
+
+The correctness mechanism passed, but the global-range Serfling form did not earn promotion as an execution architecture.
 
 ## Decisive question
 
 > Is CPTC failing because real Transformer decision-tile contributions are intrinsically uncertifiable early, or because one global range bound is too loose?
 
-The next Gate must answer this before any deployable Phase-C backend is built.
+The next Gate answers this before any deployable Phase-C backend is built.
 
 ## Real-checkpoint audit scope
 
-Use several available unmodified dense causal checkpoints, aiming for at least three sizes when GitHub storage/time permit.
-
-For held-out prompts and current-token states:
-
-1. run the exact baseline forward pass;
-2. select a declared scalar decision, initially LM-head winner versus runner-up;
-3. partition the corresponding dot-product difference into input-dimension tiles;
-4. save exact tile contributions only as a non-deployable analysis oracle;
-5. replay causal random tile orders and compare certificate families.
-
-The exact baseline and full contributions are used only to measure the upper bound and catch wrong accepts. They may not be hidden from forward-call or cost accounting.
-
-## Certificate families to compare
-
-### C0 — global range Serfling
-
-Current EXP-047 implementation. Expected control baseline.
-
-### C1 — oracle-tight global range
-
-Use the exact min/max of the current state's full contribution vector. This is future/full-work oracle metadata and is not deployable.
-
-Purpose:
-
-- strongest quick falsification of the range looseness hypothesis;
-- if C1 still needs nearly all tiles, reject range-only CPTC as a core path.
-
-### C2 — causal stratified static bounds
-
-Group tiles using checkpoint-derived, checksummed static metadata. Candidate bound:
+Use three available unmodified trained dense causal checkpoints:
 
 ```text
-|q^T W_i x_i| <= ||q||_2 ||W_i||_F ||x_i||_2
+roneneldan/TinyStories-1M
+roneneldan/TinyStories-3M
+roneneldan/TinyStories-8M
 ```
 
-or a tighter operator-norm/block bound if computable without reading the skipped tile at runtime.
+The runner resolves an exact Hugging Face revision SHA before downloading or executing each model, then records a file SHA-256 manifest. The first successful workflow must be inspected and its exact revisions frozen before evidence becomes authoritative.
 
-Sample and certify strata separately, then combine intervals with explicit delta allocation.
+For fixed held-out prompts and current-token states:
 
-### C3 — empirical-Bernstein/variance-adaptive finite-population bound
+1. execute the exact baseline forward pass;
+2. obtain the exact final hidden state and logits;
+3. select top-1 versus runner-up as the declared scalar decision;
+4. partition that exact pairwise margin into input-dimension tiles;
+5. save exact contributions only as a non-deployable analysis oracle;
+6. compare C0, C1, and C2 under deterministic causal random orders.
 
-Only include after the mathematical adaptive-stopping contract is independently derived and tested. Do not import an asymptotic IID bound into sampling-without-replacement without proof.
+This is offline full-contribution observation, not real operation replacement and not E2.
+
+## Certificate families
+
+### C0 — global checkpoint-derived range
+
+For output-weight matrix `W`, compile per-hidden-dimension column spans:
+
+```text
+s_j = max_o W[o,j] - min_o W[o,j]
+```
+
+For current hidden state `h` and tile `T_i`:
+
+```text
+|c_i| <= B_i = sum_{j in T_i} |h_j| s_j
+```
+
+C0 applies one range:
+
+```text
+[-max_i B_i, +max_i B_i]
+```
+
+The metadata is checkpoint-derived and the activation factor is available at the current token. It does not require reading the selected output rows to establish the bound.
+
+### C1 — exact per-state oracle range
+
+Use the exact min/max of the fully materialized current-state contribution vector. This is intentionally non-deployable and is the strongest favorable range-only control.
+
+If C1 misses the rejection thresholds, further C0/C2 range metadata tuning stops.
+
+### C2 — checkpoint-span stratified range
+
+Group tiles by `B_i` magnitude. Sample without replacement inside each stratum and sum per-stratum Serfling intervals.
+
+Union accounting:
+
+```text
+delta_s   = delta * 6 / (pi^2 (s+1)^2)
+delta_s,n = delta_s * 6 / (pi^2 n^2)
+```
+
+Current code validates every bound against exact materialized contributions because this is an offline audit. A later deployable runtime would require checksummed metadata and fail-closed validation without consuming skipped rows.
+
+### C3 — variance-adaptive finite-population bound
+
+Status: `NOT IMPLEMENTED`.
+
+C3 is forbidden from influencing the Gate until an independent proof, slow reference calculator, property tests, adaptive-stopping union accounting, and fault injection are committed. An IID or asymptotic empirical-Bernstein formula may not be imported without a valid sampling-without-replacement proof.
 
 ## Required measurements
 
-MEASURED:
+MEASURED in the valid current environment:
 
-- checkpoint ID/revision and bytes;
-- prompt split and hashes;
-- exact baseline forward calls;
-- current/future information audit;
-- layer/operator/tile counts;
-- exact winner/runner-up logit margin;
-- per-certificate accepted fraction;
-- sampled/evaluated tile fraction;
-- wrong accepts;
-- fallback;
-- CPU time and peak RSS;
-- static metadata construction time/bytes;
-- model-size trend.
+- exact model/tokenizer revision and file hashes;
+- prompt hashes;
+- exact baseline forward states;
+- layer/hidden/vocabulary/tile counts;
+- top-1/runner-up logit margin;
+- LM-head and tile reconstruction errors;
+- C0/C1/C2 evaluated fractions;
+- wrong accepts and bound violations;
+- fallback/full-evaluation behavior;
+- CPU primitive timing after contributions are materialized;
+- peak RSS;
+- metadata bytes and model-size trend.
 
 DERIVED:
 
-- union error budget;
-- selector operations;
-- logical weight bytes saved under each certificate;
-- exact fallback cost.
+- two-dimensional union error budget;
+- Gate booleans;
+- decision classification;
+- 405B fraction gap from measured oracle fractions.
 
 PROJECTED:
 
-- 405B weight fraction and bytes/token under the measured fractions;
-- gap to 1.185% traffic fraction;
-- memory requirements for static bounds.
+- 405B Q4 weight bytes/token under the observed fractions;
+- gap to the 1.185% pre-overhead traffic fraction.
 
 UNVERIFIED:
 
-- GPU kernel overhead;
-- target PCIe/SSD behavior;
+- C3 correctness;
+- real LM-head operation replacement;
+- model-wide nonlinear propagation;
+- GPU selector cost;
+- PCIe/SSD behavior;
 - 8 GiB execution;
 - 70B/405B quality and wall clock.
 
-## Future-information audit
+## Future-information and deployability fields
 
-Every result row must state:
+Every row records the equivalent of:
 
 ```text
-uses_exact_full_contributions
-uses_exact_baseline_winner
-uses_future_generated_tokens
-is_deployable
+future_generated_tokens_used = false
+real_operation_replacement = false
+offline_full_contribution_oracle = true
 ```
 
-C1 is intentionally non-deployable. Future generated tokens remain forbidden for every family.
+C1 is non-deployable by definition. C0/C2 bounds are sound candidates, but the present audit still materializes full logits and contributions for validation and therefore is not a deployable executor.
 
 ## Pre-registered decision thresholds
 
-### Reject range-only CPTC core
+### Reject range-based CPTC core
 
-Reject C0/C1 as a primary mechanism if, on held-out real states:
+Reject the range family from the core execution path if any condition holds:
 
-- oracle-tight C1 median evaluated fraction >10%; or
-- C1 p90 >25%; or
-- any wrong accept occurs; or
-- certificate overhead plus fallback exceeds full exact reference cost.
+```text
+C1 oracle median evaluated fraction >10%
+C1 oracle p90 evaluated fraction >25%
+wrong certified accept >0
+checkpoint-derived bound violation >0
+C2 materialized-contribution CPU selector/fallback median cost > full materialized sum
+```
 
-The 10% threshold is still far above the final 1.185% target; it is only an early rejection threshold.
+The 10% threshold is deliberately lenient and remains far above the final PROJECTED 1.185% requirement.
 
-### Continue stratified-bound research
+### Continue only if the oracle survives
 
-Continue C2 only when:
-
-- zero wrong accepts;
-- median deployable evaluated fraction materially improves over C0;
-- metadata and selector cost are fully charged;
-- at least one held-out task family has nonzero certified coverage;
-- trend does not worsen with checkpoint size.
-
-### Real operation replacement promotion
-
-Only after the audit shows a meaningful deployable certificate should a subsequent Gate replace the actual LM-head operation during generation. Offline contribution analysis alone does not qualify as E2.
+Continue to independently proven C3 and then real operation replacement only when all rejection conditions are avoided. Offline observation alone cannot earn E2.
 
 ## Strongest falsification
 
-Search held-out states with:
+The C1 exact per-state min/max oracle is tighter than any sound state range derived without already knowing every realized contribution. If C1 still requires high coverage, the range-only family is intrinsically too weak for the declared core role and must be retired rather than tuned.
 
-- tiny exact top-1 margin;
-- late aligned contributions;
-- heavy-tailed tiles;
-- winner changes under partial evaluation;
-- domain/language shift;
-- code, mathematics, Korean, English, structured output, and long context.
-
-If even oracle-tight intervals do not close early, reject the current statistical-certificate family rather than tuning thresholds.
-
-## Required implementation additions
+## Active files
 
 ```text
-docs/research/EXPERIMENT_047R_ORACLE_TIGHT_TILE_BOUND_AUDIT.md
+docs/research/EXPERIMENT_047R_ORACLE_TIGHT_STRATIFIED_TILE_BOUND_AUDIT.md
+vortex_runtime/cptc_audit.py
 experiments/exp_047r/
-results/exp_047r/
 tests/exp_047r/
 .github/workflows/exp_047r_gate.yml
 ```
 
-Reuse EXP-047 reference code and provenance schema. Do not overwrite EXP-047 raw evidence.
+EXP-047 frozen evidence must not be overwritten.
+
+## Next exact action
+
+Open the branch PR, run `.github/workflows/exp_047r_gate.yml`, inspect the complete logs and uploaded candidate evidence, then classify the outcome as:
+
+```text
+CONTINUE_TO_INDEPENDENT_C3_AND_REAL_OPERATION_REPLACEMENT
+REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY
+INFRASTRUCTURE FAILURE — NO SCIENTIFIC DECISION
+```
