@@ -113,3 +113,8 @@ Q4 checksum agreement 144/144; full integer/rational rank 144/144; certificate/c
 ## EXP-059 closure
 
 Q4 checksum agreement PASS; registration 144/144; operator certificates 612; control/certificate mismatches 0; p50/p90 selected displacement-rank fraction 100%/100%; favorable query lower bound 100%/100%; favorable generator storage 200%/200%. Hardware and 405B remain NOT TESTED.
+
+<!-- EXP-060-AUTHORITATIVE-FINAL -->
+## EXP-060 closure
+
+Q4 checksum agreement PASS; dense registration 144/144; formats 1224; reconstruction/control mismatches 0; exact zero fraction p50/p90 17.76%/20.37%; operation fraction 82.22%/85.06%; query-byte fraction 150.93%/200.86%. Physical sparse kernels, 405B, 8 GiB, and target hardware remain NOT TESTED.

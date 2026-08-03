@@ -1,0 +1,34 @@
+{
+  "experiment": "EXP-060",
+  "seed": 600060,
+  "torch_num_threads": 2,
+  "bits_per_scalar": 4,
+  "block_shapes": [[1, 4], [1, 8], [4, 4], [8, 8], [16, 16]],
+  "models": [
+    {
+      "model_id": "roneneldan/TinyStories-1M",
+      "revision": "77f1b168e219585646439073245fe87e56b3023e"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-3M",
+      "revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-8M",
+      "revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af"
+    }
+  ],
+  "primary_matrix_role": "dense_projection",
+  "early_gate": {
+    "maximum_reconstruction_or_control_mismatches": 0,
+    "maximum_unregistered_dense_projections": 0,
+    "maximum_q4_checksum_mismatches_against_exp_057": 0,
+    "maximum_p50_operation_fraction": 0.10,
+    "maximum_p90_operation_fraction": 0.25,
+    "maximum_p50_query_byte_fraction": 0.10,
+    "maximum_p90_query_byte_fraction": 0.25,
+    "maximum_model_size_degradation": 0.25
+  },
+  "failure_decision": "REJECT_REAL_Q4_EXACT_ZERO_SPARSITY_STREAMING_AS_CORE_RETAIN_SPARSE_AUXILIARY",
+  "evidence_ceiling": "Phase C observation only: Q4 output preservation, physical sparse kernels, operation replacement, 405B and target hardware are not tested"
+}

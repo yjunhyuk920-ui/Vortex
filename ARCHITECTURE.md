@@ -208,3 +208,8 @@ Modular rank certification is retained as an offline structural audit. Conventio
 ## Displacement-structure boundary
 
 The runtime must not promote the tested zero-fill/cyclic diagonal/anti-diagonal generator route for matrices with full certified displacement rank. Certificates remain offline audits. The next permitted exact structural path is sparse streaming conditioned on measured Q4 zero scalars or complete zero blocks.
+
+<!-- EXP-060-AUTHORITATIVE-FINAL -->
+## Static-zero sparsity boundary
+
+The runtime must not promote static CSR/run/BSR streaming for the measured Q4 population. Exact sparse formats remain conditional auxiliaries. The next permitted sparsity route is causal activation-column skipping based only on exact runtime zeros and fail-closed dense fallback.

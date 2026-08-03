@@ -1,0 +1,92 @@
+{
+  "DERIVED": {
+    "accounting_scope": "exact scalar zeros only; packed Q4 values, indexes, row pointers, run metadata, nonzero-block internal slots and edge padding charged",
+    "decision": "REJECT_REAL_Q4_EXACT_ZERO_SPARSITY_STREAMING_AS_CORE_RETAIN_SPARSE_AUXILIARY",
+    "model_size_trend_gate_pass": true,
+    "operation_gate_pass": false,
+    "q4_checksum_gate_pass": true,
+    "query_byte_gate_pass": false,
+    "real_q4_zero_sparsity_survives_gate": false,
+    "reconstruction_control_gate_pass": true,
+    "registration_gate_pass": true
+  },
+  "MEASURED": {
+    "best_real_matrix_format": "row_runs",
+    "best_real_matrix_model": "roneneldan/TinyStories-8M",
+    "best_real_matrix_operation_fraction": 0.6989593505859375,
+    "best_real_matrix_query_byte_fraction": 1.90118408203125,
+    "best_real_matrix_tensor": "transformer.h.2.attn.attention.k_proj.weight",
+    "control_row_count": 4,
+    "dense_projection_matrix_count": 144,
+    "elapsed_ns": 227166173649,
+    "format_row_count": 1224,
+    "maximum_zero_scalar_fraction": 0.3010406494140625,
+    "missing_exp_057_q4_checksum_count": 0,
+    "model_count": 3,
+    "model_p50_operation_fraction": {
+      "roneneldan/TinyStories-1M": 0.842529296875,
+      "roneneldan/TinyStories-3M": 0.82635498046875,
+      "roneneldan/TinyStories-8M": 0.8094940185546875
+    },
+    "model_size_degradation_fraction": 0.0,
+    "p50_operation_fraction": 0.82220458984375,
+    "p50_query_byte_fraction": 1.50927734375,
+    "p50_zero_scalar_fraction": 0.1776123046875,
+    "p90_operation_fraction": 0.8505859375,
+    "p90_query_byte_fraction": 2.00860595703125,
+    "p90_zero_scalar_fraction": 0.20367431640625,
+    "peak_rss_kib": 1169112,
+    "q4_checksum_mismatches_against_exp_057": 0,
+    "reconstruction_or_control_mismatches": 0,
+    "registered_format_count": 8,
+    "selected_format_distribution": {
+      "row_runs": 144
+    },
+    "total_format_compile_elapsed_ns": 219301223564,
+    "total_format_search_scalar_scans": 433642496,
+    "two_dimensional_tensor_count": 153,
+    "unregistered_dense_projection_count": 0
+  },
+  "UNVERIFIED": [
+    "Q4 model output preservation",
+    "physical CSR run or BSR kernels",
+    "actual Transformer operation replacement",
+    "70B or 405B zero sparsity",
+    "405B execution",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_REAL_Q4_EXACT_ZERO_SPARSITY_STREAMING_AS_CORE_RETAIN_SPARSE_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "physical_sparse_kernel": "NOT TESTED",
+    "q4_output_preservation": "NOT TESTED",
+    "real_transformer_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-060",
+  "name": "pinned_real_q4_exact_zero_sparsity_streaming_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-observation"
+  ],
+  "provenance": {
+    "artifact_id": 8867145590,
+    "artifact_name": "exp-060-candidate-30841671707",
+    "artifact_size_bytes": 58039,
+    "artifact_zip_sha256": "5e5255dbedd779b734876faa027cd2bf5e4a1b00ece7f28cbf35f428fb9a0b05",
+    "config_sha256": "82254fd1177bcce6b788199ed92bbc122d97f04783f0bc02d056c090ba043a29",
+    "exp057_summary_sha256": "2a2c451cc1d508dbf9ea65288e1533274baf97e8bc86b827c16828459ed4bd4a",
+    "frozen_date": "2026-08-04",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "5f2af394180beaf3e5b5b8c7386d2becdf7eb8e7",
+    "source_head_sha": "bf89d087343a4790202126c34562ca0344ebe452",
+    "torch": "2.6.0+cpu",
+    "workflow_merge_sha": "5f2af394180beaf3e5b5b8c7386d2becdf7eb8e7",
+    "workflow_run": 30841671707
+  }
+}
