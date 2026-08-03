@@ -1,183 +1,165 @@
 # Assumption Register
 
-No assumption may be used as a success condition while its status is unverified.
+No unverified assumption may be used as a success condition.
 
-## A-001 — Signed tile cancellation is exploitable
-
-Assumption:
-
-Transformer linear-operator tile contributions, under a causal randomized order, have enough cancellation that a valid finite-population confidence sequence often closes before most tiles are read.
-
-Current evidence:
-
-Deterministic signed residual experiments observed cancellation but required roughly 90–98% refinement. No valid probabilistic tile certificate has been tested.
-
-Status: UNVERIFIED.
-
-Contradiction test:
-
-EXP-047 Phase B adversarial distributions and Phase C held-out real-model states require near-100% tiles or produce wrong accepts.
-
-Dependencies: EXP-047.
-
-## A-002 — Time-uniform finite-population bounds can be implemented without hidden independence violations
+## A-001 — Signed tile cancellation is broadly exploitable
 
 Assumption:
 
-Sampling tiles without replacement and using a declared confidence sequence yields valid coverage under adaptive stopping.
+Real Transformer decision-tile contributions permit valid early certification under causal randomized order.
 
 Current evidence:
 
-Mathematical derivation and independent reference implementation pending.
+- Prior deterministic residual work observed cancellation but needed 90–98% refinement.
+- EXP-047 global-range synthetic run certified 4/525 cases and evaluated about 98% of tiles overall.
+- A strong synthetic positive control certified after 10.449% tiles.
 
-Status: UNVERIFIED.
+Status: WEAKENED / UNVERIFIED ON REAL MODELS.
 
 Contradiction test:
 
-Exact enumeration for small populations plus Monte Carlo property tests find empirical undercoverage beyond tolerance or a proof review identifies an invalid assumption.
+EXP-047R oracle-tight held-out real-checkpoint audit. Reject range-only CPTC if oracle-tight median evaluated fraction >10% or p90 >25%.
 
-Dependencies: EXP-047 Phase A/B.
+Dependencies: EXP-047R.
+
+## A-002 — Alpha-spending Serfling implementation is valid under declared assumptions
+
+Assumption:
+
+Sampling without replacement plus fixed-step Serfling intervals and `delta_n = delta*6/(pi^2 n^2)` is valid under adaptive stopping when every contribution lies in the declared range.
+
+Current evidence:
+
+10 unit/property tests; 525 cases; zero independent-bound mismatches; zero wrong accepts in the corpus; adversarial exact fallback 15/15.
+
+Status: SUPPORTED AT PHASE B / E1. Mathematical and implementation scope only.
+
+Remaining risk:
+
+A real checkpoint must derive sound ranges without reading all skipped tiles.
+
+Dependencies: EXP-047R.
 
 ## A-003 — Certificate overhead is smaller than skipped work
 
 Assumption:
 
-Selector, statistics, projections, and confidence updates cost materially less than evaluating the omitted dense tiles.
+Selector/statistics cost is materially smaller than evaluated dense work.
 
 Current evidence:
 
-None for CPTC.
+Python Phase-B optimized path was about 8.8–9.1x slower than simple full summation in measured buckets, while fallback was 99.238%.
 
-Status: UNVERIFIED.
+Status: CONTRADICTED FOR CURRENT PYTHON CPTC-v1; UNVERIFIED FOR VECTORIZED ACCELERATOR IMPLEMENTATION.
 
-Contradiction test:
+Contradiction/promotion test:
 
-MEASURED Phase B/C selector time or operations exceed saved tile work at the promotion thresholds.
+Charge selector operations and real-operation wall clock. No hardware projection may override current measured CPU evidence.
 
-Dependencies: EXP-047.
+Dependencies: EXP-047R and later real replacement.
 
 ## A-004 — A decision-relevant low-dimensional projection is sufficient
 
 Assumption:
 
-A candidate can certify a token or operator decision without constructing every omitted output coordinate exactly.
+A token/operator decision can be certified without reconstructing every omitted output coordinate.
 
 Current evidence:
 
-LM-head top-1 certificates and constructed decision lower bounds exist, but model-wide nonlinear propagation remains unresolved.
+LM-head top-1 certificate primitives and constructed decision bounds exist, but model-wide nonlinear propagation is unresolved.
 
-Status: PARTIALLY SUPPORTED, UNVERIFIED MODEL-WIDE.
+Status: PARTIALLY SUPPORTED / UNVERIFIED MODEL-WIDE.
 
 Contradiction test:
 
-Real-operation replacement shows downstream nonlinearities require near-complete hidden-vector precision before any token certificate can close.
+Real operation replacement requires near-complete hidden-vector precision before final certification.
 
-Dependencies: future EXP-048+.
-
-## A-005 — Probabilistic certification is acceptable under a declared error budget
+## A-005 — Probabilistic certification is acceptable
 
 Assumption:
 
-A runtime mode with an explicitly union-bounded wrong-commit probability can be considered an original-output-preserving mode for some users/tests.
+A union-bounded wrong-commit mode is acceptable alongside strict exact fallback mode.
 
 Current evidence:
 
-No product acceptance criterion is defined. Deterministic exact mode remains the strict reference.
+No final product acceptance criterion. EXP-047 uses `delta=1e-8` per synthetic decision and observed zero wrong accepts, but this is not model-wide union accounting.
 
 Status: UNVERIFIED REQUIREMENT.
 
 Contradiction test:
 
-Project acceptance requires bitwise determinism only, or union accounting makes the usable `delta` too small for any savings.
+Strict bitwise exactness is mandatory or usable model-wide delta makes all certificates ineffective.
 
-Dependencies: EXP-047 and final validation protocol.
+## A-006 — Small-model certification trends predict larger models
 
-## A-006 — Small-model tile-certification trends predict larger models
-
-Assumption:
-
-Certified skip fractions remain stable or improve with width/depth.
-
-Current evidence:
-
-None. TinyLlama results cannot establish this.
+Current evidence: none.
 
 Status: UNVERIFIED FOR LARGE MODELS.
 
-Contradiction test:
+Contradiction test: same held-out protocol across at least three sizes, then 30B/70B/405B in later phases.
 
-Measurements across at least three sizes show worsening tile fractions, fallback, or certificate overhead.
+## A-007 — Target RAM/SSD capacity and bandwidth are sufficient
 
-Dependencies: Phase C/E3 and Phase D/E5.
-
-## A-007 — 405B cold storage and host memory are sufficient
-
-Assumption:
-
-A target machine can hold the original checkpoint and runtime metadata in RAM and/or SSD while sustaining the required access pattern.
-
-Current evidence:
-
-Only formulas and small mmap tests. No 405B file or target SSD measurement.
+Current evidence: small mmap tests and formulas only.
 
 Status: UNVERIFIED; Phase D NOT TESTED.
 
-Contradiction test:
+## A-008 — Full hot state fits 8 GiB including KV/buffers/fallback
 
-Actual capacity, random-access latency, endurance, or bandwidth fails `HARDWARE_VALIDATION_PLAN.md` thresholds.
-
-Dependencies: Phase D.
-
-## A-008 — 8 GiB hot-state budget can include KV, buffers, and fallback tile
-
-Assumption:
-
-The final architecture can schedule all GPU-resident state within 8 GiB at the declared context.
-
-Current evidence:
-
-No complete candidate and no target GPU measurement.
+Current evidence: no complete architecture and no target GPU measurement.
 
 Status: UNVERIFIED; E0.
 
-Contradiction test:
-
-Analytical memory certificate or measured peak allocation exceeds 8 GiB.
-
-Dependencies: full architecture Gate and Phase D.
-
 ## A-009 — 4B-class speed can coexist with exact fallback
 
-Assumption:
-
-Normal-path certification succeeds often enough that fallback amortization fits the 4B-class latency budget.
-
 Current evidence:
 
-Prior repair mechanisms failed badly; CPTC has no measurements.
+Prior repair mechanisms failed; CPTC-v1 fallback was 99.238% in synthetic cases.
 
-Status: UNVERIFIED AND HIGH RISK.
+Status: HIGH-RISK AND CURRENTLY UNSUPPORTED.
 
 Contradiction test:
 
-Required fallback frequency or cold bytes/token exceeds the declared budget.
+Measured fallback/cold bytes exceed target budget. A simple same-bit comparison requires about 1.185% average target weight evaluation before overhead.
 
-Dependencies: EXP-047 onward.
+## A-010 — Auxiliary DAG/VM components aid the final runtime
 
-## A-010 — Auxiliary DAG/VM components will be useful in the final runtime
+Current evidence: bounded functional components only.
+
+Status: OPTIONAL/UNVERIFIED. They must not constrain core research.
+
+## A-011 — Loose range metadata, not intrinsic tile behavior, caused CPTC-v1 failure
 
 Assumption:
 
-Existing exact pointer VM and suffix-DAG work will store certificates, capsules, or repeated execution states in a future operation-skipping architecture.
+Per-state oracle-tight or deployable stratified bounds materially reduce certificate sample fractions.
 
 Current evidence:
 
-Functional bounded implementations only.
+Not tested. Current global range was deliberately broad `[-1,1]`.
 
-Status: OPTIONAL/UNVERIFIED.
+Status: ACTIVE UNVERIFIED ASSUMPTION.
 
 Contradiction test:
 
-The winning execution principle requires no such state or their storage/build cost exceeds benefit.
+EXP-047R compares global, oracle-tight, and deployable stratified ranges on held-out real-checkpoint tile contributions.
 
-Dependencies: none; must not constrain core research.
+Decision:
+
+If oracle-tight C1 remains above rejection thresholds, reject range-only CPTC rather than tuning sample fractions.
+
+## A-012 — Sound static tile metadata can be computed automatically
+
+Assumption:
+
+Checkpoint-derived tile norms or tighter bounds can be precomputed without training/model modification, stored compactly, and combined with the current activation without reading skipped weights.
+
+Current evidence: formula candidates only.
+
+Status: UNVERIFIED.
+
+Contradiction test:
+
+Metadata is too large, runtime activation bounds too loose, or construction requires forbidden calibration/training.
+
+Dependencies: EXP-047R C2.
