@@ -40,7 +40,12 @@ jobs:
             safetensors==0.5.3 tokenizers==0.21.1
 
       - name: Apply durable state
-        run: python scripts/finalize_exp_053.py
+        run: |
+          python scripts/finalize_exp_053.py
+          # GitHub Actions tokens cannot push workflow-file changes. The
+          # scientific workflow is manualized separately through the connected
+          # GitHub write API after this validated document commit lands.
+          git checkout -- .github/workflows/exp_053_gate.yml
 
       - name: Validate
         run: |
