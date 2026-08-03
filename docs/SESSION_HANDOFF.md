@@ -16,14 +16,15 @@ Read in order:
 8. `ARCHITECTURE.md`
 9. `HARDWARE_VALIDATION_PLAN.md`
 10. `REPRODUCIBILITY.md`
-11. EXP-048 document and `results/exp_048/summary.json`
-12. PR #58.
+11. `docs/PROOF_FIRST_CONTRACT.md`
+12. `docs/WORK_SESSION_PROTOCOL.md`
+13. EXP-049 document, `results/exp_049/summary.json`, PR #59.
 
 Root files and machine-readable result JSON are authoritative; conversation memory is not.
 
 ## Fixed target
 
-Real arbitrary unmodified Hugging Face dense model, runtime only, 405B flagship, <=8 GiB VRAM, original contract preserved, and p50 warm time/token <=1.2x native 4B Q4 on the same machine.
+Real arbitrary unmodified Hugging Face dense target, runtime only, 405B flagship, total peak GPU VRAM <=8 GiB, original contract preserved, p50 warm time/token <=1.2x native 4B Q4 and p95 <=1.5x on the same machine.
 
 ## Environment truth
 
@@ -32,35 +33,29 @@ Real arbitrary unmodified Hugging Face dense model, runtime only, 405B flagship,
 405B storage/execution unavailable
 CUDA/PCIe/target SSD profiling unavailable
 real 405B TTFT/tokens/sec/VRAM NOT TESTED
+physical block weight reuse NOT TESTED
 Phase D NOT TESTED
+E6/E7 not achieved
 ```
 
 ## Current branch and PR
 
 ```text
 repository yjunhyuk920-ui/Vortex
-branch research/exp-048-causal-block-amortization
-PR #58
+branch research/exp-049-anderson-continuous-fixed-point
+PR #59
 ```
 
-## EXP-047/047R closed decision
+## EXP-049 authoritative evidence
 
 ```text
-REJECT_RANGE_BASED_CPTC_CORE_RETAIN_CERTIFICATE_AUXILIARY
-```
-
-The exact per-state range oracle evaluated 100% at median and p90. C3 was not continued. Certificate/fault rejection/exact fallback remain auxiliary.
-
-## EXP-048 authoritative evidence
-
-```text
-results/exp_048/summary.json
-workflow 30798936320
-source head SHA 484a1f0f313d88733d2f7210f2a24d3904bf1373
-workflow merge SHA d60e392d66d694fc020f2cfe2435e47e5f5a22ca
-artifact 8850040445
-artifact size 17689 bytes
-artifact ZIP SHA-256 67c1e6d8965f7535020ecd4c02bb8a2af1156a234564f3cdf74d10c882fd7eb9
+results/exp_049/summary.json
+workflow 30803672059
+source head SHA 91d0caa86d784c663bc520d36d9b512f0cc526e9
+workflow merge SHA 173dd3477e2a6f5ecb0d55b58375ec18dfe774dd
+artifact 8851957250
+artifact size 105493 bytes
+artifact ZIP SHA-256 4cd6c8c4afb833562438a97f052d45d331f3691362472fb08e594bd0c5585b9e
 ```
 
 Pinned external revisions:
@@ -72,150 +67,140 @@ TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
 TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
 ```
 
-## EXP-048 MEASURED result
-
-Exactness and causality:
+## EXP-049 MEASURED result
 
 ```text
-9 EXP-048 tests passed
+9 EXP-049 tests passed
 repository validation passed
 3 models × 6 families = 18 cases
-B1 exact mismatches 0
-B2 exact mismatches 0
-B3 exact mismatches 0
-B3 deployable future information uses 0
-peak RSS 682552 KiB
+1,458 fixed solver trajectories
+excluded states 0
+selected exact mismatch 0
+selected future-information uses 0
+unhandled numerical failures 0
+S3 oracle alignment failures 0
+peak RSS 684684 KiB
 ```
 
-B1 perfect future oracle:
+Favorable exact-reference-selected S1/S2:
 
 ```text
-96 exact tokens / 1 target pass
-target-equivalent fraction 1.0416667%
-future information true
-deployable false
+p50 matching prefix 4.5
+maximum matching prefix 6
+p90 target-equivalent fraction 168.778596%
+model medians 4.5 / 5.0 / 4.0
+all selected rows: 4 target passes, block 64
+17/18 hard top-1 Picard
+0/18 Anderson
 ```
 
-B2 hard Jacobi:
+Controls:
 
 ```text
-p50 target passes / 32 exact tokens 58
-p50 accepted tokens per target pass 0.551724
-p50 fraction 181.25%
-p90 fraction 193.75%
-maximum matching prefix 3
+hard Jacobi p50 prefix after four passes 4
+Anderson p50 prefix after four passes 1
+Anderson/Jacobi improvement 0.25x
 ```
 
-B3 partial-layer self-draft:
+Triangular audit:
 
 ```text
-18 cases, 54 fixed variants
-best cases with nonzero matching prefix 4/18
-maximum matching prefix 1
-p50 committed tokens per target verification 1
-model medians 1 / 1 / 1
-minimum fully accounted fraction 1333.463%
-p90 fully accounted fraction 2893.843%
-```
-
-PROJECTED:
-
-```text
-405B Q4 full stream 188.592821 GiB
-1.2x 4B allowance 2.235174 GiB/token
-required target-equivalent fraction 1.185185%
-zero-cost perfect-proposal minimum 85 tokens/full target pass
-B1 oracle fraction / requirement 0.87890625
-B3 p90 fraction / requirement 2441.6793
+Picard prefixes 1,2,3,4
+Anderson prefixes 1,2,3,3
+hidden suffix transcript indistinguishability true
+one-new-exact-position-per-round barrier true
 ```
 
 ## Scientific decision
 
 ```text
-EXP-048 exact block verifier: ACCEPT E1 AUXILIARY
-B1 perfect future proposal: NON-DEPLOYABLE UPPER BOUND ONLY
-B2 hard Jacobi core: REJECT
-B3 partial-layer self-draft core: REJECT
-B4 tree continuation from failed B3: DO NOT IMPLEMENT
-complete real operation replacement: NOT TESTED
-Phase D: NOT TESTED
-E6/E7: not achieved
+EXP-049 solver/numerical reference: ACCEPT E1 AUXILIARY
+exact block verifier: RETAIN E1 AUXILIARY
+target-only continuous fixed-point core: REJECT
+405B/8 GiB/4B-class performance: NOT TESTED
 ```
 
 Required phrase:
 
-> The exact block verifier safely preserved greedy output, and a future-aware 96-token oracle reached a logical 1.0417% stream fraction. The causal partial-layer draft matched at most one proposal token and had p50 one committed token with p90 28.9384 target-equivalent streams per token, so partial-layer self-drafting is rejected as the core runtime.
+> Even with exact-reference selection of the best fixed Picard/Anderson trajectory, EXP-049 achieved only p50 4.5 exact proposal tokens and p90 1.6878 target-equivalent streams per committed token. Hidden triangular targets also preserved the one-new-position-per-round transcript barrier. Target-only continuous fixed-point proposal generation is rejected as core; 405B and target hardware remain untested.
 
 ## Frozen evidence layout
 
 ```text
-results/exp_048/summary.json
-results/exp_048/raw/artifact_provenance.json
-results/exp_048/raw/checkpoint_manifest.json
-results/exp_048/raw/cases.jsonl.gz.b64
-results/exp_048/processed/aggregate.json
-results/exp_048/logs/run.log
-results/exp_048/artifacts/
-results/exp_048/checksums.sha256
+results/exp_049/summary.json
+results/exp_049/raw/artifact_provenance.json
+results/exp_049/raw/workflow_summary.json
+results/exp_049/raw/checkpoint_manifest.json
+results/exp_049/raw/triangular_audit.json
+results/exp_049/raw/cases.jsonl
+results/exp_049/processed/aggregate.json
+results/exp_049/logs/run.log
+results/exp_049/artifacts/
+results/exp_049/checksums.sha256
 ```
 
-Restore raw cases:
+`.github/workflows/exp_049_gate.yml` is manual-only and writes isolated reproduction output. The one-shot evidence-freeze workflow installed byte-identical authoritative evidence and does not trigger on ordinary result/document changes.
 
-```bash
-base64 -d results/exp_048/raw/cases.jsonl.gz.b64 | gunzip > /tmp/exp_048_cases.jsonl
-sha256sum /tmp/exp_048_cases.jsonl
-# b70d56f3e13ab1f39dd8947be468e663d6b5691fb20236b990f20a343bcbe4d2
-```
+## Next work — EXP-050
 
-## Next work — EXP-049
+`Target-Independent External Draft Advice Gate` changes the information source.
 
-`Anderson-Accelerated Continuous Block Fixed-Point Gate` removes the sequential per-token draft loop.
+Algorithm:
+
+1. load exact prompt into target and another already-published unmodified draft checkpoint;
+2. generate a causal draft continuation with draft KV cache;
+3. verify the entire draft block with one exact target pass;
+4. commit only target-matching prefix plus exact first-mismatch correction;
+5. charge every draft token forward, target verification, selector, rejected position, KV state, and correction.
+
+Fixed initial pool:
 
 ```text
-soft future-token embeddings
--> 1/2/4 full causal target block passes
--> damped Picard or bounded Anderson update
--> hard proposal
--> retained exact block verifier
+Target 1M <- Drafts 3M,8M
+Target 3M <- Drafts 1M,8M
+Target 8M <- Drafts 1M,3M
 ```
 
-Conditions:
+Controls:
 
 ```text
-S0 charged hard Jacobi baseline
-S1 damped continuous Picard
-S2 Anderson history m in {2,4,8}
-S3 exact future-state oracle, non-deployable
-S4 adversarial triangular causal models
-K in {64,128,256}
-solver passes in {1,2,4}
+E0 target-independent first-token counterexample
+E1 every cross-checkpoint single draft
+E2 exact-reference favorable pool selection, non-deployable
+E3 exact future-target oracle, non-deployable
+E4 tree forbidden unless E2 survives
 ```
 
 Early rejection:
 
 ```text
-any exact mismatch/future information/unhandled numerical failure
-p50 matching prefix <16 after <=4 solver passes
-p90 accounted fraction >10%
-Anderson p50 improvement <4x over hard Jacobi
-materially worsening model-size trend
-universal >1-position/round claim contradicted by adversarial model
+any verifier mismatch
+any target-future leakage
+favorable pool p50 exact prefix <16
+p90 4B/405B-normalized fraction >10%
+any required family with zero useful proposal acceptance
+worsening size trend
+universal first-token counterexample succeeds
 ```
 
-Theoretical obligation:
+Universal boundary: a fixed target-independent draft can always be contradicted by an arbitrary target choosing a different first token. Practical pool evidence is separate from the arbitrary-model claim.
 
-> For arbitrary causal dense models, a target-only synchronous black-box solver may be unable to guarantee more than one new exact token position per target round in the worst case.
+PROJECTED 4B draft requirement:
 
-EXP-049 must formalize and test this before making any universal acceleration claim.
+```text
+4/405 = 0.0098765432 target streams/draft token
+required total fraction 0.01185185185
+perfect proposal minimum after draft cost 507 tokens
+```
 
 ## Reproduction
 
 ```bash
-git checkout research/exp-048-causal-block-amortization
-python -m pytest -q tests/exp_048
+git checkout research/exp-049-anderson-continuous-fixed-point
+python -m pytest -q tests/exp_049
 python scripts/run_validation.py
-bash experiments/exp_048/reproduce.sh
-cd results/exp_048 && sha256sum -c checksums.sha256
+bash experiments/exp_049/reproduce.sh
+cd results/exp_049 && sha256sum -c checksums.sha256
 ```
 
-Do not overwrite `results/exp_047/`, `results/exp_047r/`, or `results/exp_048/`. EXP-049 must use a new branch and result directory.
+Do not overwrite frozen `results/exp_047*`, `results/exp_048`, or `results/exp_049`. EXP-050 uses a new branch/result directory.
