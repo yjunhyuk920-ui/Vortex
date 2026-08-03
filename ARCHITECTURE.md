@@ -4,19 +4,19 @@
 
 VORTEX is a runtime, not a retrained target model. It ingests an unmodified supported Hugging Face dense checkpoint and automatically constructs runtime state/metadata.
 
-## Fixed target execution stack
+## Target execution stack
 
 ```text
 unmodified Hugging Face target checkpoint
         |
         v
-checkpoint/shard inspector and automatic runtime compiler
+checkpoint inspector and automatic runtime compiler
         |
         v
 causal executor
         |
-        +--> proposal/information source
-        +--> exact or declared probabilistic certificate/verifier
+        +--> proposal, early-exit, or operation-skipping source
+        +--> exact/probabilistic certificate or verifier
         +--> safe commit OR exact correction/fallback
         |
         v
@@ -24,262 +24,162 @@ memory scheduler
         - target/draft hot state
         - KV and work buffers
         - RAM/SSD cold state
-        - every proposal, verification, rejection, and fallback charged
+        - all probes, proposals, verification, and fallback charged
         |
         v
-original-model-compatible output contract
+original-target-compatible output contract
 ```
 
 ## Core requirement
 
-The primary runtime must causally reduce or amortize original 405B weight traffic and arithmetic on unseen prompts. A component is core only when it participates in that measured cost reduction. Correctness-only components are auxiliary.
+The primary runtime must causally reduce or amortize original 405B weight traffic and arithmetic on unseen prompts. Correctness-only components remain auxiliary.
 
 ## Mandatory interfaces
 
-### Proposal or information source
+### Operation-reduction source
 
-Produces candidate tokens, soft states, decision metadata, or an execution capsule. It must report:
+Produces a proposal, intermediate decision, exact execution capsule, or early-exit candidate. It reports causal inputs, target/draft/layer/probe counts, target-specific preprocessing, future information, state bytes, selector cost, and rejected work.
 
-- causal inputs;
-- target/draft/solver pass counts;
-- target-specific training or compilation, if any;
-- parameter and state bytes;
-- future-information use;
-- rejected positions and numerical fallback;
-- selector cost.
+### Certificate/verifier
 
-### Certificate or verifier
+Declares one contract: deterministic exact, deterministic top-1, bounded logit, probabilistic top-1, or exact block longest-prefix verification.
 
-Declares exactly one contract:
-
-- deterministic exact;
-- deterministic top-1;
-- bounded-logit error;
-- probabilistic top-1 with union-accounted delta;
-- exact target block verification with longest-prefix plus first-mismatch correction.
-
-Future-token oracle controls are never deployable evidence.
+An exact-reference oracle depth/proposal is not a deployable selector.
 
 ### Correction/fallback
 
-When proposal matching, certification, metadata, or numerical solving fails, execute the exact target work required by the declared reference contract. No silent approximation and no uncharged correction stream.
+Any uncertainty, mismatch, corrupt metadata, or numerical failure executes the exact target work required by the reference contract. No silent approximation.
 
-### Memory virtualization
+### Memory/evidence
 
-Separate:
+Separate target/draft weights, KV, work, probe heads, metadata, verification, and fallback. Every run emits revisions, calls/layers/bytes, exact output agreement, selector/oracle labels, timing, memory, and raw checksums.
 
-```text
-M_total = M_target_hot + M_draft_hot + M_kv_target + M_kv_draft
-          + M_work + M_metadata + M_verify + M_fallback
-```
+## Auxiliary components retained
 
-The final target requires `M_total <=8 GiB`; this remains UNVERIFIED.
-
-### Evidence
-
-Every run emits exact revisions, phase/evidence/provenance, target/draft/solver passes, logical and physical bytes where available, exact-prefix distribution, correction/fallback, future-information audit, numerical failures, memory, timing, and output agreement.
-
-## Auxiliary accepted components
-
-- safetensors discovery/slice access;
-- compact/checksummed mmap pointer VM;
-- atomic runtime-format builder;
-- bounded exact decision-index and finite-horizon DAG components;
-- CPTC certificate, metadata fault rejection, and exact fallback at E1;
-- `vortex_runtime/block_verify.py` exact longest-prefix plus correction verifier at E1;
-- `vortex_runtime/fixed_point.py` Picard/Anderson reference and fail-closed numerical machinery at E1;
-- hidden triangular adversarial models for universal target-round claims.
-
-None currently supplies the core proposal information required by the final runtime.
+- exact/checksummed mmap pointer VM;
+- bounded exact compiler/DAG components;
+- CPTC certificate/fault rejection/exact fallback;
+- exact block verifier;
+- Picard/Anderson numerical reference;
+- adversarial triangular and first-token constructions.
 
 ## Rejected core mechanisms
 
 See `FAILED_APPROACHES.md`.
 
-Closed families include:
+Closed through EXP-050:
 
-- global/oracle-tight/stratified range-based CPTC;
+- range-based partial-sum certification;
 - hard target-only Jacobi;
-- sequential partial-target-layer self-draft with repeated target LM-head work;
-- target-only continuous Picard/Anderson block solving;
-- proposal-tree expansion from a failed single-path source.
+- recursive partial-layer draft;
+- target-only continuous fixed-point proposal;
+- fixed target-independent external draft as arbitrary-model core;
+- tested TinyStories cross-checkpoint pool as practical restricted core;
+- proposal-tree continuation from failed single-path sources.
 
-## Retained exact block verifier
-
-```text
-exact target prefix + proposed block
-        |
-        v
-one exact causal target block pass
-        |
-        v
-left-to-right comparison
-        |
-        +--> commit every matching proposal token
-        +--> commit exact target token at first mismatch
-        +--> discard every later position/state
-```
-
-EXP-048/049 committed-output mismatches: zero in their tested scopes.
-
-Verifier arithmetic positive control:
+## Closed EXP-050 external-draft path
 
 ```text
-96 perfect future tokens / one target pass = 1.0416667%
-```
-
-The verifier is not the proposal source.
-
-## Closed EXP-049 target-only solver architecture
-
-### Tested map
-
-```text
-exact prefix embeddings || continuous future block Z
-        |
-        v
-full causal target pass
-        |
-        v
-aligned logits -> top-k soft projection through target embedding
-        |
-        v
-F(Z), residual F(Z)-Z
-        |
-        +--> damped Picard
-        +--> bounded Anderson history
-        |
-        v
-hard proposal -> exact block verifier
+prompt -> external model cached greedy proposal
+       -> one exact target block pass
+       -> exact prefix + correction
 ```
 
 MEASURED favorable result:
 
 ```text
-exact-reference-selected p50 prefix 4.5
-maximum prefix 6
-p90 target-equivalent fraction 168.778596%
-Anderson p50 prefix after four passes 1
-hard Jacobi p50 prefix after four passes 4
+p50 matching proposal prefix 0.5
+maximum 3
+p90 normalized fraction 163.20987654%
+matching prefix zero 72/108 rows
+Korean/JSON coverage false
 ```
 
-Triangular adversarial result:
+Universal first-token counterexample returned prefix zero.
+
+Decision: reject core; retain only accounting and verifier references.
+
+## Active EXP-051 layer-finalization architecture
+
+EXP-051 changes the skip axis from future token positions to target layer depth.
 
 ```text
-Picard round prefixes 1,2,3,4
-Anderson round prefixes 1,2,3,3
-hidden suffix indistinguishability true
-```
-
-Decision:
-
-- retain solver/numerical reference only;
-- reject target-only fixed-point proposal as core;
-- do not tune only top-k/temperature/damping/history/iterations;
-- do not build a target-only fixed-point GPU backend from this evidence.
-
-## Active EXP-050 external-draft architecture
-
-EXP-050 changes the information source:
-
-```text
-exact prompt
-   |                         unmodified external draft checkpoint
-   +------------------------> cached sequential draft generation
-                                      |
-                                      v
-                              K-token causal proposal
-                                      |
-exact target prefix + proposal ------+
+exact greedy prefix/current token
         |
         v
-one exact target block verification pass
+embedding
         |
-        +--> longest exact proposal prefix
-        +--> first-mismatch exact target correction
+        v
+block 1 -> h_1 -> final norm + LM head -> z_1
+block 2 -> h_2 -> final norm + LM head -> z_2
+...
+block L -> h_L -> final norm + LM head -> exact z_L
 ```
 
-The target remains unmodified and untrained. The external draft is already published and fixed independently of target future tokens.
-
-### Draft pool
-
-For the initial falsification Gate:
+Oracle definitions:
 
 ```text
-Target TinyStories-1M <- Drafts 3M, 8M
-Target TinyStories-3M <- Drafts 1M, 8M
-Target TinyStories-8M <- Drafts 1M, 3M
+first_match = earliest d with z_d = z_L
+suffix_stable = earliest d with z_j = z_L for every j >= d
 ```
 
-A reference-selected best draft is an explicitly non-deployable favorable upper bound. A deployable selector remains a separate obligation.
+The suffix-stable oracle gives the strongest favorable layer-tail skip. It uses later layer results and is not deployable.
+
+### Logical traffic
+
+For depth `d`:
+
+```text
+B_oracle(d) = B_current_embedding_rows
+              + sum_{j<=d} B_block_j
+              + B_final_norm
+              + B_lm_head
+
+fraction(d) = B_oracle(d) / B_full_target_token
+```
+
+This favorable accounting pays one LM-head probe and assumes the correct depth is already known. A real selector/certificate can only cost more.
+
+### Oracle Gate before engineering
+
+If suffix-stable oracle median bytes exceed 10%, p90 exceeds 25%, or median block depth exceeds 10%, no tail selector/certificate backend is built.
 
 ### Universal boundary
 
-A fixed target-independent draft cannot guarantee a nonzero exact prefix for every arbitrary target: for the same prompt, an adversarial target can choose a first greedy token different from the draft.
+A valid residual target can preserve token `a` through all early layers and add a final residual that flips to `b`. Thus no fixed early depth is universally exact for arbitrary targets.
 
-Therefore EXP-050 reports separately:
+Empirical oracle results are separately used to decide whether a restricted adaptive certificate deserves work.
 
-- universal exact claim: tested by the first-token counterexample;
-- practical restricted-family acceptance: tested by cross-checkpoint proposals.
+### Sound certificate stage
 
-### Accounting equations
-
-For target parameter bytes `P_t`, draft bytes `P_d`, proposal length `K`, and exact committed tokens `A`:
-
-```text
-S_actual/token = (K * P_d/P_t + 1 target verification stream) / A
-```
-
-Final 4B-draft/405B-target normalization:
-
-```text
-S_projected/token = (K * 4/405 + 1) / A
-```
-
-Required target condition:
-
-```text
-S_projected/token <=0.01185185185
-```
-
-Even with a completely correct proposal:
-
-```text
-4/405 + 1/K <=0.01185185185
-K >=507
-```
-
-Thus an actual 4B draft requires at least 507 consecutive exact proposal tokens before other overhead. The older 85-token minimum applies only to a zero-cost proposal.
-
-### Tree expansion
-
-A proposal tree is forbidden until the single-path fixed pool survives its early Gate. Every branch and target-scored node must be charged. A tree cannot be used to hide position-zero divergence.
+Forbidden until the oracle survives. It must bound omitted attention/MLP residual effects on the final token without executing skipped layers. Intermediate token equality or multi-layer stability alone is not a certificate.
 
 ## Resource equations
 
 ```text
-B_total/token = B_draft + B_target_verify/A + B_selector
-                + B_correction + B_metadata
-
-C_total/token = C_draft + C_target_verify/A + C_selector
-                + C_correction
-
-T_token >= max(B_total/effective_bandwidth,
-               C_total/effective_throughput,
-               serial_latency_floor)
+M_total = M_target_hot + M_kv + M_work + M_probe + M_metadata + M_fallback
+B_total/token = B_executed_layers + B_probe + B_selector + B_fallback
+C_total/token = C_executed_layers + C_probe + C_selector + C_fallback
 ```
 
-PROJECTED same-bit target comparison:
+Target conditions:
 
 ```text
-405B Q4 target stream: 188.592821 GiB
-4B Q4 draft/baseline stream: 1.862645 GiB
-1.2x allowance: 2.235174 GiB/token
-required target-equivalent fraction: 1.185185%
+M_total <=8 GiB
+B_total/token <=1.2 * B_4B
+C_total/token <=1.2 * C_4B
 ```
 
-Hardware terms remain `NOT TESTED` until Phase D.
+PROJECTED:
+
+```text
+405B Q4 stream 188.592821 GiB
+1.2x 4B allowance 2.235174 GiB/token
+required fraction 1.185185%
+```
+
+Hardware terms remain `NOT TESTED`.
 
 ## Safety rule
 
-No path commits outside its declared exact verifier or certificate. Invalid revision, metadata, proposal, numerical state, selector, or accounting triggers exact correction/fallback or abort.
+No path commits outside its declared exact verifier/certificate. Invalid depth, metadata, proposal, probe, selector, or numerical state triggers exact completion/fallback or abort.
