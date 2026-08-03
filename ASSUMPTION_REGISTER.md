@@ -191,3 +191,8 @@ A-026 enumerative exact advice generalizes across unseen families: CONTRADICTED 
 ## A-029/A-030 — AIG reduction and input-adaptive exact diagrams
 
 A-029 structural hashing alone makes exact dense arithmetic cheap: CONTRADICTED for the registered bounded operators. A-030 a weight-derived reduced ordered decision diagram can trade compile/storage for a short exact input-adaptive query path without exponential growth: ACTIVE UNVERIFIED for EXP-054.
+
+<!-- EXP-054-AUTHORITATIVE-FINAL -->
+## A-031/A-032 — Decision paths and word-level column aggregation
+
+A-031 an exact reduced ordered diagram yields a universally short path: CONTRADICTED for the registered operator family. A-032 quantized target weight columns contain enough exact repeated/sign-related structure for word-level grouped popcount aggregation to close query and storage costs: ACTIVE UNVERIFIED for EXP-055.

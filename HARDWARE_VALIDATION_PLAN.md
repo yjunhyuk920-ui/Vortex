@@ -144,3 +144,8 @@ EXP-052 has no Phase-D core route. EXP-053 hardware work is forbidden until a re
 ## EXP-053/054 hardware boundary
 
 EXP-053 has no Phase-D promotion route as core. EXP-054 hardware work is forbidden until a real small-checkpoint operation is replaced exactly and both decision-diagram storage and path probes close the 8 GiB and 1.185185% equations. Phase D remains NOT TESTED.
+
+<!-- EXP-054-AUTHORITATIVE-FINAL -->
+## EXP-054/055 hardware boundary
+
+EXP-054 has no Phase-D route as core. EXP-055 hardware work is forbidden until a real small-checkpoint linear operation is replaced exactly and grouped signature bytes/operations close the 8 GiB and 1.185185% equations. Phase D remains NOT TESTED.

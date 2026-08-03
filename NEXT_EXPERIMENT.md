@@ -1,91 +1,87 @@
 # Next Experiment
 
-## Closed Gate — EXP-053
+## Closed Gate — EXP-054
 
-Authority: `results/exp_053/summary.json`; workflow `30814648709`; source head `325cc694d4b2e88e34dba5ba8e980e3970c34c66`; workflow merge `4ecca6405f549fc9a05d7ad17cfe1d7c3a9c3398`; artifact `8856213147`; ZIP SHA-256 `eb7ecf8f284cc974d62e03bee767892666160abfae79a70bb32446f0dfe95178`.
+Authority: `results/exp_054/summary.json`; workflow `30816333096`; source head `2c63da85050afcedad6a00698a6f8fddd3bc99d2`; artifact `8856906303`; ZIP SHA-256 `0dc642f306cea99ce01095758a5f49151092d530efb94d36985553e408596edf`.
 
-24 weight-derived circuits were exhaustively checked over 4,506,624 inputs with zero output-bit mismatch and no truth-table representation. Structural hashing left p50/p90 reachable fractions 0.84168345/0.94107229; dense-random p50 was 0.92452096. The maximum 405B source-parameter circuit projection was 255.5966 TiB. Late-bit controls simplified to zero AND nodes, but sparse controls still retained 65–78% of the exact bit-blast and projected 3.17–7.45 TiB. Growth and compile-amortization Gates passed; node, byte, storage, and random-dense Gates failed.
+24 operators were compiled in natural and weight-magnitude orders: 48 completed diagrams, zero ceiling/fallback, zero mismatches across 9,013,248 validations, and zero truth-table representations. Selected global p50/p90 path fractions were 35%/95%. Dense-random growth was 1.6872587x per added input bit, maximum projected storage was 202.2479 TiB, and maximum order-search amortization was 1,185,055 queries. Late-bit controls reached 5–12.5% paths, but dense, low-rank, and sparse families failed the universal Gate.
 
 Decision:
-
-```text
-REJECT_BIT_EXACT_DECISION_CIRCUIT_COMPILER_AS_CORE_RETAIN_AIG_REFERENCE_AUXILIARY
-```
-
-## EXP-054 — Exact Reduced Ordered Decision-Diagram Gate
-
-### Mechanism change
-
-Compile the same bounded signed modular top-1 operators into a reduced ordered multi-terminal decision diagram (ROMTDD/ROBDD-like representation). Unlike EXP-053 AIGs, runtime evaluates one variable-dependent root-to-terminal path rather than every reachable gate.
-
-The compiler may use exact residual score states and Shannon decomposition, but it may not store an explicit input-to-output truth table.
-
-### Conditions
-
-```text
-D0 independent arithmetic reference
-D1 natural input-bit variable order
-D2 deterministic weight-magnitude variable order
-D3 exact unique-table reduction: low==high elimination and (var,low,high) sharing
-D4 sparse/low-rank controls
-D5 dense-random and late-bit adversaries
-D6 exact path evaluator and exhaustive finite-domain equivalence
-```
-
-For each operator, compile both registered variable orders. A fixed weight-derived selector may retain the smaller diagram, but compile visits/time for both orders are charged.
-
-### Registered domains
-
-Use the EXP-053 operator families and scaling matrix, with an early safety ceiling:
-
-```text
-input bits 8, 12, 16, 20
-classes 2, 4, 8
-accumulator widths 8, 12, 16
-maximum compile states/nodes per order 2,000,000
-```
-
-A ceiling hit is a scientific failure row with exact fallback, not an infrastructure crash.
-
-### Accounting
-
-```text
-recursive compile-state visits
-memoized residual states
-unique decision nodes
-terminal count
-serialized bytes
-both-order compile time/bytes
-p50/p90 root-to-terminal input probes
-query probe fraction = path probes / input bits
-fallback on ceiling or corruption
-405B source-parameter storage projection
-node growth per added input bit
-```
-
-### Early rejection Gate
-
-```text
-exact mismatch >0
-explicit truth table stored as representation
-p50 query probe fraction >10%
-p90 query probe fraction >25%
-any dense-random 20-bit case exceeds 2,000,000 compile states/nodes
-projected diagram storage >1 TiB
-adversarial node-growth multiplier >1.5 per added input bit
-variable-order search cost cannot be amortized within 1,000,000 queries
-fallback/ceiling rate >0
-```
-
-Failure decision:
 
 ```text
 REJECT_EXACT_REDUCED_DECISION_DIAGRAM_AS_CORE_RETAIN_BDD_REFERENCE_AUXILIARY
 ```
 
+## EXP-055 — Exact Column-Signature Popcount Aggregation Gate
+
+### Mechanism change
+
+For a binary activation vector and signed modular multi-class linear decision, represent each input column as the exact vector of class weights. Compile identical column signatures into groups and compute one activation count per group:
+
+```text
+score_vector = bias_vector + sum_g popcount(active bits in group g) * column_signature_g
+```
+
+Optional exact-negated grouping may use a canonical signature plus signed count only when modular equality is proved. Runtime states are not enumerated.
+
+### Conditions
+
+```text
+G0 independent signed modular top-1 reference
+G1 exact identical-column grouping
+G2 exact sign-canonical grouping with proved modular reconstruction
+G3 scalar and packed group-popcount evaluator
+G4 sparse/repeated/low-rank structured controls
+G5 dense-random and unique-column adversaries
+G6 exact complete-domain validation
+```
+
+### Registered domains
+
+Use binary inputs n=8/12/16/20/32/64, classes C=2/4/8, accumulator widths 8/12/16, and structured repeated-column, sparse, low-rank, dense-random, and forced-unique families.
+
+### Accounting
+
+```text
+source columns and scalar weights
+group count and signature bytes
+group membership/index bytes
+input bits scanned or popcount words
+group popcount operations
+scaled vector-add operations
+p50/p90 logical scalar-operation fraction
+p50/p90 logical bytes touched
+compile time and storage
+405B source-parameter projection
+exact mismatch and fallback
+```
+
+Baseline is the exact dense scalar operation `C*n` signed conditional additions plus source weight reads. Bit scanning/popcount and all grouped vector operations are charged.
+
+### Early rejection Gate
+
+```text
+exact mismatch >0
+runtime state table used as representation
+p50 operation fraction >10%
+p90 operation fraction >25%
+p50 byte fraction >10%
+p90 byte fraction >25%
+dense-random or unique-column p50 fraction >25%
+projected grouped storage >1 TiB
+non-degrading savings fail as n/classes grow
+compile cost cannot be amortized within 1,000,000 queries
+```
+
+Failure decision:
+
+```text
+REJECT_EXACT_COLUMN_SIGNATURE_AGGREGATION_AS_CORE_RETAIN_GROUPING_REFERENCE_AUXILIARY
+```
+
 ### Promotion boundary
 
-Synthetic success still requires real small-checkpoint operation replacement, exact output agreement, p90 fully-accounted target fraction <=1.185185%, non-degrading scale, 8 GiB hot-state closure, and Phase-D measurement.
+Synthetic success still requires real checkpoint weight-column extraction and operation replacement, exact token/logit agreement, p90 fully-accounted target fraction <=1.185185%, non-degrading scaling, 8 GiB closure, and Phase-D evidence.
 
 ### Evidence boundary
 
@@ -97,9 +93,8 @@ real Transformer operation replacement NOT TESTED
 
 ### Next exact action
 
-1. implement exact reduced multi-terminal decision diagrams from residual arithmetic states;
-2. add natural and weight-magnitude variable orders;
-3. enforce compile-state/node ceilings with exact fallback;
-4. exhaustively validate all completed finite domains;
-5. measure path probes, storage, growth, and order-selection cost;
-6. freeze diagrams, checksums, raw rows, and decision.
+1. implement exact column grouping and signed modular grouped evaluator;
+2. add repeated, sign-related, sparse, low-rank, dense-random, and unique-column generators;
+3. exhaustively validate small domains and use deterministic larger-domain controls;
+4. measure grouped operations/bytes and storage projections;
+5. freeze raw groups, manifests, checksums, scaling, and decision.

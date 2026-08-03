@@ -218,3 +218,8 @@ F-019 rejects fixed/oracle layer-finalization tail skipping as core. F-020 rejec
 ## F-021 — Structurally hashed bit-exact AIG as core
 
 Bit-exact AIG compilation preserved all registered finite-domain decisions, but p50/p90 query work remained 84.17%/94.11% of the same unreduced exact bit-blast, dense-random p50 was 92.45%, and projected storage reached 255.60 TiB. Forbidden rescues are reporting only late-bit controls, relabeling raw bit blasting as compression, hiding circuit bytes, or extrapolating E1 synthetic exactness into a real Transformer claim.
+
+<!-- EXP-054-AUTHORITATIVE-FINAL -->
+## F-022 — Exact reduced ordered decision diagrams as core
+
+Reduced diagrams were exact and avoided compile ceilings, but global p50/p90 paths were 35%/95%, dense-random node growth was 1.6873x per input bit, storage projection reached 202.25 TiB, and order-search amortization exceeded one million queries. Do not continue by trying only more variable orders, reporting late-bit controls alone, or hiding both-order compile cost.
