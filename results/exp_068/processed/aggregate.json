@@ -1,0 +1,90 @@
+{
+  "DERIVED": {
+    "bound_family": "exact output-head coordinate contributions with absolute unread winner-versus-competitor bounds",
+    "correctness_gate_pass": true,
+    "decision": "REJECT_GLOBAL_DEMAND_CERTIFICATE_AS_CORE_RETAIN_BOUND_AUDITOR_AUXILIARY",
+    "failure_basis": "output-head competitor-entry lower bound exceeds the preregistered global target: p50=0.137696858262, p90=0.192524013315",
+    "family_coverage_gate_pass": true,
+    "favorable_free_grants": [
+      "all preceding Transformer operations and weight reads",
+      "the complete winning output-head row",
+      "all bound and ordering metadata",
+      "an independently optimal reveal order for every competitor"
+    ],
+    "global_demand_certificate_survives_necessary_gate": false,
+    "logical_scope": "failure is sufficient to close the registered norm/absolute-bound demand family because the output head alone exceeds the whole-model budget after every preceding layer is granted for free",
+    "model_trend_gate_pass": true,
+    "operation_gate_pass": false,
+    "population_gate_pass": true,
+    "weight_byte_gate_pass": false
+  },
+  "MEASURED": {
+    "bound_violations": 0,
+    "control_failures": 0,
+    "elapsed_ns": 9877271547,
+    "family_count": 6,
+    "family_p90_weight_fraction_lower_bound": {
+      "code": 0.21005500788993103,
+      "english_narrative": 0.1777611434194429,
+      "identifier_boundary": 0.19252401331536675,
+      "korean": 0.17829675133903589,
+      "mathematics": 0.17756334107551286,
+      "structured_json": 0.13300351500859914
+    },
+    "largest_model_degradation_fraction": 0.0,
+    "maximum_weight_fraction_lower_bound": 0.21005500788993103,
+    "minimum_weight_fraction_lower_bound": 0.10137619975478733,
+    "missing_source_evidence": 0,
+    "model_count": 3,
+    "model_p50_weight_fraction_lower_bound": {
+      "roneneldan/TinyStories-1M": 0.17756334107551286,
+      "roneneldan/TinyStories-3M": 0.140856458349988,
+      "roneneldan/TinyStories-8M": 0.10477517438830462
+    },
+    "p50_operation_fraction_lower_bound": 0.13769685826205133,
+    "p50_weight_byte_fraction_lower_bound": 0.13769685826205133,
+    "p90_operation_fraction_lower_bound": 0.19252401331536675,
+    "p90_weight_byte_fraction_lower_bound": 0.19252401331536675,
+    "peak_rss_kib": 765424,
+    "prompt_case_count": 18,
+    "reference_head_replay_mismatches": 0,
+    "source_hash_mismatches": 0,
+    "two_dimensional_tensor_count": 153
+  },
+  "UNVERIFIED": [
+    "bitwise floating-point bound preservation",
+    "deployable demand scheduler",
+    "actual skipped Transformer operations",
+    "physical lazy-execution kernel",
+    "405B execution",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_GLOBAL_DEMAND_CERTIFICATE_AS_CORE_RETAIN_BOUND_AUDITOR_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "actual_operation_replacement": false,
+    "bitwise_floating_point_certificate": "NOT TESTED",
+    "exact_real_output_head_bound": "MEASURED",
+    "full_network_demand_bound": "NOT REQUIRED IF NECESSARY GATE FAILS",
+    "target_hardware": "NOT TESTED"
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-068",
+  "name": "oracle_output_head_competitor_entry_demand_lower_bound_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-small-model-oracle-bound"
+  ],
+  "provenance": {
+    "config_sha256": "0ff180d3619d1473f190c75a9de808a1b0b739df0f0110a7a9d0c4b5b0c86242",
+    "exp058_rows_sha256": "1b9a20b25457ee305a3f9da9fe19b676e86f86a479d9ee9c4708c267b1055dcc",
+    "numpy": "2.1.3",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "80b0c07d74e04cf4fea4ee51e022cfc5361265d1",
+    "torch": "2.6.0+cpu"
+  }
+}

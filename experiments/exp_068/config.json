@@ -1,0 +1,73 @@
+{
+  "experiment": "EXP-068",
+  "seed": 680068,
+  "torch_num_threads": 2,
+  "max_input_tokens": 64,
+  "tile_columns": 1,
+  "competitor_chunk_rows": 4096,
+  "tokenizer": {
+    "model_id": "EleutherAI/gpt-neo-125M",
+    "revision": "21def0189f5705e2521767faed922f1f15e7d7db"
+  },
+  "models": [
+    {
+      "model_id": "roneneldan/TinyStories-1M",
+      "revision": "77f1b168e219585646439073245fe87e56b3023e"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-3M",
+      "revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-8M",
+      "revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af"
+    }
+  ],
+  "held_out_prompts": [
+    {
+      "family": "english_narrative",
+      "text": "Once there was a small blue bird who wanted to cross the river."
+    },
+    {
+      "family": "korean",
+      "text": "작은 로봇은 비가 오는 밤에 길을 잃은 강아지를 발견했다."
+    },
+    {
+      "family": "code",
+      "text": "def binary_search(values, target):\n    left, right = 0, len(values) - 1\n"
+    },
+    {
+      "family": "mathematics",
+      "text": "A box contains 12 red balls and 7 blue balls. After removing 5 red balls,"
+    },
+    {
+      "family": "structured_json",
+      "text": "Return only JSON: {\"name\": \"Mina\", \"items\": ["
+    },
+    {
+      "family": "identifier_boundary",
+      "text": "The exact deployment identifier is VTX-405B-RUNTIME-000173 and the next identifier is"
+    }
+  ],
+  "baseline_matrix_roles": [
+    "dense_projection",
+    "output_head"
+  ],
+  "gate": {
+    "expected_model_count": 3,
+    "expected_prompt_case_count": 18,
+    "expected_two_dimensional_tensors": 153,
+    "expected_family_count": 6,
+    "maximum_reference_mismatches": 0,
+    "maximum_bound_violations": 0,
+    "maximum_p50_weight_byte_fraction": 0.10,
+    "maximum_p90_weight_byte_fraction": 0.25,
+    "maximum_p50_operation_fraction": 0.10,
+    "maximum_p90_operation_fraction": 0.25,
+    "maximum_family_p90_fraction": 0.25,
+    "maximum_largest_model_degradation": 0.25
+  },
+  "failure_decision": "REJECT_GLOBAL_DEMAND_CERTIFICATE_AS_CORE_RETAIN_BOUND_AUDITOR_AUXILIARY",
+  "survival_decision": "REVISE_FULL_NETWORK_DEMAND_BOUND_REQUIRED",
+  "evidence_ceiling": "E1 necessary-condition oracle lower bound on exact-real output-head column-stripe demand only; preceding Transformer work is granted for free and deployable scheduling, bitwise floating-point certification, actual skipped operations, 405B execution, 8 GiB VRAM and target hardware are not tested"
+}
