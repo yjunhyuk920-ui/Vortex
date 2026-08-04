@@ -1,113 +1,122 @@
 # EXP-066 — Pinned Real-Q4 Exact Tensor-Train / MPO Bond-Rank Gate
 
-## Question
+## Status
 
-Can unchanged real Q4 dense Transformer matrices be represented by an exact classical Tensor-Train / Matrix-Product-Operator with sufficiently small bond dimensions to plausibly approach the fixed 405B/8 GiB/4B-class runtime target?
-
-## Efficiency scope
-
-This is the final authorized bounded screen in the classical exact single-matrix tensor-factorization direction after EXP-065. No MPO reconstruction, contraction kernel, backend integration, broad mode-order rescue search, checkpoint download, or repeated real-weight modular elimination is permitted before this Gate passes.
-
-## Frozen evidence reuse
-
-EXP-065 already evaluated every ordered nontrivial factorization
-
-```text
-m = m1 * m2
-n = n1 * n2
-```
-
-of the same deterministic Q4 matrices under primes 251 and 257. It froze 6,108 validated plan rows with source checksums and zero witness mismatch.
-
-For TT/MPO mode pairs `(m_k,n_k)`, the cut after mode `k` has factors
-
-```text
-m1 = product_{i<=k} m_i
-m2 = product_{i>k}  m_i
-n1 = product_{i<=k} n_i
-n2 = product_{i>k}  n_i
-```
-
-The TT prefix/suffix unfolding orders axes as interleaved physical modes. The EXP-065 rearrangement groups all row-prefix axes before all column-prefix axes, and likewise on the suffix. Independent row and column permutations transform one matrix into the other exactly:
-
-```text
-P_row * TT_unfolding * P_column^T
-=
-W.reshape(m1,m2,n1,n2).transpose(0,2,1,3)
-```
-
-Rank is invariant under these permutations. Therefore EXP-066 verifies frozen EXP-065 checksums and reuses each matching rank lower bound. A cut containing a unit factor was intentionally absent from EXP-065; it receives rank lower bound one, which is universally valid and deliberately favors the TT/MPO candidate. Any missing nontrivial mapping fails the correctness Gate.
-
-## Precommitted mode family
-
-For each matrix dimension, factor it into primes and one deterministic coarsening whose mode product is at most 16 where possible. Combine row and column schedules with only these deterministic variants:
-
-1. paired forward;
-2. paired with reversed column schedule;
-3. row modes followed by column modes;
-4. column modes followed by row modes;
-5. alternating row/column singleton modes.
-
-This bounded family was fixed before observing EXP-066 results. Failure may not be rescued by an unbounded ordering or radix sweep.
-
-## Favorable accounting
-
-With `R_0=R_L=1`, charge the classical dense-core slot lower bound
-
-```text
-S_core = sum_k R_{k-1} * m_k * n_k * R_k
-```
-
-using 4-bit core slots. Also charge row scales, biases, mode/rank metadata, input/output reads, and a favorable intermediate allowance. Construction, coefficient widening, sparse-core indexing, and many contraction-index operations are omitted, deliberately favoring survival.
-
-The reused bond ranks are lower bounds. Combining them is sound because every classical TT core size is monotone in adjacent bond dimensions.
-
-## Population
-
-Frozen unchanged checkpoints represented by EXP-065 evidence:
-
-```text
-roneneldan/TinyStories-1M @ 77f1b168e219585646439073245fe87e56b3023e
-roneneldan/TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
-roneneldan/TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
-```
-
-Required coverage: all 153 two-dimensional tensors and all 144 registered dense projections. Source Q4 checksums and EXP-065 evidence-file checksums must match exactly.
-
-## Controls
-
-- every tested TT cut becomes the matching EXP-065 rearrangement after independently constructed row and column permutations;
-- frozen input files match committed checksums;
-- duplicate EXP-065 keys cannot conflict;
-- exact rank-one MPO controls retain unit bond ranks;
-- dense-random controls produce unfavorable classical MPO accounting;
-- any missing nontrivial EXP-065 mapping fails closed;
-- unit-boundary cuts are explicitly labeled as favorable rank-one lower bounds.
-
-## Promotion Gate
-
-```text
-zero source-checksum/mapping/witness/control mismatch
-all 144 dense projections covered
-p50 favorable operation fraction <=10%
-p90 favorable operation fraction <=25%
-p50 favorable storage fraction <=10%
-p90 favorable storage fraction <=25%
-dense-random p50 favorable operation fraction <=25%
-projected static storage <=1 TiB
-largest-model degradation <=25%
-```
-
-A surviving lower bound is still insufficient for runtime promotion. Exact integer MPO reconstruction and actual operation replacement would require a new Gate.
-
-## Failure decision
+Closed at evidence level E1.
 
 ```text
 REJECT_REAL_Q4_TT_MPO_BOND_RANK_AS_CORE_RETAIN_MPO_CERTIFIER_AUXILIARY
 ```
 
-On failure, exact classical single-matrix tensor factorization is closed as the primary direction for this measured real-Q4 population. The next core candidate must change execution class and pass the research-efficiency E0 triage.
+Machine-readable authority:
+
+```text
+results/exp_066/summary.json
+results/exp_066/evidence_manifest.json
+results/exp_066/checksums.sha256
+workflow 30913788506
+artifact 8894166935
+artifact ZIP SHA-256 4bf87298e47d4800be1c17a80fb0ccd03e7c064118d42f31f45a186e181d157a
+```
+
+## Question
+
+Can unchanged real-Q4 dense Transformer matrices be represented by an exact classical Tensor-Train / Matrix-Product-Operator with sufficiently small necessary bond ranks to survive the fixed operation and storage Gates before any core reconstruction or kernel work?
+
+## Bounded method
+
+EXP-066 did not download or execute the models again and did not repeat real-weight modular elimination.
+
+It reused two checksum-verified evidence sets over the same 153 deterministic Q4 matrices:
+
+- EXP-065: 6,108 ordered nontrivial Kronecker-rearrangement rank rows;
+- EXP-058: full integer/rational matrix-rank certificates for all 153 matrices.
+
+For mode pairs `(m_k,n_k)`, an internal TT cut has row/column prefix and suffix products `(m1,m2,n1,n2)`. Its interleaved unfolding becomes the corresponding EXP-065 Kronecker rearrangement after independent row and column permutations. Rank is invariant under those permutations.
+
+Cuts equal to `W` or `W^T` reuse the EXP-058 full-matrix rank. The exact adjacent inequalities
+
+```text
+R_k <= d_k R_{k-1}
+R_{k-1} <= d_k R_k
+```
+
+then propagate lower bounds through neighboring bonds. Every remaining unresolved unit-boundary rank is assigned only a favorable lower bound; resolving it can increase, but cannot reduce, the accounting.
+
+The preregistered family contained prime/coarsened schedules with physical mode size at most 16 and five deterministic order variants. No rescue sweep was allowed.
+
+## Correctness and controls
+
+```text
+EXP-066 tests: 14 passed
+2D tensors: 153
+registered dense projections: 144
+EXP-065 mapped cuts: 4,937
+EXP-058 full-rank rows reused: 153
+source checksum mismatches: 0
+source witness mismatches: 0
+missing nontrivial mappings: 0
+control failures: 0
+```
+
+The dense-random control is correctly oriented as an incompressibility control: its p50 favorable operation fraction must remain at or above 25%. Measured p50 was 105%, so the control passed.
+
+## Favorable population lower bounds
+
+```text
+operation p50: 3.8941375969%
+operation p90: 6.7788461538%
+query-byte p50: 2.9983836207%
+query-byte p90: 6.1697345890%
+storage p50: 11.0523897059%
+storage p90: 22.9882812500%
+aggregate storage fraction: 7.0691890618%
+```
+
+The operation Gate passed. The storage Gate failed because the preregistered p50 limit was 10%:
+
+```text
+11.0523897059% > 10%
+```
+
+This is already a favorable lower bound. Additional exact unit-boundary ranks, core construction overhead, coefficient widening, sparse indexing, and physical contraction costs can only make it worse. Therefore exact core reconstruction and kernel work are not authorized.
+
+## Projection boundary
+
+Applying the measured aggregate small-checkpoint fraction to a 405B Q4 parameter stream gives:
+
+```text
+projected lower-bound storage: 14,315,107,850 bytes
+8 GiB:                         8,589,934,592 bytes
+ratio:                         1.6665x
+```
+
+This is a projection from the TinyStories population, not a direct 405B measurement or a universal impossibility proof.
+
+## Scientific closure
+
+The result closes the preregistered bounded exact classical single-matrix TT/MPO family as the primary execution core for the measured real-Q4 population. It also closes rescue by unbounded mode-order expansion, Tensor Ring, Hierarchical Tucker, or adjacent relabelings unless a genuinely new measured mechanism reopens the class.
+
+Retained auxiliary infrastructure:
+
+- TT/MPO mode enumeration;
+- permutation-equivalence controls;
+- frozen-rank evidence reuse;
+- exact adjacent-rank propagation;
+- favorable storage/operation accounting.
+
+The next primary research Gate must change execution class and pass bounded E0 triage.
 
 ## Claim boundary
 
-Phase A/B/C-derived-from-frozen-real-Q4-evidence, evidence ceiling E1. EXP-066 performs no new real-model execution and no new real-weight modular-rank measurement. Exact MPO cores, Q4 model-output preservation, physical kernels, real Transformer operation replacement, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, tokens/second, E6, and E7 remain NOT TESTED.
+Not tested:
+
+```text
+exact MPO core reconstruction
+Q4 output preservation through an MPO runtime
+physical contraction kernel
+actual Transformer operation replacement
+405B execution
+8 GiB peak VRAM
+CUDA, PCIe, SSD, TTFT, tokens/second
+```
