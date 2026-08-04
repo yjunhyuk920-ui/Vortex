@@ -112,6 +112,42 @@ UNVERIFIED
 
 A projected 405B byte count is not measured traffic. CPU lookup time is not PCIe latency. Tiny-checkpoint token agreement is not 405B quality. A reference-selected proposal source is not a deployable selector.
 
+## Architecture Gate A-1 — candidate efficiency and target-scale upside
+
+Before Architecture Gate A0 and before an experiment branch is opened, apply `docs/RESEARCH_EFFICIENCY_CONTRACT.md`.
+
+The proposal must preregister:
+
+```text
+optimistic fully charged operation fraction
+optimistic fully charged traffic fraction
+optimistic storage fraction
+ultimate route toward the approximately 1.185% target-equivalent fraction
+new mechanism or new evidence versus closed families
+reason the effect survives or strengthens with model scale
+cheapest decisive falsification
+implementation stage authorized if the cheap Gate survives
+```
+
+A candidate is rejected or classified as auxiliary before implementation when its favorable ceiling is only incremental, when it is a nearby variant of a closed family without new evidence, or when its gains disappear after selector, metadata, intermediate, verification, correction, fallback, RAM, SSD, PCIe, or VRAM costs.
+
+The primary research track is not a catalogue of decompositions. Mathematical testability, novelty of notation, or adjacency to the previous experiment is insufficient.
+
+Required progression:
+
+```text
+resource/information upper bound
+-> exact certificate or favorable oracle upper bound
+-> pinned small-real-checkpoint measurement
+-> minimal operation replacement
+-> backend/kernel
+-> target hardware
+```
+
+A decisive negative theorem, lower bound, or oracle ceiling terminates the candidate. No optimized backend or physical kernel may be built merely to reconfirm it.
+
+Promotion from cheap screening requires population-level p50/p90 evidence, a route to actual Transformer operation replacement, full current-level cost accounting, and expected information gain that justifies the next implementation stage.
+
 ## Architecture Gate A0 — direct objective connection
 
 Before implementation answer:
@@ -221,20 +257,18 @@ Forbidden before matching evidence:
 - `generalizes` from replay, oracle selection, or three tiny models;
 - `deployable` for future-aware or reference-selected conditions.
 
+Research-efficiency reporting must also state whether a result improves feasibility, merely closes a family, or only preserves auxiliary machinery. A long sequence of low-upside negative tests must not be described as increasing target feasibility.
+
 ## Current classification
 
 ```text
 Governance/provenance system: implemented
-mmap/DAG/index: bounded auxiliary components
-raw prefix scaling: rejected
-EXP-047/047R CPTC correctness: E1 auxiliary
-range-based CPTC core: rejected
-EXP-048 exact block verifier: E1 auxiliary
-hard Jacobi and partial-layer self-draft core: rejected
-EXP-049 Picard/Anderson reference/fault handling: E1 auxiliary
-EXP-049 target-only continuous fixed-point core: rejected
-EXP-049 hidden triangular round barrier: E1 adversarial construction in declared interface
-EXP-050 target-independent external draft advice: active next Gate, NOT TESTED
+research-efficiency candidate Gate: implemented by this contract and docs/RESEARCH_EFFICIENCY_CONTRACT.md
+mmap/DAG/index and exact verifier/certifier machinery: bounded auxiliary components
+raw prefix, enumerative advice, AIG/BDD, fixed-point, external draft, layer-tail, exact repetition, exact sparsity, low-rank, displacement, output-row, and Kronecker core families: rejected under their committed scopes
+EXP-065 exact Kronecker rank: rejected as core; tensor certifier retained auxiliary
+EXP-066 exact TT/MPO bond rank: bounded cheap-kill next Gate, NOT TESTED
+exact MPO reconstruction/runtime/kernel: prohibited before EXP-066 lower-bound survival
 Phase D: NOT TESTED
 E6/E7: not achieved
 ```

@@ -48,8 +48,9 @@ Read before proposing or editing:
 9. `HARDWARE_VALIDATION_PLAN.md`
 10. `REPRODUCIBILITY.md`
 11. `docs/PROOF_FIRST_CONTRACT.md`
-12. `docs/WORK_SESSION_PROTOCOL.md`
-13. active experiment files, workflow, PR comments, logs, and result JSON.
+12. `docs/RESEARCH_EFFICIENCY_CONTRACT.md`
+13. `docs/WORK_SESSION_PROTOCOL.md`
+14. active experiment files, workflow, PR comments, logs, and result JSON.
 
 Then verify branch, head commit, PR state, workflow conclusion, and authoritative raw evidence. Conversation memory is not authoritative.
 
@@ -132,23 +133,58 @@ Core research must directly answer all twelve questions in `RESEARCH_STATE.md`, 
 
 Token-path storage, response replay, file compression, or bounded grammar memorization are auxiliary unless attached to a new causal operation-skipping principle.
 
+## Research-efficiency and candidate-selection Gate
+
+`docs/RESEARCH_EFFICIENCY_CONTRACT.md` is mandatory and has the same authority as the proof-first contract.
+
+Before opening an experiment branch, a proposed core candidate must pass E0 triage:
+
+- show a credible optimistic path to at least an order-of-magnitude reduction and toward the final target-equivalent fraction;
+- identify a materially new mechanism or new evidence rather than a nearby variant of a rejected family;
+- explain why the effect should survive or improve with model scale;
+- include selector, metadata, intermediate, verification, correction, fallback, RAM, SSD, PCIe, and VRAM costs;
+- define the cheapest decisive falsification before backend or kernel work;
+- preserve the fixed arbitrary-model, unmodified-checkpoint, runtime-only, fail-closed mission.
+
+Do not run experiments merely because a mathematical decomposition or optimization has not yet appeared in the sequence. Do not complete a taxonomy for its own sake.
+
+An optimization whose favorable ceiling is only a few tens of percent is auxiliary unless an independently justified composition closes the remaining orders-of-magnitude gap. Population-level p50/p90 behavior controls promotion; an isolated best matrix, prompt, row, head, or synthetic fragment does not.
+
+Repeated negative evidence closes a mechanism family. Reopening it requires a new information source, asymptotic mechanism, execution dependency, or measured fact that invalidates the prior rejection premise. Parameter sweeps, mode-order variants, rank changes, and renamed decompositions are not sufficient.
+
+Use the cheapest-kill-first order:
+
+```text
+resource/information bound
+-> exact certificate or favorable oracle upper bound
+-> pinned small-real-checkpoint measurement
+-> minimal operation replacement
+-> backend/kernel
+-> target hardware
+```
+
+No model-wide backend, physical kernel, or broad rescue search may start before the cheaper Gate survives.
+
+Default research prioritization is approximately 70% high-upside new execution paradigms, 20% cheap falsification and certificates, and 10% auxiliary engineering. This is a prioritization rule, not fabricated time accounting.
+
 ## Mandatory proof-first loop
 
 Before a model-wide backend is built:
 
-1. read previous state, failures, decisions, and assumptions;
-2. select one falsifiable core hypothesis;
-3. define success and rejection thresholds;
+1. read previous state, failures, decisions, assumptions, and the efficiency contract;
+2. select one falsifiable high-upside core hypothesis that passed E0 candidate triage;
+3. define success and rejection thresholds plus the optimistic target-scale ceiling;
 4. derive correctness, memory, traffic, compute, and fallback equations;
 5. identify all unverified assumptions;
 6. implement an independent reference;
-7. implement the minimum optimized candidate;
+7. implement only the minimum candidate required by the cheapest decisive Gate;
 8. run the strongest current-environment falsification;
-9. save raw logs, processed results, and checksums;
-10. update all required root documents and experiment files;
-11. commit before reporting progress.
+9. stop immediately when a decisive rejection bound is established;
+10. save raw logs, processed results, and checksums;
+11. update all required root documents and experiment files;
+12. commit before reporting progress.
 
-Do not increase experiment numbers without eliminating a real assumption or testing a new mechanism.
+Do not increase experiment numbers without eliminating a real assumption or testing a new mechanism. Do not build an optimized implementation to reconfirm a decisive negative theorem, lower bound, or oracle ceiling.
 
 ## Safety and correctness
 
@@ -188,4 +224,8 @@ Before a user-facing progress response after repository work, commit the current
 
 ## Active frontier
 
-Read `NEXT_EXPERIMENT.md`. At the time of this contract, the core candidate is EXP-047 Causal Probabilistic Tile Certificate. Existing mmap decision VM and exact DAG work are preserved as auxiliary components, not the core solution.
+Read `NEXT_EXPERIMENT.md`.
+
+EXP-066 Tensor-Train/MPO is authorized only as a bounded cheap-kill bond-rank certificate Gate. Exact MPO reconstruction, runtime integration, kernels, and broad factorization rescue searches are prohibited unless the lower-bound Gate survives.
+
+If EXP-066 fails, close exact classical single-matrix tensor factorization as the primary direction for the measured population. The next core candidate must change execution class and pass E0 efficiency triage, prioritizing high-upside joint multi-operator arithmetic compilation or certificate-guided demand-driven execution rather than another adjacent decomposition.
