@@ -221,3 +221,8 @@ Status: ACTIVE FOR EXP-062 ONLY. EXP-061 found no exact zeros at dense inputs, b
 ## A-038 — Cached Keys or Key-Value pairs may repeat exactly across positions
 
 Status: ACTIVE FOR EXP-063 ONLY. Identical Key vectors permit one QK score to be copied for every duplicate position. Identical Key-Value pairs additionally permit one probability-times-Value product to be reused when the copied scores produce identical probabilities. EXP-063 must compare exact tensor bit patterns, exclude structurally ineligible local positions, charge cache scanning/hashing/group metadata/copies/additions, and preserve all reference tokens. Approximate vector similarity is forbidden.
+
+<!-- EXP-063-AUTHORITATIVE-FINAL -->
+## A-039 — Real Q4 output rows may share exact prototypes
+
+Status: ACTIVE FOR EXP-064 ONLY. Identical or sign-related weight rows can share a dot product; rows near an exact prototype may reuse the prototype dot plus an exact sparse residual. Bias additions, row mappings, prototype storage, residual indexes, activation reads and output copies/sign operations must all be charged. Approximate residuals are forbidden.

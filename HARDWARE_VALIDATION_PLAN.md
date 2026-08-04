@@ -174,3 +174,8 @@ No activation-sparse kernel was promoted because exact-zero density was zero and
 ## EXP-062 hardware status
 
 No attention-sparse kernel was promoted because whole-model logical work and bytes exceeded baseline. CUDA attention kernels, physical cache traffic, PCIe, SSD, TTFT, tokens/sec, power, 405B attention statistics, and 8 GiB residency remain NOT TESTED.
+
+<!-- EXP-063-AUTHORITATIVE-FINAL -->
+## EXP-063 hardware status
+
+No grouped-attention kernel was promoted. CUDA kernels, physical KV traffic, PCIe, SSD, TTFT, tokens/sec, 405B statistics and 8 GiB residency remain NOT TESTED.

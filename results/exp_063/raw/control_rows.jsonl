@@ -1,0 +1,3 @@
+{"control": "duplicate_key_and_kv", "key_duplicates": 1, "kv_duplicates": 1, "operation_fraction": 1.0476190476190477, "passed": true}
+{"control": "one_bit_value_breaks_kv_only", "passed": true}
+{"control": "signed_zero_distinct", "passed": true}

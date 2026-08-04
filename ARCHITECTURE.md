@@ -223,3 +223,8 @@ The runtime must not scan ordinary dense-projection inputs for exact zeros on th
 ## Attention-probability zero boundary
 
 The runtime must not scan post-softmax probabilities for exact zeros on the measured architecture. Structural mask zeros remain a standard attention optimization and are not VORTEX evidence. EXP-063 may inspect cached K/V bit equivalence but must fail closed to ordinary attention when no exact group exists.
+
+<!-- EXP-063-AUTHORITATIVE-FINAL -->
+## Cached-KV equivalence boundary
+
+The runtime must not maintain exact K/KV grouping on the measured architecture. EXP-064 may compile static output-row prototypes from Q4 weights, but must fail closed to dense row evaluation whenever exact accounting is not favorable.

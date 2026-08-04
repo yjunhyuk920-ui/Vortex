@@ -1,0 +1,1 @@
+Phase C observation only. Physical grouped-attention kernels, 405B KV statistics, 405B execution, 8 GiB and target hardware are NOT TESTED.
