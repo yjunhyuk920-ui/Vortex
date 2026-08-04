@@ -1,198 +1,143 @@
 # Next Experiment
 
-## Closed Gate — EXP-069
+## Closed Gate — EXP-070
 
-EXP-069 tested whether exact projection inputs from earlier causal tokens span later inputs, allowing later `W*x` outputs to be reconstructed from cached exact `(x_k, W*x_k)` pairs without rereading `W`.
+EXP-070 tested exact short-block Q4 table circuits across every frozen real dense projection. Each plan grouped identical coefficient tuples, reconstructed the complete Q4 matrix exactly, and charged dictionaries, row IDs, block offsets, favorable fused gather-adds, row scales, and non-natural permutation costs.
 
-Every captured float32 scalar was interpreted as its exact dyadic rational and mapped into three odd prime fields. A rank increase under any prime certifies that the new input is outside the exact rational span of all previous inputs and therefore requires a full projection pass.
-
-Authoritative coverage and correctness:
+Authoritative coverage and integrity:
 
 ```text
 3 pinned models
-18 model/prompt cases
-6 required families
-147 registered projections
-833 warm projection traces
-8 EXP-069 tests passed
-frozen EXP-061 weight-hash mismatches: 0
-output token mismatches: 0
-registration mismatches: 0
-rank/trace/control mismatches: 0
+144 dense projections
+3,024 preregistered plans
+7 block widths
+3 deterministic order families
+checksum mismatches: 0
+reconstruction mismatches: 0
+hash-collision mismatches: 0
+control failures: 0
 ```
 
-Favorable mandatory lower bound:
+Best joint plan per matrix, without per-axis cherry-picking:
 
 ```text
-p50 weight-read fraction: 100%
-p90 weight-read fraction: 100%
-p50 operation fraction:   100%
-p90 operation fraction:   100%
-TinyStories-1M p50:        69.2439812633%
-TinyStories-3M p50:        100%
-TinyStories-8M p50:        100%
-verified exact replay hits: 0
-p50 basis cache / Q4 projection population: 391.9746782317%
+operation p50/p90:            88.4856% / 91.4423%
+query-byte p50/p90:          111.0294% / 112.7907%
+static representation p50/p90: 111.0294% / 112.7907%
+minimum joint fraction:      105.4244%
+maximum joint fraction:      113.4191%
 ```
-
-The mandatory lower bound grants every modular non-increase, coefficient search, rank metadata, and unverified reconstruction for free. Certified-independent arrivals alone still consume the full budget at p50 and p90.
 
 Decision:
-
-```text
-REJECT_CAUSAL_EXACT_TEMPORAL_SPAN_REPLAY_AS_CORE
-RETAIN_DYADIC_RANK_AUDITOR_AUXILIARY
-```
-
-Exact temporal span reuse is closed as a primary core. It may not be reopened using numerical tolerances, approximate subspaces, longer traces selected after observation, future/cross-prompt dictionaries, or uncharged coefficient/cache work.
-
-Authority:
-
-```text
-results/exp_069/summary.json
-results/exp_069/raw/projection_rows.jsonl
-results/exp_069/raw/case_rows.jsonl
-results/exp_069/raw/control_rows.jsonl
-workflow 30922174380
-artifact 8897596252
-artifact ZIP SHA-256 81e73226e5369a4fb876d3d855f1d1dc69e0a182a7e584b858d4a111a0724247
-```
-
-## EXP-070 — Exact Q4 Local-Pattern Table Circuit Gate
-
-### Execution-class change
-
-EXP-070 returns to static exact arithmetic, but at a granularity not covered by whole-row/whole-column reuse, low rank, Kronecker/TT structure, or prototype residuals.
-
-For a Q4 integer projection `y = W x`, partition the input columns into short blocks. Within one block, many output rows may contain the same short coefficient pattern:
-
-```text
-W[row, block] = p
-```
-
-For the current activation block `x_block`, compute each distinct partial dot product once:
-
-```text
-v_p = p · x_block
-```
-
-Every row carrying pattern `p` gathers the same `v_p`. This is the exact finite-alphabet table method often called a Four-Russians-style linear circuit. It can reuse partial arithmetic even when no complete rows or columns are equal.
-
-### Why this class is allowed
-
-Potential upside:
-
-- Q4 has a small coefficient alphabet, so short patterns must repeat;
-- one partial dot product can serve many output rows;
-- the transform is exact in the registered Q4 integer domain;
-- no training, activation approximation, future token, or model modification is required.
-
-Reasons for low prior probability:
-
-- pattern IDs may require almost as many bits as the original Q4 block;
-- dictionary coefficients and row-routing metadata must also be read/stored;
-- output assembly adds one gather/accumulation per row and block;
-- wider blocks reduce assembly work but rapidly become unique;
-- GPU Q4 kernels already exploit packed low-bit arithmetic, so scalar arithmetic savings may not become physical speed.
-
-### Registered block families
-
-Evaluate only the bounded widths:
-
-```text
-2, 3, 4, 6, 8, 12, 16 columns
-```
-
-For non-divisible widths, the final short block is charged at its actual width. Evaluate these deterministic column orders only:
-
-```text
-natural order
-bit-reversal order where the width permits it
-lexicographic column-signature order
-```
-
-No unbounded partition search, learned permutation, or post-result width addition is permitted.
-
-### Exact plan and accounting
-
-For every block:
-
-1. group output rows by the exact Q4 coefficient tuple;
-2. reconstruct every row block from its dictionary pattern ID and verify equality;
-3. compute one partial dot product per distinct nonzero pattern;
-4. gather and accumulate one partial result per output row;
-5. charge the exact pattern dictionary, row IDs, block offsets, and routing metadata.
-
-Report three separate quantities:
-
-```text
-operation fraction
-query-byte fraction
-static representation fraction
-```
-
-Favorable operation accounting may treat multiplication by `0`, `+1`, and `-1` at their exact minimal costs, but it must charge all other coefficient work and output assembly. Query bytes must include every dictionary coefficient and pattern ID needed by the token. Static storage and query traffic may not be conflated.
-
-### Population
-
-Use the unchanged pinned real-Q4 dense projections and checksums from EXP-057/058:
-
-```text
-3 TinyStories checkpoints
-144 dense projections
-all registered matrix roles and model sizes
-```
-
-No selected-tensor-only result may promote the candidate.
-
-### Controls
-
-- repeated local patterns reconstruct exactly and fall below the Gate;
-- forced-unique patterns do not appear compressible;
-- dense-random Q4 matrices retain high pattern entropy;
-- one-nibble mutation changes the expected dictionary class;
-- natural and permuted plans reconstruct the identical Q4 matrix;
-- dictionary/hash collisions are checked by full tuple equality;
-- all dictionary, ID, offset, gather, and accumulation costs are charged.
-
-### Promotion Gate
-
-```text
-zero checksum/reconstruction/control/collision mismatch
-100% registered dense-projection coverage
-p50 operation fraction <=10%
-p90 operation fraction <=25%
-p50 query-byte fraction <=10%
-p90 query-byte fraction <=25%
-p50 static representation fraction <=10%
-p90 static representation fraction <=25%
-no required model role with p90 >25% in either cost axis
-no largest-model degradation >25%
-```
-
-Passing authorizes only an exact floating-point replay-order and physical table-kernel Gate. It does not authorize a 405B or 8 GiB claim.
-
-### Failure decision
 
 ```text
 REJECT_EXACT_Q4_LOCAL_PATTERN_TABLE_AS_CORE
 RETAIN_BLOCK_PATTERN_ANALYZER_AUXILIARY
 ```
 
-On failure, the registered short-block table/dictionary family is closed. It may not be rescued by reporting arithmetic without bytes, hiding row-routing costs, choosing widths after observation, or counting repeated synthetic controls as real-model evidence.
+The registered short-block table family is closed. It may not be reopened by adding block widths after observation, hiding dictionaries/IDs/routing/scales, reporting arithmetic without bytes, or using learned/approximate pattern merging while claiming exactness.
+
+Authority:
+
+```text
+results/exp_070/summary.json
+results/exp_070/raw/plan_rows.jsonl
+results/exp_070/raw/selected_rows.jsonl
+results/exp_070/checksums.sha256
+workflow 30930542616
+artifact 8901017649
+artifact ZIP SHA-256 0e3e60f959af852759b9aac8dd6af1a28524cdcbb6c736cd8e32ad00d6c29987
+```
+
+## EXP-071 — Universal Exact Dense Runtime Lower-Bound Applicability Audit
+
+### Research-class change
+
+Do not implement another weight decomposition or cache variant next. First determine whether the fixed objective is compatible with known unconditional online matrix-vector data-structure lower bounds under a clearly stated conventional execution model.
+
+The audit starts from primary results including:
+
+- Clifford, Grønlund, and Larsen, *New Unconditional Hardness Results for Dynamic and Online Problems*, FOCS 2015, DOI `10.1109/FOCS.2015.71`;
+- Chakraborty, Kamma, and Larsen, *Tight Cell Probe Bounds for Succinct Boolean Matrix-Vector Multiplication*, STOC 2018, arXiv `1711.04467`.
+
+These papers must not be cited as a 405B impossibility proof until every hypothesis and reduction below is checked.
+
+### Formal execution model
+
+Define the candidate runtime explicitly:
+
+```text
+immutable arbitrary dense matrix/model
+unbounded offline preprocessing time
+read-only cold representation
+at most 8 GiB total hot/side information
+online causal query vector unavailable during preprocessing
+exact output required for every supported matrix and query
+standard word-RAM/cell-probe memory accesses
+no future queries, learned target modification, or external prover hardware
+```
+
+Record word size, cell size, randomization/error allowance, side-information size, cold representation size, preprocessing dependence, and whether computation between probes is free.
+
+### Required applicability checks
+
+1. Verify theorem statements directly from the primary papers.
+2. Build a machine-readable hypothesis matrix for:
+   - Boolean and `F2` arithmetic versus row-scaled Q4/float execution;
+   - square versus rectangular projections;
+   - static versus dynamic preprocessing;
+   - exact versus bounded-error queries;
+   - per-matrix versus model-wide side information;
+   - theorem word/cell-size and space ranges.
+3. Construct an exact small-domain reduction control:
+   - embed arbitrary `0/1` matrices and `0/1` vectors in a dense float projection;
+   - prove that exact integer output permits recovery of the corresponding `F2` product;
+   - exhaustively verify the reduction on the registered small domains.
+4. Determine whether square padding and a direct-sum argument across independent layer matrices are actually justified. Do not assume direct-sum composition.
+5. Apply only certified formulas to the registered Llama-3.1-405B tensor plan and the 8 GiB hot-state budget.
+6. Separate theorem-backed lower bounds from heuristic projections and hardware estimates.
+
+### Required outputs
+
+```text
+source theorem and exact statement
+hypothesis-by-hypothesis applicability table
+verified reduction controls
+per-matrix parameter rows
+model-wide side-information allocation audit
+certified probe lower bound, if derivable
+fraction of dense Q4 traffic/operations implied by that bound
+remaining loopholes and execution models not covered
+```
+
+### Promotion outcomes
+
+A strong closure requires a rigorous reduction and model-wide/direct-sum bound whose favorable lower limit already exceeds the fixed `1.185185%` whole-execution budget. Only then may the repository state that the registered conventional exact online-runtime model is ruled out.
+
+```text
+CERTIFY_CONVENTIONAL_EXACT_ONLINE_DENSE_RUNTIME_LOWER_BOUND
+```
+
+If the source theorems do not cover Q4/float semantics, rectangular/model-wide composition, the 8 GiB side-information regime, or the required direct sum, record:
+
+```text
+INSUFFICIENT_LOWER_BOUND_DO_NOT_CLAIM_IMPOSSIBILITY
+```
+
+An insufficient theorem is not evidence that the objective is feasible or impossible.
 
 ### Stop rule
 
-Before survival, prohibit:
+Before this audit completes, prohibit:
 
 ```text
-CUDA table kernels
-model-wide packed-table conversion
-learned column permutations
-approximate pattern merging
-405B implementation work
+another classical exact matrix decomposition variant
+another pattern width/order sweep
+claims that all software executors are impossible
+numerical 405B lower-bound projections without checked theorem hypotheses
+CUDA or target-hardware implementation based only on an asymptotic theorem
 ```
 
 ### Claim boundary
 
-Phase A/B/C real-Q4 structural evidence, ceiling E1. Floating-point replay order, a physical lookup kernel, actual Transformer replacement, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, and tokens/second remain **NOT TESTED**.
+Phase A/B theorem and reduction audit, ceiling E1. A paper theorem is not a measurement. Actual 405B execution, 8 GiB runtime behavior, CUDA, PCIe, SSD, TTFT, tokens/second, and physical latency remain **NOT TESTED**.
