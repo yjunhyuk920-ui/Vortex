@@ -2,7 +2,7 @@
 
 This experiment is a bounded cheap-kill screen, not an MPO runtime implementation.
 
-It does **not** download the pinned checkpoints or repeat modular Gaussian elimination. EXP-065 already evaluated every ordered nontrivial row/column factorization of the same deterministic Q4 matrices and froze 6,108 validated plan rows. An interleaved TT/MPO cut is byte-for-byte the same rearrangement when its factors are the row/column prefix and suffix products.
+It does **not** download the pinned checkpoints or repeat modular Gaussian elimination. EXP-065 already evaluated every ordered nontrivial row/column factorization of the same deterministic Q4 matrices and froze 6,108 validated plan rows. An interleaved TT/MPO cut is transformed into the matching EXP-065 rearrangement by independent row and column permutations when its factors are the row/column prefix and suffix products. Matrix rank is invariant under those permutations.
 
 EXP-066 therefore:
 
@@ -12,7 +12,7 @@ EXP-066 therefore:
 4. assigns the deliberately favorable universal lower bound one to unit-boundary cuts that EXP-065 did not measure;
 5. computes favorable classical MPO storage, operation, and query-byte lower bounds.
 
-No new real-weight rank claim is produced. The scientific result is a deterministic derivation from frozen real-Q4 evidence plus independently tested reshaping equivalence.
+No new real-weight rank claim is produced. The scientific result is a deterministic derivation from frozen real-Q4 evidence plus independently tested row/column-permutation equivalence.
 
 Run:
 
