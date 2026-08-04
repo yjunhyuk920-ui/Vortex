@@ -1,0 +1,21 @@
+{
+  "config_sha256": "dec3287d3ad159b1c7a1b72ac92f4814297aa5a4c3efda2d17705a255fa4e070",
+  "exp058_checksum_mismatches": 0,
+  "exp058_full_rank_rows_reused": 153,
+  "exp058_input_hashes": {
+    "exp058/raw/matrix_rank_rows.jsonl": "1b9a20b25457ee305a3f9da9fe19b676e86f86a479d9ee9c4708c267b1055dcc",
+    "exp058/summary.json": "79bd1df87d770ab2d98bf9af94de94389eb31f07247c06ed01f81d28a5249238"
+  },
+  "exp065_input_hashes": {
+    "raw/control_rows.jsonl": "a879c6ee8ae23320f4fee3b0b5d32fe341e1bec3252cd8e9ddcc87e30aa8486a",
+    "raw/matrix_rows.jsonl": "2c79889494001b5da2ea01fb34e21d701901251fa1be8c583d5123305cb1c1a0",
+    "raw/model_rows.jsonl": "0231f63434e11b0376ecfe08df74116da2f375b8f223e23b61c0d52131e389cc",
+    "raw/plan_rows.jsonl": "b855eb190e5e7691735bccb4437d26f418b19ddf2e51643153bb02b68869f31a",
+    "summary.json": "a72b621830fb8d588d90ddc0a52decacc33062146cf59eb1ca3329643bfc741d"
+  },
+  "exp065_summary_sha256": "a72b621830fb8d588d90ddc0a52decacc33062146cf59eb1ca3329643bfc741d",
+  "numpy": "2.1.3",
+  "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+  "python": "3.11.15",
+  "source_commit": "d70d77722140dc40cfe145ec06810b8ccee7d8df"
+}
