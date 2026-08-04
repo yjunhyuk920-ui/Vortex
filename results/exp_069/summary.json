@@ -1,0 +1,105 @@
+{
+  "DERIVED": {
+    "causal_exact_temporal_span_replay_survives_gate": false,
+    "correctness_gate_pass": true,
+    "decision": "REJECT_CAUSAL_EXACT_TEMPORAL_SPAN_REPLAY_AS_CORE_RETAIN_DYADIC_RANK_AUDITOR_AUXILIARY",
+    "failure_basis": "certified-independent arrivals alone exceed the preregistered whole-execution weight/operation budget",
+    "favorable_free_grants": [
+      "all uncertified non-increase calls are free in the mandatory lower bound",
+      "coefficient discovery and rank metadata are excluded from the mandatory lower bound",
+      "only exact duplicate witnesses are charged in fail-closed replay accounting"
+    ],
+    "logical_scope": "a rank increase modulo any registered odd prime proves exact rational independence and therefore a mandatory full W*x pass; modular non-increase receives no replay credit without a separately verified exact coefficient witness",
+    "mandatory_operation_lower_bound_gate_pass": false,
+    "mandatory_weight_lower_bound_gate_pass": false,
+    "model_trend_gate_pass": false,
+    "population_gate_pass": true,
+    "verified_replay_in_every_family_gate_pass": false
+  },
+  "MEASURED": {
+    "case_count": 18,
+    "elapsed_ns": 63556733440,
+    "family_max_verified_exact_replay_hit_fraction": {
+      "code": 0.0,
+      "english_narrative": 0.0,
+      "identifier_boundary": 0.0,
+      "korean": 0.0,
+      "mathematics": 0.0,
+      "structured_json": 0.0
+    },
+    "family_p90_mandatory_weight_fraction_lower_bound": {
+      "code": 1.0,
+      "english_narrative": 1.0,
+      "identifier_boundary": 1.0,
+      "korean": 1.0,
+      "mathematics": 1.0,
+      "structured_json": 1.0
+    },
+    "frozen_exp061_registration_hash_mismatches": 0,
+    "largest_model_degradation_fraction": 0.4441688385837066,
+    "maximum_case_verified_exact_replay_hit_fraction": 0.0,
+    "maximum_mandatory_weight_fraction_lower_bound": 1.0,
+    "minimum_mandatory_weight_fraction_lower_bound": 0.0,
+    "model_count": 3,
+    "model_p50_mandatory_weight_fraction_lower_bound": {
+      "roneneldan/TinyStories-1M": 0.6924398126334715,
+      "roneneldan/TinyStories-3M": 1.0,
+      "roneneldan/TinyStories-8M": 1.0
+    },
+    "output_token_mismatches": 0,
+    "p50_basis_cache_to_q4_projection_population_ratio": 3.919746782316732,
+    "p50_fail_closed_weight_fraction": 1.0,
+    "p50_mandatory_operation_fraction_lower_bound": 1.0,
+    "p50_mandatory_weight_fraction_lower_bound": 1.0,
+    "p90_fail_closed_weight_fraction": 1.0,
+    "p90_mandatory_operation_fraction_lower_bound": 1.0,
+    "p90_mandatory_weight_fraction_lower_bound": 1.0,
+    "peak_rss_kib": 737716,
+    "projection_trace_count": 833,
+    "prompt_family_count": 6,
+    "rank_trace_or_control_mismatches": 0,
+    "registration_mismatches": 0,
+    "registration_row_count": 147,
+    "total_verified_exact_replay_hits": 0
+  },
+  "UNVERIFIED": [
+    "complete exact coefficient-witness search for modular non-increases",
+    "bitwise floating-point output replay equivalence",
+    "physical temporal replay cache and kernel",
+    "actual Transformer operation replacement",
+    "405B causal trajectory rank",
+    "405B execution",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_CAUSAL_EXACT_TEMPORAL_SPAN_REPLAY_AS_CORE_RETAIN_DYADIC_RANK_AUDITOR_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "bitwise_floating_point_replay": "NOT TESTED",
+    "exact_float32_dyadic_modular_rank": "MEASURED",
+    "mandatory_full_pass_lower_bound": "MEASURED",
+    "model_exact_replay_witness_search": "DUPLICATES ONLY",
+    "physical_cache_kernel": "NOT TESTED",
+    "target_hardware": "NOT TESTED"
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-069",
+  "name": "pinned_causal_exact_temporal_span_necessary_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-small-model-causal-trajectory"
+  ],
+  "provenance": {
+    "config_sha256": "3fcc781c325e3a8131f7e219826d09a8a3414806899697847a721d84e3dc2b95",
+    "exp061_registration_rows_sha256": "24dd5f59a452dc7ff70803592f97e1b9aa906c633cc5da61a6a6ae28968b9b44",
+    "numpy": "2.1.3",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "58a90c746e429f4a2790deccf204e29ce014f8bf",
+    "tokenizer_id": "EleutherAI/gpt-neo-125M",
+    "tokenizer_revision": "21def0189f5705e2521767faed922f1f15e7d7db",
+    "torch": "2.6.0+cpu"
+  }
+}

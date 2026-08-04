@@ -1,0 +1,11 @@
+{
+  "config_sha256": "3fcc781c325e3a8131f7e219826d09a8a3414806899697847a721d84e3dc2b95",
+  "exp061_registration_rows_sha256": "24dd5f59a452dc7ff70803592f97e1b9aa906c633cc5da61a6a6ae28968b9b44",
+  "numpy": "2.1.3",
+  "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+  "python": "3.11.15",
+  "source_commit": "58a90c746e429f4a2790deccf204e29ce014f8bf",
+  "tokenizer_id": "EleutherAI/gpt-neo-125M",
+  "tokenizer_revision": "21def0189f5705e2521767faed922f1f15e7d7db",
+  "torch": "2.6.0+cpu"
+}
