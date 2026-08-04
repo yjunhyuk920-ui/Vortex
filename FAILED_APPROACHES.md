@@ -263,3 +263,8 @@ No exact projection-input zero occurred in 56,448 calls or 17,529,344 observed i
 ## F-030 — Exact non-mask attention-probability zero skipping
 
 After excluding causal and local-window structural masks, warm-decode exact-zero probability density was only 0.0305% in aggregate. Whole-model work and bytes exceeded dense execution after QK, softmax, discovery, metadata, and unchanged Linear costs. Do not revive by counting structural mask zeros, reporting the 7.16% maximum row alone, or using near-zero thresholds while claiming exactness. Retain the probability validator/accounting as an auxiliary.
+
+<!-- EXP-063-AUTHORITATIVE-FINAL -->
+## F-031 — Exact cached Key/Key-Value equivalence reuse
+
+No exact K or KV duplicate occurred in 147,456 measured layer/head rows. Hashing and metadata increased bytes. Do not revive by using approximate similarity while claiming exactness, by counting repeated token IDs instead of vector bit patterns, or by omitting local-window eligibility and metadata. Retain the validator as auxiliary.

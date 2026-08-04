@@ -345,3 +345,8 @@ Authority: workflow `30843404056`, artifact `8867731496`, ZIP SHA-256 `a01d31b01
 ## EXP-062 closed — Exact non-mask attention probability sparsity
 
 Authority: workflow `30844873182`, artifact `8868287407`, ZIP SHA-256 `497816dcca7e6b8c40e9222ed8511efa266fe2358aab847a93795d7c04637390`. Warm decode had 2,564 exact eligible zeros among 8,404,224 probabilities. Whole-model p50/p90 work was 100.048%/100.154% and bytes 100.093%/100.303%. Decision: `REJECT_CAUSAL_EXACT_ATTENTION_PROBABILITY_SPARSITY_AS_CORE_RETAIN_ATTENTION_AUXILIARY`. Physical kernels, 405B statistics, 405B, 8 GiB and target hardware remain NOT TESTED. Current frontier: EXP-063 exact cached KV equivalence.
+
+<!-- EXP-063-AUTHORITATIVE-FINAL -->
+## EXP-063 closed — Exact cached-KV equivalence
+
+Authority: workflow `30846082964`, artifact `8868770832`, ZIP SHA-256 `b900a7019d8527d6f67d0eb412bb2fb7a0331188d84cd74444ca10762a105a14`. Exact K/KV duplicate counts were zero across 147,456 group rows. Warm p50/p90 work was 100.021%/100.027%; bytes 106.263%/119.401%. Decision: `REJECT_CAUSAL_EXACT_KV_EQUIVALENCE_REUSE_AS_CORE_RETAIN_KV_AUXILIARY`. Current frontier: EXP-064 pinned real-Q4 output-row equivalence and sparse-delta structure. 405B, 8 GiB, physical kernels and target hardware remain NOT TESTED.

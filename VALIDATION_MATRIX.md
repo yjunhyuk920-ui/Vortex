@@ -128,3 +128,8 @@ Reference/hooked output tokens 1,152/1,152 exact; projection registrations 147; 
 ## EXP-062 closure
 
 Cases 18; forwards 1,152; attention rows 9,216; token/registration/control mismatches 0; warm eligible probabilities 8,404,224; exact non-mask zeros 2,564; whole-model p50/p90 operations 100.048%/100.154%; bytes 100.093%/100.303%. 405B and hardware remain NOT TESTED.
+
+<!-- EXP-063-AUTHORITATIVE-FINAL -->
+## EXP-063 closure
+
+18 cases; 1,152 forwards; 147,456 group rows; exact K duplicates 0; exact KV duplicates 0; mismatches 0; warm p50/p90 operations 100.021%/100.027%; bytes 106.263%/119.401%. 405B and hardware NOT TESTED.

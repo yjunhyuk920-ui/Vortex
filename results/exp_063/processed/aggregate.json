@@ -1,0 +1,115 @@
+{
+  "DERIVED": {
+    "accounting_scope": "exact dtype/shape/bit-pattern K and KV groups only; incremental new-vector hash scan, score copies, unchanged softmax and Value additions, group metadata, representative K/V reads, and all unchanged Linear work/bytes charged",
+    "cached_kv_equivalence_survives_gate": false,
+    "decision": "REJECT_CAUSAL_EXACT_KV_EQUIVALENCE_REUSE_AS_CORE_RETAIN_KV_AUXILIARY",
+    "model_size_trend_gate_pass": true,
+    "prompt_family_gate_pass": true,
+    "token_registration_control_gate_pass": true,
+    "whole_model_operation_gate_pass": false,
+    "whole_model_query_byte_gate_pass": false
+  },
+  "MEASURED": {
+    "case_count": 18,
+    "elapsed_ns": 64908328079,
+    "forward_row_count": 1152,
+    "generated_tokens_per_case": 64,
+    "group_row_count": 147456,
+    "largest_model_degradation_fraction": 0.0,
+    "maximum_group_row_key_duplicate_fraction": 0.0,
+    "maximum_group_row_kv_duplicate_fraction": 0.0,
+    "model_count": 3,
+    "model_p50_whole_model_warm_operation_fraction": {
+      "roneneldan/TinyStories-1M": 1.000276295567183,
+      "roneneldan/TinyStories-3M": 1.000250019532776,
+      "roneneldan/TinyStories-8M": 1.0002098250583575
+    },
+    "p50_warm_key_duplicate_fraction": 0.0,
+    "p50_warm_kv_duplicate_fraction": 0.0,
+    "p50_whole_model_warm_operation_fraction": 1.0002113871621934,
+    "p50_whole_model_warm_query_byte_fraction": 1.0626293444968722,
+    "p90_warm_key_duplicate_fraction": 0.0,
+    "p90_warm_kv_duplicate_fraction": 0.0,
+    "p90_whole_model_warm_operation_fraction": 1.0002733500760255,
+    "p90_whole_model_warm_query_byte_fraction": 1.1940054210478073,
+    "peak_rss_kib": 1087700,
+    "phase_totals": {
+      "first_decode": {
+        "aggregate_key_duplicate_fraction": 0.0,
+        "aggregate_kv_duplicate_fraction": 0.0,
+        "aggregate_whole_model_operation_fraction": 1.0002306524787934,
+        "aggregate_whole_model_query_byte_fraction": 1.0459120770531307,
+        "duplicate_key_count": 0,
+        "duplicate_kv_count": 0,
+        "eligible_position_count": 62976,
+        "forward_count": 18
+      },
+      "prefill": {
+        "aggregate_key_duplicate_fraction": 0.0,
+        "aggregate_kv_duplicate_fraction": 0.0,
+        "aggregate_whole_model_operation_fraction": 1.0000088423931064,
+        "aggregate_whole_model_query_byte_fraction": 1.0017645667213784,
+        "duplicate_key_count": 0,
+        "duplicate_kv_count": 0,
+        "eligible_position_count": 60672,
+        "forward_count": 18
+      },
+      "warm_decode": {
+        "aggregate_key_duplicate_fraction": 0.0,
+        "aggregate_kv_duplicate_fraction": 0.0,
+        "aggregate_whole_model_operation_fraction": 1.0002280780352706,
+        "aggregate_whole_model_query_byte_fraction": 1.0916598828073993,
+        "duplicate_key_count": 0,
+        "duplicate_kv_count": 0,
+        "eligible_position_count": 8404224,
+        "forward_count": 1116
+      }
+    },
+    "prompt_family_count": 6,
+    "registration_row_count": 171,
+    "token_registration_or_control_mismatches": 0,
+    "warm_forward_count": 1116
+  },
+  "UNVERIFIED": [
+    "physical grouped-attention kernels",
+    "405B exact KV equivalence statistics",
+    "actual Transformer operation replacement",
+    "405B execution",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_CAUSAL_EXACT_KV_EQUIVALENCE_REUSE_AS_CORE_RETAIN_KV_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "405b_kv_equivalence_statistics": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "cuda_pcie_ssd_ttft_tokens_per_second": "NOT TESTED",
+    "physical_grouped_attention_kernel": "NOT TESTED",
+    "real_transformer_operation_replacement": false
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-063",
+  "name": "pinned_causal_exact_cached_kv_equivalence_reuse_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-observation"
+  ],
+  "provenance": {
+    "artifact_id": 8868770832,
+    "artifact_name": "exp-063-candidate-30846082964",
+    "artifact_size_bytes": 2371412,
+    "artifact_zip_sha256": "b900a7019d8527d6f67d0eb412bb2fb7a0331188d84cd74444ca10762a105a14",
+    "config_sha256": "69ebb4868b3707bbdf42d07a9f7f75458c147eb9c43dfe7e92e93843a5ffc32b",
+    "frozen_date": "2026-08-04",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "488fa0e3785885bbcea25681aae55bb361fa0f84",
+    "source_head_sha": "979bde3a23b76270f740740fbf511c7f90900a7c",
+    "tokenizer_id": "EleutherAI/gpt-neo-125M",
+    "tokenizer_revision": "21def0189f5705e2521767faed922f1f15e7d7db",
+    "torch": "2.6.0+cpu",
+    "workflow_merge_sha": "488fa0e3785885bbcea25681aae55bb361fa0f84",
+    "workflow_run": 30846082964
+  }
+}
