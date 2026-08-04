@@ -1,0 +1,51 @@
+{
+  "experiment": "EXP-069",
+  "seed": 690069,
+  "torch_num_threads": 2,
+  "max_input_tokens": 64,
+  "max_new_tokens": 96,
+  "minimum_warm_decode_tokens_unless_eos": 64,
+  "primes": [65521, 65519, 65497],
+  "tokenizer": {
+    "model_id": "EleutherAI/gpt-neo-125M",
+    "revision": "21def0189f5705e2521767faed922f1f15e7d7db"
+  },
+  "models": [
+    {
+      "model_id": "roneneldan/TinyStories-1M",
+      "revision": "77f1b168e219585646439073245fe87e56b3023e"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-3M",
+      "revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-8M",
+      "revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af"
+    }
+  ],
+  "held_out_prompts": [
+    {"family": "english_narrative", "text": "Once there was a small blue bird who wanted to cross the river."},
+    {"family": "korean", "text": "작은 로봇은 비가 오는 밤에 길을 잃은 강아지를 발견했다."},
+    {"family": "code", "text": "def binary_search(values, target):\n    left, right = 0, len(values) - 1\n"},
+    {"family": "mathematics", "text": "A box contains 12 red balls and 7 blue balls. After removing 5 red balls,"},
+    {"family": "structured_json", "text": "Return only JSON: {\"name\": \"Mina\", \"items\": ["},
+    {"family": "identifier_boundary", "text": "The exact deployment identifier is VTX-405B-RUNTIME-000173 and the next identifier is"}
+  ],
+  "gate": {
+    "expected_model_count": 3,
+    "expected_prompt_case_count": 18,
+    "required_prompt_family_count": 6,
+    "maximum_output_token_mismatches": 0,
+    "maximum_registration_mismatches": 0,
+    "maximum_rank_or_control_mismatches": 0,
+    "maximum_p50_mandatory_weight_fraction": 0.10,
+    "maximum_p90_mandatory_weight_fraction": 0.25,
+    "maximum_p50_mandatory_operation_fraction": 0.10,
+    "maximum_p90_mandatory_operation_fraction": 0.25,
+    "maximum_family_p90_mandatory_weight_fraction": 0.25,
+    "maximum_largest_model_degradation": 0.25
+  },
+  "failure_decision": "REJECT_CAUSAL_EXACT_TEMPORAL_SPAN_REPLAY_AS_CORE_RETAIN_DYADIC_RANK_AUDITOR_AUXILIARY",
+  "evidence_ceiling": "Phase A/B/C small-model causal trajectory E1 only; bitwise floating-point replay, physical cache kernels, 405B execution, 8 GiB VRAM and target hardware are not tested"
+}
