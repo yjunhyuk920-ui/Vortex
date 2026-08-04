@@ -6,7 +6,35 @@ Can unchanged real Q4 dense Transformer matrices be represented by an exact clas
 
 ## Efficiency scope
 
-This is the final authorized bounded screen in the classical exact single-matrix tensor-factorization direction after EXP-065. It is intentionally limited to exact unfolding-rank certificates. No MPO reconstruction, contraction kernel, backend integration, or broad mode-order rescue search is permitted before this Gate passes.
+This is the final authorized bounded screen in the classical exact single-matrix tensor-factorization direction after EXP-065. No MPO reconstruction, contraction kernel, backend integration, broad mode-order rescue search, checkpoint download, or repeated real-weight modular elimination is permitted before this Gate passes.
+
+## Frozen evidence reuse
+
+EXP-065 already evaluated every ordered nontrivial factorization
+
+```text
+m = m1 * m2
+n = n1 * n2
+```
+
+of the same deterministic Q4 matrices under primes 251 and 257. It froze 6,108 validated plan rows with source checksums and zero witness mismatch.
+
+For TT/MPO mode pairs `(m_k,n_k)`, the cut after mode `k` has factors
+
+```text
+m1 = product_{i<=k} m_i
+m2 = product_{i>k}  m_i
+n1 = product_{i<=k} n_i
+n2 = product_{i>k}  n_i
+```
+
+and its prefix/suffix unfolding is byte-for-byte the EXP-065 Kronecker rearrangement
+
+```text
+W.reshape(m1,m2,n1,n2).transpose(0,2,1,3)
+```
+
+Therefore EXP-066 verifies frozen EXP-065 checksums and reuses each matching rank lower bound. A cut containing a unit factor was intentionally absent from EXP-065; it receives rank lower bound one, which is universally valid and deliberately favors the TT/MPO candidate. Any missing nontrivial mapping fails the correctness Gate.
 
 ## Precommitted mode family
 
@@ -18,17 +46,7 @@ For each matrix dimension, factor it into primes and one deterministic coarsenin
 4. column modes followed by row modes;
 5. alternating row/column singleton modes.
 
-This bounded family is fixed before observing EXP-066 results. Failure may not be rescued by an unbounded ordering or radix sweep.
-
-## Exact certificate
-
-Given mode pairs `(m_k,n_k)`, reshape the integer Q4 matrix into an interleaved tensor with physical dimensions `d_k=m_k*n_k`. For every internal cut `k`, certify
-
-```text
-R_k = rank(unfold(W, product_{i<=k} d_i, product_{i>k} d_i))
-```
-
-independently under primes 251 and 257. Each witness stores pivot rows, pivot columns, and a verified nonzero modular minor determinant. The maximum certified prime-field rank is a rigorous lower bound on the exact integer/rational bond rank.
+This bounded family was fixed before observing EXP-066 results. Failure may not be rescued by an unbounded ordering or radix sweep.
 
 ## Favorable accounting
 
@@ -40,9 +58,11 @@ S_core = sum_k R_{k-1} * m_k * n_k * R_k
 
 using 4-bit core slots. Also charge row scales, biases, mode/rank metadata, input/output reads, and a favorable intermediate allowance. Construction, coefficient widening, sparse-core indexing, and many contraction-index operations are omitted, deliberately favoring survival.
 
+The reused bond ranks are lower bounds. Combining them is sound because every classical TT core size is monotone in adjacent bond dimensions.
+
 ## Population
 
-Unchanged pinned checkpoints:
+Frozen unchanged checkpoints represented by EXP-065 evidence:
 
 ```text
 roneneldan/TinyStories-1M @ 77f1b168e219585646439073245fe87e56b3023e
@@ -50,21 +70,22 @@ roneneldan/TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
 roneneldan/TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
 ```
 
-Required coverage: all 153 two-dimensional tensors and all 144 registered dense projections, with exact agreement against frozen EXP-057 Q4 checksums.
+Required coverage: all 153 two-dimensional tensors and all 144 registered dense projections. Source Q4 checksums and EXP-065 evidence-file checksums must match exactly.
 
 ## Controls
 
-- exact rank-one MPO has unit bond ranks;
-- one-nibble mutation raises at least one bond rank;
-- reshape/interleave round trip is exact;
-- dense-random controls produce high certified bond rank;
-- every selected witness validates under both primes;
-- malformed shapes and insufficient prime sets fail closed.
+- every tested TT cut unfolding equals the EXP-065 rearrangement exactly;
+- frozen input files match committed checksums;
+- duplicate EXP-065 keys cannot conflict;
+- exact rank-one MPO controls retain unit bond ranks;
+- dense-random controls produce unfavorable classical MPO accounting;
+- any missing nontrivial EXP-065 mapping fails closed;
+- unit-boundary cuts are explicitly labeled as favorable rank-one lower bounds.
 
 ## Promotion Gate
 
 ```text
-zero checksum/certificate/control mismatch
+zero source-checksum/mapping/witness/control mismatch
 all 144 dense projections covered
 p50 favorable operation fraction <=10%
 p90 favorable operation fraction <=25%
@@ -87,4 +108,4 @@ On failure, exact classical single-matrix tensor factorization is closed as the 
 
 ## Claim boundary
 
-Phase A/B/C-observation, evidence ceiling E1. Exact MPO cores, Q4 model-output preservation, physical kernels, real Transformer operation replacement, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, tokens/second, E6, and E7 remain NOT TESTED.
+Phase A/B/C-derived-from-frozen-real-Q4-evidence, evidence ceiling E1. EXP-066 performs no new real-model execution and no new real-weight modular-rank measurement. Exact MPO cores, Q4 model-output preservation, physical kernels, real Transformer operation replacement, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, tokens/second, E6, and E7 remain NOT TESTED.
