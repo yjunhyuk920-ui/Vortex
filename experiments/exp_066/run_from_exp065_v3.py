@@ -116,12 +116,11 @@ _EXP058_INDEX, _EXP058_CHECKSUM_MISMATCHES, _EXP058_HASHES = (
 )
 _original_verify = base.verify_frozen_inputs
 _original_derive = base.derive_reused_tt_plan
-_original_write_json = base.write_json
+_raw_write_json = v2._original_write_json
 
 
 def verify_frozen_inputs():
     summary, mismatches, hashes = _original_verify()
-    hashes.update(_EXP058_HASHES)
     return summary, mismatches + _EXP058_CHECKSUM_MISMATCHES, hashes
 
 
@@ -150,6 +149,7 @@ def write_json(path: Path, value: Any) -> None:
     if isinstance(value, dict) and value.get("experiment") == "EXP-066":
         measured = value.setdefault("MEASURED", {})
         derived = value.setdefault("DERIVED", {})
+        projected = value.setdefault("PROJECTED", {})
         provenance = value.setdefault("provenance", {})
         measured.update(_unresolved_survivor_metrics(path.parent))
         provenance["exp058_input_hashes"] = _EXP058_HASHES
@@ -165,25 +165,27 @@ def write_json(path: Path, value: Any) -> None:
             "dense-random p50 operation fraction must remain at or above the "
             "25% target boundary; random matrices must not appear cheaply compressible"
         )
+        derived["permutation_equivalence_control"] = True
         derived["exp058_full_matrix_rank_reused"] = True
         derived["adjacent_tt_rank_inequalities_applied"] = True
         derived["derivation"] = (
             "Nontrivial TT cuts reuse checksum-verified EXP-065 Kronecker ranks. "
             "Cuts equal to W or W-transpose reuse checksum-matched EXP-058 full-rank "
             "certificates. Exact adjacent TT-rank inequalities propagate those lower "
-            "bounds. Remaining unit-boundary cuts are explicitly unresolved."
+            "bounds. Remaining unit-boundary ranks can only increase the accounting."
         )
 
-        scientific_gates_pass = all(
+        evidence_valid = all(
             bool(derived.get(name))
             for name in (
                 "correctness_gate_pass",
                 "population_gate_pass",
-                "operation_gate_pass",
-                "storage_gate_pass",
                 "adversary_gate_pass",
                 "model_trend_gate_pass",
             )
+        )
+        target_gate_pass = bool(derived.get("operation_gate_pass")) and bool(
+            derived.get("storage_gate_pass")
         )
         survivor_count = int(
             measured.get("dense_with_any_joint_p90_survivor", 0)
@@ -192,7 +194,10 @@ def write_json(path: Path, value: Any) -> None:
             measured.get("unique_unresolved_unit_boundary_cut_count", 0)
         )
         lower_bound_screen_survives = (
-            scientific_gates_pass and survivor_count > 0
+            evidence_valid and target_gate_pass and survivor_count > 0
+        )
+        family_closure = evidence_valid and (
+            not target_gate_pass or survivor_count == 0
         )
         derived["tt_mpo_lower_bound_survives_gate"] = (
             lower_bound_screen_survives
@@ -201,10 +206,30 @@ def write_json(path: Path, value: Any) -> None:
             lower_bound_screen_survives
         )
         derived["no_joint_p90_survivor"] = survivor_count == 0
-        derived["family_closure_justified"] = (
-            scientific_gates_pass and survivor_count == 0
-        )
+        derived["family_closure_justified"] = family_closure
         derived["exact_integer_mpo_reconstruction_gate_pass"] = False
+
+        storage_p50 = float(measured.get("p50_storage_fraction", 0.0))
+        storage_limit = float(gate["maximum_p50_storage_fraction"])
+        if storage_p50 > storage_limit:
+            derived["failure_basis"] = (
+                "favorable p50 storage lower bound exceeds the preregistered limit: "
+                f"{storage_p50:.12f} > {storage_limit:.12f}"
+            )
+
+        projected_bytes = float(
+            measured.get("projected_405b_lower_bound_storage_bytes", 0.0)
+        )
+        target_8_gib = 8 * 1024**3
+        projected["target_8_gib_bytes"] = target_8_gib
+        projected["lower_bound_to_8_gib_ratio"] = (
+            projected_bytes / target_8_gib if target_8_gib else None
+        )
+        projected["exceeds_8_gib"] = projected_bytes > target_8_gib
+        projected["projection_warning"] = (
+            "This is an extrapolation from the measured TinyStories population, "
+            "not a direct 405B measurement or proof."
+        )
 
         if lower_bound_screen_survives and unresolved > 0:
             decision = "REVISE_REAL_Q4_TT_MPO_UNIT_BOUNDARY_RANKS_REQUIRED"
@@ -220,12 +245,13 @@ def write_json(path: Path, value: Any) -> None:
         else:
             decision = str(CONFIG["failure_decision"])
             derived["next_gate"] = (
-                "change execution class and return to bounded E0 triage"
+                "close exact classical single-matrix TT/MPO as the primary core "
+                "and change execution class under bounded E0 triage"
             )
         value["authoritative_decision"] = decision
         derived["decision"] = decision
 
-    _original_write_json(path, value)
+    _raw_write_json(path, value)
 
 
 base.verify_frozen_inputs = verify_frozen_inputs
