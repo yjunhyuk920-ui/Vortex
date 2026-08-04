@@ -2,11 +2,17 @@
 
 This experiment is a bounded cheap-kill screen, not an MPO runtime implementation.
 
-It reuses the unchanged revision-pinned TinyStories-1M/3M/8M checkpoints and the frozen EXP-057 deterministic Q4 integer checksums. For every two-dimensional tensor it evaluates only the preregistered radix family in `config.json` and the five deterministic mode-order variants implemented in `vortex_runtime/tensor_train_rank.py`.
+It does **not** download the pinned checkpoints or repeat modular Gaussian elimination. EXP-065 already evaluated every ordered nontrivial row/column factorization of the same deterministic Q4 matrices and froze 6,108 validated plan rows. An interleaved TT/MPO cut is byte-for-byte the same rearrangement when its factors are the row/column prefix and suffix products.
 
-For every internal cut it forms the exact prefix/suffix unfolding and certifies rank independently under primes 251 and 257. The maximum certified modular rank is a rigorous lower bound on the integer/rational MPO bond dimension for that cut.
+EXP-066 therefore:
 
-The experiment charges favorable classical dense-core slot counts, 4-bit core storage, per-row scales, biases, metadata, input/output traffic, and a deliberately optimistic intermediate allowance. It does not reconstruct MPO cores.
+1. verifies the frozen EXP-065 input checksums;
+2. enumerates only the preregistered TT radix and mode-order family;
+3. maps each nontrivial TT cut to its frozen EXP-065 rank lower bound;
+4. assigns the deliberately favorable universal lower bound one to unit-boundary cuts that EXP-065 did not measure;
+5. computes favorable classical MPO storage, operation, and query-byte lower bounds.
+
+No new real-weight rank claim is produced. The scientific result is a deterministic derivation from frozen real-Q4 evidence plus independently tested reshaping equivalence.
 
 Run:
 
