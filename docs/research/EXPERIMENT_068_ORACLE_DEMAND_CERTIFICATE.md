@@ -124,13 +124,70 @@ no largest-model degradation >25%
 
 Passing this necessary Gate authorizes only the full-network downstream-bound stage. It does not authorize a scheduler or kernel.
 
-## Failure decision
+## Authoritative result
+
+Coverage and integrity:
+
+```text
+6 EXP-068 tests passed
+repository validation passed
+3 pinned models
+18 prompt cases
+6 required families
+153/153 source tensor hashes matched
+full-model/direct-head winner mismatches: 0
+bound violations: 0
+control failures: 0
+```
+
+Favorable output-head-only lower bound against the whole-model dense baseline:
+
+```text
+p50 weight-read fraction: 13.7696858262%   FAIL against 10%
+p90 weight-read fraction: 19.2524013315%   PASS against 25%
+p50 operation fraction:   13.7696858262%   FAIL against 10%
+p90 operation fraction:   19.2524013315%   PASS against 25%
+minimum case:              10.1376199755%
+maximum case:              21.0055007890%
+```
+
+Per-family p90 lower bounds:
+
+```text
+code                 21.0055007890%
+identifier boundary  19.2524013315%
+Korean               17.8296751339%
+English narrative    17.7761143419%
+mathematics           17.7563341076%
+structured JSON       13.3003515009%
+```
+
+The largest checkpoint had the lowest model p50, so the model-trend Gate passed. That does not rescue the failed global p50 target.
+
+## Decision
 
 ```text
 REJECT_GLOBAL_DEMAND_CERTIFICATE_AS_CORE_RETAIN_BOUND_AUDITOR_AUXILIARY
 ```
 
-Failure closes the registered exact norm/absolute-unread demand family as a primary core because the final output head alone exceeds the whole-model budget after every preceding layer is granted for free. A future reopening requires a genuinely new exact information source or theorem, not tile-size or ordering tuning.
+The final output head alone exceeds the whole-model p50 budget after every preceding Transformer operation, every preceding weight read, the complete winning row, all metadata, and an independently optimal order for every competitor are excluded from cost. Full-network propagation and deployment overhead can only add work.
+
+Therefore the registered exact norm/absolute-unread demand family is closed as a primary core. It may not be reopened through tile-size tuning, ordering search, a scheduler implementation, or a kernel implementation without a genuinely stronger exact theorem or new information source.
+
+## Evidence authority
+
+```text
+results/exp_068/summary.json
+results/exp_068/raw/case_rows.jsonl
+results/exp_068/raw/control_rows.jsonl
+results/exp_068/raw/model_rows.jsonl
+results/exp_068/raw/tensor_rows.jsonl
+results/exp_068/raw/snapshot_rows.jsonl
+results/exp_068/evidence_manifest.json
+workflow 30918865952
+artifact 8896230736
+artifact ZIP SHA-256 ff0f4398c0d162142d3e71d6864a3990704a14bf59e007182c9dce72c913835f
+```
 
 ## Claim boundary
 
