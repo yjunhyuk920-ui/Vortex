@@ -76,7 +76,8 @@ def test_rank_one_mpo_has_unit_bond_ranks() -> None:
     assert certified.bond_rank_lower_bounds == (1, 1)
     assert certified.cut_prime_ranks == ((1, 1), (1, 1))
     assert certified.witness_mismatches == 0
-    assert certified.storage_fraction < 1.0
+    assert certified.core_scalar_lower_bound == 12
+    assert certified.query_byte_fraction < 1.0
 
 
 def test_one_scalar_mutation_raises_a_bond_rank() -> None:
