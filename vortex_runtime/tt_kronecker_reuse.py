@@ -1,10 +1,11 @@
 """Reuse frozen EXP-065 Kronecker ranks as exact TT/MPO bond lower bounds.
 
-For interleaved row/column MPO modes, every internal TT cut is exactly the
-Kronecker rearrangement with factors equal to the row/column prefix and suffix
-products.  EXP-065 already measured every nontrivial ordered factorization of
-the same deterministic Q4 matrices, so recomputing those modular ranks would
-only duplicate frozen evidence.
+For interleaved row/column MPO modes, every internal TT cut is related to the
+Kronecker rearrangement with row/column prefix and suffix products by
+independent row and column permutations. Rank is invariant under those
+permutations. EXP-065 already measured every nontrivial ordered factorization
+of the same deterministic Q4 matrices, so recomputing those modular ranks
+would only duplicate frozen evidence.
 """
 from __future__ import annotations
 
@@ -48,13 +49,62 @@ def tt_cut_unfolding(
     return unfold_interleaved_tensor(tensor, cut)
 
 
-def validate_cut_equivalence(
+def _grouped_axis_permutation(
+    mode_pairs: Sequence[tuple[int, int]], *, prefix: bool, cut: int
+) -> np.ndarray:
+    pairs = tuple((int(row), int(column)) for row, column in mode_pairs)
+    selected = pairs[:cut] if prefix else pairs[cut:]
+    physical = tuple(row * column for row, column in selected)
+    row_dims = tuple(row for row, _ in selected)
+    column_dims = tuple(column for _, column in selected)
+    size = math.prod(physical)
+    grouped_to_interleaved = np.empty(size, dtype=np.int64)
+    for interleaved_index in range(size):
+        physical_coordinates = np.unravel_index(interleaved_index, physical)
+        row_coordinates = tuple(
+            coordinate // column
+            for coordinate, (_, column) in zip(
+                physical_coordinates, selected, strict=True
+            )
+        )
+        column_coordinates = tuple(
+            coordinate % column
+            for coordinate, (_, column) in zip(
+                physical_coordinates, selected, strict=True
+            )
+        )
+        row_index = int(np.ravel_multi_index(row_coordinates, row_dims))
+        column_index = int(
+            np.ravel_multi_index(column_coordinates, column_dims)
+        )
+        grouped_index = row_index * math.prod(column_dims) + column_index
+        grouped_to_interleaved[grouped_index] = interleaved_index
+    return grouped_to_interleaved
+
+
+def tt_unfolding_in_kronecker_order(
+    matrix: Any, mode_pairs: Sequence[tuple[int, int]], cut: int
+) -> np.ndarray:
+    """Permute one TT unfolding into the EXP-065 rearrangement order."""
+    unfolding = tt_cut_unfolding(matrix, mode_pairs, cut)
+    row_permutation = _grouped_axis_permutation(
+        mode_pairs, prefix=True, cut=cut
+    )
+    column_permutation = _grouped_axis_permutation(
+        mode_pairs, prefix=False, cut=cut
+    )
+    return np.ascontiguousarray(
+        unfolding[np.ix_(row_permutation, column_permutation)]
+    )
+
+
+def validate_cut_permutation_equivalence(
     matrix: Any, mode_pairs: Sequence[tuple[int, int]], cut: int
 ) -> bool:
-    """Check byte-exact equality with the EXP-065 rearrangement convention."""
+    """Prove exact equality after independent TT row/column permutations."""
     factors = tt_cut_factors(mode_pairs, cut)
     return np.array_equal(
-        tt_cut_unfolding(matrix, mode_pairs, cut),
+        tt_unfolding_in_kronecker_order(matrix, mode_pairs, cut),
         rearrange_kronecker(
             matrix,
             m1=factors[0],
@@ -247,12 +297,9 @@ def derive_reused_tt_plan(
                 "full_rearrangement_rank_proven": bool(
                     source_row["full_rearrangement_rank_proven"]
                 ),
-                "source": "EXP-065 frozen validated plan row",
+                "source": "EXP-065 frozen validated plan row; TT rank invariant under row/column permutations",
             }
         elif nontrivial:
-            # This should never occur because EXP-065 covered every ordered
-            # nontrivial factorization.  Rank one is retained only to avoid an
-            # unsound favorable overstatement before the correctness Gate fails.
             rank = 1
             missing += 1
             record = {
@@ -262,8 +309,6 @@ def derive_reused_tt_plan(
                 "source": "missing nontrivial EXP-065 row; fail-closed rank-one placeholder",
             }
         else:
-            # EXP-065 deliberately excluded unit factors.  One is a universally
-            # valid lower bound and deliberately favors the TT/MPO candidate.
             rank = 1
             unit_boundaries += 1
             record = {
