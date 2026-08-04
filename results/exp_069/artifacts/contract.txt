@@ -1,0 +1,1 @@
+Phase A/B/C small-model causal trajectory E1 only; bitwise floating-point replay, physical cache kernels, 405B execution, 8 GiB VRAM and target hardware are not tested
