@@ -1,10 +1,12 @@
 """Sound output-head demand lower bounds for activation-conditioned lazy execution.
 
-The registered mechanism reveals full-vocabulary column stripes of a linear output
-head.  For a known exact hidden vector and exact real-arithmetic winner, an unread
-coordinate may contribute adversarially to every winner-versus-competitor margin.
-The functions below derive a necessary number of revealed stripes.  They do not
-claim a deployable scheduler or bitwise floating-point replay equivalence.
+For a known exact hidden vector and exact real-arithmetic winner, every unread
+weight coordinate may contribute adversarially to a winner-versus-competitor
+margin.  The registered audit grants the complete winner row, all bound metadata,
+and a different perfect reveal order for every competitor for free.  It then sums
+only the competitor-row weight entries that remain mathematically necessary.
+This is a favorable necessary lower bound, not a deployable scheduler or a claim
+of bitwise floating-point replay equivalence.
 """
 from __future__ import annotations
 
@@ -27,6 +29,7 @@ class OutputHeadDemandLowerBound:
     exact_real_margin: float
     necessary_tile_count: int
     necessary_column_count: int
+    necessary_competitor_weight_entries: int
     head_weight_fraction_lower_bound: float
     hardest_competitor_index: int
     domain_winner_mismatch_count: int
@@ -43,6 +46,9 @@ class OutputHeadDemandLowerBound:
             "exact_real_margin": self.exact_real_margin,
             "necessary_tile_count": self.necessary_tile_count,
             "necessary_column_count": self.necessary_column_count,
+            "necessary_competitor_weight_entries": (
+                self.necessary_competitor_weight_entries
+            ),
             "head_weight_fraction_lower_bound": (
                 self.head_weight_fraction_lower_bound
             ),
@@ -100,7 +106,7 @@ def analyze_output_head_demand_lower_bound(
     expected_winner: int | None = None,
     competitor_chunk_rows: int = 4096,
 ) -> OutputHeadDemandLowerBound:
-    """Return a sound necessary stripe count for exact winner certification.
+    """Return sound necessary reveal work for exact winner certification.
 
     For competitor ``i`` and hidden coordinate ``j`` define
     ``d_ij = (w_winner,j - w_i,j) * h_j``.  After revealing a set S,
@@ -108,12 +114,12 @@ def analyze_output_head_demand_lower_bound(
 
         bias_diff + sum_{j in S} d_ij > sum_{j not in S} |d_ij|.
 
-    Equivalently, revealed stripes must collect more than
-    ``sum_j |d_ij| - bias_diff`` of gain ``2*max(d_ij, 0)``.  The independently
-    optimal stripe count for every competitor is a necessary condition for any
-    single subset that certifies all competitors.  Their maximum is therefore a
-    rigorous lower bound, while still granting an impossible competitor-specific
-    oracle ordering.
+    Equivalently, revealed coordinates must collect more than
+    ``sum_j |d_ij| - bias_diff`` of gain ``2*max(d_ij, 0)``.  Each competitor is
+    granted its independently optimal ordering.  Because different competitor
+    rows contain disjoint weight entries, summing their individual minima is a
+    necessary lower bound for any coordinate/tile implementation in this bound
+    family.  The winner row and every metadata/bound read are deliberately free.
     """
     matrix = np.asarray(weight)
     vector = np.asarray(hidden)
@@ -154,11 +160,16 @@ def analyze_output_head_demand_lower_bound(
     winner_bias = float(bias64[winner])
 
     necessary_tiles = 0
+    necessary_entries = 0
     hardest = runner_up
     domain_violations = 0
     rows = int(matrix.shape[0])
     width = int(matrix.shape[1])
     padded_width = len(widths) * int(tile_columns)
+    columns_for_count = np.asarray(
+        [_minimum_columns_for_tile_count(widths, count) for count in range(len(widths) + 1)],
+        dtype=np.int64,
+    )
 
     for start in range(0, rows, competitor_chunk_rows):
         stop = min(rows, start + competitor_chunk_rows)
@@ -190,7 +201,7 @@ def analyze_output_head_demand_lower_bound(
         local_counts = np.argmax(met, axis=1) + 1
         impossible = ~np.any(met, axis=1)
         local_counts[threshold < 0.0] = 0
-        local_counts[impossible] = len(widths) + 1
+        local_counts[impossible] = len(widths)
         if 0 <= local_winner < stop - start:
             local_counts[local_winner] = 0
 
@@ -199,6 +210,7 @@ def analyze_output_head_demand_lower_bound(
         if local_max > necessary_tiles:
             necessary_tiles = local_max
             hardest = start + local_max_index
+        necessary_entries += int(np.sum(columns_for_count[local_counts]))
 
     domain_violations += int(necessary_tiles > len(widths))
     if domain_violations:
@@ -207,8 +219,9 @@ def analyze_output_head_demand_lower_bound(
     necessary_columns = _minimum_columns_for_tile_count(
         widths, necessary_tiles
     )
+    head_slots = rows * width
     return OutputHeadDemandLowerBound(
-        vocabulary_size=int(matrix.shape[0]),
+        vocabulary_size=rows,
         hidden_width=width,
         tile_columns=int(tile_columns),
         tile_count=len(widths),
@@ -217,7 +230,8 @@ def analyze_output_head_demand_lower_bound(
         exact_real_margin=exact_margin,
         necessary_tile_count=necessary_tiles,
         necessary_column_count=necessary_columns,
-        head_weight_fraction_lower_bound=necessary_columns / width,
+        necessary_competitor_weight_entries=necessary_entries,
+        head_weight_fraction_lower_bound=necessary_entries / head_slots,
         hardest_competitor_index=hardest,
         domain_winner_mismatch_count=mismatch + domain_violations,
         nonfinite_count=nonfinite_count,
