@@ -1,21 +1,26 @@
 """Exact Q4 short-block pattern table accounting."""
 from __future__ import annotations
-
 from dataclasses import dataclass
 import math
 from typing import Iterable, Sequence
-
 import numpy as np
 
 
 class LocalPatternError(ValueError):
-    """Raised when a local-pattern plan is invalid."""
+    pass
 
 
 def ceil_log2(value: int) -> int:
-    if value <= 1:
-        return 0
-    return int(math.ceil(math.log2(value)))
+    return 0 if value <= 1 else int(math.ceil(math.log2(value)))
+
+
+def _matrix(matrix: np.ndarray) -> np.ndarray:
+    value = np.ascontiguousarray(matrix)
+    if value.ndim != 2 or min(value.shape) <= 0:
+        raise LocalPatternError("matrix must be non-empty and two-dimensional")
+    if not np.issubdtype(value.dtype, np.signedinteger):
+        raise LocalPatternError("matrix must use a signed integer dtype")
+    return value
 
 
 def bit_reversal_order(length: int) -> tuple[int, ...]:
@@ -23,15 +28,6 @@ def bit_reversal_order(length: int) -> tuple[int, ...]:
         raise LocalPatternError("bit reversal requires a positive power-of-two length")
     bits = length.bit_length() - 1
     return tuple(int(f"{index:0{bits}b}"[::-1], 2) for index in range(length))
-
-
-def _matrix(matrix: np.ndarray) -> np.ndarray:
-    value = np.ascontiguousarray(matrix)
-    if value.ndim != 2 or value.shape[0] <= 0 or value.shape[1] <= 0:
-        raise LocalPatternError("matrix must be non-empty and two-dimensional")
-    if not np.issubdtype(value.dtype, np.signedinteger):
-        raise LocalPatternError("matrix must use a signed integer dtype")
-    return value
 
 
 def lexicographic_signature_order(matrix: np.ndarray) -> tuple[int, ...]:
@@ -42,7 +38,7 @@ def lexicographic_signature_order(matrix: np.ndarray) -> tuple[int, ...]:
 def registered_orders(matrix: np.ndarray, names: Sequence[str]) -> tuple[tuple[str, tuple[int, ...]], ...]:
     value = _matrix(matrix)
     length = int(value.shape[1])
-    rows = []
+    result = []
     for name in names:
         if name == "natural":
             order = tuple(range(length))
@@ -54,10 +50,10 @@ def registered_orders(matrix: np.ndarray, names: Sequence[str]) -> tuple[tuple[s
             order = lexicographic_signature_order(value)
         else:
             raise LocalPatternError(f"unsupported order: {name}")
-        rows.append((name, order))
-    if not rows:
+        result.append((name, order))
+    if not result:
         raise LocalPatternError("no registered column order applies")
-    return tuple(rows)
+    return tuple(result)
 
 
 @dataclass(frozen=True)
@@ -77,7 +73,7 @@ class BlockRow:
     accumulation_terms: int
 
     def as_dict(self) -> dict[str, int]:
-        return {field: int(getattr(self, field)) for field in self.__dataclass_fields__}
+        return {name: int(getattr(self, name)) for name in self.__dataclass_fields__}
 
 
 @dataclass(frozen=True)
@@ -120,92 +116,83 @@ class LocalPatternPlan:
         return max(self.operation_fraction, self.query_byte_fraction, self.static_representation_fraction)
 
     def as_dict(self) -> dict[str, object]:
-        result = {field: getattr(self, field) for field in self.__dataclass_fields__ if field != "blocks"}
+        result = {name: getattr(self, name) for name in self.__dataclass_fields__ if name != "blocks"}
         result.update({
             "operation_fraction": self.operation_fraction,
             "query_byte_fraction": self.query_byte_fraction,
             "static_representation_fraction": self.static_representation_fraction,
             "joint_fraction": self.joint_fraction,
-            "blocks": [row.as_dict() for row in self.blocks],
+            "blocks": [block.as_dict() for block in self.blocks],
         })
         return result
 
 
 def analyze_local_pattern_plan(matrix: np.ndarray, *, block_width: int, order_name: str, order: Sequence[int]) -> LocalPatternPlan:
     value = _matrix(matrix)
-    rows, columns = (int(x) for x in value.shape)
+    rows, columns = map(int, value.shape)
     if block_width <= 0:
         raise LocalPatternError("block width must be positive")
-    permutation = tuple(int(x) for x in order)
+    permutation = tuple(map(int, order))
     if len(permutation) != columns or sorted(permutation) != list(range(columns)):
         raise LocalPatternError("column order is not a permutation")
     ordered = np.ascontiguousarray(value[:, permutation])
     reconstructed = np.empty_like(ordered)
     blocks = []
-    dictionary_bits = identifiers_bits = offsets_bits = 0
-    partial_terms = gather_terms = accumulation_terms = 0
-    collision_mismatches = distinct_total = nonzero_total = 0
-
+    dictionary_bits = identifier_bits = offset_bits = partial_terms = gather_terms = 0
+    distinct_total = nonzero_total = collisions = 0
     for block_index, start in enumerate(range(0, columns, block_width)):
         stop = min(columns, start + block_width)
-        block = np.ascontiguousarray(ordered[:, start:stop])
+        source = np.ascontiguousarray(ordered[:, start:stop])
         width = stop - start
-        dictionary = []
-        by_bytes = {}
+        dictionary: list[tuple[int, ...]] = []
+        keyed: dict[bytes, list[int]] = {}
         ids = np.empty(rows, dtype=np.int64)
         for row_index in range(rows):
-            vector = np.ascontiguousarray(block[row_index])
-            key = vector.tobytes()
-            pattern = tuple(int(x) for x in vector)
-            candidates = by_bytes.setdefault(key, [])
+            vector = np.ascontiguousarray(source[row_index])
+            pattern = tuple(map(int, vector))
+            candidates = keyed.setdefault(vector.tobytes(), [])
             found = None
             for candidate in candidates:
                 if dictionary[candidate] == pattern:
                     found = candidate
                     break
-                collision_mismatches += 1
+                collisions += 1
             if found is None:
                 found = len(dictionary)
                 dictionary.append(pattern)
                 candidates.append(found)
             ids[row_index] = found
         distinct = len(dictionary)
-        nonzero = sum(any(c != 0 for c in pattern) for pattern in dictionary)
-        id_bits = ceil_log2(distinct)
-        dictionary_bits_here = distinct * width * 4
-        identifier_bits_here = rows * id_bits
-        offset_bits_here = 64
-        dot_terms_here = sum(sum(c != 0 for c in pattern) for pattern in dictionary)
-        gather_here = rows
-        accumulation_here = rows if block_index else 0
-        dictionary_bits += dictionary_bits_here
-        identifiers_bits += identifier_bits_here
-        offsets_bits += offset_bits_here
-        partial_terms += dot_terms_here
-        gather_terms += gather_here
-        accumulation_terms += accumulation_here
+        nonzero = sum(any(coefficient != 0 for coefficient in pattern) for pattern in dictionary)
+        id_width = ceil_log2(distinct)
+        block_dictionary_bits = distinct * width * 4
+        block_identifier_bits = rows * id_width
+        block_partial_terms = sum(sum(coefficient != 0 for coefficient in pattern) for pattern in dictionary)
+        dictionary_bits += block_dictionary_bits
+        identifier_bits += block_identifier_bits
+        offset_bits += 64
+        partial_terms += block_partial_terms
+        gather_terms += rows  # favorable fused gather-add, one term per row and block
         distinct_total += distinct
         nonzero_total += nonzero
         reconstructed[:, start:stop] = np.asarray(dictionary, dtype=value.dtype)[ids]
-        blocks.append(BlockRow(block_index, start, stop, width, distinct, nonzero, id_bits, dictionary_bits_here, identifier_bits_here, offset_bits_here, dot_terms_here, gather_here, accumulation_here))
-
+        blocks.append(BlockRow(block_index, start, stop, width, distinct, nonzero, id_width, block_dictionary_bits, block_identifier_bits, 64, block_partial_terms, rows, 0))
     reconstruction_mismatches = int(np.count_nonzero(reconstructed != ordered))
     natural = permutation == tuple(range(columns))
     permutation_bits = 0 if natural else columns * ceil_log2(columns)
     permutation_terms = 0 if natural else columns
-    scale_terms = rows
     scale_bits = rows * 32
-    dense_terms = rows * columns + scale_terms
-    table_terms = partial_terms + gather_terms + accumulation_terms + permutation_terms + scale_terms
+    dense_terms = rows * columns + rows
+    table_terms = partial_terms + gather_terms + permutation_terms + rows
     dense_bits = rows * columns * 4 + scale_bits
-    representation_bits = dictionary_bits + identifiers_bits + offsets_bits + permutation_bits + scale_bits
-    return LocalPatternPlan(rows, columns, int(block_width), str(order_name), len(blocks), distinct_total, nonzero_total, dense_terms, table_terms, dense_bits, scale_bits, dictionary_bits, identifiers_bits, offsets_bits, permutation_bits, representation_bits, representation_bits, reconstruction_mismatches, collision_mismatches, tuple(blocks))
+    representation_bits = dictionary_bits + identifier_bits + offset_bits + permutation_bits + scale_bits
+    return LocalPatternPlan(rows, columns, block_width, order_name, len(blocks), distinct_total, nonzero_total, dense_terms, table_terms, dense_bits, scale_bits, dictionary_bits, identifier_bits, offset_bits, permutation_bits, representation_bits, representation_bits, reconstruction_mismatches, collisions, tuple(blocks))
 
 
 def choose_joint_plan(plans: Iterable[LocalPatternPlan]) -> LocalPatternPlan:
     population = tuple(plans)
     if not population:
         raise LocalPatternError("cannot choose from an empty plan population")
-    if any(p.reconstruction_mismatches or p.hash_collision_mismatches for p in population):
+    if any(plan.reconstruction_mismatches or plan.hash_collision_mismatches for plan in population):
         raise LocalPatternError("invalid plan cannot be selected")
-    return min(population, key=lambda p: (p.joint_fraction, p.operation_fraction + p.query_byte_fraction + p.static_representation_fraction, p.block_width, p.order_name))
+    return min(population, key=lambda plan: (plan.joint_fraction, plan.operation_fraction + plan.query_byte_fraction + plan.static_representation_fraction, plan.block_width, plan.order_name))
