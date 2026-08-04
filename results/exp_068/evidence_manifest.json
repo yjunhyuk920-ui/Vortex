@@ -1,0 +1,28 @@
+{
+  "experiment": "EXP-068",
+  "authority": "results/exp_068/summary.json",
+  "workflow_run_id": 30918865952,
+  "workflow_job_id": 92023901647,
+  "artifact_id": 8896230736,
+  "artifact_name": "exp-068-candidate-30918865952",
+  "artifact_size_bytes": 17971,
+  "artifact_zip_sha256": "ff0f4398c0d162142d3e71d6864a3990704a14bf59e007182c9dce72c913835f",
+  "artifact_created_at": "2026-08-04T14:26:32Z",
+  "source_head_sha": "ceb88c935f8c87a1001f73da5dabf4f3d9e1d395",
+  "workflow_merge_sha": "80b0c07d74e04cf4fea4ee51e022cfc5361265d1",
+  "tests": {
+    "exp_068": "6 passed",
+    "repository_validation": "passed"
+  },
+  "coverage": {
+    "models": 3,
+    "prompt_cases": 18,
+    "families": 6,
+    "two_dimensional_tensors": 153
+  },
+  "frozen_input_hashes": {
+    "exp058_matrix_rank_rows_sha256": "1b9a20b25457ee305a3f9da9fe19b676e86f86a479d9ee9c4708c267b1055dcc",
+    "config_sha256": "0ff180d3619d1473f190c75a9de808a1b0b739df0f0110a7a9d0c4b5b0c86242"
+  },
+  "claim_boundary": "E1 exact-real output-head necessary lower bound; no deployable scheduler, actual skipped Transformer operation, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT or tokens/sec measurement"
+}
