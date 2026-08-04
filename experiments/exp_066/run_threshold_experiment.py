@@ -3,15 +3,16 @@
 from __future__ import annotations
 
 from experiments.exp_066 import run_experiment as base
-from vortex_runtime.tensor_train_fast_screen import (
-    certify_fast_screen_family,
-    select_favorable_fast_screen_plan,
-    selected_fast_certificate_rows,
+from vortex_runtime import tensor_train_fast_screen as fast_screen
+from vortex_runtime.modular_minor_screen import (
+    minor_first_threshold_rank_witness,
 )
+
+fast_screen.threshold_rank_witness = minor_first_threshold_rank_witness
 
 
 def _certify_mode_family(matrix, **kwargs):
-    return certify_fast_screen_family(
+    return fast_screen.certify_fast_screen_family(
         matrix,
         rejection_operation_fraction=0.25,
         rejection_storage_fraction=0.25,
@@ -20,8 +21,8 @@ def _certify_mode_family(matrix, **kwargs):
 
 
 base.certify_mode_family = _certify_mode_family
-base.select_favorable_tt_plan = select_favorable_fast_screen_plan
-base.selected_certificate_rows = selected_fast_certificate_rows
+base.select_favorable_tt_plan = fast_screen.select_favorable_fast_screen_plan
+base.selected_certificate_rows = fast_screen.selected_fast_certificate_rows
 
 
 if __name__ == "__main__":
