@@ -1,0 +1,6 @@
+{"control": "tt_cut_matches_exp065_after_independent_row_column_permutations", "cut_count": 2, "equivalence_kind": "rank-preserving row/column permutations", "passed": true}
+{"control": "direct_rank_one_mpo", "minimum_maximum_bond_rank": 1, "passed": true}
+{"control": "dense_random_0", "mode_plan_count": 59, "passed": true, "selected_maximum_bond_rank": 2, "selected_operation_fraction": 1.05, "selected_storage_fraction": 1.4791666666666667}
+{"control": "dense_random_1", "mode_plan_count": 59, "passed": true, "selected_maximum_bond_rank": 2, "selected_operation_fraction": 1.05, "selected_storage_fraction": 1.4791666666666667}
+{"control": "dense_random_2", "mode_plan_count": 59, "passed": true, "selected_maximum_bond_rank": 2, "selected_operation_fraction": 1.05, "selected_storage_fraction": 1.4791666666666667}
+{"control": "dense_random_3", "mode_plan_count": 59, "passed": true, "selected_maximum_bond_rank": 2, "selected_operation_fraction": 1.05, "selected_storage_fraction": 1.4791666666666667}

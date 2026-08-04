@@ -1,146 +1,161 @@
 # Next Experiment
 
-## Research-efficiency classification
+## Closed Gate — EXP-066
 
-EXP-066 is authorized as a **bounded cheap-kill certificate Gate**, not as an open-ended Tensor-Train implementation program.
+EXP-066 reused checksum-verified EXP-065 Kronecker ranks and EXP-058 full-matrix ranks, then propagated exact adjacent TT-rank lower bounds across 4,384 preregistered plans.
 
-Reason for allowing it:
-
-- it was preregistered before the efficiency-policy change;
-- it strictly generalizes the one-cut Kronecker rank test;
-- exact unfolding-rank certificates can reject it before factor reconstruction, runtime integration, or kernel work;
-- the certifier can reuse the frozen real-Q4 population and modular-witness infrastructure.
-
-The Gate must terminate at lower-bound certification and fully favorable accounting unless the promotion thresholds pass.
-
-Before survival, the following are prohibited:
+Authoritative result:
 
 ```text
-exact MPO core reconstruction
-physical MPO kernels
-model-wide MPO runtime integration
-broad rescue searches over unregistered mode orders or factor schedules
-adjacent classical single-matrix tensor decompositions opened only because TT/MPO failed
+operation p50 3.8941375969%   PASS
+operation p90 6.7788461538%   PASS
+storage p50  11.0523897059%   FAIL against 10%
+storage p90  22.9882812500%   PASS
 ```
 
-## Closed Gate — EXP-065
-
-All 144 dense projections selected a full-rank four-row Kronecker rearrangement. Favorable lower-bound operations exceeded dense execution by more than 2x and static storage did not shrink.
-
-```text
-REJECT_REAL_Q4_KRONECKER_RANK_AS_CORE_RETAIN_TENSOR_CERTIFIER_AUXILIARY
-```
-
-## EXP-066 — Pinned Real-Q4 Exact Tensor-Train / MPO Bond-Rank Gate
-
-### E0 efficiency triage
-
-Optimistic upside if exact bond ranks are genuinely small:
-
-- static core storage and per-query weight reads could, in principle, fall by an order of magnitude or more;
-- chained contractions could replace the dense matrix-vector product;
-- the mechanism is automatically derived from unchanged weights.
-
-Reasons for low prior probability:
-
-- EXP-058 proved ordinary exact low rank absent;
-- EXP-065 found full-rank Kronecker rearrangements with more than 2x favorable operation cost and no storage reduction;
-- the same real-Q4 population has repeatedly behaved like general dense matrices under exact classical structure tests.
-
-Cheapest decisive falsification:
-
-> certify every necessary prefix/suffix unfolding rank and derive favorable lower bounds on exact MPO storage and contraction work before reconstructing any core.
-
-Authorized implementation stage:
-
-> rank/certificate generation, witness verification, controls, accounting, frozen evidence, and repository validation only.
-
-### Mechanism
-
-Factor matrix dimensions into ordered radix sequences:
-
-```text
-m = product_k m_k
-n = product_k n_k
-```
-
-Pad the shorter sequence only with unit modes, pair `(m_k,n_k)`, and reshape the Q4 matrix into an interleaved Matrix-Product-Operator tensor with physical mode sizes `d_k=m_k*n_k`. For every cut `k`, certify the exact rank of the prefix/suffix unfolding:
-
-```text
-R_k = rank(unfold(W, product_{i<=k} d_i, product_{i>k} d_i))
-```
-
-These are necessary TT/MPO bond ranks. With `R_0=R_L=1`, exact core storage is lower-bounded by:
-
-```text
-sum_k R_{k-1} * m_k * n_k * R_k
-```
-
-All admissible radix schedules and deterministic mode-order variants defined before execution must be evaluated. Every selected cut receives independently verified witnesses under at least two primes.
-
-### Population
-
-Use the unchanged TinyStories-1M/3M/8M revisions and frozen EXP-057 Q4 checksums. Analyze all 153 two-dimensional tensors and report promotion statistics over all 144 dense projections.
-
-### Accounting
-
-Charge the bond-rank storage lower bound, mode-order metadata, per-row scales and biases, input reads, MPO contractions, every intermediate tensor read/write, output reductions, compilation and certificate work. Use favorable 4-bit core storage so rejection remains conservative.
-
-### Controls
-
-- exact rank-1 and low-bond MPO tensors certify correctly;
-- a one-nibble mutation raises at least one bond rank;
-- dense-random and forced-unique tensors produce high bond ranks;
-- interleaved reshape/order round trips are exact;
-- every selected bond witness verifies under two primes;
-- no approximation, training, activation table or changed quantization.
-
-### Promotion Gate
-
-```text
-zero checksum/certificate/control mismatch
-all 144 dense projections covered
-p50 lower-bound operation fraction <=10%
-p90 lower-bound operation fraction <=25%
-p50 lower-bound storage fraction <=10%
-p90 lower-bound storage fraction <=25%
-dense-random adversary p50 <=25%
-projected static storage <=1 TiB
-no largest-model degradation >25%
-exact integer MPO reconstruction before operation-replacement promotion
-```
-
-Passing rank or storage alone is insufficient. Promotion requires operations and storage to survive together at population level and a credible route to actual Transformer operation replacement.
-
-Failure decision:
+Decision:
 
 ```text
 REJECT_REAL_Q4_TT_MPO_BOND_RANK_AS_CORE_RETAIN_MPO_CERTIFIER_AUXILIARY
 ```
 
-### Mandatory stop rule after failure
+The favorable storage lower bound already fails. Unresolved ranks and implementation costs can only increase it. Exact classical single-matrix TT/MPO is therefore closed as a primary core for the measured real-Q4 population. No core reconstruction, contraction kernel, broad mode-order rescue, Tensor Ring, Hierarchical Tucker, or adjacent decomposition is authorized.
 
-If the operation or storage lower-bound Gate fails:
+## EXP-067 — Pinned Real-Q4 Joint Multi-Projection Exact-Reuse Gate
 
-1. retain only the generic MPO unfolding/rank certifier as auxiliary infrastructure;
-2. do not implement exact cores, contractions, kernels, or runtime integration;
-3. close exact classical single-matrix tensor factorization as a primary core direction for the measured real-Q4 population;
-4. prohibit rescue through mode-order expansion, rank tuning, Tensor Ring, Hierarchical Tucker, Butterfly-like relabeling, or another adjacent decomposition unless a new measured fact or asymptotic mechanism explicitly reopens the family;
-5. select the next core candidate through `docs/RESEARCH_EFFICIENCY_CONTRACT.md` rather than by decomposition adjacency.
+### Execution-class change
 
-### Post-EXP-066 pivot rule
+EXP-067 does not seek another representation of one matrix. It examines operations that the Transformer already evaluates together from the same input activation:
 
-If EXP-066 fails, the next primary Gate must change execution class and show a credible order-of-magnitude upside before implementation.
+```text
+attention group: q_proj, k_proj, v_proj
+MLP group:       gate_proj, up_proj
+```
 
-Priority classes for E0 triage are:
+The candidate mechanism is exact common arithmetic across operators:
 
-- **joint multi-projection common-arithmetic compilation** — analyze Q/K/V together and Gate/Up together, seeking reusable exact arithmetic across operators rather than another isolated matrix representation;
-- **certificate-guided demand-driven or lazy execution** — determine whether only a small dependency subgraph is needed to settle the final decision, with exact fail-closed expansion when the certificate is insufficient;
-- **proposal plus substantially cheaper exact verification** — only if a theorem or executable bound shows verification avoids nearly all target work;
-- another genuinely new information source or execution representation with a route toward the approximately 1.185% final target fraction.
+- one input linear form reused by multiple output rows;
+- identical, negated, or integer-proportional Q4 rows reused with a cheap scale/sign correction;
+- exact common right-factor width shared by an entire projection group;
+- repeated row blocks reused without changing the model or quantization.
 
-These are not presumed solutions. Each must pass target-upside, novelty, scaling, full-cost, universality, correctness, and cheap-falsification triage before receiving an experiment number.
+This is an executor/compiler question, not target retraining or approximate compression.
+
+### Prior and cheap falsification
+
+The prior is low:
+
+- EXP-058 proved individual matrices full rank;
+- EXP-065/066 found no useful exact single-matrix classical tensor structure;
+- independently learned projections are expected to contain few exact repeated linear forms.
+
+The cheapest decisive test is therefore to measure exact reusable arithmetic directly on the pinned Q4 weights before implementing any joint kernel.
+
+### Population
+
+Use unchanged revisions and the frozen deterministic row-wise Q4 quantizer:
+
+```text
+roneneldan/TinyStories-1M @ 77f1b168e219585646439073245fe87e56b3023e
+roneneldan/TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
+roneneldan/TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
+```
+
+Every analyzed tensor checksum must match the frozen EXP-057/058/065 Q4 evidence. Required groups are every complete attention `Q/K/V` group and every complete MLP `Gate/Up` group present in the models.
+
+### Exact canonical row classes
+
+For every Q4 integer row `w`, construct fail-closed canonical identities:
+
+1. exact equality: `w_a = w_b`;
+2. sign equality: `w_a = -w_b`;
+3. primitive integer proportionality:
+   - divide by the row gcd;
+   - normalize the first nonzero sign;
+   - retain the exact integer multiplier;
+4. exact repeated contiguous row blocks at preregistered block sizes.
+
+Zero rows are reported separately and may not be silently folded into proportional classes.
+
+One canonical dot product may be charged once, followed by one cheap sign/scale operation per dependent row. Hash matches must be byte-verified before accounting.
+
+### Common-right-factor lower bound
+
+For a projection group with matrices `W_i`, any exact shared input transform
+
+```text
+z = Bx
+W_i x = A_i z
+```
+
+requires
+
+```text
+rank(B) >= rank(vertical_stack(W_i)).
+```
+
+Certify the stacked Q4 rank using existing modular witnesses. This closes exact shared low-width input transforms when the stacked rank equals the input width.
+
+### Favorable accounting
+
+Report both structural coverage and best-case operation/storage fractions:
+
+```text
+baseline dot products = total output rows
+unique canonical dot products = canonical row-class count
+reuse operation fraction =
+  (unique full dot products + dependent sign/scale corrections)
+  / baseline full dot products
+```
+
+Also charge canonical maps, multipliers, group metadata, and query traffic. Compilation time is reported separately. Dense GEMV kernel efficiencies are not credited without a physical kernel.
+
+### Controls
+
+- synthetic duplicate/sign/proportional groups achieve the registered reuse exactly;
+- a one-nibble mutation breaks the corresponding class;
+- random dense groups show negligible exact reuse;
+- hash collisions are byte-verified and fail closed;
+- stacked-rank witnesses validate under at least two primes;
+- Q4 checksums match frozen evidence;
+- no approximation, activation oracle, training, or changed quantization.
+
+### Promotion Gate
+
+```text
+zero checksum/certificate/control mismatch
+100% complete registered projection-group coverage
+p50 exact joint operation fraction <=10%
+p90 exact joint operation fraction <=25%
+p50 exact joint storage fraction <=10%
+p90 exact joint storage fraction <=25%
+random-control reusable-row fraction <=1%
+no largest-model degradation >25%
+```
+
+Passing only a few layers or one operator family is insufficient. Promotion authorizes an exact reconstruction/replay test, not a physical kernel claim.
+
+### Failure decision
+
+```text
+REJECT_REAL_Q4_EXACT_JOINT_ROW_REUSE_AS_CORE_RETAIN_GROUP_CERTIFIER_AUXILIARY
+```
+
+On failure, exact equality/sign/proportional common-subexpression reuse and exact shared low-width input factors are closed as the primary core for the measured population. The next candidate must move to certificate-guided demand-driven execution or another new information source.
+
+### Stop rule
+
+Before the Gate passes, prohibit:
+
+```text
+joint CUDA kernels
+model-wide integration
+approximate row clustering
+learned cross-projection adapters
+unbounded transform searches
+arbitrary linear-circuit synthesis
+```
 
 ### Claim boundary
 
-Phase C weight observation and exact unfolding-rank certification only. Exact MPO cores, Q4 model-output preservation, a physical MPO kernel, real Transformer operation replacement, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT and tokens/sec remain NOT TESTED.
+Phase A/B/C weight observation, evidence ceiling E1. 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, tokens/second, real joint-kernel speedup, and end-to-end model-output preservation remain NOT TESTED.

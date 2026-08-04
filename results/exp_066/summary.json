@@ -1,0 +1,128 @@
+{
+  "DERIVED": {
+    "adjacent_tt_rank_inequalities_applied": true,
+    "adversary_gate_definition": "dense-random p50 operation fraction must remain at or above the 25% target boundary; random matrices must not appear cheaply compressible",
+    "adversary_gate_pass": true,
+    "correctness_gate_pass": true,
+    "decision": "REJECT_REAL_Q4_TT_MPO_BOND_RANK_AS_CORE_RETAIN_MPO_CERTIFIER_AUXILIARY",
+    "derivation": "Nontrivial TT cuts reuse checksum-verified EXP-065 Kronecker ranks. Cuts equal to W or W-transpose reuse checksum-matched EXP-058 full-rank certificates. Exact adjacent TT-rank inequalities propagate those lower bounds. Remaining unit-boundary ranks can only increase the accounting.",
+    "exact_integer_mpo_reconstruction_gate_pass": false,
+    "exp058_full_matrix_rank_reused": true,
+    "failure_basis": "favorable p50 storage lower bound exceeds the preregistered limit: 0.110523897059 > 0.100000000000",
+    "family_closure_justified": true,
+    "model_trend_gate_pass": true,
+    "next_gate": "close exact classical single-matrix TT/MPO as the primary core and change execution class under bounded E0 triage",
+    "no_joint_p90_survivor": false,
+    "operation_gate_pass": true,
+    "permutation_equivalence_control": true,
+    "population_gate_pass": true,
+    "real_population_lower_bound_screen_survives": false,
+    "storage_gate_pass": false,
+    "tt_mpo_lower_bound_survives_gate": false
+  },
+  "MEASURED": {
+    "aggregate_lower_bound_storage_fraction": 0.07069189061763319,
+    "control_failures": 0,
+    "dense_projection_count": 144,
+    "dense_random_control_p50": 1.05,
+    "dense_with_any_joint_p90_survivor": 136,
+    "elapsed_ns": 623906943,
+    "joint_p90_surviving_plan_count": 775,
+    "largest_model_degradation_fraction": 0.0,
+    "mapped_exp065_cut_count": 4937,
+    "minimum_operation_fraction": 0.009807504873294346,
+    "minimum_query_byte_fraction": 0.007355529679376084,
+    "minimum_storage_fraction": 0.02442908653846154,
+    "missing_nontrivial_exp065_cut_count": 0,
+    "model_count": 3,
+    "model_p50_operation_fraction": {
+      "roneneldan/TinyStories-1M": 0.06778846153846153,
+      "roneneldan/TinyStories-3M": 0.043362403100775194,
+      "roneneldan/TinyStories-8M": 0.03520184824902724
+    },
+    "p50_operation_fraction": 0.03894137596899225,
+    "p50_query_byte_fraction": 0.029983836206896552,
+    "p50_storage_fraction": 0.11052389705882353,
+    "p90_operation_fraction": 0.06778846153846153,
+    "p90_query_byte_fraction": 0.06169734589041096,
+    "p90_storage_fraction": 0.2298828125,
+    "peak_rss_kib": 89580,
+    "projected_405b_lower_bound_storage_bytes": 14315107850.07072,
+    "selected_cut_row_count": 1180,
+    "selected_unresolved_unit_boundary_cut_count": 928,
+    "selected_variant_distribution": {
+      "alternating_singletons": 80,
+      "paired_forward": 64
+    },
+    "source_checksum_mismatches": 0,
+    "source_exp065_authoritative_decision": "REJECT_REAL_Q4_KRONECKER_RANK_AS_CORE_RETAIN_TENSOR_CERTIFIER_AUXILIARY",
+    "source_exp065_workflow": 30870558294,
+    "source_plan_row_count": 6108,
+    "source_witness_mismatches": 0,
+    "surviving_plan_count_after_exp058_propagation": 632,
+    "tt_mode_plan_row_count": 4384,
+    "two_dimensional_tensor_count": 153,
+    "unique_unresolved_unit_boundary_cut_count": 1608,
+    "unit_boundary_lower_bound_cut_count": 22758,
+    "unresolved_unit_boundary_cut_occurrences_in_survivors": 3632
+  },
+  "PROJECTED": {
+    "405b_lower_bound_storage_bytes": 14315107850.07072,
+    "exceeds_8_gib": true,
+    "lower_bound_to_8_gib_ratio": 1.6664978873532639,
+    "projection_warning": "This is an extrapolation from the measured TinyStories population, not a direct 405B measurement or proof.",
+    "source": "aggregate measured small-checkpoint storage fraction times 405B Q4 bytes",
+    "target_8_gib_bytes": 8589934592
+  },
+  "UNVERIFIED": [
+    "exact integer MPO core reconstruction",
+    "Q4 model-output preservation",
+    "physical MPO contraction kernel",
+    "actual Transformer operation replacement",
+    "405B execution",
+    "8 GiB total runtime state",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_REAL_Q4_TT_MPO_BOND_RANK_AS_CORE_RETAIN_MPO_CERTIFIER_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "exact_mpo_reconstruction": "NOT TESTED",
+    "frozen_real_q4_rank_evidence_reused": true,
+    "new_model_execution": false,
+    "new_modular_rank_execution_on_real_weights": false,
+    "physical_kernel": "NOT TESTED",
+    "q4_output_preservation": "NOT TESTED",
+    "real_transformer_operation_replacement": false,
+    "target_hardware": "NOT TESTED"
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-066",
+  "name": "frozen_exp065_derived_exact_tt_mpo_bond_rank_gate",
+  "phase": [
+    "A",
+    "B",
+    "C-derived-from-frozen-real-Q4-evidence"
+  ],
+  "provenance": {
+    "config_sha256": "dec3287d3ad159b1c7a1b72ac92f4814297aa5a4c3efda2d17705a255fa4e070",
+    "exp058_checksum_mismatches": 0,
+    "exp058_full_rank_rows_reused": 153,
+    "exp058_input_hashes": {
+      "exp058/raw/matrix_rank_rows.jsonl": "1b9a20b25457ee305a3f9da9fe19b676e86f86a479d9ee9c4708c267b1055dcc",
+      "exp058/summary.json": "79bd1df87d770ab2d98bf9af94de94389eb31f07247c06ed01f81d28a5249238"
+    },
+    "exp065_input_hashes": {
+      "raw/control_rows.jsonl": "a879c6ee8ae23320f4fee3b0b5d32fe341e1bec3252cd8e9ddcc87e30aa8486a",
+      "raw/matrix_rows.jsonl": "2c79889494001b5da2ea01fb34e21d701901251fa1be8c583d5123305cb1c1a0",
+      "raw/model_rows.jsonl": "0231f63434e11b0376ecfe08df74116da2f375b8f223e23b61c0d52131e389cc",
+      "raw/plan_rows.jsonl": "b855eb190e5e7691735bccb4437d26f418b19ddf2e51643153bb02b68869f31a",
+      "summary.json": "a72b621830fb8d588d90ddc0a52decacc33062146cf59eb1ca3329643bfc741d"
+    },
+    "exp065_summary_sha256": "a72b621830fb8d588d90ddc0a52decacc33062146cf59eb1ca3329643bfc741d",
+    "numpy": "2.1.3",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15",
+    "source_commit": "d70d77722140dc40cfe145ec06810b8ccee7d8df"
+  }
+}
