@@ -1,161 +1,168 @@
 # Next Experiment
 
-## Closed Gate — EXP-066
+## Closed Gate — EXP-067
 
-EXP-066 reused checksum-verified EXP-065 Kronecker ranks and EXP-058 full-matrix ranks, then propagated exact adjacent TT-rank lower bounds across 4,384 preregistered plans.
+EXP-067 changed execution class from single-matrix factorization to exact common arithmetic across projections evaluated from the same activation.
 
 Authoritative result:
 
 ```text
-operation p50 3.8941375969%   PASS
-operation p90 6.7788461538%   PASS
-storage p50  11.0523897059%   FAIL against 10%
-storage p90  22.9882812500%   PASS
+24/24 complete Q/K/V groups
+10,752 Q4 rows
+exact reusable rows: 0
+maximum reusable-row fraction: 0%
+operation p50/p90: 100% / 100%
+storage p50/p90: 107.4142% / 114.1204%
+common-right rank p50/p90: 100% / 100% of input width
 ```
 
 Decision:
 
 ```text
-REJECT_REAL_Q4_TT_MPO_BOND_RANK_AS_CORE_RETAIN_MPO_CERTIFIER_AUXILIARY
+REJECT_REAL_Q4_EXACT_JOINT_ROW_REUSE_AS_CORE_RETAIN_GROUP_CERTIFIER_AUXILIARY
 ```
 
-The favorable storage lower bound already fails. Unresolved ranks and implementation costs can only increase it. Exact classical single-matrix TT/MPO is therefore closed as a primary core for the measured real-Q4 population. No core reconstruction, contraction kernel, broad mode-order rescue, Tensor Ring, Hierarchical Tucker, or adjacent decomposition is authorized.
+Exact equality, sign, primitive integer-proportional row reuse, registered repeated row blocks, and exact common low-width right factors are closed as the primary core for the measured population. No joint kernel or model integration is authorized.
 
-## EXP-067 — Pinned Real-Q4 Joint Multi-Projection Exact-Reuse Gate
+## EXP-068 — Oracle Global Demand-Certificate Lower-Bound Gate
 
 ### Execution-class change
 
-EXP-067 does not seek another representation of one matrix. It examines operations that the Transformer already evaluates together from the same input activation:
+EXP-068 does not seek static structure in the weights. It asks whether the current activation and final token margin allow most dense weight tiles to remain unread while an exact fail-closed certificate proves the same greedy token.
+
+The candidate execution model is:
 
 ```text
-attention group: q_proj, k_proj, v_proj
-MLP group:       gate_proj, up_proj
+read a subset of weight tiles
+compute exact contributions for those tiles
+bound every unread tile's maximum effect on the final target-token margin
+commit only when the remaining global bound cannot change the token
+otherwise expand and eventually fall back to the exact full model
 ```
 
-The candidate mechanism is exact common arithmetic across operators:
+This is activation-conditioned demand-driven execution. It is distinct from static compression, fixed drafting, and single-layer progressive LM-head certification.
 
-- one input linear form reused by multiple output rows;
-- identical, negated, or integer-proportional Q4 rows reused with a cheap scale/sign correction;
-- exact common right-factor width shared by an entire projection group;
-- repeated row blocks reused without changing the model or quantization.
+### E0 prior
 
-This is an executor/compiler question, not target retraining or approximate compression.
+Potential upside:
 
-### Prior and cheap falsification
+- query-dependent reads rather than full parameter streaming;
+- exact fail-closed fallback;
+- no model modification or training;
+- a genuine route to reducing both weight traffic and arithmetic if global margins are large and sensitivities concentrate.
 
-The prior is low:
+Reasons for low prior probability:
 
-- EXP-058 proved individual matrices full rank;
-- EXP-065/066 found no useful exact single-matrix classical tensor structure;
-- independently learned projections are expected to contain few exact repeated linear forms.
+- exact intermediate activations feed nonlinear residual depth, so local uncertainty can propagate widely;
+- dense learned weights have repeatedly shown general-matrix structure;
+- previous range and progressive certificates often required substantial residual reads;
+- a final token margin may be small even when many local outputs look stable.
 
-The cheapest decisive test is therefore to measure exact reusable arithmetic directly on the pinned Q4 weights before implementing any joint kernel.
+### Cheapest decisive experiment
+
+Before implementing a scheduler or kernel, compute a deliberately favorable non-deployable oracle lower bound on the amount of exact tile work required.
+
+For pinned small checkpoints and exact greedy target traces:
+
+1. run the full target once to capture the exact committed token and final logit margin;
+2. partition every dense projection into fixed registered tiles;
+3. compute each tile's exact contribution on the recorded activation;
+4. assign a sound upper bound to the effect of omitting that contribution on the final winning-logit margin through the remaining network;
+5. let an oracle reveal tiles in the most favorable order;
+6. stop only when the sum of all unread influence bounds is strictly below the exact final margin;
+7. report the minimum favorable tile/byte fraction required for certification.
+
+A weak but sound bound is acceptable for rejection. No deployable scheduling claim is made.
+
+### Registered bound families
+
+EXP-068 may evaluate only these bounded variants:
+
+```text
+A. norm-product global influence bound
+B. exact local contribution magnitude with registered downstream operator-norm products
+C. residual-path-separated bound where mathematically valid
+```
+
+No learned sensitivity predictor, activation table, target-future oracle at runtime, or unbounded bound search is allowed.
 
 ### Population
 
-Use unchanged revisions and the frozen deterministic row-wise Q4 quantizer:
+Use unchanged pinned TinyStories-1M/3M/8M revisions and the existing held-out prompt families. Every exact reference token must match the standard full-model greedy replay.
+
+Required coverage includes:
 
 ```text
-roneneldan/TinyStories-1M @ 77f1b168e219585646439073245fe87e56b3023e
-roneneldan/TinyStories-3M @ cfaf26ec85ecdfc1bd7c2638104cce55cb67f894
-roneneldan/TinyStories-8M @ 8612e3b15c66ffa94eaa6ee0de5c96edd2d630af
+English narrative
+code
+mathematics
+identifier boundary
+Korean
+structured JSON
 ```
-
-Every analyzed tensor checksum must match the frozen EXP-057/058/065 Q4 evidence. Required groups are every complete attention `Q/K/V` group and every complete MLP `Gate/Up` group present in the models.
-
-### Exact canonical row classes
-
-For every Q4 integer row `w`, construct fail-closed canonical identities:
-
-1. exact equality: `w_a = w_b`;
-2. sign equality: `w_a = -w_b`;
-3. primitive integer proportionality:
-   - divide by the row gcd;
-   - normalize the first nonzero sign;
-   - retain the exact integer multiplier;
-4. exact repeated contiguous row blocks at preregistered block sizes.
-
-Zero rows are reported separately and may not be silently folded into proportional classes.
-
-One canonical dot product may be charged once, followed by one cheap sign/scale operation per dependent row. Hash matches must be byte-verified before accounting.
-
-### Common-right-factor lower bound
-
-For a projection group with matrices `W_i`, any exact shared input transform
-
-```text
-z = Bx
-W_i x = A_i z
-```
-
-requires
-
-```text
-rank(B) >= rank(vertical_stack(W_i)).
-```
-
-Certify the stacked Q4 rank using existing modular witnesses. This closes exact shared low-width input transforms when the stacked rank equals the input width.
 
 ### Favorable accounting
 
-Report both structural coverage and best-case operation/storage fractions:
+Charge:
 
 ```text
-baseline dot products = total output rows
-unique canonical dot products = canonical row-class count
-reuse operation fraction =
-  (unique full dot products + dependent sign/scale corrections)
-  / baseline full dot products
+all revealed target weight bytes
+all revealed tile multiply-accumulates
+activation and bound metadata reads
+bound aggregation work
+full exact fallback work when certification fails
+one-time oracle ordering is reported separately and excluded only as a favorable upper bound
 ```
 
-Also charge canonical maps, multipliers, group metadata, and query traffic. Compilation time is reported separately. Dense GEMV kernel efficiencies are not credited without a physical kernel.
+Report both per-token and family-level p50/p90 fractions. A certificate that saves arithmetic but not weight traffic, or vice versa, does not pass.
 
 ### Controls
 
-- synthetic duplicate/sign/proportional groups achieve the registered reuse exactly;
-- a one-nibble mutation breaks the corresponding class;
-- random dense groups show negligible exact reuse;
-- hash collisions are byte-verified and fail closed;
-- stacked-rank witnesses validate under at least two primes;
-- Q4 checksums match frozen evidence;
-- no approximation, activation oracle, training, or changed quantization.
+- exact full replay token matches the registered target;
+- a synthetic large-margin sparse-influence network certifies early;
+- a late-flip adversarial residual chain requires all decisive tiles;
+- one unread tile capable of flipping the winner prevents commitment;
+- every bound is checked against exact omission effects on bounded synthetic cases;
+- malformed or non-finite bounds fail closed;
+- zero target-future information is available to a deployable path.
 
 ### Promotion Gate
 
 ```text
-zero checksum/certificate/control mismatch
-100% complete registered projection-group coverage
-p50 exact joint operation fraction <=10%
-p90 exact joint operation fraction <=25%
-p50 exact joint storage fraction <=10%
-p90 exact joint storage fraction <=25%
-random-control reusable-row fraction <=1%
+zero exact-reference/control/bound violation
+100% required prompt-family coverage
+p50 favorable target weight-byte fraction <=10%
+p90 favorable target weight-byte fraction <=25%
+p50 favorable target operation fraction <=10%
+p90 favorable target operation fraction <=25%
+zero incorrect early commitments
+no required family with p90 byte fraction >25%
 no largest-model degradation >25%
 ```
 
-Passing only a few layers or one operator family is insufficient. Promotion authorizes an exact reconstruction/replay test, not a physical kernel claim.
+Passing the oracle lower-bound Gate authorizes only a deployable certificate/scheduler Gate. It does not authorize a physical kernel claim.
 
 ### Failure decision
 
 ```text
-REJECT_REAL_Q4_EXACT_JOINT_ROW_REUSE_AS_CORE_RETAIN_GROUP_CERTIFIER_AUXILIARY
+REJECT_GLOBAL_DEMAND_CERTIFICATE_AS_CORE_RETAIN_BOUND_AUDITOR_AUXILIARY
 ```
 
-On failure, exact equality/sign/proportional common-subexpression reuse and exact shared low-width input factors are closed as the primary core for the measured population. The next candidate must move to certificate-guided demand-driven execution or another new information source.
+On failure, registered norm-based exact lazy execution is closed as a primary core. The next candidate must introduce a new exact information source or a stronger theorem, not merely tune tile sizes or orderings.
 
 ### Stop rule
 
-Before the Gate passes, prohibit:
+Before survival, prohibit:
 
 ```text
-joint CUDA kernels
-model-wide integration
-approximate row clustering
-learned cross-projection adapters
-unbounded transform searches
-arbitrary linear-circuit synthesis
+CUDA kernels
+model-wide lazy runtime integration
+learned tile predictors
+approximate commitments
+unbounded tile-size/order sweeps
+405B implementation work
 ```
 
 ### Claim boundary
 
-Phase A/B/C weight observation, evidence ceiling E1. 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, tokens/second, real joint-kernel speedup, and end-to-end model-output preservation remain NOT TESTED.
+Phase A/B/C small-model oracle-bound evidence, ceiling E1. A deployable scheduler, actual skipped Transformer operations, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, and tokens/second remain NOT TESTED.

@@ -1,0 +1,43 @@
+{
+  "authoritative_decision": "REJECT_REAL_Q4_EXACT_JOINT_ROW_REUSE_AS_CORE_RETAIN_GROUP_CERTIFIER_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "floating_point_replay": "NOT TESTED",
+    "physical_joint_kernel": "NOT TESTED",
+    "q4_integer_domain_reuse": "MEASURED"
+  },
+  "committed_compact_evidence": [
+    "summary.json",
+    "artifacts/environment.json",
+    "artifacts/contract.txt",
+    "raw/control_rows.jsonl",
+    "raw/model_rows.jsonl",
+    "evidence_manifest.json",
+    "checksums.sha256"
+  ],
+  "experiment": "EXP-067",
+  "omission_rationale": "Per-tensor and per-group rows are deterministic derivatives of pinned checkpoints, committed code, and frozen checksums. Their hashes, counts, byte sizes, workflow/artifact provenance, and reproduction command are frozen here.",
+  "raw_evidence": {
+    "raw/group_rows.jsonl": {
+      "bytes": 34504,
+      "rows": 24,
+      "sha256": "4a6b8fba3b5d7b66cd57dd24f3ae207c12e2ccabc53c13eb635cc71b88337216"
+    },
+    "raw/incomplete_group_rows.jsonl": {
+      "bytes": 0,
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "raw/tensor_rows.jsonl": {
+      "bytes": 64457,
+      "rows": 153,
+      "sha256": "cdd52f217874380190c48a85153818f116bdb9c970af6887e466cd4c468453ad"
+    }
+  },
+  "reproduction_command": "bash experiments/exp_067/reproduce.sh",
+  "source_head_sha": "48e87bf82b86b955a93d6c0e74a613e8a3914944",
+  "workflow_artifact_id": 8894994162,
+  "workflow_artifact_zip_sha256": "e4ce3078b338cbdc410fdcd8265704d7d3eb49f606438ba0cf89f9824597ce05",
+  "workflow_run_id": 30915776126
+}
