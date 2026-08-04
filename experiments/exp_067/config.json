@@ -1,0 +1,36 @@
+{
+  "experiment": "EXP-067",
+  "seed": 670067,
+  "torch_num_threads": 2,
+  "models": [
+    {
+      "model_id": "roneneldan/TinyStories-1M",
+      "revision": "77f1b168e219585646439073245fe87e56b3023e"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-3M",
+      "revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-8M",
+      "revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af"
+    }
+  ],
+  "primes": [251, 257],
+  "block_rows": [4, 8, 16],
+  "gate": {
+    "expected_complete_groups": 24,
+    "expected_attention_qkv_groups": 24,
+    "expected_mlp_gate_up_groups": 0,
+    "maximum_p50_operation_fraction": 0.10,
+    "maximum_p90_operation_fraction": 0.25,
+    "maximum_p50_storage_fraction": 0.10,
+    "maximum_p90_storage_fraction": 0.25,
+    "maximum_p50_common_right_rank_fraction": 0.10,
+    "maximum_p90_common_right_rank_fraction": 0.25,
+    "maximum_random_reusable_row_fraction": 0.01,
+    "maximum_largest_model_degradation": 0.25
+  },
+  "failure_decision": "REJECT_REAL_Q4_EXACT_JOINT_ROW_REUSE_AS_CORE_RETAIN_GROUP_CERTIFIER_AUXILIARY",
+  "evidence_ceiling": "Phase A/B/C real-Q4 joint row and shared-input rank observation only: no floating-point replay preservation, joint physical kernel, Transformer operation replacement, 405B execution, 8 GiB VRAM or target hardware are tested"
+}
