@@ -1,0 +1,43 @@
+{
+  "authoritative_decision": "REJECT_REAL_Q4_TT_MPO_BOND_RANK_AS_CORE_RETAIN_MPO_CERTIFIER_AUXILIARY",
+  "claim_boundary": {
+    "405b_execution": "NOT TESTED",
+    "8_gib_vram": "NOT TESTED",
+    "new_real_model_execution": false,
+    "new_real_weight_modular_elimination": false,
+    "physical_mpo_kernel": "NOT TESTED"
+  },
+  "committed_compact_evidence": [
+    "summary.json",
+    "artifacts/environment.json",
+    "artifacts/contract.txt",
+    "raw/control_rows.jsonl",
+    "raw/model_rows.jsonl",
+    "evidence_manifest.json",
+    "checksums.sha256"
+  ],
+  "experiment": "EXP-066",
+  "omission_rationale": "Large raw rows are deterministic derivatives of committed EXP-058/EXP-065 evidence and EXP-066 code. Their SHA-256, row counts, byte sizes, workflow/artifact provenance, and reproduction command are frozen here to avoid duplicating 11+ MiB of generated JSONL in Git history.",
+  "raw_evidence": {
+    "raw/matrix_rows.jsonl": {
+      "bytes": 156343,
+      "rows": 153,
+      "sha256": "6152debbdc9b9f0122ced0b5c39017783030e3d5a439057ad310e27d808f4604"
+    },
+    "raw/plan_rows.jsonl": {
+      "bytes": 10795419,
+      "rows": 4384,
+      "sha256": "db5a813ccc58f957d345f1e9915074a92056fc281f5fccee0ab8bb24a75a39dd"
+    },
+    "raw/selected_cut_rows.jsonl": {
+      "bytes": 571442,
+      "rows": 1180,
+      "sha256": "f6cb307b462865d04266bf4ebc62af38961e2ee19e9772042e3d13279b5172af"
+    }
+  },
+  "reproduction_command": "bash experiments/exp_066/reproduce.sh",
+  "source_head_sha": "7f25a3ac091d3c78b2980cb55d97c19bd01f6866",
+  "workflow_artifact_id": 8894166935,
+  "workflow_artifact_zip_sha256": "4bf87298e47d4800be1c17a80fb0ccd03e7c064118d42f31f45a186e181d157a",
+  "workflow_run_id": 30913788506
+}
