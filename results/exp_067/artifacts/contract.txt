@@ -1,0 +1,1 @@
+Phase A/B/C real-Q4 joint row and shared-input rank observation only: no floating-point replay preservation, joint physical kernel, Transformer operation replacement, 405B execution, 8 GiB VRAM or target hardware are tested
