@@ -1,18 +1,12 @@
 # EXP-066 — Exact Tensor-Train / MPO Bond-Rank Gate
 
-This experiment is a bounded cheap-kill screen, not an MPO runtime implementation.
+Status: closed, E1.
 
-It does **not** download the pinned checkpoints or repeat modular Gaussian elimination. EXP-065 already evaluated every ordered nontrivial row/column factorization of the same deterministic Q4 matrices and froze 6,108 validated plan rows. An interleaved TT/MPO cut is transformed into the matching EXP-065 rearrangement by independent row and column permutations when its factors are the row/column prefix and suffix products. Matrix rank is invariant under those permutations.
+```text
+REJECT_REAL_Q4_TT_MPO_BOND_RANK_AS_CORE_RETAIN_MPO_CERTIFIER_AUXILIARY
+```
 
-EXP-066 therefore:
-
-1. verifies the frozen EXP-065 input checksums;
-2. enumerates only the preregistered TT radix and mode-order family;
-3. maps each nontrivial TT cut to its frozen EXP-065 rank lower bound;
-4. assigns the deliberately favorable universal lower bound one to unit-boundary cuts that EXP-065 did not measure;
-5. computes favorable classical MPO storage, operation, and query-byte lower bounds.
-
-No new real-weight rank claim is produced. The scientific result is a deterministic derivation from frozen real-Q4 evidence plus independently tested row/column-permutation equivalence.
+This is a bounded lower-bound screen, not an MPO runtime implementation. It reuses checksum-verified EXP-065 Kronecker ranks and EXP-058 full-matrix ranks for the same Q4 tensors, applies exact adjacent TT-rank inequalities, and computes deliberately favorable classical MPO costs.
 
 Run:
 
@@ -20,6 +14,15 @@ Run:
 bash experiments/exp_066/reproduce.sh
 ```
 
-Default candidate evidence is written to `results/exp_066_candidate/`.
+The reproduction writes `results/exp_066_candidate/`. The committed authority is `results/exp_066/summary.json`; hashes and provenance for large deterministic raw JSONL files are in `results/exp_066/evidence_manifest.json`.
 
-Promotion requires population p50/p90 operation and storage fractions of at most 10%/25%. Failure closes bounded exact classical single-matrix TT/MPO as a primary core direction for the measured population. It does not prove that every conceivable tensor representation is impossible.
+Authoritative result:
+
+```text
+operation p50 3.8941%  PASS
+operation p90 6.7788%  PASS
+storage p50  11.0524% FAIL against 10%
+storage p90  22.9883% PASS
+```
+
+Because unresolved ranks and omitted implementation costs can only increase the lower bound, no exact core reconstruction, kernel, or runtime integration is authorized. The next Gate must change execution class.
