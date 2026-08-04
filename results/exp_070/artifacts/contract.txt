@@ -1,0 +1,1 @@
+Phase A/B/C real-Q4 local-pattern structural evidence only: floating-point replay order, physical lookup kernel, Transformer operation replacement, 405B execution, 8 GiB VRAM and target hardware are not tested

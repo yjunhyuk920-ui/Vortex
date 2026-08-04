@@ -1,0 +1,9 @@
+{
+  "config_sha256": "05bdaa01bb67e86e5d18046246b7ab351179a73854c763293e4116c911b37f25",
+  "exp058_rows_sha256": "1b9a20b25457ee305a3f9da9fe19b676e86f86a479d9ee9c4708c267b1055dcc",
+  "numpy": "2.1.3",
+  "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+  "python": "3.11.15",
+  "source_commit": "bf0cd5850e0d42a50dc7b55878a2274f52f693a2",
+  "torch": "2.6.0+cpu"
+}
