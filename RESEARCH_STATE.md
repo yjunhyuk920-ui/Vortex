@@ -350,3 +350,8 @@ Authority: workflow `30844873182`, artifact `8868287407`, ZIP SHA-256 `497816dcc
 ## EXP-063 closed — Exact cached-KV equivalence
 
 Authority: workflow `30846082964`, artifact `8868770832`, ZIP SHA-256 `b900a7019d8527d6f67d0eb412bb2fb7a0331188d84cd74444ca10762a105a14`. Exact K/KV duplicate counts were zero across 147,456 group rows. Warm p50/p90 work was 100.021%/100.027%; bytes 106.263%/119.401%. Decision: `REJECT_CAUSAL_EXACT_KV_EQUIVALENCE_REUSE_AS_CORE_RETAIN_KV_AUXILIARY`. Current frontier: EXP-064 pinned real-Q4 output-row equivalence and sparse-delta structure. 405B, 8 GiB, physical kernels and target hardware remain NOT TESTED.
+
+<!-- EXP-064-AUTHORITATIVE-FINAL -->
+## EXP-064 closed — Real-Q4 exact output-row structure
+
+Authority: workflow `30869720552`, artifact `8877450455`, ZIP SHA-256 `99c634bd4fb3903d32a1ed45fada7853ea4e1d199b375c129d1d4b8da4f39cb8`. 153 tensors, 144 dense projections, 1,683 plans, zero checksum/reconstruction/control mismatch. Identical/sign-related dense matrices: 0/0. Selected: dense 140, sparse-delta 4. p50/p90 operations and bytes: 100%/100%. Decision: `REJECT_REAL_Q4_OUTPUT_ROW_PROTOTYPE_AS_CORE_RETAIN_ROW_DICTIONARY_AUXILIARY`. Current frontier: EXP-065 exact Kronecker-rearrangement rank. 405B, 8 GiB, Q4 model-output preservation and hardware remain NOT TESTED.

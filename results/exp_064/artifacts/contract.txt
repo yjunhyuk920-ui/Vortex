@@ -1,0 +1,1 @@
+Phase C weight observation only: exact Q4 integer structure is measured, but Q4 model-output preservation, physical kernels, Transformer operation replacement, 405B execution, 8 GiB VRAM and target hardware are not tested

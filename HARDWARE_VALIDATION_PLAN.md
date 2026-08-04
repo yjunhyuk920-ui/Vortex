@@ -179,3 +179,8 @@ No attention-sparse kernel was promoted because whole-model logical work and byt
 ## EXP-063 hardware status
 
 No grouped-attention kernel was promoted. CUDA kernels, physical KV traffic, PCIe, SSD, TTFT, tokens/sec, 405B statistics and 8 GiB residency remain NOT TESTED.
+
+<!-- EXP-064-AUTHORITATIVE-FINAL -->
+## EXP-064 hardware status
+
+No output-row kernel was promoted. Q4 output preservation, CUDA implementation, physical memory traffic, PCIe, SSD, TTFT, tokens/sec, 405B execution and 8 GiB residency remain NOT TESTED.

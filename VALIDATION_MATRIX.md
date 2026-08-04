@@ -133,3 +133,8 @@ Cases 18; forwards 1,152; attention rows 9,216; token/registration/control misma
 ## EXP-063 closure
 
 18 cases; 1,152 forwards; 147,456 group rows; exact K duplicates 0; exact KV duplicates 0; mismatches 0; warm p50/p90 operations 100.021%/100.027%; bytes 106.263%/119.401%. 405B and hardware NOT TESTED.
+
+<!-- EXP-064-AUTHORITATIVE-FINAL -->
+## EXP-064 closure
+
+153 tensors; 144 dense; 1,683 plans; zero checksum/reconstruction/control mismatch; exact identical/sign row matrices 0/0; p50/p90 operation 100%/100%; query bytes 100%/100%; projected static storage 211.31 GB. 405B execution and hardware NOT TESTED.
