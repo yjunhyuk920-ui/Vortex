@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Freeze EXP-063 authority and register EXP-064."""
 from __future__ import annotations
-import hashlib, json
+import gzip, hashlib, json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,6 +48,12 @@ def main() -> None:
     if len(gr)!=147456: raise SystemExit("group row count mismatch")
     if any(int(r["duplicate_key_count"]) or int(r["duplicate_kv_count"]) for r in gr):
         raise SystemExit("authority unexpectedly contains duplicates")
+    group_path = RESULT / "raw/group_rows.jsonl"
+    compressed_path = RESULT / "raw/group_rows.jsonl.gz"
+    with group_path.open("rb") as source, gzip.GzipFile(filename="group_rows.jsonl", mode="wb", fileobj=compressed_path.open("wb"), mtime=0) as target:
+        while chunk := source.read(1024 * 1024):
+            target.write(chunk)
+    group_path.unlink()
     provenance={"workflow_run":RUN,"artifact_id":ARTIFACT,"artifact_name":ARTIFACT_NAME,"artifact_size_bytes":ARTIFACT_SIZE,"artifact_zip_sha256":ZIP_SHA,"source_head_sha":SOURCE_HEAD,"workflow_merge_sha":MERGE_SHA,"config_sha256":CONFIG_SHA,"frozen_date":"2026-08-04"}
     (RESULT/"raw/artifact_provenance.json").write_text(json.dumps(provenance,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     summary["provenance"].update(provenance)
@@ -87,7 +93,7 @@ No grouped-attention kernel was promoted. CUDA kernels, physical KV traffic, PCI
     append_once("REPRODUCIBILITY.md",f'''{MARKER}
 ## EXP-063 authority
 
-Workflow `{RUN}`; source `{SOURCE_HEAD}`; merge `{MERGE_SHA}`; artifact `{ARTIFACT}` ({ARTIFACT_SIZE} bytes); ZIP SHA-256 `{ZIP_SHA}`; config SHA-256 `{CONFIG_SHA}`. Reproduce with `experiments/exp_063/reproduce.sh` and verify `results/exp_063/checksums.sha256`.''')
+Workflow `{RUN}`; source `{SOURCE_HEAD}`; merge `{MERGE_SHA}`; artifact `{ARTIFACT}` ({ARTIFACT_SIZE} bytes); ZIP SHA-256 `{ZIP_SHA}`; config SHA-256 `{CONFIG_SHA}`. Reproduce with `experiments/exp_063/reproduce.sh`; the full group table is frozen losslessly as `raw/group_rows.jsonl.gz`; verify `results/exp_063/checksums.sha256`.''')
 
     (ROOT/"NEXT_EXPERIMENT.md").write_text('''# Next Experiment
 
