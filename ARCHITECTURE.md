@@ -228,3 +228,8 @@ The runtime must not scan post-softmax probabilities for exact zeros on the meas
 ## Cached-KV equivalence boundary
 
 The runtime must not maintain exact K/KV grouping on the measured architecture. EXP-064 may compile static output-row prototypes from Q4 weights, but must fail closed to dense row evaluation whenever exact accounting is not favorable.
+
+<!-- EXP-064-AUTHORITATIVE-FINAL -->
+## Output-row structure boundary
+
+The core runtime must not assume row identity or sparse prototype deltas for generic dense checkpoints. The exact row compiler remains fail-closed auxiliary. EXP-065 may only promote a Kronecker path after certified low rearrangement rank and exact integer reconstruction.

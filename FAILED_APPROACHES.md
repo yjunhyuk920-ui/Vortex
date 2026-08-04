@@ -268,3 +268,8 @@ After excluding causal and local-window structural masks, warm-decode exact-zero
 ## F-031 — Exact cached Key/Key-Value equivalence reuse
 
 No exact K or KV duplicate occurred in 147,456 measured layer/head rows. Hashing and metadata increased bytes. Do not revive by using approximate similarity while claiming exactness, by counting repeated token IDs instead of vector bit patterns, or by omitting local-window eligibility and metadata. Retain the validator as auxiliary.
+
+<!-- EXP-064-AUTHORITATIVE-FINAL -->
+## F-032 — Exact output-row identity, sign reuse, and sparse-delta prototypes
+
+No identical or sign-related dense output rows occurred. Only four projections admitted a dual-cost-beneficial sparse-delta plan, while population p50/p90 remained dense. Do not revive by ignoring per-row scales/biases, activation reads, residual indexes, or by selecting a plan that saves operations while increasing bytes. Retain the row compiler as an auxiliary exact dictionary tool.

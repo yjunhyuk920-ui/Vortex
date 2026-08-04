@@ -285,3 +285,10 @@ D-044 closes exact post-softmax zero skipping for this measured population. EXP-
 EXP-063 authority: workflow `30846082964`, source `979bde3a23b76270f740740fbf511c7f90900a7c`, merge `488fa0e3785885bbcea25681aae55bb361fa0f84`, artifact `8868770832`, ZIP SHA-256 `b900a7019d8527d6f67d0eb412bb2fb7a0331188d84cd74444ca10762a105a14`. Across 18 causal cases, 1,152 forwards and 147,456 layer/head rows, exact Key duplicates and exact Key-Value duplicates were both zero. Token, registration and control mismatches were zero. Fully accounted warm whole-model p50/p90 operation fractions were 100.0211%/100.0273%; query-byte fractions were 106.2629%/119.4005%. Decision: `REJECT_CAUSAL_EXACT_KV_EQUIVALENCE_REUSE_AS_CORE_RETAIN_KV_AUXILIARY`.
 
 D-046 opens EXP-064: inspect exact identical, sign-related, and prototype-plus-sparse-delta output rows in the pinned real Q4 dense matrices. This is the row-space dual not covered by EXP-057's column grouping.
+
+<!-- EXP-064-AUTHORITATIVE-FINAL -->
+## D-047/D-048 — Reject exact Q4 output-row reuse and open Kronecker-rank Gate
+
+EXP-064 authority: workflow `30869720552`, source `a6371c39d85dc39669b98eac6125d9c3bbf4a5dc`, merge `3716584078a91ae307b11b4bf1b2662e1511e9c9`, artifact `8877450455`, ZIP SHA-256 `99c634bd4fb3903d32a1ed45fada7853ea4e1d199b375c129d1d4b8da4f39cb8`. All 153 two-dimensional tensors and 144 dense projections matched frozen Q4 checksums; all 1,683 plans reconstructed exactly. No dense matrix contained identical or sign-related rows. The deployable selector retained dense execution for 140/144 projections and exact sparse-delta plans for four. Dense-projection p50/p90 operation and query-byte fractions were all 100%; the best single matrix reached 70.522% operations and 93.811% bytes. Decision: `REJECT_REAL_Q4_OUTPUT_ROW_PROTOTYPE_AS_CORE_RETAIN_ROW_DICTIONARY_AUXILIARY`.
+
+D-048 opens EXP-065: exact Kronecker-rearrangement rank certificates on the same pinned real-Q4 matrices.

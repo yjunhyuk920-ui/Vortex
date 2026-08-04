@@ -229,3 +229,8 @@ Workflow `30844873182`; source head `c38baa187e41760ef07676326c6a14f08635acc3`; 
 ## EXP-063 authority
 
 Workflow `30846082964`; source `979bde3a23b76270f740740fbf511c7f90900a7c`; merge `488fa0e3785885bbcea25681aae55bb361fa0f84`; artifact `8868770832` (2371412 bytes); ZIP SHA-256 `b900a7019d8527d6f67d0eb412bb2fb7a0331188d84cd74444ca10762a105a14`; config SHA-256 `69ebb4868b3707bbdf42d07a9f7f75458c147eb9c43dfe7e92e93843a5ffc32b`. Reproduce with `experiments/exp_063/reproduce.sh`; the full group table is frozen losslessly as `raw/group_rows.jsonl.gz`; verify `results/exp_063/checksums.sha256`.
+
+<!-- EXP-064-AUTHORITATIVE-FINAL -->
+## EXP-064 authority
+
+Workflow `30869720552`; source `a6371c39d85dc39669b98eac6125d9c3bbf4a5dc`; merge `3716584078a91ae307b11b4bf1b2662e1511e9c9`; artifact `8877450455` (102883 bytes); ZIP SHA-256 `99c634bd4fb3903d32a1ed45fada7853ea4e1d199b375c129d1d4b8da4f39cb8`; config SHA-256 `d80c0eb37968f6cfecfbfe781aef406b30b536be873b052c69734aa9add68343`. Reproduce with `experiments/exp_064/reproduce.sh` and verify `results/exp_064/checksums.sha256`.

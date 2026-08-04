@@ -226,3 +226,8 @@ Status: ACTIVE FOR EXP-063 ONLY. Identical Key vectors permit one QK score to be
 ## A-039 — Real Q4 output rows may share exact prototypes
 
 Status: ACTIVE FOR EXP-064 ONLY. Identical or sign-related weight rows can share a dot product; rows near an exact prototype may reuse the prototype dot plus an exact sparse residual. Bias additions, row mappings, prototype storage, residual indexes, activation reads and output copies/sign operations must all be charged. Approximate residuals are forbidden.
+
+<!-- EXP-064-AUTHORITATIVE-FINAL -->
+## A-040 — Real Q4 matrices may have low exact Kronecker rank
+
+Status: ACTIVE FOR EXP-065 ONLY. For every nontrivial shape factorization, rearrange the Q4 matrix so the rank equals the minimum number of Kronecker-product terms over the certified field. Rank certificates may reject a candidate but cannot promote it without an exact integer reconstruction and full operation/storage accounting.
