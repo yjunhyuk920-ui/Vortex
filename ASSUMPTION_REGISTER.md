@@ -231,3 +231,8 @@ Status: ACTIVE FOR EXP-064 ONLY. Identical or sign-related weight rows can share
 ## A-040 — Real Q4 matrices may have low exact Kronecker rank
 
 Status: ACTIVE FOR EXP-065 ONLY. For every nontrivial shape factorization, rearrange the Q4 matrix so the rank equals the minimum number of Kronecker-product terms over the certified field. Rank certificates may reject a candidate but cannot promote it without an exact integer reconstruction and full operation/storage accounting.
+
+<!-- EXP-065-AUTHORITATIVE-FINAL -->
+## A-041 — Multi-cut TT/MPO ranks may remain low despite failed one-cut Kronecker rank
+
+Status: ACTIVE FOR EXP-066 ONLY. Pair row and column radix modes, interleave them into MPO physical dimensions, and certify every prefix/suffix unfolding rank. Exact TT/MPO storage is lower-bounded by the certified bond ranks. Mode order search, rank metadata, scales, biases, contractions and intermediates must be charged. Approximate tensor decomposition is forbidden.

@@ -273,3 +273,8 @@ No exact K or KV duplicate occurred in 147,456 measured layer/head rows. Hashing
 ## F-032 — Exact output-row identity, sign reuse, and sparse-delta prototypes
 
 No identical or sign-related dense output rows occurred. Only four projections admitted a dual-cost-beneficial sparse-delta plan, while population p50/p90 remained dense. Do not revive by ignoring per-row scales/biases, activation reads, residual indexes, or by selecting a plan that saves operations while increasing bytes. Retain the row compiler as an auxiliary exact dictionary tool.
+
+<!-- EXP-065-AUTHORITATIVE-FINAL -->
+## F-033 — Exact low Kronecker-rearrangement rank
+
+Every selected real-Q4 dense rearrangement was full rank at its four-row cut. Even favorable 4-bit-factor accounting required at least 200.877% of dense operations and slightly more static storage. Do not revive by reporting query bytes alone, using one prime without witness verification, or treating a low field rank as an exact integer factor reconstruction. Retain the certifier as auxiliary.

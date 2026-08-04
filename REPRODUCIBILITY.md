@@ -234,3 +234,8 @@ Workflow `30846082964`; source `979bde3a23b76270f740740fbf511c7f90900a7c`; merge
 ## EXP-064 authority
 
 Workflow `30869720552`; source `a6371c39d85dc39669b98eac6125d9c3bbf4a5dc`; merge `3716584078a91ae307b11b4bf1b2662e1511e9c9`; artifact `8877450455` (102883 bytes); ZIP SHA-256 `99c634bd4fb3903d32a1ed45fada7853ea4e1d199b375c129d1d4b8da4f39cb8`; config SHA-256 `d80c0eb37968f6cfecfbfe781aef406b30b536be873b052c69734aa9add68343`. Reproduce with `experiments/exp_064/reproduce.sh` and verify `results/exp_064/checksums.sha256`.
+
+<!-- EXP-065-AUTHORITATIVE-FINAL -->
+## EXP-065 authority
+
+Workflow `30870558294`; source `22fd41697979f0e5aeb570880714a47958270d7f`; merge `2e512e91b5bfcd5e30a19ef163a6438221a134dc`; artifact `8878551394` (244495 bytes); ZIP SHA-256 `cf5bfcc53bda4117430c0856b6989704e79bb34fb52c9a4f81869bf20233155d`; config SHA-256 `6dd637104c6edfdaaf424d22790e1f521dc9fa59f9a10f59552a6dfeaec18666`. Reproduce with `experiments/exp_065/reproduce.sh` and verify `results/exp_065/checksums.sha256`.

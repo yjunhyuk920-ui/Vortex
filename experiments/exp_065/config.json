@@ -1,0 +1,41 @@
+{
+  "experiment": "EXP-065",
+  "seed": 650065,
+  "torch_num_threads": 2,
+  "models": [
+    {
+      "model_id": "roneneldan/TinyStories-1M",
+      "revision": "77f1b168e219585646439073245fe87e56b3023e"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-3M",
+      "revision": "cfaf26ec85ecdfc1bd7c2638104cce55cb67f894"
+    },
+    {
+      "model_id": "roneneldan/TinyStories-8M",
+      "revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af"
+    }
+  ],
+  "primes": [251, 257],
+  "bits_per_factor": 4,
+  "activation_bytes": 4,
+  "projection": {
+    "target_parameters": 405000000000,
+    "target_q4_bytes": 202500000000,
+    "maximum_storage_bytes": 1099511627776
+  },
+  "gate": {
+    "expected_two_dimensional_tensors": 153,
+    "expected_dense_projections": 144,
+    "maximum_mismatches": 0,
+    "maximum_p50_operation_fraction": 0.10,
+    "maximum_p90_operation_fraction": 0.25,
+    "maximum_p50_storage_fraction": 0.10,
+    "maximum_p90_storage_fraction": 0.25,
+    "maximum_dense_random_control_p50": 0.25,
+    "maximum_projected_storage_bytes": 1099511627776,
+    "maximum_largest_model_degradation": 0.25
+  },
+  "failure_decision": "REJECT_REAL_Q4_KRONECKER_RANK_AS_CORE_RETAIN_TENSOR_CERTIFIER_AUXILIARY",
+  "evidence_ceiling": "Phase C weight observation and exact modular-rank certification only: no exact Kronecker execution factors, Q4 model-output preservation, physical kernel, Transformer operation replacement, 405B execution, 8 GiB VRAM or target hardware are tested"
+}

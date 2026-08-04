@@ -138,3 +138,8 @@ Cases 18; forwards 1,152; attention rows 9,216; token/registration/control misma
 ## EXP-064 closure
 
 153 tensors; 144 dense; 1,683 plans; zero checksum/reconstruction/control mismatch; exact identical/sign row matrices 0/0; p50/p90 operation 100%/100%; query bytes 100%/100%; projected static storage 211.31 GB. 405B execution and hardware NOT TESTED.
+
+<!-- EXP-065-AUTHORITATIVE-FINAL -->
+## EXP-065 closure
+
+153 tensors; 144 dense; 6,108 plans; 306 selected two-prime certificates; zero checksum/witness/control mismatch; all selected ranks 4/full; p50/p90 operation 203.891%/215.385%; storage 100.234%/101.042%; projected storage 202.66 GB. 405B execution and hardware NOT TESTED.
