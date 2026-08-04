@@ -21,11 +21,11 @@ from experiments.exp_050.run_experiment import (
     TOKENIZER_PATTERNS,
     resolve_snapshot,
 )
+from experiments.exp_058.run_experiment import tensor_checksum
 from experiments.exp_059.run_experiment import (
     dump,
     dump_rows,
     git_commit,
-    sha256_bytes,
     sha256_file,
     write_checksums,
 )
@@ -259,7 +259,7 @@ def main() -> None:
                 .numpy()
                 .astype(np.float32, copy=False)
             )
-            digest = sha256_bytes(floating.tobytes())
+            digest = tensor_checksum(floating)
             source = rank_index.get((model_id, tensor_name))
             if source is None:
                 missing_source_evidence += 1
