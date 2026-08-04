@@ -1,0 +1,1 @@
+Bounded cheap-kill Phase C derivation from frozen real-Q4 rank evidence only: no exact MPO reconstruction, Q4 model-output preservation, physical kernel, Transformer operation replacement, 405B execution, 8 GiB VRAM or target hardware are tested
