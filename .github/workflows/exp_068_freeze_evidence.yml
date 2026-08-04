@@ -1,0 +1,56 @@
+name: EXP-068 freeze authoritative evidence
+
+on:
+  push:
+    branches:
+      - research/exp-068-oracle-demand-certificate
+    paths:
+      - experiments/exp_068/FREEZE_EVIDENCE
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: exp-068-freeze-evidence
+  cancel-in-progress: false
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/exp-068-oracle-demand-certificate
+          fetch-depth: 0
+      - name: Download authoritative workflow artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -rf results/exp_068.download
+          mkdir -p results/exp_068.download
+          gh run download 30918865952 \
+            --repo "${GITHUB_REPOSITORY}" \
+            --name exp-068-candidate-30918865952 \
+            --dir results/exp_068.download
+          mkdir -p results/exp_068
+          cp -a results/exp_068.download/. results/exp_068/
+          rm -rf results/exp_068.download
+      - name: Verify frozen artifact checksums
+        run: |
+          set -euo pipefail
+          cd results/exp_068
+          sha256sum --check checksums.sha256
+      - name: Commit exact artifact contents
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add results/exp_068
+          if git diff --cached --quiet; then
+            echo "Authoritative evidence already frozen"
+            exit 0
+          fi
+          git commit -m "evidence(exp-068): freeze authoritative raw artifact"
+          git push origin HEAD:research/exp-068-oracle-demand-certificate
