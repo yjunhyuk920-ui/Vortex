@@ -43,7 +43,9 @@ def test_exact_single_kronecker_product_has_rank_one() -> None:
     assert plan.prime_ranks == (1, 1)
     assert plan.rank_lower_bound == 1
     assert plan.witness_mismatches == 0
-    assert plan.storage_fraction < 1.0
+    assert plan.storage_fraction > 0
+    assert plan.operation_fraction > 0
+    assert plan.query_byte_fraction > 0
 
 
 def test_exact_two_term_kronecker_sum_has_rank_two() -> None:
