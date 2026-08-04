@@ -33,10 +33,10 @@
     "maximum_p90_operation_fraction": 0.25,
     "maximum_p50_storage_fraction": 0.10,
     "maximum_p90_storage_fraction": 0.25,
-    "maximum_dense_random_control_p50": 0.25,
+    "minimum_dense_random_control_p50": 0.25,
     "maximum_projected_storage_bytes": 1099511627776,
     "maximum_largest_model_degradation": 0.25
   },
   "failure_decision": "REJECT_REAL_Q4_TT_MPO_BOND_RANK_AS_CORE_RETAIN_MPO_CERTIFIER_AUXILIARY",
-  "evidence_ceiling": "Bounded cheap-kill Phase C weight observation and exact TT/MPO unfolding-rank certification only: no exact MPO reconstruction, Q4 model-output preservation, physical kernel, Transformer operation replacement, 405B execution, 8 GiB VRAM or target hardware are tested"
+  "evidence_ceiling": "Bounded cheap-kill Phase C derivation from frozen real-Q4 rank evidence only: no exact MPO reconstruction, Q4 model-output preservation, physical kernel, Transformer operation replacement, 405B execution, 8 GiB VRAM or target hardware are tested"
 }
