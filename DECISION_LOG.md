@@ -292,3 +292,10 @@ D-046 opens EXP-064: inspect exact identical, sign-related, and prototype-plus-s
 EXP-064 authority: workflow `30869720552`, source `a6371c39d85dc39669b98eac6125d9c3bbf4a5dc`, merge `3716584078a91ae307b11b4bf1b2662e1511e9c9`, artifact `8877450455`, ZIP SHA-256 `99c634bd4fb3903d32a1ed45fada7853ea4e1d199b375c129d1d4b8da4f39cb8`. All 153 two-dimensional tensors and 144 dense projections matched frozen Q4 checksums; all 1,683 plans reconstructed exactly. No dense matrix contained identical or sign-related rows. The deployable selector retained dense execution for 140/144 projections and exact sparse-delta plans for four. Dense-projection p50/p90 operation and query-byte fractions were all 100%; the best single matrix reached 70.522% operations and 93.811% bytes. Decision: `REJECT_REAL_Q4_OUTPUT_ROW_PROTOTYPE_AS_CORE_RETAIN_ROW_DICTIONARY_AUXILIARY`.
 
 D-048 opens EXP-065: exact Kronecker-rearrangement rank certificates on the same pinned real-Q4 matrices.
+
+<!-- EXP-065-AUTHORITATIVE-FINAL -->
+## D-049/D-050 — Reject exact Kronecker sums and open Tensor-Train/MPO bond-rank Gate
+
+EXP-065 authority: workflow `30870558294`, source `22fd41697979f0e5aeb570880714a47958270d7f`, merge `2e512e91b5bfcd5e30a19ef163a6438221a134dc`, artifact `8878551394`, ZIP SHA-256 `cf5bfcc53bda4117430c0856b6989704e79bb34fb52c9a4f81869bf20233155d`. All 153 two-dimensional tensors and 144 dense projections matched frozen Q4 checksums. Across 6,108 ordered factorization plans, selected two-prime certificates had zero witness mismatch. Every dense projection selected a full-rank 4-row rearrangement. Favorable lower-bound p50/p90 operation fractions were 203.891%/215.385%; storage fractions 100.234%/101.042%. Decision: `REJECT_REAL_Q4_KRONECKER_RANK_AS_CORE_RETAIN_TENSOR_CERTIFIER_AUXILIARY`.
+
+D-050 opens EXP-066: exact Tensor-Train/Matrix-Product-Operator unfolding ranks, which strictly generalize one-cut Kronecker structure.

@@ -233,3 +233,8 @@ The runtime must not maintain exact K/KV grouping on the measured architecture. 
 ## Output-row structure boundary
 
 The core runtime must not assume row identity or sparse prototype deltas for generic dense checkpoints. The exact row compiler remains fail-closed auxiliary. EXP-065 may only promote a Kronecker path after certified low rearrangement rank and exact integer reconstruction.
+
+<!-- EXP-065-AUTHORITATIVE-FINAL -->
+## Kronecker structure boundary
+
+The core runtime must not assume a short exact sum of Kronecker products for generic Q4 dense weights. The modular certifier remains auxiliary. EXP-066 may only advance TT/MPO candidates after all bond-rank witnesses and favorable full accounting pass.

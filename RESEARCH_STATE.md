@@ -355,3 +355,8 @@ Authority: workflow `30846082964`, artifact `8868770832`, ZIP SHA-256 `b900a7019
 ## EXP-064 closed — Real-Q4 exact output-row structure
 
 Authority: workflow `30869720552`, artifact `8877450455`, ZIP SHA-256 `99c634bd4fb3903d32a1ed45fada7853ea4e1d199b375c129d1d4b8da4f39cb8`. 153 tensors, 144 dense projections, 1,683 plans, zero checksum/reconstruction/control mismatch. Identical/sign-related dense matrices: 0/0. Selected: dense 140, sparse-delta 4. p50/p90 operations and bytes: 100%/100%. Decision: `REJECT_REAL_Q4_OUTPUT_ROW_PROTOTYPE_AS_CORE_RETAIN_ROW_DICTIONARY_AUXILIARY`. Current frontier: EXP-065 exact Kronecker-rearrangement rank. 405B, 8 GiB, Q4 model-output preservation and hardware remain NOT TESTED.
+
+<!-- EXP-065-AUTHORITATIVE-FINAL -->
+## EXP-065 closed — Real-Q4 exact Kronecker rank
+
+Authority: workflow `30870558294`, artifact `8878551394`, ZIP SHA-256 `cf5bfcc53bda4117430c0856b6989704e79bb34fb52c9a4f81869bf20233155d`. 153 tensors, 144 dense projections, 6,108 factorization plans, 306 selected certificates, zero checksum/witness/control mismatch. All 144 selected rearrangements were full rank 4. p50/p90 operation lower bounds: 203.891%/215.385%; storage: 100.234%/101.042%. Decision: `REJECT_REAL_Q4_KRONECKER_RANK_AS_CORE_RETAIN_TENSOR_CERTIFIER_AUXILIARY`. Current frontier: EXP-066 exact TT/MPO bond ranks. 405B, 8 GiB, exact factors, Q4 outputs and hardware remain NOT TESTED.

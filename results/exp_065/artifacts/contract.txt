@@ -1,0 +1,1 @@
+Phase C weight observation and exact modular-rank certification only: no exact Kronecker execution factors, Q4 model-output preservation, physical kernel, Transformer operation replacement, 405B execution, 8 GiB VRAM or target hardware are tested
