@@ -1,0 +1,86 @@
+name: EXP-069 finalize research registers
+
+on:
+  push:
+    branches:
+      - research/exp-069-temporal-span-replay
+    paths:
+      - experiments/exp_069/FINALIZE_REGISTERS
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/exp-069-temporal-span-replay
+          fetch-depth: 0
+      - name: Append missing authoritative failure entries
+        run: |
+          set -euo pipefail
+          if ! grep -q 'EXP-066-AUTHORITATIVE-FINAL' FAILED_APPROACHES.md; then
+            cat >> FAILED_APPROACHES.md <<'EOF'
+
+<!-- EXP-066-AUTHORITATIVE-FINAL -->
+## F-034 — Exact classical TT/MPO bond-rank core
+
+Frozen real-Q4 rank evidence gave favorable p50 operation/query fractions of 3.8941%/2.9984%, but p50/p90 static storage lower bounds were 11.0524%/22.9883%. The measured small-model extrapolation placed the 405B Q4 lower-bound representation at about 14.315 GB, above 8 GiB before runtime state. Do not revive classical single-matrix TT/MPO by hiding factor storage, reporting only operation/query savings, or treating unresolved unit-boundary cuts as an exact reconstruction. Retain the MPO rank certifier as an auxiliary.
+EOF
+          fi
+          if ! grep -q 'EXP-067-AUTHORITATIVE-FINAL' FAILED_APPROACHES.md; then
+            cat >> FAILED_APPROACHES.md <<'EOF'
+
+<!-- EXP-067-AUTHORITATIVE-FINAL -->
+## F-035 — Exact joint Q/K/V row and common-right-factor reuse
+
+Across 24 complete Q/K/V groups and 10,752 Q4 rows, exact reusable rows were zero. The common-right rank was 100% of input width at p50/p90; operation fractions remained 100%, while storage rose to 107.41%/114.12%. Do not reopen with equality/sign/proportional-row variants, larger repeated blocks, or a joint kernel before a genuinely new shared circuit is proven. Retain the group certifier as an auxiliary.
+EOF
+          fi
+          if ! grep -q 'EXP-068-AUTHORITATIVE-FINAL' FAILED_APPROACHES.md; then
+            cat >> FAILED_APPROACHES.md <<'EOF'
+
+<!-- EXP-068-AUTHORITATIVE-FINAL -->
+## F-036 — Exact absolute-unread global demand certificates
+
+Even after granting every preceding Transformer operation and weight read, the winning LM-head row, all metadata, and an independently optimal reveal order for every competitor for free, the output-head-only mandatory lower bound was 13.7697% at p50 and 19.2524% at p90. The p50 target failed before any real scheduler, propagation, fallback, or kernel cost. Do not reopen with tile-size/order tuning or the same norm/absolute-unread bounds. Retain the bound auditor as an auxiliary.
+EOF
+          fi
+          if ! grep -q 'EXP-069-AUTHORITATIVE-FINAL' FAILED_APPROACHES.md; then
+            cat >> FAILED_APPROACHES.md <<'EOF'
+
+<!-- EXP-069-AUTHORITATIVE-FINAL -->
+## F-037 — Causal exact temporal-span replay
+
+Exact dyadic modular-rank certificates covered 833 warm projection traces. Certified-independent arrivals alone required 100% of dense weight reads and operations at p50/p90; model p50 values were 69.244%/100%/100% for TinyStories-1M/3M/8M. No exact duplicate replay hit occurred, and the favorable basis cache was 391.97% of one Q4 projection-weight population at p50. Do not reopen with approximate subspaces, numerical tolerances, post-selected longer traces, future/cross-prompt dictionaries, or uncharged coefficient/cache work. Retain the dyadic rank auditor as an auxiliary.
+EOF
+          fi
+      - name: Update root research state
+        run: |
+          set -euo pipefail
+          sed -i 's/^Last updated:.*/Last updated: 2026-08-04 Asia\/Seoul/' RESEARCH_STATE.md
+          if ! grep -q 'EXP-069-LATEST-STATE' RESEARCH_STATE.md; then
+            cat >> RESEARCH_STATE.md <<'EOF'
+
+<!-- EXP-069-LATEST-STATE -->
+## Latest authoritative Gate — EXP-069
+
+Causal exact temporal-span replay is rejected as the primary core. Across 833 warm projection traces, exact float32 dyadic modular rank showed p50/p90 mandatory full-weight and operation fractions of 100%. TinyStories-1M reached a 69.244% p50 lower bound after narrow-width saturation; TinyStories-3M/8M remained at 100%. Verified exact replay hits were zero. Authority: `results/exp_069/summary.json`, workflow `30922174380`, artifact `8897596252`.
+
+The next preregistered Gate is EXP-070, exact Q4 local-pattern table circuits. It tests short coefficient-block reuse with full dictionary, pattern-ID, routing, assembly, query-byte, and storage accounting before any kernel work.
+EOF
+          fi
+      - name: Commit register updates
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add FAILED_APPROACHES.md RESEARCH_STATE.md
+          if git diff --cached --quiet; then
+            echo 'Research registers already current'
+            exit 0
+          fi
+          git commit -m 'docs: finalize EXP-066 through EXP-069 research registers'
+          git push origin HEAD:research/exp-069-temporal-span-replay
