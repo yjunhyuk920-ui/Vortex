@@ -28,13 +28,15 @@ n1 = product_{i<=k} n_i
 n2 = product_{i>k}  n_i
 ```
 
-and its prefix/suffix unfolding is byte-for-byte the EXP-065 Kronecker rearrangement
+The TT prefix/suffix unfolding orders axes as interleaved physical modes. The EXP-065 rearrangement groups all row-prefix axes before all column-prefix axes, and likewise on the suffix. Independent row and column permutations transform one matrix into the other exactly:
 
 ```text
+P_row * TT_unfolding * P_column^T
+=
 W.reshape(m1,m2,n1,n2).transpose(0,2,1,3)
 ```
 
-Therefore EXP-066 verifies frozen EXP-065 checksums and reuses each matching rank lower bound. A cut containing a unit factor was intentionally absent from EXP-065; it receives rank lower bound one, which is universally valid and deliberately favors the TT/MPO candidate. Any missing nontrivial mapping fails the correctness Gate.
+Rank is invariant under these permutations. Therefore EXP-066 verifies frozen EXP-065 checksums and reuses each matching rank lower bound. A cut containing a unit factor was intentionally absent from EXP-065; it receives rank lower bound one, which is universally valid and deliberately favors the TT/MPO candidate. Any missing nontrivial mapping fails the correctness Gate.
 
 ## Precommitted mode family
 
@@ -74,7 +76,7 @@ Required coverage: all 153 two-dimensional tensors and all 144 registered dense 
 
 ## Controls
 
-- every tested TT cut unfolding equals the EXP-065 rearrangement exactly;
+- every tested TT cut becomes the matching EXP-065 rearrangement after independently constructed row and column permutations;
 - frozen input files match committed checksums;
 - duplicate EXP-065 keys cannot conflict;
 - exact rank-one MPO controls retain unit bond ranks;
