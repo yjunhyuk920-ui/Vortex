@@ -9,6 +9,8 @@ on:
       - "experiments/exp_066/**"
       - "tests/exp_066/**"
       - "vortex_runtime/tensor_train_rank.py"
+      - "vortex_runtime/tt_kronecker_reuse.py"
+      - "results/exp_065/**"
 
 concurrency:
   group: exp-066-${{ github.ref }}
@@ -17,7 +19,7 @@ concurrency:
 jobs:
   gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 15
     permissions:
       contents: read
     steps:
@@ -26,24 +28,14 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-      - name: Restore pinned checkpoint cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ runner.temp }}/exp_066_huggingface
-          key: exp-058-tinystories-1m-3m-8m-v1
-      - name: Install validation environment
+      - name: Install bounded validation environment
         run: |
           set -euo pipefail
           python -m pip install --disable-pip-version-check pytest==8.3.5 numpy==2.1.3
-          python -m pip install --disable-pip-version-check --index-url https://download.pytorch.org/whl/cpu torch==2.6.0
-          python -m pip install --disable-pip-version-check transformers==4.50.3 huggingface_hub==0.29.3 safetensors==0.5.3 tokenizers==0.21.1
-      - name: Run EXP-066 bounded reproduction
+      - name: Run EXP-066 frozen-evidence reproduction
         env:
           PYTHONPATH: ${{ github.workspace }}
           EXP066_OUTPUT_DIR: ${{ runner.temp }}/exp_066_candidate
-          EXP066_CACHE_DIR: ${{ runner.temp }}/exp_066_huggingface
-          HF_HUB_DISABLE_TELEMETRY: "1"
-          TOKENIZERS_PARALLELISM: "false"
         run: bash experiments/exp_066/reproduce.sh
       - name: Upload EXP-066 candidate evidence
         if: always()
