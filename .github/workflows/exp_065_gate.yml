@@ -1,12 +1,6 @@
 name: EXP-065 real-Q4 Kronecker-rank Gate
 
 on:
-  pull_request:
-    paths:
-      - "vortex_runtime/kronecker_rank.py"
-      - "tests/exp_065/**"
-      - "experiments/exp_065/**"
-      - ".github/workflows/exp_065_gate.yml"
   workflow_dispatch:
 
 concurrency:
