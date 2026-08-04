@@ -9,11 +9,11 @@ from vortex_runtime.tt_kronecker_reuse import (
     derive_reused_tt_plan,
     index_exp065_plan_rows,
     tt_cut_factors,
-    validate_cut_equivalence,
+    validate_cut_permutation_equivalence,
 )
 
 
-def test_every_internal_cut_matches_kronecker_convention() -> None:
+def test_every_internal_cut_matches_after_row_column_permutations() -> None:
     matrix = np.arange(8 * 12, dtype=np.int16).reshape(8, 12)
     plan = TensorTrainModePlan(
         variant="mixed",
@@ -25,7 +25,9 @@ def test_every_internal_cut_matches_kronecker_convention() -> None:
         factors = tt_cut_factors(plan.mode_pairs, cut)
         assert factors[0] * factors[1] == matrix.shape[0]
         assert factors[2] * factors[3] == matrix.shape[1]
-        assert validate_cut_equivalence(matrix, plan.mode_pairs, cut)
+        assert validate_cut_permutation_equivalence(
+            matrix, plan.mode_pairs, cut
+        )
 
 
 def test_frozen_plan_rows_become_bond_lower_bounds() -> None:
@@ -70,7 +72,7 @@ def test_frozen_plan_rows_become_bond_lower_bounds() -> None:
     assert derived.missing_nontrivial_cut_count == 0
     assert derived.source_witness_mismatches == 0
     assert derived.core_scalar_lower_bound == 96
-    assert math.isclose(derived.operation_fraction, 1.625)
+    assert math.isclose(derived.operation_fraction, 104 / 72)
 
 
 def test_unit_factor_cut_uses_favorable_rank_one_lower_bound() -> None:
