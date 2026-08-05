@@ -17,7 +17,7 @@ concurrency:
 jobs:
   gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
@@ -30,10 +30,14 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install --disable-pip-version-check pytest==8.3.5 numpy==2.1.3
+          python -m pip install --disable-pip-version-check --index-url https://download.pytorch.org/whl/cpu torch==2.6.0
+          python -m pip install --disable-pip-version-check transformers==4.50.3 huggingface_hub==0.29.3 safetensors==0.5.3 tokenizers==0.21.1
       - name: Run EXP-071 bounded reproduction
         env:
           PYTHONPATH: ${{ github.workspace }}
           EXP071_OUTPUT_DIR: ${{ runner.temp }}/exp_071_candidate
+          HF_HUB_DISABLE_TELEMETRY: "1"
+          TOKENIZERS_PARALLELISM: "false"
         run: bash experiments/exp_071/reproduce.sh
       - name: Upload EXP-071 candidate evidence
         if: always()
