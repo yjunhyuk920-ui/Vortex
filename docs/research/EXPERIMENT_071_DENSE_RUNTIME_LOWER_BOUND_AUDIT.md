@@ -4,14 +4,14 @@
 
 Can known unconditional online matrix-vector cell-probe lower bounds rigorously rule out the VORTEX fixed objective under a conventional exact runtime model?
 
-The answer must be one of:
+The only allowed outcomes were:
 
 ```text
 CERTIFY_CONVENTIONAL_EXACT_ONLINE_DENSE_RUNTIME_LOWER_BOUND
 INSUFFICIENT_LOWER_BOUND_DO_NOT_CLAIM_IMPOSSIBILITY
 ```
 
-No asymptotic theorem, heuristic constant, or per-matrix result may be promoted into a model-wide 405B impossibility claim without all hypotheses.
+No asymptotic theorem, heuristic constant, or per-matrix result may be promoted into a model-wide 405B impossibility claim without every hypothesis.
 
 ## Primary sources
 
@@ -59,7 +59,14 @@ Boolean semiring output = [y_i > 0]
 F2 output               = y_i mod 2
 ```
 
-For registered dimensions, all sums are exactly representable in float32. EXP-071 exhaustively checks every matrix/vector pair through dimension four and directly replays float32 through dimension three.
+EXP-071 exhaustively verified every matrix/vector pair through dimension four and directly replayed float32 through dimension three:
+
+```text
+exhaustive reduction cases  1,052,740
+float32 replay cases        4,164
+reduction mismatches        0
+control failures            0
+```
 
 A finite-field embedding up to `F13` also fits signed Q4 representatives `[-6,6]`, but CGL15 remains asymptotic and weak in the large-side-information regime.
 
@@ -74,6 +81,17 @@ k = min(m,n)
 An arbitrary `k x k` matrix can be placed in the top-left block and unused rows/columns zeroed.
 
 Padding an `m x n` matrix to `max(m,n)^2` lets a square solver solve a rectangular problem. It does **not** let a rectangular solver solve every larger square matrix, so it cannot strengthen the lower-bound dimension to `max(m,n)`.
+
+## Registered 405B plan
+
+```text
+tensor families    9
+tensor instances   884
+parameters         405,849,243,648
+Q4 population      188.98828125 GiB
+```
+
+These are registered-plan arithmetic values, not a measured 405B checkpoint execution.
 
 ## 8 GiB side-information audit
 
@@ -90,7 +108,14 @@ The fixed hot/side-information allowance is:
 8 GiB = 68,719,476,736 bits
 ```
 
-Thus the available side information is exactly `1024x` above the maximum CKL18 tradeoff range for every individual registered tensor family. No individual tensor satisfies the succinct-redundancy hypothesis when the runtime may devote the complete hot state to that tensor.
+Thus the available side information is exactly `1024x` above the maximum CKL18 tradeoff range for every individual registered tensor family.
+
+```text
+CKL18-covered tensor families      0 / 9
+CKL18-out-of-range tensor families 9 / 9
+```
+
+No individual tensor satisfies the succinct-redundancy hypothesis when the runtime may devote the complete hot state to that tensor.
 
 ## Why side information cannot be divided by 884 tensors
 
@@ -106,15 +131,21 @@ One side-information bit can encode a joint function of many matrices and need n
 
 ## CGL15 finite-size indicator
 
-The experiment evaluates the displayed CGL15 expression with constants set to one, using the strongest direct signed-Q4 field embedding `F13`. These rows are explicitly labeled:
+The experiment evaluated the displayed CGL15 expression with constants set to one, using the strongest direct signed-Q4 field embedding `F13`. These rows are explicitly labeled:
 
 ```text
 UNIT-CONSTANT INDICATOR — NOT A CERTIFIED FINITE LOWER BOUND
 ```
 
-Even illegally summing every per-instance indicator as though a direct-sum theorem existed gives only about `0.0249%` of packed Q4 cells, below the fixed `1.185185%` whole-execution budget. This number is diagnostic only; it is not theorem-backed because both finite constants and direct-sum composition are absent.
+Even illegally summing every per-instance indicator as though a direct-sum theorem existed gives:
 
-## Expected authoritative decision
+```text
+0.0248971867% of packed Q4 cells
+```
+
+This is below the fixed `1.185185%` whole-execution budget, but is diagnostic only. It is not theorem-backed because finite constants and direct-sum composition are both absent.
+
+## Authoritative decision
 
 ```text
 INSUFFICIENT_LOWER_BOUND_DO_NOT_CLAIM_IMPOSSIBILITY
@@ -124,11 +155,24 @@ Reasons:
 
 1. CKL18 does not cover the 8 GiB per-matrix redundancy regime.
 2. Neither paper proves the required model-wide direct sum.
-3. The asymptotic Omega constants cannot be converted into a finite 405B traffic fraction.
-4. Cell probes are not yet mapped to physical GPU, PCIe, or SSD transactions.
-5. The theorems constrain conventional systematic/general data structures, not every conceivable execution model.
+3. Hidden asymptotic constants cannot be converted into a certified finite 405B traffic fraction.
+4. Cell probes are not mapped to physical GPU, PCIe, or SSD transactions.
+5. The theorems constrain registered conventional data-structure models, not every conceivable execution model.
 
 This result does not show the VORTEX objective is feasible. It only prohibits claiming that these papers prove it impossible.
+
+## Authority
+
+```text
+results/exp_071/summary.json
+results/exp_071/raw/theorem_hypotheses.jsonl
+results/exp_071/raw/tensor_rows.jsonl
+results/exp_071/raw/control_rows.jsonl
+results/exp_071/processed/direct_sum_audit.json
+workflow 30965323458
+artifact 8914506737
+artifact ZIP SHA-256 bc81e90e3b5a35935f893ad7396d4b41a13de46606ce14bccc53cf79e30e8ba4
+```
 
 ## Claim boundary
 
