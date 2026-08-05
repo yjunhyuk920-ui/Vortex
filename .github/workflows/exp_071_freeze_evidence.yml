@@ -1,0 +1,52 @@
+name: EXP-071 freeze authoritative evidence
+
+on:
+  push:
+    branches:
+      - research/exp-071-dense-runtime-lower-bound-audit
+    paths:
+      - FREEZE_EXP071_EVIDENCE
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/exp-071-dense-runtime-lower-bound-audit
+          fetch-depth: 0
+      - name: Download authoritative workflow artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -rf results/exp_071.download
+          mkdir -p results/exp_071.download
+          gh run download 30965323458 \
+            --repo "${GITHUB_REPOSITORY}" \
+            --name exp-071-candidate-30965323458 \
+            --dir results/exp_071.download
+          mkdir -p results/exp_071
+          cp -a results/exp_071.download/. results/exp_071/
+          rm -rf results/exp_071.download
+      - name: Verify frozen artifact checksums
+        run: |
+          set -euo pipefail
+          cd results/exp_071
+          sha256sum --check checksums.sha256
+      - name: Commit exact artifact contents
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add results/exp_071
+          if git diff --cached --quiet; then
+            echo "Authoritative evidence already frozen"
+            exit 0
+          fi
+          git commit -m "evidence(exp-071): freeze authoritative raw artifact"
+          git push origin HEAD:research/exp-071-dense-runtime-lower-bound-audit
