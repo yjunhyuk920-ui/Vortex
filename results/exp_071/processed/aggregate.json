@@ -1,0 +1,67 @@
+{
+  "DERIVED": {
+    "boolean_reduction_valid": true,
+    "cgl_numeric_rows": "UNIT-CONSTANT INDICATORS, NOT CERTIFIED FINITE LOWER BOUNDS",
+    "correctness_gate_pass": true,
+    "decision": "INSUFFICIENT_LOWER_BOUND_DO_NOT_CLAIM_IMPOSSIBILITY",
+    "direct_sum_gate_pass": false,
+    "finite_constant_gate_pass": false,
+    "per_matrix_ckl_range_gate_pass": false,
+    "population_gate_pass": true,
+    "rectangular_square_subproblem_rule": "dimension=min(rows,columns)",
+    "side_information_division_across_matrices": "NOT JUSTIFIED",
+    "strong_closure": false,
+    "theorem_source_gate_pass": true
+  },
+  "MEASURED": {
+    "ckl_applicable_tensor_family_count": 0,
+    "ckl_out_of_range_tensor_family_count": 9,
+    "control_failures": 0,
+    "elapsed_ns": 12786642448,
+    "float32_replay_cases": 4164,
+    "hot_side_information_bits": 68719476736,
+    "illegal_direct_sum_unit_constant_indicator_fraction": 0.00024897186731252964,
+    "maximum_ckl_tradeoff_side_bits": 67108864,
+    "maximum_square_subproblem_dimension": 16384,
+    "parameter_total": 405849243648,
+    "peak_rss_kib": 32812,
+    "q4_parameter_gib": 188.98828125,
+    "reduction_cases": 1052740,
+    "reduction_mismatches": 0,
+    "side_bits_over_maximum_ckl_tradeoff_range": 1024.0,
+    "tensor_family_count": 9,
+    "tensor_instance_count": 884,
+    "theorem_count": 3
+  },
+  "UNVERIFIED": [
+    "direct-sum lower bound for jointly preprocessed Transformer matrices",
+    "finite constants hidden by asymptotic Omega and soft-O notation",
+    "physical mapping from a cell probe to target GPU/PCIe/SSD transactions",
+    "actual Transformer operation replacement",
+    "405B execution",
+    "8 GiB runtime behavior",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "INSUFFICIENT_LOWER_BOUND_DO_NOT_CLAIM_IMPOSSIBILITY",
+  "claim_boundary": {
+    "impossibility_claim": "PROHIBITED",
+    "model_wide_lower_bound": "NOT CERTIFIED",
+    "per_tensor_formula_inputs": "DERIVED FROM REGISTERED PLAN",
+    "primary_theorem_statements": "SOURCE-AUDITED",
+    "small_domain_exact_reduction": "MEASURED",
+    "target_hardware": "NOT TESTED"
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-071",
+  "name": "universal_exact_dense_runtime_lower_bound_applicability_audit",
+  "phase": [
+    "A",
+    "B-theorem-and-reduction-audit"
+  ],
+  "provenance": {
+    "config_sha256": "195c3f7cc49a4ef2005878b95a886eb1e92cff2eb4a983c6f3cb5bc5a18cafbe",
+    "numpy": "2.1.3",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "python": "3.11.15"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "config_sha256": "195c3f7cc49a4ef2005878b95a886eb1e92cff2eb4a983c6f3cb5bc5a18cafbe",
+  "numpy": "2.1.3",
+  "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+  "python": "3.11.15"
+}

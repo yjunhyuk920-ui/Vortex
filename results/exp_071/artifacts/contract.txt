@@ -1,0 +1,1 @@
+Phase A/B theorem and exact-reduction applicability audit only; asymptotic theorems are not finite hardware measurements and no 405B, 8 GiB GPU, CUDA, PCIe, SSD, TTFT or tokens/sec result is tested
