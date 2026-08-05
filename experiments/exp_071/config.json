@@ -1,0 +1,11 @@
+{
+  "experiment": "EXP-071",
+  "word_bits": 64,
+  "hot_side_information_bytes": 8589934592,
+  "strongest_direct_q4_field_prime": 13,
+  "exhaustive_binary_max_dimension": 4,
+  "expected_parameter_total": 405849243648,
+  "whole_execution_budget_fraction": 0.01185185185,
+  "failure_decision": "INSUFFICIENT_LOWER_BOUND_DO_NOT_CLAIM_IMPOSSIBILITY",
+  "evidence_ceiling": "Phase A/B theorem and exact-reduction applicability audit only; asymptotic theorems are not finite hardware measurements and no 405B, 8 GiB GPU, CUDA, PCIe, SSD, TTFT or tokens/sec result is tested"
+}
