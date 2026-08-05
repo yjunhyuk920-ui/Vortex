@@ -1,0 +1,6 @@
+{
+  "certified": false,
+  "fix_other_matrices_rule": "When all other matrices are fixed, the complete 8 GiB side state may still be an arbitrary function of the selected matrix; it cannot be divided by layer or tensor count without a theorem.",
+  "pigeonhole_division_allowed": false,
+  "reason": "Neither registered source theorem supplies a direct-sum result for many independent matrices sharing one jointly computed redundancy string and receiving adaptively generated, layer-dependent queries."
+}

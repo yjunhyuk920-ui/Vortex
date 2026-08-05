@@ -13,16 +13,16 @@ Execute an arbitrary publicly released, unmodified Hugging Face dense Transforme
 - p50 warm time/token <=1.2x native 4B Q4 and p95 <=1.5x on the same target machine;
 - independently reproducible evidence.
 
-The objective is unchanged. A small-checkpoint result, theoretical mechanism, or projected number is not target completion.
+The objective is unchanged. A small-checkpoint result, theorem, or projection is not target completion.
 
 ## Current environment truth
 
-Measured and available:
+Available and measured:
 
 ```text
 GitHub repository and GitHub Actions CPU
 Python/PyTorch
-pinned downloadable TinyStories checkpoints
+pinned downloadable small checkpoints
 synthetic/reference controls
 frozen machine-readable evidence
 ```
@@ -47,7 +47,7 @@ Phase D remains `NOT TESTED`. E6/E7 are not achieved.
 - Phase C: small-real-model falsification or actual operation replacement;
 - Phase D: target hardware.
 
-Every result must distinguish `MEASURED`, `DERIVED`, `PROJECTED`, and `UNVERIFIED`. Estimates may not be presented as measurements.
+Every result must distinguish `MEASURED`, `DERIVED`, `PROJECTED`, and `UNVERIFIED`. Estimates and asymptotic theorems may not be presented as measurements.
 
 ## Current scientific position
 
@@ -66,10 +66,11 @@ EXP-066 exact TT/MPO: storage Gate failure
 EXP-067 joint Q/K/V arithmetic: zero reusable rows
 EXP-068 absolute-unread demand certificate: output-head-only p50 Gate failure
 EXP-069 temporal exact span replay: mandatory p50/p90 full passes 100%
-EXP-070 Q4 local-pattern tables: operation remained about 88-91%; bytes/storage exceeded dense
+EXP-070 Q4 local-pattern tables: operation 88-91%; bytes/storage exceeded dense
+EXP-071 known online-Mv lower bounds: insufficient for an 8 GiB model-wide impossibility claim
 ```
 
-These failures do not prove the final objective impossible. They close only the registered mechanisms and prohibit cosmetic variants without a new fact, theorem, or information source. Permanent restrictions are in `FAILED_APPROACHES.md` and `FAILED_APPROACHES_RECENT.md`; machine-readable authority is under `results/exp_NNN/`.
+These results do not prove the final objective feasible or impossible. They close only the registered mechanisms or claims. Permanent restrictions are in `FAILED_APPROACHES.md` and `FAILED_APPROACHES_RECENT.md`; machine-readable authority is under `results/exp_NNN/`.
 
 ## Recent authoritative closures
 
@@ -81,8 +82,6 @@ These failures do not prove the final objective impossible. They close only the 
 operation p50/p90 3.8941% / 6.7788%
 storage p50/p90 11.0524% / 22.9883%
 ```
-
-The favorable storage lower bound failed the 10% p50 Gate before unresolved ranks and implementation costs.
 
 Decision:
 
@@ -112,7 +111,7 @@ Authority: `results/exp_067/summary.json`.
 
 ### EXP-068 — Absolute-unread demand certificates
 
-After granting all preceding Transformer work, the winning output-head row, metadata, and a separate optimal reveal order per competitor for free:
+After granting all preceding Transformer work, the winning output-head row, metadata, and an independently optimal reveal order for each competitor for free:
 
 ```text
 output-head-only p50 weight/operation lower bound 13.7697%
@@ -149,16 +148,13 @@ Authority: `results/exp_069/summary.json`.
 
 ### EXP-070 — Exact Q4 local-pattern table circuits
 
-Every frozen dense projection was evaluated under the preregistered block widths and deterministic column orders. One joint plan per matrix minimized the maximum of operation, query-byte, and static-representation fractions; no cost-axis cherry-picking was allowed.
-
 ```text
 3 models
 144 dense projections
 3,024 plans
 checksum/reconstruction/collision/control failures 0
 operation p50/p90 88.4856% / 91.4423%
-query-byte p50/p90 111.0294% / 112.7907%
-static representation p50/p90 111.0294% / 112.7907%
+query-byte and static p50/p90 111.0294% / 112.7907%
 minimum joint worst-axis fraction 105.4244%
 ```
 
@@ -169,15 +165,55 @@ REJECT_EXACT_Q4_LOCAL_PATTERN_TABLE_AS_CORE
 RETAIN_BLOCK_PATTERN_ANALYZER_AUXILIARY
 ```
 
+Authority: `results/exp_070/summary.json`.
+
+### EXP-071 — Exact dense-runtime lower-bound applicability audit
+
+EXP-071 directly audited CGL15 Theorem 3 and CKL18 Theorems 1.2/1.3 before allowing an impossibility claim.
+
+Integrity:
+
+```text
+3 theorem statements registered
+1,052,740 exhaustive binary reduction cases
+4,164 direct float32 replay cases
+reduction mismatches 0
+control failures 0
+9 Llama-405B tensor families
+884 tensor instances
+405,849,243,648 parameters
+```
+
+Applicability:
+
+```text
+largest valid square subproblem n          16,384
+CKL18 maximum registered side state        8 MiB
+VORTEX hot/side-state allowance            8 GiB
+ratio                                      1,024x
+covered tensor families                    0 / 9
+required model-wide direct sum             not established
+finite Omega constants                     unavailable
+```
+
+Decision:
+
+```text
+INSUFFICIENT_LOWER_BOUND_DO_NOT_CLAIM_IMPOSSIBILITY
+```
+
+This does not establish feasibility. It prohibits dividing the shared 8 GiB state by tensor count, summing per-matrix asymptotic bounds without a direct-sum theorem, or equating cell probes with hardware transactions.
+
 Authority:
 
 ```text
-results/exp_070/summary.json
-results/exp_070/raw/plan_rows.jsonl
-results/exp_070/raw/selected_rows.jsonl
-workflow 30930542616
-artifact 8901017649
-artifact ZIP SHA-256 0e3e60f959af852759b9aac8dd6af1a28524cdcbb6c736cd8e32ad00d6c29987
+results/exp_071/summary.json
+results/exp_071/raw/theorem_hypotheses.jsonl
+results/exp_071/raw/tensor_rows.jsonl
+results/exp_071/processed/direct_sum_audit.json
+workflow 30965323458
+artifact 8914506737
+artifact ZIP SHA-256 bc81e90e3b5a35935f893ad7396d4b41a13de46606ce14bccc53cf79e30e8ba4
 ```
 
 ## Auxiliary infrastructure retained
@@ -186,29 +222,28 @@ artifact ZIP SHA-256 0e3e60f959af852759b9aac8dd6af1a28524cdcbb6c736cd8e32ad00d6c
 - exact modular-rank and witness certifiers;
 - Kronecker/MPO and dyadic temporal-rank auditors;
 - exact row/group/block-pattern analyzers;
+- theorem-hypothesis and exact-reduction auditor;
 - exact verifier and fail-closed fallback components;
-- output-head absolute-unread bound auditor;
-- adversarial random, forced-unique, triangular, recurrence, and late-flip controls.
+- adversarial random, forced-unique, structured, recurrence, and late-flip controls.
 
 Auxiliary classification does not mean the final runtime objective is achieved.
 
 ## Primary unresolved bottleneck
 
-No tested mechanism has supplied a universal exact way to avoid almost all dense weight information and arithmetic. Static exact structure, sparsity, duplication, current-input certification, temporal replay, and short Q4 table circuits all failed by large margins or storage limits.
+No tested mechanism supplies a universal exact way to avoid almost all dense weight information and arithmetic. At the same time, the audited lower-bound papers do not rule out a jointly preprocessed model with 8 GiB of side state.
 
-Continuing to enumerate classical decompositions is no longer efficient. Before proposing another executor mechanism, the project must determine whether known online matrix-vector data-structure lower bounds can rigorously constrain the registered conventional execution model.
+The remaining gap is therefore constructive: find an exact smaller executable program that is more general than row/column equality, fixed tensor decompositions, contiguous block tables, or temporal replay.
 
 ## Current frontier
 
-`EXP-071 — Universal Exact Dense Runtime Lower-Bound Applicability Audit`, preregistered in `NEXT_EXPERIMENT.md`.
+`EXP-072 — Exact Nonlocal Q4 Shared Arithmetic-DAG Synthesis Gate`, preregistered in `NEXT_EXPERIMENT.md`.
 
-It will:
+It tests whether a deterministic compiler can synthesize exact integer straight-line programs that share non-contiguous linear forms across output rows and across projections receiving the same activation. The Gate will:
 
-- verify primary theorem statements and every hypothesis;
-- formalize preprocessing, cold representation, <=8 GiB side information, online query, exactness, word/cell size, and randomization assumptions;
-- verify a small exact reduction from Boolean matrix-vector multiplication into dense float projections;
-- audit square/rectangular padding and model-wide direct-sum composition rather than assume them;
-- apply only certified formulas to the registered 405B tensor plan;
-- state either a rigorously bounded conventional model or `INSUFFICIENT_LOWER_BOUND_DO_NOT_CLAIM_IMPOSSIBILITY`.
+- synthesize bounded exact arithmetic DAGs on every registered real-Q4 tile and shared-input group;
+- verify every output by full symbolic coefficient-vector reconstruction;
+- charge runtime arithmetic, circuit bytes, operand IDs, constants, output maps, row scales, and cross-tile accumulation;
+- use structured positive controls and dense-random/forced-unique negative controls;
+- stop before CUDA or model-wide transcoding unless operation, query, and storage p50/p90 Gates all pass.
 
-A theorem audit is not a hardware measurement. Actual 405B execution and target hardware remain `NOT TESTED` regardless of the EXP-071 outcome.
+Floating-point evaluation-order preservation, physical kernels, 405B execution, and target hardware remain `NOT TESTED` regardless of the EXP-072 outcome.
