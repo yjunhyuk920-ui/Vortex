@@ -1,143 +1,210 @@
 # Next Experiment
 
-## Closed Gate — EXP-070
+## Closed Audit — EXP-071
 
-EXP-070 tested exact short-block Q4 table circuits across every frozen real dense projection. Each plan grouped identical coefficient tuples, reconstructed the complete Q4 matrix exactly, and charged dictionaries, row IDs, block offsets, favorable fused gather-adds, row scales, and non-natural permutation costs.
+EXP-071 audited whether two primary unconditional online matrix-vector lower-bound results can rigorously rule out the registered conventional exact VORTEX runtime model.
 
-Authoritative coverage and integrity:
-
-```text
-3 pinned models
-144 dense projections
-3,024 preregistered plans
-7 block widths
-3 deterministic order families
-checksum mismatches: 0
-reconstruction mismatches: 0
-hash-collision mismatches: 0
-control failures: 0
-```
-
-Best joint plan per matrix, without per-axis cherry-picking:
+Source-audited population:
 
 ```text
-operation p50/p90:            88.4856% / 91.4423%
-query-byte p50/p90:          111.0294% / 112.7907%
-static representation p50/p90: 111.0294% / 112.7907%
-minimum joint fraction:      105.4244%
-maximum joint fraction:      113.4191%
+CGL15 Theorem 3
+CKL18 Theorem 1.2
+CKL18 Theorem 1.3
 ```
+
+Exact reduction and registered-plan integrity:
+
+```text
+1,052,740 exhaustive binary matrix/vector cases
+4,164 direct float32 replay cases
+reduction mismatches 0
+control failures 0
+9 Llama-405B tensor families
+884 tensor instances
+405,849,243,648 registered parameters
+```
+
+Applicability result:
+
+```text
+largest valid square subproblem n          16,384
+CKL18 maximum side-information range       67,108,864 bits = 8 MiB
+registered hot/side-information allowance  68,719,476,736 bits = 8 GiB
+allowance / theorem range                  1,024x
+CKL18-covered tensor families              0 / 9
+model-wide direct-sum theorem              not established
+finite constants hidden by Omega           unresolved
+```
+
+Even the deliberately non-authoritative unit-constant CGL15 indicator, illegally summed as if a direct-sum theorem existed, was only `0.0248972%` of packed Q4 cells. This is diagnostic only and is not a certified finite lower bound.
 
 Decision:
-
-```text
-REJECT_EXACT_Q4_LOCAL_PATTERN_TABLE_AS_CORE
-RETAIN_BLOCK_PATTERN_ANALYZER_AUXILIARY
-```
-
-The registered short-block table family is closed. It may not be reopened by adding block widths after observation, hiding dictionaries/IDs/routing/scales, reporting arithmetic without bytes, or using learned/approximate pattern merging while claiming exactness.
-
-Authority:
-
-```text
-results/exp_070/summary.json
-results/exp_070/raw/plan_rows.jsonl
-results/exp_070/raw/selected_rows.jsonl
-results/exp_070/checksums.sha256
-workflow 30930542616
-artifact 8901017649
-artifact ZIP SHA-256 0e3e60f959af852759b9aac8dd6af1a28524cdcbb6c736cd8e32ad00d6c29987
-```
-
-## EXP-071 — Universal Exact Dense Runtime Lower-Bound Applicability Audit
-
-### Research-class change
-
-Do not implement another weight decomposition or cache variant next. First determine whether the fixed objective is compatible with known unconditional online matrix-vector data-structure lower bounds under a clearly stated conventional execution model.
-
-The audit starts from primary results including:
-
-- Clifford, Grønlund, and Larsen, *New Unconditional Hardness Results for Dynamic and Online Problems*, FOCS 2015, DOI `10.1109/FOCS.2015.71`;
-- Chakraborty, Kamma, and Larsen, *Tight Cell Probe Bounds for Succinct Boolean Matrix-Vector Multiplication*, STOC 2018, arXiv `1711.04467`.
-
-These papers must not be cited as a 405B impossibility proof until every hypothesis and reduction below is checked.
-
-### Formal execution model
-
-Define the candidate runtime explicitly:
-
-```text
-immutable arbitrary dense matrix/model
-unbounded offline preprocessing time
-read-only cold representation
-at most 8 GiB total hot/side information
-online causal query vector unavailable during preprocessing
-exact output required for every supported matrix and query
-standard word-RAM/cell-probe memory accesses
-no future queries, learned target modification, or external prover hardware
-```
-
-Record word size, cell size, randomization/error allowance, side-information size, cold representation size, preprocessing dependence, and whether computation between probes is free.
-
-### Required applicability checks
-
-1. Verify theorem statements directly from the primary papers.
-2. Build a machine-readable hypothesis matrix for:
-   - Boolean and `F2` arithmetic versus row-scaled Q4/float execution;
-   - square versus rectangular projections;
-   - static versus dynamic preprocessing;
-   - exact versus bounded-error queries;
-   - per-matrix versus model-wide side information;
-   - theorem word/cell-size and space ranges.
-3. Construct an exact small-domain reduction control:
-   - embed arbitrary `0/1` matrices and `0/1` vectors in a dense float projection;
-   - prove that exact integer output permits recovery of the corresponding `F2` product;
-   - exhaustively verify the reduction on the registered small domains.
-4. Determine whether square padding and a direct-sum argument across independent layer matrices are actually justified. Do not assume direct-sum composition.
-5. Apply only certified formulas to the registered Llama-3.1-405B tensor plan and the 8 GiB hot-state budget.
-6. Separate theorem-backed lower bounds from heuristic projections and hardware estimates.
-
-### Required outputs
-
-```text
-source theorem and exact statement
-hypothesis-by-hypothesis applicability table
-verified reduction controls
-per-matrix parameter rows
-model-wide side-information allocation audit
-certified probe lower bound, if derivable
-fraction of dense Q4 traffic/operations implied by that bound
-remaining loopholes and execution models not covered
-```
-
-### Promotion outcomes
-
-A strong closure requires a rigorous reduction and model-wide/direct-sum bound whose favorable lower limit already exceeds the fixed `1.185185%` whole-execution budget. Only then may the repository state that the registered conventional exact online-runtime model is ruled out.
-
-```text
-CERTIFY_CONVENTIONAL_EXACT_ONLINE_DENSE_RUNTIME_LOWER_BOUND
-```
-
-If the source theorems do not cover Q4/float semantics, rectangular/model-wide composition, the 8 GiB side-information regime, or the required direct sum, record:
 
 ```text
 INSUFFICIENT_LOWER_BOUND_DO_NOT_CLAIM_IMPOSSIBILITY
 ```
 
-An insufficient theorem is not evidence that the objective is feasible or impossible.
+This does not establish feasibility. It establishes only that the registered papers do not justify a 405B impossibility claim under the full 8 GiB jointly computed side-state regime.
+
+Authority:
+
+```text
+results/exp_071/summary.json
+results/exp_071/raw/theorem_hypotheses.jsonl
+results/exp_071/raw/tensor_rows.jsonl
+results/exp_071/raw/control_rows.jsonl
+results/exp_071/processed/direct_sum_audit.json
+workflow 30965323458
+artifact 8914506737
+artifact ZIP SHA-256 bc81e90e3b5a35935f893ad7396d4b41a13de46606ce14bccc53cf79e30e8ba4
+```
+
+Permanent restrictions:
+
+- do not divide the shared 8 GiB state by tensor/layer count without a direct-sum theorem;
+- do not add independent per-matrix asymptotic lower bounds without a composition proof;
+- do not set hidden asymptotic constants to one and call the result certified;
+- do not equate cell probes with physical GPU, PCIe, or SSD transactions;
+- do not claim that all exact software runtimes are impossible from EXP-071.
+
+## EXP-072 — Exact Nonlocal Q4 Shared Arithmetic-DAG Synthesis Gate
+
+### Execution-class change
+
+EXP-070 tested only contiguous short coefficient patterns. EXP-067 tested only whole-row equality/sign/proportional reuse and common-right rank. Neither test covered a general exact straight-line arithmetic program that can share **non-contiguous intermediate linear forms** across many output rows and across projections consuming the same activation.
+
+For symbolic input coordinates `x_j`, a circuit node may form an exact integer linear form:
+
+```text
+z_k = a * z_i + b * z_j
+```
+
+where `a,b` are bounded registered small integers and the resulting symbolic coefficient vector is verified exactly. Outputs must reconstruct every requested Q4 row as an integer coefficient vector. The circuit may discover reusable forms such as:
+
+```text
+x_3 - x_19
+2*x_7 + x_41
+(x_3 - x_19) + (2*x_7 + x_41)
+```
+
+These forms need not correspond to contiguous blocks, identical rows, low-rank factors, or a fixed tensor decomposition.
+
+### Why this class remains eligible
+
+- Q4 coefficients come from a small alphabet;
+- many rows consume the same activation vector within one projection or Q/K/V group;
+- arbitrary linear circuits can share partial expressions that block dictionaries cannot see;
+- exact symbolic reconstruction is possible without training or activation approximation;
+- a positive result would expose a true smaller executable program rather than only a compressed byte layout.
+
+Prior probability remains low because general dense matrices usually have high linear-circuit complexity. Therefore the experiment is bounded and must stop before kernel work unless the full Gate passes.
+
+### Registered synthesis scopes
+
+Use the unchanged frozen real-Q4 population and checksums. Evaluate only preregistered scopes:
+
+```text
+single projection tiles
+complete Q/K/V groups sharing one input
+complete Gate/Up groups where present
+```
+
+Registered column widths:
+
+```text
+16, 32, 64
+```
+
+Registered output-row tile heights:
+
+```text
+16, 32, 64
+```
+
+No post-result tile size, model, matrix role, or selected favorable subset may promote the candidate.
+
+### Registered circuit search
+
+Implement deterministic bounded search families only:
+
+1. pair-frequency common-subexpression elimination over signed linear forms;
+2. bounded beam search seeded by the highest-support exact pair forms;
+3. addition-chain seeds for Q4 constants `-8..7`;
+4. joint-output search for matrices sharing an identical runtime input.
+
+Every candidate node is represented by its full exact integer coefficient vector during compilation. Hash matches must be confirmed by full-vector equality. Cycles, approximate coefficient matches, floating tolerances, and activation-derived search are forbidden.
+
+### Accounting
+
+Report separately:
+
+```text
+operation fraction
+query-description byte fraction
+static circuit-storage fraction
+compiler work and peak memory
+```
+
+Charge at minimum:
+
+- every runtime add, subtract, small-constant multiply, and output accumulation;
+- every required input load not already resident under the registered baseline;
+- circuit opcodes, operand IDs, constants, output maps, tile maps, and row scales;
+- repeated execution of a circuit template on different activation values;
+- cross-tile output accumulation;
+- dense fallback for any unsynthesized row.
+
+One plan per scope must minimize the maximum of operation, query-byte, and static-storage fractions. Per-axis cherry-picking is prohibited.
+
+### Exactness controls
+
+- exhaustive symbolic reconstruction for every emitted circuit;
+- random activation replay in exact integer arithmetic;
+- float32 replay reported separately without promoting changed reduction order to bitwise equivalence;
+- Hadamard/butterfly and hand-shared linear-form positive controls;
+- forced-unique and dense-random Q4 negative controls;
+- one-coefficient mutation must invalidate or alter the expected circuit;
+- deterministic reruns must produce identical circuit and evidence hashes.
+
+### Promotion Gate
+
+```text
+zero checksum/reconstruction/collision/control mismatch
+100% registered population coverage
+p50 operation fraction <=10%
+p90 operation fraction <=25%
+p50 query-description fraction <=10%
+p90 query-description fraction <=25%
+p50 static-circuit fraction <=10%
+p90 static-circuit fraction <=25%
+no required matrix role or shared-input group with p90 >25%
+no largest-model degradation >25%
+```
+
+Passing authorizes only a bitwise floating replay-order Gate and a physical packed-circuit kernel Gate. It does not authorize a 405B or 8 GiB claim.
+
+### Failure decision
+
+```text
+REJECT_EXACT_NONLOCAL_Q4_ARITHMETIC_DAG_AS_CORE
+RETAIN_LINEAR_CIRCUIT_SYNTHESIZER_AUXILIARY
+```
+
+On failure, do not rescue the family by hiding circuit bytes, counting compiler work as free amortization without a query threshold, reporting positive structured controls as real-model evidence, selecting only Q/K/V or only favorable tiles, or using approximate linear forms while claiming exactness.
 
 ### Stop rule
 
-Before this audit completes, prohibit:
+Before survival, prohibit:
 
 ```text
-another classical exact matrix decomposition variant
-another pattern width/order sweep
-claims that all software executors are impossible
-numerical 405B lower-bound projections without checked theorem hypotheses
-CUDA or target-hardware implementation based only on an asymptotic theorem
+CUDA circuit kernels
+model-wide circuit transcoding
+unbounded SAT/SMT synthesis
+learned or activation-specific circuits
+floating-point semantic claims
+405B implementation work
 ```
 
 ### Claim boundary
 
-Phase A/B theorem and reduction audit, ceiling E1. A paper theorem is not a measurement. Actual 405B execution, 8 GiB runtime behavior, CUDA, PCIe, SSD, TTFT, tokens/second, and physical latency remain **NOT TESTED**.
+Phase A/B/C real-Q4 symbolic-circuit evidence, ceiling E1. Floating-point reduction-order equivalence, a physical circuit kernel, actual Transformer operation replacement, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, and tokens/second remain **NOT TESTED**.
