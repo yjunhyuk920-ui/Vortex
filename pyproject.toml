@@ -17,6 +17,7 @@ experiments = [
 vortex-proto = "vortex_runtime.cli:main"
 vortex-cpsm-proto = "vortex_runtime.causal_proof_state_prototype:main"
 vortex-hyperblock-proto = "vortex_runtime.hyperblock_fmm_prototype:main"
+vortex-syndrome-proto = "vortex_runtime.syndrome_lookup_prototype:main"
 
 [tool.setuptools.packages.find]
 include = ["vortex_runtime*"]
