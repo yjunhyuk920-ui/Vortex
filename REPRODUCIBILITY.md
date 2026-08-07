@@ -512,3 +512,31 @@ The command inherits the exact EXP-076 checkpoint and dependency manifests,
 requires an empty output directory, performs no network or Ubuntu-server
 operation, and writes checksummed raw/processed/artifact/log evidence. No
 scientific result or expected decision is recorded before the source commit.
+
+## EXP-079A local authority
+
+```text
+results/exp_079a/summary.json
+source commit       e0c661eb5fe39a6835262567d75d388c4fc66c43
+evidence commit     PENDING
+config SHA-256      fc6add8c0e230bd542f02a06d750acac10402a703d317ab65a3977305b7d3996
+prompt SHA-256      46c9779c24e59f356247145f7ef870a1b82ba4907eb9dffcd48652e519f7612a
+trace SHA-256       1e921698ce8ee522c0d3cb9b8b9004139beb54cc2dee82e1a2aa0a08fa245e4f
+weight SHA-256      04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696
+core SHA-256        c8d794bea8f17b31e40b9f667836d2198ce80137e23080260f81ea6866112eeb
+workflow/artifact   NOT RUN
+```
+
+The Windows/Python 3.12.13 CPU run used Torch 2.6.0+cpu, Transformers
+5.12.0, BF16 eager attention, and eight threads. It completed in
+`1,628.6480521` seconds. The bundle has eleven payload checksums plus the
+manifest; independent verification found zero mismatch. The seven
+experiment-specific tests passed, the repository suite passed `392/392`, and
+`scripts/run_validation.py` completed.
+
+Expected decision is `REJECT_DCT_BLOCK_ZONOTOPE_CAUSAL_PROOF_PATH`. Expected
+invariants are 0/192 baseline mismatch, p50 charged traffic
+`0.011630347067120069`, 23/256 selected blocks, held-out top-1 `6/144`, mean/p95
+KL `7.544862263732487/12.616226196289062`, minimum sound-radius p50/p95
+`48.66391755845644/57.77874760553659`, and the core hash above. Physical speed,
+large-model scaling, and E2-E7 remain unverified.

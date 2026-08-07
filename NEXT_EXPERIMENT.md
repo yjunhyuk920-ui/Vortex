@@ -664,3 +664,40 @@ authorizes only a nonlinear proof-propagation Gate.
 
 Contract: `docs/research/EXPERIMENT_079A_CAUSAL_PROOF_STATE_GATE.md`.
 Status: PREREGISTERED; NO MODEL RESULT OR TARGET-SERVER ACTION.
+
+## Closed EXP-079A -- Causal Proof-State DCT Block-Zonotope Gate
+
+The unchanged target control had zero mismatch across 192 decisions. The p50
+logical plan stayed below its final fraction at `1.163034707%` and granted 23 of
+256 row blocks per down projection. Nevertheless the complete-residual quality
+oracle matched only `6/144` held-out top-1 decisions; mean/p95 KL was
+`7.544862/12.616226`.
+
+The separate proof-optimal oracle was even more decisive: minimum sound-radius
+p50/p95 was `48.663918x/57.778748x` the exact MLP-output signal. The p95
+allowance improved top-1 only to `14/144` and left median radius `46.993979x`.
+
+Decision:
+
+```text
+REJECT_DCT_BLOCK_ZONOTOPE_CAUSAL_PROOF_PATH
+```
+
+Authority: `results/exp_079a/summary.json`; source `e0c661e`; deterministic core
+`c8d794bea8f17b31e40b9f667836d2198ce80137e23080260f81ea6866112eeb`.
+
+## Next research Gate -- residual information, not another fixed pilot
+
+No core candidate survives. Do not sweep fixed bases, ranks, row blocks, layers,
+prompts, or proof-radius thresholds around EXP-079A. The failure occurred under
+two free oracles and a radius Gate fifty times too wide, so implementing a
+selector or nonlinear propagator cannot rescue this sidecar.
+
+A next candidate must explain how current causal information determines the
+dense non-pilot residual without first executing it. Acceptable E0 classes must
+introduce a materially new query-time dependency, such as a lossless interactive
+code with a proven sublinear decode route or a causal multi-token dependency
+that amortizes exact residual work. It must charge code/prover generation,
+queries, verification, correction, fallback, RAM/SSD/PCIe/VRAM, and show the
+final `1.185185%` equation before implementation. The honest status remains
+`NO_SURVIVING_CANDIDATE`.

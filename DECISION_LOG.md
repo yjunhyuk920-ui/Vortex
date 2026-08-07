@@ -517,3 +517,25 @@ PREREGISTER_EXP_079A_CAUSAL_PROOF_STATE_GATE
 
 Status: SOURCE/CONTRACT CONTROLS PENDING; NO MODEL RESULT, TARGET-SERVER ACTION,
 PHYSICAL SPEED, 8 GIB PEAK, 122B/405B RUN, OR E2-E7 EVIDENCE.
+
+## D-067 -- Reject the fixed DCT block-zonotope proof-state path
+
+EXP-079A reproduced all 192 unchanged decisions and met the p50 logical traffic
+and operation budgets. Its two free oracles nevertheless failed independently:
+the quality-optimal row blocks yielded `6/144` held-out top-1 with mean/p95 KL
+`7.544862/12.616226`, while the proof-optimal blocks left minimum local radius
+`48.663918x/57.778748x` the signal.
+
+Decision:
+
+```text
+REJECT_DCT_BLOCK_ZONOTOPE_CAUSAL_PROOF_PATH
+```
+
+Do not invest in a selector, nonlinear propagator, fallback engine, fixed-basis
+or block sweep, kernel, larger checkpoint, or target-server run for this path.
+The next E0 proposal must provide new information about the dense residual, not
+rename its enclosure.
+
+Status: SCIENTIFIC REJECTION AT E1; CONTROL/BUDGET PASS; NO PHASE D/E2-E7 OR
+DENSE-405B EXECUTION EVIDENCE.

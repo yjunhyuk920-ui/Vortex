@@ -413,3 +413,14 @@ and a pass promotes only the next proof-propagation Gate.
 
 Status: ACTIVE AND UNVERIFIED FOR EXP-079A E1. NO MODEL RESULT, PHYSICAL SPEED,
 8 GIB PEAK, 122B, OR DENSE-405B EXECUTION EVIDENCE EXISTS.
+
+### A-054 closure
+
+The unchanged control passed, but the p50 dual-oracle candidate preserved only
+`4.1667%` held-out top-1. The separately optimized minimum sound-radius p50/p95
+was `48.663918x/57.778748x` the exact MLP-output signal; p95 budget did not
+approach closure.
+
+Status: CONTRADICTED FOR THE REGISTERED FIXED DCT PILOT AND ROW-BLOCK L2
+PROOF-STATE INTERFACE. OTHER COLD-BACKED QUERY-TIME INFORMATION SOURCES ARE NOT
+DECIDED.

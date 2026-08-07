@@ -372,3 +372,16 @@ complete token certificate. A pass authorizes only nonlinear propagation and a
 fully charged selector/fallback Gate. No Q4 fidelity, physical I/O, CUDA, peak
 VRAM, wall-clock, 122B/405B execution, target-server action, or E2-E7 claim is
 authorized.
+
+<!-- EXP-079A-AUTHORITATIVE-FINAL -->
+## Current classification after EXP-079A
+
+The unchanged control and final logical byte/operation budgets passed. The
+dual-oracle DCT block-zonotope candidate nevertheless achieved only `6/144`
+held-out p50 top-1, mean/p95 KL `7.544862/12.616226`, and minimum local
+sound-radius p50/p95 `48.663918x/57.778748x`.
+
+This is an E1 rejection of the registered fixed pilot and row-block correlated
+enclosure. It is not a universal proof against cold-backed online executors.
+Nonlinear proof propagation, deployable selection, fallback, physical Q4/CUDA,
+8 GiB peak, wall-clock, 122B/405B, target hardware, and E2-E7 remain absent.

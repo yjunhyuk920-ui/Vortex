@@ -137,3 +137,24 @@ the same frozen anchor, dense macro construction, or an uncharged sentinel. A
 causally delta-updated operator is a different mechanism only if it supplies a
 new cheap information source and fully charges delta construction, detection,
 repair, fallback, and cold traffic.
+
+<!-- EXP-079A-AUTHORITATIVE-FINAL -->
+## F-045 -- Fixed DCT pilot plus correlated cold row-block proof balls
+
+The candidate passed its logical byte Gate only because every non-down operator,
+two mutually favorable oracle selectors, nonlinear propagation, and failed
+fallback were free. At p50 it retained 23/256 row blocks per down projection,
+yet held-out top-1 was `6/144 = 4.1667%`, mean/p95 KL was
+`7.544862/12.616226`, and MLP relative-L2 p50/p95 was
+`0.713266/0.750627`.
+
+The independently optimized minimum sound L2 enclosure was not close to a token
+proof: its p50/p95 radius was `48.663918x/57.778748x` the exact MLP-output
+signal. Increasing to the p95 allowance reached only `14/144` top-1 and left a
+`46.993979x` median radius.
+
+Do not reopen with DCT/Hadamard/random basis swaps, nearby pilot ranks, row-block
+sizes, layer/prompt selection, fraction sweeps, or an uncharged nonlinear
+propagator. These do not supply the missing dense residual information. This
+entry rejects only the registered fixed-pilot/block-zonotope interface, not all
+cold-backed online data structures or every possible correlated proof system.

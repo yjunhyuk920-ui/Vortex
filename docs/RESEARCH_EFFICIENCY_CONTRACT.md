@@ -260,3 +260,16 @@ failure. Do not sweep rank/basis/block/layer/prompt choices or build a nonlinear
 interpreter, fallback engine, kernel, larger-model run, or target-hardware path
 after failure. A pass authorizes only nonlinear proof propagation with newly
 charged selector and fallback equations.
+
+## Current directive after EXP-079A
+
+The p50 arithmetic route passed but both favorable information Gates failed by
+orders of magnitude: held-out top-1 was `4.1667%`, and the independent minimum
+sound radius was `48.663918x/57.778748x` at p50/p95. Increasing to the p95
+allowance did not create a near-lossless ceiling.
+
+Stop all fixed pilot basis, rank, row-block, layer, prompt, fraction, selector,
+nonlinear-propagator, and kernel work around this path. A new core proposal must
+obtain information about the dense residual through a different causal or
+interactive dependency and pass the final fraction before code. There is no
+promoted core candidate.

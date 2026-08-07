@@ -495,3 +495,26 @@ unchanged Qwen3.5-0.8B trace.
 Status: PREREGISTERED E1 FAVORABLE-ORACLE GATE; NO EXP-079A MODEL RESULT. NO
 CORE CANDIDATE IS PROMOTED. TARGET SERVER, DOWNLOAD, CUDA, PHYSICAL 8 GIB,
 WALL-CLOCK, 122B/405B, AND E2-E7 ARE NOT AUTHORIZED OR TESTED.
+
+## EXP-079A authoritative causal proof-state rejection
+
+The unchanged checkpoint matched all 192 frozen decisions. The p50 plan used 23
+of 256 row blocks in every MLP down projection and stayed inside the logical
+traffic/operation fractions. With every complete current residual exposed to a
+free selector, held-out top-1 was still only `6/144`, mean KL `7.544862`, and
+p95 KL `12.616226`.
+
+The independent proof-radius oracle left a p50/p95 minimum sound enclosure
+`48.663918x/57.778748x` the exact MLP-output signal. The p95 allowance reached
+only `14/144` top-1 and a `46.993979x` median radius.
+
+Decision:
+
+```text
+REJECT_DCT_BLOCK_ZONOTOPE_CAUSAL_PROOF_PATH
+```
+
+This closes the registered fixed pilot and row-block L2 enclosure, not every
+cold-backed proof system. No core candidate survives. No target server, model
+download, physical Q4/CUDA/8 GiB/speed run, 122B/405B execution, or E2-E7
+evidence was produced.

@@ -301,3 +301,23 @@ mechanism class; no core candidate survives.
 Current classification before EXP-079A execution: the exact DCT
 block-zonotope mechanism has passed only E0 arithmetic admission. No core
 candidate is promoted; E1 result and Phase D/E2-E7 remain absent.
+
+<!-- EXP-079A-AUTHORITATIVE-FINAL -->
+## EXP-079A closure
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Pinned unchanged target replay | E1: 24 cases, 192 decisions, 0 mismatch | PASS control |
+| p50 charged logical traffic <=1.185185% | E1 derived: 1.163034707% | PASS budget |
+| p50 favorable logical operations <=1.185185% | E1 derived: 1.111385105% | PASS budget |
+| Held-out top-1 agreement >=99% | E1: 6/144 = 4.1667% | REJECTED |
+| Every family top-1 agreement >=95% | E1: 0%-8.3333% | REJECTED |
+| Mean/p95 KL <=0.02/0.05 | E1: 7.544862/12.616226 | REJECTED |
+| Minimum local sound-radius p50/p95 <=1.0x | E1: 48.663918x/57.778748x | REJECTED |
+| p95 allowance establishes a near-lossless ceiling | E1: 14/144 top-1, median radius 46.993979x | REJECTED |
+| Deployable selector/nonlinear proof/fallback | dual oracles and fallback free | NOT TESTED |
+| Physical Q4/CUDA/VRAM/speed, 122B/405B | no model/server run | NOT TESTED |
+
+Current classification after EXP-079A: the fixed DCT pilot plus correlated
+row-block proof-ball path is rejected at E1. CPSM is not validated as a runtime,
+no core candidate survives, and Phase D/E2-E7 remain not achieved.

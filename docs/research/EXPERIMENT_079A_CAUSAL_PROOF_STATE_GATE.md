@@ -2,8 +2,9 @@
 
 ## Status
 
-Preregistered. No model output has been interpreted. The source commit must be
-recorded before the pinned checkpoint runner is executed.
+Complete. The authoritative E1 result rejects the registered DCT pilot plus
+row-block block-zonotope path. Source commit
+`e0c661eb5fe39a6835262567d75d388c4fc66c43`; evidence commit pending.
 
 ## Question
 
@@ -182,3 +183,51 @@ Evidence is capped at Phase B/C E1 on one unchanged small checkpoint. Sampling,
 complete-model proof propagation, fallback timing, real Q4 fidelity, CUDA,
 physical I/O, 8 GiB peak VRAM, wall-clock, 122B, arbitrary dense 405B, and E2-E7
 remain **NOT TESTED**.
+
+## Authoritative result
+
+The unchanged target replayed all 24 cases and 192 frozen decisions with zero
+mismatch. The p50 plan charged `4,375,296` ideal-Q4 bytes per logical token,
+`1.1630347067%` of the small checkpoint, and selected 23 of 256 row blocks
+(`92/1,024` output rows) in every down projection. Its favorable logical
+operation fraction was `1.111385105%`.
+
+Despite observing each complete current residual for free and selecting the
+best actual-error blocks independently at every call, held-out quality was:
+
+```text
+top-1 agreement                         6/144 = 4.1667%
+mean target-to-candidate KL             7.544862
+p95 target-to-candidate KL             12.616226
+MLP relative-L2 p50/p95                 0.713266 / 0.750627
+minimum sound-radius ratio p50/p95     48.663918 / 57.778748
+```
+
+Korean and structured-JSON top-1 agreement were zero; the best family reached
+only `8.3333%`. The separate proof-radius oracle also failed by roughly fifty
+times even though the registered radius threshold of `1.0x` was intentionally
+too weak to certify a token.
+
+The p95 budget selected 29/256 blocks and still produced only 14/144 held-out
+top-1 (`9.7222%`), mean KL `6.539900`, and minimum sound-radius p50/p95
+`46.993979x/57.002818x`. Extra tail budget therefore does not approach closure.
+
+The shape-only 405B arithmetic remained inside its registered favorable ceiling
+(`1.08883712%` traffic and `0.976002844%` operations), but the real small-model
+information content was unusable. This is not evidence that a 405B run would
+work; it is the reason no larger or physical continuation is authorized.
+
+Decision:
+
+```text
+REJECT_DCT_BLOCK_ZONOTOPE_CAUSAL_PROOF_PATH
+```
+
+All five Gate flags behaved as registered: control and byte budget passed;
+population quality, family quality, and local proof radius failed. Do not sweep
+pilot rank, fixed bases, row-block size, prompts, layers, or fractions around
+this path. A continuation must provide a new causal information source that
+predicts or resolves the dense residual, not another fixed pilot enclosure.
+
+Authority: `results/exp_079a/summary.json`; deterministic core SHA-256
+`c8d794bea8f17b31e40b9f667836d2198ce80137e23080260f81ea6866112eeb`.

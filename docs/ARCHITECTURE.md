@@ -159,3 +159,9 @@ L2 balls are not propagated through later nonlinear layers, ideal Q4 bytes are
 logical accounting, and exact fallback is semantic only. A pass would authorize
 only the nonlinear proof-propagation stage; no CUDA or target-server work is
 authorized by EXP-079A.
+
+EXP-079A did not pass that boundary. At the p50 logical budget the dual-oracle
+reference preserved only `4.1667%` held-out top-1 and left a minimum local sound
+radius roughly `49x` the signal. The DCT/block-zonotope components remain
+negative-test infrastructure only; they must not be wired into the production
+operator path or optimized with a backend.
