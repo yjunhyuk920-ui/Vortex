@@ -232,3 +232,20 @@ itself. Revisit only with a mechanism that invalidates the terminal-only tree
 model, such as useful synthetic intermediate vectors, and only after proving
 novelty against EXP-053/054/072 and fully charging discovery, circuit edges,
 intermediate state, traffic, storage, build, and fallback.
+
+## F-050 -- Static synthetic-intermediate Hamming trees and linear DAGs
+
+Adding coefficient vectors that are not original rows or columns does evade
+EXP-082A's terminal-only lower bound, but it does not define a new execution
+class. Every exact synthetic-tree edge is a linear straight-line recurrence,
+and general sharing is already the archived EXP-072B synthetic arithmetic-DAG
+class. Saving the same program to SSD changes residency only.
+
+Do not reopen with a Steiner heuristic, alternative tree topology, more beam
+search, addition-chain/CSE synthesis, compressed opcodes, a cold circuit file,
+or free offline compilation. A static runtime still stores a lossless program,
+executes and/or reads its used gates and deltas every query, and has no
+registered operation/traffic closure below `1.185185185%`. Revisit only with a
+genuinely Query-Adaptive Cold Source whose causal selector, page probes, misses,
+execution, state, verification, and fallback are fully charged. Authority:
+`docs/research/E0_SYNTHETIC_INTERMEDIATE_CIRCUIT_AUDIT.md`.

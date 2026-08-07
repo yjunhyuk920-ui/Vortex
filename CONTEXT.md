@@ -46,3 +46,9 @@ _Avoid_: Self-contained hot artifact, free oracle
 An exact coefficient vector or linear form introduced by an automatic compiler
 even though it is not an original matrix row or column.
 _Avoid_: Terminal row, approximate latent
+
+**Query-Adaptive Cold Source**:
+A causal rule that uses the current committed activation and unchanged
+checkpoint to choose a query-dependent subset of lossless cold information,
+with selection, probes, misses, verification, and fallback fully charged.
+_Avoid_: Static circuit stored on disk, free page oracle

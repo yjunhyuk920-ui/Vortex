@@ -429,3 +429,19 @@ mechanism is promoted until the registered lower-bound Gate survives.
 Current classification: terminal-only exact row/column Hamming spanning trees
 are rejected by a favorable certified coefficient-work lower bound. No core is
 promoted; Phase D and E2-E7 remain not achieved.
+
+## E0 synthetic-intermediate exact-circuit audit
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Synthetic Hamming tree is outside static exact linear DAGs | exact recurrence/class inclusion proof | REJECTED |
+| Static synthetic DAG is new relative to archived EXP-072B | EXP-072B permits shared synthetic coefficient forms | REJECTED |
+| EXP-082A alone rejects arbitrary Steiner nodes | DERIVED `SMT >= MST/2`, only `0.781183697%` | NOT CERTIFIED |
+| Random hypercube Steiner nodes approach the final fraction | published almost-all cost near `33.3%` of dense | ADVERSE E0 EVIDENCE |
+| General static linear sharing universally fits target | published almost-all `Theta(n^2/log n)` binary complexity | NOT SUPPORTED; NOT A FINITE REAL-WEIGHT GATE |
+| Cold placement proves operation/traffic closure | no selector or charged schedule | REJECTED |
+| Query-Adaptive Cold Source exists and fits target | no algorithm/equation yet | OPEN E0 QUESTION |
+
+Current classification: no static synthetic-intermediate Core Candidate is
+promoted. No model or hardware was run. A query-adaptive cold-backed interface
+remains logically open but has no surviving mechanism yet.

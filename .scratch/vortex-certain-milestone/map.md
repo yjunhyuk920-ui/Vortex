@@ -25,11 +25,10 @@ Mission.
 
 <!-- Append one linked gist for each resolved child ticket. -->
 
+- [Synthetic-intermediate exact-circuit audit](issues/01-audit-synthetic-intermediate-circuits.md): static synthetic trees are a restricted form of archived EXP-072B; only a genuinely query-adaptive cold information source remains open.
+
 ## Not yet specified
 
-- If static synthetic circuits are duplicates or fail their E0 bound, select a
-  genuinely different query-time information source rather than another
-  circuit encoding.
 - If a candidate survives E1, specify the exact E2 integration boundary,
   output contract, and held-out population from the observed mechanism.
 - If E2 survives, determine the next model-size and representative-hardware

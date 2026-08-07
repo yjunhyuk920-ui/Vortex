@@ -713,3 +713,27 @@ and deterministic core. `control_rows.jsonl`, `matrix_rows.jsonl`, and
 `d382b59daed0ae5e1aa15e33e91614232bb56e014c1584818bf9ffcdc0bd4d4b`.
 The run used the existing local pinned payload only; no server or download was
 used.
+
+## E0 synthetic-intermediate circuit audit authority
+
+Authority document:
+`docs/research/E0_SYNTHETIC_INTERMEDIATE_CIRCUIT_AUDIT.md`.
+
+The audit is reproducible by checking these symbolic steps against the frozen
+ledgers:
+
+```text
+synthetic edge                 z_v = z_u + (v-u).x
+class inclusion               synthetic tree subset static linear DAG subset EXP-072B
+metric inequality             SMT(S) >= MST(S) / 2
+EXP-082A consequence          1.562367394% / 2 = 0.781183697%
+registered allowance         1.185185185%
+EXP-072A information floor   1,623,396,974,592 bits = 188.98828125 GiB
+target root free capacity    97.6183 GiB
+```
+
+External theorem references are the linked Jiang--Miller--Pritikin hypercube
+Steiner paper and Boyar--Find linear-circuit paper in the authority document.
+Their results are used only as asymptotic/distributional E0 counterevidence.
+No source code, model weights, private server, hardware, or benchmark was run;
+there is no result artifact or experiment command.

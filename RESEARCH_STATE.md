@@ -698,3 +698,36 @@ The versioned wayfinding map is
 `.scratch/vortex-certain-milestone/map.md`. Its first frontier ticket audits
 whether Synthetic Intermediates are genuinely new relative to EXP-053/054/072
 before any EXP-083 number or implementation is permitted.
+
+## E0 closure -- static synthetic intermediates are not a new core
+
+The active map's first ticket audited exact Hamming/Steiner trees containing
+compiler-created coefficient vectors. A tree edge `u -> v` evaluates
+`z_v = z_u + (v-u).x`; expanding its delta is a static exact linear
+straight-line program. General shared linear DAGs are more permissive, and
+archived EXP-072B already defined those synthetic forms. Storing the same
+program cold changes residency but supplies no new query-time information.
+
+EXP-082A alone does not reject Steiner trees: the generic metric inequality
+`SMT >= MST/2` turns its favorable terminal-tree certificate into only
+`0.781183697%`, below the registered `1.185185185%`. Independent theory is
+nevertheless adverse: almost-all random hypercube terminal sets have Steiner
+cost near one third of dense, and almost-all binary linear maps require
+`Theta(n^2/log n)` fan-in-two linear circuits. These are distributional and
+asymptotic E0 evidence, not a finite real-checkpoint certificate.
+
+Decision:
+
+```text
+REJECT_STATIC_SYNTHETIC_INTERMEDIATE_TREE_OR_DAG_AS_NEW_CORE
+KEEP_QUERY_ADAPTIVE_COLD_BACKED_INFORMATION_SOURCE_OPEN_AT_E0
+```
+
+Authority: `docs/research/E0_SYNTHETIC_INTERMEDIATE_CIRCUIT_AUDIT.md`.
+
+No Core Candidate currently survives. The remaining distinct interface is a
+Query-Adaptive Cold Source: current causal activation selects a small subset of
+lossless cold information while selection, probes, misses, verification,
+fallback, traffic, and state are fully charged. It has no algorithm or
+resource closure yet. No EXP-083, E1 run, model download, hardware action,
+operation replacement, or E2-E7 evidence is authorized by this E0 audit.

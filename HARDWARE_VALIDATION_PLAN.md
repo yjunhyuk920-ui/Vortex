@@ -378,3 +378,17 @@ before tree construction. No CUDA, GPU allocation, physical VRAM/bandwidth,
 SSD/H2D, Ubuntu server, larger checkpoint, or 122B/405B action occurred.
 Hardware validation is not authorized for this rejected mechanism; Phase D and
 E4-E7 remain `NOT TESTED`.
+
+## Static synthetic-circuit E0 boundary
+
+The synthetic-intermediate audit is class reasoning only. A static synthetic
+tree/DAG is already covered by archived EXP-072B; moving its artifact to disk
+does not authorize SSD/H2D benchmarks, GPU allocation, a CUDA interpreter, the
+private Ubuntu host, or a larger model. The recorded `97.6183 GiB` root free
+capacity is below the `188.98828125 GiB` favorable lossless Q4 information
+floor before circuit metadata. A storage upgrade would remove that capacity
+fact only, not establish per-token traffic or latency.
+
+A future Query-Adaptive Cold Source must first pass logical operation, traffic,
+state, verification, miss, and fallback Gates. Phase D and E4-E7 remain
+`NOT TESTED`; no target-server command is authorized.

@@ -1,12 +1,13 @@
-# Derive the Cold-Backed Synthetic-Circuit Equation
+# Derive the Query-Adaptive Cold-Backed Equation
 
 Type: research
 Status: open
-Blocked by: 01
+Blocked by: none
 
 ## Question
 
-For any mechanism class left open by the synthetic-intermediate audit, what are
-the tightest favorable operation, cold-traffic, hot-state, intermediate-state,
-compile-amortization, verification, and fallback equations at the registered
-405B shapes, and do they admit a population-level path below `1.185185185%`?
+For the Query-Adaptive Cold Source left open by the synthetic-intermediate
+audit, what are the tightest favorable selection, operation, cold-traffic,
+hot/intermediate-state, compile-amortization, verification, miss, and fallback
+equations at the registered 405B shapes, and what minimum hit/coverage and page
+granularity would be required to remain below `1.185185185%`?

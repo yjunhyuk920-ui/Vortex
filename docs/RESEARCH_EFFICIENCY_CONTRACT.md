@@ -347,3 +347,20 @@ separates it from EXP-053/054/072, (2) a causal compiler is specified without
 uncharged dense discovery, and (3) edge work, intermediate state, traffic,
 storage, build, verification, and fallback all fit a favorable target equation.
 Do not assign a new experiment number merely to rename a closed circuit family.
+
+## Current directive after the synthetic-intermediate E0 audit
+
+Static synthetic trees and static shared linear DAGs are closed as a new core:
+the tree expands into the exact synthetic arithmetic-DAG class already archived
+under EXP-072B, and cold placement is only a residency change. Do not open
+EXP-083, synthesize a Steiner network, rerun CSE/beam/addition-chain search,
+build a cold circuit interpreter, or benchmark hardware for this class.
+
+The only adjacent admissible class is a Query-Adaptive Cold Source. Before any
+implementation, derive a fully favorable registered-shape equation charging
+selection, index/state, probes, cold bytes, execution, intermediate state,
+verification, misses, fallback, and compile amortization. Then identify a
+causal information source from the committed prefix and unchanged checkpoint
+that instantiates the equation without dense discovery or a free oracle. If
+either is absent, retain `NO_SURVIVING_CANDIDATE` and do not assign an
+experiment number.

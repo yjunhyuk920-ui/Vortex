@@ -715,3 +715,31 @@ ADOPT_VERSIONED_WAYFINDING_MAP_FOR_POSITIVE_E2_MILESTONE
 The map and dependency-ordered child tickets live under
 `.scratch/vortex-certain-milestone/`. Map creation does not promote a core or
 authorize EXP-083, hardware, a large-model download, or a target-server action.
+
+## D-076 -- Reject static synthetic intermediates as a renamed core
+
+An exact synthetic Hamming/Steiner tree computes each node from a parent plus
+an exact coefficient delta. It therefore expands into a static linear
+straight-line program and is strictly less general than the shared synthetic
+linear forms already archived in EXP-072B. Putting that program in cold
+storage changes capacity placement but does not create a causal query-time
+information source.
+
+The EXP-082A terminal certificate cannot by itself reject Steiner nodes:
+`SMT >= MST/2` gives only `0.781183697%`. The class still fails E0 promotion
+because it is not novel and has no fully charged sub-`1.185185185%` static
+operation/traffic schedule. Almost-all hypercube Steiner and binary
+linear-circuit results provide strong adverse distributional evidence but are
+not promoted to finite real-weight claims.
+
+Decision:
+
+```text
+REJECT_STATIC_SYNTHETIC_INTERMEDIATE_TREE_OR_DAG_AS_NEW_CORE
+KEEP_QUERY_ADAPTIVE_COLD_BACKED_INFORMATION_SOURCE_OPEN_AT_E0
+```
+
+Do not open EXP-083 or build a static synthesizer/runtime. The next admissible
+work is an E0 equation and causal information-source search for a genuinely
+query-adaptive cold-backed executor. Authority:
+`docs/research/E0_SYNTHETIC_INTERMEDIATE_CIRCUIT_AUDIT.md`.

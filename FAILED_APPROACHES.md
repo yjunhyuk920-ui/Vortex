@@ -290,5 +290,8 @@ output-head-only certificate and proof-carrying execution with no charged local
 trace source; it does not close verification as an auxiliary.
 F-049 closes exact terminal-only row/column Hamming spanning trees by a
 certified favorable lower bound; it does not by itself close arbitrary
-synthetic-intermediate linear circuits.
+synthetic-intermediate linear circuits. F-050 then closes a static synthetic
+tree/DAG as a *new* core because it is contained by archived EXP-072B and lacks
+a fully charged target route; it explicitly leaves a genuinely query-adaptive
+cold information source open.
 Read that continuation and each scope boundary before reopening a family.

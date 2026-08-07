@@ -492,3 +492,24 @@ assumption that a terminal-only row/column differential tree can meet the
 target is contradicted for the measured checkpoint Gate. This does not assert
 a universal lower bound for arbitrary synthetic-intermediate circuits or for
 all possible models; those require a distinct assumption and Gate.
+
+## A-058 -- Static Synthetic Intermediates create a new target-feasible class
+
+The hypothesis was that allowing compiler-created coefficient vectors, then
+placing the resulting exact tree or circuit in cold storage, created a new
+execution mechanism beyond EXP-053/054/072/082A with a plausible fully charged
+route below `1.185185185%`.
+
+Status: CONTRADICTED AT E0 FOR THE STATIC CLASS. A synthetic Hamming tree is a
+restricted static exact linear DAG, and archived EXP-072B already allowed
+general shared synthetic forms. Cold placement changes residency only. The
+generic Steiner consequence of EXP-082A is merely `0.781183697%`, so no finite
+real-weight Steiner impossibility is claimed; instead the proposal fails
+novelty and lacks a favorable operation/traffic equation. Almost-all random
+hypercube and binary linear-circuit theory is adverse supporting evidence.
+
+A materially different assumption remains unverified: the current causal
+activation exposes a Query-Adaptive Cold Source that can select a tiny exact
+subset without dense discovery, and all selection, probes, misses, state,
+verification, and fallback fit the target. No algorithm or evidence currently
+supports that assumption.

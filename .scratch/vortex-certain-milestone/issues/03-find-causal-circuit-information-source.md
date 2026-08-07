@@ -2,11 +2,11 @@
 
 Type: research
 Status: open
-Blocked by: 01
+Blocked by: none
 
 ## Question
 
 What information available from the current committed prefix and unchanged
-checkpoint can select or construct useful Synthetic Intermediates without
-executing an equivalent dense pass, reading target future tokens, training an
-adapter, or hiding a full checkpoint scan?
+checkpoint can select a query-dependent subset of exact cold pages or
+operations without executing an equivalent dense pass, reading target future
+tokens, training an adapter, or hiding a full checkpoint scan?

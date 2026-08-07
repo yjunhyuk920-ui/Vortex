@@ -880,6 +880,36 @@ a favorable fully charged equation, the correct state remains
 
 The persistent effort is indexed at
 `.scratch/vortex-certain-milestone/map.md`. The first unblocked ticket is
-`Audit Synthetic-Intermediate Exact Circuits`. Per the map contract, it must be
-claimed and resolved before the downstream resource-equation and causal-source
-tickets. No EXP-083 branch is authorized by map creation alone.
+`Derive the Query-Adaptive Cold-Backed Equation`; the synthetic-circuit audit
+is resolved. Per the map contract, only the claimed child ticket may be worked
+in one session. No EXP-083 branch is authorized by map progress alone.
+
+## Synthetic-intermediate E0 closure and next admissible frontier
+
+The required novelty audit is complete. A synthetic Hamming/Steiner tree
+expands exactly into a static linear straight-line program and is a restricted
+instance of the synthetic-form arithmetic DAG already archived as EXP-072B.
+Cold placement changes residency, not the computation or its information
+source.
+
+The generic `SMT >= MST/2` relation yields only `0.781183697%` from EXP-082A,
+so this is a taxonomy/resource rejection rather than a claimed finite Steiner
+lower bound. Static synthetic circuits have no new mechanism, no favorable
+fully charged operation/traffic closure, and adverse random-tree and
+linear-circuit counterevidence. Do not assign EXP-083 or implement a Steiner
+compiler, generic circuit synthesizer, cold interpreter, or kernel.
+
+Authority: `docs/research/E0_SYNTHETIC_INTERMEDIATE_CIRCUIT_AUDIT.md`.
+
+No experiment number is promoted. The only materially distinct adjacent class
+is a Query-Adaptive Cold Source: for observed causal activation `x`, a selector
+identifies a small subset of lossless checkpoint-derived pages or operations
+without a dense pass. The next ticket must derive its most favorable complete
+equation for selection, probes, page bytes, execution, intermediate/hot state,
+verification, misses, fallback, and compile amortization at the registered
+405B shapes.
+
+An equation alone does not promote the class. A later ticket must identify a
+causal information source that instantiates it without target-future leakage,
+checkpoint modification, training, added hardware, a free oracle, or hidden
+dense discovery. Until both exist, the state is `NO_SURVIVING_CANDIDATE`.

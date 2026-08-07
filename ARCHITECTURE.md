@@ -488,3 +488,31 @@ An architecture with synthetic intermediate coefficient vectors would be a
 different exact linear circuit rather than this terminal MST. It remains only
 an E0 question and must first prove that it does not restate the already closed
 exact dictionary/DAG/circuit mechanisms.
+
+## E0 synthetic-circuit closure and provisional query-adaptive boundary
+
+No synthetic tree, generic linear-DAG compiler, cold circuit interpreter, or
+delta store enters the architecture. A synthetic edge
+`z_v = z_u + (v-u).x` is a static linear-circuit instruction, and general
+synthetic sharing was already represented by archived EXP-072B. Cold placement
+does not alter that class.
+
+The only adjacent provisional interface is deliberately narrower and has no
+implementation:
+
+```text
+current committed activation x + unchanged checkpoint
+  -> causal query selector
+  -> bounded set of lossless cold page/operation identifiers
+  -> exact page execution
+  -> fail-closed verifier
+       verified result -> candidate projection output
+       miss/failure     -> charged unchanged dense fallback or abort
+```
+
+Selector work, index/state bytes, page probes and payloads, intermediate
+values, verification, misses, fallback, compile/build amortization, KV/runtime
+state, and every resident byte are mandatory. The interface is not an admitted
+Core Candidate until an E0 equation and concrete causal information source
+both exist. Authority:
+`docs/research/E0_SYNTHETIC_INTERMEDIATE_CIRCUIT_AUDIT.md`.
