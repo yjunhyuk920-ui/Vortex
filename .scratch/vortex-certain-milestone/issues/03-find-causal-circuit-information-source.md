@@ -1,7 +1,7 @@
 # Find a Causal Circuit Information Source
 
 Type: research
-Status: open
+Status: claimed
 Blocked by: none
 
 ## Question
