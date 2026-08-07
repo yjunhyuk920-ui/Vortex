@@ -143,3 +143,21 @@ Cases 18; forwards 1,152; attention rows 9,216; token/registration/control misma
 ## EXP-065 closure
 
 153 tensors; 144 dense; 6,108 plans; 306 selected two-prime certificates; zero checksum/witness/control mismatch; all selected ranks 4/full; p50/p90 operation 203.891%/215.385%; storage 100.234%/101.042%; projected storage 202.66 GB. 405B execution and hardware NOT TESTED.
+
+<!-- EXP-066-072A-AUTHORITATIVE-CATCHUP -->
+## EXP-066 through EXP-072A closure
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| EXP-066 exact TT/MPO static p50 <=10% | E1: 11.0524% | REJECTED |
+| EXP-067 joint exact Q/K/V work p50 <=10% | E1: 100% | REJECTED |
+| EXP-068 favorable output-head-only demand p50 <=10% | E1: 13.7697% | REJECTED |
+| EXP-069 causal exact temporal mandatory work p50 <=10% | E1: 100% | REJECTED |
+| EXP-070 exact local-pattern operations p50 <=10% | E1: 88.4856% | REJECTED |
+| EXP-071 registered theorems prove model-wide impossibility | E1 applicability audit: 0/9 CKL-covered families, no direct sum | NOT CERTIFIED |
+| EXP-072A finite-domain basis-map injectivity | E1: 272/272 unique, 0 collision | PASS reference |
+| Universal self-contained 405B-Q4 artifact fits 8 GiB | DERIVED: 188.9883 GiB required / 8 GiB allowed | REJECTED |
+| Cold-backed exact online execution is impossible | outside EXP-072A; EXP-071 insufficient | NOT CERTIFIED |
+| Private Ubuntu target inventory and 4B baseline | no VORTEX run | NOT TESTED — EXP-073 |
+
+Current overall classification: self-contained universal hot-artifact core rejected; restricted synthesis auxiliary; cold-backed online execution open but unsupported; Phase D/E6/E7 not achieved.

@@ -239,3 +239,31 @@ Workflow `30869720552`; source `a6371c39d85dc39669b98eac6125d9c3bbf4a5dc`; merge
 ## EXP-065 authority
 
 Workflow `30870558294`; source `22fd41697979f0e5aeb570880714a47958270d7f`; merge `2e512e91b5bfcd5e30a19ef163a6438221a134dc`; artifact `8878551394` (244495 bytes); ZIP SHA-256 `cf5bfcc53bda4117430c0856b6989704e79bb34fb52c9a4f81869bf20233155d`; config SHA-256 `6dd637104c6edfdaaf424d22790e1f521dc9fa59f9a10f59552a6dfeaec18666`. Reproduce with `experiments/exp_065/reproduce.sh` and verify `results/exp_065/checksums.sha256`.
+
+<!-- EXP-066-072A-AUTHORITATIVE-CATCHUP -->
+## EXP-066 through EXP-071 authority
+
+Machine-readable frozen authorities are `results/exp_066/summary.json` through `results/exp_071/summary.json`. Their workflow/artifact identities remain authoritative in each result bundle and `RESEARCH_STATE.md`; EXP-071 workflow is `30965323458`, artifact `8914506737`, ZIP SHA-256 `bc81e90e3b5a35935f893ad7396d4b41a13de46606ce14bccc53cf79e30e8ba4`.
+
+## EXP-072A local authority
+
+```text
+results/exp_072a/summary.json
+source commit       468f297925e10bdc541fe48f19c2f72a1e3f5e14
+evidence commit     f9ac26befb01fd9a71c7c6e1efed4c4b4df31389
+config SHA-256      089875c12bb2d0dd15bda6fb8e584bf8835053f40862bec31865493216483643
+core SHA-256        112f0490e9e21efc8df3da04f71d92adacba4c493d2eae07d94dbf0960ac8c66
+workflow/artifact   NOT RUN
+```
+
+Local authority environment: Windows 11, Python 3.12.13. Nine experiment-specific tests and the 330-test repository suite passed after the logging regression was fixed; `scripts/run_validation.py` also completed. The canonical run, an isolated reproduction, and the standard `run_current_env.sh` path returned the same decision and deterministic core hash. `results/exp_072a/checksums.sha256` contains seven entries and verified with zero mismatch.
+
+Reproduce without overwriting authority:
+
+```bash
+bash experiments/exp_072a/reproduce.sh
+```
+
+Expected invariants: two finite domains, 272 matrices, 272 unique basis signatures, zero signature collision/control failure, Q4 information `188.98828125 GiB`, hot fraction `0.042330666997375005`, and the authoritative rejection decision.
+
+The absence of a GitHub workflow run is explicit. Do not present the local result as Linux CI or Phase D evidence.

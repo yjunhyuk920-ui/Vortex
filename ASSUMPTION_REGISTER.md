@@ -236,3 +236,22 @@ Status: ACTIVE FOR EXP-065 ONLY. For every nontrivial shape factorization, rearr
 ## A-041 — Multi-cut TT/MPO ranks may remain low despite failed one-cut Kronecker rank
 
 Status: ACTIVE FOR EXP-066 ONLY. Pair row and column radix modes, interleave them into MPO physical dimensions, and certify every prefix/suffix unfolding rank. Exact TT/MPO storage is lower-bounded by the certified bond ranks. Mode order search, rank metadata, scales, biases, contractions and intermediates must be charged. Approximate tensor decomposition is forbidden.
+
+<!-- EXP-072A-AUTHORITATIVE-FINAL -->
+## A-042 — A self-contained exact Q4 DAG can universally fit the 8 GiB hot envelope
+
+Exact standard-basis outputs recover all coefficients, so artifacts must distinguish every Q4 map. The registered worst-case information is `188.98828125 GiB`, `23.62353515625x` the hot allowance before overhead.
+
+Status: CONTRADICTED FOR THE UNIVERSAL SELF-CONTAINED HOT-ARTIFACT INTERFACE BY EXP-072A.
+
+## A-043 — A cold-backed exact online runtime can meet the final physical query budget
+
+EXP-072A does not cover a runtime that queries original or other lossless cold data. EXP-071 also did not establish the required model-wide finite lower bound. No constructive mechanism has survived the `1.185185%` target-equivalent Gate, and host/storage/transfer budgets are not yet measured on the target.
+
+Status: UNVERIFIED; PRIMARY OPEN EXECUTION CLASS AFTER EXP-072A.
+
+## A-044 — The privately identified Ubuntu target provides a valid same-machine 4B baseline and reproducible storage/transfer envelope
+
+No VORTEX inventory or benchmark has run on that host. GPU compatibility, usable VRAM, storage capacity/bandwidth, host RAM, PCIe behavior, baseline runtime, thermal state, and production interference are unknown under this protocol.
+
+Status: ACTIVE FOR EXP-073 CALIBRATION; PHASE D NOT TESTED.

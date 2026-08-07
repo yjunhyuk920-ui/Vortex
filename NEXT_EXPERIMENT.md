@@ -67,7 +67,7 @@ Permanent restrictions:
 - do not equate cell probes with physical GPU, PCIe, or SSD transactions;
 - do not claim that all exact software runtimes are impossible from EXP-071.
 
-## EXP-072A — Self-Contained Exact Q4 DAG Information-Capacity Gate
+## Closed EXP-072A — Self-Contained Exact Q4 DAG Information-Capacity Gate
 
 The previously registered EXP-072 synthesis search is deferred behind a cheaper proof-first Gate.
 
@@ -87,7 +87,7 @@ For `P` Q4 coefficients there are `16^P` distinct linear maps. Exact equality on
 
 The registered 405B population contains `1,623,396,974,592` Q4 information bits (`188.98828125 GiB`) before scales, bias, opcodes, alignment, interpreter state, or workspace. The fixed 8 GiB hot allowance is only about `4.2331%`; the former `10%` static Gate is not sufficient for final residency.
 
-EXP-072A will validate the finite-domain injectivity reduction exhaustively and freeze the target arithmetic before any synthesizer is built.
+EXP-072A validated the finite-domain injectivity reduction exhaustively and froze the target arithmetic before any synthesizer was built.
 
 Promotion requires a universal self-contained cap at or below 8 GiB plus a route toward the fully charged `1.185185%` target-equivalent fraction. Failure decision:
 
@@ -98,9 +98,31 @@ RETAIN_RESTRICTED_SYNTHESIS_AUXILIARY
 
 This result will not cover a runtime that reads the original checkpoint or another lossless cold representation during a query. That is a different online execution class and must charge every cold-data probe.
 
-Full preregistration: `docs/research/EXPERIMENT_072A_SELF_CONTAINED_DAG_INFORMATION_CAPACITY.md`.
+Authoritative result:
 
-## Deferred EXP-072B — Exact Nonlocal Q4 Shared Arithmetic-DAG Synthesis Gate
+```text
+finite matrices/signatures     272 / 272
+signature collisions           0
+control failures               0
+Q4 information                 188.98828125 GiB
+hot allowance                  8 GiB = 4.2331%
+required / hot                 23.62353515625x
+```
+
+Decision:
+
+```text
+REJECT_SELF_CONTAINED_EXACT_Q4_DAG_AS_UNIVERSAL_CORE
+RETAIN_RESTRICTED_SYNTHESIS_AUXILIARY
+```
+
+Authority: `results/exp_072a/summary.json`; source `468f297925e10bdc541fe48f19c2f72a1e3f5e14`; evidence commit `f9ac26befb01fd9a71c7c6e1efed4c4b4df31389`.
+
+Full preregistration and interpretation: `docs/research/EXPERIMENT_072A_SELF_CONTAINED_DAG_INFORMATION_CAPACITY.md`.
+
+## Archived EXP-072B — Exact Nonlocal Q4 Shared Arithmetic-DAG Synthesis Gate
+
+The synthesis plan below is retained for provenance but is **not active**. EXP-072A prohibits it as a universal core because an exact self-contained hot artifact cannot cover the arbitrary Q4 checkpoint class inside 8 GiB. It may be reopened only as an explicitly restricted auxiliary or after introducing a materially different cold query-time information source with fully charged probes.
 
 ### Execution-class change
 
@@ -241,3 +263,62 @@ floating-point semantic claims
 ### Claim boundary
 
 Phase A/B/C real-Q4 symbolic-circuit evidence, ceiling E1. Floating-point reduction-order equivalence, a physical circuit kernel, actual Transformer operation replacement, 405B execution, 8 GiB VRAM, CUDA, PCIe, SSD, TTFT, and tokens/second remain **NOT TESTED**.
+
+## Active EXP-073 — Private Ubuntu Target Resource-Contract Calibration
+
+### Purpose
+
+Replace proxy hardware assumptions with a sanitized, reproducible envelope from the privately identified Ubuntu host before another cold-backed core candidate is selected.
+
+This is a Phase-D **calibration prerequisite**, not evidence that any VORTEX mechanism works. Private hostnames, addresses, usernames, keys, and internal paths must never enter this public repository or uploaded artifacts.
+
+### Stage 1 — Read-only inventory
+
+Collect without installing or restarting anything:
+
+```text
+OS/kernel and CPU
+total/available host RAM
+GPU model, compute capability, total/usable VRAM
+driver and CUDA runtime compatibility
+PCIe link generation/width when exposed
+filesystem and block-device type
+available local capacity
+existing Python/Ollama/runtime versions
+fio availability
+thermal and power telemetry availability
+```
+
+Success means a complete sanitized inventory with zero mutation. Missing tools are recorded as `NOT AVAILABLE`, not installed during Stage 1.
+
+### Stage 2 — Explicitly authorized baselines
+
+Only after Stage 1 review and separate authorization:
+
+```text
+cached and direct sequential reads
+4 KiB and 64 KiB random reads
+host-to-device transfer bandwidth
+native 4B Q4 cold/warm TTFT
+native 4B Q4 p50/p95/p99 time per token
+peak VRAM, host RSS, page faults, power, and thermal state
+```
+
+Use an already present 4B-class model when possible. Do not download a 405B checkpoint, install packages, restart services, or evict production workloads without explicit authorization.
+
+### Gate and handoff
+
+EXP-073 passes as calibration only when the same-machine 4B baseline and storage/transfer envelope are reproducible and raw evidence is sanitized. It cannot promote a runtime candidate.
+
+The next core E0 candidate must then state, using measured values:
+
+```text
+maximum hot state
+maximum cold state and preprocessing budget
+allowed physical bytes/token
+required reuse/amortization factor
+serial latency floor
+driver/kernel compatibility constraints
+```
+
+If the host cannot run a valid native 4B Q4 baseline or required profilers without disruptive changes, record `INFRASTRUCTURE LIMITATION — NO SCIENTIFIC DECISION` and do not substitute projections.

@@ -97,3 +97,38 @@ After rejection, a bounded synthesizer may be retained only as an auxiliary opti
 ## Claim boundary
 
 Phase A/B information-capacity and finite-domain reference evidence, ceiling E1. The Gate does not prove that every real checkpoint is incompressible and does not establish an online probe, traffic, latency, or hardware lower bound. Cold checkpoint access, actual Transformer operation replacement, 405B execution, 8 GiB GPU behavior, CUDA, PCIe, SSD, TTFT, and tokens/second remain **NOT TESTED**.
+
+## Authoritative result
+
+```text
+finite domains                         2
+enumerated matrices                    272
+unique standard-basis signatures      272
+signature collisions                  0
+control failures                       0
+deterministic core SHA-256             112f0490e9e21efc8df3da04f71d92adacba4c493d2eae07d94dbf0960ac8c66
+Q4 information                         188.98828125 GiB
+hot allowance fraction                 4.2330666997%
+required information / hot allowance  23.62353515625x
+former 10% static artifact             18.898828125 GiB, above 8 GiB
+```
+
+The finite-domain reference and all controls passed. The universal hot-artifact Gate failed because exact basis outputs make the artifact an injective encoding of the Q4 map, and the worst-case encoding cannot fit the registered hot envelope.
+
+Decision:
+
+```text
+REJECT_SELF_CONTAINED_EXACT_Q4_DAG_AS_UNIVERSAL_CORE_RETAIN_RESTRICTED_SYNTHESIS_AUXILIARY
+```
+
+Authority:
+
+```text
+results/exp_072a/summary.json
+source commit   468f297925e10bdc541fe48f19c2f72a1e3f5e14
+evidence commit f9ac26befb01fd9a71c7c6e1efed4c4b4df31389
+local reference Windows 11 / Python 3.12.13
+workflow/artifact NOT RUN
+```
+
+An independent local reproduction produced the same decision and deterministic core hash. Full bundle checksums verified `7/7` with zero mismatch. This result closes the self-contained universal hot artifact; it does not close cold-backed online execution.

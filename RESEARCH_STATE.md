@@ -1,6 +1,6 @@
 # VORTEX Research State
 
-Last updated: 2026-08-05 Asia/Seoul
+Last updated: 2026-08-07 Asia/Seoul
 
 ## Fixed final objective
 
@@ -20,7 +20,7 @@ The objective is unchanged. A small-checkpoint result, theorem, or projection is
 Available and measured:
 
 ```text
-GitHub repository and GitHub Actions CPU
+GitHub repository, GitHub Actions CPU, and a local Windows reference environment
 Python/PyTorch
 pinned downloadable small checkpoints
 synthetic/reference controls
@@ -31,7 +31,7 @@ Unavailable and `NOT TESTED`:
 
 ```text
 405B download/storage/execution
-target 8 GiB GPU
+VORTEX inventory or benchmarks on the privately identified Ubuntu 8 GiB target
 CUDA and physical kernels
 PCIe and target SSD
 TTFT and tokens/second
@@ -68,6 +68,7 @@ EXP-068 absolute-unread demand certificate: output-head-only p50 Gate failure
 EXP-069 temporal exact span replay: mandatory p50/p90 full passes 100%
 EXP-070 Q4 local-pattern tables: operation 88-91%; bytes/storage exceeded dense
 EXP-071 known online-Mv lower bounds: insufficient for an 8 GiB model-wide impossibility claim
+EXP-072A self-contained exact Q4 DAG: universal hot-artifact information-capacity failure
 ```
 
 These results do not prove the final objective feasible or impossible. They close only the registered mechanisms or claims. Permanent restrictions are in `FAILED_APPROACHES.md` and `FAILED_APPROACHES_RECENT.md`; machine-readable authority is under `results/exp_NNN/`.
@@ -216,6 +217,30 @@ artifact 8914506737
 artifact ZIP SHA-256 bc81e90e3b5a35935f893ad7396d4b41a13de46606ce14bccc53cf79e30e8ba4
 ```
 
+### EXP-072A — Self-contained exact Q4 DAG information capacity
+
+Exact output on standard-basis activations uniquely recovers every Q4 coefficient. Exhaustive finite-domain validation found 272 unique maps for 272 matrices with zero signature collision or control failure.
+
+Registered target arithmetic:
+
+```text
+405B Q4 information                  1,623,396,974,592 bits = 188.98828125 GiB
+8 GiB hot allowance                    68,719,476,736 bits = 4.2331%
+worst-case required / hot allowance    23.62353515625x
+former 10% static threshold            18.898828125 GiB, does not fit hot state
+```
+
+Decision:
+
+```text
+REJECT_SELF_CONTAINED_EXACT_Q4_DAG_AS_UNIVERSAL_CORE
+RETAIN_RESTRICTED_SYNTHESIS_AUXILIARY
+```
+
+This closes only an exact artifact that contains all checkpoint-derived information needed by the query inside the hot envelope. A runtime that probes the original checkpoint or another lossless cold representation remains unruled-out and must charge every probe.
+
+Authority: `results/exp_072a/summary.json`, source commit `468f297925e10bdc541fe48f19c2f72a1e3f5e14`, evidence commit `f9ac26befb01fd9a71c7c6e1efed4c4b4df31389`.
+
 ## Auxiliary infrastructure retained
 
 - checksum and provenance tooling;
@@ -230,20 +255,14 @@ Auxiliary classification does not mean the final runtime objective is achieved.
 
 ## Primary unresolved bottleneck
 
-No tested mechanism supplies a universal exact way to avoid almost all dense weight information and arithmetic. At the same time, the audited lower-bound papers do not rule out a jointly preprocessed model with 8 GiB of side state.
+No tested mechanism supplies a universal exact way to avoid almost all dense weight information and arithmetic. EXP-072A now rules out a universally compact self-contained hot artifact, while EXP-071 still leaves cold-backed online query algorithms formally open.
 
-The remaining gap is therefore constructive: find an exact smaller executable program that is more general than row/column equality, fixed tensor decompositions, contiguous block tables, or temporal replay.
+The primary unresolved contract gap is physical: host RAM, cold storage, preprocessing, and transfer budgets are not fixed by the final objective, and the privately identified Ubuntu target has not been inventoried under the VORTEX protocol. Those values are required before a cold-backed candidate can receive a meaningful resource Gate.
 
 ## Current frontier
 
-`EXP-072 — Exact Nonlocal Q4 Shared Arithmetic-DAG Synthesis Gate`, preregistered in `NEXT_EXPERIMENT.md`.
+`EXP-073 — Private Ubuntu target resource-contract calibration`, specified in `NEXT_EXPERIMENT.md`.
 
-It tests whether a deterministic compiler can synthesize exact integer straight-line programs that share non-contiguous linear forms across output rows and across projections receiving the same activation. The Gate will:
+The first stage is read-only inventory and same-machine baseline measurement, not a 405B run and not candidate promotion. It will freeze usable VRAM, host RAM, local storage capacity, sequential/random read bandwidth, PCIe/driver/CUDA compatibility, and native 4B Q4 latency distributions without committing private host identifiers. No model download, package installation, service restart, or 405B allocation is authorized by the inventory stage.
 
-- synthesize bounded exact arithmetic DAGs on every registered real-Q4 tile and shared-input group;
-- verify every output by full symbolic coefficient-vector reconstruction;
-- charge runtime arithmetic, circuit bytes, operand IDs, constants, output maps, row scales, and cross-tile accumulation;
-- use structured positive controls and dense-random/forced-unique negative controls;
-- stop before CUDA or model-wide transcoding unless operation, query, and storage p50/p90 Gates all pass.
-
-Floating-point evaluation-order preservation, physical kernels, 405B execution, and target hardware remain `NOT TESTED` regardless of the EXP-072 outcome.
+The resulting measured envelope will replace proxy numbers in future cold-backed E0 Gates. Phase D, actual operation replacement, 405B execution, and E6/E7 remain `NOT TESTED`.

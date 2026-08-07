@@ -4,6 +4,8 @@
 
 Phase D is **NOT TESTED**.
 
+A private Ubuntu host with an 8 GiB-class NVIDIA GPU has been identified outside this repository, but VORTEX has not inventoried or benchmarked it. Identification is not evidence. Connection details and private paths must not be committed or uploaded.
+
 No current result measures real 405B execution, total <=8 GiB GPU state, CUDA kernels, PCIe traffic, target SSD, TTFT, tokens/second, power, or physical skipped-layer traffic.
 
 EXP-047R, EXP-048, EXP-049, and EXP-050 core candidates were rejected before hardware promotion. Their correctness/verifier/reference components remain auxiliary.
@@ -189,3 +191,24 @@ No output-row kernel was promoted. Q4 output preservation, CUDA implementation, 
 ## EXP-065 hardware status
 
 No Kronecker kernel or exact factor reconstruction was promoted. Q4 output preservation, CUDA, physical traffic, PCIe, SSD, TTFT, tokens/sec, 405B execution and 8 GiB residency remain NOT TESTED.
+
+<!-- EXP-072A-AUTHORITATIVE-FINAL -->
+## EXP-072A hardware boundary
+
+No circuit synthesizer or kernel is promoted. The self-contained exact hot-artifact class fails the universal capacity Gate before hardware work: `188.98828125 GiB` worst-case Q4 information versus 8 GiB hot state. This is a derived resource result, not a measured GPU result. Cold-backed online execution remains outside the Gate.
+
+## EXP-073 sanitized target calibration
+
+Stage 1 is read-only and records sanitized inventory only: OS/kernel, CPU, host RAM, GPU/VRAM, driver/runtime, PCIe exposure, block devices/filesystems, free capacity, existing runtimes, and profiler availability. It must not install packages, download models, restart services, stop workloads, or write benchmark files.
+
+After Stage 1 review and separate authorization, Stage 2 may measure:
+
+```text
+native 4B Q4 cold/warm TTFT and p50/p95/p99 time per token
+peak VRAM and host RSS
+sequential/random local-storage reads using a bounded dedicated test file
+host-to-device transfer bandwidth
+page faults, power, clock, and thermal state
+```
+
+Use the same prompt, tokenizer, context, batch, decode contract, and cache state across comparisons. Sanitize hostnames, addresses, usernames, internal mount names, and keys from all evidence. EXP-073 is calibration only; 405B execution, operation replacement, and E6/E7 remain NOT TESTED.

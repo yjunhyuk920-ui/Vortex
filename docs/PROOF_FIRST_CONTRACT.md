@@ -267,8 +267,18 @@ research-efficiency candidate Gate: implemented by this contract and docs/RESEAR
 mmap/DAG/index and exact verifier/certifier machinery: bounded auxiliary components
 raw prefix, enumerative advice, AIG/BDD, fixed-point, external draft, layer-tail, exact repetition, exact sparsity, low-rank, displacement, output-row, and Kronecker core families: rejected under their committed scopes
 EXP-065 exact Kronecker rank: rejected as core; tensor certifier retained auxiliary
-EXP-066 exact TT/MPO bond rank: bounded cheap-kill next Gate, NOT TESTED
-exact MPO reconstruction/runtime/kernel: prohibited before EXP-066 lower-bound survival
+EXP-066 through EXP-070: rejected as core under frozen scopes
+EXP-071 registered lower bounds: insufficient for a model-wide impossibility claim
+EXP-072A self-contained exact Q4 hot artifact: rejected as universal core
+restricted arithmetic-DAG synthesis: auxiliary only
+EXP-073 sanitized target calibration: next prerequisite, NOT TESTED
 Phase D: NOT TESTED
 E6/E7: not achieved
 ```
+
+<!-- EXP-072A-CURRENT-CLASSIFICATION -->
+## Current classification after EXP-072A
+
+EXP-066 through EXP-070 are rejected as core under their frozen scopes. EXP-071 prohibits an unqualified impossibility claim from the registered lower-bound papers. EXP-072A rejects a self-contained exact Q4 artifact as a universal 8 GiB hot core because the worst-case artifact must retain `188.98828125 GiB` of coefficient information before overhead.
+
+Cold-backed online execution remains logically open but has no surviving constructive mechanism. EXP-073 is authorized only to calibrate a sanitized target-machine resource envelope; calibration cannot promote a runtime or change Phase D from `NOT TESTED` without the declared measurements.

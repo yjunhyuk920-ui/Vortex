@@ -49,3 +49,12 @@ INSUFFICIENT_LOWER_BOUND_DO_NOT_CLAIM_IMPOSSIBILITY
 ```
 
 Do not divide the 8 GiB state by tensor count, sum per-matrix asymptotic bounds, set hidden Omega constants to one and call the result certified, equate one cell probe with one GPU/PCIe/SSD transaction, or claim that all exact software executors are impossible. Retain the theorem/reduction auditor as a guardrail. This entry does not establish feasibility.
+
+<!-- EXP-072A-AUTHORITATIVE-FINAL -->
+## F-040 — Self-contained exact Q4 arithmetic DAG as universal hot core
+
+For an exact self-contained artifact and fixed interpreter, standard-basis queries recover every Q4 coefficient. The artifact is therefore an injective encoding of the matrix. Finite validation found 272 unique signatures for 272 matrices with zero collision or control failure.
+
+At the registered 405B count, worst-case Q4 information is `188.98828125 GiB`, while the complete hot allowance is 8 GiB (`4.2331%`). The information gap is `23.62353515625x` before scales, biases, opcodes, alignment, interpreter state, or workspace. Even the former 10% static threshold requires `18.898828125 GiB`.
+
+Do not build pair-frequency CSE, beam/SAT/SMT synthesis, model-wide transcoding, or CUDA kernels as a universal self-contained hot core. Retain a bounded synthesizer only for explicitly restricted structured matrices. A future cold-backed design must introduce a materially different query-time information source and charge every original/lossless cold-data probe.

@@ -136,3 +136,12 @@ Bit-exact AIG structural hashing is rejected as core. Read `results/exp_053/summ
 ## EXP-054 handoff
 
 Reduced decision diagrams are rejected as core. Continue with EXP-055 word-level column-signature/popcount aggregation or a materially new mechanism only.
+
+<!-- EXP-072A-AUTHORITATIVE-FINAL -->
+## 2026-08-07 — EXP-072A information-capacity closure
+
+The expensive nonlocal arithmetic-DAG synthesis plan was placed behind a cheaper information Gate. Two finite domains exhaustively produced 272 distinct exact basis signatures for 272 matrices with zero collision/control failure. The same injectivity implies `188.98828125 GiB` of worst-case Q4 information at the registered 405B count, versus 8 GiB hot state (`23.62353515625x` gap) before overhead.
+
+Decision: `REJECT_SELF_CONTAINED_EXACT_Q4_DAG_AS_UNIVERSAL_CORE_RETAIN_RESTRICTED_SYNTHESIS_AUXILIARY`.
+
+This is a useful family closure, not increased runtime feasibility. A cold-backed online executor remains formally open and unsupported. The next highest-value prerequisite is EXP-073 target-machine calibration so future E0 Gates use measured physical budgets rather than proxies.

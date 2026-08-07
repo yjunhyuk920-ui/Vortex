@@ -278,3 +278,7 @@ No identical or sign-related dense output rows occurred. Only four projections a
 ## F-033 — Exact low Kronecker-rearrangement rank
 
 Every selected real-Q4 dense rearrangement was full rank at its four-row cut. Even favorable 4-bit-factor accounting required at least 200.877% of dense operations and slightly more static storage. Do not revive by reporting query bytes alone, using one prime without witness verification, or treating a low field rank as an exact integer factor reconstruction. Retain the certifier as auxiliary.
+
+## Continuation pointer after EXP-065
+
+`FAILED_APPROACHES_RECENT.md` is the authoritative continuation for F-034 onward. As of EXP-072A it closes exact TT/MPO, joint exact row reuse, absolute-unread demand bounds, temporal exact replay, local-pattern tables, unqualified lower-bound impossibility claims, and the self-contained exact Q4 DAG as a universal hot core. Read that continuation before reopening any of these families.

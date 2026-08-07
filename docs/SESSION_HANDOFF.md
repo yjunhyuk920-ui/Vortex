@@ -219,3 +219,14 @@ Bit-exact AIG structural hashing is rejected as core. Read `results/exp_053/summ
 ## EXP-054 handoff
 
 Reduced decision diagrams are rejected as core. Continue with EXP-055 word-level column-signature/popcount aggregation or a materially new mechanism only.
+
+<!-- EXP-072A-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-072A
+
+Branch: `research/exp-072a-information-capacity`.
+
+Authority: `results/exp_072a/summary.json`; source `468f297925e10bdc541fe48f19c2f72a1e3f5e14`; evidence commit `f9ac26befb01fd9a71c7c6e1efed4c4b4df31389`.
+
+Decision: reject a self-contained exact Q4 arithmetic DAG as a universal 8 GiB hot core. Exact basis outputs make the artifact an injective matrix encoding; worst-case Q4 information is `188.98828125 GiB`, `23.62353515625x` the hot allowance. Restricted synthesis remains auxiliary. Cold-backed online execution is not ruled out.
+
+Next: EXP-073 sanitized, read-only inventory of the privately identified Ubuntu target, followed only with separate authorization by storage/transfer/native-4B baselines. Never commit connection details. Do not download 405B, install packages, restart services, or disturb workloads during inventory.

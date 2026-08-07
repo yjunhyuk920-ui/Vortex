@@ -299,3 +299,36 @@ D-048 opens EXP-065: exact Kronecker-rearrangement rank certificates on the same
 EXP-065 authority: workflow `30870558294`, source `22fd41697979f0e5aeb570880714a47958270d7f`, merge `2e512e91b5bfcd5e30a19ef163a6438221a134dc`, artifact `8878551394`, ZIP SHA-256 `cf5bfcc53bda4117430c0856b6989704e79bb34fb52c9a4f81869bf20233155d`. All 153 two-dimensional tensors and 144 dense projections matched frozen Q4 checksums. Across 6,108 ordered factorization plans, selected two-prime certificates had zero witness mismatch. Every dense projection selected a full-rank 4-row rearrangement. Favorable lower-bound p50/p90 operation fractions were 203.891%/215.385%; storage fractions 100.234%/101.042%. Decision: `REJECT_REAL_Q4_KRONECKER_RANK_AS_CORE_RETAIN_TENSOR_CERTIFIER_AUXILIARY`.
 
 D-050 opens EXP-066: exact Tensor-Train/Matrix-Product-Operator unfolding ranks, which strictly generalize one-cut Kronecker structure.
+
+<!-- EXP-066-072A-AUTHORITATIVE-CATCHUP -->
+## D-051 through D-056 — Close EXP-066 through EXP-071
+
+- D-051 rejects exact classical TT/MPO as core: p50 operation/query `3.8941%/2.9984%`, but p50/p90 static lower bounds `11.0524%/22.9883%` and projected 405B lower-bound representation about `14.315 GB`, above 8 GiB. Retain the certifier only.
+- D-052 rejects exact joint Q/K/V row/common-right reuse: zero reusable rows across 10,752 rows; p50/p90 work 100%; storage above 107%.
+- D-053 rejects absolute-unread global demand certificates: even with preceding work and the winning output-head row free, output-head-only p50/p90 mandatory fractions were `13.7697%/19.2524%`.
+- D-054 rejects causal exact temporal-span replay: p50/p90 mandatory full passes 100%, no exact replay hits, and p50 basis cache 391.97% of Q4 projection storage.
+- D-055 rejects exact Q4 local-pattern tables: p50/p90 operations `88.4856%/91.4423%`; query/static `111.0294%/112.7907%`.
+- D-056 records EXP-071 as insufficient for an impossibility claim. CKL18 covers 0/9 tensor families under the full 8 GiB side state; no model-wide direct sum or finite constants were established.
+
+Status: REJECTED/RETAINED AUXILIARY AS RECORDED; EXP-071 IS A CLAIM RESTRICTION, NOT FEASIBILITY EVIDENCE.
+
+## D-057 — Reject self-contained exact Q4 DAG as universal hot core
+
+EXP-072A authority: `results/exp_072a/summary.json`; source `468f297925e10bdc541fe48f19c2f72a1e3f5e14`; evidence commit `f9ac26befb01fd9a71c7c6e1efed4c4b4df31389`; deterministic core SHA-256 `112f0490e9e21efc8df3da04f71d92adacba4c493d2eae07d94dbf0960ac8c66`.
+
+Exact outputs on standard-basis inputs uniquely recover the coefficient matrix. Exhaustive finite controls produced 272 unique signatures for 272 matrices with zero collision/control failure. The arbitrary 405B Q4 class requires `1,623,396,974,592` worst-case artifact bits (`188.98828125 GiB`) before overhead, `23.62353515625x` the 8 GiB hot allowance. The former 10% static threshold alone is `18.898828125 GiB`.
+
+Decision:
+
+```text
+REJECT_SELF_CONTAINED_EXACT_Q4_DAG_AS_UNIVERSAL_CORE
+RETAIN_RESTRICTED_SYNTHESIS_AUXILIARY
+```
+
+This does not rule out an online runtime that queries the original checkpoint or another lossless cold representation. Such a runtime belongs to a different class and must charge all cold probes.
+
+## D-058 — Calibrate the private target before another cold-backed core Gate
+
+EXP-073 is a sanitized, read-only target inventory followed—only with separate authorization—by same-machine storage, transfer, and native 4B Q4 baselines. It may establish resource facts only; it cannot promote a VORTEX mechanism. Private connection details remain out of repository evidence.
+
+Status: ACTIVE NEXT CALIBRATION GATE; PHASE D STILL NOT TESTED.

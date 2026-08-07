@@ -238,3 +238,28 @@ The core runtime must not assume row identity or sparse prototype deltas for gen
 ## Kronecker structure boundary
 
 The core runtime must not assume a short exact sum of Kronecker products for generic Q4 dense weights. The modular certifier remains auxiliary. EXP-066 may only advance TT/MPO candidates after all bond-rank witnesses and favorable full accounting pass.
+
+<!-- EXP-066-072A-AUTHORITATIVE-CATCHUP -->
+## Current exact-representation boundary
+
+EXP-066 through EXP-070 close classical TT/MPO, exact joint-row reuse, absolute-unread demand bounds, causal exact temporal replay, and short-block local-pattern tables under their registered scopes. EXP-071 does not prove the broader online runtime impossible.
+
+EXP-072A adds a universal boundary for a self-contained hot artifact:
+
+```text
+activation x
+    -> fixed interpreter + complete checkpoint-derived hot artifact
+    -> exact Q4 linear-map output
+```
+
+Because standard-basis outputs recover the coefficient matrix, this artifact must encode the arbitrary map injectively. Worst-case 405B Q4 information is `188.98828125 GiB`; it cannot universally fit 8 GiB. Nonlocal arithmetic-DAG synthesis is therefore prohibited as a universal self-contained hot core and retained only as a restricted auxiliary.
+
+The only logically open exact representation interface after this Gate is cold-backed:
+
+```text
+8 GiB hot state + activation
+    -> fully charged probes into original/lossless cold checkpoint-derived state
+    -> exact operation or fail-closed completion
+```
+
+No tested scheduler closes its query traffic, arithmetic, latency, or fallback. Before another candidate is selected, EXP-073 must measure the target machine's actual storage, transfer, VRAM, and native 4B Q4 envelope. Private connection information is never architecture state.

@@ -129,6 +129,14 @@ The following primary candidates must then come from a materially higher-upside 
 
 These are priority classes, not presumed solutions. They must still pass the same cheap-kill and proof-first rules.
 
+## Current directive after EXP-072A
+
+EXP-066 failed static storage; EXP-067 through EXP-070 failed joint reuse, demand, temporal replay, and local-pattern Gates; EXP-071 did not prove impossibility. EXP-072A then rejected a self-contained exact arithmetic DAG as a universal hot core by an information-capacity Gate, so the deferred synthesis/kernel plan is prohibited on the primary track.
+
+Before another cold-backed core proposal, EXP-073 must replace proxy hardware assumptions with a sanitized read-only inventory and separately authorized same-machine baselines. This calibration is not part of the 70% core-candidate allocation and may not expand into general hardware engineering. Its purpose is to fix the physical byte, latency, capacity, and compatibility constraints that every future E0 candidate must close.
+
+After calibration, the next core candidate must introduce a new query-time information source or execution dependency beyond exact static compression, local/row/column reuse, absolute-unread norm bounds, temporal exact replay, and enumerative advice. It must preregister a credible path to `1.185185%`, not merely to the older 10% screening threshold.
+
 ## Communication rule
 
 Report research efficiency honestly:
