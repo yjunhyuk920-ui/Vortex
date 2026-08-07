@@ -67,7 +67,40 @@ Permanent restrictions:
 - do not equate cell probes with physical GPU, PCIe, or SSD transactions;
 - do not claim that all exact software runtimes are impossible from EXP-071.
 
-## EXP-072 — Exact Nonlocal Q4 Shared Arithmetic-DAG Synthesis Gate
+## EXP-072A — Self-Contained Exact Q4 DAG Information-Capacity Gate
+
+The previously registered EXP-072 synthesis search is deferred behind a cheaper proof-first Gate.
+
+Question:
+
+```text
+Can a self-contained exact arithmetic-DAG artifact encode every arbitrary Q4
+dense checkpoint inside the static/hot-state resource envelope without reading
+the original coefficients during a query?
+```
+
+For `P` Q4 coefficients there are `16^P` distinct linear maps. Exact equality on standard-basis activations uniquely recovers the matrix, so distinct maps require distinct self-contained artifacts. A universal variable-length artifact cap of `B` bits must satisfy:
+
+```text
+2^(B+1) - 1 >= 16^P
+```
+
+The registered 405B population contains `1,623,396,974,592` Q4 information bits (`188.98828125 GiB`) before scales, bias, opcodes, alignment, interpreter state, or workspace. The fixed 8 GiB hot allowance is only about `4.2327%`; the former `10%` static Gate is not sufficient for final residency.
+
+EXP-072A will validate the finite-domain injectivity reduction exhaustively and freeze the target arithmetic before any synthesizer is built.
+
+Promotion requires a universal self-contained cap at or below 8 GiB plus a route toward the fully charged `1.185185%` target-equivalent fraction. Failure decision:
+
+```text
+REJECT_SELF_CONTAINED_EXACT_Q4_DAG_AS_UNIVERSAL_CORE
+RETAIN_RESTRICTED_SYNTHESIS_AUXILIARY
+```
+
+This result will not cover a runtime that reads the original checkpoint or another lossless cold representation during a query. That is a different online execution class and must charge every cold-data probe.
+
+Full preregistration: `docs/research/EXPERIMENT_072A_SELF_CONTAINED_DAG_INFORMATION_CAPACITY.md`.
+
+## Deferred EXP-072B — Exact Nonlocal Q4 Shared Arithmetic-DAG Synthesis Gate
 
 ### Execution-class change
 
