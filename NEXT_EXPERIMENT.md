@@ -761,7 +761,7 @@ sweep is insufficient. The next admissible E0 artifact is a closed equation and
 constructive algorithm for one of these two missing interfaces, with the other
 still granted as an oracle. The honest status is `NO_SURVIVING_CANDIDATE`.
 
-## Candidate EXP-081A -- syndrome-recovered nonlinear lookup MatVec
+## Closed EXP-081A -- syndrome-recovered nonlinear lookup MatVec
 
 The candidate generator maps the current causal activation through eight
 depth-four regression trees and sums eight selected int8 output pages. A
@@ -776,5 +776,42 @@ frozen 405B shapes it has a favorable `0.9265250%` traffic path but can tolerate
 only `0.2586602%` weighted fallback. The cheapest decisive question is whether
 held-out real projection residuals are recovered at least `99.75%` of the time.
 
+The finite-field mechanism passed all 321 controls, and its favorable
+metadata-complete target equation remained under the logical resource ceilings.
+The real premise failed: held-out exact coverage was `8.681672%`, family
+coverage was `6.7164%-10.7143%`, and favorable corrected relative-L2 p50/p95
+was `0.351269/1.213828`. Observed fallback makes logical traffic
+`92.244986%`, not `1.185185%`.
+
+Decision:
+
+```text
+REJECT_SYNDROME_RECOVERED_LOOKUP_RESIDUAL_CODE_PATH
+```
+
 Contract: `docs/research/EXPERIMENT_081A_SYNDROME_RECOVERED_LOOKUP_MATVEC.md`.
-Status: PREREGISTERED; NO SCIENTIFIC RESULT.
+Authority: `results/exp_081a/summary.json`; source `1d3e91f`; evidence
+`ee9573d`; core
+`8621f6357536b6fc3396872668484c52103e28d2af8291b96575bc4d007c2ccc`.
+
+## Next research Gate -- certify the final decision, not each dense residual
+
+No EXP-082 number is authorized yet. A materially different candidate may use
+an end-to-end adaptive certificate:
+
+1. run a cheap causal proposal and fix the exact sampling randomness;
+2. propagate signed contribution intervals from unread checkpoint pages to the
+   final logits rather than reconstructing every intermediate `W x`;
+3. read the page with maximum possible effect on the unresolved top-token or
+   fixed-RNG CDF boundary;
+4. commit only when every completion of all unread pages yields the same token;
+5. otherwise continue reading and finally execute the unchanged dense path.
+
+The cheapest admissibility test is an intentionally favorable oracle that sees
+the exact target trace and chooses the minimum page set needed for a valid final
+decision certificate. It must report population and family page fractions,
+certificate construction cost, bound-state bytes, original-page traffic,
+verification, correction, fallback, and the complete 405B equation. If even
+that oracle exceeds `1.185185%`, close the decision-certificate family before
+building interval propagation. Passing would authorize only a causal bound
+construction Gate. It would not validate physical speed or 405B execution.

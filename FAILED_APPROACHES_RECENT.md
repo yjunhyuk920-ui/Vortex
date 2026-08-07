@@ -177,3 +177,26 @@ sources. Revisit only with an explicit exact algorithm that closes the measured
 constant gap and a materially new causal block source. This entry rejects
 standard recursive Strassen under the frozen interface, not all exact fast
 rectangular multiplication.
+
+<!-- EXP-081A-AUTHORITATIVE-FINAL -->
+## F-047 -- Nonlinear lookup plus tiny exact residual syndrome code
+
+The exact field mechanism was sound in 321/321 controls, and its favorable
+metadata-complete target shape fit the pre-fallback operation, traffic, and
+storage ceilings. The population premise failed: held-out exact residual-code
+coverage was `8.681672%` instead of `99.75%`; every family was only
+`6.7164%-10.7143%`; favorable corrected relative-L2 p50/p95 was
+`0.351269/1.213828` instead of `0.01/0.05`.
+
+All six projections produced the same `54/622` exact fraction, consistent with
+common causal template-prefix reuse rather than a general low-dimensional
+error code. Charging the `91.318328%` fallback population leaves logical
+traffic/operations at `92.244986%/91.533212%` of dense.
+
+Do not reopen with tree depth/leaf, residual-rank, field, layer, projection,
+prompt, tolerance, or kernel sweeps. Those enlarge or optimize the same failed
+information source. Revisit only if a new causal dependency predicts the
+otherwise missing residual or if the proof target changes materially, for
+example to an end-to-end exact token-decision certificate. This entry rejects
+the frozen lookup/syndrome composition, not all conditional online MatVec data
+structures.

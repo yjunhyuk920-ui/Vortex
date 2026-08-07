@@ -230,8 +230,9 @@ EXP-066 through EXP-070 are rejected as core under their frozen scopes. EXP-071 
 
 EXP-073 Stage 1 sanitized target inventory is complete. Stage 2 storage, H2D, and native 4B Q4 baselines require separate authorization and remain `NOT TESTED`. No new cold-backed core experiment may freeze a physical Gate using proxy bandwidth or capacity where EXP-073 measured values exist.
 
-EXP-077A through EXP-080A are rejected under their frozen scopes. EXP-080A
-leaves the unit-constant fast-multiplication exponent only as a theoretical
-target: standard constructive Strassen misses the final p50 arithmetic fraction
-by `30.469145x`, and no causal future-block source exists. No core candidate
-survives; read `NEXT_EXPERIMENT.md` before proposing another mechanism.
+EXP-077A through EXP-081A are rejected under their frozen scopes. EXP-081A's
+finite-field syndrome recovery is structurally correct, but held-out exact
+residual-code coverage was only `8.681672%` against `99.75%`; observed fallback
+would leave logical traffic at `92.244986%` of dense. Do not sweep lookup trees,
+code ranks, fields, layers, or prompts around this path. No core candidate
+survives. Read `NEXT_EXPERIMENT.md` before proposing another mechanism.

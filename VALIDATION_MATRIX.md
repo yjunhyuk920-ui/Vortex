@@ -368,3 +368,25 @@ achieved.
 | Held-out corrected L2 p50/p95 <=0.01/0.05 | no run | PREREGISTERED |
 | Complete model operation replacement or output quality | necessary projection Gate only | NOT TESTED |
 | CUDA, peak VRAM, latency, 122B/405B | no hardware/model run | NOT TESTED |
+
+<!-- EXP-081A-AUTHORITATIVE-FINAL -->
+## EXP-081A closure
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Exact/fail-closed finite-field reference | E1: 321/321 cases, zero wrong accept | PASS control |
+| Metadata-complete favorable operations <=1.185185% | DERIVED: 0.2148841982% | PASS before fallback |
+| Metadata-complete favorable traffic <=1.185185% | DERIVED: 0.9266579409% | PASS before fallback |
+| Sidecar <=8 GiB | DERIVED: 3.978126 GiB | PASS shape equation |
+| Held-out exact residual-code coverage >=99.75% | E1: 8.681672% | REJECTED |
+| Every family exact coverage >=99% | E1: 6.7164%-10.7143% | REJECTED |
+| Corrected relative-L2 p50/p95 <=0.01/0.05 | E1: 0.351269/1.213828 | REJECTED |
+| Observed post-fallback traffic <=1.185185% | DERIVED: 92.244986% | REJECTED (`77.8317x`) |
+| Independent deterministic reproduction | core plus 7/7 scientific files match | PASS provenance |
+| Complete model operation replacement/output quality | projection observation only | NOT TESTED |
+| CUDA, peak VRAM, latency, 122B/405B | no hardware/model run | NOT TESTED |
+
+Current classification after EXP-081A: the exact syndrome algebra is retained
+as an auxiliary fail-closed primitive, but the nonlinear lookup plus rank-eight
+residual population assumption is rejected. No core candidate survives; Phase
+D and E2-E7 remain not achieved.

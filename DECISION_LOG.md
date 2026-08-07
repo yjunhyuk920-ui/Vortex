@@ -611,3 +611,33 @@ Only synthetic controls and the pinned small-checkpoint necessary Gate are
 authorized. No decoder integration, backend, kernel, larger model, or hardware
 run is authorized before `99.75%` held-out exact recovery coverage and the
 quality/resource Gates pass.
+
+## D-071 -- Reject the tiny residual-code fast path and change the proof target
+
+EXP-081A passed all 321 finite-field correctness and fail-closed controls. Its
+pre-fallback resource equation also passed. The necessary held-out premise did
+not: exact rank-eight residual-code coverage was `8.681672%` instead of
+`99.75%`, every family was below `10.72%`, and favorable corrected relative-L2
+p50/p95 was `0.351269/1.213828` instead of `0.01/0.05`.
+
+Decision:
+
+```text
+REJECT_SYNDROME_RECOVERED_LOOKUP_RESIDUAL_CODE_PATH
+```
+
+Do not tune tree depth, leaves, residual rank, field, layer, projection, prompt,
+or tolerance around this path. The observed fallback population yields derived
+logical traffic `92.244986%` of dense and cannot be repaired by a kernel.
+
+The next E0 direction may change the proof target from exact local MatVec
+recovery to an exact final-token/fixed-RNG decision certificate. It is not yet
+an experiment or promoted mechanism. Its free-oracle minimum-page Gate and full
+resource equation must be committed before implementation.
+
+Status: SCIENTIFIC REJECTION AT E1; STRUCTURAL ALGEBRA CONTROL PASS; NO
+OPERATION REPLACEMENT, TARGET HARDWARE, PHASE D, OR E2-E7 EVIDENCE.
+
+Authority: `results/exp_081a/summary.json`; source `1d3e91f`; evidence
+`ee9573d`; core
+`8621f6357536b6fc3396872668484c52103e28d2af8291b96575bc4d007c2ccc`.

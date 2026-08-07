@@ -1,6 +1,6 @@
 # VORTEX Research State
 
-Last updated: 2026-08-07 Asia/Seoul
+Last updated: 2026-08-08 Asia/Seoul
 
 ## Fixed final objective
 
@@ -569,17 +569,48 @@ Authority: `results/exp_080a/summary.json`; source `7f1c661`; evidence
 `98e9089`; deterministic core
 `7578c4c9f463da8135f3c320df9d7fb920ffc172d31fdd2f60b30af9778280ce`.
 
-## EXP-081A preregistered syndrome-recovered lookup Gate
+## EXP-081A authoritative syndrome-recovered lookup rejection
 
-EXP-081A tests a new conditional online MatVec data structure rather than a
-renamed subspace. A nonlinear eight-stage lookup forest proposes `G(x)`; an
-independent rank-eight syndrome code attempts to reconstruct `W x-G(x)`; six
-prime-field fingerprints accept only a recovered exact result, otherwise the
-unchanged multiplication is mandatory fallback.
+The finite-field reference passed 321/321 in-code, fault-injection, replay, and
+singular-state controls. Metadata-complete 405B shape accounting was favorable
+before fallback: `0.2148841982%` logical operations, `0.9266579409%` logical
+traffic, and `3.978126 GiB` sidecar storage.
 
-The frozen 405B shape equation charges `0.2148842%` logical operations,
-`0.9265250%` logical traffic, and `3.976903 GiB` sidecar storage before
-fallback. It therefore requires at least `99.74134%` weighted recovery coverage.
-Phase A/B controls and a six-projection Qwen3.5-0.8B held-out residual-code Gate
-are authorized. No result, operation replacement, target-server action, or
-E2-E7 evidence exists.
+The required population premise failed. Across six unchanged
+Qwen3.5-0.8B projections and 622 held-out causal positions per projection,
+weighted exact residual-code coverage was `8.68167203%`, versus the registered
+`99.75%`. Every projection had the same `54/622` fraction; family coverage was
+only `6.7164%-10.7143%`. Even a favorable rank-eight SVD correction left
+relative-L2 p50/p95 `0.351269/1.213828`, versus `0.01/0.05`.
+
+Observed fallback raises derived logical traffic/operations to
+`92.244986%/91.533212%` of dense, about `77.83x/77.23x` the final p50 allowance.
+
+Decision:
+
+```text
+REJECT_SYNDROME_RECOVERED_LOOKUP_RESIDUAL_CODE_PATH
+```
+
+Authority: `results/exp_081a/summary.json`; source `1d3e91f`; evidence
+`ee9573d`; deterministic core
+`8621f6357536b6fc3396872668484c52103e28d2af8291b96575bc4d007c2ccc`.
+An independent run reproduced the core and all seven scientific payload hashes.
+
+This rejects the frozen nonlinear-lookup plus tiny exact residual-code path,
+not every distribution-sensitive online data structure. Structurally valid
+conditions were established. Large-model performance remains unverified. No
+model-wide operation replacement, target-server action, Phase D, or E2-E7
+evidence exists.
+
+## Current frontier after EXP-081A
+
+No core candidate survives. The next admissible mechanism must avoid assuming
+that a complete local `W x` residual is tiny. The highest-upside untested axis
+is an end-to-end, fail-closed **decision certificate** that adaptively reads
+cold pages until the original greedy or fixed-RNG sampled token is uniquely
+determined, then falls back when it cannot certify. Before an experiment number
+or implementation, a favorable exact-activation oracle must show that the
+minimum page set needed to certify held-out final token decisions can approach
+the `1.185185%` equation after selector, bounds, verification, and fallback.
+This is a research direction, not a promoted candidate or feasibility claim.

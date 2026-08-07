@@ -458,6 +458,12 @@ independent fingerprint verifies it before commit. The assumption concerns
 output-error structure after nonlinear coding, not exact input-span reuse or
 approximate low numerical rank.
 
-Status: ACTIVE AND UNVERIFIED FOR EXP-081A. WORST-CASE QUERIES RETAIN DENSE
-FALLBACK; LARGE-MODEL SCALING, BF16/Q4 FIDELITY, AND PHYSICAL SPEED ARE NOT
-ASSUMED.
+Status: REJECTED UNDER THE EXP-081A FROZEN GATE. Weighted held-out exact
+coverage was `8.681672%` against `99.75%`, with every family below `10.72%`.
+The same `54/622` coverage occurred in all six projections and is consistent
+with repeated template-prefix state rather than a general residual code.
+Observed fallback leaves derived traffic at `92.244986%` of dense. Reopening
+requires a new source of residual information, not rank/tree/field/prompt
+tuning. Worst-case queries always retained dense fallback; no universal
+subquadratic claim was established. Large-model scaling, BF16/Q4 fidelity, and
+physical speed remain unverified.

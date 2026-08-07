@@ -435,3 +435,18 @@ The fingerprint never manufactures a result; it only rejects an incorrect
 candidate. The component is absent from the active runtime until real held-out
 recovery coverage clears the fallback equation. Approximate corrected outputs
 are diagnostics and may not enter the exact branch.
+
+### EXP-081A closure
+
+The reference transition is algebraically valid and passed all 321 controls,
+but it does not enter the runtime architecture. Held-out exact coverage was
+only `8.681672%`; charging fallback leaves logical traffic at `92.244986%` of
+dense. The six projection rows all accepted `54/622` positions, consistent with
+repeated causal prefix state rather than a reusable general residual code.
+
+Retain `syndrome_lookup.py` only as an auxiliary exact candidate verifier and
+throwaway research reference. There is no decoder hook, packed projection,
+cache transition, scheduler, GPU kernel, or active SRLM component. A future
+decision-certificate design must expose explicit proposal, interval state,
+page-selection, certificate, commit, and unchanged-fallback interfaces before
+architecture admission.

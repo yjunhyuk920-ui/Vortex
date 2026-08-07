@@ -315,3 +315,19 @@ corrected p50/p95 error exceeds `0.01/0.05`, or fully charged target equations
 fail. Do not tune tree/rank/field/layer/prompt choices after observing failure.
 A pass authorizes only minimal integer projection replacement, not a kernel or
 large-model run.
+
+## Current directive after EXP-081A
+
+The cheapest Gate rejected the population premise by more than ninety
+percentage points. Stop all tree, code-rank, field, layer, projection, prompt,
+tolerance, integer-kernel, and larger-checkpoint work around SRLM. Its exact
+syndrome/fingerprint reference may remain auxiliary, but optimizing it cannot
+remove `91.318328%` observed fallback.
+
+No core candidate is promoted. Before opening EXP-082, test only a genuinely
+different proof target at E0. The preferred high-upside direction is an
+end-to-end exact greedy/fixed-RNG decision certificate with a free exact-trace
+oracle choosing the minimum cold page set. If that favorable population/family
+page fraction cannot approach `1.185185%` after interval state, selector,
+verification, and fallback, reject the family without building interval
+propagation, a runtime, or a kernel.

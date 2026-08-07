@@ -610,3 +610,46 @@ The result must freeze control rows, target-shape accounting, build/evaluation
 leakage audit, per-projection and family coverage, error spectra, raw logs,
 environment inventory, and checksums. Source/evidence hashes and the canonical
 command will be recorded only after implementation and execution.
+
+## EXP-081A local authority
+
+```text
+results/exp_081a/summary.json
+source commit       1d3e91fea8a8bbb68613c1afa2a56213bcd5fe7e
+evidence commit     ee9573d7760ae5adea47290c3b7b9f89af7cecfa
+config SHA-256      e139f81f01327e60028b6d28201db8fe57b2de000941642b56d35f9d7faff44b
+shape SHA-256       5009a4ed7234bd24eb1488b0f96a9c847158c2a614a6c90519a16cf4212ba82a
+prompt SHA-256      46c9779c24e59f356247145f7ef870a1b82ba4907eb9dffcd48652e519f7612a
+weight SHA-256      04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696
+summary SHA-256     52790207b424519c1abb512dc37a875f57f47fcea41c7a46214bae57a225ffa9
+core SHA-256        8621f6357536b6fc3396872668484c52103e28d2af8291b96575bc4d007c2ccc
+workflow/artifact   NOT RUN
+```
+
+Canonical command:
+
+```powershell
+.deps\exp076-venv\Scripts\python.exe experiments\exp_081a\run_experiment.py --output-dir results\exp_081a
+```
+
+The registered layer `0` did not expose `q_proj`; before any prompt forward
+pass, the data-independent topology repair changed the tuple to the earliest
+valid full-attention layer `3` plus `11,23` and committed the amendment. A later
+metric-complete attempt stopped only because `logs/` had not been created. Its
+seven scientific payload hashes all matched the canonical run after the
+one-line packaging repair.
+
+The canonical Windows/Python 3.12.13 CPU run completed in `310.8` seconds. It
+passed 321/321 exact/fault controls, wrote ten checksummed payloads plus the
+manifest, and independent checksum verification found zero mismatch. A second
+run from evidence commit `ee9573d` in an empty output directory completed in
+`322.7` seconds and reproduced the deterministic core plus all seven selected
+scientific payload hashes byte for byte.
+
+The repository suite passed `392/392` with the root on `PYTHONPATH`, and
+`scripts/run_validation.py` completed. Expected decision is
+`REJECT_SYNDROME_RECOVERED_LOOKUP_RESIDUAL_CODE_PATH`; expected weighted exact
+coverage is `0.08681672025723475`, corrected relative-L2 p50/p95 is
+`0.3512685298919678/1.2138284623622893`, and authoritative fast-path logical
+traffic is `0.009266579409111565`. No network, target-Ubuntu command, physical
+kernel, 122B/405B, or E2-E7 evidence is involved.

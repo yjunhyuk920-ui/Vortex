@@ -413,3 +413,19 @@ not authorize exact commit.
 The first real Gate observes only six pinned small-model projections and cannot
 claim model-wide replacement. BF16/Q4 equivalence, downstream token quality,
 physical traffic, peak VRAM, latency, 122B/405B, and E2-E7 remain absent.
+
+<!-- EXP-081A-AUTHORITATIVE-FINAL -->
+## Current classification after EXP-081A
+
+The algebraic reference passed all 321 exact/fault controls, but the necessary
+real residual-code premise failed. Held-out coverage was `8.681672%` versus
+`99.75%`, and favorable corrected relative-L2 p50/p95 was
+`0.351269/1.213828`. With observed fallback, derived traffic is
+`92.244986%` of dense rather than `1.185185%`.
+
+This is an E1 rejection of the frozen nonlinear lookup plus rank-eight exact
+residual code. It is not a universal online-MatVec lower bound. No integer
+operation replacement, downstream token-quality run, BF16/Q4 proof, physical
+kernel, target hardware, 122B/405B execution, or E2-E7 evidence exists.
+Structurally valid conditions were established. Large-model performance
+remains unverified.

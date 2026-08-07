@@ -346,3 +346,13 @@ equations, not allocated VRAM or measured bandwidth. No lookup kernel, GPU
 fingerprint, SSD/H2D scheduler, Ubuntu command, or large checkpoint is
 authorized until the residual-code coverage Gate passes. Phase D remains
 `NOT TESTED`.
+
+### EXP-081A closure
+
+The coverage Gate failed at `8.681672%` versus `99.75%`. Metadata-complete
+shape values were `3.978126 GiB` sidecar and `0.92665794%` fast-path traffic,
+but observed fallback raises derived traffic to `92.244986%`. Therefore no
+lookup, field-arithmetic, fingerprint, storage, H2D, CUDA, VRAM, or target-
+Ubuntu measurement is promoted. No command was executed on the private server.
+EXP-073 Stage 2 remains a separate calibration option; Phase D/E4-E7 are
+unchanged and `NOT TESTED`.

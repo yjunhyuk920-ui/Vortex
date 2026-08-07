@@ -282,7 +282,8 @@ Every selected real-Q4 dense rearrangement was full rank at its four-row cut. Ev
 ## Continuation pointer after EXP-065
 
 `FAILED_APPROACHES_RECENT.md` is the authoritative continuation for F-034
-onward. As of EXP-080A it also closes the registered sparse-channel oracle,
-frozen exact-anchor macro, fixed DCT/block-zonotope proof state, and standard
-recursive Strassen Hyperblock core, in addition to the EXP-066--076 families.
+onward. As of EXP-081A it also closes the registered sparse-channel oracle,
+frozen exact-anchor macro, fixed DCT/block-zonotope proof state, standard
+recursive Strassen Hyperblock core, and nonlinear lookup/tiny residual-syndrome
+path, in addition to the EXP-066--076 families.
 Read that continuation and each scope boundary before reopening a family.

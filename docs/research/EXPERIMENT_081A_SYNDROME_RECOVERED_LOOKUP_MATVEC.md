@@ -2,9 +2,9 @@
 
 ## Status
 
-Preregistered Phase A/B/C E1 prototype, with the pre-measurement topology
-repair recorded below. No EXP-081A scientific result existed before either
-registration commit.
+Closed at E1. The finite-field mechanism passed its exact controls, but the
+pinned held-out residual population failed the registered coverage and quality
+Gates. The residual-code fast path is rejected under this frozen scope.
 
 ## Pre-measurement topology repair
 
@@ -198,9 +198,78 @@ INVALID_SYNDROME_LOOKUP_CONTROL_FAILURE
 INFRASTRUCTURE_FAILURE_NO_SCIENTIFIC_DECISION
 ```
 
+## Authoritative result
+
+The registered runner evaluated 321 finite-field cases: 64 in-code recoveries,
+256 candidate/syndrome/dictionary/fingerprint fault cases, and one singular
+recovery sketch. All direct-output and replay checks passed, and no faulted case
+was accepted.
+
+Metadata-complete favorable 405B shape accounting at rank eight was:
+
+```text
+logical operation fraction       0.2148841982%
+logical traffic fraction         0.9266579409%
+sidecar storage                  4,271,480,688 bytes = 3.978126 GiB
+required fast coverage           99.74147276%
+```
+
+The unchanged Qwen3.5-0.8B Gate observed 212 build and 622 held-out causal
+positions for each of six projections. The result was:
+
+```text
+weighted exact residual coverage      8.68167203%   (Gate >=99.75%)
+family exact-coverage range            6.7164%-10.7143% (Gate >=99%)
+favorable rank-8 corrected L2 p50      0.35126853    (Gate <=0.01)
+favorable rank-8 corrected L2 p95      1.21382846    (Gate <=0.05)
+```
+
+All six projection rows had the same `54/622` exact-coverage count. Family
+fractions are each consistent with nine repeated positions. This strongly
+suggests that the accepted population is shared causal chat-template prefix
+state, not a general compressed residual space; per-token membership flags were
+not retained, so that explanation remains an inference rather than a measured
+identity audit.
+
+Charging the observed `91.31832797%` fallback population makes derived logical
+traffic `92.24498592%` and operations `91.53321217%` of their dense baselines,
+respectively `77.8317x` and `77.2311x` the final p50 allowance. The fast-path
+algebra is correct, but its required empirical premise is false on this Gate.
+
+Decision:
+
+```text
+REJECT_SYNDROME_RECOVERED_LOOKUP_RESIDUAL_CODE_PATH
+```
+
+Authority and reproduction:
+
+```text
+summary                 results/exp_081a/summary.json
+source commit           1d3e91fea8a8bbb68613c1afa2a56213bcd5fe7e
+evidence commit         ee9573d7760ae5adea47290c3b7b9f89af7cecfa
+config SHA-256          e139f81f01327e60028b6d28201db8fe57b2de000941642b56d35f9d7faff44b
+summary SHA-256         52790207b424519c1abb512dc37a875f57f47fcea41c7a46214bae57a225ffa9
+deterministic core      8621f6357536b6fc3396872668484c52103e28d2af8291b96575bc4d007c2ccc
+payload mismatches      0
+independent raw matches 7/7
+```
+
+The first metric-complete attempt stopped only while writing a missing log
+directory. After that one-line packaging repair, its seven scientific payloads
+matched the canonical run byte for byte. A second run from the evidence commit
+again produced the same deterministic core and all seven raw/processed hashes.
+The incomplete and reproduction duplicate directories were removed after the
+comparison; the checksummed canonical payload remains committed.
+
+Do not rescue this path with post-result rank, tree, field, prompt, layer, or
+tolerance sweeps. Reopening requires a new information source that explains
+the held-out residual rather than merely enlarging the same code.
+
 ## Evidence ceiling
 
 Phase A/B synthetic exact finite-field validation and Phase C small-checkpoint
-necessary residual-code observation, at most E1. BF16/Q4 output equivalence,
-complete generation, physical CUDA, peak VRAM, SSD/PCIe/H2D, latency, 122B,
-405B, and E2-E7 remain **NOT TESTED**.
+necessary residual-code observation, at most E1. Structurally valid conditions
+were established. Large-model performance remains unverified. BF16/Q4 output
+equivalence, complete generation, physical CUDA, peak VRAM, SSD/PCIe/H2D,
+latency, 122B, 405B, and E2-E7 remain **NOT TESTED**.
