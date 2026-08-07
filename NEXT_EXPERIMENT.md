@@ -815,3 +815,36 @@ verification, correction, fallback, and the complete 405B equation. If even
 that oracle exceeds `1.185185%`, close the decision-certificate family before
 building interval propagation. Passing would authorize only a causal bound
 construction Gate. It would not validate physical speed or 405B execution.
+
+## E0 closure -- final-head and proof-carrying trace routes
+
+Do not open the absolute-unread final-token certificate described above.
+EXP-068 already tested its strongest per-competitor reveal form. A correlated
+exact MIPS index can change output-head access, but that entire family is only
+`0.520459999%` of the registered non-embedding 405B coefficients and cannot be
+the core.
+
+A whole-network proof-carrying trace also stops at E0 as a standalone local
+executor. Six random linear checks fit the final budget, but a same-machine
+dense trace proposer leaves fully charged operation/traffic fractions at
+`100.058120260%/100.266838924%`. Retain the verifier only as an auxiliary for a
+future independently justified trace generator.
+
+Authority: `docs/research/E0_DECISION_AND_PROOF_TRACE_TRIAGE.md`.
+
+## Candidate EXP-082A -- exact differential spanning-tree MatVec
+
+The next Gate tests a published exact structural algorithm not measured by
+EXP-064: connect all quantized rows or all columns in a Hamming minimum
+spanning tree and evaluate only parent-child differences. This strictly
+contains a bounded prototype dictionary and has a low-VC/Pollard-dimension
+subquadratic route.
+
+Stage 1 uses exact 32-coefficient block-pattern IDs to certify a favorable
+lower bound on every possible row and column tree. It must stop immediately if
+the weighted best-orientation coefficient lower bound exceeds
+`1.185185185%`. Only an inconclusive lower bound authorizes exact MST
+construction and fully charged sparse-delta storage/traffic accounting.
+
+Contract: `docs/research/EXPERIMENT_082A_DIFFERENTIAL_SPANNING_TREE_GATE.md`.
+Status: E0 PREREGISTERED; NO RESULT EXISTS.

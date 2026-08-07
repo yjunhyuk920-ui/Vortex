@@ -614,3 +614,45 @@ or implementation, a favorable exact-activation oracle must show that the
 minimum page set needed to certify held-out final token decisions can approach
 the `1.185185%` equation after selector, bounds, verification, and fallback.
 This is a research direction, not a promoted candidate or feasibility claim.
+
+## E0 correction to the decision-certificate frontier
+
+The direct output-head route is not a new core candidate. EXP-068 already
+rejects absolute unread-contribution certificates, while the complete
+registered 405B `lm_head` is only `0.520459999%` of non-embedding coefficient
+uses. Eliminating it for free leaves `99.479540001%` of dense linear work.
+
+Proof-carrying traces make verification cheap but do not produce the trace. A
+six-challenge favorable field verifier is `0.058120260%` logical operations,
+`0.266838924%` logical traffic, and `0.427185 GiB` sidecar on the frozen shapes.
+The same-machine dense proposer raises the totals to `100.058120260%` and
+`100.266838924%`. External computation violates the no-added-hardware scope;
+an independent sublinear local proposer would itself be the missing executor.
+
+Decision:
+
+```text
+REJECT_OUTPUT_HEAD_ONLY_DECISION_CERTIFICATE_AS_CORE
+REJECT_PROOF_CARRYING_TRACE_AS_A_STANDALONE_LOCAL_CORE
+```
+
+All values are E0 `DERIVED`; no model or hardware was run.
+
+## EXP-082A preregistered differential spanning-tree Gate
+
+EXP-082A reopens exact row/column differences with a new asymptotic mechanism.
+Unlike EXP-064's at-most-32 fixed prototypes, every row or column may be a
+parent in an exact Hamming-difference spanning tree. The complete tree computes
+`W @ x` for every causal `x`; no selector, future token, or approximate output
+is needed. Low VC/Pollard dimension provides a published subquadratic
+structural route, while random Q4 matrices remain the strongest counterexample.
+
+The cheapest Stage 1 does not construct a tree. Exact 32-coefficient block
+patterns give a collision-free per-edge Hamming lower bound, and the sum of
+per-vertex nearest-neighbor bounds divided by two lower-bounds every spanning
+tree. Both row and column orientations are granted and the cheaper bound is
+used. If weighted coefficient work alone exceeds `1.185185185%`, the path stops
+before MST, runtime, kernel, larger model, or hardware work.
+
+Status: E0 PREREGISTERED; NO RESULT, CORE PROMOTION, OPERATION REPLACEMENT,
+TARGET-SERVER ACTION, PHASE D, OR E2-E7 EVIDENCE.

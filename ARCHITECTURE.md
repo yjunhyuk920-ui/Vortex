@@ -450,3 +450,29 @@ cache transition, scheduler, GPU kernel, or active SRLM component. A future
 decision-certificate design must expose explicit proposal, interval state,
 page-selection, certificate, commit, and unchanged-fallback interfaces before
 architecture admission.
+
+## E0 proof-carrying boundary
+
+Random linear checks may validate a supplied target trace with a small hot
+sidecar, but no trace proposer enters the architecture. On one machine the
+proposer must still produce every claimed linear result; a dense proposer plus
+verification is above 100% of target work and traffic. External proof workers
+are outside the no-added-hardware mission. The verifier remains an auxiliary
+interface only.
+
+## EXP-082A provisional differential-tree boundary
+
+```text
+pinned Q4 matrix
+  -> exact row-tree or column-tree compiler
+  -> sparse parent-child integer deltas
+  -> exact causal x evaluation
+       verified tree -> candidate Q4 projection
+       malformed/missing state -> unchanged dense Q4 fallback or abort
+```
+
+No compiler or runtime component is active yet. Stage 1 contains only a
+certified lower-bound analyzer; rejection removes the component before tree
+construction. A pass would still require exact reconstruction, direct MatVec
+equality, metadata/traffic/storage accounting, build amortization, and later
+Q4 output-contract validation before architecture admission.

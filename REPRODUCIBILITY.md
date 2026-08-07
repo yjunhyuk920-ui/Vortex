@@ -653,3 +653,35 @@ coverage is `0.08681672025723475`, corrected relative-L2 p50/p95 is
 `0.3512685298919678/1.2138284623622893`, and authoritative fast-path logical
 traffic is `0.009266579409111565`. No network, target-Ubuntu command, physical
 kernel, 122B/405B, or E2-E7 evidence is involved.
+
+## E0 proof-carrying trace audit
+
+The throwaway calculator reads the frozen EXP-080A shape rows and applies the
+closed random-linear verification equations. Authoritative numbers are copied
+to `docs/research/E0_DECISION_AND_PROOF_TRACE_TRIAGE.md`; the prototype is
+deliberately ignored under `.deps/proof_trace_e0_prototype/` and is not a
+production or experiment artifact.
+
+Expected six-challenge invariants are 883 matrix instances,
+`403,747,897,344` dense coefficients, `234,659,328` verifier operations,
+`513.724 MiB` verifier traffic, and `0.427185 GiB` sidecar. All are derived;
+no model was run.
+
+## EXP-082A preregistered inputs
+
+```text
+contract             docs/research/EXPERIMENT_082A_DIFFERENTIAL_SPANNING_TREE_GATE.md
+config               experiments/exp_082a/config.json
+model/revision       Qwen/Qwen3.5-0.8B @ 2fc06364715b967f1860aea9cf38778875588b17
+weight SHA-256       04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696
+layers               3, 11, 23
+families             q/k/v/o/gate/up/down projections
+block size           32 coefficients
+target fraction      0.011851851851851851
+```
+
+No result path, source/evidence commit, or canonical result command exists in
+the preregistration commit. The runner must freeze exact block IDs, both
+orientation bounds, per-matrix/family aggregates, controls, environment, logs,
+checksums, and an infrastructure/scientific decision separation before any
+result is interpreted.

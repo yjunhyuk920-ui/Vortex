@@ -390,3 +390,27 @@ Current classification after EXP-081A: the exact syndrome algebra is retained
 as an auxiliary fail-closed primitive, but the nonlinear lookup plus rank-eight
 residual population assumption is rejected. No core candidate survives; Phase
 D and E2-E7 remain not achieved.
+
+## E0 decision/proof-trace triage
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Entire 405B output head can be a core saving | DERIVED share `0.520459999%` | REJECTED AS CORE |
+| Six-check trace verifier fits operations | DERIVED `0.058120260%` | PASS verifier-only ceiling |
+| Six-check trace verifier fits traffic/sidecar | DERIVED `0.266838924%` / `0.427185 GiB` | PASS verifier-only ceiling |
+| Same-machine proof-carrying execution fits target | DERIVED `100.058120260%` ops, `100.266838924%` traffic | REJECTED |
+| Local sublinear trace source exists | no algorithm | NOT TESTED / REQUIRED SEPARATELY |
+
+## EXP-082A preregistered Gate
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Exact block-pattern distance never exceeds Hamming distance | no run | PREREGISTERED |
+| Nearest-neighbor sum/2 lower-bounds exact MST | Phase A proof in contract | PREREGISTERED |
+| Weighted best-orientation lower bound <=1.185185% | no model weight run | PREREGISTERED |
+| Exact tree reconstructs source and direct integer MatVec | Stage 2 conditional | NOT AUTHORIZED YET |
+| Fully charged operations/traffic/sidecar pass | Stage 2 conditional | NOT AUTHORIZED YET |
+| BF16/Q4 output preservation, CUDA, 122B/405B | no execution | NOT TESTED |
+
+Current classification: EXP-082A passed E0 novelty/upside triage only. No core
+mechanism is promoted until the registered lower-bound Gate survives.

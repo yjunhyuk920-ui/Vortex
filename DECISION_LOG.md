@@ -641,3 +641,40 @@ OPERATION REPLACEMENT, TARGET HARDWARE, PHASE D, OR E2-E7 EVIDENCE.
 Authority: `results/exp_081a/summary.json`; source `1d3e91f`; evidence
 `ee9573d`; core
 `8621f6357536b6fc3396872668484c52103e28d2af8291b96575bc4d007c2ccc`.
+
+## D-072 -- Reject verification without a local result source
+
+The post-EXP-081A final-decision direction was compared with EXP-068 before an
+experiment number was opened. Absolute unread bounds are already closed, and
+even deleting the entire registered 405B output head saves only
+`0.520459999%` of non-embedding coefficient work.
+
+Random linear trace verification itself is favorable: six checks project to
+`0.058120260%` operations, `0.266838924%` traffic, and `0.427185 GiB` sidecar.
+But the local dense proposer makes the total `100.058120260%` operations and
+`100.266838924%` traffic. Delegation moves rather than removes target work.
+
+Decision:
+
+```text
+REJECT_PROOF_CARRYING_TRACE_AS_A_STANDALONE_LOCAL_CORE
+```
+
+No implementation beyond a throwaway E0 equation prototype is authorized.
+
+## D-073 -- Preregister exact differential spanning-tree MatVec
+
+EXP-082A admits a full row/column Hamming tree rather than reopening the
+bounded-prototype sweep from EXP-064. Each edge is an exact sparse integer
+difference, and a low-weight tree gives a published subquadratic online MatVec
+route for structured matrices.
+
+Decision:
+
+```text
+PREREGISTER_EXP_082A_DIFFERENTIAL_SPANNING_TREE_GATE
+```
+
+Only the exact block-pattern MST lower bound is initially authorized. If
+coefficient work alone exceeds the final fraction, stop before constructing a
+tree or runtime. Status: E0 PREREGISTERED; NO RESULT OR CORE PROMOTION.

@@ -285,5 +285,7 @@ Every selected real-Q4 dense rearrangement was full rank at its four-row cut. Ev
 onward. As of EXP-081A it also closes the registered sparse-channel oracle,
 frozen exact-anchor macro, fixed DCT/block-zonotope proof state, standard
 recursive Strassen Hyperblock core, and nonlinear lookup/tiny residual-syndrome
-path, in addition to the EXP-066--076 families.
+path, in addition to the EXP-066--076 families. F-048 additionally closes an
+output-head-only certificate and proof-carrying execution with no charged local
+trace source; it does not close verification as an auxiliary.
 Read that continuation and each scope boundary before reopening a family.

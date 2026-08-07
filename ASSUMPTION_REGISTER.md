@@ -467,3 +467,19 @@ requires a new source of residual information, not rank/tree/field/prompt
 tuning. Worst-case queries always retained dense fallback; no universal
 subquadratic claim was established. Large-model scaling, BF16/Q4 fidelity, and
 physical speed remain unverified.
+
+## A-057 -- Real Q4 projections have a very low-weight differential tree
+
+After adding a zero vertex, either the rows or columns of each registered Q4
+projection are assumed to admit an exact Hamming spanning tree whose weighted
+population cost can meet `1.185185185%` after metadata and traffic. This is
+strictly more permissive than assigning rows to at most 32 prototypes: every
+vertex may be a reusable parent and chains may be arbitrarily long.
+
+Low VC/Pollard dimension supplies the asymptotic structural hypothesis. A
+random dense Q4 matrix is the strongest counterexample. EXP-082A first uses a
+certified exact-block lower bound and will not build the tree if that favorable
+bound already fails.
+
+Status: ACTIVE AND UNVERIFIED FOR EXP-082A E1. NO SMALL-CHECKPOINT RESULT,
+PHYSICAL EXECUTION, LARGE-MODEL SCALING, OR E2-E7 EVIDENCE.

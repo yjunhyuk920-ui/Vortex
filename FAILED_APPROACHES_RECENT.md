@@ -200,3 +200,18 @@ otherwise missing residual or if the proof target changes materially, for
 example to an end-to-end exact token-decision certificate. This entry rejects
 the frozen lookup/syndrome composition, not all conditional online MatVec data
 structures.
+
+## F-048 -- Output-head-only and source-free proof-carrying execution
+
+EXP-068 already closes absolute-unread output-head certificates, and the whole
+registered 405B head is only `0.520459999%` of non-embedding coefficients.
+Random linear proofs make checking a supplied full trace cheap, but a local
+dense proposer plus verifier remains `100.058120260%` operations and
+`100.266838924%` traffic. An external prover is added compute, not a local
+execution reduction.
+
+Do not reopen with more verifier challenges, a different polynomial
+commitment, GKR/SNARK packaging, or an uncharged claimed trace. Revisit only
+when an independently specified causal local generator produces the exact
+trace inside the final budget; that generator, not the proof, is the core
+invention. Exact correlated output-head indexing remains auxiliary.

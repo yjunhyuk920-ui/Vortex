@@ -356,3 +356,16 @@ lookup, field-arithmetic, fingerprint, storage, H2D, CUDA, VRAM, or target-
 Ubuntu measurement is promoted. No command was executed on the private server.
 EXP-073 Stage 2 remains a separate calibration option; Phase D/E4-E7 are
 unchanged and `NOT TESTED`.
+
+## E0 proof-trace and EXP-082A hardware boundary
+
+The proof-carrying-trace numbers are equations only. No prover, network worker,
+GPU, proof library, or Ubuntu command was used. External proving is outside the
+no-added-hardware target and cannot be counted as local acceleration.
+
+EXP-082A initially authorizes only CPU inspection of the already present pinned
+0.8B weight payload. Stage 1 must stop at a certified structural lower bound;
+it may not run CUDA, allocate a physical 8 GiB tree sidecar, benchmark SSD/H2D,
+contact the Ubuntu host, or download 35B/122B/405B. Hardware work remains gated
+behind exact-tree, fully charged logical, output-contract, and operation-
+replacement passes. Phase D/E4-E7 remain `NOT TESTED`.
