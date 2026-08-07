@@ -574,3 +574,29 @@ the omitted nonzero MLP contribution is recovered or amortized while charging
 selector, correction, attention/DeltaNet, LM-head, fallback, and cold traffic.
 It must pass an E0 final-fraction route before implementation. EXP-073 Stage 2
 remains a separately authorized hardware calibration and is not a solution.
+
+## Candidate EXP-078A -- Frozen Tangent Macroblock Lifetime Gate
+
+The candidate composes the complete anchor-conditioned SwiGLU path rather than
+dropping nonzero channels:
+
+```text
+c(a) = SiLU(W_gate a)
+M(a) = W_down diag(c(a)) W_up
+candidate(x_t) = M(a) x_t
+```
+
+The exact prompt's last token supplies `a`; no future target token is visible.
+All 24 layer maps are reused across the next seven registered causal positions,
+including causally divergent candidate recurrent/KV state.
+
+The direct constructor changes the cost threshold materially. The 0.8B dense
+screen requires p50/p05 reuse spans of `13,821/6,249`; the registered nine-path
+122B surrogate screen requires `115,299/26,354`. Therefore the seven-token run
+is only a cheap early-failure test. If any registered quality or family Gate
+fails, reject this frozen-anchor form. If every observation survives, classify
+the trace as right-censored and preregister a longer Gate; do not claim success.
+
+No macro matrix is physically materialized in EXP-078A. No new checkpoint,
+Ubuntu command, sentinel, repair path, rank sweep, or speed claim is authorized.
+Contract: `docs/research/EXPERIMENT_078A_TANGENT_MACROBLOCK_GATE.md`.

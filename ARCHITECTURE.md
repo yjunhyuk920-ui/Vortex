@@ -344,3 +344,26 @@ scheduler, quantized converter, or GPU backend may be attached until causal
 accepted-prefix and rollback tests pass. The architecture remains Qwen-specific
 auxiliary screening and does not solve proposal generation for arbitrary dense
 checkpoints.
+
+## EXP-078A frozen tangent-macroblock reference boundary
+
+`vortex_runtime/tangent_macroblock.py` contains the pure direct-construction,
+charged-cycle, lifetime, aggregation, and decision equations. The throwaway TUI
+in `vortex_runtime/tangent_macroblock_prototype.py` exposes the complete cost
+state after every user action. The heavyweight reference monkey-patches only the
+unchanged checkpoint's MLP executor.
+
+```text
+exact prompt prefix
+    -> capture complete post-SiLU gate coefficient at the final prompt token
+    -> reuse that coefficient in every layer for seven causal positions
+    -> preserve candidate recurrent/KV divergence
+    -> compare target and candidate logits
+```
+
+The reference executes the factorized `up -> frozen coefficient -> down` form
+to measure quality. It does not physically construct or accelerate the logical
+hidden-by-hidden matrix, implement a sentinel, certify an error bound, restore
+an exact cache after divergence, or provide fail-closed deployment. Derived
+construction cost and E1 quality observation must remain separate from physical
+performance claims.

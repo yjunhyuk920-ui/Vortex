@@ -453,3 +453,22 @@ invariants are 0/192 baseline mismatch, 72 case rows, realized fraction
 `0.8841612071313042`, p95 KL `3.080751657485962`, and the core hash above.
 Wall time may vary. Physical performance, large-model scaling, and E2-E7 remain
 unverified.
+
+## EXP-078A preregistered local command
+
+Interactive construction-amortization prototype:
+
+```powershell
+.deps\exp076-venv\Scripts\python.exe -m vortex_runtime.tangent_macroblock_prototype
+```
+
+Pinned unchanged-checkpoint favorable lifetime run:
+
+```powershell
+.deps\exp076-venv\Scripts\python.exe experiments\exp_078a\run_experiment.py --model-dir .deps\exp076-model --output-dir results\exp_078a
+```
+
+The command inherits the exact EXP-076 dependency and checkpoint manifests. It
+must start from an empty output directory and performs no network or Ubuntu
+server operation. No expected scientific decision is recorded before the source
+commit and run complete.

@@ -245,3 +245,18 @@ hardware continuation is promoted; Phase D/E2-E7 remain not achieved.
 Current classification after EXP-077A: activation-norm individual-channel MLP
 fracturing is rejected under a favorable oracle; no core candidate survives;
 Phase D/E2-E7 remain not achieved.
+
+## EXP-078A preregistered Gate
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Anchor macro equation equals factorized complete MLP at anchor | E1 bounded reference control | PREREGISTERED |
+| 0.8B hot macro MLP work fraction | DERIVED: 9.52381% | NECESSARY HOT CEILING |
+| 0.8B direct-build p50/p05 lifetime | DERIVED: 13,821/6,249 | PREREGISTERED |
+| 122B nine-path hot fraction | DERIVED: 11.1111% | NECESSARY HOT CEILING |
+| 122B direct-build p50/p05 lifetime | DERIVED: 115,299/26,354 | PREREGISTERED |
+| Baseline frozen trace replay has zero mismatch | no EXP-078A run | NOT TESTED |
+| Frozen anchor survives next seven positions at quality Gate | no EXP-078A run | NOT TESTED |
+| Physical macro construction/application speed | reference only | NOT TESTED |
+| Sentinel, exact repair, fallback | outside experiment | NOT TESTED |
+| 35B/122B/405B execution | no payload/run | NOT TESTED |

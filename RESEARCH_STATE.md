@@ -430,3 +430,25 @@ non-deployable oracle. It does not prove all dynamic sparsity impossible, but
 no fraction/layer/router/larger-model rescue of this score is authorized. No
 current core candidate survives. Phase D/E2-E7 and dense-405B execution remain
 not achieved.
+
+## EXP-078A preregistered frozen tangent-macroblock Gate
+
+EXP-078A tests a different execution dependency: the complete input-conditioned
+linear map induced by the last exact prompt token is reused on later causal
+activations. It neither chooses MLP channels nor replays an earlier output.
+
+The corrected E0 cost equation charges direct construction of
+`W_down diag(c_anchor) W_up`. For the 0.8B checkpoint, the hot map is
+`9.52381%` of exact MLP MACs but direct construction costs `341.3333` exact-MLP
+token-equivalents. The registered p50/p95 allowances therefore require at least
+`13,821/6,249` hot tokens. For the nine-path 122B surrogate screen, the hot map
+is `11.1111%`, direct construction costs `1,024` token-equivalents, and the
+requirements are `115,299/26,354`.
+
+Before any long trace or physical matrix construction, the unchanged 0.8B
+checkpoint will reuse an exact causal anchor for the next seven frozen EXP-076
+positions. An early population/family/top-1/KL failure rejects this frozen-map
+form. Perfect seven-token survival is right-censored and cannot promote it.
+
+Status: PREREGISTERED E1 FAVORABLE LIFETIME GATE; NO EXP-078A MODEL RESULT;
+NO TARGET SERVER, LARGE CHECKPOINT, PHYSICAL KERNEL, E2-E7, OR DENSE-405B CLAIM.

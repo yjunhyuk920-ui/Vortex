@@ -332,3 +332,16 @@ This is a valid E1 favorable-ceiling rejection of the registered Fractal MLP
 score, not E2 replacement and not a universal dynamic-sparsity impossibility
 result. No deployable selector or physical performance was measured. There is
 no surviving core candidate; Phase D/E2-E7 remain not achieved.
+
+<!-- EXP-078A-PREREGISTERED -->
+## EXP-078A proof-first boundary
+
+The frozen tangent-macroblock candidate composes the complete anchor-conditioned
+MLP contribution and therefore does not rescue EXP-077A's channel score. Direct
+construction, exact anchor, hot application, quality lifetime, and right
+censoring are registered before the run. The seven-position E1 trace can reject
+an early failure but cannot demonstrate the thousands-to-hundreds-of-thousands
+of positions required by the charged cost equation.
+
+No physical macro matrix, sentinel, repair, cache rollback, larger checkpoint,
+or target-server command is authorized. E2-E7 remain not achieved.

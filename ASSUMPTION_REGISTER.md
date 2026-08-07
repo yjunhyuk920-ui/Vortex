@@ -368,3 +368,21 @@ reached only `83.3333%` population top-1 agreement.
 
 Status: CONTRADICTED FOR THE REGISTERED ACTIVATION-NORM INDIVIDUAL-CHANNEL
 FRACTURING ORACLE. OTHER INFORMATION SOURCES ARE NOT DECIDED.
+
+## A-053 -- An exact anchor-conditioned MLP operator remains valid long enough to amortize construction
+
+For a causal anchor `a`, the complete bias-free SwiGLU mapping
+`W_down diag(SiLU(W_gate a)) W_up` is exact at `a`. EXP-078A asks whether that
+same map remains inside the registered target-logit contract on later causal
+activations without reading target future tokens.
+
+Direct materialization costs `H/3` exact active-MLP token-equivalents, while the
+combined hidden-by-hidden hot application costs `H/(3 E I)` of exact active MLP
+work for `E` active paths. The registered small-checkpoint p50/p05 minimum reuse
+spans are `13,821/6,249`; the nine-path 122B screen requires
+`115,299/26,354`. These are derived implementation costs, not a universal lower
+bound against every possible constructor.
+
+Status: ACTIVE AND UNVERIFIED FOR EXP-078A E1 FAVORABLE LIFETIME GATE. PHYSICAL
+CONSTRUCTION, SENTINEL, FALLBACK, LONG-HORIZON SURVIVAL, AND LARGE-MODEL SCALING
+ARE NOT TESTED.

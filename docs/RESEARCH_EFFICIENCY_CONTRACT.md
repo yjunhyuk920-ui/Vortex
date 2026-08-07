@@ -218,3 +218,16 @@ or larger-model confirmation. The next core candidate must recover or amortize
 the omitted nonzero contribution through a materially different execution
 dependency and pass a fully charged E0 route to the final fraction before code.
 EXP-073 Stage 2 remains separate physical calibration.
+
+## Current directive for EXP-078A
+
+EXP-078A is admitted only because it changes the reused object from selected
+channels or prior outputs to the complete transient computation law. The direct
+constructor reveals an unfavorable but not logically impossible lifetime
+requirement. The cheapest remaining falsification is therefore the already
+available seven-position unchanged-checkpoint trace.
+
+Stop immediately on early population, family, top-1, or KL failure. Do not run a
+longer trace, construct dense macro matrices, sweep ranks, or implement kernels
+after such a failure. If all observations are right-censored, preregister a
+longer trace and a constructor route before promotion.

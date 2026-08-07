@@ -458,3 +458,24 @@ recovers or amortizes omitted nonzero contribution under fully charged costs.
 
 Status: SCIENTIFIC REJECTION AT E1 FAVORABLE-ORACLE OBSERVATION; CONTROL PASS;
 NO PHASE D/E2-E7 OR DENSE-405B EVIDENCE.
+
+## D-064 -- Open a corrected construction-amortization Gate for frozen tangent macroblocks
+
+The complete anchor-conditioned SwiGLU mapping is a materially different
+recovery dependency from EXP-077A channel selection. However, counting only its
+hidden-by-hidden hot application omitted the cost of constructing
+`W_down diag(c_anchor) W_up`.
+
+EXP-078A therefore freezes the direct-construction equation before model
+execution. The 0.8B screen requires `13,821/6,249` p50/p05 hot positions; the
+nine-path 122B surrogate screen requires `115,299/26,354`. A seven-position
+unchanged-checkpoint run is authorized only as a cheap early-failure Gate.
+Perfect survival is right-censored, not promotion.
+
+Decision:
+
+```text
+PREREGISTER_EXP_078A_FROZEN_TANGENT_MACROBLOCK_LIFETIME_GATE
+```
+
+Status: SOURCE/CONTRACT CONTROLS PENDING; NO MODEL RESULT OR TARGET-SERVER ACTION.
