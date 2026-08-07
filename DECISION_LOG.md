@@ -697,3 +697,21 @@ Per the frozen stop rule, do not construct or benchmark a terminal-only tree.
 Synthetic-intermediate circuits are not rejected by this result, but receive
 no experiment number until an E0 novelty audit distinguishes them from the
 closed exact circuit/DAG families.
+
+## D-075 -- Define the positive research milestone and versioned investigation map
+
+The persistent research request is operationalized without weakening E7. A
+`Certain Research Milestone` requires a materially new candidate to pass E0
+and E1 and then perform actual fail-closed dense-operation replacement at E2
+on the pinned small checkpoint. Negative family closures remain valuable but
+do not satisfy this milestone.
+
+Decision:
+
+```text
+ADOPT_VERSIONED_WAYFINDING_MAP_FOR_POSITIVE_E2_MILESTONE
+```
+
+The map and dependency-ordered child tickets live under
+`.scratch/vortex-certain-milestone/`. Map creation does not promote a core or
+authorize EXP-083, hardware, a large-model download, or a target-server action.

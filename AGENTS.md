@@ -236,3 +236,19 @@ residual-code coverage was only `8.681672%` against `99.75%`; observed fallback
 would leave logical traffic at `92.244986%` of dense. Do not sweep lookup trees,
 code ranks, fields, layers, or prompts around this path. No core candidate
 survives. Read `NEXT_EXPERIMENT.md` before proposing another mechanism.
+
+## Agent skills
+
+### Issue tracker
+
+Long-running investigation maps and tickets are versioned as local Markdown
+under `.scratch/`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+The local tracker uses the canonical five-role label vocabulary. See
+`docs/agents/triage-labels.md`.
+
+### Domain docs
+
+VORTEX uses a single root `CONTEXT.md` glossary. See `docs/agents/domain.md`.

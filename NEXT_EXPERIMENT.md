@@ -875,3 +875,11 @@ nodes without charging dense work, and account for every edge delta, synthetic
 activation, metadata byte, build cost, and fallback. Without both novelty and
 a favorable fully charged equation, the correct state remains
 `NO_SURVIVING_CANDIDATE`.
+
+## Active research map
+
+The persistent effort is indexed at
+`.scratch/vortex-certain-milestone/map.md`. The first unblocked ticket is
+`Audit Synthetic-Intermediate Exact Circuits`. Per the map contract, it must be
+claimed and resolved before the downstream resource-equation and causal-source
+tickets. No EXP-083 branch is authorized by map creation alone.

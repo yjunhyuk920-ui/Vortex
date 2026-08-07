@@ -685,3 +685,16 @@ REJECT_DIFFERENTIAL_SPANNING_TREE_FROM_CERTIFIED_LOWER_BOUND
 No exact tree compiler/runtime, CUDA kernel, larger model, or target server was
 run. E1 structural evidence only; no core candidate survives and Phase D/E2-E7
 remain not achieved.
+
+## Persistent research effort after EXP-082A
+
+The user requested continuous research until a positive, evidence-backed
+milestone exists. The milestone is not another negative closure: a materially
+new Core Candidate must pass E0 resource closure and E1 real-weight
+falsification, then reach actual fail-closed operation replacement at E2 on the
+pinned small checkpoint. The unchanged E7 mission remains the final objective.
+
+The versioned wayfinding map is
+`.scratch/vortex-certain-milestone/map.md`. Its first frontier ticket audits
+whether Synthetic Intermediates are genuinely new relative to EXP-053/054/072
+before any EXP-083 number or implementation is permitted.
