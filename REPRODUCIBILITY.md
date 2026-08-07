@@ -273,13 +273,13 @@ The absence of a GitHub workflow run is explicit. Do not present the local resul
 ```text
 results/exp_073/summary.json
 source commit       d3b1d2e4dd08e73781c969814cb4d181377a054d
-evidence commit     5ac87bb
+evidence commit     4e35afb9648dc0c513c3a90c32d604f4c0b0fd21
 config SHA-256      d7867c68a135bd69e5cfc8b733b62f7c5c4ea50b9190b231d60c0653f3d4f0d0
 core SHA-256        aa9cae0457a6b92fcb75da35fedc1a2a2a9f3da115808d341a5a498ca4722da2
 workflow/artifact   NOT RUN
 ```
 
-The collector sent an LF-only read-only shell program over an existing SSH configuration and retained no connection alias, hostname, address, username, key, device name, serial, UUID, or mount path. The result bundle contains four checksummed files plus the checksum manifest; all four verified. The forbidden-identifier scan and evidence-core recomputation passed.
+The collector sent an LF-only read-only shell program over an existing SSH configuration and retained no connection alias, hostname, address, username, key, device name, serial, UUID, or mount path. The checkout-stable evidence commit pins the experiment definition and frozen result bundle to LF and corrects the log checksum to the committed LF bytes; measured inventory, summary, and evidence-core hash are unchanged. The result bundle contains four checksummed files plus the checksum manifest; all four verified on fresh Windows checkout. The forbidden-identifier scan and evidence-core recomputation passed.
 
 Reproduce only with an authorized runtime-only SSH alias:
 
@@ -289,8 +289,8 @@ EXP073_OUTPUT_DIR=results/exp_073_reproduction \
 bash experiments/exp_073/reproduce.sh
 ```
 
-The alias is not serialized. Reproduction reruns 13 experiment tests before collection and refuses to overwrite a nonempty result directory. It performs no remote write, package install, model enumeration, inference, service mutation, or benchmark. Snapshot-dependent free RAM/VRAM may change; hardware identity and static capacity fields should remain stable.
+The alias is not serialized. Reproduction reruns 14 experiment tests before collection and refuses to overwrite a nonempty result directory. It performs no remote write, package install, model enumeration, inference, service mutation, or benchmark. Snapshot-dependent free RAM/VRAM may change; hardware identity and static capacity fields should remain stable.
 
-Closure verification passed: 13/13 EXP-073 tests, 343/343 repository tests, `scripts/run_validation.py`, and the Git Bash offline `run_current_env.sh` fixture Gate. The offline fixture remains synthetic and is not target evidence.
+Closure verification passed: 14/14 EXP-073 tests, 344/344 repository tests, `scripts/run_validation.py`, and the Git Bash offline `run_current_env.sh` fixture Gate. The offline fixture remains synthetic and is not target evidence.
 
 Expected decision: `COMPLETE_SANITIZED_READ_ONLY_TARGET_INVENTORY`. This is target inventory evidence only. GitHub Actions runs a synthetic fixture and must never be cited as target evidence. Stage 2 and Phase-D runtime validation remain not run.

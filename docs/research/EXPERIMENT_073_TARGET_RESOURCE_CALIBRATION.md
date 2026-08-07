@@ -186,13 +186,13 @@ Authority:
 ```text
 results/exp_073/summary.json
 source commit       d3b1d2e4dd08e73781c969814cb4d181377a054d
-evidence commit     5ac87bb
+evidence commit     4e35afb9648dc0c513c3a90c32d604f4c0b0fd21
 config SHA-256      d7867c68a135bd69e5cfc8b733b62f7c5c4ea50b9190b231d60c0653f3d4f0d0
 core SHA-256        aa9cae0457a6b92fcb75da35fedc1a2a2a9f3da115808d341a5a498ca4722da2
 checksums           4 / 4 verified
 private scan        PASS
-EXP-073 tests        13 / 13 passed
-repository tests     343 / 343 passed
+EXP-073 tests        14 / 14 passed
+repository tests     344 / 344 passed
 validation/current   PASS / PASS (offline fixture only)
 workflow/artifact   NOT RUN
 ```

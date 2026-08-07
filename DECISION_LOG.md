@@ -346,6 +346,6 @@ COMPLETE_SANITIZED_READ_ONLY_TARGET_INVENTORY
 HOLD_STAGE_2_PENDING_SEPARATE_AUTHORIZATION
 ```
 
-Authority: `results/exp_073/summary.json`; source `d3b1d2e4dd08e73781c969814cb4d181377a054d`; evidence `5ac87bb`; core SHA-256 `aa9cae0457a6b92fcb75da35fedc1a2a2a9f3da115808d341a5a498ca4722da2`.
+Authority: `results/exp_073/summary.json`; source `d3b1d2e4dd08e73781c969814cb4d181377a054d`; checkout-stable evidence `4e35afb9648dc0c513c3a90c32d604f4c0b0fd21`; core SHA-256 `aa9cae0457a6b92fcb75da35fedc1a2a2a9f3da115808d341a5a498ca4722da2`.
 
 Status: STAGE 1 COMPLETE; EXP-073 ACTIVE; PHASE-D RUNTIME VALIDATION, E6, AND E7 NOT ACHIEVED.

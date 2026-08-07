@@ -265,7 +265,7 @@ These are inventory facts, not performance measurements. Root free capacity is `
 
 `EXP-073 — Private Ubuntu target resource-contract calibration`, specified in `NEXT_EXPERIMENT.md`.
 
-Stage 1 read-only inventory is complete with zero saved private identifier and no authorized mutation. Authority: `results/exp_073/summary.json`; source `d3b1d2e4dd08e73781c969814cb4d181377a054d`; evidence `5ac87bb`; deterministic core SHA-256 `aa9cae0457a6b92fcb75da35fedc1a2a2a9f3da115808d341a5a498ca4722da2`.
+Stage 1 read-only inventory is complete with zero saved private identifier and no authorized mutation. Authority: `results/exp_073/summary.json`; source `d3b1d2e4dd08e73781c969814cb4d181377a054d`; checkout-stable evidence `4e35afb9648dc0c513c3a90c32d604f4c0b0fd21`; deterministic core SHA-256 `aa9cae0457a6b92fcb75da35fedc1a2a2a9f3da115808d341a5a498ca4722da2`.
 
 Stage 2 is not authorized by Stage 1 success. It remains a separately approved same-machine storage, transfer, and native 4B Q4 baseline measurement. No model download, package installation, service restart, benchmark file allocation, inference, or 405B allocation occurred in Stage 1.
 
