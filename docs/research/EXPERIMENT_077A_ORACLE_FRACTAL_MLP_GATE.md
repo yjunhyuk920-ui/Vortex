@@ -115,6 +115,11 @@ not claim autoregressive generation quality.
 Rounding is downward because the registered fraction is a hard ceiling. On the
 fixed 3,584-channel checkpoint, the 10% arm keeps 358 channels (`9.9888%`).
 
+The CPU reference may right-pad and batch the frozen cases. Only logits before
+each case's trailing padding are scored, and the zero-mismatch control covers
+all 192 registered target decisions. This is an execution optimization; it does
+not change the oracle formula, split, fraction, or Gate.
+
 ## Quality Gate at 10%
 
 Promotion requires all of:

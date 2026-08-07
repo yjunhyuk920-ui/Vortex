@@ -216,30 +216,40 @@ def tokenize_prompt(tokenizer: Any, prompt: str, max_tokens: int = 192) -> Any:
 
 
 class OracleTracker:
-    def __init__(self, fraction: float) -> None:
+    def __init__(self, fraction: float, valid_token_mask: Any) -> None:
         self.fraction = fraction
-        self.selected_channels = 0
-        self.total_channels = 0
-        self.squared_error = 0.0
-        self.squared_target = 0.0
+        self.valid_token_mask = valid_token_mask.to(dtype=__import__("torch").bool)
+        self.batch_size = int(valid_token_mask.shape[0])
+        self.selected_channels = [0] * self.batch_size
+        self.total_channels = [0] * self.batch_size
+        self.squared_error = [0.0] * self.batch_size
+        self.squared_target = [0.0] * self.batch_size
         self.calls = 0
 
     def record(self, *, selected: int, total: int, candidate: Any, target: Any) -> None:
         delta = candidate.float() - target.float()
-        self.selected_channels += selected
-        self.total_channels += total
-        self.squared_error += float(delta.square().sum().item())
-        self.squared_target += float(target.float().square().sum().item())
+        if candidate.ndim != 3 or candidate.shape[:2] != self.valid_token_mask.shape:
+            raise ValueError("oracle tracker batch/sequence shape mismatch")
+        mask = self.valid_token_mask.to(device=candidate.device).unsqueeze(-1)
+        errors = (delta.square() * mask).sum(dim=(1, 2)).tolist()
+        targets = (target.float().square() * mask).sum(dim=(1, 2)).tolist()
+        positions = self.valid_token_mask.sum(dim=1).tolist()
+        for index in range(self.batch_size):
+            self.selected_channels[index] += int(positions[index]) * selected
+            self.total_channels[index] += int(positions[index]) * total
+            self.squared_error[index] += float(errors[index])
+            self.squared_target[index] += float(targets[index])
         self.calls += 1
 
-    def summary(self) -> dict[str, Any]:
+    def case_summary(self, index: int) -> dict[str, Any]:
         return {
             "mlp_calls": self.calls,
-            "selected_channels": self.selected_channels,
-            "total_channels": self.total_channels,
-            "realized_channel_fraction": self.selected_channels / self.total_channels,
+            "selected_channels": self.selected_channels[index],
+            "total_channels": self.total_channels[index],
+            "realized_channel_fraction": self.selected_channels[index]
+            / self.total_channels[index],
             "mlp_relative_l2": math.sqrt(
-                self.squared_error / max(self.squared_target, 1e-30)
+                self.squared_error[index] / max(self.squared_target[index], 1e-30)
             ),
         }
 
@@ -264,10 +274,9 @@ def activation_norm_oracle(target: Any, fraction: float, tracker: OracleTracker)
             candidate = self.down_proj(intermediate.masked_fill(~mask, 0))
             with torch.no_grad():
                 full = self.down_proj(intermediate)
-                positions = intermediate.numel() // intermediate.shape[-1]
                 tracker.record(
-                    selected=positions * _keep,
-                    total=intermediate.numel(),
+                    selected=_keep,
+                    total=int(intermediate.shape[-1]),
                     candidate=candidate,
                     target=full,
                 )
@@ -360,6 +369,7 @@ def main() -> None:
         for split in ("build", "evaluation")
         for row in inputs["prompts"][split]
     ]
+    prepared: list[dict[str, Any]] = []
     for prompt_id in ordered_ids:
         prompt = prompts_by_id[prompt_id]
         trace = traces_by_id[prompt_id]
@@ -375,11 +385,46 @@ def main() -> None:
             ],
             dim=1,
         )
-        with torch.inference_mode():
-            baseline_output = target(input_ids=teacher_input, use_cache=False)
+        prepared.append(
+            {
+                "prompt_id": prompt_id,
+                "prompt": prompt,
+                "continuation": continuation,
+                "prefix_length": int(prefix_ids.shape[1]),
+                "teacher_input": teacher_input[0],
+            }
+        )
+
+    pad_token_id = tokenizer.pad_token_id
+    if pad_token_id is None:
+        pad_token_id = tokenizer.eos_token_id
+    if pad_token_id is None:
+        raise ValueError("tokenizer provides no padding or EOS token")
+    max_teacher_length = max(int(row["teacher_input"].shape[0]) for row in prepared)
+    batch_input = torch.full(
+        (len(prepared), max_teacher_length), int(pad_token_id), dtype=torch.long
+    )
+    attention_mask = torch.zeros_like(batch_input)
+    for index, row in enumerate(prepared):
+        length = int(row["teacher_input"].shape[0])
+        batch_input[index, :length] = row["teacher_input"]
+        attention_mask[index, :length] = 1
+
+    with torch.inference_mode():
+        baseline_output = target(
+            input_ids=batch_input, attention_mask=attention_mask, use_cache=False
+        )
+    baseline_logits_by_id: dict[str, Any] = {}
+    for index, row in enumerate(prepared):
+        prompt_id = row["prompt_id"]
+        prompt = row["prompt"]
+        continuation = row["continuation"]
         baseline_logits = select_prediction_logits(
-            baseline_output.logits, int(prefix_ids.shape[1]), token_count
-        ).detach()
+            baseline_output.logits[index : index + 1],
+            row["prefix_length"],
+            token_count,
+        ).detach().clone()
+        baseline_logits_by_id[prompt_id] = baseline_logits
         baseline_top = [int(value) for value in baseline_logits.argmax(dim=-1).tolist()]
         mismatch_count = sum(
             observed != expected
@@ -391,7 +436,7 @@ def main() -> None:
                 "prompt_id": prompt_id,
                 "split": prompt["split"],
                 "family": prompt["family"],
-                "prefix_token_count": int(prefix_ids.shape[1]),
+                "prefix_token_count": row["prefix_length"],
                 "teacher_token_count": token_count,
                 "registered_target_tokens": continuation,
                 "baseline_top_tokens": baseline_top,
@@ -399,16 +444,27 @@ def main() -> None:
                 "baseline_logits_sha256": logits_sha256(baseline_logits),
             }
         )
-        for fraction in fractions:
-            tracker = OracleTracker(fraction)
-            started = time.perf_counter_ns()
-            with activation_norm_oracle(target, fraction, tracker), torch.inference_mode():
-                candidate_output = target(input_ids=teacher_input, use_cache=False)
-            candidate_logits = select_prediction_logits(
-                candidate_output.logits, int(prefix_ids.shape[1]), token_count
+    del baseline_output
+
+    for fraction in fractions:
+        tracker = OracleTracker(fraction, attention_mask)
+        started = time.perf_counter_ns()
+        with activation_norm_oracle(target, fraction, tracker), torch.inference_mode():
+            candidate_output = target(
+                input_ids=batch_input, attention_mask=attention_mask, use_cache=False
             )
+        batch_wall_ns = time.perf_counter_ns() - started
+        for index, prepared_row in enumerate(prepared):
+            prompt_id = prepared_row["prompt_id"]
+            prompt = prepared_row["prompt"]
+            candidate_logits = select_prediction_logits(
+                candidate_output.logits[index : index + 1],
+                prepared_row["prefix_length"],
+                token_count,
+            )
+            baseline_logits = baseline_logits_by_id[prompt_id]
             comparison = compare_logits(baseline_logits, candidate_logits)
-            tracker_summary = tracker.summary()
+            tracker_summary = tracker.case_summary(index)
             row = {
                 "prompt_id": prompt_id,
                 "split": prompt["split"],
@@ -417,7 +473,7 @@ def main() -> None:
                 **comparison,
                 **tracker_summary,
                 "candidate_logits_sha256": logits_sha256(candidate_logits),
-                "wall_ns": time.perf_counter_ns() - started,
+                "fraction_batch_wall_ns": batch_wall_ns,
             }
             case_rows.append(row)
             line = json.dumps(
