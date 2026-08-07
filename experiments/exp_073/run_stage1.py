@@ -28,6 +28,10 @@ def _json_bytes(value: Any) -> bytes:
     return (json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n").encode("utf-8")
 
 
+def _write_text_lf(path: Path, value: str) -> None:
+    path.write_bytes(value.encode("utf-8"))
+
+
 def _sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -110,7 +114,8 @@ def _write_bundle(
     (output_dir / "processed" / "validation.json").write_bytes(
         _json_bytes({"validation_failures": validation_failures, "private_identifier_scan": "PASS"})
     )
-    (output_dir / "logs" / "run.log").write_text(
+    _write_text_lf(
+        output_dir / "logs" / "run.log",
         "\n".join(
             [
                 f"collection_mode={collection_mode}",
@@ -122,13 +127,12 @@ def _write_bundle(
             ]
         )
         + "\n",
-        encoding="utf-8",
     )
     (output_dir / "summary.json").write_bytes(_json_bytes(summary))
 
     checksum_paths = sorted(path for path in output_dir.rglob("*") if path.is_file())
     checksum_text = "".join(f"{_sha256_file(path)}  {path.relative_to(output_dir).as_posix()}\n" for path in checksum_paths)
-    (output_dir / "checksums.sha256").write_text(checksum_text, encoding="utf-8", newline="\n")
+    _write_text_lf(output_dir / "checksums.sha256", checksum_text)
     return summary
 
 

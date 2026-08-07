@@ -15,6 +15,7 @@ from vortex_runtime.target_inventory import (
     sha256_json,
     validate_required_fields,
 )
+from experiments.exp_073.run_stage1 import _write_text_lf
 
 
 FIXTURE = Path(__file__).parent / "fixtures" / "valid_wire.txt"
@@ -129,3 +130,9 @@ def test_nonzero_ssh_status_is_exposed_without_stderr_content() -> None:
     assert collected.returncode == 255
     assert collected.stderr_present is True
     assert collected.stdout == ""
+
+
+def test_evidence_text_writer_is_lf_only(tmp_path: Path) -> None:
+    output = tmp_path / "evidence.txt"
+    _write_text_lf(output, "first\nsecond\n")
+    assert output.read_bytes() == b"first\nsecond\n"
