@@ -1,0 +1,97 @@
+{
+  "DERIVED": {
+    "checkpoint_surface_pass": true,
+    "decision": "PROMOTE_TO_PINNED_QWEN35_08B_ACCEPTED_PREFIX_GATE",
+    "declared_weight_bytes": 1746882752,
+    "declared_weight_gib": 1.6269113421440125,
+    "mtp_num_hidden_layers": 1,
+    "runtime_surface_pass": true,
+    "selected_next_model": "Qwen/Qwen3.5-0.8B",
+    "selected_next_revision": "2fc06364715b967f1860aea9cf38778875588b17"
+  },
+  "MEASURED": {
+    "control_count": 5,
+    "control_failures": 0,
+    "deterministic_core_sha256": "2515bb53a0e2967cfd23e15d18720142337c7d25dc658db057e86e1aa45b5674",
+    "elapsed_ns": 3360987700,
+    "mtp_tensor_count": 15,
+    "peak_traced_bytes": 901960,
+    "runtime_file_count": 3,
+    "source_bytes": 255779,
+    "source_count": 6
+  },
+  "REGISTERED_EXTERNAL_INPUTS": {
+    "checkpoint": {
+      "expected_architecture": "Qwen3_5ForConditionalGeneration",
+      "expected_mtp_hidden_layers": 1,
+      "expected_mtp_tensor_keys": [
+        "mtp.fc.weight",
+        "mtp.layers.0.input_layernorm.weight",
+        "mtp.layers.0.mlp.down_proj.weight",
+        "mtp.layers.0.mlp.gate_proj.weight",
+        "mtp.layers.0.mlp.up_proj.weight",
+        "mtp.layers.0.post_attention_layernorm.weight",
+        "mtp.layers.0.self_attn.k_norm.weight",
+        "mtp.layers.0.self_attn.k_proj.weight",
+        "mtp.layers.0.self_attn.o_proj.weight",
+        "mtp.layers.0.self_attn.q_norm.weight",
+        "mtp.layers.0.self_attn.q_proj.weight",
+        "mtp.layers.0.self_attn.v_proj.weight",
+        "mtp.norm.weight",
+        "mtp.pre_fc_norm_embedding.weight",
+        "mtp.pre_fc_norm_hidden.weight"
+      ],
+      "expected_text_model_type": "qwen3_5_text",
+      "model_id": "Qwen/Qwen3.5-0.8B",
+      "required_model_card_markers": [
+        "MTP: trained with multi-steps",
+        "--speculative-algo NEXTN",
+        "--speculative-num-draft-tokens 4",
+        "qwen3_next_mtp",
+        "num_speculative_tokens\":2"
+      ],
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17"
+    },
+    "runtime": {
+      "repository": "vllm-project/vllm",
+      "revision": "a07086e4032e66aacae60ac2fc01e738096e9569"
+    }
+  },
+  "UNVERIFIED": [
+    "MTP proposal token correctness or acceptance distribution",
+    "causal accepted-prefix p50 and p95",
+    "more-than-one-step recursive MTP usefulness",
+    "quantized checkpoint preservation of all MTP tensors",
+    "runtime execution on the local or target GPU",
+    "Gated DeltaNet rollback and rejection-state correctness",
+    "proposal LM-head verification fallback compute and memory traffic",
+    "physical latency VRAM RAM SSD PCIe H2D power and thermal behavior",
+    "expert route locality on 35B 122B or any MoE checkpoint",
+    "transfer to arbitrary dense 405B checkpoints",
+    "E2 through E7"
+  ],
+  "authoritative_decision": "PROMOTE_TO_PINNED_QWEN35_08B_ACCEPTED_PREFIX_GATE",
+  "claim_boundary": {
+    "checkpoint_metadata": "MTP_TENSORS_INDEXED_AT_PINNED_OFFICIAL_REVISION",
+    "dense_405b": "NOT_VALIDATED_BY_QWEN_SPECIFIC_SURFACE",
+    "model_execution": "NOT_PERFORMED",
+    "quantization_path": "NOT_VALIDATED",
+    "target_server": "NO_COMMAND_EXECUTED",
+    "vllm_source": "STATIC_MAPPING_AND_LOADER_SURFACE_PRESENT_AT_PINNED_REVISION",
+    "weight_payload_download": "NOT_PERFORMED"
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-075",
+  "name": "native_mtp_checkpoint_and_runtime_surface_audit",
+  "phase": [
+    "A",
+    "B-static-public-metadata"
+  ],
+  "provenance": {
+    "config_sha256": "8f7824e18f9819f5bac1ed18dd1e0dbab6544883935f1775bce13627b8f2a637",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.13",
+    "source_commit": "f85ac583a129070247992987d1b3c63634e6447f",
+    "source_mode": "network-pinned"
+  }
+}

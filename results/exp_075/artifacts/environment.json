@@ -1,0 +1,7 @@
+{
+  "config_sha256": "8f7824e18f9819f5bac1ed18dd1e0dbab6544883935f1775bce13627b8f2a637",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.13",
+  "source_commit": "f85ac583a129070247992987d1b3c63634e6447f",
+  "source_mode": "network-pinned"
+}

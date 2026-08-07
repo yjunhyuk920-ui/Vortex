@@ -1,0 +1,1 @@
+Phase A/B static public-metadata audit, E1. No safetensors payload, model execution, proposal token, acceptance measurement, quantized-path validation, server command, CUDA, latency, or 405B result is produced.

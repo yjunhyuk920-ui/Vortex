@@ -9,3 +9,5 @@ experiments/exp_074/** text eol=lf
 # EXP-075 metadata evidence and runners are checksum-stable across checkouts.
 results/exp_075/** text eol=lf
 experiments/exp_075/** text eol=lf
+# Preserve pinned upstream source bytes while suppressing whitespace diagnostics.
+results/exp_075/raw/sources/** -diff text eol=lf
