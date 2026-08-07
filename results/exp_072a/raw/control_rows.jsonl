@@ -1,0 +1,6 @@
+{"control": "finite_domain_basis_injectivity", "domain_count": 2, "passed": true}
+{"control": "variable_length_capacity_boundary", "domain_count": 2, "passed": true}
+{"control": "one_coefficient_mutation_changes_exact_map", "passed": true}
+{"control": "structured_zero_map_is_individually_compact_only", "passed": true, "promotion_effect": "NONE_UNIVERSAL_POPULATION_BOUND_UNCHANGED"}
+{"control": "q4_config_information_width", "passed": true, "registered_bits_per_coefficient": 4}
+{"control": "deterministic_core_hash_rerun", "passed": true, "sha256": "112f0490e9e21efc8df3da04f71d92adacba4c493d2eae07d94dbf0960ac8c66"}

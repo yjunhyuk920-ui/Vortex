@@ -1,0 +1,1 @@
+Phase A/B information-capacity and finite-domain reference evidence only; per-instance real-weight compressibility, online cold-data probes, physical traffic, Transformer operation replacement, 405B execution, 8 GiB GPU behavior, CUDA, PCIe, SSD, TTFT and tokens/sec are not tested
