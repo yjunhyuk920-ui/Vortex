@@ -1,0 +1,8 @@
+{"columns": 16384, "count": 126, "family": "q_proj", "parameters": 33822867456, "rows": 16384}
+{"columns": 16384, "count": 126, "family": "k_proj", "parameters": 2113929216, "rows": 1024}
+{"columns": 16384, "count": 126, "family": "v_proj", "parameters": 2113929216, "rows": 1024}
+{"columns": 16384, "count": 126, "family": "o_proj", "parameters": 33822867456, "rows": 16384}
+{"columns": 16384, "count": 126, "family": "gate_proj", "parameters": 109924319232, "rows": 53248}
+{"columns": 16384, "count": 126, "family": "up_proj", "parameters": 109924319232, "rows": 53248}
+{"columns": 53248, "count": 126, "family": "down_proj", "parameters": 109924319232, "rows": 16384}
+{"columns": 16384, "count": 1, "family": "lm_head", "parameters": 2101346304, "rows": 128256}

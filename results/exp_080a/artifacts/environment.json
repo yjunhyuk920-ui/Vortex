@@ -1,0 +1,6 @@
+{
+  "config_sha256": "97f02f4f16cf5befb498cc7d34ed1c837b3ad10b2fee9a4fa408936a4cb4f985",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.13",
+  "source_commit": "7f1c66125a844f5366e2b88f0aaa07b089dc0378"
+}
