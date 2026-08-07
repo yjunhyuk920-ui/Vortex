@@ -683,7 +683,8 @@ Decision:
 REJECT_DCT_BLOCK_ZONOTOPE_CAUSAL_PROOF_PATH
 ```
 
-Authority: `results/exp_079a/summary.json`; source `e0c661e`; deterministic core
+Authority: `results/exp_079a/summary.json`; source `e0c661e`; evidence
+`38bfd6c`; deterministic core
 `c8d794bea8f17b31e40b9f667836d2198ce80137e23080260f81ea6866112eeb`.
 
 ## Next research Gate -- residual information, not another fixed pilot

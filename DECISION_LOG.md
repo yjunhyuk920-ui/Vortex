@@ -539,3 +539,7 @@ rename its enclosure.
 
 Status: SCIENTIFIC REJECTION AT E1; CONTROL/BUDGET PASS; NO PHASE D/E2-E7 OR
 DENSE-405B EXECUTION EVIDENCE.
+
+Authority: `results/exp_079a/summary.json`; source `e0c661e`; evidence
+`38bfd6c`; core
+`c8d794bea8f17b31e40b9f667836d2198ce80137e23080260f81ea6866112eeb`.

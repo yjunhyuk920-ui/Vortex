@@ -518,3 +518,7 @@ This closes the registered fixed pilot and row-block L2 enclosure, not every
 cold-backed proof system. No core candidate survives. No target server, model
 download, physical Q4/CUDA/8 GiB/speed run, 122B/405B execution, or E2-E7
 evidence was produced.
+
+Authority: `results/exp_079a/summary.json`; source `e0c661e`; evidence
+`38bfd6c`; deterministic core
+`c8d794bea8f17b31e40b9f667836d2198ce80137e23080260f81ea6866112eeb`.

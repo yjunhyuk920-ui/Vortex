@@ -28,4 +28,4 @@ down projection fit the logical budget, but held-out top-1 was only 6/144
 (`4.1667%`), mean/p95 KL was `7.544862/12.616226`, and the separately optimized
 minimum sound-radius p50/p95 was `48.663918x/57.778748x` the exact MLP-output
 signal. Even the p95 allowance reached only 14/144 top-1. Authority is
-`results/exp_079a/summary.json`; source `e0c661e`; evidence commit pending.
+`results/exp_079a/summary.json`; source `e0c661e`; evidence `38bfd6c`.

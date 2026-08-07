@@ -4,7 +4,8 @@
 
 Complete. The authoritative E1 result rejects the registered DCT pilot plus
 row-block block-zonotope path. Source commit
-`e0c661eb5fe39a6835262567d75d388c4fc66c43`; evidence commit pending.
+`e0c661eb5fe39a6835262567d75d388c4fc66c43`; evidence commit
+`38bfd6c6277426bdf8f8e43593482125a0f776bd`.
 
 ## Question
 

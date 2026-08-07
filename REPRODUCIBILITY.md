@@ -518,7 +518,7 @@ scientific result or expected decision is recorded before the source commit.
 ```text
 results/exp_079a/summary.json
 source commit       e0c661eb5fe39a6835262567d75d388c4fc66c43
-evidence commit     PENDING
+evidence commit     38bfd6c6277426bdf8f8e43593482125a0f776bd
 config SHA-256      fc6add8c0e230bd542f02a06d750acac10402a703d317ab65a3977305b7d3996
 prompt SHA-256      46c9779c24e59f356247145f7ef870a1b82ba4907eb9dffcd48652e519f7612a
 trace SHA-256       1e921698ce8ee522c0d3cb9b8b9004139beb54cc2dee82e1a2aa0a08fa245e4f
