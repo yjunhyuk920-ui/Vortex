@@ -1,0 +1,28 @@
+platform.os_pretty_name	Ubuntu 22.04.5 LTS
+platform.kernel_release	5.15.0-130-generic
+platform.machine_architecture	x86_64
+cpu.model_name	Example 8-Core CPU
+cpu.logical_cpu_count	16
+memory.total_bytes	34359738368
+memory.available_bytes	21474836480
+gpu.count	1
+gpu.models	NVIDIA Example GPU
+gpu.driver_versions	535.183.01
+gpu.cuda_driver_api_versions	12.2
+gpu.compute_capabilities	5.2
+gpu.total_vram_mib	8192
+gpu.free_vram_mib	7600
+gpu.pcie_current_generation	3
+gpu.pcie_current_width	16
+gpu.pcie_max_generation	3
+gpu.pcie_max_width	16
+storage.root_row	ext4|999653638144|751619276800
+storage.block_rows	0,1000204886016,disk,sata;1,2000398934016,disk,usb;
+runtimes.python3_version	Python 3.10.12
+runtimes.ollama_version	ollama version is 0.11.4
+runtimes.fio_version	fio-3.28
+runtimes.nvcc_version	Cuda compilation tools, release 12.2, V12.2.140
+runtimes.ollama_service_state	active
+telemetry.gpu_power_available	true
+telemetry.gpu_temperature_available	true
+telemetry.gpu_clock_available	true

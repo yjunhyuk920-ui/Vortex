@@ -72,6 +72,7 @@ memory.available_bytes
 gpu.count
 gpu.models
 gpu.driver_versions
+gpu.cuda_driver_api_versions
 gpu.compute_capabilities
 gpu.total_vram_mib
 gpu.free_vram_mib
