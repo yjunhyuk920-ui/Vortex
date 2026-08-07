@@ -1,7 +1,7 @@
 # Preregister the Cheapest Surviving Gate
 
 Type: task
-Status: open
+Status: claimed
 Blocked by: none
 
 ## Question
