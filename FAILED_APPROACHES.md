@@ -288,4 +288,7 @@ recursive Strassen Hyperblock core, and nonlinear lookup/tiny residual-syndrome
 path, in addition to the EXP-066--076 families. F-048 additionally closes an
 output-head-only certificate and proof-carrying execution with no charged local
 trace source; it does not close verification as an auxiliary.
+F-049 closes exact terminal-only row/column Hamming spanning trees by a
+certified favorable lower bound; it does not by itself close arbitrary
+synthetic-intermediate linear circuits.
 Read that continuation and each scope boundary before reopening a family.

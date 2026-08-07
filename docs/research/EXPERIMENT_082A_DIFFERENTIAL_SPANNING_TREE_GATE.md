@@ -1,6 +1,6 @@
 # EXP-082A -- Exact Differential Spanning-Tree MatVec Gate
 
-Status: E0 candidate admitted for preregistration. No result exists yet.
+Status: COMPLETE AT E1; REJECTED BY THE PREREGISTERED CERTIFIED LOWER BOUND.
 
 ## Question
 
@@ -154,3 +154,56 @@ observation, ceiling E1. Physical operation replacement, BF16/Q4 output
 equivalence, 8 GiB allocation, target-server bandwidth/latency, 122B/405B, and
 E2-E7 remain `NOT TESTED`.
 
+## Authoritative result
+
+All 72 synthetic/reference controls passed. In every control, the registered
+exact-block nearest-neighbor bound was nonnegative and no greater than the
+quadratic exact Hamming MST reference for both orientations.
+
+The clean source run inspected all 21 registered Qwen3.5-0.8B Q4 projection
+matrices. For each matrix it granted the lower of the row-tree and column-tree
+bounds. The population result was:
+
+```text
+matrices                                      21
+dense coefficients                   55,050,240
+selected MST coefficient lower bound     860,087
+weighted lower-bound fraction          1.562367394%
+registered p50 target                   1.185185185%
+gap to target                              1.318247x
+matrix p50 / p90                   1.562935965% / 1.564025879%
+matrix minimum / maximum           1.549720764% / 1.564025879%
+family weighted range              1.559003194% / 1.564025879%
+```
+
+This is a lower bound, not the cost of a constructed tree. It assumes only one
+coefficient operation for each differing 32-value block even if all 32 values
+differ. It charges zero for coordinate indices, delta values, parent pointers,
+tree traversal, activation reads, output writes, scales, build, verification,
+fallback, storage, and physical transfer. Since coefficient work alone exceeds
+the final allowance, every exact row or column Hamming MST fails the registered
+Gate before those positive costs.
+
+Decision:
+
+```text
+REJECT_DIFFERENTIAL_SPANNING_TREE_FROM_CERTIFIED_LOWER_BOUND
+```
+
+Per the stop rule, Stage 2 was not run. No exact model-scale MST, sparse-delta
+executor, kernel, larger checkpoint, or target-hardware measurement was built.
+
+## Authority
+
+```text
+results/exp_082a/summary.json
+source commit       2caaba054d53ab81d8bdc2fc83aaa7f8241b0e4c
+evidence commit     5a7c7c1518333fa75c0934f0e3303a20dca72d17
+config SHA-256      34a0b9ba00d5b5ac4f305c0aea1bbaf1f04ad28fabb0d1a43089fdd352514cbe
+summary SHA-256     649f04b7ac5eb3f762c9fd50fd42efc02dd09a544b6345020957f41aace0ea27
+core SHA-256        8bf5d1f28ddf0fb53d07f3bdbc9e46e958b0375f4a53318b3c19b87e438a7a87
+workflow/artifact   NOT RUN
+```
+
+An independent run from the evidence commit reproduced the decision, core
+hash, and the control, matrix, and aggregate payloads byte for byte.

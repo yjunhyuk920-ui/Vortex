@@ -476,3 +476,15 @@ certified lower-bound analyzer; rejection removes the component before tree
 construction. A pass would still require exact reconstruction, direct MatVec
 equality, metadata/traffic/storage accounting, build amortization, and later
 Q4 output-contract validation before architecture admission.
+
+### EXP-082A closure
+
+The analyzer rejected the provisional component: its favorable terminal-tree
+coefficient lower bound is `1.562367394%`, already above the final budget.
+Therefore no differential tree compiler, delta store, traversal executor, or
+hardware path enters the architecture.
+
+An architecture with synthetic intermediate coefficient vectors would be a
+different exact linear circuit rather than this terminal MST. It remains only
+an E0 question and must first prove that it does not restate the already closed
+exact dictionary/DAG/circuit mechanisms.

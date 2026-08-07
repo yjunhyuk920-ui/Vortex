@@ -685,3 +685,31 @@ the preregistration commit. The runner must freeze exact block IDs, both
 orientation bounds, per-matrix/family aggregates, controls, environment, logs,
 checksums, and an infrastructure/scientific decision separation before any
 result is interpreted.
+
+## EXP-082A authoritative reproduction
+
+```text
+source commit        2caaba054d53ab81d8bdc2fc83aaa7f8241b0e4c
+evidence commit      5a7c7c1518333fa75c0934f0e3303a20dca72d17
+config SHA-256       34a0b9ba00d5b5ac4f305c0aea1bbaf1f04ad28fabb0d1a43089fdd352514cbe
+weight SHA-256       04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696
+summary SHA-256      649f04b7ac5eb3f762c9fd50fd42efc02dd09a544b6345020957f41aace0ea27
+deterministic core   8bf5d1f28ddf0fb53d07f3bdbc9e46e958b0375f4a53318b3c19b87e438a7a87
+decision             REJECT_DIFFERENTIAL_SPANNING_TREE_FROM_CERTIFIED_LOWER_BOUND
+```
+
+Canonical command from the source commit:
+
+```powershell
+$env:PYTHONPATH = "repo;.deps"
+.deps\exp076-venv\Scripts\python.exe experiments\exp_082a\run_experiment.py --output-dir results\exp_082a
+```
+
+An independent output directory under ignored `.deps` reproduced the decision
+and deterministic core. `control_rows.jsonl`, `matrix_rows.jsonl`, and
+`aggregate.json` were byte-identical to committed evidence with SHA-256 values
+`af8cba996ddb3c06b0229a366223496fd52c4edf63a8472c5e9b9b8e4615e3c6`,
+`219c317e6cb64b3559d33975e2181ea9ad186f7593ad78692f2e358a97dc3553`, and
+`d382b59daed0ae5e1aa15e33e91614232bb56e014c1584818bf9ffcdc0bd4d4b`.
+The run used the existing local pinned payload only; no server or download was
+used.

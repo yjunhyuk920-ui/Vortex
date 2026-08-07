@@ -656,3 +656,32 @@ before MST, runtime, kernel, larger model, or hardware work.
 
 Status: E0 PREREGISTERED; NO RESULT, CORE PROMOTION, OPERATION REPLACEMENT,
 TARGET-SERVER ACTION, PHASE D, OR E2-E7 EVIDENCE.
+
+## EXP-082A authoritative closure -- differential trees fail before construction
+
+The preregistered Stage-1 lower bound was executed on 21 pinned Qwen3.5-0.8B
+Q4 projections from layers 3, 11, and 23. All 72 exact controls passed. Even
+after granting one operation for every differing 32-coefficient block, free
+tree metadata, free delta values, free activation access, free construction,
+and the better of row and column orientations, the weighted coefficient lower
+bound was:
+
+```text
+certified lower bound       860,087 / 55,050,240 = 1.562367394%
+registered final target                            1.185185185%
+gap                                                1.318247489x
+p50 / p90 matrix bounds                            1.562935965% / 1.564025879%
+```
+
+This is a lower bound on every exact terminal-only Hamming spanning tree, not
+the cost of one unlucky tree. Stage 2 therefore stopped as preregistered.
+
+Decision:
+
+```text
+REJECT_DIFFERENTIAL_SPANNING_TREE_FROM_CERTIFIED_LOWER_BOUND
+```
+
+No exact tree compiler/runtime, CUDA kernel, larger model, or target server was
+run. E1 structural evidence only; no core candidate survives and Phase D/E2-E7
+remain not achieved.

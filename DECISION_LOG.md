@@ -678,3 +678,22 @@ PREREGISTER_EXP_082A_DIFFERENTIAL_SPANNING_TREE_GATE
 Only the exact block-pattern MST lower bound is initially authorized. If
 coefficient work alone exceeds the final fraction, stop before constructing a
 tree or runtime. Status: E0 PREREGISTERED; NO RESULT OR CORE PROMOTION.
+
+## D-074 -- Reject exact row/column differential spanning trees
+
+EXP-082A evaluated the preregistered collision-free block-pattern lower bound
+on 21 pinned Q4 matrices. The best-orientation weighted coefficient lower bound
+was `1.562367394%`, or `1.318247489x` the `1.185185185%` target, before all
+positive runtime and storage costs. Seventy-two exact small-matrix controls
+passed, and independent replay matched the deterministic artifacts.
+
+Decision:
+
+```text
+REJECT_DIFFERENTIAL_SPANNING_TREE_FROM_CERTIFIED_LOWER_BOUND
+```
+
+Per the frozen stop rule, do not construct or benchmark a terminal-only tree.
+Synthetic-intermediate circuits are not rejected by this result, but receive
+no experiment number until an E0 novelty audit distinguishes them from the
+closed exact circuit/DAG families.

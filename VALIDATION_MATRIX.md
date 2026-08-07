@@ -414,3 +414,18 @@ D and E2-E7 remain not achieved.
 
 Current classification: EXP-082A passed E0 novelty/upside triage only. No core
 mechanism is promoted until the registered lower-bound Gate survives.
+
+## EXP-082A authoritative validation
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Block-pattern distance never exceeds coefficient Hamming distance | 72 exact controls, zero failures | PASS at E1 |
+| Nearest-neighbor sum/2 lower-bounds exact terminal MST | proof plus exact Prim controls | PASS at E1 |
+| Weighted favorable lower bound <= `1.185185185%` | `1.562367394%` over 21 matrices | FAIL, `1.318247489x` target |
+| Result is isolated to one family or matrix | p50/p90 `1.562935965%/1.564025879%`; family range `1.559003194%`-`1.564025879%` | NO |
+| Independent deterministic replay | decision/core and three tabular payloads byte-identical | PASS |
+| Exact tree/runtime, BF16/Q4 outputs, CUDA, 122B/405B | stopped before Stage 2 | NOT TESTED |
+
+Current classification: terminal-only exact row/column Hamming spanning trees
+are rejected by a favorable certified coefficient-work lower bound. No core is
+promoted; Phase D and E2-E7 remain not achieved.

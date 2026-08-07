@@ -215,3 +215,20 @@ commitment, GKR/SNARK packaging, or an uncharged claimed trace. Revisit only
 when an independently specified causal local generator produces the exact
 trace inside the final budget; that generator, not the proof, is the core
 invention. Exact correlated output-head indexing remains auxiliary.
+
+## F-049 -- Exact terminal-only row/column Hamming spanning trees
+
+EXP-082A granted the cheaper of row and column trees and certified their cost
+without constructing either one. On 21 pinned Q4 projections, even the very
+favorable one-operation-per-different-32-value-block lower bound was
+`1.562367394%`, exceeding the final `1.185185185%` allowance by `1.318247489x`.
+Every omitted metadata, delta-value, activation, tree-build, traffic, and
+fallback term is nonnegative. All 72 exact controls passed.
+
+Do not reopen with block size, layer/family selection, a different MST
+algorithm, quantizer, traversal order, sparse kernel, or isolated favorable
+matrix. Those cannot reduce the certified whole-population lower bound below
+itself. Revisit only with a mechanism that invalidates the terminal-only tree
+model, such as useful synthetic intermediate vectors, and only after proving
+novelty against EXP-053/054/072 and fully charging discovery, circuit edges,
+intermediate state, traffic, storage, build, and fallback.

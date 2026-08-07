@@ -369,3 +369,12 @@ it may not run CUDA, allocate a physical 8 GiB tree sidecar, benchmark SSD/H2D,
 contact the Ubuntu host, or download 35B/122B/405B. Hardware work remains gated
 behind exact-tree, fully charged logical, output-contract, and operation-
 replacement passes. Phase D/E4-E7 remain `NOT TESTED`.
+
+### EXP-082A closure
+
+The pinned CPU structural Gate returned a `1.562367394%` favorable coefficient
+lower bound versus the `1.185185185%` target. The preregistered stop rule fired
+before tree construction. No CUDA, GPU allocation, physical VRAM/bandwidth,
+SSD/H2D, Ubuntu server, larger checkpoint, or 122B/405B action occurred.
+Hardware validation is not authorized for this rejected mechanism; Phase D and
+E4-E7 remain `NOT TESTED`.

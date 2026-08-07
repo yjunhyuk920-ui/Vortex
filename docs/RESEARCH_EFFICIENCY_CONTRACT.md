@@ -331,3 +331,19 @@ oracle choosing the minimum cold page set. If that favorable population/family
 page fraction cannot approach `1.185185%` after interval state, selector,
 verification, and fallback, reject the family without building interval
 propagation, a runtime, or a kernel.
+
+## Current directive after EXP-082A
+
+EXP-082A closes exact terminal-only row/column Hamming spanning trees. Their
+certified favorable coefficient lower bound is `1.562367394%`, above the final
+`1.185185185%` budget before every positive systems cost. Do not build the MST,
+sweep its hyperparameters, optimize a delta runtime, download a larger model,
+or run hardware for this family.
+
+No core candidate is promoted. The only adjacent question not logically
+closed by this certificate is an exact circuit with useful synthetic
+intermediate coefficient vectors. Keep it at E0 until (1) a novelty audit
+separates it from EXP-053/054/072, (2) a causal compiler is specified without
+uncharged dense discovery, and (3) edge work, intermediate state, traffic,
+storage, build, verification, and fallback all fit a favorable target equation.
+Do not assign a new experiment number merely to rename a closed circuit family.

@@ -483,3 +483,12 @@ bound already fails.
 
 Status: ACTIVE AND UNVERIFIED FOR EXP-082A E1. NO SMALL-CHECKPOINT RESULT,
 PHYSICAL EXECUTION, LARGE-MODEL SCALING, OR E2-E7 EVIDENCE.
+
+Closure: REJECTED AT E1. The exact 32-coefficient block certificate gave a
+weighted best-orientation coefficient lower bound of `1.562367394%` on 21
+pinned Q4 projections, already above the `1.185185185%` final allowance while
+granting free metadata, values, activations, construction, and traffic. The
+assumption that a terminal-only row/column differential tree can meet the
+target is contradicted for the measured checkpoint Gate. This does not assert
+a universal lower bound for arbitrary synthetic-intermediate circuits or for
+all possible models; those require a distinct assumption and Gate.

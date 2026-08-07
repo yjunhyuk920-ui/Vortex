@@ -848,3 +848,30 @@ construction and fully charged sparse-delta storage/traffic accounting.
 
 Contract: `docs/research/EXPERIMENT_082A_DIFFERENTIAL_SPANNING_TREE_GATE.md`.
 Status: E0 PREREGISTERED; NO RESULT EXISTS.
+
+## EXP-082A closed -- do not construct the tree
+
+The clean E1 run rejected the family at the cheapest registered Gate. Across
+21 real Q4 projections, the favorable weighted lower bound was `1.562367394%`
+against `1.185185185%`; p50/p90 were `1.562935965%/1.564025879%`. All 72 exact
+controls passed and an independent replay reproduced the decision, core hash,
+and tabular payloads byte for byte.
+
+Do not spend the remaining research budget on an exact MST, block-size sweep,
+tree heuristic, runtime, CUDA, larger checkpoint, or hardware measurement.
+
+## Next admissible frontier -- synthetic-intermediate exact circuits, E0 only
+
+No experiment number is promoted yet. A terminal-only tree is now closed, but
+an exact network containing synthetic coefficient vectors not present as rows
+or columns is not logically closed by the same nearest-terminal bound. The
+generic metric relation only turns this result into a favorable Steiner lower
+bound of `0.781183697%`, below the final target, so it does not prove rejection.
+
+Before preregistration, an E0 note must determine whether such a network is
+actually new relative to EXP-053/054/072's exact DAG, dictionary, and circuit
+families. It must specify a causal compiler that discovers useful synthetic
+nodes without charging dense work, and account for every edge delta, synthetic
+activation, metadata byte, build cost, and fallback. Without both novelty and
+a favorable fully charged equation, the correct state remains
+`NO_SURVIVING_CANDIDATE`.
