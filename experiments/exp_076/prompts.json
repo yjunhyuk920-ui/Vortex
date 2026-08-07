@@ -1,0 +1,126 @@
+{
+  "build": [
+    {
+      "id": "build_english_01",
+      "family": "english",
+      "prompt": "Explain in three short sentences why the sky appears blue during the day."
+    },
+    {
+      "id": "build_korean_01",
+      "family": "korean",
+      "prompt": "대한민국의 사계절을 초등학생도 이해할 수 있게 세 문장으로 설명해줘."
+    },
+    {
+      "id": "build_code_01",
+      "family": "code",
+      "prompt": "Write a Python function that returns the first non-repeated character in a string. Include one example."
+    },
+    {
+      "id": "build_json_01",
+      "family": "structured_json",
+      "prompt": "Return only valid JSON with keys name, prime_numbers, and active. Use the name alpha, the first four primes, and true."
+    },
+    {
+      "id": "build_math_01",
+      "family": "math",
+      "prompt": "Solve 3x + 7 = 31. Show each algebraic step and then give the value of x."
+    },
+    {
+      "id": "build_adversarial_01",
+      "family": "adversarial_low_acceptance",
+      "prompt": "Continue this exact alternating pattern for 20 items, without explanation: A1, z9, A2, z8, A3, z7,"
+    }
+  ],
+  "evaluation": [
+    {
+      "id": "eval_english_01",
+      "family": "english",
+      "prompt": "Give a concise explanation of how a refrigerator moves heat from inside the cabinet to the room."
+    },
+    {
+      "id": "eval_english_02",
+      "family": "english",
+      "prompt": "Write a polite email declining a meeting because of a scheduling conflict and propose two alternatives."
+    },
+    {
+      "id": "eval_english_03",
+      "family": "english",
+      "prompt": "Compare a queue and a stack using one everyday analogy for each."
+    },
+    {
+      "id": "eval_korean_01",
+      "family": "korean",
+      "prompt": "비가 온 뒤 무지개가 생기는 원리를 과학 용어를 최소화해서 설명해줘."
+    },
+    {
+      "id": "eval_korean_02",
+      "family": "korean",
+      "prompt": "팀 프로젝트 일정이 늦어진 상황에서 동료에게 보낼 정중한 확인 메시지를 작성해줘."
+    },
+    {
+      "id": "eval_korean_03",
+      "family": "korean",
+      "prompt": "자료구조에서 스택과 큐의 차이를 간단한 예시와 함께 설명해줘."
+    },
+    {
+      "id": "eval_code_01",
+      "family": "code",
+      "prompt": "Implement a JavaScript function that groups an array of objects by a specified property. Return code only."
+    },
+    {
+      "id": "eval_code_02",
+      "family": "code",
+      "prompt": "Write a Python generator that yields Fibonacci numbers not exceeding a supplied limit. Add type hints."
+    },
+    {
+      "id": "eval_code_03",
+      "family": "code",
+      "prompt": "Fix the bug and explain it briefly: def average(xs): return sum(xs) / len(xs)"
+    },
+    {
+      "id": "eval_json_01",
+      "family": "structured_json",
+      "prompt": "Return only valid JSON describing two books. Each item must contain title, year, and tags, and the root key must be books."
+    },
+    {
+      "id": "eval_json_02",
+      "family": "structured_json",
+      "prompt": "Output only a JSON object with status set to ok, count set to 3, and values set to [2, 4, 8]."
+    },
+    {
+      "id": "eval_json_03",
+      "family": "structured_json",
+      "prompt": "Return only valid JSON for a weekly schedule with monday and tuesday arrays, each containing two short tasks."
+    },
+    {
+      "id": "eval_math_01",
+      "family": "math",
+      "prompt": "A rectangle has perimeter 54 cm and length 16 cm. Find its width and area, showing the calculation."
+    },
+    {
+      "id": "eval_math_02",
+      "family": "math",
+      "prompt": "Compute the sum of the first 20 positive odd integers and explain the pattern used."
+    },
+    {
+      "id": "eval_math_03",
+      "family": "math",
+      "prompt": "If a price rises by 15 percent and then falls by 15 percent, determine the net percentage change."
+    },
+    {
+      "id": "eval_adversarial_01",
+      "family": "adversarial_low_acceptance",
+      "prompt": "Continue with exactly 24 comma-separated items and no explanation: red7, BLUE2, red6, BLUE3, red5, BLUE4,"
+    },
+    {
+      "id": "eval_adversarial_02",
+      "family": "adversarial_low_acceptance",
+      "prompt": "Repeat the following tokens in reverse order, preserving case and punctuation exactly: qZ7! | aa_2 | K-09 | beta? | Xx"
+    },
+    {
+      "id": "eval_adversarial_03",
+      "family": "adversarial_low_acceptance",
+      "prompt": "Start in Korean, switch to English after five words, then output the hexadecimal numbers from 0x1F down to 0x10 with no omissions."
+    }
+  ]
+}
