@@ -128,3 +128,39 @@ Required interpretation:
 
 > Structurally valid conditions were established. Large-model performance
 > remains unverified.
+
+## Authoritative result
+
+The pinned network audit fetched six bounded UTF-8 metadata/source files totaling
+`255,779` bytes. No URL addressed a safetensors payload.
+
+Measured static surface:
+
+```text
+checkpoint MTP tensors indexed                 15 / 15
+checkpoint mtp_num_hidden_layers                     1
+vLLM source files audited                       3 / 3
+registered controls                             5 / 5
+control failures                                    0
+declared complete checkpoint bytes      1,746,882,752
+```
+
+Both checkpoint and runtime source Gates passed. The declared checkpoint size
+is `1.6269113421 GiB`; this is index metadata, not a downloaded byte count.
+
+Decision:
+
+```text
+PROMOTE_TO_PINNED_QWEN35_08B_ACCEPTED_PREFIX_GATE
+```
+
+Authority: `results/exp_075/summary.json`; preregistration/source commit
+`f85ac583a129070247992987d1b3c63634e6447f`; evidence commit
+`2fcf7315cf9da491a5ca361536eb0f07e325e74c`; deterministic core SHA-256
+`2515bb53a0e2967cfd23e15d18720142337c7d25dc658db057e86e1aa45b5674`.
+
+Interpretation: the earlier MTP-availability assumption is now supported at the
+static interface level. Proposal acceptance, recursive-step correctness,
+hybrid-state rollback, quantization preservation, actual runtime compatibility,
+and every performance quantity remain unverified. No model weight or server
+command was used.

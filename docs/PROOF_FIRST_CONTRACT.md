@@ -292,3 +292,16 @@ weight-stationary block remains revised, not promoted, pending causal accepted
 prefixes and real router locality. No checkpoint, server command, or hardware
 runtime was used. The Qwen-specific MoE result cannot validate the arbitrary
 dense 405B mission, and Phase D/E6/E7 remain not achieved.
+
+<!-- EXP-075-CURRENT-CLASSIFICATION -->
+## Current classification after EXP-075
+
+The pinned official Qwen3.5-0.8B checkpoint statically exposes one native MTP
+layer and 15 registered MTP tensors, and pinned vLLM source exposes a matching
+loader/runtime surface. This passes only the metadata prerequisite. No weight,
+proposal, acceptance, rollback, quantized path, or runtime execution was tested.
+
+EXP-076 may perform a pinned causal small-checkpoint accepted-prefix
+falsification. It must not be called E2 unless it actually replaces the
+operation during complete generation with exact fallback. Qwen-specific success
+cannot promote the arbitrary dense target. Phase D/E6/E7 remain not achieved.

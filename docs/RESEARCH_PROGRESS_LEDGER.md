@@ -164,3 +164,23 @@ REVISE_MTP1_AND_EXPERT_PAGING_INSUFFICIENT_REQUIRE_LONG_CAUSAL_PROPOSAL_AND_ROUT
 
 No model download or server run occurred. This narrows the surrogate mechanism
 but does not increase dense-405B feasibility.
+
+<!-- EXP-075-AUTHORITATIVE-FINAL -->
+## 2026-08-07 — EXP-075 native-MTP surface Gate
+
+Six pinned official metadata/source files totaling 255,779 bytes were audited.
+The Qwen3.5-0.8B config declares one MTP layer, its index contains all 15
+registered `mtp.*` tensors, and pinned vLLM source exposes the registered
+mapping, loader, class registry, and recursive-step interface. Five controls
+passed with zero failure.
+
+Decision:
+
+```text
+PROMOTE_TO_PINNED_QWEN35_08B_ACCEPTED_PREFIX_GATE
+```
+
+This removes a metadata blocker but supplies no acceptance or performance
+evidence. No checkpoint payload, inference, or target-server command occurred.
+The next bounded falsification is the 0.8B causal accepted-prefix distribution;
+dense-405B feasibility is unchanged.

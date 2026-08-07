@@ -248,3 +248,23 @@ long-block path is revised: fixed/free requires nine perfect accepted tokens,
 Next: metadata-only native-MTP surface audit, then the smallest unchanged
 checkpoint accepted-prefix Gate if the surface exists. Do not download 35B or
 122B and do not build a page scheduler. EXP-073 Stage 2 remains not run.
+
+<!-- EXP-075-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-075
+
+Branch: `research/exp-075-native-mtp-surface-audit`.
+
+Authority: `results/exp_075/summary.json`; source
+`f85ac583a129070247992987d1b3c63634e6447f`; evidence
+`2fcf7315cf9da491a5ca361536eb0f07e325e74c`.
+
+Decision: the official Qwen3.5-0.8B config, exact 15-key MTP index surface, and
+pinned vLLM loader/runtime source all pass the metadata Gate. The complete
+checkpoint is declared as 1.626911 GiB but was not downloaded. No model or
+server command ran.
+
+Next: preregister EXP-076 around this exact model/revision, an isolated compatible
+dependency lock, causal recursive proposals for K=2..64, exact verification and
+hybrid-state rollback, held-out prompt families, and fully charged p05/p50
+acceptance accounting. Do not start 35B/122B, quantization, expert paging, or
+server work. EXP-073 Stage 2 remains not run.

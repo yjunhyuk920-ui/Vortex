@@ -284,3 +284,31 @@ workspace Gate.
 
 Status: NOMINAL FIT DERIVED; SAFE-WORKSPACE ASSUMPTION CONTRADICTED FOR CURRENT
 CAPACITY; NO DOWNLOAD PERFORMED.
+
+## A-048 — The smallest official Qwen3.5 checkpoint exposes native MTP state
+
+EXP-075 pinned `Qwen/Qwen3.5-0.8B` and found one declared MTP hidden layer plus
+the exact registered set of 15 indexed `mtp.*` tensors. Pinned vLLM source also
+contains the matching configuration rewrite, registry, loader remap, and
+recursive-step surface.
+
+Status: CONFIRMED AT E1 STATIC METADATA/SOURCE INTERFACE ONLY.
+
+## A-049 — The exposed native MTP state produces sufficiently long causal blocks
+
+No MTP weight was loaded and no proposal was executed. Configuration values of
+two or four speculative tokens are not accepted-prefix evidence. Repeated use of
+one MTP layer, Gated DeltaNet rollback, LM-head cost, rejected suffixes, and
+fallback remain unmeasured.
+
+Status: ACTIVE AND UNVERIFIED FOR EXP-076; PRIMARY CHEAP FALSIFICATION.
+
+## A-050 — A supported unchanged small-model runtime can be reproduced locally
+
+The existing local dependency set reports Transformers 4.50.3, whereas the
+pinned checkpoint config declares a 4.57.0 development build and its model card
+requires a latest implementation. vLLM source support was audited statically
+but vLLM was not installed or executed. A clean pinned dependency environment
+and exact state semantics are still required.
+
+Status: INFRASTRUCTURE COMPATIBILITY UNVERIFIED; NOT A SCIENTIFIC FAILURE.

@@ -169,3 +169,23 @@ metadata-only native-MTP surface audit
 This is restricted surrogate screening, not a replacement for the primary
 arbitrary dense 405B research track. Any continuation must explain how its
 information source transfers beyond Qwen-specific MTP/MoE or remain auxiliary.
+
+## Current directive after EXP-075
+
+Static MTP availability is no longer the blocking assumption for the selected
+official 0.8B checkpoint: 15 MTP tensor keys and a pinned vLLM loader surface
+were confirmed. Do not spend further primary-track effort on metadata variants,
+other small Qwen sizes, quantization conversions, or runtime backends before the
+accepted-prefix Gate.
+
+The highest-value next action is the bounded EXP-076 causal measurement because
+it can cheaply kill the only retained EXP-074 branch. It must measure population
+p05/p50 accepted length and exact rollback, not configured draft length or an
+isolated prompt. Proposal, tied LM-head, target verification, rejected suffix,
+and fallback costs must be derived from actual tensor shapes and calls.
+
+If the fully charged favorable ceiling fails, close the long-block native-MTP
+surrogate and return the primary portfolio to a materially different execution
+information source. If it passes, authorize only a middle-rung MoE route-union
+trace. Backend, scheduler, 35B/122B download, and target-server work remain
+prohibited until their prior Gates survive.

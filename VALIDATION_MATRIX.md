@@ -183,3 +183,23 @@ Current overall classification: self-contained universal hot-artifact core rejec
 Current classification after EXP-074: MTP-1 plus paging rejected as a 1B-class
 core; long-block candidate revised pending causal proposal and routing evidence;
 no model download; Phase D/E6/E7 unchanged.
+
+<!-- EXP-075-AUTHORITATIVE-FINAL -->
+## EXP-075 closure
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Pinned 0.8B config declares native MTP | E1 static: `mtp_num_hidden_layers=1` | PASS interface |
+| Pinned 0.8B index contains registered MTP weights | E1 static: 15/15 exact keys | PASS interface |
+| Pinned vLLM exposes Qwen3.5 MTP mapping/loader | E1 static: 3/3 source surfaces | PASS interface |
+| Metadata audit controls | E1: 5/5 | PASS |
+| Checkpoint weight was downloaded | no payload URL or file | FALSE / NOT PERFORMED |
+| Native MTP proposals are causally correct | no execution | NOT TESTED |
+| Accepted-prefix p05/p50 closes EXP-074 | no proposal trace | NOT TESTED |
+| Quantized path retains and executes MTP | no quantized artifact | NOT TESTED |
+| Current hardware supports the selected runtime | source audit only | NOT TESTED |
+| Qwen surface validates arbitrary dense 405B | outside claim | FALSE SUBSTITUTION PROHIBITED |
+
+Current classification after EXP-075: the metadata prerequisite passes and
+authorizes a pinned 0.8B accepted-prefix falsification. Runtime feasibility and
+the dense mission are unchanged; Phase D/E6/E7 remain not achieved.

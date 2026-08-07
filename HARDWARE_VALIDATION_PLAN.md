@@ -255,3 +255,22 @@ Before hardware work on the revised block candidate:
 
 Phase-D runtime validation, E4-E7, 122B execution, and dense 405B remain NOT
 TESTED.
+
+## EXP-075 hardware boundary
+
+EXP-075 downloaded only 255,779 bytes of public metadata/source text. The
+checkpoint index declares `1.6269113421 GiB`, but the payload was not fetched.
+No target-server command, runtime installation, inference, CUDA call, or
+physical measurement occurred.
+
+EXP-076 may begin on an isolated developer environment only after pinning the
+checkpoint file manifest and compatible dependency hashes. It must first use
+the smallest unchanged 0.8B checkpoint and publish exact causal proposal,
+verification, rollback, RSS, and CPU accounting. A CPU reference result is not
+E4 hardware evidence.
+
+The private Quadro M5000 host is not automatically authorized for the newest
+vLLM/SGLang stack, and its compute-capability compatibility remains unverified.
+Do not install or change services there under EXP-075/076 authority. The 35B
+and 122B downloads, expert-route traces, page scheduler, CUDA backend, and
+EXP-073 Stage 2 remain separately gated. Phase D/E4-E7 are unchanged.

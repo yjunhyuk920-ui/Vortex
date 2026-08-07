@@ -410,3 +410,71 @@ Rejection occurs if the favorable exact-reference accepted-prefix distribution
 cannot reach the EXP-074 fully charged threshold or if the public checkpoint
 does not expose usable MTP state. Only a surviving proposal Gate can authorize
 a 35B-A3B expert-route trace. A 122B download remains prohibited at this stage.
+
+## Closed EXP-075 — Native MTP Checkpoint and Runtime Surface Audit
+
+EXP-075 audited the smallest official unchanged Qwen3.5 checkpoint without
+downloading its weights. The pinned config declares one MTP layer, the weight
+index contains the exact 15 registered `mtp.*` tensor keys, and pinned vLLM
+source exposes the corresponding configuration rewrite, model registry, weight
+loader, and recursive speculative-step path.
+
+```text
+metadata/source files                         6
+metadata/source bytes                   255,779
+MTP tensor keys                          15 / 15
+runtime source surfaces                    3 / 3
+controls                                    5 / 5
+declared checkpoint size            1.626911 GiB
+```
+
+Decision:
+
+```text
+PROMOTE_TO_PINNED_QWEN35_08B_ACCEPTED_PREFIX_GATE
+```
+
+Authority: `results/exp_075/summary.json`; source
+`f85ac583a129070247992987d1b3c63634e6447f`; evidence
+`2fcf7315cf9da491a5ca361536eb0f07e325e74c`.
+
+This promotes only the next small-checkpoint falsification. No weight payload,
+inference, runtime installation, quantization path, or server command occurred.
+
+## Candidate EXP-076 — Qwen3.5-0.8B Native MTP Accepted-Prefix Gate
+
+Use the unchanged checkpoint and revision selected by EXP-075. Before download,
+commit the exact file manifest, dependency lock, prompt hashes, state semantics,
+and accounting formulas. The currently present local Transformers 4.50.3 is
+older than the checkpoint's declared 4.57.0 development format, so dependency
+compatibility must be isolated and pinned rather than silently assumed.
+
+Required causal protocol:
+
+```text
+exact greedy committed prefix
+-> one unchanged-target state/hidden output
+-> native MTP recursively proposes K in 2,4,8,16,32,64
+-> proposal never reads target future tokens
+-> unchanged target computes exact verification continuation
+-> measure longest matching prefix and first correction
+-> discard rejected suffix and restore every hybrid/KV state exactly
+```
+
+Use disjoint prompt families including English, Korean, code, structured JSON,
+math, and adversarial low-acceptance cases. Report configured proposal length
+separately from accepted prefix. At minimum publish p05/p50/p95 accepted length,
+zero-accept rate, per-position acceptance, exact token agreement, target and MTP
+forward counts, parameter-by-shape proposal/LM-head/verification cost, RSS, CPU
+time, exclusions, and all fallback work.
+
+The reference EXP-074 fully charged fixed-route thresholds require at least 25
+accepted tokens at the median and at least 15 at the fifth percentile when a
+0.8B-equivalent proposal is charged. Actual shape-derived MTP cost may change
+the arithmetic but may not be omitted. Rejection occurs on any causal leakage,
+state rollback mismatch, silent wrong accept, required-family failure, median
+below the recomputed p50 threshold, fifth percentile below the recomputed p95
+threshold, or a favorable fully charged ceiling outside the Gate.
+
+Passing authorizes only a 35B-A3B metadata/route-trace Gate. It does not
+authorize 122B download, page scheduling, Phase D, or a dense-405B claim.

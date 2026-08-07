@@ -318,3 +318,40 @@ contains a usable causal MTP proposal surface, then measure accepted-prefix
 length before any 35B/122B download or page scheduler. The MoE surrogate may
 screen infrastructure and scheduling ideas but cannot validate the arbitrary
 dense 405B mission. EXP-073 Stage 2 remains separately authorized and not run.
+
+## EXP-075 authoritative native-MTP surface audit
+
+EXP-075 replaced the assumed MTP surface with pinned public metadata from
+`Qwen/Qwen3.5-0.8B` revision
+`2fc06364715b967f1860aea9cf38778875588b17` and vLLM revision
+`a07086e4032e66aacae60ac2fc01e738096e9569`.
+
+The bounded audit fetched six UTF-8 metadata/source files totaling 255,779
+bytes. The checkpoint config declares one MTP hidden layer, its safetensors
+index contains the exact registered set of 15 `mtp.*` tensors, and the pinned
+vLLM source contains the registered model mapping, loader remap, class registry,
+quantization inheritance, and recursive speculative-step surface. Five controls
+passed with zero failure.
+
+Decision:
+
+```text
+PROMOTE_TO_PINNED_QWEN35_08B_ACCEPTED_PREFIX_GATE
+```
+
+This is E1 static-interface evidence only. The full checkpoint index declares
+`1,746,882,752` bytes (`1.6269113421 GiB`), but no payload was downloaded. No
+proposal token, target verification, quantized path, model execution, server
+command, latency, or hardware metric was produced.
+
+Authority: `results/exp_075/summary.json`; source
+`f85ac583a129070247992987d1b3c63634e6447f`; evidence
+`2fcf7315cf9da491a5ca361536eb0f07e325e74c`; deterministic core SHA-256
+`2515bb53a0e2967cfd23e15d18720142337c7d25dc658db057e86e1aa45b5674`.
+
+Current frontier: preregister and run the smallest unchanged checkpoint
+accepted-prefix Gate. It must measure causal recursive MTP proposals on exact
+prefixes, charge MTP/LM-head/target verification/rejection/fallback work, and
+report accepted-prefix p05/p50 rather than citing configured draft length. The
+35B/122B checkpoints and expert scheduler remain prohibited. The Qwen-specific
+branch remains auxiliary to the arbitrary dense 405B mission.

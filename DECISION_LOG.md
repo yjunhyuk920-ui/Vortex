@@ -375,3 +375,30 @@ audit and then a small-checkpoint accepted-prefix Gate are required before any
 does not replace the dense 405B acceptance target.
 
 Status: REVISE; E1 REFERENCE ACCOUNTING ONLY; PHASE D/E6/E7 NOT ACHIEVED.
+
+## D-061 — Accept the pinned native-MTP surface and open small acceptance Gate
+
+EXP-075 authority: `results/exp_075/summary.json`; source
+`f85ac583a129070247992987d1b3c63634e6447f`; evidence
+`2fcf7315cf9da491a5ca361536eb0f07e325e74c`; deterministic core SHA-256
+`2515bb53a0e2967cfd23e15d18720142337c7d25dc658db057e86e1aa45b5674`.
+
+At the pinned official `Qwen/Qwen3.5-0.8B` revision, the config declares one
+MTP hidden layer and the weight index contains all 15 registered `mtp.*` keys.
+Pinned vLLM source exposes the registered Qwen3.5 MTP config rewrite, model
+classes, loader remap, quantization inheritance, and recursive step surface.
+Five metadata controls passed.
+
+Decision:
+
+```text
+PROMOTE_TO_PINNED_QWEN35_08B_ACCEPTED_PREFIX_GATE
+```
+
+This confirms static surface availability only. It does not confirm that any
+proposal is accepted, that recursive hybrid state is correct, that a quantized
+artifact preserves the head, or that the runtime works on current hardware.
+No checkpoint weight or server command was used.
+
+Status: METADATA PREREQUISITE PASS; E1 STATIC INTERFACE; EXP-076 AUTHORIZED FOR
+PREREGISTRATION; PHASE D/E6/E7 NOT ACHIEVED.

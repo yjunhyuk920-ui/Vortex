@@ -311,3 +311,36 @@ locality. No page scheduler or GPU backend is authorized before those Gates.
 For dense 405B, even a zero-cost perfect proposal requires 85 accepted tokens
 at the p50 allowance; a 4B draft requires 507. Qwen-specific MTP/router behavior
 does not supply a universal dense proposal source.
+
+<!-- EXP-075-AUTHORITATIVE-FINAL -->
+## Native MTP surface boundary
+
+EXP-075 confirms that the selected official 0.8B checkpoint has the static
+pieces required to instantiate this auxiliary path:
+
+```text
+unchanged checkpoint config: one native MTP layer
+unchanged weight index:       15 mtp.* tensors
+pinned vLLM source:           config rewrite + registry + loader + step reuse
+```
+
+The next executable reference must keep four states distinct:
+
+```text
+committed target state
+proposal-only recursive MTP state
+verification target state
+post-rejection restored target state
+```
+
+Proposal generation may consume only the committed prefix and hidden state.
+Target future tokens may be used only by the evaluator/verifier, never as MTP
+inputs or variant selection. A mismatch commits at most the exact matching
+prefix plus exact correction, discards later proposal state, and restores the
+hybrid attention/KV state bit-for-bit or fails closed.
+
+Static key and loader presence does not establish those semantics. No page
+scheduler, quantized converter, or GPU backend may be attached until causal
+accepted-prefix and rollback tests pass. The architecture remains Qwen-specific
+auxiliary screening and does not solve proposal generation for arbitrary dense
+checkpoints.

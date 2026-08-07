@@ -328,3 +328,53 @@ Expected invariants: MTP-1 optimistic fraction `10.0`, fixed-route/free-draft
 p50 minimum `9`, dense 405B zero-draft minimum `85`, dense 405B/4B-draft
 minimum `507`, direct-pull remainder `22.1811537743 GiB`, and deterministic core
 hash above. Physical timing and model behavior remain unverified.
+
+## EXP-075 local authority
+
+```text
+results/exp_075/summary.json
+source commit       f85ac583a129070247992987d1b3c63634e6447f
+evidence commit     2fcf7315cf9da491a5ca361536eb0f07e325e74c
+config SHA-256      8f7824e18f9819f5bac1ed18dd1e0dbab6544883935f1775bce13627b8f2a637
+core SHA-256        2515bb53a0e2967cfd23e15d18720142337c7d25dc658db057e86e1aa45b5674
+workflow/artifact   NOT RUN
+```
+
+The canonical Windows/Python 3.12.13 audit fetched six revision-pinned public
+UTF-8 files totaling 255,779 bytes and wrote 13 checksummed payloads plus the
+checksum manifest. The source directory contains config, weight-index, model
+card, and three vLLM source files; it contains no safetensors payload.
+
+Eight experiment tests passed. Offline replay using the frozen source directory
+through `run_current_env.sh` returned the same decision and deterministic core
+hash. Verify authority with:
+
+```bash
+cd results/exp_075
+sha256sum -c checksums.sha256
+```
+
+Reproduce against the immutable network revisions without overwriting authority:
+
+```bash
+bash experiments/exp_075/reproduce.sh
+```
+
+Offline replay:
+
+```bash
+EXP075_SOURCE_DIR=results/exp_075/raw/sources \
+EXP075_OUTPUT_DIR=results/exp_075_offline_reproduction \
+bash experiments/exp_075/run_current_env.sh
+```
+
+Expected decision:
+
+```text
+PROMOTE_TO_PINNED_QWEN35_08B_ACCEPTED_PREFIX_GATE
+```
+
+Expected invariants: 15 exact MTP tensor keys, one MTP layer, three passing
+runtime source surfaces, five controls with zero failure, declared checkpoint
+size 1,746,882,752 bytes, and the deterministic core hash above. Network timing
+and local paths may vary. Model execution and E2-E7 remain unverified.
