@@ -402,3 +402,31 @@ No checkpoint weight or server command was used.
 
 Status: METADATA PREREQUISITE PASS; E1 STATIC INTERFACE; EXP-076 AUTHORIZED FOR
 PREREGISTRATION; PHASE D/E6/E7 NOT ACHIEVED.
+
+## D-062 -- Reject native-MTP long blocks as the surrogate core
+
+EXP-076 authority: `results/exp_076/summary.json`; source
+`5e331137f8e03250cc74aa796abbf69f49ef87a5`; evidence
+`55b79937c1f21887ae76b7e56ad61ba7dde8322a`; deterministic core SHA-256
+`199db6f8fc0dedd32d7b38be8ff1d05c29aced3388a87ddecccd1235038bd22d`.
+
+The build split selected `K=4`. The held-out population accepted p05/p50/p95
+prefixes of `0/4/4`, against shape-required p05/p50 minima of `9/11`. Two of
+18 evaluation cases accepted no draft token. The reference recorded zero
+future-target reads, wrong accepts, committed-state mutations, commit-replay
+mismatches, and rollback-recompute mismatches.
+
+Decision:
+
+```text
+REJECT_NATIVE_MTP_LONG_BLOCK_AS_SURROGATE_CORE
+```
+
+The 35B-A3B route-union trace is not promoted. Do not rescue the branch with
+post-selected prompts or K, another small Qwen checkpoint, quantization, a
+35B/122B download, or a page scheduler. Return candidate selection to a
+materially different query-time information source. EXP-073 Stage 2 remains a
+separately authorized calibration, not a core mechanism.
+
+Status: SCIENTIFIC REJECTION AT E1 CPU OBSERVATION; REFERENCE INTEGRITY PASS;
+NO PHASE D/E2-E7 OR DENSE-405B EVIDENCE.

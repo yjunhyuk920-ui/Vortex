@@ -378,3 +378,43 @@ Expected invariants: 15 exact MTP tensor keys, one MTP layer, three passing
 runtime source surfaces, five controls with zero failure, declared checkpoint
 size 1,746,882,752 bytes, and the deterministic core hash above. Network timing
 and local paths may vary. Model execution and E2-E7 remain unverified.
+
+## EXP-076 local authority
+
+```text
+results/exp_076/summary.json
+source commit       5e331137f8e03250cc74aa796abbf69f49ef87a5
+evidence commit     55b79937c1f21887ae76b7e56ad61ba7dde8322a
+config SHA-256      9c00c81d6b91f1da7f499f3ce4da2b477a12afeee0685888615e181aa22b438b
+prompt SHA-256      46c9779c24e59f356247145f7ef870a1b82ba4907eb9dffcd48652e519f7612a
+weight SHA-256      04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696
+core SHA-256        199db6f8fc0dedd32d7b38be8ff1d05c29aced3388a87ddecccd1235038bd22d
+workflow/artifact   NOT RUN
+```
+
+The canonical Windows/Python 3.12.13 CPU run used Torch 2.6.0+cpu,
+Transformers 5.12.0, BF16 eager attention, and eight threads. The model payload
+is intentionally ignored by Git and must be obtained from the pinned manifest.
+The result bundle contains eleven checksummed payloads plus the checksum
+manifest; all checksums verified after the run.
+
+Reproduce without overwriting authority:
+
+```bash
+EXP076_PYTHON='C:/dincAI/Vortex/.deps/exp076-venv/Scripts/python.exe' \
+EXP076_MODEL_DIR='C:/dincAI/Vortex/.deps/exp076-model' \
+EXP076_OUTPUT_DIR='C:/dincAI/Vortex/results/exp_076_reproduction' \
+bash experiments/exp_076/run_current_env.sh
+```
+
+Expected decision:
+
+```text
+REJECT_NATIVE_MTP_LONG_BLOCK_AS_SURROGATE_CORE
+```
+
+Expected deterministic invariants: 24 cases, 144 K rows, selected `K=4`,
+accepted-prefix p05/p50/p95 `0/4/4`, two zero-accept evaluation cases, required
+p05/p50 minima `9/11`, and zero integrity-control failures. Wall/CPU time may
+vary. The result is E1 CPU observation only; vLLM equivalence, physical traffic,
+target hardware, and E2-E7 remain unverified.

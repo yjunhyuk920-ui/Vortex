@@ -478,3 +478,53 @@ threshold, or a favorable fully charged ceiling outside the Gate.
 
 Passing authorizes only a 35B-A3B metadata/route-trace Gate. It does not
 authorize 122B download, page scheduling, Phase D, or a dense-405B claim.
+
+## Closed EXP-076 -- Qwen3.5-0.8B Native MTP Accepted-Prefix Gate
+
+The canonical unchanged-checkpoint CPU reference selected `K=4`. Held-out
+accepted-prefix p05/p50/p95 was `0/4/4`; two of 18 prompts accepted no first
+proposal token. Shape-derived minima were p05 `9` and p50 `11`. The p50
+accepted prefix therefore missed the necessary bound, the p05 bound failed at
+zero, and fail-closed realized traffic failed. All registered causality,
+acceptance, committed-cache, and rollback controls passed.
+
+Decision:
+
+```text
+REJECT_NATIVE_MTP_LONG_BLOCK_AS_SURROGATE_CORE
+```
+
+Authority: `results/exp_076/summary.json`; source
+`5e331137f8e03250cc74aa796abbf69f49ef87a5`; evidence
+`55b79937c1f21887ae76b7e56ad61ba7dde8322a`.
+
+Permanent stop rule: do not rescue this branch with another K sweep, selected
+prompts, sampling, quantization, another small Qwen size, a 35B/122B download,
+router tracing, or a physical page scheduler. None addresses the measured
+accepted-prefix deficit.
+
+## Next research Gate -- portfolio reset and physical calibration boundary
+
+No new core implementation is authorized immediately after EXP-076. A proposed
+EXP-077 must first identify a materially different query-time information
+source, demonstrate a favorable fully charged route toward `1.185185%`, and
+explain why it is not static compression, local equality/reuse, temporal replay,
+absolute-unread certification, fixed-point generation, external drafting, or
+native MTP under a new name.
+
+The only already specified next measurement is EXP-073 Stage 2 on the private
+Ubuntu target:
+
+```text
+native 4B Q4 cold/warm TTFT and p50/p95/p99 decode time
+peak VRAM and host RSS
+bounded sequential/random local-storage reads
+host-to-device transfer bandwidth
+power, clock, temperature, and loaded-link state
+```
+
+Stage 2 requires separate explicit authorization and a fresh preregistration;
+it may not install packages, restart Ollama, download a large checkpoint, or
+disturb existing workloads without narrower permission. Passing calibration
+does not promote a VORTEX mechanism. Until either Stage 2 is authorized or a
+new candidate passes E0, the honest core status is `NO_SURVIVING_CANDIDATE`.

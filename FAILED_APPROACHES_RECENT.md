@@ -76,3 +76,23 @@ MoE result as dense-405B evidence.
 Retain the deterministic block-accounting reference and exact longest-prefix
 verifier. A materially different continuation must causally produce long exact
 blocks and measure real router union locality under the fully charged Gate.
+
+<!-- EXP-076-AUTHORITATIVE-FINAL -->
+## F-042 -- Native MTP long blocks as a 1B-class surrogate core
+
+The pinned unchanged Qwen3.5-0.8B native MTP reference selected `K=4` on the
+registered build split. Held-out accepted-prefix p05/p50/p95 was `0/4/4`, while
+shape-derived p05/p50 minima were `9/11`. Two of 18 evaluation cases accepted
+no first proposal token, so the registered traffic accounting failed closed.
+All causality, exact-acceptance, committed-cache, and rollback controls passed.
+
+Do not reopen this branch by sweeping K after observation, selecting prompt
+families, adding sampling, converting to quantization, testing another nearby
+small Qwen size, tracing 35B routes, or building an expert pager. These changes
+do not supply the missing accepted prefix and cannot turn Qwen-specific MTP
+into arbitrary dense-405B evidence.
+
+Retain only the causal proposal/verification/rollback reference as auxiliary
+falsification machinery. A continuation must introduce a materially different
+query-time information source and independently pass the final-fraction E0
+Gate.

@@ -118,3 +118,17 @@ The Python implementation establishes semantics and metrics. A production backen
 - real GPU memory accounting.
 
 Backend optimization must not alter the exactness contract without explicit validation modes and recorded quality measurements.
+
+## EXP-076 native-MTP reference boundary
+
+`vortex_runtime/mtp_acceptance.py` contains pure longest-prefix, exact commit,
+percentile, parameter-traffic, K-selection, and Gate helpers. The heavy runner
+under `experiments/exp_076` maps the pinned Qwen3.5 text and native-MTP tensors
+into a CPU BF16 reference, maintains independent committed/proposal/verification
+caches, and reconstructs post-rejection state from the exact committed prefix.
+
+This component is retained as falsification infrastructure only. EXP-076 found
+held-out accepted-prefix p05/p50/p95 `0/4/4` at selected `K=4`, below required
+`9/11` tail/median minima, so it is not a promoted decoding backend. It is not
+vLLM equivalence, a CUDA implementation, a quantized path, or an operation-
+replacement runtime.

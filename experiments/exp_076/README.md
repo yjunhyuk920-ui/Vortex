@@ -34,3 +34,12 @@ metric fails closed.
 This is not a vLLM performance benchmark. CPU time and RSS are environment
 observations. The 35B/122B models, private Ubuntu server, GPU backend, page
 scheduler, Phase D, and dense-405B claims remain prohibited.
+
+## Result
+
+The canonical run selected `K=4` and rejected the candidate. Held-out
+accepted-prefix p05/p50/p95 was `0/4/4`, versus required p05/p50 minima of
+`9/11`; 2/18 cases accepted no proposal token. All registered causality,
+acceptance, committed-cache, and rollback controls passed. See
+`results/exp_076/summary.json` and the authoritative experiment document for
+the complete claim boundary.

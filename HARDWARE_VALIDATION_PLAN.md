@@ -274,3 +274,16 @@ vLLM/SGLang stack, and its compute-capability compatibility remains unverified.
 Do not install or change services there under EXP-075/076 authority. The 35B
 and 122B downloads, expert-route traces, page scheduler, CUDA backend, and
 EXP-073 Stage 2 remain separately gated. Phase D/E4-E7 are unchanged.
+
+## EXP-076 hardware boundary
+
+EXP-076 ran only on the developer Windows CPU with the pinned 1.65 GiB-class
+BF16 payload. It recorded logical parameter accounting and CPU time; peak RSS
+was unavailable, and no CUDA, VRAM, PCIe, SSD, H2D, power, thermal, TTFT, or
+tokens-per-second claim was produced.
+
+Because the accepted-prefix Gate failed, no 35B-A3B router trace, 35B/122B
+download, expert pager, or GPU speculative runtime is promoted. The private
+Ubuntu host was not contacted. EXP-073 Stage 2 remains the only defined target-
+hardware measurement and still requires separate authorization and
+preregistration. It would establish baselines only, not validate VORTEX.

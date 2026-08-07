@@ -305,3 +305,16 @@ EXP-076 may perform a pinned causal small-checkpoint accepted-prefix
 falsification. It must not be called E2 unless it actually replaces the
 operation during complete generation with exact fallback. Qwen-specific success
 cannot promote the arbitrary dense target. Phase D/E6/E7 remain not achieved.
+
+<!-- EXP-076-CURRENT-CLASSIFICATION -->
+## Current classification after EXP-076
+
+The unchanged pinned Qwen3.5-0.8B native-MTP reference passed every registered
+causality, exact-acceptance, cache, and rollback control, but failed the
+accepted-prefix Gate. At build-selected `K=4`, held-out p05/p50/p95 was
+`0/4/4`, below required p05/p50 minima `9/11`, with two zero-accept cases.
+
+The long-block native-MTP surrogate is rejected under this scope. No 35B-A3B
+route trace or physical scheduler is authorized. This E1 observation neither
+proves vLLM runtime equivalence nor validates arbitrary dense 405B execution.
+Phase D/E2-E7 remain not achieved, and there is no surviving core candidate.

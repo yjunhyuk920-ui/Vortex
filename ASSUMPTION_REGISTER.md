@@ -312,3 +312,33 @@ but vLLM was not installed or executed. A clean pinned dependency environment
 and exact state semantics are still required.
 
 Status: INFRASTRUCTURE COMPATIBILITY UNVERIFIED; NOT A SCIENTIFIC FAILURE.
+
+<!-- EXP-076-AUTHORITATIVE-FINAL -->
+## A-049 closure -- The exposed native MTP state produces sufficiently long causal blocks
+
+EXP-076 executed the pinned native MTP equations causally. With build-selected
+`K=4`, held-out accepted-prefix p05/p50/p95 was `0/4/4`, including two
+zero-accept cases. The necessary p05/p50 minima were `9/11` after charging the
+20,452,864-parameter MTP layer and tied 254,279,680-parameter LM head.
+
+Status: CONTRADICTED FOR THE REGISTERED QWEN3.5-0.8B NATIVE-MTP LONG-BLOCK
+SURROGATE.
+
+## A-050 closure -- A supported unchanged small-model runtime can be reproduced locally
+
+An isolated Python 3.12.13 environment with Torch 2.6.0+cpu, Transformers
+5.12.0, Tokenizers 0.22.2, Hugging Face Hub 1.26.1, and Safetensors 0.8.0
+loaded the pinned unchanged BF16 checkpoint and completed all 24 cases. The
+checkpoint manifest and twelve result files passed SHA-256 verification.
+
+Status: CONFIRMED FOR THE EXP-076 WINDOWS CPU REFERENCE ONLY; VLLM, CUDA,
+QUANTIZED EXECUTION, AND TARGET-SERVER COMPATIBILITY REMAIN UNVERIFIED.
+
+## A-051 -- A materially different cold-backed information source can meet the final Gate
+
+No currently implemented candidate survives the fully charged route toward
+`1.185185%`. EXP-076 closes native MTP under its scope but does not prove all
+online cold-backed executors impossible. A future candidate must identify its
+new query-time information source and pass E0 before implementation.
+
+Status: OPEN BUT UNSUPPORTED; NO EXP-077 CORE IMPLEMENTATION AUTHORIZED.

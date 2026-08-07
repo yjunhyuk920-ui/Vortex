@@ -203,3 +203,25 @@ no model download; Phase D/E6/E7 unchanged.
 Current classification after EXP-075: the metadata prerequisite passes and
 authorizes a pinned 0.8B accepted-prefix falsification. Runtime feasibility and
 the dense mission are unchanged; Phase D/E6/E7 remain not achieved.
+
+<!-- EXP-076-AUTHORITATIVE-FINAL -->
+## EXP-076 closure
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Pinned unchanged BF16 payload loaded | E1: weight SHA-256 `04b1c301...fe4696` | PASS input |
+| Prompt split and K selection preregistered | E1: 6 build, 18 held-out, selected K=4 | PASS |
+| Native proposal never reads target future tokens | E1: 0 reads | PASS reference |
+| Exact longest-prefix verifier never silently accepts wrong token | E1: 0 wrong accepts | PASS reference |
+| Commit replay and rollback recompute preserve exact state | E1: 0/0 mismatches | PASS reference |
+| Held-out accepted-prefix p50 reaches 11 | E1: 4 | REJECTED |
+| Held-out accepted-prefix p05 reaches 9 | E1: 0 | REJECTED |
+| Every required family reaches both acceptance minima | E1: false | REJECTED |
+| Realized p50/p95 traffic reaches 1.2x/1.5x | fail-closed with 2/18 zero accepts | REJECTED |
+| Physical vLLM/GPU/quantized performance | CPU reference only | NOT TESTED |
+| 35B/122B router locality and scaling | no model/run | NOT TESTED |
+| Arbitrary dense 405B runs in 8 GiB at 4B speed | outside claim | NOT VALIDATED |
+
+Current classification after EXP-076: native-MTP long blocks are rejected as
+the registered surrogate core; reference integrity passes; no larger-model or
+hardware continuation is promoted; Phase D/E2-E7 remain not achieved.

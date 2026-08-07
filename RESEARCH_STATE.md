@@ -355,3 +355,38 @@ prefixes, charge MTP/LM-head/target verification/rejection/fallback work, and
 report accepted-prefix p05/p50 rather than citing configured draft length. The
 35B/122B checkpoints and expert scheduler remain prohibited. The Qwen-specific
 branch remains auxiliary to the arbitrary dense 405B mission.
+
+## EXP-076 authoritative native-MTP accepted-prefix Gate
+
+EXP-076 loaded the pinned unchanged Qwen3.5-0.8B BF16 checkpoint and executed
+a causal CPU reference of the registered native MTP equations. Six build
+prompts selected `K=4`; the disjoint 18-prompt evaluation population produced
+accepted-prefix p05/p50/p95 of `0/4/4`, including two zero-accept cases.
+
+The shape audit charged 274,732,544 proposal parameters per position, including
+the tied LM head. The necessary population minima were p50 `11` and p05 `9`.
+The observed p50 was therefore insufficient even before the fail-closed
+traffic result from zero acceptance. English, Korean, code, structured JSON,
+math, and adversarial families did not all pass.
+
+Execution integrity was clean: zero future-target reads, wrong accepts,
+committed-prefix mutations, commit-replay mismatches, and rollback-recompute
+mismatches. This validates the reference measurement controls, not vLLM or GPU
+runtime equivalence.
+
+Decision:
+
+```text
+REJECT_NATIVE_MTP_LONG_BLOCK_AS_SURROGATE_CORE
+```
+
+Authority: `results/exp_076/summary.json`; source
+`5e331137f8e03250cc74aa796abbf69f49ef87a5`; evidence
+`55b79937c1f21887ae76b7e56ad61ba7dde8322a`; deterministic core SHA-256
+`199db6f8fc0dedd32d7b38be8ff1d05c29aced3388a87ddecccd1235038bd22d`.
+
+The 35B-A3B route-union trace, 35B/122B downloads, expert scheduler, and target
+server work are not authorized by this result. No current core candidate has
+survived the `1.185185%` target-equivalent E0/Gate sequence. The only already
+defined physical next measurement is separately authorized EXP-073 Stage 2;
+it is calibration, not a solution. Phase D, E6, and E7 remain not achieved.

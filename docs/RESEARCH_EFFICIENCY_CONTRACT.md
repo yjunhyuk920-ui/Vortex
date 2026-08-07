@@ -189,3 +189,17 @@ surrogate and return the primary portfolio to a materially different execution
 information source. If it passes, authorize only a middle-rung MoE route-union
 trace. Backend, scheduler, 35B/122B download, and target-server work remain
 prohibited until their prior Gates survive.
+
+## Current directive after EXP-076
+
+The fully charged native-MTP branch failed. Build-selected `K=4` produced
+held-out accepted-prefix p05/p50/p95 `0/4/4`, below shape-required `9/11`
+tail/median minima, and two zero-accept cases made the traffic Gate fail closed.
+Do not allocate work to K/prompt/quantization variants, another small Qwen,
+35B/122B weights, router traces, or a page scheduler.
+
+There is no promoted core candidate. The next core proposal must begin at E0
+with a materially different query-time information source and a fully charged
+credible path to `1.185185%`. EXP-073 Stage 2 may be separately authorized to
+measure the real 4B/storage/H2D envelope, but calibration belongs outside the
+core-candidate allocation and cannot be reported as feasibility progress.

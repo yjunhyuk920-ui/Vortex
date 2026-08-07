@@ -268,3 +268,23 @@ dependency lock, causal recursive proposals for K=2..64, exact verification and
 hybrid-state rollback, held-out prompt families, and fully charged p05/p50
 acceptance accounting. Do not start 35B/122B, quantization, expert paging, or
 server work. EXP-073 Stage 2 remains not run.
+
+<!-- EXP-076-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-076
+
+Branch: `research/exp-076-native-mtp-accepted-prefix-gate`.
+
+Authority: `results/exp_076/summary.json`; source
+`5e331137f8e03250cc74aa796abbf69f49ef87a5`; evidence
+`55b79937c1f21887ae76b7e56ad61ba7dde8322a`.
+
+Decision: reject native-MTP long blocks as the registered surrogate core. The
+build split selected `K=4`; held-out accepted-prefix p05/p50/p95 was `0/4/4`
+versus required p05/p50 minima `9/11`, and 2/18 cases accepted zero drafts.
+All causal, exact-acceptance, commit-state, and rollback controls passed.
+
+Next: do not run 35B/122B, router tracing, quantization rescue, or a page
+scheduler. No EXP-077 core implementation is authorized until a materially
+different query-time information source passes E0. EXP-073 Stage 2 remains the
+only specified physical calibration and requires separate explicit authority.
+The private target server was not contacted in EXP-076.

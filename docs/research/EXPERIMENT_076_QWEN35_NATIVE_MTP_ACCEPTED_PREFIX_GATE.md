@@ -185,3 +185,48 @@ query-time information source.
 Passing authorizes only a separately preregistered 35B-A3B expert route-union
 trace. It does not authorize a 122B download, physical scheduler, private target
 server mutation, Phase D, E6, E7, or a dense-405B claim.
+
+## Authoritative result
+
+The canonical Windows CPU run used the unchanged BF16 payload from
+`Qwen/Qwen3.5-0.8B` revision
+`2fc06364715b967f1860aea9cf38778875588b17`. The weight file SHA-256 was
+`04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696`.
+The isolated runtime was Python 3.12.13, Torch 2.6.0+cpu, Transformers 5.12.0,
+BF16 eager attention, and eight Torch threads.
+
+The build population selected `K=4`. On the 18 held-out evaluation prompts:
+
+```text
+accepted-prefix p05 / p50 / p95          0 / 4 / 4
+zero-accept cases                         2 / 18 = 11.1111%
+position 1/2/3/4 acceptance              88.89% / 77.78% / 61.11% / 55.56%
+shape-required p50 / p05                11 / 9
+wrong accepts                                  0
+target-future reads                            0
+commit replay mismatches                       0
+rollback recompute mismatches                  0
+```
+
+The native MTP tensors contain 20,452,864 parameters. Including the tied
+254,279,680-parameter LM head, each proposal position charges 274,732,544
+parameters. Even an accepted prefix of four therefore realizes
+`2.774732544x` 1B-equivalent traffic; any zero-accept case fails closed. The
+integrity Gate passed, while the population acceptance, required-family, and
+traffic Gates failed.
+
+Decision:
+
+```text
+REJECT_NATIVE_MTP_LONG_BLOCK_AS_SURROGATE_CORE
+```
+
+Authority: `results/exp_076/summary.json`; source commit
+`5e331137f8e03250cc74aa796abbf69f49ef87a5`; evidence commit
+`55b79937c1f21887ae76b7e56ad61ba7dde8322a`; deterministic core SHA-256
+`199db6f8fc0dedd32d7b38be8ff1d05c29aced3388a87ddecccd1235038bd22d`.
+
+This closes only the registered Qwen3.5 native-MTP long-block surrogate. It
+does not show that all speculative decoding is impossible, and it supplies no
+vLLM equivalence, GPU, quantized, 35B/122B, router-locality, or dense-405B
+evidence. The private target server was not contacted.

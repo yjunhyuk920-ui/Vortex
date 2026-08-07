@@ -184,3 +184,24 @@ This removes a metadata blocker but supplies no acceptance or performance
 evidence. No checkpoint payload, inference, or target-server command occurred.
 The next bounded falsification is the 0.8B causal accepted-prefix distribution;
 dense-405B feasibility is unchanged.
+
+<!-- EXP-076-AUTHORITATIVE-FINAL -->
+## 2026-08-07 -- EXP-076 native-MTP accepted-prefix Gate
+
+The pinned unchanged Qwen3.5-0.8B BF16 checkpoint was executed through a causal
+CPU native-MTP reference. Six build prompts selected `K=4`; 18 held-out prompts
+gave accepted-prefix p05/p50/p95 `0/4/4`, with two zero-accept cases. Required
+p05/p50 minima were `9/11`. Zero future-target reads, wrong accepts, cache
+mutations, commit-replay mismatches, or rollback-recompute mismatches occurred.
+
+Decision:
+
+```text
+REJECT_NATIVE_MTP_LONG_BLOCK_AS_SURROGATE_CORE
+```
+
+This is useful falsification and family closure, not increased target
+feasibility. No target-server, GPU, quantized, 35B/122B, router, or scheduler
+work ran. The primary portfolio has no surviving core candidate and must return
+to E0 for a materially different query-time information source; Phase D/E2-E7
+remain not achieved.
