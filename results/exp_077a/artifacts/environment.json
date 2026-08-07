@@ -1,0 +1,13 @@
+{
+  "config_sha256": "fce6edd0ea572ce3b6b50ad97500822d24fc1207b8ac026866753cff83459837",
+  "huggingface_hub": "1.26.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.13",
+  "requirements_lock_sha256": "a39a1d2b4dee16fb0eb464103e04339c6fb1057c9ef93e5f461158293e14acf2",
+  "safetensors": "0.8.0",
+  "source_commit": "33fed17ed6abed7c8c14eec543efc620e4fe537d",
+  "tokenizers": "0.22.2",
+  "torch": "2.6.0+cpu",
+  "torch_num_threads": 8,
+  "transformers": "5.12.0"
+}

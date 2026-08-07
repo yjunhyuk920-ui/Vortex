@@ -1,0 +1,254 @@
+{
+  "0.05": {
+    "build": {
+      "case_count": 6,
+      "mean_kl": 1.616063297027722,
+      "mlp_relative_l2_p50": 0.44405963839835466,
+      "mlp_relative_l2_p95": 0.48126120536999084,
+      "p95_kl": 4.596588134765625,
+      "token_count": 48,
+      "top1_agreement": 0.5625,
+      "top1_matches": 27
+    },
+    "evaluation": {
+      "case_count": 18,
+      "mean_kl": 1.875917179729893,
+      "mlp_relative_l2_p50": 0.45228501902959034,
+      "mlp_relative_l2_p95": 0.4809773414812105,
+      "p95_kl": 5.47512674331665,
+      "token_count": 144,
+      "top1_agreement": 0.5555555555555556,
+      "top1_matches": 80
+    },
+    "evaluation_families": {
+      "adversarial_low_acceptance": {
+        "case_count": 3,
+        "mean_kl": 2.536532527456681,
+        "mlp_relative_l2_p50": 0.42880777683359106,
+        "mlp_relative_l2_p95": 0.4442210454292016,
+        "p95_kl": 6.581116676330566,
+        "token_count": 24,
+        "top1_agreement": 0.5,
+        "top1_matches": 12
+      },
+      "code": {
+        "case_count": 3,
+        "mean_kl": 1.261130696007361,
+        "mlp_relative_l2_p50": 0.47366702630886354,
+        "mlp_relative_l2_p95": 0.4775323133765206,
+        "p95_kl": 3.602621555328369,
+        "token_count": 24,
+        "top1_agreement": 0.7083333333333334,
+        "top1_matches": 17
+      },
+      "english": {
+        "case_count": 3,
+        "mean_kl": 2.0068195573985577,
+        "mlp_relative_l2_p50": 0.45471411629114405,
+        "mlp_relative_l2_p95": 0.4689927349266018,
+        "p95_kl": 4.028346538543701,
+        "token_count": 24,
+        "top1_agreement": 0.4583333333333333,
+        "top1_matches": 11
+      },
+      "korean": {
+        "case_count": 3,
+        "mean_kl": 2.9657845412536212,
+        "mlp_relative_l2_p50": 0.4515116686797614,
+        "mlp_relative_l2_p95": 0.4542653135092931,
+        "p95_kl": 5.519691467285156,
+        "token_count": 24,
+        "top1_agreement": 0.3333333333333333,
+        "top1_matches": 8
+      },
+      "math": {
+        "case_count": 3,
+        "mean_kl": 1.0368978100207944,
+        "mlp_relative_l2_p50": 0.46254321787343333,
+        "mlp_relative_l2_p95": 0.4809773414812105,
+        "p95_kl": 4.010715961456299,
+        "token_count": 24,
+        "top1_agreement": 0.7083333333333334,
+        "top1_matches": 17
+      },
+      "structured_json": {
+        "case_count": 3,
+        "mean_kl": 1.4483379462423425,
+        "mlp_relative_l2_p50": 0.4490851708511393,
+        "mlp_relative_l2_p95": 0.45555703429076877,
+        "p95_kl": 5.300398826599121,
+        "token_count": 24,
+        "top1_agreement": 0.625,
+        "top1_matches": 15
+      }
+    }
+  },
+  "0.1": {
+    "build": {
+      "case_count": 6,
+      "mean_kl": 1.0006123005102079,
+      "mlp_relative_l2_p50": 0.37917640521319546,
+      "mlp_relative_l2_p95": 0.40134206469742145,
+      "p95_kl": 3.426429510116577,
+      "token_count": 48,
+      "top1_agreement": 0.6458333333333334,
+      "top1_matches": 31
+    },
+    "evaluation": {
+      "case_count": 18,
+      "mean_kl": 0.8841612071313042,
+      "mlp_relative_l2_p50": 0.3829877962515399,
+      "mlp_relative_l2_p95": 0.3976026569582488,
+      "p95_kl": 3.080751657485962,
+      "token_count": 144,
+      "top1_agreement": 0.7152777777777778,
+      "top1_matches": 103
+    },
+    "evaluation_families": {
+      "adversarial_low_acceptance": {
+        "case_count": 3,
+        "mean_kl": 1.1045864699408412,
+        "mlp_relative_l2_p50": 0.34255489692627267,
+        "mlp_relative_l2_p95": 0.35749031758786537,
+        "p95_kl": 4.377954483032227,
+        "token_count": 24,
+        "top1_agreement": 0.75,
+        "top1_matches": 18
+      },
+      "code": {
+        "case_count": 3,
+        "mean_kl": 0.6443609029326277,
+        "mlp_relative_l2_p50": 0.3872171759433532,
+        "mlp_relative_l2_p95": 0.39344644556921987,
+        "p95_kl": 1.8219656944274902,
+        "token_count": 24,
+        "top1_agreement": 0.7916666666666666,
+        "top1_matches": 19
+      },
+      "english": {
+        "case_count": 3,
+        "mean_kl": 1.3465887426088254,
+        "mlp_relative_l2_p50": 0.3721874208300727,
+        "mlp_relative_l2_p95": 0.3862515843390131,
+        "p95_kl": 3.214125156402588,
+        "token_count": 24,
+        "top1_agreement": 0.5416666666666666,
+        "top1_matches": 13
+      },
+      "korean": {
+        "case_count": 3,
+        "mean_kl": 1.0977380673090618,
+        "mlp_relative_l2_p50": 0.3841443228136606,
+        "mlp_relative_l2_p95": 0.38593739461375837,
+        "p95_kl": 2.765082836151123,
+        "token_count": 24,
+        "top1_agreement": 0.5833333333333334,
+        "top1_matches": 14
+      },
+      "math": {
+        "case_count": 3,
+        "mean_kl": 0.4687851217847007,
+        "mlp_relative_l2_p50": 0.3969243789585874,
+        "mlp_relative_l2_p95": 0.3976026569582488,
+        "p95_kl": 2.3414113521575928,
+        "token_count": 24,
+        "top1_agreement": 0.8333333333333334,
+        "top1_matches": 20
+      },
+      "structured_json": {
+        "case_count": 3,
+        "mean_kl": 0.6429079382117683,
+        "mlp_relative_l2_p50": 0.37192187015789174,
+        "mlp_relative_l2_p95": 0.3751700417450032,
+        "p95_kl": 2.578064203262329,
+        "token_count": 24,
+        "top1_agreement": 0.7916666666666666,
+        "top1_matches": 19
+      }
+    }
+  },
+  "0.2": {
+    "build": {
+      "case_count": 6,
+      "mean_kl": 0.49186846781109733,
+      "mlp_relative_l2_p50": 0.280165221159017,
+      "mlp_relative_l2_p95": 0.28493775217417405,
+      "p95_kl": 2.2317287921905518,
+      "token_count": 48,
+      "top1_agreement": 0.75,
+      "top1_matches": 36
+    },
+    "evaluation": {
+      "case_count": 18,
+      "mean_kl": 0.37311420670776996,
+      "mlp_relative_l2_p50": 0.277855313787075,
+      "mlp_relative_l2_p95": 0.29120644610079827,
+      "p95_kl": 1.2642021179199219,
+      "token_count": 144,
+      "top1_agreement": 0.8333333333333334,
+      "top1_matches": 120
+    },
+    "evaluation_families": {
+      "adversarial_low_acceptance": {
+        "case_count": 3,
+        "mean_kl": 0.4579355946892368,
+        "mlp_relative_l2_p50": 0.24212737199886267,
+        "mlp_relative_l2_p95": 0.258064833737946,
+        "p95_kl": 1.0361175537109375,
+        "token_count": 24,
+        "top1_agreement": 0.875,
+        "top1_matches": 21
+      },
+      "code": {
+        "case_count": 3,
+        "mean_kl": 0.3341047712068151,
+        "mlp_relative_l2_p50": 0.2857413131625225,
+        "mlp_relative_l2_p95": 0.2897103856001159,
+        "p95_kl": 0.9896756410598755,
+        "token_count": 24,
+        "top1_agreement": 0.9166666666666666,
+        "top1_matches": 22
+      },
+      "english": {
+        "case_count": 3,
+        "mean_kl": 0.48665894909451407,
+        "mlp_relative_l2_p50": 0.277855313787075,
+        "mlp_relative_l2_p95": 0.28643559643117633,
+        "p95_kl": 1.002579927444458,
+        "token_count": 24,
+        "top1_agreement": 0.75,
+        "top1_matches": 18
+      },
+      "korean": {
+        "case_count": 3,
+        "mean_kl": 0.40337984429394663,
+        "mlp_relative_l2_p50": 0.2848822705166113,
+        "mlp_relative_l2_p95": 0.2879259780493446,
+        "p95_kl": 1.2642021179199219,
+        "token_count": 24,
+        "top1_agreement": 0.75,
+        "top1_matches": 18
+      },
+      "math": {
+        "case_count": 3,
+        "mean_kl": 0.15313988532276804,
+        "mlp_relative_l2_p50": 0.2831592973082573,
+        "mlp_relative_l2_p95": 0.29120644610079827,
+        "p95_kl": 0.8645777702331543,
+        "token_count": 24,
+        "top1_agreement": 0.875,
+        "top1_matches": 21
+      },
+      "structured_json": {
+        "case_count": 3,
+        "mean_kl": 0.4034661956393393,
+        "mlp_relative_l2_p50": 0.2736410355570452,
+        "mlp_relative_l2_p95": 0.27379842226789586,
+        "p95_kl": 1.6091467142105103,
+        "token_count": 24,
+        "top1_agreement": 0.8333333333333334,
+        "top1_matches": 20
+      }
+    }
+  }
+}
