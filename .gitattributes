@@ -31,3 +31,7 @@ experiments/exp_079a/** text eol=lf
 # EXP-080A evidence and shell runners are checksum-stable across checkouts.
 results/exp_080a/** text eol=lf
 experiments/exp_080a/** text eol=lf
+
+# EXP-082A evidence and shell runners are checksum-stable across checkouts.
+results/exp_082a/** text eol=lf
+experiments/exp_082a/** text eol=lf
