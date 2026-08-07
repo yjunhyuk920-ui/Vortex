@@ -1,0 +1,89 @@
+name: MLP skeleton fast diagnostic
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/mlp-skeleton-fast-diagnostic.yml"
+
+concurrency:
+  group: mlp-skeleton-fast-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  diagnose:
+    if: github.head_ref == 'research/mlp-skeleton-fast-diagnostic'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate skeleton compiler
+        run: python -m pytest -q tests/test_mlp_functional_skeleton.py
+      - name: Run fast 32-prototype diagnostic
+        run: |
+          python scripts/run_mlp_functional_skeleton_point.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --tiny-prototypes 32 \
+            --target-prototypes 256 \
+            --projection-dim 64 \
+            --cluster-iterations 5 \
+            --factor-bits 8 \
+            --seed 4049 \
+            --tokens 8 \
+            --tree-depth 1 \
+            --top-k 32 \
+            --beam-width 32 \
+            --node-budget 64 \
+            --eval-batch-size 8 \
+            --probe-count 128 \
+            --heldout-probe-count 64 \
+            --ridge-millionths 10 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output mlp-skeleton-fast.json
+      - name: Publish diagnostic
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('mlp-skeleton-fast.json').read_text())
+          summary = {
+              'heldout_output_error': data['functional_skeleton'][
+                  'neuron_weighted_heldout_output_error'
+              ],
+              'teacher_top1': data['teacher_forced_compiled']['top1_rate'],
+              'teacher_top32': data['teacher_forced_compiled']['top32_rate'],
+              'autoregressive_prefix': data['autoregressive_exact_prefix'],
+              'first_token_tree_alive': data['tree']['exact_path_last_alive_depth'],
+          }
+          Path('fast-comment.md').write_text(
+              '## MLP functional skeleton fast diagnostic\n\n```json\n'
+              + json.dumps(summary, indent=2, ensure_ascii=False)
+              + '\n```',
+              encoding='utf-8',
+          )
+          PY
+          gh pr comment "$PR_NUMBER" --body-file fast-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mlp-skeleton-fast-diagnostic
+          path: mlp-skeleton-fast.json
