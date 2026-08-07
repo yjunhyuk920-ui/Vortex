@@ -1,0 +1,1 @@
+Phase A/B deterministic reference accounting only. No checkpoint weights, proposal traces, expert routes, Transformer operation replacement, physical bytes, latency, target inference, CUDA, H2D, storage benchmark, E4-E7, or 405B execution are measured.
