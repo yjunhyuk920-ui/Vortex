@@ -69,7 +69,7 @@ def main() -> None:
     config = json.loads(arguments.config.read_text(encoding="utf-8"))
     output = arguments.output_dir.resolve()
     root = ROOT.resolve()
-    if output == root or not output.name.startswith("exp_072a_"):
+    if output == root or not (output.name == "exp_072a" or output.name.startswith("exp_072a_")):
         raise ValueError("output directory must be a dedicated exp_072a_* path")
     if output.exists():
         shutil.rmtree(output)
