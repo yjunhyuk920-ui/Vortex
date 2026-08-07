@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from collections.abc import Mapping
 import copy
 from contextlib import contextmanager
 import hashlib
@@ -406,7 +407,7 @@ def tokenize_prompt(tokenizer: Any, prompt: str, max_tokens: int) -> Any:
         add_generation_prompt=True,
         return_tensors="pt",
     )
-    if isinstance(token_ids, dict):
+    if isinstance(token_ids, Mapping):
         token_ids = token_ids["input_ids"]
     if not isinstance(token_ids, torch.Tensor):
         token_ids = torch.tensor([token_ids], dtype=torch.long)
