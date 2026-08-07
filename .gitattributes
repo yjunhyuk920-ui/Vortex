@@ -5,3 +5,7 @@ experiments/exp_073/** text eol=lf
 # EXP-074 evidence and shell runners are checksum-stable across checkouts.
 results/exp_074/** text eol=lf
 experiments/exp_074/** text eol=lf
+
+# EXP-075 metadata evidence and runners are checksum-stable across checkouts.
+results/exp_075/** text eol=lf
+experiments/exp_075/** text eol=lf
