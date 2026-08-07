@@ -390,3 +390,18 @@ server work are not authorized by this result. No current core candidate has
 survived the `1.185185%` target-equivalent E0/Gate sequence. The only already
 defined physical next measurement is separately authorized EXP-073 Stage 2;
 it is calibration, not a solution. Phase D, E6, and E7 remain not achieved.
+
+## EXP-077A preregistered activation-informed Fractal MLP Gate
+
+EXP-077A admits a new E0 candidate but has no scientific result yet. It uses
+the current causal token's nonzero SwiGLU intermediate contribution as an
+input-conditioned information source and asks whether the best 10% favorable
+oracle subset preserves unchanged-target logits on the pinned Qwen3.5-0.8B
+population.
+
+This is only the necessary inner `10B activated -> 1B` surrogate premise for
+Qwen3.5-122B-A10B. The oracle reads the complete MLP intermediate and receives
+selector/full gate-up cost for free. Attention, DeltaNet, LM head, fallback,
+cold storage, traffic, VRAM, and large-model scaling remain unverified. No
+larger checkpoint or target-server action is authorized. The pre-result Gate
+is frozen in `docs/research/EXPERIMENT_077A_ORACLE_FRACTAL_MLP_GATE.md`.

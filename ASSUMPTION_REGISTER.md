@@ -342,3 +342,18 @@ online cold-backed executors impossible. A future candidate must identify its
 new query-time information source and pass E0 before implementation.
 
 Status: OPEN BUT UNSUPPORTED; NO EXP-077 CORE IMPLEMENTATION AUTHORIZED.
+
+## A-052 -- Nonzero activation-conditioned MLP contributions concentrate within 10%
+
+For each causal token, the contribution score
+`abs(SiLU(gate) * up) * L2(down_column)` may concentrate strongly enough that
+the top 10% of SwiGLU intermediate channels preserves the unchanged target
+logit distribution. This is materially different from EXP-061 exact-zero
+skipping: no selected or omitted activation is required to equal zero.
+
+EXP-077A tests the favorable ceiling on the pinned unchanged Qwen3.5-0.8B
+checkpoint. Full gate/up computation, scoring, and selector cost are free, so a
+pass cannot establish a deployable speedup. Failure at this ceiling rejects the
+registered activation-norm fracturing path before any larger download.
+
+Status: ACTIVE AND UNVERIFIED; PREREGISTERED FOR EXP-077A E1 ORACLE GATE.

@@ -1,0 +1,70 @@
+{
+  "experiment": "EXP-077A",
+  "name": "qwen35_08b_activation_norm_fractal_mlp_gate",
+  "checkpoint": {
+    "model_id": "Qwen/Qwen3.5-0.8B",
+    "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "weight_file": "model.safetensors-00001-of-00001.safetensors",
+    "weight_sha256": "04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696",
+    "exp076_manifest": "experiments/exp_076/config.json"
+  },
+  "registered_inputs": {
+    "prompts_path": "experiments/exp_076/prompts.json",
+    "prompts_sha256": "46c9779c24e59f356247145f7ef870a1b82ba4907eb9dffcd48652e519f7612a",
+    "target_trace_path": "results/exp_076/raw/case_rows.jsonl",
+    "target_trace_sha256": "1e921698ce8ee522c0d3cb9b8b9004139beb54cc2dee82e1a2aa0a08fa245e4f",
+    "target_trace_evidence_commit": "55b79937c1f21887ae76b7e56ad61ba7dde8322a",
+    "tokens_per_prompt": 8,
+    "required_families": [
+      "english",
+      "korean",
+      "code",
+      "structured_json",
+      "math",
+      "adversarial_low_acceptance"
+    ]
+  },
+  "oracle": {
+    "fractions": [0.05, 0.1, 0.2],
+    "gate_fraction": 0.1,
+    "selection_unit": "individual_swiglu_intermediate_channel",
+    "score": "abs(post_silu_gate_times_up_activation) * l2_norm(down_projection_column)",
+    "selected_count": "max(1, floor(intermediate_size * fraction))",
+    "selector_cost_accounting": "free_non_deployable_favorable_oracle",
+    "full_gate_up_reads_accounting": "free_non_deployable_favorable_oracle",
+    "down_projection": "zero_unselected_intermediate_channels_then_execute_original_down_projection",
+    "teacher_forcing": "registered_exact_target_prefix_tokens_only",
+    "future_generated_tokens_available": false
+  },
+  "quality_gate": {
+    "evaluation_population_only": true,
+    "max_mlp_parameter_fraction": 0.1,
+    "min_top1_agreement": 0.99,
+    "min_each_family_top1_agreement": 0.95,
+    "max_mean_target_to_candidate_kl": 0.02,
+    "max_p95_target_to_candidate_kl": 0.05,
+    "require_zero_baseline_trace_mismatches": true,
+    "decision_on_pass": "PROMOTE_TO_FRACTAL_ALL_OPERATOR_AND_SELECTOR_COST_GATE",
+    "decision_on_scientific_failure": "REJECT_ACTIVATION_NORM_FRACTAL_MLP_10PCT_PATH",
+    "decision_on_control_failure": "INVALID_FRACTAL_ORACLE_CONTROL_FAILURE",
+    "decision_on_infrastructure_failure": "INFRASTRUCTURE_FAILURE_NO_SCIENTIFIC_DECISION"
+  },
+  "projection": {
+    "qwen35_122b_total_parameters": 122000000000,
+    "qwen35_122b_activated_parameters": 10000000000,
+    "target_active_parameters": 1000000000,
+    "required_inner_active_fraction": 0.1,
+    "note": "The official MoE outer router already reduces 122B total to 10B activated. EXP-077A tests only the necessary inner 10B-to-1B MLP-fracturing premise on a dense small checkpoint."
+  },
+  "runtime": {
+    "python": "3.12.13",
+    "torch": "2.6.0+cpu",
+    "transformers": "5.12.0",
+    "attention_implementation": "eager",
+    "dtype": "bfloat16",
+    "device": "cpu",
+    "torch_num_threads": 8,
+    "requirements_lock": "experiments/exp_077a/requirements.lock.json"
+  },
+  "evidence_ceiling": "Phase C small unchanged checkpoint, non-deployable activation-informed oracle teacher-forced observation at E1. It does not replace complete generation, charge a causal selector, sparsify attention/DeltaNet/LM-head, execute MoE routing, measure physical speed, or validate 35B/122B/405B, 8 GiB, E2-E7."
+}

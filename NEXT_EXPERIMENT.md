@@ -503,7 +503,7 @@ prompts, sampling, quantization, another small Qwen size, a 35B/122B download,
 router tracing, or a physical page scheduler. None addresses the measured
 accepted-prefix deficit.
 
-## Next research Gate -- portfolio reset and physical calibration boundary
+## Superseded reset boundary -- portfolio reset and physical calibration
 
 No new core implementation is authorized immediately after EXP-076. A proposed
 EXP-077 must first identify a materially different query-time information
@@ -528,3 +528,23 @@ it may not install packages, restart Ollama, download a large checkpoint, or
 disturb existing workloads without narrower permission. Passing calibration
 does not promote a VORTEX mechanism. Until either Stage 2 is authorized or a
 new candidate passes E0, the honest core status is `NO_SURVIVING_CANDIDATE`.
+
+## Active EXP-077A -- Activation-Informed Fractal MLP Oracle Gate
+
+EXP-077A supplies the required materially different query-time information
+source: the current causal token's nonzero post-SiLU SwiGLU intermediate
+contributions, weighted by unchanged down-projection column norms. It passed
+only the paper E0 admission scorecard; no model result exists yet.
+
+The pinned unchanged Qwen3.5-0.8B checkpoint will test whether retaining at
+most 10% of each MLP's intermediate channels preserves target logits on the
+frozen EXP-076 trajectories. The registered 10% Gate requires at least 99%
+held-out top-1 agreement, at least 95% in every family, mean target-to-candidate
+KL at most 0.02, and p95 KL at most 0.05.
+
+The selector is a deliberately favorable, non-deployable oracle: it computes
+the full current MLP intermediate and receives its cost for free. A pass would
+authorize only an all-operator and deployable-selector cost Gate. A failure
+closes this activation-norm fracturing score without post-result rescue. No new
+checkpoint, 35B/122B payload, target-server command, or physical kernel is in
+scope. Contract: `docs/research/EXPERIMENT_077A_ORACLE_FRACTAL_MLP_GATE.md`.
