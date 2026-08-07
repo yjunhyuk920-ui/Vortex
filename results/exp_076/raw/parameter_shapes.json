@@ -1,0 +1,151 @@
+{
+  "mtp_parameters": 20452864,
+  "mtp_shapes": [
+    {
+      "bytes": 4194304,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.fc.weight",
+      "numel": 2097152,
+      "shape": [
+        1024,
+        2048
+      ]
+    },
+    {
+      "bytes": 2048,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.layers.0.input_layernorm.weight",
+      "numel": 1024,
+      "shape": [
+        1024
+      ]
+    },
+    {
+      "bytes": 7340032,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.layers.0.mlp.down_proj.weight",
+      "numel": 3670016,
+      "shape": [
+        1024,
+        3584
+      ]
+    },
+    {
+      "bytes": 7340032,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.layers.0.mlp.gate_proj.weight",
+      "numel": 3670016,
+      "shape": [
+        3584,
+        1024
+      ]
+    },
+    {
+      "bytes": 7340032,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.layers.0.mlp.up_proj.weight",
+      "numel": 3670016,
+      "shape": [
+        3584,
+        1024
+      ]
+    },
+    {
+      "bytes": 2048,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.layers.0.post_attention_layernorm.weight",
+      "numel": 1024,
+      "shape": [
+        1024
+      ]
+    },
+    {
+      "bytes": 512,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.layers.0.self_attn.k_norm.weight",
+      "numel": 256,
+      "shape": [
+        256
+      ]
+    },
+    {
+      "bytes": 1048576,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.layers.0.self_attn.k_proj.weight",
+      "numel": 524288,
+      "shape": [
+        512,
+        1024
+      ]
+    },
+    {
+      "bytes": 4194304,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.layers.0.self_attn.o_proj.weight",
+      "numel": 2097152,
+      "shape": [
+        1024,
+        2048
+      ]
+    },
+    {
+      "bytes": 512,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.layers.0.self_attn.q_norm.weight",
+      "numel": 256,
+      "shape": [
+        256
+      ]
+    },
+    {
+      "bytes": 8388608,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.layers.0.self_attn.q_proj.weight",
+      "numel": 4194304,
+      "shape": [
+        4096,
+        1024
+      ]
+    },
+    {
+      "bytes": 1048576,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.layers.0.self_attn.v_proj.weight",
+      "numel": 524288,
+      "shape": [
+        512,
+        1024
+      ]
+    },
+    {
+      "bytes": 2048,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.norm.weight",
+      "numel": 1024,
+      "shape": [
+        1024
+      ]
+    },
+    {
+      "bytes": 2048,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.pre_fc_norm_embedding.weight",
+      "numel": 1024,
+      "shape": [
+        1024
+      ]
+    },
+    {
+      "bytes": 2048,
+      "dtype": "torch.bfloat16",
+      "name": "mtp.pre_fc_norm_hidden.weight",
+      "numel": 1024,
+      "shape": [
+        1024
+      ]
+    }
+  ],
+  "proposal_parameters_per_token": 274732544,
+  "target_text_parameters": 752393024,
+  "tied_lm_head_parameters": 254279680
+}

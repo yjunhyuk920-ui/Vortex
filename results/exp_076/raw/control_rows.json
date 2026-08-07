@@ -1,0 +1,32 @@
+[
+  {
+    "control": "wrong_accepts",
+    "failures": 0,
+    "passed": true
+  },
+  {
+    "control": "commit_replay_mismatches",
+    "failures": 0,
+    "passed": true
+  },
+  {
+    "control": "rollback_recompute_mismatches",
+    "failures": 0,
+    "passed": true
+  },
+  {
+    "control": "committed_cache_mutations_during_verification",
+    "failures": 0,
+    "passed": true
+  },
+  {
+    "control": "prefix_mutations",
+    "failures": 0,
+    "passed": true
+  },
+  {
+    "control": "target_future_token_reads",
+    "failures": 0,
+    "passed": true
+  }
+]
