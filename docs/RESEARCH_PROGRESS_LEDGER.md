@@ -145,3 +145,22 @@ The expensive nonlocal arithmetic-DAG synthesis plan was placed behind a cheaper
 Decision: `REJECT_SELF_CONTAINED_EXACT_Q4_DAG_AS_UNIVERSAL_CORE_RETAIN_RESTRICTED_SYNTHESIS_AUXILIARY`.
 
 This is a useful family closure, not increased runtime feasibility. A cold-backed online executor remains formally open and unsupported. The next highest-value prerequisite is EXP-073 target-machine calibration so future E0 Gates use measured physical budgets rather than proxies.
+
+<!-- EXP-074-AUTHORITATIVE-FINAL -->
+## 2026-08-07 — EXP-074 weight-stationary block Gate
+
+The proposed Qwen3.5-122B-A10B surrogate was screened without checkpoint
+weights. Seven controls passed over 108 scenarios and 18 minimum searches.
+MTP-1 plus paging retained `10.0x` the 1B p50 baseline-equivalent traffic and
+was rejected. The longer block path was revised rather than promoted: its ideal
+fixed-route/free-draft minimum is nine tokens, while route diversity and draft
+cost raise the requirement sharply.
+
+Decision:
+
+```text
+REVISE_MTP1_AND_EXPERT_PAGING_INSUFFICIENT_REQUIRE_LONG_CAUSAL_PROPOSAL_AND_ROUTING_LOCALITY_GATES
+```
+
+No model download or server run occurred. This narrows the surrogate mechanism
+but does not increase dense-405B feasibility.

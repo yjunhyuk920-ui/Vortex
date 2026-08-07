@@ -58,3 +58,21 @@ For an exact self-contained artifact and fixed interpreter, standard-basis queri
 At the registered 405B count, worst-case Q4 information is `188.98828125 GiB`, while the complete hot allowance is 8 GiB (`4.2331%`). The information gap is `23.62353515625x` before scales, biases, opcodes, alignment, interpreter state, or workspace. Even the former 10% static threshold requires `18.898828125 GiB`.
 
 Do not build pair-frequency CSE, beam/SAT/SMT synthesis, model-wide transcoding, or CUDA kernels as a universal self-contained hot core. Retain a bounded synthesizer only for explicitly restricted structured matrices. A future cold-backed design must introduce a materially different query-time information source and charge every original/lossless cold-data probe.
+
+<!-- EXP-074-AUTHORITATIVE-FINAL -->
+## F-041 — MTP-1 plus expert paging as a 1B-class surrogate core
+
+For the registered Qwen3.5-122B-A10B structure, MTP-1 retained `10.0x` native
+1B weight-equivalent traffic even after granting a zero-cost proposal and a
+perfectly fixed routed-expert set. The p50 allowance was `1.2x`.
+
+The failure is not repaired by fitting the 81 GB checkpoint on disk or paging
+one layer at a time. Residency is not token latency, and the active 10B work
+must still be reduced or amortized. Do not reopen this narrow path by omitting
+draft/LM-head/verification/fallback cost, assuming expert identity across
+tokens, relabeling block GEMM utilization as reduced arithmetic, or treating a
+MoE result as dense-405B evidence.
+
+Retain the deterministic block-accounting reference and exact longest-prefix
+verifier. A materially different continuation must causally produce long exact
+blocks and measure real router union locality under the fully charged Gate.

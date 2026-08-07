@@ -231,3 +231,27 @@ page faults, power, clock, and thermal state
 Use the same prompt, tokenizer, context, batch, decode contract, and cache state across comparisons. Sanitize hostnames, addresses, usernames, internal mount names, and keys from all evidence. EXP-073 is calibration only; 405B execution, operation replacement, and E6/E7 remain NOT TESTED.
 
 Stage 2 is still not authorized. fio is absent, so any Stage 2 storage method must be preregistered using already present read-only/runtime facilities or separately approved installation; Stage 1 does not authorize either choice.
+
+## EXP-074 hardware boundary
+
+EXP-074 executed no target-server command and downloaded no checkpoint. MTP-1
+plus expert paging failed the optimistic logical Gate before hardware work, so
+no CUDA kernel, expert-page scheduler, 35B/122B run, or inference benchmark is
+promoted.
+
+The 81 GB decimal Q4 artifact nominally fits current root free capacity but
+would leave only 22.1812 GiB, below the registered 30 GiB safe-workspace Gate.
+Do not pull it on the current root filesystem.
+
+Before hardware work on the revised block candidate:
+
+1. verify native MTP tensor presence and runtime exposure without weights when
+   possible;
+2. pass a small-checkpoint causal accepted-prefix Gate;
+3. pass a middle-rung MoE router-union trace Gate;
+4. complete separately authorized EXP-073 Stage 2 baselines;
+5. preregister peak VRAM, rollback/KV, physical bytes, compute, and thermal
+   measurements.
+
+Phase-D runtime validation, E4-E7, 122B execution, and dense 405B remain NOT
+TESTED.

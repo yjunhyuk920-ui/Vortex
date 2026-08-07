@@ -294,3 +294,37 @@ The alias is not serialized. Reproduction reruns 14 experiment tests before coll
 Closure verification passed: 14/14 EXP-073 tests, 344/344 repository tests, `scripts/run_validation.py`, and the Git Bash offline `run_current_env.sh` fixture Gate. The offline fixture remains synthetic and is not target evidence.
 
 Expected decision: `COMPLETE_SANITIZED_READ_ONLY_TARGET_INVENTORY`. This is target inventory evidence only. GitHub Actions runs a synthetic fixture and must never be cited as target evidence. Stage 2 and Phase-D runtime validation remain not run.
+
+## EXP-074 local authority
+
+```text
+results/exp_074/summary.json
+source commit       8abc06e73c884b839927cf41d5f4fa6cbb8fc051
+evidence commit     c1d778af011672ec7fadfa66935ba2548de8e115
+config SHA-256      f86c32cbaecce73a27f77cbb1fd46f19d5096fcce425d7f4301372e64aed4e97
+core SHA-256        404b43088448eaafc3f3d9631cdc3271dc9ebc16b635e27c9211cf9aa0459a65
+workflow/artifact   NOT RUN
+```
+
+Local authority environment: Windows 11, Python 3.12.13. Nine EXP-074 tests
+passed. The canonical reference run emitted 108 scenario rows, 18 minimum rows,
+seven controls with zero failure, and eight checksummed payloads plus the
+checksum manifest. It did
+not use checkpoint weights, contact the target server, or execute inference.
+
+Reproduce without overwriting authority:
+
+```bash
+bash experiments/exp_074/reproduce.sh
+```
+
+Expected decision:
+
+```text
+REVISE_MTP1_AND_EXPERT_PAGING_INSUFFICIENT_REQUIRE_LONG_CAUSAL_PROPOSAL_AND_ROUTING_LOCALITY_GATES
+```
+
+Expected invariants: MTP-1 optimistic fraction `10.0`, fixed-route/free-draft
+p50 minimum `9`, dense 405B zero-draft minimum `85`, dense 405B/4B-draft
+minimum `507`, direct-pull remainder `22.1811537743 GiB`, and deterministic core
+hash above. Physical timing and model behavior remain unverified.

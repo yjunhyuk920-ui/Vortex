@@ -276,3 +276,38 @@ root free capacity               97.6183 GiB
 The current root free capacity cannot hold the registered `188.9883 GiB` packed 405B-Q4 information, even before scales and overhead. The favorable Gen2 x16 ceiling is `7.4506 GiB/s`, a `25.3656 s` floor for moving that byte-equivalent once. These are capacity/link deductions, not measured traffic. A future cold-backed architecture must either provide separately authorized larger cold storage or a lossless representation inside the measured capacity, and must still prove a query schedule far below a full checkpoint transfer.
 
 Stage 2 must measure actual storage, H2D, loaded-link, and native 4B Q4 behavior before a new physical latency Gate is frozen. It remains separately authorized.
+
+<!-- EXP-074-AUTHORITATIVE-FINAL -->
+## Weight-stationary block boundary
+
+The restricted Qwen3.5 surrogate candidate was:
+
+```text
+checkpoint-native causal MTP block
+    -> unchanged target block verification
+    -> group positions by exact routed expert
+    -> read each required cold expert page once per block
+    -> commit exact longest prefix plus correction
+```
+
+This separates three resources:
+
+```text
+residency: layer/expert pages may keep peak VRAM below total checkpoint size
+traffic:   target pages are amortized only across actually accepted positions
+compute:   every active expert multiply remains charged even when weights reuse
+```
+
+EXP-074 rejects the MTP-1 plus paging form: it retains `10.0x` the 1B target
+traffic under an optimistic fixed route and free draft. The runtime must not
+equate disk fit, layer paging, or batched GEMM utilization with 1B-class token
+latency.
+
+The reference block scheduler remains auxiliary. Reopening requires a pinned
+unchanged checkpoint with exposed native MTP, causal accepted-prefix evidence
+long enough to close fully charged p50/p95 equations, and measured router-union
+locality. No page scheduler or GPU backend is authorized before those Gates.
+
+For dense 405B, even a zero-cost perfect proposal requires 85 accepted tokens
+at the p50 allowance; a 4B draft requires 507. Qwen-specific MTP/router behavior
+does not supply a universal dense proposal source.

@@ -348,3 +348,65 @@ driver/kernel compatibility constraints
 ```
 
 If the host cannot run a valid native 4B Q4 baseline or required profilers without disruptive changes, record `INFRASTRUCTURE LIMITATION — NO SCIENTIFIC DECISION` and do not substitute projections.
+
+## Closed EXP-074 — Weight-Stationary MTP/Expert Block Budget Gate
+
+EXP-074 placed the proposed Qwen3.5-122B-A10B surrogate behind a no-download
+logical resource Gate before any checkpoint or paging backend work.
+
+The standard MTP-1 plus expert-paging path failed even under a zero-cost causal
+proposal and a fixed routed-expert set:
+
+```text
+active target equivalent                         10B
+native baseline equivalent                        1B
+MTP-1 optimistic normalized traffic             10.0x
+p50 allowance                                     1.2x
+```
+
+The broader block form is not yet rejected because an ideal fixed expert set
+and free proposal reaches p50 at nine perfectly accepted tokens. Fully charged
+or route-diverse controls move the requirement substantially:
+
+```text
+fixed routes + 0.8B draft                        25
+fixed routes + 1.0B draft                        50
+independent-uniform route expectation             98
+maximally distinct route control                 102
+```
+
+Decision:
+
+```text
+REVISE_MTP1_AND_EXPERT_PAGING_INSUFFICIENT_REQUIRE_LONG_CAUSAL_PROPOSAL_AND_ROUTING_LOCALITY_GATES
+```
+
+No server command, model download, inference, or physical measurement occurred.
+
+Authority: `results/exp_074/summary.json`; source
+`8abc06e73c884b839927cf41d5f4fa6cbb8fc051`; evidence
+`c1d778af011672ec7fadfa66935ba2548de8e115`.
+
+## Candidate next Gate — Native MTP Surface and Accepted-Prefix Audit
+
+Do not open a model execution branch until a metadata-only checkpoint audit
+proves that the selected unchanged small Qwen3.5 distribution contains the MTP
+tensors and that the chosen runtime/quantization path preserves and exposes
+them.
+
+If that audit survives, the cheapest real-model Gate is:
+
+```text
+smallest official unchanged Qwen3.5 checkpoint
+pinned revision and file hashes
+causal MTP proposals only; no target future tokens
+K in 2, 4, 8, 16, 32, 64
+exact longest-prefix target verification
+proposal, LM-head, verification, rejected-position and fallback cost charged
+p50/p95 normalized traffic reported directly
+```
+
+Rejection occurs if the favorable exact-reference accepted-prefix distribution
+cannot reach the EXP-074 fully charged threshold or if the public checkpoint
+does not expose usable MTP state. Only a surviving proposal Gate can authorize
+a 35B-A3B expert-route trace. A 122B download remains prohibited at this stage.

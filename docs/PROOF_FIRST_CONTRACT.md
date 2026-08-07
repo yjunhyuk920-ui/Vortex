@@ -282,3 +282,13 @@ E6/E7: not achieved
 EXP-066 through EXP-070 are rejected as core under their frozen scopes. EXP-071 prohibits an unqualified impossibility claim from the registered lower-bound papers. EXP-072A rejects a self-contained exact Q4 artifact as a universal 8 GiB hot core because the worst-case artifact must retain `188.98828125 GiB` of coefficient information before overhead.
 
 Cold-backed online execution remains logically open but has no surviving constructive mechanism. EXP-073 is authorized only to calibrate a sanitized target-machine resource envelope; calibration cannot promote a runtime or change Phase D from `NOT TESTED` without the declared measurements.
+
+<!-- EXP-074-CURRENT-CLASSIFICATION -->
+## Current classification after EXP-074
+
+MTP-1 plus expert paging is rejected as a 1B-class core for the registered
+Qwen3.5 surrogate under an optimistic E1 reference Gate. A longer
+weight-stationary block remains revised, not promoted, pending causal accepted
+prefixes and real router locality. No checkpoint, server command, or hardware
+runtime was used. The Qwen-specific MoE result cannot validate the arbitrary
+dense 405B mission, and Phase D/E6/E7 remain not achieved.

@@ -270,3 +270,51 @@ Stage 1 read-only inventory is complete with zero saved private identifier and n
 Stage 2 is not authorized by Stage 1 success. It remains a separately approved same-machine storage, transfer, and native 4B Q4 baseline measurement. No model download, package installation, service restart, benchmark file allocation, inference, or 405B allocation occurred in Stage 1.
 
 The measured capacity/link envelope already replaces the corresponding proxy numbers in future cold-backed E0 Gates. Storage bandwidth, H2D bandwidth, native 4B Q4 latency, loaded-link behavior, peak process VRAM/RSS, Phase-D runtime validation, actual operation replacement, 405B execution, and E6/E7 remain `NOT TESTED`.
+
+## EXP-074 authoritative no-download budget Gate
+
+EXP-074 evaluated checkpoint-native MTP plus expert-stationary block verification
+for the proposed Qwen3.5-122B-A10B surrogate without downloading weights or
+contacting the target server.
+
+Registered external model facts were `122B` total, `10B` activated, 48 layers,
+256 experts, and `8 routed + 1 shared` experts per token. Deterministic reference
+accounting produced 108 scenario rows, 18 minimum searches, and seven passing
+controls.
+
+Derived p50 perfect-acceptance requirements:
+
+```text
+fixed experts, zero-cost proposal                  9 tokens
+fixed experts, 0.8B-equivalent proposal           25 tokens
+fixed experts, 1.0B-equivalent proposal           50 tokens
+independent-uniform expected experts, zero draft  98 tokens
+maximally distinct experts, zero draft           102 tokens
+```
+
+MTP-1 plus expert paging required `10.0x` the native 1B weight-equivalent
+traffic even with a free proposal and perfect fixed expert reuse, so it failed
+the `1.2x` p50 Gate. The long-block hypothesis remains only a revised candidate
+because the optimistic fixed-route/free-proposal ceiling reaches the Gate at
+nine perfectly accepted tokens. No real proposal acceptance or expert route
+locality has been measured.
+
+The 81 GB decimal Ollama artifact nominally fits the measured root free space,
+but leaves only `22.1812 GiB`, below the registered `30 GiB` safe-workspace Gate.
+
+Decision:
+
+```text
+REVISE_MTP1_AND_EXPERT_PAGING_INSUFFICIENT_REQUIRE_LONG_CAUSAL_PROPOSAL_AND_ROUTING_LOCALITY_GATES
+```
+
+Authority: `results/exp_074/summary.json`; source
+`8abc06e73c884b839927cf41d5f4fa6cbb8fc051`; evidence
+`c1d778af011672ec7fadfa66935ba2548de8e115`; deterministic core SHA-256
+`404b43088448eaafc3f3d9631cdc3271dc9ebc16b635e27c9211cf9aa0459a65`.
+
+Current frontier: audit whether an unchanged small Qwen3.5 checkpoint actually
+contains a usable causal MTP proposal surface, then measure accepted-prefix
+length before any 35B/122B download or page scheduler. The MoE surrogate may
+screen infrastructure and scheduling ideas but cannot validate the arbitrary
+dense 405B mission. EXP-073 Stage 2 remains separately authorized and not run.

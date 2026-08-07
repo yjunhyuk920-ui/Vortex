@@ -1,3 +1,7 @@
 # Frozen EXP-073 evidence is byte-verified across Windows and Unix checkouts.
 results/exp_073/** text eol=lf
 experiments/exp_073/** text eol=lf
+
+# EXP-074 evidence and shell runners are checksum-stable across checkouts.
+results/exp_074/** text eol=lf
+experiments/exp_074/** text eol=lf

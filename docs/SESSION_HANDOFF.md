@@ -230,3 +230,21 @@ Authority: `results/exp_072a/summary.json`; source `468f297925e10bdc541fe48f19c2
 Decision: reject a self-contained exact Q4 arithmetic DAG as a universal 8 GiB hot core. Exact basis outputs make the artifact an injective matrix encoding; worst-case Q4 information is `188.98828125 GiB`, `23.62353515625x` the hot allowance. Restricted synthesis remains auxiliary. Cold-backed online execution is not ruled out.
 
 Next: EXP-073 sanitized, read-only inventory of the privately identified Ubuntu target, followed only with separate authorization by storage/transfer/native-4B baselines. Never commit connection details. Do not download 405B, install packages, restart services, or disturb workloads during inventory.
+
+<!-- EXP-074-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-074
+
+Branch: `research/exp-074-weight-stationary-block-gate`.
+
+Authority: `results/exp_074/summary.json`; source
+`8abc06e73c884b839927cf41d5f4fa6cbb8fc051`; evidence
+`c1d778af011672ec7fadfa66935ba2548de8e115`.
+
+Decision: MTP-1 plus expert paging is rejected as a 1B-class core after
+retaining `10.0x` baseline traffic under free drafting and fixed routes. The
+long-block path is revised: fixed/free requires nine perfect accepted tokens,
+0.8B draft requires 25, and independent-uniform expected routing requires 98.
+
+Next: metadata-only native-MTP surface audit, then the smallest unchanged
+checkpoint accepted-prefix Gate if the surface exists. Do not download 35B or
+122B and do not build a page scheduler. EXP-073 Stage 2 remains not run.

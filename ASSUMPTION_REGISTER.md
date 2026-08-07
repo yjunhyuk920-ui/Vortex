@@ -257,3 +257,30 @@ Stage 1 measured the sanitized inventory: Quadro M5000 8,192 MiB, compute capabi
 The inventory portion is confirmed. Valid same-machine 4B Q4 latency, storage bandwidth, H2D bandwidth, loaded PCIe state, usable process VRAM, thermal stability, and production-interference controls remain unverified pending separately authorized Stage 2.
 
 Status: PARTIALLY CONFIRMED BY EXP-073 STAGE 1 INVENTORY; BASELINE/PERFORMANCE PORTION ACTIVE AND UNVERIFIED; PHASE-D RUNTIME VALIDATION NOT TESTED.
+
+## A-045 — MTP-1 plus expert paging makes 10B active work behave like 1B
+
+EXP-074 granted free proposal generation and perfect fixed expert reuse. One
+accepted token still required `10.0x` the 1B baseline-equivalent target weight
+traffic against a `1.2x` p50 allowance.
+
+Status: CONTRADICTED FOR THE REGISTERED MTP-1 PLUS PAGING INTERFACE.
+
+## A-046 — Causal long blocks and router locality can close the revised Gate
+
+An ideal fixed-route, zero-cost proposal reaches the p50 Gate at nine perfectly
+accepted tokens. The independent-uniform expected route control requires 98;
+0.8B-equivalent proposal work with fixed routes requires 25. No accepted-prefix
+or real route distribution has been measured.
+
+Status: UNVERIFIED; REQUIRES METADATA SURFACE AUDIT, SMALL-CHECKPOINT CAUSAL
+PROPOSAL EVIDENCE, THEN MIDDLE-RUNG MOE ROUTER TRACES.
+
+## A-047 — The 122B artifact can be downloaded with safe experiment headroom
+
+The 81 GB decimal artifact nominally fits 97.6183 GiB root free space, but the
+derived remainder is only 22.1812 GiB and fails the registered 30 GiB safe
+workspace Gate.
+
+Status: NOMINAL FIT DERIVED; SAFE-WORKSPACE ASSUMPTION CONTRADICTED FOR CURRENT
+CAPACITY; NO DOWNLOAD PERFORMED.

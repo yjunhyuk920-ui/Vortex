@@ -162,3 +162,24 @@ Cases 18; forwards 1,152; attention rows 9,216; token/registration/control misma
 | Same-machine storage/H2D/native 4B Q4 baseline | no authorized Stage 2 run | NOT TESTED — EXP-073 remains active |
 
 Current overall classification: self-contained universal hot-artifact core rejected; restricted synthesis auxiliary; cold-backed online execution open but unsupported; Phase D/E6/E7 not achieved.
+
+<!-- EXP-074-AUTHORITATIVE-FINAL -->
+## EXP-074 closure
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Reference accounting controls | E1: 7/7 pass | PASS reference |
+| MTP-1 + fixed experts + free draft p50 <=1.2x 1B | DERIVED: 10.0x | REJECTED |
+| Ideal fixed-route/free-draft block has path <=16 tokens | DERIVED: 9 | NECESSARY CEILING PASS ONLY |
+| Independent-uniform expected routes reach p50 <=1.2x | DERIVED: 98 perfect tokens | UNFAVORABLE CONTROL |
+| Fixed routes + 0.8B proposal reach p50 <=1.2x | DERIVED: 25 perfect tokens | UNVERIFIED ACCEPTANCE |
+| 81 GB direct pull fits current free disk | DERIVED: 22.1812 GiB remains | NOMINAL FIT |
+| 81 GB direct pull preserves 30 GiB workspace | DERIVED: false | FAIL |
+| Real MTP accepted-prefix distribution | no checkpoint run | NOT TESTED |
+| Real expert route locality | no checkpoint run | NOT TESTED |
+| Physical 1B-class latency or VRAM | no runtime/server run | NOT TESTED |
+| MoE surrogate validates dense 405B | outside claim | FALSE SUBSTITUTION PROHIBITED |
+
+Current classification after EXP-074: MTP-1 plus paging rejected as a 1B-class
+core; long-block candidate revised pending causal proposal and routing evidence;
+no model download; Phase D/E6/E7 unchanged.

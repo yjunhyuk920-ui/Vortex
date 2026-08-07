@@ -281,4 +281,4 @@ Every selected real-Q4 dense rearrangement was full rank at its four-row cut. Ev
 
 ## Continuation pointer after EXP-065
 
-`FAILED_APPROACHES_RECENT.md` is the authoritative continuation for F-034 onward. As of EXP-072A it closes exact TT/MPO, joint exact row reuse, absolute-unread demand bounds, temporal exact replay, local-pattern tables, unqualified lower-bound impossibility claims, and the self-contained exact Q4 DAG as a universal hot core. Read that continuation before reopening any of these families.
+`FAILED_APPROACHES_RECENT.md` is the authoritative continuation for F-034 onward. As of EXP-074 it closes exact TT/MPO, joint exact row reuse, absolute-unread demand bounds, temporal exact replay, local-pattern tables, unqualified lower-bound impossibility claims, the self-contained exact Q4 DAG as a universal hot core, and MTP-1 plus expert paging as a 1B-class surrogate core. Read that continuation before reopening any of these families.

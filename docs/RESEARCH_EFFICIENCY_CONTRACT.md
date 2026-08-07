@@ -147,3 +147,25 @@ Report research efficiency honestly:
 - state when a result only closes a family;
 - do not describe a long sequence of low-upside negative tests as increasing feasibility;
 - report why the selected next experiment has higher expected value than rejected alternatives.
+
+## Current directive after EXP-074
+
+The Qwen3.5-122B-A10B surrogate was screened by a no-download Gate. MTP-1 plus
+expert paging fails at `10.0x` the 1B baseline-equivalent target traffic even
+with free drafting and fixed expert reuse. Do not build a page scheduler,
+download the 35B/122B checkpoints, or treat residency as speed for this path.
+
+The only retained branch is a long accepted block. Its optimistic p50 minimum
+is nine tokens, but proposal cost and route diversity raise the reference
+requirements to 25-612 tokens. The next cheapest information gain is therefore:
+
+```text
+metadata-only native-MTP surface audit
+-> smallest unchanged checkpoint accepted-prefix Gate
+-> middle-rung MoE route-union trace only if proposal survives
+-> physical scheduler only after EXP-073 Stage 2 and logical closure
+```
+
+This is restricted surrogate screening, not a replacement for the primary
+arbitrary dense 405B research track. Any continuation must explain how its
+information source transfers beyond Qwen-specific MTP/MoE or remain auxiliary.

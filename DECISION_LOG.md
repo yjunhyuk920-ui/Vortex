@@ -349,3 +349,29 @@ HOLD_STAGE_2_PENDING_SEPARATE_AUTHORIZATION
 Authority: `results/exp_073/summary.json`; source `d3b1d2e4dd08e73781c969814cb4d181377a054d`; checkout-stable evidence `4e35afb9648dc0c513c3a90c32d604f4c0b0fd21`; core SHA-256 `aa9cae0457a6b92fcb75da35fedc1a2a2a9f3da115808d341a5a498ca4722da2`.
 
 Status: STAGE 1 COMPLETE; EXP-073 ACTIVE; PHASE-D RUNTIME VALIDATION, E6, AND E7 NOT ACHIEVED.
+
+## D-060 — Reject MTP-1 plus expert paging; revise long-block candidate
+
+EXP-074 authority: `results/exp_074/summary.json`; source
+`8abc06e73c884b839927cf41d5f4fa6cbb8fc051`; evidence
+`c1d778af011672ec7fadfa66935ba2548de8e115`; deterministic core SHA-256
+`404b43088448eaafc3f3d9631cdc3271dc9ebc16b635e27c9211cf9aa0459a65`.
+
+MTP-1 plus expert paging retained `10.0x` the 1B baseline-equivalent target
+traffic under free drafting and fixed expert reuse, failing the `1.2x` p50 Gate.
+The ideal fixed-route/free-proposal long block reaches the Gate at nine accepted
+tokens, while independent-uniform expected routing requires 98.
+
+Decision:
+
+```text
+REVISE_MTP1_AND_EXPERT_PAGING_INSUFFICIENT_REQUIRE_LONG_CAUSAL_PROPOSAL_AND_ROUTING_LOCALITY_GATES
+```
+
+The MTP-1/paging combination is rejected as a 1B-class core. Reference block
+accounting and the exact verifier remain auxiliary. A metadata-only MTP surface
+audit and then a small-checkpoint accepted-prefix Gate are required before any
+35B/122B model download or scheduler implementation. The Qwen MoE surrogate
+does not replace the dense 405B acceptance target.
+
+Status: REVISE; E1 REFERENCE ACCOUNTING ONLY; PHASE D/E6/E7 NOT ACHIEVED.
