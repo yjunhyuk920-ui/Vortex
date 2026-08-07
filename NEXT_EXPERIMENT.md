@@ -85,7 +85,7 @@ For `P` Q4 coefficients there are `16^P` distinct linear maps. Exact equality on
 2^(B+1) - 1 >= 16^P
 ```
 
-The registered 405B population contains `1,623,396,974,592` Q4 information bits (`188.98828125 GiB`) before scales, bias, opcodes, alignment, interpreter state, or workspace. The fixed 8 GiB hot allowance is only about `4.2327%`; the former `10%` static Gate is not sufficient for final residency.
+The registered 405B population contains `1,623,396,974,592` Q4 information bits (`188.98828125 GiB`) before scales, bias, opcodes, alignment, interpreter state, or workspace. The fixed 8 GiB hot allowance is only about `4.2331%`; the former `10%` static Gate is not sufficient for final residency.
 
 EXP-072A will validate the finite-domain injectivity reduction exhaustively and freeze the target arithmetic before any synthesizer is built.
 

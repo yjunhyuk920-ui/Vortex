@@ -21,7 +21,7 @@ This restriction isolates the self-contained DAG proposed by EXP-072. A design t
 
 ## E0 candidate-efficiency scorecard
 
-1. **Target-scale upside** — A positive DAG could in principle share arithmetic across outputs. To fit the fixed 8 GiB hot-state cap using only a self-contained artifact, however, it must encode 405,849,243,648 Q4 coefficients in at most 68,719,476,736 bits: `4.2327%` of packed Q4. The former EXP-072 `10%` static median Gate is already too weak for the final hot-state cap, and the final target-equivalent traffic fraction is approximately `1.185185%` before overhead.
+1. **Target-scale upside** — A positive DAG could in principle share arithmetic across outputs. To fit the fixed 8 GiB hot-state cap using only a self-contained artifact, however, it must encode 405,849,243,648 Q4 coefficients in at most 68,719,476,736 bits: `4.2331%` of packed Q4. The former EXP-072 `10%` static median Gate is already too weak for the final hot-state cap, and the final target-equivalent traffic fraction is approximately `1.185185%` before overhead.
 2. **Mechanism novelty** — Non-contiguous shared linear forms are broader than EXP-067 whole-row reuse and EXP-070 contiguous local patterns. They do not introduce an external information source: the exact circuit still determines the complete matrix.
 3. **Evidence basis** — Q4 has a small coefficient alphabet and structured controls admit compact circuits. No population or theorem evidence currently shows that arbitrary public dense checkpoints have descriptions below the required fraction.
 4. **Scaling reason** — The number of Q4 maps grows as `16^P`, while the 8 GiB allowance is fixed. The universal information-capacity gap grows linearly with parameter count rather than improving toward 405B.
@@ -49,7 +49,7 @@ registered parameters                 405,849,243,648
 Q4 information                        1,623,396,974,592 bits
 packed Q4 size                         188.98828125 GiB
 8 GiB hot-state allowance              68,719,476,736 bits
-hot allowance / packed Q4              approximately 4.2327%
+hot allowance / packed Q4              approximately 4.2331%
 former EXP-072 static median threshold 10%
 final target-equivalent fraction       1.185185185%
 ```
@@ -73,7 +73,7 @@ Promotion to bounded real-weight synthesis requires all of the following:
 ```text
 zero finite-domain enumeration/signature/control mismatch
 a universal self-contained artifact cap <=8 GiB for the registered 405B Q4 population
-a universal static fraction <=4.2327% before scales, bias, workspace, and runtime overhead
+a universal static fraction <=4.2331% before scales, bias, workspace, and runtime overhead
 an explicit route from that cap toward 1.185185% fully charged target-equivalent traffic
 ```
 
