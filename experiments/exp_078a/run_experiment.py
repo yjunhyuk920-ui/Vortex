@@ -9,9 +9,15 @@ import math
 import platform
 from pathlib import Path
 import subprocess
+import sys
 import time
 import types
 from typing import Any, Iterator
+
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from experiments.exp_077a.run_experiment import (
     compare_logits,
@@ -34,10 +40,6 @@ from vortex_runtime.tangent_macroblock import (
     minimum_hot_tokens,
     valid_prefix_length,
 )
-
-
-ROOT = Path(__file__).resolve().parents[2]
-
 
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
