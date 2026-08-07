@@ -635,6 +635,7 @@ def main() -> None:
     (output / "artifacts/contract.txt").write_text(
         config_path.read_text(encoding="utf-8"), encoding="utf-8", newline="\n"
     )
+    (output / "logs").mkdir(parents=True, exist_ok=True)
     (output / "logs/run.log").write_text(
         "\n".join(log_lines) + "\n", encoding="utf-8", newline="\n"
     )
