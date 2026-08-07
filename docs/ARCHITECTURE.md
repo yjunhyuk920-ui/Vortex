@@ -145,3 +145,17 @@ This is retained as a negative-test instrument, not a backend. At a realized
 decisions, despite seeing full current intermediates for free. It does not
 sparsify attention, DeltaNet, or the LM head and has no deployable selector,
 traffic, CUDA, VRAM, or speed claim.
+
+## EXP-079A causal proof-state reference boundary
+
+`vortex_runtime/causal_proof_state.py` contains the pure budget, DCT pilot,
+correlated row-block enclosure, Gate, and fail-closed state transitions. The
+throwaway terminal driver exposes hot-bound, refine, certify/commit, and exact
+fallback states. The heavy runner temporarily replaces every Qwen3.5-0.8B MLP
+down output with a DCT center plus oracle-selected exact row blocks.
+
+This is not a backend. The selector sees the full residual for free, the local
+L2 balls are not propagated through later nonlinear layers, ideal Q4 bytes are
+logical accounting, and exact fallback is semantic only. A pass would authorize
+only the nonlinear proof-propagation stage; no CUDA or target-server work is
+authorized by EXP-079A.

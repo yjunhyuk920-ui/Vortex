@@ -493,3 +493,22 @@ Expected decision is `REJECT_FROZEN_TANGENT_MACROBLOCK_REUSE_PATH`; expected
 invariants are 0/192 baseline mismatch, 24 candidate cases, 126 held-out reuse
 tokens, 0 top-1 matches, valid-prefix p05/p50/p95 0/0/0, mean/p95 KL
 `14.89842255626406/25.335416793823242`, and the core hash above.
+
+## EXP-079A preregistered local commands
+
+Interactive fail-closed state prototype:
+
+```powershell
+.deps\exp076-venv\Scripts\python.exe -m vortex_runtime.causal_proof_state_prototype
+```
+
+Pinned unchanged-checkpoint favorable Gate:
+
+```powershell
+.deps\exp076-venv\Scripts\python.exe experiments\exp_079a\run_experiment.py --model-dir .deps\exp076-model --output-dir results\exp_079a
+```
+
+The command inherits the exact EXP-076 checkpoint and dependency manifests,
+requires an empty output directory, performs no network or Ubuntu-server
+operation, and writes checksummed raw/processed/artifact/log evidence. No
+scientific result or expected decision is recorded before the source commit.

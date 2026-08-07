@@ -636,3 +636,31 @@ The optimistic equation must close the final target fraction without assuming
 that `W_gate x_t` or a full Jacobian/operator is free. Until then the honest
 status is `NO_SURVIVING_CANDIDATE`. EXP-073 Stage 2 remains separately
 authorized hardware calibration, not a solution.
+
+## Candidate EXP-079A -- Causal Proof-State DCT Block-Zonotope Gate
+
+EXP-079A registers one concrete cold-backed proof-state mechanism rather than a
+frozen operator update. Every MLP down matrix keeps the exact image of four
+procedural DCT directions hot. The omitted checkpoint remains an exact deferred
+dependency, bounded as disjoint output-row L2 balls and resolved only through
+complete cold row-block reads.
+
+The p50/p95 logical ceilings are the final `1.2*4/405` and `1.5*4/405`
+fractions. Every non-down target operation is granted free and the full global
+allowance is concentrated on the 24 down projections. A non-deployable oracle
+sees the complete current residual and chooses the best quality blocks; a
+separate oracle chooses the blocks giving the minimum sound local radius.
+
+The shape-only dense-405B p50 plan charges `2,204,895,168` bytes per token
+(`1.08883712%`) and `0.976002844%` favorable operations. Its DCT images occupy
+`487,327,680` bytes and proof records `516,096` bytes, before KV/workspace. This
+is a derived route, not measured traffic or VRAM.
+
+Promotion requires the unchanged 192-decision control, held-out 99% top-1,
+95% in every family, mean/p95 KL `<=0.02/0.05`, and p50/p95 minimum local sound
+radius no larger than the exact MLP-output L2 signal. Failure closes this exact
+DCT pilot plus row-block zonotope path with no rank/block/prompt rescue. A pass
+authorizes only a nonlinear proof-propagation Gate.
+
+Contract: `docs/research/EXPERIMENT_079A_CAUSAL_PROOF_STATE_GATE.md`.
+Status: PREREGISTERED; NO MODEL RESULT OR TARGET-SERVER ACTION.

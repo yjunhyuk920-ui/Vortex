@@ -280,3 +280,24 @@ Phase D/E2-E7 remain not achieved.
 Current classification after EXP-078A: unchanged prior-token tangent operators
 are rejected; a causally delta-updated operator remains only an unsupported new
 mechanism class; no core candidate survives.
+
+## EXP-079A preregistered Gate
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| DCT pilot split and row-block L2 enclosure are exact-real sound | bounded reference/property tests | PREREGISTERED |
+| Proof-state transition cannot commit an open or over-budget proof | pure state-machine tests | PREREGISTERED |
+| Dense-405B shape plan p50 traffic <=1.185185% | DERIVED: 1.08883712% | FAVORABLE ROUTE ONLY |
+| Dense-405B shape plan p50 favorable operations <=1.185185% | DERIVED: 0.976002844% | FAVORABLE ROUTE ONLY |
+| Sidecar plus proof records fit inside 8 GiB | DERIVED: 487,843,776 bytes | PARTIAL; KV/work excluded |
+| Pinned unchanged target replay has zero mismatch | no EXP-079A run | NOT TESTED |
+| Held-out p50-arm top-1 agreement >=99% | no EXP-079A run | NOT TESTED |
+| Every family top-1 agreement >=95% | no EXP-079A run | NOT TESTED |
+| Mean/p95 KL <=0.02/0.05 | no EXP-079A run | NOT TESTED |
+| Minimum local sound-radius p50/p95 <=1.0x signal | no EXP-079A run | NOT TESTED |
+| Nonlinear token-margin proof and exact fallback | favorable grants only | NOT TESTED |
+| Physical CUDA/VRAM/speed and 122B/405B | no payload/server run | NOT TESTED |
+
+Current classification before EXP-079A execution: the exact DCT
+block-zonotope mechanism has passed only E0 arithmetic admission. No core
+candidate is promoted; E1 result and Phase D/E2-E7 remain absent.

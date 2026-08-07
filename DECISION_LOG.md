@@ -500,3 +500,20 @@ and repair equations.
 
 Status: SCIENTIFIC REJECTION AT E1; CONTROL PASS; NO PHASE D/E2-E7 OR
 DENSE-405B EVIDENCE.
+
+## D-066 -- Preregister the DCT block-zonotope causal proof-state Gate
+
+EXP-079A replaces frozen prior-token operators with current-token cold queries
+and a fail-closed correlated proof state. Its favorable dense-405B shape plan
+charges p50 logical traffic/operations of `1.08883712%/0.976002844%`; all other
+operators, dual oracle selectors, nonlinear propagation, and failed fallback
+are free. This is sufficient for E0 admission but not promotion.
+
+Decision:
+
+```text
+PREREGISTER_EXP_079A_CAUSAL_PROOF_STATE_GATE
+```
+
+Status: SOURCE/CONTRACT CONTROLS PENDING; NO MODEL RESULT, TARGET-SERVER ACTION,
+PHYSICAL SPEED, 8 GIB PEAK, 122B/405B RUN, OR E2-E7 EVIDENCE.

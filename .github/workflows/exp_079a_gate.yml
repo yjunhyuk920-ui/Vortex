@@ -1,0 +1,41 @@
+name: EXP-079A causal proof-state contract
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/exp_079a_gate.yml"
+      - "docs/research/EXPERIMENT_079A_CAUSAL_PROOF_STATE_GATE.md"
+      - "experiments/exp_079a/**"
+      - "tests/exp_079a/**"
+      - "vortex_runtime/causal_proof_state.py"
+      - "vortex_runtime/causal_proof_state_prototype.py"
+
+concurrency:
+  group: exp-079a-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preregistered-contract-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install bounded test dependencies
+        run: python -m pip install --disable-pip-version-check pytest==8.3.5 numpy==1.26.4
+      - name: Validate causal proof-state accounting and transitions
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: python -m pytest -q tests/exp_079a
+      - name: Confirm no checkpoint payload is tracked
+        run: |
+          if git ls-files '*.safetensors' '*.bin' '*.pt' '*.pth' | grep -q .; then
+            echo 'Tracked model payload is forbidden' >&2
+            exit 1
+          fi

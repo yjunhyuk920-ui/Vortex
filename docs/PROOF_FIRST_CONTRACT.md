@@ -357,3 +357,18 @@ contract controls passed.
 This is an E1 rejection of unchanged prior-token operator reuse, not an
 impossibility proof for every causal correction scheme. No construction kernel,
 sentinel, repair, larger model, target hardware, or E2-E7 evidence exists.
+
+<!-- EXP-079A-PREREGISTERED -->
+## EXP-079A proof-first boundary
+
+The DCT block-zonotope candidate derives a small pilot image automatically and
+keeps every omitted down-projection residual as a cold exact dependency with a
+local correlated L2 enclosure. The p50/p95 final fractions, dual favorable
+oracles, local-radius threshold, quality thresholds, target-shape equations,
+fallback semantics, and stop rule are committed before model execution.
+
+The E1 runner may reject the concrete local enclosure but cannot establish a
+complete token certificate. A pass authorizes only nonlinear propagation and a
+fully charged selector/fallback Gate. No Q4 fidelity, physical I/O, CUDA, peak
+VRAM, wall-clock, 122B/405B execution, target-server action, or E2-E7 claim is
+authorized.

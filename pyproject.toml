@@ -15,6 +15,7 @@ experiments = [
 
 [project.scripts]
 vortex-proto = "vortex_runtime.cli:main"
+vortex-cpsm-proto = "vortex_runtime.causal_proof_state_prototype:main"
 
 [tool.setuptools.packages.find]
 include = ["vortex_runtime*"]

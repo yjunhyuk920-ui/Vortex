@@ -396,3 +396,20 @@ reuse token.
 
 Status: CONTRADICTED FOR THE REGISTERED UNCHANGED PRIOR-TOKEN OPERATOR. A NEW
 CAUSAL DELTA-CONSTRUCTION INFORMATION SOURCE IS NOT DECIDED.
+
+## A-054 -- A correlated cold-backed proof state closes after few row-block reads
+
+For every MLP down projection, a procedural DCT pilot image supplies a small hot
+center. The exact non-pilot residual is retained as disjoint row-block L2 balls;
+current causal activations trigger complete original row-block reads. The
+registered hypothesis is that dual favorable oracles can preserve target logits
+and reduce the minimum local sound radius while total logical work/traffic stays
+inside `1.185185%` of the complete target.
+
+This directly tests whether correlation-aware deferred residuals change the
+near-full refinement premise recorded by F-001/F-004. It does not assume a
+deployable selector or nonlinear certificate: those are free favorable grants,
+and a pass promotes only the next proof-propagation Gate.
+
+Status: ACTIVE AND UNVERIFIED FOR EXP-079A E1. NO MODEL RESULT, PHYSICAL SPEED,
+8 GIB PEAK, 122B, OR DENSE-405B EXECUTION EVIDENCE EXISTS.

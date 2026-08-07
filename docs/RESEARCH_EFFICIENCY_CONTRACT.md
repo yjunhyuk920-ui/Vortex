@@ -243,3 +243,20 @@ operator is admissible only if its E0 proposal explains how the delta is obtaine
 without first doing the skipped full gate/operator work and charges update,
 verification, exact cache repair, fallback, RAM/SSD/PCIe/VRAM, and cold traffic.
 No core candidate currently survives.
+
+## Current directive for EXP-079A
+
+EXP-079A is admitted because it changes the information interface: current
+causal activations may query exact original row blocks, while unresolved data is
+carried as a correlated fail-closed proof state. It is not admitted as another
+exact low-rank representation; the DCT image is only a hot center and all
+residual traffic remains explicit.
+
+The shape-only dense-405B plan reaches the final p50 arithmetic ceiling only by
+granting every other operator, dual oracle selectors, nonlinear propagation,
+and failed fallback for free. Therefore execute only the pinned small-checkpoint
+favorable Gate. Stop on budget, local-radius, population, family, top-1, or KL
+failure. Do not sweep rank/basis/block/layer/prompt choices or build a nonlinear
+interpreter, fallback engine, kernel, larger-model run, or target-hardware path
+after failure. A pass authorizes only nonlinear proof propagation with newly
+charged selector and fallback equations.

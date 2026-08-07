@@ -476,3 +476,22 @@ This closes the unchanged prior-token operator, not every causal operator-update
 scheme. No core candidate survives. A next candidate must introduce a cheap
 causal delta/correction dependency and pass its construction-amortization E0
 Gate before code. Phase D/E2-E7 and dense-405B execution remain not achieved.
+
+## EXP-079A preregistered causal proof-state Gate
+
+EXP-079A admits a cold-backed execution dependency at E0. Four procedural DCT
+directions per small-checkpoint MLP down projection form the hot center; exact
+unread residuals remain row-block L2 proof balls and can be resolved through
+charged original row reads. No future target token, training, adapter, or
+checkpoint modification is used.
+
+The Gate is deliberately more favorable than a runtime: every non-down
+operation, the complete residual used by a quality-optimal selector, a separate
+proof-radius-optimal selector, nonlinear propagation, and failed fallback are
+free. The authoritative p50 arm still must meet the final `1.185185%` logical
+fraction plus the frozen 99%/95%-family/KL/local-radius thresholds on the
+unchanged Qwen3.5-0.8B trace.
+
+Status: PREREGISTERED E1 FAVORABLE-ORACLE GATE; NO EXP-079A MODEL RESULT. NO
+CORE CANDIDATE IS PROMOTED. TARGET SERVER, DOWNLOAD, CUDA, PHYSICAL 8 GIB,
+WALL-CLOCK, 122B/405B, AND E2-E7 ARE NOT AUTHORIZED OR TESTED.
