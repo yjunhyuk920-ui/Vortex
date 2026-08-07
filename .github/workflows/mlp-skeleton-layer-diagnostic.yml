@@ -1,0 +1,88 @@
+name: MLP skeleton layer sensitivity
+
+on:
+  pull_request:
+    paths:
+      - "scripts/run_mlp_skeleton_layer_diagnostic.py"
+      - ".github/workflows/mlp-skeleton-layer-diagnostic.yml"
+
+concurrency:
+  group: mlp-skeleton-layer-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  diagnose:
+    if: github.head_ref == 'research/mlp-skeleton-layer-diagnostic'
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        layer: [0, 10, 21]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+          pip install pytest transformers sentencepiece
+      - name: Validate compiler
+        run: python -m pytest -q tests/test_mlp_functional_skeleton.py
+      - name: Diagnose layer ${{ matrix.layer }}
+        run: |
+          python scripts/run_mlp_skeleton_layer_diagnostic.py \
+            --model TinyLlama/TinyLlama-1.1B-Chat-v1.0 \
+            --device cpu \
+            --layer-index ${{ matrix.layer }} \
+            --prototypes 32 \
+            --probe-count 128 \
+            --heldout-probe-count 64 \
+            --factor-bits 8 \
+            --tokens 16 \
+            --seed 7079 \
+            --eval-prompt "한국어로 정렬 알고리즘의 시간 복잡도를 설명해줘." \
+            --output "layer-${{ matrix.layer }}.json"
+      - name: Publish layer result
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = next(Path('.').glob('layer-*.json'))
+          data = json.loads(path.read_text())
+          report = {
+              'layer': data['layer_index'],
+              'heldout_output_error': data['functional_skeleton'][
+                  'heldout_output_relative_l2_error'
+              ],
+              'teacher_top1': data['teacher_forced_compiled']['top1_rate'],
+              'teacher_top32': data['teacher_forced_compiled']['top32_rate'],
+              'autoregressive_prefix': data['autoregressive_exact_prefix'],
+          }
+          Path('layer-comment.md').write_text(
+              '## MLP skeleton layer diagnostic\n\n```json\n'
+              + json.dumps(report, indent=2, ensure_ascii=False)
+              + '\n```',
+              encoding='utf-8',
+          )
+          PY
+          gh pr comment "$PR_NUMBER" --body-file layer-comment.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mlp-skeleton-layer-${{ matrix.layer }}
+          path: layer-${{ matrix.layer }}.json
