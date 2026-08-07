@@ -92,10 +92,10 @@ def test_fixture_replay_has_deterministic_core_hash() -> None:
 def test_ssh_alias_is_runtime_only_and_program_has_no_mutating_tools() -> None:
     captured: dict[str, object] = {}
 
-    def fake_runner(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+    def fake_runner(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[bytes]:
         captured["command"] = command
         captured["input"] = kwargs["input"]
-        return subprocess.CompletedProcess(command, 0, FIXTURE.read_text(encoding="utf-8"), "")
+        return subprocess.CompletedProcess(command, 0, FIXTURE.read_bytes(), b"")
 
     alias = "private-target-alias"
     collected = collect_over_ssh(alias, 20, runner=fake_runner)
@@ -103,6 +103,8 @@ def test_ssh_alias_is_runtime_only_and_program_has_no_mutating_tools() -> None:
     serialized = json.dumps(inventory, sort_keys=True)
     assert alias in captured["command"]
     assert alias not in serialized
+    assert isinstance(captured["input"], bytes)
+    assert b"\r" not in captured["input"]
     assert "StrictHostKeyChecking=yes" in captured["command"]
     assert "UpdateHostKeys=no" in captured["command"]
     forbidden = (
@@ -120,8 +122,8 @@ def test_ssh_alias_is_runtime_only_and_program_has_no_mutating_tools() -> None:
 
 
 def test_nonzero_ssh_status_is_exposed_without_stderr_content() -> None:
-    def fake_runner(command: list[str], **_: object) -> subprocess.CompletedProcess[str]:
-        return subprocess.CompletedProcess(command, 255, "", "private-target: permission denied")
+    def fake_runner(command: list[str], **_: object) -> subprocess.CompletedProcess[bytes]:
+        return subprocess.CompletedProcess(command, 255, b"", b"private-target: permission denied")
 
     collected = collect_over_ssh("private-target-alias", 20, runner=fake_runner)
     assert collected.returncode == 255

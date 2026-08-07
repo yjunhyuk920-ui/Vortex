@@ -373,7 +373,7 @@ def collect_over_ssh(
     host_alias: str,
     timeout_seconds: int,
     *,
-    runner: Callable[..., subprocess.CompletedProcess[str]] = subprocess.run,
+    runner: Callable[..., subprocess.CompletedProcess[Any]] = subprocess.run,
 ) -> SSHCollection:
     if not re.fullmatch(r"[A-Za-z0-9._-]+", host_alias):
         raise InventoryError("SSH alias has invalid characters")
@@ -401,14 +401,15 @@ def collect_over_ssh(
     ]
     completed = runner(
         command,
-        input=REMOTE_READ_ONLY_PROGRAM,
-        text=True,
+        input=REMOTE_READ_ONLY_PROGRAM.encode("utf-8"),
         capture_output=True,
         timeout=timeout_seconds + 10,
         check=False,
     )
+    stdout = completed.stdout.decode("utf-8", errors="strict") if isinstance(completed.stdout, bytes) else completed.stdout
+    stderr = completed.stderr.decode("utf-8", errors="replace") if isinstance(completed.stderr, bytes) else completed.stderr
     return SSHCollection(
-        stdout=completed.stdout,
+        stdout=stdout,
         returncode=completed.returncode,
-        stderr_present=bool(completed.stderr.strip()),
+        stderr_present=bool(stderr.strip()),
     )
