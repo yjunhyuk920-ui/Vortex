@@ -1,7 +1,7 @@
 # Derive the Query-Adaptive Cold-Backed Equation
 
 Type: research
-Status: open
+Status: claimed
 Blocked by: none
 
 ## Question
