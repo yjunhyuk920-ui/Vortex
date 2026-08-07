@@ -309,3 +309,26 @@ Next: do not sweep this score, train a router, build a sparse kernel, or downloa
 35B/122B. A new candidate must introduce a different correction/amortization
 dependency and pass E0. EXP-073 Stage 2 remains separately authorized but not
 run. The private Ubuntu server was not contacted; Phase D/E2-E7 remain open.
+
+<!-- EXP-078A-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-078A
+
+Branch: `research/exp-078a-tangent-macroblock-gate`.
+
+Authority: `results/exp_078a/summary.json`; source
+`cc368190031d87db92f7a476dd741c18224239c1`; evidence
+`fe6081917c65b2392f8760d72a2b0e17a4461982`; core
+`c743ae14748effaad3a034def7d8d92e67fa09abf65eeb931bef3e8a26368667`.
+
+Decision: reject frozen complete anchor-conditioned MLP operator reuse. The
+unchanged checkpoint matched all 192 baseline decisions. The candidate then
+matched 0/126 held-out later-token top-1 decisions; all 18 cases failed on the
+first reuse token; mean/p95 KL was `14.898423/25.335417`.
+
+The direct-build cost also required `13,821/6,249` small-checkpoint and
+`115,299/26,354` 122B-screen p50/p05 reuse positions. Do not extend the trace,
+sweep ranks/layers/prompts, add a sentinel, or construct a physical macro matrix.
+A causal delta-updated map is a new unsupported mechanism and must first pass E0
+with update, detection, repair, fallback, and cold-traffic costs. No core
+candidate survives; the Ubuntu server was not contacted; Phase D/E2-E7 remain
+open.

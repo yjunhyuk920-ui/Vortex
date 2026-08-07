@@ -479,3 +479,24 @@ PREREGISTER_EXP_078A_FROZEN_TANGENT_MACROBLOCK_LIFETIME_GATE
 ```
 
 Status: SOURCE/CONTRACT CONTROLS PENDING; NO MODEL RESULT OR TARGET-SERVER ACTION.
+
+## D-065 -- Reject frozen tangent macroblocks and require a new delta-construction source
+
+EXP-078A reproduced the unchanged target with zero baseline mismatch, but the
+complete frozen anchor operator failed at the first later token for all 18
+held-out cases. Top-1 agreement was `0/126`; mean/p95 KL was
+`14.898423/25.335417`; valid-prefix p05/p50/p95 was `0/0/0`.
+
+Decision:
+
+```text
+REJECT_FROZEN_TANGENT_MACROBLOCK_REUSE_PATH
+```
+
+Do not spend work on longer traces, rank sweeps, selected layers/prompts,
+sentinels, or physical macro kernels for this path. A delta-updated operator is
+not promoted; it requires a fresh E0 information source and fully charged update
+and repair equations.
+
+Status: SCIENTIFIC REJECTION AT E1; CONTROL PASS; NO PHASE D/E2-E7 OR
+DENSE-405B EVIDENCE.

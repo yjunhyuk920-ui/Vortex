@@ -300,3 +300,16 @@ Therefore no sparse kernel, 35B/122B download, expert router, or target-server
 trial is promoted. EXP-073 Stage 2 remains the only specified target-hardware
 calibration and still needs separate explicit authorization. Phase D/E4-E7 are
 unchanged.
+
+## EXP-078A hardware boundary
+
+EXP-078A ran only in the developer Windows CPU reference environment with the
+already present pinned Qwen3.5-0.8B BF16 payload. It downloaded nothing and did
+not contact the Ubuntu host. The reported direct macro construction and hot
+application values are logical MAC equations, not measured latency, bandwidth,
+VRAM, SSD, PCIe, H2D, power, thermal, or token throughput.
+
+Frozen tangent reuse failed at the first later token for every held-out case, so
+no dense macro materializer, rank kernel, sentinel, cache-repair runtime,
+35B/122B download, or target-server trial is promoted. EXP-073 Stage 2 remains
+separate hardware calibration and Phase D/E4-E7 remain unchanged.

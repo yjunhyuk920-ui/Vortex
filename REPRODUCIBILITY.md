@@ -472,3 +472,24 @@ The command inherits the exact EXP-076 dependency and checkpoint manifests. It
 must start from an empty output directory and performs no network or Ubuntu
 server operation. No expected scientific decision is recorded before the source
 commit and run complete.
+
+## EXP-078A local authority
+
+```text
+results/exp_078a/summary.json
+source commit       cc368190031d87db92f7a476dd741c18224239c1
+evidence commit     fe6081917c65b2392f8760d72a2b0e17a4461982
+config SHA-256      4ffc97eb9b3ab17354df2adbfedaf77b3eafcbbf80e1573e855a0c6a8370046a
+prompt SHA-256      46c9779c24e59f356247145f7ef870a1b82ba4907eb9dffcd48652e519f7612a
+trace SHA-256       1e921698ce8ee522c0d3cb9b8b9004139beb54cc2dee82e1a2aa0a08fa245e4f
+weight SHA-256      04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696
+core SHA-256        c743ae14748effaad3a034def7d8d92e67fa09abf65eeb931bef3e8a26368667
+workflow/artifact   NOT RUN
+```
+
+The Windows CPU run used the inherited pinned EXP-076 environment and took
+`1,184.806152` seconds. The nine payload checksums verified independently.
+Expected decision is `REJECT_FROZEN_TANGENT_MACROBLOCK_REUSE_PATH`; expected
+invariants are 0/192 baseline mismatch, 24 candidate cases, 126 held-out reuse
+tokens, 0 top-1 matches, valid-prefix p05/p50/p95 0/0/0, mean/p95 KL
+`14.89842255626406/25.335416793823242`, and the core hash above.

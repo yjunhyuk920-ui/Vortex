@@ -116,3 +116,24 @@ costs would make the favorable ceiling worse.
 This entry does not reject all dynamic sparse execution. Revisit only with a
 materially different information source or exact/declared-quality correction
 dependency and a new fully charged E0 route.
+
+<!-- EXP-078A-AUTHORITATIVE-FINAL -->
+## F-044 -- Frozen exact-anchor tangent macroblock reuse
+
+The complete causal anchor-conditioned SwiGLU operator avoided EXP-077A's
+channel omission, but it did not remain valid for even one later token. Across
+18 held-out cases and 126 reuse positions, top-1 agreement was `0%`; valid-prefix
+p05/p50/p95 was `0/0/0`; mean/p95 KL was `14.898423/25.335417`. All six families
+failed. The unchanged target control had zero mismatch across 192 decisions.
+
+Direct materialization was already unfavorable: the 0.8B path required
+`13,821/6,249` p50/p05 reuse tokens, and the nine-path 122B screen required
+`115,299/26,354`. The measured first-token failure is therefore decisive before
+sentinel, repair, rank approximation, physical construction, or cache-fallback
+costs are charged.
+
+Do not reopen with a longer trace, selected prompts/layers, rank sweeps around
+the same frozen anchor, dense macro construction, or an uncharged sentinel. A
+causally delta-updated operator is a different mechanism only if it supplies a
+new cheap information source and fully charges delta construction, detection,
+repair, fallback, and cold traffic.

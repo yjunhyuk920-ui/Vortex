@@ -386,3 +386,13 @@ bound against every possible constructor.
 Status: ACTIVE AND UNVERIFIED FOR EXP-078A E1 FAVORABLE LIFETIME GATE. PHYSICAL
 CONSTRUCTION, SENTINEL, FALLBACK, LONG-HORIZON SURVIVAL, AND LARGE-MODEL SCALING
 ARE NOT TESTED.
+
+### A-053 closure
+
+The unchanged target passed 192/192 baseline decisions. The complete frozen
+anchor operator had held-out top-1 agreement `0/126`, valid-prefix p05/p50/p95
+`0/0/0`, and mean/p95 KL `14.898423/25.335417`. Every family failed at the first
+reuse token.
+
+Status: CONTRADICTED FOR THE REGISTERED UNCHANGED PRIOR-TOKEN OPERATOR. A NEW
+CAUSAL DELTA-CONSTRUCTION INFORMATION SOURCE IS NOT DECIDED.

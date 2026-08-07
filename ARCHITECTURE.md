@@ -367,3 +367,16 @@ hidden-by-hidden matrix, implement a sentinel, certify an error bound, restore
 an exact cache after divergence, or provide fail-closed deployment. Derived
 construction cost and E1 quality observation must remain separate from physical
 performance claims.
+
+### EXP-078A closure
+
+The reference boundary was valid, but the state transition failed immediately:
+
+```text
+exact anchor -> frozen complete MLP map -> first later token -> quality failure
+```
+
+All held-out valid-prefix lengths were zero. The frozen map is therefore removed
+from the active architecture before any materializer, sentinel, cache repair, or
+kernel is built. A future delta-updated map must be treated as a new component
+with an explicit causal delta source and fail-closed state-repair transition.

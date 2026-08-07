@@ -2,8 +2,9 @@
 
 ## Status
 
-Preregistered. No EXP-078A model result exists until a source commit is frozen
-and the unchanged-checkpoint runner completes.
+Complete. The authoritative E1 result rejects the registered frozen-anchor
+reuse path. Source commit `cc368190031d87db92f7a476dd741c18224239c1`;
+evidence commit `fe6081917c65b2392f8760d72a2b0e17a4461982`.
 
 ## Question
 
@@ -118,3 +119,38 @@ The reference does not physically materialize or accelerate `M(a)`, implement a
 sentinel or exact repair, measure hardware, execute 35B/122B/405B, or establish
 E2-E7. Structurally valid conditions may be established; large-model performance
 remains unverified.
+
+## Authoritative result
+
+The unchanged target replayed all 24 cases and 192 registered decisions with
+zero mismatch. On the disjoint 18-case evaluation population, the frozen exact
+anchor operator matched `0/126` later-token top-1 decisions. Every case failed
+at the first reuse position, so valid-prefix p05/p50/p95 was `0/0/0`.
+
+```text
+held-out top-1 agreement             0.0000%
+held-out mean KL                    14.898423
+held-out p95 KL                     25.335417
+MLP relative-L2 p50/p95              0.354193 / 0.511419
+0.8B required p50/p05 lifetime       13,821 / 6,249
+122B screen required p50/p05         115,299 / 26,354
+```
+
+All six prompt families had zero top-1 agreement. The failure occurs before
+construction cost, sentinel cost, rank approximation, fallback, and physical
+traffic could make the route worse.
+
+Decision:
+
+```text
+REJECT_FROZEN_TANGENT_MACROBLOCK_REUSE_PATH
+```
+
+This closes only reuse of a complete, unchanged prior-token MLP operator. It
+does not reject an operator whose coefficients are causally updated by a new
+cheap delta mechanism. Such a mechanism must explain how the delta is computed
+without the omitted full gate/weight work and must freeze its construction,
+sentinel, repair, cache, and cold-traffic equations before implementation.
+
+Authority: `results/exp_078a/summary.json`; deterministic core SHA-256
+`c743ae14748effaad3a034def7d8d92e67fa09abf65eeb931bef3e8a26368667`.

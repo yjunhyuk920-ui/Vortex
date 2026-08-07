@@ -345,3 +345,15 @@ of positions required by the charged cost equation.
 
 No physical macro matrix, sentinel, repair, cache rollback, larger checkpoint,
 or target-server command is authorized. E2-E7 remain not achieved.
+
+<!-- EXP-078A-AUTHORITATIVE-FINAL -->
+## Current classification after EXP-078A
+
+The frozen complete anchor-conditioned MLP map failed at the first reuse token
+for every held-out case. Zero of 126 later-token top-1 decisions matched, versus
+the required 99%; mean/p95 KL was `14.898423/25.335417`. The baseline and
+contract controls passed.
+
+This is an E1 rejection of unchanged prior-token operator reuse, not an
+impossibility proof for every causal correction scheme. No construction kernel,
+sentinel, repair, larger model, target hardware, or E2-E7 evidence exists.

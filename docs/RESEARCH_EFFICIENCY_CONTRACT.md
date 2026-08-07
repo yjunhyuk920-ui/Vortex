@@ -231,3 +231,15 @@ Stop immediately on early population, family, top-1, or KL failure. Do not run a
 longer trace, construct dense macro matrices, sweep ranks, or implement kernels
 after such a failure. If all observations are right-censored, preregister a
 longer trace and a constructor route before promotion.
+
+## Current directive after EXP-078A
+
+The cheapest Gate rejected frozen tangent reuse at the first later token for
+every held-out case. Do not allocate work to longer traces, ranks, selected
+layers/prompts, dense construction, or sentinel engineering around this path.
+
+A new candidate must change the execution dependency again. A delta-updated
+operator is admissible only if its E0 proposal explains how the delta is obtained
+without first doing the skipped full gate/operator work and charges update,
+verification, exact cache repair, fallback, RAM/SSD/PCIe/VRAM, and cold traffic.
+No core candidate currently survives.

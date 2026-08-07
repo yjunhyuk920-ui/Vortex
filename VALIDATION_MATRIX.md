@@ -260,3 +260,23 @@ Phase D/E2-E7 remain not achieved.
 | Physical macro construction/application speed | reference only | NOT TESTED |
 | Sentinel, exact repair, fallback | outside experiment | NOT TESTED |
 | 35B/122B/405B execution | no payload/run | NOT TESTED |
+
+<!-- EXP-078A-AUTHORITATIVE-FINAL -->
+## EXP-078A closure
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Pinned unchanged target replay | E1: 24 cases, 192 positions, 0 mismatch | PASS control |
+| Exact anchor macro algebra/reference controls | E1: 6/6 contract tests | PASS reference |
+| Held-out top-1 agreement >=99% | E1: 0/126 = 0% | REJECTED |
+| Every family top-1 agreement >=95% | E1: all six at 0% | REJECTED |
+| Mean target-to-candidate KL <=0.02 | E1: 14.898423 | REJECTED |
+| p95 target-to-candidate KL <=0.05 | E1: 25.335417 | REJECTED |
+| p50/p05 lifetime reaches 13,821/6,249 | E1: 0/0 | REJECTED |
+| Physical macro construction/application | not executed | NOT TESTED |
+| Delta update, sentinel, exact repair/fallback | outside frozen scope | NOT TESTED |
+| 35B/122B/405B and E2-E7 | no model/server run | NOT TESTED |
+
+Current classification after EXP-078A: unchanged prior-token tangent operators
+are rejected; a causally delta-updated operator remains only an unsupported new
+mechanism class; no core candidate survives.

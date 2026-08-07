@@ -600,3 +600,39 @@ the trace as right-censored and preregister a longer Gate; do not claim success.
 No macro matrix is physically materialized in EXP-078A. No new checkpoint,
 Ubuntu command, sentinel, repair path, rank sweep, or speed claim is authorized.
 Contract: `docs/research/EXPERIMENT_078A_TANGENT_MACROBLOCK_GATE.md`.
+
+## Closed EXP-078A -- Frozen Tangent Macroblock Lifetime Gate
+
+The corrected baseline had zero mismatch across 192 decisions. The frozen
+complete anchor operator then matched `0/126` held-out later-token top-1
+decisions. Every evaluation case failed at the first reuse position; mean/p95
+KL was `14.898423/25.335417`. This misses the direct-construction requirements
+of `13,821/6,249` small-checkpoint and `115,299/26,354` surrogate reuse tokens
+by orders of magnitude.
+
+Decision:
+
+```text
+REJECT_FROZEN_TANGENT_MACROBLOCK_REUSE_PATH
+```
+
+Authority: `results/exp_078a/summary.json`; source `cc36819`; evidence
+`fe60819`; core
+`c743ae14748effaad3a034def7d8d92e67fa09abf65eeb931bef3e8a26368667`.
+
+## Next research Gate -- causal delta construction, not frozen reuse
+
+No core candidate survives. Do not extend the trace or sweep rank, layer,
+prompt, or sentinel variants around the frozen anchor. A next candidate may
+study a causally delta-updated computation law only after an E0 Gate identifies
+information available before the skipped work and derives the cost of:
+
+```text
+delta extraction + operator update + hot application
++ error detection + exact cache repair/fallback + cold traffic
+```
+
+The optimistic equation must close the final target fraction without assuming
+that `W_gate x_t` or a full Jacobian/operator is free. Until then the honest
+status is `NO_SURVIVING_CANDIDATE`. EXP-073 Stage 2 remains separately
+authorized hardware calibration, not a solution.

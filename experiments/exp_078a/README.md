@@ -21,3 +21,9 @@ The runner does not download anything, contact the private Ubuntu target, or
 physically materialize a macro matrix. The candidate reference executes the
 factorized up/frozen-coefficient/down expression so quality can be measured;
 direct macro-construction and hot-application costs are derived separately.
+
+Authoritative result: `REJECT_FROZEN_TANGENT_MACROBLOCK_REUSE_PATH`. The
+unchanged baseline had 0/192 mismatches. Held-out reuse matched 0/126 target
+top-1 decisions; all 18 evaluation cases failed on the first reuse token. Mean
+and p95 KL were `14.898423/25.335417`. Authority is
+`results/exp_078a/summary.json`; source `cc36819`; evidence `fe60819`.

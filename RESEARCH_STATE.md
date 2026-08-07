@@ -452,3 +452,27 @@ form. Perfect seven-token survival is right-censored and cannot promote it.
 
 Status: PREREGISTERED E1 FAVORABLE LIFETIME GATE; NO EXP-078A MODEL RESULT;
 NO TARGET SERVER, LARGE CHECKPOINT, PHYSICAL KERNEL, E2-E7, OR DENSE-405B CLAIM.
+
+## EXP-078A authoritative frozen tangent-macroblock rejection
+
+The unchanged checkpoint reproduced all 192 registered baseline decisions.
+Freezing every layer's complete MLP operator at the exact last prompt token then
+matched zero of 126 held-out later-token top-1 decisions. Every one of the 18
+evaluation cases failed at its first reuse position; mean/p95 KL was
+`14.898423/25.335417`, and MLP output relative-L2 p50/p95 was
+`0.354193/0.511419`.
+
+Decision:
+
+```text
+REJECT_FROZEN_TANGENT_MACROBLOCK_REUSE_PATH
+```
+
+Authority: `results/exp_078a/summary.json`; source
+`cc368190031d87db92f7a476dd741c18224239c1`; evidence `fe60819`;
+deterministic core `c743ae14748effaad3a034def7d8d92e67fa09abf65eeb931bef3e8a26368667`.
+
+This closes the unchanged prior-token operator, not every causal operator-update
+scheme. No core candidate survives. A next candidate must introduce a cheap
+causal delta/correction dependency and pass its construction-amortization E0
+Gate before code. Phase D/E2-E7 and dense-405B execution remain not achieved.

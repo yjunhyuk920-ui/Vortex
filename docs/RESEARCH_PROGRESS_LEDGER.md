@@ -226,3 +226,28 @@ This closes one dynamic fracturing score under favorable conditions; it does
 not improve final feasibility and does not prove all dynamic sparsity
 impossible. No new model, target-server, GPU, or physical performance work ran.
 No core candidate survives; Phase D/E2-E7 remain not achieved.
+
+<!-- EXP-078A-AUTHORITATIVE-FINAL -->
+## 2026-08-07 -- EXP-078A frozen tangent-macroblock lifetime Gate
+
+The pinned unchanged Qwen3.5-0.8B baseline matched 192/192 registered target
+decisions. The candidate captured each layer's complete post-SiLU gate
+coefficient at the exact last prompt token and reused the corresponding full
+linear MLP law for seven causal positions.
+
+Held-out top-1 agreement was `0/126`; every case failed on the first reuse
+token; mean/p95 KL was `14.898423/25.335417`; MLP relative-L2 p50/p95 was
+`0.354193/0.511419`. Direct construction would have required thousands to more
+than one hundred thousand reuse positions, so the first-token quality failure is
+decisive.
+
+Decision:
+
+```text
+REJECT_FROZEN_TANGENT_MACROBLOCK_REUSE_PATH
+```
+
+This closes unchanged prior-token operator reuse, not every possible causal
+delta correction. It is useful falsification, not increased feasibility. No
+server, larger checkpoint, physical matrix, GPU kernel, or Phase D/E2-E7 work
+ran; no core candidate survives.
