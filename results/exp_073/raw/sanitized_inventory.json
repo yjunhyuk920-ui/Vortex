@@ -1,0 +1,71 @@
+{
+  "cpu": {
+    "logical_cpu_count": 8,
+    "model_name": "Intel(R) Xeon(R) CPU E5504 @ 2.00GHz"
+  },
+  "gpu": {
+    "compute_capabilities": [
+      "5.2"
+    ],
+    "count": 1,
+    "cuda_driver_api_versions": [
+      "12.2"
+    ],
+    "driver_versions": [
+      "535.309.01"
+    ],
+    "free_vram_mib": [
+      8058
+    ],
+    "models": [
+      "Quadro M5000"
+    ],
+    "pcie_current_generation": [
+      1
+    ],
+    "pcie_current_width": [
+      16
+    ],
+    "pcie_max_generation": [
+      2
+    ],
+    "pcie_max_width": [
+      16
+    ],
+    "total_vram_mib": [
+      8192
+    ]
+  },
+  "memory": {
+    "available_bytes": 23500468224,
+    "total_bytes": 25231065088
+  },
+  "platform": {
+    "kernel_release": "6.17.0-35-generic",
+    "machine_architecture": "x86_64",
+    "os_pretty_name": "Ubuntu 24.04.3 LTS"
+  },
+  "runtimes": {
+    "fio_version": "NOT_AVAILABLE",
+    "nvcc_version": "NOT_AVAILABLE",
+    "ollama_service_state": "active",
+    "ollama_version": "ollama version is 0.30.6",
+    "python3_version": "Python 3.12.3"
+  },
+  "storage": {
+    "block_device_count": 1,
+    "block_total_bytes": 256060514304,
+    "root_available_bytes": 104816832512,
+    "root_filesystem_type": "ext4",
+    "root_total_bytes": 250901458944,
+    "rotational_device_count": 0,
+    "transport_counts": {
+      "ata": 1
+    }
+  },
+  "telemetry": {
+    "gpu_clock_available": true,
+    "gpu_power_available": true,
+    "gpu_temperature_available": true
+  }
+}

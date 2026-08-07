@@ -1,0 +1,6 @@
+collection_mode=TARGET_SSH
+transport_returncode=0
+transport_stderr_present=false
+transport_stdout_lines=28
+elapsed_seconds=1.750000
+decision=COMPLETE_SANITIZED_READ_ONLY_TARGET_INVENTORY
