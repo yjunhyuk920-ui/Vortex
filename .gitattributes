@@ -1,0 +1,2 @@
+# Frozen EXP-073 evidence is byte-verified across Windows and Unix checkouts.
+results/exp_073/** text eol=lf
