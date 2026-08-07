@@ -530,3 +530,22 @@ using the retained six-check verifier makes those `99.081653739%` and
 about unread coefficients is contradicted by indistinguishability, but coded
 pages or causal certificates are not universally ruled out. No concrete source,
 E1 population evidence, operation replacement, or physical result exists.
+
+## A-060 -- Committed-prefix images make residual certification target-feasible
+
+For each unchanged dense projection, exact committed-prefix input/image pairs
+are assumed to provide a low-rank causal center whose remaining residual can be
+certified after reading only a very small set of cold column pages. The
+registered rank-16 screen requires at least `99.899840530%` token-level
+certificate coverage after favorable 64-token build amortization, with actual
+page-rounded cold work `0.349720584%` and `1,009` page requests/token.
+
+Status: ACTIVE BUT UNVERIFIED AT E0. The algebra and single-projection residual
+bound pass synthetic/reference controls. EXP-069 contradicts exact span hits
+but does not measure this fully retained residual certificate. EXP-079A's fixed
+four-direction radius failure is adverse, while a committed-prefix basis is a
+new causal source. An activation orthogonal to the prefix span with aligned
+weight-block contributions is the strongest counterexample and forces dense
+fallback. Real small-checkpoint residual concentration, end-to-end output
+certificate coverage, numerical enclosure, short-prefix behavior, physical
+I/O, and E2-E7 are all untested.

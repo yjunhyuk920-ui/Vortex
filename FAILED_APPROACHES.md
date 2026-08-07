@@ -296,4 +296,8 @@ a fully charged target route; it explicitly leaves a genuinely query-adaptive
 cold information source open. F-051 closes raw Q4 page omission with no coded
 source for unread contributions; it explicitly leaves a fully charged Coded
 Causal Cold Source open as an unsupported search class.
+F-052 closes exhaustive finite-semiring tables and Boolean absorbing
+cell-probe shortcuts as direct numerical Transformer sources. It does not
+close the newly specified Causal Residual Atlas; that class must now pass a
+real causal-residual certificate Gate.
 Read that continuation and each scope boundary before reopening a family.

@@ -408,3 +408,20 @@ EXP-073 root free capacity was `97.6183 GiB`. No storage allocation, page read,
 GPU buffer, SSD/H2D probe, native-4B run, CUDA action, download, or private
 Ubuntu command occurred. A concrete coded causal information source must first
 pass E0 and E1 before hardware promotion; Phase D/E4-E7 remain `NOT TESTED`.
+
+## Causal Residual Atlas hardware boundary
+
+The new source is not authorized for physical validation. Its favorable
+rank-16 screen logically reads `1,009` cold column pages and about
+`0.657508850 GiB` of rounded Q4 payload per token. The stored two-byte capsule
+is `0.980995178 GiB`, but its logical HBM reads are `1.366004944 GiB/token`
+because `Q` is used for both coordinates and residuals. These are derived logical
+quantities, not SSD, RAM, H2D, or HBM measurements.
+
+Before hardware work, the pinned real-weight Gate must show at least
+`99.899840530%` fully declared certificate coverage and a deployable numerical
+enclosure. A later plan must then measure request latency/IOPS, page coalescing,
+layer-sequential dependency, capsule HBM traffic, fallback tails, complete KV
+and workspace peak, and same-machine native-4B p50/p95. No target-server
+command, storage allocation, model download, CUDA path, or E4-E7 claim is
+authorized by source identification.

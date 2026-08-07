@@ -463,3 +463,24 @@ remains logically open but has no surviving mechanism yet.
 Current classification: the accounting frontier is closed and reproducible,
 but no Core Candidate survives. A Coded Causal Cold Source remains a search
 class only; Phase D and E1-E7 remain unachieved for it.
+
+## E0/E1-reference Causal Residual Atlas source
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Prefix pairs causally construct `Q` and `Z=WQ` | exact algebra plus focused reference tests | PASS synthetic/reference |
+| Unread page radius encloses exact residual | Frobenius/operator inequality; randomized no-false-bound tests | PASS synthetic/reference |
+| Corrupt/non-finite capsule or bound fails closed | reference fault tests | PASS |
+| All revealed pages recover dense result | exact reference comparison | PASS |
+| Rank-16, requested-0.2%, 64-column logical traffic fits `8/675` | `1.085025716%` after minimum 64-token build amortization | PASS E0 arithmetic screen |
+| Same screen fits logical operations | `0.557958575%` | PASS E0 arithmetic screen |
+| Required certificate coverage exists on real causal traces | `99.899840530%` required; no real run | NOT TESTED / NEXT GATE |
+| Complete 8 GiB state fits | capsule `0.980995178 GiB`; KV/work/buffers absent | NOT CLOSED |
+| 1,009 cold pages meet native-4B latency | no physical I/O | NOT TESTED |
+| Exact/native numerical enclosure across full Transformer | single-projection exact-real reference only | NOT TESTED |
+| E2 operation replacement, 122B/405B, target hardware | no execution | NOT TESTED |
+
+Current classification: a concrete Coded Causal Cold Source now exists, but it
+is only an E0 information-source candidate with E1 synthetic controls. No
+Surviving Candidate or positive milestone exists until the pinned real-weight
+coverage Gate passes.

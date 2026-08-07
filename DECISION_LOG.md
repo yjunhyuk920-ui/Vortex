@@ -771,3 +771,36 @@ KEEP_CODED_CAUSAL_COLD_SOURCE_OPEN_FOR_INFORMATION_SOURCE_SEARCH
 This resolves an E0 equation, not the missing mechanism. Do not assign
 EXP-083, download a model, or enter hardware/runtime work. Authority:
 `docs/research/E0_QUERY_ADAPTIVE_COLD_EQUATION.md`.
+
+## D-078 -- Admit committed-prefix residual coding to Gate design
+
+Exact committed-prefix pairs contain query-specific checkpoint information:
+orthogonalizing their inputs into `Q` and applying the same combinations to
+their already computed images produces `Z = WQ` without target-future tokens
+or another checkpoint scan. A later query is `x = Qa + u`; a legal runtime may
+evaluate `Za`, reveal cold pages for `Wu`, and retain every unread page in a
+sound residual enclosure or exact fallback.
+
+The named class is **Causal Residual Atlas**. It is not exact temporal replay,
+because a nonzero `u` is allowed but never ignored. It is not a fixed pilot,
+because the code is formed only from the current request's committed prefix.
+It is not raw page selection, because prefix images and block certificates
+carry information about omitted contributions.
+
+A favorable rank-16/64-column/0.2%-requested/64-token registered screen has
+`1.085025716%` amortized traffic and `0.557958575%` amortized operations, but
+requires `99.899840530%` traffic-governed certificate coverage. Real residual
+concentration, full numerical propagation, page latency, and complete branch
+memory are unverified.
+
+Decision:
+
+```text
+IDENTIFY_CAUSAL_RESIDUAL_ATLAS_AS_A_CONCRETE_CODED_CAUSAL_COLD_SOURCE
+REJECT_TABLE_ENUMERATION_AND_BOOLEAN_ABSORPTION_AS_DIRECT_NUMERICAL_SOURCES
+AUTHORIZE_ONLY_PREREGISTRATION_OF_THE_CHEAPEST_REAL_WEIGHT_GATE
+```
+
+No Core Candidate is promoted and no EXP-083, runtime, model download, Ubuntu
+action, or hardware work is authorized. Authority:
+`docs/research/E0_CAUSAL_RESIDUAL_ATLAS_SOURCE.md`.

@@ -271,3 +271,25 @@ omitted contribution and pays selection, decode, state, verification, misses,
 fallback, and build. This rejects raw-page omission as a source, not all coded
 query-adaptive data structures. Authority:
 `docs/research/E0_QUERY_ADAPTIVE_COLD_EQUATION.md`.
+
+## F-052 -- Exhaustive tables or Boolean absorption as the numerical source
+
+Preprocessed finite-semiring MatVec is exact, but the known
+`n^2/(epsilon log n)^2` query scheme pays
+`n^(2 + epsilon log_2 K)` preprocessing. At `n=16,384`, reaching the bare
+`84.375x` operation factor requires `epsilon >=0.656113324`; even granting
+`K=16` to the complete arithmetic gives exponent `4.624453296` and roughly
+`1.1496e11` table states in the relevant factor before stored output vectors.
+
+The deterministic Boolean cell-probe upper bound also does not provide an
+`84x` physical source. Against an already 64-bit-packed Boolean matrix its
+finite `n=16,384`, `w=64` traffic factor is only about `1.414214x`. Its crucial
+OR witness/zero-rectangle saturation returns one bit and does not reconstruct
+signed counts, Q4/BF16 sums, or Transformer hidden vectors.
+
+Do not reopen with a different table block width, free exponential
+preprocessing, coefficient-operations-versus-word-probes accounting, or an OR
+oracle relabeled as a numerical dot product. Revisit only if a new algebra
+preserves the declared Transformer computation and supplies a fully charged
+finite representation. This entry does not reject committed-prefix residual
+coding. Authority: `docs/research/E0_CAUSAL_RESIDUAL_ATLAS_SOURCE.md`.

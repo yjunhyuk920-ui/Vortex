@@ -937,3 +937,34 @@ cheapest finite Gate for any source that survives on paper.
 Do not assign EXP-083, build a runtime, download a model, or use the private
 Ubuntu server merely because the equation is known. The state remains
 `NO_SURVIVING_CANDIDATE` until a concrete source instantiates it.
+
+## Causal source identified -- preregister its cheapest Gate
+
+`docs/research/E0_CAUSAL_RESIDUAL_ATLAS_SOURCE.md` identifies the only current
+paper candidate: a **Causal Residual Atlas** built from exact committed-prefix
+`(x, W x)` pairs. It evaluates the cached prefix subspace and keeps every
+out-of-span component as an explicit cold residual with a sound bound or exact
+fallback. This is materially different from tolerance-only Atlas replay,
+fixed DCT pilots, raw page omission, and source-free proof traces.
+
+The favorable rank-16 registered screen fits the logical p50 fractions only
+at a requested `0.2%` cold share: 64-column rounding yields `1,009` pages/token,
+`0.980995178 GiB` capsule state, and 64-token amortized
+traffic/operations of `1.085025716%/0.557958575%`. It consequently needs
+`99.899840530%` certificate coverage. Rank 16 plus a requested `0.5%` cold
+share and rank 32 plus `0.2%` are already traffic-infeasible.
+
+The next Wayfinder ticket must preregister the cheapest decisive test before
+assigning an experiment number. It must freeze one rank, page width, prefix
+length policy, held-out prompt population, exact-reference favorable selector,
+output-contract test, and stop rule. First measure whether committed-prefix
+subspaces plus the most favorable legal residual-page order could possibly
+meet the `99.899840530%` coverage frontier on the already pinned small
+checkpoint. Failure stops bound propagation and all backend work. Passing may
+authorize only a deployable outward-rounded residual propagator.
+
+Do not run a parameter sweep, use target-future activations as the deployable
+selector, construct a cold runtime, download a larger model, or access the
+private Ubuntu server. The current result is source identification with
+synthetic controls, not a Surviving Candidate, EXP-083 result, positive
+milestone, or E2-E7 evidence.

@@ -429,3 +429,20 @@ operation replacement, downstream token-quality run, BF16/Q4 proof, physical
 kernel, target hardware, 122B/405B execution, or E2-E7 evidence exists.
 Structurally valid conditions were established. Large-model performance
 remains unverified.
+
+<!-- E0-CAUSAL-RESIDUAL-ATLAS-SOURCE -->
+## Current classification after the causal information-source search
+
+Exact committed-prefix `(x, W x)` pairs instantiate a concrete Coded Causal
+Cold Source: a Causal Residual Atlas evaluates the exact-real prefix subspace
+image and retains all out-of-span work as a bounded, progressively revealed
+cold residual or exact fallback. Ten focused reference tests validate the
+single-projection algebra, safe bounds, faults, and exact completion.
+
+The favorable registered rank-16 screen has `1.085025716%` 64-token amortized
+traffic and `0.557958575%` operations, but only by requiring
+`99.899840530%` certificate coverage. No real causal trace, end-to-end bound,
+native numerical contract, operation replacement, physical I/O, 8 GiB peak,
+or 122B/405B result exists. The class is authorized only for preregistration
+of its cheapest pinned real-weight Gate; it is not a Surviving Candidate or a
+positive milestone.

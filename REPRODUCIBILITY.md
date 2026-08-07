@@ -757,3 +757,28 @@ known verifier, 4-KiB page limits `584,126/452,612`, and the independent
 EXP-081A frontier `99.741472756%`. Nine focused tests cover the branch equation,
 miss/build charging, page/index state, compile amortization, and favorable PCIe
 floor. No model, target server, hardware, or network access is required.
+
+## Causal Residual Atlas source reproduction
+
+Authority document:
+`docs/research/E0_CAUSAL_RESIDUAL_ATLAS_SOURCE.md`.
+
+```powershell
+$env:PYTHONPATH = "repo;.deps"
+python scripts/derive_causal_residual_atlas.py
+python -m pytest tests/test_causal_residual_atlas.py -q
+```
+
+Expected registered rank-16/requested-0.2%/64-column/64-token invariants are
+`526,667,776` capsule elements, `0.980995178 GiB` capsule state, `298,624`
+metadata blocks, `1,009` selected pages/token, `1,466,736,640` capsule read
+bytes/token, `0.349720584%` actual cold coefficient fraction,
+`1.085025716%` amortized traffic, `0.557958575%` amortized operations, and
+`99.899840530%` minimum traffic-governed coverage.
+
+Ten focused tests cover pair-only `WQ` construction, exact committed-prefix
+reconstruction, dependent and late-independent prefix handling, certified unread residuals, all-page exact
+completion, strict top-1 certification, page rounding, minimum build
+amortization, corrupt/non-finite state, and randomized no-false-bound cases.
+No checkpoint, network, private server, or hardware is required. Real causal
+coverage and E2-E7 remain absent.

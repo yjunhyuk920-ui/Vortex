@@ -541,3 +541,35 @@ request/transfer latency remain separate mandatory terms. No selector, page
 format, decoder, verifier hook, cache transition, fallback engine, or kernel is
 admitted until a concrete causal source passes E0. Authority:
 `docs/research/E0_QUERY_ADAPTIVE_COLD_EQUATION.md`.
+
+## Provisional Causal Residual Atlas boundary
+
+The first concrete Coded Causal Cold Source is admitted only to Gate design:
+
+```text
+exact committed prefix pairs (X, W X)
+  -> causal orthogonal code Q and image Z = W Q
+current committed activation x
+  -> a = Q^T x; residual u = x - Q a
+  -> center Z a
+  -> score/reveal exact cold column pages for W u
+  -> outward residual enclosure for every unread page
+       declared output certified -> commit
+       unresolved/corrupt/nonfinite -> exact dense completion or abort
+```
+
+Unlike `OnlineAtlasLinear`, a nonzero residual is not accepted by tolerance.
+Unlike EXP-079A, the basis is formed from the current request's committed
+prefix rather than fixed DCT directions. Unlike raw page selection, `Z` and
+the page bounds carry checkpoint-derived information about omitted work.
+
+No runtime component enters production architecture yet. The favorable
+rank-16 screen reserves `0.980995178 GiB` for the two-byte capsule and scans
+`1,009` 64-column pages/token. The `0.980995178 GiB` stored capsule incurs
+`1.366004944 GiB/token` logical reads because `Q` is used twice. Amortized
+traffic/operation fractions are `1.085025716%/0.557958575%`, requiring
+`99.899840530%` certificate coverage.
+KV, workspaces, numerical-enclosure state, fallback overlap, page service, and
+allocator headroom are still mandatory and absent. Only a preregistered pinned
+real-weight favorable-oracle Gate may advance this provisional boundary.
+Authority: `docs/research/E0_CAUSAL_RESIDUAL_ATLAS_SOURCE.md`.

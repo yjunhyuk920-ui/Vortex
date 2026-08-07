@@ -775,3 +775,53 @@ Authority: `docs/research/E0_QUERY_ADAPTIVE_COLD_EQUATION.md`. The equation is
 E0 derived accounting, not a Core Candidate or execution result. The next map
 ticket must find a causal coded information source; no EXP-083, E1, model,
 server, hardware, operation replacement, or E2-E7 work is yet authorized.
+
+## E0 causal information source -- Causal Residual Atlas
+
+The committed prefix supplies a concrete coded source that raw page selection
+lacked. For exact prefix pairs `(x_s, W x_s)`, causal orthogonalization forms
+`Q` and `Z = WQ`. A current activation decomposes exactly as
+
+```text
+x = Q a + u
+W x = Z a + W u.
+```
+
+The new **Causal Residual Atlas** never treats `u` as an approximate hit. It
+reveals query-scored cold column pages and encloses every unread block by
+`beta_G ||u_G||`, with exact completion or dense fallback when the declared
+output cannot be certified. Synthetic/reference controls establish the linear
+identity, safe residual bound, corrupt/non-finite rejection, all-page exact
+completion, and strict top-1 margin rule.
+
+Exact table enumeration and Boolean cell-probe saturation do not supply the
+numerical Transformer source. The finite-semiring table needed for an
+`84.375x` operation factor at `n=16,384` has at least a `4.624453296`
+preprocessing exponent even under the unrealistically small `K=16` grant.
+The deterministic Boolean cell-probe result gives only about `1.414214x`
+additional traffic improvement over an already packed 64-bit Boolean matrix
+at that finite shape, and its OR witness does not recover signed sums.
+
+One favorable registered screen uses rank 16, two-byte capsule scalars,
+64-column pages, a requested `0.2%` cold fraction, and 64 service tokens. Page
+rounding raises cold work to `0.349720584%` over `1,009` pages/token. The
+capsule is `0.980995178 GiB` and is read as `1.366004944 GiB/token` because
+`Q` is needed twice; 64-token amortized logical traffic/operations are
+`1.085025716%/0.557958575%`. This creates a narrow nonempty arithmetic window
+but requires at least `99.899840530%` traffic-governed certificate coverage.
+
+Decision:
+
+```text
+IDENTIFY_CAUSAL_RESIDUAL_ATLAS_AS_A_CONCRETE_CODED_CAUSAL_COLD_SOURCE
+AUTHORIZE_ONLY_A_CHEAP_REAL_WEIGHT_RESIDUAL_CERTIFICATE_GATE
+NO_SURVIVING_CANDIDATE_OR_POSITIVE_MILESTONE_YET
+```
+
+The decisive premise is unmeasured. Orthogonal arrivals, short prompts,
+nonlinear bound growth, numerical enclosure, and `1,009` sequential page
+requests can each reject it. Authority:
+`docs/research/E0_CAUSAL_RESIDUAL_ATLAS_SOURCE.md`. No EXP-083, model download,
+Ubuntu command, physical runtime, or E2-E7 work is authorized. The next map
+ticket may only preregister the cheapest pinned real-weight favorable-oracle
+Gate.

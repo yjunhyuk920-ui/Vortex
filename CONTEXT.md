@@ -59,6 +59,12 @@ determines omitted dense contributions instead of merely withholding raw Q4
 pages.
 _Avoid_: Raw page selector, static synthetic circuit, free target trace
 
+**Causal Residual Atlas**:
+A Coded Causal Cold Source formed only from exact committed-prefix input/image
+pairs, with every current out-of-span component retained as a certified residual
+or sent to exact fallback.
+_Avoid_: Approximate replay, tolerance-only Atlas, future-selected dictionary
+
 **Useful Information Amplification**:
 The dense coefficient-equivalent work or traffic determined per charged unit
 of selected cold payload; it is a query-time conservation metric, not artifact
