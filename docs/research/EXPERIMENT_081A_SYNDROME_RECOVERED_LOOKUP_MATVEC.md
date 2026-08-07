@@ -2,8 +2,21 @@
 
 ## Status
 
-Preregistered Phase A/B/C E1 prototype. No EXP-081A result exists before the
-preregistration commit.
+Preregistered Phase A/B/C E1 prototype, with the pre-measurement topology
+repair recorded below. No EXP-081A scientific result existed before either
+registration commit.
+
+## Pre-measurement topology repair
+
+The first canonical command stopped during module resolution, before any
+prompt forward pass or evidence write. Registered layer `0` is a
+`linear_attention` layer in the pinned checkpoint and therefore has
+`in_proj_qkv`, not the registered `q_proj`. The layer tuple is amended from
+`0, 11, 23` to `3, 11, 23`, where layer `3` is the earliest full-attention
+layer and all three layers expose the same `q_proj` operation. No activation,
+residual, or metric was observed before this data-independent repair; the
+failed command is an infrastructure event, not a scientific result or a layer
+sweep.
 
 ## Question
 
@@ -146,7 +159,7 @@ The embedded reference must demonstrate:
 Use the unchanged pinned `Qwen/Qwen3.5-0.8B` payload and frozen EXP-076 prompt
 split. Build prompts alone fit the eight-stage generator and rank-eight residual
 dictionary. Evaluation prompts are held out. Capture all causal prompt
-positions from `q_proj` and `down_proj` at layers `0, 11, 23`; no generation or
+positions from `q_proj` and `down_proj` at layers `3, 11, 23`; no generation or
 future target token is used.
 
 The cheap Gate forms a deterministic symmetric W4/A8 integer reference for
@@ -191,4 +204,3 @@ Phase A/B synthetic exact finite-field validation and Phase C small-checkpoint
 necessary residual-code observation, at most E1. BF16/Q4 output equivalence,
 complete generation, physical CUDA, peak VRAM, SSD/PCIe/H2D, latency, 122B,
 405B, and E2-E7 remain **NOT TESTED**.
-
