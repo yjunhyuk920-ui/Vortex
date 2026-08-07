@@ -568,3 +568,18 @@ peak/speed run, 122B/405B execution, or E2-E7 evidence was produced.
 Authority: `results/exp_080a/summary.json`; source `7f1c661`; evidence
 `98e9089`; deterministic core
 `7578c4c9f463da8135f3c320df9d7fb920ffc172d31fdd2f60b30af9778280ce`.
+
+## EXP-081A preregistered syndrome-recovered lookup Gate
+
+EXP-081A tests a new conditional online MatVec data structure rather than a
+renamed subspace. A nonlinear eight-stage lookup forest proposes `G(x)`; an
+independent rank-eight syndrome code attempts to reconstruct `W x-G(x)`; six
+prime-field fingerprints accept only a recovered exact result, otherwise the
+unchanged multiplication is mandatory fallback.
+
+The frozen 405B shape equation charges `0.2148842%` logical operations,
+`0.9265250%` logical traffic, and `3.976903 GiB` sidecar storage before
+fallback. It therefore requires at least `99.74134%` weighted recovery coverage.
+Phase A/B controls and a six-projection Qwen3.5-0.8B held-out residual-code Gate
+are authorized. No result, operation replacement, target-server action, or
+E2-E7 evidence exists.

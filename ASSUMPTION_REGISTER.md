@@ -448,3 +448,16 @@ non-constructive diagnostic and cannot contradict this measurement.
 Status: CONTRADICTED FOR STANDARD RECURSIVE STRASSEN WITH THE REGISTERED
 RECTANGULAR TILING/CHARGING INTERFACE. OTHER EXPLICIT EXACT LOW-CONSTANT
 ALGORITHMS AND A NEW CAUSAL FUTURE-BLOCK SOURCE ARE NOT DECIDED.
+
+## A-056 -- Nonlinear lookup errors occupy a tiny recoverable residual code
+
+After an eight-stage depth-four lookup generator, held-out causal projection
+errors are assumed to lie in a rank-eight field code on at least `99.75%` of
+weighted calls. A syndrome then reconstructs the complete error and an
+independent fingerprint verifies it before commit. The assumption concerns
+output-error structure after nonlinear coding, not exact input-span reuse or
+approximate low numerical rank.
+
+Status: ACTIVE AND UNVERIFIED FOR EXP-081A. WORST-CASE QUERIES RETAIN DENSE
+FALLBACK; LARGE-MODEL SCALING, BF16/Q4 FIDELITY, AND PHYSICAL SPEED ARE NOT
+ASSUMED.

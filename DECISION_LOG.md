@@ -592,3 +592,22 @@ TARGET HARDWARE, PHYSICAL KERNEL, OR E2-E7 EVIDENCE.
 Authority: `results/exp_080a/summary.json`; source `7f1c661`; evidence
 `98e9089`; core
 `7578c4c9f463da8135f3c320df9d7fb920ffc172d31fdd2f60b30af9778280ce`.
+
+## D-070 -- Preregister syndrome-recovered nonlinear lookup MatVec
+
+The OMv boundary rules out claiming a universal arbitrary-query improvement.
+EXP-081A instead defines an exact conditional fast path: a nonlinear candidate,
+rank-eight syndrome recovery, six independent field fingerprints, and unchanged
+fallback. Its success variable is the measured residual-code coverage of real
+causal projection inputs.
+
+Decision:
+
+```text
+PREREGISTER_EXP_081A_SYNDROME_RECOVERED_LOOKUP_MATVEC_GATE
+```
+
+Only synthetic controls and the pinned small-checkpoint necessary Gate are
+authorized. No decoder integration, backend, kernel, larger model, or hardware
+run is authorized before `99.75%` held-out exact recovery coverage and the
+quality/resource Gates pass.

@@ -302,3 +302,16 @@ arithmetic equation, or a new causal information source that creates long valid
 blocks without equivalent target execution. Hold the other interface as a
 clearly labeled oracle and apply the cheapest falsification Gate first. No core
 candidate is promoted.
+
+## Current directive for EXP-081A
+
+EXP-081A is admitted because nonlinear lookup cells plus query-time error
+syndromes introduce information absent from prior fixed subspaces, tangents, and
+future-block attempts. Execute only exact synthetic controls and the held-out
+small-checkpoint residual-code Gate.
+
+Stop if exact weighted coverage is below `99.75%`, any family is below `99%`,
+corrected p50/p95 error exceeds `0.01/0.05`, or fully charged target equations
+fail. Do not tune tree/rank/field/layer/prompt choices after observing failure.
+A pass authorizes only minimal integer projection replacement, not a kernel or
+large-model run.

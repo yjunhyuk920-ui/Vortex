@@ -760,3 +760,21 @@ An exponent, an uncharged tensor-core primitive, or a new proposal-quality
 sweep is insufficient. The next admissible E0 artifact is a closed equation and
 constructive algorithm for one of these two missing interfaces, with the other
 still granted as an oracle. The honest status is `NO_SURVIVING_CANDIDATE`.
+
+## Candidate EXP-081A -- syndrome-recovered nonlinear lookup MatVec
+
+The candidate generator maps the current causal activation through eight
+depth-four regression trees and sums eight selected int8 output pages. A
+rank-eight residual dictionary is recovered from a precomputed syndrome; six
+independent field fingerprints verify the complete result. Verification failure
+executes the original `W @ x` and expands cost, never silently approximates.
+
+This is admissible because nonlinear code cells plus query-time residual
+syndromes are a new information interface. It does not rely on an exact prior
+activation span, a frozen tangent, a fixed DCT pilot, or future columns. At the
+frozen 405B shapes it has a favorable `0.9265250%` traffic path but can tolerate
+only `0.2586602%` weighted fallback. The cheapest decisive question is whether
+held-out real projection residuals are recovered at least `99.75%` of the time.
+
+Contract: `docs/research/EXPERIMENT_081A_SYNDROME_RECOVERED_LOOKUP_MATVEC.md`.
+Status: PREREGISTERED; NO SCIENTIFIC RESULT.

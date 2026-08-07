@@ -400,3 +400,16 @@ impossibility proof for all fast rectangular multiplication. The exponent-only
 oracle is not proof of an implementation, and no causal future-block source was
 tested. Exact BF16/Q4 semantics, physical kernel behavior, peak VRAM, latency,
 122B/405B execution, target hardware, and E2-E7 remain absent.
+
+<!-- EXP-081A-PREREGISTERED -->
+## EXP-081A proof-first boundary
+
+The only exact fast-path claim is finite-field syndrome recovery followed by an
+independent fingerprint. A fingerprint collision is union-accounted; a failed
+or unavailable verification mandates original multiplication or abort. A low
+floating residual, favorable SVD correction, or successful synthetic code does
+not authorize exact commit.
+
+The first real Gate observes only six pinned small-model projections and cannot
+claim model-wide replacement. BF16/Q4 equivalence, downstream token quality,
+physical traffic, peak VRAM, latency, 122B/405B, and E2-E7 remain absent.

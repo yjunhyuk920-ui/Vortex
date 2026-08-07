@@ -594,3 +594,19 @@ Expected best constructive invariants at `K=16,384` are traffic
 `8,095,006,720` bytes, zero constructive joint passes, first unit-constant
 omega pass `K=512`, and first 4B-draft omega pass `K=8,192`. No checkpoint,
 network, Ubuntu host, physical kernel, or E2-E7 evidence is involved.
+
+## EXP-081A preregistered inputs
+
+```text
+shape rows SHA-256  5009a4ed7234bd24eb1488b0f96a9c847158c2a614a6c90519a16cf4212ba82a
+prompt SHA-256      46c9779c24e59f356247145f7ef870a1b82ba4907eb9dffcd48652e519f7612a
+weight SHA-256      04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696
+field prime         2147483647
+recovery rank       8
+verification rows   6
+```
+
+The result must freeze control rows, target-shape accounting, build/evaluation
+leakage audit, per-projection and family coverage, error spectra, raw logs,
+environment inventory, and checksums. Source/evidence hashes and the canonical
+command will be recorded only after implementation and execution.

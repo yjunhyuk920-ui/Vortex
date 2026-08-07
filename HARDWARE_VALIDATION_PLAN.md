@@ -337,3 +337,12 @@ The `7.539063 GiB` workspace value is a favorable shape equation only; it omits
 model-resident state, KV cache, layout buffers, runtime overhead, and causal
 block production. It is not a measured VRAM result. EXP-073 Stage 2 remains the
 separate baseline-calibration route and Phase D/E4-E7 remain unchanged.
+
+## EXP-081A hardware boundary
+
+EXP-081A may run only finite-field controls and a CPU small-checkpoint residual
+Gate. Its `3.976903 GiB` sidecar and `0.9265250%` traffic values are logical
+equations, not allocated VRAM or measured bandwidth. No lookup kernel, GPU
+fingerprint, SSD/H2D scheduler, Ubuntu command, or large checkpoint is
+authorized until the residual-code coverage Gate passes. Phase D remains
+`NOT TESTED`.

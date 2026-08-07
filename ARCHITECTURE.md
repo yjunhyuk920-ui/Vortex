@@ -419,3 +419,19 @@ target, not a callable component. No proposal, verification, correction,
 commit, KV-repair, or exact-fallback transition was added. A future replacement
 must expose both a constructive low-constant arithmetic interface and an
 independently justified causal source before it can enter the architecture.
+
+## EXP-081A provisional lookup-recovery boundary
+
+```text
+current causal x
+  -> nonlinear lookup candidate G(x)
+  -> residual syndrome recovery
+  -> independent field fingerprint
+       pass -> commit exact integer projection result
+       fail -> original W @ x fallback
+```
+
+The fingerprint never manufactures a result; it only rejects an incorrect
+candidate. The component is absent from the active runtime until real held-out
+recovery coverage clears the fallback equation. Approximate corrected outputs
+are diagnostics and may not enter the exact branch.

@@ -354,3 +354,17 @@ Current classification after EXP-080A: standard recursive Strassen is rejected
 as the Hyperblock arithmetic core under the frozen interface. The cost model is
 retained as an auxiliary. No core candidate survives; Phase D/E2-E7 remain not
 achieved.
+
+## EXP-081A preregistered Gate
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| In-code finite-field errors recover exactly | no run | PREREGISTERED |
+| Out-of-code/faulted candidates are fingerprint-rejected | no run | PREREGISTERED |
+| 405B favorable operations <=1.185185% | derived preregistration: 0.2148842% | NECESSARY PASS |
+| 405B favorable traffic <=1.185185% | derived preregistration: 0.9265250% | NECESSARY PASS |
+| Sidecar <=8 GiB | derived preregistration: 3.976903 GiB | NECESSARY PASS |
+| Held-out exact residual-code coverage >=99.75% | no run | PREREGISTERED |
+| Held-out corrected L2 p50/p95 <=0.01/0.05 | no run | PREREGISTERED |
+| Complete model operation replacement or output quality | necessary projection Gate only | NOT TESTED |
+| CUDA, peak VRAM, latency, 122B/405B | no hardware/model run | NOT TESTED |
