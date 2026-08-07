@@ -725,7 +725,13 @@ def main() -> None:
     dump(output / "summary.json", summary)
     dump(output / "artifacts/environment.json", {"python": sys.version, "platform": platform.platform(), "cpu_count": os.cpu_count()})
     (output / "artifacts/contract.txt").write_text(CONFIG_PATH.read_text(encoding="utf-8"), encoding="utf-8")
-    (output / "logs/run.log").write_text(json.dumps({"decision": decision, "aggregate": aggregate}, sort_keys=True) + "\n", encoding="utf-8")
+    log_path = output / "logs/run.log"
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    log_path.write_text(
+        json.dumps({"decision": decision, "aggregate": aggregate}, sort_keys=True)
+        + "\n",
+        encoding="utf-8",
+    )
     write_checksums(output)
     print(json.dumps({
         "decision": decision,
