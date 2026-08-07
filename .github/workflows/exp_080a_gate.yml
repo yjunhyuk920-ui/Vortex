@@ -1,0 +1,43 @@
+name: EXP-080A Hyperblock arithmetic contract
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/exp_080a_gate.yml"
+      - "docs/research/EXPERIMENT_080A_HYPERBLOCK_FMM_GATE.md"
+      - "experiments/exp_080a/**"
+      - "vortex_runtime/hyperblock_fmm.py"
+      - "vortex_runtime/hyperblock_fmm_prototype.py"
+
+concurrency:
+  group: exp-080a-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  arithmetic-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run embedded exact controls and arithmetic Gate
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: >-
+          python experiments/exp_080a/run_experiment.py
+          --output-dir results/exp_080a_ci
+      - name: Verify expected evidence exists
+        run: |
+          test -s results/exp_080a_ci/summary.json
+          test -s results/exp_080a_ci/checksums.sha256
+      - name: Confirm no checkpoint payload is tracked
+        run: |
+          if git ls-files '*.safetensors' '*.bin' '*.pt' '*.pth' | grep -q .; then
+            echo 'Tracked model payload is forbidden' >&2
+            exit 1
+          fi

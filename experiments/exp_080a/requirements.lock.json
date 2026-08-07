@@ -1,0 +1,6 @@
+{
+  "experiment": "EXP-080A",
+  "python": ">=3.10",
+  "dependencies": [],
+  "note": "The arithmetic prototype and embedded exact controls use only the Python standard library."
+}
