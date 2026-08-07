@@ -540,3 +540,19 @@ invariants are 0/192 baseline mismatch, p50 charged traffic
 KL `7.544862263732487/12.616226196289062`, minimum sound-radius p50/p95
 `48.66391755845644/57.77874760553659`, and the core hash above. Physical speed,
 large-model scaling, and E2-E7 remain unverified.
+
+## EXP-080A preregistered inputs
+
+```text
+shape population     results/exp_071/raw/tensor_rows.jsonl
+shape SHA-256        5009a4ed7234bd24eb1488b0f96a9c847158c2a614a6c90519a16cf4212ba82a
+EXP-048 summary      18252019a35ecb23fe2c8525e13a93ec73a5b69eea00330e965932f4148ef718
+EXP-049 summary      f0683a7852f1efe930b22c1feaf4863b68bf9d4351217461080ee784e6488a57
+EXP-050 summary      00f76310a45187c820a3b76dc70abf673ebd3c1c74bb90d88536c2138e685a2a
+```
+
+The result must be reproducible without network, model payload, or Ubuntu host.
+It must freeze exact integer-control rows, per-block constructive and exponent-
+oracle counts, aggregate Gate rows, environment data, logs, and checksums.
+Canonical commands and authority hashes will be recorded only after the source
+commit and run complete.

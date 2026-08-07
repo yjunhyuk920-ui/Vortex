@@ -702,3 +702,26 @@ that amortizes exact residual work. It must charge code/prover generation,
 queries, verification, correction, fallback, RAM/SSD/PCIe/VRAM, and show the
 final `1.185185%` equation before implementation. The honest status remains
 `NO_SURVIVING_CANDIDATE`.
+
+## Candidate EXP-080A -- Hyperblock Exact Rectangular-Multiplication Gate
+
+The broad Hyperwave proposal contains a component not tested by EXP-048/049:
+replace `K` independent dense matrix-vector operations with one exact
+rectangular `W @ X` operation and share scalar arithmetic across token columns.
+
+EXP-080A grants the exact future block for free and therefore does not claim a
+causal executor. It first applies the cheapest arithmetic Gate to the frozen
+405B tensor shapes. The constructive arm is recursive Strassen with exact
+multiply/add/padding/accumulation counts and a free best leaf-size oracle. A
+unit-constant modern matrix-multiplication exponent is only a theoretical
+diagnostic.
+
+The path promotes only if one preregistered block length simultaneously reaches
+the final p50 traffic and arithmetic fractions and the favorable workspace
+stays within 8 GiB. Failure stops packed kernels, model downloads, speculative
+backends, and target-hardware work. A pass still does not reopen prior causal
+proposal families; that would require a separately justified new information
+source.
+
+Contract: `docs/research/EXPERIMENT_080A_HYPERBLOCK_FMM_GATE.md`.
+Status: PREREGISTERED; NO SCIENTIFIC RESULT.

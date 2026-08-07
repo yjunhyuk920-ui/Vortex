@@ -273,3 +273,17 @@ nonlinear-propagator, and kernel work around this path. A new core proposal must
 obtain information about the dense residual through a different causal or
 interactive dependency and pass the final fraction before code. There is no
 promoted core candidate.
+
+## Current directive for EXP-080A
+
+EXP-080A is admitted only because it adds a new asymptotic mechanism to the
+closed multi-token family: exact cross-column bilinear arithmetic, not another
+proposal source or acceptance sweep. It must grant perfect future activations
+and execute only the arithmetic upper-bound prototype.
+
+Stop if standard recursive Strassen cannot meet both final fractions after all
+scalar additions, padding, and tile accumulations are charged. A favorable
+modern exponent with unit constants is not constructive evidence. Do not build
+a kernel or rerun Jacobi/draft families after failure. A pass authorizes only an
+exact packed-constructor Gate; causality remains independently closed or
+unsupported.

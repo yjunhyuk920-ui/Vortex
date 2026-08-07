@@ -380,3 +380,23 @@ All held-out valid-prefix lengths were zero. The frozen map is therefore removed
 from the active architecture before any materializer, sentinel, cache repair, or
 kernel is built. A future delta-updated map must be treated as a new component
 with an explicit causal delta source and fail-closed state-repair transition.
+
+## EXP-080A Hyperblock arithmetic boundary
+
+The candidate changes only the linear-operator scheduling axis:
+
+```text
+non-deployable exact future block X[n,K]
+    -> exact tiled rectangular W[m,n] @ X[n,K]
+    -> constructive Strassen arithmetic count
+```
+
+It does not contain a proposal generator, verifier, correction path, KV state
+machine, or deployable future source. Traffic amortization is `1/K` for one
+perfect target sweep. Arithmetic reduction is accepted only from fully charged
+constructive multiply/add/padding/accumulation counts; a matrix-multiplication
+exponent with unit constants is diagnostic.
+
+Failure removes standard Strassen Hyperblocks from the core before a kernel is
+built. Passing would authorize only a lower-level exact packed constructor Gate
+and would leave the causal-sequential barrier unchanged.

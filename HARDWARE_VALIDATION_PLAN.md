@@ -313,3 +313,15 @@ Frozen tangent reuse failed at the first later token for every held-out case, so
 no dense macro materializer, rank kernel, sentinel, cache-repair runtime,
 35B/122B download, or target-server trial is promoted. EXP-073 Stage 2 remains
 separate hardware calibration and Phase D/E4-E7 remain unchanged.
+
+## EXP-080A hardware boundary
+
+EXP-080A is a CPU arithmetic-count prototype only. A perfect future activation
+block and best Strassen leaf width are favorable grants. No CUDA/Strassen/
+bit-sliced kernel, PCIe or SSD transfer, target-server command, checkpoint
+download, TTFT, token latency, power, or measured peak VRAM is authorized.
+
+Only a constructive joint arithmetic/traffic pass could authorize a separate
+exact packed-kernel micro-Gate. Even then, causal future-block production and
+online output latency require independent proof before Phase D. Current status
+remains `NOT TESTED`.

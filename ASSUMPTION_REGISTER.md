@@ -424,3 +424,15 @@ approach closure.
 Status: CONTRADICTED FOR THE REGISTERED FIXED DCT PILOT AND ROW-BLOCK L2
 PROOF-STATE INTERFACE. OTHER COLD-BACKED QUERY-TIME INFORMATION SOURCES ARE NOT
 DECIDED.
+
+## A-055 -- Exact cross-token rectangular arithmetic closes the dense MAC Gate
+
+If `K` exact future activations are available, a subcubic exact multiplication
+of `W[m,n] @ X[n,K]` may reduce scalar arithmetic per committed token rather
+than merely amortizing weight traffic. EXP-080A grants the future block and one
+target sweep for free and charges constructive Strassen multiplications,
+additions, padding, and tile accumulation on the frozen 405B shapes.
+
+Status: ACTIVE FOR EXP-080A ONLY. CAUSAL PRODUCTION OF THE BLOCK IS NOT AN
+ASSUMPTION OF THIS GATE AND REMAINS CONTRADICTED/UNSUPPORTED BY EXP-048-050 AND
+EXP-076 UNDER THEIR SCOPES.

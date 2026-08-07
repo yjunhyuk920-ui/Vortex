@@ -321,3 +321,15 @@ candidate is promoted; E1 result and Phase D/E2-E7 remain absent.
 Current classification after EXP-079A: the fixed DCT pilot plus correlated
 row-block proof-ball path is rejected at E1. CPSM is not validated as a runtime,
 no core candidate survives, and Phase D/E2-E7 remain not achieved.
+
+## EXP-080A preregistered Gate
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Exact integer Strassen control equals classical product | no run | PREREGISTERED |
+| Constructive Hyperblock traffic reaches p50 fraction | equation pending run | PREREGISTERED |
+| Constructive Hyperblock arithmetic reaches p50 fraction | equation pending run | PREREGISTERED |
+| Favorable workspace fits 8 GiB | shape equation pending run | PREREGISTERED |
+| Unit-constant exponent oracle supplies theoretical headroom | diagnostic only | NOT A PROMOTION GATE |
+| Future activation block is produced causally | granted perfect-future oracle | NOT TESTED / NON-DEPLOYABLE |
+| Physical latency, CUDA, 122B/405B execution | no runtime | NOT TESTED |

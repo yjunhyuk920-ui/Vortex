@@ -543,3 +543,23 @@ DENSE-405B EXECUTION EVIDENCE.
 Authority: `results/exp_079a/summary.json`; source `e0c661e`; evidence
 `38bfd6c`; core
 `c8d794bea8f17b31e40b9f667836d2198ce80137e23080260f81ea6866112eeb`.
+
+## D-068 -- Preregister Hyperblock exact rectangular arithmetic Gate
+
+EXP-048/049/050 already reject hard Jacobi, target-only fixed-point, and fixed
+external drafting. EXP-080A therefore does not rerun proposal quality. It
+tests whether exact subcubic arithmetic across a granted future block can close
+the dense-operation budget that those experiments left unchanged.
+
+Decision:
+
+```text
+PREREGISTER_EXP_080A_HYPERBLOCK_EXACT_RECTANGULAR_MULTIPLICATION_GATE
+```
+
+The authoritative constructive arm is standard recursive Strassen with every
+scalar multiply/add, padding tile, and output accumulation charged. Passing a
+unit-constant exponent-only control is insufficient. No backend, checkpoint,
+or target-hardware work is authorized before the arithmetic Gate survives.
+
+Status: E0 PREREGISTERED; NO RESULT OR CORE PROMOTION.

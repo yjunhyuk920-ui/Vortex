@@ -522,3 +522,24 @@ evidence was produced.
 Authority: `results/exp_079a/summary.json`; source `e0c661e`; evidence
 `38bfd6c`; deterministic core
 `c8d794bea8f17b31e40b9f667836d2198ce80137e23080260f81ea6866112eeb`.
+
+## EXP-080A preregistered Hyperblock arithmetic Gate
+
+EXP-080A does not reopen the rejected Jacobi, target-only fixed-point,
+external-draft, or native-MTP proposal families. It grants a non-deployable
+perfect block of future activations and tests one new asymptotic mechanism:
+exact rectangular fast matrix multiplication across token columns.
+
+The frozen Llama-405B tensor-shape population is tiled at block lengths
+`32..16,384`. A constructive Strassen arm charges every scalar multiplication,
+addition, padding tile, and cross-inner-block accumulation while granting the
+best classical leaf width for free. A unit-constant `omega=2.371552` arm is
+reported separately as a non-constructive theoretical control.
+
+Promotion requires one constructive block length to meet both the final p50
+traffic and arithmetic fraction under an already impossible zero-cost perfect
+future oracle, fit a favorable 8 GiB workspace equation, and pass exact signed-
+integer controls. Passing only the exponent oracle cannot promote the path.
+
+Status: PREREGISTERED PHASE A/B E1 ARITHMETIC UPPER-BOUND PROTOTYPE; NO RESULT,
+MODEL EXECUTION, CAUSAL FUTURE SOURCE, TARGET SERVER, PHYSICAL KERNEL, OR E2-E7.
