@@ -529,7 +529,7 @@ disturb existing workloads without narrower permission. Passing calibration
 does not promote a VORTEX mechanism. Until either Stage 2 is authorized or a
 new candidate passes E0, the honest core status is `NO_SURVIVING_CANDIDATE`.
 
-## Active EXP-077A -- Activation-Informed Fractal MLP Oracle Gate
+## Closed EXP-077A -- Activation-Informed Fractal MLP Oracle Gate
 
 EXP-077A supplies the required materially different query-time information
 source: the current causal token's nonzero post-SiLU SwiGLU intermediate
@@ -548,3 +548,29 @@ authorize only an all-operator and deployable-selector cost Gate. A failure
 closes this activation-norm fracturing score without post-result rescue. No new
 checkpoint, 35B/122B payload, target-server command, or physical kernel is in
 scope. Contract: `docs/research/EXPERIMENT_077A_ORACLE_FRACTAL_MLP_GATE.md`.
+
+The corrected authoritative causal-cache replay had zero mismatch across 192
+registered target positions. At the realized `9.988839%` MLP fraction,
+held-out top-1 agreement was only `71.5278%`; mean/p95 KL was
+`0.884161/3.080752`. Every family missed its 95% top-1 Gate. Even the 20% arm
+reached only `83.3333%` top-1 agreement.
+
+Decision:
+
+```text
+REJECT_ACTIVATION_NORM_FRACTAL_MLP_10PCT_PATH
+```
+
+Authority: `results/exp_077a/summary.json`; source `33fed17`; evidence
+`0970c66`; core
+`e25083693c6db21a0da16c9305816958b149865f2fcfde0bd9b7e95c43022411`.
+
+## Next research Gate -- new dependency, not a Fractal score rescue
+
+No core candidate survives. Do not sweep fractions, layers, prompts, channel
+blocks, trained routers, or larger Qwen checkpoints around EXP-077A. The next
+candidate must introduce a different execution dependency that explains how
+the omitted nonzero MLP contribution is recovered or amortized while charging
+selector, correction, attention/DeltaNet, LM-head, fallback, and cold traffic.
+It must pass an E0 final-fraction route before implementation. EXP-073 Stage 2
+remains a separately authorized hardware calibration and is not a solution.

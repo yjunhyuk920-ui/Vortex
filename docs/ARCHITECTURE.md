@@ -132,3 +132,16 @@ held-out accepted-prefix p05/p50/p95 `0/4/4` at selected `K=4`, below required
 `9/11` tail/median minima, so it is not a promoted decoding backend. It is not
 vLLM equivalence, a CUDA implementation, a quantized path, or an operation-
 replacement runtime.
+
+## EXP-077A Fractal MLP reference boundary
+
+`vortex_runtime/fractal_oracle.py` contains pure trace-validation, strict
+fraction, aggregation, and Gate helpers. The runner under
+`experiments/exp_077a` replays frozen EXP-076 prefix/verification caches and
+temporarily replaces every SwiGLU MLP with a top-channel favorable oracle.
+
+This is retained as a negative-test instrument, not a backend. At a realized
+`9.988839%` MLP fraction it preserved only `71.5278%` of held-out top-1 target
+decisions, despite seeing full current intermediates for free. It does not
+sparsify attention, DeltaNet, or the LM head and has no deployable selector,
+traffic, CUDA, VRAM, or speed claim.

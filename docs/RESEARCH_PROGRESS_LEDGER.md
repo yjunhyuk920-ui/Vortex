@@ -205,3 +205,24 @@ feasibility. No target-server, GPU, quantized, 35B/122B, router, or scheduler
 work ran. The primary portfolio has no surviving core candidate and must return
 to E0 for a materially different query-time information source; Phase D/E2-E7
 remain not achieved.
+
+<!-- EXP-077A-AUTHORITATIVE-FINAL -->
+## 2026-08-07 -- EXP-077A activation-informed Fractal MLP Gate
+
+The pinned unchanged Qwen3.5-0.8B BF16 target replayed 24 frozen
+proposal-conditioned causal-cache cases with zero mismatch over 192 positions.
+A free non-deployable oracle retained the top activation/down-norm channels in
+every MLP. At `9.988839%`, held-out top-1 was `71.5278%`, mean KL `0.884161`,
+and p95 KL `3.080752`; all family Gates failed. The 20% arm reached only
+`83.3333%` top-1.
+
+Decision:
+
+```text
+REJECT_ACTIVATION_NORM_FRACTAL_MLP_10PCT_PATH
+```
+
+This closes one dynamic fracturing score under favorable conditions; it does
+not improve final feasibility and does not prove all dynamic sparsity
+impossible. No new model, target-server, GPU, or physical performance work ran.
+No core candidate survives; Phase D/E2-E7 remain not achieved.

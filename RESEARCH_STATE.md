@@ -391,9 +391,9 @@ survived the `1.185185%` target-equivalent E0/Gate sequence. The only already
 defined physical next measurement is separately authorized EXP-073 Stage 2;
 it is calibration, not a solution. Phase D, E6, and E7 remain not achieved.
 
-## EXP-077A preregistered activation-informed Fractal MLP Gate
+## EXP-077A pre-result activation-informed Fractal MLP contract
 
-EXP-077A admits a new E0 candidate but has no scientific result yet. It uses
+EXP-077A admitted a new E0 candidate under the following frozen contract. It uses
 the current causal token's nonzero SwiGLU intermediate contribution as an
 input-conditioned information source and asks whether the best 10% favorable
 oracle subset preserves unchanged-target logits on the pinned Qwen3.5-0.8B
@@ -405,3 +405,28 @@ selector/full gate-up cost for free. Attention, DeltaNet, LM head, fallback,
 cold storage, traffic, VRAM, and large-model scaling remain unverified. No
 larger checkpoint or target-server action is authorized. The pre-result Gate
 is frozen in `docs/research/EXPERIMENT_077A_ORACLE_FRACTAL_MLP_GATE.md`.
+
+## EXP-077A authoritative Fractal MLP rejection
+
+The corrected unchanged-checkpoint causal-cache replay passed its control with
+zero mismatch across 192 registered positions. The favorable oracle kept 358
+of 3,584 intermediate channels (`9.988839%`) but held-out top-1 agreement was
+`71.5278%`, mean KL `0.884161`, and p95 KL `3.080752`. Every required family
+missed its `95%` top-1 Gate. The 20% arm reached only `83.3333%` top-1.
+
+Decision:
+
+```text
+REJECT_ACTIVATION_NORM_FRACTAL_MLP_10PCT_PATH
+```
+
+Authority: `results/exp_077a/summary.json`; source
+`33fed17ed6abed7c8c14eec543efc620e4fe537d`; evidence
+`0970c6626ff848c5026b684b3e2d1bb479e96603`; deterministic core
+`e25083693c6db21a0da16c9305816958b149865f2fcfde0bd9b7e95c43022411`.
+
+This closes activation-norm individual-channel fracturing under a free,
+non-deployable oracle. It does not prove all dynamic sparsity impossible, but
+no fraction/layer/router/larger-model rescue of this score is authorized. No
+current core candidate survives. Phase D/E2-E7 and dense-405B execution remain
+not achieved.

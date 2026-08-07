@@ -288,3 +288,24 @@ scheduler. No EXP-077 core implementation is authorized until a materially
 different query-time information source passes E0. EXP-073 Stage 2 remains the
 only specified physical calibration and requires separate explicit authority.
 The private target server was not contacted in EXP-076.
+
+<!-- EXP-077A-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-077A
+
+Branch: `research/exp-077a-oracle-fractal-mlp-gate`.
+
+Authority: `results/exp_077a/summary.json`; source
+`33fed17ed6abed7c8c14eec543efc620e4fe537d`; evidence
+`0970c6626ff848c5026b684b3e2d1bb479e96603`; core
+`e25083693c6db21a0da16c9305816958b149865f2fcfde0bd9b7e95c43022411`.
+
+Decision: reject activation-norm individual-channel Fractal MLP at the 10%
+favorable ceiling. The corrected causal-cache control matched 192/192 target
+positions. The realized `9.988839%` arm achieved held-out top-1 `71.5278%`,
+mean KL `0.884161`, and p95 KL `3.080752`; every family failed. The invalid
+pre-authority runs were not committed as evidence.
+
+Next: do not sweep this score, train a router, build a sparse kernel, or download
+35B/122B. A new candidate must introduce a different correction/amortization
+dependency and pass E0. EXP-073 Stage 2 remains separately authorized but not
+run. The private Ubuntu server was not contacted; Phase D/E2-E7 remain open.

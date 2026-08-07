@@ -430,3 +430,31 @@ separately authorized calibration, not a core mechanism.
 
 Status: SCIENTIFIC REJECTION AT E1 CPU OBSERVATION; REFERENCE INTEGRITY PASS;
 NO PHASE D/E2-E7 OR DENSE-405B EVIDENCE.
+
+## D-063 -- Reject activation-norm Fractal MLP at the 10% favorable ceiling
+
+EXP-077A authority: `results/exp_077a/summary.json`; source
+`33fed17ed6abed7c8c14eec543efc620e4fe537d`; evidence
+`0970c6626ff848c5026b684b3e2d1bb479e96603`; deterministic core SHA-256
+`e25083693c6db21a0da16c9305816958b149865f2fcfde0bd9b7e95c43022411`.
+
+The unchanged target replayed all 192 registered causal positions with zero
+mismatch. The oracle used the complete current SwiGLU intermediate and free
+selection, yet retaining 358/3,584 channels (`9.988839%`) produced held-out
+top-1 agreement `71.5278%`, mean KL `0.884161`, and p95 KL `3.080752`.
+All six families failed the registered `95%` top-1 minimum. At 20%, population
+top-1 agreement was still only `83.3333%`.
+
+Decision:
+
+```text
+REJECT_ACTIVATION_NORM_FRACTAL_MLP_10PCT_PATH
+```
+
+Do not rescue this score with post-selected fractions, layers, prompts,
+channel blocks, a trained router, physical sparse kernels, or a larger model.
+A continuation must supply a materially different execution dependency that
+recovers or amortizes omitted nonzero contribution under fully charged costs.
+
+Status: SCIENTIFIC REJECTION AT E1 FAVORABLE-ORACLE OBSERVATION; CONTROL PASS;
+NO PHASE D/E2-E7 OR DENSE-405B EVIDENCE.

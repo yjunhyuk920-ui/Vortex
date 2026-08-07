@@ -27,3 +27,9 @@ EXP-076 two-stage cache path: prompt prefill, then frozen first-target/MTP-propo
 conditioning. It uses no padding. The mandatory zero-mismatch control checks all
 192 registered target decisions. Batching changes host execution efficiency,
 not the registered causal path, subset score, fractions, population, or Gate.
+
+Authoritative result: `REJECT_ACTIVATION_NORM_FRACTAL_MLP_10PCT_PATH`. Baseline
+trace mismatches were zero. At a realized `9.988839%` MLP fraction, held-out
+top-1 agreement was `71.5278%`, mean KL was `0.884161`, and p95 KL was
+`3.080752`, versus required `99%`, `0.02`, and `0.05`. Authority is
+`results/exp_077a/summary.json`; source `33fed17`; evidence `0970c66`.

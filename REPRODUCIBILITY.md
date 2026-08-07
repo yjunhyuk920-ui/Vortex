@@ -418,3 +418,38 @@ accepted-prefix p05/p50/p95 `0/4/4`, two zero-accept evaluation cases, required
 p05/p50 minima `9/11`, and zero integrity-control failures. Wall/CPU time may
 vary. The result is E1 CPU observation only; vLLM equivalence, physical traffic,
 target hardware, and E2-E7 remain unverified.
+
+## EXP-077A local authority
+
+```text
+results/exp_077a/summary.json
+source commit       33fed17ed6abed7c8c14eec543efc620e4fe537d
+evidence commit     0970c6626ff848c5026b684b3e2d1bb479e96603
+config SHA-256      fce6edd0ea572ce3b6b50ad97500822d24fc1207b8ac026866753cff83459837
+prompt SHA-256      46c9779c24e59f356247145f7ef870a1b82ba4907eb9dffcd48652e519f7612a
+trace SHA-256       1e921698ce8ee522c0d3cb9b8b9004139beb54cc2dee82e1a2aa0a08fa245e4f
+weight SHA-256      04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696
+core SHA-256        e25083693c6db21a0da16c9305816958b149865f2fcfde0bd9b7e95c43022411
+workflow/artifact   NOT RUN
+```
+
+The Windows/Python 3.12.13 CPU run used Torch 2.6.0+cpu, Transformers 5.12.0,
+BF16 eager attention, and eight threads. It replayed 24 frozen causal cases
+through equal-length, unpadded two-stage cache batches. The bundle contains ten
+checksummed payloads plus the checksum manifest; all checksums verified.
+
+Reproduce without overwriting authority:
+
+```bash
+EXP077A_PYTHON='C:/dincAI/Vortex/.deps/exp076-venv/Scripts/python.exe' \
+EXP077A_MODEL_DIR='C:/dincAI/Vortex/.deps/exp076-model' \
+EXP077A_OUTPUT_DIR='C:/dincAI/Vortex/results/exp_077a_reproduction' \
+bash experiments/exp_077a/run_current_env.sh
+```
+
+Expected decision: `REJECT_ACTIVATION_NORM_FRACTAL_MLP_10PCT_PATH`. Expected
+invariants are 0/192 baseline mismatch, 72 case rows, realized fraction
+`0.09988839285714286`, held-out 10% top-1 `0.7152777777777778`, mean KL
+`0.8841612071313042`, p95 KL `3.080751657485962`, and the core hash above.
+Wall time may vary. Physical performance, large-model scaling, and E2-E7 remain
+unverified.

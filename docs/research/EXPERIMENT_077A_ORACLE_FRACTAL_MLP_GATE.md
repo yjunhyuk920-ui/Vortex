@@ -2,8 +2,9 @@
 
 ## Status
 
-Pre-registered before execution. No result is interpreted in this document
-until the source and contract commit exists.
+Complete. The authoritative E1 result rejects the registered 10% path. Source
+commit `33fed17ed6abed7c8c14eec543efc620e4fe537d`; evidence commit
+`0970c6626ff848c5026b684b3e2d1bb479e96603`.
 
 ## Hypothesis
 
@@ -192,3 +193,32 @@ The unchanged target supplies real weights and logits, and MLP outputs are
 replaced, but the free non-deployable oracle prevents E2 operation-replacement
 credit. Structurally valid conditions may be established; large-model and
 physical performance remain unverified.
+
+## Authoritative result
+
+All 24 cases and 192 registered causal positions replayed the unchanged target
+with zero mismatch. The 10% arm kept 358 of 3,584 channels per MLP, a realized
+MLP parameter fraction of `9.9888392857%`.
+
+| Fraction | Top-1 agreement | Mean KL | p95 KL |
+|---:|---:|---:|---:|
+| 5% | 55.5556% | 1.875917 | 5.475127 |
+| 10% | 71.5278% | 0.884161 | 3.080752 |
+| 20% | 83.3333% | 0.373114 | 1.264202 |
+
+At 10%, the weakest family was English at `54.1667%` top-1 agreement; the best
+was math at `83.3333%`. Every family missed the registered `95%` minimum. The
+population missed `99%` top-1 by 27.4722 percentage points, mean KL exceeded
+the `0.02` ceiling by `44.2081x`, and p95 KL exceeded `0.05` by `61.6150x`.
+
+Decision:
+
+```text
+REJECT_ACTIVATION_NORM_FRACTAL_MLP_10PCT_PATH
+```
+
+The result closes only individual-channel activation-norm fracturing under this
+favorable oracle. It does not prove all input-conditioned sparse execution
+impossible. Do not rescue this score with post-selected fractions, layers,
+prompts, a trained selector, or a larger checkpoint. The deterministic core is
+`e25083693c6db21a0da16c9305816958b149865f2fcfde0bd9b7e95c43022411`.

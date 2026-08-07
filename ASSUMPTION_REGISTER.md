@@ -357,3 +357,14 @@ pass cannot establish a deployable speedup. Failure at this ceiling rejects the
 registered activation-norm fracturing path before any larger download.
 
 Status: ACTIVE AND UNVERIFIED; PREREGISTERED FOR EXP-077A E1 ORACLE GATE.
+
+### A-052 closure
+
+The authoritative proposal-conditioned causal-cache replay matched all 192
+unmodified target decisions. At `9.988839%` selected MLP parameters, held-out
+top-1 agreement was `71.5278%`, mean KL `0.884161`, and p95 KL `3.080752`.
+Every family failed its registered top-1 minimum; 20% selected channels still
+reached only `83.3333%` population top-1 agreement.
+
+Status: CONTRADICTED FOR THE REGISTERED ACTIVATION-NORM INDIVIDUAL-CHANNEL
+FRACTURING ORACLE. OTHER INFORMATION SOURCES ARE NOT DECIDED.

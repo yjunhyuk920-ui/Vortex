@@ -203,3 +203,18 @@ with a materially different query-time information source and a fully charged
 credible path to `1.185185%`. EXP-073 Stage 2 may be separately authorized to
 measure the real 4B/storage/H2D envelope, but calibration belongs outside the
 core-candidate allocation and cannot be reported as feasibility progress.
+
+## Current directive after EXP-077A
+
+The new activation-conditioned information source passed admission to a cheap
+favorable oracle but failed decisively. At the 10% MLP budget it preserved only
+`71.5278%` held-out top-1 and exceeded the mean/p95 KL ceilings by
+`44.21x/61.62x`; all family Gates failed. This is useful family closure, not
+increased target feasibility.
+
+Do not allocate primary-track work to fraction/layer/prompt sweeps, blockifying
+the same score, training a target-specific router, sparse-kernel optimization,
+or larger-model confirmation. The next core candidate must recover or amortize
+the omitted nonzero contribution through a materially different execution
+dependency and pass a fully charged E0 route to the final fraction before code.
+EXP-073 Stage 2 remains separate physical calibration.

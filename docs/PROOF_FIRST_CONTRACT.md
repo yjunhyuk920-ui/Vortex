@@ -318,3 +318,17 @@ The long-block native-MTP surrogate is rejected under this scope. No 35B-A3B
 route trace or physical scheduler is authorized. This E1 observation neither
 proves vLLM runtime equivalence nor validates arbitrary dense 405B execution.
 Phase D/E2-E7 remain not achieved, and there is no surviving core candidate.
+
+<!-- EXP-077A-CURRENT-CLASSIFICATION -->
+## Current classification after EXP-077A
+
+The unchanged target replay passed all 192 registered causal decisions, but the
+free activation-informed oracle preserved only `71.5278%` held-out top-1 at a
+realized `9.988839%` MLP fraction. Mean/p95 KL was
+`0.884161/3.080752`; all family Gates failed. Even 20% reached only
+`83.3333%` top-1.
+
+This is a valid E1 favorable-ceiling rejection of the registered Fractal MLP
+score, not E2 replacement and not a universal dynamic-sparsity impossibility
+result. No deployable selector or physical performance was measured. There is
+no surviving core candidate; Phase D/E2-E7 remain not achieved.

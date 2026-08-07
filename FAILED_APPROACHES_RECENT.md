@@ -96,3 +96,23 @@ Retain only the causal proposal/verification/rollback reference as auxiliary
 falsification machinery. A continuation must introduce a materially different
 query-time information source and independently pass the final-fraction E0
 Gate.
+
+<!-- EXP-077A-AUTHORITATIVE-FINAL -->
+## F-043 -- Activation-norm individual-channel Fractal MLP
+
+The free non-deployable oracle saw every post-SiLU SwiGLU intermediate and
+ranked channels by absolute activation times unchanged down-column norm. Even
+with selector, full gate/up reads, score construction, and error measurement
+charged free, the `9.988839%` path preserved only `71.5278%` of held-out target
+top-1 decisions. Mean/p95 KL was `0.884161/3.080752`; every family failed. The
+20% arm reached only `83.3333%` top-1.
+
+Do not reopen by sweeping fractions after observation, selecting layers or
+prompts, replacing individual channels with nearby blocks under the same score,
+training a target-specific router, adding a sparse kernel, or moving directly
+to 35B/122B. None supplies the missing logit contribution, and all real selector
+costs would make the favorable ceiling worse.
+
+This entry does not reject all dynamic sparse execution. Revisit only with a
+materially different information source or exact/declared-quality correction
+dependency and a new fully charged E0 route.

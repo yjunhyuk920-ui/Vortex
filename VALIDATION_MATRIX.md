@@ -225,3 +225,23 @@ the dense mission are unchanged; Phase D/E6/E7 remain not achieved.
 Current classification after EXP-076: native-MTP long blocks are rejected as
 the registered surrogate core; reference integrity passes; no larger-model or
 hardware continuation is promoted; Phase D/E2-E7 remain not achieved.
+
+<!-- EXP-077A-AUTHORITATIVE-FINAL -->
+## EXP-077A closure
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Pinned unchanged target trace replay | E1: 24 cases, 192 positions, 0 mismatch | PASS control |
+| Realized selected MLP fraction <=10% | E1: 358/3,584 = 9.988839% | PASS budget |
+| Held-out top-1 agreement >=99% | E1: 71.5278% | REJECTED |
+| Every family top-1 agreement >=95% | E1: 54.1667%-83.3333% | REJECTED |
+| Mean target-to-candidate KL <=0.02 | E1: 0.884161 | REJECTED |
+| p95 target-to-candidate KL <=0.05 | E1: 3.080752 | REJECTED |
+| 20% channel arm establishes near-lossless ceiling | E1: 83.3333% top-1 | REJECTED |
+| Deployable selector/full gate-up cost | granted free oracle | NOT TESTED |
+| Attention/DeltaNet/LM-head fracturing | outside experiment | NOT TESTED |
+| Physical speed, VRAM, 35B/122B/405B | no server/GPU run | NOT TESTED |
+
+Current classification after EXP-077A: activation-norm individual-channel MLP
+fracturing is rejected under a favorable oracle; no core candidate survives;
+Phase D/E2-E7 remain not achieved.
