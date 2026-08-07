@@ -252,6 +252,8 @@ Status: UNVERIFIED; PRIMARY OPEN EXECUTION CLASS AFTER EXP-072A.
 
 ## A-044 — The privately identified Ubuntu target provides a valid same-machine 4B baseline and reproducible storage/transfer envelope
 
-No VORTEX inventory or benchmark has run on that host. GPU compatibility, usable VRAM, storage capacity/bandwidth, host RAM, PCIe behavior, baseline runtime, thermal state, and production interference are unknown under this protocol.
+Stage 1 measured the sanitized inventory: Quadro M5000 8,192 MiB, compute capability 5.2, 8,058 MiB free at snapshot, maximum PCIe Gen2 x16, 23.4983 GiB host RAM, one 238.4749 GiB non-rotational ATA block device, and 97.6183 GiB root free capacity. Python 3.12.3 and active Ollama 0.30.6 are present; fio and nvcc are not available. Private identifiers were not retained.
 
-Status: ACTIVE FOR EXP-073 CALIBRATION; PHASE D NOT TESTED.
+The inventory portion is confirmed. Valid same-machine 4B Q4 latency, storage bandwidth, H2D bandwidth, loaded PCIe state, usable process VRAM, thermal stability, and production-interference controls remain unverified pending separately authorized Stage 2.
+
+Status: PARTIALLY CONFIRMED BY EXP-073 STAGE 1 INVENTORY; BASELINE/PERFORMANCE PORTION ACTIVE AND UNVERIFIED; PHASE-D RUNTIME VALIDATION NOT TESTED.

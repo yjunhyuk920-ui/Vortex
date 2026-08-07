@@ -158,6 +158,7 @@ Cases 18; forwards 1,152; attention rows 9,216; token/registration/control misma
 | EXP-072A finite-domain basis-map injectivity | E1: 272/272 unique, 0 collision | PASS reference |
 | Universal self-contained 405B-Q4 artifact fits 8 GiB | DERIVED: 188.9883 GiB required / 8 GiB allowed | REJECTED |
 | Cold-backed exact online execution is impossible | outside EXP-072A; EXP-071 insufficient | NOT CERTIFIED |
-| Private Ubuntu target inventory and 4B baseline | no VORTEX run | NOT TESTED — EXP-073 |
+| Private Ubuntu target inventory | MEASURED sanitized Stage 1: 8,192 MiB GPU, 23.4983 GiB RAM, 97.6183 GiB root free, max PCIe Gen2 x16 | PASS CALIBRATION INVENTORY ONLY — `results/exp_073/summary.json` |
+| Same-machine storage/H2D/native 4B Q4 baseline | no authorized Stage 2 run | NOT TESTED — EXP-073 remains active |
 
 Current overall classification: self-contained universal hot-artifact core rejected; restricted synthesis auxiliary; cold-backed online execution open but unsupported; Phase D/E6/E7 not achieved.

@@ -152,3 +152,49 @@ This is a Phase-D calibration prerequisite, not Phase-D runtime validation. E6 a
 ## Stop rule
 
 Stop immediately after the sanitized inventory bundle is frozen and reviewed. Do not proceed to Stage 2 merely because Stage 1 succeeds. If SSH, permissions, or required read-only interfaces fail, record the infrastructure limitation; do not repair the host during this experiment.
+
+## Stage 1 authoritative result
+
+```text
+decision                         COMPLETE_SANITIZED_READ_ONLY_TARGET_INVENTORY
+GPU                              Quadro M5000, 8,192 MiB, compute 5.2
+free VRAM snapshot               8,058 MiB
+driver / CUDA API                535.309.01 / 12.2
+PCIe current / maximum           Gen1 x16 / Gen2 x16
+host RAM total / available       23.4983 / 21.8865 GiB
+local block storage              238.4749 GiB, non-rotational ATA
+root filesystem total / free     233.6702 / 97.6183 GiB, ext4
+Python / Ollama                  3.12.3 / 0.30.6, service active
+fio / nvcc                       NOT_AVAILABLE / NOT_AVAILABLE
+telemetry interfaces             power, temperature, clock available
+validation failures              0
+```
+
+Derived consequences:
+
+```text
+packed 405B Q4 information              188.9883 GiB
+root free-capacity deficit               91.3700 GiB before overhead
+favorable PCIe Gen2 x16 ceiling           7.4506 GiB/s
+full packed-Q4-equivalent transfer floor 25.3656 s before overhead
+```
+
+The current PCIe Gen1 state is an idle snapshot and may upshift; no loaded-link measurement was made. The Gen2 number is a favorable signaling ceiling, not measured bandwidth. Likewise, telemetry availability is not a power or thermal measurement.
+
+Authority:
+
+```text
+results/exp_073/summary.json
+source commit       d3b1d2e4dd08e73781c969814cb4d181377a054d
+evidence commit     5ac87bb
+config SHA-256      d7867c68a135bd69e5cfc8b733b62f7c5c4ea50b9190b231d60c0653f3d4f0d0
+core SHA-256        aa9cae0457a6b92fcb75da35fedc1a2a2a9f3da115808d341a5a498ca4722da2
+checksums           4 / 4 verified
+private scan        PASS
+EXP-073 tests        13 / 13 passed
+repository tests     343 / 343 passed
+validation/current   PASS / PASS (offline fixture only)
+workflow/artifact   NOT RUN
+```
+
+Stage 1 is complete. Stage 2 remains separately authorized and was not started.

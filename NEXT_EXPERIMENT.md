@@ -272,7 +272,7 @@ Replace proxy hardware assumptions with a sanitized, reproducible envelope from 
 
 This is a Phase-D **calibration prerequisite**, not evidence that any VORTEX mechanism works. Private hostnames, addresses, usernames, keys, and internal paths must never enter this public repository or uploaded artifacts.
 
-### Stage 1 — Read-only inventory
+### Stage 1 — COMPLETE: read-only inventory
 
 Collect without installing or restarting anything:
 
@@ -291,7 +291,33 @@ thermal and power telemetry availability
 
 Success means a complete sanitized inventory with zero mutation. Missing tools are recorded as `NOT AVAILABLE`, not installed during Stage 1.
 
-### Stage 2 — Explicitly authorized baselines
+Measured result:
+
+```text
+decision                         COMPLETE_SANITIZED_READ_ONLY_TARGET_INVENTORY
+GPU                              Quadro M5000, 8,192 MiB, compute 5.2
+VRAM free at snapshot            8,058 MiB
+PCIe exposed current / maximum   Gen1 x16 / Gen2 x16
+host RAM total / available       23.4983 / 21.8865 GiB
+local block storage              238.4749 GiB, non-rotational ATA
+root filesystem total / free     233.6702 / 97.6183 GiB, ext4
+Python / Ollama                  3.12.3 / 0.30.6, service active
+fio / nvcc                       NOT_AVAILABLE / NOT_AVAILABLE
+power / temperature / clock      telemetry interfaces available
+```
+
+Derived resource consequences:
+
+```text
+registered packed 405B Q4 information     188.9883 GiB
+root free-capacity deficit                  91.3700 GiB before overhead
+favorable PCIe Gen2 x16 ceiling              7.4506 GiB/s
+full packed-Q4-equivalent transfer floor    25.3656 s before overhead
+```
+
+Authority: `results/exp_073/summary.json`; source `d3b1d2e4dd08e73781c969814cb4d181377a054d`; evidence `5ac87bb`; core SHA-256 `aa9cae0457a6b92fcb75da35fedc1a2a2a9f3da115808d341a5a498ca4722da2`.
+
+### Stage 2 — PENDING SEPARATE AUTHORIZATION: baselines
 
 Only after Stage 1 review and separate authorization:
 
@@ -308,7 +334,7 @@ Use an already present 4B-class model when possible. Do not download a 405B chec
 
 ### Gate and handoff
 
-EXP-073 passes as calibration only when the same-machine 4B baseline and storage/transfer envelope are reproducible and raw evidence is sanitized. It cannot promote a runtime candidate.
+Stage 1 passes its inventory Gate. EXP-073 as a whole passes calibration only when the same-machine 4B baseline and storage/transfer envelope are reproducible and raw evidence is sanitized. It cannot promote a runtime candidate.
 
 The next core E0 candidate must then state, using measured values:
 

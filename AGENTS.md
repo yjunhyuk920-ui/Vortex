@@ -226,6 +226,6 @@ Before a user-facing progress response after repository work, commit the current
 
 Read `NEXT_EXPERIMENT.md`.
 
-EXP-066 Tensor-Train/MPO is authorized only as a bounded cheap-kill bond-rank certificate Gate. Exact MPO reconstruction, runtime integration, kernels, and broad factorization rescue searches are prohibited unless the lower-bound Gate survives.
+EXP-066 through EXP-070 are rejected as core under their frozen scopes. EXP-071 does not prove online exact execution impossible. EXP-072A rejects a self-contained exact Q4 artifact as a universal 8 GiB hot core.
 
-If EXP-066 fails, close exact classical single-matrix tensor factorization as the primary direction for the measured population. The next core candidate must change execution class and pass E0 efficiency triage, prioritizing high-upside joint multi-operator arithmetic compilation or certificate-guided demand-driven execution rather than another adjacent decomposition.
+EXP-073 Stage 1 sanitized target inventory is complete. Stage 2 storage, H2D, and native 4B Q4 baselines require separate authorization and remain `NOT TESTED`. No new cold-backed core experiment may freeze a physical Gate using proxy bandwidth or capacity where EXP-073 measured values exist.

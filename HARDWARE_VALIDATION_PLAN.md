@@ -201,6 +201,23 @@ No circuit synthesizer or kernel is promoted. The self-contained exact hot-artif
 
 Stage 1 is read-only and records sanitized inventory only: OS/kernel, CPU, host RAM, GPU/VRAM, driver/runtime, PCIe exposure, block devices/filesystems, free capacity, existing runtimes, and profiler availability. It must not install packages, download models, restart services, stop workloads, or write benchmark files.
 
+Stage 1 completed successfully:
+
+```text
+GPU                         Quadro M5000, 8,192 MiB, compute 5.2
+snapshot free VRAM          8,058 MiB
+driver CUDA API             12.2
+PCIe current / maximum      Gen1 x16 / Gen2 x16
+host RAM                    23.4983 GiB total, 21.8865 GiB available
+local block device          238.4749 GiB, non-rotational ATA
+root filesystem             ext4, 233.6702 GiB total, 97.6183 GiB free
+Python / Ollama             3.12.3 / 0.30.6, service active
+fio / nvcc                  NOT_AVAILABLE / NOT_AVAILABLE
+telemetry interfaces        power, temperature, clock available
+```
+
+Authority is `results/exp_073/summary.json`. This does not establish CUDA-library compatibility or benchmark stability. The current root free capacity is insufficient for the registered packed 405B-Q4 information by 91.3700 GiB before overhead. Do not download or allocate that checkpoint on this filesystem.
+
 After Stage 1 review and separate authorization, Stage 2 may measure:
 
 ```text
@@ -212,3 +229,5 @@ page faults, power, clock, and thermal state
 ```
 
 Use the same prompt, tokenizer, context, batch, decode contract, and cache state across comparisons. Sanitize hostnames, addresses, usernames, internal mount names, and keys from all evidence. EXP-073 is calibration only; 405B execution, operation replacement, and E6/E7 remain NOT TESTED.
+
+Stage 2 is still not authorized. fio is absent, so any Stage 2 storage method must be preregistered using already present read-only/runtime facilities or separately approved installation; Stage 1 does not authorize either choice.

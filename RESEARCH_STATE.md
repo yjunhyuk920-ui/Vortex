@@ -257,12 +257,16 @@ Auxiliary classification does not mean the final runtime objective is achieved.
 
 No tested mechanism supplies a universal exact way to avoid almost all dense weight information and arithmetic. EXP-072A now rules out a universally compact self-contained hot artifact, while EXP-071 still leaves cold-backed online query algorithms formally open.
 
-The primary unresolved contract gap is physical: host RAM, cold storage, preprocessing, and transfer budgets are not fixed by the final objective, and the privately identified Ubuntu target has not been inventoried under the VORTEX protocol. Those values are required before a cold-backed candidate can receive a meaningful resource Gate.
+EXP-073 Stage 1 now fixes part of the physical contract. The sanitized target inventory measured one Quadro M5000 with 8,192 MiB total VRAM, compute capability 5.2, 8,058 MiB free at the inventory snapshot, and a maximum exposed PCIe Gen2 x16 link. Host RAM is 23.4983 GiB. The root filesystem has 97.6183 GiB available on one non-rotational ATA block device. Python 3.12.3 and Ollama 0.30.6 are present, Ollama is active, and fio/nvcc are not available.
+
+These are inventory facts, not performance measurements. Root free capacity is `91.3700 GiB` below the registered `188.9883 GiB` packed 405B-Q4 information size before scales or other overhead. A favorable PCIe Gen2 x16 signaling calculation gives at most `7.4506 GiB/s`, so one full packed-Q4-equivalent host-to-device transfer would take at least `25.3656 s`; actual transfer behavior remains unmeasured.
 
 ## Current frontier
 
 `EXP-073 — Private Ubuntu target resource-contract calibration`, specified in `NEXT_EXPERIMENT.md`.
 
-The first stage is read-only inventory and same-machine baseline measurement, not a 405B run and not candidate promotion. It will freeze usable VRAM, host RAM, local storage capacity, sequential/random read bandwidth, PCIe/driver/CUDA compatibility, and native 4B Q4 latency distributions without committing private host identifiers. No model download, package installation, service restart, or 405B allocation is authorized by the inventory stage.
+Stage 1 read-only inventory is complete with zero saved private identifier and no authorized mutation. Authority: `results/exp_073/summary.json`; source `d3b1d2e4dd08e73781c969814cb4d181377a054d`; evidence `5ac87bb`; deterministic core SHA-256 `aa9cae0457a6b92fcb75da35fedc1a2a2a9f3da115808d341a5a498ca4722da2`.
 
-The resulting measured envelope will replace proxy numbers in future cold-backed E0 Gates. Phase D, actual operation replacement, 405B execution, and E6/E7 remain `NOT TESTED`.
+Stage 2 is not authorized by Stage 1 success. It remains a separately approved same-machine storage, transfer, and native 4B Q4 baseline measurement. No model download, package installation, service restart, benchmark file allocation, inference, or 405B allocation occurred in Stage 1.
+
+The measured capacity/link envelope already replaces the corresponding proxy numbers in future cold-backed E0 Gates. Storage bandwidth, H2D bandwidth, native 4B Q4 latency, loaded-link behavior, peak process VRAM/RSS, Phase-D runtime validation, actual operation replacement, 405B execution, and E6/E7 remain `NOT TESTED`.

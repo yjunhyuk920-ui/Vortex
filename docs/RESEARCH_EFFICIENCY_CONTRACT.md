@@ -135,6 +135,8 @@ EXP-066 failed static storage; EXP-067 through EXP-070 failed joint reuse, deman
 
 Before another cold-backed core proposal, EXP-073 must replace proxy hardware assumptions with a sanitized read-only inventory and separately authorized same-machine baselines. This calibration is not part of the 70% core-candidate allocation and may not expand into general hardware engineering. Its purpose is to fix the physical byte, latency, capacity, and compatibility constraints that every future E0 candidate must close.
 
+EXP-073 Stage 1 is now complete. Future E0 accounting must use the measured 8,192 MiB GPU, maximum PCIe Gen2 x16 link, 23.4983 GiB host RAM, and 97.6183 GiB root free capacity rather than broader proxy hardware. Actual storage/H2D bandwidth and native 4B Q4 latency remain unavailable until separately authorized Stage 2, so no candidate may substitute PCIe signaling rate or storage type for measured performance.
+
 After calibration, the next core candidate must introduce a new query-time information source or execution dependency beyond exact static compression, local/row/column reuse, absolute-unread norm bounds, temporal exact replay, and enumerative advice. It must preregister a credible path to `1.185185%`, not merely to the older 10% screening threshold.
 
 ## Communication rule

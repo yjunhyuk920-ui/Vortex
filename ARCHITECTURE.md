@@ -262,4 +262,17 @@ The only logically open exact representation interface after this Gate is cold-b
     -> exact operation or fail-closed completion
 ```
 
-No tested scheduler closes its query traffic, arithmetic, latency, or fallback. Before another candidate is selected, EXP-073 must measure the target machine's actual storage, transfer, VRAM, and native 4B Q4 envelope. Private connection information is never architecture state.
+No tested scheduler closes its query traffic, arithmetic, latency, or fallback. EXP-073 Stage 1 now fixes the target capacity/link inventory without making private connection information architecture state:
+
+```text
+GPU total / free snapshot         8,192 / 8,058 MiB
+GPU compute capability           5.2
+PCIe current / maximum           Gen1 x16 / Gen2 x16
+host RAM total                   23.4983 GiB
+local block total                238.4749 GiB, non-rotational ATA
+root free capacity               97.6183 GiB
+```
+
+The current root free capacity cannot hold the registered `188.9883 GiB` packed 405B-Q4 information, even before scales and overhead. The favorable Gen2 x16 ceiling is `7.4506 GiB/s`, a `25.3656 s` floor for moving that byte-equivalent once. These are capacity/link deductions, not measured traffic. A future cold-backed architecture must either provide separately authorized larger cold storage or a lossless representation inside the measured capacity, and must still prove a query schedule far below a full checkpoint transfer.
+
+Stage 2 must measure actual storage, H2D, loaded-link, and native 4B Q4 behavior before a new physical latency Gate is frozen. It remains separately authorized.

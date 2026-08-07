@@ -332,3 +332,20 @@ This does not rule out an online runtime that queries the original checkpoint or
 EXP-073 is a sanitized, read-only target inventory followed—only with separate authorization—by same-machine storage, transfer, and native 4B Q4 baselines. It may establish resource facts only; it cannot promote a VORTEX mechanism. Private connection details remain out of repository evidence.
 
 Status: ACTIVE NEXT CALIBRATION GATE; PHASE D STILL NOT TESTED.
+
+## D-059 — Accept EXP-073 Stage 1 inventory and hold Stage 2 for separate authorization
+
+EXP-073 Stage 1 collected a complete sanitized read-only inventory with no remote mutation, no saved private identifier, and zero validation/checksum mismatch. The target exposes one Quadro M5000 with 8,192 MiB VRAM and maximum PCIe Gen2 x16, 23.4983 GiB host RAM, and 97.6183 GiB free on the root filesystem. fio and nvcc are not available; Python 3.12.3 and an active Ollama 0.30.6 service are present.
+
+The registered packed 405B-Q4 information is 91.3700 GiB larger than current root free capacity before overhead. The favorable Gen2 x16 signaling ceiling implies at least 25.3656 seconds for one packed-Q4-equivalent transfer, but physical bandwidth and loaded-link behavior are not measured.
+
+Decision:
+
+```text
+COMPLETE_SANITIZED_READ_ONLY_TARGET_INVENTORY
+HOLD_STAGE_2_PENDING_SEPARATE_AUTHORIZATION
+```
+
+Authority: `results/exp_073/summary.json`; source `d3b1d2e4dd08e73781c969814cb4d181377a054d`; evidence `5ac87bb`; core SHA-256 `aa9cae0457a6b92fcb75da35fedc1a2a2a9f3da115808d341a5a498ca4722da2`.
+
+Status: STAGE 1 COMPLETE; EXP-073 ACTIVE; PHASE-D RUNTIME VALIDATION, E6, AND E7 NOT ACHIEVED.
