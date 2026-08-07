@@ -1,0 +1,108 @@
+{
+  "build": {
+    "case_count": 6,
+    "mean_kl": 12.152435785248166,
+    "mlp_relative_l2_p50": 0.3384658901662572,
+    "mlp_relative_l2_p95": 0.45851194819774355,
+    "p95_kl": 22.18842887878418,
+    "token_count": 42,
+    "top1_agreement": 0.0,
+    "top1_matches": 0,
+    "valid_prefix_p05": 0.0,
+    "valid_prefix_p50": 0.0,
+    "valid_prefix_p95": 0.0
+  },
+  "evaluation": {
+    "case_count": 18,
+    "mean_kl": 14.89842255626406,
+    "mlp_relative_l2_p50": 0.35419254073884704,
+    "mlp_relative_l2_p95": 0.5114191034195067,
+    "p95_kl": 25.335416793823242,
+    "token_count": 126,
+    "top1_agreement": 0.0,
+    "top1_matches": 0,
+    "valid_prefix_p05": 0.0,
+    "valid_prefix_p50": 0.0,
+    "valid_prefix_p95": 0.0
+  },
+  "evaluation_families": {
+    "adversarial_low_acceptance": {
+      "case_count": 3,
+      "mean_kl": 10.265129702431816,
+      "mlp_relative_l2_p50": 0.24973864183736588,
+      "mlp_relative_l2_p95": 0.2958345117527468,
+      "p95_kl": 15.790833473205566,
+      "token_count": 21,
+      "top1_agreement": 0.0,
+      "top1_matches": 0,
+      "valid_prefix_p05": 0.0,
+      "valid_prefix_p50": 0.0,
+      "valid_prefix_p95": 0.0
+    },
+    "code": {
+      "case_count": 3,
+      "mean_kl": 14.344607268060956,
+      "mlp_relative_l2_p50": 0.35419254073884704,
+      "mlp_relative_l2_p95": 0.4219016960214965,
+      "p95_kl": 21.566814422607422,
+      "token_count": 21,
+      "top1_agreement": 0.0,
+      "top1_matches": 0,
+      "valid_prefix_p05": 0.0,
+      "valid_prefix_p50": 0.0,
+      "valid_prefix_p95": 0.0
+    },
+    "english": {
+      "case_count": 3,
+      "mean_kl": 18.271148227509997,
+      "mlp_relative_l2_p50": 0.3695083855634286,
+      "mlp_relative_l2_p95": 0.38636325393120224,
+      "p95_kl": 22.87317657470703,
+      "token_count": 21,
+      "top1_agreement": 0.0,
+      "top1_matches": 0,
+      "valid_prefix_p05": 0.0,
+      "valid_prefix_p50": 0.0,
+      "valid_prefix_p95": 0.0
+    },
+    "korean": {
+      "case_count": 3,
+      "mean_kl": 10.801104386647543,
+      "mlp_relative_l2_p50": 0.286462997772764,
+      "mlp_relative_l2_p95": 0.3341763760594461,
+      "p95_kl": 17.103084564208984,
+      "token_count": 21,
+      "top1_agreement": 0.0,
+      "top1_matches": 0,
+      "valid_prefix_p05": 0.0,
+      "valid_prefix_p50": 0.0,
+      "valid_prefix_p95": 0.0
+    },
+    "math": {
+      "case_count": 3,
+      "mean_kl": 23.46125557309105,
+      "mlp_relative_l2_p50": 0.48450049135487655,
+      "mlp_relative_l2_p95": 0.5114191034195067,
+      "p95_kl": 27.79604148864746,
+      "token_count": 21,
+      "top1_agreement": 0.0,
+      "top1_matches": 0,
+      "valid_prefix_p05": 0.0,
+      "valid_prefix_p50": 0.0,
+      "valid_prefix_p95": 0.0
+    },
+    "structured_json": {
+      "case_count": 3,
+      "mean_kl": 12.247290179842995,
+      "mlp_relative_l2_p50": 0.36143920880333785,
+      "mlp_relative_l2_p95": 0.3835863772279033,
+      "p95_kl": 16.953102111816406,
+      "token_count": 21,
+      "top1_agreement": 0.0,
+      "top1_matches": 0,
+      "valid_prefix_p05": 0.0,
+      "valid_prefix_p50": 0.0,
+      "valid_prefix_p95": 0.0
+    }
+  }
+}

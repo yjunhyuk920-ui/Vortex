@@ -1,0 +1,14 @@
+{
+  "build_count": 6,
+  "evaluation_count": 18,
+  "families": [
+    "adversarial_low_acceptance",
+    "code",
+    "english",
+    "korean",
+    "math",
+    "structured_json"
+  ],
+  "joined_core_sha256": "9a7f1a9f38ee4c86b2a8a63427e1ca3ac3f9f73b6f708096e99fec734d1a0da7",
+  "prompt_count": 24
+}
