@@ -25,3 +25,16 @@ Run the canonical batch Gate from an empty output directory:
 The runner uses only the Python standard library and committed shape/evidence
 JSON. Exact signed-integer Strassen comparisons are embedded controls rather
 than a production test suite.
+
+Authoritative result:
+
+```text
+REJECT_STANDARD_STRASSEN_HYPERBLOCK_AS_CORE_RETAIN_COST_MODEL_AUXILIARY
+```
+
+All 80 exact controls passed. At the best registered constructive row
+`K=16,384`, traffic was `0.0061035%` and favorable workspace was `7.5391 GiB`,
+but Strassen arithmetic remained `36.1116%` of dense execution versus the
+`1.1852%` p50 allowance. The unit-constant exponent control passed only as a
+non-constructive diagnostic. Authority is `results/exp_080a/summary.json`;
+source `7f1c661`; evidence `98e9089`.

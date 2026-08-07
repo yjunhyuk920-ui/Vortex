@@ -523,7 +523,7 @@ Authority: `results/exp_079a/summary.json`; source `e0c661e`; evidence
 `38bfd6c`; deterministic core
 `c8d794bea8f17b31e40b9f667836d2198ce80137e23080260f81ea6866112eeb`.
 
-## EXP-080A preregistered Hyperblock arithmetic Gate
+## EXP-080A Hyperblock arithmetic Gate
 
 EXP-080A does not reopen the rejected Jacobi, target-only fixed-point,
 external-draft, or native-MTP proposal families. It grants a non-deployable
@@ -541,5 +541,30 @@ traffic and arithmetic fraction under an already impossible zero-cost perfect
 future oracle, fit a favorable 8 GiB workspace equation, and pass exact signed-
 integer controls. Passing only the exponent oracle cannot promote the path.
 
-Status: PREREGISTERED PHASE A/B E1 ARITHMETIC UPPER-BOUND PROTOTYPE; NO RESULT,
-MODEL EXECUTION, CAUSAL FUTURE SOURCE, TARGET SERVER, PHYSICAL KERNEL, OR E2-E7.
+All 80 signed-integer controls matched. No constructive joint pass existed for
+any registered `K=32..16,384`. At the best constructive row, `K=16,384`, one
+perfect target sweep reduced logical weight traffic to `0.006103516%` and the
+favorable workspace equation to `7.539063 GiB`, but fully charged standard
+Strassen arithmetic remained `36.111580%` of dense execution. The final p50
+allowance is `1.185185%`, leaving a `30.469145x` arithmetic miss even before
+layout, kernel, quantized reduction-order, or causal-production costs.
+
+The unit-constant `omega=2.371552` diagnostic passed at `K=512`, or `K=8,192`
+after charging a streamed 4B draft. It is not a constructive algorithm and does
+not supply future causal activations. Prior causal evidence reaches at most six
+target-only fixed-point positions or three external-draft positions.
+
+Decision:
+
+```text
+REJECT_STANDARD_STRASSEN_HYPERBLOCK_AS_CORE_RETAIN_COST_MODEL_AUXILIARY
+```
+
+This closes standard recursive Strassen under the registered Hyperblock
+interface, not every possible exact low-constant rectangular algorithm. No core
+candidate survives. No target server, model download, physical Q4/CUDA/8 GiB
+peak/speed run, 122B/405B execution, or E2-E7 evidence was produced.
+
+Authority: `results/exp_080a/summary.json`; source `7f1c661`; evidence
+`98e9089`; deterministic core
+`7578c4c9f463da8135f3c320df9d7fb920ffc172d31fdd2f60b30af9778280ce`.

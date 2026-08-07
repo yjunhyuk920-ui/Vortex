@@ -400,3 +400,22 @@ exponent with unit constants is diagnostic.
 Failure removes standard Strassen Hyperblocks from the core before a kernel is
 built. Passing would authorize only a lower-level exact packed constructor Gate
 and would leave the causal-sequential barrier unchanged.
+
+### EXP-080A closure
+
+The exact-control layer passed, but the registered component chain terminates at
+the arithmetic Gate:
+
+```text
+perfect future X -> K=16,384 -> traffic/workspace upper bounds pass
+                                -> standard Strassen arithmetic = 36.111580%
+                                -> final allowance = 1.185185%
+                                -> reject component
+```
+
+Standard recursive Strassen is therefore not part of the active runtime
+architecture. The unit-constant `omega=2.371552` row remains a theoretical
+target, not a callable component. No proposal, verification, correction,
+commit, KV-repair, or exact-fallback transition was added. A future replacement
+must expose both a constructive low-constant arithmetic interface and an
+independently justified causal source before it can enter the architecture.

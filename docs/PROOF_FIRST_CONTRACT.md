@@ -385,3 +385,18 @@ This is an E1 rejection of the registered fixed pilot and row-block correlated
 enclosure. It is not a universal proof against cold-backed online executors.
 Nonlinear proof propagation, deployable selection, fallback, physical Q4/CUDA,
 8 GiB peak, wall-clock, 122B/405B, target hardware, and E2-E7 remain absent.
+
+<!-- EXP-080A-AUTHORITATIVE-FINAL -->
+## Current classification after EXP-080A
+
+The synthetic/reference exact-arithmetic control passed `80/80`. Under a free
+perfect-future oracle, standard recursive Strassen passed logical traffic and
+the incomplete favorable workspace equation but consumed `36.111580%` of dense
+arithmetic at the best registered block. This exceeds the final p50 allowance
+by `30.469145x`.
+
+This is an E1 rejection of one constructive arithmetic engine, not an
+impossibility proof for all fast rectangular multiplication. The exponent-only
+oracle is not proof of an implementation, and no causal future-block source was
+tested. Exact BF16/Q4 semantics, physical kernel behavior, peak VRAM, latency,
+122B/405B execution, target hardware, and E2-E7 remain absent.

@@ -333,3 +333,24 @@ no core candidate survives, and Phase D/E2-E7 remain not achieved.
 | Unit-constant exponent oracle supplies theoretical headroom | diagnostic only | NOT A PROMOTION GATE |
 | Future activation block is produced causally | granted perfect-future oracle | NOT TESTED / NON-DEPLOYABLE |
 | Physical latency, CUDA, 122B/405B execution | no runtime | NOT TESTED |
+
+<!-- EXP-080A-AUTHORITATIVE-FINAL -->
+## EXP-080A closure
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Exact signed-integer Strassen equals classical product | E1 reference: 80/80 comparisons | PASS control |
+| Constructive traffic reaches p50 fraction | best `K=16,384`: 0.006103516% <=1.185185% | PASS upper bound |
+| Constructive arithmetic reaches p50 fraction | best `K=16,384`: 36.111580% >1.185185% | REJECTED (`30.469145x` miss) |
+| One registered block jointly passes traffic and arithmetic | 0 of 10 block lengths | REJECTED |
+| Favorable incomplete workspace fits 8 GiB | best row: 7.539063 GiB | PASS upper bound only |
+| Unit-constant exponent supplies constructive evidence | first theoretical pass `K=512` | NOT CONSTRUCTIVE |
+| Streamed 4B draft plus exponent control passes | first theoretical pass `K=8,192` | DIAGNOSTIC; CAUSAL SOURCE ABSENT |
+| Future activation block is produced causally | perfect-future oracle only | NOT TESTED / NON-DEPLOYABLE |
+| Physical Q4/BF16 reduction fidelity or CUDA kernel | no implementation | NOT TESTED |
+| Physical latency, peak VRAM, 122B/405B, Ubuntu host | no model/server run | NOT TESTED |
+
+Current classification after EXP-080A: standard recursive Strassen is rejected
+as the Hyperblock arithmetic core under the frozen interface. The cost model is
+retained as an auxiliary. No core candidate survives; Phase D/E2-E7 remain not
+achieved.

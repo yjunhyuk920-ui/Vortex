@@ -563,3 +563,32 @@ unit-constant exponent-only control is insufficient. No backend, checkpoint,
 or target-hardware work is authorized before the arithmetic Gate survives.
 
 Status: E0 PREREGISTERED; NO RESULT OR CORE PROMOTION.
+
+## D-069 -- Reject standard recursive Strassen Hyperblocks as the core
+
+EXP-080A passed all 80 exact integer controls and granted perfect future
+activations, zero proposal cost, one target weight sweep, and the best classical
+leaf width. Nevertheless, no registered block length passed both final
+fractions. At `K=16,384`, logical traffic was `0.006103516%`, but constructive
+arithmetic was `36.111580%` against a `1.185185%` allowance: a `30.469145x`
+miss before physical overhead.
+
+Decision:
+
+```text
+REJECT_STANDARD_STRASSEN_HYPERBLOCK_AS_CORE_RETAIN_COST_MODEL_AUXILIARY
+```
+
+Retain the exact rectangular cost model and unit-constant exponent row as
+falsification/target-setting auxiliaries. Do not build standard Strassen
+kernels or use the non-constructive exponent control as evidence of an
+executor. This decision does not reject every exact low-constant FMM algorithm;
+reopening requires an explicit fully charged construction beyond the measured
+gap and a separately credible causal future-block source.
+
+Status: SCIENTIFIC REJECTION AT E1 SYNTHETIC/REFERENCE; NO MODEL, PHASE D,
+TARGET HARDWARE, PHYSICAL KERNEL, OR E2-E7 EVIDENCE.
+
+Authority: `results/exp_080a/summary.json`; source `7f1c661`; evidence
+`98e9089`; core
+`7578c4c9f463da8135f3c320df9d7fb920ffc172d31fdd2f60b30af9778280ce`.

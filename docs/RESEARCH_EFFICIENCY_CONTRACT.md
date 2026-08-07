@@ -287,3 +287,18 @@ modern exponent with unit constants is not constructive evidence. Do not build
 a kernel or rerun Jacobi/draft families after failure. A pass authorizes only an
 exact packed-constructor Gate; causality remains independently closed or
 unsupported.
+
+## Current directive after EXP-080A
+
+Standard recursive Strassen failed the constructive arithmetic Gate by
+`30.469145x` at its best registered block, despite free perfect future
+activations and negligible amortized weight traffic. Stop kernel, tile, leaf,
+block-length, draft, and Jacobi work around this engine. The unit-constant
+exponent pass is target-setting evidence only.
+
+A new proposal is admitted only if it changes one of the two missing interfaces:
+an explicit exact low-constant rectangular construction that closes the full
+arithmetic equation, or a new causal information source that creates long valid
+blocks without equivalent target execution. Hold the other interface as a
+clearly labeled oracle and apply the cheapest falsification Gate first. No core
+candidate is promoted.

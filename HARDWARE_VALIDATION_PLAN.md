@@ -325,3 +325,15 @@ Only a constructive joint arithmetic/traffic pass could authorize a separate
 exact packed-kernel micro-Gate. Even then, causal future-block production and
 online output latency require independent proof before Phase D. Current status
 remains `NOT TESTED`.
+
+### EXP-080A closure
+
+The constructive arithmetic Gate failed: the best registered standard
+Strassen row remained `30.469145x` above the final p50 allowance. Therefore no
+CUDA kernel, bit-sliced/quantized reduction study, physical 8 GiB peak test,
+storage/H2D run, checkpoint download, or Ubuntu-host command is promoted.
+
+The `7.539063 GiB` workspace value is a favorable shape equation only; it omits
+model-resident state, KV cache, layout buffers, runtime overhead, and causal
+block production. It is not a measured VRAM result. EXP-073 Stage 2 remains the
+separate baseline-calibration route and Phase D/E4-E7 remain unchanged.

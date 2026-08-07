@@ -158,3 +158,22 @@ sizes, layer/prompt selection, fraction sweeps, or an uncharged nonlinear
 propagator. These do not supply the missing dense residual information. This
 entry rejects only the registered fixed-pilot/block-zonotope interface, not all
 cold-backed online data structures or every possible correlated proof system.
+
+<!-- EXP-080A-AUTHORITATIVE-FINAL -->
+## F-046 -- Standard recursive Strassen as a Hyperblock core
+
+Even with exact future activations, a zero-cost proposal, one target sweep, and
+the best classical leaf width granted for free, no registered block length met
+the final traffic and arithmetic fractions together. At `K=16,384`, traffic was
+only `0.006103516%` and the favorable workspace equation was `7.539063 GiB`,
+but fully charged multiplication/addition/padding/accumulation work remained
+`36.111580%` of dense execution. That is `30.469145x` above the p50 allowance
+before kernel and numerical overhead.
+
+The unit-constant `omega=2.371552` pass is non-constructive and supplies no
+causal future activations. Do not reopen with larger `K`, nearby leaf/tile
+sweeps, an uncharged tensor-core packing factor, or rejected Jacobi/draft
+sources. Revisit only with an explicit exact algorithm that closes the measured
+constant gap and a materially new causal block source. This entry rejects
+standard recursive Strassen under the frozen interface, not all exact fast
+rectangular multiplication.

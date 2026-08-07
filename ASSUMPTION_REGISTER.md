@@ -436,3 +436,15 @@ additions, padding, and tile accumulation on the frozen 405B shapes.
 Status: ACTIVE FOR EXP-080A ONLY. CAUSAL PRODUCTION OF THE BLOCK IS NOT AN
 ASSUMPTION OF THIS GATE AND REMAINS CONTRADICTED/UNSUPPORTED BY EXP-048-050 AND
 EXP-076 UNDER THEIR SCOPES.
+
+### A-055 closure
+
+The perfect-future grant made traffic negligible, but standard recursive
+Strassen reduced the registered dense arithmetic only to `36.111580%` at
+`K=16,384`, not the required `1.185185%`. Every smaller block was worse. The
+constructive miss is `30.469145x`; the unit-constant `omega=2.371552` pass is a
+non-constructive diagnostic and cannot contradict this measurement.
+
+Status: CONTRADICTED FOR STANDARD RECURSIVE STRASSEN WITH THE REGISTERED
+RECTANGULAR TILING/CHARGING INTERFACE. OTHER EXPLICIT EXACT LOW-CONSTANT
+ALGORITHMS AND A NEW CAUSAL FUTURE-BLOCK SOURCE ARE NOT DECIDED.

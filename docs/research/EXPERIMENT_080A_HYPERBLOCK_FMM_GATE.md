@@ -2,8 +2,10 @@
 
 ## Status
 
-Preregistered E0/E1 arithmetic upper-bound prototype. No result exists before
-the preregistration commit.
+Complete. The authoritative E1 result rejects standard constructive Strassen
+Hyperblocks as a core. Source commit
+`7f1c66125a844f5366e2b88f0aaa07b089dc0378`; evidence commit
+`98e90899a0adf3614d8dbe17691167ce426bae3b`.
 
 ## Question
 
@@ -175,3 +177,49 @@ Evidence is capped at Phase A/B E1 synthetic/reference. No checkpoint is
 downloaded or executed. CUDA, physical latency, PCIe, SSD, 8 GiB peak, exact
 BF16/Q4 reduction-order compatibility, causal future production, 122B/405B
 execution, and E2-E7 remain **NOT TESTED**.
+
+## Authoritative result
+
+All 80 signed-integer reference comparisons matched exactly across widths
+`1,2,4,8`, every registered classical leaf size, and eight deterministic trials.
+The frozen workload contained eight dense-operation families representing
+`403,747,897,344` per-token coefficients.
+
+The constructive arm produced no joint p50 pass at any registered block length.
+The most favorable row was `K=16,384`:
+
+```text
+traffic fraction                         0.0061035%
+constructive arithmetic fraction        36.1115797%
+constructive speedup                     2.769195x
+p50 arithmetic allowance                 1.1851852%
+remaining miss factor                   30.469145x
+favorable workspace                      7.5390625 GiB
+```
+
+Thus traffic and the deliberately incomplete workspace equation passed, while
+constructive arithmetic failed by more than thirty times even with exact future
+activations, a zero-cost proposal, one target sweep, free leaf selection, and no
+kernel/layout/numerical overhead.
+
+The unit-constant `omega=2.371552` diagnostic first crossed the joint Gate at
+`K=512`; after charging a streamed 4B draft it first crossed at `K=8,192`.
+Those rows are non-constructive asymptotic controls. Existing causal evidence
+reaches at most six target-only fixed-point positions, three external-draft
+positions, and requires 507 perfect positions for a 4B draft, so the diagnostic
+does not create a deployable path.
+
+Decision:
+
+```text
+REJECT_STANDARD_STRASSEN_HYPERBLOCK_AS_CORE_RETAIN_COST_MODEL_AUXILIARY
+```
+
+This closes standard recursive Strassen as the arithmetic engine for the
+registered Hyperblock interface. It does not prove every exact low-constant
+rectangular or packed algorithm impossible. Reopening requires a constructive
+fully charged arithmetic reduction at least `30.469145x` beyond this arm and a
+materially new causal block source; neither exists in the current evidence.
+
+Authority: `results/exp_080a/summary.json`; deterministic core SHA-256
+`7578c4c9f463da8135f3c320df9d7fb920ffc172d31fdd2f60b30af9778280ce`.

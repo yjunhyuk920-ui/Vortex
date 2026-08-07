@@ -724,4 +724,39 @@ proposal families; that would require a separately justified new information
 source.
 
 Contract: `docs/research/EXPERIMENT_080A_HYPERBLOCK_FMM_GATE.md`.
-Status: PREREGISTERED; NO SCIENTIFIC RESULT.
+Status: COMPLETE; STANDARD STRASSEN CORE REJECTED.
+
+## Closed EXP-080A result
+
+All 80 exact controls passed, but no constructive block length jointly passed.
+The best registered row, `K=16,384`, reduced traffic to `0.006103516%` and fit
+the favorable `7.539063 GiB` workspace equation while leaving standard
+Strassen arithmetic at `36.111580%`, versus the `1.185185%` p50 allowance. The
+remaining constructive arithmetic gap is `30.469145x` before physical overhead.
+
+The unit-constant exponent oracle is useful only as a target: it first passes at
+`K=512`, or `K=8,192` with the streamed 4B-draft charge. It is neither a
+constructive packed algorithm nor a causal future-block source. Therefore do
+not build a Strassen kernel, combine it with rejected Jacobi/draft families, or
+download a larger checkpoint.
+
+Decision:
+
+```text
+REJECT_STANDARD_STRASSEN_HYPERBLOCK_AS_CORE_RETAIN_COST_MODEL_AUXILIARY
+```
+
+## Next research Gate -- two missing inventions
+
+No core candidate survives. A successor must provide both:
+
+1. an explicit exact rectangular/packed algorithm whose fully constructive
+   constants close at least the measured `30.469145x` arithmetic gap; and
+2. a materially new causal information source capable of forming or committing
+   hundreds to thousands of valid future columns without executing an
+   equivalent target path first.
+
+An exponent, an uncharged tensor-core primitive, or a new proposal-quality
+sweep is insufficient. The next admissible E0 artifact is a closed equation and
+constructive algorithm for one of these two missing interfaces, with the other
+still granted as an oracle. The honest status is `NO_SURVIVING_CANDIDATE`.

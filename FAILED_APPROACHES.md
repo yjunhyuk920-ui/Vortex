@@ -281,4 +281,8 @@ Every selected real-Q4 dense rearrangement was full rank at its four-row cut. Ev
 
 ## Continuation pointer after EXP-065
 
-`FAILED_APPROACHES_RECENT.md` is the authoritative continuation for F-034 onward. As of EXP-076 it closes exact TT/MPO, joint exact row reuse, absolute-unread demand bounds, temporal exact replay, local-pattern tables, unqualified lower-bound impossibility claims, the self-contained exact Q4 DAG as a universal hot core, MTP-1 plus expert paging, and native-MTP long blocks as 1B-class surrogate cores. Read that continuation before reopening any of these families.
+`FAILED_APPROACHES_RECENT.md` is the authoritative continuation for F-034
+onward. As of EXP-080A it also closes the registered sparse-channel oracle,
+frozen exact-anchor macro, fixed DCT/block-zonotope proof state, and standard
+recursive Strassen Hyperblock core, in addition to the EXP-066--076 families.
+Read that continuation and each scope boundary before reopening a family.

@@ -229,3 +229,9 @@ Read `NEXT_EXPERIMENT.md`.
 EXP-066 through EXP-070 are rejected as core under their frozen scopes. EXP-071 does not prove online exact execution impossible. EXP-072A rejects a self-contained exact Q4 artifact as a universal 8 GiB hot core.
 
 EXP-073 Stage 1 sanitized target inventory is complete. Stage 2 storage, H2D, and native 4B Q4 baselines require separate authorization and remain `NOT TESTED`. No new cold-backed core experiment may freeze a physical Gate using proxy bandwidth or capacity where EXP-073 measured values exist.
+
+EXP-077A through EXP-080A are rejected under their frozen scopes. EXP-080A
+leaves the unit-constant fast-multiplication exponent only as a theoretical
+target: standard constructive Strassen misses the final p50 arithmetic fraction
+by `30.469145x`, and no causal future-block source exists. No core candidate
+survives; read `NEXT_EXPERIMENT.md` before proposing another mechanism.

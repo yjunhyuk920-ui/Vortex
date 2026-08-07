@@ -556,3 +556,41 @@ It must freeze exact integer-control rows, per-block constructive and exponent-
 oracle counts, aggregate Gate rows, environment data, logs, and checksums.
 Canonical commands and authority hashes will be recorded only after the source
 commit and run complete.
+
+## EXP-080A local authority
+
+```text
+results/exp_080a/summary.json
+source commit       7f1c66125a844f5366e2b88f0aaa07b089dc0378
+evidence commit     98e90899a0adf3614d8dbe17691167ce426bae3b
+config SHA-256      97f02f4f16cf5befb498cc7d34ed1c837b3ad10b2fee9a4fa408936a4cb4f985
+core SHA-256        7578c4c9f463da8135f3c320df9d7fb920ffc172d31fdd2f60b30af9778280ce
+summary SHA-256     0debbb96f0a31b1ef2ffc1e662109687aed3b2cedaaf89ac1c013bf9a94c1d83
+workflow/artifact   NOT RUN
+```
+
+Canonical local command:
+
+```powershell
+C:\Users\dinc2\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe experiments\exp_080a\run_experiment.py --output-dir results\exp_080a
+```
+
+The Windows/Python 3.12.13 standard-library run passed 80/80 exact signed-
+integer controls. Its bundle contains ten checksummed payloads plus the
+manifest; independent SHA-256 verification found zero mismatch. A second run in
+an empty temporary directory reproduced the deterministic core hash, all 80
+controls with zero mismatch, and the authoritative decision.
+
+The repository suite passed `392/392` with the repository root explicitly on
+`PYTHONPATH`, and `scripts/run_validation.py` completed. An initial unqualified
+suite invocation produced one EXP-072A subprocess import failure because that
+child did not inherit the repository module path; rerunning with the documented
+root path removed the environment-only failure.
+
+Expected decision is
+`REJECT_STANDARD_STRASSEN_HYPERBLOCK_AS_CORE_RETAIN_COST_MODEL_AUXILIARY`.
+Expected best constructive invariants at `K=16,384` are traffic
+`0.00006103515625`, arithmetic `0.3611157967135951`, favorable workspace
+`8,095,006,720` bytes, zero constructive joint passes, first unit-constant
+omega pass `K=512`, and first 4B-draft omega pass `K=8,192`. No checkpoint,
+network, Ubuntu host, physical kernel, or E2-E7 evidence is involved.
