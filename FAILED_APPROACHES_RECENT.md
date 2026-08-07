@@ -249,3 +249,25 @@ registered operation/traffic closure below `1.185185185%`. Revisit only with a
 genuinely Query-Adaptive Cold Source whose causal selector, page probes, misses,
 execution, state, verification, and fallback are fully charged. Authority:
 `docs/research/E0_SYNTHETIC_INTERMEDIATE_CIRCUIT_AUDIT.md`.
+
+## F-051 -- Raw Q4 page selection without an omitted-contribution source
+
+Reading a query-selected subset of raw checkpoint pages does not by itself
+determine exact arbitrary `W*x`. If the executor has no checkpoint-derived
+information about an unread coefficient, two matrices can agree on all read
+pages and differ at that coefficient, producing different output for a causal
+activation with a nonzero matching coordinate.
+
+Even granting a free selector, decoder, hit execution, and build, mean dense
+fallback must be below `1.185185185%`, so exact coverage must be at least
+`98.814814815%`. The retained verifier raises it to `99.081653739%`, while the
+selected information must amplify at least `84.375x` or `108.891389x`
+respectively.
+
+Do not reopen by renaming page IDs, changing page size, adding an uncharged
+index, or assuming omitted coefficients are irrelevant. Revisit only with a
+concrete causal checkpoint-derived code or certificate that determines the
+omitted contribution and pays selection, decode, state, verification, misses,
+fallback, and build. This rejects raw-page omission as a source, not all coded
+query-adaptive data structures. Authority:
+`docs/research/E0_QUERY_ADAPTIVE_COLD_EQUATION.md`.

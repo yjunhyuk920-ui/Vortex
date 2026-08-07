@@ -364,3 +364,19 @@ causal information source from the committed prefix and unchanged checkpoint
 that instantiates the equation without dense discovery or a free oracle. If
 either is absent, retain `NO_SURVIVING_CANDIDATE` and do not assign an
 experiment number.
+
+## Current directive after the query-adaptive equation
+
+The equation ticket is resolved. Even with zero fast-path and build cost, the
+mean conservation Gate needs `98.814814815%` exact coverage and `84.375x`
+useful information amplification. The retained verifier makes those
+`99.081653739%` and `108.891389x` before selector, decode, miss, or state costs.
+
+Do not optimize page size or implement a selector over raw Q4 pages: raw page
+omission carries no information about the omitted dense contribution. Search
+only for a Coded Causal Cold Source derived from the current committed
+activation and unchanged checkpoint. Reject on paper any proposal that reduces
+to static linear circuits, exact replay/advice, training, future target traces,
+an external prover, or dense-equivalent discovery. No experiment number is
+assigned until one source closes the equation favorably enough to preregister
+the cheapest real-weight falsification Gate.

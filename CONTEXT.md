@@ -52,3 +52,15 @@ A causal rule that uses the current committed activation and unchanged
 checkpoint to choose a query-dependent subset of lossless cold information,
 with selection, probes, misses, verification, and fallback fully charged.
 _Avoid_: Static circuit stored on disk, free page oracle
+
+**Coded Causal Cold Source**:
+A Query-Adaptive Cold Source whose selected lossless code or certificate
+determines omitted dense contributions instead of merely withholding raw Q4
+pages.
+_Avoid_: Raw page selector, static synthetic circuit, free target trace
+
+**Useful Information Amplification**:
+The dense coefficient-equivalent work or traffic determined per charged unit
+of selected cold payload; it is a query-time conservation metric, not artifact
+compression ratio.
+_Avoid_: Compression ratio, unchecked reuse factor

@@ -743,3 +743,31 @@ Do not open EXP-083 or build a static synthesizer/runtime. The next admissible
 work is an E0 equation and causal information-source search for a genuinely
 query-adaptive cold-backed executor. Authority:
 `docs/research/E0_SYNTHETIC_INTERMEDIATE_CIRCUIT_AUDIT.md`.
+
+## D-077 -- Fix the query-adaptive cold-backed conservation frontier
+
+For either logical operations or traffic, the complete favorable branch
+equation is `R = g + kappa/N + rho*h + (1-rho)*(m+1)`. On the registered
+405B non-embedding shape, even a free successful path needs
+`98.814814815%` coverage to keep mean dense fallback below the p50
+`1.185185185%` allowance. The known verifier alone raises that frontier to
+`99.081653739%`; positive selector, decode, miss, or build costs raise it
+again.
+
+The same Gate requires at least `84.375x` query-time useful information
+amplification with no overhead, or `108.891389x` after the known verifier.
+Selecting raw Q4 pages without any coded information about omitted weights
+cannot determine exact arbitrary `W*x`; a surviving class must supply a causal
+checkpoint-derived code or certificate and charge it fully.
+
+Decision:
+
+```text
+DERIVE_QUERY_ADAPTIVE_COLD_BACKED_FEASIBILITY_FRONTIER
+REJECT_RAW_Q4_PAGE_SELECTION_WITHOUT_OMITTED_CONTRIBUTION_SOURCE
+KEEP_CODED_CAUSAL_COLD_SOURCE_OPEN_FOR_INFORMATION_SOURCE_SEARCH
+```
+
+This resolves an E0 equation, not the missing mechanism. Do not assign
+EXP-083, download a model, or enter hardware/runtime work. Authority:
+`docs/research/E0_QUERY_ADAPTIVE_COLD_EQUATION.md`.

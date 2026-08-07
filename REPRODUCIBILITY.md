@@ -737,3 +737,23 @@ Steiner paper and Boyar--Find linear-circuit paper in the authority document.
 Their results are used only as asymptotic/distributional E0 counterevidence.
 No source code, model weights, private server, hardware, or benchmark was run;
 there is no result artifact or experiment command.
+
+## E0 query-adaptive cold-backed equation reproduction
+
+Authority document:
+`docs/research/E0_QUERY_ADAPTIVE_COLD_EQUATION.md`.
+
+The deterministic calculator uses only registered integer shapes and decimal
+resource fractions:
+
+```powershell
+python scripts/derive_query_adaptive_cold_equation.py
+python -m pytest tests/test_query_adaptive_cold_equation.py -q
+```
+
+Expected invariants include `201,873,948,672` non-embedding Q4 bytes,
+`98.814814815%` zero-cost minimum coverage, `99.081653739%` coverage after the
+known verifier, 4-KiB page limits `584,126/452,612`, and the independent
+EXP-081A frontier `99.741472756%`. Nine focused tests cover the branch equation,
+miss/build charging, page/index state, compile amortization, and favorable PCIe
+floor. No model, target server, hardware, or network access is required.

@@ -293,5 +293,7 @@ certified favorable lower bound; it does not by itself close arbitrary
 synthetic-intermediate linear circuits. F-050 then closes a static synthetic
 tree/DAG as a *new* core because it is contained by archived EXP-072B and lacks
 a fully charged target route; it explicitly leaves a genuinely query-adaptive
-cold information source open.
+cold information source open. F-051 closes raw Q4 page omission with no coded
+source for unread contributions; it explicitly leaves a fully charged Coded
+Causal Cold Source open as an unsupported search class.
 Read that continuation and each scope boundary before reopening a family.

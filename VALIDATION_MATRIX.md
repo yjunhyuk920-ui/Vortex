@@ -445,3 +445,21 @@ promoted; Phase D and E2-E7 remain not achieved.
 Current classification: no static synthetic-intermediate Core Candidate is
 promoted. No model or hardware was run. A query-adaptive cold-backed interface
 remains logically open but has no surviving mechanism yet.
+
+## E0 query-adaptive cold-backed equation
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Fully charged branch equation includes common/hit/miss/build/fallback | symbolic derivation plus 9 calculator tests | PASS at E0 |
+| Zero-cost minimum coverage at p50 fraction | `98.814814815%` | DERIVED |
+| Minimum coverage after known verifier traffic | `99.081653739%` | DERIVED |
+| EXP-081A coverage frontier is independently reproduced | `99.741472756%` | PASS cross-check |
+| Zero-overhead useful information amplification | `84.375x` minimum | DERIVED |
+| Amplification after known verifier | `108.891389x` minimum | DERIVED |
+| Raw page omission alone determines exact arbitrary `W*x` | scoped indistinguishability argument | REJECTED |
+| Coded causal information source exists | no algorithm | OPEN / NOT TESTED |
+| Native-4B latency, SSD/H2D, peak VRAM, 405B execution | no hardware/model run | NOT TESTED |
+
+Current classification: the accounting frontier is closed and reproducible,
+but no Core Candidate survives. A Coded Causal Cold Source remains a search
+class only; Phase D and E1-E7 remain unachieved for it.

@@ -513,3 +513,20 @@ activation exposes a Query-Adaptive Cold Source that can select a tiny exact
 subset without dense discovery, and all selection, probes, misses, state,
 verification, and fallback fit the target. No algorithm or evidence currently
 supports that assumption.
+
+## A-059 -- A coded causal cold source crosses the conservation frontier
+
+The remaining hypothesis is that the current committed activation and
+unchanged checkpoint expose a lossless query-dependent code or certificate
+that determines omitted dense contributions without an equivalent discovery
+scan. On held-out causal queries it must close operations and traffic under
+`R = g + kappa/N + rho*h + (1-rho)*(m+1)`, peak branch state under 8 GiB, and
+the final measured latency contract.
+
+Status: OPEN AND UNSUPPORTED AT E0. The derived best-case floor is
+`98.814814815%` exact coverage and `84.375x` useful information amplification;
+using the retained six-check verifier makes those `99.081653739%` and
+`108.891389x` before any other cost. Raw Q4 page selection with no information
+about unread coefficients is contradicted by indistinguishability, but coded
+pages or causal certificates are not universally ruled out. No concrete source,
+E1 population evidence, operation replacement, or physical result exists.

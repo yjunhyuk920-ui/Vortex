@@ -731,3 +731,47 @@ lossless cold information while selection, probes, misses, verification,
 fallback, traffic, and state are fully charged. It has no algorithm or
 resource closure yet. No EXP-083, E1 run, model download, hardware action,
 operation replacement, or E2-E7 evidence is authorized by this E0 audit.
+
+## E0 query-adaptive cold-backed feasibility frontier
+
+The complete branch-aware operation/traffic equation is now fixed. For either
+normalized resource, common cost `g`, hit cost `h`, miss work `m`, build cost
+`kappa`, service life `N`, and exact fast-path coverage `rho` give:
+
+```text
+R = g + kappa/N + rho*h + (1-rho)*(m+1).
+```
+
+On the registered `403,747,897,344` non-embedding coefficients and
+`201,873,948,672` packed-Q4 bytes, the p50 allowance is exactly `8/675`, or
+`1.185185185%`. Even a zero-cost path therefore needs `98.814814815%` exact
+coverage under the mean conservation Gate. Reserving the retained six-check
+verifier traffic raises the minimum to `99.081653739%`. EXP-081A's independent
+pre-fallback value reproduces `99.741472756%`.
+
+The p50 payload ceiling is `2.228263889 GiB/token`. With all other costs free,
+that permits at most `584,126` 4-KiB pages, `36,507` 64-KiB pages, or `2,281`
+1-MiB pages. After the known verifier the limits fall to `452,612`, `28,288`,
+and `1,768`. If one equal cold call per 883 matrix instance is conditionally
+required, average payload is at most `2.584080 MiB`, or `2.002286 MiB` after
+that verifier.
+
+Raw Q4 page omission is not an information source: without a checkpoint-
+derived code or certificate for unread coefficients, an indistinguishable
+unread weight change can alter `W*x`. A viable source must instead provide at
+least `84.375x` useful information amplification in the impossible zero-cost
+limit, or `108.891389x` after the known verifier, while meeting the coverage,
+state, build, and fallback equations.
+
+Decision:
+
+```text
+DERIVE_QUERY_ADAPTIVE_COLD_BACKED_FEASIBILITY_FRONTIER
+REJECT_RAW_Q4_PAGE_SELECTION_WITHOUT_OMITTED_CONTRIBUTION_SOURCE
+KEEP_CODED_CAUSAL_COLD_SOURCE_OPEN_FOR_INFORMATION_SOURCE_SEARCH
+```
+
+Authority: `docs/research/E0_QUERY_ADAPTIVE_COLD_EQUATION.md`. The equation is
+E0 derived accounting, not a Core Candidate or execution result. The next map
+ticket must find a causal coded information source; no EXP-083, E1, model,
+server, hardware, operation replacement, or E2-E7 work is yet authorized.

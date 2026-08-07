@@ -516,3 +516,28 @@ state, and every resident byte are mandatory. The interface is not an admitted
 Core Candidate until an E0 equation and concrete causal information source
 both exist. Authority:
 `docs/research/E0_SYNTHETIC_INTERMEDIATE_CIRCUIT_AUDIT.md`.
+
+### Query-adaptive equation boundary
+
+The provisional interface now has a fixed accounting contract but still has no
+component implementation. For operations and traffic independently:
+
+```text
+R = common + compile/service_tokens
+    + coverage*hit
+    + (1-coverage)*(miss + dense_fallback)
+```
+
+At the p50 logical Gate, a free path needs `98.814814815%` coverage; retaining
+the known verifier traffic needs `99.081653739%`. A raw page selector cannot
+enter the architecture because it does not determine unread contributions. The
+only open subtype is a Coded Causal Cold Source carrying query-selected
+checkpoint-derived aggregates or certificates with at least `84.375x`
+best-case useful information amplification (`108.891389x` after the verifier).
+
+Peak state is evaluated per mutually exclusive hit/fallback branch under 8 GiB;
+cold capacity, build amortization, page metadata, selector scans, and physical
+request/transfer latency remain separate mandatory terms. No selector, page
+format, decoder, verifier hook, cache transition, fallback engine, or kernel is
+admitted until a concrete causal source passes E0. Authority:
+`docs/research/E0_QUERY_ADAPTIVE_COLD_EQUATION.md`.

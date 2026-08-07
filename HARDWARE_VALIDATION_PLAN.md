@@ -392,3 +392,19 @@ fact only, not establish per-token traffic or latency.
 A future Query-Adaptive Cold Source must first pass logical operation, traffic,
 state, verification, miss, and fallback Gates. Phase D and E4-E7 remain
 `NOT TESTED`; no target-server command is authorized.
+
+## Query-adaptive cold equation hardware boundary
+
+The E0 equation converts the p50 fraction to `2.228263889 GiB/token` over the
+registered non-embedding Q4 population. At the favorable EXP-073 PCIe Gen2 x16
+signaling ceiling (`7.450580597 GiB/s`), moving that entire allowance across
+the link has a `0.299072517 s/token` serialization floor. This is `DERIVED`,
+not measured, and is not a rejection because native-4B latency, useful request
+parallelism, protocol efficiency, storage bandwidth, and overlap remain
+unknown.
+
+The complete Q4 checkpoint still needs `188.988281250 GiB` cold capacity;
+EXP-073 root free capacity was `97.6183 GiB`. No storage allocation, page read,
+GPU buffer, SSD/H2D probe, native-4B run, CUDA action, download, or private
+Ubuntu command occurred. A concrete coded causal information source must first
+pass E0 and E1 before hardware promotion; Phase D/E4-E7 remain `NOT TESTED`.

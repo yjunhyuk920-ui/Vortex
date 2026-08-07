@@ -913,3 +913,27 @@ An equation alone does not promote the class. A later ticket must identify a
 causal information source that instantiates it without target-future leakage,
 checkpoint modification, training, added hardware, a free oracle, or hidden
 dense discovery. Until both exist, the state is `NO_SURVIVING_CANDIDATE`.
+
+## Query-adaptive equation resolved -- search the causal information source
+
+The registered-shape equation is now fixed in
+`docs/research/E0_QUERY_ADAPTIVE_COLD_EQUATION.md`:
+
+```text
+R = g + kappa/N + rho*h + (1-rho)*(m+1)
+best-case p50 exact coverage                  >=98.814814815%
+coverage after known verifier                >=99.081653739%
+best-case useful information amplification   >=84.375x
+amplification after known verifier            >=108.891389x
+```
+
+Raw Q4 page selection is not a candidate unless a checkpoint-derived code or
+certificate determines the omitted contribution. The next unblocked map ticket
+is `Find a Causal Circuit Information Source`. It must enumerate genuinely
+causal coded sources, reject any that reduce to static circuits, replay,
+training, free trace generation, or dense selector scans, and identify the
+cheapest finite Gate for any source that survives on paper.
+
+Do not assign EXP-083, build a runtime, download a model, or use the private
+Ubuntu server merely because the equation is known. The state remains
+`NO_SURVIVING_CANDIDATE` until a concrete source instantiates it.

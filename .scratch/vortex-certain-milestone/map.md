@@ -26,6 +26,7 @@ Mission.
 <!-- Append one linked gist for each resolved child ticket. -->
 
 - [Synthetic-intermediate exact-circuit audit](issues/01-audit-synthetic-intermediate-circuits.md): static synthetic trees are a restricted form of archived EXP-072B; only a genuinely query-adaptive cold information source remains open.
+- [Query-adaptive cold-backed equation](issues/02-derive-cold-backed-circuit-equation.md): any source needs at least `98.814815%` exact coverage and `84.375x` useful information amplification in the zero-cost limit; raw page omission is not a source, so search only causal coded information.
 
 ## Not yet specified
 
