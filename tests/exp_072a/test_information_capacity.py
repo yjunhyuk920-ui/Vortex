@@ -1,5 +1,10 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+import subprocess
+import sys
+
 import pytest
 
 from vortex_runtime.information_capacity import (
@@ -77,3 +82,26 @@ def test_invalid_domains_fail_closed() -> None:
         power_of_two_alphabet_information_bits(4, 15)
     with pytest.raises(InformationCapacityError):
         exact_matvec(((1, 2),), (1,))
+
+
+def test_experiment_writes_complete_evidence_bundle(tmp_path: Path) -> None:
+    root = Path(__file__).resolve().parents[2]
+    output = tmp_path / "exp_072a_test_bundle"
+    subprocess.run(
+        [
+            sys.executable,
+            str(root / "experiments/exp_072a/run_experiment.py"),
+            "--config",
+            str(root / "experiments/exp_072a/config.json"),
+            "--output-dir",
+            str(output),
+        ],
+        cwd=root,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    summary = json.loads((output / "summary.json").read_text(encoding="utf-8"))
+    assert summary["authoritative_decision"].startswith("REJECT_SELF_CONTAINED")
+    assert (output / "logs/run.log").is_file()
+    assert (output / "checksums.sha256").is_file()

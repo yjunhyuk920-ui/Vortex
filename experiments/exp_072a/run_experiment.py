@@ -196,6 +196,7 @@ def main() -> None:
     dump(output / "summary.json", summary)
     dump(output / "artifacts/environment.json", summary["provenance"])
     (output / "artifacts/contract.txt").write_text(str(config["evidence_ceiling"]) + "\n", encoding="utf-8", newline="\n")
+    (output / "logs").mkdir(parents=True, exist_ok=True)
     (output / "logs/run.log").write_text(
         json.dumps({"experiment": "EXP-072A", "decision": decision, "measured": measured}, sort_keys=True) + "\n",
         encoding="utf-8",
