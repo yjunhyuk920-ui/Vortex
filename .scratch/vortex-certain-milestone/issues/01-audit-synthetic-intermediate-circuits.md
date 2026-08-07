@@ -1,7 +1,7 @@
 # Audit Synthetic-Intermediate Exact Circuits
 
 Type: research
-Status: open
+Status: claimed
 Blocked by: none
 
 ## Question
