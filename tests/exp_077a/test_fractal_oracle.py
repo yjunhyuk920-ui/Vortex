@@ -6,11 +6,33 @@ from vortex_runtime.fractal_oracle import (
     FractalOracleError,
     aggregate_quality_rows,
     gate_decision,
+    homogeneous_length_batches,
     quality_gate,
+    registered_teacher_forcing_tokens,
     selected_channel_count,
     selected_parameter_fraction,
     validate_prompt_and_trace_ids,
 )
+
+
+def test_registered_teacher_forcing_replays_proposal_inputs_not_target_outputs() -> None:
+    conditioning, expected = registered_teacher_forcing_tokens(
+        {
+            "first_target_token": 10,
+            "proposal_tokens": [20, 21, 22, 23],
+            "target_verification_tokens": [30, 31, 32, 33, 34],
+        },
+        token_count=4,
+    )
+    assert conditioning == [10, 20, 21]
+    assert expected == [10, 30, 31, 32]
+
+
+def test_homogeneous_length_batches_never_mix_recurrent_sequence_lengths() -> None:
+    lengths = [34, 39, 34, 40, 39]
+    batches = homogeneous_length_batches(lengths)
+    assert batches == [[0, 2], [1, 4], [3]]
+    assert all(len({lengths[index] for index in batch}) == 1 for batch in batches)
 
 
 def test_selected_channel_count_respects_hard_fraction_ceiling() -> None:
@@ -38,6 +60,7 @@ def test_prompt_trace_join_requires_exact_ids_and_metadata() -> None:
             "split": "build",
             "family": "x",
             "first_target_token": 1,
+            "proposal_tokens": [9],
             "target_verification_tokens": [2],
         },
         {
@@ -45,6 +68,7 @@ def test_prompt_trace_join_requires_exact_ids_and_metadata() -> None:
             "split": "evaluation",
             "family": "x",
             "first_target_token": 3,
+            "proposal_tokens": [8],
             "target_verification_tokens": [4],
         },
     ]

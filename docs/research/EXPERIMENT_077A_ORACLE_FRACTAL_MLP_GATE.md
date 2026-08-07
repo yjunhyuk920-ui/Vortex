@@ -70,10 +70,10 @@ make the Gate easier and cannot promote a runtime.
 ### Cheapest decisive falsification
 
 Use the already downloaded unchanged Qwen3.5-0.8B BF16 checkpoint. Replace each
-MLP output in a causal teacher-forced forward with the output from the top
-fraction of intermediate channels. Compare against the unmodified target logits
-on frozen exact target trajectories. Do not train a selector or download a new
-checkpoint before this Gate passes.
+MLP output in the frozen EXP-076 causal trace replay with the output from the
+top fraction of intermediate channels. Compare against the unmodified target
+logits on the same proposal-conditioned path. Do not train a selector or
+download a new checkpoint before this Gate passes.
 
 ## Registered inputs
 
@@ -106,19 +106,33 @@ mask    = top-k(score)
 y_hat   = W_down (z * mask)
 ```
 
-The oracle reads the complete `z`, so it is explicitly non-deployable. Target
-trajectories contain only the exact prior target tokens at each causal position;
-no later generated token is visible to an earlier position. The runner uses
-teacher forcing to isolate one-step target-distribution preservation and does
-not claim autoregressive generation quality.
+The oracle reads the complete `z`, so it is explicitly non-deployable. EXP-076
+first prefills the exact prompt, then verifies the frozen sequence
+`[first_target_token, *mtp_proposal_tokens]` on a cloned causal cache. EXP-077A
+replays that exact two-stage conditioning for both target and candidate and
+scores `[first_target_token, *target_verification_tokens]`. Verification outputs
+are labels, never recycled as inputs. No later token is visible to an earlier
+position. This isolates target-distribution preservation on a registered causal
+trace and does not claim free-running autoregressive quality.
 
 Rounding is downward because the registered fraction is a hard ceiling. On the
 fixed 3,584-channel checkpoint, the 10% arm keeps 358 channels (`9.9888%`).
 
-The CPU reference may right-pad and batch the frozen cases. Only logits before
-each case's trailing padding are scored, and the zero-mismatch control covers
-all 192 registered target decisions. This is an execution optimization; it does
-not change the oracle formula, split, fraction, or Gate.
+The CPU reference groups only equal-length prefixes, uses no padding, and
+executes the same prefix-cache then verify-cache path as EXP-076. The
+zero-mismatch control covers all 192 registered target decisions. This batching
+changes host efficiency only; it does not change the causal state path, oracle
+formula, split, fraction, or Gate.
+
+### Pre-authoritative control correction
+
+An initial implementation was correctly classified invalid: it recycled target
+verification outputs as the next inputs and used a padded full-sequence
+`use_cache=False` path. That produced 42 baseline trace mismatches. Replaying the
+right proposal inputs reduced this to one; matching the original two-stage cache
+path reduced it to zero for the isolated case and then zero across all 192
+registered decisions. No invalid quality metric is scientific evidence. The
+authoritative run starts only from the corrected source commit.
 
 ## Quality Gate at 10%
 

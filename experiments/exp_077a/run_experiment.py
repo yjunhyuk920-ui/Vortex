@@ -21,7 +21,9 @@ from vortex_runtime.fractal_oracle import (
     canonical_sha256,
     family_aggregates,
     gate_decision,
+    homogeneous_length_batches,
     quality_gate,
+    registered_teacher_forcing_tokens,
     selected_channel_count,
     selected_parameter_fraction,
     validate_prompt_and_trace_ids,
@@ -216,10 +218,11 @@ def tokenize_prompt(tokenizer: Any, prompt: str, max_tokens: int = 192) -> Any:
 
 
 class OracleTracker:
-    def __init__(self, fraction: float, valid_token_mask: Any) -> None:
+    def __init__(self, fraction: float, batch_size: int) -> None:
         self.fraction = fraction
-        self.valid_token_mask = valid_token_mask.to(dtype=__import__("torch").bool)
-        self.batch_size = int(valid_token_mask.shape[0])
+        if batch_size <= 0:
+            raise ValueError("oracle tracker batch size must be positive")
+        self.batch_size = batch_size
         self.selected_channels = [0] * self.batch_size
         self.total_channels = [0] * self.batch_size
         self.squared_error = [0.0] * self.batch_size
@@ -228,15 +231,14 @@ class OracleTracker:
 
     def record(self, *, selected: int, total: int, candidate: Any, target: Any) -> None:
         delta = candidate.float() - target.float()
-        if candidate.ndim != 3 or candidate.shape[:2] != self.valid_token_mask.shape:
-            raise ValueError("oracle tracker batch/sequence shape mismatch")
-        mask = self.valid_token_mask.to(device=candidate.device).unsqueeze(-1)
-        errors = (delta.square() * mask).sum(dim=(1, 2)).tolist()
-        targets = (target.float().square() * mask).sum(dim=(1, 2)).tolist()
-        positions = self.valid_token_mask.sum(dim=1).tolist()
+        if candidate.ndim != 3 or int(candidate.shape[0]) != self.batch_size:
+            raise ValueError("oracle tracker batch shape mismatch")
+        errors = delta.square().sum(dim=(1, 2)).tolist()
+        targets = target.float().square().sum(dim=(1, 2)).tolist()
+        positions = int(candidate.shape[1])
         for index in range(self.batch_size):
-            self.selected_channels[index] += int(positions[index]) * selected
-            self.total_channels[index] += int(positions[index]) * total
+            self.selected_channels[index] += positions * selected
+            self.total_channels[index] += positions * total
             self.squared_error[index] += float(errors[index])
             self.squared_target[index] += float(targets[index])
         self.calls += 1
@@ -316,13 +318,17 @@ def compare_logits(target_logits: Any, candidate_logits: Any) -> dict[str, Any]:
     }
 
 
-def select_prediction_logits(logits: Any, prompt_length: int, token_count: int) -> Any:
-    start = prompt_length - 1
-    stop = start + token_count
-    selected = logits[0, start:stop, :]
-    if selected.shape[0] != token_count:
-        raise ValueError("model output lacks registered prediction positions")
-    return selected
+def cached_trace_logits(target: Any, prefix_ids: Any, conditioning_ids: Any) -> Any:
+    """Execute the exact two-stage causal path used by EXP-076 traces."""
+    prefix_output = target.model(input_ids=prefix_ids, use_cache=True)
+    first_logits = target.lm_head(prefix_output.last_hidden_state[:, -1:, :])
+    verify_output = target.model(
+        input_ids=conditioning_ids,
+        past_key_values=prefix_output.past_key_values,
+        use_cache=True,
+    )
+    verify_logits = target.lm_head(verify_output.last_hidden_state)
+    return __import__("torch").cat([first_logits, verify_logits], dim=1)
 
 
 def main() -> None:
@@ -330,7 +336,18 @@ def main() -> None:
     parser.add_argument("--config", default=str(Path(__file__).with_name("config.json")))
     parser.add_argument("--model-dir", required=True)
     parser.add_argument("--output-dir", required=True)
+    parser.add_argument(
+        "--control-only",
+        action="store_true",
+        help="stop after checking the unmodified target trace replay",
+    )
+    parser.add_argument(
+        "--control-prompt-id",
+        help="with --control-only, restrict the trace replay to one prompt",
+    )
     arguments = parser.parse_args()
+    if arguments.control_prompt_id and not arguments.control_only:
+        parser.error("--control-prompt-id requires --control-only")
 
     import torch
     import transformers
@@ -369,127 +386,142 @@ def main() -> None:
         for split in ("build", "evaluation")
         for row in inputs["prompts"][split]
     ]
+    if arguments.control_prompt_id:
+        if arguments.control_prompt_id not in ordered_ids:
+            raise ValueError(f"unknown control prompt: {arguments.control_prompt_id}")
+        ordered_ids = [arguments.control_prompt_id]
     prepared: list[dict[str, Any]] = []
     for prompt_id in ordered_ids:
         prompt = prompts_by_id[prompt_id]
         trace = traces_by_id[prompt_id]
-        continuation = [int(trace["first_target_token"]), *map(int, trace["target_verification_tokens"])]
-        continuation = continuation[:token_count]
-        if len(continuation) != token_count:
-            raise ValueError(f"short registered target trace for {prompt_id}")
-        prefix_ids = tokenize_prompt(tokenizer, prompt["prompt"])
-        teacher_input = torch.cat(
-            [
-                prefix_ids,
-                torch.tensor([continuation[:-1]], dtype=torch.long),
-            ],
-            dim=1,
+        conditioning, continuation = registered_teacher_forcing_tokens(
+            trace, token_count=token_count
         )
+        prefix_ids = tokenize_prompt(tokenizer, prompt["prompt"])
         prepared.append(
             {
                 "prompt_id": prompt_id,
                 "prompt": prompt,
                 "continuation": continuation,
                 "prefix_length": int(prefix_ids.shape[1]),
-                "teacher_input": teacher_input[0],
+                "prefix_ids": prefix_ids[0],
+                "conditioning_ids": torch.tensor(conditioning, dtype=torch.long),
             }
         )
 
-    pad_token_id = tokenizer.pad_token_id
-    if pad_token_id is None:
-        pad_token_id = tokenizer.eos_token_id
-    if pad_token_id is None:
-        raise ValueError("tokenizer provides no padding or EOS token")
-    max_teacher_length = max(int(row["teacher_input"].shape[0]) for row in prepared)
-    batch_input = torch.full(
-        (len(prepared), max_teacher_length), int(pad_token_id), dtype=torch.long
+    batches = homogeneous_length_batches(
+        [int(row["prefix_ids"].shape[0]) for row in prepared]
     )
-    attention_mask = torch.zeros_like(batch_input)
-    for index, row in enumerate(prepared):
-        length = int(row["teacher_input"].shape[0])
-        batch_input[index, :length] = row["teacher_input"]
-        attention_mask[index, :length] = 1
-
-    with torch.inference_mode():
-        baseline_output = target(
-            input_ids=batch_input, attention_mask=attention_mask, use_cache=False
-        )
     baseline_logits_by_id: dict[str, Any] = {}
-    for index, row in enumerate(prepared):
-        prompt_id = row["prompt_id"]
-        prompt = row["prompt"]
-        continuation = row["continuation"]
-        baseline_logits = select_prediction_logits(
-            baseline_output.logits[index : index + 1],
-            row["prefix_length"],
-            token_count,
-        ).detach().clone()
-        baseline_logits_by_id[prompt_id] = baseline_logits
-        baseline_top = [int(value) for value in baseline_logits.argmax(dim=-1).tolist()]
-        mismatch_count = sum(
-            observed != expected
-            for observed, expected in zip(baseline_top, continuation)
+    for batch in batches:
+        prefix_batch = torch.stack([prepared[index]["prefix_ids"] for index in batch])
+        conditioning_batch = torch.stack(
+            [prepared[index]["conditioning_ids"] for index in batch]
         )
-        baseline_mismatches += mismatch_count
-        baseline_rows.append(
-            {
-                "prompt_id": prompt_id,
-                "split": prompt["split"],
-                "family": prompt["family"],
-                "prefix_token_count": row["prefix_length"],
-                "teacher_token_count": token_count,
-                "registered_target_tokens": continuation,
-                "baseline_top_tokens": baseline_top,
-                "trace_mismatches": mismatch_count,
-                "baseline_logits_sha256": logits_sha256(baseline_logits),
-            }
-        )
-    del baseline_output
-
-    for fraction in fractions:
-        tracker = OracleTracker(fraction, attention_mask)
-        started = time.perf_counter_ns()
-        with activation_norm_oracle(target, fraction, tracker), torch.inference_mode():
-            candidate_output = target(
-                input_ids=batch_input, attention_mask=attention_mask, use_cache=False
+        with torch.inference_mode():
+            baseline_batch = cached_trace_logits(
+                target, prefix_batch, conditioning_batch
+            ).detach()
+        for local_index, prepared_index in enumerate(batch):
+            row = prepared[prepared_index]
+            prompt_id = row["prompt_id"]
+            prompt = row["prompt"]
+            continuation = row["continuation"]
+            baseline_logits = baseline_batch[local_index].clone()
+            baseline_logits_by_id[prompt_id] = baseline_logits
+            baseline_top = [
+                int(value) for value in baseline_logits.argmax(dim=-1).tolist()
+            ]
+            mismatch_count = sum(
+                observed != expected
+                for observed, expected in zip(baseline_top, continuation)
             )
-        batch_wall_ns = time.perf_counter_ns() - started
-        for index, prepared_row in enumerate(prepared):
-            prompt_id = prepared_row["prompt_id"]
-            prompt = prepared_row["prompt"]
-            candidate_logits = select_prediction_logits(
-                candidate_output.logits[index : index + 1],
-                prepared_row["prefix_length"],
-                token_count,
-            )
-            baseline_logits = baseline_logits_by_id[prompt_id]
-            comparison = compare_logits(baseline_logits, candidate_logits)
-            tracker_summary = tracker.case_summary(index)
-            row = {
-                "prompt_id": prompt_id,
-                "split": prompt["split"],
-                "family": prompt["family"],
-                "fraction": fraction,
-                **comparison,
-                **tracker_summary,
-                "candidate_logits_sha256": logits_sha256(candidate_logits),
-                "fraction_batch_wall_ns": batch_wall_ns,
-            }
-            case_rows.append(row)
-            line = json.dumps(
+            baseline_mismatches += mismatch_count
+            baseline_rows.append(
                 {
                     "prompt_id": prompt_id,
                     "split": prompt["split"],
-                    "fraction": fraction,
-                    "top1_matches": comparison["top1_matches"],
-                    "token_count": token_count,
-                    "mean_kl": sum(comparison["token_kls"]) / token_count,
-                    "mlp_relative_l2": tracker_summary["mlp_relative_l2"],
-                },
-                sort_keys=True,
+                    "family": prompt["family"],
+                    "prefix_token_count": row["prefix_length"],
+                    "teacher_token_count": token_count,
+                    "registered_target_tokens": continuation,
+                    "baseline_top_tokens": baseline_top,
+                    "trace_mismatches": mismatch_count,
+                    "baseline_logits_sha256": logits_sha256(baseline_logits),
+                }
             )
-            print(line, flush=True)
-            log_lines.append(line)
+
+    if arguments.control_only:
+        print(
+            json.dumps(
+                {
+                    "experiment": "EXP-077A-control-only",
+                    "baseline_case_count": len(baseline_rows),
+                    "baseline_trace_mismatches": baseline_mismatches,
+                    "mismatching_cases": [
+                        {
+                            "prompt_id": row["prompt_id"],
+                            "trace_mismatches": row["trace_mismatches"],
+                        }
+                        for row in baseline_rows
+                        if row["trace_mismatches"]
+                    ],
+                },
+                indent=2,
+                sort_keys=True,
+            ),
+            flush=True,
+        )
+        return
+
+    for fraction in fractions:
+        for batch in batches:
+            tracker = OracleTracker(fraction, len(batch))
+            prefix_batch = torch.stack(
+                [prepared[index]["prefix_ids"] for index in batch]
+            )
+            conditioning_batch = torch.stack(
+                [prepared[index]["conditioning_ids"] for index in batch]
+            )
+            started = time.perf_counter_ns()
+            with activation_norm_oracle(target, fraction, tracker), torch.inference_mode():
+                candidate_batch = cached_trace_logits(
+                    target, prefix_batch, conditioning_batch
+                )
+            batch_wall_ns = time.perf_counter_ns() - started
+            for local_index, prepared_index in enumerate(batch):
+                prepared_row = prepared[prepared_index]
+                prompt_id = prepared_row["prompt_id"]
+                prompt = prepared_row["prompt"]
+                candidate_logits = candidate_batch[local_index]
+                baseline_logits = baseline_logits_by_id[prompt_id]
+                comparison = compare_logits(baseline_logits, candidate_logits)
+                tracker_summary = tracker.case_summary(local_index)
+                row = {
+                    "prompt_id": prompt_id,
+                    "split": prompt["split"],
+                    "family": prompt["family"],
+                    "fraction": fraction,
+                    **comparison,
+                    **tracker_summary,
+                    "candidate_logits_sha256": logits_sha256(candidate_logits),
+                    "homogeneous_batch_wall_ns": batch_wall_ns,
+                }
+                case_rows.append(row)
+                line = json.dumps(
+                    {
+                        "prompt_id": prompt_id,
+                        "split": prompt["split"],
+                        "fraction": fraction,
+                        "top1_matches": comparison["top1_matches"],
+                        "token_count": token_count,
+                        "mean_kl": sum(comparison["token_kls"]) / token_count,
+                        "mlp_relative_l2": tracker_summary["mlp_relative_l2"],
+                    },
+                    sort_keys=True,
+                )
+                print(line, flush=True)
+                log_lines.append(line)
 
     fraction_aggregates: dict[str, Any] = {}
     for fraction in fractions:
@@ -587,7 +619,7 @@ def main() -> None:
         "MEASURED": {
             "case_count": len(case_rows),
             "baseline_case_count": len(baseline_rows),
-            "teacher_forced_token_count_per_fraction": len(baseline_rows)
+            "registered_trace_token_count_per_fraction": len(baseline_rows)
             * token_count,
             "baseline_trace_mismatches": baseline_mismatches,
             "wall_ns": time.perf_counter_ns() - run_started,
@@ -617,7 +649,7 @@ def main() -> None:
         "claim_boundary": {
             "checkpoint": "UNCHANGED_PINNED_OFFICIAL_BF16_PAYLOAD",
             "selector": "NON_DEPLOYABLE_ORACLE_USING_FULL_POST_SILU_INTERMEDIATE_ACTIVATIONS",
-            "teacher_forcing": "EXACT_REGISTERED_TARGET_PREFIX_ONLY",
+            "trace_replay": "REGISTERED_EXP076_PROPOSAL_CONDITIONED_TWO_STAGE_CAUSAL_CACHE_PATH",
             "operation_replacement": "MLP_OUTPUT_REPLACED_IN_REFERENCE_FORWARD_BUT_SELECTOR_COST_GRANTED_FREE",
             "quality": "TARGET_LOGIT_DISTRIBUTION_AGREEMENT_NOT_GROUND_TRUTH_TASK_QUALITY",
             "physical_speed": "NOT_MEASURED",

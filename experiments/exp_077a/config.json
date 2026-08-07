@@ -33,7 +33,7 @@
     "selector_cost_accounting": "free_non_deployable_favorable_oracle",
     "full_gate_up_reads_accounting": "free_non_deployable_favorable_oracle",
     "down_projection": "zero_unselected_intermediate_channels_then_execute_original_down_projection",
-    "teacher_forcing": "registered_exact_target_prefix_tokens_only",
+    "trace_replay": "registered_exp076_first_target_plus_mtp_proposal_conditioning_on_exact_two_stage_cache_path",
     "future_generated_tokens_available": false
   },
   "quality_gate": {
@@ -66,5 +66,5 @@
     "torch_num_threads": 8,
     "requirements_lock": "experiments/exp_077a/requirements.lock.json"
   },
-  "evidence_ceiling": "Phase C small unchanged checkpoint, non-deployable activation-informed oracle teacher-forced observation at E1. It does not replace complete generation, charge a causal selector, sparsify attention/DeltaNet/LM-head, execute MoE routing, measure physical speed, or validate 35B/122B/405B, 8 GiB, E2-E7."
+  "evidence_ceiling": "Phase C small unchanged checkpoint, non-deployable activation-informed oracle proposal-conditioned causal-trace observation at E1. It does not replace complete generation, charge a causal selector, sparsify attention/DeltaNet/LM-head, execute MoE routing, measure physical speed, or validate 35B/122B/405B, 8 GiB, E2-E7."
 }

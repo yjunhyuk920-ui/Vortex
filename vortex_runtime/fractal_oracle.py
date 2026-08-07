@@ -55,6 +55,52 @@ def selected_parameter_fraction(
     return selected / full
 
 
+def registered_teacher_forcing_tokens(
+    trace: dict[str, Any], *, token_count: int
+) -> tuple[list[int], list[int]]:
+    """Replay EXP-076's exact target-verification conditioning.
+
+    EXP-076 verifies ``[first_target_token, *proposal_tokens]`` against a
+    cloned target cache. Its verification outputs are labels, not the next
+    inputs. For N scored positions, the full-sequence equivalent therefore
+    appends N-1 conditioning tokens while expecting the prefix token plus the
+    first N-1 verification outputs.
+    """
+    if token_count <= 0:
+        raise FractalOracleError("token count must be positive")
+    first = trace.get("first_target_token")
+    proposals = trace.get("proposal_tokens")
+    verification = trace.get("target_verification_tokens")
+    if not isinstance(first, int):
+        raise FractalOracleError("missing first target token")
+    if not isinstance(proposals, list) or not all(
+        isinstance(value, int) for value in proposals
+    ):
+        raise FractalOracleError("missing proposal token trace")
+    if not isinstance(verification, list) or not all(
+        isinstance(value, int) for value in verification
+    ):
+        raise FractalOracleError("missing target verification trace")
+    required_suffix = token_count - 1
+    if len(proposals) < max(0, required_suffix - 1):
+        raise FractalOracleError("proposal trace is too short")
+    if len(verification) < required_suffix:
+        raise FractalOracleError("verification trace is too short")
+    conditioning = [first, *proposals[: max(0, required_suffix - 1)]]
+    expected = [first, *verification[:required_suffix]]
+    return conditioning[:required_suffix], expected
+
+
+def homogeneous_length_batches(lengths: Sequence[int]) -> list[list[int]]:
+    """Return stable index groups that never require recurrent-state padding."""
+    if not lengths or any(not isinstance(value, int) or value <= 0 for value in lengths):
+        raise FractalOracleError("sequence lengths must be nonempty positive integers")
+    groups: dict[int, list[int]] = {}
+    for index, length in enumerate(lengths):
+        groups.setdefault(length, []).append(index)
+    return list(groups.values())
+
+
 def validate_prompt_and_trace_ids(
     prompts: dict[str, Any], trace_rows: Sequence[dict[str, Any]]
 ) -> dict[str, Any]:
@@ -88,6 +134,8 @@ def validate_prompt_and_trace_ids(
             raise FractalOracleError(f"missing first target token for {prompt_id}")
         if not isinstance(trace.get("target_verification_tokens"), list):
             raise FractalOracleError(f"missing target trace for {prompt_id}")
+        if not isinstance(trace.get("proposal_tokens"), list):
+            raise FractalOracleError(f"missing proposal trace for {prompt_id}")
     return {
         "prompt_count": len(prompt_rows),
         "build_count": len(prompts["build"]),
@@ -102,6 +150,7 @@ def validate_prompt_and_trace_ids(
                     "first_target_token": trace_by_id[prompt_id][
                         "first_target_token"
                     ],
+                    "proposal_tokens": trace_by_id[prompt_id]["proposal_tokens"],
                     "target_verification_tokens": trace_by_id[prompt_id][
                         "target_verification_tokens"
                     ],

@@ -22,9 +22,8 @@ and charged as free. Therefore even a passing result is only a favorable upper
 bound that authorizes a later causal-selector cost Gate. CPU time is an
 environment observation, not a sparse-kernel or hardware speed measurement.
 
-The reference runner right-pads all 24 frozen teacher-forced inputs and evaluates
-each fraction as one batch. Causality makes trailing pads unable to affect the
-registered earlier prediction positions; the mandatory zero-mismatch control
-still checks all 192 original target decisions. Batching changes only host
-execution efficiency, not the registered subset score, fractions, population,
-or Gate.
+The reference runner groups only equal-length prefixes and uses the exact
+EXP-076 two-stage cache path: prompt prefill, then frozen first-target/MTP-proposal
+conditioning. It uses no padding. The mandatory zero-mismatch control checks all
+192 registered target decisions. Batching changes host execution efficiency,
+not the registered causal path, subset score, fractions, population, or Gate.
