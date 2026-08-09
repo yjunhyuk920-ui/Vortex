@@ -704,9 +704,18 @@ dimension 23. It leaves room for at most four weighted fallbacks from 36
 last-down rows. The finite theorem `misses >= max(0, rank-23)` makes certified
 rank 28 the cheapest decisive rejection.
 
-Status: ACTIVE AND UNVERIFIED FOR THE PREREGISTERED E1 FAVORABLE STRUCTURAL
-GATE. Pair extraction and the local result source are granted free; a general
-exact decision-dual VJP remains dense. Native BF16/Q4 coefficient combination,
-KV/workspace, complete state, earlier layers, scale, physical latency, and
-E2-E7 are not tested. A pass cannot promote a Core Candidate; it can authorize
-only a paid extractor/numerical-semantics Gate.
+Status: REJECTED AT E1 FOR THE FROZEN AUTOMATIC FACTOR-SPAN LEDGER. EXP-084A
+passed 114 controls, observed build rank 24 under all three registered primes,
+filled the first-23 exact ledger, and then observed zero exact hits and five
+exact misses on the first five held-out rows. The fifth miss exceeded the
+four-fallback allowance and triggered the registered stop.
+
+### A-067 closure
+
+Independent zero-forward verification rebuilt every exact witness/residual
+coordinate and deterministic core. The run stopped with held-out rank five,
+not 28, so it does not reject the best post-hoc 23-dimensional subspace or all
+nonlinear/implicit data structures. It does reject the preregistered
+calibration-built every-token factor scan and forbids a parameter/population
+sweep. Pair extraction, native BF16/Q4 coefficient semantics, earlier layers,
+scale, physical latency, and E2-E7 remain unsolved rather than promoted.

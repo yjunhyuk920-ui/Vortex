@@ -1,7 +1,7 @@
 # Run the Causal Bilinear Rank Gate
 
 Type: experiment
-Status: claimed
+Status: resolved
 Blocked by: Certify Causal Bilinear Query Restriction
 
 ## Question
@@ -33,3 +33,28 @@ server, download another model, start hardware work, implement a general dense
 VJP extractor, or promote a pass beyond the paid extractor/native-semantics
 Gate. Do not reopen Atlas, activation replay, matrix-local codes, or free
 cross-matrix projection reuse.
+
+## Answer
+
+The frozen automatic factor-span ledger is rejected. A first batched prompt
+capture failed closed before producing any query row and is preserved as a
+control artifact. The authoritative sequential committed-prefix run retained
+all scientific settings and passed all 114 controls.
+
+All 24 build queries were independent under each registered prime. The ledger
+retained the first 23 exact independent rows. The first five held-out rows
+were all exact rational nonmembers, with fixed-ledger rank 24 under every
+prime. The fifth miss exceeded the four-fallback allowance and triggered the
+registered scientific stop:
+
+```text
+REJECT_CAUSAL_BILINEAR_FACTOR_SPAN_LEDGER_AS_CORE
+```
+
+The held-out-only rank was five at the stop, so rank 28 and a best post-hoc
+subspace rejection are not claimed. Independent verification performed zero
+model forwards and rebuilt deterministic core
+`1e79550fb66fe050338b2eedaf069728fd959583052dee2032fdd57f5cd0a7c4`.
+
+Authority: `results/exp_084a` and
+`docs/research/EXPERIMENT_084A_CAUSAL_BILINEAR_RANK_GATE.md`.

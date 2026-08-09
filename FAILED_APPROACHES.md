@@ -320,4 +320,9 @@ linear advice is the shortened block space, and every fixed outside probe buys
 at most one local dimension. Its valid global lower bound is far below the
 target, so it explicitly forbids a general impossibility claim and leaves a
 fully specified global code or certified causal query restriction open.
+F-057 closes the frozen calibration-built full-factor Causal Bilinear Span
+Ledger: all 24 build rows were independent, and the first five held-out rows
+were exact misses against the dimension-23 ledger. It forbids post-result
+rank/build/prompt/prime sweeps, but does not claim held-out rank 28 or reject
+nonlinear, implicit, or non-factor-scanned exact query codes.
 Read that continuation and each scope boundary before reopening a family.

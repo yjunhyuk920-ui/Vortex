@@ -36,13 +36,14 @@ Mission.
 - [Break the Bilinear Cross-Residual Barrier](issues/10-break-bilinear-cross-residual-barrier.md): a finite sphere-covering bound rejects every matrix-local separable linear residual code at `1.521048%` raw cross work; only nonseparable/global advice or a proved causal query restriction remains open.
 - [Resolve Cross-Matrix Advice Locality](issues/11-resolve-cross-matrix-advice-locality.md): global linear advice supplies free block-local information only through shortened spaces and pays one dimension per fixed outside cancellation probe, but the strongest finite global bound is only `0.001587%`; free projection reuse is closed while general impossibility and construction both remain open.
 - [Certify Causal Bilinear Query Restriction](issues/12-certify-causal-bilinear-query-restriction.md): a favorable full-factor scan fits only through query-span dimension 23; exact held-out rank 28 among 36 last-down rows rejects every such ledger, so the shape threshold is closed and the frozen population Gate is next, but free pair/result oracles prevent Core Candidate promotion.
+- [Run the Causal Bilinear Rank Gate](issues/13-run-causal-bilinear-rank-gate.md): EXP-084A passed 114 controls, found build rank 24, and rejected the frozen dimension-23 automatic ledger after zero hits and five exact misses in the first five held-out rows; the stop preceded rank 28, so only this calibrated factor-scan mechanism is closed and no Core Candidate survives.
 
 ## Not yet specified
 
-- Run the frozen last-down Causal Bilinear Rank Gate without changing prompts,
-  positions, side rank, primes, decision direction, or hit semantics. A pass
-  opens only a paid pair-extractor/native-semantics Gate; a rank-28 failure
-  closes the full-factor ledger.
+- Specify a materially different nonlinear, implicit, or non-factor-scanned
+  exact Bilinear Cross Residual query representation and close its complete E0
+  equation before another model run. Do not rescue EXP-084A with a ledger or
+  population parameter sweep.
 - If a future source survives E0/E1, specify the exact E2 integration boundary,
   output contract, and held-out population from that mechanism.
 - If E2 survives, determine the next model-size and representative-hardware

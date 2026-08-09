@@ -680,3 +680,30 @@ The next Gate may address only a leakage-free causal query restriction.
 Current classification: the cheapest causal-population statistic is now
 preregistered, but no query restriction has been measured and no Core Candidate
 survives. Only the frozen last-down rank Gate may execute next.
+
+## EXP-084A authoritative causal bilinear rank validation
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Frozen implementation/config/checkpoint/prompt/trace provenance | protected `6214700...`; config/checkpoint/input SHA match | PASS |
+| Batched prompt capture is safe | attempt 01 position-0 activation/direction mismatch; zero query rows | FAIL CLOSED / QUARANTINED |
+| Sequential prompt basis excludes current decode state | single-token committed-prefix path; 9 prompt records | PASS CONTROL |
+| Prompt primal/dual side rank reaches 16 | every executed prompt | PASS |
+| Registered build population | 6 prompts x 4 positions = 24 | PASS |
+| Build outer-product rank | 24 under each of 65521/65519/65497 | MEASURED E1 |
+| Dimension-23 exact ledger construction | first 23 rationally independent rows, frozen pivots | PASS |
+| First five held-out rows hit build ledger | 0/5 exact rational hits | FAIL |
+| First five held-out fixed-ledger modular ranks | 24 under all three primes per row | MISS CERTIFICATES |
+| Held-out-only rank at registered stop | 5 under all three primes | MEASURED; NOT 28 |
+| Four-fallback allowance | fifth exact miss at row 5 | FAIL / EARLY REJECTION |
+| Control and leakage population | 114/114; target-future reads 0 | PASS |
+| Independent verifier | 0 model forwards; 24 build + 5 eval rebuilt | PASS |
+| Deterministic-core SHA-256 | `1e79550f...0a7c4` | PASS |
+| Full 36-row rank or best post-hoc B=23 rejection | stopped after fifth miss | NOT ESTABLISHED |
+| Paid pair extractor/native reconstruction | deliberately free/unsolved | NOT TESTED |
+| Physical latency, 8 GiB VRAM, 122B/405B, E2-E7 | no qualifying execution | NOT TESTED |
+
+Authoritative decision:
+`REJECT_CAUSAL_BILINEAR_FACTOR_SPAN_LEDGER_AS_CORE`. This closes the frozen
+automatic full-factor ledger, not every nonlinear or implicit exact query
+code. Current classification remains `NO_SURVIVING_CANDIDATE`.

@@ -1039,3 +1039,35 @@ DO_NOT_ASSIGN_AN_EXPERIMENT_NUMBER_OR_PROMOTE_HARDWARE
 The current pair extractor and local result source remain favorable free
 oracles, so no Core Candidate survives E0. Authority:
 `docs/research/E0_CAUSAL_BILINEAR_QUERY_RESTRICTION.md`.
+
+## D-087 -- Reject the frozen causal bilinear factor-span ledger
+
+EXP-084A executed the exact E1 Gate on the pinned unchanged Qwen3.5-0.8B
+last `down_proj`. A first batched-capture attempt failed closed with zero query
+rows and was preserved. The authoritative sequential committed-prefix run
+kept all scientific settings fixed and passed 114 controls.
+
+All 24 build queries were independent under primes `65521/65519/65497`; the
+ledger stored the first 23 exact independent rows. The first five evaluation
+queries produced zero exact rational hits and five exact misses. Each fixed-
+ledger modular rank was 24 under all primes. The fifth miss exceeded the
+registered four-row fallback allowance and stopped the run before the separate
+held-out rank could reach 28.
+
+Decision:
+
+```text
+REJECT_CAUSAL_BILINEAR_FACTOR_SPAN_LEDGER_AS_CORE
+DO_NOT_SWEEP_LEDGER_OR_POPULATION_PARAMETERS
+DO_NOT_CLAIM_EVALUATION_RANK_28
+REQUIRE_A_MATERIALLY_NONLINEAR_OR_IMPLICIT_EXACT_QUERY_CODE_AT_E0
+KEEP_NO_SURVIVING_CANDIDATE
+KEEP_HARDWARE_SCALE_AND_E2_E7_CLOSED
+```
+
+The independent verifier performed zero model forwards and rebuilt core SHA
+`1e79550fb66fe050338b2eedaf069728fd959583052dee2032fdd57f5cd0a7c4`.
+This rejects the frozen automatic full-factor ledger, not every conceivable
+post-hoc subspace or nonlinear exact data structure. Authority:
+`results/exp_084a` and
+`docs/research/EXPERIMENT_084A_CAUSAL_BILINEAR_RANK_GATE.md`.

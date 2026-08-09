@@ -1,0 +1,7 @@
+{
+  "control_failures": [],
+  "decision": "REJECT_CAUSAL_BILINEAR_FACTOR_SPAN_LEDGER_AS_CORE",
+  "deterministic_core_sha256": "1e79550fb66fe050338b2eedaf069728fd959583052dee2032fdd57f5cd0a7c4",
+  "experiment": "EXP-084A",
+  "stop_reason": "fifth_exact_miss"
+}

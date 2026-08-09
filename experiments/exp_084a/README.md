@@ -33,3 +33,20 @@ $env:PYTHONPATH = "."
   --output-dir results\exp_084a `
   --write-report
 ```
+
+## Result
+
+The authoritative sequential run passed 114 controls, built 24 independent
+queries and a dimension-23 exact ledger, then stopped after the first five
+held-out rows were all exact misses. The fifth miss exceeded the registered
+four-fallback allowance. Decision:
+
+```text
+REJECT_CAUSAL_BILINEAR_FACTOR_SPAN_LEDGER_AS_CORE
+```
+
+The held-out rank was five when the miss stop fired; rank 28 is not claimed.
+Independent verification performed zero model forwards and rebuilt core SHA
+`1e79550fb66fe050338b2eedaf069728fd959583052dee2032fdd57f5cd0a7c4`.
+See `docs/research/EXPERIMENT_084A_CAUSAL_BILINEAR_RANK_GATE.md` and
+`results/exp_084a`.

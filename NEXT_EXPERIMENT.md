@@ -1258,3 +1258,37 @@ closes this factor-scan ledger without a rank/prompt/prime sweep.
 Authority: `docs/research/E0_CAUSAL_BILINEAR_QUERY_RESTRICTION.md`. No model
 row or experiment number exists yet. The next unblocked map ticket is `Run the
 Causal Bilinear Rank Gate`.
+
+## EXP-084A rejected -- require a different exact query representation
+
+The frozen Causal Bilinear Rank Gate is complete. After a zero-row batched
+capture control failure was preserved, the sequential committed-prefix source
+freeze passed all 114 controls. The 24 build queries had rank 24 under all
+three primes, and the first 23 exact independent rows filled the ledger.
+
+The first five held-out rows were all exact rational nonmembers. Zero hits and
+five misses exceed the four-fallback allowance, so the preregistered stop
+returned:
+
+```text
+REJECT_CAUSAL_BILINEAR_FACTOR_SPAN_LEDGER_AS_CORE
+```
+
+The separate held-out rank process reached only five because the miss stop
+fired first. Do not report rank 28, retune the basis, select another build
+subset, or sweep rank, side rank, primes, prompts, positions, or decision
+directions. Those would be post-result rescue attempts, and rank 24 is already
+outside the registered factor-scan traffic window.
+
+There is no next model or hardware experiment. The next admissible ticket must
+first invent a materially different exact Bilinear Cross Residual query code:
+nonlinear, implicit, or otherwise not an every-token scan of stored factor
+pairs. Before E1 it must close a complete finite E0 equation for construction,
+representation, causal selection, query operations, logical/address traffic,
+hot/cold state, verification, misses, and fallback. Another linear-span ledger
+or Atlas variant is out of scope.
+
+Current classification remains `NO_SURVIVING_CANDIDATE`. No Ubuntu action,
+download, E2 integration, kernel, physical benchmark, 122B/405B, or E6/E7 is
+authorized by this result. Authority: `results/exp_084a` and
+`docs/research/EXPERIMENT_084A_CAUSAL_BILINEAR_RANK_GATE.md`.

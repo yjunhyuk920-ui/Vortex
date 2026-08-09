@@ -1170,3 +1170,63 @@ evaluation prompts x two positions, prompt-only side rank 16, exact dyadic
 outer-product ranks over primes `65521/65519/65497`, exact rational witnesses
 for every hit, and the frozen rank-28 early stop. It must begin from an empty
 result directory and distinguish control/infrastructure failure from science.
+
+## EXP-084A causal bilinear rank Gate reproduction
+
+The protected implementation is
+`6214700d6a5b83097c043b660e4c84e7f83feae0`; execution commit is
+`9fea5522a6b3dec6ac378a12195565645e19a2fe`. The pinned runtime and model from
+EXP-076 are required. Begin from an empty output directory:
+
+```powershell
+$env:PYTHONPATH = "."
+.deps\exp076-venv\Scripts\python.exe `
+  experiments\exp_084a\run_experiment.py `
+  --model-dir .deps\exp076-model `
+  --output-dir results\exp_084a
+```
+
+The sequential CPU reference run is intentionally expensive; its observed
+wall time was `6,395,350,600,200 ns`. A wrapper timeout is not a scientific
+stop if the child process remains alive. A valid bundle ends with
+`summary.json`, `result.json`, and `checksums.sha256`.
+
+Independently replay exact algebra with no model forward:
+
+```powershell
+$env:PYTHONPATH = "."
+.deps\exp076-venv\Scripts\python.exe `
+  experiments\exp_084a\verify_results.py `
+  --model-dir .deps\exp076-model `
+  --output-dir results\exp_084a `
+  --write-report
+```
+
+Expected authoritative invariants:
+
+```text
+decision                       REJECT_CAUSAL_BILINEAR_FACTOR_SPAN_LEDGER_AS_CORE
+controls                       114/114
+build/evaluation rows          24/5
+build ranks                    24/24/24
+ledger dimension               23
+exact hits/misses              0/5
+evaluation ranks               5/5/5
+stop                           fifth_exact_miss
+future-token reads             0
+deterministic core             1e79550fb66fe050338b2eedaf069728fd959583052dee2032fdd57f5cd0a7c4
+```
+
+Observed pre-execution validation was `13` focused tests, `499` full tests,
+and successful standard validation. Authority:
+
+```text
+docs/research/EXPERIMENT_084A_CAUSAL_BILINEAR_RANK_GATE.md
+results/exp_084a/summary.json
+results/exp_084a/verification.json
+results/exp_084a/checksums.sha256
+```
+
+The separately preserved
+`results/exp_084a_attempt_01_control_failure` must remain an invalid zero-query
+control artifact and must not be combined with the authoritative population.

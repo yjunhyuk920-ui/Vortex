@@ -1200,3 +1200,38 @@ No model row, experiment number, server command, download, kernel, or hardware
 action occurred. Authority:
 `docs/research/E0_CAUSAL_BILINEAR_QUERY_RESTRICTION.md` and
 `results/e0_causal_bilinear_query_restriction`.
+
+## EXP-084A -- causal bilinear factor-span ledger rejected
+
+EXP-084A executed the frozen last-`down_proj` Gate on the unchanged pinned
+Qwen3.5-0.8B checkpoint. The first batched-capture attempt correctly failed
+closed before any scientific query row because one prompt position did not
+bit-match its causal-prefix replay. Its zero-row artifact is preserved. A new
+source freeze used only sequential single-token committed-prefix states and
+changed no scientific threshold.
+
+The authoritative run passed all `114/114` controls. All 24 build queries were
+independent modulo each registered prime, and the automatic ledger retained
+the first 23 exact-rationally independent rows. The first five held-out rows
+then produced zero exact hits and five exact misses. Every row raised the
+fixed-ledger modular rank from 23 to 24 under all three primes; the fifth miss
+exceeded the four-fallback allowance and triggered the frozen stop.
+
+Independent verification used zero model forwards and rebuilt deterministic
+core `1e79550fb66fe050338b2eedaf069728fd959583052dee2032fdd57f5cd0a7c4`.
+
+Decision:
+
+```text
+REJECT_CAUSAL_BILINEAR_FACTOR_SPAN_LEDGER_AS_CORE
+DO_NOT_SWEEP_RANK_SIDE_RANK_PRIMES_PROMPTS_OR_POSITIONS
+DO_NOT_CLAIM_FULL_HELDOUT_RANK_28; EXECUTION STOPPED AT FIVE MISSES
+KEEP_NONLINEAR_OR_IMPLICIT_EXACT_QUERY_CODES_LOGICALLY_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+This closes the frozen full-factor scanned calibration ledger, not every
+possible nonlinear or post-hoc subspace. No pair-extractor, native numerical
+semantics, E2 integration, hardware stage, scale claim, or Fixed-Mission
+progress is promoted. Authority: `results/exp_084a` and
+`docs/research/EXPERIMENT_084A_CAUSAL_BILINEAR_RANK_GATE.md`.

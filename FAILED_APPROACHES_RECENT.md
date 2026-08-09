@@ -392,3 +392,27 @@ queries. Reopening the global interface requires a full constructor/query
 equation; the next permitted proof path is a leakage-free causal-query
 restriction certificate. Authority:
 `docs/research/E0_CROSS_MATRIX_ADVICE_LOCALITY.md`.
+
+## F-057 -- Calibration-built full-factor Causal Bilinear Span Ledger
+
+EXP-084A built a dimension-23 ledger from the first exact-rationally
+independent residual outer products in the frozen six-prompt/four-position
+build order. All 24 build rows were independent modulo each registered prime.
+On the untouched population, the first five rows were all exact nonmembers;
+each also raised the fixed-ledger field rank from 23 to 24. Zero hits and five
+misses exceeded the four-fallback traffic allowance. All 114 controls and the
+zero-forward independent verifier passed.
+
+Do not reopen with another build subset, post-hoc basis, dimension, side rank,
+prime, prompt, position, decision direction, tolerance, or modular-only hit.
+Dimension 24 already fails the registered traffic equation, and changing the
+population after observing five misses is not evidence.
+
+The run stopped at held-out rank five, so this entry does not prove that the
+best post-hoc 23-dimensional subspace misses five rows or that the complete
+36-row population has rank 28. It also does not reject nonlinear, implicit, or
+non-factor-scanned exact query data structures. Reopening the Bilinear Cross
+Residual frontier requires a materially different construction with a fully
+charged E0 equation, not a linear-ledger parameter sweep. Authority:
+`results/exp_084a` and
+`docs/research/EXPERIMENT_084A_CAUSAL_BILINEAR_RANK_GATE.md`.

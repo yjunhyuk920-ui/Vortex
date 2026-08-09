@@ -1,0 +1,29 @@
+{"row_id": "build_english_01_p1", "ledger_dimension": 1}
+{"row_id": "build_english_01_p2", "ledger_dimension": 2}
+{"row_id": "build_english_01_p3", "ledger_dimension": 3}
+{"row_id": "build_english_01_p4", "ledger_dimension": 4}
+{"row_id": "build_korean_01_p1", "ledger_dimension": 5}
+{"row_id": "build_korean_01_p2", "ledger_dimension": 6}
+{"row_id": "build_korean_01_p3", "ledger_dimension": 7}
+{"row_id": "build_korean_01_p4", "ledger_dimension": 8}
+{"row_id": "build_code_01_p1", "ledger_dimension": 9}
+{"row_id": "build_code_01_p2", "ledger_dimension": 10}
+{"row_id": "build_code_01_p3", "ledger_dimension": 11}
+{"row_id": "build_code_01_p4", "ledger_dimension": 12}
+{"row_id": "build_json_01_p1", "ledger_dimension": 13}
+{"row_id": "build_json_01_p2", "ledger_dimension": 14}
+{"row_id": "build_json_01_p3", "ledger_dimension": 15}
+{"row_id": "build_json_01_p4", "ledger_dimension": 16}
+{"row_id": "build_math_01_p1", "ledger_dimension": 17}
+{"row_id": "build_math_01_p2", "ledger_dimension": 18}
+{"row_id": "build_math_01_p3", "ledger_dimension": 19}
+{"row_id": "build_math_01_p4", "ledger_dimension": 20}
+{"row_id": "build_adversarial_01_p1", "ledger_dimension": 21}
+{"row_id": "build_adversarial_01_p2", "ledger_dimension": 22}
+{"row_id": "build_adversarial_01_p3", "ledger_dimension": 23}
+{"row_id": "build_adversarial_01_p4", "ledger_dimension": 23}
+{"row_id": "eval_english_01_p1", "exact_hit": false, "misses": 1, "oracle_rank": 1}
+{"row_id": "eval_english_01_p2", "exact_hit": false, "misses": 2, "oracle_rank": 2}
+{"row_id": "eval_english_02_p1", "exact_hit": false, "misses": 3, "oracle_rank": 3}
+{"row_id": "eval_english_02_p2", "exact_hit": false, "misses": 4, "oracle_rank": 4}
+{"row_id": "eval_english_03_p1", "exact_hit": false, "misses": 5, "oracle_rank": 5}

@@ -88,6 +88,8 @@ linear-combination witness and independent certification, otherwise it falls
 back.
 _Avoid_: Activation replay, post-hoc low rank, modular nonincrease called an
 exact hit
+_Current status_: The frozen dimension-23 full-factor implementation was
+rejected by EXP-084A after five exact misses in its first five held-out rows.
 
 **Matrix-Local Separable Residual Code**:
 A Bilinear Cross Residual source that independently covers each matrix's left
