@@ -20,6 +20,12 @@ observing a checkpoint result.
 
 ## Frozen implementation boundary
 
+The executable implementation is pinned at commit
+`ecf753d7352bcca47767d0fe91c46d84cca66b59`; the final config SHA-256 is
+`2c8bdf12535e18327f0a4116e8f9dc4b918f900208d405972cfa421764bdd5c1`.
+The canonical runner records the exact enclosing source-freeze `HEAD` in its
+environment artifact. No prompt forward occurred before this pin.
+
 The runner first compiles a static outward Gram certificate for layer-23
 `down_proj`. For each prompt it then:
 

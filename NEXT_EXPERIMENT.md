@@ -1094,3 +1094,7 @@ exists at this point. After the exact source commit is pinned, the next action
 is the single canonical run followed by independent verification. The first
 valid unresolved row must stop and reject the primary Atlas path; it may not
 change the proof, page, rank, prompt, or threshold.
+
+Executable source is pinned at
+`ecf753d7352bcca47767d0fe91c46d84cca66b59`; the frozen config SHA-256 is
+`2c8bdf12535e18327f0a4116e8f9dc4b918f900208d405972cfa421764bdd5c1`.

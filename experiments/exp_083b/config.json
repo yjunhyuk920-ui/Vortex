@@ -1,6 +1,12 @@
 {
   "experiment": "EXP-083B",
   "name": "qwen35_08b_legal_pair_outward_last_down_gate",
+  "source_freeze": {
+    "implementation_commit": "ecf753d7352bcca47767d0fe91c46d84cca66b59",
+    "focused_tests": 17,
+    "full_repository_tests": 453,
+    "prompt_forward_calls_before_freeze": 0
+  },
   "preregistration": {
     "authority": "docs/research/CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_GATE.md",
     "authority_sha256": "4cdd19b04b9232e1d2201b93ab1eb05f7f9eba071495713f35a9be588cadb930",

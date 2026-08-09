@@ -903,6 +903,15 @@ must rebuild the selector, radii, aggregate decision, and deterministic core.
 
 ## EXP-083B pre-execution source and canonical commands
 
+Implementation commit:
+`ecf753d7352bcca47767d0fe91c46d84cca66b59`.
+
+Frozen config SHA-256:
+`2c8bdf12535e18327f0a4116e8f9dc4b918f900208d405972cfa421764bdd5c1`.
+
+The canonical bundle records the subsequent documentation/config freeze HEAD;
+the executable code is unchanged from the implementation commit above.
+
 Implementation paths:
 
 ```text

@@ -10,6 +10,10 @@ the current residual without a weight/output/logit argument, and must certify
 the final native greedy token with outward bounds. The first valid unresolved
 row executes dense completion and rejects the frozen path.
 
+Implementation commit:
+`ecf753d7352bcca47767d0fe91c46d84cca66b59`. Frozen config SHA-256:
+`2c8bdf12535e18327f0a4116e8f9dc4b918f900208d405972cfa421764bdd5c1`.
+
 Canonical one-shot Windows command, only after the source commit exists:
 
 ```powershell
