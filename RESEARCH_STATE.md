@@ -857,3 +857,45 @@ Authority: `docs/research/CAUSAL_RESIDUAL_ATLAS_CHEAPEST_GATE.md`. Seven pure
 contract/oracle tests pass. The next map ticket may execute only this frozen
 Gate with the already present payload. No Surviving Candidate, E2 operation
 replacement, hardware action, or E3-E7 evidence exists.
+
+## EXP-083A -- favorable real-weight Atlas Gate passed and reproduced
+
+The frozen first-decode Gate executed on the unchanged pinned
+Qwen3.5-0.8B payload from source commit
+`1c7dd78097beaa7bc159a8f3459451b876a1338e`. The primary and separate
+reproduction runs both returned:
+
+```text
+PROMOTE_CAUSAL_RESIDUAL_ATLAS_TO_CAUSAL_PAIR_AND_BOUND_GATE
+```
+
+MEASURED: all 18 token states, all six families at 3/3, and all 36 layer-11
+`q_proj`/`down_proj` branches preserved native top-1. The selected mean/p95 KL
+was `0.007225545020063708/0.037660752986209814` against limits `0.02/0.05`.
+All 1,296 page candidates ran; 234 controls passed; control, leakage,
+malformed-state, and baseline-trace failures were zero. Independent verification
+recomputed both bundles and the identical deterministic-core SHA-256
+`ab96e6114f44a1c02a01d080848c4ec643a747b63ebfee30c77fda45f3954845`.
+
+DERIVED FROM MEASURED ROWS: 1,234/1,296 (`95.216049%`) individual page
+candidates preserved top-1, and every branch had at least two preserving pages.
+The q/down branch minima were 8/2. This is the first positive real-weight
+necessary-condition result for the Causal Residual Atlas source; it resolves
+the question of favorable one-page existence on the registered population.
+
+It does not resolve causal selection. A post-hoc minimum-certified-radius rule
+managed only 34/36 branches and 16/18 tokens, with p95 KL `0.075846638542797`.
+Even the tightest current selected radius was `19.852750x` the exact unread
+error. This audit is exploratory and cannot alter the preregistered pass.
+
+The pass remains an E1 favorable-oracle ceiling. The center uses the native
+dense current output, the selector enumerates every page with exact-reference
+logits, only one projection is patched at a time, and all remaining work is
+dense. Legal pair-built `Z=WQ`, a target-free selector, outward numerical
+certification, simultaneous composition, dense-operation replacement,
+physical speed/VRAM, 122B/405B, and E2-E7 remain unverified. The next map ticket
+may preregister only the legal causal-pair and bound Gate; no Ubuntu or hardware
+action is authorized.
+
+Authority: `docs/research/EXPERIMENT_083A_CAUSAL_RESIDUAL_ATLAS_GATE.md`,
+`results/exp_083a`, and `results/exp_083a_reproduction`.

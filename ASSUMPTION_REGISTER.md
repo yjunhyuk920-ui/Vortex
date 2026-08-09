@@ -559,10 +559,39 @@ frozen Gate grants the exact current dense image as an illegal center and
 enumerates every page, so selector discovery and pair-construction error are
 free.
 
-Status: ACTIVE AND UNVERIFIED; PREREGISTERED FOR THE CHEAPEST REAL-WEIGHT GATE.
+Status: SUPPORTED AT E1 UNDER THE FROZEN FAVORABLE ORACLE ON THE FINITE
+PINNED SMALL-MODEL POPULATION.
 The finite 18-prompt population permits zero token failure at the derived
 `99.899840530%` frontier, requires 3/3 success in each family and 36/36 branch
 top-1 agreement, and retains mean/p95 KL `<=0.02/0.05`. Failure rejects the
 registered rank-16/page-64 per-projection path before a bound propagator.
 Passing does not establish a causal selector, legal `Z` construction, sound
 end-to-end certificate, simultaneous composition, scale, or physical speed.
+
+### A-061 closure
+
+EXP-083A passed 18/18 token states, all six families at 3/3, and 36/36 required
+projection branches. Mean/p95 KL was
+`0.007225545020063708/0.037660752986209814`, controls were clean, and a separate
+model replay reproduced the same deterministic core. The assumption as written
+-- existence of at least one favorable page per registered branch -- is
+supported for this population.
+
+The support does not transfer to an executable selector because the Gate used
+native-anchored centers and exact-reference enumeration. A post-hoc
+minimum-radius selector failed two tokens. It also does not validate legal
+pair-built centers, native outward bounds, multiple layers/positions, or scale.
+
+## A-062 -- A legal causal-pair center and target-free bound retain Gate coverage
+
+Exact committed-prefix pairs are assumed to construct a numerically valid
+`Z=WQ` without scanning `W`, and current-input plus static checkpoint metadata
+are assumed to choose and certify the required cold page without native current
+outputs or candidate logits. The fully charged hit/fallback equation must still
+meet the registered coverage frontier.
+
+Status: OPEN AND UNSUPPORTED. EXP-083A proves favorable page existence only.
+The obvious minimum-certified-radius rule reaches 16/18 tokens and p95 KL
+`0.075846638542797`, while current radii are at least `19.852750x` the exact
+selected unread error. The next experiment may test this assumption only under
+a separately frozen, leakage-safe causal-pair and outward-bound contract.

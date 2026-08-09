@@ -1,0 +1,198 @@
+{
+  "DERIVED": {
+    "family_counts": {
+      "adversarial_low_acceptance": 3,
+      "code": 3,
+      "english": 3,
+      "korean": 3,
+      "math": 3,
+      "structured_json": 3
+    },
+    "frozen_gate": {
+      "evaluation_prompts": 18,
+      "layer_indices": [
+        11
+      ],
+      "maximum_mean_kl": "0.02",
+      "maximum_p95_kl": "0.05",
+      "maximum_token_failures": 0,
+      "minimum_coverage": "0.99899840530321516646293814617434775131038415234505",
+      "one_token_failure_coverage": "0.94444444444444444444444444444444444444444444444444",
+      "oracle_page_candidates": 1296,
+      "page_columns": 64,
+      "pages_per_projection": [
+        [
+          "q_proj",
+          16
+        ],
+        [
+          "down_proj",
+          56
+        ]
+      ],
+      "positions_per_prompt": 1,
+      "projection_branches": 36,
+      "projection_input_widths": [
+        [
+          "q_proj",
+          1024
+        ],
+        [
+          "down_proj",
+          3584
+        ]
+      ],
+      "prompts_per_family": 3,
+      "rank": 16,
+      "requested_cold_fraction": "0.002",
+      "required_families": 6,
+      "required_family_successes": 3,
+      "required_token_successes": 18,
+      "service_tokens": 64,
+      "teacher_position_index": 1,
+      "token_states": 18
+    },
+    "gate": {
+      "branch_successes": 36,
+      "control_failures": [],
+      "decision": "PROMOTE_CAUSAL_RESIDUAL_ATLAS_TO_CAUSAL_PAIR_AND_BOUND_GATE",
+      "evaluated_projection_branches": 36,
+      "evaluated_token_states": 18,
+      "execution_complete": true,
+      "family_successes": {
+        "adversarial_low_acceptance": 3,
+        "code": 3,
+        "english": 3,
+        "korean": 3,
+        "math": 3,
+        "structured_json": 3
+      },
+      "gates": {
+        "all_branches_preserve_top1": true,
+        "all_families_succeed": true,
+        "all_tokens_succeed": true,
+        "complete_branch_population": true,
+        "complete_token_population": true,
+        "mean_kl_within_limit": true,
+        "p95_kl_within_limit": true,
+        "zero_control_failures": true,
+        "zero_leakage_failures": true,
+        "zero_malformed_states": true
+      },
+      "leakage_failures": [],
+      "malformed_state_count": 0,
+      "observed_scientific_failure": false,
+      "selected_mean_kl": 0.007225545020063708,
+      "selected_p95_kl": 0.037660752986209814,
+      "token_successes": 18
+    },
+    "input_join_audit": {
+      "build_count": 6,
+      "evaluation_count": 18,
+      "families": [
+        "adversarial_low_acceptance",
+        "code",
+        "english",
+        "korean",
+        "math",
+        "structured_json"
+      ],
+      "joined_core_sha256": "9a7f1a9f38ee4c86b2a8a63427e1ca3ac3f9f73b6f708096e99fec734d1a0da7",
+      "prompt_count": 24
+    },
+    "parameter_audit": {
+      "layer_11_type": "full_attention",
+      "num_hidden_layers": 24,
+      "projection_shapes": {
+        "down_proj": [
+          1024,
+          3584
+        ],
+        "q_proj": [
+          4096,
+          1024
+        ]
+      },
+      "target_text_parameters": 752393024,
+      "tied_lm_head_parameters": 254279680
+    }
+  },
+  "MEASURED": {
+    "baseline_trace_mismatches": 0,
+    "control_failures": 0,
+    "control_rows": 234,
+    "cpu_ns": 2330078125000,
+    "deterministic_core_sha256": "ab96e6114f44a1c02a01d080848c4ec643a747b63ebfee30c77fda45f3954845",
+    "evaluated_projection_branches": 36,
+    "evaluated_token_states": 18,
+    "full_model_forward_calls": 36,
+    "full_model_token_positions": 640,
+    "leakage_failures": 0,
+    "logical_batch_row_layer_evaluations": 18000,
+    "malformed_state_count": 0,
+    "oracle_page_candidates_evaluated": 1296,
+    "partial_model_forward_calls": 36,
+    "peak_rss_bytes": null,
+    "physical_decoder_layer_calls": 1710,
+    "suffix_forward_calls": 36,
+    "wall_ns": 1290714917500
+  },
+  "REGISTERED_EXTERNAL_INPUTS": {
+    "checkpoint_model_id": "Qwen/Qwen3.5-0.8B",
+    "checkpoint_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "layer_indices": [
+      11
+    ],
+    "page_columns": 64,
+    "preregistration_authority_sha256": "8241f46ec5e24f6a484b32327c7d9fb2c841828f908193d37e25ac06d17b8837",
+    "projection_order": [
+      "q_proj",
+      "down_proj"
+    ],
+    "prompts_sha256": "46c9779c24e59f356247145f7ef870a1b82ba4907eb9dffcd48652e519f7612a",
+    "rank": 16,
+    "target_trace_sha256": "1e921698ce8ee522c0d3cb9b8b9004139beb54cc2dee82e1a2aa0a08fa245e4f",
+    "teacher_position_index": 1,
+    "weight_sha256": "04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696"
+  },
+  "UNVERIFIED": [
+    "causal page selector without exact-reference logits",
+    "legal WQ image constructed only from committed prefix pairs",
+    "outward-rounded native numerical certificate",
+    "simultaneous multi-projection and multi-layer composition",
+    "actual fail-closed dense-operation replacement at E2",
+    "physical SSD PCIe GPU traffic latency and peak VRAM",
+    "medium large 122B and dense 405B scaling",
+    "E2 through E7"
+  ],
+  "authoritative_decision": "PROMOTE_CAUSAL_RESIDUAL_ATLAS_TO_CAUSAL_PAIR_AND_BOUND_GATE",
+  "claim_boundary": {
+    "center": "NON_DEPLOYABLE_NATIVE_ANCHORED_EXACT_REFERENCE",
+    "checkpoint": "UNCHANGED_PINNED_OFFICIAL_BF16_PAYLOAD",
+    "future_tokens": "NONE_USED_TO_BUILD_BASIS_OR_CANDIDATE",
+    "operation_replacement": "ONE_PROJECTION_PATCHED_AT_A_TIME_WITH_ALL_OTHER_WORK_DENSE",
+    "physical_speed": "NOT_MEASURED",
+    "selector": "NON_DEPLOYABLE_EXHAUSTIVE_PAGE_ORACLE",
+    "target_server": "NO_COMMAND_EXECUTED"
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-083A",
+  "name": "qwen35_08b_causal_residual_atlas_first_decode_gate",
+  "phase": [
+    "C-small-real-checkpoint-favorable-oracle-falsification"
+  ],
+  "provenance": {
+    "config_sha256": "d19a504635456b301cb466059bcff682516c057343f5b89eaa52b92266e0f23b",
+    "huggingface_hub": "1.26.1",
+    "numpy": "2.1.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.13",
+    "requirements_lock_sha256": "a9156afe4fb0f02276eb4446a757d262e0e08c60a1649bb6042b42a637c711c0",
+    "safetensors": "0.8.0",
+    "source_commit": "1c7dd78097beaa7bc159a8f3459451b876a1338e",
+    "tokenizers": "0.22.2",
+    "torch": "2.6.0+cpu",
+    "torch_num_threads": 8,
+    "transformers": "5.12.0"
+  }
+}

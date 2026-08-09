@@ -29,11 +29,14 @@ Mission.
 - [Query-adaptive cold-backed equation](issues/02-derive-cold-backed-circuit-equation.md): any source needs at least `98.814815%` exact coverage and `84.375x` useful information amplification in the zero-cost limit; raw page omission is not a source, so search only causal coded information.
 - [Causal Residual Atlas source](issues/03-find-causal-circuit-information-source.md): committed-prefix exact input/image pairs supply `Q` and `WQ`; a fully retained residual creates a narrow rank-16 logical window but needs `99.899841%` certified coverage, so only its cheapest real-weight Gate is now open.
 - [Preregister the Cheapest Surviving Gate](issues/04-preregister-cheapest-surviving-gate.md): the frozen first post-prefill layer-11 q/down oracle enumerates 1,296 one-page candidates over 18 prompts and permits zero token failure before the legal bound stage.
+- [Run the Causal Residual Atlas First-Decode Gate](issues/06-run-causal-residual-atlas-first-decode-gate.md): EXP-083A passed and reproduced 18/18 tokens, 36/36 branches, and mean/p95 KL 0.007226/0.037661 under the favorable oracle; page existence survives, but legal pair construction, target-free selection, and outward certification remain the next blocker.
 
 ## Not yet specified
 
-- If a candidate survives E1, specify the exact E2 integration boundary,
-  output contract, and held-out population from the observed mechanism.
+- Preregister the legal causal-pair, target-free selector, and outward-bound
+  Gate without tuning on the now-observed EXP-083A evaluation logits.
+- If that Gate survives, specify the exact E2 integration boundary, output
+  contract, and held-out population from the observed mechanism.
 - If E2 survives, determine the next model-size and representative-hardware
   rung without promoting small-model evidence to E7.
 - Determine when separately authorized target-server calibration materially

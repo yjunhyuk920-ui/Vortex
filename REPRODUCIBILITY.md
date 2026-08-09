@@ -821,3 +821,44 @@ per-page or at least selected-plus-failure rows, per-branch/token/family
 aggregates, controls, environment, logs, and checksums. It must distinguish a
 scientific Gate failure from missing payload, timeout, memory, or dependency
 failure.
+
+## EXP-083A authoritative execution and replay
+
+Source commit:
+`1c7dd78097beaa7bc159a8f3459451b876a1338e`.
+
+```powershell
+$env:PYTHONPATH = "."
+.deps\exp076-venv\Scripts\python.exe `
+  experiments\exp_083a\run_experiment.py `
+  --model-dir .deps\exp076-model `
+  --output-dir results\exp_083a
+
+.deps\exp076-venv\Scripts\python.exe `
+  experiments\exp_083a\verify_results.py `
+  --output-dir results\exp_083a `
+  --write-report
+```
+
+The complete primary run returns
+`PROMOTE_CAUSAL_RESIDUAL_ATLAS_TO_CAUSAL_PAIR_AND_BOUND_GATE`, 18/18 token
+successes, 36/36 branch successes, mean/p95 KL
+`0.007225545020063708/0.037660752986209814`, and deterministic-core SHA-256
+`ab96e6114f44a1c02a01d080848c4ec643a747b63ebfee30c77fda45f3954845`.
+
+The model run was repeated from the same source and registered inputs into an
+empty `results/exp_083a_reproduction` directory, then independently verified.
+Its decision, every deterministic scientific row, and core SHA-256 are
+identical. Timing and external process-memory telemetry are intentionally
+outside the deterministic core.
+
+The original run source returned a null Windows internal RSS value because its
+ctypes function signatures were implicit. `peak_rss_bytes()` now uses explicit
+64-bit `K32GetProcessMemoryInfo` signatures; stored external OS high-water
+telemetry preserves the observed primary/reproduction CPU working sets. This
+instrumentation repair does not alter either scientific core.
+
+The post-hoc selector audit in
+`results/exp_083a/processed/exploratory_selector_audit.json` is explicitly not
+part of the frozen Gate. It derives page availability and the failed
+minimum-radius selector from committed rows only.

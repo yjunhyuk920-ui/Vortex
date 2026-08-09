@@ -30,6 +30,13 @@ Independent evidence replay:
   --write-report
 ```
 
-Until a result bundle is committed, status is `SOURCE IMPLEMENTED; NO MODEL
-RESULT`. A pass is only permission to test a legal committed-pair center and
-outward-rounded bound. It is not E2 or evidence for 405B performance.
+The authoritative primary and reproduction bundles both return
+`PROMOTE_CAUSAL_RESIDUAL_ATLAS_TO_CAUSAL_PAIR_AND_BOUND_GATE`. They preserve
+18/18 token states and 36/36 branches with mean/p95 KL
+`0.007225545020063708/0.037660752986209814`; both independently rebuild the
+same deterministic-core SHA-256
+`ab96e6114f44a1c02a01d080848c4ec643a747b63ebfee30c77fda45f3954845`.
+
+This pass is only permission to test a legal committed-pair center and
+outward-rounded bound. It is not a target-free selector, E2 dense-operation
+replacement, physical speed evidence, or evidence for 405B performance.

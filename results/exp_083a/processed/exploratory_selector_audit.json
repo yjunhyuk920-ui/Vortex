@@ -1,0 +1,62 @@
+{
+  "classification": "EXPLORATORY_POSTHOC_NOT_PREREGISTERED_NOT_AUTHORITATIVE",
+  "experiment": "EXP-083A",
+  "source": "raw/page_rows.jsonl",
+  "oracle_page_population": {
+    "pages": 1296,
+    "top1_preserving_pages": 1234,
+    "top1_preserving_fraction": 0.9521604938271605,
+    "minimum_preserving_pages_in_any_branch": 2,
+    "median_preserving_pages_per_branch": 16,
+    "maximum_preserving_pages_in_any_branch": 56,
+    "q_proj_minimum_preserving_pages": 8,
+    "down_proj_minimum_preserving_pages": 2
+  },
+  "authoritative_oracle_selection_reference": {
+    "branch_successes": 36,
+    "branches": 36,
+    "token_successes": 18,
+    "tokens": 18,
+    "selected_mean_kl": 0.007225545020063708,
+    "selected_p95_kl": 0.037660752986209814,
+    "selected_maximum_kl": 0.04627240447488557
+  },
+  "posthoc_target_free_rule": {
+    "rule": "choose minimum certified_unread_radius, breaking ties by lowest page_index",
+    "branch_successes": 34,
+    "branches": 36,
+    "token_successes": 16,
+    "tokens": 18,
+    "selected_mean_kl": 0.015676047296277956,
+    "selected_p95_kl": 0.075846638542797,
+    "selected_maximum_kl": 0.1501670911316208,
+    "gate_verdict": "FAIL_EXPLORATORY_ONLY",
+    "failed_branches": [
+      {
+        "prompt_id": "eval_english_03",
+        "family": "english",
+        "projection": "down_proj",
+        "page_index": 15,
+        "candidate_top1": 513,
+        "target_top1": 369,
+        "target_to_candidate_kl": 0.1501670911316208,
+        "certified_unread_radius": 43.93202320853669
+      },
+      {
+        "prompt_id": "eval_korean_01",
+        "family": "korean",
+        "projection": "q_proj",
+        "page_index": 0,
+        "candidate_top1": 155208,
+        "target_top1": 70593,
+        "target_to_candidate_kl": 0.049133655418912715,
+        "certified_unread_radius": 605.6765818026088
+      }
+    ]
+  },
+  "bound_slack_observation": {
+    "maximum_exact_error_to_certified_radius_ratio_across_oracle_selected_branches": 0.05037085452606585,
+    "minimum_certified_radius_to_exact_error_factor_across_oracle_selected_branches": 19.852750353530755
+  },
+  "interpretation": "A favorable page exists throughout the frozen population, but the obvious legal minimum-radius selector misses two tokens and the current bound is at least about 19.85x looser than the exact selected unread error. This audit cannot change the preregistered Gate decision and may only shape a separately frozen legal pair-and-bound Gate."
+}

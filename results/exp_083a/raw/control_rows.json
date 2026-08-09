@@ -1,0 +1,2090 @@
+[
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "english",
+    "pass": true,
+    "prefix_token_sha256": "f01b5a928df088d196033d233ec99f16cb983a147f4b900f1aa3e935f85ad7db",
+    "prompt_id": "eval_english_01",
+    "prompt_length": 30
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 32,
+    "family": "english",
+    "logits_sha256": "5b6e8150e85d410983f71ecb52836ff12e99dff49cfe4e540f7eb9031ea48c3f",
+    "observed_top1": 32,
+    "pass": true,
+    "prompt_id": "eval_english_01"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 43447,
+    "family": "english",
+    "logits_sha256": "e656d2c0b76d6a8c79a61c5cafd69e1c2ee97ae09873ad0e6bef36c0e6be21d7",
+    "observed_top1": 43447,
+    "pass": true,
+    "prompt_id": "eval_english_01"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_01"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_01"
+  },
+  {
+    "candidate_logits_sha256": "b0ed91218aee1f251202533bb2e988d06d8a0a010674125fd7b8a86ab8b865c4",
+    "candidate_top1": 43447,
+    "control": "dense_patch_top1_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_01",
+    "target_to_candidate_kl": 5.8818870079834e-05,
+    "target_top1": 43447
+  },
+  {
+    "candidate_logits_sha256": "b0ed91218aee1f251202533bb2e988d06d8a0a010674125fd7b8a86ab8b865c4",
+    "candidate_top1": 43447,
+    "control": "all_page_top1_identity",
+    "family": "english",
+    "float64_output_max_abs_difference": 1.7763568394002505e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_01",
+    "target_to_candidate_kl": 5.8818870079834e-05,
+    "target_top1": 43447
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_01"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_01"
+  },
+  {
+    "candidate_logits_sha256": "b0ed91218aee1f251202533bb2e988d06d8a0a010674125fd7b8a86ab8b865c4",
+    "candidate_top1": 43447,
+    "control": "dense_patch_top1_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_01",
+    "target_to_candidate_kl": 5.8818870079834e-05,
+    "target_top1": 43447
+  },
+  {
+    "candidate_logits_sha256": "b0ed91218aee1f251202533bb2e988d06d8a0a010674125fd7b8a86ab8b865c4",
+    "candidate_top1": 43447,
+    "control": "all_page_top1_identity",
+    "family": "english",
+    "float64_output_max_abs_difference": 1.1102230246251565e-16,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_01",
+    "target_to_candidate_kl": 5.8818870079834e-05,
+    "target_top1": 43447
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "english",
+    "pass": true,
+    "prefix_token_sha256": "9c70b284427a9fbe2a79c678a05c8d26011b5d36d885cf29902813b0eb419849",
+    "prompt_id": "eval_english_02",
+    "prompt_length": 29
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 12646,
+    "family": "english",
+    "logits_sha256": "1c7ab7cdb94a4f11e7746ff28991974ef514e7bdec99b089840f58f4a3bc7cb5",
+    "observed_top1": 12646,
+    "pass": true,
+    "prompt_id": "eval_english_02"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 25,
+    "family": "english",
+    "logits_sha256": "0b1f2a74f3949bd450410300cbf75e54c377af373a5035b88352fd78fc8a6186",
+    "observed_top1": 25,
+    "pass": true,
+    "prompt_id": "eval_english_02"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_02"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_02"
+  },
+  {
+    "candidate_logits_sha256": "0fa9a871743daf111aed6dc6fa9296d4a111f4c83f15d5faa286c7a0953c4998",
+    "candidate_top1": 25,
+    "control": "dense_patch_top1_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_02",
+    "target_to_candidate_kl": 4.1340976950222926e-08,
+    "target_top1": 25
+  },
+  {
+    "candidate_logits_sha256": "0fa9a871743daf111aed6dc6fa9296d4a111f4c83f15d5faa286c7a0953c4998",
+    "candidate_top1": 25,
+    "control": "all_page_top1_identity",
+    "family": "english",
+    "float64_output_max_abs_difference": 1.7763568394002505e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_02",
+    "target_to_candidate_kl": 4.1340976950222926e-08,
+    "target_top1": 25
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_02"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_02"
+  },
+  {
+    "candidate_logits_sha256": "0fa9a871743daf111aed6dc6fa9296d4a111f4c83f15d5faa286c7a0953c4998",
+    "candidate_top1": 25,
+    "control": "dense_patch_top1_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_02",
+    "target_to_candidate_kl": 4.1340976950222926e-08,
+    "target_top1": 25
+  },
+  {
+    "candidate_logits_sha256": "0fa9a871743daf111aed6dc6fa9296d4a111f4c83f15d5faa286c7a0953c4998",
+    "candidate_top1": 25,
+    "control": "all_page_top1_identity",
+    "family": "english",
+    "float64_output_max_abs_difference": 9.020562075079397e-17,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_02",
+    "target_to_candidate_kl": 4.1340976950222926e-08,
+    "target_top1": 25
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "english",
+    "pass": true,
+    "prefix_token_sha256": "a43ac14b2ade0540fa4297461fcb914d33c1ddd345db4331291fb938f7305a88",
+    "prompt_id": "eval_english_03",
+    "prompt_length": 25
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 8160,
+    "family": "english",
+    "logits_sha256": "a7d455cc48aad82827d2a1a7583df13fff3c8dfca909e9a073895ada7db98e1f",
+    "observed_top1": 8160,
+    "pass": true,
+    "prompt_id": "eval_english_03"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 369,
+    "family": "english",
+    "logits_sha256": "ef4044d62f37b4240037e0787dc2116cff0c96e92b71926c4dd1c7c6a897c58b",
+    "observed_top1": 369,
+    "pass": true,
+    "prompt_id": "eval_english_03"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_03"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_03"
+  },
+  {
+    "candidate_logits_sha256": "46292223ad6d6951fd3ec383b3a614ab079143e9c3fb851abbf5abc387ac9f53",
+    "candidate_top1": 369,
+    "control": "dense_patch_top1_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_03",
+    "target_to_candidate_kl": 7.75955252479077e-05,
+    "target_top1": 369
+  },
+  {
+    "candidate_logits_sha256": "46292223ad6d6951fd3ec383b3a614ab079143e9c3fb851abbf5abc387ac9f53",
+    "candidate_top1": 369,
+    "control": "all_page_top1_identity",
+    "family": "english",
+    "float64_output_max_abs_difference": 1.7763568394002505e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_03",
+    "target_to_candidate_kl": 7.75955252479077e-05,
+    "target_top1": 369
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_03"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_03"
+  },
+  {
+    "candidate_logits_sha256": "46292223ad6d6951fd3ec383b3a614ab079143e9c3fb851abbf5abc387ac9f53",
+    "candidate_top1": 369,
+    "control": "dense_patch_top1_identity",
+    "family": "english",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_03",
+    "target_to_candidate_kl": 7.75955252479077e-05,
+    "target_top1": 369
+  },
+  {
+    "candidate_logits_sha256": "46292223ad6d6951fd3ec383b3a614ab079143e9c3fb851abbf5abc387ac9f53",
+    "candidate_top1": 369,
+    "control": "all_page_top1_identity",
+    "family": "english",
+    "float64_output_max_abs_difference": 1.942890293094024e-16,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_english_03",
+    "target_to_candidate_kl": 7.75955252479077e-05,
+    "target_top1": 369
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "korean",
+    "pass": true,
+    "prefix_token_sha256": "9759ad3b82c029afae08badc59b6e4b7549dd187cb3f31d02fe6598b79e1ec66",
+    "prompt_id": "eval_korean_01",
+    "prompt_length": 31
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 199955,
+    "family": "korean",
+    "logits_sha256": "64d851c47bc92edbacd3ee420662e0785d358e5ae2799e20262f37b3871537e9",
+    "observed_top1": 199955,
+    "pass": true,
+    "prompt_id": "eval_korean_01"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 70593,
+    "family": "korean",
+    "logits_sha256": "0b01f0aec8c0ab6346176b2a7379549b1b7fdffff65c39310e2296af7afd68c6",
+    "observed_top1": 70593,
+    "pass": true,
+    "prompt_id": "eval_korean_01"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_01"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_01"
+  },
+  {
+    "candidate_logits_sha256": "1f33f952e8a6428f7f6122abb5b867383113523b58c7ae92ac4da1db4ab639b7",
+    "candidate_top1": 70593,
+    "control": "dense_patch_top1_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_01",
+    "target_to_candidate_kl": 0.0015995054785923636,
+    "target_top1": 70593
+  },
+  {
+    "candidate_logits_sha256": "1f33f952e8a6428f7f6122abb5b867383113523b58c7ae92ac4da1db4ab639b7",
+    "candidate_top1": 70593,
+    "control": "all_page_top1_identity",
+    "family": "korean",
+    "float64_output_max_abs_difference": 2.220446049250313e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_01",
+    "target_to_candidate_kl": 0.0015995054785923636,
+    "target_top1": 70593
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_01"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_01"
+  },
+  {
+    "candidate_logits_sha256": "1f33f952e8a6428f7f6122abb5b867383113523b58c7ae92ac4da1db4ab639b7",
+    "candidate_top1": 70593,
+    "control": "dense_patch_top1_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_01",
+    "target_to_candidate_kl": 0.0015995054785923636,
+    "target_top1": 70593
+  },
+  {
+    "candidate_logits_sha256": "1f33f952e8a6428f7f6122abb5b867383113523b58c7ae92ac4da1db4ab639b7",
+    "candidate_top1": 70593,
+    "control": "all_page_top1_identity",
+    "family": "korean",
+    "float64_output_max_abs_difference": 1.1102230246251565e-16,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_01",
+    "target_to_candidate_kl": 0.0015995054785923636,
+    "target_top1": 70593
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "korean",
+    "pass": true,
+    "prefix_token_sha256": "df49b60926aa6fe7ff41fe4367cc111985557a4a7d7478c5fbdfe87d8ebf9271",
+    "prompt_id": "eval_korean_02",
+    "prompt_length": 31
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 158762,
+    "family": "korean",
+    "logits_sha256": "66a60da867c75b88e81331211ab33cc17b89669f139aea79102dfb91bdf90757",
+    "observed_top1": 158762,
+    "pass": true,
+    "prompt_id": "eval_korean_02"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 181649,
+    "family": "korean",
+    "logits_sha256": "0a5af5e43557a6208a5216b8738d3d9bb7aac279d0a20666cfc30fafb53f9760",
+    "observed_top1": 181649,
+    "pass": true,
+    "prompt_id": "eval_korean_02"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_02"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_02"
+  },
+  {
+    "candidate_logits_sha256": "21134e7544eaa993aeaf30392022e14019613940ed489ed8c64f616e2b7ed8c0",
+    "candidate_top1": 181649,
+    "control": "dense_patch_top1_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_02",
+    "target_to_candidate_kl": 4.706510916931289e-05,
+    "target_top1": 181649
+  },
+  {
+    "candidate_logits_sha256": "21134e7544eaa993aeaf30392022e14019613940ed489ed8c64f616e2b7ed8c0",
+    "candidate_top1": 181649,
+    "control": "all_page_top1_identity",
+    "family": "korean",
+    "float64_output_max_abs_difference": 1.7763568394002505e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_02",
+    "target_to_candidate_kl": 4.706510916931289e-05,
+    "target_top1": 181649
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_02"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_02"
+  },
+  {
+    "candidate_logits_sha256": "21134e7544eaa993aeaf30392022e14019613940ed489ed8c64f616e2b7ed8c0",
+    "candidate_top1": 181649,
+    "control": "dense_patch_top1_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_02",
+    "target_to_candidate_kl": 4.706510916931289e-05,
+    "target_top1": 181649
+  },
+  {
+    "candidate_logits_sha256": "21134e7544eaa993aeaf30392022e14019613940ed489ed8c64f616e2b7ed8c0",
+    "candidate_top1": 181649,
+    "control": "all_page_top1_identity",
+    "family": "korean",
+    "float64_output_max_abs_difference": 8.326672684688674e-17,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_02",
+    "target_to_candidate_kl": 4.706510916931289e-05,
+    "target_top1": 181649
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "korean",
+    "pass": true,
+    "prefix_token_sha256": "5c2cf8e54276a77d9816732098f1fde7c8666fd78e396a238ae4ab37729b35ad",
+    "prompt_id": "eval_korean_03",
+    "prompt_length": 32
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 161842,
+    "family": "korean",
+    "logits_sha256": "d7fba74b9ba36dd7c50c86377464d5405b09843d81ad7c4047403b7077af2d4c",
+    "observed_top1": 161842,
+    "pass": true,
+    "prompt_id": "eval_korean_03"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 200803,
+    "family": "korean",
+    "logits_sha256": "186cdcaa33166af64d8f3ce8055bc99acc13e0dac5ac2cfcfc6ecfb17286e4c4",
+    "observed_top1": 200803,
+    "pass": true,
+    "prompt_id": "eval_korean_03"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_03"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_03"
+  },
+  {
+    "candidate_logits_sha256": "4aae7cdfe36e7e511ce0322a543410471ee51fa330f1ba23fcafb936e29794b7",
+    "candidate_top1": 200803,
+    "control": "dense_patch_top1_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_03",
+    "target_to_candidate_kl": 6.130038246542954e-06,
+    "target_top1": 200803
+  },
+  {
+    "candidate_logits_sha256": "4aae7cdfe36e7e511ce0322a543410471ee51fa330f1ba23fcafb936e29794b7",
+    "candidate_top1": 200803,
+    "control": "all_page_top1_identity",
+    "family": "korean",
+    "float64_output_max_abs_difference": 2.220446049250313e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_korean_03",
+    "target_to_candidate_kl": 6.130038246542954e-06,
+    "target_top1": 200803
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_03"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_03"
+  },
+  {
+    "candidate_logits_sha256": "4aae7cdfe36e7e511ce0322a543410471ee51fa330f1ba23fcafb936e29794b7",
+    "candidate_top1": 200803,
+    "control": "dense_patch_top1_identity",
+    "family": "korean",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_03",
+    "target_to_candidate_kl": 6.130038246542954e-06,
+    "target_top1": 200803
+  },
+  {
+    "candidate_logits_sha256": "4aae7cdfe36e7e511ce0322a543410471ee51fa330f1ba23fcafb936e29794b7",
+    "candidate_top1": 200803,
+    "control": "all_page_top1_identity",
+    "family": "korean",
+    "float64_output_max_abs_difference": 1.249000902703301e-16,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_korean_03",
+    "target_to_candidate_kl": 6.130038246542954e-06,
+    "target_top1": 200803
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "code",
+    "pass": true,
+    "prefix_token_sha256": "bbafd661858fdc5610f9dcdb2d8fb0f5a86062302ed04f83f5fe6bc8db9a8bea",
+    "prompt_id": "eval_code_01",
+    "prompt_length": 31
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 71093,
+    "family": "code",
+    "logits_sha256": "1af8823ef5766e5a6fa7a5b2351d067738864b7e6235cd677a1d13c05698ba65",
+    "observed_top1": 71093,
+    "pass": true,
+    "prompt_id": "eval_code_01"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 13670,
+    "family": "code",
+    "logits_sha256": "c223a979df6bed8b66ab5c8e9897b4ace8e6ca5b93e0f25f8193af19b3e77bc8",
+    "observed_top1": 13670,
+    "pass": true,
+    "prompt_id": "eval_code_01"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_01"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_01"
+  },
+  {
+    "candidate_logits_sha256": "5fed7b0bc2c466b68a4dbea54786ea33164c1cf3eeced09e824b0a89af9f076b",
+    "candidate_top1": 13670,
+    "control": "dense_patch_top1_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_01",
+    "target_to_candidate_kl": 1.9920195444753852e-05,
+    "target_top1": 13670
+  },
+  {
+    "candidate_logits_sha256": "5fed7b0bc2c466b68a4dbea54786ea33164c1cf3eeced09e824b0a89af9f076b",
+    "candidate_top1": 13670,
+    "control": "all_page_top1_identity",
+    "family": "code",
+    "float64_output_max_abs_difference": 1.7763568394002505e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_01",
+    "target_to_candidate_kl": 1.9920195444753852e-05,
+    "target_top1": 13670
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_01"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_01"
+  },
+  {
+    "candidate_logits_sha256": "5fed7b0bc2c466b68a4dbea54786ea33164c1cf3eeced09e824b0a89af9f076b",
+    "candidate_top1": 13670,
+    "control": "dense_patch_top1_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_01",
+    "target_to_candidate_kl": 1.9920195444753852e-05,
+    "target_top1": 13670
+  },
+  {
+    "candidate_logits_sha256": "5fed7b0bc2c466b68a4dbea54786ea33164c1cf3eeced09e824b0a89af9f076b",
+    "candidate_top1": 13670,
+    "control": "all_page_top1_identity",
+    "family": "code",
+    "float64_output_max_abs_difference": 6.938893903907228e-17,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_01",
+    "target_to_candidate_kl": 1.9920195444753852e-05,
+    "target_top1": 13670
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "code",
+    "pass": true,
+    "prefix_token_sha256": "830b7e34c99c3668580f28b335a56f0d4ad6493e6156573fac1fa7615b07cf1a",
+    "prompt_id": "eval_code_02",
+    "prompt_length": 30
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 71093,
+    "family": "code",
+    "logits_sha256": "a0b5cbd2ba038ed48ceb4f1ffdc7960c9da1c54450143146f516548ca007018e",
+    "observed_top1": 71093,
+    "pass": true,
+    "prompt_id": "eval_code_02"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 12305,
+    "family": "code",
+    "logits_sha256": "b87a70d9d852643ee045959181027c76e7858559e86522ef9633486631b88db9",
+    "observed_top1": 12305,
+    "pass": true,
+    "prompt_id": "eval_code_02"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_02"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_02"
+  },
+  {
+    "candidate_logits_sha256": "49399cc2f8689cf3252c9c66d11556c8eaabe9baf308b8fe46b5fd74bfd3ea47",
+    "candidate_top1": 12305,
+    "control": "dense_patch_top1_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_02",
+    "target_to_candidate_kl": 2.0386976286673877e-07,
+    "target_top1": 12305
+  },
+  {
+    "candidate_logits_sha256": "49399cc2f8689cf3252c9c66d11556c8eaabe9baf308b8fe46b5fd74bfd3ea47",
+    "candidate_top1": 12305,
+    "control": "all_page_top1_identity",
+    "family": "code",
+    "float64_output_max_abs_difference": 1.7763568394002505e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_02",
+    "target_to_candidate_kl": 2.0386976286673877e-07,
+    "target_top1": 12305
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_02"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_02"
+  },
+  {
+    "candidate_logits_sha256": "49399cc2f8689cf3252c9c66d11556c8eaabe9baf308b8fe46b5fd74bfd3ea47",
+    "candidate_top1": 12305,
+    "control": "dense_patch_top1_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_02",
+    "target_to_candidate_kl": 2.0386976286673877e-07,
+    "target_top1": 12305
+  },
+  {
+    "candidate_logits_sha256": "49399cc2f8689cf3252c9c66d11556c8eaabe9baf308b8fe46b5fd74bfd3ea47",
+    "candidate_top1": 12305,
+    "control": "all_page_top1_identity",
+    "family": "code",
+    "float64_output_max_abs_difference": 9.71445146547012e-17,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_02",
+    "target_to_candidate_kl": 2.0386976286673877e-07,
+    "target_top1": 12305
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "code",
+    "pass": true,
+    "prefix_token_sha256": "fdecd00f058cdbe8e3fe1e36598877541530e05650418184d60fe0662c4965c6",
+    "prompt_id": "eval_code_03",
+    "prompt_length": 32
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 760,
+    "family": "code",
+    "logits_sha256": "afbb700a2989ef6778427a567f637062ee442282c667ccec60b35152c72535c1",
+    "observed_top1": 760,
+    "pass": true,
+    "prompt_id": "eval_code_03"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 9584,
+    "family": "code",
+    "logits_sha256": "d55c8fd0f7eed38b0ade003d0a44fea363c97bbd74e4a8bacfa1bd54df90a061",
+    "observed_top1": 9584,
+    "pass": true,
+    "prompt_id": "eval_code_03"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_03"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_03"
+  },
+  {
+    "candidate_logits_sha256": "4e50bd5a3bb811fde499ac126561aa9910bfa303e5c49ec1d194290ca827818c",
+    "candidate_top1": 9584,
+    "control": "dense_patch_top1_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_03",
+    "target_to_candidate_kl": 3.8696014543359244e-05,
+    "target_top1": 9584
+  },
+  {
+    "candidate_logits_sha256": "4e50bd5a3bb811fde499ac126561aa9910bfa303e5c49ec1d194290ca827818c",
+    "candidate_top1": 9584,
+    "control": "all_page_top1_identity",
+    "family": "code",
+    "float64_output_max_abs_difference": 1.7763568394002505e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_code_03",
+    "target_to_candidate_kl": 3.8696014543359244e-05,
+    "target_top1": 9584
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_03"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_03"
+  },
+  {
+    "candidate_logits_sha256": "4e50bd5a3bb811fde499ac126561aa9910bfa303e5c49ec1d194290ca827818c",
+    "candidate_top1": 9584,
+    "control": "dense_patch_top1_identity",
+    "family": "code",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_03",
+    "target_to_candidate_kl": 3.8696014543359244e-05,
+    "target_top1": 9584
+  },
+  {
+    "candidate_logits_sha256": "4e50bd5a3bb811fde499ac126561aa9910bfa303e5c49ec1d194290ca827818c",
+    "candidate_top1": 9584,
+    "control": "all_page_top1_identity",
+    "family": "code",
+    "float64_output_max_abs_difference": 9.71445146547012e-17,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_code_03",
+    "target_to_candidate_kl": 3.8696014543359244e-05,
+    "target_top1": 9584
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "structured_json",
+    "pass": true,
+    "prefix_token_sha256": "ca82c0f3d28148d0beec26c1c8cb0ceee244d2ba35bea894c28fa038e3b62bb0",
+    "prompt_id": "eval_json_01",
+    "prompt_length": 39
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 90,
+    "family": "structured_json",
+    "logits_sha256": "6c4b2ea227383d679e6083af66697daa914aa3f66f59db391c1d2b76436bff16",
+    "observed_top1": 90,
+    "pass": true,
+    "prompt_id": "eval_json_01"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 198,
+    "family": "structured_json",
+    "logits_sha256": "7992b64c3475a90842cfc95c36f48c586aff6d7140daf668695eb8f7f409324f",
+    "observed_top1": 198,
+    "pass": true,
+    "prompt_id": "eval_json_01"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_01"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_01"
+  },
+  {
+    "candidate_logits_sha256": "40fff39929d473e5ecb27b866faf96668799cd2439eb86142502ff07702a39ee",
+    "candidate_top1": 198,
+    "control": "dense_patch_top1_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_01",
+    "target_to_candidate_kl": 3.489810905381024e-06,
+    "target_top1": 198
+  },
+  {
+    "candidate_logits_sha256": "40fff39929d473e5ecb27b866faf96668799cd2439eb86142502ff07702a39ee",
+    "candidate_top1": 198,
+    "control": "all_page_top1_identity",
+    "family": "structured_json",
+    "float64_output_max_abs_difference": 1.7763568394002505e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_01",
+    "target_to_candidate_kl": 3.489810905381024e-06,
+    "target_top1": 198
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_01"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_01"
+  },
+  {
+    "candidate_logits_sha256": "40fff39929d473e5ecb27b866faf96668799cd2439eb86142502ff07702a39ee",
+    "candidate_top1": 198,
+    "control": "dense_patch_top1_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_01",
+    "target_to_candidate_kl": 3.489810905381024e-06,
+    "target_top1": 198
+  },
+  {
+    "candidate_logits_sha256": "40fff39929d473e5ecb27b866faf96668799cd2439eb86142502ff07702a39ee",
+    "candidate_top1": 198,
+    "control": "all_page_top1_identity",
+    "family": "structured_json",
+    "float64_output_max_abs_difference": 9.71445146547012e-17,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_01",
+    "target_to_candidate_kl": 3.489810905381024e-06,
+    "target_top1": 198
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "structured_json",
+    "pass": true,
+    "prefix_token_sha256": "04ca5d88ed74d273ec4db0b94df5c256132dff76d7b5417863fe2492878d89a4",
+    "prompt_id": "eval_json_02",
+    "prompt_length": 42
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 90,
+    "family": "structured_json",
+    "logits_sha256": "6188f9c86fa7a58084b3913cc773b56eb6f2e4a0bc8f3d0e189c28eea352fffa",
+    "observed_top1": 90,
+    "pass": true,
+    "prompt_id": "eval_json_02"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 198,
+    "family": "structured_json",
+    "logits_sha256": "600378df7e1438127789351864f4c231fa86b82db09e23dbcc7d31f216eeaf84",
+    "observed_top1": 198,
+    "pass": true,
+    "prompt_id": "eval_json_02"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_02"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_02"
+  },
+  {
+    "candidate_logits_sha256": "7f9bded508108a35d7e945cd895824ff3c670e4d95aab1887c2fbc964851cd13",
+    "candidate_top1": 198,
+    "control": "dense_patch_top1_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_02",
+    "target_to_candidate_kl": 7.891673280558663e-05,
+    "target_top1": 198
+  },
+  {
+    "candidate_logits_sha256": "7f9bded508108a35d7e945cd895824ff3c670e4d95aab1887c2fbc964851cd13",
+    "candidate_top1": 198,
+    "control": "all_page_top1_identity",
+    "family": "structured_json",
+    "float64_output_max_abs_difference": 3.552713678800501e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_02",
+    "target_to_candidate_kl": 7.891673280558663e-05,
+    "target_top1": 198
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_02"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_02"
+  },
+  {
+    "candidate_logits_sha256": "7f9bded508108a35d7e945cd895824ff3c670e4d95aab1887c2fbc964851cd13",
+    "candidate_top1": 198,
+    "control": "dense_patch_top1_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_02",
+    "target_to_candidate_kl": 7.891673280558663e-05,
+    "target_top1": 198
+  },
+  {
+    "candidate_logits_sha256": "7f9bded508108a35d7e945cd895824ff3c670e4d95aab1887c2fbc964851cd13",
+    "candidate_top1": 198,
+    "control": "all_page_top1_identity",
+    "family": "structured_json",
+    "float64_output_max_abs_difference": 1.249000902703301e-16,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_02",
+    "target_to_candidate_kl": 7.891673280558663e-05,
+    "target_top1": 198
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "structured_json",
+    "pass": true,
+    "prefix_token_sha256": "7711a67d643546d71122755640f704fa40da5f95a614be88ac6bb6ac13a03d4b",
+    "prompt_id": "eval_json_03",
+    "prompt_length": 33
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 90,
+    "family": "structured_json",
+    "logits_sha256": "1440c2fde3c36d50419ff46e640580653ec86ea240e7f4c9689d3eb654992458",
+    "observed_top1": 90,
+    "pass": true,
+    "prompt_id": "eval_json_03"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 198,
+    "family": "structured_json",
+    "logits_sha256": "15d6767ae1b4adfa66d4cc3950438a3218a25c63b83e25758cb79e48e283a39f",
+    "observed_top1": 198,
+    "pass": true,
+    "prompt_id": "eval_json_03"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_03"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_03"
+  },
+  {
+    "candidate_logits_sha256": "858bc86e370e09e31028739077cd0235e8c6777ddae9bacc5dab01fa56b2b47f",
+    "candidate_top1": 198,
+    "control": "dense_patch_top1_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_03",
+    "target_to_candidate_kl": 1.7726059499733479e-07,
+    "target_top1": 198
+  },
+  {
+    "candidate_logits_sha256": "858bc86e370e09e31028739077cd0235e8c6777ddae9bacc5dab01fa56b2b47f",
+    "candidate_top1": 198,
+    "control": "all_page_top1_identity",
+    "family": "structured_json",
+    "float64_output_max_abs_difference": 1.3322676295501878e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_json_03",
+    "target_to_candidate_kl": 1.7726059499733479e-07,
+    "target_top1": 198
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_03"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_03"
+  },
+  {
+    "candidate_logits_sha256": "858bc86e370e09e31028739077cd0235e8c6777ddae9bacc5dab01fa56b2b47f",
+    "candidate_top1": 198,
+    "control": "dense_patch_top1_identity",
+    "family": "structured_json",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_03",
+    "target_to_candidate_kl": 1.7726059499733479e-07,
+    "target_top1": 198
+  },
+  {
+    "candidate_logits_sha256": "858bc86e370e09e31028739077cd0235e8c6777ddae9bacc5dab01fa56b2b47f",
+    "candidate_top1": 198,
+    "control": "all_page_top1_identity",
+    "family": "structured_json",
+    "float64_output_max_abs_difference": 8.326672684688674e-17,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_json_03",
+    "target_to_candidate_kl": 1.7726059499733479e-07,
+    "target_top1": 198
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "math",
+    "pass": true,
+    "prefix_token_sha256": "cf5b2d1ce065114ecfceda7bbc63cc4dd48df8e29ef982a844d0d09ae9b607cc",
+    "prompt_id": "eval_math_01",
+    "prompt_length": 37
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 8160,
+    "family": "math",
+    "logits_sha256": "db3a4ad600d82845d7190f2f407f239424ff648ce678e41eed71d0d7c1e32dff",
+    "observed_top1": 8160,
+    "pass": true,
+    "prompt_id": "eval_math_01"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 369,
+    "family": "math",
+    "logits_sha256": "80136a7ed6bb30b3775df0a8cb5907f8290c456ae11bbd81b9dd1b2441b1f84d",
+    "observed_top1": 369,
+    "pass": true,
+    "prompt_id": "eval_math_01"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_01"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_01"
+  },
+  {
+    "candidate_logits_sha256": "45c75867264a2258aef5cd841904f31153b8678eaa4adb056d8045953f50e924",
+    "candidate_top1": 369,
+    "control": "dense_patch_top1_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_01",
+    "target_to_candidate_kl": 0.00047525310732811983,
+    "target_top1": 369
+  },
+  {
+    "candidate_logits_sha256": "45c75867264a2258aef5cd841904f31153b8678eaa4adb056d8045953f50e924",
+    "candidate_top1": 369,
+    "control": "all_page_top1_identity",
+    "family": "math",
+    "float64_output_max_abs_difference": 2.6645352591003757e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_01",
+    "target_to_candidate_kl": 0.00047525310732811983,
+    "target_top1": 369
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_01"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_01"
+  },
+  {
+    "candidate_logits_sha256": "45c75867264a2258aef5cd841904f31153b8678eaa4adb056d8045953f50e924",
+    "candidate_top1": 369,
+    "control": "dense_patch_top1_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_01",
+    "target_to_candidate_kl": 0.00047525310732811983,
+    "target_top1": 369
+  },
+  {
+    "candidate_logits_sha256": "45c75867264a2258aef5cd841904f31153b8678eaa4adb056d8045953f50e924",
+    "candidate_top1": 369,
+    "control": "all_page_top1_identity",
+    "family": "math",
+    "float64_output_max_abs_difference": 1.1102230246251565e-16,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_01",
+    "target_to_candidate_kl": 0.00047525310732811983,
+    "target_top1": 369
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "math",
+    "pass": true,
+    "prefix_token_sha256": "caa1648813b5bf7c1d64201f86e3dcfb7ba9a3ea1f3a6718704dc9a7e09752ab",
+    "prompt_id": "eval_math_02",
+    "prompt_length": 30
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 1206,
+    "family": "math",
+    "logits_sha256": "fb128f998e9672d111c7f001d0d417a0a178ae739247e4ea3c3488c021d9ab18",
+    "observed_top1": 1206,
+    "pass": true,
+    "prompt_id": "eval_math_02"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 1423,
+    "family": "math",
+    "logits_sha256": "3466c108f883734b2721b68addcc9e00134d787a8a2dea0e3db9e86a3048cc93",
+    "observed_top1": 1423,
+    "pass": true,
+    "prompt_id": "eval_math_02"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_02"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_02"
+  },
+  {
+    "candidate_logits_sha256": "0aac074204e00d572e2fb9a911809dd3d85530cacfb67e3df2bd832c8ebd0aa0",
+    "candidate_top1": 1423,
+    "control": "dense_patch_top1_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_02",
+    "target_to_candidate_kl": 0.0006197760406607029,
+    "target_top1": 1423
+  },
+  {
+    "candidate_logits_sha256": "0aac074204e00d572e2fb9a911809dd3d85530cacfb67e3df2bd832c8ebd0aa0",
+    "candidate_top1": 1423,
+    "control": "all_page_top1_identity",
+    "family": "math",
+    "float64_output_max_abs_difference": 2.6645352591003757e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_02",
+    "target_to_candidate_kl": 0.0006197760406607029,
+    "target_top1": 1423
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_02"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_02"
+  },
+  {
+    "candidate_logits_sha256": "0aac074204e00d572e2fb9a911809dd3d85530cacfb67e3df2bd832c8ebd0aa0",
+    "candidate_top1": 1423,
+    "control": "dense_patch_top1_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_02",
+    "target_to_candidate_kl": 0.0006197760406607029,
+    "target_top1": 1423
+  },
+  {
+    "candidate_logits_sha256": "0aac074204e00d572e2fb9a911809dd3d85530cacfb67e3df2bd832c8ebd0aa0",
+    "candidate_top1": 1423,
+    "control": "all_page_top1_identity",
+    "family": "math",
+    "float64_output_max_abs_difference": 9.71445146547012e-17,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_02",
+    "target_to_candidate_kl": 0.0006197760406607029,
+    "target_top1": 1423
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "math",
+    "pass": true,
+    "prefix_token_sha256": "cc776e8dd1e11984e145ad898803a417f0cb8f00cf69d55f04253c09d3f34964",
+    "prompt_id": "eval_math_03",
+    "prompt_length": 36
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 1206,
+    "family": "math",
+    "logits_sha256": "f697da77c7f3890935c00a57440b63199594e59de64582a407bd49e4634a02b2",
+    "observed_top1": 1206,
+    "pass": true,
+    "prompt_id": "eval_math_03"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 7995,
+    "family": "math",
+    "logits_sha256": "d243b9d5ed8e05004ca1a1da8c1b3ff2a6e5d7cc55557a5fb167ccb34ea603e9",
+    "observed_top1": 7995,
+    "pass": true,
+    "prompt_id": "eval_math_03"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_03"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_03"
+  },
+  {
+    "candidate_logits_sha256": "614bdb6b4600670e8fe83cba44087366aab7d9619fbb521a8708299625eb4a42",
+    "candidate_top1": 7995,
+    "control": "dense_patch_top1_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_03",
+    "target_to_candidate_kl": 5.059190607449138e-09,
+    "target_top1": 7995
+  },
+  {
+    "candidate_logits_sha256": "614bdb6b4600670e8fe83cba44087366aab7d9619fbb521a8708299625eb4a42",
+    "candidate_top1": 7995,
+    "control": "all_page_top1_identity",
+    "family": "math",
+    "float64_output_max_abs_difference": 1.7763568394002505e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_math_03",
+    "target_to_candidate_kl": 5.059190607449138e-09,
+    "target_top1": 7995
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_03"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_03"
+  },
+  {
+    "candidate_logits_sha256": "614bdb6b4600670e8fe83cba44087366aab7d9619fbb521a8708299625eb4a42",
+    "candidate_top1": 7995,
+    "control": "dense_patch_top1_identity",
+    "family": "math",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_03",
+    "target_to_candidate_kl": 5.059190607449138e-09,
+    "target_top1": 7995
+  },
+  {
+    "candidate_logits_sha256": "614bdb6b4600670e8fe83cba44087366aab7d9619fbb521a8708299625eb4a42",
+    "candidate_top1": 7995,
+    "control": "all_page_top1_identity",
+    "family": "math",
+    "float64_output_max_abs_difference": 1.0408340855860843e-16,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_math_03",
+    "target_to_candidate_kl": 5.059190607449138e-09,
+    "target_top1": 7995
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "prefix_token_sha256": "94953c380cb0e613af977679219e9d924dacf40765e6464c0985dbe6292348db",
+    "prompt_id": "eval_adversarial_01",
+    "prompt_length": 43
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 1114,
+    "family": "adversarial_low_acceptance",
+    "logits_sha256": "552528ab4342fc540aaeac6d88b2a7f9f850c1987d7376f9e1c932c645436f64",
+    "observed_top1": 1114,
+    "pass": true,
+    "prompt_id": "eval_adversarial_01"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 22,
+    "family": "adversarial_low_acceptance",
+    "logits_sha256": "13f8f65a4941787056ce0bcf39129c71334294bc3741d1107147dd3796057d5c",
+    "observed_top1": 22,
+    "pass": true,
+    "prompt_id": "eval_adversarial_01"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_01"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_01"
+  },
+  {
+    "candidate_logits_sha256": "7dadf5c98575a1ffc3c438a3deeabaa29273c6317a989abb918b61e3a7e5c5f4",
+    "candidate_top1": 22,
+    "control": "dense_patch_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_01",
+    "target_to_candidate_kl": 0.0001314689707408616,
+    "target_top1": 22
+  },
+  {
+    "candidate_logits_sha256": "7dadf5c98575a1ffc3c438a3deeabaa29273c6317a989abb918b61e3a7e5c5f4",
+    "candidate_top1": 22,
+    "control": "all_page_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "float64_output_max_abs_difference": 1.7763568394002505e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_01",
+    "target_to_candidate_kl": 0.0001314689707408616,
+    "target_top1": 22
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_01"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_01"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_01"
+  },
+  {
+    "candidate_logits_sha256": "7dadf5c98575a1ffc3c438a3deeabaa29273c6317a989abb918b61e3a7e5c5f4",
+    "candidate_top1": 22,
+    "control": "dense_patch_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_01",
+    "target_to_candidate_kl": 0.0001314689707408616,
+    "target_top1": 22
+  },
+  {
+    "candidate_logits_sha256": "7dadf5c98575a1ffc3c438a3deeabaa29273c6317a989abb918b61e3a7e5c5f4",
+    "candidate_top1": 22,
+    "control": "all_page_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "float64_output_max_abs_difference": 1.6653345369377348e-16,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_01",
+    "target_to_candidate_kl": 0.0001314689707408616,
+    "target_top1": 22
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "prefix_token_sha256": "bbdda9e5c6e4147caf67c8d6cd886de77ecb1046a37378dd6767ad852e55c55f",
+    "prompt_id": "eval_adversarial_02",
+    "prompt_length": 45
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 55,
+    "family": "adversarial_low_acceptance",
+    "logits_sha256": "cbb7f8908c07a0589b7bd33c97a377617123b0d71b03ed4f6a49b965ba2ac82a",
+    "observed_top1": 55,
+    "pass": true,
+    "prompt_id": "eval_adversarial_02"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 87,
+    "family": "adversarial_low_acceptance",
+    "logits_sha256": "4399cd2cd6f730ff0175a77b0201ea1e93955800a0f002d08ea1a527a1c819d0",
+    "observed_top1": 87,
+    "pass": true,
+    "prompt_id": "eval_adversarial_02"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_02"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_02"
+  },
+  {
+    "candidate_logits_sha256": "eb92c3dc3a6ad95cfbb015a7c34179f155f089e06bc01d4410e0118185bdf80d",
+    "candidate_top1": 87,
+    "control": "dense_patch_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_02",
+    "target_to_candidate_kl": 7.1044528194934166e-06,
+    "target_top1": 87
+  },
+  {
+    "candidate_logits_sha256": "eb92c3dc3a6ad95cfbb015a7c34179f155f089e06bc01d4410e0118185bdf80d",
+    "candidate_top1": 87,
+    "control": "all_page_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "float64_output_max_abs_difference": 2.220446049250313e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_02",
+    "target_to_candidate_kl": 7.1044528194934166e-06,
+    "target_top1": 87
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_02"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_02"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_02"
+  },
+  {
+    "candidate_logits_sha256": "eb92c3dc3a6ad95cfbb015a7c34179f155f089e06bc01d4410e0118185bdf80d",
+    "candidate_top1": 87,
+    "control": "dense_patch_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_02",
+    "target_to_candidate_kl": 7.1044528194934166e-06,
+    "target_top1": 87
+  },
+  {
+    "candidate_logits_sha256": "eb92c3dc3a6ad95cfbb015a7c34179f155f089e06bc01d4410e0118185bdf80d",
+    "candidate_top1": 87,
+    "control": "all_page_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "float64_output_max_abs_difference": 1.3877787807814457e-16,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_02",
+    "target_to_candidate_kl": 7.1044528194934166e-06,
+    "target_top1": 87
+  },
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "prefix_token_sha256": "128818f59c93c16be92366cde805549919671c61f58565bd596cbc89c4fceccb",
+    "prompt_id": "eval_adversarial_03",
+    "prompt_length": 46
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 23841,
+    "family": "adversarial_low_acceptance",
+    "logits_sha256": "d6ee7f58cbcf264290581d340809e8b3faa9bb6e89e9153c6566781a848a6597",
+    "observed_top1": 23841,
+    "pass": true,
+    "prompt_id": "eval_adversarial_03"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 303,
+    "family": "adversarial_low_acceptance",
+    "logits_sha256": "8249abcb4293db4caf1a3c71d2ce740624bbef40881e86c76f965e84ca0c19a8",
+    "observed_top1": 303,
+    "pass": true,
+    "prompt_id": "eval_adversarial_03"
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_03"
+  },
+  {
+    "candidate_count": 18,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_03"
+  },
+  {
+    "candidate_logits_sha256": "ecd659d88b4f72124b10e5f6c777ae411f9b462dc980f25a0b93ba6be7ad1484",
+    "candidate_top1": 303,
+    "control": "dense_patch_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_03",
+    "target_to_candidate_kl": 0.00010596360458036337,
+    "target_top1": 303
+  },
+  {
+    "candidate_logits_sha256": "ecd659d88b4f72124b10e5f6c777ae411f9b462dc980f25a0b93ba6be7ad1484",
+    "candidate_top1": 303,
+    "control": "all_page_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "float64_output_max_abs_difference": 3.552713678800501e-15,
+    "pass": true,
+    "projection": "q_proj",
+    "prompt_id": "eval_adversarial_03",
+    "target_to_candidate_kl": 0.00010596360458036337,
+    "target_top1": 303
+  },
+  {
+    "control": "branch_point_layer_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_03"
+  },
+  {
+    "control": "branch_point_projection_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_03"
+  },
+  {
+    "candidate_count": 58,
+    "control": "candidate_suffix_branch_input_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_03"
+  },
+  {
+    "candidate_logits_sha256": "ecd659d88b4f72124b10e5f6c777ae411f9b462dc980f25a0b93ba6be7ad1484",
+    "candidate_top1": 303,
+    "control": "dense_patch_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_03",
+    "target_to_candidate_kl": 0.00010596360458036337,
+    "target_top1": 303
+  },
+  {
+    "candidate_logits_sha256": "ecd659d88b4f72124b10e5f6c777ae411f9b462dc980f25a0b93ba6be7ad1484",
+    "candidate_top1": 303,
+    "control": "all_page_top1_identity",
+    "family": "adversarial_low_acceptance",
+    "float64_output_max_abs_difference": 1.1102230246251565e-16,
+    "pass": true,
+    "projection": "down_proj",
+    "prompt_id": "eval_adversarial_03",
+    "target_to_candidate_kl": 0.00010596360458036337,
+    "target_top1": 303
+  }
+]

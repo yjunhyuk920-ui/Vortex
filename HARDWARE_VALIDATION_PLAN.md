@@ -440,3 +440,21 @@ and fully charged fallback/state equations. The stored capsule, `1,009`
 target-page requests, `0.657508850 GiB` target cold payload, native-4B latency,
 complete peak VRAM, and physical serialization remain unmeasured. Phase D and
 E4-E7 remain `NOT TESTED`.
+
+### EXP-083A execution closure
+
+The Windows CPU favorable oracle passed and reproduced. External lifetime
+working-set counters observed `3,513,356,288` bytes for the primary run and
+`3,516,215,296` bytes for the clean reproduction. The original internal RSS
+field was null because of a Windows ctypes signature defect, now corrected.
+These values describe the entire CPU process and do not prove GPU VRAM fit.
+
+Primary/reproduction wall times were `2,153.684/1,290.715` seconds, but the
+primary briefly contended with a stale prior attempt and both runs exhaustively
+execute all dense oracle candidates. They are explicitly not native-4B or
+deployment latency measurements. No SSD request, H2D transfer, GPU allocation,
+Ubuntu command, model download, or 122B/405B action occurred.
+
+Hardware remains gated behind legal pair construction, target-free selection,
+outward certification, simultaneous operation replacement, and complete
+branch-state accounting. Phase D and E4-E7 remain `NOT TESTED`.

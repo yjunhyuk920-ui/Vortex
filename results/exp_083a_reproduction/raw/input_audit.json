@@ -1,0 +1,30 @@
+{
+  "family_counts": {
+    "adversarial_low_acceptance": 3,
+    "code": 3,
+    "english": 3,
+    "korean": 3,
+    "math": 3,
+    "structured_json": 3
+  },
+  "file_hashes": {
+    "docs/research/CAUSAL_RESIDUAL_ATLAS_CHEAPEST_GATE.md": "8241f46ec5e24f6a484b32327c7d9fb2c841828f908193d37e25ac06d17b8837",
+    "experiments/exp_076/prompts.json": "46c9779c24e59f356247145f7ef870a1b82ba4907eb9dffcd48652e519f7612a",
+    "experiments/exp_076/requirements.lock.json": "ffdabbb8a70355f72ec967a9a1bc8844f84f250fe5c6eb64d21f64f8af3320ad",
+    "results/exp_076/raw/case_rows.jsonl": "1e921698ce8ee522c0d3cb9b8b9004139beb54cc2dee82e1a2aa0a08fa245e4f"
+  },
+  "join_audit": {
+    "build_count": 6,
+    "evaluation_count": 18,
+    "families": [
+      "adversarial_low_acceptance",
+      "code",
+      "english",
+      "korean",
+      "math",
+      "structured_json"
+    ],
+    "joined_core_sha256": "9a7f1a9f38ee4c86b2a8a63427e1ca3ac3f9f73b6f708096e99fec734d1a0da7",
+    "prompt_count": 24
+  }
+}

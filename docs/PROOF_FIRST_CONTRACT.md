@@ -467,3 +467,21 @@ Failure rejects the frozen rank-16/page-64 per-projection path and prohibits
 rank/page/layer/prompt/tolerance rescue. Passing authorizes only a separately
 preregistered legal-center and bound-propagation Gate. E2-E7 and Phase D remain
 not achieved.
+
+<!-- EXP-083A-AUTHORITATIVE-FINAL -->
+## Current classification after EXP-083A
+
+The frozen favorable one-page oracle passed and reproduced on the unchanged
+pinned Qwen3.5-0.8B checkpoint: 18/18 tokens, 3/3 per family, 36/36 branches,
+mean/p95 KL `0.007225545/0.037660753`, and zero invalid controls. Independent
+verification rebuilt the identical deterministic core
+`ab96e6114f44a1c02a01d080848c4ec643a747b63ebfee30c77fda45f3954845`
+for both complete model runs.
+
+This is E1 evidence that a favorable page exists for every registered branch,
+not evidence that a causal executor can find or certify it. Native dense
+centers, exhaustive target-logit selection, and dense remaining work were
+granted. The obvious post-hoc minimum-radius selector fails two tokens. Legal
+pair construction, outward bounds, simultaneous replacement, physical
+performance/VRAM, 122B/405B, and E2-E7 remain unverified. Only the next legal
+causal-pair and bound Gate is promoted.

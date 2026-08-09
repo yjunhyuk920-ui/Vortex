@@ -600,3 +600,27 @@ transition, fallback engine, scheduler, or kernel is added. A pass authorizes
 only those next correctness interfaces under a new Gate.
 
 Authority: `docs/research/CAUSAL_RESIDUAL_ATLAS_CHEAPEST_GATE.md`.
+
+### EXP-083A measured boundary
+
+The favorable isolated transition now has real-weight evidence: all 18 token
+states and all 36 registered q/down branches contained at least one one-page
+patch that preserved native top-1, and the complete Gate reproduced. This
+admits **page existence** as an observed property of the pinned population; it
+does not admit the evaluator as an architecture component.
+
+The next architecture boundary is deliberately split:
+
+```text
+committed prefix pairs only -> Q and legal Z=WQ
+current committed x + static metadata -> target-free page choice
+legal center + revealed page -> outward output enclosure
+  certified -> candidate output
+  unresolved/corrupt/nonfinite -> charged exact completion, fallback, or abort
+```
+
+No current component implements those interfaces. The exact-reference oracle,
+native dense center, exhaustive page logits, and one-projection-at-a-time dense
+suffix remain experiment-only. A naive minimum-radius chooser failed two token
+states, so it is not admitted. Hardware scheduling and E2 integration remain
+blocked behind a separately preregistered correctness Gate.

@@ -830,3 +830,30 @@ ON_FAILURE_REJECT_RANK16_PAGE64_CAUSAL_RESIDUAL_ATLAS_FAST_PATH
 No result, experiment number, model execution, hardware action, or Core
 Candidate promotion is recorded. Authority:
 `docs/research/CAUSAL_RESIDUAL_ATLAS_CHEAPEST_GATE.md`.
+
+## D-080 -- Accept favorable one-page existence and open the legal pair/bound Gate
+
+EXP-083A completed the exact frozen population on the unchanged pinned
+Qwen3.5-0.8B checkpoint. It preserved top-1 for 18/18 token states, 3/3 in each
+family, and 36/36 q/down branches. Mean/p95 KL was
+`0.007225545020063708/0.037660752986209814`, all 234 controls passed, and the
+separate model replay reproduced deterministic-core SHA-256
+`ab96e6114f44a1c02a01d080848c4ec643a747b63ebfee30c77fda45f3954845`.
+
+The favorable existence premise therefore survives E1 on this finite small-
+model population. It is not a runtime result: the native dense output anchors
+the center and exact-reference logits choose among every page. A post-hoc
+minimum-radius selector fails 2/18 tokens, and the present bound remains at
+least `19.852750x` looser than exact unread error even on selected branches.
+
+Decision:
+
+```text
+ACCEPT_FAVORABLE_ONE_PAGE_EXISTENCE_AT_E1_ON_THE_PINNED_SMALL_MODEL
+PROMOTE_ONLY_TO_A_PREREGISTERED_LEGAL_CAUSAL_PAIR_AND_BOUND_GATE
+KEEP_RUNTIME_HARDWARE_SCALE_AND_E2_E7_CLOSED
+```
+
+No Core Candidate is admitted to production architecture and no private-server
+or larger-model action is authorized. Authority:
+`docs/research/EXPERIMENT_083A_CAUSAL_RESIDUAL_ATLAS_GATE.md`.

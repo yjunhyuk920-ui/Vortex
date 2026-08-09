@@ -503,3 +503,25 @@ coverage Gate passes.
 Current classification: only the cheapest Gate is preregistered. There is no
 real-weight result, Surviving Candidate, positive milestone, or experiment
 number.
+
+## EXP-083A authoritative validation
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Registered payload, prompts, trace, Gate hash, rank/page/layer/position are unchanged | source commit plus input audit and checksums | PASS |
+| Baseline follows the pinned EXP-076 trace | 0 mismatches | PASS |
+| Dense/all-page and exact branch-point controls remain valid | 234/234 controls; 0 failures | PASS |
+| Favorable one-page oracle preserves every token | 18/18 | PASS E1 favorable ceiling |
+| Every family and projection branch succeeds | six families 3/3; 36/36 branches | PASS |
+| Mean/p95 KL <=0.02/0.05 | 0.007225545/0.037660753 | PASS |
+| Independent result verifier | checksum, selector, aggregation, core rebuild | PASS |
+| Separate model replay reproduces scientific core | identical `ab96e611...f3954845` | PASS |
+| A target-free minimum-radius page selector meets the Gate | exploratory 34/36 branches, 16/18 tokens, p95 0.075847 | FAIL post-hoc / non-authoritative |
+| Legal pair center and outward native certificate | native-anchored oracle only | NOT TESTED / NEXT GATE |
+| Simultaneous operation replacement and charged fallback | one projection patched; all else dense | NOT TESTED |
+| Physical latency, 8 GiB GPU VRAM, 122B/405B, E2-E7 | no qualifying run | NOT TESTED |
+
+Current classification: the registered favorable page-existence premise passes
+and reproduces at E1 on the pinned 0.8B model. This is a material positive
+necessary-condition result, not a Surviving Candidate, E2 replacement,
+hardware result, or Fixed-Mission success.

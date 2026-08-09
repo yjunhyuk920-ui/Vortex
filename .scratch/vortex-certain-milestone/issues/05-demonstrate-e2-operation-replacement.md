@@ -2,7 +2,7 @@
 
 Type: task
 Status: open
-Blocked by: Run the Causal Residual Atlas First-Decode Gate
+Blocked by: Preregister the Legal Causal-Pair and Outward-Bound Gate
 
 ## Question
 

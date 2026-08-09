@@ -1006,3 +1006,33 @@ private-server action, E2, or a 405B claim.
 The next unblocked map ticket is `Run the Causal Residual Atlas First-Decode
 Gate`. It may assign the next experiment number only while implementing this
 unchanged contract.
+
+## EXP-083A passed -- preregister the legal causal-pair and bound Gate
+
+The frozen favorable oracle passed and reproduced: 18/18 tokens, 36/36
+branches, mean/p95 KL `0.007225545/0.037660753`, zero invalid controls, and the
+same deterministic core across two complete model runs. Do not rerun rank,
+page, layer, prompt, or tolerance sweeps; the favorable existence question is
+answered for this population.
+
+The next cheapest uncertainty is executability. Before another experiment
+number, freeze a Gate that separates and tests:
+
+1. pair-only construction of `Q` and native-numerical `Z=WQ` from committed
+   prefix inputs/images, without a checkpoint scan or target-future token;
+2. a target-logit-free page rule using only the current committed activation
+   and prepaid checkpoint metadata;
+3. an outward-rounded unread-residual certificate propagated to the declared
+   output contract, with corruption/non-finite failure; and
+4. fully charged miss, exact completion/fallback, state, build, and query work.
+
+The observed 18 evaluation prompts are no longer a tuning set. Selector or
+bound choices must be analytic and frozen without consulting their target
+logits, or use a newly hashed untouched evaluation population. The post-hoc
+minimum-radius rule is evidence against using that rule unchanged: it failed
+2/18 tokens and its p95 KL was `0.075846638542797`.
+
+Passing the next Gate still does not authorize E2 until the selected projections
+are actually replaced simultaneously under fail-closed execution. It does not
+authorize CUDA, the Ubuntu host, a larger download, or 405B. The next unblocked
+map ticket is `Preregister the Legal Causal-Pair and Outward-Bound Gate`.
