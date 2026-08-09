@@ -1,0 +1,16 @@
+{
+  "experiment": "EXP-083A",
+  "attempt": 4,
+  "classification": "INFRASTRUCTURE_FAILURE_NO_SCIENTIFIC_DECISION",
+  "source_commit": "be85e78bab3105fd6fff445c1d34a5c69c3b71bf",
+  "runner_mode": "batch_one_prebranch_then_serial_batch_one_suffix_candidates",
+  "terminated_after_at_least_seconds": 1989,
+  "observed_process_cpu_seconds": 2525.046875,
+  "observed_working_set_bytes": 2066272256,
+  "observed_peak_working_set_bytes": 3515760640,
+  "scientific_page_rows_completed": 0,
+  "scientific_branch_rows_completed": 0,
+  "result_bundle_written": false,
+  "reason": "The first q_proj suffix candidate did not complete after more than 33 minutes. At that rate the 18-candidate branch would exceed ten hours. No partial candidate was interpreted as evidence.",
+  "authorized_continuation": "Restore a single vectorized suffix batch at the exact branch point and permit a two-hour command window so the complete branch, including both controls, can finish."
+}

@@ -887,45 +887,17 @@ def evaluate_projection(
             raise CandidateBatchControlError(
                 f"{recorder.name}: layer-11 input changed from baseline"
             )
-        candidate_logit_rows: list[Any] = []
-        branch_audits: list[dict[str, Any]] = []
-        for candidate_index in range(candidate_count):
-            row_logits, row_audit = candidate_suffix_logits(
-                target=target,
-                recorder=recorder,
-                projection=recorder.name,
-                patch_tensor=patch_tensor[
-                    candidate_index : candidate_index + 1
-                ],
-                partial_cache=copy.deepcopy(partial_cache),
-                captures=captures,
-                layer_contexts=layer_contexts,
-                layer_index=int(gate["layer_indices"][0]),
-                counters=counters,
-            )
-            candidate_logit_rows.append(row_logits[0])
-            branch_audits.append(row_audit)
-            print(
-                json.dumps(
-                    {
-                        "prompt_id": prompt["id"],
-                        "projection": recorder.name,
-                        "candidate_completed": candidate_index + 1,
-                        "candidate_total": candidate_count,
-                    },
-                    sort_keys=True,
-                ),
-                flush=True,
-            )
-            gc.collect()
-        candidate_logits = torch.stack(candidate_logit_rows, dim=0)
-        branch_audit = {
-            "current_input_bitwise_equal": all(
-                bool(row.get("current_input_bitwise_equal"))
-                for row in branch_audits
-            ),
-            "candidate_suffix_calls": len(branch_audits),
-        }
+        candidate_logits, branch_audit = candidate_suffix_logits(
+            target=target,
+            recorder=recorder,
+            projection=recorder.name,
+            patch_tensor=patch_tensor,
+            partial_cache=partial_cache,
+            captures=captures,
+            layer_contexts=layer_contexts,
+            layer_index=int(gate["layer_indices"][0]),
+            counters=counters,
+        )
     except CandidateBatchControlError as error:
         control_failures.append(str(error))
         return (
@@ -1116,8 +1088,8 @@ def evaluate_projection(
     timing = {
         "prompt_id": prompt["id"],
         "projection": recorder.name,
-        "candidate_suffix_batch_size": 1,
-        "candidate_suffix_calls": candidate_count,
+        "candidate_suffix_batch_size": candidate_count,
+        "candidate_suffix_calls": 1,
         "candidate_suffix_wall_ns": branch_wall_ns,
     }
     del candidate_logits, patch_tensor, partial_cache, captures
