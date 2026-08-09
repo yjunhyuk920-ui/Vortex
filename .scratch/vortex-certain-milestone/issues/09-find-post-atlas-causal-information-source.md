@@ -1,7 +1,7 @@
 # Find a Post-Atlas Causal Information Source
 
 Type: task
-Status: open
+Status: claimed
 Blocked by: none
 
 ## Question
