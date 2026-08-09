@@ -1,7 +1,7 @@
 # Resolve Cross-Matrix Advice Locality
 
 Type: research
-Status: open
+Status: claimed
 Blocked by: Break the Bilinear Cross-Residual Barrier
 
 ## Question
