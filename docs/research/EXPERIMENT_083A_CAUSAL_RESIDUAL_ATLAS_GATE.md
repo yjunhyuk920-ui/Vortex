@@ -33,13 +33,14 @@ batch size one; it produced no scientific row before the fixed 1,804-second
 command timeout and is classified as infrastructure failure only.
 
 The corrected runner now executes the prefix and pre-branch decode at batch
-size one, verifies that the captured layer-11 and projection inputs are
-bitwise-identical to the unchanged baseline, and expands the immutable cache
-only at the exact `q_proj` or `down_proj` output boundary. Candidate suffixes
-then share one batch. Dense-patch and all-page identity arms must retain the
-frozen top-1, so downstream batch-dependent drift cannot silently validate the
-scientific arm. Every page still receives a separate final-logit row and
-exact-reference KL.
+size one and verifies that the captured layer-11 and projection inputs are
+bitwise-identical to the unchanged baseline. A first suffix implementation
+expanded all 18 q candidates in one batch, but produced no scientific row
+before the same 1,804-second timeout. The current path therefore clones the
+exact branch-point cache and executes each suffix at batch size one, logging
+each completed page immediately. Dense-patch and all-page identity arms must
+retain the frozen top-1. Every page still receives a separate final-logit row
+and exact-reference KL.
 
 ## Frozen stop
 
