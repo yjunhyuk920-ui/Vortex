@@ -546,3 +546,23 @@ hardware result, or Fixed-Mission success.
 Current classification: leakage-safe equations and ten focused controls are
 preregistered. There is no result on the new prompt population, no Surviving
 Candidate, and no E2 or hardware evidence.
+
+## EXP-083B pre-execution implementation validation
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Pair compiler has no weight parameter | signature test plus pair-defect randomized control | PASS source |
+| Current page selector can receive only stored basis/current input/page width | signature tests | PASS source |
+| Static operator proof is positive-definite rather than trusted SVD | outward Gram, verified Cholesky residual, verified inverse residual | PASS reference |
+| Registered layer-23 matrix admits the proof | beta 1.3267520416; one attempt; positive margin 1.9485e-07 | PASS static preflight |
+| Projection radius encloses BF16 candidate/native difference | randomized BF16 reference | PASS reference |
+| Residual add and final RMSNorm radius encloses both paths | randomized BF16 reference | PASS reference |
+| Gate rejects the first valid fallback and promotes only complete 24/24 | aggregation boundary tests | PASS reference |
+| Focused/full repository regression | 17 / 453 tests | PASS |
+| Independent raw-evidence replay | verifier implemented; no result bundle yet | NOT TESTED / EXECUTE NEXT |
+| Untouched 24-prompt last-down certificate | no model prompt run | NOT TESTED / EXECUTE NEXT |
+| E2 operation replacement, speed, 8 GiB, 122B/405B | outside this Gate | NOT TESTED |
+
+Current classification: implementation and static metadata are ready, but the
+scientific population remains untouched. There is still no EXP-083B decision,
+Surviving Candidate, E2 result, or fixed-mission success.

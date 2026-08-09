@@ -1073,3 +1073,24 @@ A pass authorizes only a new backward-layer/eight-position composition Gate.
 It does not authorize E2, a scheduler, CUDA, the private Ubuntu server, a
 larger checkpoint, or physical claims. The next unblocked map ticket is `Run
 the Legal Pair and Outward-Bound Last-Down Gate`.
+
+## EXP-083B source implemented -- freeze and execute exactly once
+
+EXP-083B now implements the unchanged legal-pair authority with a runner,
+independent no-forward verifier, focused tests, and a fail-closed workflow.
+The candidate stops at layer 23 before reading the current dense `down_proj`,
+builds the page decision and strict final certificate, freezes that verdict,
+and only then runs the native dense evaluator and deterministic replay.
+
+The static compiler was preflighted without tokenizing or executing any new
+prompt. Its outward Gram/verified-Cholesky proof accepted the registered
+matrix in one attempt with `beta_W=1.326752041578861` and positive-definite
+margin lower bound `1.94850297451582e-07`. This is registered-weight metadata,
+not evidence about the untouched 24-prompt population.
+
+Seventeen focused tests and all 453 repository tests pass. No EXP-083B prompt
+activation, candidate, native output, result bundle, or scientific decision
+exists at this point. After the exact source commit is pinned, the next action
+is the single canonical run followed by independent verification. The first
+valid unresolved row must stop and reject the primary Atlas path; it may not
+change the proof, page, rank, prompt, or threshold.

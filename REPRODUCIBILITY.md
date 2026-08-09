@@ -900,3 +900,55 @@ and prompt hashes, and freeze pair rows, selected page, every outward term,
 strict margin, native comparison, dense completion, leakage/taint controls,
 resource counts, environment, logs, and checksums. An independent verifier
 must rebuild the selector, radii, aggregate decision, and deterministic core.
+
+## EXP-083B pre-execution source and canonical commands
+
+Implementation paths:
+
+```text
+experiments/exp_083b/config.json
+experiments/exp_083b/run_experiment.py
+experiments/exp_083b/verify_results.py
+vortex_runtime/causal_residual_atlas_legal_execution.py
+tests/exp_083b/test_legal_pair_outward_gate.py
+```
+
+The registered matrix-only preflight performs no tokenizer or model forward.
+It verifies `beta_W=1.326752041578861` for layer-23 `down_proj` by an outward
+smaller-Gram interval plus Cholesky-factor and factor-inverse residuals. The
+numerical eigensolver only proposes the value; the positive-definiteness
+margin lower bound is `1.94850297451582e-07`.
+
+Pre-execution validation:
+
+```powershell
+$env:PYTHONPATH = ".;.deps"
+.deps\exp076-venv\Scripts\python.exe -m pytest -q `
+  tests/test_causal_residual_atlas_legal_gate.py tests/exp_083b
+.deps\exp076-venv\Scripts\python.exe -m pytest -q
+.deps\exp076-venv\Scripts\python.exe scripts/run_validation.py
+```
+
+Observed source-only validation is `17 passed`, `453 passed`, and a successful
+standard validation run. These commands do not execute the new population.
+
+Canonical one-shot execution, only from the subsequently pinned clean source
+commit and into a nonexistent or empty output directory:
+
+```powershell
+$env:PYTHONPATH = ".;.deps"
+.deps\exp076-venv\Scripts\python.exe `
+  experiments\exp_083b\run_experiment.py `
+  --model-dir .deps\exp076-model `
+  --output-dir results\exp_083b
+
+.deps\exp076-venv\Scripts\python.exe `
+  experiments\exp_083b\verify_results.py `
+  --model-dir .deps\exp076-model `
+  --output-dir results\exp_083b `
+  --write-report
+```
+
+The verifier reads pinned tensor values and raw arrays but records zero model
+forward calls. No prompt result or expected scientific decision is recorded
+before the source freeze.
