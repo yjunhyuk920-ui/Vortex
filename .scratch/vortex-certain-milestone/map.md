@@ -30,11 +30,12 @@ Mission.
 - [Causal Residual Atlas source](issues/03-find-causal-circuit-information-source.md): committed-prefix exact input/image pairs supply `Q` and `WQ`; a fully retained residual creates a narrow rank-16 logical window but needs `99.899841%` certified coverage, so only its cheapest real-weight Gate is now open.
 - [Preregister the Cheapest Surviving Gate](issues/04-preregister-cheapest-surviving-gate.md): the frozen first post-prefill layer-11 q/down oracle enumerates 1,296 one-page candidates over 18 prompts and permits zero token failure before the legal bound stage.
 - [Run the Causal Residual Atlas First-Decode Gate](issues/06-run-causal-residual-atlas-first-decode-gate.md): EXP-083A passed and reproduced 18/18 tokens, 36/36 branches, and mean/p95 KL 0.007226/0.037661 under the favorable oracle; page existence survives, but legal pair construction, target-free selection, and outward certification remain the next blocker.
+- [Preregister the Legal Causal-Pair and Outward-Bound Gate](issues/07-preregister-legal-causal-pair-bound-gate.md): a new 24-prompt last-down Gate freezes pair-only causal MGS, maximum-residual-energy selection, verified spectral unread bounds, and strict final BF16 greedy certification; the charged component window remains below 1.185%, but demands 24/24 zero-fallback execution.
 
 ## Not yet specified
 
-- Preregister the legal causal-pair, target-free selector, and outward-bound
-  Gate without tuning on the now-observed EXP-083A evaluation logits.
+- Execute the untouched legal pair/outward last-down Gate exactly once without
+  enumerating alternative pages or tuning from its result.
 - If that Gate survives, specify the exact E2 integration boundary, output
   contract, and held-out population from the observed mechanism.
 - If E2 survives, determine the next model-size and representative-hardware

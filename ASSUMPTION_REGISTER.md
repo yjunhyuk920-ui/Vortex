@@ -590,8 +590,28 @@ are assumed to choose and certify the required cold page without native current
 outputs or candidate logits. The fully charged hit/fallback equation must still
 meet the registered coverage frontier.
 
-Status: OPEN AND UNSUPPORTED. EXP-083A proves favorable page existence only.
-The obvious minimum-certified-radius rule reaches 16/18 tokens and p95 KL
-`0.075846638542797`, while current radii are at least `19.852750x` the exact
-selected unread error. The next experiment may test this assumption only under
-a separately frozen, leakage-safe causal-pair and outward-bound contract.
+Status: PREREGISTERED BUT UNTESTED. EXP-083A proves favorable page existence
+only. The obvious minimum-certified-radius rule reaches 16/18 tokens and p95
+KL `0.075846638542797`, while current radii are at least `19.852750x` the exact
+selected unread error. The separately frozen next Gate replaces that rule with
+the analytically derived common-spectral-bound selector and uses a new
+24-prompt population. No real row has tested it.
+
+## A-063 -- A common spectral bound can certify the legal last-down slice
+
+For stored pair-only `Q_hat/Z_hat`, the page with maximum current residual
+energy is assumed to leave a small enough unread vector that a verified
+`beta_W >= ||W||_2`, pair-image defect, native arithmetic enclosure, final
+RMSNorm ball, and LM-head row-norm margin certify the unchanged greedy token.
+
+The component equation assumes a verified static spectral compiler amortized
+over 20,000,000 checkpoint-service tokens. It requires 24/24 untouched rows,
+4/4 per family, zero false accept, zero fallback, and mean/p95 KL
+`<=0.02/0.05`.
+
+Status: OPEN AND UNTESTED. The selector and bound pass synthetic/reference
+no-false-accept tests only. Global operator bounds may still be too loose,
+native BF16 pair-image defects may dominate, prompt-order MGS may fail to reach
+the favorable SVD residual, or the strict final margin may remain unresolved.
+Any one such valid row rejects this assumption and the legal Atlas primary
+path under the frozen scope.

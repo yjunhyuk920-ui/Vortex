@@ -857,3 +857,34 @@ KEEP_RUNTIME_HARDWARE_SCALE_AND_E2_E7_CLOSED
 No Core Candidate is admitted to production architecture and no private-server
 or larger-model action is authorized. Authority:
 `docs/research/EXPERIMENT_083A_CAUSAL_RESIDUAL_ATLAS_GATE.md`.
+
+## D-081 -- Freeze a leakage-safe legal last-down certificate
+
+The observed EXP-083A rows are quarantined from selector and bound design. A
+new 24-prompt population was written and hashed before model execution. The
+first executable slice is layer-23 `down_proj` at teacher position 1 because
+only residual addition, final RMSNorm, and the tied LM head remain after it.
+
+Two-pass causal Gram-Schmidt derives `Q_hat/Z_hat` from committed pairs only.
+The target-free selector removes the page with maximum current residual energy.
+A verified full-matrix operator bound encloses the unread residual; pair/native
+rounding, final RMSNorm, and every LM-head row margin are outward. Failure to
+prove a strict greedy winner executes dense completion or aborts.
+
+The fully charged favorable component equation, including a 20M-token static
+compile amortization, is `1.093706271797%` traffic and `0.928746620379%`
+operations. Traffic requires `99.908521086612%` coverage, so the finite Gate
+permits no failure.
+
+Decision:
+
+```text
+PREREGISTER_CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_GATE
+USE_ONLY_NEW_24_PROMPT_POPULATION_FOR_THE_SCIENTIFIC_DECISION
+ON_PASS_AUTHORIZE_ONLY_BACKWARD_LAYER_AND_POSITION_EXPANSION
+ON_FAILURE_REJECT_THE_LEGAL_ATLAS_PRIMARY_PATH
+```
+
+No new model result, experiment number, E2 claim, hardware action, or scale
+claim is recorded. Authority:
+`docs/research/CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_GATE.md`.

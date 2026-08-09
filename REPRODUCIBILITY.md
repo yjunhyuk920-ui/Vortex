@@ -862,3 +862,41 @@ The post-hoc selector audit in
 `results/exp_083a/processed/exploratory_selector_audit.json` is explicitly not
 part of the frozen Gate. It derives page availability and the failed
 minimum-radius selector from committed rows only.
+
+## Legal pair/outward Gate preregistration
+
+Authority document:
+`docs/research/CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_GATE.md`.
+
+Frozen untouched population:
+
+```text
+path    docs/research/inputs/causal_residual_atlas_legal_gate_prompts.json
+SHA-256 67bd16d4f1e63a6f4e4a9131119335aff8d4d676549ce55287bf69b8fb879fb5
+rows    24, four per family
+```
+
+No checkpoint output for those rows, result directory, experiment number,
+source/evidence authority, or expected scientific result exists in this
+preregistration. The prior 18 EXP-083A evaluation rows are provenance only and
+may not affect the next decision.
+
+Pure reproduction:
+
+```powershell
+$env:PYTHONPATH = ".;.deps"
+python scripts/derive_causal_residual_atlas_legal_gate.py
+python -m pytest tests/test_causal_residual_atlas_legal_gate.py -q
+```
+
+Expected invariants include 24/24 required tokens, layer-23 `down_proj`, rank
+16, 64-column pages, proof metadata `1,055,320` bytes, charged logical
+traffic/operations `0.010937062717971382/0.009287466203790127`, controlling
+coverage `0.999085210866119530`, and registered spectral-compile work
+`28,052,251,108,674,513` scalar operations. Ten focused tests pass.
+
+The future runner must start from an empty output directory, pin the authority
+and prompt hashes, and freeze pair rows, selected page, every outward term,
+strict margin, native comparison, dense completion, leakage/taint controls,
+resource counts, environment, logs, and checksums. An independent verifier
+must rebuild the selector, radii, aggregate decision, and deterministic core.

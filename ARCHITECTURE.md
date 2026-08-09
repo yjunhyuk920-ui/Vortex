@@ -624,3 +624,32 @@ native dense center, exhaustive page logits, and one-projection-at-a-time dense
 suffix remain experiment-only. A naive minimum-radius chooser failed two token
 states, so it is not admitted. Hardware scheduling and E2 integration remain
 blocked behind a separately preregistered correctness Gate.
+
+### Preregistered legal last-down boundary
+
+The next Gate freezes one architecture-shaped transition without admitting it
+as a runtime component:
+
+```text
+committed prefix (x_s, y_s) pairs
+  -> two-pass causal Q_hat/Z_hat + outward pair defect
+current layer-23 down input
+  -> u = x - Q_hat(Q_hat^T x)
+  -> choose maximum-residual-energy 64-column page
+  -> Z_hat a + selected exact page contribution
+  -> verified unread spectral radius
+  -> residual add + final RMSNorm radius + LM-head row margins
+       strict winner -> evaluator-checked candidate
+       unresolved/corrupt/nonfinite -> immutable dense completion or abort
+```
+
+The selector has no weight/output/logit input. The static operator certificate,
+pair construction, capsule, proof metadata, vocabulary scan, and fallback are
+present in the logical equation. The first valid fallback among 24 new prompts
+rejects the path.
+
+This boundary deliberately starts at the final `down_proj`; it does not yet
+propagate through attention, DeltaNet, earlier MLPs, multiple projections, or
+cache divergence. A pass admits only a backward-layer and position-expansion
+Gate. A failure admits no selector rescue. Authority:
+`docs/research/CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_GATE.md`.

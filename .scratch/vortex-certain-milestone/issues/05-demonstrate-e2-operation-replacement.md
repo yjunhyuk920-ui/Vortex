@@ -2,7 +2,7 @@
 
 Type: task
 Status: open
-Blocked by: Preregister the Legal Causal-Pair and Outward-Bound Gate
+Blocked by: Run the Legal Pair and Outward-Bound Last-Down Gate
 
 ## Question
 

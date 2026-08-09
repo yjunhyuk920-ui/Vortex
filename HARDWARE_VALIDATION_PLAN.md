@@ -458,3 +458,22 @@ Ubuntu command, model download, or 122B/405B action occurred.
 Hardware remains gated behind legal pair construction, target-free selection,
 outward certification, simultaneous operation replacement, and complete
 branch-state accounting. Phase D and E4-E7 remain `NOT TESTED`.
+
+## Legal pair/outward Gate hardware boundary
+
+The new preregistration is a CPU/reference correctness Gate only. Its favorable
+target equation charges `0.983090483 GiB` of capsule/proof metadata,
+`1.093706272%` logical traffic, and `0.928746620%` logical operations after an
+explicit 20M-token static-compile amortization. None is a measured GPU, SSD,
+PCIe, latency, or peak-memory value.
+
+The remaining `7.016909517 GiB` is not free verified capacity: KV, model/runtime
+state, workspaces, selected-page staging, fallback overlap, allocator headroom,
+and physical proof execution are absent. The verified spectral compiler's
+`69,479.621549` dense-token-equivalent logical work is not measured wall time.
+
+No target Ubuntu command, model download, storage allocation, CUDA action, or
+EXP-073 Stage-2 measurement is authorized. Even a 24/24 pass permits only
+backward correctness expansion; hardware remains blocked behind simultaneous
+E2 operation replacement and a complete peak-state plan. Phase D/E4-E7 remain
+`NOT TESTED`.

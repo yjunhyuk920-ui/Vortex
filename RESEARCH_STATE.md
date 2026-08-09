@@ -1,6 +1,6 @@
 # VORTEX Research State
 
-Last updated: 2026-08-08 Asia/Seoul
+Last updated: 2026-08-09 Asia/Seoul
 
 ## Fixed final objective
 
@@ -899,3 +899,58 @@ action is authorized.
 
 Authority: `docs/research/EXPERIMENT_083A_CAUSAL_RESIDUAL_ATLAS_GATE.md`,
 `results/exp_083a`, and `results/exp_083a_reproduction`.
+
+## Legal pair and outward-bound Gate preregistered
+
+The executable follow-up is now frozen without assigning an experiment number
+or running another checkpoint row. The already observed EXP-083A evaluation
+logits are quarantined from method choice. A new SHA-pinned 24-prompt
+population, four prompts in each of six families, is the only scientific
+population.
+
+The cheapest branch is the first post-prefill call to layer-23 `down_proj`.
+Two-pass causal Gram-Schmidt constructs BF16 `Q_hat/Z_hat` from committed
+prefix input/image pairs only. The selector receives only the current residual
+and chooses the 64-column page with maximum residual energy. A verified static
+`beta_W >= ||W||_2` gives
+
+```text
+||W[:, unread] u[unread]||_2 <= beta_W ||u[unread]||_2.
+```
+
+Pair-image, native FP32-accumulate/BF16-output, selected-page, cast, residual-
+addition, final RMSNorm, and LM-head row-margin errors are all outward and
+strict. An unresolved margin executes immutable-branch dense completion or
+aborts; it cannot commit.
+
+The favorable 405B component equation now charges pair construction, proof
+metadata, a full vocabulary bound scan, and verified spectral compilation
+amortized over an explicit 20,000,000 checkpoint-service tokens:
+
+```text
+charged traffic                         1.093706271797%
+charged operations                      0.928746620379%
+registered target                       1.185185185185%
+traffic-governed minimum coverage      99.908521086612%
+component capsule + metadata            0.983090482652 GiB
+verified compile work               69,479.621549 dense-token equivalents
+```
+
+The finite Gate therefore requires 24/24 tokens, 4/4 per family, zero false
+accept, zero fallback, and mean/p95 KL at most `0.02/0.05`. The 7.0169 GiB
+unallocated remainder still omits KV, workspaces, page buffers, fallback
+overlap, allocator headroom, and physical runtime state; it is not an 8 GiB
+peak pass.
+
+Decision state:
+
+```text
+PREREGISTER_CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_GATE
+NO_NEW_MODEL_RESULT_OR_EXPERIMENT_NUMBER
+```
+
+Ten focused reference tests pass. Authority:
+`docs/research/CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_GATE.md`. The next map
+ticket may execute only this frozen last-down Gate. A pass permits backward
+layer/position expansion only; a failure rejects the legal Atlas primary path.
+E2-E7, hardware, 122B/405B, and the Fixed Mission remain unachieved.

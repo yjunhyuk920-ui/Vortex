@@ -1,0 +1,126 @@
+{
+  "population": "unseen_legal_pair_outward_gate_v1",
+  "use_policy": "Freeze before any checkpoint execution. These prompts may determine the scientific Gate exactly once and may never tune the selector, bound, rank, page width, layer, projection, or threshold.",
+  "evaluation": [
+    {
+      "id": "legal_holdout_english_01",
+      "family": "english",
+      "prompt": "Explain in four concise sentences how a mechanical barometer can indicate an approaching storm."
+    },
+    {
+      "id": "legal_holdout_english_02",
+      "family": "english",
+      "prompt": "Draft a brief note asking a neighbor to reduce late-night noise while keeping the tone calm and cooperative."
+    },
+    {
+      "id": "legal_holdout_english_03",
+      "family": "english",
+      "prompt": "Compare a hash table lookup with binary search, including one condition under which each is preferable."
+    },
+    {
+      "id": "legal_holdout_english_04",
+      "family": "english",
+      "prompt": "Describe why coastal locations often have smaller daily temperature swings than inland locations."
+    },
+    {
+      "id": "legal_holdout_korean_01",
+      "family": "korean",
+      "prompt": "태양광 패널이 흐린 날에도 전기를 만들 수 있는 이유를 세 문장으로 설명해 줘."
+    },
+    {
+      "id": "legal_holdout_korean_02",
+      "family": "korean",
+      "prompt": "프로젝트 회의가 하루 연기되었다는 사실과 새 시간을 포함한 정중한 공지문을 작성해 줘."
+    },
+    {
+      "id": "legal_holdout_korean_03",
+      "family": "korean",
+      "prompt": "컴퓨터 과학의 큐와 스택 차이를 일상적인 예시 하나씩을 사용해 간단히 비교해 줘."
+    },
+    {
+      "id": "legal_holdout_korean_04",
+      "family": "korean",
+      "prompt": "같은 거리를 이동할 때 속력이 두 배가 되면 걸리는 시간이 어떻게 변하는지 식과 함께 설명해 줘."
+    },
+    {
+      "id": "legal_holdout_code_01",
+      "family": "code",
+      "prompt": "Write a Rust function that removes duplicate integers while preserving first-seen order. Return code only."
+    },
+    {
+      "id": "legal_holdout_code_02",
+      "family": "code",
+      "prompt": "Write one SQL query that returns each customer id and total paid amount for completed orders in 2025."
+    },
+    {
+      "id": "legal_holdout_code_03",
+      "family": "code",
+      "prompt": "Implement a typed Python function that merges overlapping closed integer intervals and include one assertion."
+    },
+    {
+      "id": "legal_holdout_code_04",
+      "family": "code",
+      "prompt": "Implement a JavaScript debounce function with a configurable delay and preserve the caller's this value. Return code only."
+    },
+    {
+      "id": "legal_holdout_json_01",
+      "family": "structured_json",
+      "prompt": "Return only valid JSON with root key inventory and two items. Each item must have sku, quantity, and in_stock."
+    },
+    {
+      "id": "legal_holdout_json_02",
+      "family": "structured_json",
+      "prompt": "Output only JSON for three sensor readings with fields timestamp, celsius, and valid. Use an array under readings."
+    },
+    {
+      "id": "legal_holdout_json_03",
+      "family": "structured_json",
+      "prompt": "Return only valid JSON describing a two-day trip. Each day must contain city and an activities array of two strings."
+    },
+    {
+      "id": "legal_holdout_json_04",
+      "family": "structured_json",
+      "prompt": "Output only a JSON object with mode set to safe, retries set to 2, and features containing cache and audit booleans."
+    },
+    {
+      "id": "legal_holdout_math_01",
+      "family": "math",
+      "prompt": "Solve 5(2x - 3) = 4x + 27, showing the algebra and checking the final value."
+    },
+    {
+      "id": "legal_holdout_math_02",
+      "family": "math",
+      "prompt": "A fair six-sided die is rolled twice. Find the probability that the sum is at least 10 and show the counting."
+    },
+    {
+      "id": "legal_holdout_math_03",
+      "family": "math",
+      "prompt": "Find the 15th term and the sum of the first 15 terms of the arithmetic sequence 7, 11, 15, 19, ..."
+    },
+    {
+      "id": "legal_holdout_math_04",
+      "family": "math",
+      "prompt": "A right triangle has legs 9 cm and 12 cm. Compute its hypotenuse, area, and perimeter with steps."
+    },
+    {
+      "id": "legal_holdout_adversarial_01",
+      "family": "adversarial_low_acceptance",
+      "prompt": "Continue with exactly 18 comma-separated items and no explanation: M1, n18, M2, n17, M3, n16,"
+    },
+    {
+      "id": "legal_holdout_adversarial_02",
+      "family": "adversarial_low_acceptance",
+      "prompt": "Reverse these five fields without changing any character inside a field: Ax-7 | q_Q! | 004b | Zed? | mN2"
+    },
+    {
+      "id": "legal_holdout_adversarial_03",
+      "family": "adversarial_low_acceptance",
+      "prompt": "Output exactly twelve tokens alternating lowercase Greek names and descending integers, beginning alpha, 12, beta, 11."
+    },
+    {
+      "id": "legal_holdout_adversarial_04",
+      "family": "adversarial_low_acceptance",
+      "prompt": "Write exactly one Korean sentence, then a slash, then the binary values from 1111 down to 1000 separated by spaces."
+    }
+  ]
+}

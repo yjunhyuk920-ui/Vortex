@@ -1036,3 +1036,40 @@ Passing the next Gate still does not authorize E2 until the selected projections
 are actually replaced simultaneously under fail-closed execution. It does not
 authorize CUDA, the Ubuntu host, a larger download, or 405B. The next unblocked
 map ticket is `Preregister the Legal Causal-Pair and Outward-Bound Gate`.
+
+## Legal pair/outward Gate frozen -- execute the untouched last-down test
+
+The executability contract is now authority at
+`docs/research/CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_GATE.md`. No experiment
+number or checkpoint result exists yet.
+
+Frozen first stage:
+
+```text
+population              24 newly hashed prompts; prior 18 rows quarantined
+position                first genuine post-prefill call
+layer / projection      23 / down_proj
+pair compiler           two-pass causal MGS from prefix pairs only
+rank / page             16 / one contiguous 64-column page
+selector                maximum current residual-page energy, lowest tie
+local certificate       verified spectral unread radius + pair/native errors
+declared output         strict final RMSNorm + LM-head native BF16 greedy top-1
+required result         24/24, 4/4 each family, 0 false accept, 0 fallback
+quality                 mean/p95 target-to-candidate KL <=0.02/0.05
+```
+
+The selector interface contains no weights, native current output, or logits.
+The evaluator may compare native logits only after the selection and
+certificate verdict are immutable. The first valid unresolved row rejects the
+path; it may not trigger page enumeration or method tuning.
+
+Before implementation, pin the authority and prompt hashes in a new config.
+The runner must freeze pair/certificate rows, selected page, every outward
+term, dense completion, taint/leakage controls, exact baseline comparison,
+resource counts, environment, logs, and checksums. It must independently
+verify the result bundle.
+
+A pass authorizes only a new backward-layer/eight-position composition Gate.
+It does not authorize E2, a scheduler, CUDA, the private Ubuntu server, a
+larger checkpoint, or physical claims. The next unblocked map ticket is `Run
+the Legal Pair and Outward-Bound Last-Down Gate`.

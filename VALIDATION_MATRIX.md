@@ -525,3 +525,24 @@ Current classification: the registered favorable page-existence premise passes
 and reproduces at E1 on the pinned 0.8B model. This is a material positive
 necessary-condition result, not a Surviving Candidate, E2 replacement,
 hardware result, or Fixed-Mission success.
+
+## Preregistered legal pair/outward last-down Gate
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Previously observed 18-prompt logits cannot tune the Gate | separate new prompt file, frozen SHA-256 | PASS contract |
+| New scientific population is complete and balanced | 24 unique rows, six families at 4 each | PASS contract |
+| Selector cannot read weights, native current output, or logits | function signature contains residual and page width only | PASS reference |
+| Common spectral unread bound has no false underestimate | exact-dyadic proof plus randomized matrix/vector controls | PASS reference |
+| Pair defect, unread, arithmetic, cast, and native terms are all charged | reference equation and fault tests | PASS reference |
+| RMSNorm local ball and LM-head strict top-1 rule are sound | randomized ball and exhaustive-circle controls | PASS reference |
+| Charged 405B component traffic/operations fit `8/675` | 1.093706272% / 0.928746620% at 20M static service tokens | PASS favorable E0 component equation |
+| Component capsule plus proof metadata is below 1 GiB | 0.983090483 GiB | PASS component state only |
+| Complete target peak including KV/work/fallback fits 8 GiB | 7.0169 GiB remainder excludes mandatory state | NOT CLOSED |
+| Pair-only last-down certificate succeeds on real held-out rows | no model run | NOT TESTED / NEXT GATE |
+| Required coverage | 99.908521087%; finite requirement 24/24 and 4/4/family | NOT TESTED / NEXT GATE |
+| Backward layers, eight positions, simultaneous replacement, E2-E7 | deliberately outside first Gate | NOT TESTED |
+
+Current classification: leakage-safe equations and ten focused controls are
+preregistered. There is no result on the new prompt population, no Surviving
+Candidate, and no E2 or hardware evidence.
