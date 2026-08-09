@@ -17,7 +17,7 @@ Implementation commit:
 Canonical one-shot Windows command, only after the source commit exists:
 
 ```powershell
-$env:PYTHONPATH = ".;.deps"
+$env:PYTHONPATH = "."
 .deps\exp076-venv\Scripts\python.exe `
   experiments\exp_083b\run_experiment.py `
   --model-dir .deps\exp076-model `
@@ -34,6 +34,10 @@ model forward:
   --output-dir results\exp_083b `
   --write-report
 ```
+
+The runner/verifier use the pinned virtual environment's own packages. Adding
+the repository-level `.deps` package directory to `PYTHONPATH` would shadow
+that lock with an older Transformers build and is therefore invalid.
 
 Before the canonical command there is no expected scientific decision. A pass
 would authorize only a separately preregistered backward-layer/position Gate.

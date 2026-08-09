@@ -945,7 +945,7 @@ Canonical one-shot execution, only from the subsequently pinned clean source
 commit and into a nonexistent or empty output directory:
 
 ```powershell
-$env:PYTHONPATH = ".;.deps"
+$env:PYTHONPATH = "."
 .deps\exp076-venv\Scripts\python.exe `
   experiments\exp_083b\run_experiment.py `
   --model-dir .deps\exp076-model `
@@ -957,6 +957,12 @@ $env:PYTHONPATH = ".;.deps"
   --output-dir results\exp_083b `
   --write-report
 ```
+
+Do not append the repository-level `.deps` directory for these two commands:
+the pinned virtual environment already resolves its dependencies, while that
+extra path shadows Transformers 5.12.0 with 4.50.3. A pre-prompt launch check
+demonstrated the mismatch and stopped at version validation with zero model
+loads, tokenizations, or prompt forwards.
 
 The verifier reads pinned tensor values and raw arrays but records zero model
 forward calls. No prompt result or expected scientific decision is recorded
