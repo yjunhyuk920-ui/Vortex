@@ -1098,3 +1098,31 @@ change the proof, page, rank, prompt, or threshold.
 Executable source is pinned at
 `ecf753d7352bcca47767d0fe91c46d84cca66b59`; the frozen config SHA-256 is
 `2c8bdf12535e18327f0a4116e8f9dc4b918f900208d405972cfa421764bdd5c1`.
+
+## EXP-083B rejected -- search only for a materially new causal source
+
+The one-shot Gate stopped on `legal_holdout_english_01`. Rank 16 and the
+target-free page were valid, but the strict final certificate was unresolved;
+one exact fallback therefore rejected the zero-fallback Gate. All controls
+were clean and independent no-forward verification passed with deterministic
+core `57e78fd4d7b1bdc6e97c705a5acb2e7e408a1023e38ae933799b00b8e3711ff4`.
+
+The rejection is not an artifact that permits another Atlas sweep. The unread
+common-spectral term alone was `16.3298572850` around a pre-RMSNorm center of
+norm `10.7091120605`. Even an oracle ball containing the observed native
+hidden state needs radius `38.9079080403`, versus an ideal top-two row-margin
+limit `4.1978252811`. Backward layers, more positions, and E2 integration can
+only add uncertainty and are closed for this mechanism.
+
+Current state returns to `NO_SURVIVING_CANDIDATE`. The next Wayfinder ticket
+must identify a different causal information source that changes the missing-
+contribution premise and derive its complete E0 operations, traffic, state,
+verification, miss, fallback, and compile equation before assigning another
+experiment number. Correlated/direction-aware information is admissible only
+if it is a concrete lossless source with a paid causal constructor, not a
+post-hoc tighter bound on the rejected rows.
+
+Do not run another Atlas rank/page/layer/prompt/tolerance variant, build E2,
+contact the Ubuntu host, download a larger model, or begin kernel/hardware
+work. The next unblocked map ticket is `Find a Post-Atlas Causal Information
+Source`.

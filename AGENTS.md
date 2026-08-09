@@ -237,6 +237,15 @@ would leave logical traffic at `92.244986%` of dense. Do not sweep lookup trees,
 code ranks, fields, layers, or prompts around this path. No core candidate
 survives. Read `NEXT_EXPERIMENT.md` before proposing another mechanism.
 
+EXP-082A rejects terminal-only differential spanning trees by a favorable
+whole-population lower bound. EXP-083A passes only favorable one-page
+existence; EXP-083B then rejects the legal Causal Residual Atlas primary path
+on its first untouched row with one valid fallback and zero control failures.
+Do not sweep Atlas ranks, pages, layers, selectors, prompts, spectral slack, or
+tolerances. A continuation requires a materially new causal information source
+and fully charged E0 equation. E2, hardware, larger models, and the private
+Ubuntu host remain unauthorized. Read `NEXT_EXPERIMENT.md`.
+
 ## Agent skills
 
 ### Issue tracker

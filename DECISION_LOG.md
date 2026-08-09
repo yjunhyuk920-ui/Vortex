@@ -888,3 +888,37 @@ ON_FAILURE_REJECT_THE_LEGAL_ATLAS_PRIMARY_PATH
 No new model result, experiment number, E2 claim, hardware action, or scale
 claim is recorded. Authority:
 `docs/research/CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_GATE.md`.
+
+## D-082 -- Reject the legal Causal Residual Atlas primary path
+
+EXP-083B executed the frozen untouched population exactly once and stopped on
+its first row. The pair compiler reached rank 16 and the maximum-residual-
+energy selector legally chose page 0 before native current output or logits
+existed. The final certificate was unresolved, exact dense completion replayed,
+and the required zero-fallback Gate failed.
+
+All 19 controls passed with zero leakage, malformed state, false accept, or
+dense-replay mismatch. Independent verification used zero model forwards and
+rebuilt deterministic-core SHA-256
+`57e78fd4d7b1bdc6e97c705a5acb2e7e408a1023e38ae933799b00b8e3711ff4`.
+The frozen down radius was `23.4205200666`, dominated by the unread
+common-spectral radius `16.3298572850` and pair radius `6.2376633562`.
+
+A post-hoc necessary-condition audit cannot alter the rejection: actual
+candidate/native hidden separation was `38.9079080403`, while the top-two
+row-margin certificate allows less than `4.1978252811` even with rounding set
+to zero. Therefore tightening only the large RMSNorm implementation term does
+not reopen the same certificate family.
+
+Decision:
+
+```text
+REJECT_CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_PATH
+DO_NOT_OPEN_BACKWARD_LAYER_POSITION_OR_E2_ATLAS_WORK
+REQUIRE_A_NEW_CAUSAL_INFORMATION_SOURCE_AND_E0_EQUATION
+KEEP_HARDWARE_SCALE_AND_E2_E7_CLOSED
+```
+
+Authority: `results/exp_083b`,
+`docs/research/EXPERIMENT_083B_LEGAL_PAIR_OUTWARD_LAST_DOWN_GATE.md`, and
+`docs/research/EXP083B_POSTHOC_NECESSARY_CONDITION_AUDIT.md`.

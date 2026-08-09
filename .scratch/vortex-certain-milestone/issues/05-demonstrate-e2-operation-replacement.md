@@ -2,7 +2,7 @@
 
 Type: task
 Status: open
-Blocked by: Run the Legal Pair and Outward-Bound Last-Down Gate
+Blocked by: Find a Post-Atlas Causal Information Source
 
 ## Question
 

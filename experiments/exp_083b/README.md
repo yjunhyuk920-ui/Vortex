@@ -43,3 +43,16 @@ Before the canonical command there is no expected scientific decision. A pass
 would authorize only a separately preregistered backward-layer/position Gate.
 It is not E2 operation replacement, physical performance evidence, or evidence
 for 122B/405B.
+
+## Result
+
+The one-shot run stopped on `legal_holdout_english_01`: rank 16 and target-free
+page 0 were valid, but the strict final certificate was unresolved and exact
+dense completion executed. Controls, leakage failures, and false accepts were
+all zero. The authoritative decision is
+`REJECT_CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_PATH`.
+
+Independent no-forward verification passed and rebuilt deterministic-core
+SHA-256
+`57e78fd4d7b1bdc6e97c705a5acb2e7e408a1023e38ae933799b00b8e3711ff4`.
+Evidence is under `results/exp_083b`.

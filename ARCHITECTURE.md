@@ -653,3 +653,29 @@ propagate through attention, DeltaNet, earlier MLPs, multiple projections, or
 cache divergence. A pass admits only a backward-layer and position-expansion
 Gate. A failure admits no selector rescue. Authority:
 `docs/research/CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_GATE.md`.
+
+### EXP-083B architecture closure
+
+The preregistered transition is not admitted into the runtime. On the first
+untouched row, legal pair construction and target-free page selection worked,
+but the outward declared-output certificate required dense completion. The
+zero-fallback architecture boundary therefore failed before any backward-layer
+composition or E2 integration.
+
+The decisive interface mismatch is now measured:
+
+```text
+current residual u                    15.0834838983 L2
+selected 64-column residual            8.7190044575 L2
+unread residual                       12.3081455865 L2
+verified unread radius                16.3298572850
+complete down radius                  23.4205200666
+candidate pre-RMSNorm center norm     10.7091120605
+```
+
+No `CausalResidualAtlas` selector, capsule, proof compiler, cache transition,
+fallback engine, scheduler, or kernel is promoted to production architecture.
+The favorable EXP-083A oracle remains evidence of page existence only. Any
+future architecture proposal must introduce a different causal information
+source that changes how unread contributions are known, and must pass a new E0
+resource equation before an E1 or E2 component boundary is opened.

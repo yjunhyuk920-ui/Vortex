@@ -300,4 +300,9 @@ F-052 closes exhaustive finite-semiring tables and Boolean absorbing
 cell-probe shortcuts as direct numerical Transformer sources. It does not
 close the newly specified Causal Residual Atlas; that class must now pass a
 real causal-residual certificate Gate.
+F-053 records that Gate's first-row rejection and closes the legal one-page
+common-spectral/global-L2-ball Causal Residual Atlas primary path. It does not
+prove every possible correlated causal code impossible, but reopening requires
+a materially new paid information source and E0 equation rather than an Atlas
+parameter or bound sweep.
 Read that continuation and each scope boundary before reopening a family.

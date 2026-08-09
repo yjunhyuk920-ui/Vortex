@@ -293,3 +293,30 @@ oracle relabeled as a numerical dot product. Revisit only if a new algebra
 preserves the declared Transformer computation and supplies a fully charged
 finite representation. This entry does not reject committed-prefix residual
 coding. Authority: `docs/research/E0_CAUSAL_RESIDUAL_ATLAS_SOURCE.md`.
+
+<!-- EXP-083B-AUTHORITATIVE-FINAL -->
+## F-053 -- Legal one-page Causal Residual Atlas with a common spectral ball
+
+EXP-083B used committed-prefix pairs only, two-pass causal MGS, a verified
+`beta_W=1.326752041578861`, maximum residual-energy page selection, complete
+BF16/native arithmetic enclosures, and a strict final RMSNorm/LM-row top-1
+certificate. The first untouched row reached rank 16 and preserved the native
+winner in the candidate, but its certificate was unresolved and exact fallback
+fired. That single fallback violates the required `99.908521%` coverage and
+24/24 zero-fallback Gate.
+
+The frozen down radius was `23.4205200666`: unread common-spectral residual
+`16.3298572850`, pair-image term `6.2376633562`, and the remaining charged
+terms. Actual down error was `3.5125591929`, but a sound global ball still
+cannot certify the output. The actual final-hidden separation was
+`38.9079080403`, over `9.2686x` the ideal top-two row-margin radius limit even
+with numerical rounding removed. All 19 controls and independent replay
+passed; this is a scientific rejection, not an infrastructure failure.
+
+Do not reopen with rank, page width, layer, position, prompt subset, another
+residual score, spectral slack, tolerance, or tighter RMS implementation
+constants. Those retain the same missing unread-contribution premise or cannot
+repair the observed row-margin necessary condition. Revisit only with a
+materially new causal information source that provides paid, lossless
+directional/correlated information about the unread contribution and first
+closes a fully charged E0 equation. Authority: `results/exp_083b`.

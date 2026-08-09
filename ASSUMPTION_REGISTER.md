@@ -590,12 +590,11 @@ are assumed to choose and certify the required cold page without native current
 outputs or candidate logits. The fully charged hit/fallback equation must still
 meet the registered coverage frontier.
 
-Status: PREREGISTERED BUT UNTESTED. EXP-083A proves favorable page existence
-only. The obvious minimum-certified-radius rule reaches 16/18 tokens and p95
-KL `0.075846638542797`, while current radii are at least `19.852750x` the exact
-selected unread error. The separately frozen next Gate replaces that rule with
-the analytically derived common-spectral-bound selector and uses a new
-24-prompt population. No real row has tested it.
+Status: REJECTED AT E1 UNDER THE FROZEN LEGAL GATE. EXP-083B reached rank 16
+and selected its page legally on the first untouched row, but the strict final
+certificate was unresolved and exact fallback fired. The required finite
+coverage permits no fallback. Controls and independent replay were clean, so
+this contradicts the assumption rather than indicating infrastructure failure.
 
 ## A-063 -- A common spectral bound can certify the legal last-down slice
 
@@ -609,9 +608,22 @@ over 20,000,000 checkpoint-service tokens. It requires 24/24 untouched rows,
 4/4 per family, zero false accept, zero fallback, and mean/p95 KL
 `<=0.02/0.05`.
 
-Status: OPEN AND UNTESTED. The selector and bound pass synthetic/reference
-no-false-accept tests only. Global operator bounds may still be too loose,
-native BF16 pair-image defects may dominate, prompt-order MGS may fail to reach
-the favorable SVD residual, or the strict final margin may remain unresolved.
-Any one such valid row rejects this assumption and the legal Atlas primary
-path under the frozen scope.
+Status: REJECTED AT E1. On the first frozen row, the verified unread radius was
+`16.3298572850`, pair-image radius `6.2376633562`, and total down radius
+`23.4205200666`; the candidate pre-RMSNorm norm was only `10.7091120605`.
+The strict margin was unresolved and the registered stop rule rejected the
+legal Atlas primary path.
+
+### A-063 closure
+
+The failure cannot be attributed solely to the deliberately conservative
+RMSNorm implementation term. Post-hoc necessary-condition analysis finds an
+actual candidate/native final-hidden separation of `38.9079080403`, while the
+candidate top-two logit gap and verified LM row norms admit a hidden-ball
+radius below `4.1978252811` even with all rounding deleted. A ball containing
+the native state therefore cannot satisfy the same row-norm certificate.
+
+This closure is scoped to the common-spectral, one-page, global-L2-ball Atlas
+mechanism. A genuinely new directional/correlated causal information source
+is not universally ruled out, but it requires a new assumption and fully
+charged E0 Gate rather than a parameter or bound sweep.

@@ -1,0 +1,22 @@
+{
+  "authoritative_decision": "REJECT_CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_PATH",
+  "checks": [
+    "bundle file checksums",
+    "pinned checkpoint manifest",
+    "outward Gram verified-Cholesky spectral proof",
+    "full tied-LM-head outward row norms",
+    "pair-only MGS and BF16 stored relations",
+    "target-free maximum residual-energy page",
+    "candidate tensor replay without Transformer forward",
+    "projection, residual-add, RMSNorm, and LM-head radii",
+    "strict top1 certificate and verdict-before-dense barrier",
+    "dense replay, KL, false-accept, Gate, and deterministic core"
+  ],
+  "deterministic_core_sha256": "57e78fd4d7b1bdc6e97c705a5acb2e7e408a1023e38ae933799b00b8e3711ff4",
+  "experiment": "EXP-083B",
+  "model_forward_calls": 0,
+  "verification": "PASS",
+  "verified_prompt_ids": [
+    "legal_holdout_english_01"
+  ]
+}

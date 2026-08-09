@@ -1,0 +1,15 @@
+{
+  "family_counts": {
+    "adversarial_low_acceptance": 4,
+    "code": 4,
+    "english": 4,
+    "korean": 4,
+    "math": 4,
+    "structured_json": 4
+  },
+  "file_hashes": {
+    "docs/research/CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_GATE.md": "4cdd19b04b9232e1d2201b93ab1eb05f7f9eba071495713f35a9be588cadb930",
+    "docs/research/inputs/causal_residual_atlas_legal_gate_prompts.json": "67bd16d4f1e63a6f4e4a9131119335aff8d4d676549ce55287bf69b8fb879fb5",
+    "experiments/exp_076/requirements.lock.json": "ffdabbb8a70355f72ec967a9a1bc8844f84f250fe5c6eb64d21f64f8af3320ad"
+  }
+}

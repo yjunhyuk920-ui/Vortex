@@ -954,3 +954,51 @@ Ten focused reference tests pass. Authority:
 ticket may execute only this frozen last-down Gate. A pass permits backward
 layer/position expansion only; a failure rejects the legal Atlas primary path.
 E2-E7, hardware, 122B/405B, and the Fixed Mission remain unachieved.
+
+## EXP-083B -- legal pair/outward Atlas Gate rejected on the first row
+
+The frozen Gate executed exactly once from source HEAD
+`336d59b580104af327a466ad57d7b5c2af9e7a37` on the unchanged pinned
+Qwen3.5-0.8B payload. It stopped at the first new evaluation prompt, as the
+preregistered cheapest-failure rule required.
+
+MEASURED: causal two-pass MGS reached rank 16, the target-free selector chose
+page 0, and the candidate/native greedy winner was the same token `21461`.
+However, the strict outward certificate was unresolved. Exact dense completion
+replayed bitwise, so the row incurred one valid fallback and immediately
+violated the required zero-fallback population Gate. Candidate/native KL was
+`0.05158216424853682`. All 19 controls passed; control failures, leakage,
+malformed states, false accepts, and dense-replay mismatches were zero.
+
+The frozen projection radius was `23.420520066618046`, led by unread residual
+radius `16.329857285002372` and pair-image radius `6.237663356197239`; the
+observed projection error was `3.5125591928982423`. The candidate pre-RMSNorm
+norm was only `10.709112060498093`, so the unread term alone made the sound
+ball cross the RMSNorm near-zero region.
+
+DERIVED POST-HOC, NOT USED FOR THE DECISION: the observed final-hidden
+difference was `38.90790804031119`, while the candidate top-two margin and
+static row norms permit an ideal hidden-ball radius below
+`4.197825281093514` even if all numerical rounding is deleted. Thus tightening
+only the RMSNorm implementation envelope cannot rescue this row under the same
+global L2-ball/LM-row-norm certificate.
+
+The independent verifier performed zero model forwards, passed all evidence
+checks, and rebuilt deterministic-core SHA-256
+`57e78fd4d7b1bdc6e97c705a5acb2e7e408a1023e38ae933799b00b8e3711ff4`.
+Authority: `results/exp_083b` and
+`docs/research/EXPERIMENT_083B_LEGAL_PAIR_OUTWARD_LAST_DOWN_GATE.md`.
+
+Decision:
+
+```text
+REJECT_CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_PATH
+CLOSE_BACKWARD_LAYER_POSITION_EXPANSION_AND_E2_FOR_THIS_MECHANISM
+RETURN_TO_NO_SURVIVING_CANDIDATE
+```
+
+Do not reopen with another rank, page width, selector score, layer, prompt
+subset, spectral slack, or tolerance. A continuation needs a materially new
+causal information source and a new fully charged E0 equation. No Ubuntu,
+hardware, large-model, E2-E7, or Fixed-Mission success follows from this
+negative E1 result.

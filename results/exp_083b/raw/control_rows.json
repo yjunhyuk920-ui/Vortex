@@ -1,0 +1,131 @@
+[
+  {
+    "bound": 29,
+    "control": "prefix_pair_row_count",
+    "measured": 29,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.29301248079827763,
+    "control": "prefix_native_arithmetic_envelope",
+    "measured": 0.02248243483890136,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "control": "branch_current_input_identity",
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "control": "dense_completion_replay",
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.18614258729132083,
+    "control": "current_native_down_arithmetic_envelope",
+    "measured": 0.010587677447911777,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.4109744803025618,
+    "control": "pair_image_defect_envelope",
+    "measured": 0.0032348813413279787,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.35248306831475923,
+    "control": "coordinate_arithmetic_envelope",
+    "measured": 0.03228871595155037,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.23719836288114948,
+    "control": "basis_apply_arithmetic_envelope",
+    "measured": 0.027577864315259118,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.1428221739758625,
+    "control": "residual_subtraction_arithmetic_envelope",
+    "measured": 0.02536895370406284,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.07169543185845285,
+    "control": "stored_image_apply_arithmetic_envelope",
+    "measured": 0.008679033538484317,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.06376358626094669,
+    "control": "selected_page_apply_arithmetic_envelope",
+    "measured": 0.0031842544167511753,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.027204796890754505,
+    "control": "candidate_down_add_arithmetic_envelope",
+    "measured": 0.01210212361821936,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.06269860440558164,
+    "control": "candidate_residual_add_arithmetic_envelope",
+    "measured": 0.015927274757720124,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 23.420520066618046,
+    "control": "projection_output_radius",
+    "measured": 3.5125591928982423,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.15418501091580483,
+    "control": "target_residual_add_arithmetic_envelope",
+    "measured": 0.01849867340263795,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 0.8014942564043548,
+    "control": "candidate_rmsnorm_implementation_envelope",
+    "measured": 0.2156062193879594,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 1.2027646965667826e+55,
+    "control": "target_rmsnorm_implementation_envelope",
+    "measured": 0.21958282846776198,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 1.2027646965667828e+55,
+    "control": "final_hidden_radius",
+    "measured": 38.90790804031119,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  },
+  {
+    "bound": 1.2764742795819754e+55,
+    "control": "full_vocabulary_logit_envelope",
+    "measured": 3.875,
+    "pass": true,
+    "prompt_id": "legal_holdout_english_01"
+  }
+]

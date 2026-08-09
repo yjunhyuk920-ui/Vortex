@@ -566,3 +566,29 @@ Candidate, and no E2 or hardware evidence.
 Current classification: implementation and static metadata are ready, but the
 scientific population remains untouched. There is still no EXP-083B decision,
 Surviving Candidate, E2 result, or fixed-mission success.
+
+## EXP-083B authoritative validation
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Source/config/authority/prompt/checkpoint hashes are pinned | source `336d59b...`; config `2c8bdf...`; input audit | PASS |
+| Static spectral claim is verified positive definite | beta 1.3267520416; positive margin 1.9485e-07 | PASS |
+| Pair compiler reaches registered rank on first untouched row | rank 16; accepted prefix rows 0-15 | PASS |
+| Selector is target-free and chooses registered page deterministically | maximum residual energy; page 0 | PASS |
+| Every native/candidate arithmetic envelope holds | 19/19 controls; zero failures | PASS |
+| Candidate certificate proves the native greedy winner | unresolved strict margin | FAIL SCIENTIFIC |
+| Exact completion/fallback is correct | bitwise dense replay; one fallback | PASS CONTROL / FAIL GATE |
+| Zero fallback required by 99.908521% coverage | observed 1/1 evaluated row fallback | FAIL |
+| False accept/leakage/malformed state | 0 / 0 / 0 | PASS |
+| Candidate/native winner and KL | 21461/21461; KL 0.05158216425 | MEASURED |
+| Independent verifier | zero model forwards; ten checks; same deterministic core | PASS |
+| Deterministic-core SHA-256 | `57e78fd4...3711ff4` | PASS |
+| Same-certificate rescue by tighter RMS implementation term | actual hidden radius 38.9079 vs ideal row-margin limit 4.19783 | REJECTED NECESSARY CONDITION |
+| Backward expansion and E2 Atlas integration | blocked by first-row failure | CLOSED |
+| Physical latency, 8 GiB VRAM, 122B/405B, E2-E7 | no qualifying execution | NOT TESTED |
+
+Authoritative decision:
+`REJECT_CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_PATH`. The favorable page-
+existence result remains true for EXP-083A, but its legal executable
+generalization does not survive. Current classification is
+`NO_SURVIVING_CANDIDATE`.

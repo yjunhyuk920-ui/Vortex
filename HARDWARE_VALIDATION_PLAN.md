@@ -477,3 +477,19 @@ EXP-073 Stage-2 measurement is authorized. Even a 24/24 pass permits only
 backward correctness expansion; hardware remains blocked behind simultaneous
 E2 operation replacement and a complete peak-state plan. Phase D/E4-E7 remain
 `NOT TESTED`.
+
+### EXP-083B hardware closure
+
+The prerequisite correctness Gate failed on its first untouched row with one
+valid fallback. Consequently the Causal Residual Atlas path does not advance
+to simultaneous E2 replacement, target-server calibration, SSD/H2D profiling,
+CUDA implementation, or model-size scaling. The measured Windows CPU peak RSS
+was `3,513,516,032` bytes and wall time was `257.4760863` seconds, but these
+describe a reference proof/model process and are not GPU VRAM or deployment
+latency evidence.
+
+No Ubuntu command, download, storage allocation, GPU action, or EXP-073 Stage-2
+measurement occurred. Phase D and E4-E7 remain `NOT TESTED`. A future hardware
+plan can reopen only after a materially new causal information source passes
+its own E0/E1 correctness Gates and demonstrates actual fail-closed E2
+operation replacement.

@@ -967,3 +967,51 @@ loads, tokenizations, or prompt forwards.
 The verifier reads pinned tensor values and raw arrays but records zero model
 forward calls. No prompt result or expected scientific decision is recorded
 before the source freeze.
+
+## EXP-083B authoritative execution and independent replay
+
+Canonical source HEAD:
+`336d59b580104af327a466ad57d7b5c2af9e7a37`.
+
+The first launch with `PYTHONPATH=".;.deps"` stopped at dependency validation
+because that path exposed Transformers 4.50.3 instead of the registered
+5.12.0. It performed zero model loads, tokenizations, or prompt forwards and
+produced no evidence files. The corrected, documented command used the pinned
+venv with `PYTHONPATH="."`; no Gate code, config, prompt, or threshold changed.
+
+The one scientific execution returned:
+
+```text
+decision                    REJECT_CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_PATH
+evaluated prompts           1 (stopped on first valid failure)
+prompt                      legal_holdout_english_01
+rank / selected page        16 / 0
+certificate / fallback      unresolved / 1
+candidate/native winner     21461 / 21461
+KL                          0.05158216424853682
+controls/leakage/false      19 pass / 0 / 0
+deterministic core          57e78fd4d7b1bdc6e97c705a5acb2e7e408a1023e38ae933799b00b8e3711ff4
+```
+
+The canonical commands are the two `PYTHONPATH="."` commands above. The
+verifier was then rerun read-only after its report entered the checksum file.
+Both passes returned `verification: PASS`, zero model forward calls, and the
+same decision/core hash. The checksummed bundle contains 18 files and
+`9,436,145` bytes under `results/exp_083b`.
+
+Important raw terms:
+
+```text
+verified beta_W                         1.326752041578861
+pair-image defect bound / actual        0.4109744803 / 0.0032348813
+pair-image output radius                6.2376633562
+unread residual radius                 16.3298572850
+complete projection radius / actual    23.4205200666 / 3.5125591929
+actual final-hidden difference         38.9079080403
+ideal top-two hidden-radius limit       4.1978252811
+```
+
+The last two values are a post-hoc necessary-condition audit, not inputs to the
+frozen decision. Reproduce that audit directly from the prompt NPZ and static
+LM-row norms described in
+`docs/research/EXP083B_POSTHOC_NECESSARY_CONDITION_AUDIT.md`.
