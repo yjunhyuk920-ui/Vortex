@@ -6,9 +6,9 @@ dyadic rank and exact build-ledger membership of last-layer `down_proj`
 queries from the unchanged pinned Qwen3.5-0.8B checkpoint. It is not a runtime
 or a 405B performance experiment.
 
-No prompt forward may run until the implementation commit in `config.json`
-has replaced `PENDING_SOURCE_FREEZE` and the protected source paths are
-unchanged from that commit.
+The protected runner implementation is frozen at
+`e1902949524274968d899b987747189f792fe967`. No prompt forward is valid if a
+protected source path differs from that commit.
 
 ```powershell
 $env:PYTHONPATH = "."

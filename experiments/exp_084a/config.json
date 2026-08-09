@@ -2,7 +2,7 @@
   "experiment": "EXP-084A",
   "name": "qwen35_08b_causal_bilinear_rank_gate",
   "source_freeze": {
-    "implementation_commit": "PENDING_SOURCE_FREEZE",
+    "implementation_commit": "e1902949524274968d899b987747189f792fe967",
     "protected_paths": [
       "vortex_runtime/causal_bilinear_rank_gate.py",
       "experiments/exp_084a/run_experiment.py",
