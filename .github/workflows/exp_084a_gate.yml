@@ -1,0 +1,21 @@
+name: EXP-084A Gate
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: exp-084a-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run pure contract tests
+        shell: pwsh
+        run: python -m pytest -q tests/exp_084a
+      - name: Fail closed without pinned checkpoint
+        shell: pwsh
+        run: |
+          Write-Error "EXP-084A requires the SHA-pinned local Qwen3.5-0.8B payload; no CI proxy result is valid."
