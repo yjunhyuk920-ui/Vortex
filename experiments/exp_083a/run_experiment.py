@@ -41,7 +41,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 class CandidateBatchControlError(RuntimeError):
-    """Raised when vectorized page branches change the frozen dense input."""
+    """Raised when a candidate replay changes the frozen dense input."""
 
 
 def dump(path: Path, payload: Any) -> None:
@@ -431,6 +431,18 @@ class ProjectionRecorder:
             "candidate_batch_size": int(current_input.shape[0]),
             "current_input_bitwise_equal": input_equal,
             "native_output_bitwise_equal": output_equal,
+            "current_input_max_abs_difference": float(
+                (current_input.float().cpu() - expected_input.float())
+                .abs()
+                .max()
+                .item()
+            ),
+            "native_output_max_abs_difference": float(
+                (native_output.float().cpu() - expected_output.float())
+                .abs()
+                .max()
+                .item()
+            ),
             "patch_shape_equal": patch_shape_equal,
         }
         if not input_equal:
@@ -446,18 +458,6 @@ class ProjectionRecorder:
                 f"{self.name}: candidate patch shape mismatch"
             )
         return self.patch_values
-
-
-def clone_repeated_cache(cache: Any, batch_size: int) -> Any:
-    import torch
-
-    if batch_size <= 0:
-        raise ValueError("candidate batch size must be positive")
-    candidate_cache = copy.deepcopy(cache)
-    candidate_cache.reorder_cache(
-        torch.zeros(batch_size, dtype=torch.long, device="cpu")
-    )
-    return candidate_cache
 
 
 @dataclass
@@ -581,51 +581,66 @@ def evaluate_projection(
         dtype=recorder.current_output.dtype,
         device="cpu",
     )[:, None, :]
-    batch_size = int(patch_tensor.shape[0])
-    token_batch = torch.full(
-        (batch_size, 1),
-        int(first_target_token),
+    candidate_count = int(patch_tensor.shape[0])
+    started = time.perf_counter_ns()
+    control_failures: list[str] = []
+    candidate_logit_rows: list[Any] = []
+    replay_audits: list[dict[str, Any]] = []
+    token_batch = torch.tensor(
+        [[int(first_target_token)]],
         dtype=torch.long,
         device="cpu",
     )
-    candidate_cache = clone_repeated_cache(prefix_cache, batch_size)
-    recorder.set_mode("patch", patch_tensor)
-    started = time.perf_counter_ns()
-    control_failures: list[str] = []
-    try:
-        with torch.inference_mode():
-            candidate_hidden = target.model(
-                input_ids=token_batch,
-                past_key_values=candidate_cache,
-                use_cache=True,
-            ).last_hidden_state[:, -1, :]
-            candidate_logits = target.lm_head(candidate_hidden).detach()
-        counters.record(batch_size=batch_size, sequence_length=1)
-    except CandidateBatchControlError as error:
-        control_failures.append(str(error))
-        return (
-            basis_row,
-            [],
-            None,
-            [
+    for candidate_index in range(candidate_count):
+        candidate_cache = copy.deepcopy(prefix_cache)
+        recorder.set_mode("patch", patch_tensor[candidate_index : candidate_index + 1])
+        try:
+            with torch.inference_mode():
+                candidate_hidden = target.model(
+                    input_ids=token_batch,
+                    past_key_values=candidate_cache,
+                    use_cache=True,
+                ).last_hidden_state[:, -1, :]
+                row_logits = target.lm_head(candidate_hidden).detach()[0]
+            counters.record(batch_size=1, sequence_length=1)
+            candidate_logit_rows.append(row_logits)
+            replay_audits.append(dict(recorder.patch_audit or {}))
+        except CandidateBatchControlError as error:
+            control_failures.append(str(error))
+            audit = dict(recorder.patch_audit or {})
+            return (
+                basis_row,
+                [],
+                None,
+                [
+                    {
+                        "prompt_id": prompt["id"],
+                        "family": prompt["family"],
+                        "projection": recorder.name,
+                        "control": "candidate_replay_identity",
+                        "pass": False,
+                        "candidate_index": candidate_index,
+                        "detail": str(error),
+                        "audit": audit,
+                    }
+                ],
+                control_failures,
                 {
                     "prompt_id": prompt["id"],
-                    "family": prompt["family"],
                     "projection": recorder.name,
-                    "control": "candidate_batch_identity",
-                    "pass": False,
-                    "detail": str(error),
-                }
-            ],
-            control_failures,
-            {
-                "prompt_id": prompt["id"],
-                "projection": recorder.name,
-                "candidate_batch_wall_ns": time.perf_counter_ns() - started,
-            },
-        )
-    finally:
-        recorder.set_mode("idle")
+                    "candidate_replay_count": candidate_index,
+                    "candidate_replay_wall_ns": (
+                        time.perf_counter_ns() - started
+                    ),
+                },
+            )
+        finally:
+            recorder.set_mode("idle")
+        del candidate_cache, candidate_hidden, row_logits
+        if candidate_index % 8 == 7:
+            gc.collect()
+
+    candidate_logits = torch.stack(candidate_logit_rows, dim=0)
 
     branch_wall_ns = time.perf_counter_ns() - started
     if not bool(torch.isfinite(candidate_logits.float()).all()):
@@ -640,22 +655,29 @@ def evaluate_projection(
     page_top1 = np.argmax(page_logits, axis=1)
     dense_top1 = int(np.argmax(control_logits[0]))
     all_page_top1 = int(np.argmax(control_logits[1]))
-    patch_audit = recorder.patch_audit or {}
+    all_input_equal = all(
+        bool(row.get("current_input_bitwise_equal")) for row in replay_audits
+    )
+    all_output_equal = all(
+        bool(row.get("native_output_bitwise_equal")) for row in replay_audits
+    )
 
     control_rows = [
         {
             "prompt_id": prompt["id"],
             "family": prompt["family"],
             "projection": recorder.name,
-            "control": "candidate_batch_current_input_identity",
-            "pass": bool(patch_audit.get("current_input_bitwise_equal")),
+            "control": "candidate_replay_current_input_identity",
+            "pass": all_input_equal,
+            "candidate_replays": len(replay_audits),
         },
         {
             "prompt_id": prompt["id"],
             "family": prompt["family"],
             "projection": recorder.name,
-            "control": "candidate_batch_native_output_identity",
-            "pass": bool(patch_audit.get("native_output_bitwise_equal")),
+            "control": "candidate_replay_native_output_identity",
+            "pass": all_output_equal,
+            "candidate_replays": len(replay_audits),
         },
         {
             "prompt_id": prompt["id"],
@@ -782,10 +804,11 @@ def evaluate_projection(
     timing = {
         "prompt_id": prompt["id"],
         "projection": recorder.name,
-        "candidate_batch_size": batch_size,
-        "candidate_batch_wall_ns": branch_wall_ns,
+        "candidate_replay_batch_size": 1,
+        "candidate_replay_count": candidate_count,
+        "candidate_replay_wall_ns": branch_wall_ns,
     }
-    del candidate_cache, candidate_hidden, candidate_logits, patch_tensor
+    del candidate_logits, candidate_logit_rows, patch_tensor
     gc.collect()
     return (
         basis_row,

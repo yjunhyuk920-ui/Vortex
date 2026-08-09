@@ -1,0 +1,15 @@
+{
+  "authoritative_decision": "INVALID_CAUSAL_RESIDUAL_ATLAS_ORACLE_CONTROL_FAILURE",
+  "checks": [
+    "bundle file checksums",
+    "top1-first minimum-KL page selection",
+    "token conjunction",
+    "control failure count",
+    "Gate aggregation and decision",
+    "deterministic core payload and SHA-256",
+    "summary population counts"
+  ],
+  "deterministic_core_sha256": "ecd508de23f3e3da90983346b50e03069a9beb59fafd464b0e87e6fa61e763fe",
+  "experiment": "EXP-083A",
+  "verification": "PASS"
+}

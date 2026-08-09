@@ -26,10 +26,12 @@ Each projection branches the immutable prefix cache across all page candidates
 plus dense-patch and all-page identity controls.
 
 Only one projection is patched at a time; every other operation is unchanged
-and dense. Page enumeration is vectorized over the batch dimension, but every
-page retains a separate final-logit row and exact-reference KL. Cache,
-activation, and native-output equality controls make batch-dependent drift a
-control failure rather than scientific evidence.
+and dense. Every candidate is replayed at batch size one from an independently
+cloned immutable prefix cache. An initial vectorized implementation was rejected
+by its control because changing the batch width changed the pre-patch BF16
+activation. The batch-one path retains a separate final-logit row and
+exact-reference KL for every page and requires bitwise-equal pre-patch input
+and native projection output on every replay.
 
 ## Frozen stop
 
