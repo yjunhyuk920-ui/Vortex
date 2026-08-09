@@ -2,7 +2,7 @@
 
 Type: task
 Status: open
-Blocked by: Bound Query-Adaptive Exact Code Unions
+Blocked by: Derive an Implicit Nonlinear Bilinear Query Source
 
 ## Question
 

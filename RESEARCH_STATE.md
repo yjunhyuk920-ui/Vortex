@@ -1235,3 +1235,42 @@ possible nonlinear or post-hoc subspace. No pair-extractor, native numerical
 semantics, E2 integration, hardware stage, scale claim, or Fixed-Mission
 progress is promoted. Authority: `results/exp_084a` and
 `docs/research/EXPERIMENT_084A_CAUSAL_BILINEAR_RANK_GATE.md`.
+
+## E0 query-adaptive exact code union rejected as a primary core
+
+The strongest favorable rescue of the factor ledger was analyzed as a
+**Trace-Built Bilinear Code Union**. A perfect causal router chooses one small
+exact linear leaf for free, so the hit set is nonlinear and only the selected
+leaf is scanned. Construction and persistent state for every independent
+answer-bearing direction remain charged.
+
+For a globally independent finite query population, leaves of total dimension
+`A` can hit at most `A` members. Registered build amortization therefore limits
+the most favorable leaf size `b=1` to `A=87,958`, only `0.43979%` of the 20M
+service population. Full-fallback coverage must be `99.999992826%`, while the
+traffic at that maximum-capacity point is `1.0074538801` dense, or `85.0039x`
+the complete p50 target. A one-pass online grant still pays at least one dense
+execution per never-repeated independent query.
+
+A zero-forward replay of the frozen EXP-084A arrays also closes partitioning
+as a local rescue. The complete 24-row build span has rank 24 under all three
+registered primes; every one of the five stored evaluation rows raises it to
+25. Any union of leaves generated only from that span therefore has `0/5`
+hits.
+
+Decision:
+
+```text
+REJECT_TRACE_BUILT_QUERY_ADAPTIVE_LINEAR_CODE_UNION_AS_CORE
+RETAIN_REPEATED_QUERY_CODE_UNIONS_AS_AUXILIARY_ONLY
+DO_NOT_CLAIM_A_GENERAL_NONLINEAR_OR_CELL_PROBE_LOWER_BOUND
+REQUIRE_AN_IMPLICIT_CHECKPOINT_DERIVED_NONLINEAR_SOURCE_NEXT
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+This is an E0 conservation result plus a read-only frozen diagnostic. It does
+not establish independence of all real causal queries or reject an implicit
+nonlinear checkpoint data structure. No new model forward, experiment number,
+Ubuntu action, hardware stage, scale claim, or E2-E7 evidence occurred.
+Authority: `docs/research/E0_QUERY_ADAPTIVE_CODE_UNION_BOUND.md` and
+`results/e0_query_adaptive_code_union`.

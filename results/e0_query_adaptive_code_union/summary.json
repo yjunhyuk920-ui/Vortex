@@ -1,0 +1,271 @@
+{
+  "claim_boundary": {
+    "core_candidate": "NONE",
+    "finite_causal_query_union_complexity_beyond_frozen_rows": "NOT MEASURED",
+    "implicit_nonlinear_checkpoint_data_structure": "NOT RULED OUT",
+    "model_operation_replacement": "NOT RUN",
+    "nonlinear_routing_over_trace_built_linear_leaves": "REJECTED AS NEW CORE",
+    "paid_general_pair_extractor": "NOT CONSTRUCTED",
+    "physical_hardware_or_latency": "NOT RUN",
+    "restricted_repeated_query_cache": "AUXILIARY ONLY",
+    "single_span_parameter_sweep": "NOT PERFORMED"
+  },
+  "classification": "E0_TRACE_BUILT_QUERY_ADAPTIVE_LINEAR_CODE_UNION_BOUND",
+  "decision": "REJECT_TRACE_BUILT_QUERY_ADAPTIVE_LINEAR_CODE_UNION_AS_CORE",
+  "exp084_full_build_span_diagnostic": {
+    "build_modular_ranks": {
+      "65497": 24,
+      "65519": 24,
+      "65521": 24
+    },
+    "build_rows": 24,
+    "build_rows_sha256": "f3c374c1e8f8ebd668f3e316ea943cb2b40df281984ce786e509822bb7102933",
+    "evaluation_rows": 5,
+    "evaluation_rows_sha256": "658920986ddfb3a7d6fc68e896a48c764070a32020d9e004cd7b13c833b8779d",
+    "full_build_union_certified_misses": 5,
+    "full_build_union_exact_hits": 0,
+    "model_forward_calls": 0,
+    "rows": [
+      {
+        "certified_outside_full_build_span": true,
+        "membership_ranks": {
+          "65497": 25,
+          "65519": 25,
+          "65521": 25
+        },
+        "rank_increases": {
+          "65497": true,
+          "65519": true,
+          "65521": true
+        },
+        "row_id": "eval_english_01_p1"
+      },
+      {
+        "certified_outside_full_build_span": true,
+        "membership_ranks": {
+          "65497": 25,
+          "65519": 25,
+          "65521": 25
+        },
+        "rank_increases": {
+          "65497": true,
+          "65519": true,
+          "65521": true
+        },
+        "row_id": "eval_english_01_p2"
+      },
+      {
+        "certified_outside_full_build_span": true,
+        "membership_ranks": {
+          "65497": 25,
+          "65519": 25,
+          "65521": 25
+        },
+        "rank_increases": {
+          "65497": true,
+          "65519": true,
+          "65521": true
+        },
+        "row_id": "eval_english_02_p1"
+      },
+      {
+        "certified_outside_full_build_span": true,
+        "membership_ranks": {
+          "65497": 25,
+          "65519": 25,
+          "65521": 25
+        },
+        "rank_increases": {
+          "65497": true,
+          "65519": true,
+          "65521": true
+        },
+        "row_id": "eval_english_02_p2"
+      },
+      {
+        "certified_outside_full_build_span": true,
+        "membership_ranks": {
+          "65497": 25,
+          "65519": 25,
+          "65521": 25
+        },
+        "rank_increases": {
+          "65497": true,
+          "65519": true,
+          "65521": true
+        },
+        "row_id": "eval_english_03_p1"
+      }
+    ],
+    "source": "FROZEN_EXP_084A_ZERO_FORWARD_REPLAY"
+  },
+  "favorable_cost_grants": {
+    "all_leaf_build_and_persistent_factor_state": "CHARGED",
+    "causal_router": "FREE PERFECT ROUTER",
+    "cold_address_and_request_latency": "FREE",
+    "kv_workspace_fallback_overlap": "OMITTED",
+    "leaf_index_lookup": "FREE",
+    "native_numerical_repair": "FREE",
+    "only_selected_leaf_hot": true,
+    "pair_extraction_and_local_result_source": "FREE"
+  },
+  "model": "PERFECT_ROUTER_UNION_OF_MATERIALIZED_EXACT_LINEAR_LEAVES",
+  "normalization": {
+    "build_dense_equivalents_per_cached_direction": 2,
+    "maximum_leaf_dimension": 23,
+    "p50_target_fraction": "8/675",
+    "p50_target_fraction_decimal": 0.011851851851851851,
+    "registered_total_q4_bytes": 202924621824,
+    "service_tokens": 20000000
+  },
+  "registered_leaf_table": [
+    {
+      "build_amortized_fraction": "43979/5000000",
+      "checkpoint_plus_union_state_gib": 6598.991378478706,
+      "explicit_union_state_bytes": 6882688417464,
+      "explicit_union_state_tib": 6.259768649637408,
+      "independent_stream_target_multiple": 85.0039211343361,
+      "independent_stream_traffic_fraction": "1324080031789483/1314283520000000",
+      "independent_stream_traffic_fraction_decimal": 1.0074538801106498,
+      "leaf_dimension": 1,
+      "maximum_independent_service_coverage": "43979/10000000",
+      "maximum_independent_service_coverage_decimal": 0.0043979,
+      "maximum_total_cached_directions": 87958,
+      "minimum_full_fallback_coverage": "35485652494216457/35485655040000000",
+      "minimum_full_fallback_coverage_decimal": 0.9999999282587981,
+      "packed_full_leaf_count": 87958,
+      "packed_leaf_count": 87958,
+      "packed_remainder_dimension": 0,
+      "query_operation_fraction_without_build": "11407345/16822829056",
+      "query_traffic_fraction_without_build": "51410231/16822829056",
+      "selected_leaf_state_bytes": 536930964,
+      "selected_leaf_state_gib": 0.5000559277832508
+    },
+    {
+      "build_amortized_fraction": "42041/5000000",
+      "checkpoint_plus_union_state_gib": 6316.820471465588,
+      "explicit_union_state_bytes": 6579709713088,
+      "explicit_union_state_tib": 5.98421112325741,
+      "independent_stream_target_multiple": 85.02027519170593,
+      "independent_stream_traffic_fraction": "248312770111831/246428160000000",
+      "independent_stream_traffic_fraction_decimal": 1.007647705975774,
+      "leaf_dimension": 2,
+      "maximum_independent_service_coverage": "42041/10000000",
+      "maximum_independent_service_coverage_decimal": 0.0042041,
+      "maximum_total_cached_directions": 84082,
+      "minimum_full_fallback_coverage": "2217853338253583/2217853440000000",
+      "minimum_full_fallback_coverage_decimal": 0.9999999541239222,
+      "packed_full_leaf_count": 42041,
+      "packed_leaf_count": 42041,
+      "packed_remainder_dimension": 0,
+      "query_operation_fraction_without_build": "156447499/201873948672",
+      "query_traffic_fraction_without_build": "10862099/3154280448",
+      "selected_leaf_state_bytes": 615182528,
+      "selected_leaf_state_gib": 0.5729333758354187
+    },
+    {
+      "build_amortized_fraction": "9541/1250000",
+      "checkpoint_plus_union_state_gib": 5752.256396949291,
+      "explicit_union_state_bytes": 5973513653952,
+      "explicit_union_state_tib": 5.432879019237589,
+      "independent_stream_target_multiple": 85.05298372632922,
+      "independent_stream_traffic_fraction": "165605533093841/164285440000000",
+      "independent_stream_traffic_fraction_decimal": 1.0080353626824203,
+      "leaf_dimension": 4,
+      "maximum_independent_service_coverage": "9541/2500000",
+      "maximum_independent_service_coverage_decimal": 0.0038164,
+      "maximum_total_cached_directions": 76328,
+      "minimum_full_fallback_coverage": "4435706484470539/4435706880000000",
+      "minimum_full_fallback_coverage_decimal": 0.9999999108305685,
+      "packed_full_leaf_count": 19082,
+      "packed_leaf_count": 19082,
+      "packed_remainder_dimension": 0,
+      "query_operation_fraction_without_build": "32594811/33645658112",
+      "query_traffic_fraction_without_build": "8871861/2102853632",
+      "selected_leaf_state_bytes": 771706848,
+      "selected_leaf_state_gib": 0.7187080085277557
+    },
+    {
+      "build_amortized_fraction": "60817/10000000",
+      "checkpoint_plus_union_state_gib": 4622.603468198329,
+      "explicit_union_state_bytes": 4760558057748,
+      "explicit_union_state_tib": 4.329702331004228,
+      "independent_stream_target_multiple": 85.11842356886012,
+      "independent_stream_traffic_fraction": "22599947746451/22402560000000",
+      "independent_stream_traffic_fraction_decimal": 1.0088109460013053,
+      "leaf_dimension": 8,
+      "maximum_independent_service_coverage": "60817/20000000",
+      "maximum_independent_service_coverage_decimal": 0.00304085,
+      "maximum_total_cached_directions": 60817,
+      "minimum_full_fallback_coverage": "201623028739243/201623040000000",
+      "minimum_full_fallback_coverage_decimal": 0.9999999441494534,
+      "packed_full_leaf_count": 7602,
+      "packed_leaf_count": 7603,
+      "packed_remainder_dimension": 1,
+      "query_operation_fraction_without_build": "68455549/50468487168",
+      "query_traffic_fraction_without_build": "1654591/286752768",
+      "selected_leaf_state_bytes": 1084840256,
+      "selected_leaf_state_gib": 1.0103362202644348
+    },
+    {
+      "build_amortized_fraction": "14889/5000000",
+      "checkpoint_plus_union_state_gib": 2360.8334072232246,
+      "explicit_union_state_bytes": 2332000947008,
+      "explicit_union_state_tib": 2.120942505833227,
+      "independent_stream_target_multiple": 85.24937325330937,
+      "independent_stream_traffic_fraction": "41496980132279/41071360000000",
+      "independent_stream_traffic_fraction_decimal": 1.0103629422614444,
+      "leaf_dimension": 16,
+      "maximum_independent_service_coverage": "14889/10000000",
+      "maximum_independent_service_coverage_decimal": 0.0014889,
+      "maximum_total_cached_directions": 29778,
+      "minimum_full_fallback_coverage": "1108926709364941/1108926720000000",
+      "minimum_full_fallback_coverage_decimal": 0.9999999904095926,
+      "packed_full_leaf_count": 1861,
+      "packed_leaf_count": 1862,
+      "packed_remainder_dimension": 2,
+      "query_operation_fraction_without_build": "17932135/8411414528",
+      "query_traffic_fraction_without_build": "4665203/525713408",
+      "selected_leaf_state_bytes": 1711446144,
+      "selected_leaf_state_gib": 1.593908429145813
+    },
+    {
+      "build_amortized_fraction": "13/50000",
+      "checkpoint_plus_union_state_gib": 379.0678093060851,
+      "explicit_union_state_bytes": 204096339160,
+      "explicit_union_state_tib": 0.18562453911727061,
+      "independent_stream_target_multiple": 85.36402960250902,
+      "independent_stream_traffic_fraction": "159562719726037/157714022400000",
+      "independent_stream_traffic_fraction_decimal": 1.0117218323260329,
+      "leaf_dimension": 23,
+      "maximum_independent_service_coverage": "13/100000",
+      "maximum_independent_service_coverage_decimal": 0.00013,
+      "maximum_total_cached_directions": 2600,
+      "minimum_full_fallback_coverage": "1419426173884541/1419426201600000",
+      "minimum_full_fallback_coverage_decimal": 0.999999980474181,
+      "packed_full_leaf_count": 113,
+      "packed_leaf_count": 114,
+      "packed_remainder_dimension": 1,
+      "query_operation_fraction_without_build": "567398011/201873948672",
+      "query_traffic_fraction_without_build": "585022241/50468487168",
+      "selected_leaf_state_bytes": 2260097156,
+      "selected_leaf_state_gib": 2.104879502207041
+    }
+  ],
+  "strongest_direction_count_ceiling": {
+    "explicit_union_state_tib": 6.259768649637408,
+    "independent_stream_target_multiple": 85.0039211343361,
+    "leaf_dimension": 1,
+    "maximum_independent_service_coverage": "43979/10000000",
+    "maximum_total_cached_directions": 87958,
+    "minimum_full_fallback_coverage": "35485652494216457/35485655040000000"
+  },
+  "union_information_theorem": {
+    "hit_set": "subset of union of selected linear leaf spaces",
+    "independent_population_hits_at_most_sum_leaf_dimensions": true,
+    "leaves_generated_from_one_calibration_span_remain_in_that_span": true,
+    "one_pass_online_independent_stream_target_multiple": 84.6328483218361,
+    "one_pass_online_independent_stream_traffic_lower_bound": "16874239287/16822829056",
+    "router_creates_new_answer_direction": false
+  }
+}

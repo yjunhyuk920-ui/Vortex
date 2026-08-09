@@ -784,3 +784,32 @@ Even a population pass does not admit the component. A general internal
 decision residual requires a paid nonlinear pullback, while linear combinations
 of native rounded scalar answers require an exact/outward numerical contract.
 Those two interfaces remain mandatory and unimplemented.
+
+### Trace-built query-adaptive code-union closure
+
+No `TraceBuiltBilinearCodeUnion` component is admitted into the runtime. Its
+strongest favorable interface was:
+
+```text
+calibration traces        -> many exact linear leaves + cached scalar answers
+current causal pair       -> free perfect router selects one leaf
+exact leaf membership     -> scan only that leaf and combine cached answers
+nonmember                 -> unchanged dense fallback or abort
+```
+
+This interface is nonlinear in leaf selection, but its answer information is
+still the collection of materialized leaf basis directions. A globally
+independent population can hit no more queries than the independent directions
+built across the union. The registered ceiling is 87,958 directions at
+`b=1`, covering only `0.43979%` of 20M independent queries, while required
+fallback coverage is `99.999992826%`. The frozen EXP-084A rows also show that
+partitioning the full 24-row build span produces zero hits among all five
+stored evaluation rows.
+
+Repeated-query or tightly clustered leaves may exist as an auxiliary cache,
+never as the exact primary executor. The next architecture boundary requires
+an automatic **implicit nonlinear checkpoint source** whose constructor and
+query equation expose where exact `r^T W u` information resides without
+materializing trace basis directions. No such compiler, representation,
+selector, decoder, verifier, fallback engine, scheduler, or kernel currently
+exists.

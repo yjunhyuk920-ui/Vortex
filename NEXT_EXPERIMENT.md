@@ -1292,3 +1292,25 @@ Current classification remains `NO_SURVIVING_CANDIDATE`. No Ubuntu action,
 download, E2 integration, kernel, physical benchmark, 122B/405B, or E6/E7 is
 authorized by this result. Authority: `results/exp_084a` and
 `docs/research/EXPERIMENT_084A_CAUSAL_BILINEAR_RANK_GATE.md`.
+
+## Trace-built code unions closed -- derive an implicit source before E1
+
+Do not partition the EXP-084A build span, train a router, add more trace
+leaves, or sweep leaf dimension. Even with a free perfect router, the
+registered construction budget retains at most 87,958 independent directions,
+only `0.43979%` of 20M independent queries, while full fallback requires
+`99.999992826%` coverage. The frozen full 24-row calibration span also misses
+all five stored evaluation rows under all three primes.
+
+The next unblocked ticket is `Derive an Implicit Nonlinear Bilinear Query
+Source`. It must begin with one concrete automatic checkpoint constructor and
+exact query equation for `r^T W u`; naming a nonlinear index or assuming an
+oracle is insufficient. Before any E1 run it must charge representation,
+build, selector, probes, logical/address traffic, operations, hot/cold state,
+verification, misses, and fallback, and explain where new exact answer
+information comes from without materializing trace basis directions.
+
+No model row, EXP-085 number, backend, kernel, download, private Ubuntu action,
+physical benchmark, 122B/405B execution, or E2-E7 work is authorized. Current
+classification remains `NO_SURVIVING_CANDIDATE`. Authority:
+`docs/research/E0_QUERY_ADAPTIVE_CODE_UNION_BOUND.md`.

@@ -707,3 +707,29 @@ Authoritative decision:
 `REJECT_CAUSAL_BILINEAR_FACTOR_SPAN_LEDGER_AS_CORE`. This closes the frozen
 automatic full-factor ledger, not every nonlinear or implicit exact query
 code. Current classification remains `NO_SURVIVING_CANDIDATE`.
+
+## E0 query-adaptive exact code-union bound
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| A perfect router creates new cached answer directions | union-information theorem | REJECTED |
+| Independent hits across leaves | at most sum of leaf dimensions | PASS E0 |
+| Maximum registered independent directions | 87,958 at leaf dimension 1 | DERIVED |
+| Maximum independent coverage over 20M | `0.43979%` | INSUFFICIENT |
+| Required full-fallback coverage at that ceiling | `99.999992826%` | DERIVED |
+| Independent-stream traffic at `A_max` | `1.0074538801` dense; `85.0039x` target | FAIL E0 |
+| Online one-pass independent stream | at least `1 + q`; `84.6328x` target | FAIL E0 |
+| Full 24-row EXP-084A build ranks | 24 under 65521/65519/65497 | PASS REPLAY |
+| Five eval rows inside full build span | every insertion raises rank to 25 | 0/5 / REJECTED |
+| New model forwards | zero; frozen arrays only | NOT AN E1 RUN |
+| Focused reference tests | 9/9 | PASS |
+| Full repository regression | 508 tests | PASS |
+| Standard validation runner | completed | PASS |
+| Independent output-directory reproduction | identical summary SHA-256 | PASS |
+| General implicit nonlinear data structure impossible | outside declared model | OPEN / NO CLAIM |
+| Paid extractor, E2 replacement, physical VRAM/latency, 122B/405B | none | NOT TESTED |
+
+Authoritative decision:
+`REJECT_TRACE_BUILT_QUERY_ADAPTIVE_LINEAR_CODE_UNION_AS_CORE`. Restricted
+repeated-query use remains auxiliary. Current classification remains
+`NO_SURVIVING_CANDIDATE`.

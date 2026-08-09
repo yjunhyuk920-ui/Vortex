@@ -412,3 +412,20 @@ VJP extractor, exact numerical decoder, backend, larger model, or hardware
 work. A pass authorizes only a paid pair-extractor and native-semantics Gate;
 it does not promote a Core Candidate because the result/proposal source is
 still absent.
+
+## Current directive after the query-adaptive code-union bound
+
+Do not spend another forward pass on partitioning or extending a trace-built
+linear ledger. Perfect routing cannot exceed the independent answer directions
+that were actually constructed; the strongest registered union covers only
+`0.43979%` of a 20M independent population, and every partition of the full
+EXP-084A build span misses all five frozen evaluation rows.
+
+The only open high-upside interface is now an implicit nonlinear
+checkpoint-derived exact source for `r^T W u`. Demand a concrete constructor
+and query equation before implementation. Kill it at E0 if it hides dense
+discovery, an exponential table, a future trace, a free membership/proof
+oracle, an approximate-only answer, or any already rejected static linear,
+separable, or global-advice form. Do not assign EXP-085, run a model, build a
+backend/kernel, download a larger checkpoint, or touch target hardware until
+the complete target-scale equation survives.

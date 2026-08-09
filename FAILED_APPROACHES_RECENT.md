@@ -416,3 +416,26 @@ Residual frontier requires a materially different construction with a fully
 charged E0 equation, not a linear-ledger parameter sweep. Authority:
 `results/exp_084a` and
 `docs/research/EXPERIMENT_084A_CAUSAL_BILINEAR_RANK_GATE.md`.
+
+## F-058 -- Trace-built query-adaptive exact linear code unions
+
+Routing among separately built exact factor ledgers avoids scanning their
+concatenation, but it does not amplify independent cached answers. Leaves with
+total dimension `A` hit at most `A` members of a globally independent query
+population. Under the registered build and selected-leaf equation, the best
+direction ceiling is 87,958 at leaf dimension 1, only `0.43979%` of 20M
+queries; full dense fallback instead demands `99.999992826%` coverage and
+leaves traffic at `85.0039x` target.
+
+Do not reopen this class with a perfect or trained router, more leaves,
+different leaf dimensions, shared redundant bases, or a partition of the
+EXP-084A build rows. All five frozen evaluation rows are outside even the full
+24-row build span under all three primes, so every such partition has zero
+stored hits.
+
+This entry does not reject repeated-query caching, causal populations proven
+to have low total union dimension, or an implicit nonlinear checkpoint-derived
+data structure that answers without materialized trace basis directions. Such
+a structure may reopen research only with a concrete constructor and complete
+E0 equation. Authority:
+`docs/research/E0_QUERY_ADAPTIVE_CODE_UNION_BOUND.md`.

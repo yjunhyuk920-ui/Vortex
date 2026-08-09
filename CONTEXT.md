@@ -91,6 +91,18 @@ exact hit
 _Current status_: The frozen dimension-23 full-factor implementation was
 rejected by EXP-084A after five exact misses in its first five held-out rows.
 
+**Trace-Built Bilinear Code Union**:
+A query-adaptive family of exact linear Causal Bilinear Span Ledger leaves;
+the causal router selects one small leaf to scan, while all answer-bearing
+basis directions, scalar answers, construction, and persistent state remain
+charged.
+_Avoid_: Implicit nonlinear checkpoint code, router-created answer,
+partitioning called new information
+_Current status_: Rejected as a primary Core Candidate at E0. A perfect router
+cannot create independent answer directions, and every partition of the full
+24-row EXP-084A build span misses all five frozen evaluation rows. Restricted
+repeated-query use remains auxiliary.
+
 **Matrix-Local Separable Residual Code**:
 A Bilinear Cross Residual source that independently covers each matrix's left
 and right directions with linear codes and repairs only their coordinate-sparse

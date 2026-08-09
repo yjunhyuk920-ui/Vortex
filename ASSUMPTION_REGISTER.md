@@ -719,3 +719,27 @@ nonlinear/implicit data structures. It does reject the preregistered
 calibration-built every-token factor scan and forbids a parameter/population
 sweep. Pair extraction, native BF16/Q4 coefficient semantics, earlier layers,
 scale, physical latency, and E2-E7 remain unsolved rather than promoted.
+
+## A-068 -- A perfect router turns many small trace ledgers into target coverage
+
+Assumption: nonlinear causal routing over many separately built exact linear
+leaves can retain enough distinct Bilinear Cross Residual answers while each
+query scans only one target-cheap leaf.
+
+Status: REJECTED AS A UNIVERSAL PRIMARY CORE UNDER THE REGISTERED MATERIALIZED
+TRACE-DIRECTION MODEL. A globally independent population contributes at most
+one hit per independent stored direction. Build amortization caps the strongest
+favorable union at 87,958 directions, versus 20M service queries, and the
+full-fallback equation requires `99.999992826%` coverage. The frozen EXP-084A
+diagnostic independently shows `0/5` membership even against the complete
+24-row calibration span.
+
+### A-068 closure
+
+The router and membership lookup were free, only one leaf was hot, and native
+repair and fallback overlap were omitted. The rejection therefore does not
+depend on a poor selector. It also does not establish that all actual causal
+queries are independent or close implicit nonlinear/cell-probe structures.
+The surviving unsupported assumption is now narrower: checkpoint preprocessing
+might contain an exact implicit nonlinear answer source whose information is
+not a materialized trace basis. No constructor or target equation exists yet.

@@ -554,3 +554,22 @@ no CUDA prototype, storage allocation, target-server command, EXP-073 Stage 2,
 larger download, or Phase D/E4-E7 work is authorized. Hardware can reopen only
 after the frozen E1 rank Gate and a paid extractor/native-semantics Gate both
 survive actual fail-closed E2 replacement.
+
+## Query-adaptive code-union hardware closure
+
+The code-union result is an exact E0 calculator plus a zero-forward replay of
+frozen EXP-084A arrays. Its explicit persistent-state figures range from
+`0.185625 TiB` at leaf dimension 23 to `6.259769 TiB` at dimension 1; these
+are logical representations, not GPU allocations or measured SSD/PCIe/HBM
+traffic. The perfect router, lookup, request latency, pair extractor, native
+repair, and fallback overlap were free favorable grants.
+
+Because the maximum-capacity independent-stream point is `85.0039x` the p50
+target, even the favorable online one-pass lower bound is `84.6328x`, and the
+frozen build-span partition has `0/5` hits, this class is not promoted to a
+kernel or physical benchmark. No target Ubuntu command, storage mutation,
+download, CUDA action, EXP-073 Stage 2 measurement, GPU allocation, 122B/405B
+run, or Phase D/E4-E7 work occurred. Hardware may reopen only after a
+materially implicit nonlinear checkpoint-derived source passes its own
+complete E0 equation, untouched E1 Gate, and actual fail-closed E2 replacement
+with a full peak-state plan.

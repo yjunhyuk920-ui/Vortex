@@ -514,3 +514,20 @@ This is a scoped rejection of those constructors, not a universal bilinear
 data-structure lower bound. The project remains `NO_SURVIVING_CANDIDATE` until
 a concrete lossless sub-dense cross-residual source closes its full equation.
 No experiment number or hardware stage is authorized.
+
+<!-- E0-QUERY-ADAPTIVE-CODE-UNION-BOUND -->
+## Current classification after the query-adaptive code-union bound
+
+A perfect causal router over many exact linear leaves does not create cached
+answers. Total independent leaf dimension `A` can cover at most `A` members of
+a globally independent population. Registered build amortization caps the
+strongest favorable union at 87,958 directions, only `0.43979%` of 20M, while
+the full-fallback equation needs `99.999992826%` coverage. The frozen full
+EXP-084A build span also has zero membership hits among all five stored
+evaluation rows.
+
+This rejects materialized trace-built linear unions as a primary core, not all
+nonlinear or implicit checkpoint data structures. Repeated-query caching is
+auxiliary only. No Core Candidate survives, and no model experiment, E2,
+hardware, or scale stage is authorized until a concrete implicit nonlinear
+constructor first closes the complete E0 equation.

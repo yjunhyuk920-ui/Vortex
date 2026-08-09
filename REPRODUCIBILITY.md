@@ -1230,3 +1230,48 @@ results/exp_084a/checksums.sha256
 The separately preserved
 `results/exp_084a_attempt_01_control_failure` must remain an invalid zero-query
 control artifact and must not be combined with the authoritative population.
+
+## E0 query-adaptive exact code-union reproduction
+
+This calculation performs zero new Transformer forwards. It reads the frozen
+EXP-084A factor arrays only to test membership against the complete 24-row
+build span:
+
+```powershell
+$env:PYTHONPATH = ".;.deps"
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_query_adaptive_code_union.py `
+  --exp084-dir results\exp_084a `
+  --output-dir results\e0_query_adaptive_code_union
+.deps\exp076-venv\Scripts\python.exe -m pytest -q `
+  tests\test_query_adaptive_code_union.py
+.deps\exp076-venv\Scripts\python.exe -m pytest -q
+.deps\exp076-venv\Scripts\python.exe scripts\run_validation.py
+```
+
+Expected invariants:
+
+```text
+decision                         REJECT_TRACE_BUILT_QUERY_ADAPTIVE_LINEAR_CODE_UNION_AS_CORE
+maximum selected leaf dimension  23
+best direction ceiling           87,958 at leaf dimension 1
+independent service coverage     0.43979%
+required fallback coverage       99.999992826%
+full build ranks                 24/24/24
+evaluation insertion ranks       25/25/25 for each of five rows
+full-build union hits/misses      0/5
+model forward calls              0
+```
+
+Observed validation was `9` focused tests, `508` full repository tests, and a
+successful standard validation run. A separate output directory reproduced
+the canonical summary byte-for-byte. Authority:
+
+```text
+docs/research/E0_QUERY_ADAPTIVE_CODE_UNION_BOUND.md
+results/e0_query_adaptive_code_union/summary.json
+results/e0_query_adaptive_code_union/checksums.sha256
+```
+
+Canonical summary SHA-256:
+`761b857dda9521a41a3b5b93bf32c6429379a76d4d72192704ee6f03aacb656e`.

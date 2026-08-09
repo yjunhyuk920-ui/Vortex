@@ -1071,3 +1071,35 @@ This rejects the frozen automatic full-factor ledger, not every conceivable
 post-hoc subspace or nonlinear exact data structure. Authority:
 `results/exp_084a` and
 `docs/research/EXPERIMENT_084A_CAUSAL_BILINEAR_RANK_GATE.md`.
+
+## D-088 -- Reject trace-built query-adaptive linear code unions as core
+
+A union of exact linear leaves is nonlinear at the router boundary and can be
+strictly more expressive than one scanned span. However, routing supplies no
+new cached scalar answer. For any globally independent finite query
+population, total leaf dimension `A` permits at most `A` exact hits.
+
+With all selector and lookup costs free, registered 405B construction
+amortization permits at most 87,958 independent cached directions at leaf
+dimension 1. This covers `0.43979%` of 20M independent queries while misses
+require `99.999992826%` coverage; charged traffic is `85.0039x` target. The
+complete 24-row EXP-084A build span also has zero membership hits among all
+five frozen evaluation rows, certified by rank 24-to-25 increases under every
+registered prime.
+
+Decision:
+
+```text
+REJECT_TRACE_BUILT_QUERY_ADAPTIVE_LINEAR_CODE_UNION_AS_CORE
+RETAIN_ONLY_AS_A_REPEATED_OR_CLUSTERED_QUERY_AUXILIARY
+DO_NOT_GENERALIZE_TO_ALL_NONLINEAR_OR_IMPLICIT_DATA_STRUCTURES
+OPEN_ONLY_A_CONCRETE_IMPLICIT_CHECKPOINT_DERIVED_SOURCE_AT_E0
+KEEP_NO_SURVIVING_CANDIDATE
+KEEP_MODEL_HARDWARE_AND_E2_E7_CLOSED
+```
+
+The generic independent population is a finite interface counterexample, not
+a measurement that every causal Transformer stream is independent. No new
+model forward was performed. Authority:
+`docs/research/E0_QUERY_ADAPTIVE_CODE_UNION_BOUND.md` and
+`results/e0_query_adaptive_code_union`.

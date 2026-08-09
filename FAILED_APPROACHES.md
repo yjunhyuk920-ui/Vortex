@@ -325,4 +325,10 @@ Ledger: all 24 build rows were independent, and the first five held-out rows
 were exact misses against the dimension-23 ledger. It forbids post-result
 rank/build/prompt/prime sweeps, but does not claim held-out rank 28 or reject
 nonlinear, implicit, or non-factor-scanned exact query codes.
+F-058 closes query-adaptive unions of materialized trace-built exact linear
+leaves as a primary core. A perfect router cannot exceed the independent
+answer directions actually built, and any partition of the full EXP-084A
+build span still misses all five frozen evaluation rows. It leaves repeated-
+query caching and a genuinely implicit nonlinear checkpoint-derived source
+logically open.
 Read that continuation and each scope boundary before reopening a family.
