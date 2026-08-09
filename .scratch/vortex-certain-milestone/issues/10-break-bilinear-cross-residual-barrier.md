@@ -1,7 +1,7 @@
 # Break the Bilinear Cross-Residual Barrier
 
 Type: task
-Status: open
+Status: claimed
 Blocked by: Find a Post-Atlas Causal Information Source
 
 ## Question
