@@ -1,7 +1,7 @@
 # Certify Causal Bilinear Query Restriction
 
 Type: research
-Status: open
+Status: claimed
 Blocked by: Resolve Cross-Matrix Advice Locality
 
 ## Question
