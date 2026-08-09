@@ -705,3 +705,25 @@ lossless checkpoint-derived representation that supplies `r^T W u`, defining
 its causal build/query/fallback interfaces, and passing complete E0 accounting.
 Approximate scoring may be auxiliary only if an independent sound exact path
 is charged and fail-closed.
+
+### Separable cross-residual architecture closure
+
+No `MatrixLocalSeparableResidualCode` component is admitted. Generalizing the
+two cached spans to arbitrary matrix-local linear covering codes still leaves
+coordinate residuals `e,f` and the exact term `e^T W f`. Under an all-query
+Cartesian coefficient-probe interface, the complete `8 GiB` hot grant cannot
+reduce that raw work below `1.52104775688%`, already above the full p50 target.
+
+The rejected boundary is:
+
+```text
+matrix-local row/column linear codes -> cached A^T W and W B images
+arbitrary independent query tuple   -> nearest centers + sparse e,f
+exact missing result                -> raw e^T W f coordinate probes
+```
+
+A future architecture must cross a materially different boundary: genuinely
+nonseparable/global advice with charged cancellation and query localization,
+or a causal restriction on reachable residual pairs established without
+future leakage. Merely increasing basis dimension, changing linear codes, or
+moving the same image state to cold storage remains rejected.

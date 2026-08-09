@@ -1063,3 +1063,38 @@ validation run. The generated numerical payload matched the existing tracked
 validation values; elapsed wall time is not research evidence.
 
 Authority: `docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`.
+
+## Bilinear cross-residual separable-code E0 reproduction
+
+No model, checkpoint, server, or hardware is used. Run:
+
+```powershell
+$env:PYTHONPATH = "."
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_bilinear_cross_residual_frontier.py `
+  --output-dir results\e0_bilinear_cross_residual_frontier
+
+.deps\exp076-venv\Scripts\python.exe -m pytest -q `
+  tests\test_bilinear_cross_residual_frontier.py
+```
+
+Expected focused result: `8 passed`. The summary must reproduce binary side
+fraction `16384/96261`, entropy witness `0.9962122601251457`, cross fraction
+`124943/8214272`, `6,141,198,336` probes, and decision
+`REJECT_MATRIX_LOCAL_SEPARABLE_LINEAR_RESIDUAL_CODE_AS_CORE`.
+
+Observed validation for this closure: `8` focused tests, `467` complete
+repository tests, and a successful `scripts/run_validation.py` run. The
+standard validator changed only its non-authoritative elapsed-time field, so
+the previously tracked payload was preserved.
+
+Authority:
+
+```text
+docs/research/E0_BILINEAR_CROSS_RESIDUAL_SEPARABLE_CODE_BOUND.md
+results/e0_bilinear_cross_residual_frontier/summary.json
+results/e0_bilinear_cross_residual_frontier/checksums.sha256
+```
+
+Canonical summary SHA-256:
+`eb674938a7dc737fbcc1bc61ac1d6f39a1b7de184cb1f0d65c4d47ad3bfd7dd4`.

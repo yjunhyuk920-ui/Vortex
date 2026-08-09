@@ -310,4 +310,9 @@ currently constructible decision-dual sources: a raw-checkpoint dynamic dual
 build at the registered 64-token lifetime and a static full-vocabulary dual
 scan. It leaves only a concrete, lossless, sub-dense Bilinear Cross Residual
 source open and does not claim a universal bilinear-query lower bound.
+F-055 closes matrix-local separable linear covering codes for that residual:
+even an all-binary, all-8-GiB, free-decoder coefficient-probe grant has a
+`1.52104775688%` cross-work lower bound. It does not close nonlinear or
+cross-matrix shared advice, word-packed probes, or causally restricted query
+populations.
 Read that continuation and each scope boundary before reopening a family.

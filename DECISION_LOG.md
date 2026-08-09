@@ -950,3 +950,30 @@ KEEP_ONLY_A_CONCRETE_LOSSLESS_SUBDENSE_CROSS_RESIDUAL_SOURCE_OPEN
 
 This is a scoped E0 closure, not a universal online bilinear-query lower bound.
 Authority: `docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`.
+
+## D-084 -- Reject matrix-local separable cross-residual codes
+
+The Bilinear Cross Residual audit generalized fixed primal/dual bases to
+arbitrary matrix-local binary linear covering codes. Exact cached images have
+rank `a*n + m*b - a*b`; every remaining query is repaired from the product of
+the two coordinate residual supports.
+
+The rational sphere-covering witness `(rate,radius)=(3/10,3/16)` has
+`rate + H_2(radius) < 1`. Granting the complete `8 GiB` hot allowance to a
+single binary bit plane still forces `6,141,198,336` raw cross-coordinate
+probes, `1.52104775688%` of the registered non-embedding population and
+`1.28338404487x` the complete p50 budget before all other costs.
+
+Decision:
+
+```text
+REJECT_MATRIX_LOCAL_SEPARABLE_LINEAR_RESIDUAL_CODE_AS_CORE
+DO_NOT_REOPEN_ATLAS_WITH_LARGER_OR_COVERING_BASES
+KEEP_NONSEPARABLE_GLOBAL_OR_CAUSALLY_RESTRICTED_SOURCE_OPEN
+DO_NOT_ASSIGN_AN_EXPERIMENT_NUMBER_OR_PROMOTE_HARDWARE
+```
+
+The result assumes matrix-local image state and a Cartesian tuple of arbitrary
+per-matrix query pairs. General nonlinear/cross-matrix data structures,
+word-packed probes, and real causal reachability remain unproved. Authority:
+`docs/research/E0_BILINEAR_CROSS_RESIDUAL_SEPARABLE_CODE_BOUND.md`.

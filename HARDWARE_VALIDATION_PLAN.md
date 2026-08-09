@@ -508,3 +508,17 @@ runtime state. Consequently no CUDA prototype, target-server calibration,
 model download, EXP-073 Stage 2 action, 122B/405B run, or Phase D/E4-E7 test is
 authorized. Hardware can reopen only after a concrete lossless Bilinear Cross
 Residual source passes E0 and then E1/E2 correctness boundaries.
+
+## Separable cross-residual lower-bound hardware boundary
+
+The new result is a binary coefficient-probe theorem and calculator only. It
+does not measure word packing, cache lines, SSD IOPS, H2D/HBM traffic, CUDA,
+latency, power, or peak VRAM. The `8 GiB` value is used as an unrealistically
+favorable all-side-information grant; no allocation occurred.
+
+Because the scoped logical operation bound is already `1.52104775688%`, no
+kernel, target-server calibration, storage upgrade, checkpoint download, or
+Phase D work is authorized for matrix-local separable residual codes. Hardware
+may reopen only for a materially nonseparable/global or causally restricted
+source that first passes its own complete E0 equation, E1 falsification, and
+actual fail-closed E2 replacement.

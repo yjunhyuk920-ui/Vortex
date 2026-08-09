@@ -613,3 +613,24 @@ generalization does not survive. Current classification is
 Current classification: the two constructible Decision-Directional Source
 variants are rejected at E0. The Bilinear Cross Residual interface remains a
 research question without a construction, not a Surviving Candidate.
+
+## E0 matrix-local separable cross-residual bound
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Bilinear center/span/cross identity is exact | exhaustive GF(2) reference control | PASS E0 |
+| Image-pair independent bit rank is `a*n+m*b-a*b` | formula plus independent small GF(2) ranks | PASS E0 |
+| Sphere-cover witness is finite | `0.3+H_2(3/16)=0.9962122601<1` | PASS E0 |
+| Complete 8 GiB binary side grant fits target cross work | 1.52104775688% vs 1.18518518519% | FAIL RESOURCE |
+| Cross-probe lower bound | 6,141,198,336 cells; 1.28338404487x target | DERIVED |
+| Hot point where this witness stops rejecting | 9.34710279225 GiB; not sufficient | ABOVE FIXED TOTAL |
+| Focused reference/property tests | 8/8 | PASS |
+| Focused/full repository regression | 8 / 467 tests | PASS |
+| Standard repository validation | `scripts/run_validation.py` completed successfully | PASS |
+| General nonlinear/cross-matrix/word-packed structure impossible | outside declared model | OPEN / NO CLAIM |
+| Real Transformer reachability, E1/E2, model or hardware run | none | NOT TESTED |
+
+Current classification: matrix-local separable linear covering-code upgrades
+to Atlas are rejected at E0 under the arbitrary Cartesian coefficient-probe
+contract. A nonseparable/global or causally restricted source remains an open
+research interface, not a construction or Surviving Candidate.

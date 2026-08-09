@@ -81,6 +81,12 @@ The signed term left after all cached primal and decision-dual span terms have
 been removed from a checkpoint bilinear query.
 _Avoid_: Numerical roundoff, Atlas rank residual, verifier failure
 
+**Matrix-Local Separable Residual Code**:
+A Bilinear Cross Residual source that independently covers each matrix's left
+and right directions with linear codes and repairs only their coordinate-sparse
+cross term from the original matrix.
+_Avoid_: General bilinear data structure, cross-matrix shared code
+
 **Useful Information Amplification**:
 The dense coefficient-equivalent work or traffic determined per charged unit
 of selected cold payload; it is a query-time conservation metric, not artifact

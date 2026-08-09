@@ -345,3 +345,27 @@ checkpoint-derived lossless source for the Bilinear Cross Residual `r^T W u`
 whose finite E0 equation charges construction, representation, query work,
 state, verification, misses, and fallback. Authority:
 `docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`.
+
+## F-055 -- Matrix-local separable linear residual codes
+
+Replacing the small Atlas bases with arbitrary exact left/right linear
+covering codes does not close the Bilinear Cross Residual under the declared
+all-query coefficient-probe model. A code pair with dimensions `a,b` needs
+`a*n + m*b - a*b` independent checkpoint-image bits and leaves a raw cross
+support equal to the product of its two covering radii.
+
+The finite witness `rate=3/10`, `radius=3/16` satisfies
+`0.3 + H_2(3/16) < 1`. Even granting every one of the fixed `8 GiB` hot bits to
+the binary reduction, weighted side-state accounting forces at least
+`6,141,198,336` cross-coordinate probes, or `1.52104775688%` of dense. That is
+`1.28338404487x` the entire p50 allowance before lookup, cached terms,
+verification, fallback, KV state, or physical movement.
+
+Do not reopen with a larger Atlas rank, a different linear code, a
+nearest-codeword decoder, or separately optimized row/column covering radii.
+The proof is scoped: it assumes matrix-local images and independently
+selectable per-matrix query pairs. Revisit only with nonlinear/global shared
+advice that pays cancellation and probes, a word-packed structure with full
+physical accounting, or a causal query restriction established on unchanged
+real-checkpoint traces. Authority:
+`docs/research/E0_BILINEAR_CROSS_RESIDUAL_SEPARABLE_CODE_BOUND.md`.

@@ -1151,4 +1151,39 @@ enumeration, training, target-future leakage, external proof without a local
 result source, and disguised dense discovery. First derive a scoped lower
 bound or concrete exact query structure; do not start E1 until E0 closes.
 
-The next unblocked map ticket is `Break the Bilinear Cross-Residual Barrier`.
+The resulting map ticket was `Break the Bilinear Cross-Residual Barrier`.
+
+## Bilinear cross-residual separable-code E0 closure
+
+`Break the Bilinear Cross-Residual Barrier` derived a finite lower bound for
+the strongest direct Atlas extension: arbitrary matrix-local left/right linear
+covering codes with raw-coordinate repair only for their cross residual. With
+all `8 GiB` granted to binary code images and every non-cross cost free, the
+registered whole-population lower bound is `1.52104775688%`, or
+`1.28338404487x` the complete p50 allowance. This closes larger bases,
+covering-code bases, and separately coded row/column residuals under the
+declared Cartesian coefficient-probe model.
+
+It does **not** close the general static vector-matrix-vector problem. The
+source-audited literature leaves a large gap for nonlinear cell-probe
+structures, and this proof additionally assumes matrix-local advice plus
+independently selectable query pairs across matrices. No universal
+impossibility, actual Transformer reachability result, or word-to-hardware
+mapping follows.
+
+No experiment number, E1 run, model download, Ubuntu command, kernel, or
+hardware action is authorized. The next E0 frontier must change the
+information interface, not the code rate:
+
+```text
+joint/nonseparable cross-matrix advice with charged cancellation/probes
+or
+a causal query restriction derived from unchanged real-checkpoint execution
+```
+
+Any proposal must still provide a finite constructor, representation,
+selector, operation, traffic, state, build, verification, miss, and fallback
+equation below `1.185185185%`. A shared bit may not be divided across matrices
+without proving how query-local answers cancel its other-matrix content.
+
+The next unblocked map ticket is `Resolve Cross-Matrix Advice Locality`.

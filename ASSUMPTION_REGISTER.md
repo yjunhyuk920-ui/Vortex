@@ -652,3 +652,25 @@ finite checkpoint-derived source can answer the Bilinear Cross Residual
 `r^T W u` losslessly and sub-densely for arbitrary prompt-dependent residual
 pairs. That assumption may not advance to E1 until a complete E0 equation and
 an actual construction exist.
+
+## A-065 -- Separable linear covers make every cross residual target-cheap
+
+Assumption: allocating the fixed hot state across arbitrary matrix-local left
+and right linear covering codes can make all exact cross residuals fit the
+registered `1.185185185%` coefficient budget.
+
+Status: REJECTED AT E0 UNDER THE DECLARED CARTESIAN COEFFICIENT-PROBE MODEL.
+The image pair consumes `a*n + m*b - a*b` independent bits. A finite binary
+sphere-covering and weighted-state argument gives a favorable minimum raw
+cross fraction of `1.52104775688%` even when the entire `8 GiB` state and every
+non-cross operation are free.
+
+### A-065 closure
+
+The closure covers arbitrary linear code choices, optimal row/column center
+selection, and lossless matrix-local image encoding. It assumes independently
+selectable query pairs across matrices and counts coordinate probes; it does
+not establish that a real checkpoint reaches those tuples or rule out
+nonlinear/global shared advice and word-packed algorithms. The surviving
+unsupported assumption must therefore change one of those interfaces and
+close a new E0 equation before E1.

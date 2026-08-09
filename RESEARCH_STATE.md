@@ -1052,3 +1052,48 @@ E2 claim follows. The only open invention frontier is a checkpoint-derived,
 lossless, sub-dense source for prompt-dependent `r^T W u` with complete finite
 operations, traffic, state, build, verification, miss, and fallback accounting.
 Authority: `docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`.
+
+## E0 matrix-local separable cross-residual bound
+
+The next E0 Gate generalized the primal/dual Atlas bases to arbitrary
+matrix-local binary linear covering codes. For a matrix `W_i`, left/right code
+dimensions `a_i,b_i` require exactly
+`a_i*n_i + m_i*b_i - a_i*b_i` independent image bits, while the only granted
+raw work is the coordinate cross residual.
+
+A finite sphere-covering witness uses code-rate threshold `3/10` and radius
+`3/16`, with `0.3 + H_2(3/16) = 0.9962122601 < 1`. Even granting the entire
+`8 GiB` hot target to one favorable binary bit plane, coefficient-weighted
+Markov accounting forces at least `43.2653584179%` of the registered
+population below that side rate. Its arbitrary Cartesian query pairs then
+require at least:
+
+```text
+raw cross probes                    6,141,198,336
+fraction of dense                   1.52104775688%
+complete p50 allowance              1.18518518519%
+bound / allowance                   1.28338404487x
+hot point where witness stops       9.34710279225 GiB
+```
+
+The last quantity is not sufficient state; it is only where this conservative
+witness stops rejecting. The bound grants code lookup, decoding, all cached
+terms, image reads, verification, fallback, KV/runtime state, and physical
+movement for free.
+
+Decision:
+
+```text
+REJECT_MATRIX_LOCAL_SEPARABLE_LINEAR_RESIDUAL_CODE_AS_CORE
+DO_NOT_REOPEN_ATLAS_WITH_LARGER_OR_COVERING_BASES
+KEEP_NONSEPARABLE_GLOBAL_OR_CAUSALLY_RESTRICTED_SOURCE_OPEN
+RETURN_TO_NO_SURVIVING_CANDIDATE
+```
+
+This is a scoped coefficient-probe theorem. It assumes matrix-local side
+images and independently selectable cross-matrix query tuples. It does not
+rule out nonlinear or globally shared advice, word-packed probes, or a causal
+query restriction demonstrated on real Transformer traces. No model,
+checkpoint, server, GPU, E1, or E2 action occurred. Authority:
+`docs/research/E0_BILINEAR_CROSS_RESIDUAL_SEPARABLE_CODE_BOUND.md` and
+`results/e0_bilinear_cross_residual_frontier`.
