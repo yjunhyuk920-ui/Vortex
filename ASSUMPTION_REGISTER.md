@@ -743,3 +743,26 @@ queries are independent or close implicit nonlinear/cell-probe structures.
 The surviving unsupported assumption is now narrower: checkpoint preprocessing
 might contain an exact implicit nonlinear answer source whose information is
 not a materialized trace basis. No constructor or target equation exists yet.
+
+## A-069 -- Exact algebraic nonlinearity creates adaptive answer information
+
+Assumption: rational arithmetic, exact multiplication/division, comparisons,
+and query-dependent checkpoint probes can answer `r^T W u` in a materially
+different class from static arithmetic circuits even when the program is
+exact on an open query domain.
+
+Status: REJECTED AS A DISTINCT MECHANISM CLASS. A full-dimensional fixed path
+computes the same rational bilinear function by identity, and
+Baur--Strassen's unit-cost bound maps it to a static `W u` circuit with at most
+four times the arithmetic. At the p50 scalar-query allowance this gives only
+the containment ceiling `32/675 = 4.740740740...%`, not a proof that any
+static circuit meets the final target.
+
+### A-069 closure
+
+The closure covers exact field operations and locally fixed algebraic
+branch/probe paths. It does not model finite BF16/Q4 rounding, bitwise or
+floor/modular word operations, discontinuous addresses, or unrestricted
+cell-probe schemes. The surviving unsupported assumption is now explicitly
+finite-word: such discontinuity might encode a non-exhaustive exact source
+under full state, table, probe, traffic, verification, and fallback charges.

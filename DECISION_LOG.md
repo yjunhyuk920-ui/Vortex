@@ -1103,3 +1103,31 @@ a measurement that every causal Transformer stream is independent. No new
 model forward was performed. Authority:
 `docs/research/E0_QUERY_ADAPTIVE_CODE_UNION_BOUND.md` and
 `results/e0_query_adaptive_code_union`.
+
+## D-089 -- Collapse exact-field nonlinear bilinear paths to static arithmetic
+
+Any bounded exact algebraic query program for `r^T W u` has a branch/probe
+path valid on a nonempty open cell. Rational identity makes that fixed path a
+global circuit for the same bilinear function. Baur--Strassen differentiation
+then produces `W u` with at most four times the unit-cost arithmetic, placing
+the mechanism inside the static arithmetic-DAG class archived in EXP-072B.
+
+The latest bounded-twin-width algorithm does not invalidate prior evidence:
+its general form uses Hamming predecessor differences (F-049), while its
+ordered rectangle form and grammar-compressed alternatives are static exact
+circuits (F-050).
+
+Decision:
+
+```text
+REJECT_EXACT_FIELD_NONLINEAR_BILINEAR_ARITHMETIC_AS_DISTINCT_CORE_CLASS
+REJECT_TWIN_WIDTH_AND_GRAMMAR_REOPENING_AS_NEW_SOURCE
+DO_NOT_CLAIM_FINITE_WORD_OR_CELL_PROBE_IMPOSSIBILITY
+OPEN_ONLY_A_CONCRETE_FINITE_WORD_DISCONTINUOUS_SOURCE_AT_E0
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+No model forward, EXP-085 assignment, checkpoint mutation, Ubuntu action, or
+hardware work occurred. Authority:
+`docs/research/E0_IMPLICIT_NONLINEAR_BILINEAR_SOURCE_AUDIT.md` and
+`results/e0_nonlinear_bilinear_source`.

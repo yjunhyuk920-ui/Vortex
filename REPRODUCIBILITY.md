@@ -1275,3 +1275,37 @@ results/e0_query_adaptive_code_union/checksums.sha256
 
 Canonical summary SHA-256:
 `761b857dda9521a41a3b5b93bf32c6429379a76d4d72192704ee6f03aacb656e`.
+
+## E0 exact-field nonlinear bilinear source reproduction
+
+This audit performs no model forward and uses exact standard-library rational
+arithmetic:
+
+```powershell
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_nonlinear_bilinear_source.py `
+  --output-dir results\e0_nonlinear_bilinear_source
+.deps\exp076-venv\Scripts\python.exe -m unittest discover `
+  -s tests -p test_nonlinear_bilinear_source.py -v
+```
+
+Expected invariants:
+
+```text
+decision                 REJECT_EXACT_FIELD_NONLINEAR_BILINEAR_ARITHMETIC_AS_DISTINCT_CORE_CLASS
+reference cases          64
+branch cases             32 / 32
+exact value matches      64 / 64
+exact gradient matches   64 / 64
+Baur--Strassen factor    4
+derived static fraction  32/675
+model/hardware actions   0 / 0
+```
+
+Observed focused validation was five passing `unittest` cases, and an
+independent temporary output directory reproduced the summary byte-for-byte.
+The repository pytest and standard-validation dependencies were inaccessible
+under the current sandbox ACL; their launches failed before scientific work,
+so neither a full pytest regression nor a standard validation pass is claimed.
+Canonical summary SHA-256:
+`7bf00dc2691d11956105abfa1d6bb97444cfef6fea6b5e9ca6b8318525d7e057`.

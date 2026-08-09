@@ -331,4 +331,8 @@ answer directions actually built, and any partition of the full EXP-084A
 build span still misses all five frozen evaluation rows. It leaves repeated-
 query caching and a genuinely implicit nonlinear checkpoint-derived source
 logically open.
+F-059 closes exact-field nonlinear branching as a distinct source: a fixed
+open-cell path computes the same rational bilinear function, and
+Baur--Strassen reduces it to static MatVec. It does not close finite-word
+discontinuities, native rounding, bit operations, or general cell probes.
 Read that continuation and each scope boundary before reopening a family.

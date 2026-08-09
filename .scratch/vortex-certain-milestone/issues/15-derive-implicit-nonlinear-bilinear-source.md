@@ -1,7 +1,7 @@
 # Derive an Implicit Nonlinear Bilinear Query Source
 
 Type: research
-Status: claimed
+Status: resolved
 Blocked by: Bound Query-Adaptive Exact Code Unions
 
 ## Question
@@ -27,3 +27,22 @@ cheapest untouched falsification Gate, or reject the declared construction at
 E0. Do not run a model, assign EXP-085, build a backend/kernel, contact the
 Ubuntu server, or download a larger checkpoint until such a construction
 exists and survives E0.
+
+## Resolution
+
+No distinct exact-field nonlinear source exists within the declared algebraic
+class. A bounded exact program has a full-dimensional fixed branch; rational
+identity makes that branch compute all of `r^T W u`, and Baur--Strassen gives
+a static arithmetic circuit for `W u` with at most four times the unit-cost
+arithmetic. This returns to archived EXP-072B rather than opening a new source.
+
+The 2026 bounded-twin-width route also collapses to prior classes: its general
+algorithm is the Hamming predecessor traversal rejected by F-049, while its
+rectangle decomposition and lossless grammar variants are static exact
+circuits covered by F-050. No model or hardware Gate was justified.
+
+This is novelty containment, not a universal finite-word or cell-probe lower
+bound. Native rounding, bitwise/floor/modular instructions, and discontinuous
+word addressing remain open and are isolated in the next ticket. Authority:
+`docs/research/E0_IMPLICIT_NONLINEAR_BILINEAR_SOURCE_AUDIT.md` and
+`results/e0_nonlinear_bilinear_source`.

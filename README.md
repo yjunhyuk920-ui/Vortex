@@ -46,7 +46,14 @@ The latest recorded measurements are in [`validation_results.json`](validation_r
 
 ## What is not completed yet
 
-The runtime does **not yet** achieve the final 405B-on-8GB-at-4B-speed target. The current bottleneck is internal Transformer execution: Q/K/V/O and gate/up/down projections still require exact streamed evaluation. The next milestone is to extend progressive, decision-directed refinement from the LM head into those internal projections and measure how much target weight traffic and compute can actually be skipped.
+The runtime does **not yet** achieve the final 405B-on-8GB-at-4B-speed target.
+The current research barrier is exact internal dense projection information:
+the surviving executor must determine the Bilinear Cross Residual `r^T W u`
+without a dense scan. Trace-built linear unions and exact-field nonlinear
+branching are now closed as distinct primary mechanisms. The next proof-first
+frontier is a concrete bounded-word discontinuous source with every table,
+address, probe, byte, operation, verification, miss, and fallback charged
+before any new model or hardware experiment.
 
 This distinction must remain explicit in every future session: working primitives are recorded as working; the final target is only declared achieved after the wall-clock acceptance gates in [`docs/VALIDATION_PROTOCOL.md`](docs/VALIDATION_PROTOCOL.md) pass on real hardware.
 

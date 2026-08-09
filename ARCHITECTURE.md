@@ -813,3 +813,18 @@ query equation expose where exact `r^T W u` information resides without
 materializing trace basis directions. No such compiler, representation,
 selector, decoder, verifier, fallback engine, scheduler, or kernel currently
 exists.
+
+### Exact-field nonlinear path-collapse boundary
+
+No generic algebraic decision-tree or rational-circuit component is admitted.
+On an open exact-field domain, one fixed full-dimensional path computes the
+complete `r^T W u` rational function; reverse differentiation exposes a static
+`W u` arithmetic circuit with constant-factor operation overhead. That is an
+archived static arithmetic-DAG interface, not a new query-adaptive source.
+
+The only open architecture slot is therefore a `FiniteWordDiscontinuousSource`
+whose exactness and advantage depend essentially on bounded native words:
+bitwise packing, modular/floor behavior, native rounding, or discontinuous
+addresses. No interface is admitted until its finite alphabet, word model,
+constructor, persistent layout, table bound, probe schedule, traffic,
+verification, miss/fallback path, and numerical contract close at E0.

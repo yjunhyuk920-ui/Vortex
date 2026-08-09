@@ -1274,3 +1274,41 @@ nonlinear checkpoint data structure. No new model forward, experiment number,
 Ubuntu action, hardware stage, scale claim, or E2-E7 evidence occurred.
 Authority: `docs/research/E0_QUERY_ADAPTIVE_CODE_UNION_BOUND.md` and
 `results/e0_query_adaptive_code_union`.
+
+## E0 exact-field nonlinear bilinear source class collapsed
+
+The next audit separated algebraic nonlinearity from genuine finite-word
+discontinuity. For any bounded exact algebraic program computing
+`f_W(r,u)=r^T W u` on an open domain, one full-dimensional branch/probe path
+can be fixed. Its rational expression agrees with `f_W` on an open set and is
+therefore identical. Baur--Strassen then turns that scalar circuit into a
+static circuit for `gradient_r f_W=W u` with at most four times the unit-cost
+arithmetic.
+
+At the registered p50 fraction `8/675`, the reduction gives a static MatVec
+operation ceiling `32/675 = 4.740740740...%`. This is a novelty containment
+result, not a finite impossibility theorem or proof that a static circuit
+meets the target. It prevents exact-field branching from being counted as the
+new information source demanded after EXP-084A/F-058.
+
+The current bounded-twin-width literature supplies no reopening premise. The
+general algorithm is predecessor-row Hamming traversal already covered by
+EXP-082A/F-049; ordered rectangle decomposition and lossless grammar MatVec
+are static exact schedules already covered by F-050/EXP-072B.
+
+Sixty-four exact rational reference cases across two deliberately nonlinear
+cancellation paths reproduced both the scalar answer and `W u` gradient. Five
+focused standard-library tests passed. No Transformer forward, checkpoint
+mutation, EXP-085 number, Ubuntu command, or hardware action occurred.
+
+Decision:
+
+```text
+REJECT_EXACT_FIELD_NONLINEAR_BILINEAR_ARITHMETIC_AS_DISTINCT_CORE_CLASS
+KEEP_FINITE_WORD_DISCONTINUOUS_QUERY_SOURCES_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority:
+`docs/research/E0_IMPLICIT_NONLINEAR_BILINEAR_SOURCE_AUDIT.md` and
+`results/e0_nonlinear_bilinear_source`.

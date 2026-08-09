@@ -733,3 +733,27 @@ Authoritative decision:
 `REJECT_TRACE_BUILT_QUERY_ADAPTIVE_LINEAR_CODE_UNION_AS_CORE`. Restricted
 repeated-query use remains auxiliary. Current classification remains
 `NO_SURVIVING_CANDIDATE`.
+
+## E0 exact-field nonlinear bilinear path-collapse audit
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| A fixed open-cell algebraic path computes the same rational function | rational identity argument | PASS E0 |
+| `gradient_r(r^T W u)=W u` | exact algebra | PASS E0 |
+| Static derivative-circuit overhead | Baur--Strassen all-unit-cost factor `<=4` | PASS E0 |
+| Target scalar query implies static MatVec fraction `<=32/675` | exact fraction calculation | DERIVED |
+| This proves finite target impossibility | reduction is containment only | NO / NOT CLAIMED |
+| Twin-width general algorithm is new | Hamming predecessor traversal | REJECTED / F-049 |
+| Rectangle/grammar evaluation is new | static exact schedule | REJECTED / F-050 |
+| Exact rational nonlinear cancellation controls | 64/64 values; 64/64 gradients | PASS |
+| Focused standard-library tests | 5/5 | PASS |
+| Independent output-directory reproduction | identical summary SHA-256 | PASS |
+| Full repository pytest regression | sandbox dependency unavailable in this session | NOT RUN |
+| Standard validation runner | dependency ACL failure before validation work | NOT RUN |
+| New model forwards or checkpoint mutation | zero | NOT RUN |
+| Finite-word/cell-probe impossibility | outside theorem | OPEN / NO CLAIM |
+| Core Candidate, E1/E2, hardware, 122B/405B | none | NOT TESTED |
+
+Authoritative decision:
+`REJECT_EXACT_FIELD_NONLINEAR_BILINEAR_ARITHMETIC_AS_DISTINCT_CORE_CLASS`.
+Current classification remains `NO_SURVIVING_CANDIDATE`.

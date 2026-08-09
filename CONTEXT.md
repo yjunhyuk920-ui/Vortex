@@ -103,6 +103,25 @@ cannot create independent answer directions, and every partition of the full
 24-row EXP-084A build span misses all five frozen evaluation rows. Restricted
 repeated-query use remains auxiliary.
 
+**Exact-Field Bilinear Path Collapse**:
+A barrier for exact algebraic query programs: on a nonempty open field domain,
+one full-dimensional fixed branch must compute the complete rational bilinear
+function, and Baur--Strassen differentiation turns that branch into a static
+arithmetic circuit for `W u` with constant-factor operation overhead.
+_Avoid_: Universal cell-probe impossibility, native floating-point theorem
+_Current status_: Exact-field nonlinear branching is rejected as a distinct
+Core Candidate class. The result is containment into archived static
+arithmetic-DAG research, not a finite target lower bound.
+
+**Finite-Word Discontinuous Source**:
+An exact checkpoint-derived query structure whose useful mechanism depends
+essentially on finite-word discontinuity such as bitwise packing, modular or
+floor operations, native rounding, or data-dependent word addresses, with
+tables and every probe fully charged.
+_Avoid_: Exact-field arithmetic renamed nonlinear, exhaustive activation table
+_Current status_: Open E0 search class; no constructor or target-feasible
+equation exists.
+
 **Matrix-Local Separable Residual Code**:
 A Bilinear Cross Residual source that independently covers each matrix's left
 and right directions with linear codes and repairs only their coordinate-sparse

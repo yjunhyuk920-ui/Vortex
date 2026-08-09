@@ -256,13 +256,16 @@ still supplies no independent answer information, and every partition of the
 full EXP-084A build span misses all five frozen evaluation rows. Do not sweep
 leaves, routers, prompts, positions, ranks, primes, or hit semantics.
 
-The next open ticket may only derive a concrete implicit nonlinear
-checkpoint-derived exact source for `r^T W u`, with construction,
-representation, query work/traffic, state, verification, misses, and fallback
-fully charged before E1. No Core Candidate survives. Pair extraction and
-native numerical semantics remain unsolved; EXP-085, E2, hardware, larger
-models, and the private Ubuntu host remain unauthorized. Read
-`NEXT_EXPERIMENT.md`.
+The exact-field nonlinear audit now closes algebraic branching as a distinct
+source: one full-dimensional rational path computes the same bilinear
+function, and Baur--Strassen reduces it to static MatVec. Current twin-width
+and grammar routes reduce to F-049/F-050. The next open ticket may only derive
+a concrete bounded-word discontinuous exact source for `r^T W u`, with word
+semantics, table growth, construction, representation, address/probe
+work/traffic, state, verification, misses, and fallback fully charged before
+E1. No Core Candidate survives. Pair extraction and native numerical
+semantics remain unsolved; EXP-085, E2, hardware, larger models, and the
+private Ubuntu host remain unauthorized. Read `NEXT_EXPERIMENT.md`.
 
 ## Agent skills
 

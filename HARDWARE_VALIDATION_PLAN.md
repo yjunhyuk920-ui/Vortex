@@ -573,3 +573,17 @@ run, or Phase D/E4-E7 work occurred. Hardware may reopen only after a
 materially implicit nonlinear checkpoint-derived source passes its own
 complete E0 equation, untouched E1 Gate, and actual fail-closed E2 replacement
 with a full peak-state plan.
+
+## Exact-field nonlinear source hardware closure
+
+The path-collapse result is algebraic containment, not a physical benchmark.
+It allocates no GPU/CPU/SSD state and measures no bandwidth, latency, power,
+or VRAM. Exact-field branching returns to the static arithmetic-DAG family and
+therefore authorizes no kernel or target calibration.
+
+No target Ubuntu command, storage mutation, download, CUDA action, EXP-073
+Stage 2 measurement, GPU allocation, 122B/405B run, or Phase D/E4-E7 work
+occurred. Hardware can reopen only after a concrete bounded-word discontinuous
+source passes a complete E0 equation, untouched E1 falsification, and actual
+fail-closed E2 replacement with native numerical semantics and a full
+peak-state plan.

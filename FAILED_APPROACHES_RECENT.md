@@ -439,3 +439,25 @@ data structure that answers without materialized trace basis directions. Such
 a structure may reopen research only with a concrete constructor and complete
 E0 equation. Authority:
 `docs/research/E0_QUERY_ADAPTIVE_CODE_UNION_BOUND.md`.
+
+## F-059 -- Exact-field nonlinear branching as a distinct bilinear source
+
+For a bounded exact algebraic query program, some branch/probe path has a
+full-dimensional open cell. Freezing that path gives one rational circuit that
+agrees with `f_W(r,u)=r^T W u` on an open set and therefore identically.
+Baur--Strassen then computes `gradient_r f_W=W u` with at most four times the
+unit-cost arithmetic. The alleged nonlinear adaptive source is consequently
+contained by the static arithmetic-DAG family archived in EXP-072B.
+
+Do not reopen with algebraic decision trees, rational gates, or a fixed
+checkpoint index whose addresses are locally constant on continuous query
+cells. The current twin-width route also supplies no new class: its unordered
+algorithm is F-049 Hamming predecessor traversal, while rectangle and grammar
+evaluation are F-050 static circuits.
+
+This is containment, not a finite impossibility result. It does not cover
+native BF16/Q4 rounding, bitwise/floor/modular operations, discontinuous word
+addresses, exhaustive finite domains, or general cell probes. Reopening now
+requires one non-exhaustive finite-word constructor with a complete target
+equation. Authority:
+`docs/research/E0_IMPLICIT_NONLINEAR_BILINEAR_SOURCE_AUDIT.md`.

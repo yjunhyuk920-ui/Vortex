@@ -1314,3 +1314,26 @@ No model row, EXP-085 number, backend, kernel, download, private Ubuntu action,
 physical benchmark, 122B/405B execution, or E2-E7 work is authorized. Current
 classification remains `NO_SURVIVING_CANDIDATE`. Authority:
 `docs/research/E0_QUERY_ADAPTIVE_CODE_UNION_BOUND.md`.
+
+## Exact-field nonlinear path collapsed -- derive a finite-word source only
+
+Do not propose rational/arithmetic branching, bounded-twin-width Hamming
+traversal, rectangle decomposition, or grammar evaluation as the missing
+source. A full-dimensional exact algebraic path computes the same bilinear
+function globally, and Baur--Strassen maps it to static `W u` with
+constant-factor arithmetic overhead. Those routes return to F-049/F-050 and
+archived EXP-072B.
+
+The next unblocked ticket is `Derive a Finite-Word Discontinuous Bilinear
+Source`. It must begin with one non-exhaustive automatic checkpoint
+constructor and exact finite-word query equation. The word size, native
+rounding or integer surrogate, bitwise/modular/floor instructions, table
+growth, address generation, every probe, traffic, operations, state,
+verification, misses, fallback, and service-life build amortization must be
+explicit. An unbounded word, free SIMD factor, exhaustive answer table, or
+static field circuit is inadmissible.
+
+No model row, EXP-085 number, backend, kernel, download, private Ubuntu action,
+physical benchmark, 122B/405B execution, or E2-E7 work is authorized. Current
+classification remains `NO_SURVIVING_CANDIDATE`. Authority:
+`docs/research/E0_IMPLICIT_NONLINEAR_BILINEAR_SOURCE_AUDIT.md`.
