@@ -1,7 +1,7 @@
 # Run the Causal Bilinear Rank Gate
 
 Type: experiment
-Status: open
+Status: claimed
 Blocked by: Certify Causal Bilinear Query Restriction
 
 ## Question
