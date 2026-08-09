@@ -1,7 +1,7 @@
 # Run the Legal Pair and Outward-Bound Last-Down Gate
 
 Type: task
-Status: open
+Status: claimed
 Blocked by: Preregister the Legal Causal-Pair and Outward-Bound Gate
 
 ## Question
