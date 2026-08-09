@@ -2,14 +2,13 @@
 from __future__ import annotations
 
 import argparse
-import copy
 import hashlib
 import json
 from pathlib import Path
 import platform
 import subprocess
 import time
-from typing import Any, Mapping
+from typing import Any
 
 import numpy as np
 
@@ -268,7 +267,6 @@ def prompt_state(
     tokenizer: Any,
     recorder: LastDownRecorder,
     side_rank: int,
-    replay_indices: list[str],
     control_rows: list[dict[str, Any]],
     control_failures: list[str],
 ) -> dict[str, Any]:
@@ -291,53 +289,70 @@ def prompt_state(
     if control_failures:
         raise GateControlError(control_failures[-1])
 
-    output, captures, hidden = capture_forward(
-        target=target, recorder=recorder, input_ids=prefix_ids
-    )
-    with torch.inference_mode():
-        logits = target.lm_head(hidden).detach()
     length = int(prefix_ids.shape[1])
-    winners: list[int] = []
-    competitors: list[int] = []
-    directions: list[Any] = []
-    pre_norm_match = True
-    hidden_match = True
+    x_sources: list[np.ndarray] = []
+    v_sources: list[np.ndarray] = []
+    basis_positions: list[int] = []
+    q_basis = np.empty((int(target.model.layers[-1].mlp.down_proj.in_features), 0), dtype=np.float32)
+    p_basis = np.empty((int(target.model.layers[-1].mlp.down_proj.out_features), 0), dtype=np.float32)
+    cache: Any | None = None
+    first_token: int | None = None
+    sequential_suffix_match = True
     for position in range(length):
-        winner, competitor = winner_competitor(logits[0, position])
-        replay_pre, replay_hidden, gradient = decision_direction(
-            residual=captures["residual"][0, position],
-            native_y=captures["y"][0, position],
-            winner=winner,
-            competitor=competitor,
-            final_norm=target.model.norm,
-            lm_head=target.lm_head,
+        current_ids = prefix_ids[:, position : position + 1]
+        output, captures, hidden = capture_forward(
+            target=target,
+            recorder=recorder,
+            input_ids=current_ids,
+            past_key_values=cache,
         )
-        pre_norm_match &= bool(
-            torch.equal(replay_pre, captures["pre_norm"][0, position])
-        )
-        hidden_match &= bool(torch.equal(replay_hidden, hidden[0, position]))
-        winners.append(winner)
-        competitors.append(competitor)
-        directions.append(gradient.cpu())
+        cache = output.past_key_values
+        basis_open = q_basis.shape[1] < side_rank or p_basis.shape[1] < side_rank
+        if basis_open or position == length - 1:
+            with torch.inference_mode():
+                logits = target.lm_head(hidden[:, -1, :]).detach()[0]
+            winner, competitor = winner_competitor(logits)
+            if position == length - 1:
+                first_token = winner
+            if basis_open:
+                replay_pre, replay_hidden, gradient = decision_direction(
+                    residual=captures["residual"][0, 0],
+                    native_y=captures["y"][0, 0],
+                    winner=winner,
+                    competitor=competitor,
+                    final_norm=target.model.norm,
+                    lm_head=target.lm_head,
+                )
+                sequential_suffix_match &= bool(
+                    torch.equal(replay_pre, captures["pre_norm"][0, 0])
+                    and torch.equal(replay_hidden, hidden[0, 0])
+                )
+                x_sources.append(
+                    captures["x"][0, 0]
+                    .float()
+                    .numpy()
+                    .astype(np.float32, copy=False)
+                )
+                v_sources.append(
+                    gradient.float().numpy().astype(np.float32, copy=False)
+                )
+                basis_positions.append(position)
+                q_basis = two_pass_mgs_basis(
+                    np.stack(x_sources), maximum_rank=side_rank
+                )
+                p_basis = two_pass_mgs_basis(
+                    np.stack(v_sources), maximum_rank=side_rank
+                )
+            del logits
     append_control(
         control_rows,
         control_failures,
         prompt_id=prompt_id,
-        name="batched_suffix_pre_norm_identity",
-        passed=pre_norm_match,
+        name="sequential_prefix_suffix_identity",
+        passed=sequential_suffix_match,
     )
-    append_control(
-        control_rows,
-        control_failures,
-        prompt_id=prompt_id,
-        name="batched_suffix_hidden_identity",
-        passed=hidden_match,
-    )
-
-    x_rows = captures["x"][0].float().numpy().astype(np.float32, copy=False)
-    v_rows = torch.stack(directions).float().numpy().astype(np.float32, copy=False)
-    q_basis = two_pass_mgs_basis(x_rows, maximum_rank=side_rank)
-    p_basis = two_pass_mgs_basis(v_rows, maximum_rank=side_rank)
+    x_rows = np.ascontiguousarray(np.stack(x_sources), dtype=np.float32)
+    v_rows = np.ascontiguousarray(np.stack(v_sources), dtype=np.float32)
     append_control(
         control_rows,
         control_failures,
@@ -354,56 +369,16 @@ def prompt_state(
         passed=(p_basis.shape[1] == side_rank),
         measured=int(p_basis.shape[1]),
     )
-
-    registered_positions: list[int] = []
-    for label in replay_indices:
-        position = 0 if label == "first" else length - 1
-        if position not in registered_positions:
-            registered_positions.append(position)
-    for position in registered_positions:
-        replay_ids = prefix_ids[:, : position + 1]
-        replay_output, replay_captures, replay_hidden_rows = capture_forward(
-            target=target, recorder=recorder, input_ids=replay_ids
-        )
-        with torch.inference_mode():
-            replay_logits = target.lm_head(replay_hidden_rows[:, -1, :]).detach()[0]
-        replay_winner, replay_competitor = winner_competitor(replay_logits)
-        replay_pre, replay_hidden, replay_direction = decision_direction(
-            residual=replay_captures["residual"][0, -1],
-            native_y=replay_captures["y"][0, -1],
-            winner=replay_winner,
-            competitor=replay_competitor,
-            final_norm=target.model.norm,
-            lm_head=target.lm_head,
-        )
-        activation_match = all(
-            torch.equal(replay_captures[name][0, -1], captures[name][0, position])
-            for name in ("x", "y", "residual", "pre_norm")
-        ) and torch.equal(replay_hidden_rows[0, -1], hidden[0, position])
-        direction_match = torch.equal(replay_direction, directions[position])
-        token_match = (
-            replay_winner == winners[position]
-            and replay_competitor == competitors[position]
-        )
-        suffix_match = torch.equal(
-            replay_pre, replay_captures["pre_norm"][0, -1]
-        ) and torch.equal(replay_hidden, replay_hidden_rows[0, -1])
-        append_control(
-            control_rows,
-            control_failures,
-            prompt_id=prompt_id,
-            name=f"prefix_replay_position_{position}",
-            passed=(activation_match and direction_match and token_match and suffix_match),
-            measured={
-                "activation": activation_match,
-                "direction": direction_match,
-                "winner_competitor": token_match,
-                "suffix": suffix_match,
-            },
-        )
-        del replay_output, replay_logits
-
-    first_token = winners[-1]
+    append_control(
+        control_rows,
+        control_failures,
+        prompt_id=prompt_id,
+        name="prompt_basis_current_decode_exclusion",
+        passed=bool(basis_positions and max(basis_positions) < length),
+        measured=basis_positions,
+    )
+    if first_token is None:
+        raise GateControlError("sequential prompt did not produce a final token")
     append_control(
         control_rows,
         control_failures,
@@ -427,11 +402,12 @@ def prompt_state(
         "p_basis_sha256": sha256_array(p_basis),
         "q_rank": int(q_basis.shape[1]),
         "p_rank": int(p_basis.shape[1]),
+        "basis_source_positions": basis_positions,
+        "prompt_execution": "sequential_single_token_committed_prefix",
     }
-    del logits
     return {
         "row": row,
-        "cache": output.past_key_values,
+        "cache": cache,
         "token": first_token,
         "q_basis": q_basis,
         "p_basis": p_basis,
@@ -655,7 +631,6 @@ def main() -> None:
                 tokenizer=tokenizer,
                 recorder=recorder,
                 side_rank=int(config["gate"]["side_rank"]),
-                replay_indices=list(config["gate"]["prefix_replay_indices"]),
                 control_rows=control_rows,
                 control_failures=control_failures,
             )
@@ -747,7 +722,6 @@ def main() -> None:
                 tokenizer=tokenizer,
                 recorder=recorder,
                 side_rank=int(config["gate"]["side_rank"]),
-                replay_indices=list(config["gate"]["prefix_replay_indices"]),
                 control_rows=control_rows,
                 control_failures=control_failures,
             )

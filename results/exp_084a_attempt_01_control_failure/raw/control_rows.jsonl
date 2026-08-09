@@ -1,0 +1,8 @@
+{"control": "prefix_token_trace_identity", "measured": {"length": 27, "sha256": "db7e18c713e2646869cc47ee8b51fb1225255a13497156764b57a359ba8d0d79"}, "passed": true, "prompt_id": "build_english_01"}
+{"control": "batched_suffix_pre_norm_identity", "passed": true, "prompt_id": "build_english_01"}
+{"control": "batched_suffix_hidden_identity", "passed": true, "prompt_id": "build_english_01"}
+{"control": "prompt_primal_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_english_01"}
+{"control": "prompt_dual_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_english_01"}
+{"control": "prefix_replay_position_0", "measured": {"activation": false, "direction": false, "suffix": true, "winner_competitor": true}, "passed": false, "prompt_id": "build_english_01"}
+{"control": "prefix_replay_position_26", "measured": {"activation": true, "direction": true, "suffix": true, "winner_competitor": true}, "passed": true, "prompt_id": "build_english_01"}
+{"control": "prompt_top1_exp076_trace_identity", "measured": {"expected": 16, "observed": 16}, "passed": true, "prompt_id": "build_english_01"}

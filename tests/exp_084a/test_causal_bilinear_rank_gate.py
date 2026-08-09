@@ -1,9 +1,14 @@
 from __future__ import annotations
 
 from fractions import Fraction
+import inspect
+import json
+from pathlib import Path
 
 import numpy as np
 import pytest
+
+from experiments.exp_084a.run_experiment import prompt_state
 
 from vortex_runtime.causal_bilinear_rank_gate import (
     CausalBilinearGateError,
@@ -216,3 +221,18 @@ def test_control_failure_has_priority_over_scientific_result() -> None:
         oracle_rank_lower_bound=30,
     )
     assert result["decision"] == INVALID_DECISION
+
+
+def test_prompt_basis_uses_only_sequential_single_token_prefix_steps() -> None:
+    source = inspect.getsource(prompt_state)
+    assert "prefix_ids[:, position : position + 1]" in source
+    assert "sequential_single_token_committed_prefix" in source
+    assert "replay_indices" not in inspect.signature(prompt_state).parameters
+    config = json.loads(
+        (Path(__file__).resolve().parents[2] / "experiments/exp_084a/config.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert config["gate"]["prompt_capture"] == (
+        "sequential_single_token_committed_prefix_no_batched_prompt_rows"
+    )

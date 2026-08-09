@@ -53,7 +53,7 @@
     "oracle_rejection_rank": 28,
     "primes": [65521, 65519, 65497],
     "fingerprint_seeds": [11, 23, 37, 53, 71, 97],
-    "prefix_replay_indices": ["first", "last"],
+    "prompt_capture": "sequential_single_token_committed_prefix_no_batched_prompt_rows",
     "prompt_side_basis": "float32_two_pass_mgs_file_position_order",
     "query_residual_order": "float32_x_minus_q_qt_x_and_v_minus_p_pt_v",
     "decode_conditioning": "native_greedy_committed_prefix_only",
