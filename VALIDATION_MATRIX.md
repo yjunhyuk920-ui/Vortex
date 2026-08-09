@@ -658,3 +658,25 @@ Current classification: free cross-matrix projection reuse is closed only in
 the systematic linear coefficient-use model. The finite general bound is too
 weak for mission rejection, and no globally mixed construction survives E0.
 The next Gate may address only a leakage-free causal query restriction.
+
+## E0 causal bilinear query-restriction threshold
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Rank `R` forces at least `R-B` misses for any best `B`-span | proof plus exhaustive GF(2) populations | PASS E0 |
+| Aligned residual-pair coordinates over 883 matrices | `39,109,888` | DERIVED |
+| Full factor scan with span 23 fits p50 traffic | `1.159413233%` including build/verifier/metadata | PASS favorable component |
+| Span 24 fits p50 traffic | above `1.185185185%` | FAIL resource |
+| Span-23 component state fits 8 GiB | `2.104879502 GiB` | PASS component only |
+| Logical address counts are physical latency | 40,618 segments / 442,129 rounded pages | NOT MEASURED |
+| 36-row last-down fallback allowance | 4 rows | DERIVED |
+| Certified rank rejecting every `B<=23` ledger | 28 | DERIVED / PREREGISTERED |
+| Modular nonincrease proves exact rational hit | explicitly forbidden | NO |
+| Six-check field implementation union bound | `<1.43e-17` over 17.66B queries | PASS probabilistic equation |
+| Real causal query rank/coverage | no model row | NOT TESTED / NEXT GATE |
+| Paid general pair extractor and local result source | known raw VJP is dense; granted free | NOT CLOSED |
+| Native BF16/Q4 operation replacement, hardware, E2-E7 | none | NOT TESTED |
+
+Current classification: the cheapest causal-population statistic is now
+preregistered, but no query restriction has been measured and no Core Candidate
+survives. Only the frozen last-down rank Gate may execute next.

@@ -1218,3 +1218,43 @@ fraction.
 No model download, private Ubuntu action, kernel, or hardware stage is
 authorized. The next unblocked map ticket is
 `Certify Causal Bilinear Query Restriction`.
+
+## Causal bilinear restriction threshold resolved -- run only the frozen rank Gate
+
+The shape-only question is now closed for one concrete query structure. A
+factor-scanned Causal Bilinear Span Ledger stores the residual outer products
+as left/right factors and combines cached scalar answers only after an exact
+rational membership witness.
+
+With a favorable two-byte factor grant, six-check verifier, full metadata, and
+46 dense-equivalent build passes amortized over 20M service tokens, the
+registered 405B equation permits at most span dimension 23:
+
+```text
+B=23 common traffic/operations             1.159413233% / 0.281295494%
+B=23 component state                                2.104879502 GiB
+B=24 traffic                                        above 1.185185185%
+```
+
+The frozen small-checkpoint Gate uses only the last Qwen3.5-0.8B `down_proj`.
+It builds from six existing build prompts x four decode positions and evaluates
+18 disjoint prompts x two positions. Prompt-only side bases have rank 16.
+Every float32 residual factor is treated as an exact dyadic value; rank
+increases under primes `65521/65519/65497` are certified independent arrivals,
+while modular nonincrease receives no hit credit without an exact rational
+witness.
+
+For 36 held-out rows, the best post-hoc 23-dimensional subspace must miss at
+least `rank-23`. Only four registered-down-equivalent fallbacks fit the
+remaining traffic, so rank 28 is the canonical early rejection threshold. A
+pass requires all controls, at most four exact misses, at least five hits in
+each six-row family, and rank at most 27.
+
+This is a favorable E1 structural Gate, not a Core Candidate. Pair extraction
+and a local result source are free; the known general VJP is dense. A pass may
+open only a paid extractor and native numerical-semantics Gate. A failure
+closes this factor-scan ledger without a rank/prompt/prime sweep.
+
+Authority: `docs/research/E0_CAUSAL_BILINEAR_QUERY_RESTRICTION.md`. No model
+row or experiment number exists yet. The next unblocked map ticket is `Run the
+Causal Bilinear Rank Gate`.

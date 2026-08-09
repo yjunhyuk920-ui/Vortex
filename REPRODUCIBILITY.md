@@ -1131,3 +1131,42 @@ results/e0_cross_matrix_advice_locality/checksums.sha256
 
 Canonical summary SHA-256:
 `e8957ad1a1e89e61ab7fb55b23df399e5d0bc066a4922d58a005012983c2aa14`.
+
+## Causal bilinear query-restriction E0 reproduction
+
+No model, checkpoint payload, server, or hardware is used. Run:
+
+```powershell
+$env:PYTHONPATH = ".;.deps"
+python scripts/derive_causal_bilinear_query_restriction.py `
+  --output-dir results/e0_causal_bilinear_query_restriction
+python -m pytest -q tests/test_causal_bilinear_query_restriction.py
+```
+
+Observed validation: `10` focused tests, all `486` repository tests, and a
+successful `scripts/run_validation.py` run. The standard runner uses existing
+synthetic fixtures and is not causal-query population evidence. The summary
+must reproduce aligned pair
+coordinates `39,109,888`, maximum factor-scan span `23`, common
+traffic/operations `0.01159413232603292/0.002812954939542966`, component state
+`2.104879502 GiB`, four permitted last-down misses over 36 rows, rejecting rank
+`28`, and the decision
+`PREREGISTER_LAST_DOWN_CAUSAL_BILINEAR_RANK_GATE_ONLY`.
+
+Authority:
+
+```text
+docs/research/E0_CAUSAL_BILINEAR_QUERY_RESTRICTION.md
+results/e0_causal_bilinear_query_restriction/summary.json
+results/e0_causal_bilinear_query_restriction/checksums.sha256
+```
+
+Canonical summary SHA-256:
+`bb8456553848d10a3b4128cedcb24f9f0d444d1c9d880f0cf9bc7a2d4996309c`.
+
+The future E1 runner does not yet exist. It must use the pinned EXP-076
+checkpoint/prompt hashes, six build prompts x four decode positions, 18
+evaluation prompts x two positions, prompt-only side rank 16, exact dyadic
+outer-product ranks over primes `65521/65519/65497`, exact rational witnesses
+for every hit, and the frozen rank-28 early stop. It must begin from an empty
+result directory and distinguish control/infrastructure failure from science.

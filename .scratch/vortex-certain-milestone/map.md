@@ -35,13 +35,14 @@ Mission.
 - [Find a Post-Atlas Causal Information Source](issues/09-find-post-atlas-causal-information-source.md): exact decision-directional caching leaves a bilinear cross residual; dynamic dual construction and static full-vocabulary scanning both fail E0, so no source survives and only a different lossless sub-dense cross-residual mechanism remains open.
 - [Break the Bilinear Cross-Residual Barrier](issues/10-break-bilinear-cross-residual-barrier.md): a finite sphere-covering bound rejects every matrix-local separable linear residual code at `1.521048%` raw cross work; only nonseparable/global advice or a proved causal query restriction remains open.
 - [Resolve Cross-Matrix Advice Locality](issues/11-resolve-cross-matrix-advice-locality.md): global linear advice supplies free block-local information only through shortened spaces and pays one dimension per fixed outside cancellation probe, but the strongest finite global bound is only `0.001587%`; free projection reuse is closed while general impossibility and construction both remain open.
+- [Certify Causal Bilinear Query Restriction](issues/12-certify-causal-bilinear-query-restriction.md): a favorable full-factor scan fits only through query-span dimension 23; exact held-out rank 28 among 36 last-down rows rejects every such ledger, so the shape threshold is closed and the frozen population Gate is next, but free pair/result oracles prevent Core Candidate promotion.
 
 ## Not yet specified
 
-- Determine whether an unchanged real checkpoint supplies a leakage-free
-  causal restriction strong enough to replace the arbitrary Cartesian query
-  model; this is now the open `Certify Causal Bilinear Query Restriction`
-  ticket.
+- Run the frozen last-down Causal Bilinear Rank Gate without changing prompts,
+  positions, side rank, primes, decision direction, or hit semantics. A pass
+  opens only a paid pair-extractor/native-semantics Gate; a rank-28 failure
+  closes the full-factor ledger.
 - If a future source survives E0/E1, specify the exact E2 integration boundary,
   output contract, and held-out population from that mechanism.
 - If E2 survives, determine the next model-size and representative-hardware

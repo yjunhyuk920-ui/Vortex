@@ -1,0 +1,94 @@
+{
+  "claim_boundary": {
+    "activation_span_replay": "NOT REOPENED",
+    "core_candidate": "NONE; PAIR EXTRACTOR AND LOCAL RESULT SOURCE ARE FREE",
+    "general_nonlinear_or_compressed_query_code": "NOT RULED OUT",
+    "model_or_hardware_execution": "NOT RUN",
+    "native_floating_operation_replacement": "NOT TESTED",
+    "query_restriction_proved": "NO; MEASURED POPULATION PENDING"
+  },
+  "classification": "E0_CAUSAL_BILINEAR_SPAN_LEDGER_NECESSARY_GATE",
+  "decision": "PREREGISTER_LAST_DOWN_CAUSAL_BILINEAR_RANK_GATE_ONLY",
+  "fingerprint_contract": {
+    "challenges": 6,
+    "exact_rational_witness_required_before_hit": true,
+    "field_prime": 65521,
+    "modular_nonincrease_alone_is_not_a_hit": true,
+    "service_query_union": 17660000000,
+    "union_false_accept_bound": "89419840514302445387510820333656060000000/6259882847301474709673734798785580958764549170115153592641",
+    "union_false_accept_bound_decimal": 1.428458689971327e-17
+  },
+  "ledger_shape": {
+    "address_counts": {
+      "rounded_4k_pages": 442129,
+      "rounded_64_byte_lines": 28110232,
+      "vector_segments": 40618
+    },
+    "aligned_pair_coordinates": 39109888,
+    "basis_factor_bytes": 1799054848,
+    "component_state_bytes": 2260097156,
+    "component_state_gib": 2.104879502207041,
+    "factor_scalar_bytes_favorable": 2,
+    "maximum_scannable_span_dimension": 23,
+    "metadata_bytes": {
+      "basis_fingerprints": 243708,
+      "cached_answers": 81236,
+      "gram_inverse": 1868428,
+      "pivot_descriptors": 162472
+    },
+    "next_dimension_fails": 24,
+    "verifier_state_bytes": 458686464,
+    "verifier_traffic_bytes": 538678272
+  },
+  "rank_gate": {
+    "build_positions_per_prompt": 4,
+    "build_prompts": 6,
+    "build_query_rows": 24,
+    "evaluation_positions_per_prompt": 2,
+    "evaluation_prompts": 18,
+    "evaluation_query_rows": 36,
+    "maximum_allowed_down_fallback_rows": 4,
+    "minimum_rejecting_certified_rank": 28,
+    "rank_to_oracle_miss_rule": "misses >= max(0, rank - 23)",
+    "registered_down_coefficients_per_instance": 872415232,
+    "registered_down_fraction": "208/96261",
+    "registered_rank_primes": [
+      65521,
+      65519,
+      65497
+    ],
+    "side_rank": 16,
+    "small_last_down_shape": [
+      1024,
+      3584
+    ]
+  },
+  "resource_equation": {
+    "build_amortized_fraction": "23/10000000",
+    "build_dense_equivalents": 46,
+    "checkpoint_service_tokens": 20000000,
+    "common_operation_fraction": "44364243834527/15771402240000000",
+    "common_operation_fraction_decimal": 0.002812954939542966,
+    "common_traffic_fraction": "45713931134413/3942850560000000",
+    "common_traffic_fraction_decimal": 0.01159413232603292,
+    "kv_workspace_fallback_overlap": "OMITTED",
+    "local_trace_or_proposal_source": "FREE FAVORABLE ORACLE",
+    "native_rounding_and_exact_rational_decode": "UNVERIFIED",
+    "pair_extraction": "FREE FAVORABLE ORACLE; KNOWN GENERAL VJP IS DENSE",
+    "traffic_headroom_for_weighted_fallback": "9145346190283/35485655040000000"
+  },
+  "strongest_counterexample": {
+    "all_evaluation_tensors_independent_rank": 36,
+    "fully_charged_traffic_fraction": "439114340209717/35485655040000000",
+    "oracle_miss_rows": 13,
+    "target_miss_factor": 1.0440915466667082,
+    "weighted_down_fallback_fraction": "676/866349"
+  },
+  "target": {
+    "hot_state_bytes": 8589934592,
+    "matrix_instances": 883,
+    "non_embedding_coefficients": 403747897344,
+    "non_embedding_q4_bytes": 201873948672,
+    "p50_fraction": "8/675"
+  }
+}

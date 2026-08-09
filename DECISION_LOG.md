@@ -1008,3 +1008,34 @@ DO_NOT_ASSIGN_AN_EXPERIMENT_NUMBER_OR_PROMOTE_HARDWARE
 This is a durable accounting theorem, not a Core Candidate and not increased
 mission feasibility. Authority:
 `docs/research/E0_CROSS_MATRIX_ADVICE_LOCALITY.md`.
+
+## D-086 -- Freeze the causal bilinear span rank Gate
+
+Actual causal rank-one query tensors can invalidate an arbitrary Cartesian
+lower-bound population only if their restriction survives the complete
+fallback equation. For a factor-scanned ledger, one aligned basis tuple over
+all 883 matrices has `39,109,888` left/right coordinates. After favorable
+two-byte factors, full metadata, the retained six-check verifier, and 46
+dense-equivalent build passes over 20M service tokens, dimension 23 consumes
+`1.159413233%` traffic and `0.281295494%` operations; dimension 24 is already
+traffic-infeasible.
+
+For any held-out population of rank `R`, even the best post-hoc
+`B`-dimensional subspace misses at least `R-B` rows. On the frozen 36-row last-
+down screen, remaining traffic permits only four registered-down-equivalent
+fallbacks. Certified rank 28 therefore rejects every `B<=23` factor-scan
+ledger.
+
+Decision:
+
+```text
+DERIVE_B23_SHAPE_LIMIT_FOR_A_FULL_FACTOR_SCAN
+PREREGISTER_LAST_DOWN_CAUSAL_BILINEAR_RANK_GATE_ONLY
+DO_NOT_CALL_MODULAR_NONINCREASE_AN_EXACT_HIT
+KEEP_PAIR_EXTRACTION_AND_NATIVE_NUMERICAL_RECONSTRUCTION_UNSOLVED
+DO_NOT_ASSIGN_AN_EXPERIMENT_NUMBER_OR_PROMOTE_HARDWARE
+```
+
+The current pair extractor and local result source remain favorable free
+oracles, so no Core Candidate survives E0. Authority:
+`docs/research/E0_CAUSAL_BILINEAR_QUERY_RESTRICTION.md`.

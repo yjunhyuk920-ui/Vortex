@@ -249,6 +249,14 @@ sub-dense source for the Bilinear Cross Residual `r^T W u`; no construction
 currently exists. E2, hardware, larger models, and the private Ubuntu host
 remain unauthorized. Read `NEXT_EXPERIMENT.md`.
 
+The Causal Bilinear Span Ledger E0 equation now limits a favorable full-factor
+scan to `B=23`. On the frozen 36-row last-down population, exact rank 28 or
+more rejects every such ledger because only four weighted fallbacks fit. Run
+only the preregistered rank Gate next; do not sweep prompts, positions, side
+rank, primes, or hit semantics. Pair extraction and the local result source
+remain free favorable oracles, so even a population pass is not a Core
+Candidate and may open only a paid extractor/native numerical-semantics Gate.
+
 ## Agent skills
 
 ### Issue tracker

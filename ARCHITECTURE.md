@@ -756,3 +756,31 @@ unchanged causal residual pairs occupy a certified restricted query set. It
 must be leakage-free and pre-registered before any new trace/model execution;
 it cannot enter the runtime until a complete E0 equation and E1 population
 Gate survive.
+
+### Causal Bilinear Span Ledger provisional boundary
+
+No ledger component is admitted into the runtime. The screened interface is:
+
+```text
+calibration causal residual pairs -> factorized B-query basis + scalar answers
+current exact pair (r,u)           -> factor scan + exact rational witness
+  witnessed and independently checked -> combine cached answers
+  nonmember/corrupt/nonfinite           -> weighted dense fallback or abort
+```
+
+On the registered 405B geometry, a full two-byte factor scan reaches at most
+`B=23` after metadata, six verification checks, and amortized build. Its common
+traffic/operations are `1.159413233%/0.281295494%`; `B=24` fails traffic before
+fallback. The component state is `2.104879502 GiB`, excluding KV, workspace,
+fallback overlap, and the source of current pairs/results.
+
+The exact rank-to-miss transition is `misses >= max(0,R-B)`. The frozen last-
+down Gate has 36 rows, permits only four registered-down-weighted misses, and
+rejects at certified rank 28. Until that population survives, there is no
+ledger compiler, numerical decoder, pair extractor, trace proposer, executor
+hook, cache transition, scheduler, or kernel.
+
+Even a population pass does not admit the component. A general internal
+decision residual requires a paid nonlinear pullback, while linear combinations
+of native rounded scalar answers require an exact/outward numerical contract.
+Those two interfaces remain mandatory and unimplemented.

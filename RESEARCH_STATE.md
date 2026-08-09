@@ -1149,3 +1149,54 @@ No experiment number, model/checkpoint execution, Ubuntu action, kernel, or
 hardware work occurred. Authority:
 `docs/research/E0_CROSS_MATRIX_ADVICE_LOCALITY.md` and
 `results/e0_cross_matrix_advice_locality`.
+
+## E0 causal bilinear query-restriction threshold
+
+The next Gate now separates the population question from the still-missing
+pair/result source. A **Causal Bilinear Span Ledger** stores aligned
+rank-one query factors `q_i=r_i tensor u_i` and cached scalar answers; an exact
+rational witness is mandatory for a hit and every other row falls back.
+
+The rank-to-miss theorem is finite and favorable: if `N` held-out query
+tensors have certified rank `R`, then even the best future-aware
+`B`-dimensional subspace misses at least `max(0,R-B)` rows. This does not
+repeat EXP-069, which ranked only activation inputs.
+
+Registered 405B shape accounting gives:
+
+```text
+aligned pair coordinates over 883 matrices        39,109,888
+favorable factor bytes per coordinate                        2
+largest every-token factor-scan span                         23
+B=23 common traffic/operations             1.159413233% / 0.281295494%
+B=23 component state                                2.104879502 GiB
+B=24 traffic                                        above 1.185185185%
+```
+
+The equation charges factor scans, Gram/pivot/answer/fingerprint metadata, six
+verification checks, and 46 dense-equivalent build passes amortized over 20M
+checkpoint-service tokens. It still grants pair extraction, a local
+trace/proposal source, native numerical repair, KV/workspace, and fallback
+overlap for free. The known general decision-dual VJP is dense, so no Core
+Candidate is promoted.
+
+The frozen cheapest E1 screen uses the pinned Qwen3.5-0.8B last `down_proj`,
+six build prompts at four decode positions, and 18 held-out prompts at two
+positions, for 24/36 rows. Prompt-only primal/dual side rank is 16. A miss is
+weighted as one registered 405B down instance. Only four of 36 such misses fit
+the remaining traffic, so certified held-out rank `>=28` rejects every
+`B<=23` factor-scan ledger even after granting the best post-hoc subspace.
+
+Decision state:
+
+```text
+DERIVE_B23_SHAPE_LIMIT_FOR_A_FULL_FACTOR_SCAN
+PREREGISTER_LAST_DOWN_CAUSAL_BILINEAR_RANK_GATE_ONLY
+KEEP_PAIR_EXTRACTION_AND_NATIVE_NUMERICAL_RECONSTRUCTION_UNSOLVED
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+No model row, experiment number, server command, download, kernel, or hardware
+action occurred. Authority:
+`docs/research/E0_CAUSAL_BILINEAR_QUERY_RESTRICTION.md` and
+`results/e0_causal_bilinear_query_restriction`.

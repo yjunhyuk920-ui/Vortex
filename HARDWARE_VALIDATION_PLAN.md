@@ -538,3 +538,19 @@ a kernel nor target-server calibration. No Ubuntu command, download, storage
 mutation, GPU allocation, EXP-073 Stage 2 action, 122B/405B run, or Phase D
 measurement occurred. Hardware can reopen only after a causal restriction or
 concrete global source passes E0/E1 and actual fail-closed E2 replacement.
+
+## Causal bilinear query-restriction hardware boundary
+
+The span-23 result is a logical E0 calculator and preregistration only. Its
+`1,799,054,848` factor bytes/token, `40,618` vector segments,
+`28,110,232` ideal 64-byte lines, and `442,129` vector-rounded 4-KiB pages are
+address-accounting values, not SSD IOPS, PCIe/H2D/HBM traffic, latency, power,
+or peak VRAM measurements.
+
+The `2.104879502 GiB` component state omits KV, runtime/model state, workspaces,
+fallback overlap, and allocator headroom. Pair extraction and the local result
+source are free favorable oracles; the known general VJP is dense. Therefore
+no CUDA prototype, storage allocation, target-server command, EXP-073 Stage 2,
+larger download, or Phase D/E4-E7 work is authorized. Hardware can reopen only
+after the frozen E1 rank Gate and a paid extractor/native-semantics Gate both
+survive actual fail-closed E2 replacement.

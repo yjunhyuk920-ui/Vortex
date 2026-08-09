@@ -397,3 +397,18 @@ checkpoint-derived structure with finite 405B build, state, operation,
 traffic, verification, miss, and fallback equations. Do not assign an
 experiment number, run a model, build a kernel, or use hardware until that E0
 equation fits. Retain `NO_SURVIVING_CANDIDATE` otherwise.
+
+## Current directive after the causal bilinear span threshold
+
+The factor-scanned query-span interface passes E0 only through dimension 23
+and only with pair extraction, the local result source, native numerical
+repair, and complete runtime state granted free. Its 36-row last-down screen
+has a decisive rank-28 stop derived from the weighted fallback equation.
+
+Execute only that frozen E1 structural Gate. Do not sweep span dimension,
+side rank, primes, prompts, positions, or decision directions. Stop as soon as
+rank 28 is certified. A failure closes the factor-scan ledger before a general
+VJP extractor, exact numerical decoder, backend, larger model, or hardware
+work. A pass authorizes only a paid pair-extractor and native-semantics Gate;
+it does not promote a Core Candidate because the result/proposal source is
+still absent.

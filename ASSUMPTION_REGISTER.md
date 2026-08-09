@@ -691,3 +691,22 @@ span-to-cover theorem forces `6,407,133` coefficient uses, but that is only
 Status: PARTIALLY CONSTRAINED BUT UNSUPPORTED. NO GLOBAL CONSTRUCTION, TARGET
 DIRECT-SUM LOWER BOUND, CAUSAL REACHABILITY RESULT, OR PHYSICAL MAPPING EXISTS.
 NONLINEAR AND DATA-DEPENDENT STRUCTURES REMAIN UNDECIDED.
+
+## A-067 -- Causal Bilinear Cross Residual queries occupy a tiny exact span
+
+Assumption: after prompt-only primal/dual residualization, held-out causal
+query tensors `r tensor u` lie almost entirely in one automatically compiled
+factorized span small enough to scan and verify below the final 405B fraction.
+
+The E0 shape threshold is now fixed. With favorable two-byte factors and all
+registered metadata/verifier/build costs, the maximum every-token scan is
+dimension 23. It leaves room for at most four weighted fallbacks from 36
+last-down rows. The finite theorem `misses >= max(0, rank-23)` makes certified
+rank 28 the cheapest decisive rejection.
+
+Status: ACTIVE AND UNVERIFIED FOR THE PREREGISTERED E1 FAVORABLE STRUCTURAL
+GATE. Pair extraction and the local result source are granted free; a general
+exact decision-dual VJP remains dense. Native BF16/Q4 coefficient combination,
+KV/workspace, complete state, earlier layers, scale, physical latency, and
+E2-E7 are not tested. A pass cannot promote a Core Candidate; it can authorize
+only a paid extractor/numerical-semantics Gate.

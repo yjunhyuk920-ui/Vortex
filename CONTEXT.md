@@ -81,6 +81,14 @@ The signed term left after all cached primal and decision-dual span terms have
 been removed from a checkpoint bilinear query.
 _Avoid_: Numerical roundoff, Atlas rank residual, verifier failure
 
+**Causal Bilinear Span Ledger**:
+A calibration-built factorized basis of causal Bilinear Cross Residual query
+tensors and their scalar answers; a new query is a hit only with an exact
+linear-combination witness and independent certification, otherwise it falls
+back.
+_Avoid_: Activation replay, post-hoc low rank, modular nonincrease called an
+exact hit
+
 **Matrix-Local Separable Residual Code**:
 A Bilinear Cross Residual source that independently covers each matrix's left
 and right directions with linear codes and repairs only their coordinate-sparse
