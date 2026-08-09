@@ -804,3 +804,29 @@ AUTHORIZE_ONLY_PREREGISTRATION_OF_THE_CHEAPEST_REAL_WEIGHT_GATE
 No Core Candidate is promoted and no EXP-083, runtime, model download, Ubuntu
 action, or hardware work is authorized. Authority:
 `docs/research/E0_CAUSAL_RESIDUAL_ATLAS_SOURCE.md`.
+
+## D-079 -- Freeze the smallest real-weight Atlas falsification
+
+The first real-weight Gate uses only the already pinned Qwen3.5-0.8B payload
+and evaluation trace. Prompt-only top-16 bases are frozen before teacher
+position 1. Layer-11 `q_proj` and `down_proj` enumerate all 16/56 contiguous
+64-column pages under a native-anchored exact-reference center, for 1,296
+candidate page runs across 18 prompts.
+
+The target equation's `99.899840530%` coverage requires 18/18 token states,
+3/3 per family, and 36/36 projection branches to retain unchanged greedy
+top-1. The selected branch population must also meet mean/p95 KL
+`<=0.02/0.05`. A single token failure gives only `94.444444%` coverage and
+fires the scientific stop rule.
+
+Decision:
+
+```text
+PREREGISTER_CAUSAL_RESIDUAL_ATLAS_CHEAPEST_REAL_WEIGHT_GATE
+ON_PASS_AUTHORIZE_ONLY_CAUSAL_PAIR_AND_OUTWARD_BOUND_GATE
+ON_FAILURE_REJECT_RANK16_PAGE64_CAUSAL_RESIDUAL_ATLAS_FAST_PATH
+```
+
+No result, experiment number, model execution, hardware action, or Core
+Candidate promotion is recorded. Authority:
+`docs/research/CAUSAL_RESIDUAL_ATLAS_CHEAPEST_GATE.md`.

@@ -968,3 +968,41 @@ selector, construct a cold runtime, download a larger model, or access the
 private Ubuntu server. The current result is source identification with
 synthetic controls, not a Surviving Candidate, EXP-083 result, positive
 milestone, or E2-E7 evidence.
+
+## Causal Residual Atlas cheapest Gate preregistered -- execute next
+
+The map's preregistration ticket is resolved. The frozen contract is
+`docs/research/CAUSAL_RESIDUAL_ATLAS_CHEAPEST_GATE.md`; no checkpoint execution
+or experiment number exists yet.
+
+The next execution is deliberately smaller than an eight-token, three-depth,
+all-role trace:
+
+```text
+checkpoint/revision       pinned Qwen3.5-0.8B / existing local payload
+population                18 evaluation prompts, six families
+causal position           teacher index 1, first post-prefill module call
+prefix basis              prompt-only top-16 SVD, current input excluded
+layer                     11
+required projections      q_proj and down_proj
+page width/counts         64 columns; 16 and 56 pages
+oracle candidates         1,296
+token states/branches     18 / 36
+required successes        18/18 tokens, 3/3 each family, 36/36 branches
+quality                   mean/p95 KL <=0.02/0.05
+```
+
+Each page candidate receives an illegal native-anchored exact center and all
+other model work remains dense. The exact-reference oracle enumerates all
+pages, prefers unchanged top-1, then minimizes KL. This is a favorable ceiling;
+it cannot become the runtime selector.
+
+Any valid token failure rejects the frozen rank-16/page-64 path and stops
+rank/page/layer/prompt/tolerance rescue. A complete pass authorizes only a
+pair-constructed center plus outward-rounded bound Gate over more positions and
+depths. It does not authorize a backend, cold scheduler, CUDA, larger model,
+private-server action, E2, or a 405B claim.
+
+The next unblocked map ticket is `Run the Causal Residual Atlas First-Decode
+Gate`. It may assign the next experiment number only while implementing this
+unchanged contract.

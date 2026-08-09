@@ -549,3 +549,20 @@ weight-block contributions is the strongest counterexample and forces dense
 fallback. Real small-checkpoint residual concentration, end-to-end output
 certificate coverage, numerical enclosure, short-prefix behavior, physical
 I/O, and E2-E7 are all untested.
+
+## A-061 -- One target-feasible page preserves the first post-prefill decision
+
+After a prompt-only top-16 basis is built, at least one contiguous 64-column
+page of each required layer-11 `q_proj` and `down_proj` is assumed to preserve
+the unchanged greedy token at the first genuine post-prefill decode call. The
+frozen Gate grants the exact current dense image as an illegal center and
+enumerates every page, so selector discovery and pair-construction error are
+free.
+
+Status: ACTIVE AND UNVERIFIED; PREREGISTERED FOR THE CHEAPEST REAL-WEIGHT GATE.
+The finite 18-prompt population permits zero token failure at the derived
+`99.899840530%` frontier, requires 3/3 success in each family and 36/36 branch
+top-1 agreement, and retains mean/p95 KL `<=0.02/0.05`. Failure rejects the
+registered rank-16/page-64 per-projection path before a bound propagator.
+Passing does not establish a causal selector, legal `Z` construction, sound
+end-to-end certificate, simultaneous composition, scale, or physical speed.

@@ -484,3 +484,22 @@ Current classification: a concrete Coded Causal Cold Source now exists, but it
 is only an E0 information-source candidate with E1 synthetic controls. No
 Surviving Candidate or positive milestone exists until the pinned real-weight
 coverage Gate passes.
+
+## Preregistered Causal Residual Atlas cheapest Gate
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Gate population and exact page enumeration are frozen | 18 prompts, 36 branches, 1,296 candidates | PASS contract |
+| Teacher position excludes the prompt position used to build the Atlas | fixed index 1, prompt-only basis | PASS contract |
+| Target coverage permits any failure in the finite population | required 18/18; one failure is 94.444444% | NO |
+| Exact-reference page selection is deterministic and fail-closed | 7 pure contract/oracle tests | PASS reference |
+| Pinned checkpoint baseline and all-page identity | no Gate run | NOT TESTED |
+| One-page oracle token coverage reaches 99.899840530% | no Gate run | NOT TESTED / NEXT |
+| Every family succeeds 3/3 and all branches 36/36 | no Gate run | NOT TESTED / NEXT |
+| Mean/p95 target-to-candidate KL <=0.02/0.05 | no Gate run | NOT TESTED / NEXT |
+| Legal pair center and outward native bound certify the output | favorable center only | NOT TESTED |
+| Actual operation replacement, physical speed, 122B/405B, E2-E7 | no execution | NOT TESTED |
+
+Current classification: only the cheapest Gate is preregistered. There is no
+real-weight result, Surviving Candidate, positive milestone, or experiment
+number.

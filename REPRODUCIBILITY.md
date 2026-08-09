@@ -782,3 +782,42 @@ completion, strict top-1 certification, page rounding, minimum build
 amortization, corrupt/non-finite state, and randomized no-false-bound cases.
 No checkpoint, network, private server, or hardware is required. Real causal
 coverage and E2-E7 remain absent.
+
+## Causal Residual Atlas cheapest Gate preregistration
+
+Authority document:
+`docs/research/CAUSAL_RESIDUAL_ATLAS_CHEAPEST_GATE.md`.
+
+The preregistration arithmetic and favorable page-choice rule reproduce
+without a checkpoint:
+
+```powershell
+$env:PYTHONPATH = ".;.deps"
+python scripts/derive_causal_residual_atlas_gate.py
+python -m pytest tests/test_causal_residual_atlas_gate.py -q
+```
+
+Expected invariants are rank 16, teacher index 1, layer 11, page width 64,
+18 evaluation token states, 36 q/down projection branches, 16/56 pages,
+1,296 enumerated candidates, minimum coverage
+`0.998998405303215166463`, required token successes 18, maximum failures zero,
+and required family successes three. Seven focused tests cover the arithmetic,
+ceil-to-success rule, top-1-first/minimum-KL page selection, deterministic tie
+breaking, no-match diagnostics, and malformed/non-finite rejection.
+
+Pinned execution inputs, when the next ticket runs the Gate:
+
+```text
+model/revision       Qwen/Qwen3.5-0.8B @ 2fc06364715b967f1860aea9cf38778875588b17
+weight SHA-256       04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696
+prompts SHA-256      46c9779c24e59f356247145f7ef870a1b82ba4907eb9dffcd48652e519f7612a
+trace SHA-256        1e921698ce8ee522c0d3cb9b8b9004139beb54cc2dee82e1a2aa0a08fa245e4f
+```
+
+No result path, experiment number, source/evidence authority, or expected
+scientific decision exists in this commit. The next runner must start from an
+empty output directory and freeze config, input audit, prompt/basis ranks,
+per-page or at least selected-plus-failure rows, per-branch/token/family
+aggregates, controls, environment, logs, and checksums. It must distinguish a
+scientific Gate failure from missing payload, timeout, memory, or dependency
+failure.

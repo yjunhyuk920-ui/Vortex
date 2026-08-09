@@ -28,6 +28,7 @@ Mission.
 - [Synthetic-intermediate exact-circuit audit](issues/01-audit-synthetic-intermediate-circuits.md): static synthetic trees are a restricted form of archived EXP-072B; only a genuinely query-adaptive cold information source remains open.
 - [Query-adaptive cold-backed equation](issues/02-derive-cold-backed-circuit-equation.md): any source needs at least `98.814815%` exact coverage and `84.375x` useful information amplification in the zero-cost limit; raw page omission is not a source, so search only causal coded information.
 - [Causal Residual Atlas source](issues/03-find-causal-circuit-information-source.md): committed-prefix exact input/image pairs supply `Q` and `WQ`; a fully retained residual creates a narrow rank-16 logical window but needs `99.899841%` certified coverage, so only its cheapest real-weight Gate is now open.
+- [Preregister the Cheapest Surviving Gate](issues/04-preregister-cheapest-surviving-gate.md): the frozen first post-prefill layer-11 q/down oracle enumerates 1,296 one-page candidates over 18 prompts and permits zero token failure before the legal bound stage.
 
 ## Not yet specified
 

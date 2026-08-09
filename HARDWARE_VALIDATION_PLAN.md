@@ -425,3 +425,18 @@ layer-sequential dependency, capsule HBM traffic, fallback tails, complete KV
 and workspace peak, and same-machine native-4B p50/p95. No target-server
 command, storage allocation, model download, CUDA path, or E4-E7 claim is
 authorized by source identification.
+
+## Causal Residual Atlas cheapest-Gate hardware boundary
+
+The preregistered first-decode Gate is a Windows CPU exact-reference
+falsification using the already present 0.8B payload. Its 1,296 page candidates
+are logical oracle variants, not SSD requests, H2D transfers, GPU page reads,
+or measured latency.
+
+Even a complete Gate pass may not contact the Ubuntu host or authorize a cold
+runtime. It first requires legal committed-pair `Z` construction, outward
+native numerical bounds, broader positions/depths, simultaneous composition,
+and fully charged fallback/state equations. The stored capsule, `1,009`
+target-page requests, `0.657508850 GiB` target cold payload, native-4B latency,
+complete peak VRAM, and physical serialization remain unmeasured. Phase D and
+E4-E7 remain `NOT TESTED`.

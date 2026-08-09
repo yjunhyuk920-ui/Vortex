@@ -573,3 +573,30 @@ KV, workspaces, numerical-enclosure state, fallback overlap, page service, and
 allocator headroom are still mandatory and absent. Only a preregistered pinned
 real-weight favorable-oracle Gate may advance this provisional boundary.
 Authority: `docs/research/E0_CAUSAL_RESIDUAL_ATLAS_SOURCE.md`.
+
+### Preregistered first-decode Gate boundary
+
+The first checkpoint Gate does not admit an Atlas component into the runtime.
+It evaluates only this favorable isolated transition:
+
+```text
+exact prompt-only rank-16 basis
+  + first post-prefill current activation
+  + illegal native-anchored exact center
+  -> enumerate one 64-column page
+  -> patch one layer-11 q_proj or down_proj
+  -> unchanged dense suffix and final logits
+```
+
+The exact-reference evaluator chooses the top-1-preserving minimum-KL page.
+It is not an architecture interface. The current dense output, all page
+weights, all other model operations, and page discovery are granted free.
+
+The per-token fast branch exists in this Gate only when both registered
+projection branches survive. Eighteen of eighteen token states and every one
+of 36 branches must preserve top-1. A failure removes the frozen rank-16/
+page-64 path before any legal pair center, bound propagator, selector, cache
+transition, fallback engine, scheduler, or kernel is added. A pass authorizes
+only those next correctness interfaces under a new Gate.
+
+Authority: `docs/research/CAUSAL_RESIDUAL_ATLAS_CHEAPEST_GATE.md`.

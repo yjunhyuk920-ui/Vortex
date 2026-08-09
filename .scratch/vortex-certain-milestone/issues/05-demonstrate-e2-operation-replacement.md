@@ -2,7 +2,7 @@
 
 Type: task
 Status: open
-Blocked by: 04
+Blocked by: Run the Causal Residual Atlas First-Decode Gate
 
 ## Question
 

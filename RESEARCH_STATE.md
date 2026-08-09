@@ -825,3 +825,35 @@ requests can each reject it. Authority:
 Ubuntu command, physical runtime, or E2-E7 work is authorized. The next map
 ticket may only preregister the cheapest pinned real-weight favorable-oracle
 Gate.
+
+## Preregistered Causal Residual Atlas cheapest Gate
+
+The cheapest real-weight falsification is now frozen without assigning an
+experiment number or running the checkpoint. It uses the existing pinned
+Qwen3.5-0.8B evaluation split, the first genuine post-prefill decode call
+(teacher index 1), and only layer-11 `q_proj` and `down_proj`.
+
+For each of 18 prompts, a prompt-only top-16 SVD basis is fixed before the
+current decode activation. Every contiguous 64-column page is enumerated: 16
+for `q_proj` and 56 for `down_proj`, or 1,296 exact-reference candidates in
+total. The evaluator grants a native-anchored dense center, changes only one
+projection at a time, and selects the top-1-preserving page with minimum
+target-to-candidate KL. This is an impossible favorable oracle, not a selector.
+
+The traffic equation requires `99.899840530%` token coverage. On 18 token
+states that means 18/18 successes, 3/3 in every family, zero failure, and
+top-1 preservation in all 36 projection branches. Mean/p95 KL must also be at
+most `0.02/0.05`. One token failure leaves only `94.444444%` coverage and
+rejects the registered rank-16/page-64 path before bound propagation.
+
+Decision state:
+
+```text
+PREREGISTER_CAUSAL_RESIDUAL_ATLAS_CHEAPEST_REAL_WEIGHT_GATE
+NO_MODEL_RESULT_OR_EXP_083_NUMBER
+```
+
+Authority: `docs/research/CAUSAL_RESIDUAL_ATLAS_CHEAPEST_GATE.md`. Seven pure
+contract/oracle tests pass. The next map ticket may execute only this frozen
+Gate with the already present payload. No Surviving Candidate, E2 operation
+replacement, hardware action, or E3-E7 evidence exists.

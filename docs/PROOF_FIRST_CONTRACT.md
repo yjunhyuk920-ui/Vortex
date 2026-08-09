@@ -446,3 +446,24 @@ native numerical contract, operation replacement, physical I/O, 8 GiB peak,
 or 122B/405B result exists. The class is authorized only for preregistration
 of its cheapest pinned real-weight Gate; it is not a Surviving Candidate or a
 positive milestone.
+
+<!-- CAUSAL-RESIDUAL-ATLAS-CHEAPEST-GATE -->
+## Preregistered first real-weight Atlas boundary
+
+The cheapest Gate is frozen before assigning an experiment number. It uses 18
+held-out prompts and one first post-prefill decode call, with prompt-only
+top-16 bases and layer-11 `q_proj`/`down_proj`. All 16/56 contiguous pages are
+enumerated under an illegal native-anchored exact center; every other model
+operation remains dense and free.
+
+The exact-reference oracle prefers unchanged top-1 then minimum KL. Promotion
+requires 18/18 token states, 3/3 in every family, 36/36 projection branches,
+and mean/p95 KL `<=0.02/0.05`. The derived `99.899840530%` frontier allows no
+failure in this finite population. This is a necessary favorable ceiling only:
+no selector, legal pair center, outward-rounded certificate, simultaneous
+operation replacement, physical performance, or scale evidence is present.
+
+Failure rejects the frozen rank-16/page-64 per-projection path and prohibits
+rank/page/layer/prompt/tolerance rescue. Passing authorizes only a separately
+preregistered legal-center and bound-propagation Gate. E2-E7 and Phase D remain
+not achieved.
