@@ -2,13 +2,18 @@
   "experiment": "EXP-084A",
   "name": "qwen35_08b_causal_bilinear_rank_gate",
   "source_freeze": {
-    "implementation_commit": "e1902949524274968d899b987747189f792fe967",
+    "implementation_commit": "6214700d6a5b83097c043b660e4c84e7f83feae0",
     "protected_paths": [
       "vortex_runtime/causal_bilinear_rank_gate.py",
       "experiments/exp_084a/run_experiment.py",
       "experiments/exp_084a/verify_results.py"
     ],
-    "prompt_forward_calls_before_freeze": 0
+    "prompt_forward_calls_before_freeze": 0,
+    "prior_control_attempt": {
+      "artifact": "results/exp_084a_attempt_01_control_failure",
+      "decision": "INVALID_CAUSAL_BILINEAR_RANK_GATE_CONTROL_FAILURE",
+      "scientific_query_rows": 0
+    }
   },
   "preregistration": {
     "authority": "docs/research/E0_CAUSAL_BILINEAR_QUERY_RESTRICTION.md",

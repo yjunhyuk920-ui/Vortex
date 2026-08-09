@@ -6,8 +6,8 @@ dyadic rank and exact build-ledger membership of last-layer `down_proj`
 queries from the unchanged pinned Qwen3.5-0.8B checkpoint. It is not a runtime
 or a 405B performance experiment.
 
-The protected runner implementation is frozen at
-`e1902949524274968d899b987747189f792fe967`. No prompt forward is valid if a
+The protected sequential runner implementation is frozen at
+`6214700d6a5b83097c043b660e4c84e7f83feae0`. No prompt forward is valid if a
 protected source path differs from that commit.
 
 Attempt 01 correctly failed closed before producing a query row because a
