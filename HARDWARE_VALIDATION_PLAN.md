@@ -522,3 +522,19 @@ Phase D work is authorized for matrix-local separable residual codes. Hardware
 may reopen only for a materially nonseparable/global or causally restricted
 source that first passes its own complete E0 equation, E1 falsification, and
 actual fail-closed E2 replacement.
+
+## Cross-matrix advice-locality hardware boundary
+
+Joint Advice Localization is finite binary linear algebra, not hardware
+evidence. Its `6,407,133` coefficient-use bound maps to `100,112` ideal 64-bit
+words or `12,514` ideal 512-bit lines only if every useful bit is perfectly
+packed and co-located. The resulting `800,896` bytes are a payload floor, not
+measured address traffic, cache-line reuse, SSD IOPS, PCIe/H2D/HBM movement,
+latency, energy, or peak VRAM.
+
+The bound is far below the p50 allowance, while no concrete global code
+provides a physical layout or query schedule. Therefore it authorizes neither
+a kernel nor target-server calibration. No Ubuntu command, download, storage
+mutation, GPU allocation, EXP-073 Stage 2 action, 122B/405B run, or Phase D
+measurement occurred. Hardware can reopen only after a causal restriction or
+concrete global source passes E0/E1 and actual fail-closed E2 replacement.

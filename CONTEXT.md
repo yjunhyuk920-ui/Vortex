@@ -87,6 +87,12 @@ and right directions with linear codes and repairs only their coordinate-sparse
 cross term from the original matrix.
 _Avoid_: General bilinear data structure, cross-matrix shared code
 
+**Joint Advice Localization**:
+In a systematic linear coefficient-use model, globally mixed advice contributes
+to a block-local query for free only through its shortened space in that block;
+all other-block content requires advice cancellation or charged raw probes.
+_Avoid_: Sum of projection ranks, universal nonlinear direct-sum theorem
+
 **Useful Information Amplification**:
 The dense coefficient-equivalent work or traffic determined per charged unit
 of selected cold payload; it is a query-time conservation metric, not artifact

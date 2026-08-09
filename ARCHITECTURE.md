@@ -727,3 +727,32 @@ nonseparable/global advice with charged cancellation and query localization,
 or a causal restriction on reachable residual pairs established without
 future leakage. Merely increasing basis dimension, changing linear codes, or
 moving the same image state to cold storage remains rejected.
+
+### Joint global-advice localization boundary
+
+No global linear-advice component is admitted. Its exact allowable interface
+would be:
+
+```text
+complete checkpoint w -> one hot linear advice z=G w, rank(G)<=8 GiB bits
+block-local rank-one q -> choose a in rowspace(G)
+raw cold residual      -> e=q+a, including every outside-block cancellation
+exact answer           -> <a,w> + <e,w>
+```
+
+Only `rowspace(G) intersect V_i` is usable in block `i` without outside raw
+coefficients. A fixed outside set exposes at most one extra local dimension per
+coordinate. Query-dependent supports remain a valid but unconstructed degree
+of freedom; they cannot be replaced by summed projection dimensions.
+
+The general registered lower bound is `6,407,133` coefficient uses, far below
+the `4,785,160,264.82` p50 allowance. Consequently neither an impossibility
+boundary nor a runnable component follows. There is no compiler, representation
+builder, selector, cold layout, decoder, verifier, fallback engine, state plan,
+or physical scheduler for a target-feasible global code.
+
+The next architecture boundary is evidence-only: define whether actual
+unchanged causal residual pairs occupy a certified restricted query set. It
+must be leakage-free and pre-registered before any new trace/model execution;
+it cannot enter the runtime until a complete E0 equation and E1 population
+Gate survive.

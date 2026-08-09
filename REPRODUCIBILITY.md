@@ -1098,3 +1098,36 @@ results/e0_bilinear_cross_residual_frontier/checksums.sha256
 
 Canonical summary SHA-256:
 `eb674938a7dc737fbcc1bc61ac1d6f39a1b7de184cb1f0d65c4d47ad3bfd7dd4`.
+
+## Cross-matrix advice-locality E0 reproduction
+
+No model, checkpoint, server, or hardware is used. Run:
+
+```powershell
+$env:PYTHONPATH = ".;.deps"
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_cross_matrix_advice_locality.py `
+  --output-dir results\e0_cross_matrix_advice_locality
+
+.deps\exp076-venv\Scripts\python.exe -m pytest -q `
+  tests\test_cross_matrix_advice_locality.py
+```
+
+Expected invariants are entropy sum `0.9969502972388806`, covering radius
+`104,974,453,310`, span length `16,384`, coefficient-use bound `6,407,133`,
+ideal packed payload `800,896` bytes, and decision
+`ESTABLISH_GLOBAL_LINEAR_ADVICE_LOCALIZATION_BUT_BOUND_INSUFFICIENT_FOR_TARGET_REJECTION`.
+
+Observed validation for this closure: `9` focused tests, `476` complete
+repository tests, and `scripts/run_validation.py` passed. The standard
+validator changed only its non-authoritative elapsed-time field, so the
+previous tracked payload was preserved. Authority:
+
+```text
+docs/research/E0_CROSS_MATRIX_ADVICE_LOCALITY.md
+results/e0_cross_matrix_advice_locality/summary.json
+results/e0_cross_matrix_advice_locality/checksums.sha256
+```
+
+Canonical summary SHA-256:
+`e8957ad1a1e89e61ab7fb55b23df399e5d0bc066a4922d58a005012983c2aa14`.

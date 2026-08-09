@@ -634,3 +634,27 @@ Current classification: matrix-local separable linear covering-code upgrades
 to Atlas are rejected at E0 under the arbitrary Cartesian coefficient-probe
 contract. A nonseparable/global or causally restricted source remains an open
 research interface, not a construction or Surviving Candidate.
+
+## E0 cross-matrix global linear-advice localization
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Outside global-advice content is free for a block-local query | exact identity `pi_-i(e)=pi_-i(a)` | REJECTED |
+| Zero-outside useful spaces direct-sum | `sum dim(U intersect V_i)<=dim(U)` | PASS E0 |
+| Fixed outside support can expose arbitrary local dimension | rank-nullity gives at most `dim(U_i)+abs(T)` | REJECTED |
+| Projection dimensions may be summed as local state | exhaustive diagonal counterexample `U={(x,x)}` | REJECTED |
+| Finite global covering-radius witness | `13/50`; hot rate + entropy `0.996950297239` | PASS E0 |
+| Certified global covering radius | `104,974,453,310` coefficients | DERIVED |
+| Registered rank-one tuple span | at most `16,384` aligned tuples | DERIVED |
+| Total coefficient-use lower bound | `6,407,133`; `0.001586914271%` | DERIVED |
+| Bound rejects p50 target | target is `746.8489x` the bound | NO / INSUFFICIENT |
+| Ideal 64-bit/512-bit packing | `100,112` words / `12,514` lines; payload only | NOT PHYSICAL EVIDENCE |
+| Focused exhaustive/property tests | 9/9 | PASS |
+| Full repository regression | 476 tests | PASS |
+| General nonlinear/adaptive structure impossible | outside declared model | OPEN / NO CLAIM |
+| Real causal reachability, model, E1/E2, hardware | none | NOT TESTED |
+
+Current classification: free cross-matrix projection reuse is closed only in
+the systematic linear coefficient-use model. The finite general bound is too
+weak for mission rejection, and no globally mixed construction survives E0.
+The next Gate may address only a leakage-free causal query restriction.

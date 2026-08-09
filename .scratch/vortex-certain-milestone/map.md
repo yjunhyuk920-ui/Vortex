@@ -34,15 +34,14 @@ Mission.
 - [Run the Legal Pair and Outward-Bound Last-Down Gate](issues/08-run-legal-pair-outward-last-down-gate.md): EXP-083B rejected on the first untouched row with one valid fallback and zero control failures; unread/pair radii made the global hidden-ball certificate impossible even under a post-hoc zero-rounding necessary condition, so backward expansion and E2 are closed for this mechanism.
 - [Find a Post-Atlas Causal Information Source](issues/09-find-post-atlas-causal-information-source.md): exact decision-directional caching leaves a bilinear cross residual; dynamic dual construction and static full-vocabulary scanning both fail E0, so no source survives and only a different lossless sub-dense cross-residual mechanism remains open.
 - [Break the Bilinear Cross-Residual Barrier](issues/10-break-bilinear-cross-residual-barrier.md): a finite sphere-covering bound rejects every matrix-local separable linear residual code at `1.521048%` raw cross work; only nonseparable/global advice or a proved causal query restriction remains open.
+- [Resolve Cross-Matrix Advice Locality](issues/11-resolve-cross-matrix-advice-locality.md): global linear advice supplies free block-local information only through shortened spaces and pays one dimension per fixed outside cancellation probe, but the strongest finite global bound is only `0.001587%`; free projection reuse is closed while general impossibility and construction both remain open.
 
 ## Not yet specified
 
-- Determine whether cross-matrix shared advice can be localized or used
-  nonseparably without paying equivalent cancellation and outside-block probes;
-  this is now the open `Resolve Cross-Matrix Advice Locality` ticket.
-- If global advice does not survive, determine whether an unchanged real
-  checkpoint supplies a causal restriction strong enough to invalidate the
-  arbitrary Cartesian query model without future leakage or training.
+- Determine whether an unchanged real checkpoint supplies a leakage-free
+  causal restriction strong enough to replace the arbitrary Cartesian query
+  model; this is now the open `Certify Causal Bilinear Query Restriction`
+  ticket.
 - If a future source survives E0/E1, specify the exact E2 integration boundary,
   output contract, and held-out population from that mechanism.
 - If E2 survives, determine the next model-size and representative-hardware

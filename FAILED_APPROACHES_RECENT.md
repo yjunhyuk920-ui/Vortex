@@ -369,3 +369,26 @@ advice that pays cancellation and probes, a word-packed structure with full
 physical accounting, or a causal query restriction established on unchanged
 real-checkpoint traces. Authority:
 `docs/research/E0_BILINEAR_CROSS_RESIDUAL_SEPARABLE_CODE_BOUND.md`.
+
+## F-056 -- Free cross-matrix projection reuse and overstated direct sums
+
+One global advice space may project to high dimension in every matrix block,
+but those dimensions are not independently usable. In the systematic linear
+model, a block-local query can use global advice without outside raw probes
+only through `U intersect V_i`; every other-block component must be canceled.
+For fixed outside support `T`, each charged coordinate buys at most one local
+dimension. The exact diagonal counterexample `U={(x,x)}` has two full
+projections but zero shortened dimension in either block.
+
+The valid global span-to-cover consequence is only `6,407,133` coefficient
+uses, `0.001586914271%` of dense and `746.8489x` below the available p50
+allowance. Do not divide advice by matrix count without a theorem, sum
+projection dimensions, ignore outside cancellation, or promote this weak
+bound into a general impossibility claim.
+
+This entry does not close a concrete globally mixed code, nonlinear or
+data-dependent cell probes, or a causal restriction on real Transformer
+queries. Reopening the global interface requires a full constructor/query
+equation; the next permitted proof path is a leakage-free causal-query
+restriction certificate. Authority:
+`docs/research/E0_CROSS_MATRIX_ADVICE_LOCALITY.md`.

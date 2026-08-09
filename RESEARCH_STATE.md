@@ -1097,3 +1097,55 @@ query restriction demonstrated on real Transformer traces. No model,
 checkpoint, server, GPU, E1, or E2 action occurred. Authority:
 `docs/research/E0_BILINEAR_CROSS_RESIDUAL_SEPARABLE_CODE_BOUND.md` and
 `results/e0_bilinear_cross_residual_frontier`.
+
+## E0 cross-matrix joint-advice localization closure
+
+The next Gate allowed one arbitrary global binary linear advice space over all
+883 non-embedding matrices. Exact query algebra now proves **Joint Advice
+Localization**: for a block-local query `q_i`, every outside-block component
+of the chosen advice vector appears identically in the raw residual and must
+be canceled. Zero-outside-probe advice is exactly `U intersect V_i`; those
+shortened dimensions sum to at most the global `8 GiB` dimension. For a fixed
+outside set `T`, the exposed local dimension is at most
+`dim(U intersect V_i)+|T|`.
+
+Projection dimensions themselves cannot be summed. The counterexample
+`U={(x,x)}` projects fully to two blocks while having no nonzero shortened
+vector in either. Query-dependent outside supports also form a union of local
+spaces, not one fixed subspace, so the localization theorem must not be
+inflated into a target-sized direct sum.
+
+A separate global span-to-cover theorem gives the strongest certified finite
+consequence. The `13/50` covering-radius witness has
+`hot_rate+H_2(13/50)=0.996950297239<1`. Since an arbitrary registered block
+tuple is a sum of at most `16,384` aligned rank-one tuples, the worst-case
+registered query tuple requires at least:
+
+```text
+global covering radius              104,974,453,310 coefficients
+rank-one tuple span length                      16,384
+total coefficient-use lower bound             6,407,133
+fraction of dense                    0.00158691427055%
+complete p50 allowance               1.18518518519%
+allowance / bound                    746.848904934x
+```
+
+Nine focused GF(2) controls and all 476 repository tests pass. The result
+rejects free reuse of cross-matrix projection rank but is far too weak to
+reject a global linear code, and no concrete code closes construction, query,
+traffic, state, verification, miss, fallback, or latency. Nonlinear and
+data-dependent structures remain outside scope.
+
+Decision:
+
+```text
+ESTABLISH_GLOBAL_LINEAR_ADVICE_LOCALIZATION
+DO_NOT_CLAIM_TARGET_SIZED_DIRECT_SUM_OR_GENERAL_IMPOSSIBILITY
+KEEP_NO_SURVIVING_CANDIDATE
+MOVE_NEXT_TO_A_CAUSAL_QUERY_RESTRICTION_CERTIFICATE
+```
+
+No experiment number, model/checkpoint execution, Ubuntu action, kernel, or
+hardware work occurred. Authority:
+`docs/research/E0_CROSS_MATRIX_ADVICE_LOCALITY.md` and
+`results/e0_cross_matrix_advice_locality`.

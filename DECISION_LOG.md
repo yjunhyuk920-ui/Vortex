@@ -977,3 +977,34 @@ The result assumes matrix-local image state and a Cartesian tuple of arbitrary
 per-matrix query pairs. General nonlinear/cross-matrix data structures,
 word-packed probes, and real causal reachability remain unproved. Authority:
 `docs/research/E0_BILINEAR_CROSS_RESIDUAL_SEPARABLE_CODE_BOUND.md`.
+
+## D-085 -- Localize globally mixed linear advice without claiming direct sum
+
+For global advice rowspace `U`, exact systematic-linear query recovery writes
+`q_i=a_i+e_i`. Because `q_i` is supported only on matrix block `i`, its outside
+residual equals the outside part of `a_i`. Therefore zero-outside-probe advice
+is the shortened space `U intersect V_i`, whose dimensions direct-sum inside
+`U`; a fixed outside support `T` increases the projected local dimension by at
+most `|T|`.
+
+This does not collapse query-dependent supports. The diagonal space
+`{(x,x)}` has full projection into two blocks but zero shortened dimension in
+each, proving that summing projection ranks is invalid. A finite global
+span-to-cover argument survives this issue but certifies only `6,407,133`
+coefficient uses (`0.001586914271%`), while the target permits
+`4,785,160,264.82`. The allowance is `746.8489x` the lower bound.
+
+Decision:
+
+```text
+ESTABLISH_JOINT_ADVICE_LOCALIZATION_IN_THE_SYSTEMATIC_LINEAR_MODEL
+REJECT_FREE_CROSS_MATRIX_PROJECTION_REUSE
+DO_NOT_CLAIM_TARGET_SIZED_DIRECT_SUM_OR_GENERAL_IMPOSSIBILITY
+KEEP_GLOBAL_NONLINEAR_AND_DATA_DEPENDENT_STRUCTURES_OPEN
+OPEN_CAUSAL_QUERY_RESTRICTION_CERTIFICATION_AT_E0
+DO_NOT_ASSIGN_AN_EXPERIMENT_NUMBER_OR_PROMOTE_HARDWARE
+```
+
+This is a durable accounting theorem, not a Core Candidate and not increased
+mission feasibility. Authority:
+`docs/research/E0_CROSS_MATRIX_ADVICE_LOCALITY.md`.

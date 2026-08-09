@@ -1187,3 +1187,34 @@ equation below `1.185185185%`. A shared bit may not be divided across matrices
 without proving how query-local answers cancel its other-matrix content.
 
 The next unblocked map ticket is `Resolve Cross-Matrix Advice Locality`.
+
+## Cross-matrix locality resolved -- certify the real causal query restriction
+
+Global linear advice cannot donate its projection dimension to every matrix
+for free. A block-local exact query may use only `U intersect V_i` without
+outside probes; a fixed outside support `T` buys at most `|T|` additional local
+dimensions. However, query-dependent supports prevent those local statements
+from becoming a full direct sum. The finite global span-to-cover bound is only
+`6,407,133` coefficient uses, `0.001586914271%` of dense and about `1/747` of
+the complete p50 allowance.
+
+Do not claim that globally mixed advice is impossible, build a global code
+without its constructor/query equation, or repeat matrix-local covering codes.
+The next high-value uncertainty is the arbitrary Cartesian query assumption.
+Open one proof-first ticket to determine whether unchanged causal Transformer
+execution restricts the Bilinear Cross Residual population enough to change
+the bound.
+
+That ticket must specify a leakage-free trace extractor on the already pinned
+small checkpoint, the exact residual-pair object, build/evaluation separation,
+GF(2) or finite-field rank/cover certificate, population/family thresholds,
+and a 405B equation charging extraction, representation, query operations,
+logical/address traffic, state, verification, misses, and fallback. First
+derive a shape-only information threshold and the cheapest frozen E1 Gate. Do
+not assign an experiment number or execute new model rows until that E0
+contract proves that the measured causal statistic could cross the final
+fraction.
+
+No model download, private Ubuntu action, kernel, or hardware stage is
+authorized. The next unblocked map ticket is
+`Certify Causal Bilinear Query Restriction`.

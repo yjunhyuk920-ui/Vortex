@@ -674,3 +674,20 @@ not establish that a real checkpoint reaches those tuples or rule out
 nonlinear/global shared advice and word-packed algorithms. The surviving
 unsupported assumption must therefore change one of those interfaces and
 close a new E0 equation before E1.
+
+## A-066 -- Cross-matrix mixing makes one linear advice state target-cheap
+
+Assumption: one `8 GiB` linear advice state can expose useful high-dimensional
+images in many matrix blocks without paying equivalent state or cancellation,
+and thereby answer arbitrary independent rank-one residual queries below the
+final fraction.
+
+Closure: free projection reuse is contradicted in the declared systematic
+linear model. Only shortened block spaces direct-sum; a fixed outside support
+adds at most its cardinality in local dimensions. The remaining global
+span-to-cover theorem forces `6,407,133` coefficient uses, but that is only
+`0.1338958916%` of the p50 allowance and cannot reject target feasibility.
+
+Status: PARTIALLY CONSTRAINED BUT UNSUPPORTED. NO GLOBAL CONSTRUCTION, TARGET
+DIRECT-SUM LOWER BOUND, CAUSAL REACHABILITY RESULT, OR PHYSICAL MAPPING EXISTS.
+NONLINEAR AND DATA-DEPENDENT STRUCTURES REMAIN UNDECIDED.

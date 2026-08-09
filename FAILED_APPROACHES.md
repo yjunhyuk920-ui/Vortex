@@ -315,4 +315,9 @@ even an all-binary, all-8-GiB, free-decoder coefficient-probe grant has a
 `1.52104775688%` cross-work lower bound. It does not close nonlinear or
 cross-matrix shared advice, word-packed probes, or causally restricted query
 populations.
+F-056 closes only *free* cross-matrix projection reuse: useful zero-outside
+linear advice is the shortened block space, and every fixed outside probe buys
+at most one local dimension. Its valid global lower bound is far below the
+target, so it explicitly forbids a general impossibility claim and leaves a
+fully specified global code or certified causal query restriction open.
 Read that continuation and each scope boundary before reopening a family.
