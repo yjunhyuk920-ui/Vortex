@@ -379,7 +379,13 @@ class ProjectionRecorder:
         self.handle.remove()
 
     def set_mode(self, mode: str, patch_values: Any | None = None) -> None:
-        if mode not in {"idle", "prefix", "current", "patch"}:
+        if mode not in {
+            "idle",
+            "prefix",
+            "current",
+            "patch",
+            "patch_input_only",
+        }:
             raise ValueError(f"unknown recorder mode: {mode}")
         self.mode = mode
         self.patch_values = patch_values
@@ -449,7 +455,7 @@ class ProjectionRecorder:
             raise CandidateBatchControlError(
                 f"{self.name}: candidate batch changed current input"
             )
-        if not output_equal:
+        if self.mode == "patch" and not output_equal:
             raise CandidateBatchControlError(
                 f"{self.name}: candidate batch changed native output"
             )
@@ -460,16 +466,284 @@ class ProjectionRecorder:
         return self.patch_values
 
 
+def clone_context_value(value: Any) -> Any:
+    import torch
+
+    if isinstance(value, torch.Tensor):
+        return value.detach().cpu().clone()
+    if isinstance(value, tuple):
+        return tuple(clone_context_value(item) for item in value)
+    if isinstance(value, list):
+        return [clone_context_value(item) for item in value]
+    if isinstance(value, dict):
+        return {
+            key: clone_context_value(item) for key, item in value.items()
+        }
+    return value
+
+
+class LayerContextRecorder:
+    """Capture deterministic decode kwargs without retaining the live cache."""
+
+    def __init__(self, layers: Any, *, first_layer: int) -> None:
+        self.mode = "idle"
+        self.hidden_inputs: dict[int, Any] = {}
+        self.kwargs: dict[int, dict[str, Any]] = {}
+        self.handles = []
+        for layer_index in range(first_layer, len(layers)):
+            handle = layers[layer_index].register_forward_pre_hook(
+                self._make_hook(layer_index),
+                with_kwargs=True,
+            )
+            self.handles.append(handle)
+
+    def _make_hook(self, layer_index: int) -> Any:
+        def hook(
+            module: Any,
+            arguments: tuple[Any, ...],
+            keyword_arguments: dict[str, Any],
+        ) -> None:
+            if self.mode != "current":
+                return None
+            if not arguments:
+                raise CandidateBatchControlError(
+                    f"layer {layer_index}: missing hidden input"
+                )
+            self.hidden_inputs[layer_index] = (
+                arguments[0].detach().cpu().clone()
+            )
+            self.kwargs[layer_index] = {
+                key: clone_context_value(value)
+                for key, value in keyword_arguments.items()
+                if key != "past_key_values"
+            }
+            return None
+
+        return hook
+
+    def set_mode(self, mode: str) -> None:
+        if mode not in {"idle", "current"}:
+            raise ValueError(f"unknown layer-context mode: {mode}")
+        self.mode = mode
+        if mode == "current":
+            self.hidden_inputs.clear()
+            self.kwargs.clear()
+
+    def close(self) -> None:
+        for handle in self.handles:
+            handle.remove()
+
+
+def expand_batch(value: Any, batch_size: int) -> Any:
+    import torch
+
+    if isinstance(value, torch.Tensor):
+        if value.ndim == 0:
+            return value
+        if int(value.shape[0]) != 1:
+            raise CandidateBatchControlError(
+                f"cannot expand context tensor with shape {tuple(value.shape)}"
+            )
+        return value.expand(batch_size, *value.shape[1:]).contiguous()
+    if isinstance(value, tuple):
+        return tuple(expand_batch(item, batch_size) for item in value)
+    if isinstance(value, list):
+        return [expand_batch(item, batch_size) for item in value]
+    if isinstance(value, dict):
+        return {
+            key: expand_batch(item, batch_size) for key, item in value.items()
+        }
+    return value
+
+
+class BranchPointReached(RuntimeError):
+    """Private control-flow signal used to stop after the exact branch point."""
+
+
 @dataclass
 class ExecutionCounters:
-    model_forward_calls: int = 0
-    logical_batch_rows: int = 0
-    transformer_token_positions: int = 0
+    full_model_forward_calls: int = 0
+    partial_model_forward_calls: int = 0
+    suffix_forward_calls: int = 0
+    physical_decoder_layer_calls: int = 0
+    logical_batch_row_layer_evaluations: int = 0
+    full_model_token_positions: int = 0
 
-    def record(self, *, batch_size: int, sequence_length: int) -> None:
-        self.model_forward_calls += 1
-        self.logical_batch_rows += batch_size
-        self.transformer_token_positions += batch_size * sequence_length
+    def record_full(
+        self,
+        *,
+        batch_size: int,
+        sequence_length: int,
+        layer_count: int,
+    ) -> None:
+        self.full_model_forward_calls += 1
+        self.physical_decoder_layer_calls += layer_count
+        self.logical_batch_row_layer_evaluations += batch_size * layer_count
+        self.full_model_token_positions += batch_size * sequence_length
+
+    def record_partial(self, *, completed_layers: int) -> None:
+        self.partial_model_forward_calls += 1
+        self.physical_decoder_layer_calls += completed_layers
+        self.logical_batch_row_layer_evaluations += completed_layers
+
+    def record_suffix(self, *, batch_size: int, layer_count: int) -> None:
+        self.suffix_forward_calls += 1
+        self.physical_decoder_layer_calls += layer_count
+        self.logical_batch_row_layer_evaluations += batch_size * layer_count
+
+
+def capture_branch_point(
+    *,
+    target: Any,
+    prefix_cache: Any,
+    first_target_token: int,
+    projection: str,
+    layer_index: int,
+    counters: ExecutionCounters,
+) -> tuple[Any, dict[str, Any]]:
+    """Run batch one only until q_proj or down_proj is about to execute."""
+
+    import torch
+
+    layer = target.model.layers[layer_index]
+    captures: dict[str, Any] = {}
+
+    def layer_pre_hook(module: Any, arguments: tuple[Any, ...]) -> None:
+        captures["layer_input"] = arguments[0].detach().cpu().clone()
+
+    def q_pre_hook(module: Any, arguments: tuple[Any, ...]) -> None:
+        captures["projection_input"] = arguments[0].detach().cpu().clone()
+        raise BranchPointReached()
+
+    def residual_pre_hook(module: Any, arguments: tuple[Any, ...]) -> None:
+        captures["post_attention_residual"] = (
+            arguments[0].detach().cpu().clone()
+        )
+
+    def down_pre_hook(module: Any, arguments: tuple[Any, ...]) -> None:
+        captures["projection_input"] = arguments[0].detach().cpu().clone()
+        raise BranchPointReached()
+
+    handles = [layer.register_forward_pre_hook(layer_pre_hook)]
+    if projection == "q_proj":
+        handles.append(layer.self_attn.q_proj.register_forward_pre_hook(q_pre_hook))
+    elif projection == "down_proj":
+        handles.append(
+            layer.post_attention_layernorm.register_forward_pre_hook(
+                residual_pre_hook
+            )
+        )
+        handles.append(layer.mlp.down_proj.register_forward_pre_hook(down_pre_hook))
+    else:
+        raise ValueError(f"unsupported projection branch: {projection}")
+
+    branch_cache = copy.deepcopy(prefix_cache)
+    current_ids = torch.tensor(
+        [[int(first_target_token)]],
+        dtype=torch.long,
+        device="cpu",
+    )
+    reached = False
+    try:
+        with torch.inference_mode():
+            target.model(
+                input_ids=current_ids,
+                past_key_values=branch_cache,
+                use_cache=True,
+            )
+    except BranchPointReached:
+        reached = True
+    finally:
+        for handle in handles:
+            handle.remove()
+    if not reached or "projection_input" not in captures:
+        raise CandidateBatchControlError(
+            f"{projection}: registered branch point was not reached"
+        )
+    counters.record_partial(completed_layers=layer_index)
+    return branch_cache, captures
+
+
+def candidate_suffix_logits(
+    *,
+    target: Any,
+    recorder: ProjectionRecorder,
+    projection: str,
+    patch_tensor: Any,
+    partial_cache: Any,
+    captures: dict[str, Any],
+    layer_contexts: LayerContextRecorder,
+    layer_index: int,
+    counters: ExecutionCounters,
+) -> tuple[Any, dict[str, Any]]:
+    """Expand only at the exact projection branch and execute the suffix."""
+
+    import torch
+
+    candidate_count = int(patch_tensor.shape[0])
+    candidate_cache = partial_cache
+    candidate_cache.reorder_cache(
+        torch.zeros(candidate_count, dtype=torch.long, device="cpu")
+    )
+
+    def kwargs_for(index: int) -> dict[str, Any]:
+        if index not in layer_contexts.kwargs:
+            raise CandidateBatchControlError(
+                f"layer {index}: baseline decode context is missing"
+            )
+        kwargs = expand_batch(layer_contexts.kwargs[index], candidate_count)
+        kwargs["past_key_values"] = candidate_cache
+        return kwargs
+
+    if projection == "q_proj":
+        hidden_states = expand_batch(captures["layer_input"], candidate_count)
+        recorder.set_mode("patch_input_only", patch_tensor)
+        try:
+            with torch.inference_mode():
+                hidden_states = target.model.layers[layer_index](
+                    hidden_states,
+                    **kwargs_for(layer_index),
+                )
+        finally:
+            recorder.set_mode("idle")
+        branch_audit = dict(recorder.patch_audit or {})
+        first_suffix_layer = layer_index + 1
+        suffix_layer_count = len(target.model.layers) - layer_index
+    elif projection == "down_proj":
+        residual = expand_batch(
+            captures["post_attention_residual"], candidate_count
+        )
+        hidden_states = residual + patch_tensor
+        branch_audit = {
+            "candidate_batch_size": candidate_count,
+            "current_input_bitwise_equal": True,
+            "native_output_bitwise_equal": None,
+            "patch_shape_equal": (
+                tuple(patch_tensor.shape) == tuple(residual.shape)
+            ),
+        }
+        if not branch_audit["patch_shape_equal"]:
+            raise CandidateBatchControlError(
+                "down_proj: residual/patch shape mismatch"
+            )
+        first_suffix_layer = layer_index + 1
+        suffix_layer_count = len(target.model.layers) - first_suffix_layer
+    else:
+        raise ValueError(f"unsupported projection branch: {projection}")
+
+    with torch.inference_mode():
+        for index in range(first_suffix_layer, len(target.model.layers)):
+            hidden_states = target.model.layers[index](
+                hidden_states,
+                **kwargs_for(index),
+            )
+        hidden_states = target.model.norm(hidden_states)
+        candidate_logits = target.lm_head(hidden_states[:, -1, :]).detach()
+    counters.record_suffix(
+        batch_size=candidate_count,
+        layer_count=suffix_layer_count,
+    )
+    return candidate_logits, branch_audit
 
 
 def evaluate_projection(
@@ -483,6 +757,7 @@ def evaluate_projection(
     baseline_logits: Any,
     config: dict[str, Any],
     counters: ExecutionCounters,
+    layer_contexts: LayerContextRecorder,
 ) -> tuple[
     dict[str, Any],
     list[dict[str, Any]],
@@ -584,63 +859,69 @@ def evaluate_projection(
     candidate_count = int(patch_tensor.shape[0])
     started = time.perf_counter_ns()
     control_failures: list[str] = []
-    candidate_logit_rows: list[Any] = []
-    replay_audits: list[dict[str, Any]] = []
-    token_batch = torch.tensor(
-        [[int(first_target_token)]],
-        dtype=torch.long,
-        device="cpu",
-    )
-    for candidate_index in range(candidate_count):
-        candidate_cache = copy.deepcopy(prefix_cache)
-        recorder.set_mode("patch", patch_tensor[candidate_index : candidate_index + 1])
-        try:
-            with torch.inference_mode():
-                candidate_hidden = target.model(
-                    input_ids=token_batch,
-                    past_key_values=candidate_cache,
-                    use_cache=True,
-                ).last_hidden_state[:, -1, :]
-                row_logits = target.lm_head(candidate_hidden).detach()[0]
-            counters.record(batch_size=1, sequence_length=1)
-            candidate_logit_rows.append(row_logits)
-            replay_audits.append(dict(recorder.patch_audit or {}))
-        except CandidateBatchControlError as error:
-            control_failures.append(str(error))
-            audit = dict(recorder.patch_audit or {})
-            return (
-                basis_row,
-                [],
-                None,
-                [
-                    {
-                        "prompt_id": prompt["id"],
-                        "family": prompt["family"],
-                        "projection": recorder.name,
-                        "control": "candidate_replay_identity",
-                        "pass": False,
-                        "candidate_index": candidate_index,
-                        "detail": str(error),
-                        "audit": audit,
-                    }
-                ],
-                control_failures,
+    try:
+        partial_cache, captures = capture_branch_point(
+            target=target,
+            prefix_cache=prefix_cache,
+            first_target_token=first_target_token,
+            projection=recorder.name,
+            layer_index=int(gate["layer_indices"][0]),
+            counters=counters,
+        )
+        expected_projection_input = recorder.current_input.reshape(1, 1, -1)
+        projection_input_equal = bool(
+            torch.equal(captures["projection_input"], expected_projection_input)
+        )
+        baseline_layer_input = layer_contexts.hidden_inputs.get(
+            int(gate["layer_indices"][0])
+        )
+        layer_input_equal = bool(
+            baseline_layer_input is not None
+            and torch.equal(captures["layer_input"], baseline_layer_input)
+        )
+        if not projection_input_equal:
+            raise CandidateBatchControlError(
+                f"{recorder.name}: branch-point input changed from baseline"
+            )
+        if not layer_input_equal:
+            raise CandidateBatchControlError(
+                f"{recorder.name}: layer-11 input changed from baseline"
+            )
+        candidate_logits, branch_audit = candidate_suffix_logits(
+            target=target,
+            recorder=recorder,
+            projection=recorder.name,
+            patch_tensor=patch_tensor,
+            partial_cache=partial_cache,
+            captures=captures,
+            layer_contexts=layer_contexts,
+            layer_index=int(gate["layer_indices"][0]),
+            counters=counters,
+        )
+    except CandidateBatchControlError as error:
+        control_failures.append(str(error))
+        return (
+            basis_row,
+            [],
+            None,
+            [
                 {
                     "prompt_id": prompt["id"],
+                    "family": prompt["family"],
                     "projection": recorder.name,
-                    "candidate_replay_count": candidate_index,
-                    "candidate_replay_wall_ns": (
-                        time.perf_counter_ns() - started
-                    ),
-                },
-            )
-        finally:
-            recorder.set_mode("idle")
-        del candidate_cache, candidate_hidden, row_logits
-        if candidate_index % 8 == 7:
-            gc.collect()
-
-    candidate_logits = torch.stack(candidate_logit_rows, dim=0)
+                    "control": "branch_point_or_suffix_identity",
+                    "pass": False,
+                    "detail": str(error),
+                    "audit": dict(recorder.patch_audit or {}),
+                }
+            ],
+            control_failures,
+            {
+                "prompt_id": prompt["id"],
+                "projection": recorder.name,
+                "candidate_suffix_wall_ns": time.perf_counter_ns() - started,
+            },
+        )
 
     branch_wall_ns = time.perf_counter_ns() - started
     if not bool(torch.isfinite(candidate_logits.float()).all()):
@@ -655,11 +936,8 @@ def evaluate_projection(
     page_top1 = np.argmax(page_logits, axis=1)
     dense_top1 = int(np.argmax(control_logits[0]))
     all_page_top1 = int(np.argmax(control_logits[1]))
-    all_input_equal = all(
-        bool(row.get("current_input_bitwise_equal")) for row in replay_audits
-    )
-    all_output_equal = all(
-        bool(row.get("native_output_bitwise_equal")) for row in replay_audits
+    suffix_input_equal = bool(
+        branch_audit.get("current_input_bitwise_equal")
     )
 
     control_rows = [
@@ -667,17 +945,23 @@ def evaluate_projection(
             "prompt_id": prompt["id"],
             "family": prompt["family"],
             "projection": recorder.name,
-            "control": "candidate_replay_current_input_identity",
-            "pass": all_input_equal,
-            "candidate_replays": len(replay_audits),
+            "control": "branch_point_layer_input_identity",
+            "pass": layer_input_equal,
         },
         {
             "prompt_id": prompt["id"],
             "family": prompt["family"],
             "projection": recorder.name,
-            "control": "candidate_replay_native_output_identity",
-            "pass": all_output_equal,
-            "candidate_replays": len(replay_audits),
+            "control": "branch_point_projection_input_identity",
+            "pass": projection_input_equal,
+        },
+        {
+            "prompt_id": prompt["id"],
+            "family": prompt["family"],
+            "projection": recorder.name,
+            "control": "candidate_suffix_branch_input_identity",
+            "pass": suffix_input_equal,
+            "candidate_count": candidate_count,
         },
         {
             "prompt_id": prompt["id"],
@@ -804,11 +1088,10 @@ def evaluate_projection(
     timing = {
         "prompt_id": prompt["id"],
         "projection": recorder.name,
-        "candidate_replay_batch_size": 1,
-        "candidate_replay_count": candidate_count,
-        "candidate_replay_wall_ns": branch_wall_ns,
+        "candidate_suffix_batch_size": candidate_count,
+        "candidate_suffix_wall_ns": branch_wall_ns,
     }
-    del candidate_logits, candidate_logit_rows, patch_tensor
+    del candidate_logits, patch_tensor, partial_cache, captures
     gc.collect()
     return (
         basis_row,
@@ -870,6 +1153,10 @@ def main() -> None:
         "q_proj": ProjectionRecorder("q_proj", layer.self_attn.q_proj),
         "down_proj": ProjectionRecorder("down_proj", layer.mlp.down_proj),
     }
+    layer_contexts = LayerContextRecorder(
+        target.model.layers,
+        first_layer=int(config["gate"]["layer_indices"][0]),
+    )
 
     basis_rows: list[dict[str, Any]] = []
     page_rows: list[dict[str, Any]] = []
@@ -929,7 +1216,11 @@ def main() -> None:
                 prefix_logits = target.lm_head(
                     prefix_output.last_hidden_state[:, -1, :]
                 ).detach()[0]
-            counters.record(batch_size=1, sequence_length=prompt_length)
+            counters.record_full(
+                batch_size=1,
+                sequence_length=prompt_length,
+                layer_count=int(parameter_audit["num_hidden_layers"]),
+            )
             for recorder in recorders.values():
                 recorder.set_mode("idle")
             prefix_top1 = int(prefix_logits.float().argmax().item())
@@ -955,6 +1246,7 @@ def main() -> None:
 
             for recorder in recorders.values():
                 recorder.set_mode("current")
+            layer_contexts.set_mode("current")
             baseline_cache = copy.deepcopy(prefix_output.past_key_values)
             current_ids = torch.tensor(
                 [[int(conditioning[0])]],
@@ -969,9 +1261,14 @@ def main() -> None:
                     use_cache=True,
                 ).last_hidden_state[:, -1, :]
                 baseline_logits = target.lm_head(baseline_hidden).detach()[0]
-            counters.record(batch_size=1, sequence_length=1)
+            counters.record_full(
+                batch_size=1,
+                sequence_length=1,
+                layer_count=int(parameter_audit["num_hidden_layers"]),
+            )
             for recorder in recorders.values():
                 recorder.set_mode("idle")
+            layer_contexts.set_mode("idle")
             baseline_top1 = int(baseline_logits.float().argmax().item())
             baseline_expected = int(expected_tokens[1])
             baseline_pass = baseline_top1 == baseline_expected
@@ -1031,6 +1328,7 @@ def main() -> None:
                     baseline_logits=baseline_logits,
                     config=config,
                     counters=counters,
+                    layer_contexts=layer_contexts,
                 )
                 basis_rows.append(basis_row)
                 page_rows.extend(projection_pages)
@@ -1089,6 +1387,7 @@ def main() -> None:
     finally:
         for recorder in recorders.values():
             recorder.close()
+        layer_contexts.close()
 
     execution_complete = (
         not control_failures
@@ -1171,16 +1470,16 @@ def main() -> None:
             "leakage_failures": len(leakage_failures),
             "malformed_state_count": malformed_state_count,
             "baseline_trace_mismatches": baseline_trace_mismatches,
-            "model_forward_calls": counters.model_forward_calls,
+            "full_model_forward_calls": counters.full_model_forward_calls,
+            "partial_model_forward_calls": counters.partial_model_forward_calls,
+            "suffix_forward_calls": counters.suffix_forward_calls,
             "physical_decoder_layer_calls": (
-                counters.model_forward_calls
-                * int(parameter_audit["num_hidden_layers"])
+                counters.physical_decoder_layer_calls
             ),
             "logical_batch_row_layer_evaluations": (
-                counters.logical_batch_rows
-                * int(parameter_audit["num_hidden_layers"])
+                counters.logical_batch_row_layer_evaluations
             ),
-            "transformer_token_positions": counters.transformer_token_positions,
+            "full_model_token_positions": counters.full_model_token_positions,
             "wall_ns": elapsed_wall,
             "cpu_ns": elapsed_cpu,
             "peak_rss_bytes": peak_rss_bytes(),
