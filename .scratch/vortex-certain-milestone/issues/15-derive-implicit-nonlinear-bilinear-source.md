@@ -1,7 +1,7 @@
 # Derive an Implicit Nonlinear Bilinear Query Source
 
 Type: research
-Status: open
+Status: claimed
 Blocked by: Bound Query-Adaptive Exact Code Unions
 
 ## Question
