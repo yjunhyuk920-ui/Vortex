@@ -332,3 +332,23 @@ A causal delta-updated map is a new unsupported mechanism and must first pass E0
 with update, detection, repair, fallback, and cold-traffic costs. No core
 candidate survives; the Ubuntu server was not contacted; Phase D/E2-E7 remain
 open.
+
+<!-- E0-POST-ATLAS-CAUSAL-SOURCE-AUDIT -->
+## Current handoff after the post-Atlas causal-source audit
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`.
+
+Decision: forward-only continuation is Atlas normal form; dynamic exact
+decision-dual construction fails at `1.5625%` over 64 tokens; a favorable
+static one-last-down vocabulary table fails at `12.720703125 GiB` and
+`6.765979992%` scan traffic. The EXP-083B zero-forward post-hoc screen leaves
+all 248,319 competitors unresolved. No experiment number or model run occurred.
+
+Next: address only the lossless Bilinear Cross Residual `r^T W u` with a
+concrete finite E0 construction or scoped lower bound. Do not run hardware,
+contact the Ubuntu server, download a larger model, or start E1/E2. Current
+status is `NO_SURVIVING_CANDIDATE`; this negative closure is not the Certain
+Research Milestone.

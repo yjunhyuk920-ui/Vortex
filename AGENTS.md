@@ -242,9 +242,12 @@ whole-population lower bound. EXP-083A passes only favorable one-page
 existence; EXP-083B then rejects the legal Causal Residual Atlas primary path
 on its first untouched row with one valid fallback and zero control failures.
 Do not sweep Atlas ranks, pages, layers, selectors, prompts, spectral slack, or
-tolerances. A continuation requires a materially new causal information source
-and fully charged E0 equation. E2, hardware, larger models, and the private
-Ubuntu host remain unauthorized. Read `NEXT_EXPERIMENT.md`.
+tolerances. The post-Atlas E0 audit further rejects forward-only continuation,
+one raw-checkpoint dynamic dual build at the registered 64-token lifetime, and
+a static full-vocabulary dual scan. The exact open barrier is a paid, lossless,
+sub-dense source for the Bilinear Cross Residual `r^T W u`; no construction
+currently exists. E2, hardware, larger models, and the private Ubuntu host
+remain unauthorized. Read `NEXT_EXPERIMENT.md`.
 
 ## Agent skills
 

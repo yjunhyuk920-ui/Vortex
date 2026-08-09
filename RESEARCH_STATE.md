@@ -1002,3 +1002,53 @@ subset, spectral slack, or tolerance. A continuation needs a materially new
 causal information source and a new fully charged E0 equation. No Ubuntu,
 hardware, large-model, E2-E7, or Fixed-Mission success follows from this
 negative E1 result.
+
+<!-- E0-POST-ATLAS-CAUSAL-SOURCE-AUDIT -->
+## Post-Atlas E0 causal information-source audit
+
+The strongest materially distinct continuation was made explicit as a
+**Decision-Directional Source**: compute only signed decision functionals
+`v^T W x` instead of reconstructing every `W x`. With orthonormal primal and
+dual bases `Q/P`, paid images `WQ/W^T P`, and residuals `u/r`, the exact normal
+form is:
+
+```text
+v^T W x = v^T(WQ)a + (W^T P b)^T u + r^T W u.
+```
+
+The **Bilinear Cross Residual** `r^T W u` is genuine missing information.
+The perturbation `Delta W=lambda r u^T` leaves both cached images unchanged
+while changing the query, so forward pairs alone reduce to the rejected Atlas
+normal form and a dual cache cannot silently drop the cross term.
+
+Two concrete constructors fail the registered finite equation. One fresh
+full-model dual direction costs `1/64 = 1.5625%` at the registered 64-token
+service life, already above `8/675 = 1.185185185%` with all other work free;
+it needs at least 85 tokens with zero common cost, 109 with the retained
+verifier, or 999 when added to registered Atlas traffic. A static vocabulary
+composite for only one last `down_proj` has `6,829,375,488` coefficients and
+is `12.720703125 GiB` even under a favorable two-byte grant; scanning it costs
+`6.765979992%`, `5.708795618x` the target. Across 126 downs the grant is
+`1.565242767 TiB` and `8.525134790x` complete Q4 traffic.
+
+A read-only, zero-forward diagnostic on the already observed EXP-083B row
+also left all `248,319/248,319` competitors unresolved under the obvious
+few-exact-directions plus row-norm screen, even when illegally granted the
+observed `3.5124788056` candidate/native distance. This is post-hoc evidence,
+not a population Gate or a universal exact-MIPS lower bound.
+
+Decision:
+
+```text
+REJECT_FORWARD_TRACE_ONLY_POST_ATLAS_SOURCE_AS_ATLAS_NORMAL_FORM
+REJECT_DYNAMIC_CAUSAL_DECISION_DUAL_CODE_UNDER_REGISTERED_64_TOKEN_CONSTRUCTOR
+REJECT_STATIC_FULL_VOCABULARY_DUAL_SCAN_AS_CORE
+KEEP_LOSSLESS_SUBDENSE_BILINEAR_CROSS_RESIDUAL_SOURCE_OPEN_WITH_NO_CONSTRUCTION
+RETURN_TO_NO_SURVIVING_CANDIDATE
+```
+
+No experiment number, model run, download, server command, hardware stage, or
+E2 claim follows. The only open invention frontier is a checkpoint-derived,
+lossless, sub-dense source for prompt-dependent `r^T W u` with complete finite
+operations, traffic, state, build, verification, miss, and fallback accounting.
+Authority: `docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`.

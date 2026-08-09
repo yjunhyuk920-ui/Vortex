@@ -305,4 +305,9 @@ common-spectral/global-L2-ball Causal Residual Atlas primary path. It does not
 prove every possible correlated causal code impossible, but reopening requires
 a materially new paid information source and E0 equation rather than an Atlas
 parameter or bound sweep.
+F-054 rejects forward-only continuation as Atlas normal form plus the two
+currently constructible decision-dual sources: a raw-checkpoint dynamic dual
+build at the registered 64-token lifetime and a static full-vocabulary dual
+scan. It leaves only a concrete, lossless, sub-dense Bilinear Cross Residual
+source open and does not claim a universal bilinear-query lower bound.
 Read that continuation and each scope boundary before reopening a family.

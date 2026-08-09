@@ -1015,3 +1015,51 @@ The last two values are a post-hoc necessary-condition audit, not inputs to the
 frozen decision. Reproduce that audit directly from the prompt NPZ and static
 LM-row norms described in
 `docs/research/EXP083B_POSTHOC_NECESSARY_CONDITION_AUDIT.md`.
+
+## Post-Atlas causal information-source E0 reproduction
+
+No new experiment or result bundle exists. Reproduce the deterministic
+algebra/resource audit from the claimed source branch with:
+
+```powershell
+$env:PYTHONPATH = "."
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_post_atlas_causal_source.py
+
+.deps\exp076-venv\Scripts\python.exe -m pytest -q `
+  tests\test_post_atlas_causal_source.py
+```
+
+Expected focused result: six passing tests. The printed registered invariants
+include one dynamic direction at `1/64`, minimum zero-common service lives
+`85/169/338/675/1350` for `1/2/4/8/16` directions, one favorable static
+last-down table of `13,658,750,976` bytes, and an all-down grant of
+`1,721,002,622,976` bytes.
+
+The optional diagnostic reuses only frozen EXP-083B arrays and the pinned BF16
+tied head. It performs zero Transformer forwards and writes no authority:
+
+```powershell
+$env:PYTHONPATH = "."
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\audit_exp083b_decision_directions.py
+```
+
+Expected invariants are winner `21461` for candidate/native BF16 and exact
+linear scores, actual pre-norm distance `3.5124788056`, and
+`248,319/248,319` unresolved competitors under both actual and frozen radii.
+This is explicitly a post-hoc diagnostic, not a frozen population Gate.
+
+Repository validation remains:
+
+```powershell
+$env:PYTHONPATH = "."
+.deps\exp076-venv\Scripts\python.exe -m pytest -q
+.deps\exp076-venv\Scripts\python.exe scripts\run_validation.py
+```
+
+Observed for this closure: `6 passed`, `459 passed`, and a successful standard
+validation run. The generated numerical payload matched the existing tracked
+validation values; elapsed wall time is not research evidence.
+
+Authority: `docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`.

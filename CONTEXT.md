@@ -65,6 +65,22 @@ pairs, with every current out-of-span component retained as a certified residual
 or sent to exact fallback.
 _Avoid_: Approximate replay, tolerance-only Atlas, future-selected dictionary
 
+**Decision-Directional Source**:
+A Coded Causal Cold Source that determines signed effects on token-decision
+inequalities instead of reconstructing a complete intermediate vector.
+_Avoid_: Tighter global ball, free gradient, output-head-only shortcut
+
+**Causal Decision-Dual Code**:
+A Decision-Directional Source formed from paid exact images of causal primal
+and decision-dual directions; information outside both spans remains a
+bilinear cross residual.
+_Avoid_: Bidirectional Atlas, free backpropagation, approximate Jacobian
+
+**Bilinear Cross Residual**:
+The signed term left after all cached primal and decision-dual span terms have
+been removed from a checkpoint bilinear query.
+_Avoid_: Numerical roundoff, Atlas rank residual, verifier failure
+
 **Useful Information Amplification**:
 The dense coefficient-equivalent work or traffic determined per charged unit
 of selected cold payload; it is a query-time conservation metric, not artifact

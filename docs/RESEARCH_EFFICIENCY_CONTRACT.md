@@ -380,3 +380,20 @@ to static linear circuits, exact replay/advice, training, future target traces,
 an external prover, or dense-equivalent discovery. No experiment number is
 assigned until one source closes the equation favorably enough to preregister
 the cheapest real-weight falsification Gate.
+
+## Current directive after the post-Atlas causal-source audit
+
+Forward causal pairs alone are the rejected Atlas normal form. Do not spend an
+experiment on a renamed forward cache, free backward/transpose trace, static
+full-vocabulary composite, approximate MIPS without an exact charged fallback,
+or proof system without a local result source. The dynamic dual constructor
+already costs `1.5625%` at the 64-token service life, and the favorable static
+last-down table is `12.720703125 GiB`; both fail before implementation.
+
+The only adjacent high-upside question is the Bilinear Cross Residual
+`r^T W u`. Apply the cheapest Gate first: either derive a scoped lower bound
+for the admissible preprocessing/query model, or specify a concrete lossless
+checkpoint-derived structure with finite 405B build, state, operation,
+traffic, verification, miss, and fallback equations. Do not assign an
+experiment number, run a model, build a kernel, or use hardware until that E0
+equation fits. Retain `NO_SURVIVING_CANDIDATE` otherwise.

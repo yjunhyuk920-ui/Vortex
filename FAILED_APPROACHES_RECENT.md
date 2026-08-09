@@ -320,3 +320,28 @@ repair the observed row-margin necessary condition. Revisit only with a
 materially new causal information source that provides paid, lossless
 directional/correlated information about the unread contribution and first
 closes a fully charged E0 equation. Authority: `results/exp_083b`.
+
+## F-054 -- Constructible post-Atlas decision-dual sources
+
+A signed decision query has the exact decomposition
+`v^T W x = v^T(WQ)a + (W^T P b)^T u + r^T W u`. Forward-only causal pairs
+therefore remain the Atlas normal form. Adding exact dual images is new
+information, but their prompt-dependent constructor is not free: one fresh
+full-model dual build costs `1.5625%` over the registered 64-token service life,
+above the complete `1.185185185%` target before all other costs.
+
+The static alternative also fails early. Precomposing every vocabulary
+direction through one last down projection requires `12.720703125 GiB` under
+an unrealistically favorable two-byte exact grant and a full scan costs
+`6.765979992%` of registered Q4 bytes. A few-directions plus row-norm screen
+left all `248,319` competitors unresolved on the frozen EXP-083B first row,
+even with the observed distance substituted post hoc.
+
+Do not reopen with more forward pairs, a free transpose/backpropagation pass,
+a full vocabulary scan, approximate MIPS under an exact contract, or an
+uncharged proof trace. This closure does **not** prove that every exact
+bilinear-query/MIPS data structure is impossible. Revisit only with a concrete
+checkpoint-derived lossless source for the Bilinear Cross Residual `r^T W u`
+whose finite E0 equation charges construction, representation, query work,
+state, verification, misses, and fallback. Authority:
+`docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`.

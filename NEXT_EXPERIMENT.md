@@ -1126,3 +1126,29 @@ Do not run another Atlas rank/page/layer/prompt/tolerance variant, build E2,
 contact the Ubuntu host, download a larger model, or begin kernel/hardware
 work. The next unblocked map ticket is `Find a Post-Atlas Causal Information
 Source`.
+
+## Post-Atlas E0 audit closed -- no experiment; isolate the cross residual
+
+The strongest distinct source computes signed decision functionals rather than
+full intermediate vectors. Its exact form retains `r^T W u` outside cached
+primal/dual spans. Forward pairs are therefore Atlas-normal-form information;
+a prompt-dependent exact dual build costs `1.5625%` at the registered 64-token
+service life, and a static final-slice vocabulary composite costs a favorable
+`12.720703125 GiB` plus `6.765979992%` scan traffic. Both fail before a real
+Gate. The zero-forward EXP-083B diagnostic also left all 248,319 competitors
+unresolved under the obvious few-row norm screen.
+
+No experiment number is assigned and no model, kernel, larger checkpoint,
+Ubuntu command, or hardware action is authorized. The current classification
+remains `NO_SURVIVING_CANDIDATE`.
+
+The next research ticket may address only this exact question: can a
+checkpoint-derived lossless query mechanism obtain `r^T W u` for arbitrary
+prompt-dependent residual pairs with a finite, favorable 405B equation for
+construction, storage, operations, traffic, verification, misses, and
+fallback? It must avoid a dense forward/transpose constructor, full direction
+enumeration, training, target-future leakage, external proof without a local
+result source, and disguised dense discovery. First derive a scoped lower
+bound or concrete exact query structure; do not start E1 until E0 closes.
+
+The next unblocked map ticket is `Break the Bilinear Cross-Residual Barrier`.

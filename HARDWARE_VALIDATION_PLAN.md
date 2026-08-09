@@ -493,3 +493,18 @@ measurement occurred. Phase D and E4-E7 remain `NOT TESTED`. A future hardware
 plan can reopen only after a materially new causal information source passes
 its own E0/E1 correctness Gates and demonstrates actual fail-closed E2
 operation replacement.
+
+## Post-Atlas causal-source hardware boundary
+
+The Decision-Directional Source audit is algebraic/reference E0 only. Its six
+focused controls and read-only EXP-083B direction screen used CPU arrays and
+zero Transformer forwards. They are not latency, throughput, SSD, H2D, GPU
+kernel, peak-VRAM, or energy evidence.
+
+Both constructible routes fail before hardware promotion: one dynamic exact
+dual direction is already `1.5625%` of dense work/traffic over 64 tokens, and
+one favorable static last-down vocabulary table is `12.720703125 GiB` before
+runtime state. Consequently no CUDA prototype, target-server calibration,
+model download, EXP-073 Stage 2 action, 122B/405B run, or Phase D/E4-E7 test is
+authorized. Hardware can reopen only after a concrete lossless Bilinear Cross
+Residual source passes E0 and then E1/E2 correctness boundaries.

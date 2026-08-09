@@ -679,3 +679,29 @@ The favorable EXP-083A oracle remains evidence of page existence only. Any
 future architecture proposal must introduce a different causal information
 source that changes how unread contributions are known, and must pass a new E0
 resource equation before an E1 or E2 component boundary is opened.
+
+## Post-Atlas decision-direction architecture boundary
+
+No decision-dual component is admitted. The exact candidate interface would
+have to preserve this boundary:
+
+```text
+checkpoint-derived paid primal state  -> WQ
+checkpoint-derived paid dual state    -> W^T P
+current causal activation/direction   -> a, b, u, r
+exact signed result                   -> two cached-span terms + r^T W u
+missing/corrupt/uncertified cross term -> unchanged dense fallback or abort
+```
+
+The final line is not an implementation detail. A dynamic exact constructor
+for a fresh dual direction is dense-equivalent under the audited route, while
+the static vocabulary composite exceeds both state and scan budgets. The
+runtime therefore contains no `DecisionDirectionalSource`,
+`CausalDecisionDualCode`, exact-MIPS index, backward proof compiler, or hybrid
+Atlas/dual scheduler.
+
+A future architecture proposal may cross this boundary only by naming the
+lossless checkpoint-derived representation that supplies `r^T W u`, defining
+its causal build/query/fallback interfaces, and passing complete E0 accounting.
+Approximate scoring may be auxiliary only if an independent sound exact path
+is charged and fail-closed.

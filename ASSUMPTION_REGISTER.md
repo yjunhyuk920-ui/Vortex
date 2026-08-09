@@ -627,3 +627,28 @@ This closure is scoped to the common-spectral, one-page, global-L2-ball Atlas
 mechanism. A genuinely new directional/correlated causal information source
 is not universally ruled out, but it requires a new assumption and fully
 charged E0 Gate rather than a parameter or bound sweep.
+
+## A-064 -- Paid primal/dual images cheaply determine causal decision queries
+
+Assumption: a Causal Decision-Dual Code can use checkpoint-derived `WQ` and
+`W^T P` images to determine prompt-dependent signed decision functionals below
+the registered target, without an equivalent dense constructor, an enumerated
+direction table, or hidden fallback.
+
+Status: REJECTED AT E0 FOR BOTH CURRENTLY CONSTRUCTIBLE VARIANTS. The exact
+decomposition retains `r^T W u` outside both paid spans, and two operators can
+share all cached images while differing on that term. A dynamic exact dual
+direction costs `1.5625%` at 64 tokens before all other work. A favorable
+two-byte final-slice vocabulary table is `12.720703125 GiB` and its full scan
+costs `6.765979992%` of registered Q4 bytes.
+
+### A-064 closure
+
+The closure applies to forward-pair-only state, raw-checkpoint dynamic dual
+construction at the registered service life, and static full-vocabulary dual
+scans. It does not establish a universal lower bound for every preprocessed
+exact bilinear data structure. The remaining unsupported assumption is that a
+finite checkpoint-derived source can answer the Bilinear Cross Residual
+`r^T W u` losslessly and sub-densely for arbitrary prompt-dependent residual
+pairs. That assumption may not advance to E1 until a complete E0 equation and
+an actual construction exist.

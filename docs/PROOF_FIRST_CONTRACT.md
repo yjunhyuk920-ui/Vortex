@@ -485,3 +485,32 @@ granted. The obvious post-hoc minimum-radius selector fails two tokens. Legal
 pair construction, outward bounds, simultaneous replacement, physical
 performance/VRAM, 122B/405B, and E2-E7 remain unverified. Only the next legal
 causal-pair and bound Gate is promoted.
+
+<!-- EXP-083B-AUTHORITATIVE-FINAL -->
+## Current classification after EXP-083B
+
+The first untouched legal-pair row produced one sound fallback and rejected
+the required zero-fallback Gate. All 19 controls and the independent
+zero-forward verifier passed. The legal common-spectral Atlas path therefore
+does not advance to backward composition or E2; the favorable EXP-083A page-
+existence result remains only a necessary-condition oracle result.
+
+No rank/page/layer/selector/bound sweep may reinterpret this rejection. No
+physical runtime, GPU, 8 GiB peak, target server, 122B/405B, or E2-E7 evidence
+was produced.
+
+<!-- E0-POST-ATLAS-CAUSAL-SOURCE-AUDIT -->
+## Current classification after the post-Atlas source audit
+
+Decision-direction queries expose a precise remaining Bilinear Cross Residual
+`r^T W u`. Exact cached primal/dual images alone cannot determine it: an
+operator perturbation can preserve both caches and change that term. The two
+available exact constructors fail E0 before model execution: dynamic dual
+construction costs `1.5625%` at 64 tokens versus the complete `1.185185185%`
+allowance, while a favorable one-last-down static vocabulary table costs
+`12.720703125 GiB` and `6.765979992%` scan traffic.
+
+This is a scoped rejection of those constructors, not a universal bilinear
+data-structure lower bound. The project remains `NO_SURVIVING_CANDIDATE` until
+a concrete lossless sub-dense cross-residual source closes its full equation.
+No experiment number or hardware stage is authorized.

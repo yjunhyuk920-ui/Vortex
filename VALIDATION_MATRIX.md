@@ -592,3 +592,24 @@ Authoritative decision:
 existence result remains true for EXP-083A, but its legal executable
 generalization does not survive. Current classification is
 `NO_SURVIVING_CANDIDATE`.
+
+## E0 post-Atlas causal information-source audit
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Primal/dual bilinear decomposition is exact | six deterministic reference/fault controls | PASS E0 |
+| Cached `WQ` and `W^T P` determine every query | `Delta W=lambda r u^T` preserves both images but changes `r^T W u` | REJECTED |
+| Forward-pair continuation is materially post-Atlas | no dual information; same omitted contribution | REJECTED AS ATLAS NORMAL FORM |
+| One fresh full-model dual build fits at 64 service tokens | 1.5625% vs 1.185185185% final target, all other cost free | FAIL RESOURCE |
+| Dynamic one-direction minimum lifetime | 85 tokens free-common; 109 with verifier; 999 atop Atlas | DERIVED |
+| Static one-last-down vocabulary composite fits 8 GiB | favorable 12.720703125 GiB | FAIL STATE |
+| Static one-last-down full scan fits target traffic | 6.765979992%; 5.708795618x target | FAIL TRAFFIC |
+| Few exact directions plus row-norm screen resolves EXP-083B row | 248,319/248,319 competitors unresolved under actual and frozen radii | FAIL POST-HOC DIAGNOSTIC |
+| Focused/full repository regression | 6 / 459 tests | PASS |
+| Standard repository validation | `scripts/run_validation.py` completed successfully | PASS |
+| All exact bilinear/MIPS structures are impossible | not established | OPEN / NO UNIVERSAL CLAIM |
+| New model forward, experiment, hardware, or server action | none | NOT RUN / NOT AUTHORIZED |
+
+Current classification: the two constructible Decision-Directional Source
+variants are rejected at E0. The Bilinear Cross Residual interface remains a
+research question without a construction, not a Surviving Candidate.

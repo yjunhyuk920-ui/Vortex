@@ -922,3 +922,31 @@ KEEP_HARDWARE_SCALE_AND_E2_E7_CLOSED
 Authority: `results/exp_083b`,
 `docs/research/EXPERIMENT_083B_LEGAL_PAIR_OUTWARD_LAST_DOWN_GATE.md`, and
 `docs/research/EXP083B_POSTHOC_NECESSARY_CONDITION_AUDIT.md`.
+
+## D-083 -- Reject the two constructible post-Atlas dual sources at E0
+
+The post-Atlas search changed the proof target from full intermediate vectors
+to signed decision functionals. Exact primal and dual images determine two
+terms, but a bilinear cross residual `r^T W u` remains. The perturbation
+`Delta W=lambda r u^T` proves that the two image sets alone cannot determine
+that residual for arbitrary operators.
+
+The raw-checkpoint dynamic constructor fails the registered 64-token equation:
+one fresh full-model dual direction costs `1.5625%`, above the complete
+`1.185185185%` allowance with every other term free. The static final-slice
+constructor needs a favorable `12.720703125 GiB` table per last down and a
+`6.765979992%` full scan. The EXP-083B post-hoc direction screen resolves zero
+of `248,319` competitors under both the actual and frozen radii.
+
+Decision:
+
+```text
+REJECT_FORWARD_TRACE_ONLY_POST_ATLAS_SOURCE_AS_ATLAS_NORMAL_FORM
+REJECT_DYNAMIC_CAUSAL_DECISION_DUAL_CODE_UNDER_REGISTERED_64_TOKEN_CONSTRUCTOR
+REJECT_STATIC_FULL_VOCABULARY_DUAL_SCAN_AS_CORE
+DO_NOT_ASSIGN_AN_EXPERIMENT_NUMBER_OR_PROMOTE_HARDWARE
+KEEP_ONLY_A_CONCRETE_LOSSLESS_SUBDENSE_CROSS_RESIDUAL_SOURCE_OPEN
+```
+
+This is a scoped E0 closure, not a universal online bilinear-query lower bound.
+Authority: `docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`.

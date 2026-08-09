@@ -32,12 +32,11 @@ Mission.
 - [Run the Causal Residual Atlas First-Decode Gate](issues/06-run-causal-residual-atlas-first-decode-gate.md): EXP-083A passed and reproduced 18/18 tokens, 36/36 branches, and mean/p95 KL 0.007226/0.037661 under the favorable oracle; page existence survives, but legal pair construction, target-free selection, and outward certification remain the next blocker.
 - [Preregister the Legal Causal-Pair and Outward-Bound Gate](issues/07-preregister-legal-causal-pair-bound-gate.md): a new 24-prompt last-down Gate freezes pair-only causal MGS, maximum-residual-energy selection, verified spectral unread bounds, and strict final BF16 greedy certification; the charged component window remains below 1.185%, but demands 24/24 zero-fallback execution.
 - [Run the Legal Pair and Outward-Bound Last-Down Gate](issues/08-run-legal-pair-outward-last-down-gate.md): EXP-083B rejected on the first untouched row with one valid fallback and zero control failures; unread/pair radii made the global hidden-ball certificate impossible even under a post-hoc zero-rounding necessary condition, so backward expansion and E2 are closed for this mechanism.
+- [Find a Post-Atlas Causal Information Source](issues/09-find-post-atlas-causal-information-source.md): exact decision-directional caching leaves a bilinear cross residual; dynamic dual construction and static full-vocabulary scanning both fail E0, so no source survives and only a different lossless sub-dense cross-residual mechanism remains open.
 
 ## Not yet specified
 
-- Find a materially new post-Atlas causal information source whose paid,
-  lossless information changes the unread-contribution premise; derive its
-  fully charged E0 equation before any experiment number.
+- [Break the Bilinear Cross-Residual Barrier](issues/10-break-bilinear-cross-residual-barrier.md): find a concrete checkpoint-derived exact query structure or scoped lower bound for prompt-dependent `r^T W u`, with complete finite 405B accounting before any experiment number.
 - If a future source survives E0/E1, specify the exact E2 integration boundary,
   output contract, and held-out population from that mechanism.
 - If E2 survives, determine the next model-size and representative-hardware
