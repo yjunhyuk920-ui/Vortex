@@ -1,7 +1,7 @@
 # Run the Causal Residual Atlas First-Decode Gate
 
 Type: task
-Status: open
+Status: claimed
 Blocked by: Preregister the Cheapest Surviving Gate
 
 ## Question
