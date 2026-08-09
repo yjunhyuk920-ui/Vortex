@@ -1,7 +1,7 @@
 # Preregister the Legal Causal-Pair and Outward-Bound Gate
 
 Type: task
-Status: open
+Status: claimed
 Blocked by: Run the Causal Residual Atlas First-Decode Gate
 
 ## Question
