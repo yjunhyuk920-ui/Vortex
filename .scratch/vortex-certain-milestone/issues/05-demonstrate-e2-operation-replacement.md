@@ -2,7 +2,7 @@
 
 Type: task
 Status: open
-Blocked by: Find a Post-Atlas Causal Information Source
+Blocked by: Bound Query-Adaptive Exact Code Unions
 
 ## Question
 

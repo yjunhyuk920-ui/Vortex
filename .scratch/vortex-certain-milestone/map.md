@@ -40,10 +40,6 @@ Mission.
 
 ## Not yet specified
 
-- Specify a materially different nonlinear, implicit, or non-factor-scanned
-  exact Bilinear Cross Residual query representation and close its complete E0
-  equation before another model run. Do not rescue EXP-084A with a ledger or
-  population parameter sweep.
 - If a future source survives E0/E1, specify the exact E2 integration boundary,
   output contract, and held-out population from that mechanism.
 - If E2 survives, determine the next model-size and representative-hardware
