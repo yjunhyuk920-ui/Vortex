@@ -613,3 +613,34 @@ different tolerance. Equality is tested on exact BF16 words and the free
 oracle already leaves `99.9023%` dense-row repair at the earliest point. This
 does not reject a materially different predictor or a globally coded repair
 source. Authority: `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md`.
+
+## F-067 -- OMEGA-SPIKECUT direct masked-factor evaluation
+
+Do not reopen sums of permutation blocks, block-diagonal rank-one pieces, or
+spiky matrices as a direct exact scalar evaluator.  Let `L` count every
+active row/column factor coordinate over all masked components. A finite
+description count includes arbitrary sparse supports, block partitions,
+global budget allocation, cross-matrix components, and ignored invalid cross
+cells, then applies Warren's theorem to the degree-two coefficient
+polynomials. The complete favorable `L=4,800,000,000` model-wide allowance
+has representable log2 count at most `184,958,474,578.07`, short of the
+registered sign-checkpoint space by `218,789,422,765.93` bits.
+
+This closes only the direct static evaluator.  It does not cover a further
+globally nonlinear adaptive data structure over the factors, and it is not a
+general cell-probe lower bound.  Authority:
+`docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md`.
+
+## F-068 -- OMEGA-POWERFOLD entrywise-power relabeling
+
+Do not treat an exact integer entrywise power of a low-rank root as a new
+runtime information source.  The multinomial theorem expands it into
+`binom(r+p-1,p)` ordinary rank-one terms.  Direct exact queries are therefore
+the static low-rank family already closed under its committed scope; at the
+registered square size only 96 expanded terms fit even before positive costs.
+
+The 2026 EPMF result concerns factorization complexity and nonnegative
+magnitudes.  It neither supplies arbitrary signed Transformer weights nor
+native accumulation order.  This entry does not reject every entrywise
+nonlinear representation.  Authority:
+`docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md`.

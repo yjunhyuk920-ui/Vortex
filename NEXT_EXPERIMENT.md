@@ -1485,3 +1485,28 @@ of exact finite-word rank-one answers. Its first screen remains only the final
 contract-derived allowance, not `2.5%`; reject it immediately if it merely
 wraps Atlas, a decision dual, local repetition, or a full sweep in a new
 certificate vocabulary.
+
+## Spiky and entrywise-power direct evaluators closed -- no EXP-085
+
+Do not implement a sum-of-spiky-matrices runtime.  The direct evaluator's
+resource is total active row/column factor incidence `L`, not merely the
+number of named components. A finite sign-pattern count grants the complete
+model-wide `L=4,800,000,000` allowance, arbitrary cross-matrix components,
+and ignored invalid cross cells, yet describes at most
+`2^184,958,474,578.07` of the `2^403,747,897,344` registered sign
+checkpoints. A hidden sparse-support implementation and global budget
+reallocation are already included in this count.
+
+Do not reopen entrywise integer powers of a low-rank root as a distinct
+execution class.  Their exact multinomial expansion is an ordinary static
+rank-`binom(r+p-1,p)` evaluator; at most 96 terms fit the complete favorable
+square-matrix allowance.
+
+The next admissible candidate must be outside direct static masked-factor
+decompositions and must supply either (1) a globally adaptive numerical query
+algorithm with fully charged finite-word/native-order equations, or (2) a
+covering lower bound that grants the global 8 GiB nonlinear advice and every
+adaptive cross-matrix probe.  The active ticket remains claimed.  No model,
+EXP-085, backend, kernel, download, private Ubuntu action, or hardware stage is
+authorized.  Authority:
+`docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md`.

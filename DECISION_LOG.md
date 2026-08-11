@@ -1359,3 +1359,33 @@ KEEP_NO_SURVIVING_CANDIDATE
 
 Authority: `docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`
 and `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md`.
+
+## D-098 -- Reject direct spiky and entrywise-power rank-one evaluators
+
+`OMEGA-SPIKECUT` is a genuine broader exact representation than ordinary low
+rank: one masked rank-one component may contain many disjoint rectangles.
+Its direct query cost is nevertheless bounded below by the factor coordinates
+that interact with the arbitrary query.  A finite mask-count plus Warren
+sign-pattern bound shows that, at the registered square size and complete
+work allowance, the representation family misses an overwhelming fraction
+of bounded-word sign checkpoints. The model-wide count grants cross-matrix
+components and has a log2 deficit of `218,789,422,765.93` bits.
+
+`OMEGA-POWERFOLD` does not survive the novelty Gate.  If a rank-`r` root is
+raised entrywise to integer power `p`, exact multinomial expansion produces
+`binom(r+p-1,p)` ordinary separable terms.  The execution source is static
+low rank after expansion; the cited EPMF magnitude model also omits the
+arbitrary signed native-weight equation.
+
+Decision:
+
+```text
+REJECT_OMEGA_SPIKECUT_DIRECT_EVALUATOR_BY_MODEL_WIDE_DESCRIPTION_GATE
+REJECT_OMEGA_POWERFOLD_AS_RELABELED_STATIC_LOW_RANK_EXECUTION
+DO_NOT_CLAIM_ALL_SPIKY_OR_ENTRYWISE_NONLINEAR_ALGORITHMS IMPOSSIBLE
+KEEP_GENERAL_NONLINEAR_ADAPTIVE_RANK_ONE_PROBE_GAP OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority: `docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md` and
+`results/e0_spiky_power_rank_one_frontier`.

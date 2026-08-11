@@ -526,3 +526,22 @@ with complete native-order 405B/32-token accounting. Keep
 NO_SURVIVING_CANDIDATE and do not assign EXP-085, run a model, build a
 backend/kernel, download a checkpoint, or touch hardware until one required
 ticket deliverable exists.
+
+## Current directive after the spiky / entrywise-power audit
+
+Do not implement or search parameters for sums of spiky, permutation-block,
+or block-diagonal rank-one components as a direct evaluator.  The finite
+description Gate already includes sparse supports and arbitrary block masks;
+even a globally pooled compute allowance with cross-matrix components misses
+the registered sign-checkpoint space by `218,789,422,765.93` log2 bits. Do not
+reopen entrywise integer powers of
+low-rank roots: exact multinomial expansion is the closed static low-rank
+normal form.
+
+Continue only with a materially different query algorithm: either a globally
+adaptive bounded-word exact numerical data structure with complete
+native-order 405B/32-token accounting, or a covering lower bound that grants
+one global 8 GiB nonlinear advice function and jointly charges every adaptive
+cross-matrix probe.  Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085,
+run a model, build a backend/kernel, download a checkpoint, or touch hardware
+until one active-ticket deliverable exists.

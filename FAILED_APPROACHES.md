@@ -357,4 +357,10 @@ F-064 retains a valid Fourier-fiber direct sum for all linear queries but
 closes its promotion to rank-one by query cardinality alone. The restricted
 rank-one character matrix lacks the full spanning premise; its structure or a
 new constructor remains open.
+F-067 closes the direct sum-of-spiky-matrices evaluator by a finite
+resource-sensitive sign-pattern count that includes sparse factor supports.
+It does not close a further nonlinear adaptive index over those factors.
+F-068 closes integer entrywise powers of low-rank roots as a distinct runtime
+source because exact multinomial expansion is the existing static low-rank
+normal form. It does not close every entrywise nonlinear representation.
 Read that continuation and each scope boundary before reopening a family.

@@ -949,3 +949,32 @@ A future proof interface must lower-bound the restricted character matrix on
 large advice fibers. A future execution interface must instead provide a
 concrete bounded-word scalar representation and exact decoder. Neither
 currently exists.
+
+## Rejected direct factor interfaces: SpikyCut and PowerFold
+
+No `SpikyFactorIndex` is admitted.  The screened direct interface would store
+components
+
+```text
+S_h = B_h .* (a_h b_h^T)
+```
+
+and answer a scalar by two factor dot products per disjoint block.  Its true
+logical resource is the total active factor incidence
+
+```text
+L = sum_h (|support(a_h)| + |support(b_h)|).
+```
+
+The finite E0 description Gate includes arbitrary masks, sparse supports,
+real factors, global allocation, and cross-matrix components and still
+exhibits sign checkpoints outside the complete model-wide
+`L=4,800,000,000` allowance. Consequently no factor loader, partition
+decoder, block reducer, native-order repair, cache, scheduler, or kernel is
+specified.
+
+No `PowerFoldIndex` is admitted either.  For integer `p`, an entrywise power
+of a rank-`r` root expands to `binom(r+p-1,p)` static separable terms and is
+therefore the existing low-rank execution interface.  A future architecture
+must change the query algorithm itself rather than provide another static
+masked-factor description.

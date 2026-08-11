@@ -202,3 +202,21 @@ instead of exactizing the full hidden/KV state.
 _Avoid_: a new information source, free backpropagation, general rejection
 _Current status_: candidate-winner Gate passes on the frozen row, but the
 exact correction is the already audited decision-dual `r^T W u`; duplicate.
+
+**OMEGA-SPIKECUT**:
+A direct exact rank-one-query representation that expresses a checkpoint
+matrix as masked rank-one components, each containing disjoint rectangular
+blocks, and evaluates their active factors against both query sides.
+_Avoid_: General nonlinear probe structure, ordinary low rank, free sparse
+support
+_Current status_: Rejected as a universal direct evaluator by the finite
+factor-incidence description Gate; a separate nonlinear adaptive index over
+the factors is outside that result.
+
+**OMEGA-POWERFOLD**:
+An exact representation that raises a low-rank root to an integer entrywise
+power before answering a checkpoint rank-one query.
+_Avoid_: New execution source, approximate entrywise factorization, native
+rounding proof
+_Current status_: Rejected as a distinct source because multinomial expansion
+is the existing static low-rank normal form.

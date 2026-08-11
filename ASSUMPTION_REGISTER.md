@@ -925,3 +925,33 @@ dense-row repair per unlocked coordinate. It does not reject a materially
 different predictor or a globally coded exact repair mechanism. ΩBACKCUT was
 also screened but reduces to the already registered decision-dual
 `r^T W u` source, so it is a duplicate rather than a new assumption.
+
+## A-077 -- Direct spiky incidence fits every bounded-word checkpoint
+
+Assumption: every registered `N x N` checkpoint matrix has a sum-of-spiky
+representation whose total active row/column factor incidence fits the
+complete favorable work allowance, so arbitrary `r^T W u` queries can be
+answered by direct factor dot products.
+
+Status: CONTRADICTED FOR THE UNIVERSAL CLAIM. The model-wide allowance is
+`L=4,800,000,000`. A finite block-mask count and Warren sign-pattern bound
+permits at most `2^184,958,474,578.07` representations, versus
+`2^403,747,897,344` bounded-word sign checkpoints. The proof grants optimal
+masks, sparse supports, arbitrary cross-matrix components, ignored invalid
+cross cells, real factors, associative arithmetic, and all other costs free.
+
+### A-077 closure
+
+This closes the direct masked-factor evaluator only.  A different globally
+adaptive nonlinear index over the factors is outside the proof.
+
+## A-078 -- Entrywise-power roots create a distinct exact execution source
+
+Assumption: a low-rank root followed by an integer entrywise power can answer
+the scalar without reducing to the rejected low-rank runtime family.
+
+Status: CONTRADICTED ALGEBRAICALLY.  The exact multinomial expansion contains
+`binom(r+p-1,p)` separable terms.  At `N=16,384` the complete favorable cap is
+96 expanded terms; the execution normal form is static low rank.  The EPMF
+magnitude factorization result also does not supply the arbitrary sign matrix
+or native accumulation order.

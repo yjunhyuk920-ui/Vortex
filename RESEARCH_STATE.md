@@ -1,6 +1,6 @@
 # VORTEX Research State
 
-Last updated: 2026-08-09 Asia/Seoul
+Last updated: 2026-08-11 Asia/Seoul
 
 ## Fixed final objective
 
@@ -1570,3 +1570,42 @@ OMEGA_BACKCUT: REJECTED AS DUPLICATE INFORMATION SOURCE
 NO SURVIVING CANDIDATE
 TARGET NOT ACHIEVED
 ```
+
+## Direct constructor cycle: OMEGA-SPIKECUT and OMEGA-POWERFOLD
+
+`OMEGA-SPIKECUT` applies the 2026 spiky-rank representation directly to the
+open scalar query.  A component can contain many disjoint rank-one rectangles,
+so the class is broader than ordinary low rank.  For total active factor
+incidence `L`, however, a finite Warren-counting extension bounds the number
+of representable `N x N` sign matrices by
+
+```text
+2 (32 e^2 N^3/L)^L.
+```
+
+The authoritative model-wide count grants `4,800,000,000` factor incidences
+across all `403,747,897,344` registered coefficients, permits components to
+couple blocks across all 883 matrices, and ignores invalid cross-matrix cells.
+Its representable logarithm is at most `184,958,474,578.07` bits versus
+`403,747,897,344` possible sign bits. The deficit is
+`218,789,422,765.93` bits. Thus a bounded-word hard checkpoint exists even
+after granting optimal decomposition, arbitrary real factors, associative
+arithmetic, and every non-factor cost for free. This rejects the direct spiky
+evaluator, not an arbitrary nonlinear data structure over its factors.
+
+`OMEGA-POWERFOLD` asks whether an entrywise integer power of a low-rank root
+creates a new exact source.  The multinomial expansion has
+`binom(r+p-1,p)` separable terms, so its query evaluator is exactly the
+already rejected static low-rank normal form.  The complete allowance permits
+only 96 expanded terms at `N=16,384`.
+
+```text
+OMEGA-SPIKECUT DIRECT EVALUATOR: REJECTED BY FINITE DESCRIPTION GATE
+OMEGA-POWERFOLD: REJECTED AS STATIC LOW-RANK EXPANSION
+GENERAL NONLINEAR ADAPTIVE PROBE GAP: OPEN
+NO SURVIVING CANDIDATE
+TARGET NOT ACHIEVED
+```
+
+Authority: `docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md` and
+`results/e0_spiky_power_rank_one_frontier`.

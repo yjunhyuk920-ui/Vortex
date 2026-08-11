@@ -674,3 +674,17 @@ download, CUDA action, GPU allocation, EXP-073 Stage 2, 122B/405B run, or
 Phase D/E4-E7 work is authorized. Hardware may reopen only after the active
 ticket produces a target-scale restricted-rank theorem or a complete
 constructor and survives the later E1/E2 Gates.
+
+## Spiky / entrywise-power audit: no hardware Gate is authorized
+
+The SpikyCut result is a finite description-count rejection with factor
+interactions, block reductions, metadata, storage, traffic, addressing,
+native arithmetic, and verification granted free.  PowerFold is rejected
+before implementation because its exact expansion is a static low-rank
+normal form.  Neither result supplies an executable artifact or a physical
+performance prediction.
+
+No target-server command, storage mutation, download, CUDA action, GPU
+allocation, EXP-073 Stage 2, 122B/405B run, or Phase D/E4-E7 action is
+authorized.  Hardware remains downstream of a genuinely new globally
+adaptive exact constructor that first survives its complete E0 and E1 Gates.

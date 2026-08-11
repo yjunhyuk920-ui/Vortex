@@ -642,3 +642,24 @@ This is genuine progress on global-advice accounting but not a ticket
 resolution. Universal 2.5% remains NOT ESTABLISHED, no Core Candidate
 survives, and no E1/E2, model, backend, hardware, or scale promotion is
 authorized.
+
+## Current classification after the spiky / entrywise-power audit
+
+The direct sum-of-spiky-matrices evaluator receives a finite
+resource-sensitive bound. With `L` active factor incidences, arbitrary masks
+and real factors describe at most `2 (32 e^2 G P/L)^L` sign checkpoints over
+`P` registered coefficients in a global coordinate universe `G`. Granting
+cross-matrix components, ignoring invalid cross-matrix cells, and spending
+the complete 9.6-GFLOP allowance gives a model-wide log2 deficit of
+`218,789,422,765.93` bits. This rejects a universal direct masked-factor
+constructor before every omitted systems and native-order cost.
+
+Entrywise integer powers do not supply a separate exact source: multinomial
+expansion is a static rank-`binom(r+p-1,p)` evaluator, with only 96 favorable
+terms permitted at `N=16,384`.  The cited EPMF magnitude model does not solve
+arbitrary signed native weights.
+
+These are scoped static-representation closures, not a lower bound for
+arbitrary nonlinear advice and adaptive probes.  The general finite-word
+rank-one ticket remains open, no Core Candidate survives, and no E1/E2,
+model, backend, hardware, or scale promotion is authorized.

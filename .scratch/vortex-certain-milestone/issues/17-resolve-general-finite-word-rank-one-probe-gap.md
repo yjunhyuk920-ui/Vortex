@@ -152,3 +152,23 @@ the already audited decision-dual Bilinear Cross Residual `r^T W u`; it is a
 duplicate information source, not a new constructor. Neither result supplies
 the required globally coupled rank-one answer source or covering lower bound,
 so the ticket remains claimed.
+
+The second direct constructor cycle is recorded in
+`docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md`. `OMEGA-SPIKECUT` uses the
+2026 spiky-rank representation to answer the scalar through masked factor dot
+products. A new finite resource-sensitive count includes arbitrary block
+masks, sparse factor supports, and real factors. The authoritative model-wide
+Gate pools the complete 9.6-GFLOP allowance across all 883 matrices, grants
+components that couple matrices, and ignores invalid cross-matrix cells. Its
+`L=4,800,000,000` incidence allowance describes at most
+`184,958,474,578.07` log2 checkpoint choices versus `403,747,897,344` bits in
+the registered sign-checkpoint family, leaving a
+`218,789,422,765.93`-bit hard-instance exponent. This rejects the direct
+evaluator but not an additional nonlinear adaptive index over its factors.
+
+`OMEGA-POWERFOLD` was killed at the novelty Gate: an integer entrywise power
+of a rank-`r` root expands into `binom(r+p-1,p)` ordinary separable terms, so
+its exact query execution is the previously closed static low-rank normal
+form. These closures still do not cover arbitrary nonlinear 8 GiB advice and
+adaptive raw probes, and they do not supply a surviving constructor. The
+ticket therefore remains claimed.

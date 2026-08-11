@@ -1562,3 +1562,58 @@ Canonical summary SHA-256:
 
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
+
+## E0 spiky / entrywise-power rank-one frontier audit
+
+Authoritative commands:
+
+```powershell
+$env:PYTHONPATH = (Resolve-Path '.').Path
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_spiky_power_rank_one_frontier.py `
+  --output-dir results\e0_spiky_power_rank_one_frontier
+
+.deps\exp076-venv\Scripts\python.exe -m unittest `
+  tests.test_spiky_power_rank_one_frontier -v
+```
+
+Expected authoritative invariants:
+
+```text
+decision                           REJECT_SPIKY_AND_POWER_FOLDS_KEEP_GENERAL_PROBE_GAP_OPEN
+non-embedding coefficients         403,747,897,344
+matrix instances                   883
+global row / column coordinates    19,997,952 / 19,111,936
+allowed factor incidences          4,800,000,000
+representable log2 upper           184,958,474,578.0694
+all sign checkpoints log2          403,747,897,344
+hard-checkpoint exponent bits      218,789,422,765.9306
+cross-matrix components            granted
+invalid cross-matrix cells         ignored
+paper dense-factor diagnostic      1.1904761905%
+complete allowed work              1.1827051732%
+PowerFold expanded-term cap        96
+model/hardware actions             0 / 0
+```
+
+Observed focused validation was 7/7 tests. The combined current-constructor
+frontier regression passed 14/14, the full repository regression passed
+574/574, and the standard validation runner completed successfully. An
+independent workspace-internal output directory reproduced the summary
+byte-for-byte and was removed only after its resolved path was checked inside
+the workspace. No package or network mutation was used.
+
+Artifacts:
+
+- `results/e0_spiky_power_rank_one_frontier/summary.json`
+- `results/e0_spiky_power_rank_one_frontier/checksums.sha256`
+- `docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md`
+
+Canonical summary SHA-256:
+
+```text
+89a49e42b99871d2f9f117bb1c3257b4706856ca3c8a452452bd65ef74c6299c
+```
+
+No model forward, checkpoint mutation, experiment number, backend, kernel,
+download, Ubuntu command, or hardware action was used.

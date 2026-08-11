@@ -934,3 +934,33 @@ Current classification remains `NO_SURVIVING_CANDIDATE`.
 Authoritative decision:
 `REJECT_SCREENED_SHORTCUTS_KEEP_SEARCHING_NEW_INFORMATION_SOURCE`.
 Current classification remains `NO_SURVIVING_CANDIDATE`.
+
+## E0 Spiky / entrywise-power rank-one frontier
+
+| Check | Observed | Status |
+|---|---:|---|
+| Old 2.5% premise used | false | PASS |
+| Registered non-embedding coefficients / matrices | 403,747,897,344 / 883 | PASS |
+| Global row / column coordinate universes | 19,997,952 / 19,111,936 | PASS |
+| Complete model-wide factor-incidence grant | 4,800,000,000 | PASS |
+| Model-wide representable log2 upper | 184,958,474,578.0694 | PASS |
+| All sign checkpoints log2 | 403,747,897,344 | PASS |
+| Hard-checkpoint exponent bits | 218,789,422,765.9306 | REJECT DIRECT EVALUATOR |
+| Cross-matrix components / invalid cells | granted / ignored | FAVORABLE OVERCOUNT |
+| Single-square hard-instance exponent | 178,629,392.76025754 | DIAGNOSTIC |
+| Paper dense-factor diagnostic | 1.1904761905% / 1.1827051732% | REJECT |
+| PowerFold expanded-term cap | 96 | PASS |
+| `p=2/3/4/5` maximum root ranks | 13 / 7 / 5 / 4 | REJECT AS LOW-RANK NORMAL FORM |
+| Exact small spiky query equation | reference match | PASS |
+| Focused deterministic tests | 7/7 | PASS |
+| Related constructor-frontier tests | 14/14 | PASS |
+| Full repository regression | 574/574 | PASS |
+| Standard validation runner | completed | PASS |
+| Independent output-directory reproduction | identical summary SHA-256 | PASS |
+| Canonical summary SHA-256 | `89a49e42...4c6299c` | PASS |
+| Model forwards / hardware actions | 0 / 0 | NOT RUN |
+| General nonlinear probe gap | unresolved | OPEN / NO CLAIM |
+
+Authoritative decision:
+`REJECT_SPIKY_AND_POWER_FOLDS_KEEP_GENERAL_PROBE_GAP_OPEN`.
+Full execution provenance is recorded in `REPRODUCIBILITY.md`.

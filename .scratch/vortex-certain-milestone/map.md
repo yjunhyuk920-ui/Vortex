@@ -41,6 +41,10 @@ Mission.
 - [Derive an Implicit Nonlinear Bilinear Query Source](issues/15-derive-implicit-nonlinear-bilinear-source.md): exact-field branching collapses to one static rational path and Baur--Strassen maps it to static MatVec with constant-factor arithmetic overhead; twin-width and grammar routes reduce to F-049/F-050, so only an explicitly finite-word discontinuous source remains open.
 - [Derive a Finite-Word Discontinuous Bilinear Source](issues/16-derive-finite-word-discontinuous-source.md): a genuine bounded-word GF(2) block truth table fits query-only traffic only by requiring exponential storage, build, and address width; Mailman, broadword full scans, Boolean nonemptiness probes, and free native-state claims also fail, while the general globally nonlocal nonlinear rank-one probe model remains open in ticket 17.
 
+## Current claimed frontier
+
+- [Resolve the General Finite-Word Rank-One Probe Gap](issues/17-resolve-general-finite-word-rank-one-probe-gap.md) remains claimed. The latest constructor-first cycle rejects direct spiky masked-factor evaluation by a model-wide `218,789,422,765.93`-bit description deficit even after granting cross-matrix components and the full compute allowance, and rejects entrywise-power roots as a static low-rank expansion. Neither closure supplies the required general adaptive lower bound or a surviving globally nonlinear constructor.
+
 ## Not yet specified
 
 - If a future source survives E0/E1, specify the exact E2 integration boundary,
