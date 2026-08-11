@@ -706,3 +706,16 @@ small shared physical atom set for a causal batch. Otherwise change to an
 adaptive finite-word mechanism genuinely outside the lemma. In either case,
 apply its cheapest algebraic/storage Gate before any model or hardware work.
 Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085.
+
+## Current directive after the sparse-cover Fourier Gate
+
+Do not revisit `23 x 23` or any of the first nine subset-slack-ordered block
+shapes; their covers are algebraically impossible under the registered cells
+and radius. Do not use random high-girth atoms for the next case: every
+`13 x 89` survivor needs a kernel word of weight at most 39.
+
+Continue the linear route only by exploiting structured short kernel defects
+to construct and decode the `13 x 89` rank-one syndromes, or derive the next
+finite obstruction. Otherwise move to an adaptive arbitrary-word mechanism
+outside both the ANF and fixed-linear-cover theorems. Apply the cheapest E0
+condition first and keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085.

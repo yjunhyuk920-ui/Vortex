@@ -314,3 +314,11 @@ _Current status_: Open but unconstructed. A favorable 23-by-23 counting case
 has enough subset names at weight six, while random atoms have exponentially
 negligible alignment; no atoms, decoder, joint batch layout, or native lift
 exist.
+
+**Near-Capacity Segre Sparse Cover**:
+A fixed linear atom dictionary whose target-radius Hamming ball has only a
+small counting surplus over all rectangular rank-one masks.
+_Avoid_: Treating subset names as represented queries, random-code existence
+_Current status_: The first nine exact subset-slack cases are rejected by a
+Krawtchouk/Fourier second-moment contradiction. The first unclosed `13 x 89`
+case is unconstructed and must contain kernel relations of weight at most 39.

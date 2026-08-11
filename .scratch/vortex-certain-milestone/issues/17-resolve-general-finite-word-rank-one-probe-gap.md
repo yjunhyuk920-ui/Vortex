@@ -352,3 +352,23 @@ Segre-aligned atom family, succinct decomposer, joint 32-query physical union,
 and native lift remain absent. Adaptive addresses and arbitrary finite-word
 decoders are outside the lemma, so neither required ticket deliverable exists
 and the issue remains claimed.
+
+The fifteenth post-audit screen is recorded in
+`docs/research/E0_SEGRE_SPARSE_COVER_FOURIER_GATE.md`. Raw subset capacity is
+not sufficient even for arbitrary non-systematic atoms. If a Hamming ball of
+atom selections covers the rectangular binary Segre set, its Krawtchouk
+transform must approximate the exact rank-dependent Fourier transform of that
+set. For the registered `23 x 23`, `S=619`, `t=6` case, every rank-one dual
+codeword would have weight in `[30,46]` or `[574,590]`, forcing squared
+character bias at least `527^2`. Spanning all 529 dimensions limits equal atom
+pairs and puts the exact second-moment upper at
+`195,984.95537375606... < 277,729`, a contradiction.
+
+The same Gate rejects the first nine capacity-feasible shapes in exact
+`|Ball|/|Segre|` order through `14 x 64`. A deterministic `1..128` side scan
+leaves `13 x 89`, `S=1,353`, `t=13` as the tenth and first unclosed case; this
+is not a construction. A separate section-defect lemma forces any such cover
+to have kernel minimum distance at most 39, so random high-girth dictionaries
+cannot fill the gap. Higher-slack linear codes, adaptive addresses, arbitrary
+word decoders, joint batches, and native arithmetic remain open. Neither
+required ticket deliverable is complete, and this issue remains claimed.

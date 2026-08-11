@@ -844,3 +844,16 @@ Segre-aligned sparse code. Random atoms are exponentially unaligned, and no
 explicit code, decomposer, physical batch union, or native lift has been
 delivered. `NO_SURVIVING_CANDIDATE` remains in force; do not assign EXP-085 or
 run a model, backend, download, server, or hardware stage.
+
+## Current classification after the sparse-cover Fourier Gate
+
+The low-slack linear-dictionary route is now subject to an exact pointwise
+Fourier and second-moment Gate. It rejects the first nine capacity-ordered
+rectangles in a deterministic side-`1..128` scan. In particular, the former
+`23 x 23`, 619-atom, radius-six witness requires average squared character
+bias 277,729 but has an exact upper below 195,985.
+
+This is not a general adaptive or all-shape lower bound. `13 x 89` is the
+first unclosed slack case and must have kernel distance at most 39, but no code
+or decoder has been delivered. Keep `NO_SURVIVING_CANDIDATE`; do not assign
+EXP-085 or run model, backend, download, server, or hardware work.

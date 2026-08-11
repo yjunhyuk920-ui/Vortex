@@ -481,3 +481,23 @@ rank-one decomposer and one small shared physical set for 32 queries, or move
 to an adaptive arbitrary-word mechanism outside the lemma. Do not repeat
 random dictionaries, capacity counting, or fixed XOR tables. Keep
 `NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.
+
+<!-- E0-SEGRE-SPARSE-COVER-FOURIER-HANDOFF -->
+## Current handoff after the Segre sparse-cover Fourier Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_SEGRE_SPARSE_COVER_FOURIER_GATE.md` and
+`results/e0_segre_sparse_cover_fourier_gate/summary.json`.
+
+The first nine exact subset-slack-ordered rectangular sparse covers in the
+side-`1..128` scan are now rejected by a Fourier second-moment theorem.
+`23 x 23`, `S=619`, `t=6` is closed despite passing raw capacity. `13 x 89`,
+`S=1,353`, `t=13` is the first unclosed scan case and requires a kernel
+relation of weight at most 39.
+
+Next: use mandatory short kernel defects to construct/decode the `13 x 89`
+syndromes or derive its next obstruction. Do not repeat tight blocks, random
+atoms, or subset counting. Keep `NO_SURVIVING_CANDIDATE`; do not start EXP-085
+or model/hardware work.

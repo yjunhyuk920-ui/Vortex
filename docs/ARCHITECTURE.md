@@ -208,3 +208,14 @@ unimplemented research object. The local subset count has room at target-like
 parameters, but no generator, decomposer, native cell semantics, causal batch
 union, physical layout, or runtime equation exists. This module is a pure E0
 calculator and must not enter the operator path.
+
+`vortex_runtime/segre_sparse_cover_fourier_gate.py` is a second pure E0
+boundary. It computes exact rectangular Segre Fourier coefficients,
+Krawtchouk ball sums, spanning duplicate limits, and character second moments.
+It rejects the first nine near-capacity block shapes, including the former
+`23 x 23` open counting witness.
+
+The module does not implement a code. Its first unclosed scan point is
+`13 x 89`; any cover there needs a kernel word of weight at most 39. Until an
+implicit atom layout and sub-dense decomposer satisfy that condition and close
+native/joint-batch costs, no sparse-cover object belongs in the runtime path.

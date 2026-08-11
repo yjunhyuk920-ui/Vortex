@@ -914,3 +914,28 @@ succinct decomposer, shared physical 32-query set, and native bounded-word
 lift. Adaptive data-dependent addresses and arbitrary word decoders remain
 outside F-081. Authority:
 `docs/research/E0_TABULATION_SUPERCODE_FRONTIER.md`.
+
+## F-082 -- Raw sparse-subset capacity called a Segre cover
+
+Do not promote `sum(k<=t,C(S,k)) >= |Segre|` into an atom construction. Any
+actual cover makes the Krawtchouk transform of the complete Hamming ball
+approximate the exact Fourier transform
+
+```text
+Rhat_r = 2^(a+b-r) - 2^a - 2^b + 2.
+```
+
+For `23 x 23`, `S=619`, and `t=6`, this forces every nonzero rank-one dual
+codeword into weights `[30,46]` or `[574,590]`, so its character sum has
+magnitude at least 527. The atoms must span all 529 dimensions; after all 90
+extra copies are concentrated optimally, at most 8,809 ordered pairs are
+equal. Unequal atom differences correlate by strictly less than one half.
+Consequently the squared-character average is at most
+`195,984.95537375606...`, contradicting the required `527^2=277,729`.
+
+This Gate rejects the first nine exact subset-slack-ordered rectangles in a
+`1..128` scan, not every shape. The first unclosed case is `13 x 89` with
+1,353 atoms and radius 13. Any cover there needs a kernel relation of weight
+at most 39; no such aligned layout or decoder is supplied. Adaptive word
+decoders and native numerical lifting remain outside F-082. Authority:
+`docs/research/E0_SEGRE_SPARSE_COVER_FOURIER_GATE.md`.

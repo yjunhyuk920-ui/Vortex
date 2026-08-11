@@ -1093,3 +1093,18 @@ at six of 529 source positions, but this is not a code construction. Random
 atoms miss the required structured masks by exponential margins. No aligned
 atoms, decomposer, native lift, joint causal-batch layout, or complete cost
 equation exists, so a `SegreAlignedSupercode` is not admitted.
+
+#### Sparse-cover Fourier boundary
+
+The tight local supercode parameters are now rejected by an exact Fourier
+Gate, not by random search. Hamming-ball coverage fixes a Krawtchouk character
+sum for every rank-one dual matrix. In the `23 x 23`, 619-atom, radius-six
+case this requires squared bias at least 277,729, while arbitrary spanning
+atoms with all duplicates charged have maximum average
+`195,984.95537375606...`.
+
+The first nine capacity-slack-ordered rectangular cases in the registered
+`1..128` scan fail the same Gate. `13 x 89` is the first unclosed shape and
+requires kernel distance at most 39; it has no atoms or decoder. No
+`NearCapacitySegreCover` is admitted, and a future slack cover must expose its
+structured short kernel relations, physical decomposer, and native lift.

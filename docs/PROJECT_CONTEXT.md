@@ -100,3 +100,16 @@ first has enough subset names at `b=23`, `S=619`, `t=6`, but random atoms miss
 the binary rank-one set exponentially and counting supplies neither atoms nor
 a decoder. Adaptive word-RAM schemes and native numerical queries are outside
 the theorem. No Core Candidate survives.
+
+## Current sparse-cover Fourier boundary
+
+The former `23 x 23` capacity witness is now closed. Exact Hamming-ball
+Fourier constraints force rank-one dual character bias larger than arbitrary
+spanning atoms can have in their pairwise second moment. The contradiction
+allows arbitrary atom matrices and duplicates; it is not a random-code test.
+
+The first nine shapes in exact subset-slack order fail. `13 x 89` is the
+first unclosed rectangle in the deterministic `1..128` scan, but it is only a
+parameter frontier. Any cover must contain kernel relations of weight at most
+39 and still lacks atoms, a decomposer, native semantics, and joint causal
+traffic. No Core Candidate survives.

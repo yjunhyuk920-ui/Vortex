@@ -412,3 +412,26 @@ NO_SURVIVING_CANDIDATE
 ```
 
 Authority: `docs/research/E0_TABULATION_SUPERCODE_FRONTIER.md`.
+
+<!-- E0-SEGRE-SPARSE-COVER-FOURIER-GATE -->
+## 2026-08-12 -- E0 Segre sparse-cover Fourier Gate
+
+Exact Krawtchouk and rank-one Fourier identities reject the former `23 x 23`
+capacity witness: its required squared character bias is 277,729 and its
+spanning-atom second-moment upper is `195,984.95537375606...`. The same
+deterministic Gate rejects the first nine capacity-feasible shapes in exact
+subset-slack order within the side-`1..128` scan.
+
+The tenth case, `13 x 89`, is not closed and not constructed. Any cover there
+must contain a kernel relation of weight at most 39, excluding random
+high-girth promotion.
+
+Decision:
+
+```text
+REJECT_NEAR_CAPACITY_SEGRE_SPARSE_COVERS_BY_FOURIER_SECOND_MOMENT
+KEEP_13x89_SLACK_CASE_OPEN_UNCONSTRUCTED
+NO_SURVIVING_CANDIDATE
+```
+
+Authority: `docs/research/E0_SEGRE_SPARSE_COVER_FOURIER_GATE.md`.
