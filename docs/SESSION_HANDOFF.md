@@ -421,3 +421,23 @@ Next: do not continue literal catalogs, independent leaders, or counting.
 Either construct an implicit near-source-size on-demand factor-envelope
 generator with native physical accounting, or change mechanism class. Keep
 `NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.
+
+<!-- E0-LINEARIZED-POLYNOMIAL-LOCALITY-HANDOFF -->
+## Current handoff after the linearized-polynomial locality Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_LINEARIZED_POLYNOMIAL_LOCALITY_GATE.md` and
+`results/e0_linearized_polynomial_locality_gate/summary.json`.
+
+The extension-field identity is exact but contains the original `n^2` base
+bits. One favorable model-wide bit-plane coefficient sweep shared over 32
+queries costs `49.542144 ms/token` at 32 GB/s. The ordinary degree
+`2^16,383` prevents importing a dense polynomial-evaluation data structure at
+near-source space. A specialized local evaluator would restate arbitrary
+preprocessed MatVec and is not a new mechanism.
+
+Next: change mechanism class and test only a proposal that creates new
+physical locality or removes a fully charged operation. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.

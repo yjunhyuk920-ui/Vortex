@@ -1,0 +1,66 @@
+{
+  "claim_boundary": {
+    "all_preprocessed_linearized_polynomial_ds_rejected": false,
+    "binary_square_representation_exact": true,
+    "dense_polynomial_ds_applicable_at_near_source_space": false,
+    "direct_representation_has_sublinear_locality": false,
+    "hardware_actions": 0,
+    "model_forward_calls": 0,
+    "native_bf16_fp32_lift": false,
+    "published_fast_operations_pass_registered_io_gate": false,
+    "target_candidate": false
+  },
+  "classification": "E0_LINEARIZED_POLYNOMIAL_LOCALITY_GATE",
+  "decision": "REJECT_LINEARIZED_POLYNOMIAL_RENAMING_AS_LOCAL_EVALUATOR_REJECT_DENSE_POLYNOMIAL_DATA_STRUCTURE_IMPORT_CHANGE_MECHANISM_CLASS",
+  "decisions": [
+    "PROMOTE_LINEARIZED_POLYNOMIAL_AS_EXACT_REPRESENTATION_IDENTITY",
+    "REJECT_LINEARIZED_POLYNOMIAL_RENAMING_AS_LOCAL_EVALUATOR",
+    "REJECT_DENSE_POLYNOMIAL_DATA_STRUCTURE_IMPORT",
+    "RECOGNIZE_SPECIALIZED_LOCAL_DS_AS_ORIGINAL_ARBITRARY_MATVEC_GAP",
+    "CHANGE_MECHANISM_CLASS",
+    "NO_SURVIVING_CANDIDATE"
+  ],
+  "dense_ordinary_polynomial_ds": {
+    "dense_base_bits_log2_strict_lower": 16397,
+    "dense_ds_import_rejected": true,
+    "dense_ds_parameter_matches_sparse_linearized_input": false,
+    "dense_field_cells_strictly_more_than": "2^16383",
+    "ordinary_degree": "2^16383",
+    "source_base_bits": 268435456,
+    "source_base_bits_log2": 28,
+    "square_side": 16384
+  },
+  "full_coefficient_sweep_floor": {
+    "all_compute_and_other_costs_granted_free": true,
+    "compressed_block_seconds": "17.225625",
+    "compressed_checkpoint_bytes": 551220000000,
+    "compressed_milliseconds_per_token": "538.30078125000",
+    "compressed_target_multiple": "26.9150390625",
+    "one_bit_block_seconds": "1.585348608",
+    "one_bit_milliseconds_per_token": "49.542144000",
+    "one_bit_model_bytes": "50731155456",
+    "one_bit_target_multiple": "2.4771072",
+    "ordered_batch_queries": 32,
+    "passes_target": false
+  },
+  "published_fast_operation_scope": {
+    "arbitrary_binary_matvec_equivalence": true,
+    "input": "explicit q-coefficient list",
+    "preprocessed_sublinear_cell_probe_evaluator_supplied": false,
+    "q_degree_parameter": 16384,
+    "subquadratic_multipoint_evaluation_exists": true
+  },
+  "representation": {
+    "base_bits_per_coefficient": 16384,
+    "equation": "L_W(x)=sum_i a_i x^(2^i)",
+    "evaluation_map_bijective": true,
+    "extension_field": "GF(2^16384)",
+    "linearized_coefficients": 16384,
+    "matrix_base_bits": 268435456,
+    "ordinary_degree_top_exponent": "2^16383",
+    "q_degree_at_most": 16383,
+    "representation_compresses_arbitrary_matrix": false,
+    "square_side": 16384,
+    "total_base_bits": 268435456
+  }
+}

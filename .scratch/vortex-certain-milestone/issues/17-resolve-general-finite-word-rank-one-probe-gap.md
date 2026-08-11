@@ -306,3 +306,14 @@ geometry forces only 20,218 selected bit atoms (316 perfectly packed 64-bit
 words), far below the target. Thus counting is not the missing lower bound.
 No implicit on-demand envelope generator or native lift was delivered, so the
 ticket remains claimed.
+
+The twelfth post-audit screen is recorded in
+`docs/research/E0_LINEARIZED_POLYNOMIAL_LOCALITY_GATE.md`. Every binary square
+is exactly a linearized polynomial over `GF(2^n)`, but its `n` coefficients
+each contain `n` base bits. One favorable model-wide bit-plane sweep shared
+over all 32 queries still costs `49.542144 ms/token` at 32 GB/s. Importing a
+dense ordinary-polynomial data structure fails because the ordinary degree is
+`2^16,383`, while a specialized local evaluator is precisely the original
+arbitrary MatVec gap under the representation bijection. No new physical
+locality, native lift, or complete equation was delivered, so the issue
+remains claimed.

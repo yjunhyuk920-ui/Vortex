@@ -845,3 +845,27 @@ The remaining interface is an implicit near-source-size generator that
 materializes the requested `R tensor U` restriction on demand. No such layout,
 native equation, or decoder exists. Authority:
 `docs/research/E0_JOINT_BATCH_COSET_GEOMETRY.md`.
+
+## F-079 -- Linearized-polynomial renaming as a local evaluator
+
+Do not promote the identity
+
+```text
+L_W(x) = sum_i a_i x^(2^i)
+```
+
+into an I/O shortcut. For an `n x n` binary matrix, the representation has
+`n` coefficients in `GF(2^n)`, hence exactly `n^2` base bits. Published fast
+linearized-polynomial operations consume this explicit list. Even one
+model-wide bit plane swept once for 32 queries costs `49.542144 ms/token` at
+32 GB/s with every other cost free.
+
+Do not import a dense ordinary-polynomial evaluation data structure either.
+At `n=16,384`, the ordinary degree is `2^16,383`, so its dense coefficient
+parameter is exponential rather than the `n` nonzero linearized coefficients.
+A new specialized local evaluator would be exactly the original arbitrary
+preprocessed binary MatVec gap because the evaluation map is bijective.
+
+This closes the representation renaming, not all nonlinear/adaptive MatVec
+data structures. Authority:
+`docs/research/E0_LINEARIZED_POLYNOMIAL_LOCALITY_GATE.md`.

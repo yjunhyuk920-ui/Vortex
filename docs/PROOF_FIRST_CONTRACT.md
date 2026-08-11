@@ -792,3 +792,22 @@ advice, adaptive finite-word probes, native accumulation, or causal execution.
 No Core Candidate survives. No E1/E2, model, backend, hardware, or scale
 promotion is authorized. Authority:
 `docs/research/E0_JOINT_BATCH_COSET_GEOMETRY.md`.
+
+## Current classification after the linearized-polynomial locality Gate
+
+The representation theorem is admitted: every binary square is uniquely a
+linearized polynomial over its extension field. It provides no compression or
+locality by itself. The explicit coefficient list remains `n^2` base bits,
+and one favorable model-wide bit-plane sweep already misses the registered
+latency Gate by `2.4771072x` when shared over 32 queries.
+
+The dense ordinary-polynomial data-structure theorem is out of scope because
+its degree parameter becomes `2^16,383`. A hypothetical specialized
+near-source-space local evaluator is equivalent to the still-open arbitrary
+binary MatVec data structure, not an independent construction. This is a
+mechanism closure, not a universal cell-probe lower bound or native numerical
+lift.
+
+No Core Candidate survives. No E1/E2, model, backend, hardware, or scale
+promotion is authorized. Authority:
+`docs/research/E0_LINEARIZED_POLYNOMIAL_LOCALITY_GATE.md`.

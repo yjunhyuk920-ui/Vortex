@@ -339,3 +339,27 @@ NO SURVIVING CANDIDATE
 ```
 
 Authority: `docs/research/E0_JOINT_BATCH_COSET_GEOMETRY.md`.
+
+<!-- E0-LINEARIZED-POLYNOMIAL-LOCALITY-GATE -->
+## 2026-08-12 -- E0 linearized-polynomial locality Gate
+
+The exact bijection between binary squares and linearized polynomials was
+charged at base-bit level. A registered square still contains `n^2` bits.
+Even one model-wide bit plane read once for 32 queries costs
+`49.542144 ms/token` at 32 GB/s; the 551.22 GB exact compressed source costs
+`538.30078125 ms/token` under the same free-compute assumption.
+
+The general dense-polynomial data-structure import also fails its parameter
+Gate because the ordinary degree is `2^16,383`. A specialized local evaluator
+would simply restate arbitrary preprocessed MatVec.
+
+Decision:
+
+```text
+REJECT_LINEARIZED_POLYNOMIAL_RENAMING_AS_LOCAL_EVALUATOR
+REJECT_DENSE_POLYNOMIAL_DATA_STRUCTURE_IMPORT
+CHANGE MECHANISM CLASS
+NO SURVIVING CANDIDATE
+```
+
+Authority: `docs/research/E0_LINEARIZED_POLYNOMIAL_LOCALITY_GATE.md`.

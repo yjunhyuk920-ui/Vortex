@@ -595,6 +595,20 @@ including native order and complete 405B costs. Otherwise change mechanism
 class after its cheapest novelty Gate. Keep `NO_SURVIVING_CANDIDATE`; do not
 assign EXP-085 or run model/hardware work.
 
+## Current directive after the linearized-polynomial locality Gate
+
+Do not revisit finite-field representation changes unless they introduce an
+actual physical locality mechanism. Linearized polynomials preserve exactly
+`n^2` source bits; their published fast operations consume the coefficient
+list, and the dense ordinary-polynomial data-structure parameter is
+exponential. A specialized sublinear evaluator is merely the original
+arbitrary MatVec question renamed.
+
+Change mechanism class now. The next proposal must expose a new source of
+shared physical locality or remove a complete charged operation; algebraic
+notation alone is not novelty. Keep `NO_SURVIVING_CANDIDATE`; do not assign
+EXP-085 or run model/hardware work.
+
 ## Current directive after the sparse functional dictionary audit
 
 Do not revisit literal bilinear answer books, direct local rank-one tables, or
