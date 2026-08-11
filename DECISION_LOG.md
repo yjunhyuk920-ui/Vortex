@@ -1468,3 +1468,24 @@ KEEP_NO_SURVIVING_CANDIDATE
 ```
 
 Authority: `docs/research/E0_FUNCTIONAL_ARRAY_CODE_NOVELTY_GATE.md`.
+
+## D-102 -- Reject the small-nonlinear-fiber shortcut; retain the large gap
+
+The nonlinear-fiber decision-tree model grants an arbitrary set `C` for one
+advice value, free query-specific routing, and adaptive raw-coordinate probes.
+Complete enumeration of every nonempty binary `2 x 2` fiber found no minimax
+improvement beyond affine parity covering. A separate exhaustive `2 x 3`
+affine control reproduced the same covering behavior.
+
+Decision:
+
+```text
+REJECT_OMEGA_FIBERDT_AS_AN_IMMEDIATE_SMALL_NONLINEAR_CONSTRUCTOR
+DO_NOT_EXTRAPOLATE_THE_TOY_PROFILE_TO_405B
+REQUIRE_A_LARGE_FIBER_RANK_ONE_THEOREM_OR_A_CONCRETE_NONLITERAL_DECODER
+KEEP_GENERAL_NONLINEAR_ADAPTIVE_RANK_ONE_PROBE_GAP_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority:
+`docs/research/E0_NONLINEAR_FIBER_DECISION_DEPTH_SCREEN.md`.

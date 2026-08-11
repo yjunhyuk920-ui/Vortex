@@ -578,3 +578,16 @@ Otherwise continue with a different non-oracle source or a covering
 global-advice lower bound. Keep `NO_SURVIVING_CANDIDATE`; do not assign
 EXP-085, run a model, build a backend/kernel, download a checkpoint, or touch
 hardware.
+
+## Current directive after the nonlinear-fiber decision-depth screen
+
+The complete `2 x 2` nonlinear-fiber search is a cheapest-possible novelty
+screen, not a scale result. Its optima are affine parity-covering witnesses;
+all `2 x 3` affine fibers show the same behavior. Do not enlarge this toy by
+parameter sweep or random sampling without a theorem that predicts a
+high-dimensional separation.
+
+Continue only with a concrete scalable nonlinear decoder or a large-fiber
+rank-one theorem that jointly charges global advice and adaptive cross-matrix
+probes. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a model,
+build a backend/kernel, download a checkpoint, or touch hardware.

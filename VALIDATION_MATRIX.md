@@ -1034,3 +1034,22 @@ Authoritative decision:
 | General nonlinear probe gap | unresolved | OPEN / NO CLAIM |
 
 Authoritative decision: `REJECT_OMEGA_FUNCTIONALSPAN_AT_NOVELTY_GATE`.
+
+## E0 nonlinear-fiber decision-depth screen
+
+| Check | Observed | Status |
+|---|---:|---|
+| Complete nonempty `2x2` fibers | 65,535 | PASS |
+| Distinct `2x2` rank-one masks | 10 | PASS |
+| Size 1 / 2--4 / 5--8 / 9--16 minimax depth | 0 / 1 / 2 / 4 | PASS |
+| All-linear comparison | identical minima | PASS |
+| Distinct `2x3` affine fibers | 26,387 | PASS |
+| `2x3` affine depth profile | 0,1,1,2,2,3,6 | PASS |
+| Large nonlinear/global-advice promotion | not made | PASS |
+| Full repository regression | 593/593 | PASS |
+| Standard validation runner | completed | PASS |
+| Model forwards / hardware actions | 0 / 0 | NOT RUN |
+| General nonlinear probe gap | unresolved | OPEN / NO CLAIM |
+
+Authoritative decision:
+`REJECT_OMEGA_FIBERDT_AS_AN_IMMEDIATE_SMALL_NONLINEAR_CONSTRUCTOR`.

@@ -603,6 +603,20 @@ scalar data-structure model. Universal 2.5% remains NOT ESTABLISHED, no Core
 Candidate survives, and no E1/E2, model, backend, hardware, or scale promotion
 is authorized.
 
+## Current directive after the nonlinear-fiber toy screen
+
+Do not promote finite nonlinear routing merely because the advice fibers are
+not declared linear. Complete `2 x 2` enumeration finds only affine-covering
+minimax optima, and the `2 x 3` affine control follows the same profile. Do not
+repeat nearby toy searches.
+
+Continue only with a scalable nonliteral decoder whose complete 405B equation
+fits, or a high-dimensional theorem that grants arbitrary global advice and
+adaptive rank-one probes. The toy result is not such a theorem. Keep
+`NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a model, build a backend,
+or touch hardware. Authority:
+`docs/research/E0_NONLINEAR_FIBER_DECISION_DEPTH_SCREEN.md`.
+
 ## Current classification after the global-advice synergy audit
 
 The global 8 GiB nonlinear advice cannot be divided by matrix count and

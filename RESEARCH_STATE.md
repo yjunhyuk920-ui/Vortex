@@ -1694,3 +1694,22 @@ TARGET NOT ACHIEVED
 ```
 
 Authority: `docs/research/E0_FUNCTIONAL_ARRAY_CODE_NOVELTY_GATE.md`.
+
+## Nonlinear advice-fiber decision-depth screen
+
+The first genuinely nonlinear finite control is now complete. All 65,535
+nonempty binary `2 x 2` fibers were evaluated against every rank-one parity
+query with an optimal adaptive coordinate decision tree. Nonlinear fibers did
+not beat affine parity-code optima; a `2 x 3` enumeration of all 26,387 affine
+fibers gives the corresponding covering profile.
+
+```text
+OMEGA-FIBERDT SMALL TOY: NO DISTINCT CONSTRUCTOR
+LARGE NONLINEAR FIBER / GLOBAL ADVICE: UNRESOLVED
+NO SURVIVING CANDIDATE
+TARGET NOT ACHIEVED
+```
+
+The result is a novelty screen only. It neither proves a target lower bound
+nor authorizes EXP-085, a model run, backend work, or hardware work. Authority:
+`docs/research/E0_NONLINEAR_FIBER_DECISION_DEPTH_SCREEN.md`.

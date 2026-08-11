@@ -1565,3 +1565,16 @@ that covers arbitrary nonlinear global advice and adaptive rank-one probes.
 No model, EXP-085, backend, kernel, download, Ubuntu action, or hardware stage
 is authorized. Authority:
 `docs/research/E0_FUNCTIONAL_ARRAY_CODE_NOVELTY_GATE.md`.
+
+## Small nonlinear fibers screened -- require a scalable mechanism
+
+Do not spend another cycle exhaustively enlarging the `2 x 2` fiber search or
+sampling nearby small sets. The complete toy optimum is affine covering, and
+the `2 x 3` affine profile adds no nonlinear source. A continuation must now
+provide either a scalable construction for high-dimensional nonlinear fibers
+or a theorem controlling rank-one decision depth on every sufficiently large
+fiber. Small-cardinality pattern matching alone cannot promote a candidate.
+
+No model, EXP-085, backend, kernel, download, private Ubuntu action, or
+hardware stage is authorized. Authority:
+`docs/research/E0_NONLINEAR_FIBER_DECISION_DEPTH_SCREEN.md`.

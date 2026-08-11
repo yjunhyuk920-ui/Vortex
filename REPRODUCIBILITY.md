@@ -1389,6 +1389,31 @@ Canonical summary SHA-256:
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
 
+## E0 nonlinear-fiber decision-depth screen
+
+Authoritative command:
+
+```powershell
+$env:PYTHONPATH = (Resolve-Path '.').Path
+.deps\exp076-venv\Scripts\python.exe scripts\prototype_rank_one_fiber_depth.py
+```
+
+Expected exact invariants:
+
+```text
+2x2 nonempty fibers                 65,535
+2x2 rank-one queries                10
+2x2 minimax depths by sizes 1..16   0; 1,1,1; 2,2,2,2; 4,4,4,4,4,4,4,4
+2x3 distinct affine fibers          26,387
+2x3 rank-one queries                22
+2x3 depths at sizes 1..64           0,1,1,2,2,3,6
+```
+
+The command is a deterministic finite logic prototype. It performs no model
+forward, checkpoint mutation, backend, download, Ubuntu, or hardware action.
+After the record was added, the full repository regression passed 593/593 and
+`scripts/run_validation.py` completed successfully.
+
 ## E0 functional-array-code novelty prototype
 
 Authoritative command:

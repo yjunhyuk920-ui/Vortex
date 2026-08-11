@@ -216,3 +216,17 @@ complete 8 GiB grant, but it is explicitly not a rank-one or native-float
 lower bound. This rejects the named linear-code constructor only and supplies
 neither required general nonlinear deliverable, so the ticket remains
 claimed.
+
+The sixth post-audit screen is recorded in
+`docs/research/E0_NONLINEAR_FIBER_DECISION_DEPTH_SCREEN.md`. It grants one
+arbitrary nonlinear advice fiber and a different optimal adaptive coordinate
+tree for every rank-one parity. All 65,535 nonempty binary `2 x 2` fibers were
+exhausted; the minimax depths are `0`, `1`, `2`, and `4` over cardinality
+bands `1`, `2--4`, `5--8`, and `9--16`. Power-of-two optima are ordinary
+affine parity-code fibers and match the all-linear-query minima. All 26,387
+affine `2 x 3` fibers give depths `0,1,1,2,2,3,6` at powers-of-two sizes.
+
+This rejects a small nonlinear anomaly as an immediate constructor. It does
+not control high-dimensional nonlinear fibers, the global 8 GiB advice, or
+native numerical queries, and therefore supplies neither required ticket
+deliverable. The ticket remains claimed.

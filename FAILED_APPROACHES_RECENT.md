@@ -716,3 +716,20 @@ This closes only the named linear code family. It does not cover arbitrary
 nonlinear advice, adaptive checkpoint probes, or a nonliteral compressed
 answer decoder. Authority:
 `docs/research/E0_FUNCTIONAL_ARRAY_CODE_NOVELTY_GATE.md`.
+
+## F-073 -- Small nonlinear advice fibers as an immediate rank-one shortcut
+
+Do not infer a new decoder merely from allowing an arbitrary nonlinear advice
+fiber and adaptive coordinate probes. Every one of the 65,535 nonempty fibers
+of binary `2 x 2` matrices was checked exactly. The minimax rank-one depths by
+fiber size are `0` for size one, `1` for sizes two through four, `2` for sizes
+five through eight, and the full `4` probes for sizes nine through sixteen.
+The power-of-two optima are ordinary affine parity-code fibers and match the
+all-linear-query optima.
+
+The `2 x 3` affine control exhausts 26,387 distinct cosets and gives depths
+`0,1,1,2,2,3,6` at sizes `1,2,4,8,16,32,64`. This rejects only the claim that
+the first nonlinear toy already exhibits a superior adaptive source. It is
+not a high-dimensional nonlinear-fiber theorem and does not cover global
+advice or native numerical queries. Authority:
+`docs/research/E0_NONLINEAR_FIBER_DECISION_DEPTH_SCREEN.md`.
