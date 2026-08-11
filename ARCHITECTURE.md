@@ -871,5 +871,7 @@ The only admissible future architecture change remains one uniform,
 checkpoint-only compiler with a concrete globally nonlocal nonlinear
 numerical representation, an exact decoder equation, finite word/address
 semantics, and all state/build/probe/compute/verification/fallback costs.
-Cross-request batching may yield aggregate `1/40` weight traffic, but it is a
-different throughput contract and is not a single-stream component.
+Forty-way cross-request full-sweep batching yields `1/40` per output, but the
+registered 32-token block permits only `1/1280` per token. It is 32x too large
+and keeps block `rho=1`; it is a different throughput contract, not a
+single-stream component.

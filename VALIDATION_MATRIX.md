@@ -800,9 +800,10 @@ Current classification remains NO_SURVIVING_CANDIDATE.
 | KPI25 64-bit minimum-even-time premise | max `k=2`; required `k>=130` | INAPPLICABLE |
 | Ideal `n^2` whole-MatVec bound reaches scalar `n^2/40` | scalarizes to `n`; 409.6x short | FAIL TARGET BOUND |
 | 2026 dynamic Multiphase result is static target theorem | update model; polylog bound | INAPPLICABLE |
-| Focused deterministic tests | 6/6 | PASS |
-| Related frontier regression | 21/21 | PASS |
-| Full repository pytest regression | 534/534 | PASS |
+| Full-sweep batching denominator | 40 outputs are 32x over `1/1280`; block `rho=1` | REJECTED AS TARGET |
+| Focused deterministic tests | 7/7 | PASS |
+| Related frontier regression | 22/22 | PASS |
+| Full repository pytest regression | 535/535 | PASS |
 | Standard validation runner | completed | PASS |
 | General nonlinear numerical constructor | none | OPEN |
 | General nonlinear numerical impossibility | no covering theorem | OPEN / NO CLAIM |

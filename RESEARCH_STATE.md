@@ -1383,7 +1383,7 @@ KEEP_UNIVERSAL_2.5% NOT ESTABLISHED
 KEEP_NO_SURVIVING_CANDIDATE
 ```
 
-Six focused deterministic tests pass. No model forward, checkpoint mutation,
+Seven focused deterministic tests pass. No model forward, checkpoint mutation,
 experiment number, backend, kernel, Ubuntu action, or hardware action
 occurred. Authority:
 `docs/research/E0_GLOBAL_NONLINEAR_RANK_ONE_FRONTIER.md` and

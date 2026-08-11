@@ -279,9 +279,20 @@ CORE CANDIDATE: NONE
 
 ## 7. Why batching is not the missing theorem
 
+There are two different denominators that must not be confused. The registered
+gate allows `1/40` of the checkpoint for the entire 32-token block, so its
+weight allowance per certified token is
+
+```text
+(1/40) / 32 = 1/1280 = 0.078125% of the checkpoint.
+```
+
 A full weight sweep shared by 40 independent requests has arithmetic weight
-traffic `1/40 = 2.5%` per aggregate output. This is an exact throughput
-identity, but it changes the contract:
+traffic `1/40 = 2.5%` per output. That is 32 times the registered per-token
+allowance, and its block read fraction remains `rho=1`, not `rho=1/40`.
+Matching only the weight-I/O-per-output number would require 1,280 independent
+outputs per full sweep. Even that would still change and fail the registered
+block-fraction contract:
 
 - it is cross-request throughput, not one stream's token cadence;
 - each request still waits for a full sweep;
@@ -293,8 +304,8 @@ correct. An arbitrary checkpoint can reject the first proposal. Treating
 perfect lookahead as free assumes the answer that the system is meant to
 compute.
 
-Thus batching is a useful alternative service contract, not a proof of the
-registered universal single-stream claim.
+Thus batching is a possible alternative throughput study, not a proof of the
+registered universal single-stream or 2.5%-per-block claim.
 
 ## 8. Reproduction
 

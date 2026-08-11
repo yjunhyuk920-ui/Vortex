@@ -613,9 +613,9 @@ nonemptiness output is not the native numerical result needed by the runtime.
 
 The limited-independence, singleton-injection, scalarization, and dynamic-model
 results are proof boundaries only. They provide no representation to allocate
-and no query kernel to benchmark. Cross-request 40-way batching is explicitly
-outside the registered single-stream service contract and cannot authorize a
-throughput benchmark as a substitute.
+and no query kernel to benchmark. Cross-request 40-way full-sweep batching is
+both outside the single-stream contract and 32x above its `1/1280` per-token
+weight allowance; it cannot authorize a throughput benchmark as a substitute.
 
 No target-server command, storage mutation, download, CUDA action, GPU
 allocation, EXP-073 Stage 2, 122B/405B run, or Phase D/E4-E7 work is

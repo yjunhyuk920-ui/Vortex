@@ -23,6 +23,7 @@ from math import isqrt
 REGISTERED_SQUARE_DIMENSION = 16_384
 NATIVE_WORD_BITS = 64
 REQUESTED_FRACTION = Fraction(1, 40)
+CERTIFIED_TOKENS_PER_BLOCK = 32
 GLOBAL_ADVICE_BYTES = 8 * (1 << 30)
 
 DECISION = (
@@ -212,6 +213,54 @@ def scalarization_of_static_matvec_lower_bound(
     }
 
 
+def full_sweep_batching_metric_boundary(
+    *, batch_outputs: int, certified_tokens: int = CERTIFIED_TOKENS_PER_BLOCK
+) -> dict[str, object]:
+    """Keep block read fraction separate from per-output amortization.
+
+    The registered gate reads at most 1/40 of a checkpoint for an entire
+    32-token certified block, hence its weight allowance per token is 1/1280.
+    Sharing one full sweep across 40 independent outputs gives 1/40 per
+    output, but the block read fraction is still one.  The two 2.5% labels
+    have different denominators and must not be equated.
+    """
+
+    if batch_outputs <= 0 or certified_tokens <= 0:
+        raise ValueError("batch_outputs and certified_tokens must be positive")
+    target_per_token_fraction = REQUESTED_FRACTION / certified_tokens
+    full_sweep_per_output_fraction = Fraction(1, batch_outputs)
+    outputs_needed_for_equal_per_token_weight_io = (
+        target_per_token_fraction.denominator
+        // target_per_token_fraction.numerator
+    )
+    return {
+        "registered_block_read_fraction": str(REQUESTED_FRACTION),
+        "registered_certified_tokens": certified_tokens,
+        "registered_per_token_weight_fraction": str(
+            target_per_token_fraction
+        ),
+        "registered_per_token_weight_percent": (
+            100 * float(target_per_token_fraction)
+        ),
+        "independent_batch_outputs": batch_outputs,
+        "full_sweep_block_read_fraction": "1",
+        "full_sweep_per_output_fraction": str(
+            full_sweep_per_output_fraction
+        ),
+        "full_sweep_per_output_percent": (
+            100 * float(full_sweep_per_output_fraction)
+        ),
+        "per_output_over_registered_per_token_ratio": str(
+            full_sweep_per_output_fraction / target_per_token_fraction
+        ),
+        "outputs_needed_to_match_weight_io_per_token": (
+            outputs_needed_for_equal_per_token_weight_io
+        ),
+        "meets_registered_block_read_fraction": False,
+        "changes_to_cross_request_throughput_contract": True,
+    }
+
+
 def derive_audit() -> dict[str, object]:
     larsen_williams = larsen_williams_leading_terms()
     limited_independence = rank_one_three_query_dependency()
@@ -245,6 +294,9 @@ def derive_audit() -> dict[str, object]:
         "korten_pitassi_impagliazzo_2025": limited_independence,
         "exact_aggregate_summary_lemma": exact_summary,
         "cgl_static_matvec_scalarization_boundary": ideal_scalarization,
+        "full_sweep_batching_metric_boundary": (
+            full_sweep_batching_metric_boundary(batch_outputs=40)
+        ),
         "dynamic_2026_boundary": {
             "problem": "DYNAMIC_MULTIPHASE_INNER_PRODUCT_OVER_GF2",
             "published_lower_bound": (

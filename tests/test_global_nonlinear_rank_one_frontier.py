@@ -7,6 +7,7 @@ from vortex_runtime.global_nonlinear_rank_one_frontier import (
     DECISION,
     exact_subrectangle_summary_lower_bound,
     derive_audit,
+    full_sweep_batching_metric_boundary,
     larsen_williams_leading_terms,
     rank_one_three_query_dependency,
     scalarization_of_static_matvec_lower_bound,
@@ -72,6 +73,18 @@ class GlobalNonlinearRankOneFrontierTests(unittest.TestCase):
         )
         self.assertEqual(result["implied_scalar_probe_lower_bound"], 16_384)
         self.assertFalse(result["reaches_one_fortieth_of_matrix_words"])
+
+    def test_forty_way_full_sweep_does_not_meet_block_fraction(self) -> None:
+        result = full_sweep_batching_metric_boundary(batch_outputs=40)
+        self.assertEqual(result["registered_per_token_weight_fraction"], "1/1280")
+        self.assertEqual(result["full_sweep_per_output_fraction"], "1/40")
+        self.assertEqual(
+            result["per_output_over_registered_per_token_ratio"], "32"
+        )
+        self.assertEqual(
+            result["outputs_needed_to_match_weight_io_per_token"], 1280
+        )
+        self.assertFalse(result["meets_registered_block_read_fraction"])
 
     def test_audit_keeps_the_general_claim_open(self) -> None:
         result = derive_audit()

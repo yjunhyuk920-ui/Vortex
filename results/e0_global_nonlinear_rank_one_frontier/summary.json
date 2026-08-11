@@ -46,6 +46,20 @@
     "rows": 16384,
     "scope": "SUMMARY_ALONE_ANSWERS_EVERY_SUBRECTANGLE_WITHOUT_RAW_PROBES"
   },
+  "full_sweep_batching_metric_boundary": {
+    "changes_to_cross_request_throughput_contract": true,
+    "full_sweep_block_read_fraction": "1",
+    "full_sweep_per_output_fraction": "1/40",
+    "full_sweep_per_output_percent": 2.5,
+    "independent_batch_outputs": 40,
+    "meets_registered_block_read_fraction": false,
+    "outputs_needed_to_match_weight_io_per_token": 1280,
+    "per_output_over_registered_per_token_ratio": "32",
+    "registered_block_read_fraction": "1/40",
+    "registered_certified_tokens": 32,
+    "registered_per_token_weight_fraction": "1/1280",
+    "registered_per_token_weight_percent": 0.078125
+  },
   "korten_pitassi_impagliazzo_2025": {
     "answer_identity_for_every_database": "a1 XOR a2 XOR a3 = 0",
     "field": "GF(2)",

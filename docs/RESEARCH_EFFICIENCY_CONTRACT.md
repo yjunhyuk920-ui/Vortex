@@ -470,7 +470,9 @@ Continue only on a materially different E0 route: either a globally coupled
 adaptive exact numerical data structure whose information source is not a
 hereditary Boolean rectangle and whose complete 405B equation fits, or a
 direct scalar rank-one lower bound covering arbitrary nonlinear 8 GiB advice.
-Cross-request 40-way batching may be analyzed only as a separately declared
-throughput contract, never as evidence for the registered single-stream goal.
+Cross-request full-sweep batching may be analyzed only as a separately
+declared throughput contract. Forty outputs give `1/40` per output, which is
+32x the registered `1/1280` per-token allowance and leaves block `rho=1`;
+never cite it as evidence for the registered single-stream goal.
 Keep NO_SURVIVING_CANDIDATE and do not assign EXP-085 or touch model/hardware
 work until the active ticket's deliverable changes.
