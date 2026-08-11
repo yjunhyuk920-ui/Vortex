@@ -658,3 +658,19 @@ storage mutation, download, CUDA action, GPU allocation, EXP-073 Stage 2,
 122B/405B run, or Phase D/E4-E7 work is authorized. Hardware may reopen only
 after a globally coupled constructor or a synergy-charging theorem supplies a
 complete E0 deliverable and the subsequent E1/E2 Gates survive.
+
+## Fourier-fiber direct-sum audit: no hardware Gate is authorized
+
+The 26.2% all-linear result is a systematic bit-probe lower bound with free
+advice reads, computation, query generation, addressing, packing, and physical
+movement. It is not a measured cache line, SSD, PCIe, HBM, CUDA, latency,
+power, or VRAM result. Its all-linear query description is also not a standard
+Transformer activation interface.
+
+After the rank-one restriction, the finite number is only a ceiling on one
+proof method and supplies no executable query schedule. There is therefore no
+artifact or kernel to benchmark. No target-server command, storage mutation,
+download, CUDA action, GPU allocation, EXP-073 Stage 2, 122B/405B run, or
+Phase D/E4-E7 work is authorized. Hardware may reopen only after the active
+ticket produces a target-scale restricted-rank theorem or a complete
+constructor and survives the later E1/E2 Gates.

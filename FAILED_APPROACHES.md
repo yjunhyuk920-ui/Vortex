@@ -353,4 +353,8 @@ F-063 closes naive division of global nonlinear advice and illegal summation
 of single-matrix CKL worst cases. Exact XOR synergy shows why conditional
 information cannot be allocated per matrix. It does not close a new theorem
 that jointly charges the cross-matrix probes used to unlock that synergy.
+F-064 retains a valid Fourier-fiber direct sum for all linear queries but
+closes its promotion to rank-one by query cardinality alone. The restricted
+rank-one character matrix lacks the full spanning premise; its structure or a
+new constructor remains open.
 Read that continuation and each scope boundary before reopening a family.

@@ -1257,3 +1257,34 @@ KEEP_MODEL_HARDWARE_AND_E2_E7_CLOSED
 
 Authority: `docs/research/E0_GLOBAL_ADVICE_SYNERGY_FRONTIER.md` and
 `results/e0_global_advice_synergy_frontier`.
+
+## D-094 -- Keep the all-linear Fourier-fiber bound; reject its rank-one lift
+
+For arbitrary nonlinear `r`-bit global advice and a `D`-bit systematic
+database, fixing the largest advice fiber and converting depth-`t` adaptive
+trees to low-degree polynomials gives
+`2^(D-r) <= sum(j=0..t,C(D,j))` when every binary linear query is supported.
+This charges XOR-like cross-matrix unlocking probes in the same `t`.
+
+The registered `131/500` entropy witness forces 106,332,501,836 probes for
+the all-linear family. Rank-one queries do not contain the full Walsh basis.
+Even after granting independent pairs for every registered matrix and 32
+independent tuples, query cardinality alone becomes nonrestrictive by
+114,194,991 probes (`0.028137293%`). This is 42.12x below the registered p50
+coefficient budget and is a proof-method ceiling, not an algorithm.
+
+Decision:
+
+```text
+KEEP_FOURIER_FIBER_DIRECT_SUM_BOUND_FOR_ALL_LINEAR_TUPLES
+DO_NOT_IMPORT_ALL_LINEAR_CHARACTER_SPANNING_INTO_RANK_ONE
+DO_NOT_CALL_A_PROOF_METHOD_CEILING_AN_ALGORITHM
+REQUIRE_RESTRICTED_RANK_ONE_CHARACTER_RANK_OR_A_CONCRETE_CONSTRUCTOR
+DO_NOT_CLAIM_A_GENERAL_NONLINEAR_IMPOSSIBILITY
+KEEP_GENERAL_NONLINEAR_NUMERICAL_RANK_ONE_GAP_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+KEEP_MODEL_HARDWARE_AND_E2_E7_CLOSED
+```
+
+Authority: `docs/research/E0_FOURIER_FIBER_DIRECT_SUM_FRONTIER.md` and
+`results/e0_fourier_fiber_direct_sum_frontier`.

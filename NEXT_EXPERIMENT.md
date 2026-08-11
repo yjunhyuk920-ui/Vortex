@@ -1428,3 +1428,22 @@ concrete globally coupled constructor with an exact native-order 405B and
 32-token equation. No EXP-085, model, backend, kernel, download, private
 Ubuntu action, hardware benchmark, or E2-E7 action is authorized. Authority:
 `docs/research/E0_GLOBAL_ADVICE_SYNERGY_FRONTIER.md`.
+
+## All-linear Fourier direct sum closed at the rank-one boundary
+
+Retain the Fourier-fiber theorem as a valid guardrail: it charges arbitrary
+nonlinear global advice and every adaptive cross-block raw probe jointly. Do
+not cite its `26.2%` all-linear result for Transformer rank-one queries. The
+spanning step needs every Walsh character, while 32 independently granted
+rank-one tuples have a query-cardinality method ceiling at only
+`0.028137293%` of registered coefficients.
+
+The active ticket remains Resolve the General Finite-Word Rank-One Probe Gap.
+The next theorem route must lower-bound the rank or another adaptive-tree
+complexity measure of `H[F,Q_rank1]` for every sufficiently large nonlinear
+advice fiber, at the finite registered scale. Query count alone is closed.
+The alternative remains a concrete scalar-specific constructor with complete
+native-order state, build, probe, compute, and 32-token equations. No EXP-085,
+model, backend, kernel, download, private Ubuntu action, hardware benchmark,
+or E2-E7 action is authorized. Authority:
+`docs/research/E0_FOURIER_FIBER_DIRECT_SUM_FRONTIER.md`.

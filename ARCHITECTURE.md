@@ -926,3 +926,26 @@ constructor must expose those same probes in its physical schedule. There is
 currently no representation builder, query algorithm, native numerical
 decoder, verifier, fallback engine, 32-token scheduler, or kernel satisfying
 that interface.
+
+### Fourier-fiber direct-sum boundary
+
+The proof layer may use the following theorem only for an independently
+declared all-linear binary query interface:
+
+```text
+arbitrary global advice R(x), |R|<=r
+all q in F_2^D
+adaptive probes across all blocks
+exact <q,x>
+  -> 2^(D-r) <= sum(j=0..t,C(D,j)).
+```
+
+It is not a runtime component. Standard dense projections expose rank-one or
+bounded-rank coefficient masks, not all `2^D` Walsh characters. The 32-tuple
+rank-one character-count screen becomes nonrestrictive at 114,194,991 probes,
+so no `FourierFiberIndex`, decoder, selector, scheduler, or kernel is admitted.
+
+A future proof interface must lower-bound the restricted character matrix on
+large advice fibers. A future execution interface must instead provide a
+concrete bounded-word scalar representation and exact decoder. Neither
+currently exists.

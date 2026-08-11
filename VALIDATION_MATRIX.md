@@ -871,3 +871,34 @@ Current classification remains `NO_SURVIVING_CANDIDATE`.
 Authoritative decision:
 `REJECT_NAIVE_GLOBAL_ADVICE_DIVISION_AND_CKL_TILE_SUM_AS_TARGET_BOUND`.
 Current classification remains `NO_SURVIVING_CANDIDATE`.
+
+## E0 Fourier-fiber direct-sum frontier audit
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Arbitrary nonlinear global advice is covered | fixed advice-fiber proof | PASS |
+| Adaptive cross-block probes are jointly charged | one depth-`t` decision tree | PASS |
+| Full Walsh characters span every advice fiber | restricted row orthogonality | PASS |
+| Finite all-linear inequality | `2^(D-r)<=sum(j<=t,C(D,j))` | PROVED |
+| Registered strict entropy witness | `delta=131/500`; margin `0.000927904...` | PASS |
+| All-linear raw-bit floor | 106,332,501,836; 26.2% | DERIVED |
+| Floor exceeds registered p50 coefficient budget | 22.10625x | PASS SCOPED |
+| Floor exceeds user DFloat `1/40` bits | 0.96452x | NO |
+| One registered rank-one tuple query log | 39,254,528 bits | DERIVED FAVORABLE |
+| 32 rank-one tuples query log | 1,256,144,896 bits | DERIVED FAVORABLE |
+| 32-tuple character-dimension method ceiling | 114,194,991 probes; 0.028137293% | FAR BELOW TARGET |
+| Method ceiling is an algorithm | explicitly false | NO |
+| Exhaustive small-fiber controls | 255 fibers; 2,040 query checks; 0 violations | PASS |
+| Walsh orthogonality controls | 120 row pairs; 0 failures | PASS |
+| Focused deterministic tests | 8/8 | PASS |
+| Related frontier regression | 52/52 | PASS |
+| Full repository regression | 560/560 | PASS |
+| Standard validation runner | completed | PASS |
+| Independent output-directory reproduction | identical summary SHA-256 | PASS |
+| Canonical summary SHA-256 | `004f37f8...a6ca3` | PASS |
+| General nonlinear rank-one target bound | restricted-fiber rank absent | OPEN |
+| Model forwards and hardware actions | 0 / 0 | NOT RUN |
+
+Authoritative decision:
+`KEEP_FOURIER_FIBER_BOUND_FOR_ALL_LINEAR_TUPLES_REJECT_AS_GENERAL_RANK_ONE_TARGET_RESOLUTION`.
+Current classification remains `NO_SURVIVING_CANDIDATE`.

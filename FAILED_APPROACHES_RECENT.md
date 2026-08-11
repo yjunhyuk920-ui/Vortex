@@ -557,3 +557,22 @@ all globally nonlinear exact data structures. Reopening requires a theorem
 that jointly charges cross-matrix probes used to unlock shared advice, or a
 concrete complete constructor. Authority:
 `docs/research/E0_GLOBAL_ADVICE_SYNERGY_FRONTIER.md`.
+
+## F-064 -- All-linear Fourier spanning used as a rank-one target bound
+
+The Fourier-fiber inequality is valid for the complete all-linear query
+family and correctly charges arbitrary nonlinear global advice plus adaptive
+cross-block probes. Do not reuse its 26.2% registered witness after replacing
+all characters with Transformer rank-one characters. The full-character span
+of every advice fiber is the theorem's decisive premise.
+
+For all registered matrices, one independently selectable rank-one tuple has
+at most `2^39,254,528` descriptions and 32 tuples at most
+`2^1,256,144,896`. The low-degree character-dimension method is already large
+enough at 114,194,991 probes (`0.028137293%`), 42.12x below the registered p50
+budget. Do not call this ceiling an upper-bound algorithm.
+
+This closes query cardinality and full-Walsh spanning as the missing rank-one
+proof. It leaves a lower bound exploiting the actual restricted character
+matrix, or a concrete globally nonlinear scalar constructor, open. Authority:
+`docs/research/E0_FOURIER_FIBER_DIRECT_SUM_FRONTIER.md`.

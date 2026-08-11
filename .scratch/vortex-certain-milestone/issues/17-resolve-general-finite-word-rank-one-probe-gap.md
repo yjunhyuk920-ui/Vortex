@@ -109,3 +109,23 @@ pigeonhole screen over 6-by-6 tiles supplies only one independently chosen
 hard probe per tile; even its illegal sum is 9.829856x below the target.
 These reject the naive direct-sum route, not the target or the general model.
 The ticket remains claimed.
+
+The fifth finite audit is recorded in
+`docs/research/E0_FOURIER_FIBER_DIRECT_SUM_FRONTIER.md`. It supplies a real
+synergy-charging theorem for the complete all-linear query family. Fixing one
+of `2^r` arbitrary nonlinear advice values leaves a fiber of size at least
+`2^(D-r)`. Every depth-`t` adaptive coordinate tree is a degree-`t`
+multilinear function, while all Walsh characters restricted to the fiber span
+its complete function space. Therefore
+`2^(D-r) <= sum(j=0..t,C(D,j))` without dividing advice or granting
+cross-matrix probes for free.
+
+At the registered one-bit parameter count and global 8 GiB advice, the
+finite `delta=131/500` entropy witness forces `106,332,501,836` probes, or
+`26.2%`, for all-linear tuples. But rank-one characters are far fewer. Even
+granting every registered matrix independent pairs and 32 independent tuples,
+query cardinality alone reaches its low-degree method ceiling at only
+`114,194,991` probes (`0.028137293%`), 42.12x below the registered p50
+coefficient budget. No lower bound on the rank of the restricted rank-one
+character matrix is supplied. This sharpens but does not resolve the ticket,
+which remains claimed.

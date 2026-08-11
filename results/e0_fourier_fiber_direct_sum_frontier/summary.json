@@ -1,0 +1,104 @@
+{
+  "claim_boundary": {
+    "all_linear_simultaneous_tuple_theorem": true,
+    "charges_global_advice_synergy": true,
+    "core_candidate": "NONE",
+    "hardware_actions": 0,
+    "model_forward_calls": 0,
+    "rank_one_query_family_theorem": false,
+    "standard_transformer_queries_are_all_linear_tuples": false,
+    "target_scale_rank_one_lower_bound": false,
+    "universal_2_5_percent_feasibility": "NOT_ESTABLISHED",
+    "universal_2_5_percent_impossibility": "NOT_PROVED"
+  },
+  "classification": "E0_FOURIER_FIBER_DIRECT_SUM_FRONTIER",
+  "controls": {
+    "exhaustive_binary_fibers": {
+      "all_fibers_satisfy_bound": true,
+      "dimension": 3,
+      "fiber_volume_violations": 0,
+      "maximum_observed_decision_tree_depth": 3,
+      "nonempty_fibers": 255,
+      "parity_query_checks": 2040
+    },
+    "walsh_orthogonality": {
+      "dimension": 4,
+      "distinct_row_pairs": 120,
+      "orthogonality_failures": 0,
+      "restricted_rows_are_independent": true
+    }
+  },
+  "decision": "KEEP_FOURIER_FIBER_BOUND_FOR_ALL_LINEAR_TUPLES_REJECT_AS_GENERAL_RANK_ONE_TARGET_RESOLUTION",
+  "rank_one_character_dimension_boundary": {
+    "embedding_and_lm_head_pair_bits_upper_bound": 289280,
+    "general_rank_one_ticket_resolved": false,
+    "layers": 126,
+    "one_independent_tuple_log2_query_count_upper_bound": 39254528,
+    "one_tuple_method_ceiling": {
+      "certified_log2_binomial_lower_bound": 39254530,
+      "data_bits": 405849243648,
+      "is_algorithmic_query_upper_bound": false,
+      "is_target_lower_bound": false,
+      "meaning": "QUERY_CARDINALITY_ONLY_CANNOT_FORCE_MORE",
+      "method_ceiling_probe_count": 2309090,
+      "method_ceiling_probe_fraction": "1154545/202924621824",
+      "method_ceiling_probe_percent": 0.0005689526434112844,
+      "power_of_two_ratio_witness": 17,
+      "query_log2_count_upper_bound": 39254528
+    },
+    "parameters_reconstructed_from_shapes": 405849243648,
+    "per_layer_rank_one_pair_bits_upper_bound": 309248,
+    "rank_one_character_lower_bound_for_advice_fiber": "NOT_SUPPLIED",
+    "registered_p50_budget_over_32_tuple_method_ceiling": 42.12150697487443,
+    "registered_parameter_constant": 405849243648,
+    "requested_dfloat_block_over_32_tuple_method_ceiling": 965.4013633575224,
+    "thirty_two_tuple_log2_query_count_upper_bound": 1256144896,
+    "thirty_two_tuple_method_ceiling": {
+      "certified_log2_binomial_lower_bound": 1256144901,
+      "data_bits": 405849243648,
+      "is_algorithmic_query_upper_bound": false,
+      "is_target_lower_bound": false,
+      "meaning": "QUERY_CARDINALITY_ONLY_CANNOT_FORCE_MORE",
+      "method_ceiling_probe_count": 114194991,
+      "method_ceiling_probe_fraction": "38064997/135283081216",
+      "method_ceiling_probe_percent": 0.02813729304348372,
+      "power_of_two_ratio_witness": 11,
+      "query_log2_count_upper_bound": 1256144896
+    }
+  },
+  "registered_all_linear_tuple": {
+    "advice_may_be_arbitrary_nonlinear": true,
+    "answer_error": "ZERO",
+    "binary_entropy_at_witness": "0.82974942778670278112614296976041070400025746845105768665681292002317771330255337",
+    "data_bits": 405849243648,
+    "forced_over_registered_p50_coefficient_budget": 22.10625000004657,
+    "forced_over_requested_dfloat_block": 0.9645196276985596,
+    "global_nonlinear_advice_bits": 68719476736,
+    "independent_query_description_bits": 405849243648,
+    "largest_fiber_log2_size_lower_bound": 337129766912,
+    "minimum_probe_fraction": "26583125459/101462310912",
+    "minimum_probe_percent": 26.200000000055194,
+    "minimum_worst_case_raw_bit_probes": 106332501836,
+    "query_computation_is_free": true,
+    "query_description_is_free_in_theorem_only": true,
+    "query_description_over_requested_dfloat_block": 3.681372624795907,
+    "radius_witness": "131/500",
+    "radius_witness_decimal": 0.262,
+    "raw_probes_may_be_adaptive_and_cross_block": true,
+    "reaches_requested_dfloat_block_under_one_bit_per_probe": false,
+    "registered_p50_coefficient_budget": "1082264649728/225",
+    "requested_dfloat_block_bits": "110244000000",
+    "required_normalized_fiber_log_size": "0.83067733201049998966536450259399350984890762902792418511399102953638825158636655",
+    "strict_entropy_margin": "0.00092790422379720853922153283358280584865016057686649845717810951321053828381318"
+  },
+  "theorem": {
+    "advice": "ARBITRARY_NONLINEAR_AND_FREE_TO_READ",
+    "character_span": "ALL_WALSH_CHARACTERS_RESTRICTED_TO_F_a_SPAN_R_TO_THE_F_a",
+    "computation": "FREE_FAVORABLE_GRANT",
+    "cross_block_probes": "CHARGED_IN_THE_SAME_DEPTH_t",
+    "decision_tree_to_polynomial": "DEPTH_t_IMPLIES_REAL_DEGREE_AT_MOST_t",
+    "finite_inequality": "2^(D-r)<=|F_a|<=sum(j=0..t,C(D,j))",
+    "fixed_advice_fiber": "F_a={x:R(x)=a}",
+    "randomization": "DETERMINISTIC_ZERO_ERROR"
+  }
+}

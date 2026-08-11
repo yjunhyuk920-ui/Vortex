@@ -155,6 +155,14 @@ matrix count without a direct-sum theorem.
 _Avoid_: Per-matrix advice allocation, free cross-matrix reuse, projected
 linear rank
 
+**Fourier-Fiber Direct-Sum Bound**:
+After one arbitrary nonlinear advice value is fixed, every all-linear query
+answered by `t` adaptive systematic probes is a degree-`t` function on that
+fiber; full Fourier characters span the fiber and bound its size by a Hamming
+ball. Cross-block probes are charged jointly.
+_Avoid_: Rank-one query theorem, query-cardinality lower bound, physical word
+traffic theorem
+
 **Matrix-Local Separable Residual Code**:
 A Bilinear Cross Residual source that independently covers each matrix's left
 and right directions with linear codes and repairs only their coordinate-sparse

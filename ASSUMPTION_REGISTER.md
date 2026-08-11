@@ -862,3 +862,24 @@ or probing the other matrices. A future direct-sum theorem may succeed by
 charging those probes jointly. The current finite screens show only that the
 naive route is invalid and far too weak, not that universal 2.5% is feasible
 or impossible. The general nonlinear numerical rank-one gap remains open.
+
+## A-074 -- A synergy-charging all-linear bound transfers to rank-one
+
+Assumption: once arbitrary nonlinear advice and cross-matrix probes are
+jointly charged, the complete Walsh-character fiber argument can be applied
+unchanged to `r tensor u` queries and 32-token rank-one tuples.
+
+Status: CONTRADICTED. Full Walsh characters restricted to any advice fiber
+span all functions on that fiber. Rank-one characters form a much smaller
+column set and need not span it. Registered query descriptions upper-bound
+the column count by `2^39,254,528` for one independent tuple and
+`2^1,256,144,896` for 32 tuples. The corresponding low-degree dimension
+screen is already nonrestrictive at `0.028137293%` of coefficients.
+
+### A-074 closure
+
+The all-linear theorem remains valid and is not demoted. The closure targets
+only its unsupported rank-one transfer and query-cardinality route. A future
+proof must establish target-scale rank or adaptive-tree complexity for the
+restricted character matrix on every large nonlinear advice fiber. Universal
+2.5% remains neither established nor disproved.

@@ -1476,3 +1476,45 @@ Canonical summary SHA-256:
 
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
+
+## E0 Fourier-fiber direct-sum frontier audit
+
+Authoritative commands:
+
+```powershell
+$env:PYTHONPATH = "."
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_fourier_fiber_direct_sum_frontier.py `
+  --output-dir results\e0_fourier_fiber_direct_sum_frontier
+
+.deps\exp076-venv\Scripts\python.exe -m unittest `
+  tests.test_fourier_fiber_direct_sum_frontier -v
+```
+
+Observed focused validation was 8/8 tests. The controls cover exact small
+Hamming balls, the strict high-precision entropy witness, all 255 nonempty
+fibers of the three-bit cube, 2,040 parity/fiber query checks, Walsh row
+orthogonality, exact registered shape reconstruction, integer
+character-dimension ceilings, claim boundaries, and fail-closed inputs.
+
+The related seven-file frontier regression passed 52/52, the full repository
+regression passed 560/560 with the repository root on `PYTHONPATH`, and the
+standard validation runner completed successfully. An independent workspace-
+internal temporary output reproduced the summary byte-for-byte and was removed
+only after its resolved path was checked. No network or package mutation was
+used.
+
+Artifacts:
+
+- `results/e0_fourier_fiber_direct_sum_frontier/summary.json`
+- `results/e0_fourier_fiber_direct_sum_frontier/checksums.sha256`
+- `docs/research/E0_FOURIER_FIBER_DIRECT_SUM_FRONTIER.md`
+
+Canonical summary SHA-256:
+
+```text
+004f37f8b872bfa25ecfd0704941b8656a173829322d79f73a144447ad6a6ca3
+```
+
+No model forward, checkpoint mutation, experiment number, backend, kernel,
+download, Ubuntu command, or hardware action was used.

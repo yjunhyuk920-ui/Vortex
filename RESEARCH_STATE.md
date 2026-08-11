@@ -1476,3 +1476,47 @@ pass. No model forward, checkpoint mutation, experiment number, backend,
 kernel, download, Ubuntu action, or hardware action occurred. Authority:
 `docs/research/E0_GLOBAL_ADVICE_SYNERGY_FRONTIER.md` and
 `results/e0_global_advice_synergy_frontier`.
+
+## E0 Fourier-fiber direct sum handles synergy but not rank-one geometry
+
+A new finite theorem now treats one arbitrary nonlinear global advice string
+without dividing it across matrices. Fix an advice fiber `F`. Every exact
+all-linear query answered by at most `t` adaptive raw-bit probes is a
+degree-`t` real multilinear function on `F`. The full restricted Walsh
+character set spans all functions on `F`, yielding
+
+```text
+2^(D-r) <= |F| <= sum(j=0..t,C(D,j)).
+```
+
+All cross-block probes used to unlock XOR-like advice are included in the
+same `t`. With `D=405,849,243,648`, global advice `r=68,719,476,736`, and the
+strict entropy witness `delta=131/500`, the all-linear model forces
+`106,332,501,836` raw bit probes (`26.2%`). That is 22.10625x the registered
+p50 coefficient-use budget, but only `96.451963%` of the user's favorable
+DFloat `1/40` block-bit line under the one-bit-per-probe grant.
+
+The decisive limitation is query geometry. The complete registered
+model-wide rank-one tuple has at most `2^39,254,528` pair descriptions; 32
+independent tuples have at most `2^1,256,144,896`. Query cardinality plus the
+low-degree dimension method is already nonrestrictive by 114,194,991 probes,
+only `0.028137293%` of coefficients and 42.12x below the registered p50
+budget. This number is a proof-method ceiling, not an algorithm.
+
+Decision:
+
+```text
+KEEP_FOURIER_FIBER_BOUND_FOR_ALL_LINEAR_TUPLES
+REJECT_THE_ALL_LINEAR_LIFT_AS_A_GENERAL_RANK_ONE_TARGET_RESOLUTION
+REQUIRE_A_RANK_BOUND_FOR_RESTRICTED_RANK_ONE_CHARACTERS_OR_A_CONSTRUCTOR
+KEEP_GENERAL_NONLINEAR_NUMERICAL_RANK_ONE_GAP OPEN
+KEEP_UNIVERSAL_2.5% NOT ESTABLISHED
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Eight focused tests, 52 related tests, the 560-test repository regression,
+standard validation, and independent byte-identical reproduction pass. No
+model forward, checkpoint mutation, experiment number, backend, kernel,
+download, Ubuntu action, or hardware action occurred. Authority:
+`docs/research/E0_FOURIER_FIBER_DIRECT_SUM_FRONTIER.md` and
+`results/e0_fourier_fiber_direct_sum_frontier`.

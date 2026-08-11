@@ -511,3 +511,18 @@ globally coupled constructor with a full native-order 405B/32-token equation.
 Keep NO_SURVIVING_CANDIDATE and do not assign EXP-085, run a model, build a
 backend/kernel, download a larger checkpoint, or touch hardware until one
 required ticket deliverable exists.
+
+## Current directive after the Fourier-fiber direct-sum audit
+
+Retain the all-linear fiber theorem; do not repeat XOR/advice-allocation
+arguments. Also do not transfer full Walsh spanning to `r tensor u`, multiply
+the 26.2% witness into a Transformer claim, or call the 0.028137293% method
+ceiling an algorithm. Query cardinality alone is now a closed theorem route.
+
+Continue only by proving target-scale rank or adaptive-tree complexity for
+the restricted rank-one character matrix on every large nonlinear advice
+fiber, or by specifying a concrete scalar-specific bounded-word constructor
+with complete native-order 405B/32-token accounting. Keep
+NO_SURVIVING_CANDIDATE and do not assign EXP-085, run a model, build a
+backend/kernel, download a checkpoint, or touch hardware until one required
+ticket deliverable exists.

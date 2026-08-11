@@ -622,3 +622,23 @@ This rejects a proof shortcut, not the single-matrix theorem and not the
 general nonlinear model. Universal 2.5% remains NOT ESTABLISHED, no Core
 Candidate survives, and no E1/E2, model, backend, hardware, or scale
 promotion is authorized.
+
+## Current classification after the Fourier-fiber direct-sum audit
+
+The all-linear systematic model now has a finite theorem that permits one
+arbitrary nonlinear global advice string and charges every adaptive
+cross-block probe jointly. Fixing an advice fiber, depth-`t` trees are
+degree-`t` functions while the full Walsh characters span the fiber, giving
+`2^(D-r)<=sum(j<=t,C(D,j))`. The registered strict witness forces 26.2% of
+one-bit coefficients and defeats the registered p50 coefficient budget by
+22.10625x.
+
+Transformer rank-one queries do not contain the full Walsh character family.
+Even 32 independently granted model-wide rank-one tuples reach the
+query-cardinality method ceiling at only `0.028137293%`. That is a limitation
+of this proof, not a fast algorithm.
+
+This is genuine progress on global-advice accounting but not a ticket
+resolution. Universal 2.5% remains NOT ESTABLISHED, no Core Candidate
+survives, and no E1/E2, model, backend, hardware, or scale promotion is
+authorized.
