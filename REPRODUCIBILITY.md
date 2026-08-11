@@ -1388,3 +1388,49 @@ Canonical summary SHA-256:
 
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
+
+## E0 finite-semiring preprocessing frontier audit
+
+Authoritative commands:
+
+```powershell
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_finite_semiring_preprocessing_frontier.py `
+  --output-dir results\e0_finite_semiring_preprocessing_frontier
+
+.deps\exp076-venv\Scripts\python.exe -m unittest `
+  tests.test_finite_semiring_preprocessing_frontier -v
+```
+
+Observed focused validation was 9/9 tests. The controls cover the exact
+ceiling-aware graph layout, favorable model-wide Boolean/Q4/BF16
+substitutions, the DFloat block denominator, the separate 32-query no-reuse
+constructor path, invalid-input fail-closure, and explicit BF16/FP32
+non-associativity witnesses.
+
+The related five-file frontier regression passed 36/36. The first full-suite
+launch passed 543 tests and failed only the existing EXP-072A child-process
+test before experiment work because the child did not inherit a repository
+import path. The isolated failing test passed after declaring the repository
+root as its import path, and the identically configured full repository suite
+then passed 544/544. The standard validation runner completed successfully.
+No package or network mutation was used.
+
+An independent temporary output directory reproduced the canonical summary
+byte-for-byte and was removed after its resolved path was checked inside the
+workspace.
+
+Artifacts:
+
+- `results/e0_finite_semiring_preprocessing_frontier/summary.json`
+- `results/e0_finite_semiring_preprocessing_frontier/checksums.sha256`
+- `docs/research/E0_FINITE_SEMIRING_PREPROCESSING_FRONTIER.md`
+
+Canonical summary SHA-256:
+
+```text
+8188c0fde1f7289daf4052461292b775889229963132bbeed7c45bc6553e09f1
+```
+
+No model forward, checkpoint mutation, experiment number, backend, kernel,
+download, Ubuntu command, or hardware action was used.

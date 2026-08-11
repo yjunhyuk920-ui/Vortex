@@ -71,3 +71,22 @@ full query family is at most pairwise independent, whereas the theorem needs
 reduced to one rank-one scalar and remain far below `n^2/40`. These close
 three theorem lifts but still supply neither required ticket deliverable, so
 the ticket remains claimed.
+
+The third finite audit is recorded in
+`docs/research/E0_FINITE_SEMIRING_PREPROCESSING_FRONTIER.md`. Williams'
+preprocessed finite-semiring MatVec graph is a genuine global,
+checkpoint-dependent lookup constructor. Charging only the minimum
+`b*log2(K)` output-pattern payload per selected neighbor gives the favorable
+continuous equations `query/raw=1/b` and `sidecar/raw=K^b/b`. At the
+registered `n=16,384`, the theorem parameter gives at most `b=14`. One
+ceiling-aware Boolean square already needs `36.616085 GiB` of edge payload;
+the favorable model-wide one-bit substitution needs `55,292.57 GiB`, or
+`6,911.57x` the global 8 GiB grant. Q4 and BF16 single-query payloads are
+`2.629552%` and `10.518207%` of the DFloat denominator before omitted costs.
+
+Native BF16 and FP32 additions both have explicit non-associativity witnesses,
+so the paper's finite-semiring regrouping proof is not reference-exact native
+Transformer arithmetic. The publication also returns full MatVec and supplies
+no 32-causal-query shared-probe theorem. This rejects that constructor only;
+it does not resolve a scalar-specific globally adaptive numerical structure or
+prove one impossible. The ticket therefore remains claimed.

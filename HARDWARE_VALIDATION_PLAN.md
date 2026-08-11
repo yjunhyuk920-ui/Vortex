@@ -621,3 +621,24 @@ No target-server command, storage mutation, download, CUDA action, GPU
 allocation, EXP-073 Stage 2, 122B/405B run, or Phase D/E4-E7 work is
 authorized. Hardware may reopen only after the active general nonlinear
 rank-one ticket produces one of its two required E0 deliverables.
+
+## Finite-semiring preprocessing graph: no hardware Gate is authorized
+
+The favorable physical expansion of Williams' graph already fails persistent
+representation, query payload, and numerical semantics before any device
+mapping. One registered Boolean square needs `36.616085 GiB` of minimum edge
+values; the model-wide one-bit sidecar is `55,292.57 GiB`. Q4 and BF16
+single-query values exceed the entire DFloat `1/40` block budget at `b=14`.
+These figures omit global addresses, adjacency offsets, counters, second-layer
+state, operations, cache lines, pages, and shared-link movement.
+
+The theorem's semiring regrouping is also not a bit-exact BF16/FP32 execution
+contract, and no 32-query reuse theorem supplies a hardware schedule. Random
+read benchmarking, graph-fragment allocation, or a one-bit toy kernel cannot
+repair these E0 failures and would not test the user's claim.
+
+No target-server command, storage mutation, download, CUDA action, GPU
+allocation, EXP-073 Stage 2, 122B/405B run, or Phase D/E4-E7 work is
+authorized. Hardware may reopen only for a different constructor after its
+complete native-order scalar and 32-token equation survives E0 and an
+untouched E1 Gate.

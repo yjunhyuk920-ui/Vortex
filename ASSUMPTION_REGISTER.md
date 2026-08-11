@@ -816,3 +816,27 @@ theorem. A different globally coupled adaptive numerical constructor or a new
 lower bound covering arbitrary nonlinear 8 GiB advice remains possible in the
 formal sense. Universal 2.5% remains NOT ESTABLISHED and universal
 impossibility remains NOT PROVED.
+
+## A-072 -- Finite-semiring preprocessing supplies the universal 2.5% source
+
+Assumption: Williams' subquadratic preprocessed MatVec theorem can be mapped
+directly to arbitrary unchanged Q4/BF16 Transformer weights, with the lookup
+graph fitting the global 8 GiB state and one-vector savings extending to the
+registered 32-token block.
+
+Status: REJECTED FOR THE PUBLISHED GRAPH. Charging only the minimum neighbor
+pattern payload yields `query/raw=1/b` and `sidecar/raw=K^b/b`. At
+theorem-parameter `b=14`, the favorable model-wide one-bit sidecar is
+`55,292.57 GiB`; Q4 and BF16 query payloads are already `2.629552%` and
+`10.518207%` of DFloat. The publication gives no 32-query shared-probe bound.
+Native BF16 and FP32 addition also fail associativity, so their reference
+accumulation is not the finite semiring used by the proof.
+
+### A-072 closure
+
+The closure charges only the published direct graph and direct numerical
+relabelings. It deliberately omits costs in the graph's favor and therefore
+does not reject a different scalar-specific globally adaptive structure. A
+new finite transition monoid would need its own complete representation and
+native-order equation. Universal 2.5% remains NOT ESTABLISHED and universal
+impossibility remains NOT PROVED.

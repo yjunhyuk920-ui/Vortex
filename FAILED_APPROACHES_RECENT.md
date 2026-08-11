@@ -509,3 +509,30 @@ This entry rejects those lifts only. It does not reject a different adaptive,
 globally coupled, bounded-word exact numerical structure under 8 GiB advice.
 That general gap remains open. Authority:
 `docs/research/E0_GLOBAL_NONLINEAR_RANK_ONE_FRONTIER.md`.
+
+## F-062 -- Williams finite-semiring preprocessing graph as a 2.5% core
+
+The published lookup graph genuinely preprocesses an arbitrary finite-semiring
+matrix and obtains subquadratic one-vector steps. Its physical information
+tradeoff is not free: with block length `b` and alphabet `K`, the favorable
+direct graph reads `1/b` of semantic raw matrix bits but stores `K^b/b` times
+that raw payload in output-pattern edges.
+
+Do not reopen by quoting only `O(n^2/(epsilon log n)^2)`, treating one pointer
+lookup as zero bytes, hiding node values in addresses, omitting the `K^b`
+catalog, or taking `b>14` as though the displayed `epsilon<1` theorem and
+finite work remained unchanged. One registered Boolean square at `b=14`
+already needs `36.616085 GiB` of favorable edges. Model-wide one-bit semantics
+need `55,292.57 GiB`; Q4/BF16 one-query payloads are `2.629552%` and
+`10.518207%` of DFloat before omitted costs.
+
+Do not call native BF16 or FP32 rounded accumulation a semiring. Explicit
+three-term witnesses give different left- and right-associated results.
+Also do not infer scalar rank-one or 32-token shared-probe bounds from the
+paper's full one-vector MatVec theorem.
+
+This entry rejects this graph and direct relabelings only. A scalar-specific
+global adaptive numerical structure, a finite transition construction with a
+fully charged representation, or a covering lower bound remains open.
+Authority:
+`docs/research/E0_FINITE_SEMIRING_PREPROCESSING_FRONTIER.md`.

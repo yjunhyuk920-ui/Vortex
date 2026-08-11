@@ -476,3 +476,21 @@ declared throughput contract. Forty outputs give `1/40` per output, which is
 never cite it as evidence for the registered single-stream goal.
 Keep NO_SURVIVING_CANDIDATE and do not assign EXP-085 or touch model/hardware
 work until the active ticket's deliverable changes.
+
+## Current directive after the finite-semiring preprocessing audit
+
+Do not spend another cycle translating Williams' full MatVec graph to Q4,
+BF16, bit planes, or a 32-vector wave. Its cheapest physical expansion already
+exposes the invariant tradeoff `query/raw=1/b`, `sidecar/raw=K^b/b`; hiding
+neighbor values, addresses, the pattern catalog, or native regrouping changes
+the problem rather than solving it. Do not benchmark a truncated graph or use
+one-bit query success while omitting its wrong arithmetic and `55,292.57 GiB`
+model-wide sidecar.
+
+Continue the claimed ticket only through a materially different scalar route:
+a globally coupled bounded-word exact numerical representation with a complete
+native-order 405B and 32-token equation, or a direct scalar rank-one lower
+bound that grants arbitrary nonlinear 8 GiB advice and adaptive probes. Apply
+the cheapest finite E0 falsification first. Keep NO_SURVIVING_CANDIDATE and do
+not assign EXP-085, run a model, build a backend/kernel, or touch hardware
+until one required ticket deliverable exists.

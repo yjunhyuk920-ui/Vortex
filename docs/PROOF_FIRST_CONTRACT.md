@@ -584,3 +584,21 @@ These are route closures, not a general nonlinear impossibility theorem.
 Universal 2.5% remains NOT ESTABLISHED, the general numerical rank-one gap
 remains open, no Core Candidate survives, and no E1/E2, model, backend,
 hardware, or scale promotion is authorized.
+
+## Current classification after the finite-semiring preprocessing audit
+
+Williams' finite-semiring graph supplies a genuine global preprocessed MatVec
+constructor, but its favorable physical layout reads `1/b` of semantic raw
+bits while storing a `K^b/b` sidecar. At registered theorem-parameter `b=14`,
+one Boolean square alone needs `36.616085 GiB`; the ideal model-wide one-bit
+sidecar is `6,911.57x` the 8 GiB grant. Q4 and BF16 one-query payloads also
+exceed the complete 2.5% DFloat block line.
+
+Explicit BF16 and FP32 counterexamples invalidate associativity, so the
+finite-semiring regrouping proof is not the native reference equation. The
+paper returns full MatVec and provides no 32-token shared-probe theorem.
+
+This closes the published graph as a Core Candidate, not the general adaptive
+scalar data-structure model. Universal 2.5% remains NOT ESTABLISHED, no Core
+Candidate survives, and no E1/E2, model, backend, hardware, or scale promotion
+is authorized.

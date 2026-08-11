@@ -812,3 +812,35 @@ Current classification remains NO_SURVIVING_CANDIDATE.
 Authoritative decision:
 `REJECT_BOOLEAN_ZERO_RECTANGLE_AND_LIMITED_INDEPENDENCE_LIFTS_KEEP_GENERAL_NONLINEAR_NUMERICAL_RANK_ONE_GAP_OPEN`.
 Current classification remains `NO_SURVIVING_CANDIDATE`.
+
+## E0 finite-semiring preprocessing frontier audit
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Williams graph is a valid finite-semiring preprocessed MatVec | primary theorem and construction | PASS IN PUBLISHED MODEL |
+| Minimum selected neighbor value | `b*log2(K)` bits | DERIVED FAVORABLE |
+| Ideal direct query/semantic-raw ratio | `1/b` | DERIVED |
+| Ideal persistent sidecar/semantic-raw ratio | `K^b/b` | DERIVED |
+| Registered theorem-parameter block | `n=16,384`, `b<=14` | DERIVED |
+| One explicit Boolean square edge payload | `36.616085 GiB` | FAIL 8 GiB |
+| Model-wide one-bit sidecar | `55,292.57 GiB`; `6,911.57x` 8 GiB | FAIL E0 |
+| Model-wide Q4 one-query payload | `2.629552%` DFloat | FAIL 2.5% BLOCK |
+| Model-wide BF16 one-query payload | `10.518207%` DFloat | FAIL 2.5% BLOCK |
+| Native BF16 addition associative | exact three-term witness | FALSE |
+| Native FP32 addition associative | exact three-term witness | FALSE |
+| Published output is scalar `r^T W u` | full MatVec | NO / OVERCOMPUTES |
+| Published 32-query shared-probe theorem | none | NOT ESTABLISHED |
+| Direct no-reuse one-bit 32-query payload | `21.036415%` DFloat; `8.414566x` budget | FAIL CONSTRUCTOR PATH |
+| Focused deterministic tests | 9/9 | PASS |
+| Related finite-word/nonlinear regression | 36/36 | PASS |
+| Full repository regression with repository import path | 544/544 | PASS |
+| Standard validation runner | completed | PASS |
+| Independent output-directory reproduction | identical summary SHA-256 | PASS |
+| Canonical summary SHA-256 | `8188c0fd...3e09f1` | PASS |
+| General nonlinear numerical constructor | none | OPEN |
+| General nonlinear numerical impossibility | no covering theorem | OPEN / NO CLAIM |
+| Model forwards and hardware actions | 0 / 0 | NOT RUN |
+
+Authoritative decision:
+`REJECT_WILLIAMS_FINITE_SEMIRING_GRAPH_AS_REFERENCE_EXACT_2_5_PERCENT_CORE`.
+Current classification remains `NO_SURVIVING_CANDIDATE`.

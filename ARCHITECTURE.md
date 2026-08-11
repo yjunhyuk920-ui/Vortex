@@ -875,3 +875,31 @@ Forty-way cross-request full-sweep batching yields `1/40` per output, but the
 registered 32-token block permits only `1/1280` per token. It is 32x too large
 and keeps block `rho=1`; it is a different throughput contract, not a
 single-stream component.
+
+### Finite-semiring preprocessing graph boundary
+
+No `WilliamsFiniteSemiringGraph` component is admitted. Its favorable direct
+layout is
+
+```text
+matrix/input alphabet K + block b
+  -> K^b precomputed input-pattern nodes per group
+  -> one b-symbol output-pattern value per output group
+query vector
+  -> choose one node per input group
+  -> read ceil(n/b)^2 output-pattern values
+  -> semiring-combine a full MatVec result
+```
+
+The minimum selected-value traffic is approximately `1/b` of semantic raw
+matrix bits, but the persistent edge payload is `K^b/b` times semantic raw.
+At registered scale, even the semantically insufficient one-bit model-wide
+sidecar is `55,292.57 GiB`; Q4 and BF16 single-query payloads miss the block
+budget at theorem-parameter `b=14`. Native BF16/FP32 accumulation cannot use
+the proof's regrouping because rounded addition is non-associative.
+
+No compiler, graph artifact, loader, counter state, decoder, native-order
+repair, scalar projection, 32-token scheduler, verifier, fallback engine, or
+kernel is admitted. A future finite-state transition representation is a new
+architecture proposal and must expose its complete state and operation table;
+it cannot inherit this theorem by name.

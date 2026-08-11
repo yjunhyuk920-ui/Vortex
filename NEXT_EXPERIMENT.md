@@ -1384,3 +1384,28 @@ covers arbitrary adaptive global advice and scalar rank-one output. No model,
 EXP-085, backend, kernel, download, private Ubuntu action, hardware benchmark,
 or E2-E7 action is authorized. Authority:
 `docs/research/E0_GLOBAL_NONLINEAR_RANK_ONE_FRONTIER.md`.
+
+## Finite-semiring preprocessing graph closed -- do not hide the catalog
+
+Do not cite Williams' `O(n^2/log^2 n)` finite-semiring step count while
+omitting the answer-pattern bytes carried by its adjacency lists or the
+`K^b` catalog behind every input group. In the favorable physical expansion,
+query payload falls only as `1/b` while persistent edge payload grows as
+`K^b/b`. At theorem-parameter `b=14`, one Boolean registered square already
+needs `36.616085 GiB` of edges, and the ideal model-wide one-bit sidecar is
+`6,911.57x` the global 8 GiB grant. Q4 and BF16 single-query payloads also
+miss the complete block budget.
+
+Do not relabel BF16 symbols or FP32 accumulators as a finite semiring. Their
+rounded addition is non-associative, and the published regrouping equation is
+not the native reference equation. Do not multiply the paper's one-vector
+claim into a 32-token amortization theorem; none is published.
+
+The active ticket remains Resolve the General Finite-Word Rank-One Probe Gap.
+The next admissible route must be scalar-specific and materially different:
+either a globally coupled bounded-word numerical constructor with a complete
+native-order 405B/32-token equation, or a direct scalar rank-one lower bound
+covering arbitrary adaptive global advice. No EXP-085, model, backend,
+kernel, download, private Ubuntu action, hardware benchmark, or E2-E7 action
+is authorized. Authority:
+`docs/research/E0_FINITE_SEMIRING_PREPROCESSING_FRONTIER.md`.

@@ -1388,3 +1388,50 @@ experiment number, backend, kernel, Ubuntu action, or hardware action
 occurred. Authority:
 `docs/research/E0_GLOBAL_NONLINEAR_RANK_ONE_FRONTIER.md` and
 `results/e0_global_nonlinear_rank_one_frontier`.
+
+## E0 finite-semiring preprocessing graph rejected as the universal core
+
+Williams' finite-semiring preprocessing theorem was expanded from its
+asymptotic step count into the favorable physical information layout of its
+two-layer graph. With `g=ceil(n/b)` groups and `K^b` input patterns per group,
+the direct graph reads `g^2` output-pattern values per MatVec and stores
+`g^2*K^b` such values. Charging only `b*log2(K)` bits per value gives ideal
+ratios `1/b` query payload and `K^b/b` persistent sidecar relative to semantic
+raw matrix bits.
+
+At the registered `n=16,384`, the theorem's displayed parameterization grants
+at most `b=14`. A single ceiling-aware one-bit square already requires
+`36.616085 GiB` of edge payload. Under a still more favorable continuous
+model-wide substitution, one-bit semantics read only `0.657388%` of the
+DFloat denominator per query but require `55,292.57 GiB` of sidecar, or
+`6,911.57x` the 8 GiB grant. Q4 and BF16 single queries require `2.629552%`
+and `10.518207%`, so even their query payload fails before addresses,
+counters, operations, outputs, cache lines, pages, and shared-link traffic.
+
+Exact rounding controls also show native BF16 and FP32 addition are not
+associative. The finite-semiring regrouping proof therefore cannot be called
+reference-exact Transformer arithmetic. The published result returns full
+MatVec, not scalar `r^T W u`, and has no 32-causal-query shared-probe bound.
+Direct no-reuse 32-query execution costs `21.036415%` of DFloat even for the
+semantically insufficient one-bit substitution, but that figure is a
+constructor execution count rather than a general multiquery lower bound.
+
+Decision:
+
+```text
+REJECT_WILLIAMS_FINITE_SEMIRING_GRAPH_AS_REFERENCE_EXACT_2_5_PERCENT_CORE
+KEEP_PUBLISHED_FINITE_SEMIRING_RESULT_VALID_IN_ITS_MODEL
+KEEP_GENERAL_NONLINEAR_NUMERICAL_RANK_ONE_GAP_OPEN
+KEEP_UNIVERSAL_2.5% NOT ESTABLISHED
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Nine focused deterministic tests, 36 related frontier tests, the 544-test
+repository regression, independent byte-identical reproduction, and the
+standard validation runner pass. The first unconfigured full-test launch had
+one existing EXP-072A child-process import-path failure; declaring the
+repository import path made that test and the complete suite pass. No model
+forward, checkpoint mutation, experiment number, backend, kernel, Ubuntu
+action, or hardware action occurred. Authority:
+`docs/research/E0_FINITE_SEMIRING_PREPROCESSING_FRONTIER.md` and
+`results/e0_finite_semiring_preprocessing_frontier`.

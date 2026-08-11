@@ -1192,3 +1192,36 @@ KEEP_MODEL_HARDWARE_AND_E2_E7_CLOSED
 
 Authority: `docs/research/E0_GLOBAL_NONLINEAR_RANK_ONE_FRONTIER.md` and
 `results/e0_global_nonlinear_rank_one_frontier`.
+
+## D-092 -- Reject the finite-semiring preprocessing graph as the VORTEX core
+
+Williams' published two-layer graph uses `ceil(n/b)` input groups, `K^b`
+patterns per group, and one output-pattern neighbor per output group. Even
+when each neighbor is charged only its minimum `b*log2(K)` value and all
+addresses, headers, counters, operations, cache lines, and outputs are free,
+the query/semantic-raw ratio is `1/b` while persistent sidecar/raw is
+`K^b/b`.
+
+At `n=16,384` and theorem-parameter `b=14`, one Boolean square needs
+`36.616085 GiB` of edge payload. The favorable model-wide one-bit graph needs
+`55,292.57 GiB`, Q4 reads `2.629552%` of DFloat per query, and BF16 reads
+`10.518207%`. Native BF16 and FP32 addition are explicitly non-associative,
+so neither arithmetic is the semiring assumed by the proof. The construction
+returns full MatVec and provides no 32-query shared-probe guarantee.
+
+Decision:
+
+```text
+REJECT_WILLIAMS_FINITE_SEMIRING_GRAPH_AS_REFERENCE_EXACT_2_5_PERCENT_CORE
+DO_NOT_HIDE_POINTER_PAYLOAD_OR_K_TO_THE_B_PERSISTENT_CATALOG
+DO_NOT_RENAME_NATIVE_ROUNDED_ARITHMETIC_A_SEMIRING
+DO_NOT_INFER_A_32_TOKEN_BOUND_FROM_A_ONE_VECTOR_THEOREM
+DO_NOT_CLAIM_A_GENERAL_NONLINEAR_IMPOSSIBILITY
+KEEP_GENERAL_NONLINEAR_NUMERICAL_RANK_ONE_GAP_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+KEEP_MODEL_HARDWARE_AND_E2_E7_CLOSED
+```
+
+Authority:
+`docs/research/E0_FINITE_SEMIRING_PREPROCESSING_FRONTIER.md` and
+`results/e0_finite_semiring_preprocessing_frontier`.

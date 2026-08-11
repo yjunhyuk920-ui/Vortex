@@ -344,4 +344,9 @@ rectangles, KPI25's limited-independence application to the full rank-one query
 code, and whole-MatVec lower bounds used without the mandatory `n`-fold
 scalarization. It explicitly leaves the general nonlinear numerical rank-one
 constructor/lower-bound gap open.
+F-062 closes Williams' finite-semiring preprocessing graph as a native
+reference-exact 2.5% core. Its favorable lookup payload falls as `1/b`, but
+its checkpoint-dependent catalog grows as `K^b/b`; native BF16/FP32 rounding
+also violates the semiring premise. It does not close a different
+scalar-specific adaptive numerical structure or a future covering lower bound.
 Read that continuation and each scope boundary before reopening a family.
