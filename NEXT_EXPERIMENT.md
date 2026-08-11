@@ -1510,3 +1510,24 @@ adaptive cross-matrix probe.  The active ticket remains claimed.  No model,
 EXP-085, backend, kernel, download, private Ubuntu action, or hardware stage is
 authorized.  Authority:
 `docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md`.
+
+## Literal adaptive tables and trapdoor masking closed -- no EXP-085
+
+Do not implement nearest-codeword or nearest-query routing backed by one
+literal exact scalar per representative. Even after granting arbitrary joint
+representative masks and free routing, a fixed-`u` packing forces more than
+`2^13741.25` one-bit entries to repair every `N=16,384` query inside the
+complete `8/675` coefficient budget. A direct table also needs a 13,742-bit
+address. Linear-image compression is F-055; an actually succinct nonlinear
+decoder must provide a new equation rather than hide this table.
+
+Do not use a trapdoored random mask as though it compiled the checkpoint. The
+identity `Wx=(W+R)x-Rx` makes `Rx` fast but leaves `(W+R)x` as an arbitrary
+dense product. Reopening requires a supplied exact average-case solver whose
+own complete target cost fits; the trapdoor paper does not provide one.
+
+Continue the active ticket only through a nonliteral compressed adaptive
+answer decoder with finite word/native-order accounting, or a joint lower
+bound covering that decoder and global advice. No model, EXP-085, backend,
+kernel, download, Ubuntu action, or hardware stage is authorized. Authority:
+`docs/research/E0_ADAPTIVE_CODEBOOK_TRAPDOOR_FRONTIER.md`.

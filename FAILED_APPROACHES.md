@@ -363,4 +363,10 @@ It does not close a further nonlinear adaptive index over those factors.
 F-068 closes integer entrywise powers of low-rank roots as a distinct runtime
 source because exact multinomial expansion is the existing static low-rank
 normal form. It does not close every entrywise nonlinear representation.
+F-069 closes a literal cached-answer table with nonlinear nearest-query
+routing: a finite fixed-side packing forces a 13,742-bit address before native
+or system costs. It does not close a succinct nonlinear answer decoder.
+F-070 closes trapdoored additive masking as a source: the mask product is fast
+but the arbitrary shifted-checkpoint product remains dense. It does not close
+checkpoints originally sampled together with a valid trapdoor.
 Read that continuation and each scope boundary before reopening a family.

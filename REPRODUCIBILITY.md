@@ -1617,3 +1617,54 @@ Canonical summary SHA-256:
 
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
+
+## E0 adaptive codebook / trapdoor frontier audit
+
+Authoritative commands:
+
+```powershell
+$env:PYTHONPATH = (Resolve-Path '.').Path
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_adaptive_codebook_trapdoor_frontier.py `
+  --output-dir results\e0_adaptive_codebook_trapdoor_frontier
+
+.deps\exp076-venv\Scripts\python.exe -m unittest `
+  tests.test_adaptive_codebook_trapdoor_frontier -v
+```
+
+Expected authoritative invariants:
+
+```text
+decision                         REJECT_NEARESTPAIR_LITERAL_TABLE_AND_SOURCE_FREE_TRAPSHIFT
+dimension                        16,384
+repair budget                    3,181,457 cells
+packing removal radius           388
+minimum table log2 bits          13,741.254846862746
+hot capacity log2 bits           36
+storage exponent deficit         13,705.254846862746
+literal address width            13,742 bits
+TrapShift remaining dense work   1.0
+model/hardware actions           0 / 0
+```
+
+Observed focused validation was 8/8 tests. The combined current-constructor
+frontier regression passed 15/15, the full repository regression passed
+582/582, and the standard validation runner completed successfully. An
+independent workspace-internal output directory reproduced the summary
+byte-for-byte and was removed only after its resolved path was checked inside
+the workspace. No package or network mutation was used.
+
+Artifacts:
+
+- `results/e0_adaptive_codebook_trapdoor_frontier/summary.json`
+- `results/e0_adaptive_codebook_trapdoor_frontier/checksums.sha256`
+- `docs/research/E0_ADAPTIVE_CODEBOOK_TRAPDOOR_FRONTIER.md`
+
+Canonical summary SHA-256:
+
+```text
+5bd9f7bc570df23e3b52a19092649aac2c16ffd6331b566d2028c2971472325b
+```
+
+No model forward, checkpoint mutation, experiment number, backend, kernel,
+download, Ubuntu command, or hardware action was used.

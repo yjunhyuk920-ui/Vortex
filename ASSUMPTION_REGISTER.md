@@ -955,3 +955,29 @@ Status: CONTRADICTED ALGEBRAICALLY.  The exact multinomial expansion contains
 96 expanded terms; the execution normal form is static low rank.  The EPMF
 magnitude factorization result also does not supply the arbitrary sign matrix
 or native accumulation order.
+
+## A-079 -- A literal representative table covers all fast rank-one repairs
+
+Assumption: nonlinear routing to cached representative queries can keep every
+raw difference inside the complete target budget while materializing one
+exact scalar per representative in the allowed state.
+
+Status: CONTRADICTED FOR THE LITERAL TABLE. A fixed-right-vector query packing
+requires more than `2^13741.2548` representatives at `N=16,384`; 8 GiB stores
+only `2^36` one-bit entries, and the minimum address is 13,742 bits. The Gate
+permits arbitrary joint centers and exact minimal difference repair.
+
+### A-079 closure
+
+A compressed nonlinear function of the representative index is not a literal
+table and remains the open general decoder problem.
+
+## A-080 -- A trapdoored mask transfers fast multiplication to any checkpoint
+
+Assumption: sampling a fast trapdoored `R` makes `Wx` fast through
+`Wx=(W+R)x-Rx`.
+
+Status: CONTRADICTED AS AN INFORMATION SOURCE. The trapdoor evaluates `Rx`,
+not `(W+R)x`; the latter is an arbitrary dense matrix product. The published
+family accelerates matrices sampled together with their trapdoor and supplies
+no arbitrary-checkpoint compiler or native rounded accumulation proof.

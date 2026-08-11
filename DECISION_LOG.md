@@ -1389,3 +1389,29 @@ KEEP_NO_SURVIVING_CANDIDATE
 
 Authority: `docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md` and
 `results/e0_spiky_power_rank_one_frontier`.
+
+## D-099 -- Reject literal adaptive pair tables and source-free trapdoor shifts
+
+`OMEGA-NEARESTPAIR` received a stronger-than-proposed direct Gate: cached
+representatives may be arbitrary joint masks and repair reads only the exact
+Hamming difference from the requested rank-one mask. Restricting to
+`r tensor 1` yields a finite packing whose members are more than twice the
+complete repair budget apart. The required literal table has log2 size
+`13,741.25484686` bits and 13,742-bit addresses, versus log2 hot capacity 36.
+
+`OMEGA-TRAPSHIFT` has a sound field identity but no skipped arbitrary product.
+The trapdoor computes the sampled mask product; the shifted checkpoint remains
+dense. An average-case solver is an additional assumed source, not an output
+of the trapdoor construction.
+
+Decision:
+
+```text
+REJECT_OMEGA_NEARESTPAIR_LITERAL_TABLE_BY_FINITE_COVERING_STORAGE_GATE
+REJECT_OMEGA_TRAPSHIFT_AS_SOURCE_FREE_MASKING_IDENTITY
+KEEP_GENERAL_COMPRESSED_ADAPTIVE_BILINEAR_ORACLE OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority: `docs/research/E0_ADAPTIVE_CODEBOOK_TRAPDOOR_FRONTIER.md` and
+`results/e0_adaptive_codebook_trapdoor_frontier`.

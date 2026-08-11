@@ -172,3 +172,20 @@ its exact query execution is the previously closed static low-rank normal
 form. These closures still do not cover arbitrary nonlinear 8 GiB advice and
 adaptive raw probes, and they do not supply a surviving constructor. The
 ticket therefore remains claimed.
+
+The third direct constructor cycle is recorded in
+`docs/research/E0_ADAPTIVE_CODEBOOK_TRAPDOOR_FRONTIER.md`.
+`OMEGA-NEARESTPAIR` receives arbitrary joint representative masks and repairs
+only their exact coefficient-mask difference from the requested rank-one
+query. A fixed-right-vector packing at `N=16,384` forces a literal table with
+log2 size `13,741.25484686` and 13,742-bit addresses, versus log2 8-GiB bit
+capacity 36. This closes literal cached-answer routing, not a succinct
+nonlinear decoder for those answers.
+
+`OMEGA-TRAPSHIFT` uses `Wx=(W+R)x-Rx` with a sampled fast trapdoored mask. The
+trapdoor supplies `Rx` but not the arbitrary shifted product `(W+R)x`; direct
+evaluation retains a full dense product. The cited construction accelerates
+matrices sampled with their trapdoors and provides neither an arbitrary
+checkpoint compiler nor native BF16/FP32 accumulation semantics. These
+closures do not resolve the general compressed adaptive decoder, so the
+ticket remains claimed.

@@ -663,3 +663,21 @@ These are scoped static-representation closures, not a lower bound for
 arbitrary nonlinear advice and adaptive probes.  The general finite-word
 rank-one ticket remains open, no Core Candidate survives, and no E1/E2,
 model, backend, hardware, or scale promotion is authorized.
+
+## Current classification after the adaptive codebook / trapdoor audit
+
+A direct cached-answer router is now charged by a finite packing rather than
+by an assumed code radius. Restricting to `r tensor 1`, the registered repair
+budget permits radius `R=3,181,457`; a greedy packing forces literal table
+log2 size `13,741.25484686` and 13,742-bit addresses. This remains true after
+granting arbitrary joint representative masks and all non-read costs free.
+
+Trapdoor masking is an identity, not an arbitrary-checkpoint source. It makes
+the sampled mask product fast but leaves the shifted checkpoint product
+arbitrary and dense. Neither finite-field nor exact-real algebra proves native
+BF16/FP32 accumulation equivalence.
+
+These closures are scoped to a literal answer table and a source-free mask.
+The general compressed adaptive bilinear decoder remains open, no Core
+Candidate survives, and no E1/E2, model, backend, hardware, or scale promotion
+is authorized.

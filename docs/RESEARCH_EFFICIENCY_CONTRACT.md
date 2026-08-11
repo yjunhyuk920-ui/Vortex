@@ -545,3 +545,20 @@ one global 8 GiB nonlinear advice function and jointly charges every adaptive
 cross-matrix probe.  Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085,
 run a model, build a backend/kernel, download a checkpoint, or touch hardware
 until one active-ticket deliverable exists.
+
+## Current directive after the adaptive codebook / trapdoor audit
+
+Do not materialize one answer per nearest codeword pair or joint representative
+query. The exact-difference Gate already grants the optimal router and
+arbitrary centers; the fixed-side packing still demands a 13,742-bit address.
+Do not hide the table behind an unnamed compression function. Such a function
+is the open mechanism and must be specified and charged directly.
+
+Do not mask an arbitrary checkpoint with a sampled trapdoored matrix unless a
+separate exact solver for the shifted arbitrary matrix is supplied and fully
+charged. `Wx=(W+R)x-Rx` does not eliminate `(W+R)x`.
+
+Continue only with a concrete nonliteral compressed decoder or a joint lower
+bound that covers it under global 8 GiB advice and adaptive cross-matrix
+probes. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a model,
+build a backend/kernel, download a checkpoint, or touch hardware.

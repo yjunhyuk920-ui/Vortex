@@ -220,3 +220,25 @@ _Avoid_: New execution source, approximate entrywise factorization, native
 rounding proof
 _Current status_: Rejected as a distinct source because multinomial expansion
 is the existing static low-rank normal form.
+
+**OMEGA-NEARESTPAIR**:
+A finite-word rank-one query representation that routes a query mask to a
+nearby cached representative, retrieves its exact scalar, and repairs only
+the differing checkpoint coordinates; separate codeword pairs are its named
+construction and arbitrary joint representatives are a favorable Gate grant.
+_Avoid_: Linear covering image, general compressed bilinear oracle, approximate
+nearest neighbour
+_Current status_: Direct literal-table form rejected by a finite packing and
+address-width Gate; a succinct nonlinear answer decoder remains outside it.
+
+**Literal Pair Table**:
+The OMEGA-NEARESTPAIR layout with one independently addressable stored answer
+for every cached representative query mask.
+_Avoid_: Succinct decoder, factor image, free address payload
+
+**OMEGA-TRAPSHIFT**:
+A proposed reduction that masks an arbitrary checkpoint matrix with a fast
+trapdoored matrix and attempts to recover the original product by subtraction.
+_Avoid_: Trapdoored checkpoint, average-case solver, checkpoint replacement
+_Current status_: Rejected because the trapdoor accelerates only the sampled
+mask while the arbitrary shifted-checkpoint product remains dense.

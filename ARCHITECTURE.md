@@ -978,3 +978,16 @@ of a rank-`r` root expands to `binom(r+p-1,p)` static separable terms and is
 therefore the existing low-rank execution interface.  A future architecture
 must change the query algorithm itself rather than provide another static
 masked-factor description.
+
+## Rejected adaptive interfaces: NearestPair and TrapShift
+
+No `NearestPairLiteralIndex` is admitted. Its proposed interface maps a
+rank-one query mask to a cached representative and repairs exactly the
+differing checkpoint cells. Even arbitrary joint representatives require an
+unaddressable literal answer table under the complete work budget. A future
+succinct decoder is a different component and must expose its own information,
+storage, probe, and native-order equations.
+
+No `TrapShiftCompiler` is admitted. A trapdoor associated with a sampled mask
+does not transfer to an arbitrary shifted checkpoint. The architecture cannot
+declare `(W+R)x` free or outsource it to an unspecified average-case solver.

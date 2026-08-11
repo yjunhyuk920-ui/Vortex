@@ -631,6 +631,36 @@ globally nonlinear adaptive data structure over the factors, and it is not a
 general cell-probe lower bound.  Authority:
 `docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md`.
 
+## F-069 -- OMEGA-NEARESTPAIR literal representative-answer table
+
+Do not reopen nearest-codeword, nearest-rank-one-query, or arbitrary joint
+representative routing with one materialized exact scalar per representative.
+The favorable Gate repairs only the exact differing coefficient mask and
+grants routing, representatives, addressing work, and every non-read cost
+free. A greedy packing of the `r tensor all_ones` subfamily at `N=16,384`
+still forces log2 table size `13,741.25484686` and a 13,742-bit address, while
+the complete 8 GiB contains only `2^36` bits.
+
+Reusable `Wq`/`p^T W` images of nonlinear codewords are contained by F-055:
+their linear spans retain the codewords and cannot worsen covering radius.
+This entry does not reject a nonliteral, nonseparable compressed decoder for
+the representative answers. Authority:
+`docs/research/E0_ADAPTIVE_CODEBOOK_TRAPDOOR_FRONTIER.md`.
+
+## F-070 -- OMEGA-TRAPSHIFT arbitrary-checkpoint masking
+
+Do not cite a fast sampled trapdoored matrix as a compiler for an arbitrary
+public checkpoint. Over a field, `Wx=(W+R)x-Rx` is exact and the trapdoor makes
+`Rx` fast, but no trapdoor is available for the arbitrary shifted matrix
+`W+R`. Computing that term directly retains one complete dense product;
+assuming an average-case solver merely renames the missing information source.
+
+The real/finite-field constructions also do not establish native BF16/FP32
+accumulation equivalence. This does not reject using a checkpoint that was
+originally generated with and semantically defined by a trapdoor; that is not
+the arbitrary unmodified-checkpoint objective. Authority:
+`docs/research/E0_ADAPTIVE_CODEBOOK_TRAPDOOR_FRONTIER.md`.
+
 ## F-068 -- OMEGA-POWERFOLD entrywise-power relabeling
 
 Do not treat an exact integer entrywise power of a low-rank root as a new

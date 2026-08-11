@@ -43,7 +43,7 @@ Mission.
 
 ## Current claimed frontier
 
-- [Resolve the General Finite-Word Rank-One Probe Gap](issues/17-resolve-general-finite-word-rank-one-probe-gap.md) remains claimed. The latest constructor-first cycle rejects direct spiky masked-factor evaluation by a model-wide `218,789,422,765.93`-bit description deficit even after granting cross-matrix components and the full compute allowance, and rejects entrywise-power roots as a static low-rank expansion. Neither closure supplies the required general adaptive lower bound or a surviving globally nonlinear constructor.
+- [Resolve the General Finite-Word Rank-One Probe Gap](issues/17-resolve-general-finite-word-rank-one-probe-gap.md) remains claimed. The latest adaptive cycle rejects a literal nearest-query answer table by a 13,742-bit address Gate and rejects trapdoored additive masking because the shifted arbitrary product remains dense. The still-open object is a nonliteral compressed adaptive bilinear decoder, or a joint lower bound that covers one under global advice.
 
 ## Not yet specified
 

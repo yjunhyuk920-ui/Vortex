@@ -1609,3 +1609,38 @@ TARGET NOT ACHIEVED
 
 Authority: `docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md` and
 `results/e0_spiky_power_rank_one_frontier`.
+
+## Adaptive constructor cycle: OMEGA-NEARESTPAIR and OMEGA-TRAPSHIFT
+
+`OMEGA-NEARESTPAIR` routes a binary rank-one query to a cached representative
+mask and reads only coefficient positions on which the two masks differ. A
+new finite packing Gate grants arbitrary joint representatives, free routing,
+one-bit answers, and the complete `8 GiB` to one `N=16,384` square. At the
+registered `8/675` work fraction, any literal answer table still needs at
+least `2^13741.25484686` bits and a 13,742-bit address, versus `2^36` hot bits.
+
+This rejects the literal table, not a succinct nonlinear decoder. Reusable
+linear codeword images reduce to F-055 because taking the codeword span cannot
+worsen covering radius.
+
+`OMEGA-TRAPSHIFT` uses the exact field identity
+
+```text
+W x = (W + R) x - R x
+```
+
+with a fast trapdoored mask `R`. The trapdoor accelerates only `R x`; the
+arbitrary shifted product `(W+R)x` remains the original missing dense source.
+The sampled trapdoor family therefore does not compile an arbitrary supplied
+checkpoint, and its arithmetic does not preserve native BF16/FP32 order.
+
+```text
+OMEGA-NEARESTPAIR LITERAL TABLE: REJECTED BY FINITE PACKING GATE
+OMEGA-TRAPSHIFT: REJECTED AS SOURCE-FREE MASKING IDENTITY
+GENERAL COMPRESSED ADAPTIVE BILINEAR ORACLE: OPEN
+NO SURVIVING CANDIDATE
+TARGET NOT ACHIEVED
+```
+
+Authority: `docs/research/E0_ADAPTIVE_CODEBOOK_TRAPDOOR_FRONTIER.md` and
+`results/e0_adaptive_codebook_trapdoor_frontier`.

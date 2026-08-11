@@ -688,3 +688,15 @@ No target-server command, storage mutation, download, CUDA action, GPU
 allocation, EXP-073 Stage 2, 122B/405B run, or Phase D/E4-E7 action is
 authorized.  Hardware remains downstream of a genuinely new globally
 adaptive exact constructor that first survives its complete E0 and E1 Gates.
+
+## Adaptive codebook / trapdoor audit: no hardware Gate is authorized
+
+NearestPair fails a finite storage and address-width Gate before a physical
+layout exists. TrapShift leaves one full arbitrary dense product and therefore
+defines no executable savings to benchmark. Neither result predicts target
+bandwidth, latency, VRAM, or kernel behavior.
+
+No target-server command, storage mutation, download, CUDA action, GPU
+allocation, EXP-073 Stage 2, 122B/405B run, or Phase D/E4-E7 action is
+authorized. Hardware remains downstream of a nonliteral compressed decoder
+that first survives complete E0 and E1 accounting.

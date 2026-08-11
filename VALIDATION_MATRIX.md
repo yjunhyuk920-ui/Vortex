@@ -964,3 +964,29 @@ Current classification remains `NO_SURVIVING_CANDIDATE`.
 Authoritative decision:
 `REJECT_SPIKY_AND_POWER_FOLDS_KEEP_GENERAL_PROBE_GAP_OPEN`.
 Full execution provenance is recorded in `REPRODUCIBILITY.md`.
+
+## E0 adaptive codebook / trapdoor frontier
+
+| Check | Observed | Status |
+|---|---:|---|
+| Old 2.5% premise used | false | PASS |
+| Registered square / repair budget | 16,384 / 3,181,457 cells | PASS |
+| Packing removal radius | 388 query-side bits | PASS |
+| Minimum literal table log2 bits | 13,741.254846862746 | REJECT TABLE |
+| Complete 8 GiB log2 bit capacity | 36 | PASS |
+| Storage exponent deficit | 13,705.254846862746 | REJECT TABLE |
+| Minimum literal address width | 13,742 bits | REJECT WORD MACHINE |
+| TrapShift identity | exact finite-field reference | PASS IDENTITY |
+| Shifted arbitrary product source | absent; dense fraction 1.0 | REJECT SOURCE |
+| Focused deterministic tests | 8/8 | PASS |
+| Related constructor-frontier tests | 15/15 | PASS |
+| Full repository regression | 582/582 | PASS |
+| Standard validation runner | completed | PASS |
+| Independent output-directory reproduction | identical summary SHA-256 | PASS |
+| Canonical summary SHA-256 | `5bd9f7bc...1472325b` | PASS |
+| Model forwards / hardware actions | 0 / 0 | NOT RUN |
+| General compressed adaptive decoder | unresolved | OPEN / NO CLAIM |
+
+Authoritative decision:
+`REJECT_NEARESTPAIR_LITERAL_TABLE_AND_SOURCE_FREE_TRAPSHIFT`.
+Full execution provenance is recorded in `REPRODUCIBILITY.md`.
