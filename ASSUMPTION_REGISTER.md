@@ -981,3 +981,21 @@ Status: CONTRADICTED AS AN INFORMATION SOURCE. The trapdoor evaluates `Rx`,
 not `(W+R)x`; the latter is an arbitrary dense matrix product. The published
 family accelerates matrices sampled together with their trapdoor and supplies
 no arbitrary-checkpoint compiler or native rounded accumulation proof.
+
+## A-081 -- Average-case error correction creates its own noisy oracle
+
+Assumption: an error-correcting OMv reduction can turn the resident proposer
+into an exact arbitrary-checkpoint executor without separately constructing a
+uniform random-matrix oracle.
+
+Status: CONTRADICTED. The reduction explicitly assumes a matrix-dependent
+preprocessed oracle with above-random coordinate accuracy. Under a favorable
+hot-only binary model, Parseval and counting require
+`S + M log2(1/(4 epsilon^2)) >= D`. The registered `8 GiB` state supports only
+`epsilon <= 10^-2521.899...`; one-percent advantage needs `46.9762 GiB`.
+
+### A-081 closure
+
+The theorem remains a valid amplifier. A cold-backed oracle is not rejected,
+but it is the missing information source and must pay every probe and repeated
+call plus native numerical lifting.

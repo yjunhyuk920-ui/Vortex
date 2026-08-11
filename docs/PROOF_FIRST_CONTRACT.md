@@ -681,3 +681,17 @@ These closures are scoped to a literal answer table and a source-free mask.
 The general compressed adaptive bilinear decoder remains open, no Core
 Candidate survives, and no E1/E2, model, backend, hardware, or scale promotion
 is authorized.
+
+## Current classification after the average-oracle amplifier audit
+
+Finite-field worst-case-to-average-case error correction is retained as a
+valid amplifier, not admitted as an answer source. A hot-only oracle with
+arbitrary nonlinear global state and free randomized query computation must
+satisfy `S + M log2(1/(4 epsilon^2)) >= D`; the registered state forces
+`epsilon` below approximately `10^-2522`.
+
+A cold-backed oracle is outside this capacity Gate, but must first specify and
+charge its preprocessing, every probe on every amplification call, decoding,
+verification, native numerical lifting, and fallback. No such oracle exists
+in the architecture. No Core Candidate survives, and no E1/E2, model,
+backend, hardware, or scale promotion is authorized.

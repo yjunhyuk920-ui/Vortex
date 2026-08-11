@@ -1644,3 +1644,38 @@ TARGET NOT ACHIEVED
 
 Authority: `docs/research/E0_ADAPTIVE_CODEBOOK_TRAPDOOR_FRONTIER.md` and
 `results/e0_adaptive_codebook_trapdoor_frontier`.
+
+## Average-case oracle amplification cycle: OMEGA-XORLIFT
+
+`OMEGA-XORLIFT` applies finite-field worst-case-to-average-case error
+correction to a proposed noisy MatVec oracle. The Hirahara--Shimizu reduction
+is valid, but it is an amplifier: its premise already contains a preprocessed
+oracle that beats random coordinate guessing on uniformly random matrices and
+vectors. It does not construct that oracle or cap its matrix-dependent state.
+
+A new nonlinear hot-state capacity Gate grants free query computation,
+arbitrary global mixing, randomized prediction, and the complete `8 GiB` to
+one binary checkpoint plane. Parseval bounds the number of row parities that
+one predictor can beat by advantage `epsilon` by `1/(4*epsilon^2)`. Across the
+frozen `19,997,952` output rows, universal checkpoint coverage requires
+
+```text
+S + M log2(1/(4 epsilon^2)) >= D.
+```
+
+At `D=403,747,897,344` and `S=68,719,476,736`, this gives
+`log10(epsilon) <= -2521.89934`. Even 51% average accuracy needs at least
+`46.9761628441 GiB` of self-contained state. A cold-backed oracle is outside
+this Gate, but must expose every probe and every repeated amplification call;
+none is supplied.
+
+```text
+OMEGA-XORLIFT HOT-ONLY ORACLE: REJECTED BY FOURIER LIST-CAPACITY GATE
+HIRAHARA--SHIMIZU ERROR CORRECTION: VALID AMPLIFIER, NOT AN ANSWER SOURCE
+COLD-BACKED GLOBAL NONLINEAR ORACLE: OPEN / UNSPECIFIED
+NO SURVIVING CANDIDATE
+TARGET NOT ACHIEVED
+```
+
+Authority: `docs/research/E0_AVERAGE_ORACLE_AMPLIFIER_FRONTIER.md` and
+`results/e0_average_oracle_amplifier_frontier`.

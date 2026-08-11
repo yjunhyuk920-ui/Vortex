@@ -991,3 +991,21 @@ storage, probe, and native-order equations.
 No `TrapShiftCompiler` is admitted. A trapdoor associated with a sampled mask
 does not transfer to an arbitrary shifted checkpoint. The architecture cannot
 declare `(W+R)x` free or outsource it to an unspecified average-case solver.
+
+## Rejected average-oracle interface: OMEGA-XORLIFT
+
+No `AverageOracleAmplifier` runtime component is admitted. The mathematical
+reduction consumes a separately preprocessed oracle that already beats random
+finite-field coordinate guessing. Under a self-contained binary interface,
+one arbitrary nonlinear hot state can represent too few row-parity predictors:
+
+```text
+S + M log2(1/(4 epsilon^2)) >= D.
+```
+
+The registered `8 GiB` point forces `epsilon` below roughly `10^-2522`, so no
+finite practical amplification schedule follows. A future cold-backed oracle
+must be specified as a new `Query-Adaptive Cold Source` and charge its state,
+random-instance construction, every probe on every call, list decoding,
+verification, numerical lifting, and fallback. The amplifier may then be an
+auxiliary correctness layer; it is not itself an answer source.

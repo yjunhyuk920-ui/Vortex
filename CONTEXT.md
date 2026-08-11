@@ -242,3 +242,19 @@ trapdoored matrix and attempts to recover the original product by subtraction.
 _Avoid_: Trapdoored checkpoint, average-case solver, checkpoint replacement
 _Current status_: Rejected because the trapdoor accelerates only the sampled
 mask while the arbitrary shifted-checkpoint product remains dense.
+
+**Approximate-Oracle Amplifier**:
+An error-correcting reduction that turns a separately supplied average-case
+matrix oracle into a worst-case exact oracle; it strengthens an answer source
+but does not create that source.
+_Avoid_: Approximate executor, verifier, free random-matrix oracle
+
+**OMEGA-XORLIFT**:
+A proposed executor that randomizes finite-field MatVec queries, calls an
+Approximate-Oracle Amplifier, and list-decodes the returned coordinates to an
+exact result.
+_Avoid_: Sparse-error syndrome repair, native floating-point proof, oracle-free
+constructor
+_Current status_: The self-contained 8 GiB form is rejected by the average-case
+parity-prediction capacity Gate; a cold-backed oracle remains unspecified and
+must pay every probe and amplification call.

@@ -990,3 +990,28 @@ Full execution provenance is recorded in `REPRODUCIBILITY.md`.
 Authoritative decision:
 `REJECT_NEARESTPAIR_LITERAL_TABLE_AND_SOURCE_FREE_TRAPSHIFT`.
 Full execution provenance is recorded in `REPRODUCIBILITY.md`.
+
+## E0 average-oracle amplifier frontier
+
+| Check | Observed | Status |
+|---|---:|---|
+| Old 2.5% premise used | false | PASS |
+| Binary coefficients / output rows | 403,747,897,344 / 19,997,952 | PASS |
+| Complete hot state fraction | 17.020392474626% | FAVORABLE GRANT |
+| Missing bits per output row | 16,753.136551582882 | DERIVED |
+| Common advantage ceiling log2 | -8,377.568275791441 | REJECT HOT ORACLE |
+| Common advantage ceiling log10 | -2,521.899341736204 | REJECT HOT ORACLE |
+| State for 51% accuracy | 46.9761628441 GiB | REJECT 8 GiB |
+| State for 75% accuracy | 46.9977852702 GiB | REJECT 8 GiB |
+| Exhaustive Walsh/self-correction controls | passed | PASS |
+| Focused deterministic tests | 8/8 | PASS |
+| Related frontier regression | 68/68 | PASS |
+| Full repository regression | 590/590 | PASS |
+| Standard validation runner | completed | PASS |
+| Independent output-directory reproduction | byte-identical summary | PASS |
+| Canonical summary SHA-256 | `c799c851...79bb478` | PASS |
+| Model forwards / hardware actions | 0 / 0 | NOT RUN |
+| Cold-backed adaptive oracle | unspecified | OPEN / NO CLAIM |
+
+Authoritative decision:
+`REJECT_SELF_CONTAINED_AVERAGE_ORACLE_AMPLIFIER_AS_CORE`.

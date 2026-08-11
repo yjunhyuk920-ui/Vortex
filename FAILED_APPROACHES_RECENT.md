@@ -674,3 +674,24 @@ magnitudes.  It neither supplies arbitrary signed Transformer weights nor
 native accumulation order.  This entry does not reject every entrywise
 nonlinear representation.  Authority:
 `docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md`.
+
+## F-071 -- OMEGA-XORLIFT without an average-case answer source
+
+Do not relabel a finite-field error-correcting oracle reduction as a local
+approximate MatVec constructor. Hirahara--Shimizu transform an oracle that
+already beats random guessing on uniformly random matrices and vectors; the
+reduction does not build that oracle, limit its preprocessing state, or prove
+native BF16/FP32 semantics.
+
+For the strongest self-contained arm, one arbitrary global `S`-bit hot state
+and free randomized query computation are granted. A fixed predictor can have
+advantage `epsilon` over at most `1/(4 epsilon^2)` binary row parities by
+Parseval. Universal coverage of `D` arbitrary bits in `M` rows requires
+`S + M log2(1/(4 epsilon^2)) >= D`. The registered state permits common
+advantage only below about `10^-2522`; 51% accuracy already requires
+`46.9762 GiB`.
+
+This closes the hot-only oracle, not a cold-backed adaptive oracle. Reopening
+requires a concrete random-matrix oracle with all preprocessing, probes,
+calls, decoding, verification, numerical lifting, and fallback charged.
+Authority: `docs/research/E0_AVERAGE_ORACLE_AMPLIFIER_FRONTIER.md`.

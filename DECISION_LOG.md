@@ -1415,3 +1415,28 @@ KEEP_NO_SURVIVING_CANDIDATE
 
 Authority: `docs/research/E0_ADAPTIVE_CODEBOOK_TRAPDOOR_FRONTIER.md` and
 `results/e0_adaptive_codebook_trapdoor_frontier`.
+
+## D-100 -- Treat average-case error correction as an amplifier, not a source
+
+`OMEGA-XORLIFT` would randomize finite-field MatVec instances and list-decode
+the outputs of a noisy oracle. The cited mathematics is retained, but its
+oracle premise is not satisfied by a causal 4B proposer and is not a
+constructor for arbitrary checkpoint-dependent answers.
+
+The hot-only source Gate permits arbitrary nonlinear state and randomness.
+Its finite Fourier list count forces `log10(epsilon) <= -2521.89934` for a
+common above-random row advantage under the full `8 GiB` grant. Therefore no
+practical error-correction call schedule starts from the self-contained arm.
+
+Decision:
+
+```text
+REJECT_SELF_CONTAINED_AVERAGE_ORACLE_AMPLIFIER_AS_CORE
+KEEP_THE_ERROR_CORRECTION_REDUCTION_VALID_IN_ITS_FINITE_FIELD_MODEL
+REQUIRE_A_CONCRETE_FULLY_CHARGED_COLD_ORACLE_BEFORE_REOPENING
+KEEP_GENERAL_NONLINEAR_ADAPTIVE_PROBE_GAP OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority: `docs/research/E0_AVERAGE_ORACLE_AMPLIFIER_FRONTIER.md` and
+`results/e0_average_oracle_amplifier_frontier`.

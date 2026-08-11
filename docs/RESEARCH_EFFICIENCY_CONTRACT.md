@@ -562,3 +562,18 @@ Continue only with a concrete nonliteral compressed decoder or a joint lower
 bound that covers it under global 8 GiB advice and adaptive cross-matrix
 probes. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a model,
 build a backend/kernel, download a checkpoint, or touch hardware.
+
+## Current directive after the average-oracle amplifier audit
+
+Do not spend an E1 run on OMEGA-XORLIFT or another average-case amplifier
+unless a new concrete oracle has already passed E0. A theorem that transforms
+above-random answers does not create them. The hot-only uniform predictor is
+closed by the Fourier list-capacity Gate: even 51% row accuracy needs
+`46.9762 GiB` of checkpoint-dependent state.
+
+A cold-backed variant must begin with its exact oracle constructor and close
+all repeated probe and call costs, random-instance construction, decoding,
+verification, native numerical lifting, and fallback. Otherwise continue with
+a materially different non-oracle source or a covering global-advice lower
+bound. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a model,
+build a backend/kernel, download a checkpoint, or touch hardware.

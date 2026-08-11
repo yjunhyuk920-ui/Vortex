@@ -700,3 +700,16 @@ No target-server command, storage mutation, download, CUDA action, GPU
 allocation, EXP-073 Stage 2, 122B/405B run, or Phase D/E4-E7 action is
 authorized. Hardware remains downstream of a nonliteral compressed decoder
 that first survives complete E0 and E1 accounting.
+
+## Average-oracle amplification audit: no hardware Gate is authorized
+
+OMEGA-XORLIFT fails before a runtime oracle exists. The registered values are
+finite information-capacity results for a free-compute hot-only binary
+predictor, not measurements of GPU inference, SSD reads, PCIe traffic, CUDA,
+latency, power, or VRAM allocation. The cited error-correcting reduction does
+not supply the assumed average-case oracle or native Transformer semantics.
+
+No target-server command, storage mutation, download, CUDA action, GPU
+allocation, EXP-073 Stage 2, 122B/405B run, or Phase D/E4-E7 action is
+authorized. Hardware can reopen only after a concrete cold-backed oracle
+closes every repeated-call resource equation and survives E1/E2.
