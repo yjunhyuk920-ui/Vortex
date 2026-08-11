@@ -563,6 +563,22 @@ bound that covers it under global 8 GiB advice and adaptive cross-matrix
 probes. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a model,
 build a backend/kernel, download a checkpoint, or touch hardware.
 
+## Current directive after the extension-field rank-saturation screen
+
+Do not spend another cycle treating rank weight, projective points, or a
+rank-covering radius as physical locality. The direct materialization and the
+query-specialized identity layout already fail favorable finite resource
+Gates. Also do not enlarge the tiny dictionary hill climb: its purpose was to
+show that nonlinear leaders are a real distinct mechanism, not to infer scale.
+
+The only admissible continuation of this code route is a batch-aware nonlinear
+coset constructor: for all queries in one causal batch, it must find one small
+shared set of physical atoms whose span contains them, without scanning the
+dictionary. Persistent state, native summaries, address bytes, decoding, KV,
+verification, and fallback remain charged. Without an explicit construction
+and a favorable 405B equation, change mechanism class. Keep
+`NO_SURVIVING_CANDIDATE`; do not assign EXP-085 or run model/hardware work.
+
 ## Current directive after the sparse functional dictionary audit
 
 Do not revisit literal bilinear answer books, direct local rank-one tables, or

@@ -1,0 +1,233 @@
+{
+  "claim_boundary": {
+    "direct_full_ambient_materialization_fits": false,
+    "extension_field_trace_repacking_exact": true,
+    "hardware_actions": 0,
+    "model_forward_calls": 0,
+    "native_numerical_lift": false,
+    "nonlinear_minimum_weight_decoder_rejected": false,
+    "published_rho_is_number_of_probed_cells": false,
+    "query_specialized_direct_layout_meets_latency": false,
+    "target_candidate": false,
+    "tiny_witness_is_asymptotic_lower_bound": false
+  },
+  "classification": "E0_EXTENSION_FIELD_RANK_SATURATING_FRONTIER",
+  "contract": {
+    "binary_screen_only": true,
+    "block_allowance_bytes": 13780500000,
+    "block_tokens": 32,
+    "favorable_shared_bytes_per_second": 32000000000,
+    "global_advice_bits": 68719476736,
+    "registered_parameters": 405849243648
+  },
+  "decision": "REJECT_EXTENSION_FIELD_RANK_SATURATION_AS_LOW_PROBE_CONSTRUCTOR_KEEP_QUERY_DEPENDENT_NONLINEAR_COSET_DECODER_OPEN",
+  "decisions": [
+    "REJECT_RANK_PARAMETER_AS_PROBE_COUNT",
+    "REJECT_FULL_AMBIENT_RHO_ONE_DIRECT_MATERIALIZATION",
+    "REJECT_QUERY_SPECIALIZED_IDENTITY_DIRECT_LAYOUT",
+    "KEEP_QUERY_DEPENDENT_NONLINEAR_COSET_DECODER_OPEN",
+    "REQUIRE_SMALL_32_QUERY_UNION_NOT_ONLY_SMALL_SINGLE_QUERY_LEADERS",
+    "NO_SURVIVING_CANDIDATE"
+  ],
+  "exact_repacking": {
+    "answer": "<r*u^T,W>_GF2 = Trace(alpha * sum_j u_j beta_j)",
+    "coefficient_rank_is_probe_support": false,
+    "rank_one_mask": "r*u^T becomes (u_j*alpha)_j in GF(2^m)^k"
+  },
+  "published_full_ambient_rho_one": {
+    "direct_field_summary_bits": 6584324197576704,
+    "direct_summary_tib": 748.5509965564124,
+    "direct_summary_to_raw_ratio": "535833674933/33028096",
+    "direct_summary_to_raw_ratio_decimal": 16223.571438480742,
+    "matrices": [
+      {
+        "columns": 16384,
+        "direct_field_summary_bits": 1108240079192064,
+        "direct_summary_tib": 125.99231003969908,
+        "direct_summary_to_raw_ratio": "268419073/16384",
+        "direct_summary_to_raw_ratio_decimal": 16383.000061035156,
+        "extension_degree": 16384,
+        "extension_vector_length": 16384,
+        "multiplicity": 252,
+        "q_system_binary_basis_dimension_rho_1": 268419073,
+        "raw_one_bit_source_bits": 67645734912,
+        "rows": 16384
+      },
+      {
+        "columns": 16384,
+        "direct_field_summary_bits": 4329063051264,
+        "direct_summary_tib": 0.4921574885956943,
+        "direct_summary_to_raw_ratio": "16776193/16384",
+        "direct_summary_to_raw_ratio_decimal": 1023.9375610351562,
+        "extension_degree": 1024,
+        "extension_vector_length": 16384,
+        "multiplicity": 252,
+        "q_system_binary_basis_dimension_rho_1": 16776193,
+        "raw_one_bit_source_bits": 4227858432,
+        "rows": 1024
+      },
+      {
+        "columns": 16384,
+        "direct_field_summary_bits": 3601932450988032,
+        "direct_summary_tib": 409.4923100396991,
+        "direct_summary_to_raw_ratio": "872398849/53248",
+        "direct_summary_to_raw_ratio_decimal": 16383.692326472355,
+        "extension_degree": 16384,
+        "extension_vector_length": 53248,
+        "multiplicity": 252,
+        "q_system_binary_basis_dimension_rho_1": 872398849,
+        "raw_one_bit_source_bits": 219848638464,
+        "rows": 53248
+      },
+      {
+        "columns": 53248,
+        "direct_field_summary_bits": 1800966225494016,
+        "direct_summary_tib": 204.74615501984954,
+        "direct_summary_to_raw_ratio": "872398849/53248",
+        "direct_summary_to_raw_ratio_decimal": 16383.692326472355,
+        "extension_degree": 16384,
+        "extension_vector_length": 53248,
+        "multiplicity": 126,
+        "q_system_binary_basis_dimension_rho_1": 872398849,
+        "raw_one_bit_source_bits": 109924319232,
+        "rows": 16384
+      },
+      {
+        "columns": 16384,
+        "direct_field_summary_bits": 34428189425664,
+        "direct_summary_tib": 3.91403198428452,
+        "direct_summary_to_raw_ratio": "700443307/42752",
+        "direct_summary_to_raw_ratio_decimal": 16383.872263285928,
+        "extension_degree": 16384,
+        "extension_vector_length": 128256,
+        "multiplicity": 1,
+        "q_system_binary_basis_dimension_rho_1": 2101329921,
+        "raw_one_bit_source_bits": 2101346304,
+        "rows": 128256
+      },
+      {
+        "columns": 128256,
+        "direct_field_summary_bits": 34428189425664,
+        "direct_summary_tib": 3.91403198428452,
+        "direct_summary_to_raw_ratio": "700443307/42752",
+        "direct_summary_to_raw_ratio_decimal": 16383.872263285928,
+        "extension_degree": 16384,
+        "extension_vector_length": 128256,
+        "multiplicity": 1,
+        "q_system_binary_basis_dimension_rho_1": 2101329921,
+        "raw_one_bit_source_bits": 2101346304,
+        "rows": 16384
+      }
+    ],
+    "raw_one_bit_source_bits": 405849243648
+  },
+  "query_specialized_identity_system": {
+    "allowance_ratio": 3.058032789448859,
+    "complete_hot_grant_bits": 68719476736,
+    "direct_persistent_bits": 405849243648,
+    "direct_persistent_equals_raw_one_bit_source": true,
+    "expected_active_cold_bits_ceiling": 337129766834,
+    "expected_active_cold_bytes_ceiling": 42141220855,
+    "query_count": 32,
+    "registered_block_allowance_bytes": 13780500000,
+    "uniform_batch_union_probability": "4294967295/4294967296",
+    "uniform_batch_union_probability_decimal": 0.9999999997671694,
+    "worst_case_single_query_can_activate_every_coordinate": true,
+    "zero_compute_ms_per_token_at_favorable_bandwidth": 41.15353599121094
+  },
+  "tiny_nonlinear_coset_witnesses": {
+    "interpretation": "SINGLE_QUERY_LEADERS_IMPROVE_BUT_32_QUERY_CANONICAL_UNION_IS_NEAR_THE_COMPLETE_TINY_DICTIONARY",
+    "prototype_commit": "2f68300",
+    "three_by_three_prototype_witness_not_optimality_claim": {
+      "ambient_dimension": 9,
+      "atoms_hex": [
+        "0x1",
+        "0x2",
+        "0x4",
+        "0x8",
+        "0x10",
+        "0x20",
+        "0x36",
+        "0x40",
+        "0x80",
+        "0x100",
+        "0x1ef"
+      ],
+      "canonical_expected_union_atoms": 10.934422351175748,
+      "canonical_expected_union_fraction": 0.9940383955614316,
+      "columns": 3,
+      "distance_histogram": {
+        "0": 1,
+        "1": 10,
+        "2": 19,
+        "3": 10,
+        "4": 10
+      },
+      "is_general_lower_bound": false,
+      "maximum_minimum_atoms": 4,
+      "mean_minimum_atoms_including_zero": 2.36,
+      "nonzero_rank_one_queries": 49,
+      "query_count": 32,
+      "redundancy_fraction": 0.2222222222222222,
+      "rows": 3,
+      "stored_atoms": 11
+    },
+    "two_by_three_explicit_witness_not_optimality_claim": {
+      "ambient_dimension": 6,
+      "atoms_hex": [
+        "0x1",
+        "0x2",
+        "0x4",
+        "0x8",
+        "0x10",
+        "0x20",
+        "0x3f"
+      ],
+      "canonical_expected_union_atoms": 6.998716471461012,
+      "canonical_expected_union_fraction": 0.9998166387801446,
+      "columns": 3,
+      "distance_histogram": {
+        "0": 1,
+        "1": 7,
+        "2": 9,
+        "3": 5
+      },
+      "is_general_lower_bound": false,
+      "maximum_minimum_atoms": 3,
+      "mean_minimum_atoms_including_zero": 1.8181818181818181,
+      "nonzero_rank_one_queries": 21,
+      "query_count": 32,
+      "redundancy_fraction": 0.16666666666666666,
+      "rows": 2,
+      "stored_atoms": 7
+    },
+    "two_by_two_exact_optimum_at_five_atoms": {
+      "ambient_dimension": 4,
+      "atoms_hex": [
+        "0x1",
+        "0x2",
+        "0x4",
+        "0x8",
+        "0xf"
+      ],
+      "canonical_expected_union_atoms": 4.976916920337775,
+      "canonical_expected_union_fraction": 0.995383384067555,
+      "columns": 2,
+      "distance_histogram": {
+        "0": 1,
+        "1": 5,
+        "2": 4
+      },
+      "full_rank_dictionaries_tested": 2688,
+      "is_general_lower_bound": false,
+      "maximum_minimum_atoms": 2,
+      "mean_minimum_atoms_including_zero": 1.3,
+      "nonzero_rank_one_queries": 9,
+      "query_count": 32,
+      "redundancy_fraction": 0.25,
+      "rows": 2,
+      "search": "EXHAUSTIVE",
+      "stored_atoms": 5
+    }
+  }
+}

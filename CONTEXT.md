@@ -267,3 +267,14 @@ _Avoid_: Common-row predictor, compressed nonlinear oracle, free row transform
 _Current status_: Rejected as a traffic reduction because exact recovery needs
 a rank-covering set of row forms and their direct coefficient payload is at
 least one full matrix source.
+
+**Joint Batch Coset Dictionary**:
+A cold functional dictionary whose query-dependent nonlinear decoder chooses
+one shared physical atom set `T` for a causal batch and proves every requested
+rank-one mask belongs to `span(G_T)`; individual minimum-weight leaders are
+not the objective.
+_Avoid_: Rank weight called probe count, independent per-query sparsity,
+unaddressed metadata scan
+_Current status_: Unconstructed research interface. Extension-field direct
+materializations and identity layouts are rejected; tiny nonlinear leaders do
+not establish a scalable small batch union.

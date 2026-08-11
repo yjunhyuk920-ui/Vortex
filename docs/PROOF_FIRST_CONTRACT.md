@@ -603,6 +603,23 @@ scalar data-structure model. Universal 2.5% remains NOT ESTABLISHED, no Core
 Candidate survives, and no E1/E2, model, backend, hardware, or scale promotion
 is authorized.
 
+## Current classification after the extension-field rank-saturation audit
+
+Packing a binary rank-one mask into an extension field is exact, but the
+rank-saturating coefficient rank is not a Hamming support or probe count.
+Direct full-ambient materialization expands the registered one-bit source to
+`748.5509965564124 TiB`. The query-specific identity system avoids that
+expansion only by restoring the raw one-bit source; its favorable independent
+32-query cold union still costs `41.153536 ms/token` at 32 GB/s after granting
+all 8 GiB hot and zero compute.
+
+Tiny nonlinear coset leaders are genuinely different from a fixed linear
+right inverse, so they remain outside F-076. However, single-query support is
+not the promotion metric: a candidate must construct and charge a joint
+32-query physical support union, its decoder, metadata, and native numerical
+lift. No such construction exists. No Core Candidate survives, and no model,
+backend, hardware, E1, or E2 promotion is authorized.
+
 ## Current classification after the sparse functional dictionary audit
 
 The cold source may now be re-encoded non-systematically in the proof model:

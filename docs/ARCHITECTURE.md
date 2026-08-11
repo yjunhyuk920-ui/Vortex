@@ -165,3 +165,16 @@ reference preserved only `4.1667%` held-out top-1 and left a minimum local sound
 radius roughly `49x` the signal. The DCT/block-zonotope components remain
 negative-test infrastructure only; they must not be wired into the production
 operator path or optimized with a backend.
+
+## Extension-field and joint-coset research boundary
+
+`vortex_runtime/extension_field_rank_saturating_frontier.py` is a pure finite
+calculator. It records exact GF(2) repacking equations, direct q-system
+storage, independent-batch union traffic, and tiny nonlinear dictionary
+witnesses. It is not an operator, source format, decoder, or backend.
+
+The unimplemented joint-coset interface would select one atom set `T` for a
+whole query batch such that every query lies in `span(G_T)`. No persistent
+layout, sub-dense selector, native arithmetic, causal guarantee, or physical
+cost closure exists, so it must not appear in the runtime path or be described
+as a surviving candidate.

@@ -272,3 +272,20 @@ Query-dependent nonlinear minimum-weight syndrome decoding, arbitrary
 nonlinear hot advice, and causal exclusion of the independently selectable
 tuple are not covered. No explicit decoder or covering lower bound was
 delivered, so the ticket remains claimed.
+
+The tenth post-audit screen is recorded in
+`docs/research/E0_EXTENSION_FIELD_RANK_SATURATING_FRONTIER.md`. Packing an
+`m x k` binary rank-one mask into `GF(2^m)^k` is exact, but a rank-`rho`
+coefficient vector can have dense Hamming support. Directly materializing the
+published full-ambient `rho=1` q-system costs `748.5509965564124 TiB` over the
+registered one-bit population. Restricting to the actual rank-one query set
+gives the identity q-system and a raw one-bit scan; after the full hot grant,
+its favorable independent 32-query cold union is `42,141,220,855` bytes.
+
+A separate throwaway search, preserved at commit `2f68300` on
+`prototype/rank-one-dictionary-small-search`, shows nonlinear coset leaders do
+shorten individual tiny queries, but their canonical 32-query unions cover at
+least `99.4%` of the tested dictionaries. This is not an asymptotic lower
+bound. It refines the open deliverable to a joint batch coset constructor that
+finds one small physical atom set spanning every batch query. No such layout,
+decoder, or native lift was delivered, so this issue remains claimed.

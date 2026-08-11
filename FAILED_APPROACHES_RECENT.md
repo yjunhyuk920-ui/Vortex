@@ -800,3 +800,26 @@ selectable 32-query tuple interface.  It does not cover query-dependent
 nonlinear minimum-weight syndrome decoding, arbitrary nonlinear hot advice, or
 a proved causal restriction on reachable tuples.  Authority:
 `docs/research/E0_FIXED_LINEAR_FUNCTIONAL_DECODER_ACTIVITY_BOUND.md`.
+
+## F-077 -- Extension-field rank called a physical probe count
+
+Do not promote a rank-saturating q-system by identifying coefficient rank
+`rho` with the number of stored cells read. In the exact characterization, a
+rank-one coefficient vector has the form `lambda_j=gamma*mu_j`; the binary
+support of `mu` may include every q-system basis coordinate.
+
+Directly materializing one extension-field checkpoint summary per basis vector
+of the published full-ambient `rho=1` construction expands the registered
+one-bit source to `748.5509965564124 TiB`, or `16,223.57143848x`. Restricting
+the system to the actual rank-one query subset removes that expansion but
+becomes the raw one-bit source. Across 32 independent directions, even after
+the complete 8 GiB hot grant, its expected cold union is `42,141,220,855`
+bytes and costs `41.153536 ms/token` at 32 GB/s before all other work.
+
+An exhaustive `2 x 2` search and explicit `2 x 3`/`3 x 3` witnesses confirm
+that nonlinear coset leaders can shorten one tiny query, so F-076 must not be
+misstated as a nonlinear theorem. Their canonical 32-query unions use at
+least `99.4%` of the tiny dictionaries. This is not an asymptotic lower bound.
+The remaining interface is a joint nonlinear batch decoder that finds one
+small physical atom set spanning every query in the batch. Authority:
+`docs/research/E0_EXTENSION_FIELD_RANK_SATURATING_FRONTIER.md`.

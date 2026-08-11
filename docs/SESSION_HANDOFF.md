@@ -379,3 +379,24 @@ concrete finite E0 construction or scoped lower bound. Do not run hardware,
 contact the Ubuntu server, download a larger model, or start E1/E2. Current
 status is `NO_SURVIVING_CANDIDATE`; this negative closure is not the Certain
 Research Milestone.
+
+<!-- E0-EXTENSION-FIELD-RANK-SATURATING-HANDOFF -->
+## Current handoff after the extension-field rank-saturation audit
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_EXTENSION_FIELD_RANK_SATURATING_FRONTIER.md` and
+`results/e0_extension_field_rank_saturating_frontier/summary.json`.
+
+Extension-field packing is exact over GF(2), but published coefficient rank is
+not probe support. Direct full-ambient summaries cost `748.5509965564124 TiB`;
+the rank-one-specific identity system restores a raw one-bit scan and exceeds
+the zero-compute latency Gate. The throwaway small-search source is preserved
+at commit `2f68300` on `prototype/rank-one-dictionary-small-search`.
+
+Next: work only on an explicit joint batch coset dictionary satisfying
+`q_i in span(G_T)` for one small shared physical `T`, or change mechanism
+class. A single-query sparse leader is insufficient. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085, model, backend, download,
+server, or hardware work.

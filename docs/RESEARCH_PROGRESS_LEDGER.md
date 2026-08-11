@@ -289,3 +289,29 @@ NO SURVIVING CANDIDATE
 
 Authority:
 `docs/research/E0_FIXED_LINEAR_FUNCTIONAL_DECODER_ACTIVITY_BOUND.md`.
+
+<!-- E0-EXTENSION-FIELD-RANK-SATURATING-FRONTIER -->
+## 2026-08-12 -- E0 extension-field rank-saturating frontier
+
+Rank-one masks were packed exactly into `GF(2^m)^k`. The published
+rank-saturation parameter measures coefficient-value rank, not coefficient
+support or cell probes. Direct full-ambient materialization costs
+`748.5509965564124 TiB` for the registered one-bit population; the
+query-specialized identity layout returns to a full one-bit source and has an
+expected 32-query cold union of `42,141,220,855` bytes after the full hot
+grant.
+
+Tiny nonlinear coset leaders improve single-query support but their canonical
+32-query unions are nearly complete. This keeps joint query-dependent
+nonlinear batch decoding open but unconstructed.
+
+Decision:
+
+```text
+REJECT_EXTENSION_FIELD_RANK_SATURATION_AS_LOW_PROBE_CONSTRUCTOR
+KEEP_QUERY_DEPENDENT_NONLINEAR_COSET_DECODER_OPEN
+NO SURVIVING CANDIDATE
+```
+
+Authority:
+`docs/research/E0_EXTENSION_FIELD_RANK_SATURATING_FRONTIER.md`.
