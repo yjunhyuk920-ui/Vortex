@@ -984,3 +984,24 @@ side-`1..128` scan. `30 x 40`, `S=1,404`, `t=14` is the first unclosed case,
 not a construction. Adaptive word decoders and native numerical lifting
 remain outside F-084. Authority:
 `docs/research/E0_DETERMINANTAL_RANK_AMPLIFICATION_GATE.md`.
+
+## F-085 -- Rank-amplified representatives treated as pairwise disjoint
+
+Do not retain `30 x 40`, `S=1,404`, `t=14` by charging the full `r*t`
+support to every minimal decomposition.  For one rank-`r` matrix, admissible
+rank-one terms form the binary point-hyperplane anti-flag graph.  Its exact
+least eigenvalue, distinct-representative shell activity, and an
+overlap-to-XOR-cancellation knapsack force four cancelled incidences at rank
+22.
+
+The resulting radius is 304, not 308.  Its Hamming ball is only
+`0.05068730227558649...` of the rank-at-most-22 population.  The same Gate
+rejects `31 x 39` at `0.5723204167945867...` and `30 x 44` at
+`0.18141146098814276...`.
+
+The first combined survivor moves to `31 x 43`, `S=1,559`, `t=15`, the 847th
+capacity-ordered shape.  Its best cancellation ratio is
+`3.409163670153519...`; this is not an atom construction.  Adaptive
+word-valued probes, nonlinear output decoders, native arithmetic, and joint
+causal batches remain outside F-085.  Authority:
+`docs/research/E0_BIORTHOGONAL_DECOMPOSITION_CANCELLATION_GATE.md`.

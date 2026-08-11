@@ -1001,3 +1001,23 @@ rejected because exact recovery needs a rank-covering set of row forms whose
 direct coefficient payload is at least one full binary matrix source. A
 different compressed cold-backed oracle remains open and must pay every state,
 probe, repeated call, decoder, verifier, fallback, and native numerical lift.
+
+## A-082 -- Rank-amplified short representatives can remain disjoint
+
+Assumption: after choosing one weight-at-most-`t` representative for every
+rank-one query, every rank-`r` matrix may require the full `r*t` support
+because one minimal decomposition can keep all representative supports
+disjoint.
+
+Status: CONTRADICTED for the registered first three fixed-linear survivors.
+Admissible term pairs form the rank-`r` anti-flag graph.  Its least
+eigenvalue, the exact minimum support activity of distinct representatives,
+and XOR multiplicity accounting force four cancellations.  `30 x 40`,
+`31 x 39`, and `30 x 44` then fail exact determinantal capacity.
+
+### A-082 closure
+
+This does not contradict all fixed-linear covers.  `31 x 43`, `S=1,559`,
+`t=15` still passes the present necessity at ratio
+`3.409163670153519...`; no atoms or decoder are known.  Adaptive finite-word
+addresses and nonlinear output operations remain outside the assumption.

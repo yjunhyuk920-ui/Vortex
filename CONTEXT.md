@@ -337,3 +337,12 @@ most-`r` matrix within radius `rt`, plus mixed-weight representative sampling.
 _Avoid_: Checking only rank-one subset capacity or adding shorter leaders
 _Current status_: Rejects the first 770 capacity-ordered rectangles. The first
 unclosed fixed-linear shape is `30 x 40`, `S=1,404`, `t=14`, unconstructed.
+
+**Biorthogonal Decomposition Cancellation**:
+The forced support overlap among short representatives that can co-occur in a
+minimal rank decomposition.  Admissible term pairs form a binary anti-flag
+graph; its spectrum lower-bounds shared atom coordinates, which cancel in XOR.
+_Avoid_: Independent representative counting, full `r*t` radius
+_Current status_: Rejects `30 x 40`, `31 x 39`, and `30 x 44`.  The first
+combined fixed-linear survivor is the unconstructed `31 x 43`, `S=1,559`,
+`t=15` case.

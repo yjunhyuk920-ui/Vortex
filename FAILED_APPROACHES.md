@@ -369,4 +369,10 @@ or system costs. It does not close a succinct nonlinear answer decoder.
 F-070 closes trapdoored additive masking as a source: the mask product is fast
 but the arbitrary shifted-checkpoint product remains dense. It does not close
 checkpoints originally sampled together with a valid trapdoor.
+F-085 closes the former `30 x 40` fixed-linear sparse-cover frontier.  The
+anti-flag spectrum forces support collisions inside a minimal biorthogonal
+decomposition; distinct-representative activity strengthens this to four XOR
+cancellations and an exact rank-22 capacity contradiction.  It also rejects
+`31 x 39` and `30 x 44`, but it does not close the new unconstructed
+`31 x 43`, arbitrary adaptive word decoders, or native numerical lifting.
 Read that continuation and each scope boundary before reopening a family.

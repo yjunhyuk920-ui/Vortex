@@ -1138,3 +1138,16 @@ These Gates reject the first 770 raw-capacity rectangles. The next parameter
 frontier is `30 x 40`, `S=1,404`, `t=14`; it has no atoms or decoder. No
 `DeterminantalSparseCover` is admitted until it constructs the rank-one cover,
 joint physical batch, native lift, and full costs.
+
+#### Biorthogonal cancellation boundary
+
+The `r*t` radius is not a free worst case.  Minimal decompositions of a fixed
+rank-`r` matrix form biorthogonal bases, and their admissible term pairs are
+the binary anti-flag graph.  Every fixed sparse dictionary must charge the
+support overlaps forced by that graph's spectrum.  Overlaps cancel in XOR.
+
+This rejects the former `30 x 40` frontier and two successors.  The only next
+fixed-linear design target admitted by the current exact Gates is the
+unconstructed `31 x 43`, `S=1,559`, `t=15` shape.  It is not an architecture
+component until it supplies explicit atoms, a sub-dense decomposer, a shared
+causal-batch layout, native-order numerical semantics, and complete costs.

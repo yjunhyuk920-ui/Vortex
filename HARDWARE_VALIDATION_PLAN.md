@@ -715,3 +715,13 @@ allocation, EXP-073 Stage 2, 122B/405B run, or Phase D/E4-E7 action is
 authorized. Hardware can reopen only after a materially different compressed
 cold-backed oracle closes every repeated-call resource equation and survives
 E1/E2.
+
+## Biorthogonal cancellation audit: no hardware Gate is authorized
+
+The result is an exact E0 rejection of three binary fixed-linear parameter
+shapes.  It produces no atom layout, native decoder, model forward, storage
+traffic trace, kernel, latency, bandwidth, power, or VRAM measurement.  The
+new `31 x 43` frontier is only a surviving necessity.
+
+No target-server command, checkpoint action, CUDA action, GPU allocation,
+EXP-085, or Phase D/E4-E7 work is authorized from this result.

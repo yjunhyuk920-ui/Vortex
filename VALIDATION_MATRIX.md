@@ -1077,3 +1077,23 @@ Authoritative decisions:
 `REJECT_OMEGA_CUTSUM_AS_EXACT_BILINEAR_RELABELING`,
 `REJECT_OMEGA_ZIPWAVE_AS_STANDALONE_CORE`, and
 `REJECT_ATTENTION_ONLY_GAUGE_FUSION_AT_FAVORABLE_CEILING`.
+
+## E0 biorthogonal decomposition cancellation Gate
+
+| Check | Observed | Status |
+|---|---:|---|
+| Rank-4 anti-flag graph | 120 vertices, degree 28, least eigenvalue -8 | PASS |
+| `30x40`, rank 22 expected pair intersections | 3.5230839509486778... | DERIVED |
+| `30x40` guaranteed intersections / cancellation | 4 / 4 | PASS |
+| `30x40` forced radius / capacity ratio | 304 / 0.05068730227558649... | REJECT |
+| `31x39` capacity ratio | 0.5723204167945867... | REJECT |
+| `30x44` capacity ratio | 0.18141146098814276... | REJECT |
+| Combined first unclosed shape | `31x43`, `S=1559`, `t=15` | OPEN ONLY |
+| Focused tests | 7/7 | PASS |
+| Full repository regression | 671/671 | PASS |
+| Standard validation runner | completed | PASS |
+| Model forwards / hardware actions | 0 / 0 | NOT RUN |
+| Adaptive word decoder and native lift | uncovered | OPEN / NO CLAIM |
+
+Authoritative decision:
+`REJECT_30x40_31x39_AND_30x44_BY_BIORTHOGONAL_SUPPORT_CANCELLATION`.

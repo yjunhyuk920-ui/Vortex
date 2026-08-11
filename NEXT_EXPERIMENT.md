@@ -1595,3 +1595,21 @@ zero rectangles, subset-aggregate oracles, and compressed full sweeps. No
 model, EXP-085, backend, kernel, download, private Ubuntu action, or hardware
 stage is authorized. Authority:
 `docs/research/E0_LOSSLESS_CUT_GAUGE_FRONTIER.md`.
+
+## Fixed-linear disjoint-support frontier closed through shape 846
+
+Do not construct or search the former `30 x 40` or `31 x 39` dictionaries.
+The anti-flag spectrum forces representative-support collisions inside a
+minimal rank decomposition, and exact XOR accounting turns those collisions
+into a decisive determinantal-capacity rejection.  `30 x 44` also fails.
+
+The first remaining fixed-linear parameter shape is `31 x 43`, `S=1,559`,
+`t=15`.  Continue it only if a concrete atom equation and sub-dense decoder
+are derived before search.  Its current ratio `3.409163670153519...` is slack,
+not evidence of existence.  If no such equation emerges, change mechanism to
+a genuinely adaptive finite-word decoder; do not spend another cycle on
+nearby rectangle sweeps.
+
+No EXP-085, model, backend, kernel, download, private Ubuntu action, or
+hardware stage is authorized.  Authority:
+`docs/research/E0_BIORTHOGONAL_DECOMPOSITION_CANCELLATION_GATE.md`.

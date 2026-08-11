@@ -1793,3 +1793,22 @@ NO SURVIVING CANDIDATE
 Authority:
 `docs/research/E0_FIXED_LINEAR_FUNCTIONAL_DECODER_ACTIVITY_BOUND.md` and
 `results/e0_linear_functional_decoder_activity/summary.json`.
+
+## Biorthogonal decomposition cancellation frontier
+
+The eighteenth post-audit screen is recorded in
+`docs/research/E0_BIORTHOGONAL_DECOMPOSITION_CANCELLATION_GATE.md`.  The prior
+rank-amplification count allowed the short representatives in a minimal
+rank-`r` decomposition to have disjoint supports.  For each fixed rank-`r`
+matrix, the admissible terms instead form the binary point-hyperplane
+anti-flag graph.
+
+Its exact spectrum, the minimum activity of distinct Hamming-ball
+representatives, and an exact overlap-to-XOR knapsack force four cancellations
+at rank 22.  The forced radius 304 gives capacity ratio
+`0.05068730227558649...` for `30 x 40`; `31 x 39` and `30 x 44` also fail.
+The combined side-`1..128` scan now rejects its first 846 capacity-ordered
+rectangles.  `31 x 43`, `S=1,559`, `t=15` is first unclosed at ratio
+`3.409163670153519...`, but has no atoms or decoder.  Adaptive word-valued
+probes and native numerical semantics remain open, so neither ticket
+deliverable is complete.

@@ -1389,6 +1389,49 @@ Canonical summary SHA-256:
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
 
+## E0 biorthogonal decomposition cancellation audit
+
+Authoritative commands:
+
+```powershell
+$env:PYTHONPATH = (Resolve-Path '.').Path
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_biorthogonal_cancellation_gate.py `
+  --output-dir results\e0_biorthogonal_cancellation_gate
+
+.deps\exp076-venv\Scripts\python.exe -m unittest `
+  tests.test_biorthogonal_cancellation_gate -v
+```
+
+Expected invariants:
+
+```text
+30x40 rank / cancellation / radius     22 / 4 / 304
+30x40 capacity ratio                   0.05068730227558649...
+31x39 capacity ratio                   0.5723204167945867...
+first combined survivor rank           847
+first combined survivor                31x43, S=1559, t=15
+model forwards / hardware actions      0 / 0
+```
+
+Artifacts:
+
+- `results/e0_biorthogonal_cancellation_gate/summary.json`
+- `results/e0_biorthogonal_cancellation_gate/checksums.sha256`
+- `docs/research/E0_BIORTHOGONAL_DECOMPOSITION_CANCELLATION_GATE.md`
+
+Canonical summary SHA-256:
+
+```text
+7a3d72855825188e6114c502be07111419304193f2ef59568108943773f24cb6
+```
+
+Focused validation passed 7/7 tests, the full repository regression passed
+671/671 tests, and the standard validation runner completed successfully.
+
+No checkpoint, model, backend, kernel, download, private host, or hardware
+action is part of this reproduction.
+
 ## E0 exact-cut, fused-lossless, and attention-gauge frontier
 
 Authoritative command:

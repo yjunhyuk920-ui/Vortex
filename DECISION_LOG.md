@@ -1510,3 +1510,29 @@ KEEP_NO_SURVIVING_CANDIDATE
 ```
 
 Authority: `docs/research/E0_LOSSLESS_CUT_GAUGE_FRONTIER.md`.
+
+## D-104 -- Reject the first three disjoint rank-amplification survivors
+
+The prior `r*t` count silently granted pairwise-disjoint representative
+supports in every minimal decomposition.  The binary anti-flag graph makes
+that grant inconsistent: its exact spectrum plus the minimum activity of
+distinct representatives forces support intersections, and those
+intersections cancel under XOR.
+
+At `30 x 40`, rank 22 forces four cancellations and radius 304, giving exact
+capacity ratio `0.05068730227558649...`.  `31 x 39` and `30 x 44` also fail.
+The deterministic combined scan now rejects its first 846 shapes and leaves
+`31 x 43`, `S=1,559`, `t=15` first.
+
+Decision:
+
+```text
+PROMOTE_BIORTHOGONAL_CANCELLATION_AS_A_MANDATORY_FIXED_LINEAR_GATE
+REJECT_30x40_31x39_AND_30x44
+DO_NOT_CALL_31x43_A_CONSTRUCTION
+PIVOT_TO_A_CONCRETE_31x43_EQUATION_OR_A_GENUINELY_ADAPTIVE_WORD_DECODER
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority:
+`docs/research/E0_BIORTHOGONAL_DECOMPOSITION_CANCELLATION_GATE.md`.

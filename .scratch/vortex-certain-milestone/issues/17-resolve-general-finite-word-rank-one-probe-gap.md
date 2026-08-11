@@ -410,3 +410,22 @@ rank-amplification ratio is `8.417418510567584...` at rank 22 and its strongest
 mixed-weight ratio is `1.5198090797208368...`; neither is a construction. No
 atoms, decoder, native lift, joint batch, or adaptive-word resolution exists,
 so neither ticket deliverable is complete and this issue remains claimed.
+
+The eighteenth post-audit screen is recorded in
+`docs/research/E0_BIORTHOGONAL_DECOMPOSITION_CANCELLATION_GATE.md`.  A fixed
+rank-`r` matrix's admissible minimal rank-one terms form the binary anti-flag
+graph.  The exact least eigenvalue, distinct-representative activity, and an
+overlap-to-XOR knapsack prove that the representatives cannot retain the full
+`r*t` support in every decomposition.
+
+At `30 x 40`, rank 22 forces four cancellations, reducing radius 308 to 304
+and the exact capacity ratio to `0.05068730227558649...`.  `31 x 39` and
+`30 x 44` fail as well.  The combined scan closes its first 846
+capacity-ordered rectangles and moves the first unclosed fixed-linear case to
+`31 x 43`, `S=1,559`, `t=15`, with best ratio
+`3.409163670153519...`.
+
+No atom family, decoder, native lift, or adaptive finite-word resolution was
+delivered.  The ticket therefore remains claimed; the next action is a
+concrete `31 x 43` construction equation or a mechanism change, not another
+nearby parameter sweep.
