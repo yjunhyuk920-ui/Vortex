@@ -1520,3 +1520,31 @@ model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu action, or hardware action occurred. Authority:
 `docs/research/E0_FOURIER_FIBER_DIRECT_SUM_FRONTIER.md` and
 `results/e0_fourier_fiber_direct_sum_frontier`.
+
+## Native-exact shortcut loop after removing the 2.5% premise
+
+The candidate loop now derives its only numerical screen from the final
+contract: unchanged output, at most 8 GiB accelerator state, and at most
+20 ms/token. `2.5%` is not used. The compute-only envelope permits
+`1.18270517%` of dense coefficient work and therefore requires
+`98.81729483%` elimination before positive costs.
+
+Using only the already pinned EXP-083B tensor/evidence, favorable upper bounds
+reject rounding absorption, exact temporal coordinate reuse, natural runs,
+unlimited same-coordinate history, exact product reuse, and perfect opposite
+pairing. Their best individual upper is `5.6920%`. The exact non-Boolean
+low-VC/Pollard theorem is also rejected without a VC computation: at ideal
+`d=1`, the better matrix orientation is still `35.6027%` of dense work.
+
+The result adds no model forward, new checkpoint, hardware action, or EXP-085.
+It does not prove general impossibility and does not close the active finite-
+word rank-one ticket. Classification remains:
+
+```text
+NO_SURVIVING_CANDIDATE
+TARGET NOT ACHIEVED
+CONTINUE ONLY WITH A MATERIALLY NEW EXACT INFORMATION SOURCE
+```
+
+Authority: `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md` and
+`results/e0_native_exact_shortcut_frontier`.

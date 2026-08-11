@@ -129,3 +129,16 @@ query cardinality alone reaches its low-degree method ceiling at only
 coefficient budget. No lower bound on the rank of the restricted rank-one
 character matrix is supplied. This sharpens but does not resolve the ticket,
 which remains claimed.
+
+The constructor-first shortcut loop is recorded in
+`docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md`. It explicitly removes
+the old 2.5% premise and screens only unchanged output, 8 GiB, and 20 ms/token.
+On already pinned causal evidence, rounding absorption, temporal-coordinate
+reuse, natural runs, unlimited coordinate history, product identity, and
+perfect opposite pairing have favorable elimination uppers no greater than
+5.6920%, versus 98.8173% required before positive costs. The 2026 low-VC /
+Pollard exact-MatVec result is a relabeling of the already rejected
+differential-tree source; its non-Boolean `T` factor leaves at least 35.6027%
+of dense work even at ideal `d=1` on the pinned tensor. This prevents repeated
+experiments but supplies neither required ticket deliverable, so the ticket
+remains claimed.

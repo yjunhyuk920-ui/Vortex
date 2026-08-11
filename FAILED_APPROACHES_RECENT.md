@@ -576,3 +576,25 @@ This closes query cardinality and full-Walsh spanning as the missing rank-one
 proof. It leaves a lower bound exploiting the actual restricted character
 matrix, or a concrete globally nonlinear scalar constructor, open. Authority:
 `docs/research/E0_FOURIER_FIBER_DIRECT_SUM_FRONTIER.md`.
+
+## F-065 -- Native-exact local reuse and low-VC/Pollard relabelings
+
+Do not reopen exact rounding absorption, natural activation runs,
+same-coordinate history caches, exact product dictionaries, or perfect
+opposite-product pairing as the universal core. On the pinned real final-MLP
+tensor, deliberately favorable elimination uppers range from `0.1674%` to
+`5.6920%`, while the compute-only 405B/native-4B envelope requires
+`98.8173%` before positive costs.
+
+Do not rename the Anand--van den Brand--McCarty low-VC/Pollard constructor as
+a new route around EXP-082A. Its Boolean mechanism is the already rejected
+row-difference spanning tree. Its exact non-Boolean theorem carries a `T`
+factor for unique column values. The pinned BF16 tensor has at least 653
+values per column and 1,276 per row; even the ideal `d=1` orientation costs
+at least `35.6027%` of dense work, versus a `1.1827%` allowance.
+
+This entry is a real-checkpoint necessary-condition rejection, not a universal
+impossibility result. It does not reject a genuinely global nonlinear exact
+answer source. Authority:
+`docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md` and
+`results/e0_native_exact_shortcut_frontier`.

@@ -902,3 +902,30 @@ Current classification remains `NO_SURVIVING_CANDIDATE`.
 Authoritative decision:
 `KEEP_FOURIER_FIBER_BOUND_FOR_ALL_LINEAR_TUPLES_REJECT_AS_GENERAL_RANK_ONE_TARGET_RESOLUTION`.
 Current classification remains `NO_SURVIVING_CANDIDATE`.
+
+## E0 native-exact shortcut frontier
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Old 2.5% premise used | explicit result flag | NO |
+| Registered compute-only allowed fraction | `1.18270517%` | DERIVED |
+| Favorable rounding absorption upper | max `1.25558036%` | REJECT |
+| Consecutive coordinate reuse | max `0.33482143%` | REJECT |
+| Unlimited same-coordinate history reuse | max `2.98549107%` | REJECT |
+| Natural-run saving upper | max `0.16741071%` | REJECT |
+| Exact duplicate-product reuse | max `2.98549107%` | REJECT |
+| Perfect opposite-product cancellation | max `5.69196429%` | REJECT |
+| BF16 unique values per column | min / p50 `653 / 694.5` | POLLARD T GATE FAIL |
+| BF16 unique values per row | min / p50 `1276 / 1331` | TRANSPOSE T GATE FAIL |
+| Ideal Pollard `d=1` best ratio | `35.60267857%` | REJECT |
+| Focused deterministic tests | 6/6 | PASS |
+| Full repository regression | 566/566 | PASS |
+| Standard validation runner | completed | PASS |
+| Independent output-directory reproduction | identical summary SHA-256 | PASS |
+| Canonical summary SHA-256 | `ad3b8275...c1246a943` | PASS |
+| New model forwards / hardware actions | 0 / 0 | NOT RUN |
+| General exact constructor or impossibility | neither delivered | OPEN / NO CLAIM |
+
+Authoritative decision:
+`REJECT_SCREENED_SHORTCUTS_KEEP_SEARCHING_NEW_INFORMATION_SOURCE`.
+Current classification remains `NO_SURVIVING_CANDIDATE`.

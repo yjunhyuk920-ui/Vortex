@@ -180,3 +180,10 @@ The dense coefficient-equivalent work or traffic determined per charged unit
 of selected cold payload; it is a query-time conservation metric, not artifact
 compression ratio.
 _Avoid_: Compression ratio, unchecked reuse factor
+
+**Native-Exact Shortcut Frontier**:
+A one-condition-at-a-time screen that ignores the former 2.5% hypothesis and
+tests a proposed shortcut only against unchanged output, 8 GiB, and 20 ms per
+token. Local reuse is rejected as soon as a favorable upper bound is too
+small.
+_Avoid_: Universal impossibility proof, full runtime benchmark, 2.5% premise

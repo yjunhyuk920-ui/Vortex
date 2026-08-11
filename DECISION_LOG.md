@@ -1288,3 +1288,33 @@ KEEP_MODEL_HARDWARE_AND_E2_E7_CLOSED
 
 Authority: `docs/research/E0_FOURIER_FIBER_DIRECT_SUM_FRONTIER.md` and
 `results/e0_fourier_fiber_direct_sum_frontier`.
+
+## D-095 -- Remove the 2.5% premise; reject screened native-exact shortcuts
+
+The research loop now uses only the unchanged-result, 8 GiB, and 20 ms/token
+contract. The former `2.5% evidence` hypothesis is not an input. Under the
+registered compute envelope, a universal coefficient shortcut must remove
+at least `98.81729483%` of dense work before its own costs.
+
+One pinned, already available Qwen3.5-0.8B final-MLP tensor rejects six local
+sources under favorable upper bounds: rounding absorption (`1.2556%` max),
+consecutive coordinate reuse (`0.3348%`), run reuse (`0.1674%`), unlimited
+coordinate history (`2.9855%`), duplicate products (`2.9855%`), and perfect
+opposite products (`5.6920%`). The low-VC/Pollard exact numerical theorem also
+fails even at ideal `d=1`: its best orientation is at least `35.6027%` of
+dense work.
+
+Decision:
+
+```text
+REMOVE_OLD_2_5_PERCENT_ASSUMPTION_FROM_CANDIDATE_SCREEN
+REJECT_SCREENED_NATIVE_EXACT_LOCAL_SHORTCUTS
+DO_NOT_REPEAT_DIFFERENTIAL_SPANNING_TREE_AS_LOW_VC_MATVEC
+DO_NOT_LIFT_RANDOMIZED_BOOLEAN_OUTPUT_TO_NATIVE_NUMERICAL_EXACTNESS
+DO_NOT_CLAIM_UNIVERSAL_IMPOSSIBILITY
+KEEP_GENERAL_NONLINEAR_NUMERICAL_RANK_ONE_GAP_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority: `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md` and
+`results/e0_native_exact_shortcut_frontier`.

@@ -1447,3 +1447,23 @@ native-order state, build, probe, compute, and 32-token equations. No EXP-085,
 model, backend, kernel, download, private Ubuntu action, hardware benchmark,
 or E2-E7 action is authorized. Authority:
 `docs/research/E0_FOURIER_FIBER_DIRECT_SUM_FRONTIER.md`.
+
+## Native-exact local shortcuts closed -- no EXP-085
+
+The old `2.5%` hypothesis has been removed from candidate selection. A cheap
+screen on already pinned evidence rejects rounding absorption, temporal value
+reuse, run compression, exact product reuse/cancellation, and the direct
+low-VC/Pollard exact-MatVec constructor. No additional model execution or
+hardware work is justified.
+
+Do not reopen these mechanisms under a new cache, dictionary, cancellation,
+VC-dimension, or row-tree name. The next candidate must state where new exact
+query-answer information comes from and must pass, before implementation, the
+unchanged-result, 8 GiB state, and 20 ms/token equations. If its first required
+premise is merely local repetition, full-sweep batching, randomized Boolean
+correctness, or an added compute device, reject it without experiment.
+
+The active ticket remains `Resolve the General Finite-Word Rank-One Probe
+Gap`; it remains claimed because this audit supplies neither a target-feasible
+global constructor nor a covering impossibility theorem. Authority:
+`docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md`.

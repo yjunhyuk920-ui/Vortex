@@ -883,3 +883,23 @@ only its unsupported rank-one transfer and query-cardinality route. A future
 proof must establish target-scale rank or adaptive-tree complexity for the
 restricted character matrix on every large nonlinear advice fiber. Universal
 2.5% remains neither established nor disproved.
+
+## A-075 -- A native-exact local shortcut can replace the old 2.5% premise
+
+Assumption: after dropping the fixed evidence-ratio hypothesis, exact
+rounding absorption, activation history, product reuse/cancellation, or the
+low-VC/Pollard structured-MatVec theorem can independently supply enough work
+reduction to meet the unchanged-result, 8 GiB, and 20 ms/token contract.
+
+Status: CONTRADICTED FOR THE SCREENED CONSTRUCTORS. Favorable observed local
+elimination uppers are all at most `5.6920%`, versus `98.8173%` required before
+metadata, verification, and traffic. The Pollard extension sees at least 653
+unique BF16 values per column and 1,276 per row. Even granting `d=1` and free
+logarithms/constants leaves a `35.6027%` dense-work ratio.
+
+### A-075 closure
+
+This is not a claim that no exact runtime exists. It closes only the named
+local information sources and the published low-VC/Pollard constructor on the
+pinned real tensor. A materially new globally coupled exact answer source may
+still reopen feasibility. The former `2.5%` number is no longer a premise.

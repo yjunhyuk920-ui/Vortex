@@ -1389,6 +1389,48 @@ Canonical summary SHA-256:
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
 
+## E0 native-exact shortcut frontier reproduction
+
+Authoritative commands:
+
+```powershell
+$env:PYTHONPATH = (Resolve-Path '.').Path
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_native_exact_shortcut_frontier.py `
+  --output-dir results\e0_native_exact_shortcut_frontier
+
+.deps\exp076-venv\Scripts\python.exe -m unittest `
+  tests.test_native_exact_shortcut_frontier -v
+```
+
+The runner reads the already pinned Qwen3.5-0.8B safetensors payload and the
+existing EXP-083B `legal_holdout_english_01` evidence. It performs no model
+forward, download, checkpoint mutation, or hardware action. The source hashes
+recorded in the summary are:
+
+```text
+model     04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696
+evidence  c7ab8ffee12f623e272f81c7e5d31769b727e9b4fcc93ba7157d616536e672ee
+```
+
+Observed focused validation was 6/6 tests. The full repository regression
+passed 566/566, and the standard validation runner completed successfully. A
+separate workspace-internal output directory reproduced the canonical summary
+byte-for-byte and was removed after its resolved path was checked inside the
+workspace.
+
+Artifacts:
+
+- `results/e0_native_exact_shortcut_frontier/summary.json`
+- `results/e0_native_exact_shortcut_frontier/checksums.sha256`
+- `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md`
+
+Canonical summary SHA-256:
+
+```text
+ad3b8275ced53e15eda91ba110b6c86a54ef27286ab0bfe78049d76c1246a943
+```
+
 ## E0 finite-semiring preprocessing frontier audit
 
 Authoritative commands:
