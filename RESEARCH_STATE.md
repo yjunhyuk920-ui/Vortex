@@ -1713,3 +1713,26 @@ TARGET NOT ACHIEVED
 The result is a novelty screen only. It neither proves a target lower bound
 nor authorizes EXP-085, a model run, backend work, or hardware work. Authority:
 `docs/research/E0_NONLINEAR_FIBER_DECISION_DEPTH_SCREEN.md`.
+
+## Exact-cut, fused-lossless, and attention-gauge screen
+
+Three distinct exact routes have now passed through the no-2.5% E0 Gate.
+Graph-cut reduction is only a relabeling of the unresolved bilinear query.
+Register-fused entropy decoding is real and useful, but its favorable 10.6-bit
+BF16 sweep still needs 841 tokens at 32 GB/s before any compute. Attention
+gauge/fusion is globally too small: free deletion of all attention weights
+leaves `82.29056861164507%` of the registered parameters.
+
+```text
+OMEGA-CUTSUM: REJECTED AS RELABELING
+OMEGA-ZIPWAVE STANDALONE CORE: REJECTED
+FUSED LOSSLESS EXECUTION: AUXILIARY
+ATTENTION-ONLY GAUGE/FUSION: REJECTED
+GENERAL NONLINEAR ADAPTIVE PROBE GAP: OPEN
+NO SURVIVING CANDIDATE
+TARGET NOT ACHIEVED
+```
+
+No model, checkpoint, backend, download, server, or hardware action occurred.
+Authority: `docs/research/E0_LOSSLESS_CUT_GAUGE_FRONTIER.md` and
+`results/e0_lossless_gauge_frontier/summary.json`.

@@ -1578,3 +1578,20 @@ fiber. Small-cardinality pattern matching alone cannot promote a candidate.
 No model, EXP-085, backend, kernel, download, private Ubuntu action, or
 hardware stage is authorized. Authority:
 `docs/research/E0_NONLINEAR_FIBER_DECISION_DEPTH_SCREEN.md`.
+
+## Lossless/cut/gauge routes screened -- require a cross-model source
+
+Do not call a cut-value oracle an implementation, do not treat fused
+decompression as removal of the checkpoint sweep, and do not continue
+attention-only gauge algebra after the free-deletion ceiling. Fused lossless
+execution may be composed with a future mechanism only after that mechanism
+independently supplies at least 841 exact tokens per favorable 32 GB/s BF16
+sweep or avoids the sweep altogether.
+
+The next candidate must couple information outside attention alone and expose
+one exact equation for MLP, embeddings, and state as well as weight traffic.
+It must be materially different from linear circuits, local tables, Boolean
+zero rectangles, subset-aggregate oracles, and compressed full sweeps. No
+model, EXP-085, backend, kernel, download, private Ubuntu action, or hardware
+stage is authorized. Authority:
+`docs/research/E0_LOSSLESS_CUT_GAUGE_FRONTIER.md`.

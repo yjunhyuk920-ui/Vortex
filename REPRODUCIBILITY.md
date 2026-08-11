@@ -1389,6 +1389,45 @@ Canonical summary SHA-256:
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
 
+## E0 exact-cut, fused-lossless, and attention-gauge frontier
+
+Authoritative command:
+
+```powershell
+$env:PYTHONPATH = (Resolve-Path '.').Path
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_lossless_gauge_frontier.py `
+  --output-dir results\e0_lossless_gauge_frontier
+```
+
+Expected exact invariants:
+
+```text
+Shannon BF16 rate                         10.6 bits/parameter
+Shannon-limit model bytes                 537,750,247,833.6
+32 GB/s zero-compute sweep                16.8046952448 s
+minimum zero-compute tokens at 20 ms      841
+32-token zero-compute I/O                 525.1467264 ms/token
+all attention parameters                  71,873,593,344
+free all-attention deletion fraction      17.709431388354932%
+```
+
+Artifact:
+
+- `results/e0_lossless_gauge_frontier/summary.json`
+- `results/e0_lossless_gauge_frontier/checksums.sha256`
+
+Canonical summary SHA-256:
+
+```text
+af1cff41f0f0add560427ef3e2ac0d115dc70b68d26545a346da215c234846d1
+```
+
+The command performs deterministic arithmetic only. It does not run a model,
+mutate a checkpoint, use a backend, download data, contact a server, or touch
+hardware. The focused frontier test passed 1/1, the full repository regression
+passed 594/594, and `scripts/run_validation.py` completed successfully.
+
 ## E0 nonlinear-fiber decision-depth screen
 
 Authoritative command:

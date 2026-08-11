@@ -563,6 +563,19 @@ bound that covers it under global 8 GiB advice and adaptive cross-matrix
 probes. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a model,
 build a backend/kernel, download a checkpoint, or touch hardware.
 
+## Current directive after lossless/cut/gauge screening
+
+Do not spend another cycle optimizing entropy codecs, attention gauges, or
+cut-query notation as standalone cores. Their favorable ceilings already miss
+the final contract before omitted costs. Fused lossless execution remains a
+legal auxiliary only for a new mechanism that removes or amortizes the full
+sweep by at least the registered 841-token favorable requirement.
+
+Continue with a globally coupled exact source that includes MLP, embeddings,
+and persistent state, or with a lower bound that actually covers nonlinear
+global advice. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a
+model, build a backend/kernel, download a checkpoint, or touch hardware.
+
 ## Current directive after the corrected average-oracle audit
 
 Do not spend an E1 run on OMEGA-XORLIFT or another average-case amplifier

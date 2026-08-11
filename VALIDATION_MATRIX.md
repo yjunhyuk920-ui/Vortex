@@ -1053,3 +1053,27 @@ Authoritative decision: `REJECT_OMEGA_FUNCTIONALSPAN_AT_NOVELTY_GATE`.
 
 Authoritative decision:
 `REJECT_OMEGA_FIBERDT_AS_AN_IMMEDIATE_SMALL_NONLINEAR_CONSTRUCTOR`.
+
+## E0 lossless, exact-cut, and gauge frontier
+
+| Check | Observed | Status |
+|---|---:|---|
+| Exact three-cut rectangle identity | algebraically valid | PASS / RELABELING |
+| Implemented exact cut-value source | none | REJECT |
+| Favorable BF16 entropy rate | 10.6 bits/parameter | GRANTED |
+| 32 GB/s lossless sweep | 16.8046952448 s | PASS |
+| Zero-compute tokens needed for 20 ms | 841 | REJECT STANDALONE |
+| I/O/token at 32-token block | 525.1467264 ms | REJECT |
+| Free deletion of all attention weights | 17.709431388354932% | REJECT |
+| Remaining dense parameters | 82.29056861164507% | REJECT |
+| Fused lossless execution | useful | AUXILIARY |
+| Focused frontier test | 1/1 | PASS |
+| Full repository regression | 594/594 | PASS |
+| Standard validation runner | completed | PASS |
+| Model forwards / hardware actions | 0 / 0 | NOT RUN |
+| General nonlinear probe gap | unresolved | OPEN / NO CLAIM |
+
+Authoritative decisions:
+`REJECT_OMEGA_CUTSUM_AS_EXACT_BILINEAR_RELABELING`,
+`REJECT_OMEGA_ZIPWAVE_AS_STANDALONE_CORE`, and
+`REJECT_ATTENTION_ONLY_GAUGE_FUSION_AT_FAVORABLE_CEILING`.

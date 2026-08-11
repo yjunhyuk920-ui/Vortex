@@ -1,0 +1,40 @@
+{
+  "attention_reparameterization": {
+    "all_attention_fraction_of_parameters": 0.17709431388354932,
+    "all_attention_parameters": 71873593344,
+    "generous_continuous_gauge_dimensions": 528482304,
+    "generous_gauge_fraction_of_parameters": 0.0013021640726731567,
+    "remaining_fraction_after_free_attention_deletion": 0.8229056861164507
+  },
+  "contract": {
+    "allowed_dense_fraction": 0.0118270517,
+    "parameters": 405849243648,
+    "required_elimination_fraction": 0.9881729483,
+    "token_seconds": 0.02
+  },
+  "decisions": [
+    "REJECT_OMEGA_CUTSUM_AS_EXACT_BILINEAR_RELABELING",
+    "REJECT_OMEGA_ZIPWAVE_AS_STANDALONE_CORE",
+    "REJECT_ATTENTION_ONLY_GAUGE_FUSION_AT_FAVORABLE_CEILING",
+    "KEEP_GENERAL_NONLINEAR_ADAPTIVE_RANK_ONE_PROBE_GAP_OPEN",
+    "NO_SURVIVING_CANDIDATE"
+  ],
+  "lossless_streaming": {
+    "fast_link": {
+      "bytes_per_second": 32000000000,
+      "minimum_zero_compute_tokens_for_20ms": 841,
+      "sweep_seconds": 16.8046952448,
+      "zero_compute_ms_per_token_at_32_tokens": 525.1467264
+    },
+    "shannon_bf16_bits_per_parameter": 10.6,
+    "shannon_model_bytes": 537750247833.6,
+    "target_link_favorable_ceiling": {
+      "bytes_per_second": 8000000000,
+      "minimum_zero_compute_tokens_for_20ms": 3361,
+      "sweep_seconds": 67.2187809792,
+      "zero_compute_ms_per_token_at_32_tokens": 2100.5869056
+    },
+    "zipserv_bf16_bits_per_parameter": 11.3,
+    "zipserv_model_bytes": 573262056652.8
+  }
+}

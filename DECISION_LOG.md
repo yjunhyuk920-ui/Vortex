@@ -1489,3 +1489,24 @@ KEEP_NO_SURVIVING_CANDIDATE
 
 Authority:
 `docs/research/E0_NONLINEAR_FIBER_DECISION_DEPTH_SCREEN.md`.
+
+## D-103 -- Retain fused lossless execution only as an auxiliary
+
+Three exact candidates were screened at their cheapest necessary Gate. Exact
+cut queries leave the original quadratic aggregate inside an unimplemented
+oracle. Shannon-limit BF16 streaming still needs 841 zero-compute tokens per
+sweep at 32 GB/s. Attention-only reparameterization fails even after granting
+free deletion of every attention projection.
+
+Decision:
+
+```text
+REJECT_OMEGA_CUTSUM_AS_EXACT_BILINEAR_RELABELING
+REJECT_OMEGA_ZIPWAVE_AS_STANDALONE_CORE
+REJECT_ATTENTION_ONLY_GAUGE_FUSION_AT_FAVORABLE_CEILING
+RETAIN_FUSED_LOSSLESS_EXECUTION_AS_AUXILIARY
+KEEP_GENERAL_NONLINEAR_ADAPTIVE_RANK_ONE_PROBE_GAP_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority: `docs/research/E0_LOSSLESS_CUT_GAUGE_FRONTIER.md`.

@@ -603,6 +603,19 @@ scalar data-structure model. Universal 2.5% remains NOT ESTABLISHED, no Core
 Candidate survives, and no E1/E2, model, backend, hardware, or scale promotion
 is authorized.
 
+## Current classification after lossless/cut/gauge screening
+
+An exact graph-cut reduction is not an execution source unless the cut value
+itself is implemented and charged. Fused lossless decoding is admitted only
+as an auxiliary because the favorable 10.6-bit BF16 sweep still needs 841
+zero-compute tokens at 32 GB/s. Attention-only gauge or fusion work is closed
+by the stronger free-deletion ceiling: removing every attention coefficient
+still leaves over 82% of registered dense work.
+
+No Core Candidate survives, and no E1/E2, model, backend, hardware, or scale
+promotion is authorized. Authority:
+`docs/research/E0_LOSSLESS_CUT_GAUGE_FRONTIER.md`.
+
 ## Current directive after the nonlinear-fiber toy screen
 
 Do not promote finite nonlinear routing merely because the advice fibers are

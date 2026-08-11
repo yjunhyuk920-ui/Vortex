@@ -230,3 +230,16 @@ This rejects a small nonlinear anomaly as an immediate constructor. It does
 not control high-dimensional nonlinear fibers, the global 8 GiB advice, or
 native numerical queries, and therefore supplies neither required ticket
 deliverable. The ticket remains claimed.
+
+The seventh post-audit screen is recorded in
+`docs/research/E0_LOSSLESS_CUT_GAUGE_FRONTIER.md`. The exact bipartite
+three-cut identity leaves the arbitrary quadratic subset aggregate inside an
+unimplemented cut oracle. A fused lossless BF16 sweep is retained as an
+auxiliary, but even the 10.6-bit entropy figure needs 841 zero-compute tokens
+per sweep at 32 GB/s. Granting free deletion of all Q/K/V/O parameters removes
+only `17.709431388354932%` of the registered model, so attention-only gauges
+also fail their first ceiling.
+
+These results close three named direct routes, not the globally coupled
+nonlinear cold decoder. They supply neither required ticket deliverable, so
+the ticket remains claimed.

@@ -733,3 +733,23 @@ the first nonlinear toy already exhibits a superior adaptive source. It is
 not a high-dimensional nonlinear-fiber theorem and does not cover global
 advice or native numerical queries. Authority:
 `docs/research/E0_NONLINEAR_FIBER_DECISION_DEPTH_SCREEN.md`.
+
+## F-074 -- Exact-cut, standalone lossless-streaming, and attention-gauge cores
+
+Do not reopen a weighted graph cut oracle as a numerical answer source. The
+three-cut identity for a bipartite rectangle is exact, but evaluating one cut
+contains the original arbitrary quadratic subset aggregate. The transformation
+renames the Bilinear Cross Residual; it does not implement it.
+
+Fused register-level lossless decoding is retained as an auxiliary, not a
+core. Even granting the 10.6-bit BF16 entropy figure to every registered
+parameter and charging all compute as zero, a 32 GB/s sweep takes
+`16.8046952448 s`, needs 841 exact tokens to reach 20 ms/token, and costs
+`525.1467264 ms/token` at a 32-token block.
+
+Do not reopen attention-only gauge or fusion as a whole-model solution. Even
+deleting every Q/K/V/O coefficient in all 126 layers for free removes only
+`17.709431388354932%`; `82.29056861164507%` remains against the
+`1.18270517%` compute-only allowance. These ceilings do not reject a future
+mechanism that couples attention, MLP, embeddings, and cold data globally.
+Authority: `docs/research/E0_LOSSLESS_CUT_GAUGE_FRONTIER.md`.
