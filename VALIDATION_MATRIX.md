@@ -844,3 +844,30 @@ Current classification remains `NO_SURVIVING_CANDIDATE`.
 Authoritative decision:
 `REJECT_WILLIAMS_FINITE_SEMIRING_GRAPH_AS_REFERENCE_EXACT_2_5_PERCENT_CORE`.
 Current classification remains `NO_SURVIVING_CANDIDATE`.
+
+## E0 global-advice synergy frontier audit
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Global advice may be divided by matrix count | exact XOR conditional-synergy witness | FALSE |
+| Exhaustive three-word XOR recovery | 512 cases; 1,536 target checks | PASS |
+| Advice entropy versus conditional-information sum | 3 bits versus 9 bits | 3x SYNERGY |
+| Registered complete hidden squares | 11/layer; 126 layers; 1,386 total | DERIVED |
+| Invalid average advice per square | `128/693 = 18.470418%` | DIAGNOSTIC ONLY |
+| Average lies in displayed `n^2/64` proof regime | above `4,194,304` bits | FALSE |
+| Hidden-constant-one illegal tile sum reaches target | 8,781,696 probes; 12,553.84x short | FALSE / INVALID SUM |
+| Separate-tile finite injectivity floor | one independently chosen hard probe | PROVED SCOPED |
+| Invalid 6-by-6 floor sum reaches target | 10.173088%; 9.829856x short | FALSE / INVALID SUM |
+| Published model-wide direct-sum theorem | none | NOT ESTABLISHED |
+| Focused deterministic tests | 8/8 | PASS |
+| Related frontier regression | 44/44 | PASS |
+| Full repository regression | 552/552 | PASS |
+| Standard validation runner | completed | PASS |
+| Independent output-directory reproduction | identical summary SHA-256 | PASS |
+| Canonical summary SHA-256 | `0b926e70...97feda` | PASS |
+| General nonlinear constructor or impossibility | neither delivered | OPEN / NO CLAIM |
+| Model forwards and hardware actions | 0 / 0 | NOT RUN |
+
+Authoritative decision:
+`REJECT_NAIVE_GLOBAL_ADVICE_DIVISION_AND_CKL_TILE_SUM_AS_TARGET_BOUND`.
+Current classification remains `NO_SURVIVING_CANDIDATE`.

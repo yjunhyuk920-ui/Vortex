@@ -494,3 +494,20 @@ bound that grants arbitrary nonlinear 8 GiB advice and adaptive probes. Apply
 the cheapest finite E0 falsification first. Keep NO_SURVIVING_CANDIDATE and do
 not assign EXP-085, run a model, build a backend/kernel, or touch hardware
 until one required ticket deliverable exists.
+
+## Current directive after the global-advice synergy audit
+
+Do not divide global nonlinear advice by matrices, layers, or tiles; do not
+sum conditional information; and do not compose independently chosen CKL
+worst cases without a direct-sum proof. XOR synergy is the finite
+counterexample. Also do not quote the displayed `n^2/64` finite coefficient
+when the substituted advice lies outside that proof regime or turn a hidden-
+constant-one diagnostic into evidence.
+
+Continue only through a theorem that retains one arbitrary global 8 GiB
+advice function and jointly charges every adaptive cross-matrix probe used to
+unlock it for a composable scalar rank-one transcript, or through a concrete
+globally coupled constructor with a full native-order 405B/32-token equation.
+Keep NO_SURVIVING_CANDIDATE and do not assign EXP-085, run a model, build a
+backend/kernel, download a larger checkpoint, or touch hardware until one
+required ticket deliverable exists.

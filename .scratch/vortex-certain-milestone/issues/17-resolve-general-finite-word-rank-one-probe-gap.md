@@ -90,3 +90,22 @@ Transformer arithmetic. The publication also returns full MatVec and supplies
 no 32-causal-query shared-probe theorem. This rejects that constructor only;
 it does not resolve a scalar-specific globally adaptive numerical structure or
 prove one impossible. The ticket therefore remains claimed.
+
+The fourth finite audit is recorded in
+`docs/research/E0_GLOBAL_ADVICE_SYNERGY_FRONTIER.md`. The global 8 GiB advice
+cannot be divided by matrix or tile count and inserted into CKL's
+single-matrix rank-one theorem. The exact counterexample stores the XOR of
+`m` independent `N`-bit matrices in only `N` advice bits; conditioned on all
+other matrices, those same advice bits recover any selected matrix, so the
+sum of conditional information is `mN`. A model-wide proof must charge the
+cross-matrix probes that unlock this synergy.
+
+At the registered layout, the invalid even split over 1,386 full hidden
+squares is `18.470418%` of each square and lies outside the displayed
+`n^2/64` finite proof regime. Even setting the asymptotic leading constant to
+one and illegally summing separate-square values reaches only 8,781,696
+probes, 12,553.84x below the requested block-bit bound. A separate exact
+pigeonhole screen over 6-by-6 tiles supplies only one independently chosen
+hard probe per tile; even its illegal sum is 9.829856x below the target.
+These reject the naive direct-sum route, not the target or the general model.
+The ticket remains claimed.

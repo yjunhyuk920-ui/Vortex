@@ -139,6 +139,22 @@ computation
 _Current status_: Open. Neither a target-feasible constructor nor a matching
 lower bound under the global 8 GiB advice grant is recorded.
 
+**Explicit Finite-Semiring Lookup Graph**:
+A preprocessed MatVec layout with one node for every `K^b` input pattern and
+explicit output-pattern neighbors; its direct query payload falls as `1/b`
+while its catalog grows as `K^b/b`.
+_Avoid_: Implicit compressed catalog, native rounded arithmetic, general
+nonlinear rank-one source
+_Current status_: The Williams graph is rejected as the reference-exact 2.5%
+Core Candidate; a different implicit edge encoding is not rejected by name.
+
+**Cross-Matrix Advice Synergy**:
+Global advice whose information about one matrix increases after other
+matrices are known or probed, preventing advice size from being divided by
+matrix count without a direct-sum theorem.
+_Avoid_: Per-matrix advice allocation, free cross-matrix reuse, projected
+linear rank
+
 **Matrix-Local Separable Residual Code**:
 A Bilinear Cross Residual source that independently covers each matrix's left
 and right directions with linear codes and repairs only their coordinate-sparse

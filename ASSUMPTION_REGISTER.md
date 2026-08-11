@@ -840,3 +840,25 @@ does not reject a different scalar-specific globally adaptive structure. A
 new finite transition monoid would need its own complete representation and
 native-order equation. Universal 2.5% remains NOT ESTABLISHED and universal
 impossibility remains NOT PROVED.
+
+## A-073 -- Global advice can be evenly divided for CKL tile bounds
+
+Assumption: the global 8 GiB nonlinear advice may be divided by the number of
+Transformer matrices or full hidden-square tiles, after which CKL's
+single-matrix rank-one lower bound may be applied and the independent
+worst-case probe counts summed.
+
+Status: CONTRADICTED. For independent `N`-bit matrices, their `N`-bit XOR is
+global advice that recovers any selected matrix once all other matrices are
+known. Hence each conditional information term is `N` and their sum is `mN`,
+although advice entropy is only `N`. No per-matrix division follows. The
+published single-matrix theorem also does not compose independently selected
+hard queries into one causal model execution.
+
+### A-073 closure
+
+The counterexample does not make advice free: exploiting it requires knowing
+or probing the other matrices. A future direct-sum theorem may succeed by
+charging those probes jointly. The current finite screens show only that the
+naive route is invalid and far too weak, not that universal 2.5% is feasible
+or impossible. The general nonlinear numerical rank-one gap remains open.

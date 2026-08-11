@@ -602,3 +602,23 @@ This closes the published graph as a Core Candidate, not the general adaptive
 scalar data-structure model. Universal 2.5% remains NOT ESTABLISHED, no Core
 Candidate survives, and no E1/E2, model, backend, hardware, or scale promotion
 is authorized.
+
+## Current classification after the global-advice synergy audit
+
+The global 8 GiB nonlinear advice cannot be divided by matrix count and
+inserted into a single-matrix CKL bound. One `N`-bit XOR receipt for `m`
+independent `N`-bit matrices conditionally reconstructs any target after the
+others are known, so conditional information can sum to `mN` while advice
+entropy is only `N`. A correct direct sum must charge the reads that reveal
+those other matrices.
+
+The registered invalid split over 1,386 hidden squares lies outside the
+displayed finite proof regime, and even its hidden-constant-one illegal sum is
+12,553.84x below the requested block-bit bound. The exact pigeonhole floor is
+only one separately chosen hard query per under-described tile; its illegal
+sum is still 9.829856x short.
+
+This rejects a proof shortcut, not the single-matrix theorem and not the
+general nonlinear model. Universal 2.5% remains NOT ESTABLISHED, no Core
+Candidate survives, and no E1/E2, model, backend, hardware, or scale
+promotion is authorized.

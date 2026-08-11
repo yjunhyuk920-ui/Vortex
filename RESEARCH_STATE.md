@@ -1435,3 +1435,44 @@ forward, checkpoint mutation, experiment number, backend, kernel, Ubuntu
 action, or hardware action occurred. Authority:
 `docs/research/E0_FINITE_SEMIRING_PREPROCESSING_FRONTIER.md` and
 `results/e0_finite_semiring_preprocessing_frontier`.
+
+## E0 global-advice division and CKL tile summation rejected
+
+The global 8 GiB advice allowance cannot be divided by the number of matrices
+or complete hidden-square tiles without a direct-sum theorem. An exact XOR
+control makes the obstruction finite: one `N`-bit advice string can reveal
+each of `m` independent `N`-bit matrices after the other `m-1` matrices are
+known. The sum of conditional information is then `mN`, despite advice
+entropy `N`. Exploiting that synergy requires other-matrix knowledge or
+probes, which a valid theorem must charge jointly.
+
+The registered layout contains 1,386 complete `16,384`-square tiles. The
+invalid average advice allocation is `18.470418%` per tile. It happens to lie
+inside CKL's theorem-statement endpoint `n^2/4`, but outside the displayed
+finite proof regime `n^2/64`; neither fact licenses the division. A hidden-
+constant-one and illegal direct-sum diagnostic gives only 8,781,696 probes,
+12,553.84x below the requested DFloat block-bit budget.
+
+An independent finite pigeonhole lemma proves only that a separately chosen
+under-described tile/query pair needs one raw probe. Even illegally summing
+that floor over a favorable 6-by-6 global reshape reaches `10.173088%` of the
+requested bound, 9.829856x short. Thus the available single-matrix route is
+too weak and its global lift is false.
+
+Decision:
+
+```text
+REJECT_NAIVE_GLOBAL_ADVICE_DIVISION_AND_CKL_TILE_SUM_AS_TARGET_BOUND
+KEEP_SINGLE_MATRIX_CKL_THEOREM_VALID_IN_ITS_MODEL
+KEEP_GLOBAL_NONLINEAR_DIRECT_SUM NOT ESTABLISHED
+KEEP_GENERAL_NONLINEAR_NUMERICAL_RANK_ONE_GAP OPEN
+KEEP_UNIVERSAL_2.5% NOT ESTABLISHED
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Eight focused tests, 44 related frontier tests, the 552-test repository
+regression, standard validation, and independent byte-identical reproduction
+pass. No model forward, checkpoint mutation, experiment number, backend,
+kernel, download, Ubuntu action, or hardware action occurred. Authority:
+`docs/research/E0_GLOBAL_ADVICE_SYNERGY_FRONTIER.md` and
+`results/e0_global_advice_synergy_frontier`.

@@ -1409,3 +1409,22 @@ covering arbitrary adaptive global advice. No EXP-085, model, backend,
 kernel, download, private Ubuntu action, hardware benchmark, or E2-E7 action
 is authorized. Authority:
 `docs/research/E0_FINITE_SEMIRING_PREPROCESSING_FRONTIER.md`.
+
+## Naive global-advice direct sum closed -- require a synergy-charging theorem
+
+Do not divide the global 8 GiB advice by matrix, layer, or tile count. The
+finite XOR witness shows why: one small jointly computed advice string can
+carry full conditional information about every selected matrix after the
+others are known. Do not sum per-tile CKL worst cases, set the hidden `Omega`
+constant to one, use the displayed `n^2/64` proof coefficient outside its
+regime, or assume independently hard tile queries compose into one causal
+execution.
+
+The active ticket remains Resolve the General Finite-Word Rank-One Probe Gap.
+The next admissible theorem route must jointly charge arbitrary nonlinear
+global advice and every cross-matrix probe needed to unlock its synergy for a
+simultaneously composable scalar rank-one query family. The alternative is a
+concrete globally coupled constructor with an exact native-order 405B and
+32-token equation. No EXP-085, model, backend, kernel, download, private
+Ubuntu action, hardware benchmark, or E2-E7 action is authorized. Authority:
+`docs/research/E0_GLOBAL_ADVICE_SYNERGY_FRONTIER.md`.

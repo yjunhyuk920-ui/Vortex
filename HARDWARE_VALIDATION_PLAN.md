@@ -642,3 +642,19 @@ allocation, EXP-073 Stage 2, 122B/405B run, or Phase D/E4-E7 work is
 authorized. Hardware may reopen only for a different constructor after its
 complete native-order scalar and 32-token equation survives E0 and an
 untouched E1 Gate.
+
+## Global-advice synergy audit: no hardware Gate is authorized
+
+The XOR witness, full-square substitution, and 6-by-6 pigeonhole screen are
+finite information-theory calculations. They allocate no 8 GiB artifact and
+measure no word packing, random access, SSD, PCIe/H2D/HBM traffic, CUDA,
+latency, power, or peak VRAM. The invalid per-tile sums are explicitly not a
+physical workload or a certified lower bound.
+
+The audit leaves no constructor to benchmark and no covering impossibility
+theorem. Random-read tests or a per-matrix CKL prototype would test the
+rejected division rather than the open global model. No target-server command,
+storage mutation, download, CUDA action, GPU allocation, EXP-073 Stage 2,
+122B/405B run, or Phase D/E4-E7 work is authorized. Hardware may reopen only
+after a globally coupled constructor or a synergy-charging theorem supplies a
+complete E0 deliverable and the subsequent E1/E2 Gates survive.

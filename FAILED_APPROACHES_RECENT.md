@@ -536,3 +536,24 @@ global adaptive numerical structure, a finite transition construction with a
 fully charged representation, or a covering lower bound remains open.
 Authority:
 `docs/research/E0_FINITE_SEMIRING_PREPROCESSING_FRONTIER.md`.
+
+## F-063 -- Naive global-advice division and CKL tile direct sum
+
+Do not divide the global 8 GiB nonlinear advice by matrix count and insert the
+quotient into a single-matrix rank-one lower bound. The exact XOR witness
+stores one `N`-bit checksum for `m` independent `N`-bit matrices, yet that
+checksum and the other matrices recover any selected matrix. Conditional
+information can therefore be synergistic and need not add up to advice
+entropy.
+
+Do not sum separately selected per-tile worst-case queries. The registered
+1,386-square split is invalid, outside the displayed `n^2/64` proof regime,
+and even its hidden-constant-one diagnostic is 12,553.84x below the requested
+bound. The finite pigeonhole lemma supplies only one separate hard query for
+one under-described tile; even its illegal global sum is 9.829856x short.
+
+This entry rejects the proof shortcut, not CKL's single-matrix theorem and not
+all globally nonlinear exact data structures. Reopening requires a theorem
+that jointly charges cross-matrix probes used to unlock shared advice, or a
+concrete complete constructor. Authority:
+`docs/research/E0_GLOBAL_ADVICE_SYNERGY_FRONTIER.md`.

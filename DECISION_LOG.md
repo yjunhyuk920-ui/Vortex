@@ -1225,3 +1225,35 @@ KEEP_MODEL_HARDWARE_AND_E2_E7_CLOSED
 Authority:
 `docs/research/E0_FINITE_SEMIRING_PREPROCESSING_FRONTIER.md` and
 `results/e0_finite_semiring_preprocessing_frontier`.
+
+## D-093 -- Reject naive global-advice division and CKL tile summation
+
+One globally computed advice string cannot be assigned an independent equal
+share to each matrix. For independent `N`-bit matrices, their bitwise XOR is
+only `N` bits yet, conditioned on all other matrices, recovers any selected
+matrix. Thus the sum of conditional information can be `m` times the advice
+entropy. A valid model-wide lower bound must charge the other-matrix probes
+that unlock this synergy.
+
+The invalid registered split over 1,386 full hidden squares assigns
+`18.470418%` of one square to each and is outside CKL's displayed `n^2/64`
+finite proof regime. Even a hidden-constant-one illegal sum is 12,553.84x
+below the requested block-bit target. The exact finite pigeonhole consequence
+is only one separately selected hard query per under-described tile; its
+illegal favorable sum is still 9.829856x below target.
+
+Decision:
+
+```text
+REJECT_NAIVE_GLOBAL_ADVICE_DIVISION_AND_CKL_TILE_SUM_AS_TARGET_BOUND
+DO_NOT_SUM_CONDITIONAL_INFORMATION_AS_ADVICE_ALLOCATION
+DO_NOT_SUM_SEPARATELY_CHOSEN_TILE_WORST_CASES_WITHOUT_COMPOSITION
+DO_NOT_USE_THE_DISPLAYED_FINITE_COEFFICIENT_OUTSIDE_ITS_PROOF_REGIME
+DO_NOT_CLAIM_A_GENERAL_NONLINEAR_IMPOSSIBILITY
+KEEP_GENERAL_NONLINEAR_NUMERICAL_RANK_ONE_GAP_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+KEEP_MODEL_HARDWARE_AND_E2_E7_CLOSED
+```
+
+Authority: `docs/research/E0_GLOBAL_ADVICE_SYNERGY_FRONTIER.md` and
+`results/e0_global_advice_synergy_frontier`.

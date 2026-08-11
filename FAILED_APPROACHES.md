@@ -349,4 +349,8 @@ reference-exact 2.5% core. Its favorable lookup payload falls as `1/b`, but
 its checkpoint-dependent catalog grows as `K^b/b`; native BF16/FP32 rounding
 also violates the semiring premise. It does not close a different
 scalar-specific adaptive numerical structure or a future covering lower bound.
+F-063 closes naive division of global nonlinear advice and illegal summation
+of single-matrix CKL worst cases. Exact XOR synergy shows why conditional
+information cannot be allocated per matrix. It does not close a new theorem
+that jointly charges the cross-matrix probes used to unlock that synergy.
 Read that continuation and each scope boundary before reopening a family.

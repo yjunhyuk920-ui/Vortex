@@ -903,3 +903,26 @@ repair, scalar projection, 32-token scheduler, verifier, fallback engine, or
 kernel is admitted. A future finite-state transition representation is a new
 architecture proposal and must expose its complete state and operation table;
 it cannot inherit this theorem by name.
+
+### Global-advice synergy boundary
+
+No per-matrix `CKLTileIndex` or model-wide direct-sum component is admitted.
+The rejected interface silently transformed one global nonlinear advice
+function
+
+```text
+R = f(M_1, ..., M_m), |R| <= 8 GiB
+```
+
+into independent local strings `R_i` and summed separately selected hard
+queries. XOR advice is an exact counterexample: `R=M_1 XOR ... XOR M_m`
+conditionally recovers every `M_i` after the other matrices are known, so no
+equal local allocation exists.
+
+A future admissible theorem interface must retain one global `R`, allow all
+adaptive cross-matrix probes, and charge every probe needed to unlock shared
+information for a jointly composable causal query transcript. A future
+constructor must expose those same probes in its physical schedule. There is
+currently no representation builder, query algorithm, native numerical
+decoder, verifier, fallback engine, 32-token scheduler, or kernel satisfying
+that interface.

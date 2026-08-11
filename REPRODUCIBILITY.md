@@ -1434,3 +1434,45 @@ Canonical summary SHA-256:
 
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
+
+## E0 global-advice synergy frontier audit
+
+Authoritative commands:
+
+```powershell
+$env:PYTHONPATH = "."
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_global_advice_synergy_frontier.py `
+  --output-dir results\e0_global_advice_synergy_frontier
+
+.deps\exp076-venv\Scripts\python.exe -m unittest `
+  tests.test_global_advice_synergy_frontier -v
+```
+
+Observed focused validation was 8/8 tests. The controls cover exhaustive XOR
+conditional recovery, uniform advice entropy, registered full-square counts,
+the theorem-statement versus displayed-proof range distinction, the finite
+separate-tile injectivity floor, invalid favorable sums, claim boundaries,
+and fail-closed inputs.
+
+The related six-file frontier regression passed 44/44, the full repository
+regression passed 552/552 with the repository root on `PYTHONPATH`, and the
+standard validation runner completed successfully. An independent temporary
+output directory reproduced the canonical summary byte-for-byte and was
+removed only after its resolved path was verified inside the workspace. No
+network or package mutation was used.
+
+Artifacts:
+
+- `results/e0_global_advice_synergy_frontier/summary.json`
+- `results/e0_global_advice_synergy_frontier/checksums.sha256`
+- `docs/research/E0_GLOBAL_ADVICE_SYNERGY_FRONTIER.md`
+
+Canonical summary SHA-256:
+
+```text
+0b926e70e7fc19e76ef3e5aa1839d58f1be5d6b55900440ed1d62114c397feda
+```
+
+No model forward, checkpoint mutation, experiment number, backend, kernel,
+download, Ubuntu command, or hardware action was used.
