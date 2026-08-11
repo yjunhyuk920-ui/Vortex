@@ -1,10 +1,10 @@
-"""E0 source Gate for average-case MatVec error-correction proposals.
+"""E0 source Gates for average-case MatVec error-correction proposals.
 
 ``OMEGA-XORLIFT`` asks an average-case finite-field MatVec oracle for noisy
 answers and applies an error-correcting reduction.  The reduction is a real
-amplifier, but it does not construct the oracle.  This module gives a finite
-capacity screen for the most favorable self-contained oracle: one global hot
-state, no cold probes, free query computation, and one predicted bit per row.
+amplifier, but it does not construct the oracle.  This module separates the
+paper's average-coordinate premise from a stronger every-row premise, and it
+screens a direct exact-row source without pretending that the two coincide.
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ GIB = 1 << 30
 HOT_BITS = 8 * GIB * 8
 REGISTERED_BINARY_BITS = 403_747_897_344
 REGISTERED_OUTPUT_ROWS = 19_997_952
-DECISION = "REJECT_SELF_CONTAINED_AVERAGE_ORACLE_AMPLIFIER_AS_CORE"
+DECISION = "REJECT_ROW_LOTTERY_AND_UNCHARGED_AMPLIFIER_AS_CORE"
 
 
 def _decimal_log2(value: Decimal, *, precision: int = 80) -> Decimal:
@@ -46,13 +46,67 @@ def fourier_list_size_upper_bound(advantage: Fraction) -> int:
     return numerator // denominator
 
 
+def average_coordinate_accuracy_from_exact_row_fraction(
+    exact_row_fraction: Fraction,
+    *,
+    field_order: int,
+) -> Fraction:
+    """Accuracy from exact rows and baseline guesses on all other rows.
+
+    This is a counterexample to conflating average-coordinate accuracy with a
+    common per-row advantage.  On the uncomputed coordinates the predictor is
+    granted the uniform-guess baseline ``1/field_order``.
+    """
+
+    if not Fraction(0) <= exact_row_fraction <= Fraction(1):
+        raise ValueError("exact_row_fraction must lie in [0, 1]")
+    if field_order < 2:
+        raise ValueError("field_order must be at least two")
+    baseline = Fraction(1, field_order)
+    return exact_row_fraction + (1 - exact_row_fraction) * baseline
+
+
+def minimum_exact_row_fraction_for_average_advantage(
+    advantage: Fraction,
+    *,
+    field_order: int,
+) -> Fraction:
+    """Return the direct exact-row fraction needed for average advantage."""
+
+    if field_order < 2:
+        raise ValueError("field_order must be at least two")
+    if not Fraction(0) < advantage <= 1 - Fraction(1, field_order):
+        raise ValueError("advantage is outside the attainable range")
+    return advantage * field_order / (field_order - 1)
+
+
+def minimum_rank_covering_row_forms(
+    *,
+    output_dimension: int,
+    input_dimension: int,
+) -> tuple[int, int]:
+    """Return the direct row-form rank and coefficient-payload floors.
+
+    Recovering every vector in ``F**output_dimension`` from exact linear row
+    observations needs at least ``output_dimension`` independent forms.  A
+    direct evaluator stores/reads ``input_dimension`` coefficients per form.
+    This scoped result does not reject a different compressed nonlinear
+    oracle.
+    """
+
+    if output_dimension <= 0 or input_dimension <= 0:
+        raise ValueError("dimensions must be positive")
+    forms = output_dimension
+    return forms, forms * input_dimension
+
+
 def minimum_self_contained_state_bits(
     *,
     binary_coefficient_bits: int,
     output_rows: int,
     advantage: Fraction,
 ) -> int:
-    """Finite state floor obtained from the Fourier list bound.
+    """Finite state floor for a *common per-row* advantage.
 
     One state can represent at most ``L**output_rows`` arbitrary row tuples,
     where ``L`` is the per-row parity list bound.  Covering every binary
@@ -88,7 +142,7 @@ def self_contained_advantage_ceiling(
     output_rows: int = REGISTERED_OUTPUT_ROWS,
     state_bits: int = HOT_BITS,
 ) -> AdvantageCeiling:
-    """Return the optimistic common-advantage ceiling for a hot-only oracle."""
+    """Return the optimistic *common per-row* hot-only advantage ceiling."""
 
     if not 0 <= state_bits < binary_coefficient_bits:
         raise ValueError("state_bits must lie in [0, binary_coefficient_bits)")
@@ -217,6 +271,12 @@ def derive_audit(
             "multiple_of_8_gib": minimum_bits / state_bits,
         }
 
+    hot_fraction = Fraction(state_bits, binary_coefficient_bits)
+    concentrated_accuracy = average_coordinate_accuracy_from_exact_row_fraction(
+        hot_fraction,
+        field_order=2,
+    )
+    concentrated_advantage = concentrated_accuracy - Fraction(1, 2)
     return {
         "name": "average_oracle_amplifier_frontier",
         "candidate": "OMEGA-XORLIFT",
@@ -229,8 +289,17 @@ def derive_audit(
             "hot_state_fraction": state_bits / binary_coefficient_bits,
             "average_input_bits_per_row": binary_coefficient_bits / output_rows,
         },
-        "self_contained_source_gate": {
-            "model": "ONE_GLOBAL_NONLINEAR_HOT_STATE_FREE_QUERY_COMPUTE_NO_COLD_PROBES",
+        "published_premise_correction": {
+            "metric": "EXPECTED_NORMALIZED_HAMMING_DISTANCE_OVER_OUTPUT_COORDINATES",
+            "common_advantage_required_for_every_row": False,
+            "hot_fraction_exact_rows_counterexample": str(hot_fraction),
+            "gf2_average_coordinate_accuracy": str(concentrated_accuracy),
+            "gf2_average_coordinate_advantage": str(concentrated_advantage),
+            "counterexample_satisfies_accuracy_part_only": True,
+            "counterexample_has_near_linear_query_time": False,
+        },
+        "uniform_every_row_source_gate": {
+            "model": "ONE_GLOBAL_NONLINEAR_HOT_STATE_FREE_QUERY_COMPUTE_NO_COLD_PROBES_COMMON_ROW_ADVANTAGE",
             "missing_bits_per_output_row": str(
                 ceiling.missing_bits_per_output_row
             ),
@@ -241,7 +310,18 @@ def derive_audit(
                 ceiling.log10_advantage_ceiling
             ),
             "scenarios": scenarios,
-            "decision": "REJECT_HOT_ONLY_AVERAGE_CASE_PARITY_ORACLE",
+            "decision": "REJECT_COMMON_PER_ROW_HOT_ONLY_PARITY_ORACLE",
+            "does_not_reject_published_average_distance_premise": True,
+        },
+        "direct_row_lottery_gate": {
+            "model": "EXACT_ENCODED_ROW_FORMS_PLUS_BASELINE_GUESSES",
+            "independent_row_forms_needed": output_rows,
+            "minimum_direct_coefficient_payload_bits": binary_coefficient_bits,
+            "minimum_direct_payload_fraction_of_binary_source": 1.0,
+            "hot_exact_state_injection_bits": binary_coefficient_bits,
+            "hot_exact_state_gib": binary_coefficient_bits / 8 / GIB,
+            "multiple_of_8_gib": binary_coefficient_bits / state_bits,
+            "decision": "REJECT_DIRECT_ROW_LOTTERY_AS_A_TRAFFIC_REDUCTION",
         },
         "amplifier_boundary": {
             "published_reduction_supplies_approximate_oracle": False,
@@ -254,7 +334,10 @@ def derive_audit(
         "claim_boundary": {
             "general_nonlinear_adaptive_probe_oracle_rejected": False,
             "average_oracle_amplifier_rejected_as_mathematics": False,
-            "self_contained_8_gib_oracle_rejected": True,
+            "published_average_distance_oracle_rejected": False,
+            "common_per_row_hot_oracle_rejected": True,
+            "direct_row_lottery_source_rejected": True,
+            "self_contained_exact_8_gib_derived_executor_rejected": True,
             "native_transformer_executor_constructed": False,
             "target_achieved": False,
             "model_or_hardware_execution": False,

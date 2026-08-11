@@ -982,20 +982,22 @@ not `(W+R)x`; the latter is an arbitrary dense matrix product. The published
 family accelerates matrices sampled together with their trapdoor and supplies
 no arbitrary-checkpoint compiler or native rounded accumulation proof.
 
-## A-081 -- Average-case error correction creates its own noisy oracle
+## A-081 -- The average-distance premise requires common advantage on every row
 
-Assumption: an error-correcting OMv reduction can turn the resident proposer
-into an exact arbitrary-checkpoint executor without separately constructing a
-uniform random-matrix oracle.
+Assumption: Hirahara--Shimizu's OMv premise can be screened by requiring one
+positive prediction advantage on every output row.
 
-Status: CONTRADICTED. The reduction explicitly assumes a matrix-dependent
-preprocessed oracle with above-random coordinate accuracy. Under a favorable
-hot-only binary model, Parseval and counting require
-`S + M log2(1/(4 epsilon^2)) >= D`. The registered `8 GiB` state supports only
-`epsilon <= 10^-2521.899...`; one-percent advantage needs `46.9762 GiB`.
+Status: CONTRADICTED. The paper averages normalized Hamming distance over
+output coordinates. Concentrating the complete `8 GiB` one-bit grant into
+exact rows and guessing the rest gives `58.510196237313%` average GF(2)
+coordinate accuracy, even though most rows have no advantage. The former
+Parseval calculation remains correct only for the stronger common-row model.
 
 ### A-081 closure
 
-The theorem remains a valid amplifier. A cold-backed oracle is not rejected,
-but it is the missing information source and must pay every probe and repeated
-call plus native numerical lifting.
+The concentrated-row counterexample satisfies only the accuracy clause; its
+direct dense row products are not near-linear. `OMEGA-ROWLOTTERY` is separately
+rejected because exact recovery needs a rank-covering set of row forms whose
+direct coefficient payload is at least one full binary matrix source. A
+different compressed cold-backed oracle remains open and must pay every state,
+probe, repeated call, decoder, verifier, fallback, and native numerical lift.

@@ -992,20 +992,22 @@ No `TrapShiftCompiler` is admitted. A trapdoor associated with a sampled mask
 does not transfer to an arbitrary shifted checkpoint. The architecture cannot
 declare `(W+R)x` free or outsource it to an unspecified average-case solver.
 
-## Rejected average-oracle interface: OMEGA-XORLIFT
+## Rejected direct average-oracle interface: OMEGA-ROWLOTTERY
 
-No `AverageOracleAmplifier` runtime component is admitted. The mathematical
-reduction consumes a separately preprocessed oracle that already beats random
-finite-field coordinate guessing. Under a self-contained binary interface,
-one arbitrary nonlinear hot state can represent too few row-parity predictors:
+The Hirahara--Shimizu `AverageOracleAmplifier` is valid in its finite-field
+model, but it is not admitted as a free runtime component. Its premise uses
+average output-coordinate distance, not a common advantage on every row. The
+common-row Fourier bound remains a scoped Gate only.
 
-```text
-S + M log2(1/(4 epsilon^2)) >= D.
-```
+The concrete direct source `OMEGA-ROWLOTTERY` evaluates selected encoded row
+forms exactly and guesses the rest. Exact recovery of an arbitrary
+`n`-coordinate result needs at least `n` independent row forms across all
+calls; direct evaluation of those forms reads at least `n^2` arbitrary
+coefficients. The model-wide one-bit floor is `47.00244140625 GiB`, already
+`5.875305x` the hot grant and one complete binary source sweep if cold.
 
-The registered `8 GiB` point forces `epsilon` below roughly `10^-2522`, so no
-finite practical amplification schedule follows. A future cold-backed oracle
-must be specified as a new `Query-Adaptive Cold Source` and charge its state,
+A future `Query-Adaptive Cold Source` must therefore be materially more
+succinct than a rank-covering row list and charge its preprocessing structures,
 random-instance construction, every probe on every call, list decoding,
 verification, numerical lifting, and fallback. The amplifier may then be an
 auxiliary correctness layer; it is not itself an answer source.

@@ -675,23 +675,23 @@ native accumulation order.  This entry does not reject every entrywise
 nonlinear representation.  Authority:
 `docs/research/E0_SPIKY_POWER_RANK_ONE_FRONTIER.md`.
 
-## F-071 -- OMEGA-XORLIFT without an average-case answer source
+## F-071 -- OMEGA-ROWLOTTERY direct average-coordinate source
 
-Do not relabel a finite-field error-correcting oracle reduction as a local
-approximate MatVec constructor. Hirahara--Shimizu transform an oracle that
-already beats random guessing on uniformly random matrices and vectors; the
-reduction does not build that oracle, limit its preprocessing state, or prove
-native BF16/FP32 semantics.
+Do not use the common-row Fourier Gate as if it were the publication's
+average-distance premise. Exact answers on a fraction `f` of GF(2) rows plus
+baseline guesses on the rest already achieve average accuracy `1/2+f/2`.
+The `8 GiB` one-bit fraction gives `58.510196237313%`, so the former inference
+was too broad.
 
-For the strongest self-contained arm, one arbitrary global `S`-bit hot state
-and free randomized query computation are granted. A fixed predictor can have
-advantage `epsilon` over at most `1/(4 epsilon^2)` binary row parities by
-Parseval. Universal coverage of `D` arbitrary bits in `M` rows requires
-`S + M log2(1/(4 epsilon^2)) >= D`. The registered state permits common
-advantage only below about `10^-2522`; 51% accuracy already requires
-`46.9762 GiB`.
+The resulting direct constructor still fails. Across all amplifier calls,
+exact recovery of an arbitrary `n`-coordinate result needs at least `n`
+independent encoded row forms. Directly evaluating them reads at least `n^2`
+arbitrary coefficients. The registered one-bit payload is
+`47.00244140625 GiB`, `5.875305x` the hot grant and one complete source sweep
+if cold. The concentrated-row source also has dense, not near-linear, query
+time.
 
-This closes the hot-only oracle, not a cold-backed adaptive oracle. Reopening
-requires a concrete random-matrix oracle with all preprocessing, probes,
-calls, decoding, verification, numerical lifting, and fallback charged.
-Authority: `docs/research/E0_AVERAGE_ORACLE_AMPLIFIER_FRONTIER.md`.
+This closes direct row lottery, not a succinct nonlinear cold-backed oracle.
+Every preprocessing structure, repeated call, probe, decoder, verifier,
+fallback, and native numerical lift remains mandatory. Authority:
+`docs/research/E0_AVERAGE_ORACLE_AMPLIFIER_FRONTIER.md`.

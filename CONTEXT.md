@@ -255,6 +255,15 @@ Approximate-Oracle Amplifier, and list-decodes the returned coordinates to an
 exact result.
 _Avoid_: Sparse-error syndrome repair, native floating-point proof, oracle-free
 constructor
-_Current status_: The self-contained 8 GiB form is rejected by the average-case
-parity-prediction capacity Gate; a cold-backed oracle remains unspecified and
-must pay every probe and amplification call.
+_Current status_: The amplifier is valid, but no fully charged approximate
+answer source or native numerical lift is supplied. The common-row Fourier
+Gate does not cover the publication's average-distance premise.
+
+**OMEGA-ROWLOTTERY**:
+A direct OMEGA-XORLIFT source that evaluates a subset of encoded row forms
+exactly, guesses the remaining output coordinates, and relies on repeated
+permutation/encoding calls for recovery.
+_Avoid_: Common-row predictor, compressed nonlinear oracle, free row transform
+_Current status_: Rejected as a traffic reduction because exact recovery needs
+a rank-covering set of row forms and their direct coefficient payload is at
+least one full matrix source.

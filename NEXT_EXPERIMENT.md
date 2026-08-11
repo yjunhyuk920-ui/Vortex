@@ -1532,20 +1532,22 @@ bound covering that decoder and global advice. No model, EXP-085, backend,
 kernel, download, Ubuntu action, or hardware stage is authorized. Authority:
 `docs/research/E0_ADAPTIVE_CODEBOOK_TRAPDOOR_FRONTIER.md`.
 
-## Average-case amplification closed -- require the oracle, not another amplifier
+## Direct row lottery closed -- require a compressed oracle
 
 Do not cite worst-case-to-average-case matrix error correction as the missing
 execution source. OMEGA-XORLIFT's reduction is valid, but it assumes a
-preprocessed oracle with above-random accuracy on uniform finite-field
-matrices and vectors. A causal target proposer is not such an oracle by name.
+preprocessed oracle with above-random average-coordinate accuracy on uniform
+finite-field matrices and vectors. The common-row Fourier Gate is stronger
+than that premise and cannot reject it.
 
-The hot-only source Gate already grants arbitrary nonlinear global state and
-free randomized query computation. At the registered `8 GiB` point, Fourier
-list capacity limits the common row advantage to below `10^-2521.899`; 51%
-accuracy needs `46.9762 GiB`. Do not build a decoder, randomizer, model Gate,
-or hardware path around this missing premise.
+Do not implement OMEGA-ROWLOTTERY. Concentrating exact work on selected rows
+does beat average guessing, but a rank-covering collection of direct encoded
+row forms reads at least one full matrix coefficient source. At the registered
+one-bit population that is `47.00244140625 GiB`, before repeated calls, Q4,
+native arithmetic, decoding, or verification.
 
 The active ticket remains `Resolve the General Finite-Word Rank-One Probe
-Gap`. Its next constructor must supply a concrete cold-backed above-random
-oracle with every repeated probe/call charged, or use a materially different
-non-oracle information source. The alternative remains a covering lower bound.
+Gap`. Its next constructor must supply a **compressed nonlinear** cold-backed
+above-random oracle with every repeated probe/call charged, or use a materially
+different non-oracle information source. The alternative remains a covering
+lower bound.

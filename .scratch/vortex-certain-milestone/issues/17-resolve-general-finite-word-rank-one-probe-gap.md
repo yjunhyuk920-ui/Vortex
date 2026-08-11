@@ -190,15 +190,16 @@ checkpoint compiler nor native BF16/FP32 accumulation semantics. These
 closures do not resolve the general compressed adaptive decoder, so the
 ticket remains claimed.
 
-The fourth direct post-audit cycle is recorded in
-`docs/research/E0_AVERAGE_ORACLE_AMPLIFIER_FRONTIER.md`. OMEGA-XORLIFT applies
-valid finite-field error-correcting reductions, but those reductions assume an
-average-case MatVec oracle and do not construct its checkpoint-dependent
-state. A new Parseval/list-capacity Gate grants arbitrary nonlinear global
-state, randomized free query computation, and the full 8 GiB to one binary
-plane. Universal coverage of 403,747,897,344 bits across 19,997,952 row
-functions then permits common above-random advantage only below roughly
-`10^-2522`; 51% accuracy needs 46.9762 GiB. This rejects the self-contained
-oracle, not a fully charged cold-backed adaptive oracle, and therefore still
-does not supply either required ticket deliverable. The ticket remains
-claimed.
+The fourth direct post-audit cycle is corrected in
+`docs/research/E0_AVERAGE_ORACLE_AMPLIFIER_FRONTIER.md`. Hirahara--Shimizu's
+OMv premise averages Hamming distance over output coordinates; it does not
+require common advantage on every row. The earlier Parseval/list-capacity Gate
+is retained only for that stronger scoped model.
+
+The correction produced OMEGA-ROWLOTTERY: evaluate selected encoded rows
+exactly and guess the rest. This can beat average GF(2) guessing, but exact
+recovery across all calls needs a rank-covering set of row forms. Direct
+evaluation therefore reads at least all 403,747,897,344 registered one-bit
+coefficients, or 47.00244140625 GiB. This rejects direct row lottery, not a
+succinct nonlinear cold-backed oracle, and still does not supply either
+required ticket deliverable. The ticket remains claimed.

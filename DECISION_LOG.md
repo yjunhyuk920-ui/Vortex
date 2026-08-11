@@ -1416,25 +1416,29 @@ KEEP_NO_SURVIVING_CANDIDATE
 Authority: `docs/research/E0_ADAPTIVE_CODEBOOK_TRAPDOOR_FRONTIER.md` and
 `results/e0_adaptive_codebook_trapdoor_frontier`.
 
-## D-100 -- Treat average-case error correction as an amplifier, not a source
+## D-100 -- Correct the oracle quantifier; reject direct row lottery
 
-`OMEGA-XORLIFT` would randomize finite-field MatVec instances and list-decode
-the outputs of a noisy oracle. The cited mathematics is retained, but its
-oracle premise is not satisfied by a causal 4B proposer and is not a
-constructor for arbitrary checkpoint-dependent answers.
+The first OMEGA-XORLIFT record incorrectly treated a common per-row advantage
+as the Hirahara--Shimizu premise. The publication instead averages normalized
+Hamming distance over output coordinates. The Fourier result is retained only
+as a stronger scoped Gate.
 
-The hot-only source Gate permits arbitrary nonlinear state and randomness.
-Its finite Fourier list count forces `log10(epsilon) <= -2521.89934` for a
-common above-random row advantage under the full `8 GiB` grant. Therefore no
-practical error-correction call schedule starts from the self-contained arm.
+`OMEGA-ROWLOTTERY` is the cheapest counterexample made constructive: exact
+rows plus baseline guesses can beat average guessing, but exact recovery needs
+at least a rank-covering set of encoded row forms. Direct evaluation reads at
+least `n^2` coefficients, or `47.00244140625 GiB` at the registered one-bit
+population. It is not a traffic reduction and does not meet the paper's
+near-linear oracle premise.
 
 Decision:
 
 ```text
-REJECT_SELF_CONTAINED_AVERAGE_ORACLE_AMPLIFIER_AS_CORE
+RETRACT_COMMON_ROW_AS_THE_PUBLISHED_PREMISE
+KEEP_COMMON_ROW_FOURIER_GATE_SCOPED
+REJECT_DIRECT_ROW_LOTTERY_AS_A_TRAFFIC_REDUCTION
 KEEP_THE_ERROR_CORRECTION_REDUCTION_VALID_IN_ITS_FINITE_FIELD_MODEL
-REQUIRE_A_CONCRETE_FULLY_CHARGED_COLD_ORACLE_BEFORE_REOPENING
-KEEP_GENERAL_NONLINEAR_ADAPTIVE_PROBE_GAP OPEN
+REQUIRE_A_CONCRETE_FULLY_CHARGED_COMPRESSED_COLD_ORACLE
+KEEP_GENERAL_NONLINEAR_ADAPTIVE_PROBE_GAP_OPEN
 KEEP_NO_SURVIVING_CANDIDATE
 ```
 

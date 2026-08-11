@@ -1406,22 +1406,25 @@ $env:PYTHONPATH = (Resolve-Path '.').Path
 Expected authoritative invariants:
 
 ```text
-decision                    REJECT_SELF_CONTAINED_AVERAGE_ORACLE_AMPLIFIER_AS_CORE
+decision                    REJECT_ROW_LOTTERY_AND_UNCHARGED_AMPLIFIER_AS_CORE
 binary coefficient bits     403,747,897,344
 output row functions        19,997,952
 hot state bits              68,719,476,736
-advantage ceiling log2      -8,377.568275791441...
-advantage ceiling log10     -2,521.899341736204...
-state for 51% accuracy      46.9761628441 GiB
-state for 75% accuracy      46.9977852702 GiB
+publication common-row      false
+concentrated GF2 accuracy   58.510196237313%
+concentrated near-linear    false
+common-row log10 ceiling    -2,521.899341736204... (scoped)
+direct rank-cover payload   47.00244140625 GiB
 model/hardware actions      0 / 0
 ```
 
-Focused validation passed 8/8 tests. The related frontier regression passed
-68/68, the full repository regression passed 590/590, and the standard
-validation runner completed successfully. A separate workspace-internal
-output directory reproduced the canonical summary byte-for-byte and was
-removed after its resolved path was checked inside the workspace.
+The first run passed 8/8 focused, 68/68 related, and 590/590 repository tests,
+but its claim scope was then corrected after checking the publication's exact
+average-distance quantifier. The corrected run passed 11/11 focused, 71/71
+related, and 593/593 repository tests; the standard runner also completed. A
+separate workspace-internal output directory reproduced the corrected summary
+byte-for-byte and was removed after its resolved path was checked inside the
+workspace.
 
 Artifacts:
 
@@ -1429,10 +1432,11 @@ Artifacts:
 - `results/e0_average_oracle_amplifier_frontier/checksums.sha256`
 - `docs/research/E0_AVERAGE_ORACLE_AMPLIFIER_FRONTIER.md`
 
-Canonical summary SHA-256:
+The former `c799c851...79bb478` summary is superseded. Corrected canonical
+summary SHA-256:
 
 ```text
-c799c851c003c837c6dda80f1b6bac422a67cd4faa2ceeb66a09612ee79bb478
+4f955eb89b95545ee50189a20ce82a90efb1d1b43862c7bd526c7aff9a14e514
 ```
 
 No model forward, checkpoint mutation, experiment number, backend, kernel,

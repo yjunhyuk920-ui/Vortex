@@ -1,202 +1,234 @@
 # E0 Average-Oracle Amplifier Frontier
 
-## Verdict
+## Corrected verdict
 
 ```text
-OMEGA-XORLIFT: REJECT SELF-CONTAINED 8 GiB FORM AT SOURCE GATE
-KEEP HIRAHARA--SHIMIZU ERROR-CORRECTION THEOREM VALID IN ITS MODEL
-DO NOT RELABEL AN AMPLIFIER AS AN APPROXIMATE ANSWER SOURCE
-KEEP COLD-BACKED GLOBAL NONLINEAR PROBE GAP OPEN
-KEEP NO SURVIVING CANDIDATE
+HIRAHARA--SHIMIZU AVERAGE-DISTANCE AMPLIFIER: VALID IN ITS MODEL
+COMMON-PER-ROW FOURIER GATE: VALID BUT STRICTLY NARROWER THAN THE PAPER PREMISE
+OMEGA-ROWLOTTERY DIRECT SOURCE: REJECT AT THE RANK-COVERAGE GATE
+UNCHARGED OMEGA-XORLIFT COMPOSITION: REJECT AS A VORTEX CORE
+GENERAL COMPRESSED COLD-BACKED ORACLE: OPEN
+TARGET NOT ACHIEVED
 ```
 
-This audit removes the former `2.5%` premise.  It tests only whether a new
-finite-field error-correction route supplies the information needed by the
-unchanged-output, `8 GiB`, complete p50 contract.  No model, checkpoint,
-backend, kernel, or hardware action was run.
+This correction removes the former `2.5%` premise and also fixes a quantifier
+error in the first OMEGA-XORLIFT audit. The published premise averages Hamming
+error over output coordinates. It does **not** require every row predictor to
+have the same positive advantage. The earlier Fourier calculation remains a
+sound theorem for that stronger common-row condition, but it cannot reject
+the paper's average-distance oracle by itself.
+
+No model, checkpoint, backend, kernel, or hardware action was run.
 
 ## Elementary explanation
 
-An error-correcting machine can turn a slightly blurry answer into a correct
-one.  It cannot take an empty answer box and invent the missing answer.
+An error corrector can repair a worksheet when some answers are already
+right. It still needs a machine that writes those partly right answers.
 
-`OMEGA-XORLIFT` therefore has two separate components:
-
-```text
-approximate random-matrix oracle  ->  new answer information
-error-correcting reduction        ->  amplify that information
-```
-
-The cited reduction supplies the second component.  The first component is a
-premise.  A small causal draft model is not automatically such an oracle: the
-premise is about uniformly random finite-field matrices and query vectors,
-not ordinary Transformer activations from one fixed checkpoint.
-
-## Published result being tested
-
-Hirahara and Shimizu prove worst-case-to-average-case error-correcting
-reductions for matrix multiplication and online matrix-vector multiplication
-over finite fields.  For the OMv result, an average-case data structure with
-query time `O_tilde(n)` and expected coordinate accuracy strictly better than
-the random `1/p` baseline is equivalent, asymptotically, to a worst-case exact
-data structure with `O_tilde(n)` query time.
-
-The theorem is an oracle reduction.  Its definitions give the oracle its own
-matrix-dependent preprocessing data structure; they do not construct a small
-one, cap its state at `8 GiB`, preserve BF16/FP32 accumulation order, or prove
-that a target-derived causal predictor works on uniform random matrices.
-
-## OMEGA-XORLIFT equation
-
-The proposed binary surrogate would compile an arbitrary binary checkpoint
-`W` into state `z(W)`, use a predictor on randomized finite-field queries, and
-feed those noisy coordinates to a list-decoding/worst-case reduction:
+There are two ways the partly right answers might be distributed:
 
 ```text
-z(W) = Preprocess(W), |z(W)| <= S
-g_z(x) approximately equals W*x for uniform x
-ExactReduce[g_z](u) = W*u with negligible failure probability.
+every row is slightly better than guessing
+or
+a few rows are exactly right and all other rows are guesses.
 ```
 
-This differs from EXP-081A.  Syndrome repair required one query's output error
-to occupy a small residual code.  OMEGA-XORLIFT permits dense errors but needs
-an oracle with a uniform average-case advantage on randomized inputs and, in
-the published worst-case lift, randomized matrix instances.
+The paper allows the second case because it measures the average over all
+rows. The original audit accidentally tested only the first case.
 
-## Cheapest source Gate: parity-prediction capacity
+That observation suggests a concrete source, `OMEGA-ROWLOTTERY`: compute a
+small subset of encoded rows exactly, guess the rest, randomly move the exact
+subset between calls, and error-correct the combined answers. Its cheapest
+Gate fails for a different reason. To recover an arbitrary `n`-coordinate
+answer, all calls together need at least `n` independent row equations. A
+direct row equation contains `n` arbitrary checkpoint coefficients. Thus the
+calls read at least `n*n` coefficients in total: one full matrix again.
 
-Give the proposed self-contained oracle every favorable concession:
+## 1. What the publication actually assumes
 
-- reduce each coefficient and output coordinate to one GF(2) bit;
-- give the complete `8 GiB` state to this one bit plane;
-- permit arbitrary nonlinear preprocessing and arbitrary global mixing;
-- make query computation, routing, randomness, and output free;
-- average all other independently random query vectors into the predictor's
-  internal randomness;
-- charge no verifier, decoder, KV, metadata, or native numerical state;
-- prohibit only cold checkpoint probes, because this is the self-contained
-  oracle arm.
-
-For a row `w in F_2^n`, its exact output bit on query `x` is the parity
+Hirahara and Shimizu define normalized Hamming distance as the fraction of
+disagreeing output coordinates. Their OMv theorem assumes a randomized
+preprocessed oracle satisfying
 
 ```text
-chi_w(x) = (-1)^(w dot x).
+E_{A,v}[dist(O(A;v), A*v)] <= 1 - 1/p - epsilon
 ```
 
-Fix one hot state `z` and one output row.  Let its possibly randomized Boolean
-predictor have correctness at least `1/2 + epsilon` for a row `w` under uniform
-`x`.  Its Walsh coefficient at `w` is at least `2*epsilon`.  Parseval's identity
-therefore permits at most
+for uniform finite-field matrices and vectors. It constructs a randomized
+worst-case exact data-structure algorithm with query time near-linear in the
+matrix dimension, multiplied by a function of `p` and `epsilon`. In the
+small-field theorem, both preprocessing and query phases make up to
 
 ```text
-L <= 1/(4*epsilon^2)                                  (1)
+2^poly(p,1/epsilon) * O(log n)
 ```
 
-different row parities with that advantage.  This remains true for randomized
-prediction by applying Parseval to its expected signed output, whose squared
-norm is at most one.
+oracle calls. The paper permits polynomial preprocessing and does not bound
+the total derived data-structure state by `8 GiB`, preserve native BF16/FP32
+order, or count VORTEX storage traffic.
 
-If the population has `M` independently selectable rows and `D` arbitrary
-binary coefficients, one fixed state can represent at most `L^M` checkpoints.
-There are at most `2^S` states.  Universal coverage therefore requires
+The reduction is therefore a real amplifier, but every oracle data structure
+created in preprocessing and every repeated query call must be materialized
+and charged before it becomes a VORTEX constructor.
+
+## 2. Counterexample to the former common-row inference
+
+Let a binary oracle keep an exact fraction `f` of rows and output baseline
+guesses for all other rows. Its average coordinate accuracy is
+
+```text
+f * 1 + (1-f) * 1/2 = 1/2 + f/2.                 (1)
+```
+
+At the registered one-bit population, granting all `8 GiB` to exact rows
+gives
+
+```text
+f                                      17.020392474626%
+average GF(2) coordinate accuracy      58.510196237313%
+average advantage                       8.510196237313%
+```
+
+This satisfies the **accuracy part** of the paper's premise with a constant
+advantage. It does not satisfy the near-linear query-time part: directly
+forming a constant fraction of dense row products still takes a constant
+fraction of `n^2` coefficient operations and reads.
+
+Equation (1) is the decisive scope correction. An average-distance theorem
+cannot be replaced by a theorem that assumes a common advantage for every
+row.
+
+## 3. The Fourier Gate that remains valid
+
+For a stronger oracle that promises correctness `1/2 + epsilon` on **every**
+binary row parity, fix one hot state and one output row. Parseval's identity
+bounds the number of row parities predicted with that advantage by
+
+```text
+L <= 1/(4*epsilon^2).
+```
+
+For `M` independently selectable rows, `D` arbitrary binary coefficients, and
+`S` hot bits, universal common-row coverage requires
 
 ```text
 2^S * L^M >= 2^D,
 
-S + M*log2(1/(4*epsilon^2)) >= D.                     (2)
+S + M*log2(1/(4*epsilon^2)) >= D.                  (2)
 ```
 
-This is a nonlinear-state counting Gate.  It does not assume a linear sketch,
-separate per-matrix state, or a particular predictor architecture.
-
-## Registered finite substitution
-
-Re-deriving the population from
-`results/exp_071/raw/tensor_rows.jsonl` while excluding only the embedding gives
+This permits arbitrary nonlinear global preprocessing, randomized prediction,
+and free query computation. Re-deriving the frozen non-embedding population
+gives
 
 ```text
 D binary coefficient bits            403,747,897,344
-M output-row parity functions          19,997,952
+M output-row functions                 19,997,952
 S complete hot bits                    68,719,476,736
-hot fraction                           17.020392474626%
-missing bits per row                   16,753.136551582882
+common-row log2(epsilon) ceiling       -8,377.568275791441
+common-row log10(epsilon) ceiling      -2,521.899341736204
 ```
 
-Solving (2) favorably for a common advantage gives
+The calculation and exhaustive three-bit truth-table controls remain valid.
+Its conclusion is now explicitly scoped:
 
 ```text
-log2(epsilon)  <= -8,377.568275791441
-log10(epsilon) <= -2,521.899341736204.
+REJECT COMMON-PER-ROW HOT-ONLY ORACLE
+DO NOT USE THIS TO REJECT AN AVERAGE-DISTANCE ORACLE
 ```
 
-Thus a universal hot-only oracle can guarantee at most roughly
-`10^-2522` advantage over random guessing at this state point.  Two concrete
-state floors make the scale clearer:
+## 4. New direct-source candidate: OMEGA-ROWLOTTERY
 
-| Required average accuracy | Advantage | Minimum state | Multiple of 8 GiB |
-|---|---:|---:|---:|
-| `51%` | `1%` | `46.9761628441 GiB` | `5.872020x` |
-| `75%` | `25%` | `46.9977852702 GiB` | `5.874723x` |
-
-The `75%` row also connects to the elementary two-call linear
-self-correction identity
+`OMEGA-ROWLOTTERY` makes the concentration counterexample constructive:
 
 ```text
-f(u) = f(r) + f(r+u) over F_2.
+preprocess transformed/encoded rows of A
+each oracle call evaluates k exact encoded row forms
+all other coordinates receive baseline guesses
+the amplifier permutes/encodes calls and decodes A*v exactly.
 ```
 
-If a predictor differs from a parity on less than one quarter of uniformly
-random inputs, the union bound makes this pair correct with probability above
-one half.  The exhaustive controls verify the identity and the finite Walsh
-list bound on every Boolean truth table of dimension three.  The stronger
-published reduction tolerates much lower accuracy, but it still consumes an
-oracle satisfying its displayed advantage premise; it does not evade (2).
-
-## Cold-backed boundary
-
-Equation (2) does not cover an oracle that reads the original checkpoint while
-answering each randomized query.  Such an oracle returns to the active global
-adaptive-probe problem.  It must specify and charge
+Give this source favorable exact field arithmetic, free guessing, free
+permutations, free code construction, free decoding, and no metadata. Let the
+true output have dimension `n`. If all calls together expose fewer than `n`
+independent row forms, their observation matrix has rank below `n`; two output
+vectors share the same observations, so exact recovery for every `A,v` is
+impossible. Hence
 
 ```text
-oracle preprocessing state
-+ every cold probe per oracle call
-+ number of amplification calls
-+ random-instance construction
+total independent exact row forms >= n.                         (3)
+```
+
+A direct encoded form `q^T A` contains `n` arbitrary field coefficients and
+its product with `v` reads/evaluates those coefficients. Combining (3) gives
+
+```text
+direct coefficient payload >= n*n.                              (4)
+```
+
+Changing which rows are exact, applying an invertible row transform, or
+splitting the forms across many oracle calls does not reduce this rank floor.
+It only redistributes the same complete row basis.
+
+For the frozen model-wide one-bit substitution, the favorable direct floor is
+
+```text
+403,747,897,344 bits
+= 47.00244140625 GiB
+= 5.87530517578125 * the complete 8 GiB hot grant
+= 9.155779392620% of the reported 551.22 GB DFloat denominator.
+```
+
+Thus direct row evaluation is not a traffic reduction. If all row forms are
+resident, exact basis queries recover the arbitrary checkpoint and require at
+least the same one-bit information content. If they are cold, evaluating a
+rank-covering set reads at least that content per direct composition. Q4,
+native products, code expansion, repeated calls, decoding, verification, and
+state only increase the cost.
+
+This is a scoped constructor rejection. It does not prove that every succinct
+nonlinear approximate oracle must explicitly evaluate a rank-covering list of
+row forms.
+
+## 5. Remaining open oracle
+
+A surviving OMEGA-XORLIFT source must be materially different from direct
+row lottery. It must provide above-baseline average coordinates while using a
+compressed nonlinear cold-backed query mechanism, and close
+
+```text
+all oracle preprocessing structures
++ all transformed checkpoint payloads
++ every probe on every repeated call
++ address generation and computation
 + list decoding and verification
-+ failure amplification
-+ native numerical lifting
-+ fallback.
++ failure amplification and fallback
++ exact native numerical lifting.
 ```
 
-The error-correcting theorem cannot make these terms zero.  In particular, a
-target-derived 4B proposer tested only on causal activations does not meet the
-uniform-random oracle premise, and a full target evaluator used as the oracle
-merely restores the dense cost.
+A causal proposer measured only on ordinary Transformer activations does not
+automatically satisfy the uniform random-matrix/vector premise. A full target
+evaluator used as the oracle merely restores dense work.
 
-## Native-semantics boundary
+## 6. Native-semantics boundary
 
-The published algebra is over associative finite fields.  Reference
-Transformer execution uses Q4/BF16 products, FP32 or implementation-specific
-accumulation, rounding, nonlinearities, and a token decision.  A future route
-would need an exact native-order reduction or a proof that its field result
-determines the native result.  This audit grants that missing lift for free at
-the source Gate; the hot-only oracle still fails.
+The publication works over associative finite fields. Reference Transformer
+execution uses quantized/BF16 products, FP32 or implementation-specific
+accumulation, rounding, nonlinearities, and a token decision. A future route
+needs an exact native-order reduction or a proof that its field result
+determines the native result. This audit grants that missing lift for free at
+the row-lottery source Gate, which still fails.
 
-## Decision and next admissible work
+## Decision
 
 ```text
-REJECT_SELF_CONTAINED_AVERAGE_ORACLE_AMPLIFIER_AS_CORE
-DO_NOT_CALL_ERROR_CORRECTION_A_NEW_ANSWER_SOURCE
-DO_NOT_RUN_A_MODEL_OR_HARDWARE_GATE_FOR_OMEGA-XORLIFT
-KEEP A CONCRETE COLD-BACKED APPROXIMATE ORACLE OUTSIDE THIS REJECTION
-KEEP THE GENERAL FINITE-WORD RANK-ONE PROBE TICKET CLAIMED
+RETRACT_THE_CLAIM_THAT_THE_COMMON_ROW_GATE_COVERS_THE_PUBLISHED_PREMISE
+KEEP_THE_COMMON_ROW_FOURIER_THEOREM_AS_A_SCOPED_GATE
+REJECT_DIRECT_OMEGA-ROWLOTTERY_AS_A_TRAFFIC_REDUCTION
+REJECT_AN_UNCHARGED_AMPLIFIER_AS_A_CORE
+KEEP_A_CONCRETE_COMPRESSED_COLD_BACKED_ORACLE_OPEN
+KEEP_THE_GENERAL_FINITE_WORD_RANK_ONE_PROBE_TICKET_CLAIMED
 ```
-
-Reopening requires a concrete oracle constructor, not another reduction.  It
-must show where its above-random exact coordinate information comes from and
-close the complete state, build, call-count, probe, traffic, operation,
-verification, native-order, miss, and fallback equations before E1.
 
 ## Reproduction
 
@@ -210,7 +242,7 @@ $env:PYTHONPATH = "."
   tests\test_average_oracle_amplifier_frontier.py
 ```
 
-Expected focused result: `8 passed`.  Authority:
+Expected focused result: `11 passed`. Authority:
 
 ```text
 results/e0_average_oracle_amplifier_frontier/summary.json

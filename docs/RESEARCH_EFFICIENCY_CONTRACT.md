@@ -563,17 +563,18 @@ bound that covers it under global 8 GiB advice and adaptive cross-matrix
 probes. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a model,
 build a backend/kernel, download a checkpoint, or touch hardware.
 
-## Current directive after the average-oracle amplifier audit
+## Current directive after the corrected average-oracle audit
 
 Do not spend an E1 run on OMEGA-XORLIFT or another average-case amplifier
-unless a new concrete oracle has already passed E0. A theorem that transforms
-above-random answers does not create them. The hot-only uniform predictor is
-closed by the Fourier list-capacity Gate: even 51% row accuracy needs
-`46.9762 GiB` of checkpoint-dependent state.
+unless a new concrete oracle has already passed E0. The common-row Fourier
+Gate is not the paper's average-distance premise. OMEGA-ROWLOTTERY supplies a
+valid accuracy counterexample but fails immediately because its direct
+rank-covering row forms read at least one full coefficient source.
 
-A cold-backed variant must begin with its exact oracle constructor and close
-all repeated probe and call costs, random-instance construction, decoding,
-verification, native numerical lifting, and fallback. Otherwise continue with
-a materially different non-oracle source or a covering global-advice lower
-bound. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a model,
-build a backend/kernel, download a checkpoint, or touch hardware.
+A cold-backed variant must begin with a materially different compressed
+nonlinear oracle and close all repeated probe and call costs, random-instance
+construction, decoding, verification, native numerical lifting, and fallback.
+Otherwise continue with a different non-oracle source or a covering
+global-advice lower bound. Keep `NO_SURVIVING_CANDIDATE`; do not assign
+EXP-085, run a model, build a backend/kernel, download a checkpoint, or touch
+hardware.
