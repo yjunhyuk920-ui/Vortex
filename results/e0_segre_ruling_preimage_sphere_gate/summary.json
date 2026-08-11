@@ -1,0 +1,415 @@
+{
+  "claim_boundary": {
+    "adaptive_addresses_covered": false,
+    "all_rectangular_shapes_rejected": false,
+    "arbitrary_word_decoder_covered": false,
+    "eighteen_by_thirty_six_constructed": false,
+    "hardware_actions": 0,
+    "joint_32_query_union_covered": false,
+    "model_forward_calls": 0,
+    "native_numerical_lift_covered": false,
+    "ordinary_projected_cover_code_constructed": false,
+    "simultaneous_rulings_constructed": false,
+    "thirteen_by_eighty_nine_rejected": true
+  },
+  "classification": "E0_SEGRE_RULING_PREIMAGE_SPHERE_GATE",
+  "combined_subset_slack_scan": {
+    "capacity_feasible_shape_count": 6543,
+    "exact_subset_slack_rank": 11,
+    "first_unclosed_shape": [
+      18,
+      36
+    ],
+    "fourier_case": {
+      "ambient_dimension": 648,
+      "atoms": 758,
+      "capacity_passes": true,
+      "columns": 36,
+      "fourier_second_moment_rejects": false,
+      "fourier_slack": "9991182442865574",
+      "hamming_ball_size": "28005512232608680",
+      "hamming_ball_to_query_ratio": 1.5546241552963183,
+      "maximum_equal_ordered_atom_pairs": 12968,
+      "maximum_nonzero_difference_rank_one_correlation": "9007130535002113/18014329789743105",
+      "minimum_absolute_character_bias": 0,
+      "minimum_squared_character_bias": 0,
+      "query_count": "18014329789743106",
+      "radius": 7,
+      "radius_fraction": "7/648",
+      "rank_one_fourier_coefficient_including_zero": "9007130535002114",
+      "rejection_reason": "SECOND_MOMENT_NOT_DECISIVE",
+      "rows": 18,
+      "second_moment_gap": "-755996901235490748284/2573475684249015",
+      "second_moment_upper": "755996901235490748284/2573475684249015",
+      "second_moment_upper_decimal": 293764.92883246485,
+      "valid_rank_one_dual_weight_ranges": [
+        [
+          21,
+          616
+        ]
+      ]
+    },
+    "maximum_side": 128,
+    "ordering_ratio": "14002756116304340/9007164894871553",
+    "preceding_rejected_shapes": [
+      {
+        "columns": 56,
+        "ordering_ratio": "613401531475604200458/590259781561686679553",
+        "rejected_by": "PREIMAGE_SPHERE",
+        "rows": 14,
+        "witness": {
+          "ambient_dimension": 784,
+          "atoms": 917,
+          "columns": 56,
+          "kernel_dimension": 133,
+          "left_dimension": 1,
+          "low_weight_subspace_upper": "735217423430098",
+          "preimage_dimension": 189,
+          "preimage_sphere_rejects": true,
+          "radius": 9,
+          "required_low_weight_words": "72057594037927936",
+          "right_dimension": 56,
+          "rows": 14,
+          "tensor_dimension": 56,
+          "upper_to_required_ratio": "367608711715049/36028797018963968",
+          "upper_to_required_ratio_decimal": 0.010203191394970973
+        }
+      },
+      {
+        "columns": 25,
+        "ordering_ratio": "36668985392888/35184354263041",
+        "rejected_by": "FOURIER_SECOND_MOMENT",
+        "rows": 21,
+        "witness": {
+          "ambient_dimension": 525,
+          "atoms": 614,
+          "capacity_passes": true,
+          "columns": 25,
+          "fourier_second_moment_rejects": true,
+          "fourier_slack": "2969262259694",
+          "hamming_ball_size": "73337970785776",
+          "hamming_ball_to_query_ratio": 1.0421957759618887,
+          "maximum_equal_ordered_atom_pairs": 8624,
+          "maximum_nonzero_difference_rank_one_correlation": "35184336437249/70368708526081",
+          "minimum_absolute_character_bias": 536,
+          "minimum_squared_character_bias": 287296,
+          "query_count": "70368708526082",
+          "radius": 6,
+          "radius_fraction": "2/175",
+          "rank_one_fourier_coefficient_including_zero": "35184336437250",
+          "rejection_reason": "EXTREME_DUAL_BIAS_EXCEEDS_SPANNING_ATOM_SECOND_MOMENT",
+          "rows": 21,
+          "second_moment_gap": "6648864360317755804/70368708526081",
+          "second_moment_upper": "13567784124391211172/70368708526081",
+          "second_moment_upper_decimal": 192809.90668405595,
+          "valid_rank_one_dual_weight_ranges": [
+            [
+              32,
+              39
+            ],
+            [
+              576,
+              583
+            ]
+          ]
+        }
+      },
+      {
+        "columns": 24,
+        "ordering_ratio": "37759865295769/35184361603073",
+        "rejected_by": "FOURIER_SECOND_MOMENT",
+        "rows": 22,
+        "witness": {
+          "ambient_dimension": 528,
+          "atoms": 617,
+          "capacity_passes": true,
+          "columns": 24,
+          "fourier_second_moment_rejects": true,
+          "fourier_slack": "5151007385392",
+          "hamming_ball_size": "75519730591538",
+          "hamming_ball_to_query_ratio": 1.0732002394061075,
+          "maximum_equal_ordered_atom_pairs": 8627,
+          "maximum_nonzero_difference_rank_one_correlation": "35184351117313/70368723206145",
+          "minimum_absolute_character_bias": 531,
+          "minimum_squared_character_bias": 281961,
+          "query_count": "70368723206146",
+          "radius": 6,
+          "radius_fraction": "1/88",
+          "rank_one_fourier_coefficient_including_zero": "35184351117314",
+          "rejection_reason": "EXTREME_DUAL_BIAS_EXCEEDS_SPANNING_ATOM_SECOND_MOMENT",
+          "rows": 22,
+          "second_moment_gap": "361376737848160472/4139336659185",
+          "second_moment_upper": "805754765912301313/4139336659185",
+          "second_moment_upper_decimal": 194657.94455842776,
+          "valid_rank_one_dual_weight_ranges": [
+            [
+              31,
+              43
+            ],
+            [
+              575,
+              587
+            ]
+          ]
+        }
+      },
+      {
+        "columns": 23,
+        "ordering_ratio": "38502036784523/35184363700225",
+        "rejected_by": "FOURIER_SECOND_MOMENT",
+        "rows": 23,
+        "witness": {
+          "ambient_dimension": 529,
+          "atoms": 619,
+          "capacity_passes": true,
+          "columns": 23,
+          "fourier_second_moment_rejects": true,
+          "fourier_slack": "6635346168596",
+          "hamming_ball_size": "77004073569046",
+          "hamming_ball_to_query_ratio": 1.09429396286842,
+          "maximum_equal_ordered_atom_pairs": 8809,
+          "maximum_nonzero_difference_rank_one_correlation": "35184355311617/70368727400449",
+          "minimum_absolute_character_bias": 527,
+          "minimum_squared_character_bias": 277729,
+          "query_count": "70368727400450",
+          "radius": 6,
+          "radius_fraction": "6/529",
+          "rank_one_fourier_coefficient_including_zero": "35184355311618",
+          "rejection_reason": "EXTREME_DUAL_BIAS_EXCEEDS_SPANNING_ATOM_SECOND_MOMENT",
+          "rows": 23,
+          "second_moment_gap": "5752224392914297896/70368727400449",
+          "second_moment_upper": "13791211899285002425/70368727400449",
+          "second_moment_upper_decimal": 195984.95537375606,
+          "valid_rank_one_dual_weight_ranges": [
+            [
+              30,
+              46
+            ],
+            [
+              574,
+              590
+            ]
+          ]
+        }
+      },
+      {
+        "columns": 47,
+        "ordering_ratio": "2572366299785251063/2305772640469499905",
+        "rejected_by": "PREIMAGE_SPHERE",
+        "rows": 15,
+        "witness": {
+          "ambient_dimension": 705,
+          "atoms": 824,
+          "columns": 47,
+          "kernel_dimension": 119,
+          "left_dimension": 1,
+          "low_weight_subspace_upper": "12683072357188",
+          "preimage_dimension": 166,
+          "preimage_sphere_rejects": true,
+          "radius": 8,
+          "required_low_weight_words": "140737488355328",
+          "right_dimension": 47,
+          "rows": 15,
+          "tensor_dimension": 47,
+          "upper_to_required_ratio": "3170768089297/35184372088832",
+          "upper_to_required_ratio_decimal": 0.09011864930519664
+        }
+      },
+      {
+        "columns": 122,
+        "ordering_ratio": "12346829539559784832609821090125666373026/10886377285478460999082179823696022075393",
+        "rejected_by": "PREIMAGE_SPHERE",
+        "rows": 12,
+        "witness": {
+          "ambient_dimension": 1464,
+          "atoms": 1713,
+          "columns": 122,
+          "kernel_dimension": 249,
+          "left_dimension": 1,
+          "low_weight_subspace_upper": "97255959274007352933278753460",
+          "preimage_dimension": 371,
+          "preimage_sphere_rejects": true,
+          "radius": 17,
+          "required_low_weight_words": "5316911983139663491615228241121378304",
+          "right_dimension": 122,
+          "rows": 12,
+          "tensor_dimension": 122,
+          "upper_to_required_ratio": "24313989818501838233319688365/1329227995784915872903807060280344576",
+          "upper_to_required_ratio_decimal": 1.8291812913663698e-08
+        }
+      },
+      {
+        "columns": 81,
+        "ordering_ratio": "24430862293772860747973223823/19804622776926855140036567042",
+        "rejected_by": "PREIMAGE_SPHERE",
+        "rows": 13,
+        "witness": {
+          "ambient_dimension": 1053,
+          "atoms": 1232,
+          "columns": 81,
+          "kernel_dimension": 179,
+          "left_dimension": 1,
+          "low_weight_subspace_upper": "161730542457974851024",
+          "preimage_dimension": 260,
+          "preimage_sphere_rejects": true,
+          "radius": 12,
+          "required_low_weight_words": "2417851639229258349412352",
+          "right_dimension": 81,
+          "rows": 13,
+          "tensor_dimension": 81,
+          "upper_to_required_ratio": "10108158903623428189/151115727451828646838272",
+          "upper_to_required_ratio_decimal": 6.689018458946054e-05
+        }
+      },
+      {
+        "columns": 37,
+        "ordering_ratio": "22775330381871881/18014261070397442",
+        "rejected_by": "FOURIER_SECOND_MOMENT",
+        "rows": 17,
+        "witness": {
+          "ambient_dimension": 629,
+          "atoms": 736,
+          "capacity_passes": true,
+          "columns": 37,
+          "fourier_second_moment_rejects": true,
+          "fourier_slack": "4761069311474439",
+          "hamming_ball_size": "22775330381871881",
+          "hamming_ball_to_query_ratio": 1.2642944549803505,
+          "maximum_equal_ordered_atom_pairs": 12292,
+          "maximum_nonzero_difference_rank_one_correlation": "9007061815656449/18014261070397441",
+          "minimum_absolute_character_bias": 582,
+          "minimum_squared_character_bias": 338724,
+          "query_count": "18014261070397442",
+          "radius": 7,
+          "radius_fraction": "7/629",
+          "rank_one_fourier_coefficient_including_zero": "9007061815656450",
+          "rejection_reason": "EXTREME_DUAL_BIAS_EXCEEDS_SPANNING_ATOM_SECOND_MOMENT",
+          "rows": 17,
+          "second_moment_gap": "1112056716276190734116/18014261070397441",
+          "second_moment_upper": "4989805850533112071168/18014261070397441",
+          "second_moment_upper_decimal": 276991.980466675,
+          "valid_rank_one_dual_weight_ranges": [
+            [
+              26,
+              77
+            ]
+          ]
+        }
+      },
+      {
+        "columns": 64,
+        "ordering_ratio": "212966403691863918561073/151106504079791792054273",
+        "rejected_by": "PREIMAGE_SPHERE",
+        "rows": 14,
+        "witness": {
+          "ambient_dimension": 896,
+          "atoms": 1048,
+          "columns": 64,
+          "kernel_dimension": 152,
+          "left_dimension": 1,
+          "low_weight_subspace_upper": "51799890919114906",
+          "preimage_dimension": 216,
+          "preimage_sphere_rejects": true,
+          "radius": 10,
+          "required_low_weight_words": "18446744073709551616",
+          "right_dimension": 64,
+          "rows": 14,
+          "tensor_dimension": 64,
+          "upper_to_required_ratio": "25899945459557453/9223372036854775808",
+          "upper_to_required_ratio_decimal": 0.0028080777134508266
+        }
+      },
+      {
+        "columns": 89,
+        "ordering_ratio": "3896495045998816810230058709944/2534991715446637457924681625601",
+        "rejected_by": "PREIMAGE_SPHERE",
+        "rows": 13,
+        "witness": {
+          "ambient_dimension": 1157,
+          "atoms": 1353,
+          "columns": 89,
+          "kernel_dimension": 196,
+          "left_dimension": 1,
+          "low_weight_subspace_upper": "10451278437645598672024",
+          "preimage_dimension": 285,
+          "preimage_sphere_rejects": true,
+          "radius": 13,
+          "required_low_weight_words": "618970019642690137449562112",
+          "right_dimension": 89,
+          "rows": 13,
+          "tensor_dimension": 89,
+          "upper_to_required_ratio": "1306409804705699834003/77371252455336267181195264",
+          "upper_to_required_ratio_decimal": 1.6884950976589718e-05
+        }
+      }
+    ],
+    "strongest_restricted_case": {
+      "ambient_dimension": 648,
+      "atoms": 758,
+      "columns": 36,
+      "kernel_dimension": 110,
+      "left_dimension": 18,
+      "low_weight_subspace_upper": "28005512232608680",
+      "preimage_dimension": 758,
+      "preimage_sphere_rejects": false,
+      "radius": 7,
+      "required_low_weight_words": "18014329789743106",
+      "right_dimension": 36,
+      "rows": 18,
+      "tensor_dimension": 648,
+      "upper_to_required_ratio": "14002756116304340/9007164894871553",
+      "upper_to_required_ratio_decimal": 1.5546241552963183
+    }
+  },
+  "contract": {
+    "all_rank_one_queries_must_be_covered": true,
+    "arbitrary_atom_values": true,
+    "fixed_binary_linear_atom_map": true,
+    "registered_side_scan_maximum": 128
+  },
+  "decision": "REJECT_13x89_BY_SEGRE_RULING_PREIMAGE_SPHERE_KEEP_18x36_SIMULTANEOUS_COVER_OPEN_UNCONSTRUCTED",
+  "decisions": [
+    "REJECT_13x89_BY_FIXED_RULING_INFORMATION_SET_BOUND",
+    "PROMOTE_18x36_AS_FIRST_COMBINED_GATE_CONSTRUCTION_TARGET",
+    "REQUIRE_PROJECTED_BINARY_LINEAR_146_110_RADIUS_7_COVER",
+    "DO_NOT_EQUATE_ONE_ORDINARY_COVER_WITH_SIMULTANEOUS_SEGRE_COVER",
+    "KEEP_ADAPTIVE_FINITE_WORD_MODEL_OPEN",
+    "NO_SURVIVING_CANDIDATE"
+  ],
+  "first_survivor_projected_ruling_cover_requirement": {
+    "ordinary_covering_code_constructed": false,
+    "ordinary_covering_code_requirement_passes_sphere_bound": true,
+    "projected_code_codimension": 36,
+    "projected_code_dimension": 110,
+    "projected_code_length": 146,
+    "required_covering_radius_at_most": 7,
+    "ruling_dimension": 36,
+    "simultaneous_ruling_cover_constructed": false,
+    "sphere_covering_density": "63777074935/17179869184",
+    "sphere_covering_density_decimal": 3.7123143518692814,
+    "sphere_volume": "255108299740",
+    "syndrome_count": "68719476736"
+  },
+  "proof_equations": {
+    "information_set_bound": "|P intersect Ball(S,t)| <= sum(i=0..t,C(dim(P),i))",
+    "preimage_dimension": "dim(phi^-1(A tensor B))=S-ab+xy",
+    "required_rank_one_words": "1+(2^x-1)(2^y-1)"
+  },
+  "rejected_prior_survivor": {
+    "ambient_dimension": 1157,
+    "atoms": 1353,
+    "columns": 89,
+    "kernel_dimension": 196,
+    "left_dimension": 1,
+    "low_weight_subspace_upper": "10451278437645598672024",
+    "preimage_dimension": 285,
+    "preimage_sphere_rejects": true,
+    "radius": 13,
+    "required_low_weight_words": "618970019642690137449562112",
+    "right_dimension": 89,
+    "rows": 13,
+    "tensor_dimension": 89,
+    "upper_to_required_ratio": "1306409804705699834003/77371252455336267181195264",
+    "upper_to_required_ratio_decimal": 1.6884950976589718e-05
+  }
+}

@@ -372,3 +372,22 @@ to have kernel minimum distance at most 39, so random high-girth dictionaries
 cannot fill the gap. Higher-slack linear codes, adaptive addresses, arbitrary
 word decoders, joint batches, and native arithmetic remain open. Neither
 required ticket deliverable is complete, and this issue remains claimed.
+
+The sixteenth post-audit screen is recorded in
+`docs/research/E0_SEGRE_RULING_PREIMAGE_SPHERE_GATE.md`. Every tensor-factor
+subspace has a fixed-dimensional preimage under the atom map. Information-set
+projection proves that a dimension-`k` binary subspace contains at most
+`Ball(k,t)` ambient words of weight at most `t`.
+
+For the prior `13 x 89`, `S=1,353`, `t=13` frontier, the large ruling requires
+`2^89` distinct low-weight preimages but its dimension-285 preimage contains
+at most `10,451,278,437,645,598,672,024`, only
+`0.0000168849509765...` of the requirement. The case is exactly rejected.
+
+The first shape surviving both this Gate and the Fourier Gate is `18 x 36`,
+`S=758`, `t=7`. It necessarily induces a binary `[146,110]` covering code of
+radius at most seven on each large ruling. The elementary sphere density is
+`3.7123143518692814...`, so this condition remains open; one ordinary code
+would still not supply the shared-kernel simultaneous Segre cover. No atoms,
+decoder, native lift, or adaptive-word resolution exists, so neither ticket
+deliverable is complete and this issue remains claimed.

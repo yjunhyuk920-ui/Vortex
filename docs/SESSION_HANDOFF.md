@@ -501,3 +501,23 @@ Next: use mandatory short kernel defects to construct/decode the `13 x 89`
 syndromes or derive its next obstruction. Do not repeat tight blocks, random
 atoms, or subset counting. Keep `NO_SURVIVING_CANDIDATE`; do not start EXP-085
 or model/hardware work.
+
+<!-- E0-SEGRE-RULING-PREIMAGE-SPHERE-HANDOFF -->
+## Current handoff after the Segre ruling preimage-sphere Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_SEGRE_RULING_PREIMAGE_SPHERE_GATE.md` and
+`results/e0_segre_ruling_preimage_sphere_gate/summary.json`.
+
+`13 x 89`, `S=1,353`, `t=13` is now exactly rejected: its large ruling needs
+`2^89` low-weight preimages but an information-set theorem caps its
+dimension-285 preimage at `Ball(285,13)`. The combined scan's first unclosed
+shape is `18 x 36`, `S=758`, `t=7`.
+
+Next: settle the necessary `[146,110]` binary radius-seven covering code, then
+test whether one 110-dimensional kernel can cover all `18 x 36` Segre rulings
+simultaneously. An ordinary covering code alone is not sufficient. Do not
+return to `13 x 89`, random atoms, or subset counting. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.

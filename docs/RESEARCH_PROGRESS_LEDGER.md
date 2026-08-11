@@ -435,3 +435,28 @@ NO_SURVIVING_CANDIDATE
 ```
 
 Authority: `docs/research/E0_SEGRE_SPARSE_COVER_FOURIER_GATE.md`.
+
+<!-- E0-SEGRE-RULING-PREIMAGE-SPHERE-GATE -->
+## 2026-08-12 -- E0 Segre ruling preimage-sphere Gate
+
+An exact information-set theorem bounds the number of ambient weight-`t`
+vectors in every factor-subspace preimage. The prior `13 x 89` survivor's
+large ruling needs `2^89` representatives, while its dimension-285 preimage
+has at most `Ball(285,13)`, a ratio of `0.0000168849509765...`. The case is
+rejected without atom search.
+
+The combined exact subset-slack scan now reaches `18 x 36`, `S=758`, `t=7`
+as its eleventh and first unclosed case. One ruling requires an induced binary
+`[146,110]` covering code of radius at most seven. Its sphere bound passes,
+but neither that code nor the simultaneous shared-kernel Segre cover is
+constructed.
+
+Decision:
+
+```text
+REJECT_13x89_BY_SEGRE_RULING_PREIMAGE_SPHERE
+KEEP_18x36_SIMULTANEOUS_COVER_OPEN_UNCONSTRUCTED
+NO SURVIVING CANDIDATE
+```
+
+Authority: `docs/research/E0_SEGRE_RULING_PREIMAGE_SPHERE_GATE.md`.

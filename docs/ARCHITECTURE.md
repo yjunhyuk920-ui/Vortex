@@ -219,3 +219,14 @@ The module does not implement a code. Its first unclosed scan point is
 `13 x 89`; any cover there needs a kernel word of weight at most 39. Until an
 implicit atom layout and sub-dense decomposer satisfy that condition and close
 native/joint-batch costs, no sparse-cover object belongs in the runtime path.
+
+`vortex_runtime/segre_ruling_preimage_sphere_gate.py` adds a stricter pure E0
+boundary. Every factor-subspace preimage must contain enough low-weight words;
+an information-set projection caps their count. This exactly rejects the
+former `13 x 89` frontier using one 89-dimensional ruling.
+
+The first shape surviving this Gate and the Fourier Gate is `18 x 36`. It
+implies an ordinary binary `[146,110]` covering code of radius at most seven,
+but no such code or simultaneous shared-kernel Segre alignment has been
+constructed here. The module is not an atom layout, decoder, operator, or
+native arithmetic path and must not enter the runtime architecture.

@@ -322,3 +322,11 @@ _Avoid_: Treating subset names as represented queries, random-code existence
 _Current status_: The first nine exact subset-slack cases are rejected by a
 Krawtchouk/Fourier second-moment contradiction. The first unclosed `13 x 89`
 case is unconstructed and must contain kernel relations of weight at most 39.
+
+**Segre Ruling Preimage Gate**:
+An information-set upper bound on low-weight words in the preimage of every
+factor subspace `A tensor B`.
+_Avoid_: Treating a global sphere surplus or Fourier slack as feasibility
+_Current status_: Rejects `13 x 89` exactly. The first combined survivor is
+`18 x 36`; it requires an induced `[146,110]`, radius-seven binary covering
+code plus simultaneous alignment across every ruling, none constructed.

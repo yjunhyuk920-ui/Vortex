@@ -113,3 +113,16 @@ first unclosed rectangle in the deterministic `1..128` scan, but it is only a
 parameter frontier. Any cover must contain kernel relations of weight at most
 39 and still lacks atoms, a decomposer, native semantics, and joint causal
 traffic. No Core Candidate survives.
+
+## Current Segre-ruling preimage boundary
+
+The `13 x 89` slack case is now closed without random search. Its
+89-dimensional ruling needs `2^89` low-weight representatives, but its
+285-dimensional preimage can contain at most `Ball(285,13)`, smaller by a
+factor above 59,000. This follows from an exact information-set projection.
+
+The first survivor of the combined restricted-preimage and Fourier scan is
+`18 x 36`, `S=758`, `t=7`. Survival is not a candidate. Even one ruling
+requires a `[146,110]` binary covering code of radius at most seven, and all
+rulings must share the same kernel. No code, Segre alignment, decoder, native
+lift, or physical batch path exists. No Core Candidate survives.

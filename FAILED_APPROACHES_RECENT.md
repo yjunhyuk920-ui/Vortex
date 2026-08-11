@@ -939,3 +939,25 @@ This Gate rejects the first nine exact subset-slack-ordered rectangles in a
 at most 39; no such aligned layout or decoder is supplied. Adaptive word
 decoders and native numerical lifting remain outside F-082. Authority:
 `docs/research/E0_SEGRE_SPARSE_COVER_FOURIER_GATE.md`.
+
+## F-083 -- Fourier slack survivor called a feasible sparse cover
+
+Do not retain `13 x 89`, `S=1,353`, `t=13` merely because the pointwise
+Fourier interval has slack. Freeze a nonzero left factor. The resulting
+89-dimensional Segre ruling has `2^89` points, while its full preimage under
+any surjective atom map has dimension only `196+89=285`.
+
+An information-set projection proves that a `k`-dimensional binary subspace
+contains at most `sum(i<=t,C(k,i))` ambient words of weight at most `t`.
+Here that upper is `10,451,278,437,645,598,672,024`, only
+`0.0000168849509765...` of `2^89`. Thus the prior frontier is impossible
+without atom search.
+
+Do not overclaim the theorem. The first case surviving both the restricted-
+preimage sphere Gate and the Fourier Gate is `18 x 36`, `S=758`, `t=7`.
+One large ruling necessarily induces a binary `[146,110]` code of covering
+radius at most seven; its sphere density is `3.7123143518692814...`, so the
+elementary bound does not reject it. Existence of that ordinary code is not a
+simultaneous Segre construction. Adaptive word decoders and native lifting
+remain outside F-083. Authority:
+`docs/research/E0_SEGRE_RULING_PREIMAGE_SPHERE_GATE.md`.

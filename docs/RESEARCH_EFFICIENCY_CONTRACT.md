@@ -719,3 +719,16 @@ to construct and decode the `13 x 89` rank-one syndromes, or derive the next
 finite obstruction. Otherwise move to an adaptive arbitrary-word mechanism
 outside both the ANF and fixed-linear-cover theorems. Apply the cheapest E0
 condition first and keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085.
+
+## Current directive after the Segre-ruling preimage Gate
+
+Do not search atoms for `13 x 89`; one complete ruling violates the exact
+information-set sphere bound by over four orders of magnitude. Do not repeat
+global subset counts or Fourier parameter sweeps for that case.
+
+For the fixed-linear route, work next on the decisive `18 x 36` construction
+condition: first settle an induced `[146,110]` binary radius-seven covering
+code, then require a single shared kernel to cover all Segre rulings. Reject
+the route at the first failed necessity. Do not confuse an ordinary covering
+code with the simultaneous bilinear construction, and do not begin native or
+hardware work before that construction exists. Keep `NO_SURVIVING_CANDIDATE`.

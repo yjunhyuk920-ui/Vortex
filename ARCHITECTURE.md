@@ -1108,3 +1108,20 @@ The first nine capacity-slack-ordered rectangular cases in the registered
 requires kernel distance at most 39; it has no atoms or decoder. No
 `NearCapacitySegreCover` is admitted, and a future slack cover must expose its
 structured short kernel relations, physical decomposer, and native lift.
+
+#### Segre-ruling preimage boundary
+
+The former `13 x 89` frontier is also rejected. For every factor subspace
+`A tensor B`, a valid fixed atom cover needs enough low-weight vectors inside
+its linear preimage. Information-set projection gives the exact necessary
+bound
+
+```text
+sum(i<=t,C(S-ab+xy,i)) >= 1+(2^x-1)(2^y-1).
+```
+
+The `x=1,y=89` ruling violates it by over four orders of magnitude. The first
+combined-Gate survivor is `18 x 36`, not a runtime component. It requires at
+least an induced binary `[146,110]` covering code of radius seven and one
+shared kernel satisfying all rulings. No `SimultaneousSegreCover` is admitted
+until atoms, decoder, native lift, batch union, and costs exist.

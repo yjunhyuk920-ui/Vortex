@@ -857,3 +857,17 @@ This is not a general adaptive or all-shape lower bound. `13 x 89` is the
 first unclosed slack case and must have kernel distance at most 39, but no code
 or decoder has been delivered. Keep `NO_SURVIVING_CANDIDATE`; do not assign
 EXP-085 or run model, backend, download, server, or hardware work.
+
+## Current classification after the Segre-ruling preimage Gate
+
+The prior `13 x 89` Fourier survivor is rejected by an independent exact
+necessity. For every `A tensor B`, its atom-map preimage has dimension
+`S-ab+xy`; information-set projection bounds its weight-`t` population by
+`sum(i<=t,C(S-ab+xy,i))`. The `1 x 89` ruling fails this bound by more than
+59,000-fold.
+
+The first combined-Gate survivor is `18 x 36`, but no construction is
+authorized. A necessary projected `[146,110]` radius-seven covering code is
+not sufficient: every ruling must work through one shared kernel. Keep
+`NO_SURVIVING_CANDIDATE`; do not assign EXP-085 or run model, backend,
+download, server, or hardware work.
