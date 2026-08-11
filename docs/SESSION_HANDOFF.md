@@ -422,6 +422,26 @@ Either construct an implicit near-source-size on-demand factor-envelope
 generator with native physical accounting, or change mechanism class. Keep
 `NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.
 
+<!-- E0-DETERMINANTAL-RANK-AMPLIFICATION-HANDOFF -->
+## Current handoff after the determinantal rank-amplification Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_DETERMINANTAL_RANK_AMPLIFICATION_GATE.md` and
+`results/e0_determinantal_rank_amplification_gate/summary.json`.
+
+Rank-one coverage now amplifies exactly to rank-`r` coverage at radius `rt`.
+Mixed-weight sampling supplies a second exact Gate. Together they reject the
+first 770 capacity-ordered shapes; the prior `17 x 43` fails at rank two and
+the balanced `32 x 39` fails mixed-weight averaging.
+
+Next: either construct and decode the first unclosed `30 x 40`, `S=1,404`,
+`t=14` dictionary, or derive a stronger condition from the many different
+rank-one decompositions of the same higher-rank matrix. Do not return to the
+closed shapes or rank-one-only counts. Keep `NO_SURVIVING_CANDIDATE`; do not
+start EXP-085 or model/hardware work.
+
 <!-- E0-LINEARIZED-POLYNOMIAL-LOCALITY-HANDOFF -->
 ## Current handoff after the linearized-polynomial locality Gate
 

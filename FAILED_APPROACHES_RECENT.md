@@ -961,3 +961,26 @@ elementary bound does not reject it. Existence of that ordinary code is not a
 simultaneous Segre construction. Adaptive word decoders and native lifting
 remain outside F-083. Authority:
 `docs/research/E0_SEGRE_RULING_PREIMAGE_SPHERE_GATE.md`.
+
+## F-084 -- Rank-one subset capacity treated as closed under addition
+
+Do not test only whether `Ball(S,t)` can name every rank-one matrix. If every
+rank-one matrix has a weight-at-most-`t` representative, every rank-at-most-
+`r` matrix has a weight-at-most-`rt` representative. The exact determinantal
+count must fit inside `Ball(S,rt)` for every rank.
+
+This immediately rejects the prior `17 x 43`, `S=855`, `t=8` frontier:
+`Ball(855,16)` is only `0.01557457908009767...` of the rank-at-most-two
+population. It also rejects the earlier `18 x 36` at rank two.
+
+Do not repair a balanced case by adding shorter representatives. Sampling
+`s` atom positions contains every weight-at-most-`t` representative with
+probability at least `C(s,t)/C(S,t)`. The exact maximum Segre intersection of
+an `s`-space therefore bounds all weights together. This rejects `32 x 39`
+at ratio `0.9436909272421747...` and three neighboring balanced shapes.
+
+The two Gates reject the first 770 capacity-ordered rectangles in the
+side-`1..128` scan. `30 x 40`, `S=1,404`, `t=14` is the first unclosed case,
+not a construction. Adaptive word decoders and native numerical lifting
+remain outside F-084. Authority:
+`docs/research/E0_DETERMINANTAL_RANK_AMPLIFICATION_GATE.md`.

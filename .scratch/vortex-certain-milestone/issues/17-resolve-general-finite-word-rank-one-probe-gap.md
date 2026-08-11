@@ -391,3 +391,22 @@ radius at most seven on each large ruling. The elementary sphere density is
 would still not supply the shared-kernel simultaneous Segre cover. No atoms,
 decoder, native lift, or adaptive-word resolution exists, so neither ticket
 deliverable is complete and this issue remains claimed.
+
+The seventeenth post-audit screen is recorded in
+`docs/research/E0_DETERMINANTAL_RANK_AMPLIFICATION_GATE.md`. A radius-`t`
+rank-one cover necessarily covers the full rank-at-most-`r` determinantal set
+at radius `rt`. Exact matrix-rank counts and Hamming-ball sizes reject the
+prior `17 x 43` frontier at rank two with ratio
+`0.01557457908009767...`.
+
+A separate mixed-weight representative average uses the exact maximum Segre
+intersection of a sampled atom span. It rejects four balanced shapes that
+survive determinantal capacity, including `32 x 39` at ratio
+`0.9436909272421747...`. The combined deterministic side-`1..128` scan closes
+the first 770 raw-capacity rectangles.
+
+`30 x 40`, `S=1,404`, `t=14` is the 771st and first unclosed shape. Its closest
+rank-amplification ratio is `8.417418510567584...` at rank 22 and its strongest
+mixed-weight ratio is `1.5198090797208368...`; neither is a construction. No
+atoms, decoder, native lift, joint batch, or adaptive-word resolution exists,
+so neither ticket deliverable is complete and this issue remains claimed.

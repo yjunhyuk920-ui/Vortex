@@ -732,3 +732,15 @@ code, then require a single shared kernel to cover all Segre rulings. Reject
 the route at the first failed necessity. Do not confuse an ordinary covering
 code with the simultaneous bilinear construction, and do not begin native or
 hardware work before that construction exists. Keep `NO_SURVIVING_CANDIDATE`.
+
+## Current directive after the determinantal rank-amplification Gate
+
+Do not spend time constructing any of the first 770 capacity-ordered block
+shapes. Rank amplification or mixed-weight representative averaging proves
+them impossible. Do not test rank-one capacity in isolation again.
+
+For the fixed-linear route, work only on a `30 x 40`, 1,404-atom, radius-14
+construction or a stronger theorem coupling the many rank-one decompositions
+of the same higher-rank matrix. Apply that theorem before random atom search.
+Otherwise change to a genuinely adaptive word decoder outside the fixed-XOR
+model. Keep `NO_SURVIVING_CANDIDATE`; do not begin native or hardware work.

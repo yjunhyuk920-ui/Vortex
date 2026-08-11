@@ -330,3 +330,10 @@ _Avoid_: Treating a global sphere surplus or Fourier slack as feasibility
 _Current status_: Rejects `13 x 89` exactly. The first combined survivor is
 `18 x 36`; it requires an induced `[146,110]`, radius-seven binary covering
 code plus simultaneous alignment across every ruling, none constructed.
+
+**Determinantal Rank Amplification**:
+The closure rule that a radius-`t` rank-one cover must cover every rank-at-
+most-`r` matrix within radius `rt`, plus mixed-weight representative sampling.
+_Avoid_: Checking only rank-one subset capacity or adding shorter leaders
+_Current status_: Rejects the first 770 capacity-ordered rectangles. The first
+unclosed fixed-linear shape is `30 x 40`, `S=1,404`, `t=14`, unconstructed.

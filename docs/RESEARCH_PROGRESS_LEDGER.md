@@ -460,3 +460,27 @@ NO SURVIVING CANDIDATE
 ```
 
 Authority: `docs/research/E0_SEGRE_RULING_PREIMAGE_SPHERE_GATE.md`.
+
+<!-- E0-DETERMINANTAL-RANK-AMPLIFICATION-GATE -->
+## 2026-08-12 -- E0 determinantal rank-amplification Gate
+
+An exact closure theorem now requires every radius-`t` rank-one cover to cover
+all rank-at-most-`r` binary matrices within radius `rt`. `17 x 43`, `S=855`,
+`t=8` fails at rank two with ball/determinantal ratio
+`0.01557457908009767...`.
+
+A second double-counting theorem samples atom positions and uses the exact
+Segre subspace maximum to bound every canonical representative weight at
+once. It rejects `32 x 39` at ratio `0.9436909272421747...` and three nearby
+balanced shapes. The combined scan rejects the first 770 capacity-feasible
+rectangles and leaves `30 x 40`, `S=1,404`, `t=14` first and unconstructed.
+
+Decision:
+
+```text
+REJECT_FIRST_770_BY_RANK_AMPLIFICATION_OR_MIXED_WEIGHT_AVERAGING
+KEEP_30x40_LINEAR_COVER_OPEN_UNCONSTRUCTED
+NO SURVIVING CANDIDATE
+```
+
+Authority: `docs/research/E0_DETERMINANTAL_RANK_AMPLIFICATION_GATE.md`.

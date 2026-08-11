@@ -1125,3 +1125,16 @@ combined-Gate survivor is `18 x 36`, not a runtime component. It requires at
 least an induced binary `[146,110]` covering code of radius seven and one
 shared kernel satisfying all rulings. No `SimultaneousSegreCover` is admitted
 until atoms, decoder, native lift, batch union, and costs exist.
+
+#### Determinantal rank-amplification boundary
+
+Any fixed sparse rank-one cover is automatically a radius-`rt` cover of the
+complete rank-at-most-`r` determinantal set. Every proposed block must pass
+the exact Hamming-ball inequality at every matrix rank. Canonical
+representatives must also pass one mixed-weight sampling inequality using the
+exact maximum rank-one intersection of every sampled atom span.
+
+These Gates reject the first 770 raw-capacity rectangles. The next parameter
+frontier is `30 x 40`, `S=1,404`, `t=14`; it has no atoms or decoder. No
+`DeterminantalSparseCover` is admitted until it constructs the rank-one cover,
+joint physical batch, native lift, and full costs.

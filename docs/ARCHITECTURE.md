@@ -230,3 +230,14 @@ implies an ordinary binary `[146,110]` covering code of radius at most seven,
 but no such code or simultaneous shared-kernel Segre alignment has been
 constructed here. The module is not an atom layout, decoder, operator, or
 native arithmetic path and must not enter the runtime architecture.
+
+`vortex_runtime/determinantal_rank_amplification_gate.py` adds two mandatory
+pure E0 boundaries. A radius-`t` rank-one atom cover must fit the complete
+rank-at-most-`r` population into `Ball(S,rt)` at every rank. Independently,
+sampling atom positions and applying the exact Segre subspace-intersection
+hierarchy bounds all canonical representative weights at once.
+
+The first 770 raw-capacity rectangles fail. The first unclosed `30 x 40`,
+1,404-atom, radius-14 case is not a component: no atom family, subset decoder,
+native lift, causal batch union, or cost closure exists. It must not enter the
+runtime path.

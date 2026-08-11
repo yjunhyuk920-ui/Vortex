@@ -126,3 +126,16 @@ The first survivor of the combined restricted-preimage and Fourier scan is
 requires a `[146,110]` binary covering code of radius at most seven, and all
 rulings must share the same kernel. No code, Segre alignment, decoder, native
 lift, or physical batch path exists. No Core Candidate survives.
+
+## Current determinantal rank-amplification boundary
+
+Sparse rank-one coverage now carries an exact closure obligation: rank-at-
+most-`r` matrices must fit inside the atom Hamming ball of radius `rt` for
+every `r`. The prior `17 x 43` frontier fails already at rank two by a factor
+above 64. A mixed-weight sampling theorem rejects four balanced cases that
+survive raw determinantal counting.
+
+Together the Gates close the first 770 subset-capacity-ordered rectangles.
+`30 x 40`, `S=1,404`, `t=14` is the first unclosed parameter point, but no
+atoms, decoder, native semantics, or shared physical batch exists. No Core
+Candidate survives.

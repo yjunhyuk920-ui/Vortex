@@ -871,3 +871,15 @@ authorized. A necessary projected `[146,110]` radius-seven covering code is
 not sufficient: every ruling must work through one shared kernel. Keep
 `NO_SURVIVING_CANDIDATE`; do not assign EXP-085 or run model, backend,
 download, server, or hardware work.
+
+## Current classification after the determinantal rank-amplification Gate
+
+Every fixed sparse rank-one proposal must now pass exact capacity after rank
+amplification: rank `r` forces radius at most `rt`. It must also pass the
+mixed-weight representative-sampling inequality derived from the exact Segre
+subspace hierarchy. These are theorem-level necessities, not sampled tests.
+
+The first 770 rank-one-capacity rectangles fail one of the two Gates. The
+first unclosed shape is `30 x 40`, `S=1,404`, `t=14`; no atom layout or decoder
+has been delivered. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085 or
+run model, backend, download, server, or hardware work.
