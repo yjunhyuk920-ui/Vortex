@@ -1,7 +1,7 @@
 # Resolve the General Finite-Word Rank-One Probe Gap
 
 Type: research
-Status: open
+Status: claimed
 Blocked by: Derive a Finite-Word Discontinuous Bilinear Source
 
 ## Question
