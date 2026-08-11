@@ -1,0 +1,183 @@
+{
+  "ckl_2018": {
+    "global_advice_bits": 68719476736,
+    "global_advice_over_range_ceiling": "1024",
+    "global_advice_over_range_ceiling_decimal": 1024.0,
+    "matrix_bits": 268435456,
+    "matrix_dimension": 16384,
+    "model_wide_direct_sum_supplied": false,
+    "published_model": "SYSTEMATIC_GF2_EXACT_RANK_ONE_BIT_OUTPUT_ADAPTIVE_PROBES",
+    "published_redundancy_range_lower_bits": 16384,
+    "published_redundancy_range_upper_bits": 67108864,
+    "published_tradeoff": "t*r = Omega(n^3/log n)",
+    "single_matrix_theorem_applicable_with_global_advice": false,
+    "target_scale_rejection": false
+  },
+  "claim_boundary": {
+    "core_candidate": "NONE",
+    "general_nonlinear_rank_one_constructor": "NOT FOUND",
+    "general_nonlinear_rank_one_target_lower_bound": "NOT PROVED",
+    "hardware_actions": 0,
+    "model_forward_calls": 0,
+    "universal_2_5_percent_guarantee": "NOT ESTABLISHED",
+    "universal_2_5_percent_impossibility": "NOT PROVED"
+  },
+  "classification": "E0_GENERAL_FINITE_WORD_RANK_ONE_PROBE_GAP",
+  "decision": "UNIVERSAL_2_5_PERCENT_NOT_ESTABLISHED_GENERAL_NONLINEAR_RANK_ONE_GAP_REMAINS_OPEN",
+  "frozen_model": {
+    "cold_input": "UNCHANGED_BOUNDED_WORD_CHECKPOINT",
+    "forbidden": [
+      "UNBOUNDED_WORDS",
+      "FUTURE_TRACE_ADVICE",
+      "APPROXIMATE_ANSWERS",
+      "EXHAUSTIVE_QUERY_ANSWER_TABLE",
+      "EXTERNAL_PROVER"
+    ],
+    "global_advice_bytes": 8589934592,
+    "global_advice_read_charge": "FREE_FAVORABLE_GRANT",
+    "metadata_kv_state_scheduler_reprop_cost": "ZERO_FAVORABLE_GRANT",
+    "preprocessing": "ARBITRARY_CHECKPOINT_ONLY",
+    "query_computation": "FREE_IN_LOWER_BOUND_MODEL",
+    "query_probes": "ADAPTIVE_AND_DATA_DEPENDENT",
+    "required_answer": "ZERO_ERROR_EXACT_RANK_ONE_SCALAR"
+  },
+  "ko_2025": {
+    "all_linear_entropy_premise_t_ceiling_bits": 10492896,
+    "all_linear_queries_not_rank_one": {
+      "data_bits": 4409760000000,
+      "entropy_premise_holds_at_target_t": false,
+      "entropy_premise_rhs_at_target_t": 4.633130454340829e+16,
+      "finite_omega_threshold_supplied_by_theorem": false,
+      "log2_systematic_cells": 42.02614613349324,
+      "maximum_integer_t_allowed_by_collection_entropy_premise": 10492896,
+      "minimum_log2_query_count_before_asymptotic_omega": 551220000042.0261,
+      "query_collection_log2_upper_bound": 4409760000000,
+      "query_universe_can_meet_even_non_omega_count_at_target_t": true,
+      "systematic_one_bit_cells_including_global_advice": 4478479476736,
+      "target_probe_bits": 110244000000,
+      "target_scale_rejection": false
+    },
+    "conclusion": "NO_FINITE_TARGET_CERTIFICATE_AND_QUERY_FAMILY_MISMATCH",
+    "free_global_advice_checkpoint_probe_bound": "NOT SUPPLIED",
+    "illegal_optimistic_global_bit_reshape_rank_one": {
+      "data_bits": 4409760000000,
+      "entropy_premise_holds_at_target_t": false,
+      "entropy_premise_rhs_at_target_t": 4.633130454340829e+16,
+      "finite_omega_threshold_supplied_by_theorem": false,
+      "log2_systematic_cells": 42.02614613349324,
+      "maximum_integer_t_allowed_by_collection_entropy_premise": 9,
+      "minimum_log2_query_count_before_asymptotic_omega": 551220000042.0261,
+      "query_collection_log2_upper_bound": 4199884,
+      "query_universe_can_meet_even_non_omega_count_at_target_t": false,
+      "systematic_one_bit_cells_including_global_advice": 4478479476736,
+      "target_probe_bits": 110244000000,
+      "target_scale_rejection": false
+    },
+    "largest_registered_square_rank_one": {
+      "data_bits": 268435456,
+      "entropy_premise_holds_at_target_t": false,
+      "entropy_premise_rhs_at_target_t": 2416296417084.415,
+      "finite_omega_threshold_supplied_by_theorem": false,
+      "log2_systematic_cells": 36.005624549193875,
+      "maximum_integer_t_allowed_by_collection_entropy_premise": 0,
+      "minimum_log2_query_count_before_asymptotic_omega": 33554466.00562455,
+      "query_collection_log2_upper_bound": 32768,
+      "query_universe_can_meet_even_non_omega_count_at_target_t": false,
+      "systematic_one_bit_cells_including_global_advice": 68987912192,
+      "target_probe_bits": 6710886,
+      "target_scale_rejection": false
+    },
+    "probe_accounting_mismatch": "KO_CHARGES_PROBES_TO_ALL_PREPROCESSED_S_CELLS",
+    "requested_budget_over_all_linear_t_ceiling": 10506.536994172056,
+    "theorem": "log|S|>=10000*t*log(s) AND m=omega(s*2^(5t))"
+  },
+  "nrs_help_bits": {
+    "conclusion": "VALID_GENERAL_HELP_BIT_BOUND_BUT_BILLIONS_OF_TIMES_TOO_SMALL_FOR_TARGET_REJECTION",
+    "dfloat11_reported_physical_bits_favorable_ceiling": {
+      "arbitrary_help_bits": 68719476736,
+      "covered_input_bits": 4398046511168,
+      "covers_arbitrary_nonlinear_help_bits": true,
+      "covers_cross_instance_input_probes": true,
+      "forced_64_bit_word_probes_for_one_instance": 1,
+      "forced_bit_probes_for_one_instance": 64,
+      "forced_word_bytes_for_one_instance": 8,
+      "parity_bits_per_instance": 64,
+      "requested_2_5_percent_budget_bits": "110244000000",
+      "requested_budget_to_forced_bit_probe_ratio": 1722562500.0,
+      "required_disjoint_instances": 68719476737,
+      "target_scale_rejection": false,
+      "total_input_bits": 4409760000000,
+      "unused_input_bits": 11713488832
+    },
+    "dfloat_independence_caveat": "LOSSLESS_CODE_BITS_ARE_NOT_PROVEN_INDEPENDENT_PARITY_INPUTS",
+    "one_bit_per_parameter": {
+      "arbitrary_help_bits": 68719476736,
+      "covered_input_bits": 343597383685,
+      "covers_arbitrary_nonlinear_help_bits": true,
+      "covers_cross_instance_input_probes": true,
+      "forced_64_bit_word_probes_for_one_instance": 1,
+      "forced_bit_probes_for_one_instance": 5,
+      "forced_word_bytes_for_one_instance": 8,
+      "parity_bits_per_instance": 5,
+      "requested_2_5_percent_budget_bits": "50731155456/5",
+      "requested_budget_to_forced_bit_probe_ratio": 2029246218.24,
+      "required_disjoint_instances": 68719476737,
+      "target_scale_rejection": false,
+      "total_input_bits": 405849243648,
+      "unused_input_bits": 62251859963
+    },
+    "q4_native_query_caveat": "NUMERICAL_RANK_ONE_DOES_NOT_EXPOSE_FOUR_INDEPENDENT_PARITIES",
+    "q4_physical_bits_favorable_ceiling": {
+      "arbitrary_help_bits": 68719476736,
+      "covered_input_bits": 1580547964951,
+      "covers_arbitrary_nonlinear_help_bits": true,
+      "covers_cross_instance_input_probes": true,
+      "forced_64_bit_word_probes_for_one_instance": 1,
+      "forced_bit_probes_for_one_instance": 23,
+      "forced_word_bytes_for_one_instance": 8,
+      "parity_bits_per_instance": 23,
+      "requested_2_5_percent_budget_bits": "202924621824/5",
+      "requested_budget_to_forced_bit_probe_ratio": 1764561928.904348,
+      "required_disjoint_instances": 68719476737,
+      "target_scale_rejection": false,
+      "total_input_bits": 1623396974592,
+      "unused_input_bits": 42849009641
+    },
+    "theorem_scope": "ARBITRARY_NONLINEAR_HELP_BITS_AND_CROSS_INSTANCE_PROBES"
+  },
+  "primary_sources": {
+    "ckl_2018": "https://cs.au.dk/~larsen/papers/BooleanMatrixVectorLB.pdf",
+    "ko_2025": "https://eccc.weizmann.ac.il/report/2025/155/download",
+    "nrs_help_bits": "https://www.brics.dk/NS/94/3/BRICS-NS-94-3.pdf",
+    "rigidity_boundary": "https://arxiv.org/abs/1910.11921"
+  },
+  "reduction_boundary": {
+    "arbitrary_nonlinear_rank_one_advice": "OPEN",
+    "global_direct_sum_across_matrices_and_bit_planes": "NOT SUPPLIED",
+    "native_q4_bf16_equivalence_from_gf2": "NOT_AUTOMATIC",
+    "systematic_linear_special_case": "CLOSED_BUT_TARGET_SCALE_BOUND_TOO_WEAK",
+    "systematic_nonlinear_common_bits_problem": "THE_REMAINING_ABSTRACT_INTERFACE"
+  },
+  "registered_target": {
+    "certified_tokens_per_block": 32,
+    "dfloat11_reported_bits": 4409760000000,
+    "dfloat11_reported_bytes": 551220000000,
+    "global_advice_fraction_of_dfloat_bits": "33554432/2153203125",
+    "global_advice_fraction_of_dfloat_bits_decimal": 0.01558349586734879,
+    "llama_405b_parameters": 405849243648,
+    "q4_bits": 1623396974592,
+    "registered_p50_block_bits": "470374400000/9",
+    "registered_p50_block_fraction": "8/675",
+    "registered_p50_per_certified_token_bits": "14699200000/9",
+    "requested_block_bits": "110244000000",
+    "requested_block_bytes": "13780500000",
+    "requested_block_fraction": "1/40",
+    "requested_per_certified_token_bits": "3445125000",
+    "requested_per_certified_token_bytes": "430640625"
+  },
+  "sound_theorem_that_is_currently_available": {
+    "statement": "IF a sound certificate closes within the byte budget, the emitted token is exact; otherwise refinement must continue",
+    "universal_2_5_percent_performance": "DOES_NOT_FOLLOW",
+    "universal_exactness": "CONDITIONAL_ON_TERMINAL_STATE_EXACTIZATION"
+  }
+}

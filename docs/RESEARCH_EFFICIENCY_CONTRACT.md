@@ -444,3 +444,13 @@ the global 8 GiB advice grant. A literature family name, asymptotic hidden
 constant, Boolean output, or current weak direct-sum bound is not enough. Keep
 NO_SURVIVING_CANDIDATE and do not assign EXP-085 until that E0 boundary
 changes.
+
+The finite theorem substitution in
+`docs/research/E0_GENERAL_FINITE_WORD_RANK_ONE_PROBE_BARRIER.md` does not change
+that boundary. Nisan--Rudich--Saks reaches only five strict GF(2) bits and an
+over-favorable 64-bit physical-file ceiling. Ko
+2025 misses the structured rank-one target by its explicit collection and
+query-count premises and does not grant advice probes free. CKL's
+single-matrix redundancy range cannot absorb
+the global advice. Do not promote this barrier audit into a universal
+impossibility theorem or turn 2.5% into a scheduler setting.

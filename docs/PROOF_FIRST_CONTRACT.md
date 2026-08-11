@@ -545,3 +545,23 @@ Boolean-nonemptiness, and free-native-state shortcuts. It does not prove all
 globally nonlocal nonlinear rank-one cell-probe structures impossible.
 Universal 2.5% is NOT ESTABLISHED, no Core Candidate survives, and no E1,
 E2, hardware, or scale promotion is authorized.
+
+## Current classification after the general probe theorem audit
+
+The finite substitution audit in
+`docs/research/E0_GENERAL_FINITE_WORD_RANK_ONE_PROBE_BARRIER.md` grants
+arbitrary nonlinear global advice, adaptive cross-input probes, and free query
+computation. Nisan--Rudich--Saks then forces at most a five-bit strict GF(2)
+instance at the registered parameter count; the 64-bit physical-file figure is
+an intentionally invalidly generous ceiling. Ko 2025 reaches only nine probes
+even after an illegal global square reshape of the reported DFloat bits, while
+its all-linear-query entropy premise remains 10,506x below the requested
+2.5% block budget. Ko also charges probes into every preprocessed cell; it
+does not grant the 8 GiB nonlinear advice free while charging only original
+checkpoint probes. CKL's exact rank-one theorem is inapplicable because the
+global advice is 1024x its single-largest-matrix redundancy endpoint and no
+model-wide nonlinear direct sum is supplied.
+
+These results do not resolve the claimed general nonlinear ticket. Universal
+2.5% remains NOT ESTABLISHED rather than IMPOSSIBLE; no Core Candidate, model
+run, E1/E2, backend, hardware, or scale promotion is authorized.

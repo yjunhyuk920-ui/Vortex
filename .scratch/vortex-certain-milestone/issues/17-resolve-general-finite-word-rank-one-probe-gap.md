@@ -38,3 +38,17 @@ promoted into a universal impossibility claim.
 Do not run a model, assign EXP-085, build a backend/kernel, download a larger
 checkpoint, contact the private Ubuntu server, or begin hardware calibration
 until one of the two E0 deliverables exists.
+
+## Interim evidence
+
+The finite substitution audit is recorded in
+`docs/research/E0_GENERAL_FINITE_WORD_RANK_ONE_PROBE_BARRIER.md` and reproduced
+by `scripts/derive_general_rank_one_probe_gap.py`. Nisan--Rudich--Saks covers
+arbitrary nonlinear shared help bits but forces only five bits in the strict
+GF(2) substitution; even the over-favorable physical-file ceiling is only
+64 bits. Ko 2025 does not meet its displayed premises at
+the requested rank-one target scale or the free-advice probe accounting, and
+the single-matrix CKL redundancy
+range is exceeded by the global advice grant by exactly 1024x on the largest
+registered square. These are durable boundary results, not either required
+resolution deliverable, so this ticket remains claimed.
