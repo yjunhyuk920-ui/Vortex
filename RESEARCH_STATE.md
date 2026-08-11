@@ -1812,3 +1812,22 @@ rectangles.  `31 x 43`, `S=1,559`, `t=15` is first unclosed at ratio
 `3.409163670153519...`, but has no atoms or decoder.  Adaptive word-valued
 probes and native numerical semantics remain open, so neither ticket
 deliverable is complete.
+
+## Recursive biorthogonal pair-peeling frontier
+
+The nineteenth post-audit screen is recorded in
+`docs/research/E0_RECURSIVE_BIORTHOGONAL_CANCELLATION_GATE.md`. The positive
+anti-flag internal-edge lower bound supplies a specific adjacent pair sharing
+an atom coordinate. Removing it drops rank by two and preserves the same
+fixed dictionary promise, so support cancellation composes recursively.
+
+For `31 x 43`, forced cancellation grows from 2 at rank 18 to 4 at rank 20
+and 6 at rank 22. Radius 324 has exact rank-at-most-22 capacity ratio
+`0.4293893830152846...`, rejecting the former frontier. The combined scan
+closes its first 856 rectangles and leaves `31 x 42`, `S=1,523`, `t=15`
+first; its best ratio `38.10086306517199...` is not a construction.
+
+No atom family, decoder, native lift, joint batch, or adaptive finite-word
+resolution was delivered. The ticket remains claimed. Nearby fixed-linear
+parameter sweeps are closed; the next action must expose a new structural
+equation or a genuinely adaptive word-valued decoder.

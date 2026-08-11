@@ -1536,3 +1536,29 @@ KEEP_NO_SURVIVING_CANDIDATE
 
 Authority:
 `docs/research/E0_BIORTHOGONAL_DECOMPOSITION_CANCELLATION_GATE.md`.
+
+## D-105 -- Reuse anti-flag overlap after peeling the witnessed pair
+
+The prior Gate consumed its global overlap estimate once. A positive
+internal-edge lower bound actually gives an adjacent pair sharing a support
+coordinate. Such a pair extends to a minimal biorthogonal decomposition;
+removing it leaves rank `r-2` under the identical dictionary promise. Hence
+its two cancelled incidences can be added to the residual rank bound.
+
+For `31 x 43`, recursive cancellation is 2, 4, and 6 at ranks 18, 20, and 22.
+The rank-22 radius becomes 324 and the exact capacity ratio is
+`0.4293893830152846...`. The combined scan now rejects its first 856 shapes
+and leaves `31 x 42`, `S=1,523`, `t=15` first, with no construction.
+
+Decision:
+
+```text
+PROMOTE_RECURSIVE_PAIR_PEELING_AS_A_MANDATORY_FIXED_LINEAR_GATE
+REJECT_31x43_AND_32x42
+DO_NOT_CALL_31x42_A_CONSTRUCTION
+PIVOT_TO_A_GENUINELY_ADAPTIVE_WORD_DECODER_OR_A_NEW_STRUCTURAL_EQUATION
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority:
+`docs/research/E0_RECURSIVE_BIORTHOGONAL_CANCELLATION_GATE.md`.

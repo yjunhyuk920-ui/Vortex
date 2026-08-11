@@ -1021,3 +1021,30 @@ This does not contradict all fixed-linear covers.  `31 x 43`, `S=1,559`,
 `t=15` still passes the present necessity at ratio
 `3.409163670153519...`; no atoms or decoder are known.  Adaptive finite-word
 addresses and nonlinear output operations remain outside the assumption.
+
+## A-083 -- A one-shot support-overlap charge cannot be reused
+
+Assumption: after the biorthogonal Gate finds a decomposition with support
+overlap, the proof must stop because selecting the overlapping terms changes
+the remaining problem.
+
+Status: CONTRADICTED for the fixed binary atom model. A positive summed
+internal-edge bound supplies an adjacent pair `q,q'` sharing an atom. The
+pair belongs to a minimal biorthogonal decomposition, so subtracting it leaves
+rank `r-2`. The residual matrix is covered by the same global dictionary and
+the same radius-`t` representative promise. Consequently
+
+```text
+Delta_r >= 2 + Delta_(r-2).
+```
+
+Together with the one-shot knapsack, this forces cancellation 2, 4, and 6 at
+ranks 18, 20, and 22 for `31 x 43`. Radius 324 has exact determinantal ratio
+`0.4293893830152846...`, so that former frontier is impossible.
+
+### A-083 closure
+
+The theorem does not cover adaptive word addresses or nonlinear output
+decoding. The new first fixed-linear survivor is `31 x 42`, `S=1,523`,
+`t=15`, with best necessary-condition ratio `38.10086306517199...`; it has no
+atoms or decoder.

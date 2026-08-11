@@ -1613,3 +1613,22 @@ nearby rectangle sweeps.
 No EXP-085, model, backend, kernel, download, private Ubuntu action, or
 hardware stage is authorized.  Authority:
 `docs/research/E0_BIORTHOGONAL_DECOMPOSITION_CANCELLATION_GATE.md`.
+
+## Fixed-linear overlap charge is recursive -- frontier closed through 856
+
+Do not construct or search `31 x 43` or `32 x 42`. A positive spectral
+internal-edge bound gives an overlapping adjacent anti-flag pair, not merely
+an average completed decomposition. Peeling that pair and applying the same
+theorem to the residual rank forces cumulative cancellation. `31 x 43`
+fails at rank 22 with radius 324 and exact ratio
+`0.4293893830152846...`.
+
+The new first fixed-linear parameter survivor is `31 x 42`, `S=1,523`,
+`t=15`, but its best ratio `38.10086306517199...` is only slack. Do not sweep
+nearby shapes. Continue only with a concrete structural atom/decomposer
+equation or, preferably, a genuinely adaptive finite-word decoder whose
+address discovery, words, and output operation are explicit.
+
+No EXP-085, model, backend, kernel, download, private Ubuntu action, or
+hardware stage is authorized. Authority:
+`docs/research/E0_RECURSIVE_BIORTHOGONAL_CANCELLATION_GATE.md`.

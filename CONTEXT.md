@@ -346,3 +346,13 @@ _Avoid_: Independent representative counting, full `r*t` radius
 _Current status_: Rejects `30 x 40`, `31 x 39`, and `30 x 44`.  The first
 combined fixed-linear survivor is the unconstructed `31 x 43`, `S=1,559`,
 `t=15` case.
+
+**Recursive Biorthogonal Pair Peeling**:
+The induction obtained by selecting one support-overlapping adjacent
+anti-flag pair, removing it from a minimal rank decomposition, and applying
+the same fixed dictionary theorem to the rank-two-smaller residual matrix.
+_Avoid_: Charging a positive spectral overlap only once
+_Current status_: Rejects the former `31 x 43` frontier and closes the first
+856 capacity-ordered fixed-linear shapes. The new first survivor is the
+unconstructed `31 x 42`, `S=1,523`, `t=15` case. Adaptive word probes remain
+open.

@@ -1097,3 +1097,23 @@ Authoritative decisions:
 
 Authoritative decision:
 `REJECT_30x40_31x39_AND_30x44_BY_BIORTHOGONAL_SUPPORT_CANCELLATION`.
+
+## E0 recursive biorthogonal cancellation Gate
+
+| Check | Observed | Status |
+|---|---:|---|
+| Positive internal-edge bound | overlapping adjacent pair exists | PASS |
+| Pair peel recurrence | `Delta_r >= 2+Delta_(r-2)` | PASS |
+| `31x43` cancellation at ranks 18 / 20 / 22 | 2 / 4 / 6 | PASS |
+| `31x43` rank-22 radius / capacity ratio | 324 / 0.4293893830152846... | REJECT |
+| `32x42` fixed-linear case | capacity contradiction | REJECT |
+| Combined first unclosed shape | `31x42`, `S=1523`, `t=15` | OPEN ONLY |
+| First rejected capacity-ordered shapes | 856 | PASS |
+| Focused tests | 5/5 | PASS |
+| Full repository pytest regression | 676/676 | PASS |
+| Standard validation runner | completed | PASS |
+| Model forwards / hardware actions | 0 / 0 | NOT RUN |
+| Adaptive word decoder and native lift | uncovered | OPEN / NO CLAIM |
+
+Authoritative decision:
+`REJECT_31x43_AND_32x42_BY_RECURSIVE_BIORTHOGONAL_PAIR_PEELING`.

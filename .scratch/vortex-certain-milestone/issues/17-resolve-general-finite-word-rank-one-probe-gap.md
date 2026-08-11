@@ -429,3 +429,23 @@ No atom family, decoder, native lift, or adaptive finite-word resolution was
 delivered.  The ticket therefore remains claimed; the next action is a
 concrete `31 x 43` construction equation or a mechanism change, not another
 nearby parameter sweep.
+
+The nineteenth post-audit screen is recorded in
+`docs/research/E0_RECURSIVE_BIORTHOGONAL_CANCELLATION_GATE.md`. The prior
+spectral overlap charge was incorrectly used only once. Positivity of its
+summed internal-edge bound gives an adjacent pair whose representatives share
+an atom. Peeling that pair drops rank by two and leaves the same dictionary
+contract, so two cancelled incidences add to the residual cancellation bound.
+
+For `31 x 43`, cancellation is forced to 2, 4, and 6 at ranks 18, 20, and 22.
+The rank-22 radius 324 has exact capacity ratio
+`0.4293893830152846...`, rejecting the former survivor. `32 x 42` also
+fails. The combined scan closes 856 shapes and moves the first unclosed case
+to `31 x 42`, `S=1,523`, `t=15`, with best ratio
+`38.10086306517199...`.
+
+This remains a fixed-linear lower bound, not an atom family or runtime. No
+adaptive word decoder, native lift, joint causal batch, or full cost equation
+was delivered, so the issue remains claimed. The next action is a genuinely
+adaptive finite-word equation or a theorem covering that model, not another
+nearby rectangle sweep.

@@ -1005,3 +1005,21 @@ capacity-ordered shape.  Its best cancellation ratio is
 word-valued probes, nonlinear output decoders, native arithmetic, and joint
 causal batches remain outside F-085.  Authority:
 `docs/research/E0_BIORTHOGONAL_DECOMPOSITION_CANCELLATION_GATE.md`.
+
+## F-086 -- Treating the anti-flag overlap charge as one-shot
+
+Do not retain `31 x 43`, `S=1,559`, `t=15` by applying the spectral overlap
+bound only to a completed rank decomposition. Positivity of
+`sum_c e(A_c)` identifies an adjacent pair whose representatives share a
+coordinate. Peeling that pair cancels two incidences and leaves a rank-two-
+smaller matrix governed by the same dictionary promise, so the charge
+recurses.
+
+At ranks 18, 20, and 22 this forces cancellation 2, 4, and 6. The resulting
+rank-22 radius 324 has exact capacity ratio `0.4293893830152846...`, rejecting
+the prior frontier. The combined scan closes 856 shapes. `31 x 42`,
+`S=1,523`, `t=15` is first unclosed at best ratio
+`38.10086306517199...`; it is not a construction. Adaptive word-valued
+probes, nonlinear output decoders, native arithmetic, and joint causal
+batches remain outside F-086. Authority:
+`docs/research/E0_RECURSIVE_BIORTHOGONAL_CANCELLATION_GATE.md`.

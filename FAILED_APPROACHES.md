@@ -375,4 +375,10 @@ decomposition; distinct-representative activity strengthens this to four XOR
 cancellations and an exact rank-22 capacity contradiction.  It also rejects
 `31 x 39` and `30 x 44`, but it does not close the new unconstructed
 `31 x 43`, arbitrary adaptive word decoders, or native numerical lifting.
+F-086 closes that `31 x 43` successor. A positive anti-flag internal-edge
+bound yields a concrete overlapping adjacent pair, and peeling it makes the
+cancellation theorem recursive on rank `r-2`. This closes the first 856
+fixed-linear capacity-ordered shapes and leaves the unconstructed `31 x 42`,
+but still does not cover adaptive word addresses, nonlinear output decoding,
+or native numerical lifting.
 Read that continuation and each scope boundary before reopening a family.

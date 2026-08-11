@@ -1151,3 +1151,25 @@ fixed-linear design target admitted by the current exact Gates is the
 unconstructed `31 x 43`, `S=1,559`, `t=15` shape.  It is not an architecture
 component until it supplies explicit atoms, a sub-dense decomposer, a shared
 causal-batch layout, native-order numerical semantics, and complete costs.
+
+#### Recursive biorthogonal cancellation boundary
+
+The one-shot anti-flag overlap charge is reusable. A positive summed
+internal-edge lower bound identifies an adjacent pair of rank-one terms whose
+representatives share an atom. Removing the pair drops matrix rank by two,
+loses at least two support incidences, and leaves the same dictionary contract
+on the residual matrix. Therefore every admitted fixed binary atom cover must
+satisfy the recursive Gate
+
+```text
+Delta_r >= 2 + Delta_(r-2)
+R_<=r = max_(j<=r) (j*t-Delta_j).
+```
+
+This rejects the former `31 x 43` target at rank 22 and moves the combined
+fixed-linear frontier to the unconstructed `31 x 42`, `S=1,523`, `t=15`
+shape after 856 rejected capacity-ordered rectangles. No
+`RecursiveBiorthogonalCover` is admitted until it supplies explicit atoms,
+sub-dense decoding, native-order semantics, joint causal-batch layout, and
+complete costs. Adaptive word-valued probes and nonlinear output decoding
+remain outside the Gate.
