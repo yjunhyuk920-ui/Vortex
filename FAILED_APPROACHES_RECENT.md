@@ -823,3 +823,25 @@ least `99.4%` of the tiny dictionaries. This is not an asymptotic lower bound.
 The remaining interface is a joint nonlinear batch decoder that finds one
 small physical atom set spanning every query in the batch. Authority:
 `docs/research/E0_EXTENSION_FIELD_RANK_SATURATING_FRONTIER.md`.
+
+## F-078 -- Literal joint-factor catalogs and Segre counting as a solution
+
+Do not cache one exact restriction for every pair of left/right batch factor
+spaces. Every 32-query rank-one batch does lie in the exact envelope
+`R tensor U` of dimension at most 1,024, but one registered square has more
+than `2^1,046,528` independently selectable pairs of 32-dimensional factor
+spaces. A literal envelope catalog is therefore more extreme than the already
+rejected answer table.
+
+Also do not promote rank-one intersection counting into a target lower bound.
+Schaathun's product-code weight hierarchy gives the exact maximum Segre
+intersection and matches exhaustive `2 x 2`, `2 x 3`, and `2 x 4` controls.
+Even after using that exact structure and granting all 474,568,720,384 global
+binary atoms to one 16,384 square, the proof-safe 32-batch count forces only
+20,218 selected bit atoms, or 316 perfectly packed 64-bit words. This is far
+below the physical target and rejects counting as the resolving method.
+
+The remaining interface is an implicit near-source-size generator that
+materializes the requested `R tensor U` restriction on demand. No such layout,
+native equation, or decoder exists. Authority:
+`docs/research/E0_JOINT_BATCH_COSET_GEOMETRY.md`.

@@ -774,3 +774,21 @@ probe on every amplification call, decoding, verification, native numerical
 lifting, and fallback. No such oracle exists in the architecture. No Core
 Candidate survives, and no E1/E2, model, backend, hardware, or scale promotion
 is authorized.
+
+## Current classification after the joint-batch Segre geometry audit
+
+The binary rank-one query system now has an exact subspace-intersection law:
+it is the Segre product of two simplex projective systems, and the chained
+product-code weight hierarchy applies. Complete tiny enumeration independently
+agrees with the formula. A 32-query batch also has the exact common envelope
+`R tensor U` of dimension at most 1,024.
+
+This does not produce a runtime component. Literal envelope catalogs exceed
+`2^1,046,528` registered names, while the strongest finite covering count here
+forces only 20,218 bit atoms and is far below a physical target-scale lower
+bound. The theorem covers a binary linear dictionary screen, not nonlinear
+advice, adaptive finite-word probes, native accumulation, or causal execution.
+
+No Core Candidate survives. No E1/E2, model, backend, hardware, or scale
+promotion is authorized. Authority:
+`docs/research/E0_JOINT_BATCH_COSET_GEOMETRY.md`.

@@ -275,6 +275,18 @@ rank-one mask belongs to `span(G_T)`; individual minimum-weight leaders are
 not the objective.
 _Avoid_: Rank weight called probe count, independent per-query sparsity,
 unaddressed metadata scan
-_Current status_: Unconstructed research interface. Extension-field direct
-materializations and identity layouts are rejected; tiny nonlinear leaders do
-not establish a scalable small batch union.
+_Current status_: Unconstructed research interface. Product-code geometry now
+proves that 32 queries lie in a `32 x 32` factor envelope and exactly bounds
+rank-one intersections of candidate spans. Literal envelope catalogs fail,
+while the resulting general counting lower bound is only 20,218 bit atoms.
+The missing object is an implicit near-source-size generator for the requested
+factor envelope, including native summaries and physical addresses.
+
+**Joint Factor Envelope**:
+For `q_i=r_i u_i^T`, the exact containment
+`span(q_i) subseteq span(r_i) tensor span(u_i)`; a K-query batch therefore
+lies inside at most `K^2` tensor dimensions.
+_Avoid_: Literal catalog of all factor-subspace pairs, free restriction oracle
+_Current status_: Exact design constraint, not an implementation. At K=32 the
+envelope has at most 1,024 dimensions, but registered factor-space pairs have
+strict log2 cardinality above 1,046,528.

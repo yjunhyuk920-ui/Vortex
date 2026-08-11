@@ -315,3 +315,27 @@ NO SURVIVING CANDIDATE
 
 Authority:
 `docs/research/E0_EXTENSION_FIELD_RANK_SATURATING_FRONTIER.md`.
+
+<!-- E0-JOINT-BATCH-COSET-GEOMETRY -->
+## 2026-08-12 -- E0 joint-batch coset geometry
+
+Schaathun's exact product-code weight hierarchy was specialized to the binary
+Segre system of rank-one matrix masks and independently matched against every
+binary subspace through `2 x 4`. Every 32-query rank-one batch lies in a
+common `R tensor U` envelope of dimension at most 1,024.
+
+A literal registered factor-envelope catalog has strictly more than
+`2^1,046,528` names and is rejected. Conversely, even after granting all
+model-wide binary atoms and 8 GiB of advice to one square, the proof-safe
+Segre covering count forces only 20,218 selected bit atoms (316 perfectly
+packed 64-bit words), so counting alone is not a target-scale decision method.
+
+Decision:
+
+```text
+REJECT_LITERAL_FACTOR_ENVELOPE_CATALOG_AND_COUNTING_ONLY_PROMOTION
+KEEP_IMPLICIT_JOINT_FACTOR_ENVELOPE_GENERATOR_OPEN
+NO SURVIVING CANDIDATE
+```
+
+Authority: `docs/research/E0_JOINT_BATCH_COSET_GEOMETRY.md`.

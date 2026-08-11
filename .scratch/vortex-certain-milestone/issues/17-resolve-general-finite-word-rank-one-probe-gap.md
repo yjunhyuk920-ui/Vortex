@@ -289,3 +289,20 @@ least `99.4%` of the tested dictionaries. This is not an asymptotic lower
 bound. It refines the open deliverable to a joint batch coset constructor that
 finds one small physical atom set spanning every batch query. No such layout,
 decoder, or native lift was delivered, so this issue remains claimed.
+
+The eleventh post-audit screen is recorded in
+`docs/research/E0_JOINT_BATCH_COSET_GEOMETRY.md`. The binary rank-one
+projective system is the Segre product of two simplex systems. Schaathun's
+product-code weight hierarchy therefore gives the exact maximum rank-one
+intersection of every fixed-dimensional matrix subspace; complete `2 x 2`,
+`2 x 3`, and `2 x 4` enumeration at prototype commit `0206a08` agrees with
+every value.
+
+For 32 queries, the exact containment in `R tensor U` gives a 1,024-dimensional
+factor envelope. A literal registered envelope catalog has strictly more than
+`2^1,046,528` names and is rejected. Conversely, granting the whole global
+binary dictionary plus 8 GiB advice to one square and applying the exact Segre
+geometry forces only 20,218 selected bit atoms (316 perfectly packed 64-bit
+words), far below the target. Thus counting is not the missing lower bound.
+No implicit on-demand envelope generator or native lift was delivered, so the
+ticket remains claimed.

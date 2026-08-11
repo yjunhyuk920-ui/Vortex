@@ -1,0 +1,94 @@
+{
+  "claim_boundary": {
+    "general_dictionary_counting_resolves_target": false,
+    "hardware_actions": 0,
+    "implicit_joint_envelope_generator_constructed": false,
+    "joint_factor_envelope_exact": true,
+    "literal_envelope_catalog_rejected": true,
+    "model_forward_calls": 0,
+    "native_numerical_lift": false,
+    "nonlinear_advice_or_adaptive_probes_covered": false,
+    "rank_one_intersection_formula_exact": true,
+    "target_candidate": false
+  },
+  "classification": "E0_JOINT_BATCH_COSET_GEOMETRY",
+  "contract": {
+    "binary_linear_dictionary_screen_only": true,
+    "favorable_global_dictionary_atoms": 474568720384,
+    "global_advice_bits": 68719476736,
+    "registered_parameters": 405849243648
+  },
+  "decision": "REJECT_LITERAL_FACTOR_ENVELOPE_CATALOG_AND_COUNTING_ONLY_PROMOTION_KEEP_IMPLICIT_JOINT_FACTOR_ENVELOPE_GENERATOR_OPEN",
+  "decisions": [
+    "PROMOTE_SEGRE_WEIGHT_HIERARCHY_AS_EXACT_BATCH_GEOMETRY",
+    "REJECT_LITERAL_FACTOR_ENVELOPE_CATALOG",
+    "REJECT_COUNTING_ONLY_PROMOTION",
+    "KEEP_IMPLICIT_JOINT_FACTOR_ENVELOPE_GENERATOR_OPEN",
+    "NO_SURVIVING_CANDIDATE"
+  ],
+  "general_dictionary_counting": {
+    "all_global_dictionary_atoms_granted_to_one_square": 474568720384,
+    "is_target_scale_lower_bound": false,
+    "largest_bit_atom_support_ruled_out": 20217,
+    "minimum_bit_atoms_not_ruled_out": 20218,
+    "minimum_perfectly_packed_64bit_words_not_ruled_out": 316,
+    "minimum_perfectly_packed_bytes_not_ruled_out": 2528,
+    "ordered_batch_queries": 32,
+    "per_support_batch_log2_coverage_strict_upper": 524320,
+    "rank_one_batch_log2_cardinality_strict_lower": 1048512,
+    "square_side": 16384,
+    "support_name_log2_threshold": "524192"
+  },
+  "joint_factor_envelope": {
+    "columns": 16384,
+    "equation": "span{r_i u_i^T} subseteq R tensor U",
+    "left_factor_span_at_most": 32,
+    "query_count": 32,
+    "right_factor_span_at_most": 32,
+    "rows": 16384,
+    "tensor_envelope_dimension_at_most": 1024
+  },
+  "literal_factor_envelope_catalog": {
+    "exact_summaries_per_literal_envelope": 1024,
+    "factor_subspace_pair_count_log2_strict_lower": 1046528,
+    "implicit_shared_generator_rejected": false,
+    "literal_catalog_fits": false,
+    "literal_catalog_summary_count_strict_lower": "1024 * 2^1046528",
+    "query_count": 32,
+    "side": 16384
+  },
+  "segre_product_code_theorem": {
+    "maximum_intersection": "|Q|-d_(mn-t)(S_m tensor S_n)",
+    "projective_system": "binary rank-one masks = S_m Segre S_n",
+    "prototype_commit": "0206a08",
+    "tiny_exact_sequences": {
+      "2x2": [
+        0,
+        1,
+        3,
+        5,
+        9
+      ],
+      "2x3": [
+        0,
+        1,
+        3,
+        7,
+        9,
+        13,
+        21
+      ],
+      "2x4": [
+        0,
+        1,
+        3,
+        7,
+        15,
+        17,
+        21,
+        29,
+        45
+      ]
+    }
+  }
+}

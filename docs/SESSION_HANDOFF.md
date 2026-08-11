@@ -400,3 +400,24 @@ Next: work only on an explicit joint batch coset dictionary satisfying
 class. A single-query sparse leader is insufficient. Keep
 `NO_SURVIVING_CANDIDATE`; do not start EXP-085, model, backend, download,
 server, or hardware work.
+
+<!-- E0-JOINT-BATCH-COSET-GEOMETRY-HANDOFF -->
+## Current handoff after the joint-batch geometry audit
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_JOINT_BATCH_COSET_GEOMETRY.md` and
+`results/e0_joint_batch_coset_geometry/summary.json`.
+
+Schaathun's product-code theorem now gives the exact maximum number of binary
+rank-one masks in any fixed-dimensional matrix subspace and agrees with the
+complete tiny prototype at commit `0206a08`. Every 32-query batch lies in a
+1,024-dimensional `R tensor U` envelope. Literal envelope catalogs fail above
+`2^1,046,528` names, while the strongest proof-safe general support count is
+only 20,218 bit atoms and is not target-scale.
+
+Next: do not continue literal catalogs, independent leaders, or counting.
+Either construct an implicit near-source-size on-demand factor-envelope
+generator with native physical accounting, or change mechanism class. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.

@@ -178,3 +178,13 @@ whole query batch such that every query lies in `span(G_T)`. No persistent
 layout, sub-dense selector, native arithmetic, causal guarantee, or physical
 cost closure exists, so it must not appear in the runtime path or be described
 as a surviving candidate.
+
+The exact geometry is now narrower. A K-query batch lies in
+`span(r_i) tensor span(u_i)`, of dimension at most `K^2`; at K=32 this is a
+1,024-dimensional Joint Factor Envelope. Product-simplex generalized weights
+give the exact largest rank-one intersection of any selected span. These facts
+authorize neither a cached envelope catalog nor a restriction oracle: the
+catalog has more than `2^1,046,528` registered names, and the strongest finite
+support count obtained here forces only 20,218 bit atoms. Any future component
+must generate the envelope restriction implicitly and charge every native
+summary, address, probe, and decode operation.

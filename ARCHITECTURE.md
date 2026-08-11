@@ -1051,3 +1051,18 @@ representative is admitted. Any future `SparseFunctionalDictionary` must expose
 a query-dependent nonlinear sparse representative and close its search cost;
 arbitrary nonlinear hot advice and causally restricted query sets remain
 outside this scoped theorem.
+
+#### Joint factor-envelope boundary
+
+For a batch `q_i=r_i u_i^T`, every query lies in the common space
+`R tensor U`, with dimension at most `K^2`. At `K=32` this is a 1,024-slot
+restriction target. The product-simplex weight hierarchy is the exact
+rank-one intersection law for candidate spans and is validated exhaustively
+on all binary subspaces through `2 x 4`.
+
+No `FactorEnvelopeCatalog` is admitted. A registered square has more than
+`2^1,046,528` factor-space pairs. No counting-only `SegreDictionary` is
+admitted either: even the exact geometry forces only 20,218 bit atoms under
+the complete global grant. The open interface is an implicit shared code that
+generates the requested restriction and its physical addresses on demand;
+that interface has no implementation or native cost closure.

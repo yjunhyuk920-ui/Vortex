@@ -579,6 +579,22 @@ verification, and fallback remain charged. Without an explicit construction
 and a favorable 405B equation, change mechanism class. Keep
 `NO_SURVIVING_CANDIDATE`; do not assign EXP-085 or run model/hardware work.
 
+## Current directive after the joint-batch Segre geometry screen
+
+Do not enumerate more tiny dictionaries, cache factor envelopes, or derive
+another query-cardinality bound. The exact product-code weight hierarchy and
+complete controls have already fixed the geometry: K rank-one queries lie in
+a `K x K` factor envelope, literal registered catalogs exceed
+`2^1,046,528` names, and proof-safe support counting forces only 20,218 bit
+atoms. The first is impossible to store literally and the second is too weak
+to decide the target.
+
+Continue this route only with an implicit near-source-size code that generates
+the requested `R tensor U` restriction and physical addresses on demand,
+including native order and complete 405B costs. Otherwise change mechanism
+class after its cheapest novelty Gate. Keep `NO_SURVIVING_CANDIDATE`; do not
+assign EXP-085 or run model/hardware work.
+
 ## Current directive after the sparse functional dictionary audit
 
 Do not revisit literal bilinear answer books, direct local rank-one tables, or

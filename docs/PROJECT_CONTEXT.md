@@ -65,3 +65,17 @@ The project succeeds only if internal target execution can be skipped or amortiz
 - whether the resulting wall-clock reaches the fixed acceptance target.
 
 All future architecture proposals must produce executable experiments that measure these quantities.
+
+## Current exact batch-geometry boundary
+
+For `K` rank-one bilinear questions, all left factors span at most `K`
+dimensions and all right factors span at most `K` dimensions. The complete
+batch therefore lies in one `K^2`-dimensional `R tensor U` envelope; for
+`K=32`, the envelope has at most 1,024 slots.
+
+This is a design interface, not a stored cache or a working decoder. Literal
+catalogs of all registered envelopes are too large, and exact Segre counting
+does not force enough probes to decide the runtime budget. The open task is an
+implicit near-source-size encoding that produces only the requested envelope
+restriction, with every address, native summary, probe, and decode cost
+charged.
