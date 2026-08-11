@@ -531,3 +531,17 @@ nonlinear or implicit checkpoint data structures. Repeated-query caching is
 auxiliary only. No Core Candidate survives, and no model experiment, E2,
 hardware, or scale stage is authorized until a concrete implicit nonlinear
 constructor first closes the complete E0 equation.
+
+## Current classification after the finite-word source audit
+
+A genuine bounded-word discontinuous GF(2) constructor was implemented and
+validated, but its small query-read fraction depends on an exponential
+answer table. The user's 2.5% query line passes only with
+8.660768514174031e11 checkpoint-equivalents of table storage; the registered
+8/675 line passes only with 3.449500717947148e18.
+
+This rejects the local truth table and the audited Mailman, broadword,
+Boolean-nonemptiness, and free-native-state shortcuts. It does not prove all
+globally nonlocal nonlinear rank-one cell-probe structures impossible.
+Universal 2.5% is NOT ESTABLISHED, no Core Candidate survives, and no E1,
+E2, hardware, or scale promotion is authorized.

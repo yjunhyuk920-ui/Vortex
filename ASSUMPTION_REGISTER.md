@@ -766,3 +766,27 @@ floor/modular word operations, discontinuous addresses, or unrestricted
 cell-probe schemes. The surviving unsupported assumption is now explicitly
 finite-word: such discontinuity might encode a non-exhaustive exact source
 under full state, table, probe, traffic, verification, and fallback charges.
+
+## A-070 -- Finite-word discontinuity guarantees an arbitrary-checkpoint 2.5% source
+
+Assumption: bounded words, bitwise operations, native rounding, or
+data-dependent addresses automatically let preprocessing replace every exact
+rank-one numerical query while reading no more than 2.5% of an arbitrary
+unchanged dense checkpoint.
+
+Status: REJECTED FOR THE DECLARED EXPLICIT CONSTRUCTORS, NOT AS A UNIVERSAL
+IMPOSSIBILITY. The strongest local GF(2) truth table meets 2.5% query traffic
+only by storing 8.660768514174031e11 Q4-checkpoint equivalents, using 78-bit
+addresses, and amortizing 173,215 dense-equivalent builds per token. Mailman
+remains above budget, broadword still scans the payload, Boolean
+nonemptiness is not a numerical answer, and finite rounding state is not free
+storage.
+
+### A-070 closure
+
+The audit proves that discontinuity by itself is not an information source and
+that query-read fraction cannot omit the representation that supplies the
+answer. It does not cover all globally nonlocal nonlinear cell-probe schemes.
+The surviving unsupported assumption is exactly the Finite-Word Rank-One Probe
+Gap: either a fully charged constructor or a correctly scoped lower bound is
+still required. Universal 2.5% remains NOT ESTABLISHED.

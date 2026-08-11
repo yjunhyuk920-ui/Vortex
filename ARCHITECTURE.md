@@ -828,3 +828,26 @@ bitwise packing, modular/floor behavior, native rounding, or discontinuous
 addresses. No interface is admitted until its finite alphabet, word model,
 constructor, persistent layout, table bound, probe schedule, traffic,
 verification, miss/fallback path, and numerical contract close at E0.
+
+### Finite-word rank-one probe closure boundary
+
+No bounded-word rank-one source is admitted into the runtime. The screened
+local interface was:
+
+    unchanged matrix block -> all GF(2) two-sided pattern answers
+    current left/right bits -> one data-dependent word address per block
+    queried entries         -> exact XOR reduction
+
+The equation is exact and discontinuous, but target-fitting query traffic
+forces exponential table storage and construction. At 2.5%, the favorable
+64-bit layout needs a table 8.660768514174031e11 times the Q4 checkpoint and
+78-bit addressing. At the registered 8/675 line, it needs
+3.449500717947148e18 times the checkpoint and 100-bit addressing. No compiler,
+artifact, loader, decoder, verifier, fallback engine, cache transition,
+scheduler, or kernel is admitted for this interface.
+
+Mailman, broadword full scans, Boolean nonemptiness probes, and a free native
+rounding table are also excluded as primary information sources. The only open
+architecture boundary is the Finite-Word Rank-One Probe Gap: a globally
+nonlocal nonlinear exact data structure must first close its complete E0
+equation, or a theorem must close that full model. Neither exists.

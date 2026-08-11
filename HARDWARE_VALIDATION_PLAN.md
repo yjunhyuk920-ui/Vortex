@@ -587,3 +587,18 @@ occurred. Hardware can reopen only after a concrete bounded-word discontinuous
 source passes a complete E0 equation, untouched E1 falsification, and actual
 fail-closed E2 replacement with native numerical semantics and a full
 peak-state plan.
+
+## Finite-word source audit: no hardware Gate is authorized
+
+The local Block Rank-One Truth Table fails persistent state, build
+amortization, and address width before hardware mapping. Its 2.5% query-only
+layout would require about 1.628309058482239e14 GiB of table storage and a
+78-bit address; the tighter registered layout requires about
+6.485398215045125e20 GiB and a 100-bit address. These are representation
+failures, not unknown PCIe or GPU constants.
+
+Do not benchmark random reads, allocate a table fragment, build a kernel, or
+use a small truncated table as evidence for the arbitrary-checkpoint claim.
+No target-server calibration can repair the missing artifact. Hardware work
+remains closed until a different finite-word rank-one source passes E0 with a
+real 8 GiB peak-state and shared-link plan.

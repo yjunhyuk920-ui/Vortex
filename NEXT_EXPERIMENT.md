@@ -1337,3 +1337,28 @@ No model row, EXP-085 number, backend, kernel, download, private Ubuntu action,
 physical benchmark, 122B/405B execution, or E2-E7 work is authorized. Current
 classification remains `NO_SURVIVING_CANDIDATE`. Authority:
 `docs/research/E0_IMPLICIT_NONLINEAR_BILINEAR_SOURCE_AUDIT.md`.
+
+## Explicit finite-word sources closed -- resolve the general probe gap at E0
+
+Do not build a local rank-one truth table, sweep its block dimensions, count
+one-bit payload instead of physical word traffic, omit construction and
+address costs, rerun Mailman/Four-Russians, benchmark full-scan broadword
+packing, import Boolean rectangle nonemptiness as a signed numerical result,
+or call the native finite state space a free answer table.
+
+The next unblocked ticket is Resolve the General Finite-Word Rank-One Probe
+Gap. It must produce exactly one of two deliverables before any model or
+hardware action:
+
+1. a globally nonlocal nonlinear bounded-word constructor with a complete exact
+   query equation and target-scale state/build/probe/traffic/operation/
+   verification/fallback closure; or
+2. a lower bound or finite adversarial certificate that actually covers that
+   model under the global 8 GiB advice grant.
+
+Current systematic linear, separable, direct-sum, and exact-field results are
+insufficient for the second deliverable. Do not overstate them. No EXP-085,
+model row, backend, kernel, download, Ubuntu action, hardware benchmark,
+122B/405B execution, or E2-E7 work is authorized. Current classification
+remains NO_SURVIVING_CANDIDATE. Authority:
+docs/research/E0_FINITE_WORD_DISCONTINUOUS_BILINEAR_SOURCE_AUDIT.md.

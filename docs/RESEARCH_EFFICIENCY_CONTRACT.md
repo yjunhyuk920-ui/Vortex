@@ -429,3 +429,18 @@ oracle, an approximate-only answer, or any already rejected static linear,
 separable, or global-advice form. Do not assign EXP-085, run a model, build a
 backend/kernel, download a larger checkpoint, or touch target hardware until
 the complete target-scale equation survives.
+
+## Current directive after the finite-word source audit
+
+Do not spend implementation or hardware time on local two-sided truth tables,
+Mailman/Four-Russians, full-scan broadword packing, Boolean rectangle
+nonemptiness, or exhaustive native-state tables. Their cheapest decisive E0
+charges already fail.
+
+Work only on the General Finite-Word Rank-One Probe Gap. Before any execution,
+require either a concrete globally nonlocal nonlinear exact constructor with
+every target-scale charge, or a theorem that covers that precise model under
+the global 8 GiB advice grant. A literature family name, asymptotic hidden
+constant, Boolean output, or current weak direct-sum bound is not enough. Keep
+NO_SURVIVING_CANDIDATE and do not assign EXP-085 until that E0 boundary
+changes.

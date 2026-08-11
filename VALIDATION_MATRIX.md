@@ -757,3 +757,31 @@ repeated-query use remains auxiliary. Current classification remains
 Authoritative decision:
 `REJECT_EXACT_FIELD_NONLINEAR_BILINEAR_ARITHMETIC_AS_DISTINCT_CORE_CLASS`.
 Current classification remains `NO_SURVIVING_CANDIDATE`.
+
+## E0 finite-word discontinuous rank-one source audit
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Block truth-table equation is exact over GF(2) | 296/296 exhaustive queries | PASS |
+| Basis queries recover stored matrix bits | 57/57 | PASS |
+| User 2.5% query-traffic layout | 64-bit 25-by-26; 2.461538% | QUERY AXIS PASS |
+| 2.5% layout table storage | 8.660768514174031e11 Q4 checkpoints | FAIL E0 |
+| 2.5% layout address width | 78 bits on a 64-bit model | FAIL E0 |
+| 2.5% layout build amortization | 173,215 dense/token over 20M | FAIL E0 |
+| Registered 8/675 query-traffic layout | 64-bit 37-by-37; 1.168736% | QUERY AXIS PASS |
+| Registered layout table storage | 3.449500717947148e18 Q4 checkpoints | FAIL E0 |
+| Mailman favorable operation floor | 1/9 | FAIL E0 |
+| Broadword coefficient payload | 100% read | FAIL AS SOURCE |
+| Boolean cell-probe output | rectangle nonemptiness only | NOT NUMERICAL SOURCE |
+| General nonlinear rank-one cell probes impossible | no covering theorem | OPEN / NO CLAIM |
+| Focused standard-library tests | 9/9 | PASS |
+| Independent output-directory reproduction | identical summary SHA-256 | PASS |
+| Canonical summary SHA-256 | 2f785b0f...5b9007 | PASS |
+| Pytest excluding 11 unavailable Torch files | 464 pass; 1 existing subprocess import failure | PARTIAL / NOT FULL PASS |
+| Standard validation runner | Torch unavailable at initial import | NOT RUN |
+| New model forwards or hardware actions | zero | NOT RUN |
+| E1/E2, 8 GiB physical runtime, 122B/405B | no surviving core | NOT TESTED |
+
+Authoritative decision:
+NO_FINITE_WORD_CONSTRUCTOR_SURVIVES_E0_KEEP_GENERAL_RANK_ONE_CELL_PROBE_OPEN.
+Current classification remains NO_SURVIVING_CANDIDATE.

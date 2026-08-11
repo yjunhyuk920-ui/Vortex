@@ -1309,3 +1309,38 @@ under the current sandbox ACL; their launches failed before scientific work,
 so neither a full pytest regression nor a standard validation pass is claimed.
 Canonical summary SHA-256:
 `7bf00dc2691d11956105abfa1d6bb97444cfef6fea6b5e9ca6b8318525d7e057`.
+
+## E0 finite-word discontinuous bilinear source audit
+
+Authoritative commands:
+
+    python -m unittest tests.test_finite_word_bilinear_source -v
+    python scripts/derive_finite_word_bilinear_source.py
+        --output-dir results/e0_finite_word_bilinear_source
+
+Observed focused validation: 9/9 tests passed. The deterministic controls
+covered 16 matrices, 296 exhaustive rank-one query pairs, and 57 basis-entry
+recoveries. The authoritative output records both the user's 1/40 ceiling and
+the registered 8/675 complete p50 ceiling.
+
+Artifacts:
+
+- results/e0_finite_word_bilinear_source/summary.json
+- results/e0_finite_word_bilinear_source/checksums.sha256
+- docs/research/E0_FINITE_WORD_DISCONTINUOUS_BILINEAR_SOURCE_AUDIT.md
+
+Canonical summary SHA-256:
+
+    2f785b0f3b5aac6f6192c59077a64ffdbdf90f2b96282bef04e8bd4ccc5b9007
+
+An independent temporary output directory reproduced the identical SHA-256.
+Python 3.12 pytest could not collect 11 existing Torch-dependent files because
+Torch is absent. Excluding only those files, 464 tests passed and one existing
+EXP-072A subprocess test failed because that child process could not import
+vortex_runtime from the repository root. The standard validation runner also
+stopped at its initial Torch import. These are environment/infrastructure
+limits, not scientific result failures, but no full repository pytest or
+standard-validation PASS is claimed.
+
+No model forward, checkpoint mutation, experiment number, backend, kernel,
+Ubuntu command, or hardware action was used.

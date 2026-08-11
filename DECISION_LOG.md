@@ -1131,3 +1131,32 @@ No model forward, EXP-085 assignment, checkpoint mutation, Ubuntu action, or
 hardware work occurred. Authority:
 `docs/research/E0_IMPLICIT_NONLINEAR_BILINEAR_SOURCE_AUDIT.md` and
 `results/e0_nonlinear_bilinear_source`.
+
+## D-090 -- Reject declared finite-word rank-one sources at E0
+
+The first explicit discontinuous constructor was evaluated on exact GF(2)
+semantics rather than named abstractly. Its query equation is exact and all
+296 exhaustive small queries passed, but every target-fitting word-probe
+layout creates an exponential answer table.
+
+The user's 2.5% line can be met at 2.461538% physical traffic with 64-bit
+25-by-26 blocks only by paying 8.660768514174031e11 checkpoint-equivalents of
+table storage. The registered 8/675 line can be met at 1.168736% with
+37-by-37 blocks only by paying 3.449500717947148e18
+checkpoint-equivalents. Storage, build amortization, and address width fail.
+Mailman, full-scan broadword, Boolean nonemptiness probes, and free finite-state
+rounding do not supply the missing exact numerical information.
+
+Decision:
+
+    REJECT_LOCAL_BLOCK_RANK_ONE_TRUTH_TABLE_AS_CORE
+    REJECT_NAMED_FINITE_WORD_SHORTCUTS_WITHOUT_A_NUMERICAL_SOURCE
+    DO_NOT_PROMOTE_QUERY_ONLY_TRAFFIC_WHILE_OMITTING_TABLE_OR_BUILD
+    DO_NOT_CLAIM_GENERAL_FINITE_WORD_IMPOSSIBILITY
+    OPEN_THE_GENERAL_FINITE_WORD_RANK_ONE_PROBE_GAP
+    KEEP_NO_SURVIVING_CANDIDATE
+    KEEP_MODEL_HARDWARE_AND_E2_E7_CLOSED
+
+Authority:
+docs/research/E0_FINITE_WORD_DISCONTINUOUS_BILINEAR_SOURCE_AUDIT.md and
+results/e0_finite_word_bilinear_source.

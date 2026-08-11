@@ -461,3 +461,27 @@ addresses, exhaustive finite domains, or general cell probes. Reopening now
 requires one non-exhaustive finite-word constructor with a complete target
 equation. Authority:
 `docs/research/E0_IMPLICIT_NONLINEAR_BILINEAR_SOURCE_AUDIT.md`.
+
+## F-060 -- Local finite-word rank-one answer tables and named shortcuts
+
+A Block Rank-One Truth Table is a genuine finite-word discontinuous source:
+each matrix block stores all two-sided GF(2) query answers and the current
+left/right patterns address one physical word. It buys small query traffic
+only with exponential preprocessing. The 64-bit 2.5% layout needs 25-by-26
+blocks, a table 8.660768514174031e11 times the Q4 checkpoint, 78-bit
+addresses, and 173,215 dense-equivalent builds per service token. The tighter
+8/675 layout needs 37-by-37 blocks and a table 3.449500717947148e18 times the
+checkpoint.
+
+Do not reopen with a different local block aspect ratio, one-bit ideal payload
+instead of physical word traffic, omitted table construction, uncharged
+wide addresses, Q4/BF16 answers treated as one bit, Mailman/Four-Russians,
+broadword packing that still scans all payload, a Boolean nonemptiness oracle
+called a numerical sum, or finite rounding state called a free transition
+table.
+
+This entry rejects those constructions, not every globally nonlocal nonlinear
+bounded-word data structure. The general rank-one cell-probe model remains
+open because current linear/direct-sum bounds do not cover it under the global
+8 GiB advice grant. Authority:
+docs/research/E0_FINITE_WORD_DISCONTINUOUS_BILINEAR_SOURCE_AUDIT.md.

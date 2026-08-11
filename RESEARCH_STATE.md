@@ -1312,3 +1312,37 @@ KEEP_NO_SURVIVING_CANDIDATE
 Authority:
 `docs/research/E0_IMPLICIT_NONLINEAR_BILINEAR_SOURCE_AUDIT.md` and
 `results/e0_nonlinear_bilinear_source`.
+
+## E0 finite-word discontinuous source audit rejected every declared constructor
+
+A concrete bounded-word mechanism was implemented before making a new model
+claim. The Block Rank-One Truth Table stores every GF(2) answer
+T[p,q][x,y] = x^T W[p,q] y and performs one addressed word probe plus one XOR
+per matrix block. Sixteen deterministic small matrices produced 296/296 exact
+query answers and 57/57 basis-entry recoveries.
+
+At the user's 2.5% read ceiling, the favorable 64-bit 25-by-26 layout reaches
+2.461538% query traffic but requires a table 8.660768514174031e11 times the Q4
+checkpoint, 78-bit addresses, and 173,215 dense-equivalent builds per token
+after 20M-token amortization. At the registered complete p50 ceiling 8/675,
+the 37-by-37 layout reaches 1.168736% query traffic only through a table
+3.449500717947148e18 times the checkpoint and 100-bit addresses.
+
+Mailman has a favorable 1/9 operation floor; broadword packing still reads all
+coefficient payload; the Larsen-Williams scalar cell-probe result returns
+Boolean rectangle nonemptiness, not parity, count, signed sum, Q4, or BF16;
+finite native state does not make an exhaustive answer table free.
+
+Decision:
+
+    REJECT_LOCAL_BLOCK_RANK_ONE_TRUTH_TABLE_AS_CORE
+    REJECT_MAILMAN_BROADWORD_AND_BOOLEAN_NONEMPTY_SHORTCUTS_AS_CORE
+    DO_NOT_CLAIM_A_UNIVERSAL_FINITE_WORD_OR_CELL_PROBE_IMPOSSIBILITY
+    KEEP_GENERAL_NONLINEAR_RANK_ONE_PROBE_GAP_OPEN
+    KEEP_UNIVERSAL_2_5_PERCENT_GUARANTEE_NOT_ESTABLISHED
+    KEEP_NO_SURVIVING_CANDIDATE
+
+No model forward, EXP-085 assignment, backend, kernel, checkpoint mutation, or
+hardware action occurred. Authority:
+docs/research/E0_FINITE_WORD_DISCONTINUOUS_BILINEAR_SOURCE_AUDIT.md and
+results/e0_finite_word_bilinear_source.

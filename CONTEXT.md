@@ -119,8 +119,25 @@ essentially on finite-word discontinuity such as bitwise packing, modular or
 floor operations, native rounding, or data-dependent word addresses, with
 tables and every probe fully charged.
 _Avoid_: Exact-field arithmetic renamed nonlinear, exhaustive activation table
-_Current status_: Open E0 search class; no constructor or target-feasible
-equation exists.
+_Current status_: The explicit local truth-table and named packing/Boolean
+shortcuts are rejected at E0. The general globally nonlocal nonlinear
+rank-one probe model remains open.
+
+**Block Rank-One Truth Table**:
+An exact finite-word GF(2) layout that stores every two-sided binary query
+answer for each matrix block and probes one addressed word per block.
+_Avoid_: General rank-one cell-probe structure, compact practical lookup
+_Current status_: Rejected at E0 because query-only traffic is purchased with
+exponential table storage, construction, and address width.
+
+**Finite-Word Rank-One Probe Gap**:
+The unresolved space between the rejected explicit bounded-word constructors
+and a theorem covering all globally nonlocal nonlinear exact data structures
+for rank-one numerical queries.
+_Avoid_: Proven impossibility, Boolean nonemptiness problem, free word-RAM
+computation
+_Current status_: Open. Neither a target-feasible constructor nor a matching
+lower bound under the global 8 GiB advice grant is recorded.
 
 **Matrix-Local Separable Residual Code**:
 A Bilinear Cross Residual source that independently covers each matrix's left
