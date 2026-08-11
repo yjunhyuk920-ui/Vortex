@@ -3,6 +3,7 @@
     "consecutive_coordinate_reuse": "REJECT_BELOW_FAVORABLE_NECESSARY_ELIMINATION",
     "duplicate_products": "REJECT_BELOW_FAVORABLE_NECESSARY_ELIMINATION",
     "natural_run_reuse": "REJECT_BELOW_FAVORABLE_NECESSARY_ELIMINATION",
+    "omega_roundlock_atlas_one_page": "REJECT_ORACLE_UNLOCKED_ROWS_EXCEED_COMPLETE_ALLOWANCE",
     "perfect_opposite_product_pairs": "REJECT_BELOW_FAVORABLE_NECESSARY_ELIMINATION",
     "pollard_low_complexity_matvec": "REJECT_EVEN_IDEAL_D1_WORK_RATIO_EXCEEDS_ALLOWANCE",
     "rounding_absorption": "REJECT_BELOW_FAVORABLE_NECESSARY_ELIMINATION",
@@ -75,6 +76,32 @@
     "p95": 0.008649553571428572
   },
   "name": "native_exact_shortcut_frontier",
+  "omega_roundlock_oracle": {
+    "atlas_plus_one_page_down": {
+      "coordinates": 1024,
+      "locked_coordinates": 1,
+      "oracle_lock_fraction": 0.0009765625,
+      "oracle_unlocked_fraction": 0.9990234375,
+      "reference_words_are_free_oracle_information": true,
+      "whole_vector_locked": false
+    },
+    "post_residual_pre_norm": {
+      "coordinates": 1024,
+      "locked_coordinates": 7,
+      "oracle_lock_fraction": 0.0068359375,
+      "oracle_unlocked_fraction": 0.9931640625,
+      "reference_words_are_free_oracle_information": true,
+      "whole_vector_locked": false
+    },
+    "post_rms_norm_hidden": {
+      "coordinates": 1024,
+      "locked_coordinates": 2,
+      "oracle_lock_fraction": 0.001953125,
+      "oracle_unlocked_fraction": 0.998046875,
+      "reference_words_are_free_oracle_information": true,
+      "whole_vector_locked": false
+    }
+  },
   "registered_budget": {
     "allowed_gflop_per_token": 9.6,
     "allowed_work_fraction": 0.011827051731955725,

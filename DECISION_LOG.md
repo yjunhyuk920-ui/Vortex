@@ -1318,3 +1318,44 @@ KEEP_NO_SURVIVING_CANDIDATE
 
 Authority: `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md` and
 `results/e0_native_exact_shortcut_frontier`.
+
+## D-096 -- Reject the directly designed ΩROUNDLOCK/Atlas construction
+
+ΩROUNDLOCK uses native BF16 equality as a layerwise digital firewall so state
+uncertainty can collapse to zero rather than accumulate. Its first concrete
+predictor is the already available Atlas-plus-one-page output. An oracle that
+knows the target for free locks only `1/1,024` down-projection coordinates and
+leaves `99.9023%` dense-row repair before all positive costs.
+
+Decision:
+
+```text
+REJECT_OMEGA_ROUNDLOCK_WITH_ATLAS_PLUS_ONE_PAGE_PROPOSER
+KEEP_LAYERWISE_ROUNDING_FIREWALL_ONLY_FOR_A_MATERIALLY_NEW_PREDICTOR_OR_REPAIR
+DO_NOT_CLAIM_GENERAL_ROUNDING_FIREWALL_IMPOSSIBILITY
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority: `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md` and
+`results/e0_native_exact_shortcut_frontier`.
+
+## D-097 -- Do not relabel the decision-dual source as ΩBACKCUT
+
+ΩBACKCUT pulls back only proposed-winner logit differences instead of
+exactizing the complete state. Its first proposer Gate survives on the frozen
+row: candidate and native BF16 logits both select token `21,461`. But its
+exact per-competitor correction is the previously audited
+`v^T W x` / `r^T W u` decision-dual source. The registered dynamic and static
+constructions miss the complete budget before omitted work.
+
+Decision:
+
+```text
+REJECT_OMEGA_BACKCUT_AS_A_DUPLICATE_CERTIFICATE_WRAPPER
+DO_NOT_RUN_A_NEW_EXPERIMENT_WITHOUT_A_NEW_EXACT_RANK_ONE_ANSWER_SOURCE
+KEEP_GENERAL_DECISION_ONLY_CONSTRUCTOR OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority: `docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`
+and `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md`.

@@ -107,6 +107,66 @@ without computing VC dimension or building another spanning tree.
 Primary source:
 <https://arxiv.org/html/2502.21240v3>.
 
+### ΩROUNDLOCK -- layerwise rounding firewall
+
+ΩROUNDLOCK is an original state-exactization proposal from this project. A
+cheap source proposes a layer output, coordinates whose BF16 words equal the
+native target are locked as exact singletons, and only unlocked coordinates
+are repaired. A successful lock resets uncertainty at every layer instead of
+letting an enclosure grow through the whole network.
+
+The cheapest Gate grants the unavailable target words and the lock selector
+for free. It applies the already computed Atlas-plus-one-page candidate to the
+same frozen row:
+
+```text
+location                    locked / 1,024    oracle lock fraction
+down projection                    1 / 1,024                0.0977%
+post-residual pre-norm             7 / 1,024                0.6836%
+post-RMSNorm hidden                2 / 1,024                0.1953%
+whole vector exact                 0 / 3 locations             false
+```
+
+Even at the earliest repair point, `99.9023%` of output rows remain unlocked.
+If one unlocked coordinate receives one exact dense-row repair and every
+selector, certificate, state operation, and suffix is free, the repair work
+still exceeds the complete `1.1827%` allowance. Decision:
+
+```text
+REJECT_OMEGA_ROUNDLOCK_WITH_ATLAS_PLUS_ONE_PAGE_PROPOSER
+```
+
+This does not reject every possible rounding firewall. It rejects this
+concrete cheap proposer/row-repair construction. A replacement must provide a
+materially different predictor or a non-rowwise exact repair source and must
+pay for it.
+
+### ΩBACKCUT -- decision-only backward cut
+
+ΩBACKCUT was a second direct design: do not exactize the whole hidden/KV
+state; pull back only the signed logit differences between the proposed winner
+and its competitors, and certify those scalars. The cheapest proposer Gate
+survives on the frozen row because both candidate and native BF16 logits choose
+token `21,461`.
+
+The information-source Gate then rejects the design as a duplicate rather than
+spending an experiment. After known primal and dual components are removed,
+each exact correction is the previously audited Bilinear Cross Residual
+`r^T W u`. Building one prompt-dependent full-model dual costs `1.5625%` over
+the favorable 64-token service life, already above the complete allowance;
+the static full-vocabulary composite needs `12.720703125 GiB` for one last
+down projection and a `6.765979992%` scan. The existing norm screen leaves all
+`248,319` competitors unresolved.
+
+```text
+REJECT_OMEGA_BACKCUT_AS_EXISTING_DECISION_DUAL_SOURCE_NOT_A_NEW_CONSTRUCTOR
+```
+
+This is not evidence against every decision-only method. It says that a new
+name and a backward certificate wrapper do not create the missing exact
+answer to `r^T W u`. Authority for the charged source equation is
+`E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`.
+
 ## What this changes
 
 These measurements do **not** prove that every exact runtime is impossible.

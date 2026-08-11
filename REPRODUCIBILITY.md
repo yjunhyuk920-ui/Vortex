@@ -1413,8 +1413,10 @@ model     04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696
 evidence  c7ab8ffee12f623e272f81c7e5d31769b727e9b4fcc93ba7157d616536e672ee
 ```
 
-Observed focused validation was 6/6 tests. The full repository regression
-passed 566/566, and the standard validation runner completed successfully. A
+Observed focused validation was 7/7 tests. The controls now include exact
+BF16-word ΩROUNDLOCK comparisons at the down-projection, post-residual, and
+post-RMSNorm locations. The full repository regression passed 567/567, and
+the standard validation runner completed successfully. A
 separate workspace-internal output directory reproduced the canonical summary
 byte-for-byte and was removed after its resolved path was checked inside the
 workspace.
@@ -1428,7 +1430,7 @@ Artifacts:
 Canonical summary SHA-256:
 
 ```text
-ad3b8275ced53e15eda91ba110b6c86a54ef27286ab0bfe78049d76c1246a943
+fa8a2d0d8c434400db63634730b52d891be4359eaab2509cf4e1f3415eeb09be
 ```
 
 ## E0 finite-semiring preprocessing frontier audit

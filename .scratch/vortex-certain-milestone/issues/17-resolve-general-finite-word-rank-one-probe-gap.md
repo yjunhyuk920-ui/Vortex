@@ -142,3 +142,13 @@ differential-tree source; its non-Boolean `T` factor leaves at least 35.6027%
 of dense work even at ideal `d=1` on the pinned tensor. This prevents repeated
 experiments but supplies neither required ticket deliverable, so the ticket
 remains claimed.
+
+The first direct post-audit constructor cycle is recorded in the same
+authority. ΩROUNDLOCK uses native BF16 boundaries as exact-state firewalls,
+but the free-oracle Atlas-plus-one-page Gate locks only `1/1,024` coordinates
+at the earliest repair point and leaves `99.90234375%` dense-row repair.
+ΩBACKCUT's candidate-winner Gate passes, but its exact scalar correction is
+the already audited decision-dual Bilinear Cross Residual `r^T W u`; it is a
+duplicate information source, not a new constructor. Neither result supplies
+the required globally coupled rank-one answer source or covering lower bound,
+so the ticket remains claimed.

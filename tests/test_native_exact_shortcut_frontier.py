@@ -11,6 +11,7 @@ from vortex_runtime.native_exact_shortcut_frontier import (
     exact_product_reuse_metrics,
     exact_value_multiplicity_metrics,
     favorable_rounding_absorption_upper,
+    roundlock_oracle_metrics,
     temporal_identity_metrics,
 )
 
@@ -54,6 +55,16 @@ class NativeExactShortcutFrontierTests(unittest.TestCase):
         self.assertGreaterEqual(result["min"], 0.0)
         self.assertLessEqual(result["max"], 1.0)
 
+    def test_roundlock_counts_bf16_words_and_fails_closed(self) -> None:
+        candidate = np.asarray([1.0, 2.0, 3.0], dtype=np.float32)
+        target = np.asarray([1.0, 2.5, 3.0], dtype=np.float32)
+        result = roundlock_oracle_metrics(candidate, target)
+        self.assertEqual(result["locked_coordinates"], 2)
+        self.assertEqual(result["oracle_lock_fraction"], 2 / 3)
+        self.assertFalse(result["whole_vector_locked"])
+        with self.assertRaises(ValueError):
+            roundlock_oracle_metrics(candidate, target[:2])
+
     def test_audit_uses_no_old_two_point_five_assumption(self) -> None:
         weight = np.asarray([[1, 2], [3, 4]], dtype=np.float32)
         words = np.asarray([[1, 2], [3, 4]], dtype=np.uint16)
@@ -63,6 +74,7 @@ class NativeExactShortcutFrontierTests(unittest.TestCase):
             weight_words=words,
             prefix_inputs=prefix,
             current_input=prefix[-1],
+            roundlock_pairs={"atlas_plus_one_page_down": (prefix[0], prefix[1])},
         )
         self.assertEqual(result["decision"], DECISION)
         self.assertFalse(
@@ -70,6 +82,7 @@ class NativeExactShortcutFrontierTests(unittest.TestCase):
         )
         self.assertGreater(REQUIRED_ELIMINATION_FRACTION, 0.98)
         self.assertFalse(result["claim_boundary"]["target_achieved"])
+        self.assertIn("omega_roundlock_atlas_one_page", result["candidate_decisions"])
 
     def test_invalid_shapes_fail_closed(self) -> None:
         with self.assertRaises(ValueError):

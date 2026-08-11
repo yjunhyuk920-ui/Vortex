@@ -187,3 +187,18 @@ tests a proposed shortcut only against unchanged output, 8 GiB, and 20 ms per
 token. Local reuse is rejected as soon as a favorable upper bound is too
 small.
 _Avoid_: Universal impossibility proof, full runtime benchmark, 2.5% premise
+
+**ΩROUNDLOCK**:
+A layerwise exact-state design that compares proposed and native BF16 words,
+locks equal coordinates as exact singletons, and repairs only unequal
+coordinates.
+_Avoid_: tolerance match, free selector, proof for every predictor
+_Current status_: Atlas-plus-one-page version rejected; only 1/1,024 earliest
+coordinates lock under a free target oracle.
+
+**ΩBACKCUT**:
+A decision-only design that pulls proposed-winner logit differences backward
+instead of exactizing the full hidden/KV state.
+_Avoid_: a new information source, free backpropagation, general rejection
+_Current status_: candidate-winner Gate passes on the frozen row, but the
+exact correction is the already audited decision-dual `r^T W u`; duplicate.

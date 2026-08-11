@@ -903,3 +903,25 @@ This is not a claim that no exact runtime exists. It closes only the named
 local information sources and the published low-VC/Pollard constructor on the
 pinned real tensor. A materially new globally coupled exact answer source may
 still reopen feasibility. The former `2.5%` number is no longer a premise.
+
+## A-076 -- BF16 layer boundaries make Atlas state sparse to repair
+
+Assumption: an Atlas-plus-one-page layer output lands in the same BF16 word as
+the native output for almost every coordinate, so native rounding can lock
+most state coordinates exactly and dense repair is needed only for a small
+remainder.
+
+Status: CONTRADICTED FOR THIS CONCRETE PREDICTOR. A free oracle comparison on
+the frozen EXP-083B row locks `1/1,024` down-projection coordinates,
+`7/1,024` post-residual coordinates, and `2/1,024` post-RMSNorm coordinates.
+The earliest repair point therefore leaves `99.90234375%` of rows unlocked,
+far above the complete compute-only allowance of `1.18270517%` before any
+certificate, selection, state, or traffic cost.
+
+### A-076 closure
+
+This closes ΩROUNDLOCK only with the Atlas-plus-one-page predictor and one
+dense-row repair per unlocked coordinate. It does not reject a materially
+different predictor or a globally coded exact repair mechanism. ΩBACKCUT was
+also screened but reduces to the already registered decision-dual
+`r^T W u` source, so it is a duplicate rather than a new assumption.

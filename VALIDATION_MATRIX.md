@@ -918,11 +918,16 @@ Current classification remains `NO_SURVIVING_CANDIDATE`.
 | BF16 unique values per column | min / p50 `653 / 694.5` | POLLARD T GATE FAIL |
 | BF16 unique values per row | min / p50 `1276 / 1331` | TRANSPOSE T GATE FAIL |
 | Ideal Pollard `d=1` best ratio | `35.60267857%` | REJECT |
-| Focused deterministic tests | 6/6 | PASS |
-| Full repository regression | 566/566 | PASS |
+| ΩROUNDLOCK down-projection oracle lock | `1/1,024 = 0.09765625%` | REJECT |
+| ΩROUNDLOCK post-residual oracle lock | `7/1,024 = 0.68359375%` | REJECT |
+| ΩROUNDLOCK post-RMSNorm oracle lock | `2/1,024 = 0.1953125%` | REJECT |
+| ΩBACKCUT candidate/native winner | `21,461 / 21,461` | FIRST GATE PASS |
+| ΩBACKCUT exact information source | existing decision-dual `r^T W u` | DUPLICATE / REJECT |
+| Focused deterministic tests | 7/7 | PASS |
+| Full repository regression | 567/567 | PASS |
 | Standard validation runner | completed | PASS |
 | Independent output-directory reproduction | identical summary SHA-256 | PASS |
-| Canonical summary SHA-256 | `ad3b8275...c1246a943` | PASS |
+| Canonical summary SHA-256 | `fa8a2d0d...5eeb09be` | PASS |
 | New model forwards / hardware actions | 0 / 0 | NOT RUN |
 | General exact constructor or impossibility | neither delivered | OPEN / NO CLAIM |
 

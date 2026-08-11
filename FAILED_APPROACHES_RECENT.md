@@ -598,3 +598,18 @@ impossibility result. It does not reject a genuinely global nonlinear exact
 answer source. Authority:
 `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md` and
 `results/e0_native_exact_shortcut_frontier`.
+
+## F-066 -- ΩROUNDLOCK with Atlas-plus-one-page prediction
+
+ΩROUNDLOCK was a directly designed attempt to solve the accumulated-state
+problem: BF16-equal proposed coordinates become exact singletons at each layer
+and only unlocked rows are repaired. The oracle Gate grants the true target
+words and selector for free. On the frozen EXP-083B row, the down projection
+locks only `1/1,024` coordinates; post-residual and post-RMSNorm locations lock
+`7/1,024` and `2/1,024`. No complete vector locks.
+
+Do not reopen this predictor with a paid certificate, row-repair kernel, or a
+different tolerance. Equality is tested on exact BF16 words and the free
+oracle already leaves `99.9023%` dense-row repair at the earliest point. This
+does not reject a materially different predictor or a globally coded repair
+source. Authority: `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md`.

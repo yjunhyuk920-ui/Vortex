@@ -1548,3 +1548,25 @@ CONTINUE ONLY WITH A MATERIALLY NEW EXACT INFORMATION SOURCE
 
 Authority: `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md` and
 `results/e0_native_exact_shortcut_frontier`.
+
+## Direct constructor cycle: ΩROUNDLOCK and ΩBACKCUT
+
+Two mechanisms were designed from the target rather than taken from the old
+`2.5%` premise. ΩROUNDLOCK tries to use each BF16 layer boundary as a digital
+firewall: lock exact-word matches and repair only misses. Its free-oracle Gate
+locks only `1/1,024` coordinates at the earliest repair point and therefore
+rejects the Atlas-plus-one-page version before kernel work.
+
+ΩBACKCUT avoids whole-state exactization and asks only for exact
+winner-versus-competitor scalar differences. The frozen proposer winner
+matches the native winner, but the required exact information is the existing
+decision-dual Bilinear Cross Residual `r^T W u`; its known dynamic/static
+constructions already miss the complete budget. It is recorded as a duplicate
+and was not given a redundant experiment.
+
+```text
+OMEGA_ROUNDLOCK_ATLAS_ONE_PAGE: REJECTED BY FREE ORACLE GATE
+OMEGA_BACKCUT: REJECTED AS DUPLICATE INFORMATION SOURCE
+NO SURVIVING CANDIDATE
+TARGET NOT ACHIEVED
+```

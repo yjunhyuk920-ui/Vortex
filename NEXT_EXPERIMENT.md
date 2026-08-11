@@ -1467,3 +1467,21 @@ The active ticket remains `Resolve the General Finite-Word Rank-One Probe
 Gap`; it remains claimed because this audit supplies neither a target-feasible
 global constructor nor a covering impossibility theorem. Authority:
 `docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md`.
+
+## Direct-design cycle after the local-shortcut screen
+
+ΩROUNDLOCK was designed and screened without a new model run. It treats native
+BF16 equality as a layerwise state firewall, but the free oracle leaves
+`99.90234375%` of down-projection rows unlocked for the Atlas-plus-one-page
+predictor. Do not build its selector or repair kernel.
+
+ΩBACKCUT then tried to avoid state repair by certifying only signed logit
+differences. Its candidate-winner Gate passes, but the exact source is the
+already closed decision-dual `r^T W u` construction. Do not repeat EXP-083B
+under that name.
+
+The next admissible candidate must introduce a genuinely new, charged source
+of exact finite-word rank-one answers. Its first screen remains only the final
+contract-derived allowance, not `2.5%`; reject it immediately if it merely
+wraps Atlas, a decision dual, local repetition, or a full sweep in a new
+certificate vocabulary.

@@ -39,6 +39,49 @@ def float32_words(values: np.ndarray) -> np.ndarray:
     return array.view(np.uint32)
 
 
+def roundlock_oracle_metrics(
+    candidate: np.ndarray, target: np.ndarray
+) -> dict[str, object]:
+    """Measure an oracle upper bound for the ΩROUNDLOCK state firewall.
+
+    ΩROUNDLOCK proposes a cheap pre-cast state, locks coordinates whose BF16
+    words equal the reference, and exactly repairs every unlocked coordinate.
+    This function grants knowledge of the reference words for free.  A low
+    oracle lock rate therefore rejects the supplied proposer before designing
+    a certificate or repair kernel.
+    """
+
+    import torch
+
+    proposed = np.asarray(candidate, dtype=np.float32)
+    reference = np.asarray(target, dtype=np.float32)
+    if proposed.shape != reference.shape or proposed.ndim != 1:
+        raise ValueError("candidate and target must be aligned vectors")
+    candidate_words = (
+        torch.from_numpy(proposed.copy())
+        .to(torch.bfloat16)
+        .view(torch.int16)
+        .numpy()
+    )
+    target_words = (
+        torch.from_numpy(reference.copy())
+        .to(torch.bfloat16)
+        .view(torch.int16)
+        .numpy()
+    )
+    matches = int(np.count_nonzero(candidate_words == target_words))
+    coordinates = int(candidate_words.size)
+    lock_fraction = matches / coordinates
+    return {
+        "coordinates": coordinates,
+        "locked_coordinates": matches,
+        "oracle_lock_fraction": lock_fraction,
+        "oracle_unlocked_fraction": 1.0 - lock_fraction,
+        "whole_vector_locked": matches == coordinates,
+        "reference_words_are_free_oracle_information": True,
+    }
+
+
 def temporal_identity_metrics(prefix_inputs: np.ndarray) -> dict[str, object]:
     """Measure exact same-coordinate reuse and natural contiguous runs."""
 
@@ -195,11 +238,16 @@ def derive_audit(
     weight_words: np.ndarray,
     prefix_inputs: np.ndarray,
     current_input: np.ndarray,
+    roundlock_pairs: dict[str, tuple[np.ndarray, np.ndarray]] | None = None,
 ) -> dict[str, object]:
     temporal = temporal_identity_metrics(prefix_inputs)
     absorption = favorable_rounding_absorption_upper(weight, current_input)
     products = exact_product_reuse_metrics(weight, current_input)
     values = exact_value_multiplicity_metrics(weight_words)
+    roundlock = {
+        name: roundlock_oracle_metrics(candidate, target)
+        for name, (candidate, target) in (roundlock_pairs or {}).items()
+    }
 
     observed_elimination_uppers = {
         "rounding_absorption": absorption["max"],
@@ -234,6 +282,15 @@ def derive_audit(
         > ALLOWED_GFLOP_PER_TOKEN / FULL_405B_GFLOP_PER_TOKEN
         else "INCONCLUSIVE"
     )
+    if roundlock:
+        down = roundlock.get("atlas_plus_one_page_down")
+        decisions["omega_roundlock_atlas_one_page"] = (
+            "REJECT_ORACLE_UNLOCKED_ROWS_EXCEED_COMPLETE_ALLOWANCE"
+            if down is not None
+            and down["oracle_unlocked_fraction"]
+            > ALLOWED_GFLOP_PER_TOKEN / FULL_405B_GFLOP_PER_TOKEN
+            else "INCONCLUSIVE"
+        )
 
     return {
         "name": "native_exact_shortcut_frontier",
@@ -251,6 +308,7 @@ def derive_audit(
         "temporal_identity": temporal,
         "exact_product_reuse": products,
         "exact_value_multiplicity": values,
+        "omega_roundlock_oracle": roundlock,
         "candidate_elimination_uppers": observed_elimination_uppers,
         "candidate_decisions": decisions,
         "claim_boundary": {

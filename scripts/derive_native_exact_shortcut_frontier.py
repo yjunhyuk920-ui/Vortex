@@ -68,6 +68,20 @@ def main() -> None:
             weight_words=weight_words,
             prefix_inputs=evidence["prefix_inputs"],
             current_input=evidence["current_input"],
+            roundlock_pairs={
+                "atlas_plus_one_page_down": (
+                    evidence["candidate_down"],
+                    evidence["native_down"],
+                ),
+                "post_residual_pre_norm": (
+                    evidence["candidate_pre_norm"],
+                    evidence["native_pre_norm"],
+                ),
+                "post_rms_norm_hidden": (
+                    evidence["candidate_hidden"],
+                    evidence["native_hidden"],
+                ),
+            },
         )
     payload["source"] = {
         "model_path": args.model.as_posix(),
