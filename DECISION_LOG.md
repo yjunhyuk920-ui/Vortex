@@ -1160,3 +1160,35 @@ Decision:
 Authority:
 docs/research/E0_FINITE_WORD_DISCONTINUOUS_BILINEAR_SOURCE_AUDIT.md and
 results/e0_finite_word_bilinear_source.
+
+## D-091 -- Reject Boolean rectangle and limited-independence theorem lifts
+
+Larsen--Williams supplies the missing qualitative shape--a globally nonlocal,
+nonlinear, checkpoint-derived index--but only for Boolean rectangle
+nonemptiness. Its correctness depends on the hereditary contribution of an
+all-zero rectangle. An exact summary of every numerical subrectangle would
+answer singleton rectangles and therefore injectively encode every cell; the
+direct lift has no compression.
+
+The strongest new limited-independence lower bound also misses the problem at
+its premise. Three distinct rank-one GF(2) queries with right vectors `u`,
+`v`, and `u+v` have answers whose XOR is zero for every matrix, so the full
+query code is not 3-wise independent. KPI25 requires `k>t*w+1` and cannot be
+instantiated. Whole-vector lower bounds lose a factor `n` under the only valid
+reduction to scalar rank-one answers; even a granted `n^2` bound is over 409x
+short of `n^2/40` at the registered square.
+
+Decision:
+
+```text
+REJECT_BOOLEAN_ZERO_RECTANGLE_AS_AN_EXACT_NUMERICAL_SOURCE
+REJECT_KPI25_LIMITED_INDEPENDENCE_AS_A_RANK_ONE_TARGET_BOUND
+REJECT_WHOLE_MATVEC_LOWER_BOUNDS_AS_A_2.5%-SCALAR_BOUND
+DO_NOT_CLAIM_A_GENERAL_NONLINEAR_IMPOSSIBILITY
+KEEP_GENERAL_NONLINEAR_NUMERICAL_RANK_ONE_GAP_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+KEEP_MODEL_HARDWARE_AND_E2_E7_CLOSED
+```
+
+Authority: `docs/research/E0_GLOBAL_NONLINEAR_RANK_ONE_FRONTIER.md` and
+`results/e0_global_nonlinear_rank_one_frontier`.

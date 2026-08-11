@@ -1362,3 +1362,25 @@ model row, backend, kernel, download, Ubuntu action, hardware benchmark,
 122B/405B execution, or E2-E7 work is authorized. Current classification
 remains NO_SURVIVING_CANDIDATE. Authority:
 docs/research/E0_FINITE_WORD_DISCONTINUOUS_BILINEAR_SOURCE_AUDIT.md.
+
+## Boolean rectangles and limited-independence theorems closed -- keep E0
+
+Do not lift Boolean all-zero rectangles into exact signed/Q4/BF16 arithmetic,
+quote their hidden-constant big-O leading term as a target bound, or treat
+free cell-probe computation as target-machine compute. Any rectangle summary
+claimed to answer every exact intersection without raw probes must confront
+the singleton injection lemma and pay the raw information content.
+
+Do not apply Korten--Pitassi--Impagliazzo 2025 to the full rank-one family.
+Its required limited independence is contradicted by the exact three-query
+relation `q(u) XOR q(v) XOR q(u+v)=0`. Do not divide a whole-MatVec lower
+bound by fewer than `n` scalar queries, and do not import the 2026 dynamic
+Multiphase result into the static free-advice model.
+
+The active ticket remains Resolve the General Finite-Word Rank-One Probe Gap.
+Its next action must still be either a different globally nonlocal nonlinear
+exact numerical constructor with a complete 405B equation, or a theorem that
+covers arbitrary adaptive global advice and scalar rank-one output. No model,
+EXP-085, backend, kernel, download, private Ubuntu action, hardware benchmark,
+or E2-E7 action is authorized. Authority:
+`docs/research/E0_GLOBAL_NONLINEAR_RANK_ONE_FRONTIER.md`.

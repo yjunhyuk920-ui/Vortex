@@ -790,3 +790,29 @@ answer. It does not cover all globally nonlocal nonlinear cell-probe schemes.
 The surviving unsupported assumption is exactly the Finite-Word Rank-One Probe
 Gap: either a fully charged constructor or a correctly scoped lower bound is
 still required. Universal 2.5% remains NOT ESTABLISHED.
+
+## A-071 -- A known global nonlinear or modern cell-probe theorem closes 2.5%
+
+Assumption: an existing globally nonlocal nonlinear Boolean data structure or
+the newest general cell-probe lower bound can be transferred directly to
+reference-exact native numerical `r^T W u` and thereby prove either universal
+2.5% feasibility or impossibility.
+
+Status: REJECTED FOR THE AUDITED TRANSFERS. Larsen--Williams relies on
+hereditary all-zero rectangles and returns nonemptiness, not a numerical sum.
+Any direct exact subrectangle summary is injective by singleton queries and
+retains the raw information. Korten--Pitassi--Impagliazzo requires
+`k>t*w+1`, while three distinct rank-one queries have an exact XOR dependency
+and prevent even 3-wise independence. Whole-MatVec lower bounds lose a factor
+`n` when scalarized; the newest dynamic Multiphase theorem has the wrong model
+and scale.
+
+### A-071 closure
+
+This closure is deliberately route-specific. The singleton lemma assumes no
+raw probes inside the summarized region; the independence argument targets
+the full GF(2) rank-one family; scalarization does not rule out a direct scalar
+theorem. A different globally coupled adaptive numerical constructor or a new
+lower bound covering arbitrary nonlinear 8 GiB advice remains possible in the
+formal sense. Universal 2.5% remains NOT ESTABLISHED and universal
+impossibility remains NOT PROVED.

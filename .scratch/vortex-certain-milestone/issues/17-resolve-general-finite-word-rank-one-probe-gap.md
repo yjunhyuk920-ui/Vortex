@@ -52,3 +52,22 @@ the single-matrix CKL redundancy
 range is exceeded by the global advice grant by exactly 1024x on the largest
 registered square. These are durable boundary results, not either required
 resolution deliverable, so this ticket remains claimed.
+
+The second finite audit is recorded in
+`docs/research/E0_GLOBAL_NONLINEAR_RANK_ONE_FRONTIER.md`. Larsen--Williams is
+a genuine globally nonlocal nonlinear structure, but its proof returns only
+Boolean rectangle nonemptiness. A direct exact-numerical lift is ruled out by
+the singleton-subrectangle injection lemma: any summary that answers every
+exact subrectangle aggregate without raw probes recovers every cell and needs
+the raw information content. This does not cover arbitrary global adaptive
+schemes.
+
+Korten--Pitassi--Impagliazzo 2025 is also inapplicable for a stronger reason
+than a weak numerical substitution. Three distinct GF(2) rank-one queries
+`r tensor u`, `r tensor v`, and `r tensor (u+v)` XOR to zero, so their answers
+obey a deterministic XOR relation under every checkpoint distribution. The
+full query family is at most pairwise independent, whereas the theorem needs
+`k > t*w + 1` with even `t`. Whole-MatVec lower bounds lose a factor `n` when
+reduced to one rank-one scalar and remain far below `n^2/40`. These close
+three theorem lifts but still supply neither required ticket deliverable, so
+the ticket remains claimed.

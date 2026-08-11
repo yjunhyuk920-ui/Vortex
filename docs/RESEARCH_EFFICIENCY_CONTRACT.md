@@ -454,3 +454,23 @@ query-count premises and does not grant advice probes free. CKL's
 single-matrix redundancy range cannot absorb
 the global advice. Do not promote this barrier audit into a universal
 impossibility theorem or turn 2.5% into a scheduler setting.
+
+## Current directive after the global nonlinear frontier audit
+
+Do not spend another constructor cycle on all-zero rectangles, Boolean
+nonemptiness, direct exact-subrectangle summaries, or bit-plane naming. The
+singleton query argument already shows why the direct numerical summary must
+retain the raw covered information. Do not spend another theorem cycle on
+KPI25 limited independence for the full rank-one code; its three-query XOR
+dependency falsifies the premise. Do not use whole-MatVec or dynamic
+Multiphase bounds without the explicit `n`-fold scalarization or model-change
+charge.
+
+Continue only on a materially different E0 route: either a globally coupled
+adaptive exact numerical data structure whose information source is not a
+hereditary Boolean rectangle and whose complete 405B equation fits, or a
+direct scalar rank-one lower bound covering arbitrary nonlinear 8 GiB advice.
+Cross-request 40-way batching may be analyzed only as a separately declared
+throughput contract, never as evidence for the registered single-stream goal.
+Keep NO_SURVIVING_CANDIDATE and do not assign EXP-085 or touch model/hardware
+work until the active ticket's deliverable changes.

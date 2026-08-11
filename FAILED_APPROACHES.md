@@ -335,4 +335,13 @@ F-059 closes exact-field nonlinear branching as a distinct source: a fixed
 open-cell path computes the same rational bilinear function, and
 Baur--Strassen reduces it to static MatVec. It does not close finite-word
 discontinuities, native rounding, bit operations, or general cell probes.
+F-060 closes local finite-word rank-one truth tables and the audited Mailman,
+broadword, Boolean-nonemptiness, and free-native-state shortcuts. It does not
+close globally nonlocal nonlinear bounded-word data structures under the
+global 8 GiB advice grant.
+F-061 closes the direct exact-numerical lift of Larsen--Williams all-zero
+rectangles, KPI25's limited-independence application to the full rank-one query
+code, and whole-MatVec lower bounds used without the mandatory `n`-fold
+scalarization. It explicitly leaves the general nonlinear numerical rank-one
+constructor/lower-bound gap open.
 Read that continuation and each scope boundary before reopening a family.

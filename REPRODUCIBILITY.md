@@ -1344,3 +1344,46 @@ standard-validation PASS is claimed.
 
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 Ubuntu command, or hardware action was used.
+
+## E0 global nonlinear rank-one frontier audit
+
+Authoritative commands:
+
+```powershell
+.deps\exp076-venv\Scripts\python.exe `
+  scripts\derive_global_nonlinear_rank_one_frontier.py `
+  --output-dir results\e0_global_nonlinear_rank_one_frontier
+
+.deps\exp076-venv\Scripts\python.exe -m unittest `
+  tests.test_global_nonlinear_rank_one_frontier -v
+```
+
+Observed focused validation: 6/6 deterministic tests passed. The finite
+substitution records `262,144` leading Larsen--Williams probes, a `1/16`
+leading byte ratio, the exact three-query rank-one XOR dependency, KPI25's
+`k>=130` minimum versus maximum `k=2`, the singleton-summary injection count,
+and the `n`-fold scalarization loss. The pinned interpreter emitted an
+existing sandbox ACL warning while processing its distutils `.pth`; execution
+continued and all scientific checks passed.
+An independent temporary output directory reproduced the canonical summary
+byte-for-byte with the same SHA-256.
+The related three-file pytest regression passed 21/21 tests, the full
+repository regression passed 534/534 tests, and the standard validation
+runner completed successfully. Those commands required the existing pinned
+dependency directory to be read outside the default sandbox ACL; no network
+or package mutation was used.
+
+Artifacts:
+
+- `results/e0_global_nonlinear_rank_one_frontier/summary.json`
+- `results/e0_global_nonlinear_rank_one_frontier/checksums.sha256`
+- `docs/research/E0_GLOBAL_NONLINEAR_RANK_ONE_FRONTIER.md`
+
+Canonical summary SHA-256:
+
+```text
+a5105d11360d773da689397093c865ee27b0b8e01cb7e2f32cb532b9f9d797e8
+```
+
+No model forward, checkpoint mutation, experiment number, backend, kernel,
+download, Ubuntu command, or hardware action was used.

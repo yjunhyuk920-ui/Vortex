@@ -785,3 +785,29 @@ Current classification remains `NO_SURVIVING_CANDIDATE`.
 Authoritative decision:
 NO_FINITE_WORD_CONSTRUCTOR_SURVIVES_E0_KEEP_GENERAL_RANK_ONE_CELL_PROBE_OPEN.
 Current classification remains NO_SURVIVING_CANDIDATE.
+
+## E0 global nonlinear rank-one frontier audit
+
+| Claim | Evidence | Verdict |
+|---|---:|---|
+| Larsen--Williams is globally nonlocal/nonlinear | checkpoint-derived all-zero rectangle list | PASS CLASSIFICATION |
+| Published output is exact numerical rank-one | Boolean-semiring nonemptiness bit | FAIL SEMANTICS |
+| Leading `n=16,384,w=64` probe bytes | 262,144 words = 2 MiB = 6.25% | NOT 2.5%; BIG-O ONLY |
+| Leading redundancy | 16,777,216 bits = 2 MiB = 6.25% | BIG-O ONLY |
+| Published 32-query amortization | none | NOT ESTABLISHED |
+| Exact summary of every subrectangle compresses arbitrary block | singleton injection; raw information required | REJECTED DIRECT LIFT |
+| Full rank-one query answers are 3-wise independent | three-query XOR identity | FALSE |
+| KPI25 64-bit minimum-even-time premise | max `k=2`; required `k>=130` | INAPPLICABLE |
+| Ideal `n^2` whole-MatVec bound reaches scalar `n^2/40` | scalarizes to `n`; 409.6x short | FAIL TARGET BOUND |
+| 2026 dynamic Multiphase result is static target theorem | update model; polylog bound | INAPPLICABLE |
+| Focused deterministic tests | 6/6 | PASS |
+| Related frontier regression | 21/21 | PASS |
+| Full repository pytest regression | 534/534 | PASS |
+| Standard validation runner | completed | PASS |
+| General nonlinear numerical constructor | none | OPEN |
+| General nonlinear numerical impossibility | no covering theorem | OPEN / NO CLAIM |
+| Model forwards and hardware actions | 0 / 0 | NOT RUN |
+
+Authoritative decision:
+`REJECT_BOOLEAN_ZERO_RECTANGLE_AND_LIMITED_INDEPENDENCE_LIFTS_KEEP_GENERAL_NONLINEAR_NUMERICAL_RANK_ONE_GAP_OPEN`.
+Current classification remains `NO_SURVIVING_CANDIDATE`.

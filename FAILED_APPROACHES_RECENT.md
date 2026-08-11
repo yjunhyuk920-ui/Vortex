@@ -485,3 +485,27 @@ bounded-word data structure. The general rank-one cell-probe model remains
 open because current linear/direct-sum bounds do not cover it under the global
 8 GiB advice grant. Authority:
 docs/research/E0_FINITE_WORD_DISCONTINUOUS_BILINEAR_SOURCE_AUDIT.md.
+
+## F-061 -- Boolean zero rectangles and limited-independence theorem lifts
+
+The Larsen--Williams all-zero-rectangle list is globally nonlocal and
+nonlinear, but its answer is one Boolean nonemptiness bit. Its proof works
+because every intersection with an all-zero rectangle contributes zero. A
+summary that instead answers every exact numerical subrectangle without raw
+probes must answer singleton rectangles, recover every cell, and store at
+least the raw block information. Do not reopen the direct lift with parity,
+counts, signed sums, bit planes, Q4, BF16, or native rounding named as though
+they had the same hereditary property.
+
+Korten--Pitassi--Impagliazzo 2025 also cannot be cited as a target lower bound.
+The complete GF(2) rank-one query family has a three-query XOR dependency and
+is at most pairwise independent; its premise `k>t*w+1` fails before numerical
+substitution. A whole-MatVec lower bound must be divided by `n` to infer one
+scalar-call lower bound, and even an ideal `n^2` premise then misses `n^2/40`
+by a factor 409.6 at `n=16,384`. The 2026 Multiphase bound is dynamic and
+polylogarithmic.
+
+This entry rejects those lifts only. It does not reject a different adaptive,
+globally coupled, bounded-word exact numerical structure under 8 GiB advice.
+That general gap remains open. Authority:
+`docs/research/E0_GLOBAL_NONLINEAR_RANK_ONE_FRONTIER.md`.

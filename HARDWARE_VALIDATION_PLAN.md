@@ -602,3 +602,22 @@ use a small truncated table as evidence for the arbitrary-checkpoint claim.
 No target-server calibration can repair the missing artifact. Hardware work
 remains closed until a different finite-word rank-one source passes E0 with a
 real 8 GiB peak-state and shared-link plan.
+
+## Global nonlinear theorem audit: no hardware Gate is authorized
+
+The Larsen--Williams leading substitutions (`2 MiB` query traffic and `2 MiB`
+redundancy for one `16,384 x 16,384` one-bit square at `w=64`) are asymptotic
+cell-probe monomials with hidden constants and free computation. They are not
+SSD, PCIe, HBM, latency, power, or peak-VRAM measurements, and their Boolean
+nonemptiness output is not the native numerical result needed by the runtime.
+
+The limited-independence, singleton-injection, scalarization, and dynamic-model
+results are proof boundaries only. They provide no representation to allocate
+and no query kernel to benchmark. Cross-request 40-way batching is explicitly
+outside the registered single-stream service contract and cannot authorize a
+throughput benchmark as a substitute.
+
+No target-server command, storage mutation, download, CUDA action, GPU
+allocation, EXP-073 Stage 2, 122B/405B run, or Phase D/E4-E7 work is
+authorized. Hardware may reopen only after the active general nonlinear
+rank-one ticket produces one of its two required E0 deliverables.

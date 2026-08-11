@@ -1,0 +1,104 @@
+{
+  "cgl_static_matvec_scalarization_boundary": {
+    "dimension": 16384,
+    "implied_scalar_probe_lower_bound": 16384,
+    "loss_factor": 16384,
+    "number_of_basis_left_queries": 16384,
+    "reaches_one_fortieth_of_matrix_words": false,
+    "whole_vector_probe_lower_bound": 268435456
+  },
+  "claim_boundary": {
+    "core_candidate": "NONE",
+    "general_nonlinear_numerical_rank_one_constructor": "NOT FOUND",
+    "general_nonlinear_numerical_rank_one_lower_bound": "NOT PROVED",
+    "hardware_actions": 0,
+    "kpi_limited_independence_application": "PREMISE FALSE",
+    "model_forward_calls": 0,
+    "universal_2_5_percent_guarantee": "NOT ESTABLISHED",
+    "universal_2_5_percent_impossibility": "NOT PROVED",
+    "whole_matvec_lower_bound_as_scalar_target_bound": "TOO_WEAK_AFTER_N_FOLD_SCALARIZATION",
+    "zero_rectangle_numeric_lift": "REJECTED"
+  },
+  "classification": "E0_GLOBAL_NONLINEAR_RANK_ONE_FRONTIER",
+  "decision": "REJECT_BOOLEAN_ZERO_RECTANGLE_AND_LIMITED_INDEPENDENCE_LIFTS_KEEP_GENERAL_NONLINEAR_NUMERICAL_RANK_ONE_GAP_OPEN",
+  "dynamic_2026_boundary": {
+    "contains_updates": true,
+    "problem": "DYNAMIC_MULTIPHASE_INNER_PRODUCT_OVER_GF2",
+    "published_lower_bound": "Omega((log n / log log n)^2) UPDATE_OR_TOTAL_PROBES",
+    "static_checkpoint_query_model": false,
+    "target_scale_certificate": false
+  },
+  "exact_aggregate_summary_lemma": {
+    "alphabet_size": 2,
+    "bits_per_symbol": 1,
+    "cells": 268435456,
+    "columns": 16384,
+    "compression_below_raw_information_possible": false,
+    "covers_arbitrary_adaptive_global_data_structures": false,
+    "minimum_summary_bits": 268435456,
+    "proof": [
+      "query every singleton rectangle",
+      "each singleton answer recovers its cell",
+      "equal summaries imply equal cells at every position",
+      "therefore the summary map is injective"
+    ],
+    "raw_information_bits": 268435456,
+    "rows": 16384,
+    "scope": "SUMMARY_ALONE_ANSWERS_EVERY_SUBRECTANGLE_WITHOUT_RAW_PROBES"
+  },
+  "korten_pitassi_impagliazzo_2025": {
+    "answer_identity_for_every_database": "a1 XOR a2 XOR a3 = 0",
+    "field": "GF(2)",
+    "kpi_strict_premise": "k > t*w + 1",
+    "kpi_theorem_requires_even_t": true,
+    "maximum_k_wise_independence_of_full_distinct_query_family": 2,
+    "minimum_integer_k_required": 130,
+    "premise_can_hold_for_full_rank_one_family": false,
+    "query_identity": "q1 XOR q2 XOR q3 = 0",
+    "requires_query_dimension_at_least": 2,
+    "strict_threshold_t_times_w_plus_one": 129,
+    "substituted_even_probe_count": 2,
+    "substituted_word_bits": 64,
+    "support_size_of_answer_triple_at_most": 4,
+    "support_size_required_for_three_wise_independence": 8,
+    "target_lower_bound_obtained": false,
+    "three_distinct_queries": [
+      "r tensor u",
+      "r tensor v",
+      "r tensor (u+v)"
+    ],
+    "uniform_database_achieves_pairwise_independence": true
+  },
+  "larsen_williams_2017": {
+    "dimension": 16384,
+    "exact_parity_count_signed_sum_or_native_numeric_output": false,
+    "leading_probe_byte_fraction_of_one_bit_matrix": "1/16",
+    "leading_probe_byte_percent_of_one_bit_matrix": 6.25,
+    "leading_probe_bytes": 2097152,
+    "leading_probe_words": 262144,
+    "leading_redundancy_bits": 16777216,
+    "leading_redundancy_bytes": 2097152,
+    "leading_redundancy_fraction_of_one_bit_matrix": "1/16",
+    "leading_redundancy_percent_of_one_bit_matrix": 6.25,
+    "matrix_bits": 268435456,
+    "matrix_bytes": 33554432,
+    "multiquery_32_token_amortization_supplied": false,
+    "published_bounds_have_hidden_constants": true,
+    "published_output": "BOOLEAN_SEMIRING_RECTANGLE_NONEMPTINESS_BIT",
+    "target_certificate": false,
+    "word_bits": 64
+  },
+  "primary_sources": {
+    "clifford_gronlund_larsen": "https://arxiv.org/abs/1504.01836",
+    "dynamic_multiphase_2026": "https://eccc.weizmann.ac.il/report/2026/047/",
+    "korten_pitassi_impagliazzo": "https://eccc.weizmann.ac.il/report/2025/030/",
+    "larsen_williams": "https://arxiv.org/abs/1605.01695"
+  },
+  "registered_target": {
+    "global_advice_bytes": 8589934592,
+    "native_word_bits": 64,
+    "registered_square_dimension": 16384,
+    "requested_fraction": "1/40",
+    "required_output": "REFERENCE_EXACT_NATIVE_NUMERICAL_RANK_ONE_SCALAR"
+  }
+}

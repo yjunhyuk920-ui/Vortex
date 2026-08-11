@@ -565,3 +565,22 @@ model-wide nonlinear direct sum is supplied.
 These results do not resolve the claimed general nonlinear ticket. Universal
 2.5% remains NOT ESTABLISHED rather than IMPOSSIBLE; no Core Candidate, model
 run, E1/E2, backend, hardware, or scale promotion is authorized.
+
+## Current classification after the global nonlinear frontier audit
+
+Larsen--Williams is the first audited constructor with the required global,
+checkpoint-derived, nonlinear shape, but its all-zero-rectangle proof returns
+only Boolean nonemptiness. A direct exact numerical rectangle summary is
+injective by singleton queries and cannot compress an arbitrary covered block.
+
+Korten--Pitassi--Impagliazzo 2025 does not supply the missing lower bound:
+three distinct GF(2) rank-one queries have an answer XOR fixed to zero, so the
+full family is at most pairwise independent and violates the theorem's
+`k>t*w+1` premise. Whole-vector MatVec lower bounds lose a factor `n` under a
+valid scalar reduction, and the 2026 dynamic result has the wrong model and
+scale.
+
+These are route closures, not a general nonlinear impossibility theorem.
+Universal 2.5% remains NOT ESTABLISHED, the general numerical rank-one gap
+remains open, no Core Candidate survives, and no E1/E2, model, backend,
+hardware, or scale promotion is authorized.
