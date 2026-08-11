@@ -195,3 +195,16 @@ directions create additional measurements, not new causal states or KV
 records. Full-sweep accounting therefore divides by at most the number of
 state columns/accepted path nodes, never by the scalar table size. At K=32,
 the favorable 10.6-bit sweep floor is `525.1467264 ms/token` at 32 GB/s.
+
+`vortex_runtime/tabulation_supercode_frontier.py` adds a scoped compiler
+boundary. If arbitrary Boolean stored cells are queried through fixed
+nonadaptive recovery sets and an XOR-only decoder, ANF uniqueness replaces
+them with linear functional atoms without changing any exact answer. Such a
+component must use the sparse-functional-dictionary interface and cannot be
+advertised as a nonlinear source.
+
+An aligned low-weight atom family for the rank-one/Segre query set remains an
+unimplemented research object. The local subset count has room at target-like
+parameters, but no generator, decomposer, native cell semantics, causal batch
+union, physical layout, or runtime equation exists. This module is a pure E0
+calculator and must not enter the operator path.

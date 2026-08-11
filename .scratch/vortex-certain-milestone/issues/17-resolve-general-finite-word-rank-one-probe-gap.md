@@ -331,3 +331,24 @@ would report `16.4108352 ms/scalar` and is explicitly rejected. The June 2026
 tile-addressable ANS codec is retained as an exact transport auxiliary but
 supplies no partial-state certificate. No partial exact source or general
 nonlinear lower bound was delivered, so this issue remains claimed.
+
+The fourteenth post-audit screen is recorded in
+`docs/research/E0_TABULATION_SUPERCODE_FRONTIER.md`. It permits every stored
+one-bit cell to be an arbitrary Boolean function of the checkpoint, but fixes
+each query's nonadaptive recovery set and XORs the selected cells. Uniqueness
+of algebraic normal form then gives an exact linearization lemma: selected
+constants and higher-degree monomials cancel, while the selected degree-one
+coefficients XOR to the query mask. Nonlinear preprocessing therefore cannot
+improve this decoder class; it reduces to the existing sparse functional
+dictionary without assuming a linear encoder.
+
+The reduction exposes a narrower structured object rather than closing the
+ticket. Under the favorable proportional one-bit storage grant, a `23 x 23`
+block has 619 atoms, and raw subset capacity first permits its complete binary
+rank-one set at weight six (`6/529`). Random atoms are not a constructor: the
+fixed-query union-bound exponent is at most `-483`, and the expected number of
+nonzero rank-one masks hit has exponent at most `-437`. An explicit
+Segre-aligned atom family, succinct decomposer, joint 32-query physical union,
+and native lift remain absent. Adaptive addresses and arbitrary finite-word
+decoders are outside the lemma, so neither required ticket deliverable exists
+and the issue remains claimed.

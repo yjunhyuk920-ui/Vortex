@@ -828,3 +828,19 @@ tile and supplies no state or token certificate.
 No Core Candidate survives. No E1/E2, model, backend, hardware, or scale
 promotion is authorized. Authority:
 `docs/research/E0_CARTESIAN_BILINEAR_CAUSAL_UTILITY_GATE.md`.
+
+## Current classification after the tabulation/supercode Gate
+
+For a binary checkpoint, arbitrary preprocessing cells followed by fixed
+nonadaptive addresses and XOR-only recovery are now closed by an exact ANF
+linearization lemma. The proof preserves each query's recovery set and reduces
+the scheme to the non-systematic sparse functional dictionary. It is not a
+lower bound for adaptive addresses, arbitrary word decoders, or native
+BF16/FP32 arithmetic.
+
+The first favorable local capacity witness is `b=23`, `S=619`, `t=6`. This
+only shows that subset cardinality cannot reject a deliberately
+Segre-aligned sparse code. Random atoms are exponentially unaligned, and no
+explicit code, decomposer, physical batch union, or native lift has been
+delivered. `NO_SURVIVING_CANDIDATE` remains in force; do not assign EXP-085 or
+run a model, backend, download, server, or hardware stage.

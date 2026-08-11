@@ -298,3 +298,19 @@ _Avoid_: Treating measurements as successor states, K-squared tokens
 _Current status_: Retained as an arithmetic/certificate auxiliary. With K
 forward states it creates K-squared scalar measurements but at most K causal
 state nodes, so it does not rescue a full checkpoint sweep.
+
+**Nonadaptive XOR Tabulation**:
+A compiled binary source whose cells may be arbitrary checkpoint functions,
+but whose query chooses a fixed set of cells and XORs their bits.
+_Avoid_: Adaptive addresses, arbitrary word decoders, native floating point
+_Current status_: Closed as a distinct nonlinear source. ANF uniqueness
+linearizes every exact recovery set to the sparse functional dictionary.
+
+**Segre-Aligned Sparse Supercode**:
+An implicit near-source-size binary atom family whose short XOR sums contain
+every rank-one query mask, together with a sub-dense decomposer.
+_Avoid_: Random high-girth code, subset-count capacity, literal atom metadata
+_Current status_: Open but unconstructed. A favorable 23-by-23 counting case
+has enough subset names at weight six, while random atoms have exponentially
+negligible alignment; no atoms, decoder, joint batch layout, or native lift
+exist.

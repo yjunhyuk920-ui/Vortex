@@ -1077,3 +1077,19 @@ accepted-token denominator remains at most 32. A full near-Shannon BF16 sweep
 therefore remains at least `525.1467264 ms/token` at the favorable 32 GB/s
 link. Cartesian batching is auxiliary until paired with a partial exact
 information source.
+
+#### Nonadaptive XOR-tabulation boundary
+
+No component may claim nonlinear-preprocessing power merely by storing
+arbitrary Boolean checkpoint summaries and XORing a fixed query-dependent set
+of them. Algebraic-normal-form uniqueness replaces every such summary by its
+degree-one coefficient mask while preserving every exact recovery set. This
+decoder is exactly the existing sparse functional dictionary.
+
+The remaining binary interface is a deliberately structured, implicit atom
+family whose low-weight subset sums contain the Segre/rank-one query set. Raw
+capacity first fits the registered fraction for a favorable `23 x 23` block
+at six of 529 source positions, but this is not a code construction. Random
+atoms miss the required structured masks by exponential margins. No aligned
+atoms, decomposer, native lift, joint causal-batch layout, or complete cost
+equation exists, so a `SegreAlignedSupercode` is not admitted.

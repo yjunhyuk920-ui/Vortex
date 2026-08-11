@@ -461,3 +461,23 @@ Next: seek a partial exact source that determines unread contributions and
 state, or a genuinely new finite-word nonlinear decoder. Do not continue
 full-sweep compression or scalar-denominator variants. Keep
 `NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.
+
+<!-- E0-TABULATION-SUPERCODE-HANDOFF -->
+## Current handoff after the tabulation/supercode Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_TABULATION_SUPERCODE_FRONTIER.md` and
+`results/e0_tabulation_supercode_frontier/summary.json`.
+
+Fixed-address XOR tabulation is now exactly linearized by ANF and is not a new
+nonlinear source. Favorable local subset capacity first fits at `b=23`,
+`S=619`, `t=6`, but random atoms are exponentially unaligned and no explicit
+Segre-aligned family or decomposer exists.
+
+Next: construct a structured near-source atom generator plus sub-dense exact
+rank-one decomposer and one small shared physical set for 32 queries, or move
+to an adaptive arbitrary-word mechanism outside the lemma. Do not repeat
+random dictionaries, capacity counting, or fixed XOR tables. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.

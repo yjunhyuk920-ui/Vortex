@@ -86,3 +86,17 @@ measurements, but the model still has only 32 forward/KV states. The scalar
 table may reduce repeated certification work; it may not be used as a
 1,024-token denominator. A full near-Shannon BF16 sweep remains
 `525.1467264 ms/token` over the valid state count.
+
+## Current tabulation/supercode boundary
+
+Arbitrary nonlinear stored bits do not create a new source when a query uses
+fixed addresses and XOR-only decoding. The unique algebraic normal form of
+each cell proves that every exact recovery set has an equivalent collection
+of linear functional atoms. This closes the named tabulation route without
+assuming that the original preprocessing was linear.
+
+The aligned sparse dictionary itself remains open. Favorable local counting
+first has enough subset names at `b=23`, `S=619`, `t=6`, but random atoms miss
+the binary rank-one set exponentially and counting supplies neither atoms nor
+a decoder. Adaptive word-RAM schemes and native numerical queries are outside
+the theorem. No Core Candidate survives.

@@ -389,3 +389,26 @@ NO SURVIVING CANDIDATE
 
 Authority:
 `docs/research/E0_CARTESIAN_BILINEAR_CAUSAL_UTILITY_GATE.md`.
+
+<!-- E0-TABULATION-SUPERCODE-FRONTIER -->
+## 2026-08-12 -- E0 tabulation / Segre-supercode frontier
+
+Arbitrary Boolean checkpoint cells with fixed nonadaptive XOR recovery were
+reduced exactly to linear functional atoms by ANF uniqueness. Nonlinear
+preprocessing therefore supplies no distinct advantage in that scoped model.
+
+The remaining aligned-code capacity was computed without sampling. A
+favorable `23 x 23` block gets 619 cells and first stops being count-rejected
+at weight six (`6/529`), but uniform random atoms have fixed-query and total
+expected-hit floor exponents `-483` and `-437`. No aligned code or decoder was
+constructed; adaptive/native models remain outside the lemma.
+
+Decision:
+
+```text
+REDUCE_NONADAPTIVE_XOR_TABULATION_TO_SPARSE_FUNCTIONAL_DICTIONARY
+KEEP_SEGRE_ALIGNED_SUPERCODE_OPEN_UNCONSTRUCTED
+NO_SURVIVING_CANDIDATE
+```
+
+Authority: `docs/research/E0_TABULATION_SUPERCODE_FRONTIER.md`.

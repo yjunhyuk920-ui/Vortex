@@ -890,3 +890,27 @@ it as token amplification without additional distinct forward states and a
 causal path-coverage proof. The result does not reject selective tile reads
 or a partial exact information source. Authority:
 `docs/research/E0_CARTESIAN_BILINEAR_CAUSAL_UTILITY_GATE.md`.
+
+## F-081 -- Nonlinear stored bits called a new fixed-XOR tabulation source
+
+Do not promote arbitrary nonlinear checkpoint preprocessing when every query
+reads a fixed nonadaptive cell set and XORs the returned bits. Expand each
+stored bit in its unique algebraic normal form. Exact equality to the query's
+linear parity for every checkpoint forces all selected constants and
+higher-degree monomials to cancel; the selected degree-one coefficient masks
+XOR exactly to the query. Replacing the cells by those linear forms preserves
+every recovery set. This is the sparse functional dictionary, not a new
+nonlinear mechanism.
+
+Do not invert this scoped lemma into a universal rejection. With the complete
+8 GiB advice granted proportionally and every omitted cost free, a `23 x 23`
+binary block has 619 atom slots and enough subset names to stop rejecting at
+weight six (`6/529`). That capacity is not an aligned code. Uniform random
+atoms hit a fixed nonzero rank-one query with union-bound floor exponent
+`-483`; the expected total nonzero rank-one hits have floor exponent `-437`.
+
+The unresolved object is an explicit Segre-aligned sparse atom family plus a
+succinct decomposer, shared physical 32-query set, and native bounded-word
+lift. Adaptive data-dependent addresses and arbitrary word decoders remain
+outside F-081. Authority:
+`docs/research/E0_TABULATION_SUPERCODE_FRONTIER.md`.

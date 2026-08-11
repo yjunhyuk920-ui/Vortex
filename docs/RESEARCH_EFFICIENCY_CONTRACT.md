@@ -691,3 +691,18 @@ the 841-token favorable sweep requirement. Continue with a mechanism that
 determines unread contributions or creates at least that many genuinely
 causal states without future-token leakage. Keep `NO_SURVIVING_CANDIDATE` and
 do not start EXP-085 or model/hardware work.
+
+## Current directive after the tabulation/supercode Gate
+
+Do not revisit nonlinear stored bits with fixed addresses and XOR output;
+their ANF linearization is exact and returns to the sparse functional
+dictionary. Do not run more random-dictionary searches merely because the
+subset count has capacity: the `23 x 23` diagnostic shows both that counting
+cannot reject and that random alignment is exponentially absent.
+
+Continue this route only with an explicit structured atom generator and a
+sub-dense exact decomposer for the rank-one/Segre set, preferably proving one
+small shared physical atom set for a causal batch. Otherwise change to an
+adaptive finite-word mechanism genuinely outside the lemma. In either case,
+apply its cheapest algebraic/storage Gate before any model or hardware work.
+Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085.
