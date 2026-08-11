@@ -203,3 +203,16 @@ evaluation therefore reads at least all 403,747,897,344 registered one-bit
 coefficients, or 47.00244140625 GiB. This rejects direct row lottery, not a
 succinct nonlinear cold-backed oracle, and still does not supply either
 required ticket deliverable. The ticket remains claimed.
+
+The fifth constructor screen is recorded in
+`docs/research/E0_FUNCTIONAL_ARRAY_CODE_NOVELTY_GATE.md`.
+`OMEGA-FUNCTIONALSPAN` maps functional PIR/batch/array recovery sets to the
+existing systematic-linear sparse-span model. An exhaustive prototype over
+every binary resident subspace through ambient dimension six recovered only
+row-parity/covering witnesses; for a `2 x 3` matrix, one hot form still needs
+three of six raw coordinates and two hot forms need two. The all-linear
+`GF(16)` sphere-covering diagnostic has a `79.09389479630005%` root under the
+complete 8 GiB grant, but it is explicitly not a rank-one or native-float
+lower bound. This rejects the named linear-code constructor only and supplies
+neither required general nonlinear deliverable, so the ticket remains
+claimed.

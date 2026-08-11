@@ -1551,3 +1551,17 @@ Gap`. Its next constructor must supply a **compressed nonlinear** cold-backed
 above-random oracle with every repeated probe/call charged, or use a materially
 different non-oracle information source. The alternative remains a covering
 lower bound.
+
+## Functional-code names closed -- continue beyond linear recovery sets
+
+Do not implement functional PIR, functional batch, or functional array-code
+layouts. Their recovery sets contain stored linear forms and reduce to the
+already screened sparse-span/covering model. The small exhaustive prototype
+is a novelty check, not authority for a general nonlinear lower bound.
+
+Continue only with a nonliteral **nonlinear** cold decoder whose query-time
+equation includes address discovery and every raw probe, or with a theorem
+that covers arbitrary nonlinear global advice and adaptive rank-one probes.
+No model, EXP-085, backend, kernel, download, Ubuntu action, or hardware stage
+is authorized. Authority:
+`docs/research/E0_FUNCTIONAL_ARRAY_CODE_NOVELTY_GATE.md`.

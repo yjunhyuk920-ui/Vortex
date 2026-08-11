@@ -695,3 +695,24 @@ This closes direct row lottery, not a succinct nonlinear cold-backed oracle.
 Every preprocessing structure, repeated call, probe, decoder, verifier,
 fallback, and native numerical lift remains mandatory. Authority:
 `docs/research/E0_AVERAGE_ORACLE_AMPLIFIER_FRONTIER.md`.
+
+## F-072 -- OMEGA-FUNCTIONALSPAN linear recovery-set relabeling
+
+Do not reopen functional PIR, functional batch, or functional array codes as
+a nonlinear cold oracle. Their encoded symbols and recovery equations are
+linear forms, so they are the existing systematic-linear sparse-span and
+covering-code model.
+
+A complete binary enumeration of every resident subspace through ambient
+dimension six found only the expected parity/covering tradeoff. For a `2 x 3`
+matrix, one resident form still needs three of six raw coefficients in the
+worst case; two resident forms need two. The witnesses store row parities and
+read the requested subset or its complement. The favorable all-linear
+`GF(16)` sphere-covering screen with the complete 8 GiB grant has a
+`79.09389479630005%` radius root, but this is not a rank-one or native-float
+lower bound and must not be cited as one.
+
+This closes only the named linear code family. It does not cover arbitrary
+nonlinear advice, adaptive checkpoint probes, or a nonliteral compressed
+answer decoder. Authority:
+`docs/research/E0_FUNCTIONAL_ARRAY_CODE_NOVELTY_GATE.md`.

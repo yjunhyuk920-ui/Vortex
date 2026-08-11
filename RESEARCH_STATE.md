@@ -1676,3 +1676,21 @@ TARGET NOT ACHIEVED
 
 Authority: `docs/research/E0_AVERAGE_ORACLE_AMPLIFIER_FRONTIER.md` and
 `results/e0_average_oracle_amplifier_frontier`.
+
+## Functional linear-query code screen
+
+`OMEGA-FUNCTIONALSPAN` was rejected before implementation. Functional
+PIR/batch/array codes store and combine linear forms, so they are the existing
+linear sparse-span/covering family. Exhaustive toy controls through six
+ambient bits found only row-parity witnesses. The favorable all-linear
+`GF(16)` radius root is `79.09389479630005%`, but it cannot be transferred to
+the smaller Transformer rank-one family or native floating arithmetic.
+
+```text
+OMEGA-FUNCTIONALSPAN: LINEAR-COVERING DUPLICATE / REJECTED
+GENERAL NONLINEAR ADAPTIVE PROBE GAP: OPEN
+NO SURVIVING CANDIDATE
+TARGET NOT ACHIEVED
+```
+
+Authority: `docs/research/E0_FUNCTIONAL_ARRAY_CODE_NOVELTY_GATE.md`.

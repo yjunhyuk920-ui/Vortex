@@ -1017,3 +1017,20 @@ Full execution provenance is recorded in `REPRODUCIBILITY.md`.
 
 Authoritative decision:
 `REJECT_ROW_LOTTERY_AND_UNCHARGED_AMPLIFIER_AS_CORE`.
+
+## E0 functional-array-code novelty Gate
+
+| Check | Observed | Status |
+|---|---:|---|
+| Enumerated toy ambient dimensions | 4 and 6 bits | PASS |
+| `2x3`, one / two hot forms | 3 / 2 raw reads | PASS |
+| `3x2`, one / three hot forms | 4 / 2 raw reads | PASS |
+| Witness family | row parity / linear covering | DUPLICATE |
+| `GF(16)` all-linear radius root | 79.09389479630005% | DIAGNOSTIC ONLY |
+| Rank-one/native-float promotion | not made | PASS |
+| Full repository regression | 593/593 | PASS |
+| Standard validation runner | completed | PASS |
+| Model forwards / hardware actions | 0 / 0 | NOT RUN |
+| General nonlinear probe gap | unresolved | OPEN / NO CLAIM |
+
+Authoritative decision: `REJECT_OMEGA_FUNCTIONALSPAN_AT_NOVELTY_GATE`.

@@ -1444,3 +1444,27 @@ KEEP_NO_SURVIVING_CANDIDATE
 
 Authority: `docs/research/E0_AVERAGE_ORACLE_AMPLIFIER_FRONTIER.md` and
 `results/e0_average_oracle_amplifier_frontier`.
+
+## D-101 -- Reject functional-array codes as a linear-covering relabeling
+
+Functional PIR, batch, and array codes recover requested linear forms from
+sets of stored linear forms. They therefore remain inside the already scoped
+systematic-linear sparse-span model and do not supply the missing nonlinear
+cold oracle.
+
+The throwaway logic prototype enumerated every binary resident subspace up to
+ambient dimension six. Its exact optima were ordinary row-parity/covering
+witnesses; no distinct whole-MatVec cross-row source appeared. The separate
+`GF(16)` all-linear radius diagnostic is `79.09389479630005%`, but it is not a
+rank-one or native-float lower bound.
+
+Decision:
+
+```text
+REJECT_OMEGA_FUNCTIONALSPAN_AT_NOVELTY_GATE
+DO_NOT_PROMOTE_THE_GF16_ALL_LINEAR_RADIUS_TO_THE_TARGET_QUERY_FAMILY
+KEEP_GENERAL_NONLINEAR_ADAPTIVE_RANK_ONE_PROBE_GAP_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority: `docs/research/E0_FUNCTIONAL_ARRAY_CODE_NOVELTY_GATE.md`.

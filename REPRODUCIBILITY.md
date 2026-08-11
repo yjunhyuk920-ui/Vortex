@@ -1389,6 +1389,23 @@ Canonical summary SHA-256:
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
 
+## E0 functional-array-code novelty prototype
+
+Authoritative command:
+
+```powershell
+$env:PYTHONPATH = (Resolve-Path '.').Path
+.deps\exp076-venv\Scripts\python.exe scripts\prototype_functional_span_cover.py
+```
+
+Observed exact controls enumerate all binary resident subspaces for matrix
+shapes `1x4`, `2x2`, `2x3`, and `3x2`. The registered all-linear diagnostic
+prints a `GF(16)` hot-symbol rate of `0.04255098118656569` and covering-radius
+root `0.7909389479630005`. This prototype is deliberately E0-only and makes
+no model, checkpoint, package, network, or hardware mutation. The full
+repository regression passed 593/593 and `scripts/run_validation.py`
+completed successfully after the record was added.
+
 ## E0 average-oracle amplifier frontier audit
 
 Authoritative commands:
