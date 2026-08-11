@@ -869,3 +869,24 @@ preprocessed binary MatVec gap because the evaluation map is bijective.
 This closes the representation renaming, not all nonlinear/adaptive MatVec
 data structures. Authority:
 `docs/research/E0_LINEARIZED_POLYNOMIAL_LOCALITY_GATE.md`.
+
+## F-080 -- Cartesian bilinear scalars counted as causal tokens
+
+Do not divide a full checkpoint sweep by every entry of `R^T W U`. With 32
+left directions and 32 forward states the table does contain 1,024 exact
+scalars, but only the 32 columns of `U` are distinct model states. Changing a
+left direction asks another decision or competitor question about the same
+state; it does not create another KV-bearing successor.
+
+Even granting 10.6 bits per BF16 weight and making decompression, GEMM, KV,
+metadata, and scheduling free, one registered sweep is
+`16.8046952448 seconds` at 32 GB/s. The valid 32-state denominator is
+`525.1467264 ms/token`, while the invalid 1,024-scalar denominator would
+appear to pass at `16.4108352 ms/scalar`. At least 841 causally usable tokens
+per sweep are required before positive costs.
+
+Retain Cartesian batching for shared scalar certification, but do not reopen
+it as token amplification without additional distinct forward states and a
+causal path-coverage proof. The result does not reject selective tile reads
+or a partial exact information source. Authority:
+`docs/research/E0_CARTESIAN_BILINEAR_CAUSAL_UTILITY_GATE.md`.

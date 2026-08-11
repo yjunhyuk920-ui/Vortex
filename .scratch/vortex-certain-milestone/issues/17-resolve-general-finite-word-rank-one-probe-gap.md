@@ -317,3 +317,17 @@ dense ordinary-polynomial data structure fails because the ordinary degree is
 arbitrary MatVec gap under the representation bijection. No new physical
 locality, native lift, or complete equation was delivered, so the issue
 remains claimed.
+
+The thirteenth post-audit screen is recorded in
+`docs/research/E0_CARTESIAN_BILINEAR_CAUSAL_UTILITY_GATE.md`. The exact table
+`R^T W U` produces 1,024 scalar measurements from 32 left directions and 32
+forward states, but only the 32 columns of `U` are causal state nodes. The
+left directions add questions about a state, not KV-bearing successors.
+
+At the favorable 10.6-bit BF16 entropy and 32 GB/s, a full registered sweep
+therefore costs `525.1467264 ms/token` over the valid state denominator and
+needs 841 causally useful tokens to touch 20 ms. Dividing by 1,024 scalars
+would report `16.4108352 ms/scalar` and is explicitly rejected. The June 2026
+tile-addressable ANS codec is retained as an exact transport auxiliary but
+supplies no partial-state certificate. No partial exact source or general
+nonlinear lower bound was delivered, so this issue remains claimed.

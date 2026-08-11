@@ -441,3 +441,23 @@ preprocessed MatVec and is not a new mechanism.
 Next: change mechanism class and test only a proposal that creates new
 physical locality or removes a fully charged operation. Keep
 `NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.
+
+<!-- E0-CARTESIAN-BILINEAR-CAUSAL-UTILITY-HANDOFF -->
+## Current handoff after the Cartesian causal-utility Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_CARTESIAN_BILINEAR_CAUSAL_UTILITY_GATE.md` and
+`results/e0_cartesian_bilinear_causal_utility_gate/summary.json`.
+
+`R^T W U` is retained as exact batched scalar reuse, but its 1,024 entries at
+K=32 refer to only 32 forward states. Counting entries as generated tokens is
+invalid. A favorable 10.6-bit full sweep is `525.1467264 ms/token` at the
+valid denominator and needs 841 causal tokens per sweep to touch the target.
+The new tile-addressable ANS paper improves lossless tile transport only.
+
+Next: seek a partial exact source that determines unread contributions and
+state, or a genuinely new finite-word nonlinear decoder. Do not continue
+full-sweep compression or scalar-denominator variants. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.

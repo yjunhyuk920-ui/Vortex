@@ -79,3 +79,10 @@ does not force enough probes to decide the runtime budget. The open task is an
 implicit near-source-size encoding that produces only the requested envelope
 restriction, with every address, native summary, probe, and decode cost
 charged.
+
+The envelope also has a strict causal-utility boundary. Computing all entries
+of `R^T W U` for 32 left directions and 32 state columns yields 1,024 exact
+measurements, but the model still has only 32 forward/KV states. The scalar
+table may reduce repeated certification work; it may not be used as a
+1,024-token denominator. A full near-Shannon BF16 sweep remains
+`525.1467264 ms/token` over the valid state count.

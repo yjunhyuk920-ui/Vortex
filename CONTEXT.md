@@ -290,3 +290,11 @@ _Avoid_: Literal catalog of all factor-subspace pairs, free restriction oracle
 _Current status_: Exact design constraint, not an implementation. At K=32 the
 envelope has at most 1,024 dimensions, but registered factor-space pairs have
 strict log2 cardinality above 1,046,528.
+
+**Cartesian Bilinear Batch**:
+The exact table `C=R^T W U`, which contains one scalar for every pair of a
+left decision direction and a forward-state column.
+_Avoid_: Treating measurements as successor states, K-squared tokens
+_Current status_: Retained as an arithmetic/certificate auxiliary. With K
+forward states it creates K-squared scalar measurements but at most K causal
+state nodes, so it does not rescue a full checkpoint sweep.

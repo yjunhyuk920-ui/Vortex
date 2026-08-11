@@ -188,3 +188,10 @@ catalog has more than `2^1,046,528` registered names, and the strongest finite
 support count obtained here forces only 20,218 bit atoms. Any future component
 must generate the envelope restriction implicitly and charge every native
 summary, address, probe, and decode operation.
+
+`R^T W U` is an exact auxiliary inside this interface. Its Cartesian table
+has `K^2` scalar entries but only `K` forward-state columns. Left decision
+directions create additional measurements, not new causal states or KV
+records. Full-sweep accounting therefore divides by at most the number of
+state columns/accepted path nodes, never by the scalar table size. At K=32,
+the favorable 10.6-bit sweep floor is `525.1467264 ms/token` at 32 GB/s.

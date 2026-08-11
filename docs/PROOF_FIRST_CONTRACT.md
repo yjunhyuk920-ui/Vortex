@@ -811,3 +811,20 @@ lift.
 No Core Candidate survives. No E1/E2, model, backend, hardware, or scale
 promotion is authorized. Authority:
 `docs/research/E0_LINEARIZED_POLYNOMIAL_LOCALITY_GATE.md`.
+
+## Current classification after the Cartesian causal-utility Gate
+
+The identity `C=R^T W U` is exact and may share work across many scalar
+certificates. Its resource denominator is now fixed by causal state, not by
+the number of scalar table entries. With 32 state columns and 32 left
+directions, 1,024 measurements still describe only 32 forward states.
+
+The favorable 10.6-bit full sweep costs `525.1467264 ms/token` over those 32
+states. The apparent `16.4108352 ms` result obtained from the square scalar
+denominator is explicitly invalid. The new tile-addressable ANS literature is
+admitted as an exact transport auxiliary, but it fully decodes every consumed
+tile and supplies no state or token certificate.
+
+No Core Candidate survives. No E1/E2, model, backend, hardware, or scale
+promotion is authorized. Authority:
+`docs/research/E0_CARTESIAN_BILINEAR_CAUSAL_UTILITY_GATE.md`.

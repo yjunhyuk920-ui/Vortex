@@ -676,3 +676,18 @@ Continue only with a concrete scalable nonlinear decoder or a large-fiber
 rank-one theorem that jointly charges global advice and adaptive cross-matrix
 probes. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a model,
 build a backend/kernel, download a checkpoint, or touch hardware.
+
+## Current directive after the Cartesian causal-utility Gate
+
+Do not promote a `K x K` table of exact bilinear measurements by dividing its
+traffic by `K^2` generated tokens. Before any batch-amortization claim, count
+the distinct forward/KV states and the longest causally coverable accepted
+path. Left decision directions do not increase either count.
+
+Keep `R^T W U` only as an auxiliary for a future partial exact source. Do not
+spend another cycle on full-sweep lossless codecs: the new tile-addressable
+ANS result improves transport but retains the full consumed-tile payload and
+the 841-token favorable sweep requirement. Continue with a mechanism that
+determines unread contributions or creates at least that many genuinely
+causal states without future-token leakage. Keep `NO_SURVIVING_CANDIDATE` and
+do not start EXP-085 or model/hardware work.

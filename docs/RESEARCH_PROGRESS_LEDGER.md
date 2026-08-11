@@ -363,3 +363,29 @@ NO SURVIVING CANDIDATE
 ```
 
 Authority: `docs/research/E0_LINEARIZED_POLYNOMIAL_LOCALITY_GATE.md`.
+
+<!-- E0-CARTESIAN-BILINEAR-CAUSAL-UTILITY -->
+## 2026-08-12 -- E0 Cartesian bilinear causal-utility Gate
+
+The exact `R^T W U` table was separated into scalar measurements and causal
+forward states. A 32-by-32 table gives 1,024 exact measurements but only 32
+state columns, hence no more than 32 nodes on an accepted causal path.
+
+At the favorable 10.6-bit BF16 entropy and 32 GB/s link, a full registered
+sweep costs `16.8046952448 seconds`, `525.1467264 ms/token` over 32 states,
+and requires at least 841 causally useful tokens to reach 20 ms before other
+costs. The square-scalar denominator would report `16.4108352 ms/scalar` and
+is rejected. The June 2026 tile-addressable ANS codec is retained as an exact
+transport auxiliary only.
+
+Decision:
+
+```text
+REJECT_CARTESIAN_SCALAR_COUNT_AS_CAUSAL_TOKEN_AMPLIFICATION
+KEEP_CARTESIAN_BILINEAR_BATCHING_AS_AUXILIARY
+REQUIRE_PARTIAL_EXACT_INFORMATION_SOURCE
+NO SURVIVING CANDIDATE
+```
+
+Authority:
+`docs/research/E0_CARTESIAN_BILINEAR_CAUSAL_UTILITY_GATE.md`.

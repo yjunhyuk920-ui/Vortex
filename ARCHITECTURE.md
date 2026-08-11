@@ -1066,3 +1066,14 @@ admitted either: even the exact geometry forces only 20,218 bit atoms under
 the complete global grant. The open interface is an implicit shared code that
 generates the requested restriction and its physical addresses on demand;
 that interface has no implementation or native cost closure.
+
+#### Cartesian scalar utility boundary
+
+`R^T W U` is a valid way to share one matrix use across every left/right
+pair. If `R` and `U` each have 32 columns, it yields 1,024 exact scalars.
+Only the 32 columns of `U` are distinct forward states. The 32 left
+directions are measurements of those states, not new successor states, so the
+accepted-token denominator remains at most 32. A full near-Shannon BF16 sweep
+therefore remains at least `525.1467264 ms/token` at the favorable 32 GB/s
+link. Cartesian batching is auxiliary until paired with a partial exact
+information source.
