@@ -579,6 +579,16 @@ Native numerical width/order, atom metadata, physical random probes, and all
 materially different globally coupled nonlinear source. Keep
 `NO_SURVIVING_CANDIDATE`; do not assign EXP-085 or run model/hardware work.
 
+### Directive after the fixed-linear decoder Gate
+
+Do not try another invertible transform, FFT basis, tensor basis, or linear
+syndrome map. Their 32-query union activity is already closed with perfect
+packing and free hot cells. Continue the dictionary route only through an
+explicit nonlinear sparse coset representative whose search is itself
+sub-dense and whose atom layout is succinct. Apply a finite toy/exact Gate to
+that nonlinear decoder before any model work. A causal restriction is a
+separate route and must prove reachability exclusion rather than assume it.
+
 ## Current directive after lossless/cut/gauge screening
 
 Do not spend another cycle optimizing entropy codecs, attention gauges, or

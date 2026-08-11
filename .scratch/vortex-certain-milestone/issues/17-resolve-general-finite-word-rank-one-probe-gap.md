@@ -259,3 +259,16 @@ distinct short sums slightly above those points, but do not align them with
 rank-one masks, find their indices, or implement native arithmetic. This
 screen supplies neither an explicit target-fitting dictionary nor a covering
 lower bound, so the ticket remains claimed.
+
+The ninth post-audit screen is recorded in
+`docs/research/E0_FIXED_LINEAR_FUNCTIONAL_DECODER_ACTIVITY_BOUND.md`. It closes
+every fixed linear right inverse for the sparse functional dictionary. Rank
+forces at least `D` nonzero decoder rows; bilinear character activity makes a
+32-query independent tuple activate all but a `(3/4)^32` fraction in
+expectation. After all 8 GiB is granted hot, perfect packing still forces
+`41,874,345,776` cold bytes, `3.03866665x` the block allowance.
+
+Query-dependent nonlinear minimum-weight syndrome decoding, arbitrary
+nonlinear hot advice, and causal exclusion of the independently selectable
+tuple are not covered. No explicit decoder or covering lower bound was
+delivered, so the ticket remains claimed.

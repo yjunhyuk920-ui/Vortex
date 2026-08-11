@@ -1036,3 +1036,18 @@ physical layout, or complete runtime equation exists. A random high-girth
 dictionary supplies many distinct sparse sums but no reason that they equal
 the required masks. `OMEGA-FUNCDICT` therefore remains an unimplemented proof
 interface, not an architecture component.
+
+#### Fixed linear decoder closure
+
+The dictionary boundary is narrower than a fixed transform. If its decoder is
+`a(q)=Hq` with `GH=I`, then at least `D` decoder rows are nonzero. Under 32
+independently selectable binary rank-one tuples, almost every row is active at
+least once. Even after granting all 8 GiB as hot one-bit cells and perfect
+64-bit cold packing, one hard batch reads at least `41.874345776 GB`, or
+`40.8929 ms/token` at 32 GB/s with zero compute.
+
+Consequently no invertible basis, fixed FFT/tensor inverse, or linear syndrome
+representative is admitted. Any future `SparseFunctionalDictionary` must expose
+a query-dependent nonlinear sparse representative and close its search cost;
+arbitrary nonlinear hot advice and causally restricted query sets remain
+outside this scoped theorem.

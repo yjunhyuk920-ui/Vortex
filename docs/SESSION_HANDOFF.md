@@ -309,6 +309,13 @@ succinct exact decomposer and native-order lift, or a covering lower bound that
 actually applies to the non-systematic rank-one linear model. Keep
 `NO_SURVIVING_CANDIDATE` and do not assign EXP-085 without one deliverable.
 
+The first decomposer subcase is now closed. Any fixed linear right inverse
+activates almost every useful dictionary row across an independently selectable
+32-query tuple; even perfect bit packing leaves `41.874345776 GB` cold after
+the complete hot grant. Continue only with a nonlinear minimum-weight syndrome
+decoder or a proved causal restriction. Authority:
+`docs/research/E0_FIXED_LINEAR_FUNCTIONAL_DECODER_ACTIVITY_BOUND.md`.
+
 <!-- EXP-077A-AUTHORITATIVE-FINAL -->
 ## Current handoff after EXP-077A
 

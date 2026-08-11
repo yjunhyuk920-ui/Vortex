@@ -270,3 +270,22 @@ NO_SURVIVING_CANDIDATE
 ```
 
 Authority: `docs/research/E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER.md`.
+
+<!-- E0-FIXED-LINEAR-FUNCTIONAL-DECODER-ACTIVITY -->
+## 2026-08-12 -- E0 fixed-linear functional decoder activity
+
+For every fixed right inverse `H`, each nonzero row fires with probability at
+least one quarter on a uniform rank-one tuple. A 32-query hard union remains
+`41.874345776 GB` cold after all 8 GiB is granted hot, giving
+`40.8929 ms/token` at 32 GB/s before compute.
+
+Decision:
+
+```text
+REJECT_FIXED_LINEAR_FUNCTIONAL_DECODER
+KEEP_NONLINEAR_MINIMUM-WEIGHT_SYNDROME_DECODER_OPEN
+NO SURVIVING CANDIDATE
+```
+
+Authority:
+`docs/research/E0_FIXED_LINEAR_FUNCTIONAL_DECODER_ACTIVITY_BOUND.md`.

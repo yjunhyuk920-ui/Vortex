@@ -1,0 +1,55 @@
+{
+  "claim_boundary": {
+    "arbitrary_nonlinear_hot_advice": "NOT_COVERED",
+    "causal_transformer_reachability_of_independent_batch": "NOT_ESTABLISHED",
+    "fixed_fft_or_tensor_transform_inverse": "COVERED",
+    "fixed_linear_decoder": "REJECTED",
+    "general_nonlinear_data_structure": "NOT_COVERED",
+    "hardware_actions": 0,
+    "invertible_basis_change": "COVERED",
+    "linear_syndrome_representative": "COVERED",
+    "model_forward_calls": 0,
+    "native_numerical_lift": "NOT_SUPPLIED",
+    "nonlinear_minimum_weight_syndrome_decoder": "NOT_COVERED",
+    "target_candidate": false
+  },
+  "classification": "E0_FIXED_LINEAR_FUNCTIONAL_DECODER_ACTIVITY_BOUND",
+  "decision": "REJECT_FIXED_LINEAR_FUNCTIONAL_DECODER_FOR_32_INDEPENDENT_RANK_ONE_TUPLES_KEEP_NONLINEAR_SYNDROME_DECODER_OPEN",
+  "decisions": [
+    "REJECT_FIXED_LINEAR_FUNCTIONAL_DECODER",
+    "KEEP_NONLINEAR_SYNDROME_DECODER_OPEN",
+    "NO_SURVIVING_CANDIDATE"
+  ],
+  "io_comparison": {
+    "cold_over_requested_block": 3.038666650411814,
+    "exceeds_20ms_per_token_before_other_costs": true,
+    "favorable_link_bytes_per_second": 32000000000,
+    "requested_block_bytes": "13780500000",
+    "requested_block_bytes_decimal": 13780500000.0,
+    "zero_compute_block_ms": 1308.5733055,
+    "zero_compute_ms_per_token": 40.892915796875
+  },
+  "registered_floor": {
+    "batch_queries": 32,
+    "batch_union_activity_lower": "18444891053520699775/18446744073709551616",
+    "batch_union_activity_lower_decimal": 0.9998995475742793,
+    "data_dimension_bits": 403747897344,
+    "expected_cold_active_cells_lower": "1473322562682072935927675/4398046511104",
+    "favorable_word_bits": 64,
+    "forced_worst_case_cold_active_cell_bits": 334994766191,
+    "forced_worst_case_cold_bytes": 41874345776,
+    "forced_worst_case_cold_words": 5234293222,
+    "hot_one_bit_cells_granted": 68719476736,
+    "minimum_cold_nonzero_decoder_rows": 335028420608,
+    "minimum_nonzero_decoder_rows": 403747897344,
+    "minimum_single_query_row_activity": "1/4"
+  },
+  "theorem": {
+    "dictionary_atoms": "columns of G in GF(2)^D",
+    "fixed_linear_decoder": "H with G H = I_D",
+    "hot_cells_and_query_compute": "FREE_FAVORABLE_GRANT",
+    "independent_batch_union": "1-(3/4)^K",
+    "nonzero_row_activity": "Pr[sum_i r_i^T A_i u_i=1]=(1-2^-sum_i rank(A_i))/2",
+    "query_coefficients": "a(q)=H q"
+  }
+}

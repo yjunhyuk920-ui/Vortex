@@ -1769,3 +1769,27 @@ TARGET NOT ACHIEVED
 
 Authority: `docs/research/E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER.md` and
 `results/e0_sparse_functional_dictionary_frontier/summary.json`.
+
+## Fixed linear functional-decoder activity bound
+
+The first concrete decomposer for the open dictionary has been rejected. For
+`a(q)=Hq` and `GH=I`, rank forces at least one nonzero decoder row per binary
+source dimension. A nonzero row fires with probability at least `1/4` on an
+independently uniform rank-one tuple; the 32-query union probability is at
+least `0.9998995475742793`.
+
+After subtracting the complete 8 GiB hot grant, averaging forces one batch with
+334,994,766,191 active cold cell bits. Perfect 64-bit packing is still
+41,874,345,776 bytes, `3.03866665x` the registered block allowance and
+`40.8929 ms/token` at 32 GB/s before compute.
+
+```text
+FIXED LINEAR / INVERTIBLE TRANSFORM DECODER: REJECTED
+NONLINEAR MINIMUM-WEIGHT SYNDROME DECODER: OPEN / UNCONSTRUCTED
+CAUSAL REACHABILITY OF THE INDEPENDENT HARD BATCH: NOT ESTABLISHED
+NO SURVIVING CANDIDATE
+```
+
+Authority:
+`docs/research/E0_FIXED_LINEAR_FUNCTIONAL_DECODER_ACTIVITY_BOUND.md` and
+`results/e0_linear_functional_decoder_activity/summary.json`.

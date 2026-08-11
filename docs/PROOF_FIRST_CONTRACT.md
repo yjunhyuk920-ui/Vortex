@@ -622,6 +622,20 @@ boundaries, not a runtime cost claim.
 no E1/E2, model, backend, or hardware promotion is authorized. Authority:
 `docs/research/E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER.md`.
 
+### Fixed-linear decoder refinement
+
+A fixed right inverse `H` for a dictionary atom matrix cannot be the missing
+sparse decomposer. Rank and bilinear character activity force a 32-query hard
+tuple with `41.874345776 GB` of cold one-bit cells after the entire 8 GiB hot
+grant. Perfect word packing and 32 GB/s still give `40.8929 ms/token` before
+any other cost.
+
+This rejects fixed linear coordinate maps only. Nonlinear minimum-weight coset
+representatives and arbitrary nonlinear advice remain outside the theorem, as
+does causal reachability of the independently selectable hard tuple. No
+component or experiment is promoted. Authority:
+`docs/research/E0_FIXED_LINEAR_FUNCTIONAL_DECODER_ACTIVITY_BOUND.md`.
+
 ## Current classification after lossless/cut/gauge screening
 
 An exact graph-cut reduction is not an execution source unless the cut value

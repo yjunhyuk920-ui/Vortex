@@ -779,3 +779,24 @@ physical equation exist.  This entry rejects the table/LDC/counting-only
 promotions; it does not reject every globally aligned non-systematic linear or
 nonlinear cold source.  Authority:
 `docs/research/E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER.md`.
+
+## F-076 -- Fixed linear functional-dictionary decoders
+
+Do not reopen invertible basis changes, fixed FFT/tensor inverse transforms, or
+fixed linear syndrome representatives as the sparse functional decoder.  If
+dictionary atoms are columns of `G` and a fixed linear decoder `H` satisfies
+`G H=I`, then `H` has at least `D` nonzero rows.  Every such row is active with
+probability at least `1/4` under an independently uniform binary rank-one tuple.
+
+Across 32 independent tuples, the union activity is at least
+`1-(3/4)^32 = 0.9998995475742793` in expectation.  Granting all 8 GiB as free
+one-bit hot cells and perfect 64-bit packing still forces a worst-case cold
+union of `41,874,345,776` bytes.  This is `3.03866665x` the complete registered
+block allowance and costs `40.8929 ms/token` at a favorable 32 GB/s before all
+other work.
+
+This closes only a fixed linear representative under the independently
+selectable 32-query tuple interface.  It does not cover query-dependent
+nonlinear minimum-weight syndrome decoding, arbitrary nonlinear hot advice, or
+a proved causal restriction on reachable tuples.  Authority:
+`docs/research/E0_FIXED_LINEAR_FUNCTIONAL_DECODER_ACTIVITY_BOUND.md`.
