@@ -1,7 +1,7 @@
 # Derive a Finite-Word Discontinuous Bilinear Source
 
 Type: research
-Status: open
+Status: in-progress
 Blocked by: Derive an Implicit Nonlinear Bilinear Query Source
 
 ## Question
