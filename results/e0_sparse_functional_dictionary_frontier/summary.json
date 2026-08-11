@@ -1,0 +1,125 @@
+{
+  "candidate_equation": {
+    "cold_source_may_be_reencoded_non_systematically": true,
+    "exact_answer": "<q,W> = XOR(j in T(q), c_j)",
+    "query_decomposition": "q = XOR(j in T(q), g_j)",
+    "stored_cells": "c_j = <g_j, W> over GF(2)"
+  },
+  "claim_boundary": {
+    "complete_405b_cost_equation": false,
+    "direct_local_rank_one_truth_tables": "REJECTED",
+    "explicit_rank_one_aligned_dictionary": false,
+    "full_literal_answer_table": "REJECTED",
+    "general_nonlinear_lower_bound": false,
+    "hardware_actions": 0,
+    "implicit_physical_address_layout": false,
+    "model_forward_calls": 0,
+    "native_accumulation_order": false,
+    "native_numerical_lift": false,
+    "sparse_query_decoder": false,
+    "standard_coordinate_ldc_is_functional_decoder": false,
+    "target_candidate": false
+  },
+  "classification": "E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER",
+  "contract": {
+    "binary_screen_only": true,
+    "favorable_dictionary_form_bits": 474568720384,
+    "favorable_dictionary_words_64": 7415136256,
+    "global_advice_bits": 68719476736,
+    "registered_non_embedding_coefficients": 403747897344,
+    "registered_p50_coefficient_budget": "1076661059584/225",
+    "registered_p50_fraction": "8/675",
+    "registered_parameters": 405849243648
+  },
+  "decision": "REJECT_LITERAL_TABLE_AND_NAME_ONLY_LDC_PROMOTION_KEEP_ALIGNED_SPARSE_FUNCTIONAL_DICTIONARY_UNCONSTRUCTED",
+  "decisions": [
+    "REJECT_FULL_BILINEAR_EVALUATION_TABLE",
+    "REJECT_DIRECT_LOCAL_RANK_ONE_TRUTH_TABLE",
+    "REJECT_STANDARD_COORDINATE_LDC_NAME_AS_CONSTRUCTION",
+    "REJECT_QUERY_CARDINALITY_AS_EITHER_CONSTRUCTOR_OR_TARGET_LOWER_BOUND",
+    "KEEP_SPARSE_FUNCTIONAL_DICTIONARY_AS_UNCONSTRUCTED_OPEN_INTERFACE",
+    "NO_SURVIVING_CANDIDATE"
+  ],
+  "direct_square_tables": {
+    "decision": "REJECT_PERSISTENT_SPACE_EXPANSION",
+    "minimum_side_meeting_coefficient_fraction": 10,
+    "smallest_nontrivial_uniform_tile": {
+      "block_side": 2,
+      "favorable_persistent_bits": "908432769024",
+      "favorable_persistent_tib": 0.10327684879302979,
+      "raw_cells_per_tile": 4,
+      "storage_ratio_decimal": 2.25,
+      "storage_ratio_over_one_bit_source": "9/4",
+      "stored_nonzero_rank_one_forms_per_tile": 9,
+      "worst_query_fraction": "1/4",
+      "worst_query_fraction_decimal": 0.25
+    },
+    "target_fraction_tile": {
+      "block_side": 10,
+      "favorable_persistent_bits": "105633470814879744/25",
+      "favorable_persistent_tib": 480.3654101800919,
+      "raw_cells_per_tile": 100,
+      "storage_ratio_decimal": 10465.29,
+      "storage_ratio_over_one_bit_source": "1046529/100",
+      "stored_nonzero_rank_one_forms_per_tile": 1046529,
+      "worst_query_fraction": "1/100",
+      "worst_query_fraction_decimal": 0.01
+    }
+  },
+  "independent_rank_one_tuple": {
+    "exact_floor_log2_query_count": 39254527,
+    "literal_one_bit_table_address_bits": 39254528,
+    "matrix_count": 884,
+    "minimum_matrix_side": 1024,
+    "pair_description_bits_upper_bound": 39254528,
+    "parameters_reconstructed_from_shapes": 405849243648,
+    "strict_query_count_lower_exponent": 39254527,
+    "trace_reachability": "NOT_ESTABLISHED"
+  },
+  "literal_table": {
+    "address_bits": 39254528,
+    "decision": "REJECT",
+    "one_answer_bit_per_tuple_exceeds_bits": "2^39254527"
+  },
+  "near_linear_sparse_dictionary_counting": {
+    "bit_forms": {
+      "capacity_is_aligned_to_rank_one_queries": false,
+      "capacity_only_log2_lower": "39254539.14251854309521791300",
+      "capacity_only_witness_probe_count": 2216796,
+      "choice_bits_lower_per_selected_item": 0,
+      "choice_bits_upper_per_selected_item": 0,
+      "full_rank_high_girth_dictionary_exists_by_union_bound": true,
+      "items": 474568720384,
+      "largest_probe_count_ruled_out_by_cardinality": 2020681,
+      "log2_choice_upper_at_first_not_ruled_out": "39254531.722353547574953095727337366541540925594627134842967830326922507970422103",
+      "log2_choice_upper_at_ruled_out": "39254513.738670541991890220112842558933833807868407272972036654913041856798674064",
+      "maximum_dependency_weight_for_unique_capacity_sums": 4433592,
+      "minimum_probe_count_not_ruled_out_by_cardinality": 2020682,
+      "random_dictionary_bad_dependency_union_below_data_bits": true,
+      "random_dictionary_bad_dependency_union_log2_upper": "81102563.348534398467279671348839455924603000117708026834796926858378136116337696",
+      "random_dictionary_rank_deficiency_probability_log2_upper": -68719476736,
+      "random_dictionary_small_dependency_probability_log2_upper": "-405768141084.6514656015327203"
+    },
+    "interpretation": "CARDINALITY_HAS_ROOM_BUT_SUPPLIES_NO_ALIGNED_DICTIONARY",
+    "word_64_favorable": {
+      "capacity_is_aligned_to_rank_one_queries": false,
+      "capacity_only_log2_lower": "39254564.72423038649022107198",
+      "capacity_only_payload_bytes": 4087688,
+      "capacity_only_witness_probe_count": 510961,
+      "choice_bits_lower_per_selected_item": 63,
+      "choice_bits_upper_per_selected_item": 64,
+      "full_rank_high_girth_dictionary_exists_by_union_bound": true,
+      "items": 7415136256,
+      "largest_probe_count_ruled_out_by_cardinality": 494025,
+      "log2_choice_upper_at_first_not_ruled_out": "39254595.111988213239353130642109346749838440062832030369175319260389075209192957",
+      "log2_choice_upper_at_ruled_out": "39254517.096120681842201236522956709433176374956649759642461635552357046056780632",
+      "maximum_dependency_weight_for_unique_capacity_sums": 65403008,
+      "minimum_not_ruled_out_payload_bytes": 3952208,
+      "minimum_probe_count_not_ruled_out_by_cardinality": 494026,
+      "random_dictionary_bad_dependency_union_below_data_bits": true,
+      "random_dictionary_bad_dependency_union_log2_upper": "942453087.81585525425316555284547059431901422342724697797314847643249662760461599",
+      "random_dictionary_rank_deficiency_probability_log2_upper": -68719476736,
+      "random_dictionary_small_dependency_probability_log2_upper": "-404906790560.1841447457468344"
+    }
+  }
+}

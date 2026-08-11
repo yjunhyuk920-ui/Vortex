@@ -289,6 +289,26 @@ different query-time information source passes E0. EXP-073 Stage 2 remains the
 only specified physical calibration and requires separate explicit authority.
 The private target server was not contacted in EXP-076.
 
+<!-- E0-SPARSE-FUNCTIONAL-DICTIONARY-HANDOFF -->
+## Current handoff after the sparse functional dictionary audit
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER.md` and
+`results/e0_sparse_functional_dictionary_frontier/summary.json`.
+
+Literal global bilinear answers and direct local rank-one truth tables are
+closed by finite address/storage Gates. A globally non-systematic cold linear
+dictionary remains an exact open interface, but query cardinality supplies
+neither rank-one alignment nor a sparse decoder. No candidate, model run,
+backend, or hardware stage was promoted.
+
+Next: search only for an explicit near-linear aligned dictionary with a
+succinct exact decomposer and native-order lift, or a covering lower bound that
+actually applies to the non-systematic rank-one linear model. Keep
+`NO_SURVIVING_CANDIDATE` and do not assign EXP-085 without one deliverable.
+
 <!-- EXP-077A-AUTHORITATIVE-FINAL -->
 ## Current handoff after EXP-077A
 

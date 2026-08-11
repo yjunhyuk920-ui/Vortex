@@ -603,6 +603,25 @@ scalar data-structure model. Universal 2.5% remains NOT ESTABLISHED, no Core
 Candidate survives, and no E1/E2, model, backend, hardware, or scale promotion
 is authorized.
 
+## Current classification after the sparse functional dictionary audit
+
+The cold source may now be re-encoded non-systematically in the proof model:
+stored cells are checkpoint linear forms, and a query is exact if its rank-one
+mask is a sparse XOR of their atom masks. Full answer books and direct local
+truth tables are closed by finite address/storage counts; a favorable 1% tile
+query requires `480.3654 TiB` in the one-bit reduction.
+
+Query cardinality does not close the general dictionary. It stops rejecting at
+494,026 maximally favorable 64-bit word probes, while a capacity-only
+high-girth dictionary already has enough distinct sparse sums near 510,961
+words. No result aligns those sums to rank-one queries, and no native
+bounded-word or physical decoder exists. These numbers are proof-method
+boundaries, not a runtime cost claim.
+
+`OMEGA-FUNCDICT` is not admitted. `NO_SURVIVING_CANDIDATE` remains in force;
+no E1/E2, model, backend, or hardware promotion is authorized. Authority:
+`docs/research/E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER.md`.
+
 ## Current classification after lossless/cut/gauge screening
 
 An exact graph-cut reduction is not an execution source unless the cut value

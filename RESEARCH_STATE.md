@@ -1736,3 +1736,36 @@ TARGET NOT ACHIEVED
 No model, checkpoint, backend, download, server, or hardware action occurred.
 Authority: `docs/research/E0_LOSSLESS_CUT_GAUGE_FRONTIER.md` and
 `results/e0_lossless_gauge_frontier/summary.json`.
+
+## Sparse functional dictionary frontier
+
+The cold source has now been generalized beyond the systematic hot-advice plus
+raw-coordinate model. In the favorable binary interface it stores
+`c_j=<g_j,W>` and answers exactly whenever the requested coefficient mask is a
+sparse XOR of dictionary atoms. This admits a completely re-encoded,
+non-systematic cold checkpoint.
+
+Two direct realizations fail before execution. The independently selectable
+884-matrix rank-one tuple has exact integer query-count logarithm floor
+`39,254,527`, making a literal answer table unaddressable. A local square table
+large enough to read only 1% of coefficient tiles uses 1,046,529 forms per 100
+raw bits, or `480.3654 TiB` even in a one-bit model.
+
+The global sparse dictionary is not killed by information count. With the
+registered binary dimensions plus all 8 GiB of favorable redundancy, selection
+counting rejects through 2,020,681 bit forms or 494,025 64-bit words and then
+stops. Capacity-only high-girth witnesses have enough distinct combinations at
+2,216,796 forms or 510,961 words, but do not align any combination with the
+rank-one query family. There is no sparse decoder, implicit atom layout,
+native numerical lift, or complete physical equation.
+
+```text
+LITERAL/TILED FUNCTIONAL TABLES: REJECTED
+STANDARD COORDINATE LDC NAME: NOT A FUNCTIONAL CONSTRUCTION
+ALIGNED NONSYSTEMATIC SPARSE DICTIONARY: OPEN / UNCONSTRUCTED
+NO SURVIVING CANDIDATE
+TARGET NOT ACHIEVED
+```
+
+Authority: `docs/research/E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER.md` and
+`results/e0_sparse_functional_dictionary_frontier/summary.json`.

@@ -753,3 +753,29 @@ deleting every Q/K/V/O coefficient in all 126 layers for free removes only
 `1.18270517%` compute-only allowance. These ceilings do not reject a future
 mechanism that couples attention, MLP, embeddings, and cold data globally.
 Authority: `docs/research/E0_LOSSLESS_CUT_GAUGE_FRONTIER.md`.
+
+## F-075 -- Literal functional tables and counting-only sparse dictionaries
+
+Do not reopen a full bilinear answer table, a direct local rank-one truth
+table, or a standard coordinate-LDC label as an exact source.  The frozen 884
+matrix independently rank-one tuple family has
+`floor(log2 |Q|)=39,254,527`; one literal answer bit per tuple is
+unaddressable.  A favorable square truth table needs `b=10` merely to reach a
+1% coefficient-query fraction, but stores 1,046,529 forms per 100 source bits:
+`10,465.29x`, or `480.3654 TiB` model-wide before native value widths.
+
+A cold non-systematic linear dictionary is a more general and still open
+interface.  With 405,849,243,648 binary source dimensions plus all 8 GiB as
+redundancy, query-cardinality counting rejects only through 2,020,681 selected
+bit forms, or 494,025 favorable 64-bit words.  High-girth capacity witnesses
+already have enough distinct short sums at 2,216,796 forms or 510,961 words.
+They do **not** align those sums with rank-one masks, provide a decoder, or lift
+to native arithmetic.  Therefore cardinality is neither a constructor nor a
+target lower bound.
+
+Do not promote `OMEGA-FUNCDICT` until an explicit implicit-layout dictionary,
+sparse exact rank-one decoder, native-order numerical lift, and complete
+physical equation exist.  This entry rejects the table/LDC/counting-only
+promotions; it does not reject every globally aligned non-systematic linear or
+nonlinear cold source.  Authority:
+`docs/research/E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER.md`.

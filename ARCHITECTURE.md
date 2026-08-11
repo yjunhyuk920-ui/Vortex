@@ -1011,3 +1011,28 @@ succinct than a rank-covering row list and charge its preprocessing structures,
 random-instance construction, every probe on every call, list decoding,
 verification, numerical lifting, and fallback. The amplifier may then be an
 auxiliary correctness layer; it is not itself an answer source.
+
+### Sparse functional dictionary boundary
+
+No `SparseFunctionalDictionary`, functional LDC, or local rank-one truth-table
+component is admitted. The only exact binary interface that survived the first
+storage/counting screen is
+
+```text
+compiled cold cells c_j=<g_j,W>
+query mask q -> sparse T(q) with q=XOR(j in T(q),g_j)
+answer       -> XOR(j in T(q),c_j).
+```
+
+Literal global answers require an address of 39,254,528 bits. Direct `b x b`
+rank-one tile tables need `b=10` to reach a favorable 1% coefficient fraction,
+but expand a one-bit source by `10,465.29x` (`480.3654 TiB` model-wide).
+
+Near-linear non-systematic storage is not rejected by query cardinality:
+counting ceases to decide at 2,020,682 bit-form probes or 494,026 favorable
+64-bit words. This is not an upper-bound algorithm. No atom generator,
+rank-one-aligned sparse decomposition, metadata index, native numerical cell,
+physical layout, or complete runtime equation exists. A random high-girth
+dictionary supplies many distinct sparse sums but no reason that they equal
+the required masks. `OMEGA-FUNCDICT` therefore remains an unimplemented proof
+interface, not an architecture component.

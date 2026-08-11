@@ -243,3 +243,19 @@ also fail their first ceiling.
 These results close three named direct routes, not the globally coupled
 nonlinear cold decoder. They supply neither required ticket deliverable, so
 the ticket remains claimed.
+
+The eighth post-audit screen is recorded in
+`docs/research/E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER.md`. It permits the
+cold checkpoint to be replaced by arbitrary binary linear forms and requires a
+sparse exact decomposition of every rank-one coefficient mask. Literal global
+answers require a 39,254,528-bit address; direct `10 x 10` rank-one tile tables
+reach a favorable 1% query fraction only by expanding one-bit persistent state
+to `480.3654 TiB`.
+
+The globally non-systematic dictionary remains open but unconstructed.
+Cardinality counting rejects only through 2,020,681 selected bit forms or
+494,025 favorable 64-bit words. High-girth capacity witnesses have enough
+distinct short sums slightly above those points, but do not align them with
+rank-one masks, find their indices, or implement native arithmetic. This
+screen supplies neither an explicit target-fitting dictionary nor a covering
+lower bound, so the ticket remains claimed.

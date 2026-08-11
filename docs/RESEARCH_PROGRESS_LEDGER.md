@@ -251,3 +251,22 @@ This closes unchanged prior-token operator reuse, not every possible causal
 delta correction. It is useful falsification, not increased feasibility. No
 server, larger checkpoint, physical matrix, GPU kernel, or Phase D/E2-E7 work
 ran; no core candidate survives.
+
+<!-- E0-SPARSE-FUNCTIONAL-DICTIONARY-FRONTIER -->
+## 2026-08-12 -- E0 sparse functional dictionary frontier
+
+The cold representation was generalized to arbitrary non-systematic binary
+linear forms. Literal all-query storage and direct local rank-one tables fail
+finite address/storage Gates; a favorable 1% table is `480.3654 TiB`.
+Cardinality counting ceases to reject a global dictionary at 2,020,682 bit
+forms or 494,026 favorable 64-bit words, but supplies neither rank-one
+alignment nor a decoder. No model or hardware action occurred.
+
+Decision:
+
+```text
+KEEP_ALIGNED_SPARSE_FUNCTIONAL_DICTIONARY_UNCONSTRUCTED
+NO_SURVIVING_CANDIDATE
+```
+
+Authority: `docs/research/E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER.md`.

@@ -563,6 +563,22 @@ bound that covers it under global 8 GiB advice and adaptive cross-matrix
 probes. Keep `NO_SURVIVING_CANDIDATE`; do not assign EXP-085, run a model,
 build a backend/kernel, download a checkpoint, or touch hardware.
 
+## Current directive after the sparse functional dictionary audit
+
+Do not revisit literal bilinear answer books, direct local rank-one tables, or
+coordinate-LDC terminology. Their missing functional recovery structure is now
+explicit. Also do not cite the 494,026-word counting boundary as an algorithm:
+it says only that query-name cardinality loses resolving power.
+
+The one adjacent open linear route is an **aligned** near-linear cold
+dictionary with a succinct atom generator and a sub-dense exact rank-one
+decomposer. Continue it only by giving such a construction or by proving a
+restricted-rank-one covering lower bound for the non-systematic linear model.
+Native numerical width/order, atom metadata, physical random probes, and all
+405B state/scheduler/fallback costs remain mandatory. Otherwise change to a
+materially different globally coupled nonlinear source. Keep
+`NO_SURVIVING_CANDIDATE`; do not assign EXP-085 or run model/hardware work.
+
 ## Current directive after lossless/cut/gauge screening
 
 Do not spend another cycle optimizing entropy codecs, attention gauges, or
