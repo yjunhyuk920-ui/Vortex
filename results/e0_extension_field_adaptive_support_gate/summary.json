@@ -1,0 +1,274 @@
+{
+  "aggregate_block_local_cases": [
+    {
+      "available_to_required_storage_ratio": "0.00021368994816611195474649777449160379414289250791491526746229257994573058492371365",
+      "minimum_probe_fraction_relaxation": "0.13535470104805401985742694521982411544963466895000063027149944585539248254038021",
+      "minimum_to_target_multiplier": "2.8551382252323894813675996257306649352657312981640757947894414360121851785861451",
+      "name": "ALL_PACKED_Q4_BITS_PLUS_8GIB_GRANTED_TO_ONE_BINARY_PLANE",
+      "required_storage_expansion_at_target": "19515.208649423946271601705371484023988570611910907551693339231442727400572351960",
+      "storage_expansion": "401428/96261",
+      "storage_expansion_decimal": "4.1702039247462627647749348126447886475311912404816072968284144149759508004280030",
+      "target_coverage_exponent_upper": "0.42199972345473962982666799191497211572651895095012226607291822375816373341182325",
+      "target_fraction": "32/675",
+      "target_fraction_decimal": "0.047407407407407407407407407407407407407407407407407407407407407407407407407407407",
+      "target_rejected": true
+    },
+    {
+      "available_to_required_storage_ratio": "0.00056839089942944655396390407200055132995985889155210925576970064494431759291687208",
+      "minimum_probe_fraction_relaxation": "0.10988947946199298547176413312215116280891723540853624415720895924379817286404247",
+      "minimum_to_target_multiplier": "2.3179812074014145372950246830453760905005979343988114001911264840488677088508959",
+      "name": "ALL_DFLOAT11_BITS_PLUS_8GIB_GRANTED_TO_ONE_BINARY_PLANE",
+      "required_storage_expansion_at_target": "19515.208649423946271601705371484023988570611910907551693339231442727400572351960",
+      "storage_expansion": "2186757557/197142528",
+      "storage_expansion_decimal": "11.092266996799391757825079731147609104414040992717715377982775994431805196289255",
+      "target_coverage_exponent_upper": "0.48890885101339339696969378967366991526042434196171138775158713445365877848585476",
+      "target_fraction": "32/675",
+      "target_fraction_decimal": "0.047407407407407407407407407407407407407407407407407407407407407407407407407407407",
+      "target_rejected": true
+    },
+    {
+      "available_to_required_storage_ratio": "2.0283957596659169955014018244167804120539712235442308214748516191086828161034522E-22",
+      "minimum_probe_fraction_relaxation": "0.10988947946199298547176413312215116280891723540853624415720895924379817286404247",
+      "minimum_to_target_multiplier": "9.2719248296056581491800987321815043620023917375952456007645059361954708354035833",
+      "name": "ALL_DFLOAT11_BITS_PLUS_8GIB_LOGICAL_WORK_GATE",
+      "required_storage_expansion_at_target": "54684924990310185631522.962191129205479816249768815956909728976228586988334594311",
+      "storage_expansion": "2186757557/197142528",
+      "storage_expansion_decimal": "11.092266996799391757825079731147609104414040992717715377982775994431805196289255",
+      "target_coverage_exponent_upper": "0.14593091645705205294612715112212118251880978919413155064160048731711839832516740",
+      "target_fraction": "8/675",
+      "target_fraction_decimal": "0.011851851851851851851851851851851851851851851851851851851851851851851851851851852",
+      "target_rejected": true
+    }
+  ],
+  "claim_boundary": {
+    "arbitrary_block_local_storage_allocation_rejected": true,
+    "arbitrary_exact_postprocessing_rejected": true,
+    "cross_matrix_mixed_cells_covered": false,
+    "deterministic_adaptive_addresses_rejected": true,
+    "fixed_extension_field_linear_cells_rejected": true,
+    "hardware_actions": 0,
+    "model_forward_calls": 0,
+    "native_q4_bf16_fp32_semantics_covered": false,
+    "nonlinear_stored_cells_covered": false,
+    "randomized_error_decoder_covered": false,
+    "source_dependent_nonlinear_hot_advice_covered": false,
+    "surviving_runtime_candidate": false
+  },
+  "classification": "E0_EXTENSION_FIELD_ADAPTIVE_SUPPORT_GATE",
+  "contract": {
+    "addresses_may_depend_on_previous_cell_values": true,
+    "arbitrary_exact_postprocessing": true,
+    "block_local_cells": true,
+    "deterministic_query_dependent_addresses": true,
+    "query": "Trace(alpha * <u,beta>), alpha!=0, u in GF(2)^k",
+    "source_per_block": "beta in GF(2^m)^k",
+    "stored_cells": "arbitrary GF(2^m)-linear forms of beta"
+  },
+  "decision": "REJECT_BLOCK_LOCAL_EXTENSION_FIELD_LINEAR_CELLS_EVEN_WITH_ADAPTIVE_ADDRESSES_KEEP_NONLINEAR_AND_CROSS_BLOCK_CELLS_OPEN",
+  "decisions": [
+    "REJECT_EXTENSION_FIELD_LINEAR_SUMMARY_CONSTRUCTOR",
+    "REJECT_ADAPTIVE_ZERO_TRANSCRIPT_ESCAPE",
+    "REQUIRE_NONLINEAR_STORED_CELLS_OR_CROSS_BLOCK_STRUCTURE_FOR_NEXT_ROUTE",
+    "KEEP_GENERAL_FINITE_WORD_TICKET_OPEN",
+    "NO_SURVIVING_CANDIDATE"
+  ],
+  "integer_only_dfloat_traffic_rejection": {
+    "capacity_exponent_strict_upper": "352/675",
+    "capacity_exponent_strict_upper_decimal": 0.5214814814814814,
+    "e_upper": 3,
+    "log_argument_strict_upper": "2^11",
+    "rejects": true,
+    "storage_expansion_upper": 12
+  },
+  "proof_equations": {
+    "aggregate": "1 <= p log2(2e lambda/p)",
+    "binomial_relaxation": "k <= t log2(2eS/t)",
+    "field_support": "alpha*u in span_E{g_j:j in J} => u in span_E{g_j:j in J}",
+    "intersection": "dim_GF(2)(span_E(J) intersect GF(2)^k) <= |J|",
+    "support_union": "sum_(j=0)^t C(S,j) 2^j >= 2^k",
+    "zero_transcript": "ker(G_J) subset ker(q) => q in span_GF(2)(G_J bits)"
+  },
+  "proportional_registered_blocks": [
+    {
+      "binary_direction_dimension": 1024,
+      "field_cells": 1198,
+      "four_lane_traffic_target": {
+        "count_condition_passes": false,
+        "exponent_gap_at_least": 689,
+        "probe_fraction": "3/64",
+        "probe_fraction_decimal": 0.046875,
+        "probes": 48,
+        "required_binary_direction_count": "2^1024",
+        "support_union_upper_bound_bit_length": 335,
+        "support_union_upper_bound_lt": "2^335"
+      },
+      "logical_target": {
+        "count_condition_passes": false,
+        "exponent_gap_at_least": 918,
+        "probe_fraction": "3/256",
+        "probe_fraction_decimal": 0.01171875,
+        "probes": 12,
+        "required_binary_direction_count": "2^1024",
+        "support_union_upper_bound_bit_length": 106,
+        "support_union_upper_bound_lt": "2^106"
+      },
+      "minimum_is_exact": true,
+      "minimum_minus_one_union_bit_length": 1024,
+      "minimum_probe_fraction": "27/128",
+      "minimum_probe_fraction_decimal": 0.2109375,
+      "minimum_probes": 216,
+      "minimum_to_four_lane_traffic_target_multiplier": 4.5,
+      "minimum_to_logical_target_multiplier": 18.0,
+      "minimum_union_bit_length": 1027,
+      "storage_expansion": "599/512"
+    },
+    {
+      "binary_direction_dimension": 16384,
+      "field_cells": 19172,
+      "four_lane_traffic_target": {
+        "count_condition_passes": false,
+        "exponent_gap_at_least": 10927,
+        "probe_fraction": "97/2048",
+        "probe_fraction_decimal": 0.04736328125,
+        "probes": 776,
+        "required_binary_direction_count": "2^16384",
+        "support_union_upper_bound_bit_length": 5457,
+        "support_union_upper_bound_lt": "2^5457"
+      },
+      "logical_target": {
+        "count_condition_passes": false,
+        "exponent_gap_at_least": 14631,
+        "probe_fraction": "97/8192",
+        "probe_fraction_decimal": 0.0118408203125,
+        "probes": 194,
+        "required_binary_direction_count": "2^16384",
+        "support_union_upper_bound_bit_length": 1753,
+        "support_union_upper_bound_lt": "2^1753"
+      },
+      "minimum_is_exact": true,
+      "minimum_minus_one_union_bit_length": 16384,
+      "minimum_probe_fraction": "3421/16384",
+      "minimum_probe_fraction_decimal": 0.20880126953125,
+      "minimum_probes": 3421,
+      "minimum_to_four_lane_traffic_target_multiplier": 4.408505154639175,
+      "minimum_to_logical_target_multiplier": 17.6340206185567,
+      "minimum_union_bit_length": 16387,
+      "storage_expansion": "4793/4096"
+    },
+    {
+      "binary_direction_dimension": 53248,
+      "field_cells": 62311,
+      "four_lane_traffic_target": {
+        "count_condition_passes": false,
+        "exponent_gap_at_least": 35489,
+        "probe_fraction": "631/13312",
+        "probe_fraction_decimal": 0.04740084134615385,
+        "probes": 2524,
+        "required_binary_direction_count": "2^53248",
+        "support_union_upper_bound_bit_length": 17759,
+        "support_union_upper_bound_lt": "2^17759"
+      },
+      "logical_target": {
+        "count_condition_passes": false,
+        "exponent_gap_at_least": 47536,
+        "probe_fraction": "631/53248",
+        "probe_fraction_decimal": 0.011850210336538462,
+        "probes": 631,
+        "required_binary_direction_count": "2^53248",
+        "support_union_upper_bound_bit_length": 5712,
+        "support_union_upper_bound_lt": "2^5712"
+      },
+      "minimum_is_exact": true,
+      "minimum_minus_one_union_bit_length": 53246,
+      "minimum_probe_fraction": "11111/53248",
+      "minimum_probe_fraction_decimal": 0.20866511418269232,
+      "minimum_probes": 11111,
+      "minimum_to_four_lane_traffic_target_multiplier": 4.402139461172742,
+      "minimum_to_logical_target_multiplier": 17.608557844690967,
+      "minimum_union_bit_length": 53250,
+      "storage_expansion": "62311/53248"
+    },
+    {
+      "binary_direction_dimension": 128256,
+      "field_cells": 150085,
+      "four_lane_traffic_target": {
+        "count_condition_passes": false,
+        "exponent_gap_at_least": 85468,
+        "probe_fraction": "95/2004",
+        "probe_fraction_decimal": 0.04740518962075848,
+        "probes": 6080,
+        "required_binary_direction_count": "2^128256",
+        "support_union_upper_bound_bit_length": 42788,
+        "support_union_upper_bound_lt": "2^42788"
+      },
+      "logical_target": {
+        "count_condition_passes": false,
+        "exponent_gap_at_least": 114489,
+        "probe_fraction": "95/8016",
+        "probe_fraction_decimal": 0.01185129740518962,
+        "probes": 1520,
+        "required_binary_direction_count": "2^128256",
+        "support_union_upper_bound_bit_length": 13767,
+        "support_union_upper_bound_lt": "2^13767"
+      },
+      "minimum_is_exact": true,
+      "minimum_minus_one_union_bit_length": 128254,
+      "minimum_probe_fraction": "26759/128256",
+      "minimum_probe_fraction_decimal": 0.2086374126746507,
+      "minimum_probes": 26759,
+      "minimum_to_four_lane_traffic_target_multiplier": 4.401151315789473,
+      "minimum_to_logical_target_multiplier": 17.604605263157893,
+      "minimum_union_bit_length": 128258,
+      "storage_expansion": "150085/128256"
+    }
+  ],
+  "registered_constants": {
+    "all_dfloat_to_one_plane_expansion": "2186757557/197142528",
+    "all_q4_to_one_plane_expansion": "401428/96261",
+    "four_q4_lane_traffic_fraction": "32/675",
+    "global_hot_bits": 68719476736,
+    "logical_target_fraction": "8/675",
+    "non_embedding_coefficients": 403747897344,
+    "one_plane_proportional_expansion": "112645/96261"
+  },
+  "small_field_control": {
+    "ambient": "GF(4)^3",
+    "expected_upper_bounds": {
+      "0": 1,
+      "1": 2,
+      "2": 4
+    },
+    "maximum_binary_intersection_by_generator_count": {
+      "0": 1,
+      "1": 2,
+      "2": 4
+    },
+    "passes": true,
+    "witnesses": {
+      "0": [],
+      "1": [
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "2": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ]
+    }
+  },
+  "storage_required_at_four_lane_target": {
+    "expansion": "19515.208649423946271601705371484023988570611910907551693339231442727400572351960",
+    "one_plane_encoded_tib": "895.76411237821507074863994634839231165113242776673881223322284598750224423178292"
+  }
+}

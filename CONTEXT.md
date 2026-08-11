@@ -356,3 +356,14 @@ _Current status_: Rejects the former `31 x 43` frontier and closes the first
 856 capacity-ordered fixed-linear shapes. The new first survivor is the
 unconstructed `31 x 42`, `S=1,523`, `t=15` case. Adaptive word probes remain
 open.
+
+**Zero-Transcript Adaptive-Support Lemma**:
+For an exact deterministic decoder of linear finite-field cells, run the
+decoder on the zero source. The resulting value-adaptive address path is a
+fixed support, and every source vector in its common kernel follows that same
+path. The requested linear functional must therefore lie in the probed field
+span.
+_Avoid_: Claiming value-dependent addresses alone evade a sparse-span count
+_Current status_: Rejects every block-local extension-field linear-summary
+constructor under the registered storage/traffic grants. Nonlinear cells and
+cross-block mixing remain open.

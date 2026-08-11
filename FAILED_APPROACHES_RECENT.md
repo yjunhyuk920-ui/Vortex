@@ -1023,3 +1023,24 @@ the prior frontier. The combined scan closes 856 shapes. `31 x 42`,
 probes, nonlinear output decoders, native arithmetic, and joint causal
 batches remain outside F-086. Authority:
 `docs/research/E0_RECURSIVE_BIORTHOGONAL_CANCELLATION_GATE.md`.
+
+## F-087 -- Treating adaptive addresses as new information in a linear field layout
+
+Do not reopen extension-field linear summaries merely by choosing their
+addresses from earlier returned values. On the zero source, all such values
+are zero and select one definite support. Perturbations in the support's
+common kernel reproduce the path; exactness therefore puts the query in the
+same field span. A support of size `j` contains at most `2^j` binary
+directions, yielding the exact necessity
+
+```text
+sum_(j=0)^t C(S,j)2^j >= 2^k.
+```
+
+For `k=16,384`, `S=19,172`, the minimum is 3,421 probes. The logical target
+is 194; even granting every packed-Q4 lane to that one plane permits only 776.
+Arbitrary block-local storage allocation does not help: all DFloat11 bits plus
+8 GiB still give a relaxed minimum `10.988948%` against `4.740741%`.
+Nonlinear stored cells, cross-block mixed cells, and native arithmetic remain
+outside F-087. Authority:
+`docs/research/E0_EXTENSION_FIELD_ADAPTIVE_SUPPORT_GATE.md`.

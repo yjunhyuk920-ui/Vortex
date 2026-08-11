@@ -1117,3 +1117,25 @@ Authoritative decision:
 
 Authoritative decision:
 `REJECT_31x43_AND_32x42_BY_RECURSIVE_BIORTHOGONAL_PAIR_PEELING`.
+
+## E0 extension-field adaptive-support Gate
+
+| Check | Observed | Status |
+|---|---:|---|
+| Zero-transcript adaptive path | common kernel forces sparse field span | PASS |
+| Exhaustive `GF(4)^3` intersection maxima for 0 / 1 / 2 generators | 1 / 2 / 4 | PASS |
+| `k=16,384` proportional cells | 19,172 | DERIVED |
+| Logical / four-lane targets | 194 / 776 probes | REJECT |
+| Exact first count-feasible radius | 3,421 probes | PASS |
+| All DFloat11 bits + 8 GiB aggregate relaxed minimum | 10.988948% | REJECT |
+| Favorable one-plane four-lane traffic allowance | 4.740741% | REJECT |
+| Required storage at four-lane target | 19,515.208649x / 895.764 TiB | REJECT |
+| Focused tests | 5/5 | PASS |
+| Full unittest regression | 172/172 | PASS |
+| Full repository pytest regression | 681/681 | PASS |
+| Standard validation runner | completed | PASS |
+| Model forwards / hardware actions | 0 / 0 | NOT RUN |
+| Nonlinear cells / cross-block mixing / native lift | uncovered | OPEN / NO CLAIM |
+
+Authoritative decision:
+`REJECT_BLOCK_LOCAL_EXTENSION_FIELD_LINEAR_CELLS_EVEN_WITH_ADAPTIVE_ADDRESSES`.

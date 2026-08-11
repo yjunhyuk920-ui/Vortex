@@ -1048,3 +1048,31 @@ The theorem does not cover adaptive word addresses or nonlinear output
 decoding. The new first fixed-linear survivor is `31 x 42`, `S=1,523`,
 `t=15`, with best necessary-condition ratio `38.10086306517199...`; it has no
 atoms or decoder.
+
+## A-084 -- Value-adaptive extension-field addresses evade sparse support
+
+Assumption: after packing an `m x k` binary matrix into `GF(2^m)^k`, a decoder
+can avoid a short field-span representation by choosing every next linear
+summary from values returned by earlier probes and applying arbitrary exact
+post-processing.
+
+Status: CONTRADICTED for deterministic exact block-local field-linear cells.
+On the zero source every returned cell is zero, fixing one adaptive path `J`.
+Every perturbation in the common kernel of those cells follows the same path,
+so exactness forces the queried direction into `span_GF(2^m)(J)`. Field
+extension preserves binary independence, and hence
+
+```text
+sum_(j=0)^t C(S,j) 2^j >= 2^k
+```
+
+is necessary. For `k=16,384`, `S=19,172`, the first count-feasible radius is
+3,421, not the logical target 194 or the four-Q4-lane traffic grant 776.
+
+### A-084 closure
+
+Arbitrary allocation among block-local field-linear dictionaries also fails:
+`1 <= p log2(2e lambda/p)`. Giving all DFloat11 bits plus 8 GiB to the one-bit
+surrogate still requires at least `p=10.988948%`, versus `4.740741%`. The
+closure does not cover nonlinear stored cells, cross-matrix mixed cells, or
+source-dependent nonlinear hot advice.

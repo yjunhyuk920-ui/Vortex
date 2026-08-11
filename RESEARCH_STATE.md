@@ -1831,3 +1831,24 @@ No atom family, decoder, native lift, joint batch, or adaptive finite-word
 resolution was delivered. The ticket remains claimed. Nearby fixed-linear
 parameter sweeps are closed; the next action must expose a new structural
 equation or a genuinely adaptive word-valued decoder.
+
+## Extension-field adaptive-support frontier
+
+The twentieth post-audit screen is recorded in
+`docs/research/E0_EXTENSION_FIELD_ADAPTIVE_SUPPORT_GATE.md`. It strengthens
+the extension-field constructor to deterministic addresses depending on all
+earlier field values and arbitrary exact final post-processing. The zero
+source fixes one path; its common kernel must lie in the requested query's
+kernel. Thus the query has a sparse representation in the probed field span.
+
+A `j`-cell field span contains at most `2^j` binary directions. At
+`k=16,384`, `S=19,172`, exact counting needs 3,421 probes, versus 194 logical
+or 776 with the whole four-lane packed-Q4 traffic allowance assigned to one
+plane. The aggregate equation `1 <= p log2(2e lambda/p)` also rejects arbitrary
+allocation among block-local dictionaries: granting all DFloat11 bits plus
+8 GiB still requires `10.988948%`, over twice the favorable traffic grant.
+
+This closes linear extension-field cells, including their adaptive-address
+variant. It does not close nonlinear cells, cross-block mixed cells, arbitrary
+nonlinear advice, or native semantics. No runtime candidate was delivered;
+the general finite-word ticket remains claimed.

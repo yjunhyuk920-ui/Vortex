@@ -1632,3 +1632,22 @@ address discovery, words, and output operation are explicit.
 No EXP-085, model, backend, kernel, download, private Ubuntu action, or
 hardware stage is authorized. Authority:
 `docs/research/E0_RECURSIVE_BIORTHOGONAL_CANCELLATION_GATE.md`.
+
+## Adaptive extension-field linear summaries are closed
+
+Do not implement a value-adaptive extension-field linear dictionary. The
+zero-transcript theorem already permits its strongest deterministic address
+logic and arbitrary exact post-processing, then forces a sparse field-span
+representation. Exact counting and the aggregate storage equation reject it
+well before native execution.
+
+The next constructor must change the information source, not only the
+scheduler. It must expose either (a) explicit nonlinear stored cells with a
+sub-dense address/recovery algorithm, or (b) a concrete cross-matrix mixed
+cell whose joint causal query actually reuses one physical read. Charge its
+source-dependent metadata and preprocessing immediately. Apply only the
+cheapest semantic/counting Gate before any model or hardware action.
+
+No new experiment number, model, backend, kernel, download, private Ubuntu
+action, or hardware stage is authorized. Authority:
+`docs/research/E0_EXTENSION_FIELD_ADAPTIVE_SUPPORT_GATE.md`.

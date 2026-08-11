@@ -449,3 +449,24 @@ adaptive word decoder, native lift, joint causal batch, or full cost equation
 was delivered, so the issue remains claimed. The next action is a genuinely
 adaptive finite-word equation or a theorem covering that model, not another
 nearby rectangle sweep.
+
+The twentieth post-audit screen is recorded in
+`docs/research/E0_EXTENSION_FIELD_ADAPTIVE_SUPPORT_GATE.md`. It permits a
+deterministic extension-field decoder to choose every address from the query
+and all earlier returned linear-cell values, then apply arbitrary exact
+post-processing. On the zero source, all values vanish and fix one support;
+exactness forces the query direction into that support's field span.
+
+Each `j`-cell field span contains at most `2^j` binary directions. For the
+registered `k=16,384`, `S=19,172` proportional case, exact counting requires
+3,421 probes rather than the logical 194 or favorable four-Q4-lane 776. The
+aggregate concavity equation also allows arbitrary storage distribution among
+block-local dictionaries. Even granting all 551.22 GB of DFloat11 plus 8 GiB
+to the one-bit surrogate leaves a `10.988948%` relaxed minimum against the
+`4.740741%` traffic grant.
+
+This rejects adaptive extension-field **linear** summaries, not arbitrary
+finite-word preprocessing. Nonlinear stored cells, cross-matrix mixed cells,
+source-dependent nonlinear advice, native semantics, and a complete runtime
+remain open. The issue therefore remains claimed; the next action must change
+the stored information source rather than only its address scheduler.

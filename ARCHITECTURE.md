@@ -1173,3 +1173,25 @@ shape after 856 rejected capacity-ordered rectangles. No
 sub-dense decoding, native-order semantics, joint causal-batch layout, and
 complete costs. Adaptive word-valued probes and nonlinear output decoding
 remain outside the Gate.
+
+#### Extension-field adaptive-support boundary
+
+Packing matrix columns into `GF(2^m)` does not make adaptive linear summaries
+local. Run any deterministic exact decoder on the zero source. Its returned
+linear cells are all zero and fix one adaptive support `J`; every perturbation
+in their common kernel follows the same path. Exactness therefore forces the
+rank-one query direction into `span_GF(2^m)(J)` even when the final decoder is
+nonlinear. A `j`-cell field span contains at most `2^j` binary directions, so
+every admitted block-local field-linear layout must satisfy
+
+```text
+sum_(j=0)^t C(S,j) 2^j >= 2^k.
+```
+
+At `k=16,384`, proportional storage needs at least 3,421 field-cell probes,
+versus 194 logical probes or 776 after granting all four packed-Q4 traffic
+lanes to the one binary plane. Even granting all 551.22 GB of DFloat11 plus
+8 GiB to that plane leaves the aggregate relaxed minimum at `10.988948%`,
+above the favorable `4.740741%` traffic allowance. No extension-field linear
+summary component is admitted. Nonlinear source cells and cells mixing
+independent matrix blocks remain outside this Gate and unconstructed.

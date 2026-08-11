@@ -1562,3 +1562,31 @@ KEEP_NO_SURVIVING_CANDIDATE
 
 Authority:
 `docs/research/E0_RECURSIVE_BIORTHOGONAL_CANCELLATION_GATE.md`.
+
+## D-106 -- Collapse adaptive field-linear probes on the zero transcript
+
+The extension-field route was strengthened before rejection: addresses may
+depend on the query and every previously returned cell value, and the final
+exact output operation may be arbitrary. On the zero source this still fixes
+one support. Its common kernel must lie in the query kernel, forcing a sparse
+extension-field representation. Each `j`-cell support contains at most `2^j`
+binary directions.
+
+At the registered hidden dimension, exact counting requires 3,421 cells,
+versus 194 logical cells or 776 under the favorable four-Q4-lane traffic
+grant. An aggregate concavity bound permits arbitrary allocation among
+block-local dictionaries and still gives a minimum `10.988948%` after all
+551.22 GB of DFloat11 plus 8 GiB are granted to one binary plane.
+
+Decision:
+
+```text
+REJECT_BLOCK_LOCAL_EXTENSION_FIELD_LINEAR_SUMMARIES
+DO_NOT_REOPEN_THE_ROUTE_BY_MAKING_ONLY_ITS_ADDRESSES_ADAPTIVE
+PIVOT_TO_NONLINEAR_STORED_CELLS_OR_CROSS_BLOCK_STRUCTURE
+KEEP_GENERAL_FINITE_WORD_TICKET_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority:
+`docs/research/E0_EXTENSION_FIELD_ADAPTIVE_SUPPORT_GATE.md`.

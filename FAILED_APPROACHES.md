@@ -381,4 +381,11 @@ cancellation theorem recursive on rank `r-2`. This closes the first 856
 fixed-linear capacity-ordered shapes and leaves the unconstructed `31 x 42`,
 but still does not cover adaptive word addresses, nonlinear output decoding,
 or native numerical lifting.
+F-087 closes the natural adaptive extension-field successor. On the zero
+source, value-dependent probes of linear field cells expose one fixed support;
+exactness forces the query into that support's field span. Exact support
+counting requires 3,421 probes at `k=16,384`, and an aggregate storage
+relaxation still fails after granting all DFloat11 bits plus 8 GiB to the
+one-bit surrogate. This does not cover nonlinear stored cells or cross-block
+mixed cells.
 Read that continuation and each scope boundary before reopening a family.
