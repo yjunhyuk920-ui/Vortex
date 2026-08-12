@@ -1044,3 +1044,36 @@ Arbitrary block-local storage allocation does not help: all DFloat11 bits plus
 Nonlinear stored cells, cross-block mixed cells, and native arithmetic remain
 outside F-087. Authority:
 `docs/research/E0_EXTENSION_FIELD_ADAPTIVE_SUPPORT_GATE.md`.
+
+## F-088 -- Treating independent linear forms in one word as free locality
+
+Do not reopen the linear-summary route by packing 64 unrelated summaries per
+word. The zero-source path fixes its adaptive word support. A `j`-word span
+has dimension at most `64j`, and exact Segre intersection bounds the number of
+rank-one queries any support can answer.
+
+At `31 x 42`, seven words reach only `0.19975212628...` of the required
+population; the first count-feasible point is eight words and already uses
+`64/651` of a favorable four-lane Q4 tile. None of 8,256 side-128 rectangles
+reaches the registered line; the best is `118 x 128`, 22 words, `11/472`.
+Nonlinear cells and global cross-matrix mixing remain outside F-088.
+Authority: `docs/research/E0_ADAPTIVE_PACKED_LINEAR_WORD_GATE.md`.
+
+## F-089 -- Assuming nonlinear cells erase determinantal capacity
+
+Do not drop rank amplification when the stored cells or address path are
+nonlinear. Every depth-`t` adaptive decoder is a cylinder polynomial of degree
+at most `t`. Products of `r` rank-one characters give all rank-at-most-`r`
+characters at degree at most `rt`, forcing
+
+```text
+RankLeq(a,b,r) <= sum_(j<=rt) C(S,j)(A-1)^j.
+```
+
+Arbitrary nonlinear bit cells at `31 x 42` still require 15 probes. Nonlinear
+64-bit words become capacity-feasible, not constructed: the first side-128
+traffic-line point is `25 x 108`, 50 words, two probes. Exact symbolic search
+rejects the systematic `2 x 3` plus one arbitrary advice-bit seed. The fully
+non-systematic seven-bit SMT timeout is inconclusive and must not be cited as
+a rejection. Authority:
+`docs/research/E0_ADAPTIVE_NONLINEAR_PROBE_DEGREE_GATE.md`.

@@ -1852,3 +1852,36 @@ This closes linear extension-field cells, including their adaptive-address
 variant. It does not close nonlinear cells, cross-block mixed cells, arbitrary
 nonlinear advice, or native semantics. No runtime candidate was delivered;
 the general finite-word ticket remains claimed.
+
+## Adaptive packed-linear word frontier
+
+The twenty-first post-audit screen is recorded in
+`docs/research/E0_ADAPTIVE_PACKED_LINEAR_WORD_GATE.md`. Each 64-bit word was
+granted 64 unrelated linear checkpoint forms, full padding, deterministic
+value-adaptive addresses, and arbitrary exact postprocessing. On the zero
+source, the selected word support spans every answer it can determine.
+
+Exact Segre subspace intersections show that `31 x 42` needs at least eight
+words; seven reach only `0.19975212628...` of its rank-one population. The
+complete side-128 scan has no registered traffic-line survivor. Its best
+relaxed point is `118 x 128`, 22 words, `11/472`, still `7425/3776` over the
+line. Linear word packing is closed; nonlinear contents remain open.
+
+## Adaptive nonlinear probe-degree frontier
+
+The twenty-second post-audit screen is recorded in
+`docs/research/E0_ADAPTIVE_NONLINEAR_PROBE_DEGREE_GATE.md`. A depth-`t`
+adaptive decoder over arbitrary nonlinear alphabet cells lies in cylinder
+degree at most `t`. Rank-one character products and character independence
+extend the determinantal capacity Gate to that full block-local model.
+
+Arbitrary nonlinear bit cells at `31 x 42` still need 15 probes. Nonlinear
+64-bit cells first become capacity-feasible at `25 x 108`, 2,700 source bits,
+50 padded words, and two probes; this is not an encoder. The smallest
+systematic nonlinear seed is exactly rejected. A fully non-systematic
+seven-bit SMT run returned `unknown` after its 600-second timeout and supplies
+no positive or negative claim.
+
+No finite encoder, uniform address functions, native lift, joint batch, or
+runtime was delivered. The general finite-word ticket remains claimed and no
+Core Candidate survives.

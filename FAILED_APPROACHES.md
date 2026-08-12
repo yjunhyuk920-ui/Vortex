@@ -388,4 +388,16 @@ counting requires 3,421 probes at `k=16,384`, and an aggregate storage
 relaxation still fails after granting all DFloat11 bits plus 8 GiB to the
 one-bit surrogate. This does not cover nonlinear stored cells or cross-block
 mixed cells.
+F-088 closes block-local adaptive words made from arbitrary independent
+linear summaries. Zero-transcript supports plus exact Segre subspace
+intersections require eight words at `31 x 42`; every side-128 rectangle
+misses the registered traffic line even with full padding and four favorable
+Q4 lanes. It does not cover nonlinear word contents or global mixing.
+F-089 closes the claim that arbitrary nonlinear stored bits automatically
+escape rank amplification. Adaptive depth becomes cylinder degree, and
+products of rank-one characters force exact determinantal capacity at degree
+`rt`. It also closes the smallest systematic `2 x 3` plus one arbitrary
+advice-bit/two-probe seed. It does not construct or reject the fully
+non-systematic seven-bit seed, the `25 x 108` nonlinear-word capacity point,
+global mixed cells, or native arithmetic.
 Read that continuation and each scope boundary before reopening a family.

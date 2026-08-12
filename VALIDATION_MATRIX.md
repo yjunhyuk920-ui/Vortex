@@ -1139,3 +1139,43 @@ Authoritative decision:
 
 Authoritative decision:
 `REJECT_BLOCK_LOCAL_EXTENSION_FIELD_LINEAR_CELLS_EVEN_WITH_ADAPTIVE_ADDRESSES`.
+
+## E0 adaptive packed-linear word Gate
+
+| Check | Observed | Status |
+|---|---:|---|
+| Decoder address dependence | query and prior word values | GRANTED |
+| Per-word contents | 64 independent binary linear forms | GRANTED |
+| `31x42` minimum non-rejected reads | 8 words | REJECT TARGET |
+| `31x42` favorable traffic | 64/651 = 9.831029% | REJECT |
+| Rectangles checked through side 128 | 8,256 | PASS |
+| Rectangles meeting `8/675` target | 0 | REJECT |
+| Best scanned favorable traffic | 11/472 = 2.330508% | REJECT |
+| Focused tests | 4/4 | PASS |
+| Global cross-matrix/nonlinear words | uncovered | OPEN / NO CLAIM |
+
+Authoritative decision:
+`REJECT_BLOCK_LOCAL_ADAPTIVE_PACKED_LINEAR_WORDS`.
+
+## E0 adaptive nonlinear probe-degree Gate
+
+| Check | Observed | Status |
+|---|---:|---|
+| Stored cells | arbitrary nonlinear checkpoint functions | GRANTED |
+| Decoder | deterministic adaptive addresses and arbitrary exact postprocessing | GRANTED |
+| Necessary inequality | `RankLeq(a,b,r) <= V_A(S,min(S,r*t))` | DERIVED |
+| `31x42` arbitrary nonlinear bit-cell minimum | 15 probes | PASS |
+| `31x42` arbitrary nonlinear 64-bit-word minimum | 2 words | CAPACITY ONLY |
+| Smallest target-feasible scan point | `25x108`, 50 words, 2 reads | UNCONSTRUCTED |
+| Target-feasible rectangles through side 128 | 4,257 | CAPACITY ONLY |
+| Systematic `2x3` plus one arbitrary advice bit | no 2-probe scheme | REJECT SUBCLASS |
+| Fully nonsystematic `2x3`, 7-bit SMT | 600 s timeout / unknown | INCONCLUSIVE |
+| Focused deterministic tests | 9/9 | PASS |
+| Full unittest regression | 185/185 | PASS |
+| Full repository pytest regression | 694/694 | PASS |
+| Standard validation runner | completed | PASS |
+| Model forwards / hardware actions | 0 / 0 | NOT RUN |
+| Global cross-matrix encoding/native lift | uncovered | OPEN / NO CLAIM |
+
+Authoritative decision:
+`KEEP_NONLINEAR_CAPACITY_SURVIVORS_OPEN_BUT_UNCONSTRUCTED_AND_PIVOT_TO_GLOBAL_SHARED_READS`.

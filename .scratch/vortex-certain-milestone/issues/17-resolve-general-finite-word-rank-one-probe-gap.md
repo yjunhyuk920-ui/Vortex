@@ -470,3 +470,39 @@ finite-word preprocessing. Nonlinear stored cells, cross-matrix mixed cells,
 source-dependent nonlinear advice, native semantics, and a complete runtime
 remain open. The issue therefore remains claimed; the next action must change
 the stored information source rather than only its address scheduler.
+
+The twenty-first post-audit screen is recorded in
+`docs/research/E0_ADAPTIVE_PACKED_LINEAR_WORD_GATE.md`. It grants every
+physical word 64 unrelated binary linear summaries, full padding, adaptive
+addresses depending on all prior word values, and arbitrary exact output
+logic. The zero transcript fixes a support; exact Segre subspace intersections
+then bound the rank-one masks reachable by every support.
+
+For `31 x 42`, seven words cover at most `0.19975212628...` of the required
+rank-one population and the first count-feasible point is eight words. None of
+the 8,256 side-128 rectangles reaches the registered traffic line. The best
+case is `118 x 128`, 22 words, `11/472`, still `7425/3776` times the target.
+This closes block-local packed-linear words, not nonlinear word contents or
+global cross-matrix encoding. The issue remains claimed.
+
+The twenty-second post-audit screen is recorded in
+`docs/research/E0_ADAPTIVE_NONLINEAR_PROBE_DEGREE_GATE.md`. Every depth-`t`
+adaptive decoder over arbitrary nonlinear cells is a cylinder polynomial of
+degree at most `t`. Multiplying `r` rank-one characters yields rank-at-most-
+`r` characters at degree at most `rt`, so exact character independence forces
+
+```text
+RankLeq(a,b,r) <= sum_(j<=rt) C(S,j)(A-1)^j
+```
+
+for every rank, with no linear-encoder or fixed-address premise. Nonlinear bit
+cells at `31 x 42` still need 15 probes. Nonlinear 64-bit words first pass raw
+capacity at the traffic line for `25 x 108`, 50 padded words, and two probes,
+but no encoder or decoder exists. The systematic `2 x 3` plus one arbitrary
+advice-bit seed is exactly impossible at two probes. The fully non-systematic
+seven-bit SMT search timed out and is explicitly inconclusive.
+
+No native lift, joint causal batch, or complete runtime was delivered. The
+issue remains claimed; the next positive action requires an explicit
+non-systematic nonlinear word equation or a different global information
+source, not another capacity count.

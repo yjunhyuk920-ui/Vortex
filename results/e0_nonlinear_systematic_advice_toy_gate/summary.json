@@ -1,0 +1,31 @@
+{
+  "adaptive_probe_limit": 2,
+  "advice_constraint_witness": null,
+  "all_depth_two_decoder_trees_enumerated": true,
+  "backtracking_nodes": 15,
+  "claim_boundary": {
+    "arbitrary_depth_two_adaptive_decoder_covered": true,
+    "arbitrary_systematic_advice_bit_covered": true,
+    "fully_nonsystematic_seven_bit_encoding_covered": false,
+    "large_word_encoding_covered": false,
+    "surviving_runtime_candidate": false
+  },
+  "classification": "E0_NONLINEAR_SYSTEMATIC_ADVICE_TOY_GATE",
+  "columns": 3,
+  "decision": "REJECT_SYSTEMATIC_2X3_PLUS_ONE_ARBITRARY_ADVICE_BIT_AT_TWO_PROBES_KEEP_FULLY_NONSYSTEMATIC_SEVEN_BIT_ENCODING_OPEN",
+  "hard_query_cube_counts": {
+    "000111": 14,
+    "011011": 14,
+    "101101": 14,
+    "110110": 14,
+    "111000": 14,
+    "111111": 14
+  },
+  "rank_one_query_count": 21,
+  "raw_source_bits_are_systematic": true,
+  "rows": 2,
+  "scheme_exists": false,
+  "seventh_bit_is_arbitrary_boolean_function": true,
+  "source_bits": 6,
+  "stored_bits": 7
+}

@@ -1590,3 +1590,55 @@ KEEP_NO_SURVIVING_CANDIDATE
 
 Authority:
 `docs/research/E0_EXTENSION_FIELD_ADAPTIVE_SUPPORT_GATE.md`.
+
+## D-107 -- Charge arbitrary linear summaries packed in adaptive words
+
+The physical-word successor was granted 64 independent binary linear forms
+per address, value-dependent addresses, arbitrary exact postprocessing, full
+word padding, and a four-Q4-lane denominator. The zero transcript still fixes
+one support, and exact Segre subspace intersections bound every support.
+
+`31 x 42` needs at least eight words; seven cover at most
+`0.19975212628...` of its rank-one masks. The complete side-128 scan has no
+traffic-line survivor; its best case is `118 x 128`, 22 words, `11/472`, a
+`7425/3776` miss.
+
+Decision:
+
+```text
+REJECT_BLOCK_LOCAL_ADAPTIVE_PACKED_LINEAR_WORDS
+DO_NOT_REOPEN_LINEAR_SUMMARIES_BY_CHANGING_ONLY_PACKING_OR_ADDRESS_LOGIC
+PIVOT_TO_NONLINEAR_STORED_WORDS_OR_GLOBAL_CROSS_MATRIX_STRUCTURE
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authority:
+`docs/research/E0_ADAPTIVE_PACKED_LINEAR_WORD_GATE.md`.
+
+## D-108 -- Extend rank amplification to arbitrary nonlinear adaptive cells
+
+Every depth-`t` adaptive cell decoder has cylinder degree at most `t`.
+Multiplying exact rank-one characters produces every rank-at-most-`r`
+character at degree at most `rt`; independence forces the exact alphabet
+dimension inequality. This proof assumes neither a linear encoder nor fixed
+addresses.
+
+Arbitrary nonlinear bit cells at `31 x 42` still need 15 probes. Nonlinear
+64-bit capacity first reaches the traffic line at the unconstructed
+`25 x 108`, 50-word, two-probe point. The systematic `2 x 3` plus one
+arbitrary nonlinear advice bit is exactly rejected; the fully non-systematic
+seven-bit SMT run timed out and is explicitly inconclusive.
+
+Decision:
+
+```text
+PROMOTE_NONLINEAR_PROBE_DEGREE_AS_A_MANDATORY_BLOCK_LOCAL_GATE
+REJECT_SYSTEMATIC_2x3_PLUS_ONE_NONLINEAR_ADVICE_BIT_AT_TWO_PROBES
+DO_NOT_CALL_25x108_CAPACITY_A_CONSTRUCTION
+KEEP_FULLY_NONSYSTEMATIC_AND_GLOBAL_NONLINEAR_WORDS_OPEN
+KEEP_NO_SURVIVING_CANDIDATE
+```
+
+Authorities:
+`docs/research/E0_ADAPTIVE_NONLINEAR_PROBE_DEGREE_GATE.md` and
+`results/e0_nonlinear_systematic_advice_toy_gate/summary.json`.

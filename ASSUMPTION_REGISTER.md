@@ -1076,3 +1076,56 @@ Arbitrary allocation among block-local field-linear dictionaries also fails:
 surrogate still requires at least `p=10.988948%`, versus `4.740741%`. The
 closure does not cover nonlinear stored cells, cross-matrix mixed cells, or
 source-dependent nonlinear hot advice.
+
+## A-085 -- Independent packed linear bits evade field-span locality
+
+Assumption: a physical word containing 64 unrelated binary linear summaries
+can evade the extension-field support theorem because one read exposes an
+arbitrary 64-dimensional binary space and later addresses may depend on all
+returned bits.
+
+Status: CONTRADICTED for block-local linear words. On the zero source, the
+adaptive support is fixed and the query lies in the span of the exposed
+summaries. A support of `j` words has dimension at most `64j`; the exact
+maximum Segre intersection of such a subspace gives
+
+```text
+sum_(j=1)^p C(L,j) M(a,b,min(64j,ab))
+    >= (2^a-1)(2^b-1).
+```
+
+For `31 x 42`, seven words cover at most `0.19975212628...` of the rank-one
+population by this favorable union bound, so at least eight words are needed.
+
+### A-085 closure
+
+Across all side-`1..128` rectangles, the best four-Q4-lane traffic point is
+`118 x 128`, 22 words, `11/472`, still `7425/3776` times the registered line.
+This does not cover nonlinear word contents or global cross-matrix encoding.
+
+## A-086 -- Nonlinear cell contents evade determinantal rank amplification
+
+Assumption: replacing stored linear atoms by arbitrary nonlinear checkpoint
+functions and choosing addresses adaptively invalidates every rank-amplified
+capacity inequality.
+
+Status: CONTRADICTED for arbitrary deterministic block-local cells. A depth-
+`t` decision tree is a cylinder polynomial of cell-support degree at most
+`t`. Products of `r` rank-one parity characters give rank-at-most-`r`
+characters at degree at most `rt`. Their linear independence forces
+
+```text
+RankLeq(a,b,r) <= sum_(j<=rt) C(S,j)(A-1)^j
+```
+
+for alphabet size `A`. At `31 x 42`, arbitrary nonlinear bit encodings still
+need at least 15 probes.
+
+### A-086 closure
+
+For 64-bit nonlinear words the theorem isolates, but does not construct, a
+gap. `25 x 108` with 50 padded words and two probes is the smallest side-128
+capacity point at the traffic line. The systematic `2 x 3` plus one arbitrary
+advice-bit seed is exactly impossible at two probes; the fully non-systematic
+seven-bit case remains unresolved after an explicitly inconclusive SMT
+timeout. Global mixed cells, native arithmetic, and joint batches stay open.

@@ -1,0 +1,130 @@
+{
+  "claim_boundary": {
+    "adaptive_addresses_covered": true,
+    "arbitrary_nonlinear_block_local_bit_cells_covered": true,
+    "arbitrary_nonlinear_block_local_word_cells_covered": true,
+    "capacity_survivor_is_a_construction": false,
+    "global_cross_matrix_encoding_covered": false,
+    "joint_thirty_two_query_physical_union_covered": false,
+    "native_numerical_semantics_covered": false,
+    "surviving_runtime_candidate": false
+  },
+  "classification": "E0_ADAPTIVE_NONLINEAR_PROBE_DEGREE_GATE",
+  "contract": {
+    "addresses_may_depend_on_query_and_prior_values": true,
+    "all_rank_one_queries_include_matrix_units": true,
+    "encoding_need_not_be_linear_or_systematic": true,
+    "exactness_forces_encoding_injectivity": true,
+    "layout_is_one_block_local_matrix": true,
+    "postprocessing_is_arbitrary_deterministic_exact_logic": true,
+    "stored_cells_may_be_arbitrary_checkpoint_functions": true
+  },
+  "decision": "EXTEND_DETERMINANTAL_CAPACITY_TO_ARBITRARY_NONLINEAR_ADAPTIVE_CELLS_KEEP_CAPACITY_FEASIBLE_WORD_ENCODINGS_OPEN_UNCONSTRUCTED",
+  "proof_equations": {
+    "cylinder_dimension": "V_A(S,d)=sum_(j=0)^d C(S,j)(A-1)^j",
+    "decision_tree_degree": "depth-t adaptive decoder lies in cylinder degree <= t",
+    "necessary_rank_inequality": "RankLeq(a,b,r) <= V_A(S,min(S,r*t)) for every r",
+    "product_degree": "degree <= r*t",
+    "rank_product": "chi_(q1+...+qr)=product_i chi_qi"
+  },
+  "side_one_to_128_nonlinear_word_scan": {
+    "best_traffic_capacity_case": {
+      "columns": 128,
+      "constructor_exists": false,
+      "favorable_traffic_fraction": "1/256",
+      "favorable_traffic_fraction_decimal": 0.00390625,
+      "favorable_value_lanes": 4,
+      "granted_encoded_bits": 19172,
+      "last_rejected_witness": {
+        "cylinder_degree": 3,
+        "dimension_to_required_ratio": "27965115941321201466432111204880459894981792580715383922408338251/115792089237316195423570985008687907852589419931798687112530834793049593217026",
+        "dimension_to_required_ratio_decimal": 2.4151145493200854e-13,
+        "maximum_matrix_rank": 1,
+        "probes": 3
+      },
+      "minimum_physical_bits": 256,
+      "minimum_probes_not_degree_rejected": 4,
+      "minimum_to_target_multiplier": "675/2048",
+      "minimum_to_target_multiplier_decimal": 0.32958984375,
+      "padded_words": 300,
+      "registered_target_fraction": "8/675",
+      "registered_target_rejected": false,
+      "rows": 128,
+      "source_bit_plane_dimension": 16384,
+      "word_bits": 64
+    },
+    "maximum_side": 128,
+    "rectangles_checked": 8256,
+    "registered_target_passing_count": 4257,
+    "smallest_area_capacity_survivor": {
+      "columns": 108,
+      "constructor_exists": false,
+      "favorable_traffic_fraction": "8/675",
+      "favorable_traffic_fraction_decimal": 0.011851851851851851,
+      "favorable_value_lanes": 4,
+      "granted_encoded_bits": 3159,
+      "last_rejected_witness": {
+        "cylinder_degree": 1,
+        "dimension_to_required_ratio": "922337203685477580751/10889035416951477172401260654660528635906",
+        "dimension_to_required_ratio_decimal": 8.4703297249785e-20,
+        "maximum_matrix_rank": 1,
+        "probes": 1
+      },
+      "minimum_physical_bits": 128,
+      "minimum_probes_not_degree_rejected": 2,
+      "minimum_to_target_multiplier": "1",
+      "minimum_to_target_multiplier_decimal": 1.0,
+      "padded_words": 50,
+      "registered_target_fraction": "8/675",
+      "registered_target_rejected": false,
+      "rows": 25,
+      "source_bit_plane_dimension": 2700,
+      "word_bits": 64
+    }
+  },
+  "thirty_one_by_forty_two_bit_cells": {
+    "last_rejected_witness": {
+      "cylinder_degree": 224,
+      "dimension_to_required_ratio": "57584838196569368562607028444101949809430867057708379412552863416526161757533128627178578837665941735561363385464356333646198133587236509792123789358727590441250159087004524497203663349690776562476555302726582684292193445865816492737342932788022306093270383865923781081196609/119882798590907534788880722206407068912796277833827553244601509859919013213212284346143514119439557487203859046925114305726064364783293194724919015985863970756806400940917855485304280489207260689120865107539881966002976323330921905578388966830950820054898881645963465409429504",
+      "dimension_to_required_ratio_decimal": 0.48034279207206354,
+      "maximum_matrix_rank": 16,
+      "probes": 14
+    },
+    "minimum_probes_not_degree_rejected": 15
+  },
+  "thirty_one_by_forty_two_nonlinear_words": {
+    "columns": 42,
+    "constructor_exists": false,
+    "favorable_traffic_fraction": "16/651",
+    "favorable_traffic_fraction_decimal": 0.02457757296466974,
+    "favorable_value_lanes": 4,
+    "granted_encoded_bits": 1523,
+    "last_rejected_witness": {
+      "cylinder_degree": 1,
+      "dimension_to_required_ratio": "442721857769029238761/9444732961339096432642",
+      "dimension_to_required_ratio_decimal": 0.04687500002183853,
+      "maximum_matrix_rank": 1,
+      "probes": 1
+    },
+    "minimum_physical_bits": 128,
+    "minimum_probes_not_degree_rejected": 2,
+    "minimum_to_target_multiplier": "450/217",
+    "minimum_to_target_multiplier_decimal": 2.0737327188940093,
+    "padded_words": 24,
+    "registered_target_fraction": "8/675",
+    "registered_target_rejected": true,
+    "rows": 31,
+    "source_bit_plane_dimension": 1302,
+    "word_bits": 64
+  },
+  "two_by_three_degree_capacity_gap": {
+    "last_rejected_witness": {
+      "cylinder_degree": 1,
+      "dimension_to_required_ratio": "4/11",
+      "dimension_to_required_ratio_decimal": 0.36363636363636365,
+      "maximum_matrix_rank": 1,
+      "probes": 1
+    },
+    "minimum_probes_not_degree_rejected": 2
+  }
+}

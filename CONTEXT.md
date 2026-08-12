@@ -367,3 +367,21 @@ _Avoid_: Claiming value-dependent addresses alone evade a sparse-span count
 _Current status_: Rejects every block-local extension-field linear-summary
 constructor under the registered storage/traffic grants. Nonlinear cells and
 cross-block mixing remain open.
+
+**Adaptive Packed-Linear Word Gate**:
+The zero-transcript span condition after granting each physical word 64
+unrelated binary linear summaries and arbitrary value-dependent addresses.
+_Avoid_: Treating word packing or address adaptivity as new checkpoint
+information
+_Current status_: Rejects every block-local side-128 rectangle under the
+registered four-Q4-lane traffic comparison. The best relaxed case is
+`118 x 128`, 22 words, `11/472`; nonlinear word contents remain outside.
+
+**Adaptive Nonlinear Probe-Degree Gate**:
+The low-degree cylinder-polynomial capacity condition for arbitrary nonlinear
+stored cells and adaptive deterministic exact decoders.
+_Avoid_: Assuming nonlinear preprocessing invalidates rank amplification
+_Current status_: Bit cells at `31 x 42` still need 15 probes. Nonlinear words
+first become capacity-feasible at `25 x 108`, 50 padded words, two probes,
+but no encoder or decoder exists. The systematic `2 x 3` one-advice-bit seed
+is exactly rejected; the fully non-systematic seed is unresolved.

@@ -1195,3 +1195,48 @@ lanes to the one binary plane. Even granting all 551.22 GB of DFloat11 plus
 above the favorable `4.740741%` traffic allowance. No extension-field linear
 summary component is admitted. Nonlinear source cells and cells mixing
 independent matrix blocks remain outside this Gate and unconstructed.
+
+#### Adaptive packed-linear word boundary
+
+A 64-bit load may expose 64 unrelated binary linear checkpoint summaries, not
+only one extension-field multiple. This stronger packing still has an exact
+zero-transcript Gate. A zero-source adaptive path using `p` words puts the
+requested rank-one mask in a subspace of dimension at most `64p`. The exact
+Segre intersection of each such subspace, unioned over all word supports,
+rejects seven or fewer words for the `31 x 42` frontier; the first count-
+feasible point is eight words. Every block-local rectangle with sides at most
+128 misses the registered traffic line even under four-lane Q4 accounting;
+the best relaxed point is `118 x 128`, 22 words, at `11/472` traffic.
+
+No packed-linear word component is admitted. A new address scheduler or field
+packing does not change this boundary. Nonlinear cell contents and global
+cross-matrix encodings remain outside it.
+
+#### Adaptive nonlinear probe-degree boundary
+
+Arbitrary nonlinear stored cells do not evade determinantal capacity. A
+depth-`t` adaptive decoder is a cylinder polynomial whose monomials mention at
+most `t` cells. Multiplying `r` exact rank-one characters gives every rank-
+at-most-`r` character at cylinder degree at most `rt`. Therefore an alphabet-
+`A`, `S`-cell block must satisfy
+
+```text
+RankLeq(a,b,r) <= sum_(j<=rt) C(S,j)(A-1)^j
+```
+
+at every rank. This includes arbitrary nonlinear encoders, value-dependent
+addresses, and arbitrary deterministic exact postprocessing. With bit cells,
+the `31 x 42` block still needs at least 15 probes.
+
+Nonlinear 64-bit words have a real capacity gap rather than a component. The
+smallest side-128 point not rejected at the traffic line is `25 x 108`: 2,700
+source bits, 50 padded words, and two probes. The best count point is
+`128 x 128` with four probes. Neither point has an encoder or decoder.
+
+The smallest nonlinear seed, `2 x 3` source bits encoded into seven bits with
+two adaptive probes, also remains unconstructed. The complete systematic-six-
+bits-plus-one-arbitrary-advice subclass is impossible; a fully non-systematic
+SMT search timed out and is recorded as inconclusive. No nonlinear probe
+component enters the runtime until an explicit finite encoder, both address
+functions, exact decoder, native numerical lift, joint batch, and complete
+costs exist.

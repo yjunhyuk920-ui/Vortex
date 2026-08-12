@@ -1651,3 +1651,33 @@ cheapest semantic/counting Gate before any model or hardware action.
 No new experiment number, model, backend, kernel, download, private Ubuntu
 action, or hardware stage is authorized. Authority:
 `docs/research/E0_EXTENSION_FIELD_ADAPTIVE_SUPPORT_GATE.md`.
+
+## Packed-linear words closed; nonlinear word capacity isolated
+
+Do not implement another linear word packer, field basis, or value-adaptive
+linear address scheduler. The packed-linear Segre union Gate already grants
+64 unrelated summaries per word and rejects the entire registered side-128
+range.
+
+The only block-local finite-word target surviving current capacity is
+genuinely nonlinear. Its first exact traffic-line parameters are:
+
+```text
+source       arbitrary 25 x 108 binary matrix
+storage      50 padded 64-bit words
+query        every rank-one parity
+budget       two adaptive word reads
+```
+
+This is not authorized for implementation from capacity alone. Continue only
+if an explicit finite encoder, first address, value-dependent second address,
+and exact decoder equation are derived. Use the `2 x 3`, seven-bit, two-probe
+case as the cheapest algebraic seed, but do not rerun the systematic subclass
+or the same 600-second unrestricted SMT query. If no equation emerges, change
+to a global cross-matrix information source and immediately charge its decoder
+description, joint causal query, and physical reads.
+
+No experiment number, model, backend, kernel, download, private Ubuntu action,
+or hardware stage is authorized. Authorities:
+`docs/research/E0_ADAPTIVE_PACKED_LINEAR_WORD_GATE.md` and
+`docs/research/E0_ADAPTIVE_NONLINEAR_PROBE_DEGREE_GATE.md`.
