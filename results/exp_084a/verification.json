@@ -1,0 +1,11 @@
+{
+  "decision": "REJECT_CAUSAL_BILINEAR_FACTOR_SPAN_LEDGER_AS_CORE",
+  "deterministic_core_sha256": "1e79550fb66fe050338b2eedaf069728fd959583052dee2032fdd57f5cd0a7c4",
+  "experiment": "EXP-084A",
+  "model_forward_calls": 0,
+  "passed": true,
+  "verified_build_rows": 24,
+  "verified_evaluation_rows": 5,
+  "verified_exact_misses": 5,
+  "verified_oracle_rank_lower_bound": 5
+}

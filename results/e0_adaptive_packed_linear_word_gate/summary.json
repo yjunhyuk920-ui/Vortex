@@ -1,0 +1,344 @@
+{
+  "claim_boundary": {
+    "adaptive_addresses_covered": true,
+    "arbitrary_exact_postprocessing_covered": true,
+    "block_local_independent_linear_bits_per_word_rejected": true,
+    "global_cross_matrix_word_mixing_covered": false,
+    "joint_thirty_two_query_union_covered": false,
+    "native_numerical_semantics_covered": false,
+    "nonlinear_stored_words_covered": false,
+    "surviving_runtime_candidate": false
+  },
+  "classification": "E0_ADAPTIVE_PACKED_LINEAR_WORD_GATE",
+  "contract": {
+    "all_global_advice_is_granted_proportionally_to_one_plane": true,
+    "decoder_postprocessing_is_arbitrary_and_exact": true,
+    "layout_is_block_local": true,
+    "partial_word_is_padded_to_full_width": true,
+    "stored_word_bits_are_arbitrary_binary_linear_forms": true,
+    "word_addresses_may_depend_on_query_and_prior_values": true,
+    "zero_checkpoint_transcript_fixes_support": true
+  },
+  "decision": "REJECT_BLOCK_LOCAL_ADAPTIVE_PACKED_LINEAR_WORDS_KEEP_NONLINEAR_AND_GLOBAL_CROSS_MATRIX_WORDS_OPEN",
+  "proof_equations": {
+    "necessary_union": "sum_(j=1)^p C(M,j) M(a,b,min(j*w,a*b)) >= (2^a-1)(2^b-1)",
+    "segre_intersection": "M(a,b,d)=(2^q-1)(2^b-1)+2^q(2^r-1), d=q*b+r",
+    "support_span_dimension": "dim <= j*w",
+    "zero_path_span": "q in span_F2(functionals in zero-path words)"
+  },
+  "side_one_to_128_scan": {
+    "best_case": {
+      "ambient_bit_plane_dimension": 15104,
+      "columns": 128,
+      "favorable_source_bits": 60416,
+      "favorable_traffic_fraction": "11/472",
+      "favorable_traffic_fraction_decimal": 0.023305084745762712,
+      "favorable_value_lanes": 4,
+      "minimum_physical_bits": 1408,
+      "minimum_probes_not_count_rejected": 22,
+      "minimum_to_target_multiplier": "7425/3776",
+      "minimum_to_target_multiplier_decimal": 1.9663665254237288,
+      "padded_physical_words": 277,
+      "probe_cases": [
+        {
+          "capacity_to_required_ratio": "277/6129982163463555433765695107547465684254164180094943231",
+          "capacity_to_required_ratio_decimal": 4.518773344088978e-53,
+          "maximum_span_dimension": 64,
+          "probes": 1,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "5109748108417545797355"
+        },
+        {
+          "capacity_to_required_ratio": "705145238961621320111719/6129982163463555433765695107547465684254164180094943231",
+          "capacity_to_required_ratio_decimal": 1.1503218445960387e-31,
+          "maximum_span_dimension": 128,
+          "probes": 2,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "13007633757919793704356067491795189196876185"
+        },
+        {
+          "capacity_to_required_ratio": "21781152936814525223556223/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 1.0659649093256625e-29,
+          "maximum_span_dimension": 192,
+          "probes": 3,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "1205374061567234216732470487806046499218850435"
+        },
+        {
+          "capacity_to_required_ratio": "4449505632583328397756652448/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 2.1775784238510446e-27,
+          "maximum_span_dimension": 256,
+          "probes": 4,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "246236674976381348122443636984505607476416310560"
+        },
+        {
+          "capacity_to_required_ratio": "246203262221282985855537702873/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 1.2049134352562627e-25,
+          "maximum_span_dimension": 320,
+          "probes": 5,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "13624945704925231968341288354059100266487781869685"
+        },
+        {
+          "capacity_to_required_ratio": "77455135210811206918624051541459/6129982163463555433765695107547465684254164180094943231",
+          "capacity_to_required_ratio_decimal": 1.2635458496513405e-23,
+          "maximum_span_dimension": 384,
+          "probes": 6,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "1428795056428403653026979273416864191371592472906285"
+        },
+        {
+          "capacity_to_required_ratio": "1015826873162838688436427495668873/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 4.971434725621831e-22,
+          "maximum_span_dimension": 448,
+          "probes": 7,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "56216095057294496814548564677165695413165950027139685"
+        },
+        {
+          "capacity_to_required_ratio": "72614655512000366520203937318767123/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 3.5537455204097226e-20,
+          "maximum_span_dimension": 512,
+          "probes": 8,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "4018511898691360162714824382293700715164205882800660935"
+        },
+        {
+          "capacity_to_required_ratio": "2212624089272810920726776995483260773/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 1.082853439179978e-18,
+          "maximum_span_dimension": 576,
+          "probes": 9,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "122447130918420656183693320674644730077823431447844895185"
+        },
+        {
+          "capacity_to_required_ratio": "120740613260504904809527727264498646113/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 5.909019473832409e-17,
+          "maximum_span_dimension": 640,
+          "probes": 10,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "6681813576357827264752999403305717709307935354291377867485"
+        },
+        {
+          "capacity_to_required_ratio": "2997738168598593002089598731874298807773/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 1.4670865699084586e-15,
+          "maximum_span_dimension": 704,
+          "probes": 11,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "165895526388387060408935567920532732604662744326430720110185"
+        },
+        {
+          "capacity_to_required_ratio": "132601837717941819699728046598535753829743/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 6.489505230942757e-14,
+          "maximum_span_dimension": 768,
+          "probes": 12,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "7338216492259316869228579547842164233886555111385126742054835"
+        },
+        {
+          "capacity_to_required_ratio": "2774531559300707594835542872473487922611993/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 1.3578497385380866e-12,
+          "maximum_span_dimension": 832,
+          "probes": 13,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "153543220796551347595526763711288099871935500854919470954556085"
+        },
+        {
+          "capacity_to_required_ratio": "103203805601508157599229559811201701332153393/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 5.0507719035447924e-11,
+          "maximum_span_dimension": 896,
+          "probes": 14,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "5711322568091679698980301854421675519928582206761700341292639085"
+        },
+        {
+          "capacity_to_required_ratio": "1864063743808212114439146023923178294636532233/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 9.122687607079338e-10,
+          "maximum_span_dimension": 960,
+          "probes": 15,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "103157720457332930131917533376147798883212655359775506878774118885"
+        },
+        {
+          "capacity_to_required_ratio": "59759266731795363369383614641078742588122563258/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 2.924605576569749e-08,
+          "maximum_span_dimension": 1024,
+          "probes": 16,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "3307091698301923452311459024915679907460572923367952143234960685010"
+        },
+        {
+          "capacity_to_required_ratio": "948620912606186332684846469339563246224123355103/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 4.6425302095994894e-07,
+          "maximum_span_dimension": 1088,
+          "probes": 17,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "52496901593445342648450873469656073905121266645360326799274656424035"
+        },
+        {
+          "capacity_to_required_ratio": "26677195699288448680577088789268439819343393064153/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 1.3055761821767845e-05,
+          "maximum_span_dimension": 1152,
+          "probes": 18,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "1476322205007117384923703767865541292177561228700657222910255679271285"
+        },
+        {
+          "capacity_to_required_ratio": "377398294107220340705105385438827072244463486742003/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 0.00018469790810646497,
+          "maximum_span_dimension": 1216,
+          "probes": 19,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "20885309235751383646466899756776664691942450591819215986673614950954535"
+        },
+        {
+          "capacity_to_required_ratio": "9434856453324353020213319881665214961560882710295388/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 0.004617398322735159,
+          "maximum_span_dimension": 1280,
+          "probes": 20,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "522127147099983983567787523581250062686973894390261935748452981047354860"
+        },
+        {
+          "capacity_to_required_ratio": "120280892020886405342114413459688703748657174784169313/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 0.05886520815890536,
+          "maximum_span_dimension": 1344,
+          "probes": 21,
+          "rejected": true,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "6656372496200354373413955469252277789657083433402749743782029384417771485"
+        },
+        {
+          "capacity_to_required_ratio": "2701231292382597833370129176367002668897559863652707553/2043327387821185144588565035849155228084721393364981077",
+          "capacity_to_required_ratio_decimal": 1.3219767465961196,
+          "maximum_span_dimension": 1408,
+          "probes": 22,
+          "rejected": false,
+          "required_nonzero_rank_one_masks": "113078212145816597093331040047546784672344295480154920888182237685889368065",
+          "support_union_capacity": "149486767003432438971185044469866962615333211306271535163557125437061544285"
+        }
+      ],
+      "registered_target_fraction": "8/675",
+      "registered_target_rejected": true,
+      "rows": 118,
+      "stored_linear_bits": 17674,
+      "word_bits": 64
+    },
+    "maximum_side": 128,
+    "rectangles_checked": 8256,
+    "registered_target_passing_count": 0
+  },
+  "thirty_one_by_forty_two_case": {
+    "ambient_bit_plane_dimension": 1302,
+    "columns": 42,
+    "favorable_source_bits": 5208,
+    "favorable_traffic_fraction": "64/651",
+    "favorable_traffic_fraction_decimal": 0.09831029185867896,
+    "favorable_value_lanes": 4,
+    "minimum_physical_bits": 512,
+    "minimum_probes_not_count_rejected": 8,
+    "minimum_to_target_multiplier": "1800/217",
+    "minimum_to_target_multiplier_decimal": 8.294930875576037,
+    "padded_physical_words": 24,
+    "probe_cases": [
+      {
+        "capacity_to_required_ratio": "11728146399224/1049414773482121825849",
+        "capacity_to_required_ratio_decimal": 1.1175892216866913e-08,
+        "maximum_span_dimension": 64,
+        "probes": 1,
+        "rejected": true,
+        "required_nonzero_rank_one_masks": "9444732961339096432641",
+        "support_union_capacity": "105553317593016"
+      },
+      {
+        "capacity_to_required_ratio": "955842130783404/1049414773482121825849",
+        "capacity_to_required_ratio_decimal": 9.108334997150562e-07,
+        "maximum_span_dimension": 128,
+        "probes": 2,
+        "rejected": true,
+        "required_nonzero_rank_one_masks": "9444732961339096432641",
+        "support_union_capacity": "8602579177050636"
+      },
+      {
+        "capacity_to_required_ratio": "15791979396385364/1049414773482121825849",
+        "capacity_to_required_ratio_decimal": 1.5048367714497781e-05,
+        "maximum_span_dimension": 192,
+        "probes": 3,
+        "rejected": true,
+        "required_nonzero_rank_one_masks": "9444732961339096432641",
+        "support_union_capacity": "142127814567468276"
+      },
+      {
+        "capacity_to_required_ratio": "2700216338475450/8263108452615132487",
+        "capacity_to_required_ratio_decimal": 0.00032677972871345744,
+        "maximum_span_dimension": 256,
+        "probes": 4,
+        "rejected": true,
+        "required_nonzero_rank_one_masks": "9444732961339096432641",
+        "support_union_capacity": "3086347274877439350"
+      },
+      {
+        "capacity_to_required_ratio": "2980822514750886670/1049414773482121825849",
+        "capacity_to_required_ratio_decimal": 0.002840461741223685,
+        "maximum_span_dimension": 320,
+        "probes": 5,
+        "rejected": true,
+        "required_nonzero_rank_one_masks": "9444732961339096432641",
+        "support_union_capacity": "26827402632757980030"
+      },
+      {
+        "capacity_to_required_ratio": "36590965654622423986/1049414773482121825849",
+        "capacity_to_required_ratio_decimal": 0.03486797268272477,
+        "maximum_span_dimension": 384,
+        "probes": 6,
+        "rejected": true,
+        "required_nonzero_rank_one_masks": "9444732961339096432641",
+        "support_union_capacity": "329318690891601815874"
+      },
+      {
+        "capacity_to_required_ratio": "29946118907551703110/149916396211731689407",
+        "capacity_to_required_ratio_decimal": 0.19975212628015582,
+        "maximum_span_dimension": 448,
+        "probes": 7,
+        "rejected": true,
+        "required_nonzero_rank_one_masks": "9444732961339096432641",
+        "support_union_capacity": "1886605491175757295930"
+      },
+      {
+        "capacity_to_required_ratio": "1681382060271398486305/1049414773482121825849",
+        "capacity_to_required_ratio_decimal": 1.6022092529651653,
+        "maximum_span_dimension": 512,
+        "probes": 8,
+        "rejected": false,
+        "required_nonzero_rank_one_masks": "9444732961339096432641",
+        "support_union_capacity": "15132438542442586376745"
+      }
+    ],
+    "registered_target_fraction": "8/675",
+    "registered_target_rejected": true,
+    "rows": 31,
+    "stored_linear_bits": 1523,
+    "word_bits": 64
+  }
+}

@@ -278,3 +278,126 @@ No identical or sign-related dense output rows occurred. Only four projections a
 ## F-033 — Exact low Kronecker-rearrangement rank
 
 Every selected real-Q4 dense rearrangement was full rank at its four-row cut. Even favorable 4-bit-factor accounting required at least 200.877% of dense operations and slightly more static storage. Do not revive by reporting query bytes alone, using one prime without witness verification, or treating a low field rank as an exact integer factor reconstruction. Retain the certifier as auxiliary.
+
+## Continuation pointer after EXP-065
+
+`FAILED_APPROACHES_RECENT.md` is the authoritative continuation for F-034
+onward. As of EXP-081A it also closes the registered sparse-channel oracle,
+frozen exact-anchor macro, fixed DCT/block-zonotope proof state, standard
+recursive Strassen Hyperblock core, and nonlinear lookup/tiny residual-syndrome
+path, in addition to the EXP-066--076 families. F-048 additionally closes an
+output-head-only certificate and proof-carrying execution with no charged local
+trace source; it does not close verification as an auxiliary.
+F-049 closes exact terminal-only row/column Hamming spanning trees by a
+certified favorable lower bound; it does not by itself close arbitrary
+synthetic-intermediate linear circuits. F-050 then closes a static synthetic
+tree/DAG as a *new* core because it is contained by archived EXP-072B and lacks
+a fully charged target route; it explicitly leaves a genuinely query-adaptive
+cold information source open. F-051 closes raw Q4 page omission with no coded
+source for unread contributions; it explicitly leaves a fully charged Coded
+Causal Cold Source open as an unsupported search class.
+F-052 closes exhaustive finite-semiring tables and Boolean absorbing
+cell-probe shortcuts as direct numerical Transformer sources. It does not
+close the newly specified Causal Residual Atlas; that class must now pass a
+real causal-residual certificate Gate.
+F-053 records that Gate's first-row rejection and closes the legal one-page
+common-spectral/global-L2-ball Causal Residual Atlas primary path. It does not
+prove every possible correlated causal code impossible, but reopening requires
+a materially new paid information source and E0 equation rather than an Atlas
+parameter or bound sweep.
+F-054 rejects forward-only continuation as Atlas normal form plus the two
+currently constructible decision-dual sources: a raw-checkpoint dynamic dual
+build at the registered 64-token lifetime and a static full-vocabulary dual
+scan. It leaves only a concrete, lossless, sub-dense Bilinear Cross Residual
+source open and does not claim a universal bilinear-query lower bound.
+F-055 closes matrix-local separable linear covering codes for that residual:
+even an all-binary, all-8-GiB, free-decoder coefficient-probe grant has a
+`1.52104775688%` cross-work lower bound. It does not close nonlinear or
+cross-matrix shared advice, word-packed probes, or causally restricted query
+populations.
+F-056 closes only *free* cross-matrix projection reuse: useful zero-outside
+linear advice is the shortened block space, and every fixed outside probe buys
+at most one local dimension. Its valid global lower bound is far below the
+target, so it explicitly forbids a general impossibility claim and leaves a
+fully specified global code or certified causal query restriction open.
+F-057 closes the frozen calibration-built full-factor Causal Bilinear Span
+Ledger: all 24 build rows were independent, and the first five held-out rows
+were exact misses against the dimension-23 ledger. It forbids post-result
+rank/build/prompt/prime sweeps, but does not claim held-out rank 28 or reject
+nonlinear, implicit, or non-factor-scanned exact query codes.
+F-058 closes query-adaptive unions of materialized trace-built exact linear
+leaves as a primary core. A perfect router cannot exceed the independent
+answer directions actually built, and any partition of the full EXP-084A
+build span still misses all five frozen evaluation rows. It leaves repeated-
+query caching and a genuinely implicit nonlinear checkpoint-derived source
+logically open.
+F-059 closes exact-field nonlinear branching as a distinct source: a fixed
+open-cell path computes the same rational bilinear function, and
+Baur--Strassen reduces it to static MatVec. It does not close finite-word
+discontinuities, native rounding, bit operations, or general cell probes.
+F-060 closes local finite-word rank-one truth tables and the audited Mailman,
+broadword, Boolean-nonemptiness, and free-native-state shortcuts. It does not
+close globally nonlocal nonlinear bounded-word data structures under the
+global 8 GiB advice grant.
+F-061 closes the direct exact-numerical lift of Larsen--Williams all-zero
+rectangles, KPI25's limited-independence application to the full rank-one query
+code, and whole-MatVec lower bounds used without the mandatory `n`-fold
+scalarization. It explicitly leaves the general nonlinear numerical rank-one
+constructor/lower-bound gap open.
+F-062 closes Williams' finite-semiring preprocessing graph as a native
+reference-exact 2.5% core. Its favorable lookup payload falls as `1/b`, but
+its checkpoint-dependent catalog grows as `K^b/b`; native BF16/FP32 rounding
+also violates the semiring premise. It does not close a different
+scalar-specific adaptive numerical structure or a future covering lower bound.
+F-063 closes naive division of global nonlinear advice and illegal summation
+of single-matrix CKL worst cases. Exact XOR synergy shows why conditional
+information cannot be allocated per matrix. It does not close a new theorem
+that jointly charges the cross-matrix probes used to unlock that synergy.
+F-064 retains a valid Fourier-fiber direct sum for all linear queries but
+closes its promotion to rank-one by query cardinality alone. The restricted
+rank-one character matrix lacks the full spanning premise; its structure or a
+new constructor remains open.
+F-067 closes the direct sum-of-spiky-matrices evaluator by a finite
+resource-sensitive sign-pattern count that includes sparse factor supports.
+It does not close a further nonlinear adaptive index over those factors.
+F-068 closes integer entrywise powers of low-rank roots as a distinct runtime
+source because exact multinomial expansion is the existing static low-rank
+normal form. It does not close every entrywise nonlinear representation.
+F-069 closes a literal cached-answer table with nonlinear nearest-query
+routing: a finite fixed-side packing forces a 13,742-bit address before native
+or system costs. It does not close a succinct nonlinear answer decoder.
+F-070 closes trapdoored additive masking as a source: the mask product is fast
+but the arbitrary shifted-checkpoint product remains dense. It does not close
+checkpoints originally sampled together with a valid trapdoor.
+F-085 closes the former `30 x 40` fixed-linear sparse-cover frontier.  The
+anti-flag spectrum forces support collisions inside a minimal biorthogonal
+decomposition; distinct-representative activity strengthens this to four XOR
+cancellations and an exact rank-22 capacity contradiction.  It also rejects
+`31 x 39` and `30 x 44`, but it does not close the new unconstructed
+`31 x 43`, arbitrary adaptive word decoders, or native numerical lifting.
+F-086 closes that `31 x 43` successor. A positive anti-flag internal-edge
+bound yields a concrete overlapping adjacent pair, and peeling it makes the
+cancellation theorem recursive on rank `r-2`. This closes the first 856
+fixed-linear capacity-ordered shapes and leaves the unconstructed `31 x 42`,
+but still does not cover adaptive word addresses, nonlinear output decoding,
+or native numerical lifting.
+F-087 closes the natural adaptive extension-field successor. On the zero
+source, value-dependent probes of linear field cells expose one fixed support;
+exactness forces the query into that support's field span. Exact support
+counting requires 3,421 probes at `k=16,384`, and an aggregate storage
+relaxation still fails after granting all DFloat11 bits plus 8 GiB to the
+one-bit surrogate. This does not cover nonlinear stored cells or cross-block
+mixed cells.
+F-088 closes block-local adaptive words made from arbitrary independent
+linear summaries. Zero-transcript supports plus exact Segre subspace
+intersections require eight words at `31 x 42`; every side-128 rectangle
+misses the registered traffic line even with full padding and four favorable
+Q4 lanes. It does not cover nonlinear word contents or global mixing.
+F-089 closes the claim that arbitrary nonlinear stored bits automatically
+escape rank amplification. Adaptive depth becomes cylinder degree, and
+products of rank-one characters force exact determinantal capacity at degree
+`rt`. It also closes the smallest systematic `2 x 3` plus one arbitrary
+advice-bit/two-probe seed. It does not construct or reject the fully
+non-systematic seven-bit seed, the `25 x 108` nonlinear-word capacity point,
+global mixed cells, or native arithmetic.
+Read that continuation and each scope boundary before reopening a family.

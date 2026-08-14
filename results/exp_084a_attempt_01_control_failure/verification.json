@@ -1,0 +1,11 @@
+{
+  "decision": "INVALID_CAUSAL_BILINEAR_RANK_GATE_CONTROL_FAILURE",
+  "deterministic_core_sha256": "36ba5b53333ab33598919aa0bf0d076dac0e29923864c5a3ed73b246be51b734",
+  "experiment": "EXP-084A",
+  "model_forward_calls": 0,
+  "passed": true,
+  "verified_build_rows": 0,
+  "verified_evaluation_rows": 0,
+  "verified_exact_misses": 0,
+  "verified_oracle_rank_lower_bound": 0
+}

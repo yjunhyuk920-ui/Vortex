@@ -1,0 +1,43 @@
+name: EXP-074 weight-stationary block budget Gate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/exp_074_gate.yml"
+      - "docs/research/EXPERIMENT_074_WEIGHT_STATIONARY_BLOCK_GATE.md"
+      - "experiments/exp_074/**"
+      - "tests/exp_074/**"
+      - "vortex_runtime/weight_stationary_block.py"
+
+concurrency:
+  group: exp-074-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reference-budget-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install bounded validation dependency
+        run: python -m pip install --disable-pip-version-check pytest==8.3.5
+      - name: Run no-download reference Gate
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+          EXP074_OUTPUT_DIR: ${{ runner.temp }}/exp_074_reference
+        run: bash experiments/exp_074/run_current_env.sh
+      - name: Upload reference evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-074-reference-${{ github.run_id }}
+          path: ${{ runner.temp }}/exp_074_reference
+          if-no-files-found: error
+          retention-days: 30

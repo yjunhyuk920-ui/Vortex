@@ -1,0 +1,2 @@
+{"baseline_decode_wall_ns": 18001994200, "prefill_wall_ns": 21511223700, "prompt_id": "eval_english_01"}
+{"candidate_batch_wall_ns": 19616823200, "projection": "q_proj", "prompt_id": "eval_english_01"}

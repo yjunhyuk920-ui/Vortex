@@ -1,0 +1,98 @@
+{
+  "DERIVED": {
+    "decision": "REVISE_MTP1_AND_EXPERT_PAGING_INSUFFICIENT_REQUIRE_LONG_CAUSAL_PROPOSAL_AND_ROUTING_LOCALITY_GATES",
+    "dense_405b_4b_draft_p50_minimum_tokens": 507,
+    "dense_405b_zero_cost_p50_minimum_tokens": 85,
+    "fixed_route_zero_draft_p50_minimum_tokens": 9,
+    "mtp1_p50_gate_pass": false,
+    "mtp1_zero_draft_fixed_route_normalized_traffic": 10.0,
+    "nonexpert_active_parameters": 5923136512.0,
+    "optimistic_long_block_path_within_registered_limit": true,
+    "parameters_per_expert_model_wide": 452984832,
+    "parameters_per_expert_per_layer": 9437184,
+    "single_token_active_expert_parameters": 4076863488,
+    "storage": {
+      "direct_pull_nominally_fits": true,
+      "minimum_safe_remaining_gib": 30.0,
+      "model_artifact_gib": 75.43712854385376,
+      "remaining_after_direct_pull_gib": 22.181153774261475,
+      "root_available_gib": 97.61828231811523,
+      "safe_workspace_gate_pass": false
+    }
+  },
+  "MEASURED": {
+    "control_count": 7,
+    "control_failures": 0,
+    "deterministic_core_sha256": "404b43088448eaafc3f3d9631cdc3271dc9ebc16b635e27c9211cf9aa0459a65",
+    "elapsed_ns": 82023700,
+    "minimum_search_count": 18,
+    "peak_traced_bytes": 103445,
+    "scenario_count": 108
+  },
+  "REGISTERED_EXTERNAL_INPUTS": {
+    "baseline": {
+      "p50_allowed_multiplier": 1.2,
+      "p95_allowed_multiplier": 1.5,
+      "parameter_equivalent": 1000000000
+    },
+    "sources": {
+      "model_card": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B",
+      "model_config": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B/raw/main/config.json",
+      "ollama_tag": "https://ollama.com/library/qwen3.5:122b",
+      "standard_runtime_recipe": "https://github.com/vllm-project/recipes/blob/main/Qwen/Qwen3.5.md"
+    },
+    "target": {
+      "active_parameters": 10000000000,
+      "expert_count": 256,
+      "expert_intermediate_size": 1024,
+      "hidden_size": 3072,
+      "layer_count": 48,
+      "model_id": "Qwen/Qwen3.5-122B-A10B",
+      "model_revision": "dc4d348",
+      "mtp_hidden_layers": 1,
+      "ollama_q4_k_m_size_decimal_gb": 81.0,
+      "routed_experts_per_token": 8,
+      "shared_experts_per_token": 1,
+      "total_parameters": 122000000000
+    },
+    "target_hardware": {
+      "gpu_vram_bytes": 8589934592,
+      "host_ram_bytes": 25231065088,
+      "minimum_safe_remaining_bytes": 32212254720,
+      "root_available_bytes": 104816832512
+    }
+  },
+  "UNVERIFIED": [
+    "causal MTP proposal acceptance distribution",
+    "real Qwen expert route union and temporal locality",
+    "MTP and verification compute and memory traffic",
+    "exact floating and quantized block semantics",
+    "actual Transformer operation replacement",
+    "physical SSD RAM PCIe H2D and VRAM traffic",
+    "latency TTFT tokens per second power and thermal behavior",
+    "122B checkpoint execution",
+    "transfer to arbitrary dense 405B checkpoints",
+    "E4 E5 E6 and E7"
+  ],
+  "authoritative_decision": "REVISE_MTP1_AND_EXPERT_PAGING_INSUFFICIENT_REQUIRE_LONG_CAUSAL_PROPOSAL_AND_ROUTING_LOCALITY_GATES",
+  "claim_boundary": {
+    "122b_download": "NOT_AUTHORIZED_OR_PERFORMED",
+    "dense_405b": "NOT_VALIDATED_BY_MOE_SURROGATE",
+    "long_block_weight_stationary_candidate": "REVISE_PENDING_CAUSAL_PROPOSAL_AND_ROUTING_TRACE_GATES",
+    "mtp1_plus_expert_paging": "REJECTED_AS_1B_CLASS_CORE_UNDER_OPTIMISTIC_ACCOUNTING",
+    "target_hardware": "NO_COMMAND_EXECUTED"
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-074",
+  "name": "weight_stationary_mtp_expert_block_budget_gate",
+  "phase": [
+    "A",
+    "B-reference-accounting"
+  ],
+  "provenance": {
+    "config_sha256": "f86c32cbaecce73a27f77cbb1fd46f19d5096fcce425d7f4301372e64aed4e97",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.13",
+    "source_commit": "8abc06e73c884b839927cf41d5f4fa6cbb8fc051"
+  }
+}

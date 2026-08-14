@@ -1,0 +1,21 @@
+name: EXP-081A Gate
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: exp-081a-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fail closed without pinned local checkpoint
+        shell: pwsh
+        run: |
+          Write-Error "EXP-081A requires the pinned local Qwen3.5-0.8B payload; no CI proxy result is valid."

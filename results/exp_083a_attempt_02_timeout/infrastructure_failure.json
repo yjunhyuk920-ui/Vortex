@@ -1,0 +1,14 @@
+{
+  "experiment": "EXP-083A",
+  "attempt": 2,
+  "classification": "INFRASTRUCTURE_FAILURE_NO_SCIENTIFIC_DECISION",
+  "source_commit": "7694773c7ea9c006e5ec2cba288875d51edf81d9",
+  "runner_mode": "batch_one_full_24_layer_replay_per_candidate",
+  "timeout_seconds": 1804.1,
+  "exit_code": 124,
+  "scientific_page_rows_completed": 0,
+  "scientific_branch_rows_completed": 0,
+  "result_bundle_written": false,
+  "reason": "The first 16-page q_proj branch plus two controls did not complete before the command timeout. No partial candidate was interpreted as evidence.",
+  "authorized_continuation": "Preserve batch-one computation before layer 11, expand only at the exact registered projection output, and execute the remaining suffix with dense/all-page controls."
+}

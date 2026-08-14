@@ -1,0 +1,114 @@
+{"control": "prefix_token_trace_identity", "measured": {"length": 27, "sha256": "db7e18c713e2646869cc47ee8b51fb1225255a13497156764b57a359ba8d0d79"}, "passed": true, "prompt_id": "build_english_01"}
+{"control": "sequential_prefix_suffix_identity", "passed": true, "prompt_id": "build_english_01"}
+{"control": "prompt_primal_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_english_01"}
+{"control": "prompt_dual_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_english_01"}
+{"control": "prompt_basis_current_decode_exclusion", "measured": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "passed": true, "prompt_id": "build_english_01"}
+{"control": "prompt_top1_exp076_trace_identity", "measured": {"expected": 16, "observed": 16}, "passed": true, "prompt_id": "build_english_01"}
+{"control": "decode_1_suffix_identity", "passed": true, "prompt_id": "build_english_01"}
+{"control": "decode_1_finite_query", "passed": true, "prompt_id": "build_english_01"}
+{"control": "decode_2_suffix_identity", "passed": true, "prompt_id": "build_english_01"}
+{"control": "decode_2_finite_query", "passed": true, "prompt_id": "build_english_01"}
+{"control": "decode_3_suffix_identity", "passed": true, "prompt_id": "build_english_01"}
+{"control": "decode_3_finite_query", "passed": true, "prompt_id": "build_english_01"}
+{"control": "decode_4_suffix_identity", "passed": true, "prompt_id": "build_english_01"}
+{"control": "decode_4_finite_query", "passed": true, "prompt_id": "build_english_01"}
+{"control": "prefix_token_trace_identity", "measured": {"length": 32, "sha256": "e388663a2a4d0ef83722a5abb6cc6f6fcdd1f465e02873ab6cc2508be13458c2"}, "passed": true, "prompt_id": "build_korean_01"}
+{"control": "sequential_prefix_suffix_identity", "passed": true, "prompt_id": "build_korean_01"}
+{"control": "prompt_primal_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_korean_01"}
+{"control": "prompt_dual_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_korean_01"}
+{"control": "prompt_basis_current_decode_exclusion", "measured": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "passed": true, "prompt_id": "build_korean_01"}
+{"control": "prompt_top1_exp076_trace_identity", "measured": {"expected": 169204, "observed": 169204}, "passed": true, "prompt_id": "build_korean_01"}
+{"control": "decode_1_suffix_identity", "passed": true, "prompt_id": "build_korean_01"}
+{"control": "decode_1_finite_query", "passed": true, "prompt_id": "build_korean_01"}
+{"control": "decode_2_suffix_identity", "passed": true, "prompt_id": "build_korean_01"}
+{"control": "decode_2_finite_query", "passed": true, "prompt_id": "build_korean_01"}
+{"control": "decode_3_suffix_identity", "passed": true, "prompt_id": "build_korean_01"}
+{"control": "decode_3_finite_query", "passed": true, "prompt_id": "build_korean_01"}
+{"control": "decode_4_suffix_identity", "passed": true, "prompt_id": "build_korean_01"}
+{"control": "decode_4_finite_query", "passed": true, "prompt_id": "build_korean_01"}
+{"control": "prefix_token_trace_identity", "measured": {"length": 32, "sha256": "a15fb230d0bcfa06689ee3f90bbcfcc4ed44996a9275cedc22a5ea85afd6c9a8"}, "passed": true, "prompt_id": "build_code_01"}
+{"control": "sequential_prefix_suffix_identity", "passed": true, "prompt_id": "build_code_01"}
+{"control": "prompt_primal_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_code_01"}
+{"control": "prompt_dual_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_code_01"}
+{"control": "prompt_basis_current_decode_exclusion", "measured": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "passed": true, "prompt_id": "build_code_01"}
+{"control": "prompt_top1_exp076_trace_identity", "measured": {"expected": 71093, "observed": 71093}, "passed": true, "prompt_id": "build_code_01"}
+{"control": "decode_1_suffix_identity", "passed": true, "prompt_id": "build_code_01"}
+{"control": "decode_1_finite_query", "passed": true, "prompt_id": "build_code_01"}
+{"control": "decode_2_suffix_identity", "passed": true, "prompt_id": "build_code_01"}
+{"control": "decode_2_finite_query", "passed": true, "prompt_id": "build_code_01"}
+{"control": "decode_3_suffix_identity", "passed": true, "prompt_id": "build_code_01"}
+{"control": "decode_3_finite_query", "passed": true, "prompt_id": "build_code_01"}
+{"control": "decode_4_suffix_identity", "passed": true, "prompt_id": "build_code_01"}
+{"control": "decode_4_finite_query", "passed": true, "prompt_id": "build_code_01"}
+{"control": "prefix_token_trace_identity", "measured": {"length": 39, "sha256": "410e66c72300a73b2d8b5679e4b1cbeef17928d328a09c2077b86e97865e39eb"}, "passed": true, "prompt_id": "build_json_01"}
+{"control": "sequential_prefix_suffix_identity", "passed": true, "prompt_id": "build_json_01"}
+{"control": "prompt_primal_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_json_01"}
+{"control": "prompt_dual_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_json_01"}
+{"control": "prompt_basis_current_decode_exclusion", "measured": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "passed": true, "prompt_id": "build_json_01"}
+{"control": "prompt_top1_exp076_trace_identity", "measured": {"expected": 90, "observed": 90}, "passed": true, "prompt_id": "build_json_01"}
+{"control": "decode_1_suffix_identity", "passed": true, "prompt_id": "build_json_01"}
+{"control": "decode_1_finite_query", "passed": true, "prompt_id": "build_json_01"}
+{"control": "decode_2_suffix_identity", "passed": true, "prompt_id": "build_json_01"}
+{"control": "decode_2_finite_query", "passed": true, "prompt_id": "build_json_01"}
+{"control": "decode_3_suffix_identity", "passed": true, "prompt_id": "build_json_01"}
+{"control": "decode_3_finite_query", "passed": true, "prompt_id": "build_json_01"}
+{"control": "decode_4_suffix_identity", "passed": true, "prompt_id": "build_json_01"}
+{"control": "decode_4_finite_query", "passed": true, "prompt_id": "build_json_01"}
+{"control": "prefix_token_trace_identity", "measured": {"length": 38, "sha256": "ab2052d40a0354756aa95cc2e6635a196eeb6869846a846369fd3d9bef5d4b66"}, "passed": true, "prompt_id": "build_math_01"}
+{"control": "sequential_prefix_suffix_identity", "passed": true, "prompt_id": "build_math_01"}
+{"control": "prompt_primal_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_math_01"}
+{"control": "prompt_dual_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_math_01"}
+{"control": "prompt_basis_current_decode_exclusion", "measured": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "passed": true, "prompt_id": "build_math_01"}
+{"control": "prompt_top1_exp076_trace_identity", "measured": {"expected": 1206, "observed": 1206}, "passed": true, "prompt_id": "build_math_01"}
+{"control": "decode_1_suffix_identity", "passed": true, "prompt_id": "build_math_01"}
+{"control": "decode_1_finite_query", "passed": true, "prompt_id": "build_math_01"}
+{"control": "decode_2_suffix_identity", "passed": true, "prompt_id": "build_math_01"}
+{"control": "decode_2_finite_query", "passed": true, "prompt_id": "build_math_01"}
+{"control": "decode_3_suffix_identity", "passed": true, "prompt_id": "build_math_01"}
+{"control": "decode_3_finite_query", "passed": true, "prompt_id": "build_math_01"}
+{"control": "decode_4_suffix_identity", "passed": true, "prompt_id": "build_math_01"}
+{"control": "decode_4_finite_query", "passed": true, "prompt_id": "build_math_01"}
+{"control": "prefix_token_trace_identity", "measured": {"length": 44, "sha256": "d680a0a1a979139edb31cbb25f4ab73b03e4c2c081302f821ed1d1baa424379e"}, "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "sequential_prefix_suffix_identity", "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "prompt_primal_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "prompt_dual_basis_rank", "measured": 16, "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "prompt_basis_current_decode_exclusion", "measured": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "prompt_top1_exp076_trace_identity", "measured": {"expected": 32, "observed": 32}, "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "decode_1_suffix_identity", "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "decode_1_finite_query", "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "decode_2_suffix_identity", "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "decode_2_finite_query", "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "decode_3_suffix_identity", "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "decode_3_finite_query", "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "decode_4_suffix_identity", "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "decode_4_finite_query", "passed": true, "prompt_id": "build_adversarial_01"}
+{"control": "registered_build_row_count", "measured": 24, "passed": true, "prompt_id": "build_population"}
+{"control": "ledger_dimension_bound", "measured": 23, "passed": true, "prompt_id": "build_population"}
+{"control": "prefix_token_trace_identity", "measured": {"length": 30, "sha256": "f01b5a928df088d196033d233ec99f16cb983a147f4b900f1aa3e935f85ad7db"}, "passed": true, "prompt_id": "eval_english_01"}
+{"control": "sequential_prefix_suffix_identity", "passed": true, "prompt_id": "eval_english_01"}
+{"control": "prompt_primal_basis_rank", "measured": 16, "passed": true, "prompt_id": "eval_english_01"}
+{"control": "prompt_dual_basis_rank", "measured": 16, "passed": true, "prompt_id": "eval_english_01"}
+{"control": "prompt_basis_current_decode_exclusion", "measured": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "passed": true, "prompt_id": "eval_english_01"}
+{"control": "prompt_top1_exp076_trace_identity", "measured": {"expected": 32, "observed": 32}, "passed": true, "prompt_id": "eval_english_01"}
+{"control": "decode_1_suffix_identity", "passed": true, "prompt_id": "eval_english_01"}
+{"control": "decode_1_finite_query", "passed": true, "prompt_id": "eval_english_01"}
+{"control": "decode_2_suffix_identity", "passed": true, "prompt_id": "eval_english_01"}
+{"control": "decode_2_finite_query", "passed": true, "prompt_id": "eval_english_01"}
+{"control": "prefix_token_trace_identity", "measured": {"length": 29, "sha256": "9c70b284427a9fbe2a79c678a05c8d26011b5d36d885cf29902813b0eb419849"}, "passed": true, "prompt_id": "eval_english_02"}
+{"control": "sequential_prefix_suffix_identity", "passed": true, "prompt_id": "eval_english_02"}
+{"control": "prompt_primal_basis_rank", "measured": 16, "passed": true, "prompt_id": "eval_english_02"}
+{"control": "prompt_dual_basis_rank", "measured": 16, "passed": true, "prompt_id": "eval_english_02"}
+{"control": "prompt_basis_current_decode_exclusion", "measured": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "passed": true, "prompt_id": "eval_english_02"}
+{"control": "prompt_top1_exp076_trace_identity", "measured": {"expected": 12646, "observed": 12646}, "passed": true, "prompt_id": "eval_english_02"}
+{"control": "decode_1_suffix_identity", "passed": true, "prompt_id": "eval_english_02"}
+{"control": "decode_1_finite_query", "passed": true, "prompt_id": "eval_english_02"}
+{"control": "decode_2_suffix_identity", "passed": true, "prompt_id": "eval_english_02"}
+{"control": "decode_2_finite_query", "passed": true, "prompt_id": "eval_english_02"}
+{"control": "prefix_token_trace_identity", "measured": {"length": 25, "sha256": "a43ac14b2ade0540fa4297461fcb914d33c1ddd345db4331291fb938f7305a88"}, "passed": true, "prompt_id": "eval_english_03"}
+{"control": "sequential_prefix_suffix_identity", "passed": true, "prompt_id": "eval_english_03"}
+{"control": "prompt_primal_basis_rank", "measured": 16, "passed": true, "prompt_id": "eval_english_03"}
+{"control": "prompt_dual_basis_rank", "measured": 16, "passed": true, "prompt_id": "eval_english_03"}
+{"control": "prompt_basis_current_decode_exclusion", "measured": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "passed": true, "prompt_id": "eval_english_03"}
+{"control": "prompt_top1_exp076_trace_identity", "measured": {"expected": 8160, "observed": 8160}, "passed": true, "prompt_id": "eval_english_03"}
+{"control": "decode_1_suffix_identity", "passed": true, "prompt_id": "eval_english_03"}
+{"control": "decode_1_finite_query", "passed": true, "prompt_id": "eval_english_03"}

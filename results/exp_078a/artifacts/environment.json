@@ -1,0 +1,12 @@
+{
+  "config_sha256": "4ffc97eb9b3ab17354df2adbfedaf77b3eafcbbf80e1573e855a0c6a8370046a",
+  "huggingface_hub": "1.26.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.13",
+  "safetensors": "0.8.0",
+  "source_commit": "cc368190031d87db92f7a476dd741c18224239c1",
+  "tokenizers": "0.22.2",
+  "torch": "2.6.0+cpu",
+  "torch_num_threads": 8,
+  "transformers": "5.12.0"
+}

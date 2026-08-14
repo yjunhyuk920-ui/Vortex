@@ -1,0 +1,68 @@
+{
+  "claim_boundary": {
+    "charged_hadamard_correlation_blocks_covered": false,
+    "entrywise_black_box_recursion_covered": true,
+    "native_numerical_semantics_covered": false,
+    "non_entrywise_global_encodings_covered": false,
+    "surviving_runtime_candidate": false
+  },
+  "classification": "E0_NONLINEAR_RECURSIVE_LIFT_GATE",
+  "consequence": {
+    "additional_correlation_sources_required": true,
+    "free_recursive_lift_of_nonlinear_seed": false,
+    "toy_capacity_survivor_promoted": false
+  },
+  "contract": {
+    "child_blocks_are_arbitrary_and_independent": true,
+    "decoder_computation_is_free_and_arbitrary": true,
+    "parent_cell_is_entrywise_boolean_function": true,
+    "parent_decoder_receives_only_matching_child_query_answers": true,
+    "query_contains_two_sites_in_one_row_or_column": true
+  },
+  "decision": "REJECT_FREE_ENTRYWISE_RECURSION_OF_NONLINEAR_PROBE_SEEDS_REQUIRE_CHARGED_CORRELATION_SOURCES_OR_GLOBAL_ENCODING",
+  "exhaustive_controls": [
+    {
+      "affine_function_count": 4,
+      "arity": 1,
+      "boolean_function_count": 4,
+      "classification_mismatch_count": 0,
+      "two_site_factoring_function_count": 4
+    },
+    {
+      "affine_function_count": 8,
+      "arity": 2,
+      "boolean_function_count": 16,
+      "classification_mismatch_count": 0,
+      "two_site_factoring_function_count": 8
+    },
+    {
+      "affine_function_count": 16,
+      "arity": 3,
+      "boolean_function_count": 256,
+      "classification_mismatch_count": 0,
+      "two_site_factoring_function_count": 16
+    },
+    {
+      "affine_function_count": 32,
+      "arity": 4,
+      "boolean_function_count": 65536,
+      "classification_mismatch_count": 0,
+      "two_site_factoring_function_count": 32
+    }
+  ],
+  "nonlinear_and_counterexample": {
+    "child_parity_vector": 3,
+    "first_left": 0,
+    "first_parent_parity": 1,
+    "first_right": 3,
+    "second_left": 1,
+    "second_parent_parity": 0,
+    "second_right": 2
+  },
+  "theorem": {
+    "conclusion": "f is affine over F2",
+    "converse": "every affine f factors through child parities",
+    "equivalent_form": "h(x)=f(x) XOR f(0); h(x XOR y)=h(x) XOR h(y)",
+    "factorization_condition": "f(x) XOR f(y) depends only on x XOR y"
+  }
+}

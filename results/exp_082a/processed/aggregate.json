@@ -1,0 +1,64 @@
+{
+  "dense_coefficients": 55050240,
+  "families": {
+    "down_proj": {
+      "dense_coefficients": 11010048,
+      "matrix_count": 3,
+      "p50_matrix_fraction_lower_bound": 0.015629359654017856,
+      "selected_lower_bound": 171960,
+      "weighted_operation_fraction_lower_bound": 0.015618460518973214
+    },
+    "gate_proj": {
+      "dense_coefficients": 11010048,
+      "matrix_count": 3,
+      "p50_matrix_fraction_lower_bound": 0.01562908717564174,
+      "selected_lower_bound": 172076,
+      "weighted_operation_fraction_lower_bound": 0.01562899634951637
+    },
+    "k_proj": {
+      "dense_coefficients": 1572864,
+      "matrix_count": 3,
+      "p50_matrix_fraction_lower_bound": 0.0156402587890625,
+      "selected_lower_bound": 24600,
+      "weighted_operation_fraction_lower_bound": 0.0156402587890625
+    },
+    "o_proj": {
+      "dense_coefficients": 6291456,
+      "matrix_count": 3,
+      "p50_matrix_fraction_lower_bound": 0.01562643051147461,
+      "selected_lower_bound": 98232,
+      "weighted_operation_fraction_lower_bound": 0.015613555908203125
+    },
+    "q_proj": {
+      "dense_coefficients": 12582912,
+      "matrix_count": 3,
+      "p50_matrix_fraction_lower_bound": 0.015628814697265625,
+      "selected_lower_bound": 196652,
+      "weighted_operation_fraction_lower_bound": 0.015628496805826824
+    },
+    "up_proj": {
+      "dense_coefficients": 11010048,
+      "matrix_count": 3,
+      "p50_matrix_fraction_lower_bound": 0.015629359654017856,
+      "selected_lower_bound": 172046,
+      "weighted_operation_fraction_lower_bound": 0.015626271565755207
+    },
+    "v_proj": {
+      "dense_coefficients": 1572864,
+      "matrix_count": 3,
+      "p50_matrix_fraction_lower_bound": 0.01563262939453125,
+      "selected_lower_bound": 24521,
+      "weighted_operation_fraction_lower_bound": 0.015590031941731771
+    }
+  },
+  "gap_to_target": 1.3182474885668074,
+  "matrix_count": 21,
+  "maximum_matrix_fraction_lower_bound": 0.0156402587890625,
+  "minimum_matrix_fraction_lower_bound": 0.015497207641601562,
+  "p50_matrix_fraction_lower_bound": 0.015629359654017856,
+  "p90_matrix_fraction_lower_bound": 0.0156402587890625,
+  "selected_lower_bound": 860087,
+  "stage_1_reject": true,
+  "target_fraction": 0.011851851851851851,
+  "weighted_operation_fraction_lower_bound": 0.015623673938569569
+}

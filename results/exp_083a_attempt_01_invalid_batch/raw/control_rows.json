@@ -1,0 +1,36 @@
+[
+  {
+    "control": "prefix_token_trace_identity",
+    "family": "english",
+    "pass": true,
+    "prefix_token_sha256": "f01b5a928df088d196033d233ec99f16cb983a147f4b900f1aa3e935f85ad7db",
+    "prompt_id": "eval_english_01",
+    "prompt_length": 30
+  },
+  {
+    "control": "teacher_position_zero_top1_trace",
+    "expected_top1": 32,
+    "family": "english",
+    "logits_sha256": "5b6e8150e85d410983f71ecb52836ff12e99dff49cfe4e540f7eb9031ea48c3f",
+    "observed_top1": 32,
+    "pass": true,
+    "prompt_id": "eval_english_01"
+  },
+  {
+    "control": "teacher_position_one_top1_trace",
+    "expected_top1": 43447,
+    "family": "english",
+    "logits_sha256": "e656d2c0b76d6a8c79a61c5cafd69e1c2ee97ae09873ad0e6bef36c0e6be21d7",
+    "observed_top1": 43447,
+    "pass": true,
+    "prompt_id": "eval_english_01"
+  },
+  {
+    "control": "candidate_batch_identity",
+    "detail": "q_proj: candidate batch changed current input",
+    "family": "english",
+    "pass": false,
+    "projection": "q_proj",
+    "prompt_id": "eval_english_01"
+  }
+]

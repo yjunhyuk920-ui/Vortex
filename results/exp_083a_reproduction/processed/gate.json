@@ -1,0 +1,34 @@
+{
+  "branch_successes": 36,
+  "control_failures": [],
+  "decision": "PROMOTE_CAUSAL_RESIDUAL_ATLAS_TO_CAUSAL_PAIR_AND_BOUND_GATE",
+  "evaluated_projection_branches": 36,
+  "evaluated_token_states": 18,
+  "execution_complete": true,
+  "family_successes": {
+    "adversarial_low_acceptance": 3,
+    "code": 3,
+    "english": 3,
+    "korean": 3,
+    "math": 3,
+    "structured_json": 3
+  },
+  "gates": {
+    "all_branches_preserve_top1": true,
+    "all_families_succeed": true,
+    "all_tokens_succeed": true,
+    "complete_branch_population": true,
+    "complete_token_population": true,
+    "mean_kl_within_limit": true,
+    "p95_kl_within_limit": true,
+    "zero_control_failures": true,
+    "zero_leakage_failures": true,
+    "zero_malformed_states": true
+  },
+  "leakage_failures": [],
+  "malformed_state_count": 0,
+  "observed_scientific_failure": false,
+  "selected_mean_kl": 0.007225545020063708,
+  "selected_p95_kl": 0.037660752986209814,
+  "token_successes": 18
+}

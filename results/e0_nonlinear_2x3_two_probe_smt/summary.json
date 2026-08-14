@@ -1,0 +1,17 @@
+{
+  "adaptive_probe_limit": 2,
+  "classification": "E0_NONLINEAR_2X3_TWO_PROBE_SMT",
+  "columns": 3,
+  "decision": "INCONCLUSIVE_SOLVER_TIMEOUT_OR_UNKNOWN",
+  "decoder_output_table_is_arbitrary": true,
+  "decoder_second_address_depends_on_first_value": true,
+  "elapsed_seconds": 600.0407077999989,
+  "encoder_is_arbitrary_injective": true,
+  "rank_one_query_count": 21,
+  "reason_unknown": "timeout",
+  "rows": 2,
+  "solver_status": "unknown",
+  "source_bits": 6,
+  "stored_bits": 7,
+  "timeout_ms": 600000
+}

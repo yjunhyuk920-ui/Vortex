@@ -1,0 +1,23 @@
+[
+  {
+    "control": "metadata_source_guard",
+    "detail": "all source URLs passed the no-weight-payload guard",
+    "passed": true
+  },
+  {
+    "control": "pinned_checkpoint_revision_in_all_hf_urls",
+    "passed": true
+  },
+  {
+    "control": "pinned_runtime_revision_in_all_vllm_urls",
+    "passed": true
+  },
+  {
+    "control": "source_hashes_unique",
+    "passed": true
+  },
+  {
+    "control": "deterministic_checkpoint_replay",
+    "passed": true
+  }
+]

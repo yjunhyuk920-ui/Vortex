@@ -1,0 +1,43 @@
+name: EXP-075 native MTP surface Gate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/exp_075_gate.yml"
+      - "docs/research/EXPERIMENT_075_NATIVE_MTP_SURFACE_AUDIT.md"
+      - "experiments/exp_075/**"
+      - "tests/exp_075/**"
+      - "vortex_runtime/mtp_surface.py"
+
+concurrency:
+  group: exp-075-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  metadata-surface-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install bounded validation dependency
+        run: python -m pip install --disable-pip-version-check pytest==8.3.5
+      - name: Run pinned metadata-only Gate
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+          EXP075_OUTPUT_DIR: ${{ runner.temp }}/exp_075_reference
+        run: bash experiments/exp_075/run_current_env.sh
+      - name: Upload metadata evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-075-metadata-${{ github.run_id }}
+          path: ${{ runner.temp }}/exp_075_reference
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,68 @@
+{
+  "claim_boundary": {
+    "causal_transformer_query_restriction": "NOT TESTED",
+    "core_candidate": "NONE",
+    "data_dependent_adaptive_probe_algorithm": "NOT RULED OUT",
+    "free_cross_matrix_projection_reuse": "RULED OUT IN DECLARED MODEL",
+    "general_nonlinear_data_structure": "NOT RULED OUT",
+    "model_or_hardware_execution": "NOT RUN",
+    "target_sized_direct_sum_for_rank_one_queries": "NOT PROVED",
+    "word_or_address_granular_hardware_lower_bound": "NOT PROVED"
+  },
+  "classification": "E0_SCOPED_JOINT_LINEAR_ADVICE_LOCALIZATION_BOUND",
+  "decision": "ESTABLISH_GLOBAL_LINEAR_ADVICE_LOCALIZATION_BUT_BOUND_INSUFFICIENT_FOR_TARGET_REJECTION",
+  "favorable_cost_grants": {
+    "advice_reads_and_linear_decode": "FREE",
+    "build_amortization": "FREE",
+    "kv_workspace_and_runtime_state": "OMITTED",
+    "miss_and_fallback": "FREE",
+    "physical_latency": "NOT MAPPED",
+    "query_selector_and_address_discovery": "FREE",
+    "representation": "all 8 GiB are linear binary advice",
+    "verification": "FREE"
+  },
+  "localization_theorem": {
+    "fixed_outside_support_dimension_bound": "dim(U_i)+|T|",
+    "one_fixed_outside_probe_buys_at_most_local_dimensions": 1,
+    "outside_advice_content_equals_raw_cancellation": true,
+    "projection_dimensions_are_not_additive": true,
+    "query_adaptive_support_union_not_collapsed_to_one_subspace": true,
+    "sum_zero_outside_local_dimensions_at_most_hot_dimension": true,
+    "zero_outside_probe_space": "U intersect V_i"
+  },
+  "model": "SYSTEMATIC_LINEAR_COEFFICIENT_USE_WITH_GLOBAL_ADVICE",
+  "normalization": {
+    "binary_cold_gib": 47.00244140625,
+    "hot_advice_bits": 68719476736,
+    "hot_advice_gib": 8.0,
+    "hot_advice_rate": "16384/96261",
+    "hot_advice_rate_decimal": 0.17020392474626275,
+    "matrix_count": 883,
+    "non_embedding_coefficients": 403747897344,
+    "p50_target_cells": "1076661059584/225",
+    "p50_target_cells_decimal": 4785160264.817778,
+    "p50_target_fraction": "8/675",
+    "p50_target_fraction_decimal": 0.011851851851851851,
+    "q4_cold_gib": 188.009765625
+  },
+  "registered_lower_bound": {
+    "bound_over_p50_target": 0.001338958915777085,
+    "coefficient_fraction": "2135711/134582632448",
+    "coefficient_fraction_decimal": 1.586914270550619e-05,
+    "coefficient_percent": 0.0015869142705506193,
+    "coefficient_uses": 6407133,
+    "ideal_512_bit_line_probes": 12514,
+    "ideal_64_bit_word_probes": 100112,
+    "ideal_packed_payload_bytes": 800896,
+    "p50_target_over_bound": 746.8489049342003
+  },
+  "span_cover_witness": {
+    "binary_entropy_radius": 0.8267463724926178,
+    "certified_covering_radius_cells": 104974453310,
+    "holds": true,
+    "hot_rate_plus_entropy": 0.9969502972388806,
+    "maximum_rank_one_tuple_span_length": 16384,
+    "radius_fraction": "13/50",
+    "strict_margin_below_one": 0.003049702761119377
+  }
+}

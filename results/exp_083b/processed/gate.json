@@ -1,0 +1,36 @@
+{
+  "certified_tokens": 0,
+  "control_failures": [],
+  "decision": "REJECT_CAUSAL_RESIDUAL_ATLAS_LEGAL_PAIR_OUTWARD_PATH",
+  "evaluated_token_states": 1,
+  "exact_completion_failures": 0,
+  "execution_complete": false,
+  "fallbacks": 1,
+  "false_accepts": 0,
+  "family_successes": {
+    "adversarial_low_acceptance": 0,
+    "code": 0,
+    "english": 0,
+    "korean": 0,
+    "math": 0,
+    "structured_json": 0
+  },
+  "gates": {
+    "certified_tokens": false,
+    "controls_clean": true,
+    "exact_dense_completion": true,
+    "execution_complete": false,
+    "family_successes": false,
+    "mean_kl_within_limit": false,
+    "p95_kl_within_limit": false,
+    "token_successes": false,
+    "zero_fallback": false,
+    "zero_false_accept": true
+  },
+  "leakage_failures": [],
+  "malformed_state_count": 0,
+  "mean_target_to_candidate_kl": 0.05158216424853682,
+  "observed_scientific_failure": true,
+  "p95_target_to_candidate_kl": 0.05158216424853682,
+  "token_successes": 0
+}

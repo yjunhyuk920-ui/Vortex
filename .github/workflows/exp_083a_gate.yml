@@ -1,0 +1,18 @@
+name: EXP-083A Gate
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: exp-083a-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail closed without pinned local checkpoint
+        shell: pwsh
+        run: |
+          Write-Error "EXP-083A requires the SHA-pinned local Qwen3.5-0.8B payload; no CI proxy result is valid."

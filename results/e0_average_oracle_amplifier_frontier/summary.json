@@ -1,0 +1,77 @@
+{
+  "amplifier_boundary": {
+    "cold_backed_oracle_covered_by_capacity_gate": false,
+    "every_cold_probe_and_repeated_oracle_call_must_be_charged": true,
+    "native_bf16_fp32_semantics_proved": false,
+    "published_domain": "FINITE_FIELD_RANDOM_MATRIX_AND_VECTOR",
+    "published_reduction_supplies_approximate_oracle": false,
+    "target_derived_causal_predictor_meets_uniform_oracle_premise": false
+  },
+  "candidate": "OMEGA-XORLIFT",
+  "claim_boundary": {
+    "average_oracle_amplifier_rejected_as_mathematics": false,
+    "common_per_row_hot_oracle_rejected": true,
+    "direct_row_lottery_source_rejected": true,
+    "general_nonlinear_adaptive_probe_oracle_rejected": false,
+    "model_or_hardware_execution": false,
+    "native_transformer_executor_constructed": false,
+    "published_average_distance_oracle_rejected": false,
+    "self_contained_exact_8_gib_derived_executor_rejected": true,
+    "target_achieved": false
+  },
+  "decision": "REJECT_ROW_LOTTERY_AND_UNCHARGED_AMPLIFIER_AS_CORE",
+  "direct_row_lottery_gate": {
+    "decision": "REJECT_DIRECT_ROW_LOTTERY_AS_A_TRAFFIC_REDUCTION",
+    "hot_exact_state_gib": 47.00244140625,
+    "hot_exact_state_injection_bits": 403747897344,
+    "independent_row_forms_needed": 19997952,
+    "minimum_direct_coefficient_payload_bits": 403747897344,
+    "minimum_direct_payload_fraction_of_binary_source": 1.0,
+    "model": "EXACT_ENCODED_ROW_FORMS_PLUS_BASELINE_GUESSES",
+    "multiple_of_8_gib": 5.87530517578125
+  },
+  "name": "average_oracle_amplifier_frontier",
+  "old_2_5_percent_assumption_used": false,
+  "published_premise_correction": {
+    "common_advantage_required_for_every_row": false,
+    "counterexample_has_near_linear_query_time": false,
+    "counterexample_satisfies_accuracy_part_only": true,
+    "gf2_average_coordinate_accuracy": "112645/192522",
+    "gf2_average_coordinate_advantage": "8192/96261",
+    "hot_fraction_exact_rows_counterexample": "16384/96261",
+    "metric": "EXPECTED_NORMALIZED_HAMMING_DISTANCE_OVER_OUTPUT_COORDINATES"
+  },
+  "registered_population": {
+    "average_input_bits_per_row": 20189.462268136256,
+    "binary_coefficient_bits": 403747897344,
+    "hot_state_bits": 68719476736,
+    "hot_state_fraction": 0.17020392474626275,
+    "output_row_functions": 19997952
+  },
+  "uniform_every_row_source_gate": {
+    "common_advantage_ceiling_log10": "-2521.8993417362039151312255585562198814459453766578120665944959472275104905214545",
+    "common_advantage_ceiling_log2": "-8377.5682757914410435628608369497036496537245413930386471574689248179013530985575",
+    "decision": "REJECT_COMMON_PER_ROW_HOT_ONLY_PARITY_ORACLE",
+    "does_not_reject_published_average_distance_premise": true,
+    "missing_bits_per_output_row": "16753.136551582882087125721673899407299307449082786077294314937849635802706197115",
+    "model": "ONE_GLOBAL_NONLINEAR_HOT_STATE_FREE_QUERY_COMPUTE_NO_COLD_PROBES_COMMON_ROW_ADVANTAGE",
+    "scenarios": {
+      "blum_luby_rubinfeld_pair_threshold": {
+        "accuracy": "3/4",
+        "advantage": "1/4",
+        "fourier_list_size_upper_bound": 4,
+        "minimum_state_bits": 403707901440,
+        "minimum_state_gib": 46.99778527021408,
+        "multiple_of_8_gib": 5.87472315877676
+      },
+      "one_percent_advantage": {
+        "accuracy": "51/100",
+        "advantage": "1/100",
+        "fourier_list_size_upper_bound": 2500,
+        "minimum_state_bits": 403522166214,
+        "minimum_state_gib": 46.97616284410469,
+        "multiple_of_8_gib": 5.8720203555130865
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "final_norm_epsilon": 1e-06,
+  "final_norm_gain_abs_max": 6.3125,
+  "lm_head_maximum_row_norm_upper": 1.0570894295155968,
+  "lm_head_minimum_row_norm_upper": 0.34659998137366255,
+  "lm_head_row_norms_sha256": "4cb8299f1d54f33b9d533f335c4bafe8cb6a83bfdaac199d2e51d9d9046c4763",
+  "lm_head_rows": 248320,
+  "registered_spectral_compile_operations": 28052251108674513,
+  "spectral": {
+    "cholesky_factor_sha256": "2b72dbe70b392593d51b31aaff2568fdd60e647db094ac16fcf2638d1f9f8c56",
+    "cholesky_minimum_eigenvalue_lower": 1.9508743579452815e-07,
+    "cholesky_residual_operator_upper": 2.37138342946106e-10,
+    "contracted_dimension": 3584,
+    "frobenius_norm_upper": 16.41672529547519,
+    "gram_center_sha256": "4876fa00fb94ee7cfd04c584c3794f277dcfc6cc17bd7d32eb932844fd65728e",
+    "gram_dimension": 1024,
+    "gram_interval_operator_radius_upper": 2.3494004343903663e-10,
+    "gram_radius_sha256": "5df33c25a1aa598fe3f71b1e2420e5034a9165ac0e8bc5e6dff25a3327478290",
+    "inverse_operator_norm_upper": 2264.04653681065,
+    "inverse_residual_operator_upper": 8.542734704896119e-10,
+    "operator_norm_squared_lower": 1.7602709798336753,
+    "operator_norm_upper": 1.326752041578861,
+    "orientation": "W_W_transpose",
+    "positive_definite_margin_lower": 1.94850297451582e-07,
+    "proof_method": "outward_gram_verified_cholesky_residual",
+    "proposal_multiplier": 1.000001,
+    "proposed_operator_norm": 1.326750714828146,
+    "verification_attempts": 1
+  }
+}

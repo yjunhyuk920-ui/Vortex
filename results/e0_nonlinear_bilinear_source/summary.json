@@ -1,0 +1,44 @@
+{
+  "claim_boundary": {
+    "continuous_algebraic_branching_and_finite_probes": "CONTAINED",
+    "core_candidate": "NONE",
+    "exact_field_arithmetic_as_distinct_adaptive_source": "REJECTED",
+    "finite_word_bitwise_rounding_or_discontinuous_addressing": "OPEN",
+    "general_cell_probe_lower_bound": "NOT PROVED",
+    "hardware_actions": 0,
+    "model_forward_calls": 0,
+    "native_bf16_q4_rounding_semantics": "NOT MODELED",
+    "static_circuit_meets_registered_target": "NOT PROVED"
+  },
+  "classification": "E0_EXACT_FIELD_NONLINEAR_BILINEAR_PATH_COLLAPSE",
+  "containment": {
+    "baur_strassen_unit_cost_factor": 4,
+    "bilinear_function": "f_W(r,u)=r^T W u",
+    "bounded_exact_algebraic_branching": "one full-dimensional fixed path computes the same rational function",
+    "left_gradient": "gradient_r f_W(r,u)=W u",
+    "result_type": "NOVELTY_CONTAINMENT_NOT_FINITE_IMPOSSIBILITY",
+    "target_query_implies_static_matvec_fraction_at_most": "32/675",
+    "target_query_implies_static_matvec_fraction_decimal": 0.047407407407407405
+  },
+  "decision": "REJECT_EXACT_FIELD_NONLINEAR_BILINEAR_ARITHMETIC_AS_DISTINCT_CORE_CLASS",
+  "known_structure_audit": {
+    "general_bounded_twin_width": "Hamming-coherence predecessor traversal; already F-049",
+    "grammar_compressed_matvec": "static grammar evaluation proportional to representation; F-050 class",
+    "twin_ordered_rectangle_decomposition": "static exact linear schedule; already F-050/EXP-072B"
+  },
+  "reference_controls": {
+    "all_controls_pass": true,
+    "branch_one_cases": 32,
+    "branch_zero_cases": 32,
+    "cases": 64,
+    "exact_gradient_matches": 64,
+    "exact_value_matches": 64,
+    "maximum_forward_tape_operations": 69,
+    "seed": 11607714
+  },
+  "registered_target": {
+    "dense_reduction_required": 84.375,
+    "p50_fraction": "8/675",
+    "p50_fraction_decimal": 0.011851851851851851
+  }
+}

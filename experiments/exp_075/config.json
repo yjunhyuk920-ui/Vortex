@@ -1,0 +1,108 @@
+{
+  "experiment": "EXP-075",
+  "name": "native_mtp_checkpoint_and_runtime_surface_audit",
+  "checkpoint": {
+    "model_id": "Qwen/Qwen3.5-0.8B",
+    "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "expected_architecture": "Qwen3_5ForConditionalGeneration",
+    "expected_text_model_type": "qwen3_5_text",
+    "expected_mtp_hidden_layers": 1,
+    "expected_mtp_tensor_keys": [
+      "mtp.fc.weight",
+      "mtp.layers.0.input_layernorm.weight",
+      "mtp.layers.0.mlp.down_proj.weight",
+      "mtp.layers.0.mlp.gate_proj.weight",
+      "mtp.layers.0.mlp.up_proj.weight",
+      "mtp.layers.0.post_attention_layernorm.weight",
+      "mtp.layers.0.self_attn.k_norm.weight",
+      "mtp.layers.0.self_attn.k_proj.weight",
+      "mtp.layers.0.self_attn.o_proj.weight",
+      "mtp.layers.0.self_attn.q_norm.weight",
+      "mtp.layers.0.self_attn.q_proj.weight",
+      "mtp.layers.0.self_attn.v_proj.weight",
+      "mtp.norm.weight",
+      "mtp.pre_fc_norm_embedding.weight",
+      "mtp.pre_fc_norm_hidden.weight"
+    ],
+    "required_model_card_markers": [
+      "MTP: trained with multi-steps",
+      "--speculative-algo NEXTN",
+      "--speculative-num-draft-tokens 4",
+      "qwen3_next_mtp",
+      "num_speculative_tokens\":2"
+    ]
+  },
+  "runtime": {
+    "repository": "vllm-project/vllm",
+    "revision": "a07086e4032e66aacae60ac2fc01e738096e9569",
+    "required_markers": {
+      "vllm_speculative": [
+        "if hf_config.model_type in (\"qwen3_5\", \"qwen3_5_moe\"):",
+        "\"architectures\": [\"Qwen3_5MoeMTP\" if is_moe else \"Qwen3_5MTP\"]",
+        "self.model = self.target_model_config.model",
+        "self.quantization = self.target_model_config.quantization",
+        "deprecated and replaced with mtp",
+        "self.method = \"mtp\""
+      ],
+      "vllm_qwen35_mtp": [
+        "class Qwen3_5MultiTokenPredictor(nn.Module):",
+        "self.num_mtp_layers = getattr(config, \"mtp_num_hidden_layers\", 1)",
+        "current_step_idx = spec_step_idx % self.num_mtp_layers",
+        "class Qwen3_5MTP(",
+        "if name.startswith(\"mtp.\"):",
+        "name = name.replace(\"mtp.\", \"model.\")"
+      ],
+      "vllm_registry": [
+        "\"Qwen3_5MTP\": (\"qwen3_5_mtp\", \"Qwen3_5MTP\")",
+        "\"Qwen3_5MoeMTP\": (\"qwen3_5_mtp\", \"Qwen3_5MoeMTP\")"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "name": "model_config",
+      "output_name": "model_config.json",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-0.8B/raw/2fc06364715b967f1860aea9cf38778875588b17/config.json",
+      "max_bytes": 65536
+    },
+    {
+      "name": "weight_index",
+      "output_name": "model_safetensors_index.json",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-0.8B/raw/2fc06364715b967f1860aea9cf38778875588b17/model.safetensors.index.json",
+      "max_bytes": 1048576
+    },
+    {
+      "name": "model_card",
+      "output_name": "model_README.md",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-0.8B/raw/2fc06364715b967f1860aea9cf38778875588b17/README.md",
+      "max_bytes": 1048576
+    },
+    {
+      "name": "vllm_speculative",
+      "output_name": "vllm_speculative.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/a07086e4032e66aacae60ac2fc01e738096e9569/vllm/config/speculative.py",
+      "max_bytes": 1048576
+    },
+    {
+      "name": "vllm_qwen35_mtp",
+      "output_name": "vllm_qwen3_5_mtp.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/a07086e4032e66aacae60ac2fc01e738096e9569/vllm/model_executor/models/qwen3_5_mtp.py",
+      "max_bytes": 1048576
+    },
+    {
+      "name": "vllm_registry",
+      "output_name": "vllm_registry.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/a07086e4032e66aacae60ac2fc01e738096e9569/vllm/model_executor/models/registry.py",
+      "max_bytes": 1048576
+    }
+  ],
+  "gate": {
+    "metadata_only_required": true,
+    "exact_expected_mtp_key_set_required": true,
+    "runtime_mapping_and_loader_required": true,
+    "decision_on_pass": "PROMOTE_TO_PINNED_QWEN35_08B_ACCEPTED_PREFIX_GATE",
+    "decision_on_checkpoint_failure": "REJECT_NATIVE_MTP_SURFACE_UNAVAILABLE",
+    "decision_on_runtime_failure": "REVISE_RUNTIME_MTP_SURFACE_NOT_EXPOSED"
+  },
+  "evidence_ceiling": "Phase A/B static public-metadata audit, E1. No safetensors payload, model execution, proposal token, acceptance measurement, quantized-path validation, server command, CUDA, latency, or 405B result is produced."
+}

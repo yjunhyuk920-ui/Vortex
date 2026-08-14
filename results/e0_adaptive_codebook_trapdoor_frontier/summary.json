@@ -1,0 +1,48 @@
+{
+  "claim_boundary": {
+    "causal_transformer_query_reachability": "NOT TESTED",
+    "general_compressed_bilinear_oracle_rejected": false,
+    "joint_literal_representatives_granted": true,
+    "joint_nonseparable_compressed_codebook_rejected": false,
+    "linear_image_variant": "CONTAINED_BY_F055",
+    "model_or_hardware_execution": false,
+    "target_achieved": false,
+    "trapdoored_generated_checkpoint_fast": "SUPPORTED_ONLY_FOR_SAMPLED_FAMILY"
+  },
+  "decision": "REJECT_NEARESTPAIR_LITERAL_TABLE_AND_SOURCE_FREE_TRAPSHIFT",
+  "name": "adaptive_codebook_trapdoor_frontier",
+  "old_2_5_percent_assumption_used": false,
+  "omega_nearestpair": {
+    "decision": "REJECT_OMEGA_NEARESTPAIR_LITERAL_TABLE_BY_FINITE_COVERING_STORAGE_GATE",
+    "dimension": 16384,
+    "favorable_grants": [
+      "all 8 GiB assigned to one binary square",
+      "arbitrary joint representative masks",
+      "free codebook storage and nearest-codeword routing",
+      "one-bit exact cached scalar per representative",
+      "free table lookup and address computation",
+      "one ideal operation per repaired coefficient",
+      "all native numerical and system costs omitted"
+    ],
+    "fits_hot_capacity": false,
+    "hot_capacity_log2_bits": 36.0,
+    "literal_table_address_bits": 13742,
+    "minimum_literal_table_log2_bits": 13741.254846862746,
+    "model": "JOINT_REPRESENTATIVE_LITERAL_SCALAR_TABLE_EXACT_DIFFERENCE_REPAIR",
+    "packing_removal_radius": 388,
+    "packing_subfamily": "r tensor all_ones",
+    "repair_budget_cells": 3181457,
+    "storage_exponent_deficit_bits": 13705.254846862746,
+    "target_fraction": "8/675"
+  },
+  "omega_trapshift": {
+    "average_case_solver_supplied_by_trapdoor_paper": false,
+    "decision": "REJECT_OMEGA_TRAPSHIFT_AS_SOURCE_FREE_MASKING_IDENTITY",
+    "identity": "W*x = (W+R)*x - R*x over an associative field",
+    "native_bf16_fp32_order_preserved": false,
+    "remaining_dense_fraction_if_computed_directly": 1.0,
+    "sampled_trapdoor_matrix_is_not_an_arbitrary_checkpoint": true,
+    "shifted_arbitrary_matrix_product": "MISSING_SOURCE",
+    "trapdoored_mask_product": "FAST"
+  }
+}

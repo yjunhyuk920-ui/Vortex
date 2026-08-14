@@ -1,0 +1,14 @@
+{
+  "classification": "MEASURED_EXTERNAL_PROCESS_TELEMETRY",
+  "experiment": "EXP-083A",
+  "run": "reproduction",
+  "source_commit": "1c7dd78097beaa7bc159a8f3459451b876a1338e",
+  "process_id": 7636,
+  "observer": "Windows System.Diagnostics.Process.PeakWorkingSet64",
+  "observed_peak_working_set_bytes": 3516215296,
+  "observed_peak_working_set_gib": 3.2747306823730469,
+  "internal_peak_rss_field": null,
+  "instrumentation_note": "The runner's original ctypes call omitted explicit 64-bit Windows API signatures, so the in-bundle peak_rss_bytes field is null. The source is fixed after this run; the OS lifetime high-water counter above was sampled while the process was alive.",
+  "timing_note": "No duplicate EXP-083A model process was observed during this reproduction. Timing is still an exhaustive dense CPU oracle cost, not a deployment-speed measurement.",
+  "claim_boundary": "CPU process working set only; not GPU VRAM, native-4B latency, target-server memory, or E4 evidence"
+}

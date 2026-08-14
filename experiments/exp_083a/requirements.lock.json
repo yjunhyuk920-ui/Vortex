@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "inherits_exact_environment": "experiments/exp_076/requirements.lock.json",
+  "inherited_file_sha256": "ffdabbb8a70355f72ec967a9a1bc8844f84f250fe5c6eb64d21f64f8af3320ad",
+  "python": "3.12.13",
+  "torch": "2.6.0+cpu",
+  "numpy": "2.1.3",
+  "transformers": "5.12.0",
+  "tokenizers": "0.22.2",
+  "huggingface_hub": "1.26.1",
+  "safetensors": "0.8.0"
+}

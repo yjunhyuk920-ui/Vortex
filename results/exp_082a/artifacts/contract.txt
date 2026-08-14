@@ -1,0 +1,71 @@
+{
+  "config": {
+    "checkpoint": {
+      "local_path": ".deps/exp076-model",
+      "model_id": "Qwen/Qwen3.5-0.8B",
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "weight_sha256": "04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696"
+    },
+    "decisions": {
+      "control_failure": "INVALID_DIFFERENTIAL_TREE_CONTROL_FAILURE",
+      "infrastructure_failure": "INFRASTRUCTURE_FAILURE_NO_SCIENTIFIC_DECISION",
+      "stage_1_inconclusive": "STAGE_1_INCONCLUSIVE_EXACT_MST_REQUIRED",
+      "stage_1_reject": "REJECT_DIFFERENTIAL_SPANNING_TREE_FROM_CERTIFIED_LOWER_BOUND",
+      "stage_2_pass": "PROMOTE_DIFFERENTIAL_SPANNING_TREE_TO_OPERATION_REPLACEMENT_GATE"
+    },
+    "evidence_ceiling": "Phase A/B exact structural controls plus Phase C pinned small-checkpoint weight observation at E1; no complete operation replacement, BF16/Q4 output preservation, physical speed, 122B/405B, or E2-E7 claim.",
+    "experiment": "EXP-082A",
+    "name": "exact_differential_spanning_tree_gate",
+    "population": {
+      "include_zero_vertex": true,
+      "layer_indices": [
+        3,
+        11,
+        23
+      ],
+      "orientations": [
+        "rows",
+        "columns"
+      ],
+      "projection_names": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ],
+      "weight_bits": 4
+    },
+    "seed": 820082,
+    "stage_1": {
+      "coordinate_block_size": 32,
+      "exact_pattern_ids": true,
+      "maximum_weighted_operation_fraction": 0.011851851851851851,
+      "mst_lower_bound": "ceil(sum_nearest_block_distance/2)",
+      "pair_chunk_rows": 32
+    },
+    "stage_2": {
+      "activation_bytes": 2,
+      "authorized_only_if_stage_1_inconclusive": true,
+      "coordinate_index_bytes": 2,
+      "delta_value_bytes": 1,
+      "maximum_compile_amortization_tokens": 512,
+      "maximum_family_operation_fraction": 0.011851851851851851,
+      "maximum_projected_sidecar_bytes": 8589934592,
+      "maximum_projected_traffic_fraction": 0.011851851851851851,
+      "maximum_weighted_operation_fraction": 0.011851851851851851
+    },
+    "target_shapes": {
+      "exclude": [
+        "embedding"
+      ],
+      "path": "results/exp_071/raw/tensor_rows.jsonl",
+      "sha256": "5009a4ed7234bd24eb1488b0f96a9c847158c2a614a6c90519a16cf4212ba82a"
+    }
+  },
+  "config_sha256": "34a0b9ba00d5b5ac4f305c0aea1bbaf1f04ad28fabb0d1a43089fdd352514cbe",
+  "source_commit": "2caaba054d53ab81d8bdc2fc83aaa7f8241b0e4c",
+  "weight_sha256": "04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696"
+}

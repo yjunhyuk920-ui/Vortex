@@ -226,6 +226,59 @@ Before a user-facing progress response after repository work, commit the current
 
 Read `NEXT_EXPERIMENT.md`.
 
-EXP-066 Tensor-Train/MPO is authorized only as a bounded cheap-kill bond-rank certificate Gate. Exact MPO reconstruction, runtime integration, kernels, and broad factorization rescue searches are prohibited unless the lower-bound Gate survives.
+EXP-066 through EXP-070 are rejected as core under their frozen scopes. EXP-071 does not prove online exact execution impossible. EXP-072A rejects a self-contained exact Q4 artifact as a universal 8 GiB hot core.
 
-If EXP-066 fails, close exact classical single-matrix tensor factorization as the primary direction for the measured population. The next core candidate must change execution class and pass E0 efficiency triage, prioritizing high-upside joint multi-operator arithmetic compilation or certificate-guided demand-driven execution rather than another adjacent decomposition.
+EXP-073 Stage 1 sanitized target inventory is complete. Stage 2 storage, H2D, and native 4B Q4 baselines require separate authorization and remain `NOT TESTED`. No new cold-backed core experiment may freeze a physical Gate using proxy bandwidth or capacity where EXP-073 measured values exist.
+
+EXP-077A through EXP-081A are rejected under their frozen scopes. EXP-081A's
+finite-field syndrome recovery is structurally correct, but held-out exact
+residual-code coverage was only `8.681672%` against `99.75%`; observed fallback
+would leave logical traffic at `92.244986%` of dense. Do not sweep lookup trees,
+code ranks, fields, layers, or prompts around this path. No core candidate
+survives. Read `NEXT_EXPERIMENT.md` before proposing another mechanism.
+
+EXP-082A rejects terminal-only differential spanning trees by a favorable
+whole-population lower bound. EXP-083A passes only favorable one-page
+existence; EXP-083B then rejects the legal Causal Residual Atlas primary path
+on its first untouched row with one valid fallback and zero control failures.
+Do not sweep Atlas ranks, pages, layers, selectors, prompts, spectral slack, or
+tolerances. The post-Atlas E0 audit further rejects forward-only continuation,
+one raw-checkpoint dynamic dual build at the registered 64-token lifetime, and
+a static full-vocabulary dual scan. The exact open barrier is a paid, lossless,
+sub-dense source for the Bilinear Cross Residual `r^T W u`; no construction
+currently exists. E2, hardware, larger models, and the private Ubuntu host
+remain unauthorized. Read `NEXT_EXPERIMENT.md`.
+
+EXP-084A rejected the dimension-23 Causal Bilinear Span Ledger after zero hits
+and five exact misses. The subsequent E0 union bound rejects routing among
+materialized trace-built linear leaves as a new primary core: perfect routing
+still supplies no independent answer information, and every partition of the
+full EXP-084A build span misses all five frozen evaluation rows. Do not sweep
+leaves, routers, prompts, positions, ranks, primes, or hit semantics.
+
+The exact-field nonlinear audit now closes algebraic branching as a distinct
+source: one full-dimensional rational path computes the same bilinear
+function, and Baur--Strassen reduces it to static MatVec. Current twin-width
+and grammar routes reduce to F-049/F-050. The next open ticket may only derive
+a concrete bounded-word discontinuous exact source for `r^T W u`, with word
+semantics, table growth, construction, representation, address/probe
+work/traffic, state, verification, misses, and fallback fully charged before
+E1. No Core Candidate survives. Pair extraction and native numerical
+semantics remain unsolved; EXP-085, E2, hardware, larger models, and the
+private Ubuntu host remain unauthorized. Read `NEXT_EXPERIMENT.md`.
+
+## Agent skills
+
+### Issue tracker
+
+Long-running investigation maps and tickets are versioned as local Markdown
+under `.scratch/`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+The local tracker uses the canonical five-role label vocabulary. See
+`docs/agents/triage-labels.md`.
+
+### Domain docs
+
+VORTEX uses a single root `CONTEXT.md` glossary. See `docs/agents/domain.md`.

@@ -1,0 +1,86 @@
+{
+  "aggregate": {
+    "dense_coefficients": 55050240,
+    "families": {
+      "down_proj": {
+        "dense_coefficients": 11010048,
+        "matrix_count": 3,
+        "p50_matrix_fraction_lower_bound": 0.015629359654017856,
+        "selected_lower_bound": 171960,
+        "weighted_operation_fraction_lower_bound": 0.015618460518973214
+      },
+      "gate_proj": {
+        "dense_coefficients": 11010048,
+        "matrix_count": 3,
+        "p50_matrix_fraction_lower_bound": 0.01562908717564174,
+        "selected_lower_bound": 172076,
+        "weighted_operation_fraction_lower_bound": 0.01562899634951637
+      },
+      "k_proj": {
+        "dense_coefficients": 1572864,
+        "matrix_count": 3,
+        "p50_matrix_fraction_lower_bound": 0.0156402587890625,
+        "selected_lower_bound": 24600,
+        "weighted_operation_fraction_lower_bound": 0.0156402587890625
+      },
+      "o_proj": {
+        "dense_coefficients": 6291456,
+        "matrix_count": 3,
+        "p50_matrix_fraction_lower_bound": 0.01562643051147461,
+        "selected_lower_bound": 98232,
+        "weighted_operation_fraction_lower_bound": 0.015613555908203125
+      },
+      "q_proj": {
+        "dense_coefficients": 12582912,
+        "matrix_count": 3,
+        "p50_matrix_fraction_lower_bound": 0.015628814697265625,
+        "selected_lower_bound": 196652,
+        "weighted_operation_fraction_lower_bound": 0.015628496805826824
+      },
+      "up_proj": {
+        "dense_coefficients": 11010048,
+        "matrix_count": 3,
+        "p50_matrix_fraction_lower_bound": 0.015629359654017856,
+        "selected_lower_bound": 172046,
+        "weighted_operation_fraction_lower_bound": 0.015626271565755207
+      },
+      "v_proj": {
+        "dense_coefficients": 1572864,
+        "matrix_count": 3,
+        "p50_matrix_fraction_lower_bound": 0.01563262939453125,
+        "selected_lower_bound": 24521,
+        "weighted_operation_fraction_lower_bound": 0.015590031941731771
+      }
+    },
+    "gap_to_target": 1.3182474885668074,
+    "matrix_count": 21,
+    "maximum_matrix_fraction_lower_bound": 0.0156402587890625,
+    "minimum_matrix_fraction_lower_bound": 0.015497207641601562,
+    "p50_matrix_fraction_lower_bound": 0.015629359654017856,
+    "p90_matrix_fraction_lower_bound": 0.0156402587890625,
+    "selected_lower_bound": 860087,
+    "stage_1_reject": true,
+    "target_fraction": 0.011851851851851851,
+    "weighted_operation_fraction_lower_bound": 0.015623673938569569
+  },
+  "config_sha256": "34a0b9ba00d5b5ac4f305c0aea1bbaf1f04ad28fabb0d1a43089fdd352514cbe",
+  "control_count": 72,
+  "control_failures": 0,
+  "decision": "REJECT_DIFFERENTIAL_SPANNING_TREE_FROM_CERTIFIED_LOWER_BOUND",
+  "deterministic_core_sha256": "8bf5d1f28ddf0fb53d07f3bdbc9e46e958b0375f4a53318b3c19b87e438a7a87",
+  "elapsed_seconds": 11.060358499998983,
+  "evidence_ceiling": "Phase A/B exact structural controls plus Phase C pinned small-checkpoint weight observation at E1; no complete operation replacement, BF16/Q4 output preservation, physical speed, 122B/405B, or E2-E7 claim.",
+  "experiment": "EXP-082A",
+  "name": "exact_differential_spanning_tree_gate",
+  "not_tested": [
+    "exact model-scale MST construction",
+    "sparse-delta operation replacement",
+    "BF16/Q4 model-output preservation",
+    "physical CUDA, SSD, PCIe, H2D, VRAM, or latency",
+    "122B and 405B execution",
+    "E2-E7"
+  ],
+  "source_commit": "2caaba054d53ab81d8bdc2fc83aaa7f8241b0e4c",
+  "source_worktree_clean": true,
+  "weight_sha256": "04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696"
+}

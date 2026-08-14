@@ -1,0 +1,7 @@
+{"control": "single_token_active_decomposition", "passed": true}
+{"control": "independent_union_at_one_token", "passed": true}
+{"control": "expected_union_monotonic", "passed": true}
+{"control": "dense_405b_zero_cost_requirement", "passed": true}
+{"control": "dense_405b_4b_draft_requirement", "passed": true}
+{"control": "storage_unit_conversion", "passed": true}
+{"control": "deterministic_core_hash_rerun", "passed": true, "sha256": "404b43088448eaafc3f3d9631cdc3271dc9ebc16b635e27c9211cf9aa0459a65"}

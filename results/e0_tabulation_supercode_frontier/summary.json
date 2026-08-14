@@ -1,0 +1,201 @@
+{
+  "claim_boundary": {
+    "adaptive_data_dependent_addresses_covered": false,
+    "arbitrary_boolean_preprocessing_within_scope": true,
+    "arbitrary_word_decoder_covered": false,
+    "constructor_supplied": false,
+    "general_lower_bound_supplied": false,
+    "hardware_actions": 0,
+    "joint_32_query_physical_union_covered": false,
+    "model_forward_calls": 0,
+    "native_bf16_fp32_query_covered": false,
+    "nonadaptive_fixed_addresses_only": true,
+    "xor_only_decoder_only": true
+  },
+  "classification": "E0_TABULATION_SUPERCODE_FRONTIER",
+  "contract": {
+    "binary_single_query_screen_only": true,
+    "favorable_cell_ratio": "112645/96261",
+    "favorable_total_one_bit_cells": 472467374080,
+    "global_advice_bits": 68719476736,
+    "registered_non_embedding_binary_bits": 403747897344,
+    "registered_p50_fraction": "8/675"
+  },
+  "decision": "REDUCE_NONADAPTIVE_XOR_TABULATION_TO_SPARSE_FUNCTIONAL_DICTIONARY_KEEP_SEGRE_ALIGNED_SUPERCODE_OPEN_UNCONSTRUCTED",
+  "decisions": [
+    "REJECT_NONLINEAR_PREPROCESSING_AS_DISTINCT_ADVANTAGE_FOR_NONADAPTIVE_XOR_TABULATION",
+    "REDUCE_SCOPED_TABULATION_TO_SPARSE_FUNCTIONAL_DICTIONARY",
+    "REJECT_RANDOM_ATOMS_AS_ALIGNMENT_ARGUMENT",
+    "KEEP_SEGRE_ALIGNED_SPARSE_SUPERCODE_OPEN_UNCONSTRUCTED",
+    "KEEP_ADAPTIVE_NONLINEAR_FINITE_WORD_DECODER_OPEN",
+    "NO_SURVIVING_CANDIDATE"
+  ],
+  "linearization_lemma": {
+    "addresses": "fixed nonadaptive recovery set S(q)",
+    "conclusion": "degree-one ANF atoms g_j preserve every recovery set and satisfy q=XOR(j in S(q),g_j)",
+    "decoder": "XOR of selected one-bit cells",
+    "finite_nonlinear_control": {
+      "all_queries_exact_after_linearization": true,
+      "all_queries_exact_before_linearization": true,
+      "cell_count": 4,
+      "dimension": 3,
+      "linearized_atom_masks": [
+        1,
+        0,
+        2,
+        0
+      ],
+      "nonlinear_input_cell_count": 4,
+      "query_certificates": [
+        {
+          "constant_terms_cancel": true,
+          "higher_degree_terms_cancel": true,
+          "query_mask": 1,
+          "recovered_linear_atom": 1,
+          "recovery_set": [
+            0,
+            1
+          ],
+          "same_recovery_set_works_after_linearization": true
+        },
+        {
+          "constant_terms_cancel": true,
+          "higher_degree_terms_cancel": true,
+          "query_mask": 2,
+          "recovered_linear_atom": 2,
+          "recovery_set": [
+            2,
+            3
+          ],
+          "same_recovery_set_works_after_linearization": true
+        },
+        {
+          "constant_terms_cancel": true,
+          "higher_degree_terms_cancel": true,
+          "query_mask": 3,
+          "recovered_linear_atom": 3,
+          "recovery_set": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "same_recovery_set_works_after_linearization": true
+        }
+      ]
+    },
+    "preprocessing_cells": "arbitrary Boolean functions z_j(W)",
+    "proof": "ANF is unique; exact equality to a linear character forces selected constants and higher-degree monomials to cancel"
+  },
+  "segre_aligned_sparse_supercode": {
+    "definition": "near-source-many implicit atoms whose weight-at-most-t XOR sums contain every binary rank-one mask",
+    "diagnostic_cases": [
+      {
+        "ambient_dimension": 256,
+        "block_side": 16,
+        "capacity_is_a_construction": false,
+        "capacity_threshold_meets_registered_fraction": false,
+        "distinct_rank_at_most_one_queries": "4294836226",
+        "favorable_dictionary_cells": 299,
+        "minimum_weight_not_rejected_by_capacity": 5,
+        "probe_fraction": "5/256",
+        "probe_fraction_decimal": 0.01953125,
+        "random_atoms_expected_nonzero_rank_one_hits_log2_floor_upper": -190,
+        "random_atoms_fixed_query_hit_probability_log2_floor_upper": -222,
+        "rank_one_alignment_established": false,
+        "registered_target_fraction": "8/675",
+        "selection_ball_at_minimum_weight": "19587292960",
+        "selection_ball_floor_log2": 34
+      },
+      {
+        "ambient_dimension": 484,
+        "block_side": 22,
+        "capacity_is_a_construction": false,
+        "capacity_threshold_meets_registered_fraction": false,
+        "distinct_rank_at_most_one_queries": "17592177655810",
+        "favorable_dictionary_cells": 566,
+        "minimum_weight_not_rejected_by_capacity": 6,
+        "probe_fraction": "3/242",
+        "probe_fraction_decimal": 0.012396694214876033,
+        "random_atoms_expected_nonzero_rank_one_hits_log2_floor_upper": -395,
+        "random_atoms_fixed_query_hit_probability_log2_floor_upper": -439,
+        "rank_one_alignment_established": false,
+        "registered_target_fraction": "8/675",
+        "selection_ball_at_minimum_weight": "44944901508088",
+        "selection_ball_floor_log2": 45
+      },
+      {
+        "ambient_dimension": 529,
+        "block_side": 23,
+        "capacity_is_a_construction": false,
+        "capacity_threshold_meets_registered_fraction": true,
+        "distinct_rank_at_most_one_queries": "70368727400450",
+        "favorable_dictionary_cells": 619,
+        "minimum_weight_not_rejected_by_capacity": 6,
+        "probe_fraction": "6/529",
+        "probe_fraction_decimal": 0.011342155009451797,
+        "random_atoms_expected_nonzero_rank_one_hits_log2_floor_upper": -437,
+        "random_atoms_fixed_query_hit_probability_log2_floor_upper": -483,
+        "rank_one_alignment_established": false,
+        "registered_target_fraction": "8/675",
+        "selection_ball_at_minimum_weight": "77004073569046",
+        "selection_ball_floor_log2": 46
+      },
+      {
+        "ambient_dimension": 576,
+        "block_side": 24,
+        "capacity_is_a_construction": false,
+        "capacity_threshold_meets_registered_fraction": false,
+        "distinct_rank_at_most_one_queries": "281474943156226",
+        "favorable_dictionary_cells": 674,
+        "minimum_weight_not_rejected_by_capacity": 7,
+        "probe_fraction": "7/576",
+        "probe_fraction_decimal": 0.012152777777777778,
+        "random_atoms_expected_nonzero_rank_one_hits_log2_floor_upper": -475,
+        "random_atoms_fixed_query_hit_probability_log2_floor_upper": -523,
+        "rank_one_alignment_established": false,
+        "registered_target_fraction": "8/675",
+        "selection_ball_at_minimum_weight": "12279526055211060",
+        "selection_ball_floor_log2": 53
+      },
+      {
+        "ambient_dimension": 1024,
+        "block_side": 32,
+        "capacity_is_a_construction": false,
+        "capacity_threshold_meets_registered_fraction": true,
+        "distinct_rank_at_most_one_queries": "18446744065119617026",
+        "favorable_dictionary_cells": 1198,
+        "minimum_weight_not_rejected_by_capacity": 8,
+        "probe_fraction": "1/128",
+        "probe_fraction_decimal": 0.0078125,
+        "random_atoms_expected_nonzero_rank_one_hits_log2_floor_upper": -894,
+        "random_atoms_fixed_query_hit_probability_log2_floor_upper": -958,
+        "rank_one_alignment_established": false,
+        "registered_target_fraction": "8/675",
+        "selection_ball_at_minimum_weight": "103487248770419819075",
+        "selection_ball_floor_log2": 66
+      }
+    ],
+    "explicit_aligned_atoms": false,
+    "first_case_meeting_target_by_counting_only": {
+      "ambient_dimension": 529,
+      "block_side": 23,
+      "capacity_is_a_construction": false,
+      "capacity_threshold_meets_registered_fraction": true,
+      "distinct_rank_at_most_one_queries": "70368727400450",
+      "favorable_dictionary_cells": 619,
+      "minimum_weight_not_rejected_by_capacity": 6,
+      "probe_fraction": "6/529",
+      "probe_fraction_decimal": 0.011342155009451797,
+      "random_atoms_expected_nonzero_rank_one_hits_log2_floor_upper": -437,
+      "random_atoms_fixed_query_hit_probability_log2_floor_upper": -483,
+      "rank_one_alignment_established": false,
+      "registered_target_fraction": "8/675",
+      "selection_ball_at_minimum_weight": "77004073569046",
+      "selection_ball_floor_log2": 46
+    },
+    "necessary_capacity_equation": "sum(k=0..t,C(S,k)) >= 1+(2^b-1)^2",
+    "random_atoms_are_alignment_constructor": false,
+    "succinct_decomposer": false
+  }
+}

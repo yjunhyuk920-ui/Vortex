@@ -118,3 +118,126 @@ The Python implementation establishes semantics and metrics. A production backen
 - real GPU memory accounting.
 
 Backend optimization must not alter the exactness contract without explicit validation modes and recorded quality measurements.
+
+## EXP-076 native-MTP reference boundary
+
+`vortex_runtime/mtp_acceptance.py` contains pure longest-prefix, exact commit,
+percentile, parameter-traffic, K-selection, and Gate helpers. The heavy runner
+under `experiments/exp_076` maps the pinned Qwen3.5 text and native-MTP tensors
+into a CPU BF16 reference, maintains independent committed/proposal/verification
+caches, and reconstructs post-rejection state from the exact committed prefix.
+
+This component is retained as falsification infrastructure only. EXP-076 found
+held-out accepted-prefix p05/p50/p95 `0/4/4` at selected `K=4`, below required
+`9/11` tail/median minima, so it is not a promoted decoding backend. It is not
+vLLM equivalence, a CUDA implementation, a quantized path, or an operation-
+replacement runtime.
+
+## EXP-077A Fractal MLP reference boundary
+
+`vortex_runtime/fractal_oracle.py` contains pure trace-validation, strict
+fraction, aggregation, and Gate helpers. The runner under
+`experiments/exp_077a` replays frozen EXP-076 prefix/verification caches and
+temporarily replaces every SwiGLU MLP with a top-channel favorable oracle.
+
+This is retained as a negative-test instrument, not a backend. At a realized
+`9.988839%` MLP fraction it preserved only `71.5278%` of held-out top-1 target
+decisions, despite seeing full current intermediates for free. It does not
+sparsify attention, DeltaNet, or the LM head and has no deployable selector,
+traffic, CUDA, VRAM, or speed claim.
+
+## EXP-079A causal proof-state reference boundary
+
+`vortex_runtime/causal_proof_state.py` contains the pure budget, DCT pilot,
+correlated row-block enclosure, Gate, and fail-closed state transitions. The
+throwaway terminal driver exposes hot-bound, refine, certify/commit, and exact
+fallback states. The heavy runner temporarily replaces every Qwen3.5-0.8B MLP
+down output with a DCT center plus oracle-selected exact row blocks.
+
+This is not a backend. The selector sees the full residual for free, the local
+L2 balls are not propagated through later nonlinear layers, ideal Q4 bytes are
+logical accounting, and exact fallback is semantic only. A pass would authorize
+only the nonlinear proof-propagation stage; no CUDA or target-server work is
+authorized by EXP-079A.
+
+EXP-079A did not pass that boundary. At the p50 logical budget the dual-oracle
+reference preserved only `4.1667%` held-out top-1 and left a minimum local sound
+radius roughly `49x` the signal. The DCT/block-zonotope components remain
+negative-test infrastructure only; they must not be wired into the production
+operator path or optimized with a backend.
+
+## Extension-field and joint-coset research boundary
+
+`vortex_runtime/extension_field_rank_saturating_frontier.py` is a pure finite
+calculator. It records exact GF(2) repacking equations, direct q-system
+storage, independent-batch union traffic, and tiny nonlinear dictionary
+witnesses. It is not an operator, source format, decoder, or backend.
+
+The unimplemented joint-coset interface would select one atom set `T` for a
+whole query batch such that every query lies in `span(G_T)`. No persistent
+layout, sub-dense selector, native arithmetic, causal guarantee, or physical
+cost closure exists, so it must not appear in the runtime path or be described
+as a surviving candidate.
+
+The exact geometry is now narrower. A K-query batch lies in
+`span(r_i) tensor span(u_i)`, of dimension at most `K^2`; at K=32 this is a
+1,024-dimensional Joint Factor Envelope. Product-simplex generalized weights
+give the exact largest rank-one intersection of any selected span. These facts
+authorize neither a cached envelope catalog nor a restriction oracle: the
+catalog has more than `2^1,046,528` registered names, and the strongest finite
+support count obtained here forces only 20,218 bit atoms. Any future component
+must generate the envelope restriction implicitly and charge every native
+summary, address, probe, and decode operation.
+
+`R^T W U` is an exact auxiliary inside this interface. Its Cartesian table
+has `K^2` scalar entries but only `K` forward-state columns. Left decision
+directions create additional measurements, not new causal states or KV
+records. Full-sweep accounting therefore divides by at most the number of
+state columns/accepted path nodes, never by the scalar table size. At K=32,
+the favorable 10.6-bit sweep floor is `525.1467264 ms/token` at 32 GB/s.
+
+`vortex_runtime/tabulation_supercode_frontier.py` adds a scoped compiler
+boundary. If arbitrary Boolean stored cells are queried through fixed
+nonadaptive recovery sets and an XOR-only decoder, ANF uniqueness replaces
+them with linear functional atoms without changing any exact answer. Such a
+component must use the sparse-functional-dictionary interface and cannot be
+advertised as a nonlinear source.
+
+An aligned low-weight atom family for the rank-one/Segre query set remains an
+unimplemented research object. The local subset count has room at target-like
+parameters, but no generator, decomposer, native cell semantics, causal batch
+union, physical layout, or runtime equation exists. This module is a pure E0
+calculator and must not enter the operator path.
+
+`vortex_runtime/segre_sparse_cover_fourier_gate.py` is a second pure E0
+boundary. It computes exact rectangular Segre Fourier coefficients,
+Krawtchouk ball sums, spanning duplicate limits, and character second moments.
+It rejects the first nine near-capacity block shapes, including the former
+`23 x 23` open counting witness.
+
+The module does not implement a code. Its first unclosed scan point is
+`13 x 89`; any cover there needs a kernel word of weight at most 39. Until an
+implicit atom layout and sub-dense decomposer satisfy that condition and close
+native/joint-batch costs, no sparse-cover object belongs in the runtime path.
+
+`vortex_runtime/segre_ruling_preimage_sphere_gate.py` adds a stricter pure E0
+boundary. Every factor-subspace preimage must contain enough low-weight words;
+an information-set projection caps their count. This exactly rejects the
+former `13 x 89` frontier using one 89-dimensional ruling.
+
+The first shape surviving this Gate and the Fourier Gate is `18 x 36`. It
+implies an ordinary binary `[146,110]` covering code of radius at most seven,
+but no such code or simultaneous shared-kernel Segre alignment has been
+constructed here. The module is not an atom layout, decoder, operator, or
+native arithmetic path and must not enter the runtime architecture.
+
+`vortex_runtime/determinantal_rank_amplification_gate.py` adds two mandatory
+pure E0 boundaries. A radius-`t` rank-one atom cover must fit the complete
+rank-at-most-`r` population into `Ball(S,rt)` at every rank. Independently,
+sampling atom positions and applying the exact Segre subspace-intersection
+hierarchy bounds all canonical representative weights at once.
+
+The first 770 raw-capacity rectangles fail. The first unclosed `30 x 40`,
+1,404-atom, radius-14 case is not a component: no atom family, subset decoder,
+native lift, causal batch union, or cost closure exists. It must not enter the
+runtime path.

@@ -1,0 +1,43 @@
+name: EXP-072A self-contained DAG information-capacity Gate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/exp_072a_gate.yml"
+      - "docs/research/EXPERIMENT_072A_SELF_CONTAINED_DAG_INFORMATION_CAPACITY.md"
+      - "experiments/exp_072a/**"
+      - "tests/exp_072a/**"
+      - "vortex_runtime/information_capacity.py"
+
+concurrency:
+  group: exp-072a-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install bounded validation dependency
+        run: python -m pip install --disable-pip-version-check pytest==8.3.5
+      - name: Run EXP-072A bounded Gate
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+          EXP072A_OUTPUT_DIR: ${{ runner.temp }}/exp_072a_candidate
+        run: bash experiments/exp_072a/run_current_env.sh
+      - name: Upload EXP-072A candidate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-072a-candidate-${{ github.run_id }}
+          path: ${{ runner.temp }}/exp_072a_candidate
+          if-no-files-found: error
+          retention-days: 30

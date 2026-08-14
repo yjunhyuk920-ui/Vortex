@@ -1,0 +1,36 @@
+{
+  "qwen35_122b_surrogate": {
+    "cost": {
+      "active_paths": 9,
+      "direct_materialization_macs": 86973087744,
+      "exact_macs_per_token": 84934656,
+      "hidden_size": 3072,
+      "hot_fraction_of_exact": 0.1111111111111111,
+      "hot_macro_macs_per_token": 9437184,
+      "hot_storage_fraction_of_exact_mlp_weights": 0.1111111111111111,
+      "intermediate_size": 1024,
+      "materialization_exact_token_equivalents": 1024.0
+    },
+    "requirements": {
+      "p05_hot_tokens_for_p95_latency": 26354,
+      "p50_hot_tokens": 115299
+    }
+  },
+  "small_checkpoint": {
+    "cost": {
+      "active_paths": 1,
+      "direct_materialization_macs": 3758096384,
+      "exact_macs_per_token": 11010048,
+      "hidden_size": 1024,
+      "hot_fraction_of_exact": 0.09523809523809523,
+      "hot_macro_macs_per_token": 1048576,
+      "hot_storage_fraction_of_exact_mlp_weights": 0.09523809523809523,
+      "intermediate_size": 3584,
+      "materialization_exact_token_equivalents": 341.3333333333333
+    },
+    "requirements": {
+      "p05_hot_tokens_for_p95_latency": 6249,
+      "p50_hot_tokens": 13821
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "claim_boundary": {
+    "cross_matrix_shared_advice": "NOT RULED OUT",
+    "general_nonlinear_data_structure": "NOT RULED OUT",
+    "independent_cross_matrix_query_tuple": "MODEL ASSUMPTION",
+    "model_or_hardware_execution": "NOT RUN",
+    "real_transformer_reachability": "NOT TESTED",
+    "word_packed_probe_mapping": "NOT RULED OUT"
+  },
+  "classification": "E0_SCOPED_COEFFICIENT_PROBE_LOWER_BOUND",
+  "decision": "REJECT_MATRIX_LOCAL_SEPARABLE_LINEAR_RESIDUAL_CODE_AS_CORE",
+  "model": "MATRIX_LOCAL_SEPARABLE_LINEAR_RESIDUAL_CODE",
+  "normalization": {
+    "hot_side_bits": 68719476736,
+    "hot_side_fraction_binary": "16384/96261",
+    "hot_side_fraction_binary_decimal": 0.17020392474626275,
+    "non_embedding_coefficients": 403747897344,
+    "p50_target_fraction": "8/675",
+    "p50_target_fraction_decimal": 0.011851851851851851
+  },
+  "sphere_cover_witness": {
+    "binary_entropy_radius": 0.6962122601251458,
+    "holds": true,
+    "radius_fraction": "3/16",
+    "rate_plus_entropy": 0.9962122601251457,
+    "side_rate_threshold": "3/10"
+  },
+  "weighted_bound": {
+    "bound_over_target": 1.2833840448672749,
+    "cross_probe_cells": 6141198336,
+    "cross_probe_fraction": "124943/8214272",
+    "cross_probe_fraction_decimal": 0.015210477568797332,
+    "low_side_population_fraction": "124943/288783",
+    "low_side_population_fraction_decimal": 0.43265358417912414,
+    "minimum_hot_bits_to_escape_this_witness": "270982130434048/3375",
+    "minimum_hot_gib_to_escape_this_witness": 9.347102792245371,
+    "target_cells": "1076661059584/225",
+    "target_cells_decimal": 4785160264.817778
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "exp_048": {
+    "decision": "REJECT_PARTIAL_LAYER_SELF_DRAFT_CORE_RETAIN_EXACT_BLOCK_VERIFIER",
+    "hard_jacobi_passes_per_32_tokens_p50": 58.0,
+    "hard_jacobi_target_fraction_p50": 1.8125,
+    "perfect_future_block_size": 96,
+    "perfect_future_target_fraction": 0.010416666666666666
+  },
+  "exp_049": {
+    "decision": "REJECT_TARGET_ONLY_CONTINUOUS_FIXED_POINT_CORE_RETAIN_SOLVER_AND_VERIFIER_AUXILIARY",
+    "oracle_best_prefix_max": 6.0,
+    "oracle_best_prefix_p50": 4.5,
+    "triangular_barrier_observed": true
+  },
+  "exp_050": {
+    "decision": "REJECT_TARGET_INDEPENDENT_EXTERNAL_DRAFT_AS_UNIVERSAL_CORE",
+    "external_draft_prefix_max": 3.0,
+    "external_draft_prefix_p50": 0.5,
+    "required_perfect_4b_prefix": 507
+  }
+}

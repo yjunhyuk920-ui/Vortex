@@ -1,0 +1,202 @@
+{
+  "p50": {
+    "build": {
+      "case_count": 6,
+      "mean_kl": 7.184634938836098,
+      "minimum_sound_radius_ratio_p50": 48.67678061827259,
+      "minimum_sound_radius_ratio_p95": 57.929053823024475,
+      "mlp_relative_l2_p50": 0.7094039085098385,
+      "mlp_relative_l2_p95": 0.735185161663826,
+      "p95_kl": 12.520535469055176,
+      "token_count": 48,
+      "top1_agreement": 0.020833333333333332,
+      "top1_matches": 1
+    },
+    "evaluation": {
+      "case_count": 18,
+      "mean_kl": 7.544862263732487,
+      "minimum_sound_radius_ratio_p50": 48.66391755845644,
+      "minimum_sound_radius_ratio_p95": 57.77874760553659,
+      "mlp_relative_l2_p50": 0.7132656904818677,
+      "mlp_relative_l2_p95": 0.7506269483799637,
+      "p95_kl": 12.616226196289062,
+      "token_count": 144,
+      "top1_agreement": 0.041666666666666664,
+      "top1_matches": 6
+    },
+    "evaluation_families": {
+      "adversarial_low_acceptance": {
+        "case_count": 3,
+        "mean_kl": 7.549170037110646,
+        "minimum_sound_radius_ratio_p50": 47.85480078805831,
+        "minimum_sound_radius_ratio_p95": 48.13628556883868,
+        "mlp_relative_l2_p50": 0.6957283796679274,
+        "mlp_relative_l2_p95": 0.7020347325578978,
+        "p95_kl": 12.616226196289062,
+        "token_count": 24,
+        "top1_agreement": 0.08333333333333333,
+        "top1_matches": 2
+      },
+      "code": {
+        "case_count": 3,
+        "mean_kl": 6.826191584269206,
+        "minimum_sound_radius_ratio_p50": 47.7103094787172,
+        "minimum_sound_radius_ratio_p95": 48.66391755845644,
+        "mlp_relative_l2_p50": 0.6964009799401865,
+        "mlp_relative_l2_p95": 0.7283276466632874,
+        "p95_kl": 9.962286949157715,
+        "token_count": 24,
+        "top1_agreement": 0.041666666666666664,
+        "top1_matches": 1
+      },
+      "english": {
+        "case_count": 3,
+        "mean_kl": 8.200783719619116,
+        "minimum_sound_radius_ratio_p50": 47.66519551102337,
+        "minimum_sound_radius_ratio_p95": 48.70042498007407,
+        "mlp_relative_l2_p50": 0.7209816781257897,
+        "mlp_relative_l2_p95": 0.7254787838838742,
+        "p95_kl": 14.20844554901123,
+        "token_count": 24,
+        "top1_agreement": 0.08333333333333333,
+        "top1_matches": 2
+      },
+      "korean": {
+        "case_count": 3,
+        "mean_kl": 7.780096630255382,
+        "minimum_sound_radius_ratio_p50": 57.47583140332513,
+        "minimum_sound_radius_ratio_p95": 57.77874760553659,
+        "mlp_relative_l2_p50": 0.7126946697529195,
+        "mlp_relative_l2_p95": 0.7132656904818677,
+        "p95_kl": 13.073320388793945,
+        "token_count": 24,
+        "top1_agreement": 0.0,
+        "top1_matches": 0
+      },
+      "math": {
+        "case_count": 3,
+        "mean_kl": 7.942297687133153,
+        "minimum_sound_radius_ratio_p50": 49.52190780103377,
+        "minimum_sound_radius_ratio_p95": 51.07756661728298,
+        "mlp_relative_l2_p50": 0.743646034370895,
+        "mlp_relative_l2_p95": 0.7506269483799637,
+        "p95_kl": 11.278509140014648,
+        "token_count": 24,
+        "top1_agreement": 0.041666666666666664,
+        "top1_matches": 1
+      },
+      "structured_json": {
+        "case_count": 3,
+        "mean_kl": 6.970633924007416,
+        "minimum_sound_radius_ratio_p50": 49.175343745507,
+        "minimum_sound_radius_ratio_p95": 50.32379114002171,
+        "mlp_relative_l2_p50": 0.7197131306099038,
+        "mlp_relative_l2_p95": 0.7306964059250938,
+        "p95_kl": 12.177569389343262,
+        "token_count": 24,
+        "top1_agreement": 0.0,
+        "top1_matches": 0
+      }
+    }
+  },
+  "p95": {
+    "build": {
+      "case_count": 6,
+      "mean_kl": 6.067778217916687,
+      "minimum_sound_radius_ratio_p50": 47.56158418788551,
+      "minimum_sound_radius_ratio_p95": 56.74547645292284,
+      "mlp_relative_l2_p50": 0.6827388638226541,
+      "mlp_relative_l2_p95": 0.7021064594758222,
+      "p95_kl": 12.605635643005371,
+      "token_count": 48,
+      "top1_agreement": 0.0625,
+      "top1_matches": 3
+    },
+    "evaluation": {
+      "case_count": 18,
+      "mean_kl": 6.539899930357933,
+      "minimum_sound_radius_ratio_p50": 46.993978532147494,
+      "minimum_sound_radius_ratio_p95": 57.00281830974863,
+      "mlp_relative_l2_p50": 0.6872755970402588,
+      "mlp_relative_l2_p95": 0.7112073268766861,
+      "p95_kl": 12.097799301147461,
+      "token_count": 144,
+      "top1_agreement": 0.09722222222222222,
+      "top1_matches": 14
+    },
+    "evaluation_families": {
+      "adversarial_low_acceptance": {
+        "case_count": 3,
+        "mean_kl": 5.691753372550011,
+        "minimum_sound_radius_ratio_p50": 46.354410889443486,
+        "minimum_sound_radius_ratio_p95": 47.204474662780925,
+        "mlp_relative_l2_p50": 0.6817131273929098,
+        "mlp_relative_l2_p95": 0.6867342578753398,
+        "p95_kl": 12.097799301147461,
+        "token_count": 24,
+        "top1_agreement": 0.16666666666666666,
+        "top1_matches": 4
+      },
+      "code": {
+        "case_count": 3,
+        "mean_kl": 6.134792933861415,
+        "minimum_sound_radius_ratio_p50": 47.52184090602173,
+        "minimum_sound_radius_ratio_p95": 48.05495481035482,
+        "mlp_relative_l2_p50": 0.6847321410479871,
+        "mlp_relative_l2_p95": 0.6865726325308684,
+        "p95_kl": 9.930435180664062,
+        "token_count": 24,
+        "top1_agreement": 0.041666666666666664,
+        "top1_matches": 1
+      },
+      "english": {
+        "case_count": 3,
+        "mean_kl": 7.103250826398532,
+        "minimum_sound_radius_ratio_p50": 46.56035429746237,
+        "minimum_sound_radius_ratio_p95": 47.452411520955465,
+        "mlp_relative_l2_p50": 0.6953606748896677,
+        "mlp_relative_l2_p95": 0.6961385773234254,
+        "p95_kl": 11.783976554870605,
+        "token_count": 24,
+        "top1_agreement": 0.16666666666666666,
+        "top1_matches": 4
+      },
+      "korean": {
+        "case_count": 3,
+        "mean_kl": 7.730756560961406,
+        "minimum_sound_radius_ratio_p50": 56.617718154462715,
+        "minimum_sound_radius_ratio_p95": 57.00281830974863,
+        "mlp_relative_l2_p50": 0.6879303448913088,
+        "mlp_relative_l2_p95": 0.6997350051895885,
+        "p95_kl": 13.315328598022461,
+        "token_count": 24,
+        "top1_agreement": 0.0,
+        "top1_matches": 0
+      },
+      "math": {
+        "case_count": 3,
+        "mean_kl": 5.805465330680211,
+        "minimum_sound_radius_ratio_p50": 46.78595621953873,
+        "minimum_sound_radius_ratio_p95": 48.11835381289713,
+        "mlp_relative_l2_p50": 0.6895673032024784,
+        "mlp_relative_l2_p95": 0.7112073268766861,
+        "p95_kl": 12.015756607055664,
+        "token_count": 24,
+        "top1_agreement": 0.125,
+        "top1_matches": 3
+      },
+      "structured_json": {
+        "case_count": 3,
+        "mean_kl": 6.773380557696025,
+        "minimum_sound_radius_ratio_p50": 46.993978532147494,
+        "minimum_sound_radius_ratio_p95": 48.4575364836681,
+        "mlp_relative_l2_p50": 0.6830335094892203,
+        "mlp_relative_l2_p95": 0.6947342484136441,
+        "p95_kl": 11.20138168334961,
+        "token_count": 24,
+        "top1_agreement": 0.08333333333333333,
+        "top1_matches": 2
+      }
+    }
+  }
+}

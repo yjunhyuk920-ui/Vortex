@@ -1,0 +1,62 @@
+[
+  {
+    "bytes": 2907,
+    "content_type": "text/plain; charset=utf-8",
+    "final_url": "https://huggingface.co/Qwen/Qwen3.5-0.8B/raw/2fc06364715b967f1860aea9cf38778875588b17/config.json",
+    "name": "model_config",
+    "output_name": "model_config.json",
+    "requested_url": "https://huggingface.co/Qwen/Qwen3.5-0.8B/raw/2fc06364715b967f1860aea9cf38778875588b17/config.json",
+    "sha256": "b90b86f35c8e6925ef74ee04d0e758f0a845c83a42089ad82bbaa948de9b4204",
+    "status": 200
+  },
+  {
+    "bytes": 50900,
+    "content_type": "text/plain; charset=utf-8",
+    "final_url": "https://huggingface.co/Qwen/Qwen3.5-0.8B/raw/2fc06364715b967f1860aea9cf38778875588b17/model.safetensors.index.json",
+    "name": "weight_index",
+    "output_name": "model_safetensors_index.json",
+    "requested_url": "https://huggingface.co/Qwen/Qwen3.5-0.8B/raw/2fc06364715b967f1860aea9cf38778875588b17/model.safetensors.index.json",
+    "sha256": "d8a08838a613b025eb7952ed9db11696213e57e76a375661ef5c12f9dd5dcf4e",
+    "status": 200
+  },
+  {
+    "bytes": 61705,
+    "content_type": "text/plain; charset=utf-8",
+    "final_url": "https://huggingface.co/Qwen/Qwen3.5-0.8B/raw/2fc06364715b967f1860aea9cf38778875588b17/README.md",
+    "name": "model_card",
+    "output_name": "model_README.md",
+    "requested_url": "https://huggingface.co/Qwen/Qwen3.5-0.8B/raw/2fc06364715b967f1860aea9cf38778875588b17/README.md",
+    "sha256": "87a163af54f32fa608a0f8d3ac67945c53dd2b4a7c96740b3d7fdc28e8458864",
+    "status": 200
+  },
+  {
+    "bytes": 67253,
+    "content_type": "text/plain; charset=utf-8",
+    "final_url": "https://raw.githubusercontent.com/vllm-project/vllm/a07086e4032e66aacae60ac2fc01e738096e9569/vllm/config/speculative.py",
+    "name": "vllm_speculative",
+    "output_name": "vllm_speculative.py",
+    "requested_url": "https://raw.githubusercontent.com/vllm-project/vllm/a07086e4032e66aacae60ac2fc01e738096e9569/vllm/config/speculative.py",
+    "sha256": "e794f866c050aae819d95435e6bf2c4de272a7088b4feabacc7761ab96c0c6ff",
+    "status": 200
+  },
+  {
+    "bytes": 11494,
+    "content_type": "text/plain; charset=utf-8",
+    "final_url": "https://raw.githubusercontent.com/vllm-project/vllm/a07086e4032e66aacae60ac2fc01e738096e9569/vllm/model_executor/models/qwen3_5_mtp.py",
+    "name": "vllm_qwen35_mtp",
+    "output_name": "vllm_qwen3_5_mtp.py",
+    "requested_url": "https://raw.githubusercontent.com/vllm-project/vllm/a07086e4032e66aacae60ac2fc01e738096e9569/vllm/model_executor/models/qwen3_5_mtp.py",
+    "sha256": "41259149b519ad31feb5fa9bd99b1e808515f1b73410a31653ffd0d3d58ca713",
+    "status": 200
+  },
+  {
+    "bytes": 61520,
+    "content_type": "text/plain; charset=utf-8",
+    "final_url": "https://raw.githubusercontent.com/vllm-project/vllm/a07086e4032e66aacae60ac2fc01e738096e9569/vllm/model_executor/models/registry.py",
+    "name": "vllm_registry",
+    "output_name": "vllm_registry.py",
+    "requested_url": "https://raw.githubusercontent.com/vllm-project/vllm/a07086e4032e66aacae60ac2fc01e738096e9569/vllm/model_executor/models/registry.py",
+    "sha256": "be49f1bbd342983e073bacdb8aadc7740d663a61d94113c683a6dd0d9f526c88",
+    "status": 200
+  }
+]

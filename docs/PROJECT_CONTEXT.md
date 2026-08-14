@@ -65,3 +65,77 @@ The project succeeds only if internal target execution can be skipped or amortiz
 - whether the resulting wall-clock reaches the fixed acceptance target.
 
 All future architecture proposals must produce executable experiments that measure these quantities.
+
+## Current exact batch-geometry boundary
+
+For `K` rank-one bilinear questions, all left factors span at most `K`
+dimensions and all right factors span at most `K` dimensions. The complete
+batch therefore lies in one `K^2`-dimensional `R tensor U` envelope; for
+`K=32`, the envelope has at most 1,024 slots.
+
+This is a design interface, not a stored cache or a working decoder. Literal
+catalogs of all registered envelopes are too large, and exact Segre counting
+does not force enough probes to decide the runtime budget. The open task is an
+implicit near-source-size encoding that produces only the requested envelope
+restriction, with every address, native summary, probe, and decode cost
+charged.
+
+The envelope also has a strict causal-utility boundary. Computing all entries
+of `R^T W U` for 32 left directions and 32 state columns yields 1,024 exact
+measurements, but the model still has only 32 forward/KV states. The scalar
+table may reduce repeated certification work; it may not be used as a
+1,024-token denominator. A full near-Shannon BF16 sweep remains
+`525.1467264 ms/token` over the valid state count.
+
+## Current tabulation/supercode boundary
+
+Arbitrary nonlinear stored bits do not create a new source when a query uses
+fixed addresses and XOR-only decoding. The unique algebraic normal form of
+each cell proves that every exact recovery set has an equivalent collection
+of linear functional atoms. This closes the named tabulation route without
+assuming that the original preprocessing was linear.
+
+The aligned sparse dictionary itself remains open. Favorable local counting
+first has enough subset names at `b=23`, `S=619`, `t=6`, but random atoms miss
+the binary rank-one set exponentially and counting supplies neither atoms nor
+a decoder. Adaptive word-RAM schemes and native numerical queries are outside
+the theorem. No Core Candidate survives.
+
+## Current sparse-cover Fourier boundary
+
+The former `23 x 23` capacity witness is now closed. Exact Hamming-ball
+Fourier constraints force rank-one dual character bias larger than arbitrary
+spanning atoms can have in their pairwise second moment. The contradiction
+allows arbitrary atom matrices and duplicates; it is not a random-code test.
+
+The first nine shapes in exact subset-slack order fail. `13 x 89` is the
+first unclosed rectangle in the deterministic `1..128` scan, but it is only a
+parameter frontier. Any cover must contain kernel relations of weight at most
+39 and still lacks atoms, a decomposer, native semantics, and joint causal
+traffic. No Core Candidate survives.
+
+## Current Segre-ruling preimage boundary
+
+The `13 x 89` slack case is now closed without random search. Its
+89-dimensional ruling needs `2^89` low-weight representatives, but its
+285-dimensional preimage can contain at most `Ball(285,13)`, smaller by a
+factor above 59,000. This follows from an exact information-set projection.
+
+The first survivor of the combined restricted-preimage and Fourier scan is
+`18 x 36`, `S=758`, `t=7`. Survival is not a candidate. Even one ruling
+requires a `[146,110]` binary covering code of radius at most seven, and all
+rulings must share the same kernel. No code, Segre alignment, decoder, native
+lift, or physical batch path exists. No Core Candidate survives.
+
+## Current determinantal rank-amplification boundary
+
+Sparse rank-one coverage now carries an exact closure obligation: rank-at-
+most-`r` matrices must fit inside the atom Hamming ball of radius `rt` for
+every `r`. The prior `17 x 43` frontier fails already at rank two by a factor
+above 64. A mixed-weight sampling theorem rejects four balanced cases that
+survive raw determinantal counting.
+
+Together the Gates close the first 770 subset-capacity-ordered rectangles.
+`30 x 40`, `S=1,404`, `t=14` is the first unclosed parameter point, but no
+atoms, decoder, native semantics, or shared physical batch exists. No Core
+Candidate survives.

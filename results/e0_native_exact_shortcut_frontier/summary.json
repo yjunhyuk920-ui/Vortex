@@ -1,0 +1,155 @@
+{
+  "candidate_decisions": {
+    "consecutive_coordinate_reuse": "REJECT_BELOW_FAVORABLE_NECESSARY_ELIMINATION",
+    "duplicate_products": "REJECT_BELOW_FAVORABLE_NECESSARY_ELIMINATION",
+    "natural_run_reuse": "REJECT_BELOW_FAVORABLE_NECESSARY_ELIMINATION",
+    "omega_roundlock_atlas_one_page": "REJECT_ORACLE_UNLOCKED_ROWS_EXCEED_COMPLETE_ALLOWANCE",
+    "perfect_opposite_product_pairs": "REJECT_BELOW_FAVORABLE_NECESSARY_ELIMINATION",
+    "pollard_low_complexity_matvec": "REJECT_EVEN_IDEAL_D1_WORK_RATIO_EXCEEDS_ALLOWANCE",
+    "rounding_absorption": "REJECT_BELOW_FAVORABLE_NECESSARY_ELIMINATION",
+    "unlimited_coordinate_history_cache": "REJECT_BELOW_FAVORABLE_NECESSARY_ELIMINATION"
+  },
+  "candidate_elimination_uppers": {
+    "consecutive_coordinate_reuse": 0.0033482142857142855,
+    "duplicate_products": 0.0298549107142857,
+    "natural_run_reuse": 0.0016741071428570953,
+    "perfect_opposite_product_pairs": 0.056919642857142856,
+    "rounding_absorption": 0.012555803571428572,
+    "unlimited_coordinate_history_cache": 0.029854910714285716
+  },
+  "claim_boundary": {
+    "native_accumulation_order_proved": false,
+    "necessary_condition_only": true,
+    "single_real_checkpoint_tensor_observation": true,
+    "target_achieved": false,
+    "universal_impossibility_proved": false,
+    "whole_model_runtime_built": false
+  },
+  "decision": "REJECT_SCREENED_SHORTCUTS_KEEP_SEARCHING_NEW_INFORMATION_SOURCE",
+  "exact_product_reuse": {
+    "best_combined_local_elimination_upper": 0.08677455357142855,
+    "best_duplicate_reuse_fraction": 0.0298549107142857,
+    "perfect_opposite_pair_cancellation_fraction": {
+      "max": 0.056919642857142856,
+      "mean": 0.04173006330217634,
+      "min": 0.026227678571428572,
+      "p50": 0.041294642857142856,
+      "p95": 0.04966517857142857
+    },
+    "unique_product_fraction": {
+      "max": 0.9866071428571429,
+      "mean": 0.9781436920166016,
+      "min": 0.9701450892857143,
+      "p50": 0.9782366071428571,
+      "p95": 0.9821428571428571
+    }
+  },
+  "exact_value_multiplicity": {
+    "best_possible_d1_forward_work_ratio": 0.6376953125,
+    "best_possible_d1_transpose_work_ratio": 0.3560267857142857,
+    "columns_with_at_most_84_values": 0,
+    "rows_with_at_most_84_values": 0,
+    "shape": [
+      1024,
+      3584
+    ],
+    "unique_values_per_column": {
+      "max": 739.0,
+      "mean": 694.6224888392857,
+      "min": 653.0,
+      "p50": 694.5,
+      "p95": 715.0
+    },
+    "unique_values_per_row": {
+      "max": 1461.0,
+      "mean": 1335.3564453125,
+      "min": 1276.0,
+      "p50": 1331.0,
+      "p95": 1387.6999999999998
+    }
+  },
+  "favorable_rounding_absorption_upper": {
+    "max": 0.012555803571428572,
+    "mean": 0.006426674979073661,
+    "min": 0.003627232142857143,
+    "p50": 0.006417410714285714,
+    "p95": 0.008649553571428572
+  },
+  "name": "native_exact_shortcut_frontier",
+  "omega_roundlock_oracle": {
+    "atlas_plus_one_page_down": {
+      "coordinates": 1024,
+      "locked_coordinates": 1,
+      "oracle_lock_fraction": 0.0009765625,
+      "oracle_unlocked_fraction": 0.9990234375,
+      "reference_words_are_free_oracle_information": true,
+      "whole_vector_locked": false
+    },
+    "post_residual_pre_norm": {
+      "coordinates": 1024,
+      "locked_coordinates": 7,
+      "oracle_lock_fraction": 0.0068359375,
+      "oracle_unlocked_fraction": 0.9931640625,
+      "reference_words_are_free_oracle_information": true,
+      "whole_vector_locked": false
+    },
+    "post_rms_norm_hidden": {
+      "coordinates": 1024,
+      "locked_coordinates": 2,
+      "oracle_lock_fraction": 0.001953125,
+      "oracle_unlocked_fraction": 0.998046875,
+      "reference_words_are_free_oracle_information": true,
+      "whole_vector_locked": false
+    }
+  },
+  "registered_budget": {
+    "allowed_gflop_per_token": 9.6,
+    "allowed_work_fraction": 0.011827051731955725,
+    "full_405b_gflop_per_token": 811.698487296,
+    "old_2_5_percent_assumption_used": false,
+    "required_elimination_fraction": 0.9881729482680442
+  },
+  "source": {
+    "evidence_path": "results/exp_083b/raw/prompt_arrays/legal_holdout_english_01.npz",
+    "evidence_sha256": "c7ab8ffee12f623e272f81c7e5d31769b727e9b4fcc93ba7157d616536e672ee",
+    "model_path": ".deps/exp076-model/model.safetensors-00001-of-00001.safetensors",
+    "model_sha256": "04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696",
+    "tensor_name": "model.language_model.layers.23.mlp.down_proj.weight"
+  },
+  "temporal_identity": {
+    "consecutive_same_coordinate_fraction": {
+      "max": 0.0033482142857142855,
+      "mean": 0.0013352997448979591,
+      "min": 0.00027901785714285713,
+      "p50": 0.001255580357142857,
+      "p95": 0.0021344866071428565
+    },
+    "consecutive_same_coordinate_overall": 0.0013352997448979591,
+    "last_history_hit_fraction": 0.029854910714285716,
+    "natural_run_fraction": {
+      "max": 1.0,
+      "mean": 0.9992591594827588,
+      "min": 0.9983258928571429,
+      "p50": 0.9991629464285714,
+      "p95": 0.9997209821428571
+    },
+    "shape": [
+      29,
+      3584
+    ],
+    "unlimited_same_coordinate_history_hit_fraction": {
+      "max": 0.029854910714285716,
+      "mean": 0.01294065578817734,
+      "min": 0.0,
+      "p50": 0.013671875,
+      "p95": 0.024330357142857143
+    },
+    "within_vector_distinct_value_fraction": {
+      "max": 0.47293526785714285,
+      "mean": 0.4512103602216748,
+      "min": 0.42885044642857145,
+      "p50": 0.4497767857142857,
+      "p95": 0.4712611607142857
+    }
+  }
+}

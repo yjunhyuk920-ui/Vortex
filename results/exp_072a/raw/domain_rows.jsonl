@@ -1,0 +1,2 @@
+{"alphabet_size": 4, "boundary_valid": true, "capacity_at_required_bits": 31, "capacity_below_required_bits": 15, "columns": 2, "injective": true, "matrix_count": 16, "required_universal_maximum_bits": 4, "rows": 1, "signature_collision_count": 0, "unique_basis_signature_count": 16}
+{"alphabet_size": 4, "boundary_valid": true, "capacity_at_required_bits": 511, "capacity_below_required_bits": 255, "columns": 2, "injective": true, "matrix_count": 256, "required_universal_maximum_bits": 8, "rows": 2, "signature_collision_count": 0, "unique_basis_signature_count": 256}

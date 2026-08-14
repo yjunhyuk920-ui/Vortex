@@ -1,0 +1,36 @@
+{
+  "branch_successes": 0,
+  "control_failures": [
+    "q_proj: candidate batch changed current input"
+  ],
+  "decision": "INVALID_CAUSAL_RESIDUAL_ATLAS_ORACLE_CONTROL_FAILURE",
+  "evaluated_projection_branches": 0,
+  "evaluated_token_states": 0,
+  "execution_complete": false,
+  "family_successes": {
+    "adversarial_low_acceptance": 0,
+    "code": 0,
+    "english": 0,
+    "korean": 0,
+    "math": 0,
+    "structured_json": 0
+  },
+  "gates": {
+    "all_branches_preserve_top1": false,
+    "all_families_succeed": false,
+    "all_tokens_succeed": false,
+    "complete_branch_population": false,
+    "complete_token_population": false,
+    "mean_kl_within_limit": false,
+    "p95_kl_within_limit": false,
+    "zero_control_failures": false,
+    "zero_leakage_failures": true,
+    "zero_malformed_states": true
+  },
+  "leakage_failures": [],
+  "malformed_state_count": 0,
+  "observed_scientific_failure": false,
+  "selected_mean_kl": null,
+  "selected_p95_kl": null,
+  "token_successes": 0
+}

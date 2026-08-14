@@ -1,0 +1,6 @@
+{"corrected_relative_l2_p50": 0.3642837852239609, "corrected_relative_l2_p95": 1.1746052682399748, "family": "adversarial_low_acceptance", "samples": 804, "weighted_exact_coverage": 0.06716417910447761}
+{"corrected_relative_l2_p50": 0.3410797119140625, "corrected_relative_l2_p95": 1.204711991548538, "family": "code", "samples": 558, "weighted_exact_coverage": 0.0967741935483871}
+{"corrected_relative_l2_p50": 0.35007520020008087, "corrected_relative_l2_p95": 1.202969455718994, "family": "english", "samples": 504, "weighted_exact_coverage": 0.10714285714285714}
+{"corrected_relative_l2_p50": 0.3495767265558243, "corrected_relative_l2_p95": 1.2413432717323305, "family": "korean", "samples": 564, "weighted_exact_coverage": 0.09574468085106383}
+{"corrected_relative_l2_p50": 0.3546370416879654, "corrected_relative_l2_p95": 1.2391115725040436, "family": "math", "samples": 618, "weighted_exact_coverage": 0.08737864077669903}
+{"corrected_relative_l2_p50": 0.3418743461370468, "corrected_relative_l2_p95": 1.2316885471343995, "family": "structured_json", "samples": 684, "weighted_exact_coverage": 0.07894736842105263}

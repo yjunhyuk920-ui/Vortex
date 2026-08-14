@@ -1,0 +1,65 @@
+{
+  "DERIVED": {
+    "alphabet_size": 16,
+    "coefficient_count": 405849243648,
+    "correctness_gate_pass": true,
+    "decision": "REJECT_SELF_CONTAINED_EXACT_Q4_DAG_AS_UNIVERSAL_CORE_RETAIN_RESTRICTED_SYNTHESIS_AUXILIARY",
+    "final_query_traffic_route": "NOT EVALUATED AFTER DECISIVE HOT-ARTIFACT FAILURE",
+    "former_static_gate_bits": 162339697459,
+    "former_static_gate_fits_hot": false,
+    "former_static_gate_gib": 18.898828124976717,
+    "hot_allowance_bits": 68719476736,
+    "hot_allowance_fraction": 0.042330666997375005,
+    "injectivity_reason": "exact outputs on standard-basis inputs uniquely recover every matrix coefficient",
+    "q4_information_bits": 1623396974592,
+    "q4_information_gib": 188.98828125,
+    "required_over_hot_factor": 23.62353515625,
+    "scope_boundary": "artifacts that query original or other lossless cold weight-derived data are excluded",
+    "self_contained_dag_survives_gate": false,
+    "target_equivalent_fraction": 0.01185185185,
+    "universal_hot_gate_pass": false,
+    "universal_self_contained_hot_gate_pass": false,
+    "worst_case_static_fraction": 1.0,
+    "worst_case_static_over_target_equivalent_factor": 84.3750000131836
+  },
+  "MEASURED": {
+    "control_failures": 0,
+    "deterministic_core_sha256": "112f0490e9e21efc8df3da04f71d92adacba4c493d2eae07d94dbf0960ac8c66",
+    "elapsed_ns": 16884700,
+    "enumerated_matrix_count": 272,
+    "finite_domain_count": 2,
+    "peak_traced_bytes": 169584,
+    "signature_collision_count": 0,
+    "unique_basis_signature_count": 272
+  },
+  "UNVERIFIED": [
+    "per-instance compressibility of pinned real checkpoints",
+    "online probe lower bound when original or cold lossless data remains queryable",
+    "physical query traffic and latency",
+    "actual Transformer operation replacement",
+    "405B execution",
+    "8 GiB GPU runtime behavior",
+    "CUDA PCIe SSD TTFT and tokens per second"
+  ],
+  "authoritative_decision": "REJECT_SELF_CONTAINED_EXACT_Q4_DAG_AS_UNIVERSAL_CORE_RETAIN_RESTRICTED_SYNTHESIS_AUXILIARY",
+  "claim_boundary": {
+    "405b_information_arithmetic": "DERIVED_FROM_REGISTERED_PARAMETER_COUNT",
+    "cold_data_online_runtime": "NOT RULED OUT",
+    "finite_domain_basis_injectivity": "MEASURED",
+    "self_contained_universal_artifact_cap": "REJECTED",
+    "target_hardware": "NOT TESTED"
+  },
+  "evidence_level": "E1",
+  "experiment": "EXP-072A",
+  "name": "self_contained_exact_q4_dag_information_capacity_gate",
+  "phase": [
+    "A",
+    "B-finite-domain-reference"
+  ],
+  "provenance": {
+    "config_sha256": "089875c12bb2d0dd15bda6fb8e584bf8835053f40862bec31865493216483643",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.13",
+    "source_commit": "468f297925e10bdc541fe48f19c2f72a1e3f5e14"
+  }
+}

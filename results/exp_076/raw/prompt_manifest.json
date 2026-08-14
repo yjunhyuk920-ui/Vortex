@@ -1,0 +1,47 @@
+{
+  "counts": {
+    "build": {
+      "adversarial_low_acceptance": 1,
+      "code": 1,
+      "english": 1,
+      "korean": 1,
+      "math": 1,
+      "structured_json": 1
+    },
+    "evaluation": {
+      "adversarial_low_acceptance": 3,
+      "code": 3,
+      "english": 3,
+      "korean": 3,
+      "math": 3,
+      "structured_json": 3
+    }
+  },
+  "manifest_core_sha256": "2682c8288ec9eb17002fd1a728cd6317cbe8426566c8deea0731695607610960",
+  "prompt_hashes": {
+    "build_adversarial_01": "7bb2e8243952f1e759fdae3f67205f1e6d3ef0dcf2cbe028b433d577f1b0ede1",
+    "build_code_01": "cda702fcbbe3196dad9a71b0d73f22058a66702770f9bea99f54984db1be9a5f",
+    "build_english_01": "564c4033d9a6f03af82b8306113b4d6b079fb7f09c943be3e1021c73ae36c0ab",
+    "build_json_01": "5f9cd21f1b6b96bcb91e8fc725481f4171484cae9f569b34d8189b8be052b4e6",
+    "build_korean_01": "4014ca28701235ccd0fc45edf461797fdfd636f0477623ba7f3140d855e5d750",
+    "build_math_01": "f88ca647d7035e44b0aad45b2bd8142d5fc7163b0880e31c4e22d20a71ddc814",
+    "eval_adversarial_01": "9da507ffbec145eec6ed705885146839431fcec6b4b78fccc08d7e984f875528",
+    "eval_adversarial_02": "8055c7d28425c1be4e7ab7da5d7d224dbf923b4888169ebbd63cbe34939b4518",
+    "eval_adversarial_03": "66fc15d7885be3aa5b19cc45f8c5eea5dab545bfb8ee1d0975774d75ab3db928",
+    "eval_code_01": "d1f0b5de22720ef487d97239bd40ba8648fe0bee1e39c05c1551aa052436ddd8",
+    "eval_code_02": "f1efa405e382ac3b9a3be55e19b70c3df2fce5fc5735d192eaa59fe9b65589cc",
+    "eval_code_03": "4166babb5116a01590911f675089e81fa2dadf7e57b89485599f1f530e82c9ef",
+    "eval_english_01": "c62734096852482f3d396faafa009eee590e894218fecb728f3a70da2dffd0ba",
+    "eval_english_02": "290cdd75b32dabfcb250938b3bcb111a1cf79a55162f0caad3888a4adac6361b",
+    "eval_english_03": "1e50db5c6ab6a3532cf7145faa8557d9b4ad0ab28fbff58ba7a8e9fc05e488a0",
+    "eval_json_01": "234de57fc94aa05e67f084f0e6d25fed7b1843794323441eb5efbe9ac68971ff",
+    "eval_json_02": "b8ece19982899a4563f5189bcb248468d9d56988028f5376a7519b290a52a5ca",
+    "eval_json_03": "ddb6ce8d0ca999dae721845dd52231fb8ecef659c637ee5c70d4738d148e8283",
+    "eval_korean_01": "01d0269f02d269c81e894a69f84c8b2f2c1b8877bdec22e2909abbe80e12f2a2",
+    "eval_korean_02": "411fa048b06f5fec415e29bb2a3f31098a330a6fb93773622d5821e724c3d6a1",
+    "eval_korean_03": "0c3c76d7412c8bf6e0a8e0c2ace8903f8bd81c5d704b7f0bb888cedc8af03de5",
+    "eval_math_01": "ea22dd451d4fb00e1f1b8957650e96cd4ea748668006689996fc88ca83ed302d",
+    "eval_math_02": "d7b52d38d8ecf981ca2e298fcd11df052fdcbdad1829586fda239eb869b8ba5f",
+    "eval_math_03": "35f629ea2f74bc70832c3a853ea21bdb206a308e443bbbd920a80f957ad28fb8"
+  }
+}

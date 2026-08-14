@@ -1,0 +1,58 @@
+{
+  "experiment": "EXP-074",
+  "name": "weight_stationary_mtp_expert_block_budget_gate",
+  "target": {
+    "model_id": "Qwen/Qwen3.5-122B-A10B",
+    "model_revision": "dc4d348",
+    "total_parameters": 122000000000,
+    "active_parameters": 10000000000,
+    "hidden_size": 3072,
+    "expert_intermediate_size": 1024,
+    "layer_count": 48,
+    "expert_count": 256,
+    "routed_experts_per_token": 8,
+    "shared_experts_per_token": 1,
+    "mtp_hidden_layers": 1,
+    "ollama_q4_k_m_size_decimal_gb": 81.0
+  },
+  "sources": {
+    "model_card": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B",
+    "model_config": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B/raw/main/config.json",
+    "ollama_tag": "https://ollama.com/library/qwen3.5:122b",
+    "standard_runtime_recipe": "https://github.com/vllm-project/recipes/blob/main/Qwen/Qwen3.5.md"
+  },
+  "baseline": {
+    "parameter_equivalent": 1000000000,
+    "p50_allowed_multiplier": 1.2,
+    "p95_allowed_multiplier": 1.5
+  },
+  "target_hardware": {
+    "gpu_vram_bytes": 8589934592,
+    "host_ram_bytes": 25231065088,
+    "root_available_bytes": 104816832512,
+    "minimum_safe_remaining_bytes": 32212254720
+  },
+  "registered_block_sizes": [1, 2, 4, 8, 9, 10, 12, 16, 24, 32, 64, 128],
+  "route_models": [
+    "fixed",
+    "independent_uniform_expected",
+    "maximally_distinct"
+  ],
+  "draft_parameter_equivalents": [0, 800000000, 1000000000],
+  "standard_recipe_mtp_speculative_tokens": 1,
+  "comparison_405b_dense": {
+    "target_parameters": 405000000000,
+    "baseline_parameters": 4000000000,
+    "draft_parameters": 4000000000
+  },
+  "gate": {
+    "optimistic_candidate_block_limit": 16,
+    "mtp1_must_meet_p50_multiplier": true,
+    "zero_future_information_required": true,
+    "exact_verification_required": true,
+    "decision_on_mtp1_failure_with_optimistic_path": "REVISE_MTP1_AND_EXPERT_PAGING_INSUFFICIENT_REQUIRE_LONG_CAUSAL_PROPOSAL_AND_ROUTING_LOCALITY_GATES",
+    "decision_on_no_optimistic_path": "REJECT_WEIGHT_STATIONARY_BLOCK_AS_1B_CLASS_SURROGATE_CORE",
+    "decision_on_mtp1_success": "PROMOTE_TO_SMALL_CHECKPOINT_MTP_AND_ROUTING_TRACE_GATE"
+  },
+  "evidence_ceiling": "Phase A/B deterministic reference accounting only. No checkpoint weights, proposal traces, expert routes, Transformer operation replacement, physical bytes, latency, target inference, CUDA, H2D, storage benchmark, E4-E7, or 405B execution are measured."
+}

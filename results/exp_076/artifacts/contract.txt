@@ -1,0 +1,1 @@
+Phase C small unchanged checkpoint causal accepted-prefix observation, at most E1 unless complete generation actually replaces target operations. CPU timings are environment observations, not E4. No 35B, 122B, target server, CUDA, page scheduler, dense 405B, E6, or E7 claim is authorized.

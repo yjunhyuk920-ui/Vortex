@@ -1,0 +1,15 @@
+{
+  "authoritative_decision": "PROMOTE_CAUSAL_RESIDUAL_ATLAS_TO_CAUSAL_PAIR_AND_BOUND_GATE",
+  "checks": [
+    "bundle file checksums",
+    "top1-first minimum-KL page selection",
+    "token conjunction",
+    "control failure count",
+    "Gate aggregation and decision",
+    "deterministic core payload and SHA-256",
+    "summary population counts"
+  ],
+  "deterministic_core_sha256": "ab96e6114f44a1c02a01d080848c4ec643a747b63ebfee30c77fda45f3954845",
+  "experiment": "EXP-083A",
+  "verification": "PASS"
+}

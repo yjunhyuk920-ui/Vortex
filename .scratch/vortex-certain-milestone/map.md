@@ -1,0 +1,64 @@
+# Wayfinding Map: Reach a Certain VORTEX Research Milestone
+
+## Destination
+
+Produce a commit-backed Certain Research Milestone: a materially new Core
+Candidate passes E0 resource closure and E1 real-weight falsification, then
+performs actual fail-closed dense-operation replacement at E2 on the pinned
+small checkpoint while retaining a credible route to the unchanged Fixed
+Mission.
+
+## Notes
+
+- Read `AGENTS.md`, `CONTEXT.md`, all mandatory root research ledgers, and the
+  proof-first, efficiency, and work-session contracts every session.
+- Use `wayfinder` to resolve at most one child ticket per session.
+- Use `domain-modeling` whenever a new mechanism class or milestone term is
+  introduced.
+- Apply the cheapest-kill-first order and commit every claim before reporting.
+- Execution is included in this map: a surviving decision should graduate into
+  the minimum prototype or experiment required for the next Gate.
+- A negative result is durable research evidence but does not satisfy the
+  Destination by itself.
+
+## Decisions so far
+
+<!-- Append one linked gist for each resolved child ticket. -->
+
+- [Synthetic-intermediate exact-circuit audit](issues/01-audit-synthetic-intermediate-circuits.md): static synthetic trees are a restricted form of archived EXP-072B; only a genuinely query-adaptive cold information source remains open.
+- [Query-adaptive cold-backed equation](issues/02-derive-cold-backed-circuit-equation.md): any source needs at least `98.814815%` exact coverage and `84.375x` useful information amplification in the zero-cost limit; raw page omission is not a source, so search only causal coded information.
+- [Causal Residual Atlas source](issues/03-find-causal-circuit-information-source.md): committed-prefix exact input/image pairs supply `Q` and `WQ`; a fully retained residual creates a narrow rank-16 logical window but needs `99.899841%` certified coverage, so only its cheapest real-weight Gate is now open.
+- [Preregister the Cheapest Surviving Gate](issues/04-preregister-cheapest-surviving-gate.md): the frozen first post-prefill layer-11 q/down oracle enumerates 1,296 one-page candidates over 18 prompts and permits zero token failure before the legal bound stage.
+- [Run the Causal Residual Atlas First-Decode Gate](issues/06-run-causal-residual-atlas-first-decode-gate.md): EXP-083A passed and reproduced 18/18 tokens, 36/36 branches, and mean/p95 KL 0.007226/0.037661 under the favorable oracle; page existence survives, but legal pair construction, target-free selection, and outward certification remain the next blocker.
+- [Preregister the Legal Causal-Pair and Outward-Bound Gate](issues/07-preregister-legal-causal-pair-bound-gate.md): a new 24-prompt last-down Gate freezes pair-only causal MGS, maximum-residual-energy selection, verified spectral unread bounds, and strict final BF16 greedy certification; the charged component window remains below 1.185%, but demands 24/24 zero-fallback execution.
+- [Run the Legal Pair and Outward-Bound Last-Down Gate](issues/08-run-legal-pair-outward-last-down-gate.md): EXP-083B rejected on the first untouched row with one valid fallback and zero control failures; unread/pair radii made the global hidden-ball certificate impossible even under a post-hoc zero-rounding necessary condition, so backward expansion and E2 are closed for this mechanism.
+- [Find a Post-Atlas Causal Information Source](issues/09-find-post-atlas-causal-information-source.md): exact decision-directional caching leaves a bilinear cross residual; dynamic dual construction and static full-vocabulary scanning both fail E0, so no source survives and only a different lossless sub-dense cross-residual mechanism remains open.
+- [Break the Bilinear Cross-Residual Barrier](issues/10-break-bilinear-cross-residual-barrier.md): a finite sphere-covering bound rejects every matrix-local separable linear residual code at `1.521048%` raw cross work; only nonseparable/global advice or a proved causal query restriction remains open.
+- [Resolve Cross-Matrix Advice Locality](issues/11-resolve-cross-matrix-advice-locality.md): global linear advice supplies free block-local information only through shortened spaces and pays one dimension per fixed outside cancellation probe, but the strongest finite global bound is only `0.001587%`; free projection reuse is closed while general impossibility and construction both remain open.
+- [Certify Causal Bilinear Query Restriction](issues/12-certify-causal-bilinear-query-restriction.md): a favorable full-factor scan fits only through query-span dimension 23; exact held-out rank 28 among 36 last-down rows rejects every such ledger, so the shape threshold is closed and the frozen population Gate is next, but free pair/result oracles prevent Core Candidate promotion.
+- [Run the Causal Bilinear Rank Gate](issues/13-run-causal-bilinear-rank-gate.md): EXP-084A passed 114 controls, found build rank 24, and rejected the frozen dimension-23 automatic ledger after zero hits and five exact misses in the first five held-out rows; the stop preceded rank 28, so only this calibrated factor-scan mechanism is closed and no Core Candidate survives.
+- [Bound Query-Adaptive Exact Code Unions](issues/14-bound-query-adaptive-code-unions.md): even a free perfect router over separately built exact linear leaves can cache at most 87,958 independent directions inside the target build budget, only 0.43979% of 20M queries; every partition of the full EXP-084A build span also misses all five frozen evaluation rows, so trace-built unions are auxiliary only and the next open ticket requires an implicit nonlinear checkpoint source.
+- [Derive an Implicit Nonlinear Bilinear Query Source](issues/15-derive-implicit-nonlinear-bilinear-source.md): exact-field branching collapses to one static rational path and Baur--Strassen maps it to static MatVec with constant-factor arithmetic overhead; twin-width and grammar routes reduce to F-049/F-050, so only an explicitly finite-word discontinuous source remains open.
+- [Derive a Finite-Word Discontinuous Bilinear Source](issues/16-derive-finite-word-discontinuous-source.md): a genuine bounded-word GF(2) block truth table fits query-only traffic only by requiring exponential storage, build, and address width; Mailman, broadword full scans, Boolean nonemptiness probes, and free native-state claims also fail, while the general globally nonlocal nonlinear rank-one probe model remains open in ticket 17.
+
+## Current claimed frontier
+
+- [Resolve the General Finite-Word Rank-One Probe Gap](issues/17-resolve-general-finite-word-rank-one-probe-gap.md) remains claimed. The latest adaptive cycle rejects a literal nearest-query answer table by a 13,742-bit address Gate and rejects trapdoored additive masking because the shifted arbitrary product remains dense. The still-open object is a nonliteral compressed adaptive bilinear decoder, or a joint lower bound that covers one under global advice.
+
+## Not yet specified
+
+- If a future source survives E0/E1, specify the exact E2 integration boundary,
+  output contract, and held-out population from that mechanism.
+- If E2 survives, determine the next model-size and representative-hardware
+  rung without promoting small-model evidence to E7.
+- Determine when separately authorized target-server calibration materially
+  changes a candidate's physical Gate; it is not itself a Core Candidate.
+
+## Out of scope
+
+- Reducing or redefining the Fixed Mission.
+- Training, distillation, LoRA, checkpoint modification, target-future leakage,
+  or unreported approximation.
+- Downloading 35B/122B/405B or mutating the private Ubuntu server without the
+  separately required authorization and surviving prior Gates.
+- Treating another family closure, projection, or E0/E1 result as Final Success.

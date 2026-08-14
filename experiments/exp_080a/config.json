@@ -1,0 +1,62 @@
+{
+  "experiment": "EXP-080A",
+  "name": "hyperblock_exact_rectangular_multiplication_gate",
+  "registered_inputs": {
+    "target_shape_path": "results/exp_071/raw/tensor_rows.jsonl",
+    "target_shape_sha256": "5009a4ed7234bd24eb1488b0f96a9c847158c2a614a6c90519a16cf4212ba82a",
+    "prior_block_summaries": {
+      "exp_048": {
+        "path": "results/exp_048/summary.json",
+        "sha256": "18252019a35ecb23fe2c8525e13a93ec73a5b69eea00330e965932f4148ef718"
+      },
+      "exp_049": {
+        "path": "results/exp_049/summary.json",
+        "sha256": "f0683a7852f1efe930b22c1feaf4863b68bf9d4351217461080ee784e6488a57"
+      },
+      "exp_050": {
+        "path": "results/exp_050/summary.json",
+        "sha256": "00f76310a45187c820a3b76dc70abf673ebd3c1c74bb90d88536c2138e685a2a"
+      }
+    }
+  },
+  "target_contract": {
+    "baseline_billions": 4,
+    "target_billions": 405,
+    "p50_latency_multiple": 1.2,
+    "p95_latency_multiple": 1.5,
+    "p50_target_fraction": 0.011851851851851851,
+    "p95_target_fraction": 0.014814814814814815,
+    "peak_vram_bytes": 8589934592
+  },
+  "candidate": {
+    "block_lengths": [32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384],
+    "exclude_tensor_families": ["embedding"],
+    "constructive_algorithm": "recursive_strassen_7_products_18_half_size_additions",
+    "leaf_selection": "free_best_power_of_two_classical_leaf_per_tile",
+    "theoretical_omega": 2.371552,
+    "authoritative_target_sweeps": 1,
+    "authoritative_proposal_billions": 0,
+    "diagnostic_draft_billions": 4,
+    "q4_weight_bytes_per_scalar": 0.5,
+    "activation_bytes_per_scalar": 2,
+    "scratch_bytes_per_scalar": 4,
+    "scratch_square_tile_count": 3,
+    "future_generated_tokens_available": true,
+    "future_information_label": "NON_DEPLOYABLE_PERFECT_FUTURE_ORACLE"
+  },
+  "controls": {
+    "seed": 800080,
+    "matrix_widths": [1, 2, 4, 8],
+    "trials_per_width": 8,
+    "minimum_value": -8,
+    "maximum_value": 7
+  },
+  "gate": {
+    "require_zero_exact_control_mismatches": true,
+    "require_one_constructive_joint_p50_pass": true,
+    "decision_on_pass": "PROMOTE_TO_EXACT_PACKED_RECTANGULAR_CONSTRUCTOR_GATE",
+    "decision_on_scientific_failure": "REJECT_STANDARD_STRASSEN_HYPERBLOCK_AS_CORE_RETAIN_COST_MODEL_AUXILIARY",
+    "decision_on_control_failure": "INVALID_HYPERBLOCK_ARITHMETIC_CONTROL_FAILURE"
+  },
+  "evidence_ceiling": "Phase A/B E1 synthetic/reference arithmetic upper bound. Perfect future activations and best Strassen leaf choices are favorable oracles. No model execution, causal proposal source, physical kernel, CUDA, target server, 8 GiB measured peak, latency, 122B/405B, or E2-E7 claim."
+}

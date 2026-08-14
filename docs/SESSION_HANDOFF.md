@@ -219,3 +219,325 @@ Bit-exact AIG structural hashing is rejected as core. Read `results/exp_053/summ
 ## EXP-054 handoff
 
 Reduced decision diagrams are rejected as core. Continue with EXP-055 word-level column-signature/popcount aggregation or a materially new mechanism only.
+
+<!-- EXP-072A-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-072A
+
+Branch: `research/exp-072a-information-capacity`.
+
+Authority: `results/exp_072a/summary.json`; source `468f297925e10bdc541fe48f19c2f72a1e3f5e14`; evidence commit `f9ac26befb01fd9a71c7c6e1efed4c4b4df31389`.
+
+Decision: reject a self-contained exact Q4 arithmetic DAG as a universal 8 GiB hot core. Exact basis outputs make the artifact an injective matrix encoding; worst-case Q4 information is `188.98828125 GiB`, `23.62353515625x` the hot allowance. Restricted synthesis remains auxiliary. Cold-backed online execution is not ruled out.
+
+Next: EXP-073 sanitized, read-only inventory of the privately identified Ubuntu target, followed only with separate authorization by storage/transfer/native-4B baselines. Never commit connection details. Do not download 405B, install packages, restart services, or disturb workloads during inventory.
+
+<!-- EXP-074-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-074
+
+Branch: `research/exp-074-weight-stationary-block-gate`.
+
+Authority: `results/exp_074/summary.json`; source
+`8abc06e73c884b839927cf41d5f4fa6cbb8fc051`; evidence
+`c1d778af011672ec7fadfa66935ba2548de8e115`.
+
+Decision: MTP-1 plus expert paging is rejected as a 1B-class core after
+retaining `10.0x` baseline traffic under free drafting and fixed routes. The
+long-block path is revised: fixed/free requires nine perfect accepted tokens,
+0.8B draft requires 25, and independent-uniform expected routing requires 98.
+
+Next: metadata-only native-MTP surface audit, then the smallest unchanged
+checkpoint accepted-prefix Gate if the surface exists. Do not download 35B or
+122B and do not build a page scheduler. EXP-073 Stage 2 remains not run.
+
+<!-- EXP-075-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-075
+
+Branch: `research/exp-075-native-mtp-surface-audit`.
+
+Authority: `results/exp_075/summary.json`; source
+`f85ac583a129070247992987d1b3c63634e6447f`; evidence
+`2fcf7315cf9da491a5ca361536eb0f07e325e74c`.
+
+Decision: the official Qwen3.5-0.8B config, exact 15-key MTP index surface, and
+pinned vLLM loader/runtime source all pass the metadata Gate. The complete
+checkpoint is declared as 1.626911 GiB but was not downloaded. No model or
+server command ran.
+
+Next: preregister EXP-076 around this exact model/revision, an isolated compatible
+dependency lock, causal recursive proposals for K=2..64, exact verification and
+hybrid-state rollback, held-out prompt families, and fully charged p05/p50
+acceptance accounting. Do not start 35B/122B, quantization, expert paging, or
+server work. EXP-073 Stage 2 remains not run.
+
+<!-- EXP-076-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-076
+
+Branch: `research/exp-076-native-mtp-accepted-prefix-gate`.
+
+Authority: `results/exp_076/summary.json`; source
+`5e331137f8e03250cc74aa796abbf69f49ef87a5`; evidence
+`55b79937c1f21887ae76b7e56ad61ba7dde8322a`.
+
+Decision: reject native-MTP long blocks as the registered surrogate core. The
+build split selected `K=4`; held-out accepted-prefix p05/p50/p95 was `0/4/4`
+versus required p05/p50 minima `9/11`, and 2/18 cases accepted zero drafts.
+All causal, exact-acceptance, commit-state, and rollback controls passed.
+
+Next: do not run 35B/122B, router tracing, quantization rescue, or a page
+scheduler. No EXP-077 core implementation is authorized until a materially
+different query-time information source passes E0. EXP-073 Stage 2 remains the
+only specified physical calibration and requires separate explicit authority.
+The private target server was not contacted in EXP-076.
+
+<!-- E0-SPARSE-FUNCTIONAL-DICTIONARY-HANDOFF -->
+## Current handoff after the sparse functional dictionary audit
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_SPARSE_FUNCTIONAL_DICTIONARY_FRONTIER.md` and
+`results/e0_sparse_functional_dictionary_frontier/summary.json`.
+
+Literal global bilinear answers and direct local rank-one truth tables are
+closed by finite address/storage Gates. A globally non-systematic cold linear
+dictionary remains an exact open interface, but query cardinality supplies
+neither rank-one alignment nor a sparse decoder. No candidate, model run,
+backend, or hardware stage was promoted.
+
+Next: search only for an explicit near-linear aligned dictionary with a
+succinct exact decomposer and native-order lift, or a covering lower bound that
+actually applies to the non-systematic rank-one linear model. Keep
+`NO_SURVIVING_CANDIDATE` and do not assign EXP-085 without one deliverable.
+
+The first decomposer subcase is now closed. Any fixed linear right inverse
+activates almost every useful dictionary row across an independently selectable
+32-query tuple; even perfect bit packing leaves `41.874345776 GB` cold after
+the complete hot grant. Continue only with a nonlinear minimum-weight syndrome
+decoder or a proved causal restriction. Authority:
+`docs/research/E0_FIXED_LINEAR_FUNCTIONAL_DECODER_ACTIVITY_BOUND.md`.
+
+<!-- EXP-077A-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-077A
+
+Branch: `research/exp-077a-oracle-fractal-mlp-gate`.
+
+Authority: `results/exp_077a/summary.json`; source
+`33fed17ed6abed7c8c14eec543efc620e4fe537d`; evidence
+`0970c6626ff848c5026b684b3e2d1bb479e96603`; core
+`e25083693c6db21a0da16c9305816958b149865f2fcfde0bd9b7e95c43022411`.
+
+Decision: reject activation-norm individual-channel Fractal MLP at the 10%
+favorable ceiling. The corrected causal-cache control matched 192/192 target
+positions. The realized `9.988839%` arm achieved held-out top-1 `71.5278%`,
+mean KL `0.884161`, and p95 KL `3.080752`; every family failed. The invalid
+pre-authority runs were not committed as evidence.
+
+Next: do not sweep this score, train a router, build a sparse kernel, or download
+35B/122B. A new candidate must introduce a different correction/amortization
+dependency and pass E0. EXP-073 Stage 2 remains separately authorized but not
+run. The private Ubuntu server was not contacted; Phase D/E2-E7 remain open.
+
+<!-- EXP-078A-AUTHORITATIVE-FINAL -->
+## Current handoff after EXP-078A
+
+Branch: `research/exp-078a-tangent-macroblock-gate`.
+
+Authority: `results/exp_078a/summary.json`; source
+`cc368190031d87db92f7a476dd741c18224239c1`; evidence
+`fe6081917c65b2392f8760d72a2b0e17a4461982`; core
+`c743ae14748effaad3a034def7d8d92e67fa09abf65eeb931bef3e8a26368667`.
+
+Decision: reject frozen complete anchor-conditioned MLP operator reuse. The
+unchanged checkpoint matched all 192 baseline decisions. The candidate then
+matched 0/126 held-out later-token top-1 decisions; all 18 cases failed on the
+first reuse token; mean/p95 KL was `14.898423/25.335417`.
+
+The direct-build cost also required `13,821/6,249` small-checkpoint and
+`115,299/26,354` 122B-screen p50/p05 reuse positions. Do not extend the trace,
+sweep ranks/layers/prompts, add a sentinel, or construct a physical macro matrix.
+A causal delta-updated map is a new unsupported mechanism and must first pass E0
+with update, detection, repair, fallback, and cold-traffic costs. No core
+candidate survives; the Ubuntu server was not contacted; Phase D/E2-E7 remain
+open.
+
+<!-- E0-POST-ATLAS-CAUSAL-SOURCE-AUDIT -->
+## Current handoff after the post-Atlas causal-source audit
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_POST_ATLAS_CAUSAL_INFORMATION_SOURCE_AUDIT.md`.
+
+Decision: forward-only continuation is Atlas normal form; dynamic exact
+decision-dual construction fails at `1.5625%` over 64 tokens; a favorable
+static one-last-down vocabulary table fails at `12.720703125 GiB` and
+`6.765979992%` scan traffic. The EXP-083B zero-forward post-hoc screen leaves
+all 248,319 competitors unresolved. No experiment number or model run occurred.
+
+Next: address only the lossless Bilinear Cross Residual `r^T W u` with a
+concrete finite E0 construction or scoped lower bound. Do not run hardware,
+contact the Ubuntu server, download a larger model, or start E1/E2. Current
+status is `NO_SURVIVING_CANDIDATE`; this negative closure is not the Certain
+Research Milestone.
+
+<!-- E0-EXTENSION-FIELD-RANK-SATURATING-HANDOFF -->
+## Current handoff after the extension-field rank-saturation audit
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_EXTENSION_FIELD_RANK_SATURATING_FRONTIER.md` and
+`results/e0_extension_field_rank_saturating_frontier/summary.json`.
+
+Extension-field packing is exact over GF(2), but published coefficient rank is
+not probe support. Direct full-ambient summaries cost `748.5509965564124 TiB`;
+the rank-one-specific identity system restores a raw one-bit scan and exceeds
+the zero-compute latency Gate. The throwaway small-search source is preserved
+at commit `2f68300` on `prototype/rank-one-dictionary-small-search`.
+
+Next: work only on an explicit joint batch coset dictionary satisfying
+`q_i in span(G_T)` for one small shared physical `T`, or change mechanism
+class. A single-query sparse leader is insufficient. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085, model, backend, download,
+server, or hardware work.
+
+<!-- E0-JOINT-BATCH-COSET-GEOMETRY-HANDOFF -->
+## Current handoff after the joint-batch geometry audit
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_JOINT_BATCH_COSET_GEOMETRY.md` and
+`results/e0_joint_batch_coset_geometry/summary.json`.
+
+Schaathun's product-code theorem now gives the exact maximum number of binary
+rank-one masks in any fixed-dimensional matrix subspace and agrees with the
+complete tiny prototype at commit `0206a08`. Every 32-query batch lies in a
+1,024-dimensional `R tensor U` envelope. Literal envelope catalogs fail above
+`2^1,046,528` names, while the strongest proof-safe general support count is
+only 20,218 bit atoms and is not target-scale.
+
+Next: do not continue literal catalogs, independent leaders, or counting.
+Either construct an implicit near-source-size on-demand factor-envelope
+generator with native physical accounting, or change mechanism class. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.
+
+<!-- E0-DETERMINANTAL-RANK-AMPLIFICATION-HANDOFF -->
+## Current handoff after the determinantal rank-amplification Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_DETERMINANTAL_RANK_AMPLIFICATION_GATE.md` and
+`results/e0_determinantal_rank_amplification_gate/summary.json`.
+
+Rank-one coverage now amplifies exactly to rank-`r` coverage at radius `rt`.
+Mixed-weight sampling supplies a second exact Gate. Together they reject the
+first 770 capacity-ordered shapes; the prior `17 x 43` fails at rank two and
+the balanced `32 x 39` fails mixed-weight averaging.
+
+Next: either construct and decode the first unclosed `30 x 40`, `S=1,404`,
+`t=14` dictionary, or derive a stronger condition from the many different
+rank-one decompositions of the same higher-rank matrix. Do not return to the
+closed shapes or rank-one-only counts. Keep `NO_SURVIVING_CANDIDATE`; do not
+start EXP-085 or model/hardware work.
+
+<!-- E0-LINEARIZED-POLYNOMIAL-LOCALITY-HANDOFF -->
+## Current handoff after the linearized-polynomial locality Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_LINEARIZED_POLYNOMIAL_LOCALITY_GATE.md` and
+`results/e0_linearized_polynomial_locality_gate/summary.json`.
+
+The extension-field identity is exact but contains the original `n^2` base
+bits. One favorable model-wide bit-plane coefficient sweep shared over 32
+queries costs `49.542144 ms/token` at 32 GB/s. The ordinary degree
+`2^16,383` prevents importing a dense polynomial-evaluation data structure at
+near-source space. A specialized local evaluator would restate arbitrary
+preprocessed MatVec and is not a new mechanism.
+
+Next: change mechanism class and test only a proposal that creates new
+physical locality or removes a fully charged operation. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.
+
+<!-- E0-CARTESIAN-BILINEAR-CAUSAL-UTILITY-HANDOFF -->
+## Current handoff after the Cartesian causal-utility Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_CARTESIAN_BILINEAR_CAUSAL_UTILITY_GATE.md` and
+`results/e0_cartesian_bilinear_causal_utility_gate/summary.json`.
+
+`R^T W U` is retained as exact batched scalar reuse, but its 1,024 entries at
+K=32 refer to only 32 forward states. Counting entries as generated tokens is
+invalid. A favorable 10.6-bit full sweep is `525.1467264 ms/token` at the
+valid denominator and needs 841 causal tokens per sweep to touch the target.
+The new tile-addressable ANS paper improves lossless tile transport only.
+
+Next: seek a partial exact source that determines unread contributions and
+state, or a genuinely new finite-word nonlinear decoder. Do not continue
+full-sweep compression or scalar-denominator variants. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.
+
+<!-- E0-TABULATION-SUPERCODE-HANDOFF -->
+## Current handoff after the tabulation/supercode Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_TABULATION_SUPERCODE_FRONTIER.md` and
+`results/e0_tabulation_supercode_frontier/summary.json`.
+
+Fixed-address XOR tabulation is now exactly linearized by ANF and is not a new
+nonlinear source. Favorable local subset capacity first fits at `b=23`,
+`S=619`, `t=6`, but random atoms are exponentially unaligned and no explicit
+Segre-aligned family or decomposer exists.
+
+Next: construct a structured near-source atom generator plus sub-dense exact
+rank-one decomposer and one small shared physical set for 32 queries, or move
+to an adaptive arbitrary-word mechanism outside the lemma. Do not repeat
+random dictionaries, capacity counting, or fixed XOR tables. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.
+
+<!-- E0-SEGRE-SPARSE-COVER-FOURIER-HANDOFF -->
+## Current handoff after the Segre sparse-cover Fourier Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_SEGRE_SPARSE_COVER_FOURIER_GATE.md` and
+`results/e0_segre_sparse_cover_fourier_gate/summary.json`.
+
+The first nine exact subset-slack-ordered rectangular sparse covers in the
+side-`1..128` scan are now rejected by a Fourier second-moment theorem.
+`23 x 23`, `S=619`, `t=6` is closed despite passing raw capacity. `13 x 89`,
+`S=1,353`, `t=13` is the first unclosed scan case and requires a kernel
+relation of weight at most 39.
+
+Next: use mandatory short kernel defects to construct/decode the `13 x 89`
+syndromes or derive its next obstruction. Do not repeat tight blocks, random
+atoms, or subset counting. Keep `NO_SURVIVING_CANDIDATE`; do not start EXP-085
+or model/hardware work.
+
+<!-- E0-SEGRE-RULING-PREIMAGE-SPHERE-HANDOFF -->
+## Current handoff after the Segre ruling preimage-sphere Gate
+
+Branch: `research/exp-082a-differential-spanning-tree`.
+
+Authority:
+`docs/research/E0_SEGRE_RULING_PREIMAGE_SPHERE_GATE.md` and
+`results/e0_segre_ruling_preimage_sphere_gate/summary.json`.
+
+`13 x 89`, `S=1,353`, `t=13` is now exactly rejected: its large ruling needs
+`2^89` low-weight preimages but an information-set theorem caps its
+dimension-285 preimage at `Ball(285,13)`. The combined scan's first unclosed
+shape is `18 x 36`, `S=758`, `t=7`.
+
+Next: settle the necessary `[146,110]` binary radius-seven covering code, then
+test whether one 110-dimensional kernel can cover all `18 x 36` Segre rulings
+simultaneously. An ordinary covering code alone is not sufficient. Do not
+return to `13 x 89`, random atoms, or subset counting. Keep
+`NO_SURVIVING_CANDIDATE`; do not start EXP-085 or model/hardware work.

@@ -1,0 +1,9 @@
+{
+  "control_failures": [
+    "build_english_01:prefix_replay_position_0"
+  ],
+  "decision": "INVALID_CAUSAL_BILINEAR_RANK_GATE_CONTROL_FAILURE",
+  "deterministic_core_sha256": "36ba5b53333ab33598919aa0bf0d076dac0e29923864c5a3ed73b246be51b734",
+  "experiment": "EXP-084A",
+  "stop_reason": "control_failure"
+}

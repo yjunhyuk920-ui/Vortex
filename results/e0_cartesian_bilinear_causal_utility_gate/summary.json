@@ -1,0 +1,55 @@
+{
+  "causal_utility": {
+    "cartesian_exact_scalar_count": 1024,
+    "cartesian_scalars_may_be_counted_as_tokens": false,
+    "forward_state_count": 32,
+    "left_direction_count": 32,
+    "left_direction_creates_successor_state": false,
+    "maximum_causal_tokens_from_these_states": 32,
+    "maximum_distinct_forward_states": 32,
+    "scalar_to_state_ratio": "32"
+  },
+  "claim_boundary": {
+    "cartesian_scalar_identity_exact": true,
+    "cartesian_scalar_reuse_useful": true,
+    "causal_token_count_equals_scalar_count": false,
+    "full_sweep_core_passes": false,
+    "hardware_actions": 0,
+    "native_model_forward_calls": 0,
+    "nonlinear_rank_one_source_rejected": false,
+    "partial_evidence_source_rejected": false
+  },
+  "classification": "E0_CARTESIAN_BILINEAR_CAUSAL_UTILITY_GATE",
+  "decision": "REJECT_CARTESIAN_SCALAR_COUNT_AS_CAUSAL_TOKEN_AMPLIFICATION_KEEP_CARTESIAN_BILINEAR_BATCHING_AS_AUXILIARY_REQUIRE_PARTIAL_EXACT_INFORMATION_SOURCE",
+  "decisions": [
+    "PROMOTE_CARTESIAN_BILINEAR_BATCHING_AS_EXACT_AUXILIARY",
+    "REJECT_K_SQUARED_SCALARS_AS_K_SQUARED_CAUSAL_TOKENS",
+    "REJECT_FULL_LOSSLESS_SWEEP_AT_32_CAUSAL_STATES",
+    "REQUIRE_PARTIAL_EXACT_INFORMATION_SOURCE",
+    "NO_SURVIVING_CANDIDATE"
+  ],
+  "exact_identity": "C=R^T W U",
+  "full_sweep": {
+    "all_non_link_costs_granted_free": true,
+    "causal_forward_states": 32,
+    "dfloat_milliseconds_per_token": "538.30078125000",
+    "effective_bits_per_weight": "10.6",
+    "exact_scalars_in_square_cartesian_table": 1024,
+    "invalid_scalar_denominator_milliseconds": "16.4108352000",
+    "invalid_scalar_denominator_would_pass": true,
+    "minimum_causally_usable_tokens_per_full_sweep": 841,
+    "optimistic_sweep_bytes": "537750247833.6",
+    "optimistic_sweep_seconds": "16.8046952448",
+    "parameters": 405849243648,
+    "registered_states_meet_full_sweep_floor": false,
+    "valid_milliseconds_per_token": "525.1467264000",
+    "valid_target_multiple": "26.25733632"
+  },
+  "new_lossless_literature_boundary": {
+    "bf16_entropy_bits_per_weight_range": "10-12",
+    "consumed_tiles_are_fully_decoded": true,
+    "llama_405b_bf16_reported_compression_factor": "about 1.5x",
+    "partial_transformer_decision_certificate_supplied": false,
+    "tile_random_access": true
+  }
+}

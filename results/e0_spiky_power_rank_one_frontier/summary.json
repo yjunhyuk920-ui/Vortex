@@ -1,0 +1,94 @@
+{
+  "claim_boundary": {
+    "all_spiky_or_entrywise_nonlinear_algorithms_rejected": false,
+    "finite_e0_only": true,
+    "general_nonlinear_probe_gap_resolved": false,
+    "native_numerical_execution_proved": false,
+    "target_achieved": false,
+    "whole_model_runtime_built": false
+  },
+  "decision": "REJECT_SPIKY_AND_POWER_FOLDS_KEEP_GENERAL_PROBE_GAP_OPEN",
+  "name": "spiky_power_rank_one_frontier",
+  "omega_powerfold": {
+    "allowed_work_fraction": 0.011827051731955725,
+    "decision": "REJECT_OMEGA_POWERFOLD_AS_RELABELED_STATIC_LOW_RANK_EXECUTION",
+    "dimension": 16384,
+    "exact_runtime_normal_form": "STATIC_LOW_RANK_AFTER_MULTINOMIAL_EXPANSION",
+    "expanded_separable_term_cap": 96,
+    "native_accumulation_order_preserved": false,
+    "paper_epmf_covers_nonnegative_magnitudes_not_signed_native_weights": true,
+    "power_thresholds": {
+      "2": {
+        "expanded_terms_at_maximum": 91,
+        "expanded_terms_at_next_rank": 105,
+        "maximum_root_rank_within_free_term_cap": 13
+      },
+      "3": {
+        "expanded_terms_at_maximum": 84,
+        "expanded_terms_at_next_rank": 120,
+        "maximum_root_rank_within_free_term_cap": 7
+      },
+      "4": {
+        "expanded_terms_at_maximum": 70,
+        "expanded_terms_at_next_rank": 126,
+        "maximum_root_rank_within_free_term_cap": 5
+      },
+      "5": {
+        "expanded_terms_at_maximum": 56,
+        "expanded_terms_at_next_rank": 126,
+        "maximum_root_rank_within_free_term_cap": 4
+      }
+    },
+    "term_formula": "binom(root_rank + power - 1, power)"
+  },
+  "omega_spikecut": {
+    "decision": "REJECT_OMEGA_SPIKECUT_DIRECT_EVALUATOR_BY_MODEL_WIDE_DESCRIPTION_GATE",
+    "model_wide_authoritative_gate": {
+      "all_sign_checkpoints_log2": 403747897344.0,
+      "allowed_factor_incidence_terms": 4800000000,
+      "coefficient_count": 403747897344,
+      "combined_representable_log2_upper": 184958474578.0694,
+      "decision": "REJECT_OMEGA_SPIKECUT_DIRECT_EVALUATOR_BY_MODEL_WIDE_DESCRIPTION_GATE",
+      "global_column_coordinates": 19111936,
+      "global_counting_dimension": 19997952,
+      "global_cross_matrix_components_granted": true,
+      "global_row_coordinates": 19997952,
+      "hard_checkpoint_exponent_bits": 218789422765.9306,
+      "hard_sign_checkpoint_exists": true,
+      "invalid_cross_matrix_cells_ignored": true,
+      "matrix_instances": 883,
+      "representable_fraction_log2_upper": -218789422765.9306
+    },
+    "single_square_diagnostic": {
+      "all_sign_matrices_log2": 268435456.0,
+      "allowed_factor_incidence_terms": 3174800,
+      "allowed_work_fraction": 0.011827051731955725,
+      "combined_representable_log2_upper": 89806063.23974244,
+      "decision": "REJECT_OMEGA_SPIKECUT_DIRECT_EVALUATOR_BY_FINITE_DESCRIPTION_GATE",
+      "dimension": 16384,
+      "favorable_grants": [
+        "optimal decomposition",
+        "arbitrary real factors",
+        "exact associative arithmetic",
+        "free preprocessing and selector",
+        "free block products and reductions",
+        "free metadata, storage, traffic, verification, and fallback"
+      ],
+      "fixed_mask_sign_pattern_log2_bound_formula": "log2((8*e*N^2/L)^L)",
+      "hard_instance_exponent_bits": 178629392.76025754,
+      "hard_sign_matrix_exists": true,
+      "mask_family_log2_bound_formula": "log2(2*(4*e*N)^L)",
+      "paper_dense_factor_diagnostic_fraction": 0.011904761904761904,
+      "paper_dense_factor_diagnostic_over_allowance": 1.0065705447619049,
+      "paper_random_boolean_component_lower_continuous": 97.52380952380952,
+      "paper_random_boolean_component_lower_integer": 98,
+      "representable_fraction_log2_upper": -178629392.76025754
+    }
+  },
+  "registered_budget": {
+    "allowed_gflop_per_token": 9.6,
+    "allowed_work_fraction": 0.011827051731955725,
+    "full_405b_gflop_per_token": 811.698487296,
+    "old_2_5_percent_assumption_used": false
+  }
+}

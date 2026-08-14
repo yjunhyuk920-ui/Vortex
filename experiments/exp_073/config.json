@@ -1,0 +1,41 @@
+{
+  "experiment": "EXP-073",
+  "stage": 1,
+  "protocol_version": 1,
+  "connection_mode": "runtime_argument_not_serialized",
+  "remote_mutation_allowed": false,
+  "ssh_timeout_seconds": 20,
+  "required_sections": [
+    "platform",
+    "cpu",
+    "memory",
+    "gpu",
+    "storage",
+    "runtimes",
+    "telemetry"
+  ],
+  "required_fields": [
+    "platform.os_pretty_name",
+    "platform.kernel_release",
+    "platform.machine_architecture",
+    "cpu.model_name",
+    "cpu.logical_cpu_count",
+    "memory.total_bytes",
+    "memory.available_bytes",
+    "gpu.count",
+    "gpu.models",
+    "gpu.driver_versions",
+    "gpu.total_vram_mib",
+    "gpu.free_vram_mib",
+    "storage.root_filesystem_type",
+    "storage.root_total_bytes",
+    "storage.root_available_bytes",
+    "storage.block_device_count",
+    "storage.block_total_bytes"
+  ],
+  "optional_unavailable_value": "NOT_AVAILABLE",
+  "complete_decision": "COMPLETE_SANITIZED_READ_ONLY_TARGET_INVENTORY",
+  "infrastructure_decision": "INFRASTRUCTURE_LIMITATION_NO_SCIENTIFIC_DECISION",
+  "evidence_ceiling": "Phase-D calibration prerequisite only; inventory values may be MEASURED, but storage bandwidth, H2D bandwidth, inference latency, operation replacement, 405B execution, E6 and E7 remain unverified",
+  "stage_2_authorized": false
+}

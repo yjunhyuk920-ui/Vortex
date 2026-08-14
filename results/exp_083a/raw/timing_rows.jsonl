@@ -1,0 +1,54 @@
+{"baseline_decode_wall_ns": 25217069000, "prefill_wall_ns": 28541852000, "prompt_id": "eval_english_01"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 35842979600, "projection": "q_proj", "prompt_id": "eval_english_01"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 48371083500, "projection": "down_proj", "prompt_id": "eval_english_01"}
+{"baseline_decode_wall_ns": 32159048200, "prefill_wall_ns": 32713210300, "prompt_id": "eval_english_02"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 49785154400, "projection": "q_proj", "prompt_id": "eval_english_02"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 44468658000, "projection": "down_proj", "prompt_id": "eval_english_02"}
+{"baseline_decode_wall_ns": 27949037500, "prefill_wall_ns": 33376423400, "prompt_id": "eval_english_03"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 38090021500, "projection": "q_proj", "prompt_id": "eval_english_03"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 51601582700, "projection": "down_proj", "prompt_id": "eval_english_03"}
+{"baseline_decode_wall_ns": 27404398800, "prefill_wall_ns": 31420278100, "prompt_id": "eval_korean_01"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 37517853200, "projection": "q_proj", "prompt_id": "eval_korean_01"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 37331634300, "projection": "down_proj", "prompt_id": "eval_korean_01"}
+{"baseline_decode_wall_ns": 26431717800, "prefill_wall_ns": 26862784300, "prompt_id": "eval_korean_02"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 41808073800, "projection": "q_proj", "prompt_id": "eval_korean_02"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 44140010900, "projection": "down_proj", "prompt_id": "eval_korean_02"}
+{"baseline_decode_wall_ns": 29551684100, "prefill_wall_ns": 29278258200, "prompt_id": "eval_korean_03"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 40185861200, "projection": "q_proj", "prompt_id": "eval_korean_03"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 47030446000, "projection": "down_proj", "prompt_id": "eval_korean_03"}
+{"baseline_decode_wall_ns": 28702878500, "prefill_wall_ns": 32821821000, "prompt_id": "eval_code_01"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 37732108400, "projection": "q_proj", "prompt_id": "eval_code_01"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 38696288800, "projection": "down_proj", "prompt_id": "eval_code_01"}
+{"baseline_decode_wall_ns": 21875173800, "prefill_wall_ns": 22795860600, "prompt_id": "eval_code_02"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 34127138300, "projection": "q_proj", "prompt_id": "eval_code_02"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 39355127700, "projection": "down_proj", "prompt_id": "eval_code_02"}
+{"baseline_decode_wall_ns": 11104378700, "prefill_wall_ns": 19615691600, "prompt_id": "eval_code_03"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 22759927700, "projection": "q_proj", "prompt_id": "eval_code_03"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 21837268900, "projection": "down_proj", "prompt_id": "eval_code_03"}
+{"baseline_decode_wall_ns": 12890559700, "prefill_wall_ns": 15642257300, "prompt_id": "eval_json_01"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 21048394700, "projection": "q_proj", "prompt_id": "eval_json_01"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 24097117700, "projection": "down_proj", "prompt_id": "eval_json_01"}
+{"baseline_decode_wall_ns": 15603911900, "prefill_wall_ns": 15646719600, "prompt_id": "eval_json_02"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 16777232800, "projection": "q_proj", "prompt_id": "eval_json_02"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 25013408500, "projection": "down_proj", "prompt_id": "eval_json_02"}
+{"baseline_decode_wall_ns": 13093812600, "prefill_wall_ns": 14933761900, "prompt_id": "eval_json_03"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 18580487800, "projection": "q_proj", "prompt_id": "eval_json_03"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 22029775600, "projection": "down_proj", "prompt_id": "eval_json_03"}
+{"baseline_decode_wall_ns": 10918933300, "prefill_wall_ns": 17239619800, "prompt_id": "eval_math_01"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 23067272600, "projection": "q_proj", "prompt_id": "eval_math_01"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 21821014500, "projection": "down_proj", "prompt_id": "eval_math_01"}
+{"baseline_decode_wall_ns": 13248252900, "prefill_wall_ns": 14347044200, "prompt_id": "eval_math_02"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 19758909400, "projection": "q_proj", "prompt_id": "eval_math_02"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 25861424900, "projection": "down_proj", "prompt_id": "eval_math_02"}
+{"baseline_decode_wall_ns": 15890344700, "prefill_wall_ns": 12562732800, "prompt_id": "eval_math_03"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 17859894200, "projection": "q_proj", "prompt_id": "eval_math_03"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 22288709700, "projection": "down_proj", "prompt_id": "eval_math_03"}
+{"baseline_decode_wall_ns": 12400948400, "prefill_wall_ns": 17661692600, "prompt_id": "eval_adversarial_01"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 20161454600, "projection": "q_proj", "prompt_id": "eval_adversarial_01"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 23076347200, "projection": "down_proj", "prompt_id": "eval_adversarial_01"}
+{"baseline_decode_wall_ns": 11982263000, "prefill_wall_ns": 17778770400, "prompt_id": "eval_adversarial_02"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 20572092100, "projection": "q_proj", "prompt_id": "eval_adversarial_02"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 24735264300, "projection": "down_proj", "prompt_id": "eval_adversarial_02"}
+{"baseline_decode_wall_ns": 14998451000, "prefill_wall_ns": 15457353400, "prompt_id": "eval_adversarial_03"}
+{"candidate_suffix_batch_size": 18, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 19013538000, "projection": "q_proj", "prompt_id": "eval_adversarial_03"}
+{"candidate_suffix_batch_size": 58, "candidate_suffix_calls": 1, "candidate_suffix_wall_ns": 23996753500, "projection": "down_proj", "prompt_id": "eval_adversarial_03"}

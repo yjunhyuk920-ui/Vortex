@@ -1,0 +1,16 @@
+{
+  "experiment": "EXP-072A",
+  "coefficient_alphabet_size": 16,
+  "bits_per_q4_coefficient": 4,
+  "registered_parameter_total": 405849243648,
+  "hot_state_allowance_bytes": 8589934592,
+  "former_static_gate_fraction": 0.10,
+  "target_equivalent_fraction": 0.01185185185,
+  "exhaustive_domains": [
+    {"rows": 1, "columns": 2, "alphabet_size": 4},
+    {"rows": 2, "columns": 2, "alphabet_size": 4}
+  ],
+  "success_decision": "PROMOTE_SELF_CONTAINED_EXACT_Q4_DAG_TO_BOUNDED_SYNTHESIS",
+  "failure_decision": "REJECT_SELF_CONTAINED_EXACT_Q4_DAG_AS_UNIVERSAL_CORE_RETAIN_RESTRICTED_SYNTHESIS_AUXILIARY",
+  "evidence_ceiling": "Phase A/B information-capacity and finite-domain reference evidence only; per-instance real-weight compressibility, online cold-data probes, physical traffic, Transformer operation replacement, 405B execution, 8 GiB GPU behavior, CUDA, PCIe, SSD, TTFT and tokens/sec are not tested"
+}

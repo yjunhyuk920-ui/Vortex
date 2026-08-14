@@ -1,0 +1,7 @@
+{
+  "python": "3.12.13",
+  "torch": "2.6.0+cpu",
+  "safetensors": "0.5.3",
+  "numpy": "2.1.3",
+  "source": "reuses the pinned local EXP-076 environment; no network install"
+}
