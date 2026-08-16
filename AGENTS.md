@@ -38,19 +38,20 @@ All Phase D claims are therefore **NOT TESTED** until actual hardware evidence e
 Read before proposing or editing:
 
 1. `AGENTS.md`
-2. `RESEARCH_STATE.md`
-3. `FAILED_APPROACHES.md`
-4. `DECISION_LOG.md`
-5. `ASSUMPTION_REGISTER.md`
-6. `VALIDATION_MATRIX.md`
-7. `NEXT_EXPERIMENT.md`
-8. `ARCHITECTURE.md`
-9. `HARDWARE_VALIDATION_PLAN.md`
-10. `REPRODUCIBILITY.md`
-11. `docs/PROOF_FIRST_CONTRACT.md`
-12. `docs/RESEARCH_EFFICIENCY_CONTRACT.md`
-13. `docs/WORK_SESSION_PROTOCOL.md`
-14. active experiment files, workflow, PR comments, logs, and result JSON.
+2. `docs/research/VORTEX_RESEARCH_HANDOFF.md`
+3. `RESEARCH_STATE.md`
+4. `FAILED_APPROACHES.md`
+5. `DECISION_LOG.md`
+6. `ASSUMPTION_REGISTER.md`
+7. `VALIDATION_MATRIX.md`
+8. `NEXT_EXPERIMENT.md`
+9. `ARCHITECTURE.md`
+10. `HARDWARE_VALIDATION_PLAN.md`
+11. `REPRODUCIBILITY.md`
+12. `docs/PROOF_FIRST_CONTRACT.md`
+13. `docs/RESEARCH_EFFICIENCY_CONTRACT.md`
+14. `docs/WORK_SESSION_PROTOCOL.md`
+15. active experiment files, workflow, PR comments, logs, and result JSON.
 
 Then verify branch, head commit, PR state, workflow conclusion, and authoritative raw evidence. Conversation memory is not authoritative.
 
@@ -282,3 +283,52 @@ The local tracker uses the canonical five-role label vocabulary. See
 ### Domain docs
 
 VORTEX uses a single root `CONTEXT.md` glossary. See `docs/agents/domain.md`.
+
+## Vortex research-session commit rule
+
+Every meaningful research round must be represented by at least one meaningful Git commit. Prefer atomic commits for governance/handoff, reference environment, implementation, and evidence when the changes warrant separation.
+
+Required sequence:
+
+```text
+verify remote and authentication
+-> fetch verified base branch/SHA
+-> create clean research branch
+-> read canonical state and handoff
+-> implement and validate
+-> record raw evidence and hashes
+-> update canonical state and next experiment
+-> commit before reporting
+-> push when write access exists
+-> verify remote branch contains the commit
+-> create/update PR and record CI
+-> finish with a clean worktree
+```
+
+Rules:
+
+- direct pushes to `main` and force pushes are forbidden;
+- do not rewrite another research branch;
+- do not create an empty or meaningless commit to satisfy this rule;
+- local-only SHA, reconstructed tree, bundle, or patch must never be reported as a remote Vortex commit;
+- record actual branch, local SHA, remote SHA, push result, PR, CI, tests, changed files, and result hashes;
+- if remote writing is available, push in the same round and verify with the remote, not conversation memory;
+- if remote writing is blocked after connector, MCP writer, Git/credential, and configured-remote checks, create a local commit, clean patch, and Git bundle against the verified base, preserve the exact error and hashes, and classify the round `BLOCKED_REMOTE_WRITE / LOCAL_COMMIT_ONLY / ROUND_NOT_COMPLETE`;
+- do not report research completion while `REMOTE_CONTAINS_COMMIT=false` unless the report explicitly says the round is incomplete;
+- do not end with an uncommitted generated result or dirty worktree;
+- a failed scientific mechanism is still committed with its reproducer, raw evidence, decision, and the one authoritative next experiment.
+
+Fail-closed completion fields:
+
+```text
+HAS_MEANINGFUL_CHANGE
+HAS_LOCAL_COMMIT
+HAS_REMOTE_BRANCH
+REMOTE_CONTAINS_COMMIT
+WORKTREE_CLEAN
+TESTS_RECORDED
+RESEARCH_STATE_UPDATED
+NEXT_EXPERIMENT_UPDATED
+```
+
+When remote writing is not blocked, all must be true before a user-facing completion claim.
