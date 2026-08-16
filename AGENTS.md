@@ -33,24 +33,29 @@ Currently unavailable:
 
 All Phase D claims are therefore **NOT TESTED** until actual hardware evidence exists. Never imitate or infer a Phase D measurement from GitHub Actions.
 
+A missing local package, local DNS route, local `git`, `gh`, tunnel, or GPU is an infrastructure fact, not a session stop condition. When an authenticated GitHub connector or repository writer is available, use it directly for branch, commit, PR, and status operations. Continue all constructive work that does not require the missing resource, commit a hosted workflow or executable next gate, and mark only the device-dependent result `NOT TESTED`.
+
 ## Mandatory startup order
 
 Read before proposing or editing:
 
 1. `AGENTS.md`
-2. `RESEARCH_STATE.md`
-3. `FAILED_APPROACHES.md`
-4. `DECISION_LOG.md`
-5. `ASSUMPTION_REGISTER.md`
-6. `VALIDATION_MATRIX.md`
-7. `NEXT_EXPERIMENT.md`
-8. `ARCHITECTURE.md`
-9. `HARDWARE_VALIDATION_PLAN.md`
-10. `REPRODUCIBILITY.md`
-11. `docs/PROOF_FIRST_CONTRACT.md`
-12. `docs/RESEARCH_EFFICIENCY_CONTRACT.md`
-13. `docs/WORK_SESSION_PROTOCOL.md`
-14. active experiment files, workflow, PR comments, logs, and result JSON.
+2. `docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md`
+3. `docs/research/VORTEX_RESEARCH_HANDOFF.md`
+4. `docs/research/FIXED_PUBLIC_DYNAMIC_EXECUTOR_DIRECTIVE.md`
+5. `RESEARCH_STATE.md`
+6. `FAILED_APPROACHES.md`
+7. `DECISION_LOG.md`
+8. `ASSUMPTION_REGISTER.md`
+9. `VALIDATION_MATRIX.md`
+10. `NEXT_EXPERIMENT.md`
+11. `ARCHITECTURE.md`
+12. `HARDWARE_VALIDATION_PLAN.md`
+13. `REPRODUCIBILITY.md`
+14. `docs/PROOF_FIRST_CONTRACT.md`
+15. `docs/RESEARCH_EFFICIENCY_CONTRACT.md`
+16. `docs/WORK_SESSION_PROTOCOL.md`
+17. active experiment files, workflow, PR comments, logs, and result JSON.
 
 Then verify branch, head commit, PR state, workflow conclusion, and authoritative raw evidence. Conversation memory is not authoritative.
 
@@ -182,7 +187,8 @@ Before a model-wide backend is built:
 9. stop immediately when a decisive rejection bound is established;
 10. save raw logs, processed results, and checksums;
 11. update all required root documents and experiment files;
-12. commit before reporting progress.
+12. commit before reporting progress;
+13. push through an available repository writer and read back the remote SHA before calling the round complete.
 
 Do not increase experiment numbers without eliminating a real assumption or testing a new mechanism. Do not build an optimized implementation to reconfirm a decisive negative theorem, lower bound, or oracle ceiling.
 
@@ -220,11 +226,13 @@ tests/exp_xxx/
 .github/workflows/exp_xxx_gate.yml
 ```
 
-Before a user-facing progress response after repository work, commit the current state. If writing or validation fails, say so explicitly.
+Before a user-facing progress response after repository work, commit the current state. When a remote writer is available, push and verify the remote branch head. If writing or validation fails, say so explicitly and continue every task that remains possible under the infrastructure-failure policy.
+
+A local-only reconstructed tree, downloadable bundle, or unapplied patch is not remote project progress. Use the exact classifications in `docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md`.
 
 ## Active frontier
 
-Read `NEXT_EXPERIMENT.md`.
+Read `NEXT_EXPERIMENT.md` and `docs/research/VORTEX_RESEARCH_HANDOFF.md`.
 
 EXP-066 through EXP-070 are rejected as core under their frozen scopes. EXP-071 does not prove online exact execution impossible. EXP-072A rejects a self-contained exact Q4 artifact as a universal 8 GiB hot core.
 
@@ -259,13 +267,33 @@ leaves, routers, prompts, positions, ranks, primes, or hit semantics.
 The exact-field nonlinear audit now closes algebraic branching as a distinct
 source: one full-dimensional rational path computes the same bilinear
 function, and Baur--Strassen reduces it to static MatVec. Current twin-width
-and grammar routes reduce to F-049/F-050. The next open ticket may only derive
-a concrete bounded-word discontinuous exact source for `r^T W u`, with word
-semantics, table growth, construction, representation, address/probe
-work/traffic, state, verification, misses, and fallback fully charged before
-E1. No Core Candidate survives. Pair extraction and native numerical
-semantics remain unsolved; EXP-085, E2, hardware, larger models, and the
-private Ubuntu host remain unauthorized. Read `NEXT_EXPERIMENT.md`.
+and grammar routes reduce to F-049/F-050. The fixed-public dynamic executor
+handoff supersedes the former practice of treating another generic open lemma
+as the next milestone. The constructive frontier is now the automatic
+compilation of an actual named public checkpoint into an existing-ISA dynamic
+executor with a nontrivial exact or bisimilar successor state and a complete
+physical resource ledger. Read
+`docs/research/FIXED_PUBLIC_DYNAMIC_EXECUTOR_DIRECTIVE.md`.
+
+## Remote commit and handoff Gate
+
+Every repository-changing research round must satisfy the following before it is reported as complete:
+
+```text
+HAS_MEANINGFUL_CHANGE=true
+HAS_COMMIT=true
+REMOTE_CONTAINS_COMMIT=true
+RESEARCH_STATE_CURRENT=true
+NEXT_GATE_CURRENT=true
+VALIDATION_RECORDED=true
+PROVENANCE_TRUTHFUL=true
+```
+
+Use the connected GitHub connector first when it is available. Local DNS or local `git fetch` failure does not justify skipping connector branch/commit/PR operations.
+
+Negative results are committed. Infrastructure-only results are committed when they add a reproducible workflow, harness, state correction, or executable next gate. Do not create an empty commit merely to satisfy the Gate.
+
+Final reports must begin with repository, base SHA, working branch, commit SHA(s), remote verification, PR, CI/check status, and uncommitted remainder. A remote write failure must include evidence that every available writer was actually attempted; otherwise the round remains incomplete.
 
 ## Agent skills
 
