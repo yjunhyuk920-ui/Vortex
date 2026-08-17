@@ -1,0 +1,121 @@
+name: fixed-public-dynamic-executor
+
+on:
+  push:
+    branches:
+      - research/fixed-public-dynamic-executor
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  PYTHONHASHSEED: "0"
+  TOKENIZERS_PARALLELISM: "false"
+  OMP_NUM_THREADS: "2"
+  MKL_NUM_THREADS: "2"
+
+jobs:
+  model-free-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned constructor runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Verify package pins
+        run: |
+          python - <<'PY'
+          import safetensors, torch, transformers
+          assert torch.__version__ == "2.5.1+cpu", torch.__version__
+          assert transformers.__version__ == "4.46.3", transformers.__version__
+          assert safetensors.__version__ == "0.4.5", safetensors.__version__
+          print(torch.__version__, transformers.__version__, safetensors.__version__)
+          PY
+      - name: Model-free API, state and fail-closed tests
+        run: python -m pytest -q tests/test_fixed_public_dynamic_executor.py
+
+  real-checkpoint-constructor:
+    if: ${{ !contains(github.event.head_commit.message, '[executor-results]') }}
+    needs: model-free-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned official HF runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Record host and perf availability
+        run: |
+          mkdir -p results/fixed_public_dynamic_executor/${GITHUB_SHA}
+          {
+            uname -a
+            lscpu
+            free -b
+            df -B1 .
+            python --version
+            perf --version || true
+            cat /proc/sys/kernel/perf_event_paranoid || true
+          } | tee results/fixed_public_dynamic_executor/${GITHUB_SHA}/host.txt
+      - name: Official DEV-W load, actual tensor audit, 128-step dynamic executor gates
+        shell: bash
+        run: |
+          set -o pipefail
+          python experiments/fixed_public_dynamic_executor/run_real_checkpoint.py \
+            --workload experiments/fixed_public_dynamic_executor/workload.json \
+            --output-dir results/fixed_public_dynamic_executor/${GITHUB_SHA} \
+            2>&1 | tee results/fixed_public_dynamic_executor/${GITHUB_SHA}/run.log
+      - name: Append canonical ledgers from raw result
+        run: |
+          python experiments/fixed_public_dynamic_executor/update_ledgers.py \
+            --result results/fixed_public_dynamic_executor/${GITHUB_SHA}/result.json
+      - name: Upload raw result and compiler artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fixed-public-dynamic-executor-${{ github.sha }}
+          path: results/fixed_public_dynamic_executor/${{ github.sha }}/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit raw scientific result and canonical ledger update
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            results/fixed_public_dynamic_executor/${GITHUB_SHA}/result.json \
+            results/fixed_public_dynamic_executor/${GITHUB_SHA}/host.txt \
+            results/fixed_public_dynamic_executor/${GITHUB_SHA}/run.log \
+            docs/research/FIXED_PUBLIC_DYNAMIC_EXECUTOR_LATEST_RESULT.md \
+            RESEARCH_STATE.md DECISION_LOG.md ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md NEXT_EXPERIMENT.md FAILED_APPROACHES_RECENT.md
+          if git diff --cached --quiet; then
+            echo "No result delta to commit"
+            exit 0
+          fi
+          git commit -m "research: record actual fixed-public executor result [executor-results]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+      - name: Publish gate summary
+        if: always()
+        run: |
+          if test -f results/fixed_public_dynamic_executor/${GITHUB_SHA}/result.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          p = Path("results/fixed_public_dynamic_executor") / os.environ["GITHUB_SHA"] / "result.json"
+          r = json.loads(p.read_text())
+          print("## Fixed-public dynamic executor")
+          print(f"- verdict: `{r['verdict']}`")
+          print(f"- strongest mechanism: `{r['strongest_mechanism']}`")
+          for m in r['mechanisms']:
+              print(f"- `{m['mechanism']}`: G2={m['G2_exact_transition']} G3={m['G3_full_transformer_layer_boundary']} G4={m['G4_physical_saving']}")
+          PY
+          fi
