@@ -1,0 +1,19 @@
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+We detected that you are passing `past_key_values` as a tuple of tuples. This is deprecated and will be removed in v4.47. Please convert your cache or use an appropriate `Cache` class (https://huggingface.co/docs/transformers/kv_cache#legacy-cache-format)
+{
+  "verdict": "REAL_CHECKPOINT_MECHANISM_CLASS_REJECTED_AT_G4",
+  "mechanisms": [
+    {
+      "mechanism": "cold_packed_projection_sequential_materialization",
+      "G2_exact_transition": true,
+      "G3_full_transformer_layer_boundary": true,
+      "G4_physical_saving": false
+    },
+    {
+      "mechanism": "checkpoint_mlp_torchinductor_existing_isa",
+      "G2_exact_transition": false,
+      "G3_full_transformer_layer_boundary": true,
+      "G4_physical_saving": false
+    }
+  ]
+}
