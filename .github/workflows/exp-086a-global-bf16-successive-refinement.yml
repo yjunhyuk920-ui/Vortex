@@ -1,0 +1,141 @@
+name: exp-086a-global-bf16-successive-refinement
+
+on:
+  push:
+    branches:
+      - research/exp-086a-global-bf16-successive-refinement
+  pull_request:
+    branches:
+      - research/exp-085a-joint-exact-swiglu-compiler
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exp-086a-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONHASHSEED: "0"
+  TOKENIZERS_PARALLELISM: "false"
+  OMP_NUM_THREADS: "2"
+  MKL_NUM_THREADS: "2"
+
+jobs:
+  model-free-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned official runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Verify package pins
+        run: |
+          python - <<'PY'
+          import safetensors, torch, transformers
+          assert torch.__version__ == "2.5.1+cpu", torch.__version__
+          assert transformers.__version__ == "4.46.3", transformers.__version__
+          assert safetensors.__version__ == "0.4.5", safetensors.__version__
+          PY
+      - name: BF16 successive-refinement tests
+        run: python -m pytest -q tests/exp_086a
+      - name: Syntax and frozen-ledger materialization
+        run: |
+          python -m py_compile \
+            vortex_runtime/global_bf16_successive_refinement.py \
+            experiments/exp_086a/run_experiment.py \
+            experiments/exp_086a/update_ledgers.py
+          python experiments/exp_086a/update_ledgers.py --mode preregister
+          grep -q 'EXP086A_GLOBAL_BF16_SUCCESSIVE_REFINEMENT' NEXT_EXPERIMENT.md
+          git diff --check
+
+  real-checkpoint-gate:
+    if: ${{ github.event_name == 'pull_request' || !contains(github.event.head_commit.message, '[exp086-results]') }}
+    needs: model-free-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned official runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Record host
+        run: |
+          mkdir -p results/exp_086a/${GITHUB_SHA}
+          {
+            uname -a
+            lscpu
+            free -b
+            df -B1 .
+            python --version
+          } | tee results/exp_086a/${GITHUB_SHA}/host.txt
+      - name: Execute official-checkpoint global BF16 refinement Gate
+        shell: bash
+        run: |
+          set -o pipefail
+          python experiments/exp_086a/run_experiment.py \
+            --config experiments/exp_086a/config.json \
+            --output-dir results/exp_086a/${GITHUB_SHA} \
+            2>&1 | tee results/exp_086a/${GITHUB_SHA}/console.log
+      - name: Materialize preregistration and update canonical ledgers
+        if: github.event_name != 'pull_request'
+        run: |
+          python experiments/exp_086a/update_ledgers.py --mode preregister
+          python experiments/exp_086a/update_ledgers.py \
+            --result results/exp_086a/${GITHUB_SHA}/result.json
+      - name: Add complete checksums
+        run: |
+          cd results/exp_086a/${GITHUB_SHA}
+          sha256sum result.json console.log host.txt >> checksums.sha256
+          sort -u checksums.sha256 -o checksums.sha256
+      - name: Upload immutable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-086a-${{ github.sha }}
+          path: results/exp_086a/${{ github.sha }}/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit result and ledgers
+        if: github.event_name != 'pull_request'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            results/exp_086a/${GITHUB_SHA}/ \
+            docs/research/EXP_086A_LATEST_RESULT.md \
+            RESEARCH_STATE.md NEXT_EXPERIMENT.md DECISION_LOG.md \
+            FAILED_APPROACHES_RECENT.md ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md
+          if git diff --cached --quiet; then
+            echo "No result delta"
+            exit 0
+          fi
+          git commit -m "research: record EXP-086A global BF16 refinement Gate [exp086-results] [skip ci]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+      - name: Publish summary
+        if: always()
+        run: |
+          if test -f results/exp_086a/${GITHUB_SHA}/result.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          result = json.loads((Path("results/exp_086a") / os.environ["GITHUB_SHA"] / "result.json").read_text())
+          measured = result.get("MEASURED", {})
+          print("## EXP-086A")
+          print(f"- decision: `{result['authoritative_decision']}`")
+          print(f"- activations: `{measured.get('activation_count', 'NOT_COMPLETED')}`")
+          print(f"- row-adaptive entropy p50/p95: `{measured.get('row_adaptive_entropy_fraction_p50', 'NOT_COMPLETED')}/{measured.get('row_adaptive_entropy_fraction_p95', 'NOT_COMPLETED')}`")
+          print(f"- minimum perfect acceptance p50/p95: `{measured.get('row_adaptive_minimum_perfect_acceptance_p50', 'NOT_COMPLETED')}/{measured.get('row_adaptive_minimum_perfect_acceptance_p95', 'NOT_COMPLETED')}`")
+          PY
+          fi

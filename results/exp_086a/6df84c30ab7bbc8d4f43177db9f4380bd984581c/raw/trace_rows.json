@@ -1,0 +1,74 @@
+[
+  {
+    "family": "english",
+    "prompt_id": "english_explanation",
+    "prompt_sha256": "00030be9dd7d9ab401a17c0d4e102efc633b7ad4f0e0eb4b84ff4fc5fa199cba",
+    "state_count": 4,
+    "tokens": [
+      198,
+      504,
+      6376,
+      314
+    ]
+  },
+  {
+    "family": "korean",
+    "prompt_id": "korean_reasoning",
+    "prompt_sha256": "04445f32de79443938b0e9d8bcd43a88ce10bf1753554eb3211ca030ad81b086",
+    "state_count": 4,
+    "tokens": [
+      198,
+      183,
+      242,
+      226
+    ]
+  },
+  {
+    "family": "code",
+    "prompt_id": "code_generation",
+    "prompt_sha256": "b8f1f198654cf1a55fa86dfebd53eb83456e7090bbd0520842ab8db4ad509081",
+    "state_count": 4,
+    "tokens": [
+      198,
+      19,
+      5905,
+      216
+    ]
+  },
+  {
+    "family": "structured_json",
+    "prompt_id": "structured_json",
+    "prompt_sha256": "e9698a24077f48414503607015da8fe4619cdd391fb9cb52cf3ced8714980817",
+    "state_count": 4,
+    "tokens": [
+      198,
+      504,
+      1695,
+      1183
+    ]
+  },
+  {
+    "family": "math",
+    "prompt_id": "mathematics",
+    "prompt_sha256": "7c14567b195aa593aa08b30af92742d28a20c8c178ebc6909bac01ef95734627",
+    "state_count": 4,
+    "tokens": [
+      198,
+      104,
+      78,
+      35
+    ]
+  },
+  {
+    "family": "repeated_token",
+    "prompt_id": "repeated_pattern",
+    "prompt_sha256": "e77440a51157b97d273db17749d343d3290bb2fa274b60f428420351771fe1a4",
+    "state_count": 4,
+    "tokens": [
+      198,
+      49,
+      389,
+      330
+    ]
+  }
+]

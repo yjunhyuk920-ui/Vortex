@@ -1,0 +1,63 @@
+{
+  "exactness_contract": {
+    "k7": "bitwise identity with original checkpoint",
+    "oracle": "reference-aided, non-deployable and favorable",
+    "prefix": "preserve BF16 sign/exponent and k MSB mantissa bits",
+    "unread_residual": "accepted only on complete MLP BF16 equality"
+  },
+  "fingerprint": "6e39f98ca5501d0e12d88e85152ee9e8013c2e42a33ea736a256003f2edd8504",
+  "format": "global-bf16-successive-refinement-v1",
+  "full_entropy_bits_per_weight": {
+    "down": 10.589010494942842,
+    "gate": 10.471358862665909,
+    "up": 10.479863421153018
+  },
+  "full_entropy_total_bits": 27904779.387750573,
+  "hidden_size": 576,
+  "intermediate_size": 1536,
+  "mechanism": "global_bf16_sign_exponent_mantissa_successive_refinement",
+  "output_size": 576,
+  "parameter_count": 2654208,
+  "parameter_counts": {
+    "down": 884736,
+    "gate": 884736,
+    "up": 884736
+  },
+  "weight_sha256": {
+    "down": "cd82c901faa31baba56e78a44a7defc4cb8295084678bad85a3919860b560e74",
+    "gate": "b3257bec2c20bcfef046fcd8dfe99cac5a1f70822bd83ca683de0d1e6933120c",
+    "up": "d713739db7950d6c3dfe8d82f036591fc3667a7d1a5f688264221dd253fc814f"
+  },
+  "zero_order_entropy_bits_per_weight": {
+    "down": {
+      "0": 3.658328581581089,
+      "1": 4.610673415886311,
+      "2": 5.597430694095919,
+      "3": 6.594050269462218,
+      "4": 7.59301600241659,
+      "5": 8.592246999805,
+      "6": 9.59109963299504,
+      "7": 10.589010494942842
+    },
+    "gate": {
+      "0": 3.552296921503398,
+      "1": 4.496924152903041,
+      "2": 5.480819486194374,
+      "3": 6.476733684418897,
+      "4": 7.475391783473482,
+      "5": 8.474566435535074,
+      "6": 9.473429396577547,
+      "7": 10.471358862665909
+    },
+    "up": {
+      "0": 3.559879202034009,
+      "1": 4.505151645240213,
+      "2": 5.48915232594862,
+      "3": 6.484899006882212,
+      "4": 7.483762068022221,
+      "5": 8.482944910264145,
+      "6": 9.481872583420245,
+      "7": 10.479863421153018
+    }
+  }
+}

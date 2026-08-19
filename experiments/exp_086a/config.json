@@ -1,0 +1,33 @@
+{
+  "schema": "exp-086a-global-bf16-successive-refinement-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "dtype": "bfloat16",
+  "attention_implementation": "eager",
+  "layer_index": 0,
+  "decode_positions_per_prompt": 4,
+  "mantissa_bits": [0, 1, 2, 3, 4, 5, 6, 7],
+  "target_total_parameters": 405849243648,
+  "target_one_mlp_projection_parameters": 109924319232,
+  "p50_whole_model_fraction": 0.011851851851851851,
+  "p95_whole_model_fraction": 0.014814814814814815,
+  "mechanism_fingerprint": "global_bf16_sign_exponent_mantissa_successive_refinement_with_row_adaptive_down_precision",
+  "success": {
+    "full_precision_control_mismatches": 0,
+    "row_adaptive_all_exact": true,
+    "row_adaptive_entropy_fraction_p50_max": 0.20,
+    "row_adaptive_entropy_fraction_p95_max": 0.25,
+    "minimum_perfect_acceptance_p50_max": 16,
+    "minimum_perfect_acceptance_p95_max": 32
+  },
+  "stop_rule": "Reject this globally significance-ordered BF16 prefix/refinement fingerprint if the favorable oracle cannot reduce required checkpoint information to <=20% p50 and <=25% p95 while retaining bit-exact complete-SwiGLU outputs. Do not tune mantissa order, prompts, layer, dtype, thresholds, or row policy after results. Reopening requires a cross-weight context model, non-prefix nonlinear code, or different causal execution dependency.",
+  "prompts": [
+    {"id": "english_explanation", "family": "english", "prompt": "Explain why the sky can look red at sunset in three concise paragraphs.\n"},
+    {"id": "korean_reasoning", "family": "korean", "prompt": "다음 문제를 단계별로 설명해줘. 17개의 사과를 5명이 최대한 공평하게 나누면 어떻게 되는가?\n"},
+    {"id": "code_generation", "family": "code", "prompt": "Write a Python function for stable topological sorting with cycle detection. Return code only.\n"},
+    {"id": "structured_json", "family": "structured_json", "prompt": "Return JSON with keys name, version, enabled, and tags for a fictional compiler.\n"},
+    {"id": "mathematics", "family": "math", "prompt": "Compute the derivative of x^3 sin(x) and simplify the result.\n"},
+    {"id": "repeated_pattern", "family": "repeated_token", "prompt": "A B A B A B A B A B A B. Continue the pattern and explain it briefly.\n"}
+  ]
+}
