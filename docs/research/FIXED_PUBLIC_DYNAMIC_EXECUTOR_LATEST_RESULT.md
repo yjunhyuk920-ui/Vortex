@@ -2,7 +2,6 @@
 ## Fixed-public dynamic executor hosted result — source `7777eda66232c6a37c39f4e55f5b9ce56032fe92` / run `32219219400`
 
 - Evidence commit: `50cc5e34e7e27b00be2edb868f1da5d9f36461e0`.
-- Clarification commit: `96a0e3659dc589b647cbc95241b10aad0f3623bb`.
 - Verdict: `REAL_CHECKPOINT_DYNAMIC_EXECUTOR_SURVIVES_G4`.
 - DEV-W: `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`; resolved SHA `93efa2f097d58c2a74874c7e644dbc9b0cee75a2`; official `LlamaForCausalLM.from_pretrained()` executed.
 - TARGET-W: `meta-llama/Meta-Llama-3.1-405B-Instruct@f9801cba95a53242b3cc928a4a418d12571d1c5f`; repository metadata resolved to the pinned SHA, but gated `config.json`, tensor index, weights, and performance remain `NOT TESTED`.
