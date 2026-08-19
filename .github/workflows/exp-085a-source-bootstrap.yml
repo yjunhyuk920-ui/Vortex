@@ -32,6 +32,7 @@ jobs:
           rm .scratch/exp085a_bundle_*.b64
           rm -f .scratch/exp085a_bootstrap_trigger.txt
           rm .github/workflows/exp-085a-source-bootstrap.yml
+          rm .github/workflows/exp-085a-joint-exact-swiglu-compiler.yml
       - name: Commit EXP-085A compiler, Gate, tests, and hosted runner
         run: |
           set -euo pipefail
