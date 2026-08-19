@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: fixed-public-dynamic-executor-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   PYTHONHASHSEED: "0"
   TOKENIZERS_PARALLELISM: "false"
@@ -66,11 +70,11 @@ jobs:
             perf --version || true
             cat /proc/sys/kernel/perf_event_paranoid || true
           } | tee results/fixed_public_dynamic_executor/${GITHUB_SHA}/host.txt
-      - name: Official DEV-W load, actual tensor audit, 128-step dynamic executor gates
+      - name: Official DEV-W load, actual tensor audit, current 128-step constructor gate
         shell: bash
         run: |
           set -o pipefail
-          python experiments/fixed_public_dynamic_executor/run_real_checkpoint.py \
+          python experiments/fixed_public_dynamic_executor/run_current_constructor.py \
             --workload experiments/fixed_public_dynamic_executor/workload.json \
             --output-dir results/fixed_public_dynamic_executor/${GITHUB_SHA} \
             2>&1 | tee results/fixed_public_dynamic_executor/${GITHUB_SHA}/run.log
