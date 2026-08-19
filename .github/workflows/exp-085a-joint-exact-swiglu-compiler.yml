@@ -1,0 +1,154 @@
+name: exp-085a-joint-exact-swiglu-compiler
+
+on:
+  push:
+    branches:
+      - research/exp-085a-joint-exact-swiglu-compiler
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exp-085a-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHONHASHSEED: "0"
+  TOKENIZERS_PARALLELISM: "false"
+  OMP_NUM_THREADS: "2"
+  MKL_NUM_THREADS: "2"
+
+jobs:
+  model-free-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Verify package pins
+        run: |
+          python - <<'PY'
+          import safetensors, torch, transformers
+          assert torch.__version__ == "2.5.1+cpu", torch.__version__
+          assert transformers.__version__ == "4.46.3", transformers.__version__
+          assert safetensors.__version__ == "0.4.5", safetensors.__version__
+          print(torch.__version__, transformers.__version__, safetensors.__version__)
+          PY
+      - name: Exact compiler unit and fail-closed controls
+        run: python -m pytest -q tests/test_joint_exact_swiglu_compiler.py
+      - name: Syntax and entrypoint smoke
+        run: |
+          python -m py_compile \
+            vortex_runtime/joint_exact_swiglu_compiler.py \
+            experiments/exp_085a/run_experiment.py \
+            experiments/exp_085a/update_ledgers.py
+          python experiments/exp_085a/run_experiment.py --help >/dev/null
+
+  preregister-canonical-ledgers:
+    if: ${{ !contains(github.event.head_commit.message, '[exp085a-registered]') && !contains(github.event.head_commit.message, '[exp085a-results]') }}
+    needs: model-free-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Append frozen Gate to canonical ledgers
+        run: python experiments/exp_085a/update_ledgers.py --mode preregister
+      - name: Commit preregistration before any checkpoint result
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add NEXT_EXPERIMENT.md RESEARCH_STATE.md ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md
+          if git diff --cached --quiet; then
+            echo "Preregistration already present"
+            exit 0
+          fi
+          git commit -m "research: preregister EXP-085A joint exact SwiGLU Gate [exp085a-registered]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+
+  real-checkpoint-gate:
+    if: ${{ contains(github.event.head_commit.message, '[exp085a-registered]') && !contains(github.event.head_commit.message, '[exp085a-results]') }}
+    needs: model-free-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned official HF runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Record host
+        run: |
+          mkdir -p results/exp_085a/${GITHUB_SHA}
+          {
+            uname -a
+            lscpu
+            free -b
+            df -B1 .
+            python --version
+          } | tee results/exp_085a/${GITHUB_SHA}/host.txt
+      - name: Official DEV-W causal activation and exact compiler Gate
+        shell: bash
+        run: |
+          set -o pipefail
+          python experiments/exp_085a/run_experiment.py \
+            --config experiments/exp_085a/config.json \
+            --output-dir results/exp_085a/${GITHUB_SHA} \
+            2>&1 | tee results/exp_085a/${GITHUB_SHA}/run.log
+      - name: Update canonical ledgers from raw result
+        run: |
+          python experiments/exp_085a/update_ledgers.py \
+            --mode result \
+            --result results/exp_085a/${GITHUB_SHA}/result.json
+      - name: Upload raw evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-085a-joint-exact-swiglu-${{ github.sha }}
+          path: results/exp_085a/${{ github.sha }}/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit authoritative result and ledgers
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            results/exp_085a/${GITHUB_SHA}/ \
+            docs/research/EXPERIMENT_085A_JOINT_EXACT_SWIGLU_COMPILER_GATE.md \
+            RESEARCH_STATE.md NEXT_EXPERIMENT.md DECISION_LOG.md \
+            ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md FAILED_APPROACHES_RECENT.md
+          if git diff --cached --quiet; then
+            echo "No result delta to commit"
+            exit 0
+          fi
+          git commit -m "research: record EXP-085A joint exact SwiGLU result [exp085a-results] [skip ci]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+      - name: Publish summary
+        if: always()
+        run: |
+          if test -f results/exp_085a/${GITHUB_SHA}/result.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          p = Path("results/exp_085a") / os.environ["GITHUB_SHA"] / "result.json"
+          r = json.loads(p.read_text())
+          print("## EXP-085A")
+          print(f"- verdict: `{r['authoritative_decision']}`")
+          if "aggregates" in r:
+              for key in ("oracle", "sound"):
+                  a = r["aggregates"][key]
+                  print(f"- {key}: pages p50/p95 `{a['pages_p50']}/{a['pages_p95']}`, whole fraction `{a['whole_model_fraction_p50']:.6%}/{a['whole_model_fraction_p95']:.6%}`, fallback `{a['fallback_rate']:.6%}`")
+              print(f"- projected metadata: `{r['projected']['target_hot_metadata_gib']:.6f} GiB`")
+          PY
+          fi
