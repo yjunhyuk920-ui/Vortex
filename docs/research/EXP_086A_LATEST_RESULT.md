@@ -1,5 +1,5 @@
-<!-- EXP086A_RESULT:376700afc276cb30b5eece61d3c1fb7e2e5b6ccd -->
-## EXP-086A result — `376700afc276cb30b5eece61d3c1fb7e2e5b6ccd`
+<!-- EXP086A_RESULT:152faa529ffafd2b84136dc9282bd237f6a8764a -->
+## EXP-086A result — `152faa529ffafd2b84136dc9282bd237f6a8764a`
 
 - Decision: `INVALID_CAUSAL_FUNCTIONAL_MICROPROGRAM_NUMERICAL_CONTROL_FAILURE`.
 - Evaluation oracle FP32 vector exact: `NOT_AVAILABLE`.

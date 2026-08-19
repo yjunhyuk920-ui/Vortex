@@ -1,0 +1,28 @@
+{
+  "clusters": 4,
+  "fingerprint": "f3a2eac734eaf590c7d41c092793ca7f27a84812e68a99f2d184f61442ead18e",
+  "mechanism": "checkpoint_static_low_rank_affine_whole_swiglu_microprogram_library",
+  "programs": [
+    {
+      "build_count": 69,
+      "fingerprint": "2461678bb8a89025c05ddb6aa31b50d3757caa7926587022acda440b8508cd91",
+      "rank": 32
+    },
+    {
+      "build_count": 9,
+      "fingerprint": "f4183e2b0214d8299bf54e775e207d1676c7db54cf528c2f76144a13661e3566",
+      "rank": 8
+    },
+    {
+      "build_count": 6,
+      "fingerprint": "e0e025c9d1c226b321ff6aa0acd8ec5718ae8bb26eeaa8bed7bea02bb3388cd8",
+      "rank": 5
+    },
+    {
+      "build_count": 12,
+      "fingerprint": "80c469356630455a33e0b69602289300e9f6b7f9295bd4f6083aa96ada5387dd",
+      "rank": 11
+    }
+  ],
+  "rank_cap": 32
+}
