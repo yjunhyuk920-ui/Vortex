@@ -1,0 +1,115 @@
+name: exact-swiglu-global-compiler
+
+on:
+  push:
+    branches:
+      - research/exact-swiglu-global-compiler-v2
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exact-swiglu-global-compiler-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONHASHSEED: "0"
+  TOKENIZERS_PARALLELISM: "false"
+  OMP_NUM_THREADS: "2"
+  MKL_NUM_THREADS: "2"
+
+jobs:
+  model-free-compiler:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Exact global compiler unit and property tests
+        run: python -m pytest -q tests/test_exact_swiglu_global_compiler.py tests/test_fixed_public_dynamic_executor.py
+      - name: Syntax and entrypoint checks
+        run: |
+          python -m py_compile \
+            vortex_runtime/exact_swiglu_global_compiler.py \
+            experiments/exact_swiglu_global_compiler/run_experiment.py \
+            experiments/exact_swiglu_global_compiler/update_ledgers.py
+          python experiments/exact_swiglu_global_compiler/run_experiment.py --help >/dev/null
+
+  actual-public-checkpoint-gate:
+    if: ${{ !contains(github.event.head_commit.message, '[compiler-results]') }}
+    needs: model-free-compiler
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned official runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Execute official-checkpoint compiler Gate
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p results/exp_085a/${GITHUB_SHA}
+          python experiments/exact_swiglu_global_compiler/run_experiment.py \
+            --workload experiments/fixed_public_dynamic_executor/workload.json \
+            --output-dir results/exp_085a/${GITHUB_SHA} \
+            2>&1 | tee results/exp_085a/${GITHUB_SHA}/console.log
+      - name: Update canonical research ledgers
+        run: |
+          python experiments/exact_swiglu_global_compiler/update_ledgers.py \
+            --result results/exp_085a/${GITHUB_SHA}/result.json
+      - name: Upload raw compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exact-swiglu-global-compiler-${{ github.sha }}
+          path: results/exp_085a/${{ github.sha }}/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit authoritative result and ledgers
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            results/exp_085a/${GITHUB_SHA}/result.json \
+            results/exp_085a/${GITHUB_SHA}/run.log \
+            results/exp_085a/${GITHUB_SHA}/console.log \
+            RESEARCH_STATE.md NEXT_EXPERIMENT.md DECISION_LOG.md \
+            ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md FAILED_APPROACHES_RECENT.md \
+            docs/research/EXPERIMENT_085A_EXACT_SWIGLU_GLOBAL_COMPILER_GATE.md
+          if git diff --cached --quiet; then
+            echo "No compiler result delta"
+            exit 0
+          fi
+          git commit -m "research: record exact whole-SwiGLU compiler result [compiler-results] [skip ci]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+      - name: Publish summary
+        if: always()
+        run: |
+          if test -f results/exp_085a/${GITHUB_SHA}/result.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          p = Path("results/exp_085a") / os.environ["GITHUB_SHA"] / "result.json"
+          r = json.loads(p.read_text())
+          a = r["DERIVED"]["aggregate"]
+          print("## Exact whole-SwiGLU global compiler")
+          print(f"- decision: `{r['authoritative_decision']}`")
+          print(f"- layers audited: `{r['MEASURED']['layers_audited']}`")
+          print(f"- optimistic operation fraction: `{a['optimistic_algebraic_operation_fraction']:.12%}`")
+          print(f"- target fraction: `{a['target_fraction']:.12%}`")
+          print(f"- joint gate/up ABI exact: `{r['MEASURED']['joint_gate_up_abi_probe']['exact']}`")
+          PY
+          fi
