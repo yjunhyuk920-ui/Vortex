@@ -1,0 +1,97 @@
+{
+  "schema": "exp-087a-quadratic-bf16-residual-generator-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "dtype": "bfloat16",
+  "attention_implementation": "eager",
+  "layer_index": 0,
+  "decode_positions_per_prompt": 16,
+  "program_count": 4,
+  "context_bits": 12,
+  "context_pool": 64,
+  "seed": 20260820,
+  "torch_num_threads": 2,
+  "target_sidecar_limit_bytes": 4294967296,
+  "success": {
+    "build_vector_exact_fraction_min": 1.0,
+    "oracle_vector_exact_fraction_min": 1.0,
+    "router_vector_exact_fraction_min": 1.0,
+    "minimum_evaluation_states_per_used_program": 4,
+    "compiled_mlp_operation_fraction_max": 0.011851851851851851
+  },
+  "prompts": [
+    {
+      "id": "build_english",
+      "family": "english",
+      "split": "build",
+      "prompt": "Explain why a glass prism separates white light into colors, using precise but simple language.\n"
+    },
+    {
+      "id": "eval_english",
+      "family": "english",
+      "split": "evaluation",
+      "prompt": "Describe how ocean tides arise and why their timing changes, in a concise technical explanation.\n"
+    },
+    {
+      "id": "build_korean",
+      "family": "korean",
+      "split": "build",
+      "prompt": "데이터베이스 인덱스가 조회 속도를 높이는 원리를 예시와 함께 설명해 주세요.\n"
+    },
+    {
+      "id": "eval_korean",
+      "family": "korean",
+      "split": "evaluation",
+      "prompt": "트랜잭션의 원자성과 격리 수준이 왜 필요한지 간결하게 설명해 주세요.\n"
+    },
+    {
+      "id": "build_code",
+      "family": "code",
+      "split": "build",
+      "prompt": "Write a Python function that merges overlapping intervals and include two assertions. Return code only.\n"
+    },
+    {
+      "id": "eval_code",
+      "family": "code",
+      "split": "evaluation",
+      "prompt": "Write a Python function that detects a cycle in a directed graph and include two assertions. Return code only.\n"
+    },
+    {
+      "id": "build_json",
+      "family": "structured_json",
+      "split": "build",
+      "prompt": "Return JSON with keys project, owner, risks, and milestones for a small database migration. Use valid JSON only.\n"
+    },
+    {
+      "id": "eval_json",
+      "family": "structured_json",
+      "split": "evaluation",
+      "prompt": "Return JSON with keys service, version, dependencies, and health_checks for an API deployment. Use valid JSON only.\n"
+    },
+    {
+      "id": "build_math",
+      "family": "mathematics",
+      "split": "build",
+      "prompt": "Solve 3x + 7 = 31 and explain each algebraic step briefly.\n"
+    },
+    {
+      "id": "eval_math",
+      "family": "mathematics",
+      "split": "evaluation",
+      "prompt": "A rectangle has perimeter 54 and length 16. Find its width and show the equation.\n"
+    },
+    {
+      "id": "build_repeat",
+      "family": "repeated_pattern",
+      "split": "build",
+      "prompt": "alpha beta alpha beta alpha beta alpha beta. Continue the pattern and then explain it.\n"
+    },
+    {
+      "id": "eval_repeat",
+      "family": "repeated_pattern",
+      "split": "evaluation",
+      "prompt": "red blue green red blue green red blue green. Continue the pattern and then explain it.\n"
+    }
+  ]
+}
