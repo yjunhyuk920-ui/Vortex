@@ -1723,3 +1723,30 @@ Use the committed actual-checkpoint tensor audit and physical ledger to modify o
 The active cheapest decisive Gate compiles one actual public BF16 SwiGLU MLP as a sum of fused nonlinear macro-pages crossing gate, SiLU, multiplication, and down projection. It tests an impossible favorable oracle selector and a sound metadata selector on 24 real causal activations from `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`.
 
 The frozen pass requires zero false accept/fallback, p50/p95 whole-model-equivalent fractions at or below `1.185185%/1.481481%`, and a projected complete metadata ledger within 8 GiB. The contract is `docs/research/EXPERIMENT_085A_JOINT_EXACT_SWIGLU_COMPILER_GATE.md`. No backend or complete-layer work is authorized before this Gate survives.
+
+
+<!-- EXP086A_GLOBAL_BF16_SUCCESSIVE_REFINEMENT -->
+## Active EXP-086A — Global BF16 Successive-Refinement Oracle Gate
+
+EXP-085A rejected page-separable exact SwiGLU refinement after both the
+reference-aided oracle and sound selector consumed every fused macro-page.
+EXP-086A changes the information unit from pages to a global BF16
+sign/exponent/MSB-mantissa stream.
+
+The official SmolLM2-135M layer-0 Gate grants one global gate/up precision and
+a reference-aided independently refinable down precision for every output row.
+It accepts only a complete bitwise-equal BF16 MLP output. The frozen promotion
+threshold is zero-order prefix-entropy fraction p50/p95 <=20%/25% and required
+perfect block acceptance p50/p95 <=16/32. This is a favorable cold-information
+Gate, not an operation or latency claim.
+
+Authority: `docs/research/EXPERIMENT_086A_GLOBAL_BF16_SUCCESSIVE_REFINEMENT_GATE.md`.
+
+
+<!-- EXP086A_POST_RESULT -->
+## Post EXP-086A next Gate
+
+The fixed global BF16 MSB-prefix information source is closed under its frozen
+favorable oracle. The next candidate must change the checkpoint information
+source: a cross-weight context model or nonlinear exact generator with fully
+charged residual code must first pass a no-forward construction Gate.

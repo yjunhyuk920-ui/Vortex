@@ -1179,3 +1179,16 @@ timeout. Global mixed cells, native arithmetic, and joint batches stay open.
 - `A-085A-2`: an output-row/page bound table is small enough for the complete 405B 8-GiB ledger. **DERIVED BY THE GATE, NOT YET RUN**.
 - `A-085A-3`: output-row splitting preserves gate/up BF16 rows and the down FP32 accumulation envelope contains the official result. **TO BE CONTROL-TESTED**.
 - `A-085A-4`: oracle failure is sufficient to reject this page-separable fingerprint, but not every globally coupled nonlinear exact compiler. **FIXED SCOPE**.
+
+
+<!-- EXP086A_GLOBAL_BF16_SUCCESSIVE_REFINEMENT -->
+## EXP-086A frozen assumptions
+
+- `A-086A-1`: low BF16 mantissa streams can often remain unread while the
+  complete unchanged SwiGLU output stays bitwise exact. **UNVERIFIED**.
+- `A-086A-2`: one global gate/up precision plus row-adaptive down precision is a
+  favorable ceiling for the fixed MSB-prefix source. **FROZEN**.
+- `A-086A-3`: zero-order prefix entropy grants ideal coding with coder, framing,
+  random access, decode, metadata and kernel costs free. **NOT A RUNTIME**.
+- `A-086A-4`: rejection closes only the fixed significance-prefix source; a
+  cross-weight context model or nonlinear exact generator is different.

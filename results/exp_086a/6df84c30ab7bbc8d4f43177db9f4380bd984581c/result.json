@@ -1,0 +1,243 @@
+{
+  "DERIVED": {
+    "interpretation": "All non-MLP traffic, draft, selector, coding, addressing and physical kernel costs are free favorable grants.",
+    "p50_whole_model_fraction": 0.011851851851851851,
+    "p95_whole_model_fraction": 0.014814814814814815
+  },
+  "MEASURED": {
+    "activation_count": 24,
+    "full_precision_control_passed": true,
+    "global_uniform_entropy_fraction_p50": 1.0,
+    "global_uniform_entropy_fraction_p95": 1.0,
+    "row_adaptive_entropy_fraction_p50": 0.9507781338525199,
+    "row_adaptive_entropy_fraction_p95": 0.951998430042707,
+    "row_adaptive_minimum_perfect_acceptance_p50": 66,
+    "row_adaptive_minimum_perfect_acceptance_p95": 53
+  },
+  "aggregates": {
+    "families": {
+      "code": {
+        "all_exact": true,
+        "count": 4,
+        "entropy_fraction_p05": 0.9507873524877405,
+        "entropy_fraction_p50": 0.9510348032175341,
+        "entropy_fraction_p95": 0.9524398913418123,
+        "gate_up_mantissa_bits_p50": 7,
+        "ideal_information_speedup_p50": 1.05148623017455,
+        "minimum_perfect_acceptance_p50": 66,
+        "minimum_perfect_acceptance_p95": 53,
+        "raw_fraction_p50": 0.9840133101851852,
+        "raw_fraction_p95": 0.9854962384259259
+      },
+      "english": {
+        "all_exact": true,
+        "count": 4,
+        "entropy_fraction_p05": 0.949573459776148,
+        "entropy_fraction_p50": 0.9504563621081483,
+        "entropy_fraction_p95": 0.951998430042707,
+        "gate_up_mantissa_bits_p50": 7,
+        "ideal_information_speedup_p50": 1.0521261573566218,
+        "minimum_perfect_acceptance_p50": 66,
+        "minimum_perfect_acceptance_p95": 53,
+        "raw_fraction_p50": 0.9836154513888888,
+        "raw_fraction_p95": 0.9849898726851852
+      },
+      "korean": {
+        "all_exact": true,
+        "count": 4,
+        "entropy_fraction_p05": 0.9510693892908004,
+        "entropy_fraction_p50": 0.9512158556282617,
+        "entropy_fraction_p95": 0.9517319539117861,
+        "gate_up_mantissa_bits_p50": 7,
+        "ideal_information_speedup_p50": 1.0512860925131626,
+        "minimum_perfect_acceptance_p50": 66,
+        "minimum_perfect_acceptance_p95": 53,
+        "raw_fraction_p50": 0.9844111689814815,
+        "raw_fraction_p95": 0.9847005208333334
+      },
+      "math": {
+        "all_exact": true,
+        "count": 4,
+        "entropy_fraction_p05": 0.9484381103839948,
+        "entropy_fraction_p50": 0.9497555948872098,
+        "entropy_fraction_p95": 0.9516098309645422,
+        "gate_up_mantissa_bits_p50": 7,
+        "ideal_information_speedup_p50": 1.0529024576251715,
+        "minimum_perfect_acceptance_p50": 66,
+        "minimum_perfect_acceptance_p95": 53,
+        "raw_fraction_p50": 0.9833622685185185,
+        "raw_fraction_p95": 0.9844473379629629
+      },
+      "repeated_token": {
+        "all_exact": true,
+        "count": 4,
+        "entropy_fraction_p05": 0.9507781338525199,
+        "entropy_fraction_p50": 0.9515735835705278,
+        "entropy_fraction_p95": 0.9516731391472992,
+        "gate_up_mantissa_bits_p50": 7,
+        "ideal_information_speedup_p50": 1.0508908793451,
+        "minimum_perfect_acceptance_p50": 66,
+        "minimum_perfect_acceptance_p95": 53,
+        "raw_fraction_p50": 0.9845196759259259,
+        "raw_fraction_p95": 0.9845920138888888
+      },
+      "structured_json": {
+        "all_exact": true,
+        "count": 4,
+        "entropy_fraction_p05": 0.9503194159899407,
+        "entropy_fraction_p50": 0.9503816574732724,
+        "entropy_fraction_p95": 0.9519403209727418,
+        "gate_up_mantissa_bits_p50": 7,
+        "ideal_information_speedup_p50": 1.0522088596055663,
+        "minimum_perfect_acceptance_p50": 66,
+        "minimum_perfect_acceptance_p95": 53,
+        "raw_fraction_p50": 0.9837239583333334,
+        "raw_fraction_p95": 0.9847005208333334
+      }
+    },
+    "global_uniform": {
+      "all_exact": true,
+      "count": 24,
+      "entropy_fraction_p05": 1.0,
+      "entropy_fraction_p50": 1.0,
+      "entropy_fraction_p95": 1.0,
+      "gate_up_mantissa_bits_p50": 7,
+      "ideal_information_speedup_p50": 1.0,
+      "minimum_perfect_acceptance_p50": 69,
+      "minimum_perfect_acceptance_p95": 55,
+      "raw_fraction_p50": 1.0,
+      "raw_fraction_p95": 1.0
+    },
+    "row_adaptive": {
+      "all_exact": true,
+      "count": 24,
+      "entropy_fraction_p05": 0.9485502548031968,
+      "entropy_fraction_p50": 0.9507781338525199,
+      "entropy_fraction_p95": 0.951998430042707,
+      "gate_up_mantissa_bits_p50": 7,
+      "ideal_information_speedup_p50": 1.0517700864112587,
+      "minimum_perfect_acceptance_p50": 66,
+      "minimum_perfect_acceptance_p95": 53,
+      "raw_fraction_p50": 0.9839771412037037,
+      "raw_fraction_p95": 0.9849898726851852
+    }
+  },
+  "authoritative_decision": "REJECT_GLOBAL_BF16_MANTISSA_PREFIX_AS_COLD_QUERY_CORE",
+  "claim_boundary": {
+    "405b_execution": "NOT_TESTED",
+    "8gib_gpu": "NOT_TESTED",
+    "actual_checkpoint_activations": true,
+    "candidate_successor_state": "NOT_TESTED",
+    "complete_real_mlp_replaced": false,
+    "official_checkpoint_loaded": true,
+    "oracle_selector_deployable": false,
+    "physical_latency": "NOT_TESTED",
+    "standard_isa_operation_saving": "NOT_ESTABLISHED"
+  },
+  "compile_wall_ns": 894154442,
+  "compiler_manifest": {
+    "exactness_contract": {
+      "k7": "bitwise identity with original checkpoint",
+      "oracle": "reference-aided, non-deployable and favorable",
+      "prefix": "preserve BF16 sign/exponent and k MSB mantissa bits",
+      "unread_residual": "accepted only on complete MLP BF16 equality"
+    },
+    "fingerprint": "6e39f98ca5501d0e12d88e85152ee9e8013c2e42a33ea736a256003f2edd8504",
+    "format": "global-bf16-successive-refinement-v1",
+    "full_entropy_bits_per_weight": {
+      "down": 10.589010494942842,
+      "gate": 10.471358862665909,
+      "up": 10.479863421153018
+    },
+    "full_entropy_total_bits": 27904779.387750573,
+    "hidden_size": 576,
+    "intermediate_size": 1536,
+    "mechanism": "global_bf16_sign_exponent_mantissa_successive_refinement",
+    "output_size": 576,
+    "parameter_count": 2654208,
+    "parameter_counts": {
+      "down": 884736,
+      "gate": 884736,
+      "up": 884736
+    },
+    "weight_sha256": {
+      "down": "cd82c901faa31baba56e78a44a7defc4cb8295084678bad85a3919860b560e74",
+      "gate": "b3257bec2c20bcfef046fcd8dfe99cac5a1f70822bd83ca683de0d1e6933120c",
+      "up": "d713739db7950d6c3dfe8d82f036591fc3667a7d1a5f688264221dd253fc814f"
+    },
+    "zero_order_entropy_bits_per_weight": {
+      "down": {
+        "0": 3.658328581581089,
+        "1": 4.610673415886311,
+        "2": 5.597430694095919,
+        "3": 6.594050269462218,
+        "4": 7.59301600241659,
+        "5": 8.592246999805,
+        "6": 9.59109963299504,
+        "7": 10.589010494942842
+      },
+      "gate": {
+        "0": 3.552296921503398,
+        "1": 4.496924152903041,
+        "2": 5.480819486194374,
+        "3": 6.476733684418897,
+        "4": 7.475391783473482,
+        "5": 8.474566435535074,
+        "6": 9.473429396577547,
+        "7": 10.471358862665909
+      },
+      "up": {
+        "0": 3.559879202034009,
+        "1": 4.505151645240213,
+        "2": 5.48915232594862,
+        "3": 6.484899006882212,
+        "4": 7.483762068022221,
+        "5": 8.482944910264145,
+        "6": 9.481872583420245,
+        "7": 10.479863421153018
+      }
+    }
+  },
+  "config_sha256": "d41aa976a9062c51413ac7c521ecd22dc24cdcf558bf5cedc7187b2feea2a0c0",
+  "controls": {
+    "activation_count": 24,
+    "full_precision_control_passed": true,
+    "full_precision_exact_activations": 24,
+    "prefix_identity_weight_mismatches": {
+      "down": 0,
+      "gate": 0,
+      "up": 0
+    }
+  },
+  "deterministic_core_sha256": "17478366c320c4f46ffa04a238a54e6fe4d34d37360439f8434c48dfd98bd4e4",
+  "evaluation_wall_ns": 1215858512,
+  "evidence_level": "E1",
+  "experiment": "EXP-086A",
+  "gates": {
+    "acceptance_passed": false,
+    "controls_passed": true,
+    "information_passed": false,
+    "oracle_exact_passed": true
+  },
+  "load_wall_ns": 10415311962,
+  "name": "global_bf16_successive_refinement_gate",
+  "phase": [
+    "A-structure",
+    "B-reference",
+    "C-small-real-checkpoint-observation"
+  ],
+  "runtime": {
+    "python": "3.11.10",
+    "safetensors": "0.4.5",
+    "torch": "2.5.1+cpu",
+    "transformers": "4.46.3"
+  },
+  "source_sha": "6df84c30ab7bbc8d4f43177db9f4380bd984581c",
+  "unverified": [
+    "cross-weight context coding",
+    "sound residual-bit selector",
+    "packed bit-serial/fused decompression kernel",
+    "complete Transformer layer and successor state",
+    "405B, 8 GiB and same-machine 4B latency"
+  ]
+}

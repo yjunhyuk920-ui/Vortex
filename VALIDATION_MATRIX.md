@@ -1240,3 +1240,21 @@ Authoritative decision:
 | favorable oracle | p50/p95 fractions and fallback | NOT RUN |
 | sound selector | p50/p95 fractions, fallback, metadata | NOT RUN |
 | complete layer / 128 steps / hardware | separate later gate | NOT AUTHORIZED |
+
+
+<!-- EXP086A_RESULT -->
+## EXP-086A — Global BF16 successive refinement
+
+```text
+decision                                    REJECT_GLOBAL_BF16_MANTISSA_PREFIX_AS_COLD_QUERY_CORE
+official checkpoint                         HuggingFaceTB/SmolLM2-135M
+actual causal activations                   24
+full-precision control                      True
+row-adaptive entropy fraction p50/p95       0.9507781338525199 / 0.951998430042707
+minimum perfect acceptance p50/p95          66 / 53
+deterministic core SHA-256                   17478366c320c4f46ffa04a238a54e6fe4d34d37360439f8434c48dfd98bd4e4
+```
+
+The Gate grants ideal zero-order coding, reference-aided per-output-row down
+precision, free non-MLP traffic, and free selector/decompression/kernel costs.
+It is not a physical speed result.

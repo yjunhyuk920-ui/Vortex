@@ -1673,3 +1673,21 @@ Authorities:
 - `checkpoint_mlp_output_row_streamed_lossless_existing_isa`: G2=True, G3=True, G4=True; output-row-tile=128; artifact=4223092 B; reference-layer=7080192 B; compiled-layer-resident=1771776 B; peak-hot=393216 B; baseline p50/p95=113.832 ms/203.051 ms; candidate p50/p95=151.764 ms/241.453 ms.
 - Instruction/SASS counts are not synthesized: each mechanism reports its measured/not-measured status explicitly.
 - G5/G6 remain gated by TARGET-W measurements; DEV-W results are not extrapolated into a 405B performance claim.
+
+
+<!-- EXP086A_RESULT -->
+## EXP-086A — Global BF16 successive refinement
+
+```text
+decision                                    REJECT_GLOBAL_BF16_MANTISSA_PREFIX_AS_COLD_QUERY_CORE
+official checkpoint                         HuggingFaceTB/SmolLM2-135M
+actual causal activations                   24
+full-precision control                      True
+row-adaptive entropy fraction p50/p95       0.9507781338525199 / 0.951998430042707
+minimum perfect acceptance p50/p95          66 / 53
+deterministic core SHA-256                   17478366c320c4f46ffa04a238a54e6fe4d34d37360439f8434c48dfd98bd4e4
+```
+
+The Gate grants ideal zero-order coding, reference-aided per-output-row down
+precision, free non-MLP traffic, and free selector/decompression/kernel costs.
+It is not a physical speed result.
