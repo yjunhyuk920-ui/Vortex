@@ -1,0 +1,141 @@
+{
+  "DERIVED": {
+    "accepted_length_scenarios": [
+      {
+        "accepted_length": 1,
+        "optimistic_repair_weight_traffic_fraction_per_token": 0.9990234375,
+        "repair_arithmetic_compute_pass": false,
+        "repair_arithmetic_fraction_per_token_lower_bound": 0.9990234375,
+        "traffic_p50_pass": false,
+        "traffic_p95_pass": false
+      },
+      {
+        "accepted_length": 4,
+        "optimistic_repair_weight_traffic_fraction_per_token": 0.249755859375,
+        "repair_arithmetic_compute_pass": false,
+        "repair_arithmetic_fraction_per_token_lower_bound": 0.9990234375,
+        "traffic_p50_pass": false,
+        "traffic_p95_pass": false
+      },
+      {
+        "accepted_length": 8,
+        "optimistic_repair_weight_traffic_fraction_per_token": 0.1248779296875,
+        "repair_arithmetic_compute_pass": false,
+        "repair_arithmetic_fraction_per_token_lower_bound": 0.9990234375,
+        "traffic_p50_pass": false,
+        "traffic_p95_pass": false
+      },
+      {
+        "accepted_length": 16,
+        "optimistic_repair_weight_traffic_fraction_per_token": 0.06243896484375,
+        "repair_arithmetic_compute_pass": false,
+        "repair_arithmetic_fraction_per_token_lower_bound": 0.9990234375,
+        "traffic_p50_pass": false,
+        "traffic_p95_pass": false
+      },
+      {
+        "accepted_length": 32,
+        "optimistic_repair_weight_traffic_fraction_per_token": 0.031219482421875,
+        "repair_arithmetic_compute_pass": false,
+        "repair_arithmetic_fraction_per_token_lower_bound": 0.9990234375,
+        "traffic_p50_pass": false,
+        "traffic_p95_pass": false
+      },
+      {
+        "accepted_length": 64,
+        "optimistic_repair_weight_traffic_fraction_per_token": 0.0156097412109375,
+        "repair_arithmetic_compute_pass": false,
+        "repair_arithmetic_fraction_per_token_lower_bound": 0.9990234375,
+        "traffic_p50_pass": false,
+        "traffic_p95_pass": false
+      },
+      {
+        "accepted_length": 68,
+        "optimistic_repair_weight_traffic_fraction_per_token": 0.014691521139705883,
+        "repair_arithmetic_compute_pass": false,
+        "repair_arithmetic_fraction_per_token_lower_bound": 0.9990234375,
+        "traffic_p50_pass": false,
+        "traffic_p95_pass": true
+      },
+      {
+        "accepted_length": 85,
+        "optimistic_repair_weight_traffic_fraction_per_token": 0.011753216911764706,
+        "repair_arithmetic_compute_pass": false,
+        "repair_arithmetic_fraction_per_token_lower_bound": 0.9990234375,
+        "traffic_p50_pass": true,
+        "traffic_p95_pass": true
+      },
+      {
+        "accepted_length": 96,
+        "optimistic_repair_weight_traffic_fraction_per_token": 0.010406494140625,
+        "repair_arithmetic_compute_pass": false,
+        "repair_arithmetic_fraction_per_token_lower_bound": 0.9990234375,
+        "traffic_p50_pass": true,
+        "traffic_p95_pass": true
+      },
+      {
+        "accepted_length": 128,
+        "optimistic_repair_weight_traffic_fraction_per_token": 0.00780487060546875,
+        "repair_arithmetic_compute_pass": false,
+        "repair_arithmetic_fraction_per_token_lower_bound": 0.9990234375,
+        "traffic_p50_pass": true,
+        "traffic_p95_pass": true
+      }
+    ],
+    "allowed_compute_fraction": 0.011827051731955725,
+    "composition_equations": {
+      "optimistic_weight_traffic_per_committed_token": "rho/A",
+      "raw_repair_arithmetic_for_A_positions": "A*rho*C_dense",
+      "raw_repair_arithmetic_per_perfectly_accepted_token": "(A*rho*C_dense)/A = rho*C_dense"
+    },
+    "gates": {
+      "raw_row_repair_compute_within_allowance": false,
+      "source_hyperblock_decision_matches": true,
+      "source_native_decision_matches": true,
+      "standard_constructive_block_arithmetic_within_p50": false
+    },
+    "minimum_perfect_accepted_length_for_p50_traffic": 85,
+    "minimum_perfect_accepted_length_for_p95_traffic": 68,
+    "p50_target_fraction": 0.011851851851851851,
+    "p95_target_fraction": 0.014814814814814815,
+    "repair_arithmetic_fraction_per_committed_token_lower_bound": 0.9990234375,
+    "repair_arithmetic_miss_factor": 84.46935552000001,
+    "standard_strassen_best_block_length": 16384,
+    "standard_strassen_best_constructive_arithmetic_fraction": 0.3611157967135951,
+    "standard_strassen_p50_miss_factor": 30.46914534770959
+  },
+  "MEASURED": {
+    "coordinates": 1024,
+    "locked_coordinates": 1,
+    "oracle_lock_fraction": 0.0009765625,
+    "oracle_unlocked_fraction": 0.9990234375,
+    "reference_words_and_selector_granted_free": true,
+    "source_scope": "one pinned unchanged Qwen3.5-0.8B layer-23 down projection and frozen EXP-083B causal row",
+    "whole_vector_locked": false
+  },
+  "claim_boundary": {
+    "actual_405b_execution": false,
+    "dflash_rejected": false,
+    "every_rounding_firewall_rejected": false,
+    "new_hardware_measurement": false,
+    "new_model_forward_executed": false,
+    "remaining_escape_requires": "a materially different exact non-rowwise or cross-position coded repair whose arithmetic, not only weight traffic, is below the final fraction",
+    "scope_rejected": "prompt/Atlas proposal plus BF16 coordinate lock plus ordinary raw row/page repair, even with perfect block acceptance and optimistic weight reuse"
+  },
+  "decision": "REJECT_ROUNDING_SESSION_ATLAS_RAW_REPAIR_COMPOSITION",
+  "name": "rounding_session_atlas_composition_audit",
+  "source_claims": {
+    "hyperblock_decision": "REJECT_STANDARD_STRASSEN_HYPERBLOCK_AS_CORE_RETAIN_COST_MODEL_AUXILIARY",
+    "native_roundlock_decision": "REJECT_ORACLE_UNLOCKED_ROWS_EXCEED_COMPLETE_ALLOWANCE"
+  },
+  "sources": {
+    "hyperblock": {
+      "git_blob_sha1": "83e278b76d4348754b728ac3e0fb908441855d37",
+      "path": "results/exp_080a/summary.json"
+    },
+    "native_exact_shortcut": {
+      "git_blob_sha1": "f8bbf7181ef1e71c3f7999094ad97e3082b6b2f1",
+      "path": "results/e0_native_exact_shortcut_frontier/summary.json"
+    }
+  }
+}
