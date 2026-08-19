@@ -107,7 +107,7 @@ jobs:
             echo "No result delta to commit"
             exit 0
           fi
-          git commit -m "research: record actual fixed-public executor result [executor-results]"
+          git commit -m "research: record actual fixed-public executor result [executor-results] [skip ci]"
           git push origin HEAD:${GITHUB_REF_NAME}
       - name: Publish gate summary
         if: always()
