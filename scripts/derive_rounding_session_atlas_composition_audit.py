@@ -16,8 +16,8 @@ from vortex_runtime.rounding_session_atlas_composition import derive_composition
 
 NATIVE_PATH = ROOT / "results/e0_native_exact_shortcut_frontier/summary.json"
 HYPERBLOCK_PATH = ROOT / "results/exp_080a/summary.json"
-EXPECTED_NATIVE_SHA256 = "fa8a2d0d8c434400db63634730b52d891be4359eaab2509cf4e1f3415eeb09be"
-EXPECTED_HYPERBLOCK_SHA256 = "0debbb96f0a31b1ef2ffc1e662109687aed3b2cedaaf89ac1c013bf9a94c1d83"
+EXPECTED_NATIVE_BLOB_SHA1 = "f8bbf7181ef1e71c3f7999094ad97e3082b6b2f1"
+EXPECTED_HYPERBLOCK_BLOB_SHA1 = "83e278b76d4348754b728ac3e0fb908441855d37"
 
 
 def sha256_file(path: Path) -> str:
@@ -28,10 +28,18 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def load_pinned(path: Path, expected_sha256: str) -> dict[str, Any]:
-    actual = sha256_file(path)
-    if actual != expected_sha256:
-        raise ValueError(f"source SHA mismatch for {path}: {actual} != {expected_sha256}")
+def git_blob_sha1(path: Path) -> str:
+    data = path.read_bytes()
+    header = f"blob {len(data)}\0".encode("ascii")
+    return hashlib.sha1(header + data).hexdigest()
+
+
+def load_pinned(path: Path, expected_blob_sha1: str) -> dict[str, Any]:
+    actual = git_blob_sha1(path)
+    if actual != expected_blob_sha1:
+        raise ValueError(
+            f"source Git blob mismatch for {path}: {actual} != {expected_blob_sha1}"
+        )
     value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
         raise ValueError(f"{path} must contain a JSON object")
@@ -63,17 +71,17 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    native = load_pinned(NATIVE_PATH, EXPECTED_NATIVE_SHA256)
-    hyperblock = load_pinned(HYPERBLOCK_PATH, EXPECTED_HYPERBLOCK_SHA256)
+    native = load_pinned(NATIVE_PATH, EXPECTED_NATIVE_BLOB_SHA1)
+    hyperblock = load_pinned(HYPERBLOCK_PATH, EXPECTED_HYPERBLOCK_BLOB_SHA1)
     payload = derive_composition_audit(native, hyperblock)
     payload["sources"] = {
         "native_exact_shortcut": {
             "path": NATIVE_PATH.relative_to(ROOT).as_posix(),
-            "sha256": EXPECTED_NATIVE_SHA256,
+            "git_blob_sha1": EXPECTED_NATIVE_BLOB_SHA1,
         },
         "hyperblock": {
             "path": HYPERBLOCK_PATH.relative_to(ROOT).as_posix(),
-            "sha256": EXPECTED_HYPERBLOCK_SHA256,
+            "git_blob_sha1": EXPECTED_HYPERBLOCK_BLOB_SHA1,
         },
     }
     write_output(args.output_dir, payload)

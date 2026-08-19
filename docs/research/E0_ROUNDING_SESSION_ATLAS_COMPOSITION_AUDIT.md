@@ -30,8 +30,8 @@ raw checkpoint rows/pages used to repair the rest.
 ## Existing measured checkpoint evidence
 
 The pinned source is
-`results/e0_native_exact_shortcut_frontier/summary.json`, SHA-256
-`fa8a2d0d8c434400db63634730b52d891be4359eaab2509cf4e1f3415eeb09be`.
+`results/e0_native_exact_shortcut_frontier/summary.json`, Git blob SHA-1
+`f8bbf7181ef1e71c3f7999094ad97e3082b6b2f1`.
 It uses the unchanged Qwen/Qwen3.5-0.8B checkpoint, layer-23 MLP
 `down_proj`, and the frozen causal row from EXP-083B.
 
@@ -114,8 +114,8 @@ metadata, attention, KV state, verification, or synchronization.
 
 ## Independent cross-position arithmetic check
 
-The second pinned source is `results/exp_080a/summary.json`, SHA-256
-`0debbb96f0a31b1ef2ffc1e662109687aed3b2cedaaf89ac1c013bf9a94c1d83`.
+The second pinned source is `results/exp_080a/summary.json`, Git blob SHA-1
+`83e278b76d4348754b728ac3e0fb908441855d37`.
 EXP-080A granted exact future activations, a free perfect proposal, one target
 sweep, and favorable workspace.  Standard constructive Strassen at the largest
 registered block still required:

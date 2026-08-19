@@ -106,7 +106,7 @@
   },
   "MEASURED": {
     "coordinates": 1024,
-    "locked_coordinates": 1,
+    "locked_cordinates": 1,
     "oracle_lock_fraction": 0.0009765625,
     "oracle_unlocked_fraction": 0.9990234375,
     "reference_words_and_selector_granted_free": true,
@@ -130,12 +130,12 @@
   },
   "sources": {
     "hyperblock": {
-      "path": "results/exp_080a/summary.json",
-      "sha256": "0debbb96f0a31b1ef2ffc1e662109687aed3b2cedaaf89ac1c013bf9a94c1d83"
+      "git_blob_sha1": "83e278b76d4348754b728ac3e0fb908441855d37",
+      "path": "results/exp_080a/summary.json"
     },
     "native_exact_shortcut": {
-      "path": "results/e0_native_exact_shortcut_frontier/summary.json",
-      "sha256": "fa8a2d0d8c434400db63634730b52d891be4359eaab2509cf4e1f3415eeb09be"
+      "git_blob_sha1": "f8bbf7181ef1e71c3f7999094ad97e3082b6b2f1",
+      "path": "results/e0_native_exact_shortcut_frontier/summary.json"
     }
   }
 }
