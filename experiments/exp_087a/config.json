@@ -1,0 +1,19 @@
+{
+  "schema": "exp-087a-cross-weight-context-code-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "dtype": "bfloat16",
+  "attention_implementation": "eager",
+  "layer_selection_rule": "first_middle_last",
+  "coordinate_periods": [2, 4, 8, 16, 32],
+  "seed": 20260820,
+  "torch_num_threads": 2,
+  "mechanism_fingerprint": "aligned_cross_projection_and_coordinate_context_dictionary_with_exact_xor_residual",
+  "success": {
+    "best_information_fraction_p50_max": 0.20,
+    "best_information_fraction_p95_max": 0.25
+  },
+  "stop_rule": "Reject when the best frozen exact context code exceeds either information threshold even after granting ideal entropy coding, free probability tables, free perfect hashing/address generation, and free decoder/kernel cost. Do not sweep layers, coordinate periods, table width, residual operator, or thresholds after results. Reopening requires a sublinear cross-layer generator or a different transition dependency, not a larger context dictionary.",
+  "claim_boundary": "This no-forward Gate tests exact checkpoint description length only. Dense arithmetic, complete MLP replacement, successor state, CUDA, 405B, 8 GiB, and target latency remain NOT TESTED."
+}
