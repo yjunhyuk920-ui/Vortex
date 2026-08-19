@@ -1,0 +1,38 @@
+{
+  "schema": "exp-086a-causal-functional-microprogram-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "dtype": "bfloat16",
+  "attention_implementation": "eager",
+  "layer_index": 0,
+  "decode_positions_per_prompt": 16,
+  "clusters": 4,
+  "rank_cap": 32,
+  "sidecar_scalar_bytes": 4,
+  "target_sidecar_limit_bytes": 4294967296,
+  "seed": 20260819,
+  "torch_num_threads": 2,
+  "mechanism_fingerprint": "checkpoint_static_low_rank_affine_whole_swiglu_microprogram_library",
+  "success": {
+    "oracle_vector_exact_fraction_min": 1.0,
+    "router_vector_exact_fraction_min": 1.0,
+    "minimum_evaluation_states_per_used_program": 4,
+    "compiled_mlp_operation_fraction_max": 0.011851851851851851
+  },
+  "stop_rule": "If the impossible favorable oracle cannot reuse four non-state-keyed whole-SwiGLU affine microprograms with zero BF16 vector mismatch on the disjoint evaluation population, reject this functional microprogram language. Do not sweep clusters, rank, prompts, layer, precision, or router after results. Reopening requires a non-affine or state-transition-level program language with a different exact information source.",
+  "prompts": [
+    {"id":"build_english","family":"english","split":"build","prompt":"Explain why ocean tides change during a day, using a clear physical argument and one example.\n"},
+    {"id":"eval_english","family":"english","split":"evaluation","prompt":"Explain why a metal spoon feels colder than a wooden spoon in the same room.\n"},
+    {"id":"build_korean","family":"korean","split":"build","prompt":"23개의 책을 4개의 상자에 최대한 공평하게 나누는 과정을 단계별로 설명해줘.\n"},
+    {"id":"eval_korean","family":"korean","split":"evaluation","prompt":"기차가 터널을 통과하는 시간 문제를 간단한 식과 함께 설명해줘.\n"},
+    {"id":"build_code","family":"code","split":"build","prompt":"Write a Python function that merges overlapping intervals and include two assertions. Return code only.\n"},
+    {"id":"eval_code","family":"code","split":"evaluation","prompt":"Write a Python function for breadth-first search that returns distances and detects unreachable nodes. Return code only.\n"},
+    {"id":"build_json","family":"structured_json","split":"build","prompt":"Return JSON for a fictional database with keys engine, version, replicas, encrypted, and regions.\n"},
+    {"id":"eval_json","family":"structured_json","split":"evaluation","prompt":"Return JSON for a fictional compiler with keys name, targets, optimization_level, debug, and plugins.\n"},
+    {"id":"build_math","family":"math","split":"build","prompt":"Differentiate x^4 cos(x), then simplify the expression step by step.\n"},
+    {"id":"eval_math","family":"math","split":"evaluation","prompt":"Integrate 3x^2 + 2x - 5 and include the constant of integration.\n"},
+    {"id":"build_pattern","family":"repeated_token","split":"build","prompt":"red blue red blue red blue red blue red blue. Continue the pattern and describe it.\n"},
+    {"id":"eval_pattern","family":"repeated_token","split":"evaluation","prompt":"1 2 1 2 1 2 1 2 1 2. Continue the pattern and explain the rule.\n"}
+  ]
+}

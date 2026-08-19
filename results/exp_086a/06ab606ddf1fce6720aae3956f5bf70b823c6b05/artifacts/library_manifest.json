@@ -1,0 +1,57 @@
+{
+  "candidate": {
+    "fingerprint": "43f76acfbd8b6636355eb5dd8efe904bd3d1f4a420cb21458b4cc054fa16bd68",
+    "programs": [
+      {
+        "build_count": 65,
+        "fingerprint": "ef91c67583149a18e016c6706d5aba9d0c17d181a4a1839d4d150fd7da6ee5ba",
+        "rank": 32
+      },
+      {
+        "build_count": 10,
+        "fingerprint": "38c2ef60471ddf536c2add1369ea6c79ee83a44ddcbf669d2564aae618e88cd6",
+        "rank": 9
+      },
+      {
+        "build_count": 16,
+        "fingerprint": "36711da128049e0a977a0a4abf3b409ecc22c04e8823e709d234635654337df5",
+        "rank": 15
+      },
+      {
+        "build_count": 5,
+        "fingerprint": "84cb900e763484ffafa9e7dbe0bdac3a75d7e3b178f56b4d295281150f6b8e65",
+        "rank": 4
+      }
+    ],
+    "rank_cap": 32
+  },
+  "clusters": 4,
+  "control_partition_sha256": "4c824ee9a4b44d23142796edf26a15a63d781e74302756cdbec89924db396646",
+  "full_rank_numerical_control": {
+    "fingerprint": "a9743c2d63f2ce62fb3d15698457ce49d4d4313a46d9a0e3089ac9ca5ea98e04",
+    "programs": [
+      {
+        "build_count": 65,
+        "fingerprint": "922746ded4d21c1829b48a5367a9fe1e287c6f20a83d0824d6ac61f68909db9c",
+        "rank": 64
+      },
+      {
+        "build_count": 10,
+        "fingerprint": "771878e5f05e7e2c7ac484a48ae17aca90639461d07deb70e793e22a0411159e",
+        "rank": 9
+      },
+      {
+        "build_count": 16,
+        "fingerprint": "6f26c6074138dfc97afaf7639ac1995876de7444bf6626d232bad3f57918d8c9",
+        "rank": 15
+      },
+      {
+        "build_count": 5,
+        "fingerprint": "3bb9320b608e9e4b934e6f23d6833f4582dc0fdc708c5e7f2ea809aabfa6bbee",
+        "rank": 4
+      }
+    ],
+    "rank_cap": 96
+  },
+  "mechanism": "checkpoint_static_low_rank_affine_whole_swiglu_microprogram_library"
+}

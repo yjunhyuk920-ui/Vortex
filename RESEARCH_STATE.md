@@ -1917,3 +1917,42 @@ Core Candidate survives.
 ## EXP-085A preregistered constructive frontier
 
 EXP-085A changes the operation boundary from independent matrices or a linear session basis to a complete fused SwiGLU macrofunction. It is an exact fail-closed compiler reference, not an approximate channel selector. Official DEV-W execution and the scientific decision remain `NOT RUN` until hosted evidence is committed.
+
+<!-- EXP086A_RESULT:376700afc276cb30b5eece61d3c1fb7e2e5b6ccd -->
+## EXP-086A result — `376700afc276cb30b5eece61d3c1fb7e2e5b6ccd`
+
+- Decision: `INVALID_CAUSAL_FUNCTIONAL_MICROPROGRAM_NUMERICAL_CONTROL_FAILURE`.
+- Evaluation oracle FP32 vector exact: `NOT_AVAILABLE`.
+- Evaluation router FP32 vector exact: `NOT_AVAILABLE`.
+- Oracle row exact p50: `NOT_AVAILABLE`.
+- Router row exact p50: `NOT_AVAILABLE`.
+- Projected target sidecar: `2.06103515625 GiB`.
+- Compiled MLP operation fraction: `0.00048828125`.
+- Whole-model fraction with only MLP replaced: `NOT_AVAILABLE`.
+- Complete Transformer layer, 405B, 8-GiB GPU, and physical p50/p95 remain `NOT TESTED`.
+
+<!-- EXP086A_RESULT:152faa529ffafd2b84136dc9282bd237f6a8764a -->
+## EXP-086A result — `152faa529ffafd2b84136dc9282bd237f6a8764a`
+
+- Decision: `INVALID_CAUSAL_FUNCTIONAL_MICROPROGRAM_NUMERICAL_CONTROL_FAILURE`.
+- Evaluation oracle FP32 vector exact: `NOT_AVAILABLE`.
+- Evaluation router FP32 vector exact: `NOT_AVAILABLE`.
+- Oracle row exact p50: `NOT_AVAILABLE`.
+- Router row exact p50: `NOT_AVAILABLE`.
+- Projected target sidecar: `2.06103515625 GiB`.
+- Compiled MLP operation fraction: `0.00048828125`.
+- Whole-model fraction with only MLP replaced: `NOT_AVAILABLE`.
+- Complete Transformer layer, 405B, 8-GiB GPU, and physical p50/p95 remain `NOT TESTED`.
+
+<!-- EXP086A_RESULT:06ab606ddf1fce6720aae3956f5bf70b823c6b05 -->
+## EXP-086A result — `06ab606ddf1fce6720aae3956f5bf70b823c6b05`
+
+- Decision: `REJECT_LOW_RANK_FUNCTIONAL_MICROPROGRAM_LIBRARY_AT_ORACLE_GATE`.
+- Evaluation oracle FP32 vector exact: `0.0`.
+- Evaluation router FP32 vector exact: `0.0`.
+- Oracle row exact p50: `0.0052083334885537624`.
+- Router row exact p50: `0.0052083334885537624`.
+- Projected target sidecar: `2.06103515625 GiB`.
+- Compiled MLP operation fraction: `0.00048828125`.
+- Whole-model fraction with only MLP replaced: `0.1878463717678428`.
+- Complete Transformer layer, 405B, 8-GiB GPU, and physical p50/p95 remain `NOT TESTED`.

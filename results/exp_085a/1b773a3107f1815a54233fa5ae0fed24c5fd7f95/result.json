@@ -1,0 +1,117 @@
+{
+  "aggregates": {
+    "oracle": {
+      "bound_violations": 0,
+      "candidate_mismatches": 0,
+      "count": 24,
+      "fallback_rate": 1.0,
+      "false_accepts": 0,
+      "full_read_unresolved": 6845,
+      "gate_up_row_split_mismatches": 0,
+      "mode": "oracle_exact_contribution_greedy",
+      "pages_p05": 192.0,
+      "pages_p50": 192.0,
+      "pages_p95": 192.0,
+      "whole_model_fraction_p05": 0.8125503813480498,
+      "whole_model_fraction_p50": 0.8125503813480498,
+      "whole_model_fraction_p95": 0.8125503813480498,
+      "whole_model_operation_fraction_p05": 0.8125503813480498,
+      "whole_model_operation_fraction_p50": 0.8125503813480498,
+      "whole_model_operation_fraction_p95": 0.8125503813480498
+    },
+    "sound": {
+      "bound_violations": 0,
+      "candidate_mismatches": 0,
+      "count": 24,
+      "fallback_rate": 1.0,
+      "false_accepts": 0,
+      "full_read_unresolved": 6845,
+      "gate_up_row_split_mismatches": 0,
+      "mode": "sound_metadata_bound",
+      "pages_p05": 192.0,
+      "pages_p50": 192.0,
+      "pages_p95": 192.0,
+      "whole_model_fraction_p05": 0.8125503813480498,
+      "whole_model_fraction_p50": 0.8125503813480498,
+      "whole_model_fraction_p95": 0.8125503813480498,
+      "whole_model_operation_fraction_p05": 0.9479754449060581,
+      "whole_model_operation_fraction_p50": 0.9479754449060581,
+      "whole_model_operation_fraction_p95": 0.9479754449060581
+    }
+  },
+  "authoritative_decision": "REJECT_PAGE_SEPARABLE_JOINT_EXACT_SWIGLU_REFINEMENT_AS_CORE",
+  "claim_boundary": {
+    "405b_execution": "NOT_TESTED",
+    "8gib_gpu": "NOT_TESTED",
+    "actual_checkpoint_activations": true,
+    "complete_layer": "NOT_TESTED",
+    "complete_real_mlp_replaced": false,
+    "exactness": "fail-closed; unresolved rows use unchanged native MLP",
+    "official_checkpoint_loaded": true,
+    "oracle_selector_deployable": false,
+    "physical_latency": "NOT_TESTED",
+    "sound_reference_deployable": true
+  },
+  "compile_wall_ns": 13946101,
+  "compiler_manifest": {
+    "exactness": {
+      "down_projection": "exact-real page contributions plus conservative FP32 accumulation envelope",
+      "gate_up_rows": "original reduction axis; page partitions only output rows",
+      "unresolved": "unchanged native MLP fallback; never silent approximation"
+    },
+    "fingerprint": "2dc61f2e01e55325cd9aa7dab9a14eb85bc61ed99003df8d44295d6a46bcce81",
+    "format": "joint-exact-swiglu-compiler-v1",
+    "hidden_size": 576,
+    "hot_metadata_bytes": 887808,
+    "intermediate_size": 1536,
+    "mechanism": "page_separable_fused_swiglu_exact_rounding_refinement",
+    "output_size": 576,
+    "p50_whole_model_fraction": 0.011851851851851851,
+    "p95_whole_model_fraction": 0.014814814814814815,
+    "page_channels": 8,
+    "page_count": 192,
+    "source_parameter_bytes": 5308416,
+    "target_mlp_parameter_share": 0.8125503813480498
+  },
+  "config_sha256": "08a9543d8e7399472a9fc85d18ac9a700c2c18ce11cea893a8e349bf2214660b",
+  "deterministic_core_sha256": "3197360387d4c9e458bab5dced9246e4b8ce059eb9182e682c3e04db4411c02e",
+  "evidence_level": "E1",
+  "experiment": "EXP-085A",
+  "gates": {
+    "integrity_passed": true,
+    "metadata_passed": false,
+    "oracle_passed": false,
+    "sound_passed": false
+  },
+  "load_wall_ns": 8986996842,
+  "measured_activation_count": 24,
+  "measured_case_count": 48,
+  "name": "joint_exact_swiglu_compiler_gate",
+  "phase": [
+    "A-structure",
+    "B-reference",
+    "C-small-real-checkpoint-observation"
+  ],
+  "projected": {
+    "p50_whole_model_fraction": 0.011851851851851851,
+    "p95_whole_model_fraction": 0.014814814814814815,
+    "target_hot_metadata_bytes": 109937737728,
+    "target_hot_metadata_gib": 102.38749694824219,
+    "target_mlp_parameter_share": 0.8125503813480498
+  },
+  "runtime": {
+    "python": "3.11.10",
+    "safetensors": "0.4.5",
+    "torch": "2.5.1+cpu",
+    "transformers": "4.46.3"
+  },
+  "source_sha": "1b773a3107f1815a54233fa5ae0fed24c5fd7f95",
+  "unverified": [
+    "CUDA lowering and physical page I/O",
+    "complete Transformer-layer replacement",
+    "128-step candidate successor-state equality",
+    "405B model execution",
+    "8 GiB peak VRAM",
+    "same-machine 4B p50/p95 target"
+  ]
+}

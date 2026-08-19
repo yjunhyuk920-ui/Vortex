@@ -1,0 +1,10 @@
+{
+  "artifact_id": 9362920446,
+  "artifact_name": "exp-085a-joint-exact-swiglu-1b773a3107f1815a54233fa5ae0fed24c5fd7f95",
+  "artifact_sha256": "d4361acd5f1e258117fc3886a2147c79c7b35251efa93ea5ad4140d5ec4cde5a",
+  "workflow_run_id": 32246784954,
+  "workflow_conclusion": "success",
+  "source_head_sha": "eaf9b9d016e9f652a14fa8bae90c355adaeb9e02",
+  "pull_request_merge_ref_sha": "1b773a3107f1815a54233fa5ae0fed24c5fd7f95",
+  "note": "The immutable Actions artifact contains raw/query_rows.jsonl, raw/trace_rows.json, compiler manifest, deterministic core, host inventory, run log, result, and checksums. This compact remote record preserves the authoritative decision and artifact digest without committing generated checkpoint traces twice."
+}
