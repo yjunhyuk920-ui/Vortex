@@ -1,16 +1,16 @@
 name: exp-085a-joint-exact-swiglu-compiler
 
 on:
-  push:
+  pull_request:
     branches:
-      - research/exp-085a-joint-exact-swiglu-compiler
+      - research/fixed-public-dynamic-executor
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: exp-085a-${{ github.ref }}
+  group: exp-085a-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 
 env:
@@ -20,9 +20,9 @@ env:
   MKL_NUM_THREADS: "2"
 
 jobs:
-  model-free-contract:
+  official-checkpoint-gate:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -42,51 +42,11 @@ jobs:
           PY
       - name: Exact compiler unit and fail-closed controls
         run: python -m pytest -q tests/test_joint_exact_swiglu_compiler.py
-      - name: Syntax and entrypoint smoke
+      - name: Verify frozen preregistration materializes without mutation of the remote branch
         run: |
-          python -m py_compile \
-            vortex_runtime/joint_exact_swiglu_compiler.py \
-            experiments/exp_085a/run_experiment.py \
-            experiments/exp_085a/update_ledgers.py
-          python experiments/exp_085a/run_experiment.py --help >/dev/null
-
-  preregister-canonical-ledgers:
-    if: ${{ !contains(github.event.head_commit.message, '[exp085a-registered]') && !contains(github.event.head_commit.message, '[exp085a-results]') }}
-    needs: model-free-contract
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-      - name: Append frozen Gate to canonical ledgers
-        run: python experiments/exp_085a/update_ledgers.py --mode preregister
-      - name: Commit preregistration before any checkpoint result
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add NEXT_EXPERIMENT.md RESEARCH_STATE.md ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md
-          if git diff --cached --quiet; then
-            echo "Preregistration already present"
-            exit 0
-          fi
-          git commit -m "research: preregister EXP-085A joint exact SwiGLU Gate [exp085a-registered]"
-          git push origin HEAD:${GITHUB_REF_NAME}
-
-  real-checkpoint-gate:
-    if: ${{ contains(github.event.head_commit.message, '[exp085a-registered]') && !contains(github.event.head_commit.message, '[exp085a-results]') }}
-    needs: model-free-contract
-    runs-on: ubuntu-24.04
-    timeout-minutes: 90
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11.10"
-          cache: pip
-      - name: Install pinned official HF runtime
-        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+          python experiments/exp_085a/update_ledgers.py --mode preregister
+          grep -q 'EXP085A_PREREGISTERED' NEXT_EXPERIMENT.md
+          git diff --check
       - name: Record host
         run: |
           mkdir -p results/exp_085a/${GITHUB_SHA}
@@ -97,7 +57,7 @@ jobs:
             df -B1 .
             python --version
           } | tee results/exp_085a/${GITHUB_SHA}/host.txt
-      - name: Official DEV-W causal activation and exact compiler Gate
+      - name: Official SmolLM2 causal activation and exact compiler Gate
         shell: bash
         run: |
           set -o pipefail
@@ -105,12 +65,7 @@ jobs:
             --config experiments/exp_085a/config.json \
             --output-dir results/exp_085a/${GITHUB_SHA} \
             2>&1 | tee results/exp_085a/${GITHUB_SHA}/run.log
-      - name: Update canonical ledgers from raw result
-        run: |
-          python experiments/exp_085a/update_ledgers.py \
-            --mode result \
-            --result results/exp_085a/${GITHUB_SHA}/result.json
-      - name: Upload raw evidence
+      - name: Upload immutable raw evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -118,22 +73,6 @@ jobs:
           path: results/exp_085a/${{ github.sha }}/
           if-no-files-found: warn
           retention-days: 90
-      - name: Commit authoritative result and ledgers
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            results/exp_085a/${GITHUB_SHA}/ \
-            docs/research/EXPERIMENT_085A_JOINT_EXACT_SWIGLU_COMPILER_GATE.md \
-            RESEARCH_STATE.md NEXT_EXPERIMENT.md DECISION_LOG.md \
-            ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md FAILED_APPROACHES_RECENT.md
-          if git diff --cached --quiet; then
-            echo "No result delta to commit"
-            exit 0
-          fi
-          git commit -m "research: record EXP-085A joint exact SwiGLU result [exp085a-results] [skip ci]"
-          git push origin HEAD:${GITHUB_REF_NAME}
       - name: Publish summary
         if: always()
         run: |
