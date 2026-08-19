@@ -1,0 +1,13 @@
+{
+  "schema": "fixed-public-dynamic-executor-workload-v1",
+  "frozen_before_results": true,
+  "decode_steps": 128,
+  "workloads": [
+    {"id":"general_conversation_greedy","category":"general_conversation","prompt":"User: Explain why the sky can look red at sunset in three concise paragraphs.\nAssistant:","mode":"greedy"},
+    {"id":"code_greedy","category":"code","prompt":"Write a Python function that performs stable topological sorting, detects a cycle, and includes two small tests. Return code only.\n","mode":"greedy"},
+    {"id":"long_context_greedy","category":"long_context","prompt_repeat":"alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu xi omicron pi rho sigma tau upsilon phi chi psi omega. ","repeat_count":96,"suffix":"\nSummarize the repeated structure without omitting the ordering.\n","mode":"greedy"},
+    {"id":"repeated_token_greedy","category":"repeated_token","prompt_repeat":"ha ","repeat_count":512,"suffix":"\nContinue the pattern, then explain it.\n","mode":"greedy"},
+    {"id":"high_entropy_sample_seed_20260817","category":"high_entropy_generation","prompt":"Invent a surprising but internally consistent fictional machine, mixing engineering terms, colors, places, and numbers. Avoid repeating phrases.\n","mode":"sample","seed":20260817,"temperature":1.0,"top_k":0,"top_p":1.0},
+    {"id":"adversarial_low_margin_greedy","category":"adversarial_low_logit_margin","selection_rule":"Evaluate the fixed candidate list with the pinned reference model and choose the candidate with the smallest first-step top1-minus-top2 logit margin; ties use list order.","candidates":["The answer is","A or B? I choose","Continue exactly one symbol: A B A B A","Complete the ambiguous sentence: The bank was","Choose a plausible next word without explanation: Although","One token answer: true or false? The statement may be","Finish: 1, 1, 2, 3, 5,","Respond with the first thing that comes to mind:"],"mode":"greedy"}
+  ]
+}
