@@ -1,0 +1,2 @@
+bundle_sha256=dfe145dc9ac72a733b7c4ce117cd9b1f2cbf315b9e62009072c7e3fb127fb5e3
+trigger=2
