@@ -106,7 +106,7 @@
   },
   "MEASURED": {
     "coordinates": 1024,
-    "locked_cordinates": 1,
+    "locked_coordinates": 1,
     "oracle_lock_fraction": 0.0009765625,
     "oracle_unlocked_fraction": 0.9990234375,
     "reference_words_and_selector_granted_free": true,
