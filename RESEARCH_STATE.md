@@ -1912,3 +1912,8 @@ Core Candidate survives.
 - `checkpoint_mlp_output_row_streamed_lossless_existing_isa`: G2=True, G3=True, G4=True; output-row-tile=128; artifact=4223092 B; reference-layer=7080192 B; compiled-layer-resident=1771776 B; peak-hot=393216 B; baseline p50/p95=113.832 ms/203.051 ms; candidate p50/p95=151.764 ms/241.453 ms.
 - Instruction/SASS counts are not synthesized: each mechanism reports its measured/not-measured status explicitly.
 - G5/G6 remain gated by TARGET-W measurements; DEV-W results are not extrapolated into a 405B performance claim.
+
+<!-- EXP085A_PREREGISTERED -->
+## EXP-085A preregistered constructive frontier
+
+EXP-085A changes the operation boundary from independent matrices or a linear session basis to a complete fused SwiGLU macrofunction. It is an exact fail-closed compiler reference, not an approximate channel selector. Official DEV-W execution and the scientific decision remain `NOT RUN` until hosted evidence is committed.

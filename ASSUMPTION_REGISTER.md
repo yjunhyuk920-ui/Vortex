@@ -1171,3 +1171,11 @@ timeout. Global mixed cells, native arithmetic, and joint batches stay open.
 - `checkpoint_mlp_output_row_streamed_lossless_existing_isa`: G2=True, G3=True, G4=True; output-row-tile=128; artifact=4223092 B; reference-layer=7080192 B; compiled-layer-resident=1771776 B; peak-hot=393216 B; baseline p50/p95=113.832 ms/203.051 ms; candidate p50/p95=151.764 ms/241.453 ms.
 - Instruction/SASS counts are not synthesized: each mechanism reports its measured/not-measured status explicitly.
 - G5/G6 remain gated by TARGET-W measurements; DEV-W results are not extrapolated into a 405B performance claim.
+
+<!-- EXP085A_PREREGISTERED -->
+## EXP-085A frozen assumptions
+
+- `A-085A-1`: additive intermediate macro-pages can expose enough exact BF16 rounding closure before nearly all pages are read. **UNVERIFIED**.
+- `A-085A-2`: an output-row/page bound table is small enough for the complete 405B 8-GiB ledger. **DERIVED BY THE GATE, NOT YET RUN**.
+- `A-085A-3`: output-row splitting preserves gate/up BF16 rows and the down FP32 accumulation envelope contains the official result. **TO BE CONTROL-TESTED**.
+- `A-085A-4`: oracle failure is sufficient to reject this page-separable fingerprint, but not every globally coupled nonlinear exact compiler. **FIXED SCOPE**.
