@@ -1258,3 +1258,18 @@ deterministic core SHA-256                   17478366c320c4f46ffa04a238a54e6fe4d
 The Gate grants ideal zero-order coding, reference-aided per-output-row down
 precision, free non-MLP traffic, and free selector/decompression/kernel costs.
 It is not a physical speed result.
+
+<!-- EXP087A_PREREGISTERED -->
+## EXP-087A preregistered validation
+
+| Requirement | Frozen check | Status before run |
+|---|---|---|
+| Official checkpoint | SmolLM2-135M pinned revision through `LlamaForCausalLM` | NOT TESTED |
+| Finite-word integrity | independent synthetic GF(2) quadratic replay | NOT TESTED |
+| Build language | four assigned populations 100% BF16 vector exact | NOT TESTED |
+| Unseen oracle | 96/96 held-out vectors exact; >=4 states/program | NOT TESTED |
+| Causal router | nearest-centroid held-out vectors exact | NOT TESTED |
+| Sidecar | projected <=4 GiB | DERIVED BY RUNNER |
+| Query work | favorable packed compiled-MLP fraction <=1.185185185% | DERIVED BY RUNNER |
+| Complete layer/state | actual replacement and successor state | NOT TESTED |
+| 405B/8 GiB/latency | Phase-D evidence | NOT TESTED |

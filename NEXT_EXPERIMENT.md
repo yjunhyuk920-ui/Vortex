@@ -1750,3 +1750,12 @@ The fixed global BF16 MSB-prefix information source is closed under its frozen
 favorable oracle. The next candidate must change the checkpoint information
 source: a cross-weight context model or nonlinear exact generator with fully
 charged residual code must first pass a no-forward construction Gate.
+
+<!-- EXP087A_PREREGISTERED -->
+## Active EXP-087A — Cross-Weight Quadratic BF16 Residual Generator Gate
+
+The active cheapest decisive Gate tests a checkpoint-static, non-affine finite-word language rather than another page, rank, or precision selector. Four programs receive only twelve current-input predicate bits and generate all 16 residual bits of every complete SwiGLU BF16 output word with a degree-two GF(2) program.
+
+Frozen public evidence is `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`, official eager BF16 `LlamaForCausalLM`, layer-0 complete MLP, 96 build states and 96 unseen causal evaluation states across six families. The favorable oracle may select among the four already compiled programs but may not use a state key, prefix table, dense MLP call, or fallback.
+
+Promotion requires 100% full-vector BF16 exactness on every held-out state, at least four held-out states per used program, projected sidecar no greater than 4 GiB, and favorable compiled-MLP work no greater than `1.185185185%`. Oracle failure permanently closes width/degree/program-count sweeps around this finite-context quadratic residual language.

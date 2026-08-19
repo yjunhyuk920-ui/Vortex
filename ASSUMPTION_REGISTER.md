@@ -1192,3 +1192,11 @@ timeout. Global mixed cells, native arithmetic, and joint batches stay open.
   random access, decode, metadata and kernel costs free. **NOT A RUNTIME**.
 - `A-086A-4`: rejection closes only the fixed significance-prefix source; a
   cross-weight context model or nonlinear exact generator is different.
+
+<!-- EXP087A_PREREGISTERED -->
+## EXP-087A frozen assumptions
+
+- `A-087A-1`: a complete SwiGLU BF16 word residual is a reusable degree-two Boolean function of twelve checkpoint-static input predicates on unseen causal states. **UNVERIFIED**.
+- `A-087A-2`: four non-state-keyed programs can cover every held-out state without dense fallback. **UNVERIFIED**.
+- `A-087A-3`: the target-shape packed residual sidecar fits below 4 GiB and its favorable packed-word query work is below the MLP target fraction. **DERIVED, NOT PHYSICAL**.
+- `A-087A-4`: failure of the target-seeing oracle rejects this exact finite-context quadratic fingerprint but not every non-polynomial or recurrent transition compiler. **FIXED SCOPE**.
