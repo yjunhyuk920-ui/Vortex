@@ -1,0 +1,164 @@
+name: exact-swiglu-global-compiler
+
+on:
+  push:
+    branches:
+      - research/exact-swiglu-global-compiler
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exact-swiglu-global-compiler-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONHASHSEED: "0"
+  TOKENIZERS_PARALLELISM: "false"
+  OMP_NUM_THREADS: "2"
+  MKL_NUM_THREADS: "2"
+
+jobs:
+  model-free-compiler-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned fixed-public runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Verify package pins
+        run: |
+          python - <<'PY'
+          import safetensors, torch, transformers
+          assert torch.__version__ == "2.5.1+cpu", torch.__version__
+          assert transformers.__version__ == "4.46.3", transformers.__version__
+          assert safetensors.__version__ == "0.4.5", safetensors.__version__
+          print(torch.__version__, transformers.__version__, safetensors.__version__)
+          PY
+      - name: Syntax and focused compiler tests
+        run: |
+          python -m py_compile \
+            vortex_runtime/exact_swiglu_program.py \
+            experiments/exact_swiglu_global_compiler/run_real_gate.py \
+            experiments/exact_swiglu_global_compiler/update_ledgers.py
+          python -m pytest -q tests/test_exact_swiglu_global_compiler.py
+      - name: Existing dynamic-executor regression
+        run: python -m pytest -q tests/test_fixed_public_dynamic_executor.py
+
+  actual-public-checkpoint-gate:
+    if: ${{ !contains(github.event.head_commit.message, '[global-compiler-results]') }}
+    needs: model-free-compiler-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned official Hugging Face runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Record host and runtime availability
+        run: |
+          mkdir -p results/exact_swiglu_global_compiler/${GITHUB_SHA}
+          {
+            uname -a
+            lscpu
+            free -b
+            df -B1 .
+            python --version
+            perf --version || true
+            cat /proc/sys/kernel/perf_event_paranoid || true
+          } | tee results/exact_swiglu_global_compiler/${GITHUB_SHA}/host.txt
+      - name: Official DEV-W whole-SwiGLU compile and 128-step state Gate
+        shell: bash
+        run: |
+          set -o pipefail
+          python experiments/exact_swiglu_global_compiler/run_real_gate.py \
+            --workload experiments/fixed_public_dynamic_executor/workload.json \
+            --output-dir results/exact_swiglu_global_compiler/${GITHUB_SHA} \
+            2>&1 | tee results/exact_swiglu_global_compiler/${GITHUB_SHA}/run.log
+      - name: Update canonical ledgers from raw result
+        run: |
+          python experiments/exact_swiglu_global_compiler/update_ledgers.py \
+            --result results/exact_swiglu_global_compiler/${GITHUB_SHA}/result.json
+      - name: Normalize an interrupted scaffold alias if present
+        run: |
+          if test -f vortex_runtime/exact_swiglu_global_compiler.py && grep -qx 'PLACEHOLDER' vortex_runtime/exact_swiglu_global_compiler.py; then
+            printf '%s\n' 'from .exact_swiglu_program import *  # noqa: F401,F403' > vortex_runtime/exact_swiglu_global_compiler.py
+          fi
+      - name: Verify deterministic result and ledger marker
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root = Path("results/exact_swiglu_global_compiler") / os.environ["GITHUB_SHA"]
+          result = json.loads((root / "result.json").read_text())
+          assert result["compiler"]["G2_exact_transition"] is True
+          assert result["compiler"]["G3_full_transformer_layer_boundary"] is True
+          assert result["compiler"]["G4_continuous_decode"] is True
+          marker = f"EXACT_SWIGLU_GLOBAL_COMPILER_RESULT:{os.environ['GITHUB_SHA']}"
+          assert marker in Path("RESEARCH_STATE.md").read_text()
+          digest = hashlib.sha256((root / "result.json").read_bytes()).hexdigest()
+          (root / "checksums.sha256").write_text(f"{digest}  result.json\n")
+          print(result["verdict"], result["highest_gate"], digest)
+          PY
+      - name: Upload raw result and compiler artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exact-swiglu-global-compiler-${{ github.sha }}
+          path: results/exact_swiglu_global_compiler/${{ github.sha }}/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit raw evidence and canonical research state
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            results/exact_swiglu_global_compiler/${GITHUB_SHA}/result.json \
+            results/exact_swiglu_global_compiler/${GITHUB_SHA}/host.txt \
+            results/exact_swiglu_global_compiler/${GITHUB_SHA}/run.log \
+            results/exact_swiglu_global_compiler/${GITHUB_SHA}/checksums.sha256 \
+            docs/research/EXACT_SWIGLU_GLOBAL_COMPILER_LATEST_RESULT.md \
+            docs/research/VORTEX_RESEARCH_HANDOFF.md \
+            RESEARCH_STATE.md NEXT_EXPERIMENT.md DECISION_LOG.md \
+            ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md ARCHITECTURE.md \
+            REPRODUCIBILITY.md FAILED_APPROACHES_RECENT.md
+          if test -f vortex_runtime/exact_swiglu_global_compiler.py; then
+            git add vortex_runtime/exact_swiglu_global_compiler.py
+          fi
+          if git diff --cached --quiet; then
+            echo "No evidence delta to commit"
+            exit 0
+          fi
+          git commit -m "research: record exact whole-SwiGLU compiler result [global-compiler-results] [skip ci]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+      - name: Publish Gate summary
+        if: always()
+        run: |
+          if test -f results/exact_swiglu_global_compiler/${GITHUB_SHA}/result.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          path = Path("results/exact_swiglu_global_compiler") / os.environ["GITHUB_SHA"] / "result.json"
+          result = json.loads(path.read_text())
+          compiler = result["compiler"]
+          print("## Exact Whole-SwiGLU global compiler")
+          print(f"- verdict: `{result['verdict']}`")
+          print(f"- highest gate: `{result['highest_gate']}`")
+          print(f"- ABI mode: `{compiler['selected_joint_affine_mode']}`")
+          print(f"- transitions: `{compiler['completed_transitions']}/{compiler['expected_transitions']}`")
+          print(f"- G5 physical saving: `{compiler['G5_physical_saving']}`")
+          print(f"- identity-CSE optimistic fraction: `{compiler['identity_cse_optimistic_coefficient_fraction']}`")
+          print(f"- Q4 fiber-tree fraction: `{compiler['q4_fiber_tree_certified_fraction']}`")
+          PY
+          fi
