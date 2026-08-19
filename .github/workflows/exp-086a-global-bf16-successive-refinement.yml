@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - research/exp-086a-global-bf16-successive-refinement
+  pull_request:
+    branches:
+      - research/exp-085a-joint-exact-swiglu-compiler
   workflow_dispatch:
 
 permissions:
@@ -52,7 +55,7 @@ jobs:
           git diff --check
 
   real-checkpoint-gate:
-    if: ${{ !contains(github.event.head_commit.message, '[exp086-results]') }}
+    if: ${{ github.event_name == 'pull_request' || !contains(github.event.head_commit.message, '[exp086-results]') }}
     needs: model-free-contract
     runs-on: ubuntu-24.04
     timeout-minutes: 90
@@ -85,6 +88,7 @@ jobs:
             --output-dir results/exp_086a/${GITHUB_SHA} \
             2>&1 | tee results/exp_086a/${GITHUB_SHA}/console.log
       - name: Materialize preregistration and update canonical ledgers
+        if: github.event_name != 'pull_request'
         run: |
           python experiments/exp_086a/update_ledgers.py --mode preregister
           python experiments/exp_086a/update_ledgers.py \
@@ -103,6 +107,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 90
       - name: Commit result and ledgers
+        if: github.event_name != 'pull_request'
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
