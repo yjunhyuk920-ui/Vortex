@@ -1096,3 +1096,16 @@ a rejection. Authority:
 - `checkpoint_mlp_torchinductor_existing_isa`: G2=False, G3=True, G4=False; artifact=169700 B; reference-layer=7080192 B; compiled-layer-resident=7080192 B; baseline p50/p95=102.057 ms/102.057 ms; candidate p50/p95=2268.660 ms/2268.660 ms.
 - Instruction/SASS counts are not synthesized: each mechanism reports its measured/not-measured status explicitly.
 - G5/G6 remain gated by TARGET-W measurements; DEV-W results are not extrapolated into a 405B performance claim.
+
+<!-- EXP086A_RESULT:376700afc276cb30b5eece61d3c1fb7e2e5b6ccd -->
+## EXP-086A result — `376700afc276cb30b5eece61d3c1fb7e2e5b6ccd`
+
+- Decision: `INVALID_CAUSAL_FUNCTIONAL_MICROPROGRAM_NUMERICAL_CONTROL_FAILURE`.
+- Evaluation oracle FP32 vector exact: `NOT_AVAILABLE`.
+- Evaluation router FP32 vector exact: `NOT_AVAILABLE`.
+- Oracle row exact p50: `NOT_AVAILABLE`.
+- Router row exact p50: `NOT_AVAILABLE`.
+- Projected target sidecar: `2.06103515625 GiB`.
+- Compiled MLP operation fraction: `0.00048828125`.
+- Whole-model fraction with only MLP replaced: `NOT_AVAILABLE`.
+- Complete Transformer layer, 405B, 8-GiB GPU, and physical p50/p95 remain `NOT TESTED`.
