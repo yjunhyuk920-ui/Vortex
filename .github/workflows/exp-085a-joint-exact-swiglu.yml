@@ -1,0 +1,124 @@
+name: exp-085a-joint-exact-swiglu
+
+on:
+  push:
+    branches:
+      - research/exp-085a-joint-exact-swiglu-compiler
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exp-085a-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONHASHSEED: "0"
+  TOKENIZERS_PARALLELISM: "false"
+  OMP_NUM_THREADS: "2"
+  MKL_NUM_THREADS: "2"
+
+jobs:
+  model-free-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned official runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Verify pins
+        run: |
+          python - <<'PY'
+          import safetensors, torch, transformers
+          assert torch.__version__ == "2.5.1+cpu", torch.__version__
+          assert transformers.__version__ == "4.46.3", transformers.__version__
+          assert safetensors.__version__ == "0.4.5", safetensors.__version__
+          PY
+      - name: Whole-SwiGLU compiler unit tests
+        run: python -m pytest -q tests/exp_085a
+      - name: Syntax and import checks
+        run: |
+          python -m py_compile \
+            vortex_runtime/joint_exact_swiglu_compiler.py \
+            experiments/exp_085a/run_experiment.py \
+            experiments/exp_085a/update_ledgers.py
+
+  real-checkpoint-gate:
+    if: ${{ !contains(github.event.head_commit.message, '[exp085-results]') }}
+    needs: model-free-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned official runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Execute public-checkpoint favorable-oracle Gate
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p results/exp_085a/${GITHUB_SHA}
+          python experiments/exp_085a/run_experiment.py \
+            --config experiments/exp_085a/config.json \
+            --output-dir results/exp_085a/${GITHUB_SHA} \
+            2>&1 | tee results/exp_085a/${GITHUB_SHA}/console.log
+      - name: Update canonical research ledgers
+        run: |
+          python experiments/exp_085a/update_ledgers.py \
+            --result results/exp_085a/${GITHUB_SHA}/result.json
+      - name: Add checksums
+        run: |
+          cd results/exp_085a/${GITHUB_SHA}
+          sha256sum result.json run.log console.log > checksums.sha256
+      - name: Upload raw evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-085a-${{ github.sha }}
+          path: results/exp_085a/${{ github.sha }}/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit result and ledgers
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            results/exp_085a/${GITHUB_SHA}/ \
+            docs/research/EXP_085A_LATEST_RESULT.md \
+            RESEARCH_STATE.md NEXT_EXPERIMENT.md DECISION_LOG.md \
+            FAILED_APPROACHES_RECENT.md ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md
+          if git diff --cached --quiet; then
+            echo "No result delta"
+            exit 0
+          fi
+          git commit -m "research: record EXP-085A whole-SwiGLU compiler Gate [exp085-results] [skip ci]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+      - name: Publish summary
+        if: always()
+        run: |
+          if test -f results/exp_085a/${GITHUB_SHA}/result.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          result = json.loads((Path("results/exp_085a") / os.environ["GITHUB_SHA"] / "result.json").read_text())
+          print("## EXP-085A Whole-SwiGLU nonlinear compiler")
+          print(f"- decision: `{result['authoritative_decision']}`")
+          measured = result.get("MEASURED", {})
+          derived = result.get("DERIVED", {})
+          print(f"- vector exact: `{measured.get('evaluation_vector_exact_fraction', 'NOT_RUN')}`")
+          print(f"- exact-prefix p50: `{measured.get('exact_prefix_p50', 'NOT_RUN')}`")
+          print(f"- target online operation fraction: `{derived.get('target_online_operation_fraction_worst', 'NOT_RUN')}`")
+          print(f"- minimum amortization tokens: `{derived.get('minimum_amortization_tokens_worst', 'NOT_RUN')}`")
+          PY
+          fi
