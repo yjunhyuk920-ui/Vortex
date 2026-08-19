@@ -1,4 +1,5 @@
 import copy
+import json
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -8,6 +9,7 @@ from torch import nn
 
 from vortex_runtime import fixed_public_dynamic_executor as f
 from vortex_runtime.fixed_public_dynamic_audit import audit_checkpoint_layer
+from vortex_runtime.fixed_public_dynamic_streaming import compile_checkpoint_row_streamed
 
 
 class FakeConfig:
@@ -37,9 +39,18 @@ class FakeAttention(nn.Module):
         super().__init__()
         self.proj = nn.Linear(8, 8, bias=False)
 
-    def forward(self, hidden_states, attention_mask=None, position_ids=None, past_key_value=None,
-                output_attentions=False, use_cache=False, cache_position=None,
-                position_embeddings=None, **kwargs):
+    def forward(
+        self,
+        hidden_states,
+        attention_mask=None,
+        position_ids=None,
+        past_key_value=None,
+        output_attentions=False,
+        use_cache=False,
+        cache_position=None,
+        position_embeddings=None,
+        **kwargs,
+    ):
         return self.proj(hidden_states), None, past_key_value
 
 
@@ -53,15 +64,31 @@ class FakeLayer(nn.Module):
         self.post_attention_layernorm = nn.LayerNorm(8)
         self.mlp = FakeMLP()
 
-    def forward(self, hidden_states, attention_mask=None, position_ids=None, past_key_value=None,
-                output_attentions=False, use_cache=False, cache_position=None,
-                position_embeddings=None, **kwargs):
+    def forward(
+        self,
+        hidden_states,
+        attention_mask=None,
+        position_ids=None,
+        past_key_value=None,
+        output_attentions=False,
+        use_cache=False,
+        cache_position=None,
+        position_embeddings=None,
+        **kwargs,
+    ):
         residual = hidden_states
         hidden_states = self.input_layernorm(hidden_states)
         hidden_states, attn, present = self.self_attn(
-            hidden_states=hidden_states, attention_mask=attention_mask, position_ids=position_ids,
-            past_key_value=past_key_value, output_attentions=output_attentions, use_cache=use_cache,
-            cache_position=cache_position, position_embeddings=position_embeddings, **kwargs)
+            hidden_states=hidden_states,
+            attention_mask=attention_mask,
+            position_ids=position_ids,
+            past_key_value=past_key_value,
+            output_attentions=output_attentions,
+            use_cache=use_cache,
+            cache_position=cache_position,
+            position_embeddings=position_embeddings,
+            **kwargs,
+        )
         hidden_states = residual + hidden_states
         residual = hidden_states
         hidden_states = self.post_attention_layernorm(hidden_states)
@@ -139,6 +166,45 @@ def test_dynamic_executor_128_steps_and_successor_state_exact(tmp_path):
         token = ref_token
 
 
+def test_row_streamed_full_layer_exact_and_peak_hot_bounded(tmp_path):
+    reference = seeded_model()
+    candidate = copy.deepcopy(reference)
+    x = torch.randn(1, 3, 8)
+    expected = reference.model.layers[0](x, use_cache=False)[0]
+    artifact = compile_checkpoint_row_streamed(candidate, artifact_dir=tmp_path, layer_index=0, output_tile_rows=4)
+    actual = candidate.model.layers[0](x, use_cache=False)[0]
+    assert torch.equal(actual, expected)
+    assert artifact.mechanism == "checkpoint_mlp_output_row_streamed_lossless_existing_isa"
+    assert artifact.replaced_layer_reference_parameter_bytes > artifact.compiled_layer_resident_parameter_bytes
+    records = artifact.runtime_layer.mlp.records
+    assert len(records) == 10
+    assert max(record.raw_bytes for record in records.values()) <= 4 * 16 * 4
+    manifest = json.loads(Path(artifact.manifest_path).read_text())
+    assert manifest["streaming"]["axis"] == "output_rows"
+    assert manifest["streaming"]["output_tile_rows"] == 4
+    assert manifest["streaming"]["reduction_axis_partitioned"] is False
+
+
+def test_row_streamed_dynamic_executor_128_steps_and_successor_state_exact(tmp_path):
+    reference = seeded_model()
+    candidate = copy.deepcopy(reference)
+    ref_artifact = f.make_reference_artifact(reference)
+    cand_artifact = compile_checkpoint_row_streamed(candidate, artifact_dir=tmp_path, layer_index=0, output_tile_rows=4)
+    prefix = torch.tensor([[1, 2, 3]])
+    ref_state = f.initialize_state(ref_artifact, prefix)
+    cand_state = f.initialize_state(cand_artifact, prefix)
+    token = 4
+    for _ in range(128):
+        ref_token, ref_state, _ = f.decode_step(ref_artifact, ref_state, token)
+        cand_token, cand_state, trace = f.decode_step(cand_artifact, cand_state, token)
+        assert cand_token == ref_token
+        assert f.states_exact(cand_state, ref_state)
+        assert trace.projection_calls == 10
+        assert trace.integrity_probes == 20
+        assert trace.hot_materialized_bytes > trace.peak_vram_bytes if trace.peak_vram_bytes is not None else True
+        token = ref_token
+
+
 def test_sampling_rng_state_is_part_of_successor_state(tmp_path):
     reference = seeded_model()
     candidate = copy.deepcopy(reference)
@@ -169,6 +235,19 @@ def test_corrupted_artifact_fails_closed(tmp_path):
         artifact.runtime_layer.mlp(torch.randn(1, 1, 8))
 
 
+def test_corrupted_row_streamed_artifact_fails_closed(tmp_path):
+    candidate = seeded_model()
+    artifact = compile_checkpoint_row_streamed(candidate, artifact_dir=tmp_path, layer_index=0, output_tile_rows=4)
+    first_key = sorted(artifact.runtime_layer.mlp.records)[0]
+    record = artifact.runtime_layer.mlp.records[first_key]
+    path = Path(artifact.artifact_dir) / record.relative_path
+    payload = bytearray(path.read_bytes())
+    payload[0] ^= 0x01
+    path.write_bytes(payload)
+    with pytest.raises(f.ArtifactIntegrityError):
+        artifact.runtime_layer.mlp(torch.randn(1, 1, 8))
+
+
 def test_actual_audit_schema_and_conservative_physical_gate():
     model = seeded_model()
     audit = audit_checkpoint_layer(model.model.layers[0], layer_index=0)
@@ -188,3 +267,19 @@ def test_actual_audit_schema_and_conservative_physical_gate():
         peak_projection_hot_bytes=300,
     )
     assert gate["passed"] is False
+
+
+def test_physical_gate_accepts_accounted_row_stream_footprint_saving():
+    gate = f.physical_gate(
+        baseline_p50_ns=100,
+        baseline_p95_ns=150,
+        candidate_p50_ns=200,
+        candidate_p95_ns=300,
+        reference_layer_parameter_bytes=7080192,
+        artifact_bytes=4208296,
+        candidate_layer_resident_parameter_bytes=1771776,
+        peak_projection_hot_bytes=393216,
+    )
+    assert gate["passed"] is True
+    assert gate["footprint_saved"] is True
+    assert gate["latency_saved_p50_and_p95"] is False
