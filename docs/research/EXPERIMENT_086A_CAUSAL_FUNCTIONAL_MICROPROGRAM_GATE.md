@@ -116,3 +116,9 @@ Oracle rejection closes this affine functional-program language at the frozen re
 ## Claim boundary
 
 Even a pass is E1 small-checkpoint evidence. It does not establish a complete MLP replacement, attention compilation, successor-state equality, 405B execution, 8-GiB residency, CUDA, storage/H2D behavior, or 4B-class latency.
+
+## Pre-scientific numerical-control correction
+
+The first hosted attempt used the frozen rank-32 candidate itself as the build interpolation integrity control. The largest frozen cluster contained 66 states, so rank 32 was not expected to interpolate those arbitrary paired outputs. That attempt was correctly preserved as invalid, but it did not classify the mechanism.
+
+The corrected runner preserves every scientific choice—checkpoint, prompts, causal positions, four clusters, rank-32 FP32 candidate, resource thresholds, oracle, router, and stop rule. It adds a separate full-empirical-rank FP64 library over the **same deterministic partition** solely to verify SVD fitting, routing, and BF16 round-trip semantics. Only this control decides numerical validity; the original rank-32 candidate still decides the oracle and router science Gates.

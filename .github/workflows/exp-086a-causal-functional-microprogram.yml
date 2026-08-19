@@ -43,7 +43,7 @@ jobs:
           assert safetensors.__version__ == "0.4.5", safetensors.__version__
           PY
       - name: Functional microprogram tests
-        run: python -m pytest -q tests/exp_086a tests/exp_085a/test_joint_exact_swiglu_compiler.py
+        run: python -m pytest -q tests/exp_086a tests/test_joint_exact_swiglu_compiler.py
       - name: Syntax checks
         run: |
           python -m py_compile \

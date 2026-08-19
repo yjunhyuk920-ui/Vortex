@@ -18,14 +18,14 @@ def test_cluster_deterministic():
 
 
 def test_library_deterministic_and_mutation_sensitive():
-    x,y=pairs(); l,a=fit_library(x,y,3,6); l2,a2=fit_library(x,y,3,6)
+    x,y=pairs(); l,a,_=fit_library(x,y,3,6); l2,a2,_=fit_library(x,y,3,6)
     assert l.fingerprint==l2.fingerprint and torch.equal(a,a2)
     z=copy.deepcopy(y); z[0,0]=torch.nextafter(z[0,0],torch.tensor(float('inf'),dtype=torch.bfloat16))
     assert fit_library(x,z,3,6)[0].fingerprint!=l.fingerprint
 
 
 def test_queries_and_fail_closed():
-    x,y=pairs(); lib,_=fit_library(x,y,3,6)
+    x,y=pairs(); lib,_,_=fit_library(x,y,3,6)
     for oracle in (True,False):
         q=lib.query(x,y,'fp64' if oracle else 'fp32',oracle)
         assert q['candidate'].shape==y.shape and sum(q['use_counts'])==x.shape[0]
@@ -38,3 +38,14 @@ def test_reports_and_resources():
     assert residual_diagnostics(r,c)['unique_residual_vector_fraction']==1.0
     t=target_resources(4,32); assert t['sidecar_gib']<4 and t['compiled_mlp_operation_fraction']<.01
     assert t['whole_model_fraction_if_only_mlp_replaced']>.1
+
+
+def test_full_rank_control_is_separate_from_low_rank_candidate():
+    torch.manual_seed(17)
+    x = torch.randn(20, 24, dtype=torch.bfloat16)
+    y = torch.randn(20, 7, dtype=torch.bfloat16)
+    candidate, assignments, centroids = fit_library(x, y, 2, 3)
+    from vortex_runtime.functional_microprogram_compiler import fit_library_from_partition
+    control = fit_library_from_partition(x, y, assignments, centroids, 20)
+    assert control.query(x, y, 'fp64', False)['report']['vector_exact_fraction'] == 1.0
+    assert candidate.query(x, y, 'fp64', False)['report']['vector_exact_fraction'] < 1.0
