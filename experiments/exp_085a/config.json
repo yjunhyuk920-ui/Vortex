@@ -1,0 +1,67 @@
+{
+  "schema": "exp-085a-joint-exact-swiglu-compiler-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "dtype": "bfloat16",
+  "attention_implementation": "eager",
+  "layer_index": 0,
+  "page_channels": 8,
+  "decode_positions_per_prompt": 4,
+  "target_total_parameters": 405849243648,
+  "target_one_mlp_projection_parameters": 109924319232,
+  "p50_whole_model_fraction": 0.011851851851851851,
+  "p95_whole_model_fraction": 0.014814814814814815,
+  "target_hot_metadata_limit_bytes": 8589934592,
+  "mechanism_fingerprint": "page_separable_fused_swiglu_exact_rounding_refinement",
+  "success": {
+    "false_accepts": 0,
+    "candidate_mismatches": 0,
+    "gate_up_row_split_mismatches": 0,
+    "bound_violations": 0,
+    "oracle_fallback_rate": 0.0,
+    "sound_fallback_rate": 0.0,
+    "oracle_whole_model_fraction_p50_max": 0.011851851851851851,
+    "oracle_whole_model_fraction_p95_max": 0.014814814814814815,
+    "sound_whole_model_fraction_p50_max": 0.011851851851851851,
+    "sound_whole_model_fraction_p95_max": 0.014814814814814815,
+    "projected_target_hot_metadata_bytes_max": 8589934592,
+    "oracle_whole_model_operation_fraction_p50_max": 0.011851851851851851,
+    "oracle_whole_model_operation_fraction_p95_max": 0.014814814814814815,
+    "sound_whole_model_operation_fraction_p50_max": 0.011851851851851851,
+    "sound_whole_model_operation_fraction_p95_max": 0.014814814814814815
+  },
+  "stop_rule": "On any population-level resource failure, reject this exact page-separable additive macrofunction compiler. Do not tune page width, prompts, layer, tolerance, or BF16 margin after results. Reopening requires cross-page nonlinear information sharing, not another page scheduler.",
+  "prompts": [
+    {
+      "id": "english_explanation",
+      "family": "english",
+      "prompt": "Explain why the sky can look red at sunset in three concise paragraphs.\n"
+    },
+    {
+      "id": "korean_reasoning",
+      "family": "korean",
+      "prompt": "다음 문제를 단계별로 설명해줘. 17개의 사과를 5명이 최대한 공평하게 나누면 어떻게 되는가?\n"
+    },
+    {
+      "id": "code_generation",
+      "family": "code",
+      "prompt": "Write a Python function for stable topological sorting with cycle detection. Return code only.\n"
+    },
+    {
+      "id": "structured_json",
+      "family": "structured_json",
+      "prompt": "Return JSON with keys name, version, enabled, and tags for a fictional compiler.\n"
+    },
+    {
+      "id": "mathematics",
+      "family": "math",
+      "prompt": "Compute the derivative of x^3 sin(x) and simplify the result.\n"
+    },
+    {
+      "id": "repeated_pattern",
+      "family": "repeated_token",
+      "prompt": "A B A B A B A B A B A B. Continue the pattern and explain it briefly.\n"
+    }
+  ]
+}

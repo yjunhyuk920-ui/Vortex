@@ -1716,3 +1716,10 @@ Use the committed actual-checkpoint tensor audit and physical ledger to modify o
 - `checkpoint_mlp_output_row_streamed_lossless_existing_isa`: G2=True, G3=True, G4=True; output-row-tile=128; artifact=4223092 B; reference-layer=7080192 B; compiled-layer-resident=1771776 B; peak-hot=393216 B; baseline p50/p95=113.832 ms/203.051 ms; candidate p50/p95=151.764 ms/241.453 ms.
 - Instruction/SASS counts are not synthesized: each mechanism reports its measured/not-measured status explicitly.
 - G5/G6 remain gated by TARGET-W measurements; DEV-W results are not extrapolated into a 405B performance claim.
+
+<!-- EXP085A_PREREGISTERED -->
+## Active EXP-085A — Joint Exact SwiGLU Compiler Gate
+
+The active cheapest decisive Gate compiles one actual public BF16 SwiGLU MLP as a sum of fused nonlinear macro-pages crossing gate, SiLU, multiplication, and down projection. It tests an impossible favorable oracle selector and a sound metadata selector on 24 real causal activations from `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`.
+
+The frozen pass requires zero false accept/fallback, p50/p95 whole-model-equivalent fractions at or below `1.185185%/1.481481%`, and a projected complete metadata ledger within 8 GiB. The contract is `docs/research/EXPERIMENT_085A_JOINT_EXACT_SWIGLU_COMPILER_GATE.md`. No backend or complete-layer work is authorized before this Gate survives.
