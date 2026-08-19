@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - research/exp-085a-joint-exact-swiglu-compiler
+  pull_request:
+    branches:
+      - research/fixed-public-dynamic-executor
   workflow_dispatch:
 
 permissions:
@@ -11,11 +14,13 @@ permissions:
 
 jobs:
   install-source:
-    if: ${{ contains(github.event.head_commit.message, '[exp085a-bootstrap]') }}
+    if: ${{ github.event_name == 'pull_request' || contains(github.event.head_commit.message, '[exp085a-bootstrap]') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
       - name: Materialize reviewed EXP-085A source bundle
         shell: bash
         run: |
@@ -25,6 +30,7 @@ jobs:
           echo "dfe145dc9ac72a733b7c4ce117cd9b1f2cbf315b9e62009072c7e3fb127fb5e3  /tmp/exp085a_bundle.tar.gz" | sha256sum -c -
           tar -xzf /tmp/exp085a_bundle.tar.gz
           rm .scratch/exp085a_bundle_*.b64
+          rm -f .scratch/exp085a_bootstrap_trigger.txt
           rm .github/workflows/exp-085a-source-bootstrap.yml
       - name: Commit EXP-085A compiler, Gate, tests, and hosted runner
         run: |
@@ -33,4 +39,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "research: implement EXP-085A joint exact SwiGLU compiler Gate [exp085a-source]"
-          git push origin HEAD:${GITHUB_REF_NAME}
+          git push origin HEAD:${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}
