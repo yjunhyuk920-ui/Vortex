@@ -1,0 +1,20 @@
+{
+  "schema": "exp-088a-cross-layer-template-code-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "dtype": "bfloat16",
+  "attention_implementation": "eager",
+  "layer_selection_rule": "all_decoder_layers",
+  "template_groups": 4,
+  "seed": 20260820,
+  "torch_num_threads": 2,
+  "mechanism_fingerprint": "sublinear_cross_layer_template_and_exact_recurrence_residual_code",
+  "success": {
+    "total_information_fraction_max": 0.20,
+    "effective_layer_fraction_p50_max": 0.20,
+    "effective_layer_fraction_p95_max": 0.25
+  },
+  "stop_rule": "Reject when even the role-wise oracle over the frozen first/second-order XOR and modular recurrences plus one/four-template generators exceeds any information threshold. Do not sweep template count, layer grouping, recurrence order, residual operator, dtype, or thresholds after results. Reopening requires a generator whose program size is sublinear in both layer count and matrix area, or a causal execution dependency that avoids reconstructing exact weights.",
+  "claim_boundary": "This no-forward Gate tests exact checkpoint description length across all MLP layers. Dense arithmetic, complete operation replacement, successor state, CUDA, 405B, 8 GiB, and physical latency remain NOT TESTED."
+}
