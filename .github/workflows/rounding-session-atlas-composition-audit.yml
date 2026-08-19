@@ -1,0 +1,45 @@
+name: Rounding Session Atlas Composition Audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "vortex_runtime/rounding_session_atlas_composition.py"
+      - "scripts/derive_rounding_session_atlas_composition_audit.py"
+      - "tests/test_rounding_session_atlas_composition.py"
+      - "docs/research/E0_ROUNDING_SESSION_ATLAS_COMPOSITION_AUDIT.md"
+      - "results/e0_rounding_session_atlas_composition_audit/**"
+      - ".github/workflows/rounding-session-atlas-composition-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned test dependency
+        run: python -m pip install pytest==8.3.5
+      - name: Compile and run focused tests
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m compileall -q vortex_runtime/rounding_session_atlas_composition.py scripts/derive_rounding_session_atlas_composition_audit.py
+          python -m pytest -q tests/test_rounding_session_atlas_composition.py
+      - name: Regenerate and compare deterministic evidence
+        env:
+          PYTHONPATH: .
+        run: |
+          rm -rf /tmp/rounding-session-atlas-audit
+          python scripts/derive_rounding_session_atlas_composition_audit.py --output-dir /tmp/rounding-session-atlas-audit
+          diff -ru results/e0_rounding_session_atlas_composition_audit /tmp/rounding-session-atlas-audit
+      - name: Upload regenerated audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: rounding-session-atlas-composition-audit
+          path: /tmp/rounding-session-atlas-audit
