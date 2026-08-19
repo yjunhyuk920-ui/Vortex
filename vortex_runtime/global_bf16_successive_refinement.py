@@ -37,6 +37,13 @@ def _require_bf16(tensor: torch.Tensor, *, name: str) -> torch.Tensor:
     return tensor
 
 
+def _unsigned_bf16_words(tensor: torch.Tensor) -> torch.Tensor:
+    """Return BF16 words as int32 in [0, 65535] on CPU/GPU-supported integer ops."""
+    tensor = _require_bf16(tensor, name="tensor")
+    signed = tensor.view(torch.int16).to(torch.int32)
+    return torch.bitwise_and(signed, 0xFFFF)
+
+
 def bf16_prefix(tensor: torch.Tensor, mantissa_bits: int) -> torch.Tensor:
     """Keep sign, exponent and the requested most-significant mantissa bits."""
     tensor = _require_bf16(tensor, name="tensor")
@@ -47,9 +54,8 @@ def bf16_prefix(tensor: torch.Tensor, mantissa_bits: int) -> torch.Tensor:
         )
     low_bits = BF16_MANTISSA_BITS - keep
     mask = 0xFFFF ^ ((1 << low_bits) - 1) if low_bits else 0xFFFF
-    bit_view = tensor.view(torch.uint16)
-    mask_tensor = torch.tensor(mask, dtype=torch.uint16, device=bit_view.device)
-    return (bit_view & mask_tensor).view(torch.bfloat16)
+    masked = torch.bitwise_and(_unsigned_bf16_words(tensor), mask)
+    return masked.to(torch.int16).view(torch.bfloat16)
 
 
 def tensor_sha256(tensor: torch.Tensor) -> str:
@@ -60,7 +66,7 @@ def tensor_sha256(tensor: torch.Tensor) -> str:
 def symbol_entropy_bits(tensor: torch.Tensor, mantissa_bits: int) -> float:
     """Zero-order empirical entropy of BF16 prefix symbols in bits/symbol."""
     prefix = bf16_prefix(tensor.detach().contiguous().cpu(), mantissa_bits)
-    symbols = prefix.view(torch.uint16).reshape(-1).to(torch.int64)
+    symbols = _unsigned_bf16_words(prefix).reshape(-1).to(torch.int64)
     counts = torch.bincount(symbols, minlength=1 << 16)
     nonzero = counts[counts > 0].to(torch.float64)
     probabilities = nonzero / nonzero.sum()
@@ -74,7 +80,7 @@ def row_symbol_entropy_bits(tensor: torch.Tensor, mantissa_bits: int) -> torch.T
     prefix = bf16_prefix(tensor.detach().contiguous().cpu(), mantissa_bits)
     result = torch.empty(prefix.shape[0], dtype=torch.float64)
     for row_index, row in enumerate(prefix):
-        symbols = row.contiguous().view(torch.uint16).to(torch.int64)
+        symbols = _unsigned_bf16_words(row.contiguous()).to(torch.int64)
         _, counts = torch.unique(symbols, return_counts=True)
         probabilities = counts.to(torch.float64) / float(symbols.numel())
         result[row_index] = (-(probabilities * torch.log2(probabilities))).sum()
@@ -282,7 +288,7 @@ class CompiledGlobalBF16Refinement:
     def _bitwise_row_equal(left: torch.Tensor, right: torch.Tensor) -> torch.Tensor:
         if left.shape != right.shape or left.dtype != torch.bfloat16 or right.dtype != torch.bfloat16:
             raise SuccessiveRefinementError("bitwise comparison ABI mismatch")
-        return left.view(torch.uint16) == right.view(torch.uint16)
+        return left.view(torch.int16) == right.view(torch.int16)
 
     def _reference(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         gate = F.linear(x, self.gate_weight)
@@ -429,7 +435,7 @@ class CompiledGlobalBF16Refinement:
             "activation_count": batch,
             "full_precision_control_passed": bool(full_control.all()),
             "prefix_identity_weight_mismatches": {
-                name: int(torch.count_nonzero(self._prefix_weights[(name, 7)].view(torch.uint16) != weight.view(torch.uint16)))
+                name: int(torch.count_nonzero(self._prefix_weights[(name, 7)].view(torch.int16) != weight.view(torch.int16)))
                 for name, weight in (("gate", self.gate_weight), ("up", self.up_weight), ("down", self.down_weight))
             },
         }
