@@ -186,7 +186,7 @@ def model_free_controls() -> dict[str, Any]:
         maximum_limit=16,
     )
     negative = static_topk_gate(
-        [1] * 120 + [17] * 8,
+        [1] * 122 + [17] * 6,
         p95_limit=4,
         maximum_limit=16,
     )
@@ -199,6 +199,8 @@ def model_free_controls() -> dict[str, Any]:
             strict_passed,
             positive["passed"],
             not negative["passed"],
+            negative["p95_passed"],
+            not negative["maximum_passed"],
             candidate_bytes == 4096,
         ]
     )
