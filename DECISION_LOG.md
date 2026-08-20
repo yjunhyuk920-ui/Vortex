@@ -1735,3 +1735,11 @@ The compiler selected `raw_q4` from the frozen build population. Untouched holdo
 
 The frozen build compiler selected `prompt_suffix_cycle_16`. Untouched first-sweep exact releases were `[0, 0, 0]` against required values `85` without compression and `67` under the favorable lossless ratio. Best releases over eight sweeps were `[7, 7, 9]`. Exact target arithmetic remained one full 128-position checkpoint evaluation per sweep.
 <!-- EXP-091A:END -->
+
+<!-- EXP-092A:START -->
+## EXP-092A decision
+
+`INVALID_BLOCK_SPAN_CORRECTION_CONTROL_FAILURE`
+
+The frozen Gate granted the complete 128-row guessed input block as an arbitrary projection basis, then measured the certified rank increment required by the exact teacher-forced block on first/middle/last complete layers. Holdout p50/p95/max lower bounds were `64.0/64.0/64` against a budget of `8`.
+<!-- EXP-092A:END -->

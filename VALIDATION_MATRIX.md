@@ -1317,3 +1317,15 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 | Two or more sweeps | logical traffic <=1.185185185% | `FAIL by frozen equation` | DERIVED |
 | Physical 405B block executor | full state/bytes/MACs/p50/p95 | `NOT TESTED` | — |
 <!-- EXP-091A:END -->
+
+<!-- EXP-092A:START -->
+## EXP-092A validation row
+
+| Boundary | Contract | Result | Evidence |
+|---|---|---|---|
+| Guessed block ordering | capture completes before AR target | `False` | MEASURED |
+| Teacher-forced block | 128-token delayed AR equality | `False` | MEASURED |
+| Block-span correction | every holdout rank increment <= `8` | p95 `64.0`, max `64` | E2/E3 lower-bound Gate |
+| Causal coefficients/native equality | all layers, no target oracle | `NOT TESTED` | — |
+| 405B / 8-GiB / 4B-class p50/p95 | complete target contract | `NOT TESTED` | — |
+<!-- EXP-092A:END -->

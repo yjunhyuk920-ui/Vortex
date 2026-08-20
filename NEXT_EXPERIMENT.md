@@ -1800,3 +1800,13 @@ Do not sweep seeds, n-gram order, cycle width, block length, iteration count, pr
 
 Later Jacobi iterations are diagnostic only: at K=128, two complete checkpoint sweeps already exceed the registered traffic fraction even under the favorable compression ratio.
 <!-- EXP-091A:END -->
+
+<!-- EXP-092A:START -->
+## Post EXP-092A handoff
+
+Current decision: `INVALID_BLOCK_SPAN_CORRECTION_CONTROL_FAILURE`.
+
+Compute full-coordinate exact ranks, synthesize one build-derived static basis, freeze it before holdout, construct causal coefficients from corrected activations, and verify native projection bytes on all DEV-W layers.
+
+Do not treat the oracle true block, coefficients, or basis discovery as deployable inputs. TARGET-W and physical latency remain `NOT TESTED`.
+<!-- EXP-092A:END -->

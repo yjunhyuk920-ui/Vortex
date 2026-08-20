@@ -1264,3 +1264,9 @@ The suffix-action object is an auxiliary causal draft component unless the autho
 
 A Jacobi block may commit only the prefix where input guesses equal unchanged-target proposals consecutively from position one. The official block cache is valid for exactly that prefix. Architecture promotion without compression=`False`; conditional compressed promotion=`False`. Later sweeps are not admitted into the final core at K=128 because their checkpoint traffic exceeds the target.
 <!-- EXP-091A:END -->
+
+<!-- EXP-092A:START -->
+## EXP-092A architecture status
+
+The block-span object is an oracle correction feasibility test, not a runtime component. It may enter the architecture only after a surviving lower-bound result is followed by a build-frozen basis, causal exact coefficient solver, all-layer native-byte equality, and complete online resource trace. Architecture promotion: `True`.
+<!-- EXP-092A:END -->
