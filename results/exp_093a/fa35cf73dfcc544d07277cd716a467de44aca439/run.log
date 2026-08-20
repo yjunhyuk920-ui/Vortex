@@ -1,0 +1,14 @@
+build build_english: rank p50/p95/max=231.0/20391.899999999998/41425 top16=25.781250%
+build build_korean: rank p50/p95/max=38.5/31206.04999999999/43083 top16=35.156250%
+build build_code: rank p50/p95/max=718.5/12504.89999999999/30701 top16=10.156250%
+holdout holdout_math: rank p50/p95/max=206.0/6295.149999999997/17115 top16=30.468750%
+holdout holdout_structured: rank p50/p95/max=1216.5/28440.299999999992/42864 top16=4.687500%
+holdout holdout_repeated: rank p50/p95/max=2012.0/10619.999999999995/15604 top16=2.343750%
+{
+  "authoritative_decision": "REJECT_ONE_SWEEP_STATIC_TOPK_BRANCH_SOURCE_AS_405B_CORE",
+  "holdout_rank_max": 42864,
+  "holdout_rank_p50": 1152.0,
+  "holdout_rank_p95": 16703.899999999954,
+  "holdout_top16_fraction": 0.125,
+  "promotion_gate_passed": false
+}

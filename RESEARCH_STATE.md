@@ -2030,3 +2030,19 @@ Every released prefix was checked against the delayed official AR continuation, 
 
 Guessed captures precede target generation. The exact incremental AR block is an oracle control only. Rank is computed on exact BF16 dyadic integers over three primes after a frozen coordinate restriction; an over-budget lower bound is decisive before coefficient or kernel work.
 <!-- EXP-092A:END -->
+
+<!-- EXP-093A:START -->
+## EXP-093A — one-sweep true-token rank Gate
+
+- decision: `REJECT_ONE_SWEEP_STATIC_TOPK_BRANCH_SOURCE_AS_405B_CORE`
+- evidence: E2/E3 public-checkpoint discrete branch-source Gate
+- frozen thresholds: p95 `<= 4`, maximum `<= 16`
+- holdout rank p50/p95/max: `1152.0 / 16703.899999999954 / 42864`
+- holdout top-1/top-4/top-16 coverage: `2.604166667% / 5.729166667% / 12.500000000%`
+- per-case holdout maxima: `[17115, 42864, 15604]`
+- promotion Gate: `False`
+- raw evidence: `results/exp_093a/fa35cf73dfcc544d07277cd716a467de44aca439/result.json`
+- source commit: `fa35cf73dfcc544d07277cd716a467de44aca439`
+
+One official guessed-context sweep completes before any target continuation. Exact target tokens are later used only to measure stable ranks in those immutable logits. The Gate is discrete and does not reuse EXP-092A's rejected linear activation span.
+<!-- EXP-093A:END -->

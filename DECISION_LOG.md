@@ -1743,3 +1743,11 @@ The frozen build compiler selected `prompt_suffix_cycle_16`. Untouched first-swe
 
 The frozen Gate granted the complete 128-row guessed input block as an arbitrary projection basis, then measured the certified rank increment required by the exact incremental-reference block on first/middle/last complete layers. Holdout p50/p95/max lower bounds were `64.0/64.0/64` against a budget of `8`.
 <!-- EXP-092A:END -->
+
+<!-- EXP-093A:START -->
+## EXP-093A decision
+
+`REJECT_ONE_SWEEP_STATIC_TOPK_BRANCH_SOURCE_AS_405B_CORE`
+
+The frozen official sweep produced full-vocabulary logits before target generation. Later incremental target tokens had holdout p50/p95/max ranks `1152.0/16703.899999999954/42864` against the preregistered p95/max limits `4/16`. Top-16 holdout coverage was `12.500000000%`.
+<!-- EXP-093A:END -->

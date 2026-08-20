@@ -1329,3 +1329,15 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 | Causal coefficients/native equality | all layers, no target oracle | `NOT TESTED` | — |
 | 405B / 8-GiB / 4B-class p50/p95 | complete target contract | `NOT TESTED` | — |
 <!-- EXP-092A:END -->
+
+<!-- EXP-093A:START -->
+## EXP-093A validation row
+
+| Boundary | Contract | Result | Evidence |
+|---|---|---|---|
+| Source causality | guessed sweep completes before target starts | `True` | MEASURED |
+| First exact position | proposal equals target and rank one | `True` | MEASURED |
+| Static branch source | holdout p95 `<= 4`, max `<= 16` | p95 `16703.899999999954`, max `42864` | E2/E3 |
+| Branch-dependent exact successors | all branches and prefix-state commitment | `NOT TESTED` | — |
+| 405B / 8-GiB / 4B-class p50/p95 | complete target contract | `NOT TESTED` | — |
+<!-- EXP-093A:END -->

@@ -433,3 +433,11 @@ EXP-092A rejects one-sweep linear block-span correction under the frozen scope. 
 
 Frozen fingerprint: K=128 EXP-091A selected seed; official guessed block before target; exact incremental-reference oracle; layers 0/15/29; qkv/o/gate-up/down input roles; exact dyadic integer encoding; deterministic 192-coordinate restriction; three modular rank lower bounds; eight extra static directions granted.
 <!-- EXP-092A:END -->
+
+<!-- EXP-093A:START -->
+## EXP-093A — one-sweep static top-k branch source
+
+EXP-093A rejects the frozen one-sweep static top-k logits as a bounded exact branch source. At least one required true token lies outside the registered static candidate width, so layout, verification, and kernel work cannot repair the source.
+
+Frozen fingerprint: exact prompt prefix and boundary; `prompt_suffix_cycle_16`; one official BF16 K=128 guessed-context sweep; complete FP32 vocabulary logits; delayed official incremental target; stable descending-logit/ascending-token-ID ranks; build plus untouched holdout; p95 top-4 and worst-case top-16 thresholds.
+<!-- EXP-093A:END -->
