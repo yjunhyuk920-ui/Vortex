@@ -1,0 +1,24 @@
+{
+  "schema": "exp-087a-lossless-entropy-stationary-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "attention_implementation": "eager",
+  "dtype": "bfloat16",
+  "layer_index": 0,
+  "decode_positions_per_prompt": 128,
+  "block_sizes": [13, 32, 64, 128],
+  "tile_bytes": 1048576,
+  "timing_repeats": 3,
+  "p50_whole_model_fraction": 0.011851851851851851,
+  "p95_whole_model_fraction": 0.014814814814814815,
+  "external_compression_ratios": [2.0, 5.0, 10.0],
+  "prompts": [
+    {"id":"english_01","family":"english","prompt":"Explain why a metal bridge expands on a hot afternoon, then give one practical engineering consequence.\n"},
+    {"id":"korean_01","family":"korean","prompt":"정확한 상태 전이를 유지하는 계산기를 설계할 때 검증과 실행 비용을 함께 고려해야 하는 이유를 설명해 주세요.\n"},
+    {"id":"code_01","family":"code","prompt":"Write a Python function that performs a stable topological sort, detects a cycle, and includes two assertions. Return code only.\n"},
+    {"id":"structured_json_01","family":"structured_json","prompt":"Return valid JSON with keys project, assumptions, risks, and next_action for a lossless model-runtime experiment.\n"},
+    {"id":"math_01","family":"math","prompt":"Derive the closed form of the recurrence a_n = 3 a_{n-1} - 2 a_{n-2}, with a_0=1 and a_1=4.\n"},
+    {"id":"repeated_01","family":"repeated_pattern","prompt":"alpha beta gamma alpha beta gamma alpha beta gamma. Continue the pattern and then explain it.\n"}
+  ]
+}
