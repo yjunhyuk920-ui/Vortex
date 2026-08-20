@@ -1,0 +1,7 @@
+8aba77c5653b110a2247208485db8319c4e4842e5ad5f284da19c4bd4ef20cf0  ./artifacts/compiler_manifest.json
+c5600395900403ad181314b6e9919b8efeea959a40f42f5f8d43e2d24408a905  ./artifacts/deterministic_core.json
+9b696671ecd49623b12fe0d3f437e000a2b263f7de068a2b9ef3b4ecb29497dd  ./host.txt
+ff5414536b053e87a49f4a6a105770717c417c83be32cf4b3b54e89aead3deb6  ./raw/query_rows.json
+d460da9390fda4342767f49c11b0a2903bc16102ca0fff2d2b590108382ce4ad  ./raw/trace_rows.json
+7ccaacaefb098d2f2e251bfe89828c250474b95026c9b484e6fa7fdf48d78108  ./result.json
+1f3b0af86cb6a9dabb627ae345a40dc54f5f20500b324d08f9cc2037e6fd9efd  ./run.log

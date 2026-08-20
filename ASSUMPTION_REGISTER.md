@@ -1200,3 +1200,11 @@ timeout. Global mixed cells, native arithmetic, and joint batches stay open.
 - `A-087A-2`: four non-state-keyed programs can cover every held-out state without dense fallback. **UNVERIFIED**.
 - `A-087A-3`: the target-shape packed residual sidecar fits below 4 GiB and its favorable packed-word query work is below the MLP target fraction. **DERIVED, NOT PHYSICAL**.
 - `A-087A-4`: failure of the target-seeing oracle rejects this exact finite-context quadratic fingerprint but not every non-polynomial or recurrent transition compiler. **FIXED SCOPE**.
+
+<!-- EXP087A_FP32_CORRECTION_RESULT -->
+## EXP-087A predicate-semantics correction
+
+- The first hosted result's build failure is superseded because compiler labels and deployed predicate tensors used different precisions.
+- The corrected run uses the exact FP32 mean/basis representation charged by the sidecar equation for selection, fitting, and replay.
+- Corrected integrity Gate: `True`.
+- The corrected mechanism verdict is `REJECT_QUADRATIC_BF16_RESIDUAL_GENERATOR_AT_ORACLE_GATE`; TARGET-W and hardware remain unverified.

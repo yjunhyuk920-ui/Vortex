@@ -1774,3 +1774,8 @@ compiled MLP operation fraction     0.00036154114283048187
 The compiler used four checkpoint-static programs and only twelve runtime input predicate bits per program. It generated complete 16-bit BF16 XOR residual words for the composed SwiGLU output and used no state key, dense query call, row/page repair, or fallback. Authority: `results/exp_087a/eda4310e8ad20cf38ab712c46a9ef7b386882c62/result.json`; deterministic core `03680d9211b76a432c82176e8fb1542f52c6af15e1a3c21da47865c990b31512`.
 
 The next Gate must follow the recorded decision. An oracle rejection authorizes no nearby polynomial-capacity rescue; the next candidate must change the exact information source or state dependency.
+
+<!-- EXP087A_FP32_CORRECTION_RESULT -->
+## Post-EXP-087A corrected handoff
+
+The next core candidate may not be another finite-context polynomial capacity sweep. It must introduce a materially different exact information source or state dependency and first pass an E0 target-scale resource equation. Priority is a checkpoint-static non-polynomial superinstruction or a causal recurrent transition program that produces exact successor state without dense fallback.

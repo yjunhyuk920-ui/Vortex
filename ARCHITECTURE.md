@@ -1240,3 +1240,8 @@ SMT search timed out and is recorded as inconclusive. No nonlinear probe
 component enters the runtime until an explicit finite encoder, both address
 functions, exact decoder, native numerical lift, joint batch, and complete
 costs exist.
+
+<!-- EXP087A_FP32_CORRECTION_RESULT -->
+## EXP-087A corrected architecture status
+
+The quadratic residual library remains an offline compiler candidate, not a production executor. Corrected promotion status is `REJECT_QUADRATIC_BF16_RESIDUAL_GENERATOR_AT_ORACLE_GATE`. No complete-layer or successor-state component enters the architecture unless a later Gate explicitly promotes it.

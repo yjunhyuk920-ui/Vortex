@@ -401,3 +401,21 @@ advice-bit/two-probe seed. It does not construct or reject the fully
 non-systematic seven-bit seed, the `25 x 108` nonlinear-word capacity point,
 global mixed cells, or native arithmetic.
 Read that continuation and each scope boundary before reopening a family.
+
+<!-- EXP087A_FP32_CORRECTION_RESULT -->
+## EXP-087A corrected finite-word residual Gate
+
+- superseded result: `4a23f49cd6e5354e8616eb930814e11db95cd933` (`FP64 compile / FP32 query predicate mismatch`)
+- corrected source: `78e9901ced2937e76be9fa75a1383baa98f0057b`
+- corrected decision: `REJECT_QUADRATIC_BF16_RESIDUAL_GENERATOR_AT_ORACLE_GATE`
+- build programs exact: `[True, True, True, True]`
+- target-seeing evaluation oracle: `0 / 96` complete BF16 vectors
+- evaluation row-exact p50: `0.0017361111240461469`
+- projected sidecar: `1.6611328125 GiB`
+- favorable compiled-MLP operation fraction: `0.00036154114283048187`
+- raw evidence: `results/exp_087a_fp32/78e9901ced2937e76be9fa75a1383baa98f0057b/result.json`
+- deterministic core: `c5600395900403ad181314b6e9919b8efeea959a40f42f5f8d43e2d24408a905`
+
+The correction changed only predicate numerical consistency. All frozen scientific capacity and resource parameters remained fixed. The corrected result is authoritative for this mechanism fingerprint.
+
+Stop rule: do not sweep context width, polynomial degree, program count, clustering, prompt/layer selection, state-keyed routing, or tolerance. The corrected target-seeing oracle is the favorable upper bound for this frozen finite-context degree-two language. Reopening requires a non-polynomial, recurrent, or otherwise materially new exact information source with a complete resource equation.

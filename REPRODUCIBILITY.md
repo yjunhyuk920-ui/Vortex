@@ -1845,3 +1845,16 @@ Canonical summary SHA-256:
 
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
+
+<!-- EXP087A_FP32_CORRECTION_RESULT -->
+## EXP-087A corrected reproduction
+
+```bash
+python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+pytest -q tests/exp_087a
+python experiments/exp_087a/run_fp32_corrected_experiment.py \
+  --config experiments/exp_087a/config.json \
+  --output-dir results/exp_087a_fp32/<source-sha>
+```
+
+Verify the corrected result directory's `checksums.sha256`. The original result is retained only as a provenance record for the fixed predicate-boundary defect.
