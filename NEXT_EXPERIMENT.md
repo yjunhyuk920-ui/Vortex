@@ -1840,3 +1840,13 @@ Do not tune the affine residual hull. The next admissible mechanism must change 
 
 Fine target arithmetic remains `100%`; the `7.554616 GiB` hot figure is favorable and physical allocation remains `NOT TESTED`.
 <!-- EXP-095A:END -->
+
+<!-- EXP-096A:START -->
+## Post EXP-096A handoff
+
+Current decision: `PROMOTE_RESIDUAL_MARGIN_CERTIFICATE_TO_CAUSAL_COEFFICIENT_GATE`.
+
+Freeze the finite FP64 coefficient/certificate ABI and construct a causal checkpoint-derived coefficient generator from the corrected shallow state and online bank. It must reproduce all certificate words before target continuation, then charge coefficient generation, full-vocabulary scoring, prefix-state commitment, and the still-unreduced fine sweep.
+
+The favorable hot ledger is `7.554739 GiB`; fine target arithmetic remains `100%`, and target hardware remains `NOT TESTED`.
+<!-- EXP-096A:END -->

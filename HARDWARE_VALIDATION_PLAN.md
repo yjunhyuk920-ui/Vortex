@@ -773,3 +773,9 @@ The target hot-state equation totals `8,094,798,848` bytes (`7.538869 GiB`) incl
 
 The favorable target ledger totals `8,111,707,136` bytes (`7.554616 GiB`) and the 8-GiB arithmetic comparison reports `True`. This is `PROJECTED`; allocator fragmentation, packed kernels, HBM/PCIe/SSD, fine sweep throughput, certificate work and p50/p95 remain `NOT TESTED`.
 <!-- EXP-095A:END -->
+
+<!-- EXP-096A:START -->
+## EXP-096A hardware status
+
+The favorable target ledger totals `8,111,839,744` bytes (`7.554739 GiB`) including `131,072` coefficient bytes. This is `PROJECTED`; allocator, packed residual scoring, HBM/PCIe/SSD, fine sweep throughput, target VRAM and p50/p95 remain `NOT TESTED`.
+<!-- EXP-096A:END -->

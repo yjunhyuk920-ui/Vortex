@@ -1,0 +1,63 @@
+  margin position=0 status=certified active=128
+  margin position=16 status=certified active=219
+  margin position=32 status=certified active=164
+  margin position=48 status=certified active=223
+  margin position=64 status=certified active=152
+  margin position=80 status=certified active=184
+  margin position=96 status=certified active=242
+  margin position=112 status=certified active=167
+build build_english: certified=128/128 infeasible_at=None
+  margin position=0 status=certified active=129
+  margin position=16 status=certified active=177
+  margin position=32 status=certified active=176
+  margin position=48 status=certified active=248
+  margin position=64 status=certified active=181
+  margin position=80 status=certified active=255
+  margin position=96 status=certified active=187
+  margin position=112 status=certified active=181
+build build_korean: certified=128/128 infeasible_at=None
+  margin position=0 status=certified active=129
+  margin position=16 status=certified active=168
+  margin position=32 status=certified active=228
+  margin position=48 status=certified active=157
+  margin position=64 status=certified active=165
+  margin position=80 status=certified active=229
+  margin position=96 status=certified active=174
+  margin position=112 status=certified active=240
+build build_code: certified=128/128 infeasible_at=None
+  margin position=0 status=certified active=128
+  margin position=16 status=certified active=168
+  margin position=32 status=certified active=154
+  margin position=48 status=certified active=232
+  margin position=64 status=certified active=161
+  margin position=80 status=certified active=138
+  margin position=96 status=certified active=165
+  margin position=112 status=certified active=182
+holdout holdout_math: certified=128/128 infeasible_at=None
+  margin position=0 status=certified active=129
+  margin position=16 status=certified active=151
+  margin position=32 status=certified active=173
+  margin position=48 status=certified active=295
+  margin position=64 status=certified active=180
+  margin position=80 status=certified active=303
+  margin position=96 status=certified active=175
+  margin position=112 status=certified active=237
+holdout holdout_structured: certified=128/128 infeasible_at=None
+  margin position=0 status=certified active=132
+  margin position=16 status=certified active=233
+  margin position=32 status=certified active=303
+  margin position=48 status=certified active=237
+  margin position=64 status=certified active=237
+  margin position=80 status=certified active=300
+  margin position=96 status=certified active=237
+  margin position=112 status=certified active=238
+holdout holdout_repeated: certified=128/128 infeasible_at=None
+{
+  "authoritative_decision": "PROMOTE_RESIDUAL_MARGIN_CERTIFICATE_TO_CAUSAL_COEFFICIENT_GATE",
+  "build_certificate_fraction": 1.0,
+  "build_infeasible_cases": [],
+  "holdout_certificate_fraction": 1.0,
+  "holdout_infeasible_cases": [],
+  "hot_limit_passed": true,
+  "hot_total_gib": 7.554739475250244
+}

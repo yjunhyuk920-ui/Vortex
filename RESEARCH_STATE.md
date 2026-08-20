@@ -2081,3 +2081,19 @@ The fixed candidate equation is `F(g)+G(c)-G(g)`: one official target block swee
 
 One current-block target sweep generated the complete online deep-residual bank. The candidate combined eight residual rows according to the corrected official first-layer hidden state before target continuation. The full-row-span oracle used delayed target residuals only as a nondeployable capacity screen.
 <!-- EXP-095A:END -->
+
+<!-- EXP-096A:START -->
+## EXP-096A — online residual direct-margin certificate
+
+- decision: `PROMOTE_RESIDUAL_MARGIN_CERTIFICATE_TO_CAUSAL_COEFFICIENT_GATE`
+- evidence: E2/E3 public-checkpoint target-seeing finite-word margin-capacity Gate
+- build certificates: `384 / 384`
+- untouched holdout certificates: `384 / 384`
+- build/holdout decisive infeasible cases: `[] / []`
+- promotion: `True`
+- projected hot state: `7.554739 GiB` (`PROJECTED`)
+- raw evidence: `results/exp_096a/33f3118a9e61471d67115d78b44300550c6f0d2d/result.json`
+- source commit: `33f3118a9e61471d67115d78b44300550c6f0d2d`
+
+One K=128 online residual bank was compiled with target-seeing minimum-L1 FP64 coefficients. Accepted rows exclude the complete vocabulary under a conservative FP64 roundoff margin. This is capacity evidence, not a causal executor.
+<!-- EXP-096A:END -->
