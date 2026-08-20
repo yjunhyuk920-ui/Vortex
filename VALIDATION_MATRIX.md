@@ -1323,8 +1323,8 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 
 | Boundary | Contract | Result | Evidence |
 |---|---|---|---|
-| Guessed block ordering | capture completes before AR target | `False` | MEASURED |
-| Teacher-forced block | 128-token delayed AR equality | `False` | MEASURED |
+| Guessed block ordering | capture completes before AR target | `True` | MEASURED |
+| Incremental reference block | 128 official one-token captures | `True` | MEASURED |
 | Block-span correction | every holdout rank increment <= `8` | p95 `64.0`, max `64` | E2/E3 lower-bound Gate |
 | Causal coefficients/native equality | all layers, no target oracle | `NOT TESTED` | — |
 | 405B / 8-GiB / 4B-class p50/p95 | complete target contract | `NOT TESTED` | — |

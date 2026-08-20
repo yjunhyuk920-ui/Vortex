@@ -1739,7 +1739,7 @@ The frozen build compiler selected `prompt_suffix_cycle_16`. Untouched first-swe
 <!-- EXP-092A:START -->
 ## EXP-092A decision
 
-`INVALID_BLOCK_SPAN_CORRECTION_CONTROL_FAILURE`
+`REJECT_ONE_SWEEP_BLOCK_SPAN_CORRECTION_AS_405B_CORE`
 
-The frozen Gate granted the complete 128-row guessed input block as an arbitrary projection basis, then measured the certified rank increment required by the exact teacher-forced block on first/middle/last complete layers. Holdout p50/p95/max lower bounds were `64.0/64.0/64` against a budget of `8`.
+The frozen Gate granted the complete 128-row guessed input block as an arbitrary projection basis, then measured the certified rank increment required by the exact incremental-reference block on first/middle/last complete layers. Holdout p50/p95/max lower bounds were `64.0/64.0/64` against a budget of `8`.
 <!-- EXP-092A:END -->

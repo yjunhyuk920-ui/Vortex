@@ -1268,5 +1268,5 @@ A Jacobi block may commit only the prefix where input guesses equal unchanged-ta
 <!-- EXP-092A:START -->
 ## EXP-092A architecture status
 
-The block-span object is an oracle correction feasibility test, not a runtime component. It may enter the architecture only after a surviving lower-bound result is followed by a build-frozen basis, causal exact coefficient solver, all-layer native-byte equality, and complete online resource trace. Architecture promotion: `True`.
+The block-span object is an oracle correction feasibility test, not a runtime component. It may enter the architecture only after a surviving lower-bound result is followed by a build-frozen basis, causal exact coefficient solver, all-layer native-byte equality, and complete online resource trace. Architecture promotion: `False`.
 <!-- EXP-092A:END -->

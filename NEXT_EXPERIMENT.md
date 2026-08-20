@@ -1804,9 +1804,9 @@ Later Jacobi iterations are diagnostic only: at K=128, two complete checkpoint s
 <!-- EXP-092A:START -->
 ## Post EXP-092A handoff
 
-Current decision: `INVALID_BLOCK_SPAN_CORRECTION_CONTROL_FAILURE`.
+Current decision: `REJECT_ONE_SWEEP_BLOCK_SPAN_CORRECTION_AS_405B_CORE`.
 
-Compute full-coordinate exact ranks, synthesize one build-derived static basis, freeze it before holdout, construct causal coefficients from corrected activations, and verify native projection bytes on all DEV-W layers.
+Do not enlarge or retune a linear correction basis. The next admissible mechanism must propagate token corrections through a nonlinear finite-word symbolic program, exact branch closure, or sound token certificate whose information is not a small linear extension of the guessed-block activation span.
 
 Do not treat the oracle true block, coefficients, or basis discovery as deployable inputs. TARGET-W and physical latency remain `NOT TESTED`.
 <!-- EXP-092A:END -->

@@ -1,0 +1,14 @@
+build build_english: extra-rank-lb min/max=0/64
+build build_korean: extra-rank-lb min/max=0/64
+build build_code: extra-rank-lb min/max=0/64
+holdout holdout_math: extra-rank-lb min/max=0/64
+holdout holdout_structured: extra-rank-lb min/max=0/64
+holdout holdout_repeated: extra-rank-lb min/max=0/64
+{
+  "authoritative_decision": "REJECT_ONE_SWEEP_BLOCK_SPAN_CORRECTION_AS_405B_CORE",
+  "holdout_extra_rank_max": 64,
+  "holdout_extra_rank_p50": 64.0,
+  "holdout_extra_rank_p95": 64.0,
+  "observed_operation_multiplier_lower_bound": 1.5,
+  "threshold_directions": 8
+}

@@ -1154,7 +1154,7 @@ Do not reopen with seed, n-gram order, cycle width, block length, iteration coun
 <!-- EXP-092A:START -->
 ## EXP-092A — one-sweep linear block-span correction
 
-EXP-092A did not reject the lower-bound Gate; no failed-family closure is registered until the full exact coefficient Gate runs.
+EXP-092A rejects one-sweep linear block-span correction under the frozen scope. Even an oracle true block and free coefficients require more than eight new directions on untouched operator inputs.
 
-Frozen fingerprint: K=128 EXP-091A selected seed; official guessed block before target; exact teacher-forced oracle; layers 0/15/29; qkv/o/gate-up/down input roles; exact dyadic integer encoding; deterministic 192-coordinate restriction; three modular rank lower bounds; eight extra static directions granted.
+Frozen fingerprint: K=128 EXP-091A selected seed; official guessed block before target; exact incremental-reference oracle; layers 0/15/29; qkv/o/gate-up/down input roles; exact dyadic integer encoding; deterministic 192-coordinate restriction; three modular rank lower bounds; eight extra static directions granted.
 <!-- EXP-092A:END -->

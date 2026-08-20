@@ -1913,5 +1913,5 @@ python experiments/exp_092a/run_experiment.py \
   --output-dir results/exp_092a/<source-commit>
 ```
 
-Checkpoint: `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`. Source commit: `01abfe5e30f1e9063b62b4c6085844bd58cfddda`. Verify `checksums.sha256` before using summaries.
+Checkpoint: `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`. Source commit: `bf33c055e506bb3a0d6679440483836d35f6f521`. Verify `checksums.sha256` before using summaries.
 <!-- EXP-092A:END -->

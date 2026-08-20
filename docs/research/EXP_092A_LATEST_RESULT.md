@@ -2,20 +2,20 @@
 
 ## Identity
 
-- source commit: `01abfe5e30f1e9063b62b4c6085844bd58cfddda`
-- raw result: `results/exp_092a/01abfe5e30f1e9063b62b4c6085844bd58cfddda/result.json`
+- source commit: `bf33c055e506bb3a0d6679440483836d35f6f521`
+- raw result: `results/exp_092a/bf33c055e506bb3a0d6679440483836d35f6f521/result.json`
 - public checkpoint: `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`
 - checkpoint tensor SHA-256: `ee567358e6d45900612a1a276fd068d1c5fd999a451cd67bae55cb2c01446308`
-- deterministic core: `bc466a6c154135d8b7a8bc239cc3e4c7c56a38d8492129bf212aaa4ff89300c8`
-- mechanism fingerprint: `one-guessed-target-block/complete-linear-operator-input-cache/exact-dyadic-row-span/192-coordinate-restriction/three-prime-rank-lower-bound/true-teacher-forced-oracle/first-middle-last-complete-layers`
+- deterministic core: `e810dedbbcc88fcc4cd7db70364aeca1b1310cd448236384e8f655ee0a065fba`
+- mechanism fingerprint: `one-guessed-target-block/complete-linear-operator-input-cache/exact-dyadic-row-span/192-coordinate-restriction/three-prime-rank-lower-bound/true-incremental-reference/first-middle-last-complete-layers`
 
 ## Authoritative decision
 
-`INVALID_BLOCK_SPAN_CORRECTION_CONTROL_FAILURE`
+`REJECT_ONE_SWEEP_BLOCK_SPAN_CORRECTION_AS_405B_CORE`
 
 ## Measured DEV-W Gate
 
-- integrity controls: `False`
+- integrity controls: `True`
 - frozen extra-direction budget per operator: `8`
 - untouched holdout reports: `36`
 - holdout certified extra-rank lower bound p50/p95/max: `64.0 / 64.0 / 64`
@@ -32,7 +32,7 @@ The projection grants true target blocks, exact coefficients, basis discovery, n
 
 ## Meaning
 
-The first guessed block supplies 128 arbitrary projection-input basis rows. The Gate asks whether the exact teacher-forced block remains inside that span plus only eight static directions. A modular rank increase on a frozen 192-coordinate restriction is a certified lower bound on the full rational rank increase. Therefore a lower bound above eight cannot be repaired by a full-rank solver or kernel implementation.
+The first guessed block supplies 128 arbitrary projection-input basis rows. The Gate asks whether the exact incremental-reference block remains inside that span plus only eight static directions. A modular rank increase on a frozen 192-coordinate restriction is a certified lower bound on the full rational rank increase. Therefore a lower bound above eight cannot be repaired by a full-rank solver or kernel implementation.
 
 ## Claim boundary
 
