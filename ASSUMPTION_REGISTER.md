@@ -1269,3 +1269,12 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - `GRANTED`: extraction and storage of static candidate IDs are free.
 - `UNVERIFIED`: branch-dependent successor transitions, branch merging, exact verification, arithmetic reduction, TARGET-W, target VRAM/traffic/latency.
 <!-- EXP-093A:END -->
+
+<!-- EXP-094A:START -->
+## EXP-094A assumptions and grants
+
+- `MEASURED`: DEV-W fine guessed logits, old/candidate/true coarse logits, delayed target tokens/caches, candidate acceptance, transported true-path ranks.
+- `DERIVED`: float64 residual transport, logical traffic, `7.538869 GiB` target hot-state projection, coarse parameter-equivalent fraction.
+- `GRANTED`: float64 residual arithmetic and score storage are exact and free of kernel overhead.
+- `UNVERIFIED`: sound token certificate, packed Q4/coarse execution, fine block throughput, TARGET-W acceptance, physical VRAM and latency.
+<!-- EXP-094A:END -->

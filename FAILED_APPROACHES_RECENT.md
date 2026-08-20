@@ -1166,3 +1166,11 @@ EXP-093A rejects the frozen one-sweep static top-k logits as a bounded exact bra
 
 Frozen fingerprint: exact prompt prefix and boundary; `prompt_suffix_cycle_16`; one official BF16 K=128 guessed-context sweep; complete FP32 vocabulary logits; delayed official incremental target; stable descending-logit/ascending-token-ID ranks; build plus untouched holdout; p95 top-4 and worst-case top-16 thresholds.
 <!-- EXP-093A:END -->
+
+<!-- EXP-094A:START -->
+## EXP-094A — one-layer Parareal residual transport
+
+EXP-094A rejects the frozen one-sweep/one-layer Parareal residual transport as a 405B block source. The online position-aligned deep residual plus corrected-prefix coarse delta did not meet either the exact-chain or bounded-rank Gate.
+
+Frozen fingerprint: one K=128 official fine guessed sweep; sequential official first layer plus rowwise-Q4 head; exact float64 `F(g)-G(g)` residual; sequential corrected-prefix `G(c)`; candidate before delayed target; build plus untouched holdout; exact-chain and p95-top4/max-top16 Gates.
+<!-- EXP-094A:END -->

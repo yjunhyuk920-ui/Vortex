@@ -1276,3 +1276,9 @@ The block-span object is an oracle correction feasibility test, not a runtime co
 
 The static top-k table is an oracle-evaluated candidate source, not a runtime component. It enters the architecture only after the source Gate passes and an exact branch-dependent successor generator commits the same behavioral prefix state under a complete online resource trace. Architecture promotion: `False`.
 <!-- EXP-093A:END -->
+
+<!-- EXP-094A:START -->
+## EXP-094A architecture status
+
+The Parareal equation is a candidate-source object, not an accepted executor. It may enter the architecture only after a surviving source result is paired with a sound token certificate or exact branch successor, complete prefix-state commitment, and a charged physical resource trace. Architecture promotion: `False`.
+<!-- EXP-094A:END -->

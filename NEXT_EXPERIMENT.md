@@ -1820,3 +1820,13 @@ Do not enlarge or retune the static candidate list. The next admissible mechanis
 
 The one-sweep source still performs 100% of dense arithmetic per represented token. TARGET-W, physical branch execution, 8-GiB residency, and target latency remain `NOT TESTED`.
 <!-- EXP-093A:END -->
+
+<!-- EXP-094A:START -->
+## Post EXP-094A handoff
+
+Current decision: `REJECT_PARAREAL_RESIDUAL_TRANSPORT_AS_405B_BLOCK_SOURCE`.
+
+Do not tune the one-layer Parareal transport. The next admissible mechanism must change the correction dependency: test a branch-conditional/higher-order residual with a construction that does not add another fine sweep, or a sound finite-word token certificate that can commit transported decisions while reducing fine arithmetic.
+
+The favorable target projection is `7.538869 GiB`, but fine dense arithmetic remains `100%` and physical allocation is `NOT TESTED`.
+<!-- EXP-094A:END -->

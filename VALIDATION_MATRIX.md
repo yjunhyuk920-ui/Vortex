@@ -1341,3 +1341,15 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 | Branch-dependent exact successors | all branches and prefix-state commitment | `NOT TESTED` | — |
 | 405B / 8-GiB / 4B-class p50/p95 | complete target contract | `NOT TESTED` | — |
 <!-- EXP-093A:END -->
+
+<!-- EXP-094A:START -->
+## EXP-094A validation row
+
+| Boundary | Contract | Result | Evidence |
+|---|---|---|---|
+| Causal source | candidate complete before delayed target | `True` | MEASURED |
+| Exact chain | every build/holdout prefix `128` | holdout `[1, 1, 1]` | E2/E3 |
+| Branch source | p95 `<=4`, maximum `<=16` | p95 `39824.74999999999`, max `49105` | E2/E3 |
+| Sound certificate | exact token commitment without second fine sweep | `NOT TESTED` | — |
+| 405B / 8-GiB / 4B-class p50/p95 | complete target contract | `NOT TESTED` | — |
+<!-- EXP-094A:END -->
