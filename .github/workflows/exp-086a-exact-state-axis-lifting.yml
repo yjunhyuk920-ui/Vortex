@@ -3,7 +3,7 @@ name: exp-086a-exact-state-axis-lifting
 on:
   push:
     branches:
-      - research/exp-086a-exact-state-axis-lifting
+      - research/exp-086a-exact-state-axis-lifting-gate
   workflow_dispatch:
 
 permissions:
