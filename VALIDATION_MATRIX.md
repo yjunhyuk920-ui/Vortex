@@ -1353,3 +1353,15 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 | Sound certificate | exact token commitment without second fine sweep | `NOT TESTED` | — |
 | 405B / 8-GiB / 4B-class p50/p95 | complete target contract | `NOT TESTED` | — |
 <!-- EXP-094A:END -->
+
+<!-- EXP-095A:START -->
+## EXP-095A validation row
+
+| Boundary | Contract | Result | Evidence |
+|---|---|---|---|
+| Causal affine candidate | complete before delayed target | `True` | MEASURED |
+| Exact chain | every build/holdout prefix `128` | holdout `[1, 1, 1]` | E2/E3 |
+| Causal branch source | p95 `<=4`, maximum `<=16` | `35475.2 / 47647` | E2/E3 |
+| Full residual-span capacity | p95 `<=4`, maximum `<=16` | `1083.4499999999973 / 20337` | favorable oracle |
+| Sound certificate / 405B / target latency | complete target contract | `NOT TESTED` | — |
+<!-- EXP-095A:END -->

@@ -1278,3 +1278,13 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - `GRANTED`: float64 residual arithmetic and score storage are exact and free of kernel overhead.
 - `UNVERIFIED`: sound token certificate, packed Q4/coarse execution, fine block throughput, TARGET-W acceptance, physical VRAM and latency.
 <!-- EXP-094A:END -->
+
+<!-- EXP-095A:START -->
+## EXP-095A assumptions and grants
+
+- `MEASURED`: DEV-W guessed fine logits, guessed/corrected/true shallow states, causal candidate, delayed target logits/tokens/caches and exact stable ranks.
+- `DERIVED`: affine-ridge coefficients, best-single residual ranks, float64 Gram pseudoinverse, L2 span projection, logical traffic and hot-state equations.
+- `GRANTED`: the target-seeing single-residual and span oracles may inspect delayed target residuals; they are not runtime constructions.
+- `PROJECTED`: `7.554616 GiB` target hot state and `0.000285835%` causal scalar-work fraction.
+- `UNVERIFIED`: sound coefficient/token certificate, physical kernels, fine arithmetic reduction, TARGET-W acceptance, target VRAM and latency.
+<!-- EXP-095A:END -->

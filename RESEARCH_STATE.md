@@ -2063,3 +2063,21 @@ One official guessed-context sweep completes before any target continuation. Exa
 
 The fixed candidate equation is `F(g)+G(c)-G(g)`: one official target block sweep supplies the deep residual, and one official first-layer/Q4-head coarse executor transports it over the corrected prefix before any target continuation.
 <!-- EXP-094A:END -->
+
+<!-- EXP-095A:START -->
+## EXP-095A — online deep-residual affine hull
+
+- decision: `REJECT_ONLINE_DEEP_RESIDUAL_AFFINE_HULL_AS_405B_SOURCE`
+- evidence: E2/E3 public-checkpoint causal candidate plus favorable online-span oracle
+- build accepted prefixes: `[1, 3, 1]`
+- untouched holdout accepted prefixes: `[1, 1, 1]`
+- causal holdout rank p50/p95/max: `2410.0 / 35475.2 / 47647`
+- single-residual oracle p95/max: `1475.9499999999991 / 23031`
+- complete residual-span oracle p50/p95/max: `6.0 / 1083.4499999999973 / 20337`
+- exact-chain / causal-branch / oracle-span: `False / False / False`
+- projected hot state: `7.554616 GiB` (`PROJECTED`)
+- raw evidence: `results/exp_095a/e284b482e7e64d6db42f3cae4037f1c6b61b87bf/result.json`
+- source commit: `e284b482e7e64d6db42f3cae4037f1c6b61b87bf`
+
+One current-block target sweep generated the complete online deep-residual bank. The candidate combined eight residual rows according to the corrected official first-layer hidden state before target continuation. The full-row-span oracle used delayed target residuals only as a nondeployable capacity screen.
+<!-- EXP-095A:END -->

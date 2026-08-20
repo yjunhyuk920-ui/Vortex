@@ -767,3 +767,9 @@ No target hardware run was performed. The logical one-sweep traffic values `0.78
 
 The target hot-state equation totals `8,094,798,848` bytes (`7.538869 GiB`) including a `131,334,144`-byte float64 residual block. This is `PROJECTED`; allocator fragmentation, workspace, physical Q4 packing, HBM/PCIe, synchronization, fine-sweep throughput, and p50/p95 remain `NOT TESTED`.
 <!-- EXP-094A:END -->
+
+<!-- EXP-095A:START -->
+## EXP-095A hardware status
+
+The favorable target ledger totals `8,111,707,136` bytes (`7.554616 GiB`) and the 8-GiB arithmetic comparison reports `True`. This is `PROJECTED`; allocator fragmentation, packed kernels, HBM/PCIe/SSD, fine sweep throughput, certificate work and p50/p95 remain `NOT TESTED`.
+<!-- EXP-095A:END -->
