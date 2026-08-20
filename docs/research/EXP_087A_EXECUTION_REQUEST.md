@@ -9,3 +9,5 @@ Reason for execution:
 - The scientific public-checkpoint Gate was not present in the branch history, so the mechanism cannot be treated as accepted or rejected until the pinned workflow runs and commits its raw evidence.
 
 The result remains scoped to the complete layer-0 DEV-W MLP. A pass would authorize only a complete-MLP operation-replacement Gate; it would not establish a complete Transformer transition, TARGET-W execution, 8-GiB residency, or 4B-class latency.
+
+Execution control: the workflow is being entered at its already-frozen preregistration boundary; no scientific parameter changed.
