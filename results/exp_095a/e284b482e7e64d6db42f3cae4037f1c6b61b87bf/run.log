@@ -1,0 +1,48 @@
+build build_english: accepted=1 exact=1 causal p95/max=26718.749999999996/45469 single p95/max=3393.749999999999/4563 span p95/max=275.8499999999987/991
+build build_korean: accepted=3 exact=5 causal p95/max=20603.749999999993/48471 single p95/max=110.5999999999998/2625 span p95/max=51.84999999999975/4188
+build build_code: accepted=1 exact=1 causal p95/max=36266.7/46672 single p95/max=4558.149999999998/17718 span p95/max=2307.7499999999914/4452
+holdout holdout_math: accepted=1 exact=1 causal p95/max=36272.9/47106 single p95/max=400.95/843 span p95/max=631.4999999999999/2255
+holdout holdout_structured: accepted=1 exact=1 causal p95/max=38813.35/46090 single p95/max=5582.249999999999/23031 span p95/max=2988.3499999999985/20337
+holdout holdout_repeated: accepted=1 exact=1 causal p95/max=9003.75/47647 single p95/max=943.55/1042 span p95/max=12.0/2464
+{
+  "authoritative_decision": "REJECT_ONLINE_DEEP_RESIDUAL_AFFINE_HULL_AS_405B_SOURCE",
+  "holdout_accepted_lengths": [
+    1,
+    1,
+    1
+  ],
+  "holdout_causal_rank": {
+    "count": 384,
+    "maximum": 47647,
+    "p50": 2410.0,
+    "p95": 35475.2,
+    "top16_fraction": 0.08854166666666667,
+    "top1_fraction": 0.018229166666666668,
+    "top4_fraction": 0.026041666666666668
+  },
+  "holdout_single_residual_rank": {
+    "count": 384,
+    "maximum": 23031,
+    "p50": 94.0,
+    "p95": 1475.9499999999991,
+    "top16_fraction": 0.265625,
+    "top1_fraction": 0.033854166666666664,
+    "top4_fraction": 0.20572916666666666
+  },
+  "holdout_span_effective_ranks": [
+    128,
+    128,
+    128
+  ],
+  "holdout_span_rank": {
+    "count": 384,
+    "maximum": 20337,
+    "p50": 6.0,
+    "p95": 1083.4499999999973,
+    "top16_fraction": 0.6432291666666666,
+    "top1_fraction": 0.2265625,
+    "top4_fraction": 0.4244791666666667
+  },
+  "hot_limit_passed": true,
+  "hot_total_gib": 7.5546159744262695
+}

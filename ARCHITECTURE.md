@@ -1282,3 +1282,9 @@ The static top-k table is an oracle-evaluated candidate source, not a runtime co
 
 The Parareal equation is a candidate-source object, not an accepted executor. It may enter the architecture only after a surviving source result is paired with a sound token certificate or exact branch successor, complete prefix-state commitment, and a charged physical resource trace. Architecture promotion: `False`.
 <!-- EXP-094A:END -->
+
+<!-- EXP-095A:START -->
+## EXP-095A architecture status
+
+The online residual bank and its affine/span programs remain candidate-source objects. Only a causal source with a sound finite-word token certificate, exact prefix-state commitment, and charged physical resource trace may enter the executor architecture. Promotion status: exact-chain `False`, causal-branch `False`, oracle-span `False`.
+<!-- EXP-095A:END -->

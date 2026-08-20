@@ -1759,3 +1759,11 @@ The frozen official sweep produced full-vocabulary logits before target generati
 
 One online fine block sweep and position-aligned float64 residual were frozen before target generation. Sequential coarse transport over the corrected prefix produced holdout accepted prefixes `[1, 1, 1]` and rank p50/p95/max `4787.0/39824.74999999999/49105`. Static p95 was `17096.299999999992`; transported p95 improvement was `-22728.45`.
 <!-- EXP-094A:END -->
+
+<!-- EXP-095A:START -->
+## EXP-095A decision
+
+`REJECT_ONLINE_DEEP_RESIDUAL_AFFINE_HULL_AS_405B_SOURCE`
+
+The frozen causal affine source produced holdout prefixes `[1, 1, 1]` and rank p95/max `35475.2/47647`. The target-seeing best-single residual reached p95/max `1475.9499999999991/23031`. The complete online residual row-span L2 oracle reached p95/max `1083.4499999999973/20337` with effective ranks `[128, 128, 128]`.
+<!-- EXP-095A:END -->

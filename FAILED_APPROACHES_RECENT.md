@@ -1174,3 +1174,11 @@ EXP-094A rejects the frozen one-sweep/one-layer Parareal residual transport as a
 
 Frozen fingerprint: one K=128 official fine guessed sweep; sequential official first layer plus rowwise-Q4 head; exact float64 `F(g)-G(g)` residual; sequential corrected-prefix `G(c)`; candidate before delayed target; build plus untouched holdout; exact-chain and p95-top4/max-top16 Gates.
 <!-- EXP-094A:END -->
+
+<!-- EXP-095A:START -->
+## EXP-095A — online deep-residual affine hull
+
+EXP-095A rejects the frozen online deep-residual affine hull as a 405B token source. Neither the causal eight-neighbor affine transport nor the full-bank target-residual L2 projection met the bounded-rank Gate under the frozen scope.
+
+Frozen fingerprint: one K=128 fine guessed sweep; official first-layer/Q4 shallow states; float64 128-row residual bank; exact hidden-row reuse plus eight-neighbor affine ridge; target-seeing best-single residual; full residual-row-span L2 projection at `2^-40`; delayed incremental target; build plus untouched holdout.
+<!-- EXP-095A:END -->

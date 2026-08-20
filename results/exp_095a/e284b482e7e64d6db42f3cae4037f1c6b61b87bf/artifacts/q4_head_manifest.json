@@ -1,0 +1,12 @@
+{
+  "artifact_bytes": 14254080,
+  "cols": 576,
+  "dequantized_sha256": "8d1e2a8d25258d6d124f194e817a1f197ef8c162c8f905231325d1603836da4f",
+  "maximum": 7,
+  "minimum": -8,
+  "packed_weight_bytes": 14155776,
+  "quantized_sha256": "10ec1a51cb59e616528e37ec4c44752e36a16680f3e3cad1320aa557de33a680",
+  "rows": 49152,
+  "scale_bytes": 98304,
+  "scale_sha256": "f1bbd8095ba231af7f3eeeecff2998c83c0450aaa503d90d2500f98254e49f29"
+}

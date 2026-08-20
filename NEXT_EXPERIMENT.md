@@ -1830,3 +1830,13 @@ Do not tune the one-layer Parareal transport. The next admissible mechanism must
 
 The favorable target projection is `7.538869 GiB`, but fine dense arithmetic remains `100%` and physical allocation is `NOT TESTED`.
 <!-- EXP-094A:END -->
+
+<!-- EXP-095A:START -->
+## Post EXP-095A handoff
+
+Current decision: `REJECT_ONLINE_DEEP_RESIDUAL_AFFINE_HULL_AS_405B_SOURCE`.
+
+Do not tune the affine residual hull. The next admissible mechanism must change the information dependency: a finite-word token-margin certificate, a checkpoint-derived branch-specific higher-order residual, or an exact symbolic transition that reduces the fine dense arithmetic rather than projecting delayed target residuals.
+
+Fine target arithmetic remains `100%`; the `7.554616 GiB` hot figure is favorable and physical allocation remains `NOT TESTED`.
+<!-- EXP-095A:END -->
