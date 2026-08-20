@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - research/exp-086a-exact-state-axis-lifting-gate
+  pull_request:
+    branches:
+      - research/exp-085a-joint-exact-swiglu-compiler
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: exp-086a-${{ github.ref }}
+  group: exp-086a-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 env:
@@ -41,15 +44,18 @@ jobs:
           PY
       - name: Exact state-axis lifting controls
         run: python -m pytest -q tests/exp_086a
+      - name: Legacy EXP-085A compatibility controls
+        run: python -m pytest -q tests/exp_085a
       - name: Syntax checks
         run: |
           python -m py_compile \
             vortex_runtime/exact_state_axis_lifting.py \
+            vortex_runtime/swiglu_quadratic_compat.py \
             experiments/exp_086a/run_experiment.py \
             experiments/exp_086a/update_ledgers.py
 
   real-checkpoint-gate:
-    if: ${{ !contains(github.event.head_commit.message, '[exp086-results]') }}
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[exp086-results]') }}
     needs: model-free-contract
     runs-on: ubuntu-24.04
     timeout-minutes: 120
@@ -99,6 +105,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 90
       - name: Commit result and ledgers
+        if: ${{ github.event_name == 'push' }}
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
