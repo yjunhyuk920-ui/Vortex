@@ -1,0 +1,7 @@
+bdc7aa42ad873937b8f61d8ba4f5505e613a27f3aa654b8305bc6f086ad054d5  ./artifacts/checkpoint_identity.json
+60745c5e10f21691bf4f2a32ef72d31bd8399fe87ee671f40ce1369c9e2329ce  ./artifacts/deterministic_core.json
+e73f76648c91ab123dffd7d4cc079c488ba09c76c3d2c3b992408f935004a351  ./artifacts/q4_head_manifest.json
+6492a680822cc2caa479fc43fc3e5bc9f123883af626f5d49f12c39b4499712d  ./host.txt
+9c0d9a45996d13c356f3de04f8a78ce353b97399ad82e70d7cb4b2638b5b446b  ./raw/case_rows.json
+ec21299285bbc96a192a0f6c5636a8d89872b61b595b408e3c6c1f54c4e80f6d  ./result.json
+95ab6cbd3ab3bfc758c80691c5d43819557a21b5e081e3a26e2fdfcae74c4ef7  ./run.log

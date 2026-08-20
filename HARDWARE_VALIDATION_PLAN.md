@@ -761,3 +761,9 @@ No target GPU run was performed. `206,438,400` bytes at the eight-direction budg
 
 No target hardware run was performed. The logical one-sweep traffic values `0.781250000%` raw and `0.619070788%` favorable-compressed exclude physical storage, PCIe/HBM movement, branch transitions, verification, rollback, and synchronization. Dense arithmetic remains `100%`; VRAM and p50/p95 remain `NOT TESTED`.
 <!-- EXP-093A:END -->
+
+<!-- EXP-094A:START -->
+## EXP-094A hardware status
+
+The target hot-state equation totals `8,094,798,848` bytes (`7.538869 GiB`) including a `131,334,144`-byte float64 residual block. This is `PROJECTED`; allocator fragmentation, workspace, physical Q4 packing, HBM/PCIe, synchronization, fine-sweep throughput, and p50/p95 remain `NOT TESTED`.
+<!-- EXP-094A:END -->

@@ -1751,3 +1751,11 @@ The frozen Gate granted the complete 128-row guessed input block as an arbitrary
 
 The frozen official sweep produced full-vocabulary logits before target generation. Later incremental target tokens had holdout p50/p95/max ranks `1152.0/16703.899999999954/42864` against the preregistered p95/max limits `4/16`. Top-16 holdout coverage was `12.500000000%`.
 <!-- EXP-093A:END -->
+
+<!-- EXP-094A:START -->
+## EXP-094A decision
+
+`REJECT_PARAREAL_RESIDUAL_TRANSPORT_AS_405B_BLOCK_SOURCE`
+
+One online fine block sweep and position-aligned float64 residual were frozen before target generation. Sequential coarse transport over the corrected prefix produced holdout accepted prefixes `[1, 1, 1]` and rank p50/p95/max `4787.0/39824.74999999999/49105`. Static p95 was `17096.299999999992`; transported p95 improvement was `-22728.45`.
+<!-- EXP-094A:END -->

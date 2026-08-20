@@ -2046,3 +2046,20 @@ Guessed captures precede target generation. The exact incremental AR block is an
 
 One official guessed-context sweep completes before any target continuation. Exact target tokens are later used only to measure stable ranks in those immutable logits. The Gate is discrete and does not reuse EXP-092A's rejected linear activation span.
 <!-- EXP-093A:END -->
+
+<!-- EXP-094A:START -->
+## EXP-094A — Parareal deep-residual transport
+
+- decision: `REJECT_PARAREAL_RESIDUAL_TRANSPORT_AS_405B_BLOCK_SOURCE`
+- evidence: E2/E3 public-checkpoint nonlinear causal candidate-source Gate
+- build accepted prefixes: `[1, 2, 1]`
+- untouched holdout accepted prefixes: `[1, 1, 1]`
+- holdout transported rank p50/p95/max: `4787.0 / 39824.74999999999 / 49105`
+- holdout top-1/top-4/top-16: `3.385416667% / 5.208333333% / 8.854166667%`
+- static-to-transport p95 improvement: `-22728.45`
+- exact-chain / branch-source Gates: `False / False`
+- raw evidence: `results/exp_094a/7bf744f73b725cee073ad68a8581be34d8243327/result.json`
+- source commit: `7bf744f73b725cee073ad68a8581be34d8243327`
+
+The fixed candidate equation is `F(g)+G(c)-G(g)`: one official target block sweep supplies the deep residual, and one official first-layer/Q4-head coarse executor transports it over the corrected prefix before any target continuation.
+<!-- EXP-094A:END -->

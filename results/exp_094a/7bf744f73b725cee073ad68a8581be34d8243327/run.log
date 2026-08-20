@@ -1,0 +1,21 @@
+build build_english: accepted=1 exact=4 rank p50/p95/max=1573.5/36263.999999999985/43256 top16=22.656250%
+build build_korean: accepted=2 exact=10 rank p50/p95/max=479.0/31983.299999999992/48524 top16=16.406250%
+build build_code: accepted=1 exact=1 rank p50/p95/max=3932.0/39282.049999999996/48956 top16=3.125000%
+holdout holdout_math: accepted=1 exact=4 rank p50/p95/max=534.5/39986.64999999999/48946 top16=20.312500%
+holdout holdout_structured: accepted=1 exact=3 rank p50/p95/max=7529.0/41295.299999999996/49105 top16=4.687500%
+holdout holdout_repeated: accepted=1 exact=1 rank p50/p95/max=7189.0/25307.6/45408 top16=1.562500%
+{
+  "authoritative_decision": "REJECT_PARAREAL_RESIDUAL_TRANSPORT_AS_405B_BLOCK_SOURCE",
+  "holdout_accepted_lengths": [
+    1,
+    1,
+    1
+  ],
+  "holdout_rank_max": 49105,
+  "holdout_rank_p50": 4787.0,
+  "holdout_rank_p95": 39824.74999999999,
+  "holdout_top16_fraction": 0.08854166666666667,
+  "hot_projection_passed": true,
+  "rank_p95_improvement": -22728.45,
+  "static_rank_p95": 17096.299999999992
+}
