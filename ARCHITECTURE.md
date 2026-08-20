@@ -1288,3 +1288,9 @@ The Parareal equation is a candidate-source object, not an accepted executor. It
 
 The online residual bank and its affine/span programs remain candidate-source objects. Only a causal source with a sound finite-word token certificate, exact prefix-state commitment, and charged physical resource trace may enter the executor architecture. Promotion status: exact-chain `False`, causal-branch `False`, oracle-span `False`.
 <!-- EXP-095A:END -->
+
+<!-- EXP-096A:START -->
+## EXP-096A architecture status
+
+The FP64 margin certificate is an offline target-seeing capacity object. It enters the runtime architecture only after a causal checkpoint-derived generator emits the same coefficient words before target continuation and a physical resource trace charges scoring, certification, prefix state, and fallback. Promotion: `True`.
+<!-- EXP-096A:END -->

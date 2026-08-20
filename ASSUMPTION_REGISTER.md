@@ -1288,3 +1288,12 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - `PROJECTED`: `7.554616 GiB` target hot state and `0.000285835%` causal scalar-work fraction.
 - `UNVERIFIED`: sound coefficient/token certificate, physical kernels, fine arithmetic reduction, TARGET-W acceptance, target VRAM and latency.
 <!-- EXP-095A:END -->
+
+<!-- EXP-096A:START -->
+## EXP-096A assumptions and grants
+
+- `MEASURED`: DEV-W online residual banks, delayed target tokens/coarse states, LP statuses, coefficient words and complete-vocabulary FP64 margin scans.
+- `DERIVED`: minimum-L1 coefficient metrics, roundoff lower margins, `7.554739 GiB` hot-state projection and `0.004085191%` score-work fraction.
+- `GRANTED`: target token and true shallow state are available to the offline coefficient compiler.
+- `UNVERIFIED`: causal coefficient generation, target-independent certificate, TARGET-W behavior, physical kernels, fine arithmetic reduction, target VRAM and latency.
+<!-- EXP-096A:END -->

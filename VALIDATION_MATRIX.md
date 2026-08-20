@@ -1365,3 +1365,14 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 | Full residual-span capacity | p95 `<=4`, maximum `<=16` | `1083.4499999999973 / 20337` | favorable oracle |
 | Sound certificate / 405B / target latency | complete target contract | `NOT TESTED` | — |
 <!-- EXP-095A:END -->
+
+<!-- EXP-096A:START -->
+## EXP-096A validation row
+
+| Boundary | Contract | Result | Evidence |
+|---|---|---|---|
+| FP64 coefficient word | complete-vocabulary positive lower margin | build `384/384` | target-seeing E2 |
+| Untouched holdout capacity | every position certified | `384/384` | target-seeing E3 |
+| Causal coefficient generator | words available before target | `NOT TESTED` | — |
+| Fine arithmetic reduction / 405B / target latency | complete target contract | `NOT TESTED` | — |
+<!-- EXP-096A:END -->

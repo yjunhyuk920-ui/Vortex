@@ -457,3 +457,11 @@ EXP-095A rejects the frozen online deep-residual affine hull as a 405B token sou
 
 Frozen fingerprint: one K=128 fine guessed sweep; official first-layer/Q4 shallow states; float64 128-row residual bank; exact hidden-row reuse plus eight-neighbor affine ridge; target-seeing best-single residual; full residual-row-span L2 projection at `2^-40`; delayed incremental target; build plus untouched holdout.
 <!-- EXP-095A:END -->
+
+<!-- EXP-096A:START -->
+## EXP-096A — complete online residual direct-margin LP
+
+EXP-096A did not reject the residual-margin capacity source. No failed-family closure is registered until the causal coefficient Gate runs.
+
+Frozen fingerprint: one K=128 fine guessed sweep; official one-layer/Q4 coarse path; complete float64 residual bank; target-seeing minimum-L1 FP64 coefficients; unique `2^-20` margin; HiGHS dual-simplex active set plus full fallback; complete-vocabulary `gamma_(2K+4)` roundoff certificate; cheapest-kill-first build and untouched holdout.
+<!-- EXP-096A:END -->

@@ -1767,3 +1767,11 @@ One online fine block sweep and position-aligned float64 residual were frozen be
 
 The frozen causal affine source produced holdout prefixes `[1, 1, 1]` and rank p95/max `35475.2/47647`. The target-seeing best-single residual reached p95/max `1475.9499999999991/23031`. The complete online residual row-span L2 oracle reached p95/max `1083.4499999999973/20337` with effective ranks `[128, 128, 128]`.
 <!-- EXP-095A:END -->
+
+<!-- EXP-096A:START -->
+## EXP-096A decision
+
+`PROMOTE_RESIDUAL_MARGIN_CERTIFICATE_TO_CAUSAL_COEFFICIENT_GATE`
+
+The frozen target-seeing compiler certified `384/384` build positions and `384/384` untouched holdout positions before cheapest-kill termination. Explicit infeasible cases were `[]` and `[]`.
+<!-- EXP-096A:END -->
