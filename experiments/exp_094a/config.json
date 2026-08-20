@@ -1,0 +1,81 @@
+{
+  "schema": "exp-094a-parareal-residual-transport-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "attention_implementation": "eager",
+  "dtype": "bfloat16",
+  "torch_num_threads": 2,
+  "shallow_depth": 1,
+  "block_length": 128,
+  "seed_mode": "prompt_suffix_cycle_16",
+  "residual_dtype": "float64",
+  "q4_head": {
+    "scheme": "rowwise_symmetric_int4",
+    "minimum": -8,
+    "maximum": 7,
+    "scale_dtype": "bfloat16"
+  },
+  "target_projection": {
+    "model_id": "meta-llama/Meta-Llama-3.1-405B-Instruct",
+    "revision": "f9801cba95a53242b3cc928a4a418d12571d1c5f",
+    "hidden_size": 16384,
+    "intermediate_size": 53248,
+    "num_attention_heads": 128,
+    "num_key_value_heads": 8,
+    "head_dim": 128,
+    "num_hidden_layers": 126,
+    "vocab_size": 128256,
+    "max_context": 131072,
+    "hot_limit_bytes": 8589934592,
+    "history_entries": 1,
+    "whole_model_fraction_limit": 0.011851851851851851,
+    "checkpoint_compression_ratio_favorable": 1.261972
+  },
+  "success": {
+    "minimum_build_cases": 3,
+    "minimum_holdout_cases": 3,
+    "chain_required_accepted_length": 128,
+    "tree_rank_p95_max": 4,
+    "tree_rank_max_max": 16,
+    "maximum_integrity_mismatches": 0
+  },
+  "cases": [
+    {
+      "id": "build_english",
+      "split": "build",
+      "family": "english",
+      "prompt": "A bridge engineer is reviewing thermal expansion, fatigue, wind loading, and inspection records before approving a repair plan. Explain how these factors interact, why expansion joints matter, and which measurements should be checked first.\n"
+    },
+    {
+      "id": "build_korean",
+      "split": "build",
+      "family": "korean",
+      "prompt": "대규모 데이터베이스를 운영하면서 인덱스, 트랜잭션 격리 수준, 장애 복구 로그, 캐시 일관성을 함께 점검한다고 가정해 주세요. 각 요소가 성능과 정확성에 어떤 영향을 주는지 설명하고 점검 순서를 제안해 주세요.\n"
+    },
+    {
+      "id": "build_code",
+      "split": "build",
+      "family": "code",
+      "prompt": "Write a Python function that performs a stable topological sort, reports one concrete cycle when present, validates duplicate edges, and includes four assertions. Return code only.\n"
+    },
+    {
+      "id": "holdout_math",
+      "split": "holdout",
+      "family": "mathematics",
+      "prompt": "A factory produces three components with coupled capacity constraints. Formulate the linear system, solve it by elimination, verify the solution numerically, and explain how a ten percent capacity reduction changes the feasible region.\n"
+    },
+    {
+      "id": "holdout_structured",
+      "split": "holdout",
+      "family": "structured_json",
+      "prompt": "Return valid JSON for a production deployment review with keys service, version, dependencies, rollout_steps, rollback_triggers, monitoring, and owner. Include at least three rollout steps and two rollback triggers.\n"
+    },
+    {
+      "id": "holdout_repeated",
+      "split": "holdout",
+      "family": "repeated_pattern",
+      "prompt": "red blue green red blue green red blue green; alpha beta gamma alpha beta gamma alpha beta gamma. Continue both patterns for twelve terms, then explain the shared rule without changing the order.\n"
+    }
+  ]
+}
