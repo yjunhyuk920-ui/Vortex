@@ -21,7 +21,7 @@ For one checkpoint projection `W` and its `K` guessed input rows `X_g`, the firs
 Y_g = X_g W^T.
 ```
 
-If the true teacher-forced input block satisfies
+If the true incremental-reference input block satisfies
 
 ```text
 rowspan(X_t) subseteq rowspan(X_g),
@@ -74,12 +74,11 @@ For every build and untouched holdout prompt:
 1. prefill the exact committed prefix and obtain the exact boundary token;
 2. construct the frozen checkpoint-independent seed;
 3. execute and hash the guessed block while capturing operator inputs;
-4. only after the guessed capture is complete, generate the ordinary exact AR target;
-5. execute the teacher-forced true block from the same prefix cache;
-6. verify that its proposals equal the delayed AR target at all 128 positions;
-7. compare guessed and true operator-input row spaces.
+4. only after the guessed capture is complete, run the ordinary exact incremental AR continuation while capturing every selected operator input at each of its 128 steps;
+5. verify that every operator produced exactly 128 incremental reference rows and that the official token/cache trace is complete;
+6. compare guessed complete-block inputs with the stacked true incremental-reference inputs.
 
-The true block and coefficients are oracle information. They may decide whether the mechanism deserves a causal constructor, but they are not credited as online inputs.
+The exact incremental block and coefficients are oracle information. They may decide whether the mechanism deserves a causal constructor, but they are not credited as online inputs.
 
 ## 4. Exact dyadic rank lower bound
 
@@ -186,7 +185,7 @@ when any frozen integrity control fails.
 
 - official checkpoint and runtime pins match;
 - guessed captures complete before ordinary AR target generation;
-- teacher-forced true block equals the independent 128-token AR target exactly;
+- every selected incremental-reference operator supplies exactly 128 rows from the official AR decode;
 - build and holdout prompts are distinct;
 - all 72 layer/role/case reports are present;
 - identical-block positive control has rank increment zero;
