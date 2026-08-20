@@ -1,0 +1,142 @@
+name: exp-092a-block-span-correction
+
+on:
+  push:
+    branches:
+      - research/exp-092a-block-span-correction-closure-gate
+  pull_request:
+    branches:
+      - research/exp-091a-exact-jacobi-fixed-point-gate
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exp-092a-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONHASHSEED: "0"
+  TOKENIZERS_PARALLELISM: "false"
+  OMP_NUM_THREADS: "1"
+  MKL_NUM_THREADS: "1"
+  OPENBLAS_NUM_THREADS: "1"
+
+jobs:
+  model-free-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned official runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Verify runtime pins
+        run: |
+          python - <<'PY'
+          import safetensors, torch, transformers
+          assert torch.__version__ == "2.5.1+cpu", torch.__version__
+          assert transformers.__version__ == "4.46.3", transformers.__version__
+          assert safetensors.__version__ == "0.4.5", safetensors.__version__
+          PY
+      - name: Run exact dyadic rank and resource controls
+        run: python -m pytest -q tests/exp_092a
+      - name: Syntax checks
+        run: |
+          python -m py_compile \
+            vortex_runtime/block_span_correction.py \
+            experiments/exp_092a/run_experiment.py \
+            experiments/exp_092a/update_ledgers.py
+
+  public-checkpoint-gate:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[exp092a-results]') }}
+    needs: model-free-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned official runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Record host
+        run: |
+          mkdir -p results/exp_092a/${GITHUB_SHA}
+          {
+            uname -a
+            lscpu
+            free -b
+            df -B1 .
+            python --version
+          } | tee results/exp_092a/${GITHUB_SHA}/host.txt
+      - name: Execute official block-span correction Gate
+        shell: bash
+        run: |
+          set -o pipefail
+          python experiments/exp_092a/run_experiment.py \
+            --config experiments/exp_092a/config.json \
+            --output-dir results/exp_092a/${GITHUB_SHA} \
+            2>&1 | tee results/exp_092a/${GITHUB_SHA}/run.log
+      - name: Update canonical research ledgers
+        run: |
+          python experiments/exp_092a/update_ledgers.py \
+            --result results/exp_092a/${GITHUB_SHA}/result.json \
+            --source-commit ${GITHUB_SHA}
+      - name: Refresh checksums
+        run: |
+          cd results/exp_092a/${GITHUB_SHA}
+          find . -type f ! -name checksums.sha256 -print0 | sort -z | \
+            xargs -0 sha256sum > checksums.sha256
+      - name: Upload immutable raw evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-092a-${{ github.sha }}
+          path: results/exp_092a/${{ github.sha }}/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit result and ledgers
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            results/exp_092a/${GITHUB_SHA}/ \
+            docs/research/EXP_092A_LATEST_RESULT.md \
+            RESEARCH_STATE.md NEXT_EXPERIMENT.md DECISION_LOG.md \
+            FAILED_APPROACHES.md FAILED_APPROACHES_RECENT.md \
+            ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md ARCHITECTURE.md \
+            HARDWARE_VALIDATION_PLAN.md REPRODUCIBILITY.md
+          if git diff --cached --quiet; then
+            echo "No result delta"
+            exit 0
+          fi
+          git commit -m "research: record EXP-092A block-span correction Gate [exp092a-results] [skip ci]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+      - name: Publish summary
+        if: always()
+        run: |
+          if test -f results/exp_092a/${GITHUB_SHA}/result.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          path = Path("results/exp_092a") / os.environ["GITHUB_SHA"] / "result.json"
+          result = json.loads(path.read_text())
+          h = result["holdout_aggregate"]
+          p = result["target_projection"]
+          print("## EXP-092A one-sweep block-span correction")
+          print(f"- decision: `{result['authoritative_decision']}`")
+          print(f"- holdout extra-rank lower-bound p50/p95/max: `{h['extra_rank_p50']} / {h['extra_rank_p95']} / {h['extra_rank_max']}`")
+          print(f"- frozen direction budget: `{result['gates']['maximum_extra_directions_per_operator']}`")
+          print(f"- correction multiplier lower bound: `{p['observed_operation_multiplier_lower_bound']:.9f}x`")
+          PY
+          fi
