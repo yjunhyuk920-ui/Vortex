@@ -1260,3 +1260,12 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - `GRANTED`: true target block, exact coefficients, basis discovery, routing, nonlinear recomputation, coefficient application, and native-order repair.
 - `UNVERIFIED`: a causal nonlinear correction source, full-coordinate ranks if the Gate survives, all layers, TARGET-W, target traffic/VRAM/latency.
 <!-- EXP-092A:END -->
+
+<!-- EXP-093A:START -->
+## EXP-093A assumptions and grants
+
+- `MEASURED`: official DEV-W guessed-sweep logits, delayed incremental target tokens/caches, exact stable ranks, ordering, and split controls.
+- `DERIVED`: top-k coverage, oracle static-path information volume, `0.781250000%` raw and `0.619070788%` favorable-compressed logical traffic/token.
+- `GRANTED`: extraction and storage of static candidate IDs are free.
+- `UNVERIFIED`: branch-dependent successor transitions, branch merging, exact verification, arithmetic reduction, TARGET-W, target VRAM/traffic/latency.
+<!-- EXP-093A:END -->

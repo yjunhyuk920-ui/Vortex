@@ -1915,3 +1915,17 @@ python experiments/exp_092a/run_experiment.py \
 
 Checkpoint: `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`. Source commit: `bf33c055e506bb3a0d6679440483836d35f6f521`. Verify `checksums.sha256` before using summaries.
 <!-- EXP-092A:END -->
+
+<!-- EXP-093A:START -->
+## EXP-093A reproduction
+
+```bash
+python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+pytest -q tests/exp_093a
+python experiments/exp_093a/run_experiment.py \
+  --config experiments/exp_093a/config.json \
+  --output-dir results/exp_093a/<source-commit>
+```
+
+Checkpoint: `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`. Source commit: `fa35cf73dfcc544d07277cd716a467de44aca439`. Verify `checksums.sha256` before using summaries.
+<!-- EXP-093A:END -->

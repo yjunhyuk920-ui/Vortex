@@ -755,3 +755,9 @@ No target GPU run was performed. The observed minimum first-sweep release gives 
 
 No target GPU run was performed. `206,438,400` bytes at the eight-direction budget and `1,651,507,200` bytes at the observed certified requirement are dimension-derived sidecar values only. SSD, PCIe, HBM, CUDA/SASS, workspace, peak VRAM, TTFT, and p50/p95 remain `NOT TESTED`.
 <!-- EXP-092A:END -->
+
+<!-- EXP-093A:START -->
+## EXP-093A hardware status
+
+No target hardware run was performed. The logical one-sweep traffic values `0.781250000%` raw and `0.619070788%` favorable-compressed exclude physical storage, PCIe/HBM movement, branch transitions, verification, rollback, and synchronization. Dense arithmetic remains `100%`; VRAM and p50/p95 remain `NOT TESTED`.
+<!-- EXP-093A:END -->

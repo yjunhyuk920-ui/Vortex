@@ -1810,3 +1810,13 @@ Do not enlarge or retune a linear correction basis. The next admissible mechanis
 
 Do not treat the oracle true block, coefficients, or basis discovery as deployable inputs. TARGET-W and physical latency remain `NOT TESTED`.
 <!-- EXP-092A:END -->
+
+<!-- EXP-093A:START -->
+## Post EXP-093A handoff
+
+Current decision: `REJECT_ONE_SWEEP_STATIC_TOPK_BRANCH_SOURCE_AS_405B_CORE`.
+
+Do not enlarge or retune the static candidate list. The next admissible mechanism must change the token information source: construct a causal finite-word certificate that excludes all competitors, or generate branch-dependent exact successor logits without another dense checkpoint sweep.
+
+The one-sweep source still performs 100% of dense arithmetic per represented token. TARGET-W, physical branch execution, 8-GiB residency, and target latency remain `NOT TESTED`.
+<!-- EXP-093A:END -->

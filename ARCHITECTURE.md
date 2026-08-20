@@ -1270,3 +1270,9 @@ A Jacobi block may commit only the prefix where input guesses equal unchanged-ta
 
 The block-span object is an oracle correction feasibility test, not a runtime component. It may enter the architecture only after a surviving lower-bound result is followed by a build-frozen basis, causal exact coefficient solver, all-layer native-byte equality, and complete online resource trace. Architecture promotion: `False`.
 <!-- EXP-092A:END -->
+
+<!-- EXP-093A:START -->
+## EXP-093A architecture status
+
+The static top-k table is an oracle-evaluated candidate source, not a runtime component. It enters the architecture only after the source Gate passes and an exact branch-dependent successor generator commits the same behavioral prefix state under a complete online resource trace. Architecture promotion: `False`.
+<!-- EXP-093A:END -->
