@@ -6,12 +6,7 @@ from typing import Any, Sequence
 
 import torch
 
-from vortex_runtime.one_sweep_true_token_rank import (
-    TrueTokenRankInvariantError,
-    rank_metrics,
-    stable_argmax_token,
-    stable_true_token_rank,
-)
+from vortex_runtime.one_sweep_true_token_rank import rank_metrics
 
 
 class PararealTransportInvariantError(RuntimeError):
@@ -74,6 +69,24 @@ def transport_scores(
     return (new + (fine - old)).contiguous()
 
 
+def stable_argmax64(scores: torch.Tensor) -> int:
+    values = _row64(scores, "scores")
+    # torch.argmax returns the first maximum and therefore preserves the frozen
+    # ascending-token-ID tie rule without narrowing the float64 transport.
+    return int(torch.argmax(values).item())
+
+
+def rank_true_token(scores: torch.Tensor, true_token: int) -> int:
+    values = _row64(scores, "scores")
+    token = int(true_token)
+    if token < 0 or token >= int(values.numel()):
+        raise PararealTransportInvariantError("true token outside score vector")
+    target = values[token]
+    strictly_better = int((values > target).sum().item())
+    earlier_ties = int((values[:token] == target).sum().item()) if token else 0
+    return 1 + strictly_better + earlier_ties
+
+
 def accepted_prefix(candidate: Sequence[int], target: Sequence[int]) -> int:
     if len(candidate) != len(target):
         raise PararealTransportInvariantError("candidate/target lengths differ")
@@ -132,17 +145,10 @@ def logical_source_fraction(
     return sweeps / (accepted * ratio)
 
 
-def rank_true_token(scores: torch.Tensor, true_token: int) -> int:
-    try:
-        return stable_true_token_rank(scores, int(true_token))
-    except TrueTokenRankInvariantError as exc:
-        raise PararealTransportInvariantError(str(exc)) from exc
-
-
 def transport_argmax(
     fine_old: torch.Tensor, coarse_old: torch.Tensor, coarse_new: torch.Tensor
 ) -> int:
-    return stable_argmax_token(transport_scores(fine_old, coarse_old, coarse_new))
+    return stable_argmax64(transport_scores(fine_old, coarse_old, coarse_new))
 
 
 def model_free_controls() -> dict[str, Any]:
@@ -155,7 +161,7 @@ def model_free_controls() -> dict[str, Any]:
     shifted = transport_scores(fine, coarse_old, coarse_new)
     shifted_expected = torch.tensor([9.0, 14.0, -3.0, 1.0], dtype=torch.float64)
     shift_passed = torch.equal(shifted, shifted_expected)
-    argmax_passed = stable_argmax_token(shifted) == 1
+    argmax_passed = stable_argmax64(shifted) == 1
     rank_passed = rank_true_token(shifted, 0) == 2
 
     candidate = [4, 5, 6, 9]
