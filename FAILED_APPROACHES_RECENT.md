@@ -1118,3 +1118,36 @@ It is not a physical speed result.
 Permanent scope restriction: do not tune or rename the global
 sign/exponent/MSB-mantissa prefix. Reopening requires a new cross-weight
 information source or causal execution dependency.
+
+<!-- EXP087A_RESULT -->
+## EXP-087A — quadratic BF16 residual generator
+
+```text
+decision                            REJECT_QUADRATIC_BF16_RESIDUAL_GENERATOR_BUILD_GATE
+evaluation oracle vector exact      0 / 96
+evaluation oracle row-exact p50     0.0017361111240461469
+projected sidecar GiB               1.6611328125
+compiled MLP operation fraction     0.00036154114283048187
+```
+
+The compiler used four checkpoint-static programs and only twelve runtime input predicate bits per program. It generated complete 16-bit BF16 XOR residual words for the composed SwiGLU output and used no state key, dense query call, row/page repair, or fallback. Authority: `results/exp_087a/eda4310e8ad20cf38ab712c46a9ef7b386882c62/result.json`; deterministic core `03680d9211b76a432c82176e8fb1542f52c6af15e1a3c21da47865c990b31512`.
+
+Stop rule: do not sweep context width, polynomial degree, program count, clustering, prompts, layers, precision, or state-keyed routing around this finite-context quadratic residual fingerprint. Reopening requires a non-polynomial or recurrent exact information source with a new resource equation.
+
+<!-- EXP087A_FP32_CORRECTION_RESULT -->
+## EXP-087A corrected finite-word residual Gate
+
+- superseded result: `4a23f49cd6e5354e8616eb930814e11db95cd933` (`FP64 compile / FP32 query predicate mismatch`)
+- corrected source: `78e9901ced2937e76be9fa75a1383baa98f0057b`
+- corrected decision: `REJECT_QUADRATIC_BF16_RESIDUAL_GENERATOR_AT_ORACLE_GATE`
+- build programs exact: `[True, True, True, True]`
+- target-seeing evaluation oracle: `0 / 96` complete BF16 vectors
+- evaluation row-exact p50: `0.0017361111240461469`
+- projected sidecar: `1.6611328125 GiB`
+- favorable compiled-MLP operation fraction: `0.00036154114283048187`
+- raw evidence: `results/exp_087a_fp32/78e9901ced2937e76be9fa75a1383baa98f0057b/result.json`
+- deterministic core: `c5600395900403ad181314b6e9919b8efeea959a40f42f5f8d43e2d24408a905`
+
+The correction changed only predicate numerical consistency. All frozen scientific capacity and resource parameters remained fixed. The corrected result is authoritative for this mechanism fingerprint.
+
+Stop rule: do not sweep context width, polynomial degree, program count, clustering, prompt/layer selection, state-keyed routing, or tolerance. The corrected target-seeing oracle is the favorable upper bound for this frozen finite-context degree-two language. Reopening requires a non-polynomial, recurrent, or otherwise materially new exact information source with a complete resource equation.
