@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: exp-087a-fp32-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 env:
   PYTHONHASHSEED: "0"
