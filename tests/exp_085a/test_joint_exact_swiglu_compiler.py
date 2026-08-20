@@ -5,7 +5,7 @@ import copy
 import torch
 from torch import nn
 
-from vortex_runtime.joint_exact_swiglu_compiler import (
+from vortex_runtime.swiglu_quadratic_compat import (
     WholeSwiGLUIR,
     consecutive_true_prefix,
     deterministic_design,
