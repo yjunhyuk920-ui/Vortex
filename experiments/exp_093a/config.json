@@ -17,7 +17,7 @@
     "whole_model_fraction_limit": 0.011851851851851851,
     "checkpoint_compression_ratio_favorable": 1.261972,
     "one_sweep_no_compression_fraction": 0.0078125,
-    "one_sweep_favorable_compression_fraction": 0.006190709131945637
+    "one_sweep_favorable_compression_fraction": 0.006190707876244481
   },
   "success": {
     "minimum_build_cases": 3,
