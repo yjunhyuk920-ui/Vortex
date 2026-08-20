@@ -749,3 +749,9 @@ No target GPU run was performed. The `7.433527470 GiB` value is a dimension-deri
 
 No target GPU run was performed. The observed minimum first-sweep release gives a logical checkpoint fraction `inf` without compression. This excludes KV reads/writes, decompression, allocator/workspace, PCIe/HBM movement, and synchronization. Exact block arithmetic remains `100%` of the target graph for 128 positions. All physical target metrics remain `NOT TESTED`.
 <!-- EXP-091A:END -->
+
+<!-- EXP-092A:START -->
+## EXP-092A hardware status
+
+No target GPU run was performed. `206,438,400` bytes at the eight-direction budget and `1,651,507,200` bytes at the observed certified requirement are dimension-derived sidecar values only. SSD, PCIe, HBM, CUDA/SASS, workspace, peak VRAM, TTFT, and p50/p95 remain `NOT TESTED`.
+<!-- EXP-092A:END -->

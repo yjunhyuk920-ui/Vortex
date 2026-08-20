@@ -1,0 +1,72 @@
+{
+  "schema": "exp-092a-block-span-correction-closure-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "attention_implementation": "eager",
+  "dtype": "bfloat16",
+  "seed_mode": "prompt_suffix_cycle_16",
+  "block_length": 128,
+  "layer_indices": [0, 15, 29],
+  "operator_roles": [
+    "attention_qkv_input",
+    "attention_o_input",
+    "mlp_gate_up_input",
+    "mlp_down_input"
+  ],
+  "rank_sketch_columns": 192,
+  "rank_primes": [1000003, 1000033, 1000037],
+  "maximum_extra_directions_per_operator": 8,
+  "maximum_extra_fraction": 0.0625,
+  "target_projection": {
+    "llama405_layer_count": 126,
+    "llama405_hidden_size": 16384,
+    "llama405_intermediate_size": 53248,
+    "bytes_per_basis_value": 2,
+    "target_hot_limit_bytes": 8589934592
+  },
+  "torch_num_threads": 2,
+  "success": {
+    "minimum_build_cases": 3,
+    "minimum_holdout_cases": 3,
+    "maximum_integrity_failures": 0
+  },
+  "cases": [
+    {
+      "id": "build_english",
+      "split": "build",
+      "family": "english",
+      "prompt": "Explain why a metal bridge expands on a hot afternoon, then give one practical engineering consequence.\n"
+    },
+    {
+      "id": "build_korean",
+      "split": "build",
+      "family": "korean",
+      "prompt": "정확한 상태 전이를 유지하는 계산기를 설계할 때 검증과 실행 비용을 함께 고려해야 하는 이유를 설명해 주세요.\n"
+    },
+    {
+      "id": "build_code",
+      "split": "build",
+      "family": "code",
+      "prompt": "Write a Python function that performs a stable topological sort, detects a cycle, and includes two assertions. Return code only.\n"
+    },
+    {
+      "id": "holdout_math",
+      "split": "holdout",
+      "family": "math",
+      "prompt": "Derive the closed form of the recurrence a_n = 3 a_{n-1} - 2 a_{n-2}, with a_0=1 and a_1=4.\n"
+    },
+    {
+      "id": "holdout_structured",
+      "split": "holdout",
+      "family": "structured_json",
+      "prompt": "Return valid JSON with keys project, assumptions, risks, and next_action for a lossless model-runtime experiment.\n"
+    },
+    {
+      "id": "holdout_repeated",
+      "split": "holdout",
+      "family": "repeated_pattern",
+      "prompt": "alpha beta gamma alpha beta gamma alpha beta gamma. Continue the pattern and then explain it.\n"
+    }
+  ]
+}

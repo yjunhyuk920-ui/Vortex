@@ -1800,3 +1800,13 @@ Do not sweep seeds, n-gram order, cycle width, block length, iteration count, pr
 
 Later Jacobi iterations are diagnostic only: at K=128, two complete checkpoint sweeps already exceed the registered traffic fraction even under the favorable compression ratio.
 <!-- EXP-091A:END -->
+
+<!-- EXP-092A:START -->
+## Post EXP-092A handoff
+
+Current decision: `REJECT_ONE_SWEEP_BLOCK_SPAN_CORRECTION_AS_405B_CORE`.
+
+Do not enlarge or retune a linear correction basis. The next admissible mechanism must propagate token corrections through a nonlinear finite-word symbolic program, exact branch closure, or sound token certificate whose information is not a small linear extension of the guessed-block activation span.
+
+Do not treat the oracle true block, coefficients, or basis discovery as deployable inputs. TARGET-W and physical latency remain `NOT TESTED`.
+<!-- EXP-092A:END -->

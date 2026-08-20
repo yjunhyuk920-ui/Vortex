@@ -2015,3 +2015,18 @@ The candidate source uses one complete BF16 first layer, a checkpoint-derived ro
 
 Every released prefix was checked against the delayed official AR continuation, and every full fixed point, if present, was required to equal it. All Jacobi trajectories were complete before that AR control began.
 <!-- EXP-091A:END -->
+
+<!-- EXP-092A:START -->
+## EXP-092A — one-sweep block-span correction closure
+
+- decision: `REJECT_ONE_SWEEP_BLOCK_SPAN_CORRECTION_AS_405B_CORE`
+- evidence: E2/E3 public-checkpoint oracle rank Gate
+- holdout certified extra-rank lower bound p50/p95/max: `64.0 / 64.0 / 64`
+- frozen budget: `8` directions per operator
+- over-budget holdout reports: `33 / 36`
+- correction-operation multiplier lower bound: `1.500000000x`
+- raw evidence: `results/exp_092a/bf33c055e506bb3a0d6679440483836d35f6f521/result.json`
+- source commit: `bf33c055e506bb3a0d6679440483836d35f6f521`
+
+Guessed captures precede target generation. The exact incremental AR block is an oracle control only. Rank is computed on exact BF16 dyadic integers over three primes after a frozen coordinate restriction; an over-budget lower bound is decisive before coefficient or kernel work.
+<!-- EXP-092A:END -->

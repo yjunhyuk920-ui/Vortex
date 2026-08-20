@@ -1251,3 +1251,12 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - `UNVERIFIED`: TARGET-W release population, maximum-context KV handling, physical SSD/PCIe/HBM traffic, 8-GiB allocation, and target latency.
 - The exact boundary token is supplied by the preceding accepted block; prompt prefill calls are measured but excluded from steady-state block amortization.
 <!-- EXP-091A:END -->
+
+<!-- EXP-092A:START -->
+## EXP-092A assumptions and grants
+
+- `MEASURED`: DEV-W guessed complete-block inputs, true incremental-reference operator-input blocks, exact modular ranks, run ordering, and population controls.
+- `DERIVED`: full rational rank-increment lower bounds from restricted-coordinate modular ranks; `1.500000000x` optimistic correction multiplier lower bound.
+- `GRANTED`: true target block, exact coefficients, basis discovery, routing, nonlinear recomputation, coefficient application, and native-order repair.
+- `UNVERIFIED`: a causal nonlinear correction source, full-coordinate ranks if the Gate survives, all layers, TARGET-W, target traffic/VRAM/latency.
+<!-- EXP-092A:END -->
