@@ -61,7 +61,7 @@ def test_static_gate_requires_both_population_and_worst_case() -> None:
     )
     assert passed["passed"]
     failed = static_topk_gate(
-        [1] * 120 + [17] * 8,
+        [1] * 122 + [17] * 6,
         p95_limit=4,
         maximum_limit=16,
     )
