@@ -1,0 +1,24 @@
+build oracle 1/256 mask=0xff exact=3/3
+build oracle 17/256 mask=0xe7 exact=0/3
+build oracle 33/256 mask=0xcf exact=0/3
+build oracle 49/256 mask=0xd7 exact=0/3
+build oracle 65/256 mask=0x9f exact=0/3
+build oracle 81/256 mask=0x87 exact=0/3
+build oracle 97/256 mask=0xaf exact=0/3
+build oracle 113/256 mask=0xb7 exact=0/3
+build oracle 129/256 mask=0x3f exact=0/3
+build oracle 145/256 mask=0x27 exact=0/3
+build oracle 161/256 mask=0x0f exact=0/3
+build oracle 177/256 mask=0x17 exact=0/3
+build oracle 193/256 mask=0x5f exact=0/3
+build oracle 209/256 mask=0x47 exact=0/3
+build oracle 225/256 mask=0x6f exact=0/3
+build oracle 241/256 mask=0x77 exact=0/3
+{
+  "authoritative_decision": "REJECT_CROSS_LAYER_PAGE_MASK_PROGRAM_SHARING_AS_405B_CORE",
+  "holdout_shared_exact": true,
+  "optimistic_405b_hot_bytes": 810000000000,
+  "oracle_program_sharing_gate_passed": false,
+  "retained_fraction": 1.0,
+  "selected_mask": 255
+}

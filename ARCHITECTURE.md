@@ -1240,3 +1240,9 @@ SMT search timed out and is recorded as inconclusive. No nonlinear probe
 component enters the runtime until an explicit finite encoder, both address
 functions, exact decoder, native numerical lift, joint batch, and complete
 costs exist.
+
+<!-- EXP-088B:START -->
+## EXP-088B architecture status
+
+The page-mask object is an offline oracle program descriptor, not an accepted runtime component. It has no causal selector: one checkpoint-static mask is frozen from build states and applied unchanged to holdout states. Architecture promotion is `False`. Until a full-layer existing-ISA executor passes 128 exact steps, the production architecture remains unchanged.
+<!-- EXP-088B:END -->

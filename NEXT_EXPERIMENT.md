@@ -1753,3 +1753,13 @@ This is a non-deployable perfect-future, exact-real favorable Gate. Native FP32 
 
 This Gate preserves exact weights on a small public checkpoint and uses perfect future activations. Target 405B entropy, target native 4B baseline, target effective compute, CUDA, 8 GiB, and latency remain `NOT TESTED`.
 <!-- EXP087A_RESULT:END -->
+
+<!-- EXP-088B:START -->
+## EXP-088B handoff
+
+Current decision: `REJECT_CROSS_LAYER_PAGE_MASK_PROGRAM_SHARING_AS_405B_CORE`.
+
+Do not sweep page-family count, tile size, layer pair, prompt set, or deletion order. The next admissible decompiler primitive must replace or fuse checkpoint pages with an exact static computation, rather than only retain/zero them, and must repeat the same build-only selection plus untouched-holdout state Gate.
+
+Do not call the dense oracle evaluator an executor. A promotion requires an existing-ISA runtime whose measured online bytes, MACs, state traffic, and exact 128-step behavior are charged.
+<!-- EXP-088B:END -->

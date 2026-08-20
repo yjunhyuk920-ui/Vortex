@@ -1845,3 +1845,17 @@ Canonical summary SHA-256:
 
 No model forward, checkpoint mutation, experiment number, backend, kernel,
 download, Ubuntu command, or hardware action was used.
+
+<!-- EXP-088B:START -->
+## EXP-088B reproduction
+
+```bash
+python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+pytest -q tests/exp_088b
+python experiments/exp_088b/run_experiment.py \
+  --config experiments/exp_088b/config.json \
+  --output-dir results/exp_088b/<source-commit>
+```
+
+Checkpoint: `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`. Source commit: `991bae0f0bfe42e9f4b918499b1e055b293c2c02`. Verify `checksums.sha256` before reading derived summaries.
+<!-- EXP-088B:END -->
