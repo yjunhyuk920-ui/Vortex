@@ -1,0 +1,49 @@
+{
+  "schema": "exp-089a-prefix-state-bisimulation-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "attention_implementation": "eager",
+  "dtype": "bfloat16",
+  "torch_num_threads": 2,
+  "cases": [
+    {
+      "id": "greedy_english",
+      "family": "english",
+      "mode": "greedy",
+      "steps": 16,
+      "prompt": "Explain why a metal bridge expands on a hot afternoon, then give one practical engineering consequence.\n"
+    },
+    {
+      "id": "greedy_korean",
+      "family": "korean",
+      "mode": "greedy",
+      "steps": 16,
+      "prompt": "정확한 상태 전이 실행기를 검증할 때 출력과 내부 상태의 관계를 함께 확인해야 하는 이유를 설명해 주세요.\n"
+    },
+    {
+      "id": "greedy_code",
+      "family": "code",
+      "mode": "greedy",
+      "steps": 16,
+      "prompt": "Write a Python function that performs a stable topological sort, detects a cycle, and includes two assertions. Return code only.\n"
+    },
+    {
+      "id": "sample_structured",
+      "family": "structured_json",
+      "mode": "sample",
+      "seed": 20260820,
+      "temperature": 0.8,
+      "top_k": 32,
+      "steps": 16,
+      "prompt": "Return valid JSON with keys project, assumptions, risks, and next_action for an exact model-runtime experiment.\n"
+    }
+  ],
+  "success": {
+    "minimum_total_transitions": 64,
+    "maximum_token_mismatches": 0,
+    "maximum_logits_byte_mismatches": 0,
+    "maximum_cache_digest_mismatches": 0,
+    "maximum_rng_mismatches": 0
+  }
+}
