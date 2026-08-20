@@ -1240,3 +1240,14 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - `UNVERIFIED`: TARGET-W acceptance, actual 8-GiB allocation, lossless target stream, block arithmetic throughput, and 4B-class latency.
 - True-path ranks after a chain mismatch are oracle diagnostics only. They do not count as accepted tokens.
 <!-- EXP-090A:END -->
+
+<!-- EXP-091A:START -->
+## EXP-091A assumptions and grants
+
+- `MEASURED`: DEV-W unchanged-target Jacobi proposals, self-consistent exact prefixes, fixed points, delayed AR controls, target calls, block sweeps, and processed positions.
+- `DERIVED`: exact-prefix soundness by causal induction and checkpoint weight fractions from committed tokens.
+- `GRANTED`: the target-scale projection treats one logical checkpoint sweep as the full weight cost and does not yet add decompression, KV, workspace, or synchronization.
+- `PROJECTED`: the observed first-sweep release applied to the registered 405B checkpoint fraction equation.
+- `UNVERIFIED`: TARGET-W release population, maximum-context KV handling, physical SSD/PCIe/HBM traffic, 8-GiB allocation, and target latency.
+- The exact boundary token is supplied by the preceding accepted block; prompt prefill calls are measured but excluded from steady-state block amortization.
+<!-- EXP-091A:END -->

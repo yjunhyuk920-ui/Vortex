@@ -743,3 +743,9 @@ No target GPU measurement was made. DEV-W replay performed `612` official target
 
 No target GPU run was performed. The `7.433527470 GiB` value is a dimension-derived favorable projection, leaving `608,245,248` bytes before packed-kernel workspace, allocator fragmentation, on-demand embedding traffic, token buffers, and synchronization. Exact target arithmetic remains `100%`. SSD, PCIe, HBM, peak VRAM, TTFT, and p50/p95 are `NOT TESTED`.
 <!-- EXP-090A:END -->
+
+<!-- EXP-091A:START -->
+## EXP-091A hardware status
+
+No target GPU run was performed. The observed minimum first-sweep release gives a logical checkpoint fraction `inf` without compression. This excludes KV reads/writes, decompression, allocator/workspace, PCIe/HBM movement, and synchronization. Exact block arithmetic remains `100%` of the target graph for 128 positions. All physical target metrics remain `NOT TESTED`.
+<!-- EXP-091A:END -->
