@@ -2,8 +2,8 @@
 
 ## Identity
 
-- source commit: `f271e52ad99ade62f39c73fe670015ff30d713cd`
-- raw result: `results/exp_089a/f271e52ad99ade62f39c73fe670015ff30d713cd/result.json`
+- source commit: `011ea4b5b6847020d069bf82c670bed3708d5845`
+- raw result: `results/exp_089a/011ea4b5b6847020d069bf82c670bed3708d5845/result.json`
 - public checkpoint: `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`
 - checkpoint tensor SHA-256: `ee567358e6d45900612a1a276fd068d1c5fd999a451cd67bae55cb2c01446308`
 - deterministic core: `a3d2a7a79fc59c0f1c18e22d001c052f2bd49c0568e22bfaf917d11238d2f820`

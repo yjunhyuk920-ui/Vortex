@@ -1973,8 +1973,8 @@ The program was selected only from three build states after exhaustive enumerati
 - token/logits/cache/RNG mismatches: `0/0/0/0`
 - official reference calls: `68`
 - replay calls: `612`
-- raw evidence: `results/exp_089a/f271e52ad99ade62f39c73fe670015ff30d713cd/result.json`
-- source commit: `f271e52ad99ade62f39c73fe670015ff30d713cd`
+- raw evidence: `results/exp_089a/011ea4b5b6847020d069bf82c670bed3708d5845/result.json`
+- source commit: `011ea4b5b6847020d069bf82c670bed3708d5845`
 
 The state relation stores only exact prefix token IDs and exact RNG bytes. It contains no hidden/KV table, output lookup, or model response table. Replay is a correctness witness and remains prohibited as the final fast core.
 <!-- EXP-089A:END -->
