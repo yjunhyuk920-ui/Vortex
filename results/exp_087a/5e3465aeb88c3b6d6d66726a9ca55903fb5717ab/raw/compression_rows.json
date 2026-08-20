@@ -1,0 +1,62 @@
+[
+  {
+    "byte_entropy_bits": 6.191864988078027,
+    "compression_ratio": 1.264755957920378,
+    "decode_ns": 13784613,
+    "dtype": "bfloat16",
+    "encode_ns": 174179877,
+    "encoded_bytes": 1399062,
+    "name": "gate_proj",
+    "raw_bytes": 1769472,
+    "raw_sha256": "b3257bec2c20bcfef046fcd8dfe99cac5a1f70822bd83ca683de0d1e6933120c",
+    "roundtrip_mismatch": 0,
+    "shannon_ratio": 1.527977429657735,
+    "shannon_word16_bytes": 1158048.5193399482,
+    "shape": [
+      1536,
+      576
+    ],
+    "tile_count": 2,
+    "word16_entropy_bits": 10.471358862665909
+  },
+  {
+    "byte_entropy_bits": 6.1922847837259845,
+    "compression_ratio": 1.2642128855303028,
+    "decode_ns": 13259116,
+    "dtype": "bfloat16",
+    "encode_ns": 173269649,
+    "encoded_bytes": 1399663,
+    "name": "up_proj",
+    "raw_bytes": 1769472,
+    "raw_sha256": "d713739db7950d6c3dfe8d82f036591fc3667a7d1a5f688264221dd253fc814f",
+    "roundtrip_mismatch": 0,
+    "shannon_ratio": 1.5267374542023984,
+    "shannon_word16_bytes": 1158989.0554721549,
+    "shape": [
+      1536,
+      576
+    ],
+    "tile_count": 2,
+    "word16_entropy_bits": 10.47986342115302
+  },
+  {
+    "byte_entropy_bits": 6.244526519287504,
+    "compression_ratio": 1.2569763468755528,
+    "decode_ns": 13299596,
+    "dtype": "bfloat16",
+    "encode_ns": 168329072,
+    "encoded_bytes": 1407721,
+    "name": "down_proj",
+    "raw_bytes": 1769472,
+    "raw_sha256": "cd82c901faa31baba56e78a44a7defc4cb8295084678bad85a3919860b560e74",
+    "roundtrip_mismatch": 0,
+    "shannon_ratio": 1.5110004856111314,
+    "shannon_word16_bytes": 1171059.8486567186,
+    "shape": [
+      576,
+      1536
+    ],
+    "tile_count": 2,
+    "word16_entropy_bits": 10.58901049494284
+  }
+]
