@@ -1,0 +1,711 @@
+We detected that you are passing `past_key_values` as a tuple of tuples. This is deprecated and will be removed in v4.47. Please convert your cache or use an appropriate `Cache` class (https://huggingface.co/docs/transformers/kv_cache#legacy-cache-format)
+{
+  "aggregates": {
+    "coordinate_k128": {
+      "block_size": 128,
+      "count": 6,
+      "down_atom_union_operation_fraction_max": 0.2956695556640625,
+      "down_atom_union_operation_fraction_p05": 0.2567342122395833,
+      "down_atom_union_operation_fraction_p50": 0.2901763916015625,
+      "down_atom_union_operation_fraction_p95": 0.29532114664713544,
+      "down_residual_nonzero_fraction_max": 0.9524585793963255,
+      "down_residual_nonzero_fraction_p05": 0.7507343442421259,
+      "down_residual_nonzero_fraction_p50": 0.8935469980314961,
+      "down_residual_nonzero_fraction_p95": 0.9432222461450132,
+      "families": {
+        "code": {
+          "count": 1,
+          "joint_max": 0.2082995186885735,
+          "joint_p50": 0.2082995186885735,
+          "joint_p95": 0.2082995186885735
+        },
+        "english": {
+          "count": 1,
+          "joint_max": 0.20052701493903854,
+          "joint_p50": 0.20052701493903854,
+          "joint_p95": 0.20052701493903854
+        },
+        "korean": {
+          "count": 1,
+          "joint_max": 0.1801658654498279,
+          "joint_p50": 0.1801658654498279,
+          "joint_p95": 0.1801658654498279
+        },
+        "math": {
+          "count": 1,
+          "joint_max": 0.20427275008526072,
+          "joint_p50": 0.20427275008526072,
+          "joint_p95": 0.20427275008526072
+        },
+        "repeated_pattern": {
+          "count": 1,
+          "joint_max": 0.20037226285564064,
+          "joint_p50": 0.20037226285564064,
+          "joint_p95": 0.20037226285564064
+        },
+        "structured_json": {
+          "count": 1,
+          "joint_max": 0.2045202615776984,
+          "joint_p50": 0.2045202615776984,
+          "joint_p95": 0.2045202615776984
+        }
+      },
+      "input_atom_union_operation_fraction_max": 0.2366943359375,
+      "input_atom_union_operation_fraction_p05": 0.2135281032986111,
+      "input_atom_union_operation_fraction_p50": 0.2284274631076389,
+      "input_atom_union_operation_fraction_p95": 0.23520914713541666,
+      "input_residual_nonzero_fraction_max": 0.9037756999125109,
+      "input_residual_nonzero_fraction_p05": 0.6654192639982502,
+      "input_residual_nonzero_fraction_p50": 0.8006342957130359,
+      "input_residual_nonzero_fraction_p95": 0.886014736439195,
+      "mode": "coordinate",
+      "projected_joint_fraction_max": 0.2082995186885735,
+      "projected_joint_fraction_p05": 0.1852174648012811,
+      "projected_joint_fraction_p50": 0.20239988251214963,
+      "projected_joint_fraction_p95": 0.2073547044108547,
+      "projected_whole_model_operation_fraction_max": 0.2082995186885735,
+      "projected_whole_model_operation_fraction_p05": 0.1852174648012811,
+      "projected_whole_model_operation_fraction_p50": 0.20239988251214963,
+      "projected_whole_model_operation_fraction_p95": 0.2073547044108547,
+      "projected_whole_model_weight_fraction_max": 0.006348049854281639,
+      "projected_whole_model_weight_fraction_p05": 0.006348049854281639,
+      "projected_whole_model_weight_fraction_p50": 0.006348049854281639,
+      "projected_whole_model_weight_fraction_p95": 0.006348049854281639,
+      "reconstruction_mismatches": 0
+    },
+    "coordinate_k16": {
+      "block_size": 16,
+      "count": 48,
+      "down_atom_union_operation_fraction_max": 1.6427001953125,
+      "down_atom_union_operation_fraction_p05": 1.3610921223958334,
+      "down_atom_union_operation_fraction_p50": 1.54364013671875,
+      "down_atom_union_operation_fraction_p95": 1.6338521321614583,
+      "down_residual_nonzero_fraction_max": 0.9967013888888889,
+      "down_residual_nonzero_fraction_p05": 0.9442382812500001,
+      "down_residual_nonzero_fraction_p50": 0.9936631944444445,
+      "down_residual_nonzero_fraction_p95": 0.9963107638888888,
+      "families": {
+        "code": {
+          "count": 8,
+          "joint_max": 1.1477185969182115,
+          "joint_p50": 1.1329432169911742,
+          "joint_p95": 1.1466141170636457
+        },
+        "english": {
+          "count": 8,
+          "joint_max": 1.167993415868316,
+          "joint_p50": 1.164742244501974,
+          "joint_p95": 1.167918840977088
+        },
+        "korean": {
+          "count": 8,
+          "joint_max": 1.0699439652833755,
+          "joint_p50": 1.0251329050272835,
+          "joint_p95": 1.0633080857380737
+        },
+        "math": {
+          "count": 8,
+          "joint_max": 1.1580231570115334,
+          "joint_p50": 1.0654768190896218,
+          "joint_p95": 1.1462853262870496
+        },
+        "repeated_pattern": {
+          "count": 8,
+          "joint_max": 1.1455805384603461,
+          "joint_p50": 1.0925037882898243,
+          "joint_p95": 1.139776554684432
+        },
+        "structured_json": {
+          "count": 8,
+          "joint_max": 1.1597901778332402,
+          "joint_p50": 1.145920350156828,
+          "joint_p95": 1.1567686089645213
+        }
+      },
+      "input_atom_union_operation_fraction_max": 1.3412543402777777,
+      "input_atom_union_operation_fraction_p05": 1.1904730902777778,
+      "input_atom_union_operation_fraction_p50": 1.3095703125,
+      "input_atom_union_operation_fraction_p95": 1.3360677083333332,
+      "input_residual_nonzero_fraction_max": 0.9892361111111111,
+      "input_residual_nonzero_fraction_p05": 0.9039178240740741,
+      "input_residual_nonzero_fraction_p50": 0.9820601851851851,
+      "input_residual_nonzero_fraction_p95": 0.9886574074074074,
+      "mode": "coordinate",
+      "projected_joint_fraction_max": 1.167993415868316,
+      "projected_joint_fraction_p05": 1.023375986715472,
+      "projected_joint_fraction_p50": 1.1262498449804674,
+      "projected_joint_fraction_p95": 1.165983383763125,
+      "projected_whole_model_operation_fraction_max": 1.167993415868316,
+      "projected_whole_model_operation_fraction_p05": 1.023375986715472,
+      "projected_whole_model_operation_fraction_p50": 1.1262498449804674,
+      "projected_whole_model_operation_fraction_p95": 1.165983383763125,
+      "projected_whole_model_weight_fraction_max": 0.05078439883425311,
+      "projected_whole_model_weight_fraction_p05": 0.05078439883425311,
+      "projected_whole_model_weight_fraction_p50": 0.05078439883425311,
+      "projected_whole_model_weight_fraction_p95": 0.05078439883425311,
+      "reconstruction_mismatches": 0
+    },
+    "coordinate_k32": {
+      "block_size": 32,
+      "count": 24,
+      "down_atom_union_operation_fraction_max": 0.9825439453125,
+      "down_atom_union_operation_fraction_p05": 0.7734263102213541,
+      "down_atom_union_operation_fraction_p50": 0.9427693684895833,
+      "down_atom_union_operation_fraction_p95": 0.9682607014973958,
+      "down_residual_nonzero_fraction_max": 0.9905913978494624,
+      "down_residual_nonzero_fraction_p05": 0.8611034106182796,
+      "down_residual_nonzero_fraction_p50": 0.970734627016129,
+      "down_residual_nonzero_fraction_p95": 0.9893124159946236,
+      "families": {
+        "code": {
+          "count": 4,
+          "joint_max": 0.6880066393573924,
+          "joint_p50": 0.6853147796752599,
+          "joint_p95": 0.6877550868609966
+        },
+        "english": {
+          "count": 4,
+          "joint_max": 0.6811093803287963,
+          "joint_p50": 0.677008679721249,
+          "joint_p95": 0.6807991414340081
+        },
+        "korean": {
+          "count": 4,
+          "joint_max": 0.6364177133714681,
+          "joint_p50": 0.5724688257335007,
+          "joint_p95": 0.6270912599180205
+        },
+        "math": {
+          "count": 4,
+          "joint_max": 0.6793148072073748,
+          "joint_p50": 0.6394300981402823,
+          "joint_p95": 0.6784273476335623
+        },
+        "repeated_pattern": {
+          "count": 4,
+          "joint_max": 0.6775037027061243,
+          "joint_p50": 0.6379808471752857,
+          "joint_p95": 0.6720968394100989
+        },
+        "structured_json": {
+          "count": 4,
+          "joint_max": 0.6892373087446518,
+          "joint_p50": 0.6790071398605599,
+          "joint_p95": 0.688185086418545
+        }
+      },
+      "input_atom_union_operation_fraction_max": 0.7922634548611112,
+      "input_atom_union_operation_fraction_p05": 0.6707275390624999,
+      "input_atom_union_operation_fraction_p50": 0.7659505208333333,
+      "input_atom_union_operation_fraction_p95": 0.7873779296875,
+      "input_residual_nonzero_fraction_max": 0.9767585125448028,
+      "input_residual_nonzero_fraction_p05": 0.7894069220430108,
+      "input_residual_nonzero_fraction_p50": 0.9364079301075269,
+      "input_residual_nonzero_fraction_p95": 0.9757868503584229,
+      "mode": "coordinate",
+      "projected_joint_fraction_max": 0.6892373087446518,
+      "projected_joint_fraction_p05": 0.5712280538363458,
+      "projected_joint_fraction_p50": 0.6741873242304571,
+      "projected_joint_fraction_p95": 0.6877550868609966,
+      "projected_whole_model_operation_fraction_max": 0.6892373087446518,
+      "projected_whole_model_operation_fraction_p05": 0.5712280538363458,
+      "projected_whole_model_operation_fraction_p50": 0.6741873242304571,
+      "projected_whole_model_operation_fraction_p95": 0.6877550868609966,
+      "projected_whole_model_weight_fraction_max": 0.025392199417126556,
+      "projected_whole_model_weight_fraction_p05": 0.025392199417126556,
+      "projected_whole_model_weight_fraction_p50": 0.025392199417126556,
+      "projected_whole_model_weight_fraction_p95": 0.025392199417126556,
+      "reconstruction_mismatches": 0
+    },
+    "coordinate_k64": {
+      "block_size": 64,
+      "count": 12,
+      "down_atom_union_operation_fraction_max": 0.5470072428385416,
+      "down_atom_union_operation_fraction_p05": 0.4462448120117188,
+      "down_atom_union_operation_fraction_p50": 0.5288747151692708,
+      "down_atom_union_operation_fraction_p95": 0.5464981079101562,
+      "down_residual_nonzero_fraction_max": 0.9787119708994709,
+      "down_residual_nonzero_fraction_p05": 0.8009192088293651,
+      "down_residual_nonzero_fraction_p50": 0.9453486689814814,
+      "down_residual_nonzero_fraction_p95": 0.9786665013227513,
+      "families": {
+        "code": {
+          "count": 2,
+          "joint_max": 0.3856054554280089,
+          "joint_p50": 0.3851995182122113,
+          "joint_p95": 0.3855648617064291
+        },
+        "english": {
+          "count": 2,
+          "joint_max": 0.3763350249839813,
+          "joint_p50": 0.370065958388882,
+          "joint_p95": 0.3757081183244714
+        },
+        "korean": {
+          "count": 2,
+          "joint_max": 0.3411975771577427,
+          "joint_p50": 0.32595885939050195,
+          "joint_p95": 0.3396737053810186
+        },
+        "math": {
+          "count": 2,
+          "joint_max": 0.38318820033303364,
+          "joint_p50": 0.35881589521034857,
+          "joint_p95": 0.3807509698207651
+        },
+        "repeated_pattern": {
+          "count": 2,
+          "joint_max": 0.3718302239806174,
+          "joint_p50": 0.36376520664911066,
+          "joint_p95": 0.3710237222474667
+        },
+        "structured_json": {
+          "count": 2,
+          "joint_max": 0.3812567841230286,
+          "joint_p50": 0.3767900971342701,
+          "joint_p95": 0.3808101154241528
+        }
+      },
+      "input_atom_union_operation_fraction_max": 0.4388020833333333,
+      "input_atom_union_operation_fraction_p05": 0.3717854817708333,
+      "input_atom_union_operation_fraction_p50": 0.4224310980902778,
+      "input_atom_union_operation_fraction_p95": 0.4387722439236111,
+      "input_residual_nonzero_fraction_max": 0.9538966049382716,
+      "input_residual_nonzero_fraction_p05": 0.7170703813932982,
+      "input_residual_nonzero_fraction_p50": 0.8936149691358024,
+      "input_residual_nonzero_fraction_p95": 0.9525325176366842,
+      "mode": "coordinate",
+      "projected_joint_fraction_max": 0.3856054554280089,
+      "projected_joint_fraction_p05": 0.32376803827868245,
+      "projected_joint_fraction_p50": 0.3720768170630645,
+      "projected_joint_fraction_p95": 0.3851589244906316,
+      "projected_whole_model_operation_fraction_max": 0.3856054554280089,
+      "projected_whole_model_operation_fraction_p05": 0.32376803827868245,
+      "projected_whole_model_operation_fraction_p50": 0.3720768170630645,
+      "projected_whole_model_operation_fraction_p95": 0.3851589244906316,
+      "projected_whole_model_weight_fraction_max": 0.012696099708563278,
+      "projected_whole_model_weight_fraction_p05": 0.012696099708563278,
+      "projected_whole_model_weight_fraction_p50": 0.012696099708563278,
+      "projected_whole_model_weight_fraction_p95": 0.012696099708563278,
+      "reconstruction_mismatches": 0
+    },
+    "vector_k128": {
+      "block_size": 128,
+      "count": 6,
+      "down_atom_union_operation_fraction_max": 0.3114267985026042,
+      "down_atom_union_operation_fraction_p05": 0.2692883809407552,
+      "down_atom_union_operation_fraction_p50": 0.3051020304361979,
+      "down_atom_union_operation_fraction_p95": 0.310754140218099,
+      "down_residual_nonzero_fraction_max": 0.9881479658792651,
+      "down_residual_nonzero_fraction_p05": 0.9030127337598425,
+      "down_residual_nonzero_fraction_p50": 0.9658561966863517,
+      "down_residual_nonzero_fraction_p95": 0.9838175135334646,
+      "families": {
+        "code": {
+          "count": 1,
+          "joint_max": 0.2161381479574239,
+          "joint_p50": 0.2161381479574239,
+          "joint_p95": 0.2161381479574239
+        },
+        "english": {
+          "count": 1,
+          "joint_max": 0.20518381279582892,
+          "joint_p50": 0.20518381279582892,
+          "joint_p95": 0.20518381279582892
+        },
+        "korean": {
+          "count": 1,
+          "joint_max": 0.18733038178565706,
+          "joint_p50": 0.18733038178565706,
+          "joint_p95": 0.18733038178565706
+        },
+        "math": {
+          "count": 1,
+          "joint_max": 0.21162554046914078,
+          "joint_p50": 0.21162554046914078,
+          "joint_p95": 0.21162554046914078
+        },
+        "repeated_pattern": {
+          "count": 1,
+          "joint_max": 0.2071014528559765,
+          "joint_p50": 0.2071014528559765,
+          "joint_p95": 0.2071014528559765
+        },
+        "structured_json": {
+          "count": 1,
+          "joint_max": 0.210573501825032,
+          "joint_p50": 0.210573501825032,
+          "joint_p95": 0.210573501825032
+        }
+      },
+      "input_atom_union_operation_fraction_max": 0.2432861328125,
+      "input_atom_union_operation_fraction_p05": 0.21941460503472224,
+      "input_atom_union_operation_fraction_p50": 0.23297119140625,
+      "input_atom_union_operation_fraction_p95": 0.2415398491753472,
+      "input_residual_nonzero_fraction_max": 0.9782370953630796,
+      "input_residual_nonzero_fraction_p05": 0.838545084208224,
+      "input_residual_nonzero_fraction_p50": 0.9229686132983377,
+      "input_residual_nonzero_fraction_p95": 0.9688217683727034,
+      "mode": "vector",
+      "projected_joint_fraction_max": 0.2161381479574239,
+      "projected_joint_fraction_p05": 0.19179373953820003,
+      "projected_joint_fraction_p50": 0.20883747734050426,
+      "projected_joint_fraction_p95": 0.21500999608535312,
+      "projected_whole_model_operation_fraction_max": 0.2161381479574239,
+      "projected_whole_model_operation_fraction_p05": 0.19179373953820003,
+      "projected_whole_model_operation_fraction_p50": 0.20883747734050426,
+      "projected_whole_model_operation_fraction_p95": 0.21500999608535312,
+      "projected_whole_model_weight_fraction_max": 0.006348049854281639,
+      "projected_whole_model_weight_fraction_p05": 0.006348049854281639,
+      "projected_whole_model_weight_fraction_p50": 0.006348049854281639,
+      "projected_whole_model_weight_fraction_p95": 0.006348049854281639,
+      "reconstruction_mismatches": 0
+    },
+    "vector_k16": {
+      "block_size": 16,
+      "count": 48,
+      "down_atom_union_operation_fraction_max": 1.958984375,
+      "down_atom_union_operation_fraction_p05": 1.5978149414062501,
+      "down_atom_union_operation_fraction_p50": 1.8230997721354165,
+      "down_atom_union_operation_fraction_p95": 1.9464355468749999,
+      "down_residual_nonzero_fraction_max": 0.9989149305555556,
+      "down_residual_nonzero_fraction_p05": 0.9582183159722223,
+      "down_residual_nonzero_fraction_p50": 0.9967447916666667,
+      "down_residual_nonzero_fraction_p95": 0.99876953125,
+      "families": {
+        "code": {
+          "count": 8,
+          "joint_max": 1.3415435149516337,
+          "joint_p50": 1.3121819475556002,
+          "joint_p95": 1.338322651114978
+        },
+        "english": {
+          "count": 8,
+          "joint_max": 1.3717151199592814,
+          "joint_p50": 1.347702372347874,
+          "joint_p95": 1.3659934257185153
+        },
+        "korean": {
+          "count": 8,
+          "joint_max": 1.2335605419095306,
+          "joint_p50": 1.1964053473341805,
+          "joint_p95": 1.2303551073607149
+        },
+        "math": {
+          "count": 8,
+          "joint_max": 1.3360624441283768,
+          "joint_p50": 1.218430655726163,
+          "joint_p95": 1.3317602443689154
+        },
+        "repeated_pattern": {
+          "count": 8,
+          "joint_max": 1.336495933643889,
+          "joint_p50": 1.2551652185258675,
+          "joint_p95": 1.3265607580487433
+        },
+        "structured_json": {
+          "count": 8,
+          "joint_max": 1.3538795979439242,
+          "joint_p50": 1.3256109384365764,
+          "joint_p95": 1.3509223177745395
+        }
+      },
+      "input_atom_union_operation_fraction_max": 1.5734592013888888,
+      "input_atom_union_operation_fraction_p05": 1.3701551649305557,
+      "input_atom_union_operation_fraction_p50": 1.4962022569444444,
+      "input_atom_union_operation_fraction_p95": 1.5400336371527779,
+      "input_residual_nonzero_fraction_max": 0.9961805555555555,
+      "input_residual_nonzero_fraction_p05": 0.9198553240740741,
+      "input_residual_nonzero_fraction_p50": 0.991261574074074,
+      "input_residual_nonzero_fraction_p95": 0.9957928240740741,
+      "mode": "vector",
+      "projected_joint_fraction_max": 1.3717151199592814,
+      "projected_joint_fraction_p05": 1.189478515503891,
+      "projected_joint_fraction_p50": 1.3053250985665859,
+      "projected_joint_fraction_p95": 1.3544813401696947,
+      "projected_whole_model_operation_fraction_max": 1.3717151199592814,
+      "projected_whole_model_operation_fraction_p05": 1.189478515503891,
+      "projected_whole_model_operation_fraction_p50": 1.3053250985665859,
+      "projected_whole_model_operation_fraction_p95": 1.3544813401696947,
+      "projected_whole_model_weight_fraction_max": 0.05078439883425311,
+      "projected_whole_model_weight_fraction_p05": 0.05078439883425311,
+      "projected_whole_model_weight_fraction_p50": 0.05078439883425311,
+      "projected_whole_model_weight_fraction_p95": 0.05078439883425311,
+      "reconstruction_mismatches": 0
+    },
+    "vector_k32": {
+      "block_size": 32,
+      "count": 24,
+      "down_atom_union_operation_fraction_max": 1.0786946614583333,
+      "down_atom_union_operation_fraction_p05": 0.860809326171875,
+      "down_atom_union_operation_fraction_p50": 1.0337626139322915,
+      "down_atom_union_operation_fraction_p95": 1.0773030598958333,
+      "down_residual_nonzero_fraction_max": 0.997059811827957,
+      "down_residual_nonzero_fraction_p05": 0.9093550487231182,
+      "down_residual_nonzero_fraction_p50": 0.978484122983871,
+      "down_residual_nonzero_fraction_p95": 0.996843497983871,
+      "families": {
+        "code": {
+          "count": 4,
+          "joint_max": 0.7511050793441639,
+          "joint_p50": 0.7406471447824301,
+          "joint_p95": 0.7504487835649583
+        },
+        "english": {
+          "count": 4,
+          "joint_max": 0.7374097495659453,
+          "joint_p50": 0.7338867288424173,
+          "joint_p95": 0.736987372811318
+        },
+        "korean": {
+          "count": 4,
+          "joint_max": 0.6987373416863024,
+          "joint_p50": 0.6360136129756515,
+          "joint_p95": 0.6893345683626448
+        },
+        "math": {
+          "count": 4,
+          "joint_max": 0.7405672431132573,
+          "joint_p50": 0.6957157728175833,
+          "joint_p95": 0.7398949670002171
+        },
+        "repeated_pattern": {
+          "count": 4,
+          "joint_max": 0.7289677249333415,
+          "joint_p50": 0.6871929281058162,
+          "joint_p95": 0.7234393559955741
+        },
+        "structured_json": {
+          "count": 4,
+          "joint_max": 0.7449903056274673,
+          "joint_p50": 0.7386716448928814,
+          "joint_p95": 0.7447541824189118
+        }
+      },
+      "input_atom_union_operation_fraction_max": 0.8550347222222222,
+      "input_atom_union_operation_fraction_p05": 0.7374701605902778,
+      "input_atom_union_operation_fraction_p50": 0.8209635416666667,
+      "input_atom_union_operation_fraction_p95": 0.8465467664930555,
+      "input_residual_nonzero_fraction_max": 0.9924955197132617,
+      "input_residual_nonzero_fraction_p05": 0.8522345430107526,
+      "input_residual_nonzero_fraction_p50": 0.9567092293906809,
+      "input_residual_nonzero_fraction_p95": 0.9919158826164874,
+      "mode": "vector",
+      "projected_joint_fraction_max": 0.7511050793441639,
+      "projected_joint_fraction_p05": 0.6359866117219312,
+      "projected_joint_fraction_p50": 0.7303425846891083,
+      "projected_joint_fraction_p95": 0.7464688538711607,
+      "projected_whole_model_operation_fraction_max": 0.7511050793441639,
+      "projected_whole_model_operation_fraction_p05": 0.6359866117219312,
+      "projected_whole_model_operation_fraction_p50": 0.7303425846891083,
+      "projected_whole_model_operation_fraction_p95": 0.7464688538711607,
+      "projected_whole_model_weight_fraction_max": 0.025392199417126556,
+      "projected_whole_model_weight_fraction_p05": 0.025392199417126556,
+      "projected_whole_model_weight_fraction_p50": 0.025392199417126556,
+      "projected_whole_model_weight_fraction_p95": 0.025392199417126556,
+      "reconstruction_mismatches": 0
+    },
+    "vector_k64": {
+      "block_size": 64,
+      "count": 12,
+      "down_atom_union_operation_fraction_max": 0.588958740234375,
+      "down_atom_union_operation_fraction_p05": 0.4839111328125,
+      "down_atom_union_operation_fraction_p50": 0.561981201171875,
+      "down_atom_union_operation_fraction_p95": 0.5866872151692708,
+      "down_residual_nonzero_fraction_max": 0.9949880125661376,
+      "down_residual_nonzero_fraction_p05": 0.9008572048611111,
+      "down_residual_nonzero_fraction_p50": 0.9698247354497354,
+      "down_residual_nonzero_fraction_p95": 0.9941525090939154,
+      "families": {
+        "code": {
+          "count": 2,
+          "joint_max": 0.40747555253159806,
+          "joint_p50": 0.4068345023582346,
+          "joint_p95": 0.4074114475142617
+        },
+        "english": {
+          "count": 2,
+          "joint_max": 0.39073201999493595,
+          "joint_p50": 0.38796163625861646,
+          "joint_p95": 0.390454981621304
+        },
+        "korean": {
+          "count": 2,
+          "joint_max": 0.3621823270304975,
+          "joint_p50": 0.348586185531252,
+          "joint_p95": 0.36082271288057294
+        },
+        "math": {
+          "count": 2,
+          "joint_max": 0.4044172472632593,
+          "joint_p50": 0.3760200103572424,
+          "joint_p95": 0.4015775235726576
+        },
+        "repeated_pattern": {
+          "count": 2,
+          "joint_max": 0.3889154050337426,
+          "joint_p50": 0.3808678374920552,
+          "joint_p95": 0.38811064827957387
+        },
+        "structured_json": {
+          "count": 2,
+          "joint_max": 0.4006839106519088,
+          "joint_p50": 0.3957419464930706,
+          "joint_p95": 0.40018971423602495
+        }
+      },
+      "input_atom_union_operation_fraction_max": 0.4625108506944444,
+      "input_atom_union_operation_fraction_p05": 0.3889797634548611,
+      "input_atom_union_operation_fraction_p50": 0.4371609157986111,
+      "input_atom_union_operation_fraction_p95": 0.4598849826388889,
+      "input_residual_nonzero_fraction_max": 0.9896660052910053,
+      "input_residual_nonzero_fraction_p05": 0.8303764329805996,
+      "input_residual_nonzero_fraction_p50": 0.9466214726631393,
+      "input_residual_nonzero_fraction_p95": 0.9874076829805997,
+      "mode": "vector",
+      "projected_joint_fraction_max": 0.40747555253159806,
+      "projected_joint_fraction_p05": 0.341938045212577,
+      "projected_joint_fraction_p50": 0.3898237125143393,
+      "projected_joint_fraction_p95": 0.4067703973408982,
+      "projected_whole_model_operation_fraction_max": 0.40747555253159806,
+      "projected_whole_model_operation_fraction_p05": 0.341938045212577,
+      "projected_whole_model_operation_fraction_p50": 0.3898237125143393,
+      "projected_whole_model_operation_fraction_p95": 0.4067703973408982,
+      "projected_whole_model_weight_fraction_max": 0.012696099708563278,
+      "projected_whole_model_weight_fraction_p05": 0.012696099708563278,
+      "projected_whole_model_weight_fraction_p50": 0.012696099708563278,
+      "projected_whole_model_weight_fraction_p95": 0.012696099708563278,
+      "reconstruction_mismatches": 0
+    }
+  },
+  "analysis_wall_ns": 135461138440,
+  "authoritative_decision": "REJECT_EXACT_STATE_AXIS_LIFTING_MICROPROGRAM_AS_CORE",
+  "claim_boundary": {
+    "405b_execution": "NOT_TESTED",
+    "8gib_gpu": "NOT_TESTED",
+    "actual_checkpoint_activations": true,
+    "complete_layer": "NOT_TESTED",
+    "complete_real_mlp_replaced": false,
+    "future_target_tokens_used": true,
+    "native_fp32_reduction_order_preserved": false,
+    "official_checkpoint_loaded": true,
+    "oracle_deployable": false,
+    "physical_latency": "NOT_TESTED"
+  },
+  "config_sha256": "ef2ec032782541c111adfc555c7c7b1bb36a4a507966cd55a2ec08fd2a16bfd6",
+  "decisive_aggregate": {
+    "block_size": 128,
+    "count": 6,
+    "down_atom_union_operation_fraction_max": 0.2956695556640625,
+    "down_atom_union_operation_fraction_p05": 0.2567342122395833,
+    "down_atom_union_operation_fraction_p50": 0.2901763916015625,
+    "down_atom_union_operation_fraction_p95": 0.29532114664713544,
+    "down_residual_nonzero_fraction_max": 0.9524585793963255,
+    "down_residual_nonzero_fraction_p05": 0.7507343442421259,
+    "down_residual_nonzero_fraction_p50": 0.8935469980314961,
+    "down_residual_nonzero_fraction_p95": 0.9432222461450132,
+    "families": {
+      "code": {
+        "count": 1,
+        "joint_max": 0.2082995186885735,
+        "joint_p50": 0.2082995186885735,
+        "joint_p95": 0.2082995186885735
+      },
+      "english": {
+        "count": 1,
+        "joint_max": 0.20052701493903854,
+        "joint_p50": 0.20052701493903854,
+        "joint_p95": 0.20052701493903854
+      },
+      "korean": {
+        "count": 1,
+        "joint_max": 0.1801658654498279,
+        "joint_p50": 0.1801658654498279,
+        "joint_p95": 0.1801658654498279
+      },
+      "math": {
+        "count": 1,
+        "joint_max": 0.20427275008526072,
+        "joint_p50": 0.20427275008526072,
+        "joint_p95": 0.20427275008526072
+      },
+      "repeated_pattern": {
+        "count": 1,
+        "joint_max": 0.20037226285564064,
+        "joint_p50": 0.20037226285564064,
+        "joint_p95": 0.20037226285564064
+      },
+      "structured_json": {
+        "count": 1,
+        "joint_max": 0.2045202615776984,
+        "joint_p50": 0.2045202615776984,
+        "joint_p95": 0.2045202615776984
+      }
+    },
+    "input_atom_union_operation_fraction_max": 0.2366943359375,
+    "input_atom_union_operation_fraction_p05": 0.2135281032986111,
+    "input_atom_union_operation_fraction_p50": 0.2284274631076389,
+    "input_atom_union_operation_fraction_p95": 0.23520914713541666,
+    "input_residual_nonzero_fraction_max": 0.9037756999125109,
+    "input_residual_nonzero_fraction_p05": 0.6654192639982502,
+    "input_residual_nonzero_fraction_p50": 0.8006342957130359,
+    "input_residual_nonzero_fraction_p95": 0.886014736439195,
+    "mode": "coordinate",
+    "projected_joint_fraction_max": 0.2082995186885735,
+    "projected_joint_fraction_p05": 0.1852174648012811,
+    "projected_joint_fraction_p50": 0.20239988251214963,
+    "projected_joint_fraction_p95": 0.2073547044108547,
+    "projected_whole_model_operation_fraction_max": 0.2082995186885735,
+    "projected_whole_model_operation_fraction_p05": 0.1852174648012811,
+    "projected_whole_model_operation_fraction_p50": 0.20239988251214963,
+    "projected_whole_model_operation_fraction_p95": 0.2073547044108547,
+    "projected_whole_model_weight_fraction_max": 0.006348049854281639,
+    "projected_whole_model_weight_fraction_p05": 0.006348049854281639,
+    "projected_whole_model_weight_fraction_p50": 0.006348049854281639,
+    "projected_whole_model_weight_fraction_p95": 0.006348049854281639,
+    "reconstruction_mismatches": 0
+  },
+  "deterministic_core_sha256": "98fece89b13977c876bb7285e57529ab1dbb9709d2f786f67baf24336dd9a085",
+  "evidence_level": "E1",
+  "experiment": "EXP-086A",
+  "gates": {
+    "integrity_passed": true,
+    "oracle_passed": false
+  },
+  "load_wall_ns": 12195524376,
+  "measured_block_rows": 180,
+  "measured_prompt_count": 6,
+  "name": "exact_state_axis_lifting_microprogram_gate",
+  "phase": [
+    "A-structure",
+    "B-reference",
+    "C-small-real-checkpoint-observation"
+  ],
+  "projected": {
+    "all_non_mlp_work_granted_free": true,
+    "coordinate_mixed_parent_application_granted_free": true,
+    "p50_whole_model_fraction": 0.011851851851851851,
+    "p95_whole_model_fraction": 0.014814814814814815,
+    "selector_metadata_granted_free": true,
+    "signed_atom_broadcast_and_reconstruction_granted_free": true,
+    "target_mlp_parameter_share": 0.8125503813480498
+  },
+  "runtime": {
+    "python": "3.11.10",
+    "safetensors": "0.4.5",
+    "torch": "2.5.1+cpu",
+    "transformers": "4.46.3"
+  },
+  "source_sha": "f3d0ff7c8f7904a7c47cffa8bf6af529e049ba4a",
+  "target_forward_calls": 768,
+  "unverified": [
+    "native-order BF16/FP32 packed lifting semantics",
+    "causal drafter producing the exact activation block",
+    "candidate-tree acceptance and rollback",
+    "complete Transformer-layer successor-state equality",
+    "CUDA lowering and physical bandwidth",
+    "405B model execution",
+    "8 GiB peak VRAM",
+    "same-machine 4B p50/p95 target"
+  ]
+}
