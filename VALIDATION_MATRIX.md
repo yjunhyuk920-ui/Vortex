@@ -1281,3 +1281,14 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 | Actual sparse existing-ISA executor | full online resource trace | `NOT TESTED` | — |
 | 405B / 8-GiB / 4B-class p50/p95 | full target contract | `NOT TESTED` | — |
 <!-- EXP-088B:END -->
+
+<!-- EXP-089A:START -->
+## EXP-089A validation row
+
+| Boundary | Contract | Result | Evidence |
+|---|---|---|---|
+| Prefix state -> official replay | raw logits + complete KV + RNG bytes | `ACCEPT_PREFIX_STATE_BISIMULATION_WITNESS_FOR_TOKEN_DECISION_RESEARCH` | E2 |
+| Token decisions | `64` consecutive configured transitions | `0 mismatches` | MEASURED |
+| Cheap exact token-decision compiler | no hidden dense replay/fallback | `NOT TESTED` | — |
+| 405B / 8-GiB / 4B-class latency | complete mission | `NOT TESTED` | — |
+<!-- EXP-089A:END -->

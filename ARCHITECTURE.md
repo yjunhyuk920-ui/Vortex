@@ -1246,3 +1246,9 @@ costs exist.
 
 The page-mask object is an offline oracle program descriptor, not an accepted runtime component. It has no causal selector: one checkpoint-static mask is frozen from build states and applied unchanged to holdout states. Architecture promotion is `False`. Until a full-layer existing-ISA executor passes 128 exact steps, the production architecture remains unchanged.
 <!-- EXP-088B:END -->
+
+<!-- EXP-089A:START -->
+## EXP-089A architecture status
+
+Prefix token IDs plus RNG bytes are accepted as a behavioral-state witness only when `ACCEPT_PREFIX_STATE_BISIMULATION_WITNESS_FOR_TOKEN_DECISION_RESEARCH` is the authoritative result. The production executor architecture is unchanged: replay is a reference oracle, not a runtime component. The next architecture candidate must compute the exact token from this state with an explicit proof and resource trace, then append it; it may use the unchanged suffix only as a fully charged exact state constructor.
+<!-- EXP-089A:END -->

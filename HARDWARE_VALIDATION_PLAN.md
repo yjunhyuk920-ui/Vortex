@@ -731,3 +731,9 @@ EXP-085, or Phase D/E4-E7 work is authorized from this result.
 
 No target GPU run was performed. Oracle evaluator timing on GitHub CPU is not a speed record. The only target-scale number is the explicitly optimistic `PROJECTED` hot-byte value `810,000,000,000` bytes/token; target VRAM, SSD, PCIe, HBM, TTFT, and p50/p95 remain `NOT TESTED`.
 <!-- EXP-088B:END -->
+
+<!-- EXP-089A:START -->
+## EXP-089A hardware status
+
+No target GPU measurement was made. DEV-W replay performed `612` official target calls and `3791` replayed token positions; these are correctness costs, not speed records. TARGET-W storage, SSD/PCIe/HBM traffic, peak VRAM, TTFT, and p50/p95 remain `NOT TESTED`.
+<!-- EXP-089A:END -->

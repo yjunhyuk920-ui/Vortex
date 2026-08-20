@@ -1,0 +1,15 @@
+We detected that you are passing `past_key_values` as a tuple of tuples. This is deprecated and will be removed in v4.47. Please convert your cache or use an appropriate `Cache` class (https://huggingface.co/docs/transformers/kv_cache#legacy-cache-format)
+greedy_english: transitions=16 token/logits/cache/rng mismatches=0/0/0/0
+greedy_korean: transitions=16 token/logits/cache/rng mismatches=0/0/0/0
+greedy_code: transitions=16 token/logits/cache/rng mismatches=0/0/0/0
+sample_structured: transitions=16 token/logits/cache/rng mismatches=0/0/0/0
+{
+  "authoritative_decision": "ACCEPT_PREFIX_STATE_BISIMULATION_WITNESS_FOR_TOKEN_DECISION_RESEARCH",
+  "cache_digest_mismatches": 0,
+  "logits_byte_mismatches": 0,
+  "reference_target_calls": 68,
+  "replay_target_calls": 612,
+  "rng_mismatches": 0,
+  "token_mismatches": 0,
+  "transitions": 64
+}
