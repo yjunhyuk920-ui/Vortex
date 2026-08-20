@@ -1252,3 +1252,9 @@ The page-mask object is an offline oracle program descriptor, not an accepted ru
 
 Prefix token IDs plus RNG bytes are accepted as a behavioral-state witness only when `ACCEPT_PREFIX_STATE_BISIMULATION_WITNESS_FOR_TOKEN_DECISION_RESEARCH` is the authoritative result. The production executor architecture is unchanged: replay is a reference oracle, not a runtime component. The next architecture candidate must compute the exact token from this state with an explicit proof and resource trace, then append it; it may use the unchanged suffix only as a fully charged exact state constructor.
 <!-- EXP-089A:END -->
+
+<!-- EXP-090A:START -->
+## EXP-090A architecture status
+
+The suffix-action object is an auxiliary causal draft component unless the authoritative decision explicitly promotes it. It may never commit state independently. Exact state comes only from the accepted token prefix and the unchanged target verifier's official cache. Architecture promotion: chain=`False`, candidate-tree=`False`. Verification arithmetic remains unreduced.
+<!-- EXP-090A:END -->

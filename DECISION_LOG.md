@@ -1719,3 +1719,11 @@ The frozen oracle searched all 256 checkpoint-static masks over eight cross-laye
 
 The official incremental decoder and prefix replay were compared for `64` token decisions plus each case's terminal successor state. Raw logits, complete cache tensors, selected tokens, and RNG bytes had `0/0/0/0` mismatches. Replay consumed `612` target calls and is not promoted as an executor.
 <!-- EXP-089A:END -->
+
+<!-- EXP-090A:START -->
+## EXP-090A decision
+
+`REJECT_CAUSAL_SUFFIX_ACTION_CACHE_AS_128_TOKEN_DRAFT_CORE`
+
+The compiler selected `raw_q4` from the frozen build population. Untouched holdout acceptance was `[0, 0, 0]` out of 128 and true-path target rank p95/max was `15186.249999999996/41239`. The projected hot-state screen was `True` at `7.433527470 GiB`; the actual-min-acceptance logical verification fraction was `inf%`. Exact verification arithmetic was not reduced.
+<!-- EXP-090A:END -->

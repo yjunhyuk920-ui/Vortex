@@ -1229,3 +1229,14 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - `UNVERIFIED`: a cheap exact token-decision program, cross-ABI equivalence, TARGET-W, 8-GiB VRAM, and target latency.
 - The relation is checkpoint- and ABI-specific. Changing dtype, attention backend, reduction schedule, tokenizer, sampling algorithm, or revision requires a new witness.
 <!-- EXP-089A:END -->
+
+<!-- EXP-090A:START -->
+## EXP-090A assumptions and grants
+
+- `MEASURED`: DEV-W causal draft chains, exact target chains, accepted prefixes, true-path target ranks, call counts, Q4-head simulation, and first-layer equality controls.
+- `DERIVED`: accepted-length logical checkpoint fractions and the frozen target hot-state equation.
+- `PROJECTED`: `7.433527470 GiB` for one 405B BF16 layer, Q4 head, 64 suffix actions/keys, one-layer maximum-context KV, and final norm.
+- `GRANTED`: packed Q4 kernel/addressing and physical block verifier overhead are absent from the favorable screen; the remaining `608,245,248` bytes must cover them.
+- `UNVERIFIED`: TARGET-W acceptance, actual 8-GiB allocation, lossless target stream, block arithmetic throughput, and 4B-class latency.
+- True-path ranks after a chain mismatch are oracle diagnostics only. They do not count as accepted tokens.
+<!-- EXP-090A:END -->

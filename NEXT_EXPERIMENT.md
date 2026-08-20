@@ -1780,3 +1780,13 @@ Measure, on a frozen real-checkpoint population, the earliest decoder depth whos
 
 This Gate makes no latency or target-hardware claim.
 <!-- EXP-089A:END -->
+
+<!-- EXP-090A:START -->
+## Post EXP-090A handoff
+
+Current decision: `REJECT_CAUSAL_SUFFIX_ACTION_CACHE_AS_128_TOKEN_DRAFT_CORE`.
+
+Do not sweep history length, shallow depth, polynomial order, Q4 format, prompt subset, block length, nearest metric, mode order, or thresholds. The next candidate must add a materially new causal suffix representation or a sound exact token certificate. It must change the missing information source rather than tune this carry/secant/nearest family.
+
+The exact target arithmetic remains `100%` in EXP-090A. No result here is a 405B latency or hardware pass.
+<!-- EXP-090A:END -->
