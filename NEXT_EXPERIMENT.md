@@ -1759,3 +1759,18 @@ The active cheapest decisive Gate tests a checkpoint-static, non-affine finite-w
 Frozen public evidence is `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`, official eager BF16 `LlamaForCausalLM`, layer-0 complete MLP, 96 build states and 96 unseen causal evaluation states across six families. The favorable oracle may select among the four already compiled programs but may not use a state key, prefix table, dense MLP call, or fallback.
 
 Promotion requires 100% full-vector BF16 exactness on every held-out state, at least four held-out states per used program, projected sidecar no greater than 4 GiB, and favorable compiled-MLP work no greater than `1.185185185%`. Oracle failure permanently closes width/degree/program-count sweeps around this finite-context quadratic residual language.
+
+<!-- EXP087A_RESULT -->
+## EXP-087A — quadratic BF16 residual generator
+
+```text
+decision                            REJECT_QUADRATIC_BF16_RESIDUAL_GENERATOR_BUILD_GATE
+evaluation oracle vector exact      0 / 96
+evaluation oracle row-exact p50     0.0017361111240461469
+projected sidecar GiB               1.6611328125
+compiled MLP operation fraction     0.00036154114283048187
+```
+
+The compiler used four checkpoint-static programs and only twelve runtime input predicate bits per program. It generated complete 16-bit BF16 XOR residual words for the composed SwiGLU output and used no state key, dense query call, row/page repair, or fallback. Authority: `results/exp_087a/eda4310e8ad20cf38ab712c46a9ef7b386882c62/result.json`; deterministic core `03680d9211b76a432c82176e8fb1542f52c6af15e1a3c21da47865c990b31512`.
+
+The next Gate must follow the recorded decision. An oracle rejection authorizes no nearby polynomial-capacity rescue; the next candidate must change the exact information source or state dependency.

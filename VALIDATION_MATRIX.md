@@ -1273,3 +1273,16 @@ It is not a physical speed result.
 | Query work | favorable packed compiled-MLP fraction <=1.185185185% | DERIVED BY RUNNER |
 | Complete layer/state | actual replacement and successor state | NOT TESTED |
 | 405B/8 GiB/latency | Phase-D evidence | NOT TESTED |
+
+<!-- EXP087A_RESULT -->
+## EXP-087A — quadratic BF16 residual generator
+
+```text
+decision                            REJECT_QUADRATIC_BF16_RESIDUAL_GENERATOR_BUILD_GATE
+evaluation oracle vector exact      0 / 96
+evaluation oracle row-exact p50     0.0017361111240461469
+projected sidecar GiB               1.6611328125
+compiled MLP operation fraction     0.00036154114283048187
+```
+
+The compiler used four checkpoint-static programs and only twelve runtime input predicate bits per program. It generated complete 16-bit BF16 XOR residual words for the composed SwiGLU output and used no state key, dense query call, row/page repair, or fallback. Authority: `results/exp_087a/eda4310e8ad20cf38ab712c46a9ef7b386882c62/result.json`; deterministic core `03680d9211b76a432c82176e8fb1542f52c6af15e1a3c21da47865c990b31512`.
