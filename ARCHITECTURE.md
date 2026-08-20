@@ -1258,3 +1258,9 @@ Prefix token IDs plus RNG bytes are accepted as a behavioral-state witness only 
 
 The suffix-action object is an auxiliary causal draft component unless the authoritative decision explicitly promotes it. It may never commit state independently. Exact state comes only from the accepted token prefix and the unchanged target verifier's official cache. Architecture promotion: chain=`False`, candidate-tree=`False`. Verification arithmetic remains unreduced.
 <!-- EXP-090A:END -->
+
+<!-- EXP-091A:START -->
+## EXP-091A architecture status
+
+A Jacobi block may commit only the prefix where input guesses equal unchanged-target proposals consecutively from position one. The official block cache is valid for exactly that prefix. Architecture promotion without compression=`False`; conditional compressed promotion=`False`. Later sweeps are not admitted into the final core at K=128 because their checkpoint traffic exceeds the target.
+<!-- EXP-091A:END -->

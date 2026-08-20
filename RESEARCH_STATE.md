@@ -1996,3 +1996,22 @@ The state relation stores only exact prefix token IDs and exact RNG bytes. It co
 
 The candidate source uses one complete BF16 first layer, a checkpoint-derived row-wise Q4 head, and BF16 suffix actions from already verified prefix states. Candidate chains precede target continuation. No target output from the evaluated block enters the draft. A wrong draft would be rejected by the unchanged target verifier and cannot silently change the exact prefix-state contract.
 <!-- EXP-090A:END -->
+
+<!-- EXP-091A:START -->
+## EXP-091A — Exact Jacobi Fixed-Point Gate
+
+- decision: `REJECT_NATIVE_JACOBI_FIXED_POINT_AS_405B_CORE`
+- evidence: E3 causal held-out exact-prefix Gate
+- selected seed: `prompt_suffix_cycle_16`
+- build minimum first-sweep release: `0 / 128`
+- holdout first-sweep releases: `[0, 0, 0]`
+- holdout best releases over eight sweeps: `[7, 7, 9]`
+- holdout fixed-point sweeps: `[None, None, None]`
+- required no-compression/favorable release: `85 / 67`
+- observed no-compression logical fraction: `inf`
+- target arithmetic per sweep: `100.000000000%`
+- raw evidence: `results/exp_091a/aa324f2b99d53207a909e70049dd025b139b42b8/result.json`
+- source commit: `aa324f2b99d53207a909e70049dd025b139b42b8`
+
+Every released prefix was checked against the delayed official AR continuation, and every full fixed point, if present, was required to equal it. All Jacobi trajectories were complete before that AR control began.
+<!-- EXP-091A:END -->

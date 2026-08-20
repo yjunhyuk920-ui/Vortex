@@ -1305,3 +1305,15 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 | Exact physical verifier | full bytes/MACs/state/p50/p95 | `NOT TESTED` | — |
 | 405B / same-machine 4B-class target | complete mission | `NOT TESTED` | — |
 <!-- EXP-090A:END -->
+
+<!-- EXP-091A:START -->
+## EXP-091A validation row
+
+| Boundary | Contract | Result | Evidence |
+|---|---|---|---|
+| Unchanged target Jacobi sweep | official BF16/eager block operator | `True` | E3 control |
+| Self-consistent prefix | exact delayed-AR equality | `True` | MEASURED |
+| One-sweep release | holdout minimum >=85 / >=67 | `[0, 0, 0]` | MEASURED DEV-W |
+| Two or more sweeps | logical traffic <=1.185185185% | `FAIL by frozen equation` | DERIVED |
+| Physical 405B block executor | full state/bytes/MACs/p50/p95 | `NOT TESTED` | — |
+<!-- EXP-091A:END -->

@@ -1142,3 +1142,11 @@ EXP-090A rejected the frozen one-layer/Q4-logit-lens suffix-action family as a 1
 
 Do not reopen with history length, shallow depth, polynomial order, Q4 range/scales, prompt selection, block length, nearest metric, mode order, or threshold sweeps. Reopening requires a materially new causal suffix representation, sound exact token certificate, or independently generated bounded tree that changes the information source. This does not reject all speculative verification or every online residual state.
 <!-- EXP-090A:END -->
+
+<!-- EXP-091A:START -->
+## EXP-091A — native exact Jacobi fixed-point decoding
+
+EXP-091A rejects the frozen unchanged-target Jacobi family as a 405B core. The selected seed was `prompt_suffix_cycle_16`; untouched first-sweep exact releases were `[0, 0, 0]` against the no-compression/favorable requirements `85/67`. Best releases after up to eight full checkpoint sweeps were `[7, 7, 9]`.
+
+Do not reopen with seed, n-gram order, cycle width, block length, iteration count, prompt, tie-rule, shallow-draft initialization, or threshold sweeps. Training a consistency model changes the checkpoint and is outside the mission. Reopening requires a materially new exact token information source that changes first-sweep certified release.
+<!-- EXP-091A:END -->

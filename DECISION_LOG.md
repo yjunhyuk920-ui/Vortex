@@ -1727,3 +1727,11 @@ The official incremental decoder and prefix replay were compared for `64` token 
 
 The compiler selected `raw_q4` from the frozen build population. Untouched holdout acceptance was `[0, 0, 0]` out of 128 and true-path target rank p95/max was `15186.249999999996/41239`. The projected hot-state screen was `True` at `7.433527470 GiB`; the actual-min-acceptance logical verification fraction was `inf%`. Exact verification arithmetic was not reduced.
 <!-- EXP-090A:END -->
+
+<!-- EXP-091A:START -->
+## EXP-091A decision
+
+`REJECT_NATIVE_JACOBI_FIXED_POINT_AS_405B_CORE`
+
+The frozen build compiler selected `prompt_suffix_cycle_16`. Untouched first-sweep exact releases were `[0, 0, 0]` against required values `85` without compression and `67` under the favorable lossless ratio. Best releases over eight sweeps were `[7, 7, 9]`. Exact target arithmetic remained one full 128-position checkpoint evaluation per sweep.
+<!-- EXP-091A:END -->

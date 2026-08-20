@@ -1790,3 +1790,13 @@ Do not sweep history length, shallow depth, polynomial order, Q4 format, prompt 
 
 The exact target arithmetic remains `100%` in EXP-090A. No result here is a 405B latency or hardware pass.
 <!-- EXP-090A:END -->
+
+<!-- EXP-091A:START -->
+## Post EXP-091A handoff
+
+Current decision: `REJECT_NATIVE_JACOBI_FIXED_POINT_AS_405B_CORE`.
+
+Do not sweep seeds, n-gram order, cycle width, block length, iteration count, prompts, tie rules, or thresholds. The next mechanism must change first-sweep exact-release information: a sound checkpoint-static token certificate, a globally shared nonseparable token solver, or another unchanged-model operator that can certify at least 85 exact tokens per checkpoint sweep.
+
+Later Jacobi iterations are diagnostic only: at K=128, two complete checkpoint sweeps already exceed the registered traffic fraction even under the favorable compression ratio.
+<!-- EXP-091A:END -->

@@ -1,0 +1,128 @@
+[
+  {
+    "all_trajectories_precede_target": true,
+    "ar_target_calls": 128,
+    "boundary_token": 198,
+    "case_id": "build_english",
+    "family": "english",
+    "prefill_logits_sha256": "c4a063449deaaff38340841e3ea319f973511d40d95d8ef0169381156dbde489",
+    "prefill_target_calls": 1,
+    "prefix_cache_bytes": 967680,
+    "prefix_cache_sha256": "483eef9714fc6df7a344f22686394f9dc8afed999bdd40cc27ec1ddf492d5821",
+    "prompt_sha256": "be79ff2a4fb50b9f53636f07bb521144a0ac561ed1357c9b321bc49c5886e1c8",
+    "prompt_token_count": 42,
+    "split": "build",
+    "target_final_cache_bytes": 3916800,
+    "target_final_cache_sha256": "594634a52fe3d917b87696256cd2a96b2527407d1a784b8c5510193149fd2a2d",
+    "target_sha256": "671139f64053f3cc9681bcdc58003ff28b3b20a4dafb9fb0ab824e7341708ea0",
+    "trajectory_modes": [
+      "boundary_repeat",
+      "prompt_suffix_cycle_16",
+      "prompt_longest_ngram_8"
+    ]
+  },
+  {
+    "all_trajectories_precede_target": true,
+    "ar_target_calls": 128,
+    "boundary_token": 198,
+    "case_id": "build_korean",
+    "family": "korean",
+    "prefill_logits_sha256": "50c6bb825b99d8fab41924bc3484caa0ca10f1c62903e43d7cc82d1a41626115",
+    "prefill_target_calls": 1,
+    "prefix_cache_bytes": 5736960,
+    "prefix_cache_sha256": "6efce0ff87317ad96d593ad4c8be3f3ce24ccf88dbc7d800c9e67998a2bd1be8",
+    "prompt_sha256": "ed53c1e66e623d662121d268097d37da40de3c38112d85ee13e41cab46154571",
+    "prompt_token_count": 249,
+    "split": "build",
+    "target_final_cache_bytes": 8686080,
+    "target_final_cache_sha256": "65afecafd2bb373bb3d93424b73b9e63cc49b6895c95035b78774e57c3d6cadd",
+    "target_sha256": "97d8f429876f9de8c567af1831dfb0f81469e2bec3738aa9d2a98b85f61d18ed",
+    "trajectory_modes": [
+      "boundary_repeat",
+      "prompt_suffix_cycle_16",
+      "prompt_longest_ngram_8"
+    ]
+  },
+  {
+    "all_trajectories_precede_target": true,
+    "ar_target_calls": 128,
+    "boundary_token": 198,
+    "case_id": "build_code",
+    "family": "code",
+    "prefill_logits_sha256": "29315b2df57f49a9c201e65d57457e441663375d48bcfd634a598562ca9b29ee",
+    "prefill_target_calls": 1,
+    "prefix_cache_bytes": 760320,
+    "prefix_cache_sha256": "67b20d39ff6a67381d3c98a50fe1f336d2fcda3492dca4dea95b5ee9ddfecd4d",
+    "prompt_sha256": "6136d681e8d056ccf9d5d8029ed4d8adb256d33854599d5c18186c0238ab250b",
+    "prompt_token_count": 33,
+    "split": "build",
+    "target_final_cache_bytes": 3709440,
+    "target_final_cache_sha256": "e010630acceaccdeef1c1232ae8337d4e29640c8015baedd30288ba883ff89e8",
+    "target_sha256": "8b0cd489b96bd6ddf01993789f70c8a1e5d34d7b4d746157c93e61866da7d518",
+    "trajectory_modes": [
+      "boundary_repeat",
+      "prompt_suffix_cycle_16",
+      "prompt_longest_ngram_8"
+    ]
+  },
+  {
+    "all_trajectories_precede_target": true,
+    "ar_target_calls": 128,
+    "boundary_token": 198,
+    "case_id": "holdout_math",
+    "family": "mathematics",
+    "prefill_logits_sha256": "b5a55b4372dbf1c0edc996bb9f4d991c9deb72ad5400027f9786bd6fda65c4f1",
+    "prefill_target_calls": 1,
+    "prefix_cache_bytes": 921600,
+    "prefix_cache_sha256": "a6a807793698fb5e1d8cfaea795dfbe685ba8483342e2bcb8c2b51af5f4de20e",
+    "prompt_sha256": "278a7051a73baeb550c582cc91995abf7c1c841dafe548fcb3408bd53aab61ac",
+    "prompt_token_count": 40,
+    "split": "holdout",
+    "target_final_cache_bytes": 3870720,
+    "target_final_cache_sha256": "d075118486e33d9ebc161e7e50783dedd39ce162d7b668ebabd51be6339c817f",
+    "target_sha256": "25ab60c44c861783ece40a33b5058bdcc0550d475f2ddbcd973184cc949f9194",
+    "trajectory_modes": [
+      "prompt_suffix_cycle_16"
+    ]
+  },
+  {
+    "all_trajectories_precede_target": true,
+    "ar_target_calls": 128,
+    "boundary_token": 198,
+    "case_id": "holdout_structured",
+    "family": "structured_json",
+    "prefill_logits_sha256": "2ccbb15a10a76a74ebfecb7d0c18db31ff3df90451a29c185612e67e2f2b71f9",
+    "prefill_target_calls": 1,
+    "prefix_cache_bytes": 1059840,
+    "prefix_cache_sha256": "aaa32ea088e361db20164d63a9cc9e2766618f26ec570cc0086018b04d9fb049",
+    "prompt_sha256": "9672ef86ef746c499970b8cd4c992a7d83b43f5db7c0a11e2225211a0c464565",
+    "prompt_token_count": 46,
+    "split": "holdout",
+    "target_final_cache_bytes": 4008960,
+    "target_final_cache_sha256": "a9644358c998bee940599c92dba7869e1245349b18b175f5fb6fb3f9c20342b2",
+    "target_sha256": "65e0a127f5691ccf8a4858a86575ed050c202f760ad13d6b1b04879171a91c1d",
+    "trajectory_modes": [
+      "prompt_suffix_cycle_16"
+    ]
+  },
+  {
+    "all_trajectories_precede_target": true,
+    "ar_target_calls": 128,
+    "boundary_token": 198,
+    "case_id": "holdout_repeated",
+    "family": "repeated_pattern",
+    "prefill_logits_sha256": "328ed2650a688de1cbbb46f91577f5806a59a67c84510b346a6690f4140476ad",
+    "prefill_target_calls": 1,
+    "prefix_cache_bytes": 875520,
+    "prefix_cache_sha256": "babb2b9ac3122d607df4a13c50b30f4d5e1d5bb5cfbfc6e88e7771327b3b7b7b",
+    "prompt_sha256": "59dbe5394356cb558bd7e7cd0be4387f97b3fb3207d338fba7d7e599263770eb",
+    "prompt_token_count": 38,
+    "split": "holdout",
+    "target_final_cache_bytes": 3824640,
+    "target_final_cache_sha256": "d07fb5a3d1e6fb3c17684b7d4386083c89361af1d67a4ffc2359ef44518dc9a6",
+    "target_sha256": "e6812d286ab8a7d21dfe36c3ac474b0683a13afbde5d726a900ceffd28b44efc",
+    "trajectory_modes": [
+      "prompt_suffix_cycle_16"
+    ]
+  }
+]

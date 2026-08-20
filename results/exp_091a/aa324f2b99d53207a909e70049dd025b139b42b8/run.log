@@ -1,0 +1,30 @@
+build build_english: boundary_repeat=0/7, prompt_suffix_cycle_16=0/7, prompt_longest_ngram_8=0/7
+build build_korean: boundary_repeat=0/7, prompt_suffix_cycle_16=1/10, prompt_longest_ngram_8=0/7
+build build_code: boundary_repeat=0/7, prompt_suffix_cycle_16=0/7, prompt_longest_ngram_8=0/7
+holdout holdout_math: prompt_suffix_cycle_16=0/7
+holdout holdout_structured: prompt_suffix_cycle_16=0/7
+holdout holdout_repeated: prompt_suffix_cycle_16=0/9
+{
+  "authoritative_decision": "REJECT_NATIVE_JACOBI_FIXED_POINT_AS_405B_CORE",
+  "build_minimum_first_sweep": 0,
+  "holdout_best_accepted": [
+    7,
+    7,
+    9
+  ],
+  "holdout_first_sweep_accepted": [
+    0,
+    0,
+    0
+  ],
+  "holdout_fixed_point_sweeps": [
+    null,
+    null,
+    null
+  ],
+  "observed_fraction_no_compression": Infinity,
+  "required_favorable": 67,
+  "required_no_compression": 85,
+  "selected_mode": "prompt_suffix_cycle_16",
+  "target_arithmetic_fraction_per_sweep": 1.0
+}
