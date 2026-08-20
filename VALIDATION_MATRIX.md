@@ -1292,3 +1292,16 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 | Cheap exact token-decision compiler | no hidden dense replay/fallback | `NOT TESTED` | — |
 | 405B / 8-GiB / 4B-class latency | complete mission | `NOT TESTED` | — |
 <!-- EXP-089A:END -->
+
+<!-- EXP-090A:START -->
+## EXP-090A validation row
+
+| Boundary | Contract | Result | Evidence |
+|---|---|---|---|
+| Causal one-layer suffix-action draft | candidate completed before target | `True` | E3 control |
+| Untouched 128-token chain | exact common prefix | `[0, 0, 0]` | MEASURED DEV-W |
+| Untouched target rank | p95/max | `15186.249999999996 / 41239` | favorable oracle diagnostic |
+| 405B hot state | <=8 GiB | `True` (`PROJECTED`) | equation only |
+| Exact physical verifier | full bytes/MACs/state/p50/p95 | `NOT TESTED` | — |
+| 405B / same-machine 4B-class target | complete mission | `NOT TESTED` | — |
+<!-- EXP-090A:END -->

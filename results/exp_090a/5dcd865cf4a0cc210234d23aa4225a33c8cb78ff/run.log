@@ -1,0 +1,22 @@
+We detected that you are passing `past_key_values` as a tuple of tuples. This is deprecated and will be removed in v4.47. Please convert your cache or use an appropriate `Cache` class (https://huggingface.co/docs/transformers/kv_cache#legacy-cache-format)
+build build_english: raw_q4=0, carry_bf16=0, secant_bf16=0, nearest_history_bf16=0
+build build_korean: raw_q4=0, carry_bf16=0, secant_bf16=0, nearest_history_bf16=0
+build build_code: raw_q4=0, carry_bf16=0, secant_bf16=0, nearest_history_bf16=0
+holdout holdout_math: raw_q4=0
+holdout holdout_structured: raw_q4=0
+holdout holdout_repeated: raw_q4=0
+{
+  "authoritative_decision": "REJECT_CAUSAL_SUFFIX_ACTION_CACHE_AS_128_TOKEN_DRAFT_CORE",
+  "build_minimum_accepted_length": 0,
+  "holdout_accepted_lengths": [
+    0,
+    0,
+    0
+  ],
+  "holdout_rank_max": 41239,
+  "holdout_rank_p95": 15186.249999999996,
+  "projected_hot_gib": 7.43352746963501,
+  "selected_mode": "raw_q4",
+  "verification_arithmetic_fraction": 1.0,
+  "verification_fraction_no_compression": Infinity
+}

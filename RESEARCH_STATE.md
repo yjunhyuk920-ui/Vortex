@@ -1978,3 +1978,21 @@ The program was selected only from three build states after exhaustive enumerati
 
 The state relation stores only exact prefix token IDs and exact RNG bytes. It contains no hidden/KV table, output lookup, or model response table. Replay is a correctness witness and remains prohibited as the final fast core.
 <!-- EXP-089A:END -->
+
+<!-- EXP-090A:START -->
+## EXP-090A — Causal Suffix-Action Cache Gate
+
+- decision: `REJECT_CAUSAL_SUFFIX_ACTION_CACHE_AS_128_TOKEN_DRAFT_CORE`
+- evidence: E3 causal held-out drafting/source Gate
+- selected mode: `raw_q4`
+- build minimum accepted length: `0 / 128`
+- holdout accepted lengths: `[0, 0, 0]`
+- holdout target-rank p95/max: `15186.249999999996 / 41239`
+- projected hot state: `7.433527470 GiB` (`PROJECTED`)
+- no-compression logical verification fraction: `inf%`
+- exact verifier arithmetic fraction: `100.000000000%`
+- raw evidence: `results/exp_090a/5dcd865cf4a0cc210234d23aa4225a33c8cb78ff/result.json`
+- source commit: `5dcd865cf4a0cc210234d23aa4225a33c8cb78ff`
+
+The candidate source uses one complete BF16 first layer, a checkpoint-derived row-wise Q4 head, and BF16 suffix actions from already verified prefix states. Candidate chains precede target continuation. No target output from the evaluated block enters the draft. A wrong draft would be rejected by the unchanged target verifier and cannot silently change the exact prefix-state contract.
+<!-- EXP-090A:END -->

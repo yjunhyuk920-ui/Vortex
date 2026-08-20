@@ -737,3 +737,9 @@ No target GPU run was performed. Oracle evaluator timing on GitHub CPU is not a 
 
 No target GPU measurement was made. DEV-W replay performed `612` official target calls and `3791` replayed token positions; these are correctness costs, not speed records. TARGET-W storage, SSD/PCIe/HBM traffic, peak VRAM, TTFT, and p50/p95 remain `NOT TESTED`.
 <!-- EXP-089A:END -->
+
+<!-- EXP-090A:START -->
+## EXP-090A hardware status
+
+No target GPU run was performed. The `7.433527470 GiB` value is a dimension-derived favorable projection, leaving `608,245,248` bytes before packed-kernel workspace, allocator fragmentation, on-demand embedding traffic, token buffers, and synchronization. Exact target arithmetic remains `100%`. SSD, PCIe, HBM, peak VRAM, TTFT, and p50/p95 are `NOT TESTED`.
+<!-- EXP-090A:END -->

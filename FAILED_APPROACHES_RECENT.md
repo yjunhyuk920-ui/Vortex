@@ -1134,3 +1134,11 @@ EXP-088B rejects the exhaustive eight-family cross-layer page-mask microprogram 
 
 Frozen fingerprint: two adjacent complete DEV-W layers; all linear weights tiled `64x64`; eight deterministic page families spanning both layers; all 256 masks; final pair hidden plus both layers' complete K/V; three build and three untouched holdout states; no selector and no runtime fallback credited.
 <!-- EXP-088B:END -->
+
+<!-- EXP-090A:START -->
+## EXP-090A — causal suffix-action carry/secant/nearest draft
+
+EXP-090A rejected the frozen one-layer/Q4-logit-lens suffix-action family as a 128-token core. The selected mode was `raw_q4`; untouched accepted lengths were `[0, 0, 0]`, and true-path rank p95/max was `15186.249999999996/41239`. This result already grants exact prefill history and free packed-kernel construction.
+
+Do not reopen with history length, shallow depth, polynomial order, Q4 range/scales, prompt selection, block length, nearest metric, mode order, or threshold sweeps. Reopening requires a materially new causal suffix representation, sound exact token certificate, or independently generated bounded tree that changes the information source. This does not reject all speculative verification or every online residual state.
+<!-- EXP-090A:END -->
