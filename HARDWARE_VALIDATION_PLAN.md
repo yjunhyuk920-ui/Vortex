@@ -725,3 +725,9 @@ new `31 x 43` frontier is only a surviving necessity.
 
 No target-server command, checkpoint action, CUDA action, GPU allocation,
 EXP-085, or Phase D/E4-E7 work is authorized from this result.
+
+<!-- EXP-088B:START -->
+## EXP-088B hardware status
+
+No target GPU run was performed. Oracle evaluator timing on GitHub CPU is not a speed record. The only target-scale number is the explicitly optimistic `PROJECTED` hot-byte value `810,000,000,000` bytes/token; target VRAM, SSD, PCIe, HBM, TTFT, and p50/p95 remain `NOT TESTED`.
+<!-- EXP-088B:END -->

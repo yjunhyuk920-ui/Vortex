@@ -401,3 +401,11 @@ advice-bit/two-probe seed. It does not construct or reject the fully
 non-systematic seven-bit seed, the `25 x 108` nonlinear-word capacity point,
 global mixed cells, or native arithmetic.
 Read that continuation and each scope boundary before reopening a family.
+
+<!-- EXP-088B:START -->
+## EXP-088B — cross-layer page-mask program sharing
+
+EXP-088B rejects the exhaustive eight-family cross-layer page-mask microprogram as a 405B core under its frozen scope. Reopening requires a richer exact program instruction that changes the information source, not a finer mask sweep.
+
+Frozen fingerprint: two adjacent complete DEV-W layers; all linear weights tiled `64x64`; eight deterministic page families spanning both layers; all 256 masks; final pair hidden plus both layers' complete K/V; three build and three untouched holdout states; no selector and no runtime fallback credited.
+<!-- EXP-088B:END -->

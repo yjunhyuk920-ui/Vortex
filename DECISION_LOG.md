@@ -1703,3 +1703,11 @@ This is a non-deployable perfect-future, exact-real favorable Gate. Native FP32 
 
 This Gate preserves exact weights on a small public checkpoint and uses perfect future activations. Target 405B entropy, target native 4B baseline, target effective compute, CUDA, 8 GiB, and latency remain `NOT TESTED`.
 <!-- EXP087A_RESULT:END -->
+
+<!-- EXP-088B:START -->
+## EXP-088B decision
+
+`REJECT_CROSS_LAYER_PAGE_MASK_PROGRAM_SHARING_AS_405B_CORE`
+
+The frozen oracle searched all 256 checkpoint-static masks over eight cross-layer page families and chose the minimum-byte program in the intersection of the build-state exact sets. The selected mask retained `100.000000000%` and its exactness on untouched holdout states was `True`. The registered promotion threshold was 25%, and the final 405B hot-byte target remained independently enforced through the optimistic projection.
+<!-- EXP-088B:END -->

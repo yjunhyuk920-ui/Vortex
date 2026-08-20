@@ -1,0 +1,63 @@
+{
+  "schema": "exp-088b-oracle-cross-layer-program-sharing-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "attention_implementation": "eager",
+  "dtype": "bfloat16",
+  "layer_indices": [14, 15],
+  "page_group_count": 8,
+  "tile_rows": 64,
+  "tile_cols": 64,
+  "program_search": "exhaustive_all_2^8_masks_gray_code",
+  "exact_transition_tensors": [
+    "pair_output_hidden_state",
+    "layer_14_complete_k_cache",
+    "layer_14_complete_v_cache",
+    "layer_15_complete_k_cache",
+    "layer_15_complete_v_cache"
+  ],
+  "minimum_distinct_build_states": 3,
+  "minimum_distinct_holdout_states": 3,
+  "promotion_max_retained_fraction": 0.25,
+  "target_405b_hot_bytes_per_token": 100000000,
+  "ideal_405b_bf16_checkpoint_bytes": 810000000000,
+  "states": [
+    {
+      "id": "build_english",
+      "split": "build",
+      "family": "english",
+      "prompt": "Explain why a metal bridge expands on a hot afternoon, then give one practical engineering consequence.\n"
+    },
+    {
+      "id": "build_korean",
+      "split": "build",
+      "family": "korean",
+      "prompt": "정확한 상태 전이를 유지하는 계산기를 설계할 때 검증과 실행 비용을 함께 고려해야 하는 이유를 설명해 주세요.\n"
+    },
+    {
+      "id": "build_code",
+      "split": "build",
+      "family": "code",
+      "prompt": "Write a Python function that performs a stable topological sort, detects a cycle, and includes two assertions. Return code only.\n"
+    },
+    {
+      "id": "holdout_math",
+      "split": "holdout",
+      "family": "math",
+      "prompt": "Derive the closed form of the recurrence a_n = 3 a_{n-1} - 2 a_{n-2}, with a_0=1 and a_1=4.\n"
+    },
+    {
+      "id": "holdout_structured",
+      "split": "holdout",
+      "family": "structured_json",
+      "prompt": "Return valid JSON with keys project, assumptions, risks, and next_action for a lossless model-runtime experiment.\n"
+    },
+    {
+      "id": "holdout_repeated",
+      "split": "holdout",
+      "family": "repeated_pattern",
+      "prompt": "alpha beta gamma alpha beta gamma alpha beta gamma. Continue the pattern and then explain it.\n"
+    }
+  ]
+}

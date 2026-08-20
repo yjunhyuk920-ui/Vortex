@@ -1209,3 +1209,13 @@ This is a non-deployable perfect-future, exact-real favorable Gate. Native FP32 
 
 This Gate preserves exact weights on a small public checkpoint and uses perfect future activations. Target 405B entropy, target native 4B baseline, target effective compute, CUDA, 8 GiB, and latency remain `NOT TESTED`.
 <!-- EXP087A_RESULT:END -->
+
+<!-- EXP-088B:START -->
+## EXP-088B assumptions and grants
+
+- `MEASURED`: exact DEV-W transition equality and exhaustive mask outcomes.
+- `GRANTED`: dense oracle search, zero-cost page addressing, zero-cost program metadata, and ideal sparse execution of retained tiles.
+- `PROJECTED`: `810,000,000,000` hot bytes/token for 405B under uniform generalization of the measured retained fraction.
+- `UNVERIFIED`: a sparse kernel can reproduce the dense-zero semantic evaluator bitwise; TARGET-W shares the same program structure; target hardware latency/VRAM.
+- The oracle may inspect build reference successor states offline. Holdout targets are not used to choose the program.
+<!-- EXP-088B:END -->

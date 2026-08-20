@@ -1126,3 +1126,11 @@ This is a non-deployable perfect-future, exact-real favorable Gate. Native FP32 
 
 This Gate preserves exact weights on a small public checkpoint and uses perfect future activations. Target 405B entropy, target native 4B baseline, target effective compute, CUDA, 8 GiB, and latency remain `NOT TESTED`.
 <!-- EXP087A_RESULT:END -->
+
+<!-- EXP-088B:START -->
+## EXP-088B — cross-layer page-mask program sharing
+
+EXP-088B rejects the exhaustive eight-family cross-layer page-mask microprogram as a 405B core under its frozen scope. Reopening requires a richer exact program instruction that changes the information source, not a finer mask sweep.
+
+Frozen fingerprint: two adjacent complete DEV-W layers; all linear weights tiled `64x64`; eight deterministic page families spanning both layers; all 256 masks; final pair hidden plus both layers' complete K/V; three build and three untouched holdout states; no selector and no runtime fallback credited.
+<!-- EXP-088B:END -->

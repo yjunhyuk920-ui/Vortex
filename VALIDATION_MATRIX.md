@@ -1270,3 +1270,14 @@ This is a non-deployable perfect-future, exact-real favorable Gate. Native FP32 
 
 This Gate preserves exact weights on a small public checkpoint and uses perfect future activations. Target 405B entropy, target native 4B baseline, target effective compute, CUDA, 8 GiB, and latency remain `NOT TESTED`.
 <!-- EXP087A_RESULT:END -->
+
+<!-- EXP-088B:START -->
+## EXP-088B validation row
+
+| Boundary | Exact contract | Result | Evidence level |
+|---|---|---|---|
+| Two adjacent official DEV-W decoder layers | pair hidden + complete K/V for both layers, byte equality | `REJECT_CROSS_LAYER_PAGE_MASK_PROGRAM_SHARING_AS_405B_CORE` | E2 |
+| Same selected program on three untouched states | no selector, no output/state literal | `True` | E3 oracle Gate |
+| Actual sparse existing-ISA executor | full online resource trace | `NOT TESTED` | — |
+| 405B / 8-GiB / 4B-class p50/p95 | full target contract | `NOT TESTED` | — |
+<!-- EXP-088B:END -->

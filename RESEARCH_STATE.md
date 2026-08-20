@@ -1947,3 +1947,18 @@ This is a non-deployable perfect-future, exact-real favorable Gate. Native FP32 
 
 This Gate preserves exact weights on a small public checkpoint and uses perfect future activations. Target 405B entropy, target native 4B baseline, target effective compute, CUDA, 8 GiB, and latency remain `NOT TESTED`.
 <!-- EXP087A_RESULT:END -->
+
+<!-- EXP-088B:START -->
+## EXP-088B — checkpoint-static cross-layer program-sharing Gate
+
+- decision: `REJECT_CROSS_LAYER_PAGE_MASK_PROGRAM_SHARING_AS_405B_CORE`
+- evidence: E2/E3 small-real-checkpoint oracle falsification; TARGET-W remains `NOT TESTED`
+- selected static mask: `0xff` (`100.000000000%` of selected-window linear bytes retained)
+- selected program exact on every untouched holdout state: `True`
+- oracle program-sharing Gate: `False`
+- optimistic projected 405B hot bytes/token: `810,000,000,000` (`PROJECTED`)
+- raw evidence: `results/exp_088b/991bae0f0bfe42e9f4b918499b1e055b293c2c02/result.json`
+- source commit: `991bae0f0bfe42e9f4b918499b1e055b293c2c02`
+
+The program was selected only from three build states after exhaustive enumeration of all `2^8` masks. One unchanged mask was then evaluated on three distinct unseen states. Exactness covered final pair hidden bytes and complete new K/V state for both adjacent official decoder layers. No state ID, state hash, output literal, or future generated token is stored in the program.
+<!-- EXP-088B:END -->
