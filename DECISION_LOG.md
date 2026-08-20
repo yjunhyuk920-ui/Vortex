@@ -1711,3 +1711,11 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 
 The frozen oracle searched all 256 checkpoint-static masks over eight cross-layer page families and chose the minimum-byte program in the intersection of the build-state exact sets. The selected mask retained `100.000000000%` and its exactness on untouched holdout states was `True`. The registered promotion threshold was 25%, and the final 405B hot-byte target remained independently enforced through the optimistic projection.
 <!-- EXP-088B:END -->
+
+<!-- EXP-089A:START -->
+## EXP-089A decision
+
+`ACCEPT_PREFIX_STATE_BISIMULATION_WITNESS_FOR_TOKEN_DECISION_RESEARCH`
+
+The official incremental decoder and prefix replay were compared for `64` token decisions plus each case's terminal successor state. Raw logits, complete cache tensors, selected tokens, and RNG bytes had `0/0/0/0` mismatches. Replay consumed `612` target calls and is not promoted as an executor.
+<!-- EXP-089A:END -->

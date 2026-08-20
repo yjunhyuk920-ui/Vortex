@@ -1,0 +1,73 @@
+{
+  "attention_implementation": "eager",
+  "checkpoint_tensor_sha256": "ee567358e6d45900612a1a276fd068d1c5fd999a451cd67bae55cb2c01446308",
+  "config_sha256": "041b84dee11829cc1cb0d903729657f809186dc41b551596b6c8d7e878930846",
+  "dtype": "bfloat16",
+  "format": "prefix-state-bisimulation-identity-v1",
+  "model_class": "LlamaForCausalLM",
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "requested_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "resolved_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "tokenizer": {
+    "class": "GPT2TokenizerFast",
+    "init_kwargs": {
+      "add_prefix_space": false,
+      "additional_special_tokens": [
+        "<|endoftext|>",
+        "<|im_start|>",
+        "<|im_end|>",
+        "<repo_name>",
+        "<reponame>",
+        "<file_sep>",
+        "<filename>",
+        "<gh_stars>",
+        "<issue_start>",
+        "<issue_comment>",
+        "<issue_closed>",
+        "<jupyter_start>",
+        "<jupyter_text>",
+        "<jupyter_code>",
+        "<jupyter_output>",
+        "<jupyter_script>",
+        "<empty_output>"
+      ],
+      "bos_token": "<|endoftext|>",
+      "clean_up_tokenization_spaces": false,
+      "eos_token": "<|endoftext|>",
+      "merges_file": "/home/runner/.cache/huggingface/hub/models--HuggingFaceTB--SmolLM2-135M/snapshots/93efa2f097d58c2a74874c7e644dbc9b0cee75a2/merges.txt",
+      "model_max_length": 8192,
+      "name_or_path": "HuggingFaceTB/SmolLM2-135M",
+      "unk_token": "<|endoftext|>",
+      "vocab_file": "/home/runner/.cache/huggingface/hub/models--HuggingFaceTB--SmolLM2-135M/snapshots/93efa2f097d58c2a74874c7e644dbc9b0cee75a2/vocab.json",
+      "vocab_size": 49152
+    },
+    "model_max_length": 8192,
+    "name_or_path": "HuggingFaceTB/SmolLM2-135M",
+    "sha256": "708f0ff55ccf9614cd7d260b1e8596d4ecb9bbc357392ec04e031e59db9ddf76",
+    "special_tokens_map": {
+      "additional_special_tokens": [
+        "<|endoftext|>",
+        "<|im_start|>",
+        "<|im_end|>",
+        "<repo_name>",
+        "<reponame>",
+        "<file_sep>",
+        "<filename>",
+        "<gh_stars>",
+        "<issue_start>",
+        "<issue_comment>",
+        "<issue_closed>",
+        "<jupyter_start>",
+        "<jupyter_text>",
+        "<jupyter_code>",
+        "<jupyter_output>",
+        "<jupyter_script>",
+        "<empty_output>"
+      ],
+      "bos_token": "<|endoftext|>",
+      "eos_token": "<|endoftext|>",
+      "unk_token": "<|endoftext|>"
+    },
+    "vocab_size": 49152
+  }
+}

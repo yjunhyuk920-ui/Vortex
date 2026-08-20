@@ -1763,3 +1763,20 @@ Do not sweep page-family count, tile size, layer pair, prompt set, or deletion o
 
 Do not call the dense oracle evaluator an executor. A promotion requires an existing-ISA runtime whose measured online bytes, MACs, state traffic, and exact 128-step behavior are charged.
 <!-- EXP-088B:END -->
+
+<!-- EXP-089A:START -->
+## Post EXP-089A handoff
+
+Current decision: `ACCEPT_PREFIX_STATE_BISIMULATION_WITNESS_FOR_TOKEN_DECISION_RESEARCH`.
+
+The prefix-state behavioral witness passed. Freeze the next cheapest decisive Gate at the token-decision boundary:
+
+```text
+checkpoint-static hot prefix -> candidate token/rank trace
+unchanged exact suffix       -> final token and official successor state
+```
+
+Measure, on a frozen real-checkpoint population, the earliest decoder depth whose logit-lens top-1 equals the final token, the final-token rank after a one-layer hot prefix, exact consecutive release lengths, and candidate-tree node growth for target block lengths 64 and 128. Promotion requires one causal checkpoint-static shallow decision rule whose final token is present on every held-out state and whose tree/resource equation can meet the registered 405B traffic fraction. A dense suffix remains a charged exact constructor, not a free fallback.
+
+This Gate makes no latency or target-hardware claim.
+<!-- EXP-089A:END -->

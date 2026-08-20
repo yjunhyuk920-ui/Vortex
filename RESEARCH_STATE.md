@@ -1962,3 +1962,19 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 
 The program was selected only from three build states after exhaustive enumeration of all `2^8` masks. One unchanged mask was then evaluated on three distinct unseen states. Exactness covered final pair hidden bytes and complete new K/V state for both adjacent official decoder layers. No state ID, state hash, output literal, or future generated token is stored in the program.
 <!-- EXP-088B:END -->
+
+<!-- EXP-089A:START -->
+## EXP-089A — Prefix-State Bisimulation Gate
+
+- decision: `ACCEPT_PREFIX_STATE_BISIMULATION_WITNESS_FOR_TOKEN_DECISION_RESEARCH`
+- evidence: E2 checkpoint-specific state witness
+- public checkpoint: `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`
+- exact decisions: `64`
+- token/logits/cache/RNG mismatches: `0/0/0/0`
+- official reference calls: `68`
+- replay calls: `612`
+- raw evidence: `results/exp_089a/f271e52ad99ade62f39c73fe670015ff30d713cd/result.json`
+- source commit: `f271e52ad99ade62f39c73fe670015ff30d713cd`
+
+The state relation stores only exact prefix token IDs and exact RNG bytes. It contains no hidden/KV table, output lookup, or model response table. Replay is a correctness witness and remains prohibited as the final fast core.
+<!-- EXP-089A:END -->

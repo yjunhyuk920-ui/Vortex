@@ -1219,3 +1219,13 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - `UNVERIFIED`: a sparse kernel can reproduce the dense-zero semantic evaluator bitwise; TARGET-W shares the same program structure; target hardware latency/VRAM.
 - The oracle may inspect build reference successor states offline. Holdout targets are not used to choose the program.
 <!-- EXP-088B:END -->
+
+<!-- EXP-089A:START -->
+## EXP-089A assumptions and scope
+
+- `MEASURED`: pinned DEV-W official incremental and replay logits/cache/RNG/token byte equality.
+- `DERIVED`: induction from initialization, output preservation, and transition preservation for the declared decoder ABI.
+- `GRANTED`: none for equality; replay cost is fully counted as target calls and replayed positions.
+- `UNVERIFIED`: a cheap exact token-decision program, cross-ABI equivalence, TARGET-W, 8-GiB VRAM, and target latency.
+- The relation is checkpoint- and ABI-specific. Changing dtype, attention backend, reduction schedule, tokenizer, sampling algorithm, or revision requires a new witness.
+<!-- EXP-089A:END -->
