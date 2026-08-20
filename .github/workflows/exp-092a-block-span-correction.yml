@@ -50,6 +50,7 @@ jobs:
           python -m py_compile \
             vortex_runtime/block_span_correction.py \
             experiments/exp_092a/run_experiment.py \
+            experiments/exp_092a/run_incremental_reference.py \
             experiments/exp_092a/update_ledgers.py
 
   public-checkpoint-gate:
@@ -77,11 +78,11 @@ jobs:
             df -B1 .
             python --version
           } | tee results/exp_092a/${GITHUB_SHA}/host.txt
-      - name: Execute official block-span correction Gate
+      - name: Execute official incremental-reference block-span Gate
         shell: bash
         run: |
           set -o pipefail
-          python experiments/exp_092a/run_experiment.py \
+          python experiments/exp_092a/run_incremental_reference.py \
             --config experiments/exp_092a/config.json \
             --output-dir results/exp_092a/${GITHUB_SHA} \
             2>&1 | tee results/exp_092a/${GITHUB_SHA}/run.log
