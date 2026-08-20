@@ -1723,3 +1723,18 @@ Use the committed actual-checkpoint tensor audit and physical ledger to modify o
 The active cheapest decisive Gate compiles one actual public BF16 SwiGLU MLP as a sum of fused nonlinear macro-pages crossing gate, SiLU, multiplication, and down projection. It tests an impossible favorable oracle selector and a sound metadata selector on 24 real causal activations from `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2`.
 
 The frozen pass requires zero false accept/fallback, p50/p95 whole-model-equivalent fractions at or below `1.185185%/1.481481%`, and a projected complete metadata ledger within 8 GiB. The contract is `docs/research/EXPERIMENT_085A_JOINT_EXACT_SWIGLU_COMPILER_GATE.md`. No backend or complete-layer work is authorized before this Gate survives.
+
+<!-- EXP086A_RESULT:START -->
+## EXP-086A exact state-axis lifting microprogram Gate
+
+- Decision: `REJECT_EXACT_STATE_AXIS_LIFTING_MICROPROGRAM_AS_CORE`
+- Official target calls: `768`
+- Decisive block size: `128`
+- Favorable whole-model operation p50/p95: `20.239988251%` / `20.735470441%`
+- Favorable whole-model weight p50/p95: `0.634804985%` / `0.634804985%`
+- Joint p50/p95: `20.239988251%` / `20.735470441%`
+- Reconstruction mismatches: `0`
+- Deterministic core: `98fece89b13977c876bb7285e57529ab1dbb9709d2f786f67baf24336dd9a085`
+
+This is a non-deployable perfect-future, exact-real favorable Gate. Native FP32 reduction order, causal drafting, complete-layer state, CUDA, 405B, 8 GiB, and target latency remain `NOT TESTED`.
+<!-- EXP086A_RESULT:END -->
