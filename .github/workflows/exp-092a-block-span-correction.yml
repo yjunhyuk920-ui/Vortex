@@ -51,7 +51,8 @@ jobs:
             vortex_runtime/block_span_correction.py \
             experiments/exp_092a/run_experiment.py \
             experiments/exp_092a/run_incremental_reference.py \
-            experiments/exp_092a/update_ledgers.py
+            experiments/exp_092a/update_ledgers.py \
+            experiments/exp_092a/update_ledgers_incremental.py
 
   public-checkpoint-gate:
     if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[exp092a-results]') }}
@@ -88,7 +89,7 @@ jobs:
             2>&1 | tee results/exp_092a/${GITHUB_SHA}/run.log
       - name: Update canonical research ledgers
         run: |
-          python experiments/exp_092a/update_ledgers.py \
+          python experiments/exp_092a/update_ledgers_incremental.py \
             --result results/exp_092a/${GITHUB_SHA}/result.json \
             --source-commit ${GITHUB_SHA}
       - name: Refresh checksums
