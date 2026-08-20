@@ -36,7 +36,7 @@ def _finite_quadratic_outputs(
 
 def test_returned_context_bits_equal_deployed_fp32_evaluation() -> None:
     generator = torch.Generator(device="cpu").manual_seed(20260821)
-    x = torch.randn((24, 48), generator=generator).to(torch.bfloat16)
+    x = torch.randn((24, 96), generator=generator).to(torch.bfloat16)
     mean, basis, fitted_bits, fitted_rank = select_context_basis_fp32(
         x, context_bits=12, pool_size=64, seed=20260820
     )
@@ -49,7 +49,7 @@ def test_returned_context_bits_equal_deployed_fp32_evaluation() -> None:
 
 def test_corrected_fit_program_replays_executable_build_semantics() -> None:
     generator = torch.Generator(device="cpu").manual_seed(20260822)
-    x = torch.randn((24, 48), generator=generator).to(torch.bfloat16)
+    x = torch.randn((24, 96), generator=generator).to(torch.bfloat16)
     _mean, _basis, bits, rank = select_context_basis_fp32(
         x, context_bits=12, pool_size=64, seed=20260820
     )
