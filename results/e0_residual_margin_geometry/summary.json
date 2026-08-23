@@ -1,0 +1,32 @@
+{
+  "decision": "DEMOTE_EXP096_SPARSE_SUPPORT_AS_MODEL_SPECIFIC_R_SIGNAL",
+  "k128_certified": 6,
+  "k128_l1_p50": 1.72508615349,
+  "k128_l1_p95": 2.54028824839,
+  "k128_support_p50": 14.0,
+  "k128_support_p95": 20.5,
+  "k128_trials": 6,
+  "numpy": "2.3.5",
+  "phase_rows": [
+    {"k": 8, "seed": 2026082408, "success": false},
+    {"achieved_margin": 9.53674312854e-07, "k": 16, "l1": 2.48442436282, "linf": 0.55984170298, "seed": 2026082416, "success": true, "support": 9},
+    {"achieved_margin": 9.53674309301e-07, "k": 32, "l1": 2.95872869865, "linf": 0.456865727983, "seed": 2026082432, "success": true, "support": 17},
+    {"achieved_margin": 9.53674096138e-07, "k": 64, "l1": 3.15582879486, "linf": 0.473627602653, "seed": 2026082464, "success": true, "support": 19}
+  ],
+  "required_unique_margin": 9.5367431640625e-07,
+  "rows": [
+    {"achieved_margin": 9.53674220483e-07, "argmax": 17243, "k": 128, "l1": 2.48170284693, "linf": 0.58680272155, "seed": 2026082300, "status": 0, "success": true, "support": 19, "target": 17243, "v": 49152},
+    {"achieved_margin": 9.53674295534e-07, "argmax": 43934, "k": 128, "l1": 1.55459842479, "linf": 0.264645469131, "seed": 2026082301, "status": 0, "success": true, "support": 11, "target": 43934, "v": 49152},
+    {"achieved_margin": 9.5367420716e-07, "argmax": 47249, "k": 128, "l1": 2.55981671554, "linf": 0.443756410244, "seed": 2026082302, "status": 0, "success": true, "support": 17, "target": 47249, "v": 49152},
+    {"achieved_margin": 9.53674261783e-07, "argmax": 33138, "k": 128, "l1": 1.89557388218, "linf": 0.231622318042, "seed": 2026082303, "status": 0, "success": true, "support": 21, "target": 33138, "v": 49152},
+    {"achieved_margin": 9.53674310189e-07, "argmax": 41021, "k": 128, "l1": 0.98195673147, "linf": 0.359965817159, "seed": 2026082304, "status": 0, "success": true, "support": 9, "target": 41021, "v": 49152},
+    {"achieved_margin": 9.53674307524e-07, "argmax": 27619, "k": 128, "l1": 1.30471656112, "linf": 0.62399758245, "seed": 2026082305, "status": 0, "success": true, "support": 9, "target": 27619, "v": 49152},
+    {"k": 8, "seed": 2026082408, "status": 2, "success": false, "target": 49082, "v": 49152},
+    {"achieved_margin": 9.53674312854e-07, "argmax": 228, "k": 16, "l1": 2.48442436282, "linf": 0.55984170298, "seed": 2026082416, "status": 0, "success": true, "support": 9, "target": 228, "v": 49152},
+    {"achieved_margin": 9.53674309301e-07, "argmax": 42154, "k": 32, "l1": 2.95872869865, "linf": 0.456865727983, "seed": 2026082432, "status": 0, "success": true, "support": 17, "target": 42154, "v": 49152},
+    {"achieved_margin": 9.53674096138e-07, "argmax": 45463, "k": 64, "l1": 3.15582879486, "linf": 0.473627602653, "seed": 2026082464, "status": 0, "success": true, "support": 19, "target": 45463, "v": 49152}
+  ],
+  "schema": "e0-residual-margin-random-geometry-v1",
+  "scipy": "1.17.0",
+  "vocabulary_size": 49152
+}

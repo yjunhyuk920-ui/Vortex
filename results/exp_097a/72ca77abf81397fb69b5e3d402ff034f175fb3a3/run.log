@@ -1,0 +1,52 @@
+bank build_english: 6c347e669c0be410f2abc7b9af46d284bdde6999a2fa011027528f33fddc0b3c
+bank build_korean: 87b621076cff1a640b9694ee75430a8602898161c0e72bbb5c8c7848ade76b78
+bank build_code: 98867db01bd6d3acbce583d8ae67db2a2264144b3d853c5c8f3f923c68b21649
+bank holdout_math: 497ecc0ed7b8c8e560f3974febc310e37d7761747d1bcdac956f31aeb611538e
+bank holdout_structured: e7bf47ed74a05e246db707c3a2a4251c51a04e0212f1500a697887acd182a29b
+bank holdout_repeated: 454b0f4720251d62787db78e7aa0775066dbda3f39bbe91429f6eecc8bbf2902
+{
+  "authoritative_decision": "REJECT_UNBOUNDED_RESIDUAL_MARGIN_CAPACITY_AS_MODEL_SPECIFIC_SOURCE",
+  "holdout_cross_prompt": {
+    "certificate_fraction": 1.0,
+    "certified": 24,
+    "infeasible": 0,
+    "l1_p50": 1.0399409455441027,
+    "l1_p95": 4.744448973030837,
+    "linf_p50": 0.562631968325422,
+    "linf_p95": 0.986434549846442,
+    "minimum_certified_margin": 9.508127772214998e-07,
+    "support_p50": 5.5,
+    "support_p95": 14.849999999999998,
+    "total": 24
+  },
+  "holdout_same": {
+    "certificate_fraction": 1.0,
+    "certified": 24,
+    "infeasible": 0,
+    "l1_p50": 0.9076383996996851,
+    "l1_p95": 3.831871688116445,
+    "linf_p50": 0.4593528687021118,
+    "linf_p95": 0.9871747667783372,
+    "minimum_certified_margin": 9.53658633909085e-07,
+    "support_p50": 4.5,
+    "support_p95": 13.849999999999998,
+    "total": 24
+  },
+  "holdout_vocab_permuted": {
+    "certificate_fraction": 1.0,
+    "certified": 24,
+    "infeasible": 0,
+    "l1_p50": 2.8658957284330246,
+    "l1_p95": 7.20327861954318,
+    "linf_p50": 0.7574813754629011,
+    "linf_p95": 1.4919916856610713,
+    "minimum_certified_margin": 9.536474799366636e-07,
+    "support_p50": 9.5,
+    "support_p95": 17.0,
+    "total": 24
+  },
+  "matched_controls": [
+    "cross_prompt",
+    "vocab_permuted"
+  ]
+}

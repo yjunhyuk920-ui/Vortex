@@ -1,0 +1,37 @@
+name: e0-speculative-offload-dual-roofline
+
+on:
+  push:
+    branches:
+      - research/exp-097a-causal-residual-codebook-gate
+  pull_request:
+    branches:
+      - research/exp-096a-residual-margin-certificate-gate
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+      - name: Run deterministic roofline audit
+        run: |
+          python experiments/e0_speculative_offload_roofline/run_audit.py \
+            --config experiments/e0_speculative_offload_roofline/config.json \
+            --output /tmp/e0-speculative-offload-summary.json
+          diff -u \
+            results/e0_speculative_offload_roofline/summary.json \
+            /tmp/e0-speculative-offload-summary.json
+      - name: Verify checksums
+        run: sha256sum -c results/e0_speculative_offload_roofline/checksums.sha256
+      - name: Run controls
+        run: python -m unittest discover -s tests/e0_speculative_offload_roofline -p 'test_*.py' -v
+      - name: Syntax check
+        run: python -m py_compile experiments/e0_speculative_offload_roofline/run_audit.py

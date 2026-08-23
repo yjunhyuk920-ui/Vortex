@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "mission": {
+    "model_parameters": 405849243648,
+    "exact_weight_bits_per_parameter": 16,
+    "favorable_lossless_compression_ratio": 1.5,
+    "gpu_hot_budget_gib": 8.0,
+    "registered_host_free_storage_gib": 97.6183,
+    "registered_host_to_device_bandwidth_gib_per_s": 7.4506,
+    "favorable_device_peak_ops_per_s": 4300000000000.0,
+    "p50_relative_multiplier": 1.2,
+    "p95_relative_multiplier": 1.5
+  },
+  "conditional_native_4b_baselines_ms": [
+    20.0,
+    50.0,
+    100.0,
+    157.30590839069767,
+    200.0,
+    300.0
+  ],
+  "diagnostic_scenarios": [
+    {
+      "id": "perfect_chain_128",
+      "verified_nodes": 128.0,
+      "accepted_tokens": 128.0,
+      "classification": "oracle",
+      "note": "One exact dense candidate column per committed token; perfect K=128 future chain."
+    },
+    {
+      "id": "exp091_raw_first_sweep_threshold",
+      "verified_nodes": 128.0,
+      "accepted_tokens": 85.0,
+      "classification": "repository_threshold",
+      "note": "Raw first-sweep release threshold retained from EXP-091A accounting."
+    },
+    {
+      "id": "exp091_compressed_first_sweep_threshold",
+      "verified_nodes": 128.0,
+      "accepted_tokens": 67.0,
+      "classification": "repository_threshold",
+      "note": "Compressed first-sweep release threshold retained from EXP-091A accounting."
+    },
+    {
+      "id": "subspec_qwen25_7b_mtbench_diagnostic",
+      "verified_nodes": 288.0,
+      "accepted_tokens": 27.08,
+      "classification": "cross_system_literature_diagnostic",
+      "note": "SubSpec reports 288 verified draft tokens and tau=27.08 in its Qwen2.5-7B MT-Bench temperature study; this row is not a 405B measurement."
+    },
+    {
+      "id": "cats_vicuna7b_mtbench_greedy_favorable_minimum",
+      "verified_nodes": 5.0,
+      "accepted_tokens": 3.052,
+      "classification": "cross_system_literature_diagnostic",
+      "note": "CATS uses five draft steps and reports tau=3.052 on Vicuna-7B MT-Bench greedy; actual correction-tree nodes can exceed five."
+    },
+    {
+      "id": "specexec_budget_1024_diagnostic",
+      "verified_nodes": 1024.0,
+      "accepted_tokens": 12.93,
+      "classification": "cross_system_literature_diagnostic",
+      "note": "SpecExec budget/tau row reproduced in the SubSpec related-work experiment; this is not a 405B measurement."
+    }
+  ],
+  "literature": [
+    {
+      "name": "SubSpec",
+      "primary_source": "arXiv:2509.18344 / NeurIPS 2025",
+      "admissible_role": "training-free offload drafting and candidate generation shell"
+    },
+    {
+      "name": "SpecOffload",
+      "primary_source": "arXiv:2505.10259",
+      "admissible_role": "offload/draft placement and transfer-compute overlap shell"
+    },
+    {
+      "name": "CATS",
+      "primary_source": "arXiv:2605.11186",
+      "admissible_role": "memory-limited cascaded verification evidence only; trained adapters violate the fixed mission"
+    },
+    {
+      "name": "ZipServ",
+      "primary_source": "arXiv:2603.17435 / ASPLOS 2026",
+      "admissible_role": "lossless compressed exact-weight kernel shell"
+    },
+    {
+      "name": "Shannon-bound lossless compression",
+      "primary_source": "arXiv:2606.15789",
+      "admissible_role": "favorable exact BF16 compression-ratio bound"
+    }
+  ]
+}
