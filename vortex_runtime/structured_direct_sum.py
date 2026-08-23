@@ -29,6 +29,25 @@ def ceil_div(value: int, divisor: int) -> int:
     return (value + divisor - 1) // divisor
 
 
+def scalar_volume(shape: tuple[int, int, int]) -> int:
+    return int(shape[0]) * int(shape[1]) * int(shape[2])
+
+
+def bilinear_rank_lower_bound(m: int, k: int, n: int) -> int:
+    """Flattening lower bound for the exact matrix-multiplication tensor rank.
+
+    Each of the three tensor flattenings has full rank in its corresponding
+    matrix space, so every exact bilinear program needs at least
+    ``max(m*k, k*n, m*n)`` scalar products.  The bound is independent of the
+    coefficient field and is therefore safe for every integral/rational scheme
+    admitted by this Gate.
+    """
+
+    if m <= 0 or k <= 0 or n <= 0:
+        raise StructuredDirectSumError("dimensions must be positive")
+    return max(int(m) * int(k), int(k) * int(n), int(m) * int(n))
+
+
 @dataclass(frozen=True, order=True)
 class UniformScheme:
     a: int
@@ -46,7 +65,11 @@ class UniformScheme:
         return self.rank / self.classical_rank
 
     def manifest(self) -> dict[str, Any]:
-        return {**asdict(self), "classical_rank": self.classical_rank, "rank_ratio": self.rank_ratio}
+        return {
+            **asdict(self),
+            "classical_rank": self.classical_rank,
+            "rank_ratio": self.rank_ratio,
+        }
 
 
 @dataclass(frozen=True)
@@ -63,7 +86,17 @@ class CostWitness:
         }
 
 
-def catalog_schemes(rows: Sequence[Mapping[str, Any]]) -> tuple[UniformScheme, ...]:
+@dataclass(frozen=True)
+class _Action:
+    lower_bound: int
+    direct_upper_bound: int
+    action: str
+    children: tuple[tuple[int, int, int, int], ...]
+
+
+def catalog_schemes(
+    rows: Sequence[Mapping[str, Any]],
+) -> tuple[UniformScheme, ...]:
     """Build all cyclic/reflection orientations and safely remove dominated rows."""
 
     unique: dict[tuple[int, int, int], UniformScheme] = {}
@@ -108,10 +141,26 @@ def catalog_schemes(rows: Sequence[Mapping[str, Any]]) -> tuple[UniformScheme, .
                 break
         if not dominated:
             survivors.append(candidate)
-    return tuple(sorted(survivors, key=lambda row: (row.rank_ratio, row.rank, row.a, row.b, row.c, row.source)))
+    return tuple(
+        sorted(
+            survivors,
+            key=lambda row: (
+                row.rank_ratio,
+                row.rank,
+                row.a,
+                row.b,
+                row.c,
+                row.source,
+            ),
+        )
+    )
 
 
-def triple_cyclic_rank(unit_multiplicity: int, double_multiplicity: int, two_by_two_rank: int) -> int:
+def triple_cyclic_rank(
+    unit_multiplicity: int,
+    double_multiplicity: int,
+    two_by_two_rank: int,
+) -> int:
     u = int(unit_multiplicity)
     d = int(double_multiplicity)
     r2 = int(two_by_two_rank)
@@ -140,6 +189,11 @@ class MultiplicationOracle:
         self.double_multiplicity = int(double_multiplicity)
         self.state_limit = int(state_limit)
         self.state_count = 0
+        self.action_count = 0
+        self.pruned_action_count = 0
+        self.partial_prune_count = 0
+        self.lower_bound_optimum_count = 0
+        self.direct_incumbent_count = 0
         self._witness: dict[tuple[int, int, int, int], CostWitness] = {}
 
         @lru_cache(maxsize=None)
@@ -149,13 +203,20 @@ class MultiplicationOracle:
                 raise StructuredDirectSumError(
                     f"state limit exceeded: {self.state_count}>{self.state_limit}"
                 )
+
             classical = m * k * n
+            floor = bilinear_rank_lower_bound(m, k, n)
             best = classical
             witness = CostWitness(classical, "classical", ())
-            if depth <= 0 or classical == 1:
+            # If one dimension is one, the flattening bound already equals the
+            # classical count.  No exact bilinear decomposition can improve it.
+            if depth <= 0 or classical == 1 or floor == classical:
+                if floor == classical:
+                    self.lower_bound_optimum_count += 1
                 self._witness[(m, k, n, depth)] = witness
                 return best
 
+            actions: list[_Action] = []
             for scheme in self.schemes:
                 child = (
                     ceil_div(m, scheme.a),
@@ -164,14 +225,21 @@ class MultiplicationOracle:
                 )
                 if child == (m, k, n):
                     continue
-                value = scheme.rank * solve(*child, depth - 1)
-                if value < best:
-                    best = value
-                    witness = CostWitness(
-                        value,
-                        f"uniform:{scheme.source}:{scheme.a},{scheme.b},{scheme.c}:r{scheme.rank}",
-                        ((child[0], child[1], child[2], scheme.rank),),
+                children = ((child[0], child[1], child[2], scheme.rank),)
+                actions.append(
+                    _Action(
+                        lower_bound=(
+                            scheme.rank
+                            * bilinear_rank_lower_bound(*child)
+                        ),
+                        direct_upper_bound=scheme.rank * scalar_volume(child),
+                        action=(
+                            f"uniform:{scheme.source}:"
+                            f"{scheme.a},{scheme.b},{scheme.c}:r{scheme.rank}"
+                        ),
+                        children=children,
                     )
+                )
 
             if self.structured_enabled:
                 base = (ceil_div(m, 6), ceil_div(k, 6), ceil_div(n, 6))
@@ -180,26 +248,107 @@ class MultiplicationOracle:
                         doubled = list(base)
                         doubled[axis] *= 2
                         doubled_t = tuple(doubled)
-                        value = (
-                            self.unit_multiplicity * solve(*base, depth - 1)
-                            + self.double_multiplicity
-                            * solve(*doubled_t, depth - 1)
+                        children = (
+                            (
+                                base[0],
+                                base[1],
+                                base[2],
+                                self.unit_multiplicity,
+                            ),
+                            (
+                                doubled_t[0],
+                                doubled_t[1],
+                                doubled_t[2],
+                                self.double_multiplicity,
+                            ),
                         )
-                        if value < best:
-                            best = value
-                            witness = CostWitness(
-                                value,
-                                f"structured666:double_{name}",
-                                (
-                                    (base[0], base[1], base[2], self.unit_multiplicity),
-                                    (
-                                        doubled_t[0],
-                                        doubled_t[1],
-                                        doubled_t[2],
-                                        self.double_multiplicity,
-                                    ),
+                        actions.append(
+                            _Action(
+                                lower_bound=sum(
+                                    multiplicity
+                                    * bilinear_rank_lower_bound(cm, ck, cn)
+                                    for cm, ck, cn, multiplicity in children
                                 ),
+                                direct_upper_bound=sum(
+                                    multiplicity * cm * ck * cn
+                                    for cm, ck, cn, multiplicity in children
+                                ),
+                                action=f"structured666:double_{name}",
+                                children=children,
                             )
+                        )
+
+            self.action_count += len(actions)
+            # Every one-level action followed by classical children is already a
+            # valid exact program.  Seed the incumbent with the best such program
+            # before recursively expanding anything.
+            for action in actions:
+                if action.direct_upper_bound < best:
+                    best = action.direct_upper_bound
+                    witness = CostWitness(
+                        best,
+                        action.action + ":direct_children",
+                        action.children,
+                    )
+                    self.direct_incumbent_count += 1
+            if best == floor:
+                self.lower_bound_optimum_count += 1
+                self._witness[(m, k, n, depth)] = witness
+                return best
+
+            for action in sorted(
+                actions,
+                key=lambda row: (
+                    row.lower_bound,
+                    row.direct_upper_bound,
+                    row.action,
+                ),
+            ):
+                if action.lower_bound >= best:
+                    self.pruned_action_count += 1
+                    continue
+
+                # Evaluate children whose classical-minus-lower-bound gap is
+                # largest first.  Their exact cost is most likely to close the
+                # remaining optimistic gap and terminate the action early.
+                ordered_children = sorted(
+                    action.children,
+                    key=lambda row: (
+                        -row[3]
+                        * (
+                            row[0] * row[1] * row[2]
+                            - bilinear_rank_lower_bound(
+                                row[0], row[1], row[2]
+                            )
+                        ),
+                        row,
+                    ),
+                )
+                remaining_floor = action.lower_bound
+                value = 0
+                complete = True
+                for cm, ck, cn, multiplicity in ordered_children:
+                    child_floor = (
+                        multiplicity
+                        * bilinear_rank_lower_bound(cm, ck, cn)
+                    )
+                    remaining_floor -= child_floor
+                    if value + child_floor + remaining_floor >= best:
+                        self.partial_prune_count += 1
+                        complete = False
+                        break
+                    value += multiplicity * solve(cm, ck, cn, depth - 1)
+                    if value + remaining_floor >= best:
+                        self.partial_prune_count += 1
+                        complete = False
+                        break
+                if complete and value < best:
+                    best = value
+                    witness = CostWitness(value, action.action, action.children)
+                    if best == floor:
+                        self.lower_bound_optimum_count += 1
+                        break
+
             self._witness[(m, k, n, depth)] = witness
             return best
 
@@ -210,7 +359,9 @@ class MultiplicationOracle:
 
     def root_witness(self, m: int, k: int, n: int) -> CostWitness:
         self.cost(m, k, n)
-        return self._witness[(int(m), int(k), int(n), self.maximum_depth)]
+        return self._witness[
+            (int(m), int(k), int(n), self.maximum_depth)
+        ]
 
     def cache_info(self) -> dict[str, int]:
         info = self._solve.cache_info()
@@ -219,6 +370,11 @@ class MultiplicationOracle:
             "misses": info.misses,
             "current_size": info.currsize,
             "state_count": self.state_count,
+            "action_count": self.action_count,
+            "pruned_action_count": self.pruned_action_count,
+            "partial_prune_count": self.partial_prune_count,
+            "lower_bound_optimum_count": self.lower_bound_optimum_count,
+            "direct_incumbent_count": self.direct_incumbent_count,
         }
 
 
