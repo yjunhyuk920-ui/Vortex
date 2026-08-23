@@ -16,7 +16,7 @@ jobs:
   materialize-source:
     if: ${{ contains(github.event.head_commit.message, '[exp102a-bootstrap]') }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,20 +37,12 @@ jobs:
 
           archive = Path('.bootstrap/exp102a_bundle.tar.gz')
           data = archive.read_bytes()
-          actual_blob = hashlib.sha1(
-              f'blob {len(data)}\0'.encode() + data
-          ).hexdigest()
-          expected_blob = 'cef98946867714a781d23a3bce90970c40c054e3'
-          if actual_blob != expected_blob:
-              raise SystemExit(
-                  f'archive Git-blob mismatch: {actual_blob} != {expected_blob}'
-              )
-          print(
-              'archive identity:',
-              actual_blob,
-              'sha256:',
-              hashlib.sha256(data).hexdigest(),
-          )
+          sha256 = hashlib.sha256(data).hexdigest()
+          blob_sha1 = hashlib.sha1(f'blob {len(data)}\0'.encode() + data).hexdigest()
+          if sha256 != 'e2526a81ecdd0d88f724d3b998122a996c339529e6fc84d014237a13d3cdb418':
+              raise SystemExit(f'archive SHA-256 mismatch: {sha256}')
+          if blob_sha1 != '794a10ed225bacc68927867b301b6eebf0151ae9':
+              raise SystemExit(f'archive Git-blob mismatch: {blob_sha1}')
           with tarfile.open(archive, 'r:gz') as handle:
               members = handle.getmembers()
               for member in members:
@@ -60,34 +52,30 @@ jobs:
               handle.extractall('.')
           print(f'extracted {len(members)} EXP-102A members')
           PY
+          sha256sum -c EXP102A_SOURCE_MANIFEST.sha256
+          python experiments/exp_102a/bootstrap_governance.py
           rm -rf .bootstrap
           rm -f .github/workflows/bootstrap-exp-102a-reality-source.yml
-      - name: Install pinned research runtime
-        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
-      - name: Validate reality-first source and static evidence
-        shell: bash
+          rm -f EXP102A_SOURCE_MANIFEST.sha256 MANIFEST.sha256 APPLY_EXP102A_SOURCE.sh
+      - name: Validate materialized reality-first source
         run: |
-          set -euo pipefail
+          python -m pip install --disable-pip-version-check pytest==8.3.3
           python -m pytest -q tests/exp_102a
           python -m py_compile \
-            vortex_runtime/causal_segment_delta.py \
+            vortex_runtime/reality_first_speculative.py \
             experiments/exp_102a/run_experiment.py \
-            experiments/exp_102a/update_ledgers.py
-          sha256sum -c results/exp_102a/sandbox/checksums.sha256
+            experiments/exp_102a/update_ledgers.py \
+            experiments/exp_102a/bootstrap_governance.py
           python - <<'PY'
           import json
-          from pathlib import Path
+          from experiments.exp_102a.run_experiment import validate_config
 
-          config = json.loads(Path('experiments/exp_102a/config.json').read_text())
-          result = json.loads(Path('results/exp_102a/sandbox/static_gate.json').read_text())
-          assert config['schema'] == 'exp-102a-causal-segment-delta-reality-v1'
-          assert config['reality_contract']['future_target_state_available'] is False
-          assert config['reality_contract']['perfect_selector_available'] is False
-          assert config['reality_contract']['unimplemented_compression_credited'] is False
-          assert config['reality_contract']['free_transform_or_workspace_credited'] is False
-          assert result['decision'].startswith('SURVIVE_STATIC_VRAM_ONLY')
-          assert result['static_target_ledger']['storage']['raw_checkpoint_fits'] is False
-          assert result['static_target_ledger']['vram']['registered_segment_count'] == 32
+          config = json.load(open('experiments/exp_102a/config.json', encoding='utf-8'))
+          validate_config(config)
+          assert config['authoritative_arm'] == 'REAL_EXECUTOR_ONLY'
+          assert config['block_lengths'] == [96]
+          assert config['target_contract']['raw_p50_fraction'] == 0.011851851851851851
+          assert 'future_target_tokens' in config['forbidden_grants']
           print('EXP-102A bootstrap contract: PASS')
           PY
       - name: Commit and push complete source
@@ -97,5 +85,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git commit -m 'research: preregister EXP-102A reality-first causal segment Gate'
+          git commit -m 'research: preregister EXP-102A reality-first causal draft Gate'
           git push origin HEAD:${GITHUB_REF_NAME}
