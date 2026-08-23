@@ -1,0 +1,69 @@
+{
+  "schema": "exp-100a-explicit-rectangular-fmm-v1",
+  "frozen_before_results": true,
+  "catalog": {
+    "repository": "google-deepmind/alphatensor",
+    "commit": "1949163da3bef7e3eb268a3ac015fd1c2dbfc767",
+    "path": "algorithms/factorizations_r.npz",
+    "urls": [
+      "https://raw.githubusercontent.com/google-deepmind/alphatensor/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/algorithms/factorizations_r.npz",
+      "https://github.com/google-deepmind/alphatensor/raw/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/algorithms/factorizations_r.npz"
+    ],
+    "git_blob_sha1": "5ff45960f86da6237f105f78aaa82d29cb18c30e"
+  },
+  "registered_inputs": {
+    "target_shapes": {
+      "path": "results/exp_071/raw/tensor_rows.jsonl",
+      "git_blob_sha1": "e7d1d3af15a5f30a2c041e6af195e8549ed47a64"
+    },
+    "exp_080a": {
+      "path": "results/exp_080a/summary.json",
+      "git_blob_sha1": "83e278b76d4348754b728ac3e0fb908441855d37"
+    },
+    "exp_099a": {
+      "path": "results/exp_099a/4fbd6699fda885fbedbe7d2158e7ae7cb3c30d3f/result.json",
+      "git_blob_sha1": "c46680e8ea6f74ec5d442f55a17bda3bced7b880"
+    }
+  },
+  "target_contract": {
+    "baseline_billions": 4,
+    "target_billions": 405,
+    "p50_latency_multiple": 1.2,
+    "p95_latency_multiple": 1.5,
+    "p50_target_fraction": 0.011851851851851851,
+    "p95_target_fraction": 0.014814814814814815,
+    "first_core_reduction_fraction": 0.1,
+    "peak_vram_bytes": 8589934592
+  },
+  "search": {
+    "block_lengths": [32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384],
+    "exclude_tensor_families": ["embedding"],
+    "minimum_depth": 1,
+    "maximum_depth": 12,
+    "maximum_padding_multiplier": 2.0,
+    "maximum_coefficient_absolute_value": 2,
+    "maximum_orientations": 128,
+    "beam_width": 192,
+    "per_split_survivors": 2,
+    "maximum_structural_plans_per_shape": 160,
+    "maximum_oracle_plans_per_shape": 64,
+    "maximum_family_candidates": 80,
+    "joint_io_bins": 8192,
+    "static_scalar_bytes": [2, 4],
+    "activation_bytes": 2,
+    "output_bytes": 2,
+    "accumulator_bytes": 4,
+    "lossless_ratio_grant": 1.5
+  },
+  "controls": {
+    "seed": 1000100,
+    "synthetic_trials_per_factorization": 2
+  },
+  "decisions": {
+    "direct_promotion": "PROMOTE_CATALOGUED_RECTANGULAR_FMM_TO_FINITE_WORD_KERNEL_AND_CAUSAL_BLOCK_GATE",
+    "rank_headroom_only": "RETAIN_RECTANGULAR_RANK_HEADROOM_REQUIRE_EXPLICIT_TRANSFORM_CIRCUIT",
+    "scientific_rejection": "REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE",
+    "control_failure": "INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE"
+  },
+  "claim_boundary": "Bounded mixed-recursion search over the pinned public AlphaTensor integral small-coefficient catalog. Perfect future activations, N/A=1, a perfect native-repair selector, free offline transform construction, favorable transformed-word widths, and a 1.5x lossless ratio are grants. No causal block, exact finite-word transformed representation, packed kernel, TARGET-W execution, physical 8-GiB allocation, or same-machine 4B latency is claimed."
+}
