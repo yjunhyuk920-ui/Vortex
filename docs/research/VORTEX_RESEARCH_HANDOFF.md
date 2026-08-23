@@ -1,48 +1,56 @@
 # VORTEX Research Handoff
 
-## Latest completed local Gate — EXP-104A
+## Latest completed local Gate
+
+**EXP-105A — Activation-Ordered Exact Residual-Bound Head Tournament**
 
 ```text
-REJECT_FULL_VOCABULARY_FULL_LAYER_RESIDENT_SLICE_AS_P50_CORE
+REJECT_ACTIVATION_ORDERED_EXACT_RESIDUAL_BOUND_HEAD_INDEX_WITH_COMPLETE_LAYER_AS_P50_CORE
+NO_REGISTERED_EXP_105A_PRINCIPLE_SURVIVES_COMPLETE_EXECUTOR_GATE
 ```
 
 Evidence:
 
 ```text
-results/exp_104a/local/result.json
-results/exp_104a/local/checksums.sha256
-docs/research/EXP_104A_LATEST_RESULT.md
+results/exp_105a/local/result.json
+results/exp_105a/local/checksums.sha256
+docs/research/EXPERIMENT_105A_ACTIVATION_ORDERED_EXACT_HEAD_TOURNAMENT_GATE.md
+docs/research/EXP_105A_LATEST_RESULT.md
 ```
 
 Deterministic core:
 
 ```text
-dcdce92c76ca84154d12e87cbfd904e1fdfe637cdbd0c8ea51d55e13605a6f93
+17cebccb51a2fbdadf871767151962b47e462bd14caeba1707cd66a64a468598
 ```
 
 Validation:
 
 ```text
-7 focused tests passed
-registered 405B population matched exactly
-byte-identical rerun
-compile PASS
-checksum ledger PASS
+8 focused tests PASS
+12 random Q4/Q8 queries x 6 block sizes, zero mismatch
+runtime winner independent of dense reference helper
+structured early-pruning positive control PASS
+late-decision exact control reads 100% of head
+byte-identical rerun PASS
+SHA-256 ledger PASS
+GitHub Actions not run
 ```
 
-Decisive fact:
+Interpretation:
 
-```text
-ideal Q4 full head + one layer = 2,644,508,672 bytes/token = 1.322254336x native 4B Q4
-real Q4 full head + one layer  = 2,809,790,464 bytes/token = 1.404895232x native 4B Q4
-required p50                   = <=1.2x
-```
+- query-adaptive exact row elimination is possible on structured heads;
+- dense random controls saved some weight payload, but selector state erased the saving;
+- a legal late-decision head forces complete head reads;
+- adding the minimum complete 405B-width layer yields `2.815515648 GB/token`, above the `2.4 GB/token` p50 budget;
+- head-only bytes are not a complete executor because no causal state source or `A>=339` continuation was implemented;
+- no-guess autoregressive dependencies serialize one weight-bearing traversal per token unless a transition operator or branches are supplied.
 
-Acceptance cannot amortize the draft scan because every proposed token requires one autoregressive resident pass.
+Do not reopen by changing only block size, activation ordering, residual-norm threshold, state-byte accounting, or the synthetic distribution.
 
 ## Next action
 
-Run EXP-105A locally. Compare a genuinely causal sub-full-head index, a single-scan multi-token transducer, and a cross-matrix decision-bit program. Implement only a principle with an explicit fully charged route below the `2.4 GB/token` p50-equivalent byte floor.
+Run EXP-106A locally: depth-complete width-thin checkpoint surrogate. Freeze a complete training-free narrow representation and cost ledger first. Only then run a public checkpoint and measure actual accepted prefix plus exact target state.
 
 ## Operating rule
 
@@ -53,4 +61,4 @@ LOCAL_RESEARCH
 -> REMOTE_COMMIT_VERIFIED
 ```
 
-No duplicate GitHub Actions run unless the user explicitly requests it.
+Do not duplicate the locally validated experiment in GitHub Actions unless explicitly requested.
