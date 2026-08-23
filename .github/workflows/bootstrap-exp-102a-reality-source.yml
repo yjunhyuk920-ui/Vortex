@@ -30,12 +30,27 @@ jobs:
         run: |
           set -euo pipefail
           test -f .bootstrap/exp102a_bundle.tar.gz
-          echo '55763beb87d3ea891330a58ebbe00a7eca73ced9920cfdf5a4efbabaf7114a78  .bootstrap/exp102a_bundle.tar.gz' | sha256sum -c -
           python - <<'PY'
+          import hashlib
           import tarfile
           from pathlib import Path
 
           archive = Path('.bootstrap/exp102a_bundle.tar.gz')
+          data = archive.read_bytes()
+          actual_blob = hashlib.sha1(
+              f'blob {len(data)}\0'.encode() + data
+          ).hexdigest()
+          expected_blob = 'cef98946867714a781d23a3bce90970c40c054e3'
+          if actual_blob != expected_blob:
+              raise SystemExit(
+                  f'archive Git-blob mismatch: {actual_blob} != {expected_blob}'
+              )
+          print(
+              'archive identity:',
+              actual_blob,
+              'sha256:',
+              hashlib.sha256(data).hexdigest(),
+          )
           with tarfile.open(archive, 'r:gz') as handle:
               members = handle.getmembers()
               for member in members:
