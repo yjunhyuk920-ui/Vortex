@@ -1,0 +1,134 @@
+{
+  "authoritative_arm": "REAL_EXECUTOR_ONLY_STATIC_AND_MEASURED_LEDGER",
+  "budgets": {
+    "embedding_row_stream_bytes_per_339_token_block": 11108352,
+    "embedding_row_stream_bytes_per_draft_token": 32768,
+    "native_4b_q4_weight_bytes": 2000000000,
+    "p50_weight_scan_budget_bytes": 2400000000,
+    "p95_weight_scan_budget_bytes": 3000000000,
+    "reserve": {
+      "allocator_fragmentation_bytes": 536870912,
+      "block_activation_bytes": 268435456,
+      "target_kv_bytes": 174956544,
+      "target_weight_staging_bytes": 536870912,
+      "total": 1517133824
+    },
+    "segment_tokens": 339,
+    "vram_bytes": 8589934592
+  },
+  "claim_boundary": {
+    "physical_8gib": "DERIVED_LEDGER_ONLY",
+    "public_checkpoint_slice_execution": "NOT_TESTED_BECAUSE_STATIC_P50_FLOOR_DECISIVE",
+    "same_machine_latency": "DERIVED_WEIGHT_SCAN_LOWER_BOUND",
+    "target_405b_execution": "NOT_TESTED"
+  },
+  "decision": "REJECT_FULL_VOCABULARY_FULL_LAYER_RESIDENT_SLICE_AS_P50_CORE",
+  "decisive_facts": {
+    "draft_autoregressive_scans_amortized_by_acceptance": false,
+    "ideal_q4_head_plus_one_layer_bytes": 2644508672,
+    "ideal_q4_head_plus_one_layer_native_ratio": 1.322254336,
+    "real_q4_head_plus_one_layer_bytes": 2809790464,
+    "real_q4_head_plus_one_layer_native_ratio": 1.404895232,
+    "real_q4_max_layers_under_8gib": 3,
+    "reason": "each proposed token requires one resident draft pass; at 100% acceptance the per-committed-token draft scan is still head+slice"
+  },
+  "deterministic_core": "dcdce92c76ca84154d12e87cbfd904e1fdfe637cdbd0c8ea51d55e13605a6f93",
+  "existing_real_checkpoint_control": {
+    "cross_family_holdout_minimum_committed_tokens": 1,
+    "interpretation": "diagnostic context only; the static p50 byte floor is the authoritative rejection",
+    "same_family_full_draft_parameter_bytes": 269030016,
+    "same_family_holdout_minimum_committed_tokens": 2,
+    "source": "EXP-102A committed result"
+  },
+  "format_rows": [
+    {
+      "bytes_per_parameter": 2.0,
+      "format": "bf16",
+      "head_bytes": 4202692608,
+      "head_plus_one_layer_bytes": 10578034688,
+      "head_plus_one_layer_to_native_4b_ratio": 5.289017344,
+      "head_plus_one_layer_to_p50_budget_ratio": 4.4075144533333335,
+      "layer_bytes": 6375342080,
+      "maximum_full_layers_under_p50_weight_budget": -1,
+      "maximum_resident_layers_under_8gib": 0,
+      "resident_total_at_max_layers": 5719826432
+    },
+    {
+      "bytes_per_parameter": 1.03125,
+      "format": "q8_g128_fp16_scale_zero",
+      "head_bytes": 2167013376,
+      "head_plus_one_layer_bytes": 5454299136,
+      "head_plus_one_layer_to_native_4b_ratio": 2.727149568,
+      "head_plus_one_layer_to_p50_budget_ratio": 2.27262464,
+      "layer_bytes": 3287285760,
+      "maximum_full_layers_under_p50_weight_budget": 0,
+      "maximum_resident_layers_under_8gib": 1,
+      "resident_total_at_max_layers": 6972821504
+    },
+    {
+      "bytes_per_parameter": 0.5,
+      "format": "q4_ideal_no_metadata",
+      "head_bytes": 1050673152,
+      "head_plus_one_layer_bytes": 2644508672,
+      "head_plus_one_layer_to_native_4b_ratio": 1.322254336,
+      "head_plus_one_layer_to_p50_budget_ratio": 1.1018786133333334,
+      "layer_bytes": 1593835520,
+      "maximum_full_layers_under_p50_weight_budget": 0,
+      "maximum_resident_layers_under_8gib": 3,
+      "resident_total_at_max_layers": 7353479168
+    },
+    {
+      "bytes_per_parameter": 0.53125,
+      "format": "q4_g128_fp16_scale_zero",
+      "head_bytes": 1116340224,
+      "head_plus_one_layer_bytes": 2809790464,
+      "head_plus_one_layer_to_native_4b_ratio": 1.404895232,
+      "head_plus_one_layer_to_p50_budget_ratio": 1.1707460266666667,
+      "layer_bytes": 1693450240,
+      "maximum_full_layers_under_p50_weight_budget": 0,
+      "maximum_resident_layers_under_8gib": 3,
+      "resident_total_at_max_layers": 7717990400
+    }
+  ],
+  "integrity_failures": [],
+  "inventory": {
+    "embedding_parameters": 2101346304,
+    "head_dim": 128,
+    "hidden_size": 16384,
+    "intermediate_size": 53248,
+    "kv_heads": 8,
+    "layer_parameters": 3187671040,
+    "layers": 126,
+    "lm_head_parameters": 2101346304,
+    "registered_parameters": 405849243648,
+    "vocab_size": 128256
+  },
+  "next_gate": {
+    "forbidden": [
+      "another full-head full-layer slice",
+      "unmeasured sub-4-bit quality",
+      "free HBM residency scans",
+      "configured K counted as accepted A"
+    ],
+    "name": "sub_full_head_or_multi_token_per_scan_transducer",
+    "requirement": "either score less than the full vocabulary with a causal charged mechanism or generate more than one exact-useful candidate token per resident weight scan"
+  },
+  "schema": "exp-104a-checkpoint-native-resident-slice-v1",
+  "three_principles_screened": [
+    {
+      "name": "full_vocabulary_checkpoint_native_resident_slice",
+      "premise_flip": "draft from a target-derived resident slice rather than an independently trained model",
+      "status": "implemented_and_rejected_by_p50_weight_scan_floor"
+    },
+    {
+      "name": "streaming_page_shadow_self_draft",
+      "premise_flip": "derive future candidates while exact pages are transferred",
+      "status": "rejected_before_implementation_as_jacobi_parareal_dependency_family"
+    },
+    {
+      "name": "deferred_mismatch_state_closure",
+      "premise_flip": "materialize mismatch-token state in the following sweep",
+      "status": "retained_auxiliary_only"
+    }
+  ]
+}

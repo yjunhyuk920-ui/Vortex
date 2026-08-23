@@ -1,46 +1,48 @@
 # VORTEX Research Handoff
 
-## Current branch handoff
-
-Latest completed local Gate: **EXP-103A Hierarchical Native-Rounding Page Certificate**.
-
-Decision:
+## Latest completed local Gate — EXP-104A
 
 ```text
-REJECT_HIERARCHICAL_NATIVE_ROUNDING_PAGE_CERTIFICATES_AS_UNIVERSAL_10X_CORE
+REJECT_FULL_VOCABULARY_FULL_LAYER_RESIDENT_SLICE_AS_P50_CORE
 ```
 
 Evidence:
 
 ```text
-results/exp_103a/local/result.json
-results/exp_103a/local/checksums.sha256
-docs/research/EXP_103A_LATEST_RESULT.md
+results/exp_104a/local/result.json
+results/exp_104a/local/checksums.sha256
+docs/research/EXP_104A_LATEST_RESULT.md
 ```
 
 Deterministic core:
 
 ```text
-d912ff35377f34d76926c9ca1a887a92c51eb0f69899b8621340650b67b7c363
+dcdce92c76ca84154d12e87cbfd904e1fdfe637cdbd0c8ea51d55e13605a6f93
 ```
 
 Validation:
 
 ```text
-200,000 randomized cases
-53,676 certified pages
-0 certificate mismatches
-6 focused tests passed
-byte-identical deterministic rerun
-all-ones finite-word negative control: 100% pages read
-Gaussian dense control p50/p95: 100% / 100% pages read
+7 focused tests passed
+registered 405B population matched exactly
+byte-identical rerun
+compile PASS
+checksum ledger PASS
 ```
 
-Interpretation: finite precision creates real no-op products, but a page-summary executor must skip roughly 99% of weight pages after paying metadata. An arbitrary legal dense row can force every page to matter. Do not reopen this family by changing page size, exponent encoding, or threshold; reopening requires a value-changing cross-page computation, not a finer no-op selector.
+Decisive fact:
+
+```text
+ideal Q4 full head + one layer = 2,644,508,672 bytes/token = 1.322254336x native 4B Q4
+real Q4 full head + one layer  = 2,809,790,464 bytes/token = 1.404895232x native 4B Q4
+required p50                   = <=1.2x
+```
+
+Acceptance cannot amortize the draft scan because every proposed token requires one autoregressive resident pass.
 
 ## Next action
 
-Run EXP-104A locally: checkpoint-native resident slice transducer. Freeze the actual <=8-GiB representation before checkpoint execution, then require real causal accepted prefix, exact target token/state, and full cost accounting. Actual target-scale `A >=339` is required unless exact sweep bytes are reduced.
+Run EXP-105A locally. Compare a genuinely causal sub-full-head index, a single-scan multi-token transducer, and a cross-matrix decision-bit program. Implement only a principle with an explicit fully charged route below the `2.4 GB/token` p50-equivalent byte floor.
 
 ## Operating rule
 
@@ -51,4 +53,4 @@ LOCAL_RESEARCH
 -> REMOTE_COMMIT_VERIFIED
 ```
 
-Do not duplicate the validated experiment in GitHub Actions unless the user explicitly asks.
+No duplicate GitHub Actions run unless the user explicitly requests it.

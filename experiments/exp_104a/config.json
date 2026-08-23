@@ -1,0 +1,22 @@
+{
+  "schema": "exp-104a-checkpoint-native-resident-slice-v1",
+  "registered_parameters": 405849243648,
+  "hidden_size": 16384,
+  "intermediate_size": 53248,
+  "vocab_size": 128256,
+  "layers": 126,
+  "kv_heads": 8,
+  "head_dim": 128,
+  "segment_tokens": 339,
+  "vram_bytes": 8589934592,
+  "native_4b_q4_weight_bytes": 2000000000,
+  "p50_multiplier": 1.2,
+  "p95_multiplier": 1.5,
+  "q4_group_size": 128,
+  "q4_scale_bytes": 2,
+  "q4_zero_bytes": 2,
+  "target_weight_staging_bytes": 536870912,
+  "block_activation_bytes": 268435456,
+  "allocator_fragmentation_bytes": 536870912,
+  "authoritative_arm": "REAL_EXECUTOR_ONLY_STATIC_AND_MEASURED_LEDGER"
+}

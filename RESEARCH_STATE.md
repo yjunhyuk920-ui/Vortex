@@ -2,7 +2,7 @@
 
 ## Fixed target
 
-Arbitrary public, unmodified Hugging Face dense 405B-class checkpoint; executor-only; one 8-GiB GPU; exact declared token and successor-state contract; same-machine native-4B-Q4 warm latency target `p50 <=1.2x`, `p95 <=1.5x`.
+Arbitrary public, unmodified Hugging Face dense 405B-class checkpoint; executor-only; one 8-GiB GPU; exact declared token and successor-state contract; same-machine native-4B-Q4 warm latency `p50 <=1.2x`, `p95 <=1.5x`.
 
 ## Operating mode
 
@@ -13,49 +13,47 @@ LOCAL_RESEARCH
 -> REMOTE_COMMIT_VERIFIED
 ```
 
-GitHub Actions and duplicate hosted reproduction are not required unless the user explicitly requests them.
+Duplicate GitHub Actions reproduction is not required unless the user explicitly requests it.
 
-## Latest authoritative completed Gate — EXP-103A
-
-```text
-REJECT_HIERARCHICAL_NATIVE_ROUNDING_PAGE_CERTIFICATES_AS_UNIVERSAL_10X_CORE
-```
-
-EXP-103A implemented an exact BF16/FP32 native-rounding page certificate. It passed 200,000 randomized soundness cases with zero mismatches and positive controls, but the byte Gate failed decisively:
-
-- one exponent byte per page consumes `1/(2Q)` of BF16 checkpoint traffic;
-- the remaining p50 allowance requires roughly `98.86%–99.60%` of full pages to be skipped for `Q=64..1024`;
-- a legal 16,384-wide all-ones BF16 row reads and executes `100%` of pages/terms at every registered Q;
-- 64 Gaussian BF16 dense rows also read `100%` of pages at p50/p95.
-
-The certificate remains auxiliary only. Public-checkpoint execution was not run because the universal finite-word byte Gate was already decisive.
-
-## Previous authoritative Gate — EXP-102A
+## Latest authoritative completed Gate — EXP-104A
 
 ```text
-REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE
+REJECT_FULL_VOCABULARY_FULL_LAYER_RESIDENT_SLICE_AS_P50_CORE
 ```
 
-Real public draft/target checkpoints preserved exact token and terminal KV state, but holdout minimum committed tokens were only `1` and `2`, far below the registered raw-traffic requirement.
+A full-vocabulary target-derived resident draft was fully accounted at target scale.
 
-## Active next Gate — EXP-104A
+- registered population reproduced exactly: `405,849,243,648` parameters;
+- realistic Q4 head plus one complete target layer: `2,809,790,464` bytes scanned per proposed token;
+- ratio to ideal native-4B-Q4 weight bytes: `1.404895232x`;
+- final p50 limit: `1.2x`;
+- even metadata-free ideal Q4 head plus one layer: `1.322254336x`;
+- a fully charged 8-GiB ledger fits three Q4 layers, but capacity does not rescue the p50 scan floor.
 
-`Checkpoint-Native Resident Slice Transducer Reality Gate`.
+Every proposed autoregressive token requires one resident draft pass, so acceptance length does not amortize this scan. The mechanism is closed as a p50 core before checkpoint execution.
 
-The next candidate changes the causal information source rather than tuning external drafts or no-op certificates. It must construct a real draft from a fully charged <=8-GiB resident subset/derived draft-only representation of the unchanged target checkpoint, stream exact embedding rows as needed, and verify with the unchanged exact target.
+## Previous Gates
 
-Before any backend work it must pass:
+```text
+EXP-103A REJECT_HIERARCHICAL_NATIVE_ROUNDING_PAGE_CERTIFICATES_AS_UNIVERSAL_10X_CORE
+EXP-102A REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE
+```
 
-1. a complete static 8-GiB ledger, including draft weights/head, KV, workspace, metadata, and fragmentation;
-2. actual public-checkpoint causal accepted-prefix measurement;
-3. exact target token and terminal-state equality;
-4. target-scale requirement `A >=339` for the raw BF16 p50 traffic floor, unless it measurably reduces the target sweep bytes;
-5. fully charged draft, verification, rebuild, repair, and `N/A` costs.
+## Active next Gate — EXP-105A
+
+`Sub-Full-Head or Multi-Token-Per-Scan Transducer Gate`.
+
+A new candidate must either:
+
+1. avoid scanning all 128,256 LM-head rows with a causal, fully charged mechanism; or
+2. produce more than one useful future token per resident weight scan without future target leakage.
+
+It must not reintroduce the closed static top-k selector, Jacobi/Parareal future-state guess, or free HBM scan families.
 
 ## Not tested
 
 - complete 405B target execution;
 - physical complete 8-GiB allocation;
-- target SSD/PCIe/HBM behavior;
+- target SSD/PCIe/HBM measurements;
 - target CUDA/SASS;
-- same-machine native-4B-Q4 p50/p95 acceptance.
+- same-machine native-4B-Q4 final p50/p95 acceptance.

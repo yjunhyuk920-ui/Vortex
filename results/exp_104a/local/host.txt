@@ -1,0 +1,2 @@
+python=Python 3.13.5
+platform=Linux f629cd29429f 6.18.35 #1 SMP Mon Jul 27 18:07:50 UTC 2026 x86_64 GNU/Linux

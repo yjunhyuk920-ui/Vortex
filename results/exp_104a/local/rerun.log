@@ -1,0 +1,5 @@
+{
+  "decision": "REJECT_FULL_VOCABULARY_FULL_LAYER_RESIDENT_SLICE_AS_P50_CORE",
+  "integrity_failures": [],
+  "deterministic_core": "dcdce92c76ca84154d12e87cbfd904e1fdfe637cdbd0c8ea51d55e13605a6f93"
+}

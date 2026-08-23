@@ -1,22 +1,17 @@
 # VORTEX
 
-VORTEX is a proof-first research runtime for executing arbitrary public, unmodified dense Hugging Face Transformers under a small GPU-memory budget without changing the model's meaning.
+VORTEX is a proof-first project for executing arbitrary public, unmodified dense Hugging Face Transformers by replacing only the executor.
 
 ## Fixed mission
 
-Run an arbitrary public dense 405B-class checkpoint by replacing only the executor, with:
-
-- peak GPU VRAM `<= 8 GiB`;
+- arbitrary public dense 405B-class checkpoint;
+- one 8-GiB GPU;
 - no retraining, fine-tuning, distillation, LoRA, or semantic target-weight modification;
 - exact declared token/output and required successor-state contract;
 - same-machine native-4B-Q4 warm latency `p50 <=1.2x`, `p95 <=1.5x`;
-- reproducible pinned source, inputs, results, logs, and checksums.
+- full accounting of storage, traffic, arithmetic, KV/state, metadata, packing, verification, repair, fallback, and synchronization.
 
-## Reality-first rule
-
-The authoritative arm is always `REAL_EXECUTOR_ONLY`. Future target states, perfect selectors, free `N/A`, free transforms/workspace/repair/fallback, unmeasured compression, hidden compute, and projected peak throughput cannot satisfy promotion.
-
-## Local-first workflow
+## Research workflow
 
 ```text
 LOCAL_RESEARCH
@@ -25,7 +20,11 @@ LOCAL_RESEARCH
 -> REMOTE_COMMIT_VERIFIED
 ```
 
-Research, checkpoint execution, tests, measurements, and evidence generation happen locally. After local validation, GitHub is used only to commit/push the already validated source/result/handoff and read back the remote SHA. Duplicate GitHub Actions execution is not required unless the user explicitly asks.
+Research, public-checkpoint execution, tests, measurements, and evidence generation happen locally. After validation, GitHub stores the source, result, logs, checksums, ledgers, and handoff. Duplicate GitHub Actions execution is not required unless explicitly requested.
+
+## Reality-first rule
+
+`REAL_EXECUTOR_ONLY` is authoritative. Future target states, perfect selectors, free `N/A`, free transforms/workspace/repair/fallback, unmeasured compression, hidden compute, or free HBM scans cannot promote a mechanism.
 
 ## Resource objective
 
@@ -33,8 +32,6 @@ Research, checkpoint execution, tests, measurements, and evidence generation hap
 T_{\rm token}\ge\max\left(\frac{S_c}{BA},\;r\frac{N}{A}\frac{2P}{F}\right),
 \qquad A\gg1,\quad N/A\to1,\quad r\ll1.
 \]
-
-Accepted length alone is not a core result when exact target arithmetic remains `r=1`.
 
 ## Latest authoritative results
 
@@ -44,38 +41,33 @@ Accepted length alone is not a core result when exact target arithmetic remains 
 REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE
 ```
 
-Real public draft/target checkpoints preserved exact token and terminal KV state, but untouched-holdout minimum committed tokens were only `1` and `2`.
-
 ### EXP-103A — native-rounding page certificates
 
 ```text
 REJECT_HIERARCHICAL_NATIVE_ROUNDING_PAGE_CERTIFICATES_AS_UNIVERSAL_10X_CORE
 ```
 
-The exact BF16/FP32 certificate passed 200,000 randomized soundness cases with zero mismatches. However, metadata plus the p50 traffic budget requires roughly 99% page skipping; a legal all-ones dense row and 64 Gaussian BF16 controls read 100% of pages. The mechanism is retained only as an auxiliary.
+### EXP-104A — checkpoint-native resident slice
+
+```text
+REJECT_FULL_VOCABULARY_FULL_LAYER_RESIDENT_SLICE_AS_P50_CORE
+```
+
+A realistic group-128 Q4 full vocabulary head plus one complete 405B-width target layer requires `2,809,790,464` resident weight bytes per proposed token, or `1.404895232x` the ideal native-4B-Q4 weight population. Even metadata-free Q4 requires `1.322254336x`. Both exceed the final `1.2x` p50 target before target verification or other costs.
+
+A fully charged 8-GiB capacity ledger can hold the Q4 head and three complete layers, but each additional layer makes the per-token scan worse. Capacity is not latency.
 
 See:
 
-- `docs/research/EXPERIMENT_103A_NATIVE_ROUNDING_PAGE_CERTIFICATE_GATE.md`
-- `docs/research/EXP_103A_LATEST_RESULT.md`
-- `results/exp_103a/local/result.json`
+- `docs/research/EXPERIMENT_104A_CHECKPOINT_NATIVE_RESIDENT_SLICE_GATE.md`
+- `docs/research/EXP_104A_LATEST_RESULT.md`
+- `results/exp_104a/local/result.json`
 
-## Active frontier — EXP-104A
+## Active frontier — EXP-105A
 
-`Checkpoint-Native Resident Slice Transducer Reality Gate`.
+The next Gate must either avoid scanning the complete 128,256-row vocabulary head with a new causal information source or produce multiple useful candidate tokens per resident weight scan. Another full-head layer slice is closed.
 
-The next candidate uses a fully charged <=8-GiB target-derived resident draft representation, exact embedding-row traffic, real causal generation, unchanged-target verification, and exact terminal-state checking. It must demonstrate an actual accepted segment `A >=339` for the raw-BF16 p50 floor unless it measurably reduces exact target sweep bytes.
-
-Read `NEXT_EXPERIMENT.md`, `RESEARCH_STATE.md`, and `docs/research/VORTEX_RESEARCH_HANDOFF.md` before continuing.
-
-## Repository map
-
-- `vortex_runtime/` — runtime primitives;
-- `experiments/` — frozen local experiment runners/configs;
-- `tests/` — focused/property/regression controls;
-- `results/` — committed raw/processed evidence and checksums;
-- `docs/research/` — experiment contracts, latest results, and handoff;
-- root ledgers — current state and next Gate.
+Read `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`, and `docs/research/VORTEX_RESEARCH_HANDOFF.md` before continuing.
 
 ## Quick start
 
@@ -88,9 +80,9 @@ python -m pip install -e . pytest
 python -m pytest -q
 ```
 
-Target 405B execution, physical complete 8-GiB allocation, target CUDA/SASS, storage/H2D throughput, and same-machine 4B-Q4 acceptance remain `NOT TESTED`.
+Complete 405B execution, physical 8-GiB allocation, target hardware traffic, CUDA/SASS, and final same-machine p50/p95 remain `NOT TESTED`.
 
 ```text
 README_CURRENT=true
-README_UPDATED=EXP-103A authoritative result; EXP-104A active frontier; local-commit-only workflow retained
+README_UPDATED=EXP-104A authoritative result; EXP-105A active frontier
 ```

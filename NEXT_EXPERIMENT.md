@@ -1,64 +1,44 @@
-# Next Experiment — EXP-104A
+# Next Experiment — EXP-105A
 
-## Checkpoint-Native Resident Slice Transducer Reality Gate
+## Sub-Full-Head or Multi-Token-Per-Scan Transducer Gate
 
 ### Why this is next
 
-EXP-102A rejected independent external drafts as a long exact segment source. EXP-103A rejected exact native-rounding page skipping as a universal weight-stream core. The next Gate must therefore change the **causal information source** and remain executable under the real 8-GiB budget.
+EXP-104A proves that a full-vocabulary Q4 head plus even one complete 405B-width target layer already scans more resident weight bytes per proposed token than the final p50 budget allows. Longer accepted blocks do not amortize an autoregressive draft pass performed once per token.
 
-### Three materially different principles
+The next mechanism must therefore change the draft execution unit, not merely select different target layers.
 
-1. **Checkpoint-native resident slice transducer — selected.** Keep a fully charged subset of target-derived draft-only weights inside 8 GiB, stream only the exact token embedding rows needed online, generate a causal draft, and use the unchanged target for exact verification.
-2. **Streaming page-shadow self-draft — secondary.** Generate draft evidence only while the corresponding exact target pages are physically transferred. Every duplicate read, synchronization, branch, and target position remains charged; transfer overlap is never called free.
-3. **Deferred mismatch state closure — auxiliary.** Commit the exact target mismatch token and materialize its target state at the next sweep. This may remove a repair call but cannot promote a candidate whose accepted segment or dense arithmetic remains inadequate.
+### Three new principles to compare locally
 
-### Static Gate before model execution
+1. **Causal sub-full-head decision index.** Use current causal state to select a small exact set of LM-head rows to score. Charge the selector, index, candidate misses, fallback, row traffic, and verification. Reopening is allowed only if the information source differs materially from the rejected static top-k rank family.
+2. **Single-scan multi-token resident transducer.** Read resident weights once and produce several causally ordered candidate tokens from an executable finite-word block state. This must not assume future hidden states or a free Jacobi fixed point.
+3. **Cross-matrix decision-bit program.** Compute the next-token winner bits through a checkpoint-static program that shares work across layer projections and the vocabulary head, with all program bytes and online operations charged.
 
-Freeze a concrete representation and report:
+### Cheapest first Gate
 
-```text
-draft resident bytes
-draft LM-head bytes
-embedding-row traffic
-KV/cache bytes
-workspace/fragmentation
-metadata/packing bytes
-peak total <= 8 GiB
-```
-
-No unmeasured compression, free transforms, future target state, or perfect selector.
-
-### Causal and exactness Gate
-
-On build-only and untouched holdout prompts, measure:
+For each principle freeze:
 
 ```text
-actual accepted prefix A
-actual target positions N
-N/A
-draft generation time
-target verification time
-repair/rebuild time
-exact committed tokens
-exact terminal target state
+online resident/cold bytes per committed token
+actual causal information available
+state and metadata bytes
+fallback and miss rate
+exact target verification path
+explicit route below 2.4 GB/token p50-equivalent bytes
 ```
 
-The target-scale raw-BF16 p50 floor is:
+Reject before checkpoint execution unless one principle has an executable path below the p50 byte floor and does not belong to a closed mechanism family.
+
+### Prohibited rescue attempts
 
 ```text
-A >= 339
+another full-head complete-layer slice
+static top-k rows without a new causal source
+future target hidden states
+free HBM residency scans
+configured K reported as accepted A
+unmeasured sub-4-bit quality
+Jacobi/Parareal retuning
 ```
 
-unless the implemented executor measurably reduces exact target sweep bytes. Merely increasing configured K does not count; actual accepted prefix is authoritative.
-
-### Stop rule
-
-Reject immediately when any of the following holds:
-
-- the static resident ledger exceeds 8 GiB;
-- the source cannot causally generate an actual segment approaching 339 tokens;
-- exact target state requires an uncharged extra sweep;
-- the mechanism is only an external draft under a new name;
-- `r=1` and the block/throughput ledger cannot meet the final latency equation.
-
-Do not run GitHub Actions after local validation. Commit the locally validated source, evidence, checksums, decision, ledgers, and README, then verify the remote SHA.
+After local validation, commit the result and verify the remote SHA. Do not rerun it in GitHub Actions unless explicitly requested.
