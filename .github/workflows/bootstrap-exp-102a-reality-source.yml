@@ -64,7 +64,6 @@ jobs:
           PY
           sha256sum -c EXP102A_SOURCE_MANIFEST.sha256
           python - <<'PY'
-          from pathlib import Path
           from experiments.exp_102a import bootstrap_governance as governance
 
           for relative in (
@@ -94,6 +93,14 @@ jobs:
               raise SystemExit('production contract install line not found')
           workflow.write_text(text.replace(old, new, 1), encoding='utf-8')
           PY
+
+          # EXP-101A is diagnostic-only and must not remain in the authoritative
+          # reality-first branch.
+          rm -f .github/workflows/exp-101a-structured-direct-sum.yml
+          rm -f docs/research/EXPERIMENT_101A_STRUCTURED_DIRECT_SUM_GATE.md
+          rm -rf experiments/exp_101a tests/exp_101a
+          rm -f vortex_runtime/structured_direct_sum.py
+
           rm -rf .bootstrap .pytest_cache vortex_runtime/__pycache__ experiments/exp_102a/__pycache__
           rm -f .github/workflows/bootstrap-exp-102a-reality-source.yml
           rm -f EXP102A_SOURCE_MANIFEST.sha256 MANIFEST.sha256 APPLY_EXP102A_SOURCE.sh
@@ -123,6 +130,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Workflow files require connector workflow permission. The production
+          # workflow is therefore added by the authenticated GitHub connector in
+          # the immediately following atomic commit.
+          rm -f .github/workflows/exp-102a-reality-first-causal-block.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
