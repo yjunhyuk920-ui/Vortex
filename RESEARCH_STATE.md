@@ -2101,10 +2101,10 @@ One K=128 online residual bank was compiled with target-seeing minimum-L1 FP64 c
 <!-- EXP-100A:START -->
 ## EXP-100A — explicit rectangular FMM Gate
 
-- decision: `INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE`
-- source commit: `0348e87fa385630a84043727ddb9a34c032df4ac`
-- evidence: `/home/runner/work/Vortex/Vortex/results/exp_100a/0348e87fa385630a84043727ddb9a34c032df4ac/result.json`
-- deterministic core: `e72ec22a41216b3b3a91c3989c5327ee7492bfb356bf4d799c2af1b97cd2ab1e`
+- decision: `REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE`
+- source commit: `c0432cfd5a8e05600e0550e952eb5c091dc0d8b7`
+- evidence: `/home/runner/work/Vortex/Vortex/results/exp_100a/c0432cfd5a8e05600e0550e952eb5c091dc0d8b7/result.json`
+- deterministic core: `b529c817367795f44ee56d38884d3d46d8197ca02553963d79f2396eb3520dbf`
 - eligible exact catalog factorizations: `59`
 - retained orientations: `128`
 - deterministic control mismatches: `0`

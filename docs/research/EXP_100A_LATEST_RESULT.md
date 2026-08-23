@@ -2,15 +2,15 @@
 
 ## Identity
 
-- source commit: `0348e87fa385630a84043727ddb9a34c032df4ac`
-- raw result: `/home/runner/work/Vortex/Vortex/results/exp_100a/0348e87fa385630a84043727ddb9a34c032df4ac/result.json`
+- source commit: `c0432cfd5a8e05600e0550e952eb5c091dc0d8b7`
+- raw result: `/home/runner/work/Vortex/Vortex/results/exp_100a/c0432cfd5a8e05600e0550e952eb5c091dc0d8b7/result.json`
 - AlphaTensor catalog commit: `1949163da3bef7e3eb268a3ac015fd1c2dbfc767`
 - AlphaTensor catalog Git blob: `5ff45960f86da6237f105f78aaa82d29cb18c30e`
-- deterministic core: `e72ec22a41216b3b3a91c3989c5327ee7492bfb356bf4d799c2af1b97cd2ab1e`
+- deterministic core: `b529c817367795f44ee56d38884d3d46d8197ca02553963d79f2396eb3520dbf`
 
 ## Authoritative decision
 
-`INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE`
+`REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE`
 
 ## Integrity and catalog
 
@@ -19,7 +19,7 @@
 - retained tensor orientations: `128`
 - deterministic integer controls: `132`
 - control mismatches: `0`
-- integrity failures: `['empty_direct_shape_search']`
+- integrity failures: `[]`
 
 ## Best explicit staged-transform plan
 
@@ -49,9 +49,9 @@ for free. It is algebraic headroom, not an executor result.
 
 ## Next gate
 
-### EXP-100A control repair
+### EXP-101A — new-information exact dense-arithmetic replacement Gate
 
-Repair only the recorded identity, tensor-reconstruction, registered-input, or deterministic-control failure. Do not interpret an invalid run scientifically and do not change the frozen search or thresholds while repairing infrastructure.
+Do not sweep AlphaTensor catalog entries, recursion depth, beam width, block length, coefficient cap, padding, transformed word width, or compression grant. Generate three new principles that change the information source or verification unit. The first admissible Gate must present an explicit existing-ISA path to at least 10× complete-population arithmetic reduction and charge exact successor state, checkpoint bytes, metadata, and fallback.
 
 ## Claim boundary
 

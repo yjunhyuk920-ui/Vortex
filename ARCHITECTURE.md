@@ -1300,7 +1300,7 @@ The FP64 margin certificate is an offline target-seeing capacity object. It ente
 
 The mixed rectangular tensor sequence and cut-depth transformed-weight plan are
 research descriptors, not production opcodes. Architecture promotion is
-conditional on `INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE` and the active next Gate `EXP-100A control repair`. Until
+conditional on `REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE` and the active next Gate `EXP-101A — new-information exact dense-arithmetic replacement Gate`. Until
 finite-word closure, a causal block, exact successor state, and existing-ISA
 lowering pass, the production executor architecture remains unchanged.
 <!-- EXP-100A:END -->

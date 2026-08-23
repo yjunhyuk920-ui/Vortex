@@ -1382,8 +1382,8 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 
 | Boundary | Contract | Result | Evidence |
 |---|---|---|---|
-| Pinned AlphaTensor catalog | blob identity + exact integer tensor reconstruction | `0 mismatches`, integrity `['empty_direct_shape_search']` | E1 |
-| Registered 405B projection ledger | explicit ops + bytes + favorable FMM scratch | `INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE` | E0/E1 derived/projected |
+| Pinned AlphaTensor catalog | blob identity + exact integer tensor reconstruction | `0 mismatches`, integrity `[]` | E1 |
+| Registered 405B projection ledger | explicit ops + bytes + favorable FMM scratch | `REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE` | E0/E1 derived/projected |
 | Causal block and exact successor state | at least 128 official DEV-W transitions | `NOT TESTED` | — |
 | Existing-ISA finite-word kernel | exact words and fully charged bytes/instructions | `NOT TESTED` | — |
 | TARGET-W / physical 8 GiB / 4B-class p50/p95 | complete final contract | `NOT TESTED` | — |

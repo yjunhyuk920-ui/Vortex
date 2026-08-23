@@ -311,10 +311,10 @@ A research round may produce a useful negative result. It may not claim reposito
 ## EXP-100A current frontier
 
 EXP-099A's native-order repair signal was followed by a pinned explicit
-rectangular-FMM resource Gate. Current decision: `INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE`. Best direct
+rectangular-FMM resource Gate. Current decision: `REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE`. Best direct
 arithmetic ratio is `38.251649686367%` and best free-transform
 oracle ratio is `13.010262621991%`. The immediate constructive
-frontier is `EXP-100A control repair`.
+frontier is `EXP-101A — new-information exact dense-arithmetic replacement Gate`.
 
 Do not reinterpret this as a causal executor, 405B run, 8-GiB physical result,
 or measured latency. The perfect future block and repair selector are oracle

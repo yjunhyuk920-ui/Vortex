@@ -1,0 +1,821 @@
+[
+  {
+    "best_direct_ratio_without_repair": 0.5882752338450985,
+    "best_oracle_ratio_without_repair": 0.46920415654946285,
+    "block_length": 32,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      5,
+      0
+    ],
+    "wall_ns": 41067353
+  },
+  {
+    "best_direct_ratio_without_repair": 0.47563109614863863,
+    "best_oracle_ratio_without_repair": 0.45448264059346816,
+    "block_length": 32,
+    "columns": 16384,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      6,
+      0
+    ],
+    "wall_ns": 38648445
+  },
+  {
+    "best_direct_ratio_without_repair": 0.46887026650283564,
+    "best_oracle_ratio_without_repair": 0.4549259985482235,
+    "block_length": 32,
+    "columns": 53248,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      6,
+      0
+    ],
+    "wall_ns": 39061337
+  },
+  {
+    "best_direct_ratio_without_repair": 0.46739896189703567,
+    "best_oracle_ratio_without_repair": 0.4534543993251572,
+    "block_length": 32,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      6,
+      0
+    ],
+    "wall_ns": 39028965
+  },
+  {
+    "best_direct_ratio_without_repair": 0.46456424711161687,
+    "best_oracle_ratio_without_repair": 0.45250825316808857,
+    "block_length": 32,
+    "columns": 16384,
+    "direct_structural_plan_count": 6,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      6,
+      0
+    ],
+    "wall_ns": 39097335
+  },
+  {
+    "best_direct_ratio_without_repair": 0.5571388907983654,
+    "best_oracle_ratio_without_repair": 0.44292359586841373,
+    "block_length": 64,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      8,
+      0
+    ],
+    "wall_ns": 68288070
+  },
+  {
+    "best_direct_ratio_without_repair": 0.45872839440081986,
+    "best_oracle_ratio_without_repair": 0.4290266456968395,
+    "block_length": 64,
+    "columns": 16384,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 61348801
+  },
+  {
+    "best_direct_ratio_without_repair": 0.4496341627054614,
+    "best_oracle_ratio_without_repair": 0.42944517076068645,
+    "block_length": 64,
+    "columns": 53248,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 63680286
+  },
+  {
+    "best_direct_ratio_without_repair": 0.44824541567897513,
+    "best_oracle_ratio_without_repair": 0.4280559971771634,
+    "block_length": 64,
+    "columns": 16384,
+    "direct_structural_plan_count": 6,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 61845052
+  },
+  {
+    "best_direct_ratio_without_repair": 0.44456270337618375,
+    "best_oracle_ratio_without_repair": 0.4271628455452858,
+    "block_length": 64,
+    "columns": 16384,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 61802544
+  },
+  {
+    "best_direct_ratio_without_repair": 0.5571388907983654,
+    "best_oracle_ratio_without_repair": 0.44292359586841373,
+    "block_length": 128,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      97,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 81823234
+  },
+  {
+    "best_direct_ratio_without_repair": 0.45872839440081986,
+    "best_oracle_ratio_without_repair": 0.4290266456968395,
+    "block_length": 128,
+    "columns": 16384,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 81456947
+  },
+  {
+    "best_direct_ratio_without_repair": 0.4496341627054614,
+    "best_oracle_ratio_without_repair": 0.42944517076068645,
+    "block_length": 128,
+    "columns": 53248,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 81256174
+  },
+  {
+    "best_direct_ratio_without_repair": 0.44824541567897513,
+    "best_oracle_ratio_without_repair": 0.4280559971771634,
+    "block_length": 128,
+    "columns": 16384,
+    "direct_structural_plan_count": 6,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 81098837
+  },
+  {
+    "best_direct_ratio_without_repair": 0.44456270337618375,
+    "best_oracle_ratio_without_repair": 0.4271628455452858,
+    "block_length": 128,
+    "columns": 16384,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 81563778
+  },
+  {
+    "best_direct_ratio_without_repair": 0.5571388907983654,
+    "best_oracle_ratio_without_repair": 0.32460942682968297,
+    "block_length": 256,
+    "columns": 16384,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 87959063
+  },
+  {
+    "best_direct_ratio_without_repair": 0.42580840432415057,
+    "best_oracle_ratio_without_repair": 0.3052550008016324,
+    "block_length": 256,
+    "columns": 16384,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 90791247
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3776285508176106,
+    "best_oracle_ratio_without_repair": 0.30326848957167973,
+    "block_length": 256,
+    "columns": 53248,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 91204412
+  },
+  {
+    "best_direct_ratio_without_repair": 0.37502855625591086,
+    "best_oracle_ratio_without_repair": 0.2974881072868159,
+    "block_length": 256,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 91280911
+  },
+  {
+    "best_direct_ratio_without_repair": 0.35636742646592734,
+    "best_oracle_ratio_without_repair": 0.2987664232975914,
+    "block_length": 256,
+    "columns": 16384,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 91370771
+  },
+  {
+    "best_direct_ratio_without_repair": 0.5571388907983654,
+    "best_oracle_ratio_without_repair": 0.30345195370132,
+    "block_length": 512,
+    "columns": 16384,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 111736088
+  },
+  {
+    "best_direct_ratio_without_repair": 0.4056775633073011,
+    "best_oracle_ratio_without_repair": 0.2881573846365137,
+    "block_length": 512,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 116503666
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3682437233087787,
+    "best_oracle_ratio_without_repair": 0.2862821397459436,
+    "block_length": 512,
+    "columns": 53248,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 117388217
+  },
+  {
+    "best_direct_ratio_without_repair": 0.36554377192591175,
+    "best_oracle_ratio_without_repair": 0.280825522042609,
+    "block_length": 512,
+    "columns": 16384,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 116709619
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3457184938390579,
+    "best_oracle_ratio_without_repair": 0.2820322383861143,
+    "block_length": 512,
+    "columns": 16384,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 117042302
+  },
+  {
+    "best_direct_ratio_without_repair": 0.5660511631188104,
+    "best_oracle_ratio_without_repair": 0.2976309818246052,
+    "block_length": 1024,
+    "columns": 16384,
+    "direct_structural_plan_count": 4,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 124847036
+  },
+  {
+    "best_direct_ratio_without_repair": 0.41319427251539304,
+    "best_oracle_ratio_without_repair": 0.2881573846365137,
+    "block_length": 1024,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 146981657
+  },
+  {
+    "best_direct_ratio_without_repair": 0.36866165347891605,
+    "best_oracle_ratio_without_repair": 0.2862821397459436,
+    "block_length": 1024,
+    "columns": 53248,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 146619176
+  },
+  {
+    "best_direct_ratio_without_repair": 0.36653679528239264,
+    "best_oracle_ratio_without_repair": 0.248836651779874,
+    "block_length": 1024,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 148190562
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3465930121234569,
+    "best_oracle_ratio_without_repair": 0.21604015663134216,
+    "block_length": 1024,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 147269897
+  },
+  {
+    "best_direct_ratio_without_repair": 0.5288097776135363,
+    "best_oracle_ratio_without_repair": 0.2976865696252915,
+    "block_length": 2048,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 125970688
+  },
+  {
+    "best_direct_ratio_without_repair": 0.41319427251539304,
+    "best_oracle_ratio_without_repair": 0.1556579489607099,
+    "block_length": 2048,
+    "columns": 16384,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 160568020
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3702992024827582,
+    "best_oracle_ratio_without_repair": 0.21772747011810206,
+    "block_length": 2048,
+    "columns": 53248,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 159687276
+  },
+  {
+    "best_direct_ratio_without_repair": 0.36836478860573196,
+    "best_oracle_ratio_without_repair": 0.124418325889937,
+    "block_length": 2048,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 159260162
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3465930121234569,
+    "best_oracle_ratio_without_repair": 0.10802007831567108,
+    "block_length": 2048,
+    "columns": 16384,
+    "direct_structural_plan_count": 11,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 160304482
+  },
+  {
+    "best_direct_ratio_without_repair": 0.5477296556978094,
+    "best_oracle_ratio_without_repair": 0.2960052799908582,
+    "block_length": 4096,
+    "columns": 16384,
+    "direct_structural_plan_count": 3,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      18,
+      0
+    ],
+    "wall_ns": 133393411
+  },
+  {
+    "best_direct_ratio_without_repair": 0.4022824490158021,
+    "best_oracle_ratio_without_repair": 0.10854734067139483,
+    "block_length": 4096,
+    "columns": 16384,
+    "direct_structural_plan_count": 11,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 182035405
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3702992024827582,
+    "best_oracle_ratio_without_repair": 0.1806862685281775,
+    "block_length": 4096,
+    "columns": 53248,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 185440949
+  },
+  {
+    "best_direct_ratio_without_repair": 0.36836478860573196,
+    "best_oracle_ratio_without_repair": 0.10664639823734853,
+    "block_length": 4096,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 184979431
+  },
+  {
+    "best_direct_ratio_without_repair": 0.34265610010831477,
+    "best_oracle_ratio_without_repair": 0.10098073215451056,
+    "block_length": 4096,
+    "columns": 16384,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 183801401
+  },
+  {
+    "best_direct_ratio_without_repair": 0.5477296556978094,
+    "best_oracle_ratio_without_repair": 0.2888688843516656,
+    "block_length": 8192,
+    "columns": 16384,
+    "direct_structural_plan_count": 3,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 150389721
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3875600250962707,
+    "best_oracle_ratio_without_repair": 0.11193255087725174,
+    "block_length": 8192,
+    "columns": 16384,
+    "direct_structural_plan_count": 14,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 193442802
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3557678318506698,
+    "best_oracle_ratio_without_repair": 0.1806862685281775,
+    "block_length": 8192,
+    "columns": 53248,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 195572951
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3547462059304804,
+    "best_oracle_ratio_without_repair": 0.11006277636270083,
+    "block_length": 8192,
+    "columns": 16384,
+    "direct_structural_plan_count": 11,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 194814883
+  },
+  {
+    "best_direct_ratio_without_repair": 0.337738754751859,
+    "best_oracle_ratio_without_repair": 0.10098073215451056,
+    "block_length": 8192,
+    "columns": 16384,
+    "direct_structural_plan_count": 12,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 194363916
+  },
+  {
+    "best_direct_ratio_without_repair": 0.5503865061933501,
+    "best_oracle_ratio_without_repair": 0.2881573846365137,
+    "block_length": 16384,
+    "columns": 16384,
+    "direct_structural_plan_count": 4,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 150679906
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3771204017183438,
+    "best_oracle_ratio_without_repair": 0.16845318434381557,
+    "block_length": 16384,
+    "columns": 16384,
+    "direct_structural_plan_count": 18,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 198148444
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3500534645508889,
+    "best_oracle_ratio_without_repair": 0.1806862685281775,
+    "block_length": 16384,
+    "columns": 53248,
+    "direct_structural_plan_count": 13,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 199788313
+  },
+  {
+    "best_direct_ratio_without_repair": 0.3487267985841926,
+    "best_oracle_ratio_without_repair": 0.11190946724126963,
+    "block_length": 16384,
+    "columns": 16384,
+    "direct_structural_plan_count": 12,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 196216385
+  },
+  {
+    "best_direct_ratio_without_repair": null,
+    "best_oracle_ratio_without_repair": 0.1551975941361653,
+    "block_length": 16384,
+    "columns": 16384,
+    "direct_structural_plan_count": 0,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 194467091
+  }
+]

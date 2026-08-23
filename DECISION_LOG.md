@@ -1779,7 +1779,7 @@ The frozen target-seeing compiler certified `384/384` build positions and `384/3
 <!-- EXP-100A:START -->
 ## EXP-100A decision
 
-`INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE`
+`REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE`
 
 The pinned AlphaTensor standard-arithmetic catalog was checked by Git blob,
 complete integer tensor reconstruction, and deterministic matrix-product

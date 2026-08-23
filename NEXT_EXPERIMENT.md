@@ -1854,11 +1854,11 @@ The favorable hot ledger is `7.554739 GiB`; fine target arithmetic remains `100%
 <!-- EXP-100A:START -->
 ## Active next gate after EXP-100A
 
-### EXP-100A control repair
+### EXP-101A — new-information exact dense-arithmetic replacement Gate
 
-Current decision: `INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE`.
+Current decision: `REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE`.
 
-Repair only the recorded identity, tensor-reconstruction, registered-input, or deterministic-control failure. Do not interpret an invalid run scientifically and do not change the frozen search or thresholds while repairing infrastructure.
+Do not sweep AlphaTensor catalog entries, recursion depth, beam width, block length, coefficient cap, padding, transformed word width, or compression grant. Generate three new principles that change the information source or verification unit. The first admissible Gate must present an explicit existing-ISA path to at least 10× complete-population arithmetic reduction and charge exact successor state, checkpoint bytes, metadata, and fallback.
 
 The frozen target remains arbitrary public unmodified Dense 405B, exact output
 and successor-state contract, one GPU with peak VRAM at most 8 GiB, and

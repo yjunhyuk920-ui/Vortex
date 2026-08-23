@@ -469,7 +469,7 @@ Frozen fingerprint: one K=128 fine guessed sweep; official one-layer/Q4 coarse p
 <!-- EXP-100A:START -->
 ## EXP-100A — catalogued explicit rectangular FMM
 
-No scientific failure is registered because the run was invalid. Repair only the recorded integrity fault and rerun the unchanged contract.
+The pinned catalogued small-coefficient mixed-recursion language failed the first 10x complete-population Gate even under a perfect future block, perfect native-repair selector, favorable 1.5x compression, and bounded 8-GiB FMM-workspace grant. The frozen catalog/search family is closed; nearby recursion or beam sweeps are prohibited.
 
 Frozen fingerprint: pinned AlphaTensor real-arithmetic catalog; integral
 coefficients with absolute value at most two; six factor-space orientations;
