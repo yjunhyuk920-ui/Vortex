@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: repair-exp100a-control-${{ github.ref }}
+  group: repair-exp100a-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -33,65 +33,63 @@ jobs:
           runner = Path('experiments/exp_100a/run_experiment.py')
           text = runner.read_text(encoding='utf-8')
           old = '''    integrity_failures: list[str] = []
-              if control_mismatches:
-                  integrity_failures.append("synthetic_factorization_execution_mismatch")
-              if not any(row.get("status") == "eligible" for row in catalog_rows):
-                  integrity_failures.append("no_eligible_catalog_factorization")
-              if not schemes:
-                  integrity_failures.append("no_pareto_orientation")
-              if any(not result.direct_structural_plans for result in searches.values()):
-                  integrity_failures.append("empty_direct_shape_search")
-              if any(not result.oracle_structural_plans for result in searches.values()):
-                  integrity_failures.append("empty_oracle_shape_search")
+          if control_mismatches:
+              integrity_failures.append("synthetic_factorization_execution_mismatch")
+          if not any(row.get("status") == "eligible" for row in catalog_rows):
+              integrity_failures.append("no_eligible_catalog_factorization")
+          if not schemes:
+              integrity_failures.append("no_pareto_orientation")
+          if any(not result.direct_structural_plans for result in searches.values()):
+              integrity_failures.append("empty_direct_shape_search")
+          if any(not result.oracle_structural_plans for result in searches.values()):
+              integrity_failures.append("empty_oracle_shape_search")
 
-              direct_passes = [
-          '''.replace('              ', '')
+          direct_passes = [
+          '''
           new = '''    integrity_failures: list[str] = []
-              if control_mismatches:
-                  integrity_failures.append("synthetic_factorization_execution_mismatch")
-              if not any(row.get("status") == "eligible" for row in catalog_rows):
-                  integrity_failures.append("no_eligible_catalog_factorization")
-              if not schemes:
-                  integrity_failures.append("no_pareto_orientation")
+          if control_mismatches:
+              integrity_failures.append("synthetic_factorization_execution_mismatch")
+          if not any(row.get("status") == "eligible" for row in catalog_rows):
+              integrity_failures.append("no_eligible_catalog_factorization")
+          if not schemes:
+              integrity_failures.append("no_pareto_orientation")
 
-              # A shape/block pair can legitimately have no explicit plan after the frozen
-              # 8-GiB workspace filter. That is negative resource evidence, not a broken
-              # tensor identity or control. The first hosted run incorrectly classified
-              # one such lm_head/K=16384 frontier point as INVALID even though all exact
-              # integer controls passed and complete joint plans existed at other K.
-              # Preserve the frozen search and record empty frontiers diagnostically.
-              search_coverage = search_coverage_diagnostics(searches)
-              expected_search_count = len(config["search"]["block_lengths"]) * len(
-                  {(family.rows, family.columns) for family in families}
-              )
-              if len(searches) != expected_search_count:
-                  integrity_failures.append("incomplete_shape_block_search_population")
+          # A shape/block pair can legitimately have no explicit plan after the frozen
+          # 8-GiB workspace filter. That is negative resource evidence, not a broken
+          # tensor identity or control. Preserve the frozen search and record empty
+          # frontiers diagnostically.
+          search_coverage = search_coverage_diagnostics(searches)
+          expected_search_count = len(config["search"]["block_lengths"]) * len(
+              {(family.rows, family.columns) for family in families}
+          )
+          if len(searches) != expected_search_count:
+              integrity_failures.append("incomplete_shape_block_search_population")
 
-              direct_passes = [
-          '''.replace('              ', '')
+          direct_passes = [
+          '''
           if old not in text:
               raise SystemExit('runner integrity block not found')
           text = text.replace(old, new)
 
           old_core = '''        "scheme_rows": scheme_rows,
-              "search_rows": search_rows,
-              "block_rows": block_rows,
-          '''.replace('              ', '')
+          "search_rows": search_rows,
+          "block_rows": block_rows,
+          '''
           new_core = '''        "scheme_rows": scheme_rows,
-              "search_rows": search_rows,
-              "search_coverage": search_coverage,
-              "block_rows": block_rows,
-          '''.replace('              ', '')
+          "search_rows": search_rows,
+          "search_coverage": search_coverage,
+          "block_rows": block_rows,
+          '''
           if old_core not in text:
               raise SystemExit('runner core block not found')
           text = text.replace(old_core, new_core)
 
           marker = '''def summarize_prior(
-              exp080: Mapping[str, Any], exp099: Mapping[str, Any]
+          exp080: Mapping[str, Any], exp099: Mapping[str, Any]
           ) -> dict[str, Any]:
-          '''.replace('              ', '')
+          '''
           helper = '''def search_coverage_diagnostics(
-              searches: Mapping[tuple[int, int, int], SearchResult],
+          searches: Mapping[tuple[int, int, int], SearchResult],
           ) -> dict[str, Any]:
               """Separate legitimate resource-empty frontiers from integrity failures."""
 
@@ -120,7 +118,7 @@ jobs:
               }
 
 
-          '''.replace('              ', '')
+          '''
           if marker not in text:
               raise SystemExit('runner helper marker not found')
           text = text.replace(marker, helper + marker)
@@ -135,7 +133,7 @@ jobs:
               search_coverage_diagnostics,
               validate_config,
           )
-          '''.replace('              ', '')
+          '''
           if old_import not in text:
               raise SystemExit('test import not found')
           text = text.replace(old_import, new_import)
@@ -159,7 +157,7 @@ jobs:
               assert "not a control failure" in diagnostics["empty_frontier_interpretation"]
 
 
-          '''.replace('              ', '')
+          '''
           if test_marker not in text:
               raise SystemExit('test insertion marker not found')
           text = text.replace(test_marker, test_case + test_marker)
