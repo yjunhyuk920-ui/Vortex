@@ -63,7 +63,26 @@ jobs:
           print(f'extracted {len(members)} EXP-102A members')
           PY
           sha256sum -c EXP102A_SOURCE_MANIFEST.sha256
-          python experiments/exp_102a/bootstrap_governance.py
+          python - <<'PY'
+          from pathlib import Path
+          from experiments.exp_102a import bootstrap_governance as governance
+
+          for relative in (
+              'MISSION_AND_WORKING_PRINCIPLES.md',
+              'AGENTS.md',
+              'docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md',
+              'CREATIVE_RESEARCH_MANDATE.md',
+          ):
+              governance.replace_or_append(governance.ROOT / relative)
+
+          readme = governance.ROOT / 'README.md'
+          text = readme.read_text(encoding='utf-8')
+          if 'Active frontier — EXP-102A' in text or 'EXP-102A reality-first causal draft/verify' in text:
+              governance.replace_or_append(readme)
+          else:
+              governance.update_readme(readme)
+          print('REALITY_FIRST_GOVERNANCE_APPLIED')
+          PY
           python - <<'PY'
           from pathlib import Path
 
@@ -75,7 +94,7 @@ jobs:
               raise SystemExit('production contract install line not found')
           workflow.write_text(text.replace(old, new, 1), encoding='utf-8')
           PY
-          rm -rf .bootstrap .pytest_cache vortex_runtime/__pycache__
+          rm -rf .bootstrap .pytest_cache vortex_runtime/__pycache__ experiments/exp_102a/__pycache__
           rm -f .github/workflows/bootstrap-exp-102a-reality-source.yml
           rm -f EXP102A_SOURCE_MANIFEST.sha256 MANIFEST.sha256 APPLY_EXP102A_SOURCE.sh
       - name: Install pinned research runtime
