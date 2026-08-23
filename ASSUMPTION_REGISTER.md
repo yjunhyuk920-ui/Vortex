@@ -1297,3 +1297,14 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - `GRANTED`: target token and true shallow state are available to the offline coefficient compiler.
 - `UNVERIFIED`: causal coefficient generation, target-independent certificate, TARGET-W behavior, physical kernels, fine arithmetic reduction, target VRAM and latency.
 <!-- EXP-096A:END -->
+
+<!-- EXP-100A:START -->
+## EXP-100A assumptions and provenance
+
+- `MEASURED`: catalog bytes/hash; exact integer tensor reconstruction; deterministic integer controls; committed EXP-080A/099A input identities.
+- `DERIVED`: mixed split/rank products; leaf and factor-transform operations; transformed-stream expansion; repair-row side stream; favorable FMM workspace; joint I/O dynamic program.
+- `PROJECTED`: application of those counts to the registered 405B projection inventory; 1.5x lossless ratio for transformed forms; role-p95 repair transfer to TARGET-W shapes.
+- `UNVERIFIED`: causal block; exact finite-word transformed words; repair selector; transposition/packing kernel; TARGET-W behavior; complete 8-GiB runtime; wall-clock latency.
+- Bounded beam search is not an exhaustive tensor-rank or algorithm search.
+- A static-transformed plan must retain/read original BF16 repair rows; those bytes are charged.
+<!-- EXP-100A:END -->

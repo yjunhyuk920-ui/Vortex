@@ -779,3 +779,13 @@ The favorable target ledger totals `8,111,707,136` bytes (`7.554616 GiB`) and th
 
 The favorable target ledger totals `8,111,839,744` bytes (`7.554739 GiB`) including `131,072` coefficient bytes. This is `PROJECTED`; allocator, packed residual scoring, HBM/PCIe/SSD, fine sweep throughput, target VRAM and p50/p95 remain `NOT TESTED`.
 <!-- EXP-096A:END -->
+
+<!-- EXP-100A:START -->
+## EXP-100A hardware status
+
+No target GPU or 405B checkpoint was executed. Best direct favorable FMM scratch
+was `6.121550854 GiB` and is a projected lower-bound workspace, not a
+complete VRAM measurement. KV, allocator reserve, decompression buffers,
+concurrent streams, packing, repair selection, PCIe/SSD/HBM throughput, TTFT,
+and p50/p95 are `NOT TESTED`.
+<!-- EXP-100A:END -->

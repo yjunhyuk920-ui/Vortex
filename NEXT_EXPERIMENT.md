@@ -1850,3 +1850,18 @@ Freeze the finite FP64 coefficient/certificate ABI and construct a causal checkp
 
 The favorable hot ledger is `7.554739 GiB`; fine target arithmetic remains `100%`, and target hardware remains `NOT TESTED`.
 <!-- EXP-096A:END -->
+
+<!-- EXP-100A:START -->
+## Active next gate after EXP-100A
+
+### EXP-100A control repair
+
+Current decision: `INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE`.
+
+Repair only the recorded identity, tensor-reconstruction, registered-input, or deterministic-control failure. Do not interpret an invalid run scientifically and do not change the frozen search or thresholds while repairing infrastructure.
+
+The frozen target remains arbitrary public unmodified Dense 405B, exact output
+and successor-state contract, one GPU with peak VRAM at most 8 GiB, and
+same-machine native-4B-Q4 p50/p95 limits. Do not describe a structural FMM ratio
+as measured latency.
+<!-- EXP-100A:END -->

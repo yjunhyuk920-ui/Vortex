@@ -306,3 +306,17 @@ The next experiment is constructive, not a new lower-bound sweep:
 ## 17. Research-completion truth
 
 A research round may produce a useful negative result. It may not claim repository progress until the corresponding code, documents, raw summaries, and updated state are present in a verified remote commit. See `docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md` for the fail-closed Git policy.
+
+<!-- EXP-100A:START -->
+## EXP-100A current frontier
+
+EXP-099A's native-order repair signal was followed by a pinned explicit
+rectangular-FMM resource Gate. Current decision: `INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE`. Best direct
+arithmetic ratio is `38.251649686367%` and best free-transform
+oracle ratio is `13.010262621991%`. The immediate constructive
+frontier is `EXP-100A control repair`.
+
+Do not reinterpret this as a causal executor, 405B run, 8-GiB physical result,
+or measured latency. The perfect future block and repair selector are oracle
+grants and must be removed at the next applicable Gate.
+<!-- EXP-100A:END -->

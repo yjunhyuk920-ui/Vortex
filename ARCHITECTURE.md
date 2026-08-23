@@ -1294,3 +1294,13 @@ The online residual bank and its affine/span programs remain candidate-source ob
 
 The FP64 margin certificate is an offline target-seeing capacity object. It enters the runtime architecture only after a causal checkpoint-derived generator emits the same coefficient words before target continuation and a physical resource trace charges scoring, certification, prefix state, and fallback. Promotion: `True`.
 <!-- EXP-096A:END -->
+
+<!-- EXP-100A:START -->
+## EXP-100A architecture status
+
+The mixed rectangular tensor sequence and cut-depth transformed-weight plan are
+research descriptors, not production opcodes. Architecture promotion is
+conditional on `INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE` and the active next Gate `EXP-100A control repair`. Until
+finite-word closure, a causal block, exact successor state, and existing-ISA
+lowering pass, the production executor architecture remains unchanged.
+<!-- EXP-100A:END -->
