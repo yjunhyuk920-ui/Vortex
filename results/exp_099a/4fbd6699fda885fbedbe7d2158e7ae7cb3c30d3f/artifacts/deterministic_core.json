@@ -1,0 +1,226 @@
+{
+  "authoritative_decision": "PROMOTE_DYADIC_REASSOCIATION_LOCK_TO_EXPLICIT_RECTANGULAR_FMM_GATE",
+  "build": {
+    "generic_fp32_certificate_fraction_p50": 0.43701774691358025,
+    "generic_fp32_certificate_fraction_p95": 0.49021026234567905,
+    "layer_state_count": 36,
+    "native_order_repair_fraction_max": 0.0005967881944444445,
+    "native_order_repair_fraction_min": 0.0,
+    "native_order_repair_fraction_p50": 0.0,
+    "native_order_repair_fraction_p95": 0.0004475911458333333,
+    "role_stats": {
+      "down_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.00043402777777777775
+      },
+      "gate_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.0006510416666666666
+      },
+      "k_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.0
+      },
+      "o_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.0
+      },
+      "q_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.0
+      },
+      "up_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.0006510416666666666
+      },
+      "v_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.0013020833333333333
+      }
+    }
+  },
+  "checkpoint": {
+    "checkpoint_tensor_sha256": "ee567358e6d45900612a1a276fd068d1c5fd999a451cd67bae55cb2c01446308",
+    "config_sha256": "041b84dee11829cc1cb0d903729657f809186dc41b551596b6c8d7e878930846",
+    "model_class": "LlamaForCausalLM",
+    "model_id": "HuggingFaceTB/SmolLM2-135M",
+    "requested_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+    "resolved_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+    "tokenizer": {
+      "class": "GPT2TokenizerFast",
+      "model_max_length": 8192,
+      "name_or_path": "HuggingFaceTB/SmolLM2-135M",
+      "sha256": "391f221dea2ad9f45eacb7fe9b612956fdc69dce559e5040d36db076ed6314d4",
+      "special_tokens_map": {
+        "additional_special_tokens": [
+          "<|endoftext|>",
+          "<|im_start|>",
+          "<|im_end|>",
+          "<repo_name>",
+          "<reponame>",
+          "<file_sep>",
+          "<filename>",
+          "<gh_stars>",
+          "<issue_start>",
+          "<issue_comment>",
+          "<issue_closed>",
+          "<jupyter_start>",
+          "<jupyter_text>",
+          "<jupyter_code>",
+          "<jupyter_output>",
+          "<jupyter_script>",
+          "<empty_output>"
+        ],
+        "bos_token": "<|endoftext|>",
+        "eos_token": "<|endoftext|>",
+        "unk_token": "<|endoftext|>"
+      },
+      "vocab_size": 49152
+    }
+  },
+  "config_sha256": "00e07e335b95db2a2a3351c64ac2f91bfd4abc88794263a9786149781e0f70e5",
+  "holdout": {
+    "generic_fp32_certificate_fraction_p50": 0.4361496913580247,
+    "generic_fp32_certificate_fraction_p95": 0.46392746913580246,
+    "layer_state_count": 36,
+    "native_order_repair_fraction_max": 0.0007595486111111111,
+    "native_order_repair_fraction_min": 0.0,
+    "native_order_repair_fraction_p50": 0.0,
+    "native_order_repair_fraction_p95": 0.0005967881944444445,
+    "role_stats": {
+      "down_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.001736111111111111
+      },
+      "gate_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.0008138020833333333
+      },
+      "k_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.0
+      },
+      "o_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.001736111111111111
+      },
+      "q_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.0
+      },
+      "up_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.0006510416666666666
+      },
+      "v_proj": {
+        "count": 36,
+        "exact_real_cell_certificate_p50": 1.0,
+        "repair_fraction_p50": 0.0,
+        "repair_fraction_p95": 0.0
+      }
+    }
+  },
+  "integrity_failures": [],
+  "maximum_holdout_role_repair_p95": 0.001736111111111111,
+  "schema": "exp-099a-dyadic-reassociation-lock-v1",
+  "traces": [
+    {
+      "family": "english",
+      "prompt_id": "english_explanation",
+      "prompt_sha256": "00030be9dd7d9ab401a17c0d4e102efc633b7ad4f0e0eb4b84ff4fc5fa199cba",
+      "split": "build",
+      "tokens": [
+        198,
+        504,
+        6376,
+        314
+      ]
+    },
+    {
+      "family": "korean",
+      "prompt_id": "korean_reasoning",
+      "prompt_sha256": "04445f32de79443938b0e9d8bcd43a88ce10bf1753554eb3211ca030ad81b086",
+      "split": "build",
+      "tokens": [
+        198,
+        183,
+        242,
+        226
+      ]
+    },
+    {
+      "family": "code",
+      "prompt_id": "code_generation",
+      "prompt_sha256": "b8f1f198654cf1a55fa86dfebd53eb83456e7090bbd0520842ab8db4ad509081",
+      "split": "build",
+      "tokens": [
+        198,
+        19,
+        5905,
+        216
+      ]
+    },
+    {
+      "family": "structured_json",
+      "prompt_id": "structured_json",
+      "prompt_sha256": "e9698a24077f48414503607015da8fe4619cdd391fb9cb52cf3ced8714980817",
+      "split": "holdout",
+      "tokens": [
+        198,
+        504,
+        1695,
+        1183
+      ]
+    },
+    {
+      "family": "math",
+      "prompt_id": "mathematics",
+      "prompt_sha256": "7c14567b195aa593aa08b30af92742d28a20c8c178ebc6909bac01ef95734627",
+      "split": "holdout",
+      "tokens": [
+        198,
+        104,
+        78,
+        35
+      ]
+    },
+    {
+      "family": "repeated_token",
+      "prompt_id": "repeated_pattern",
+      "prompt_sha256": "e77440a51157b97d273db17749d343d3290bb2fa274b60f428420351771fe1a4",
+      "split": "holdout",
+      "tokens": [
+        198,
+        49,
+        389,
+        330
+      ]
+    }
+  ]
+}

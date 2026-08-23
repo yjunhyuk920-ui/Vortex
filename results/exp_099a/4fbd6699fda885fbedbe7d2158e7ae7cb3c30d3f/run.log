@@ -1,0 +1,9 @@
+We detected that you are passing `past_key_values` as a tuple of tuples. This is deprecated and will be removed in v4.47. Please convert your cache or use an appropriate `Cache` class (https://huggingface.co/docs/transformers/kv_cache#legacy-cache-format)
+{
+  "authoritative_decision": "PROMOTE_DYADIC_REASSOCIATION_LOCK_TO_EXPLICIT_RECTANGULAR_FMM_GATE",
+  "generic_fp32_certificate_p50": 0.4361496913580247,
+  "holdout_repair_p50": 0.0,
+  "holdout_repair_p95": 0.0005967881944444445,
+  "integrity_failures": [],
+  "maximum_holdout_role_repair_p95": 0.001736111111111111
+}
