@@ -1,0 +1,722 @@
+[
+  {
+    "call_index": 0,
+    "family": "code",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9927300347222222,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3513216,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "code",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9883355034722222,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3497664,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "code",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9896918402777778,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3502464,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "code",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.98828125,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3497472,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "code",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9869249131944444,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3492672,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "code",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9926215277777778,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3512832,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "code",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9860568576388888,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3489600,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "code",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9876302083333334,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3495168,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "code",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9920247395833334,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3510720,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "code",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9818793402777778,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3474816,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "code",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9878472222222222,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3495936,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "code",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9888237847222222,
+    "prompt_id": "code_generation",
+    "repair_bf16_macs": 3499392,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "english",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9916449652777778,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3509376,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "english",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.98486328125,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3485376,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "english",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9907769097222222,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3506304,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "english",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.99072265625,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3506112,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "english",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9880642361111112,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3496704,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "english",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9937065972222222,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3516672,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "english",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9881727430555556,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3497088,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "english",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9878472222222222,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3495936,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "english",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9923502604166666,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3511872,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "english",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9841037326388888,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3482688,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "english",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9860568576388888,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3489600,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "english",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9915364583333334,
+    "prompt_id": "english_explanation",
+    "repair_bf16_macs": 3508992,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "korean",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9904513888888888,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3505152,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "korean",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9890407986111112,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3500160,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "korean",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9922417534722222,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3511488,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "korean",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9901801215277778,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3504192,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "korean",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9904513888888888,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3505152,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "korean",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9916449652777778,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3509376,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "korean",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9846462673611112,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3484608,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "korean",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9874674479166666,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3494592,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "korean",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9929470486111112,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3513984,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "korean",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9855685763888888,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3487872,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "korean",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9857855902777778,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3488640,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "korean",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9918077256944444,
+    "prompt_id": "korean_reasoning",
+    "repair_bf16_macs": 3509952,
+    "split": "build",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "math",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9895833333333334,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3502080,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "math",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9871419270833334,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3493440,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "math",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9905598958333334,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3505536,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "math",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9923502604166666,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3511872,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "math",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9865993923611112,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3491520,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "math",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9904513888888888,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3505152,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "math",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.98779296875,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3495744,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "math",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9893120659722222,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3501120,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "math",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9890950520833334,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3500352,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "math",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9855685763888888,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3487872,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "math",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9889322916666666,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3499776,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "math",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9920247395833334,
+    "prompt_id": "mathematics",
+    "repair_bf16_macs": 3510720,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "repeated_token",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9899631076388888,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3503424,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "repeated_token",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9875759548611112,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3494976,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "repeated_token",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9922960069444444,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3511680,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "repeated_token",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9921332465277778,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3511104,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "repeated_token",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9860026041666666,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3489408,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "repeated_token",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9905598958333334,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3505536,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "repeated_token",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9862196180555556,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3490176,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "repeated_token",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9893663194444444,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3501312,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "repeated_token",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9914822048611112,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3508800,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "repeated_token",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9868706597222222,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3492480,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "repeated_token",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9912109375,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3507840,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "repeated_token",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9910481770833334,
+    "prompt_id": "repeated_pattern",
+    "repair_bf16_macs": 3507264,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "structured_json",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9915364583333334,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3508992,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "structured_json",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9848090277777778,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3485184,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 0,
+    "family": "structured_json",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9924045138888888,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3512064,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "structured_json",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9919162326388888,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3510336,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "structured_json",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9896375868055556,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3502272,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 1,
+    "family": "structured_json",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9906141493055556,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3505728,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "structured_json",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.9888780381944444,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3499584,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "structured_json",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9898546006944444,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3503040,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 2,
+    "family": "structured_json",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9927300347222222,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3513216,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "structured_json",
+    "layer_index": 0,
+    "oracle_bf16_repair_fraction": 0.984375,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3483648,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "structured_json",
+    "layer_index": 15,
+    "oracle_bf16_repair_fraction": 0.9891493055555556,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3500544,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  },
+  {
+    "call_index": 3,
+    "family": "structured_json",
+    "layer_index": 29,
+    "oracle_bf16_repair_fraction": 0.9881184895833334,
+    "prompt_id": "structured_json",
+    "repair_bf16_macs": 3496896,
+    "split": "holdout",
+    "total_bf16_macs": 3538944
+  }
+]
