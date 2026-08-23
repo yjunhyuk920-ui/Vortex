@@ -1,188 +1,182 @@
 # VORTEX repository commit and handoff mandate
 
-This mandate has the same authority as `AGENTS.md`, `MISSION_AND_WORKING_PRINCIPLES.md`, the proof-first contract, and the research-efficiency contract. It applies to every AI or human research session that changes VORTEX.
+This mandate has the same authority as `AGENTS.md`, `MISSION_AND_WORKING_PRINCIPLES.md`, the proof-first contract, and the research-efficiency contract.
 
 ## 1. Completion definition
 
-Research is not complete merely because code, equations, logs, a sandbox result, a local bundle, or a patch appeared in a chat or temporary workspace.
-
-A repository-changing round is complete only when:
+A research round is complete only when:
 
 ```text
 meaningful change exists
-sandbox/reference validation is recorded
-local or connector commit exists
-commit is present on a real remote VORTEX branch
+local/sandbox research is finished
+local validation is recorded
+source/result/docs are committed
+commit is present on a real remote VORTEX research branch
 remote SHA is read back and verified
-required state/handoff documents are current
-README freshness is checked
-validation evidence is recorded
-the worktree or connector change set has no unreported remainder
+required ledgers and README are current
+provenance is truthful
 ```
 
-A local-only commit is classified as:
+A local-only result is useful research but not a completed repository handoff.
 
-```text
-LOCAL_ONLY
-REMOTE_RESEARCH_NOT_RECORDED
-ROUND_NOT_COMPLETE
-```
-
-Only a commit verified on the remote branch may be classified as:
+Only a pushed commit whose remote SHA is read back may be classified:
 
 ```text
 REMOTE_COMMIT_VERIFIED
 ```
 
-## 2. Sandbox-first research, GitHub-final evidence
+## 2. Local research and validation are authoritative
 
-Do not use GitHub Actions as the default inner research loop when the ordinary sandbox can perform the work.
-
-Use the sandbox first for:
-
-- equations and exact arithmetic;
-- cost/roofline calculations;
-- combinatorial, tensor, circuit, or program search;
-- prototypes and rapid repair;
-- exhaustive, randomized, and adversarial controls;
-- focused unit/property tests;
-- small locally available checkpoint experiments.
-
-Apply the cheapest decisive sandbox Gate before opening or extending a remote experiment:
+The default path is:
 
 ```text
-SANDBOX_RESEARCH
--> SANDBOX_GATE
-```
-
-Only a survivor, a decisive reusable rejection, or meaningful reusable infrastructure is promoted:
-
-```text
-SOURCE_COMMIT_PUSHED
--> WORKFLOW_RUNNING        # only when hosted reproduction adds independent value
--> RESULT_COMMIT_PUSHED
+LOCAL_RESEARCH
+-> LOCAL_VALIDATION_PASS
+-> COMMIT_PUSHED
 -> REMOTE_COMMIT_VERIFIED
 ```
 
-Hosted workflows are appropriate for clean-room reproduction, pinned public-checkpoint access, long deterministic runs, and immutable artifact/checksum production. They are not a substitute for rapid local reasoning.
+Use the local/sandbox environment for:
 
-Do not create a commit/workflow for every nearby parameter or repair iteration. Do not wait silently for a workflow: report `WORKFLOW_RUNNING` with branch, source SHA, run ID, and independent remaining work.
+- derivations and exact arithmetic;
+- cost/roofline calculations;
+- tensor/circuit/program/combinatorial search;
+- prototypes and rapid repair;
+- exhaustive/random/adversarial controls;
+- unit/property/regression tests;
+- available public-checkpoint execution;
+- raw/processed evidence, logs, and checksums.
 
-Sandbox results are not discarded. A meaningful negative conclusion must be included in the next appropriate remote research record, but an obviously rejected nearby variant does not require its own full PR and Actions round.
+The locally executed validation is the scientific validation for the round when the required experiment is runnable there.
 
-## 3. Connector-first repository access
+If some target-hardware fact cannot be measured locally, record it as `NOT TESTED`. Do not replace it with a free grant or unrelated hardware measurement.
 
-Do not make local shell networking a prerequisite when an authenticated GitHub connector or repository writer is available.
+## 3. GitHub is commit-and-handoff only after local validation
 
-Use this order:
+Once `LOCAL_VALIDATION_PASS` is established, GitHub is used for persistence and cross-session handoff:
+
+- commit/push source, configs, dependency pins;
+- commit raw/processed results, logs, checksums;
+- update decisions, failures, state, next experiment, architecture, reproducibility as applicable;
+- update README;
+- read back the remote branch head and commit SHA.
+
+Do **not** rerun the already validated experiment merely because it was pushed to GitHub.
+
+Default policy:
+
+```text
+GITHUB_ACTIONS_REQUIRED=false
+GITHUB_REEXECUTION_REQUIRED=false
+CLEAN_ROOM_RERUN_REQUIRED=false
+HOSTED_CHECKPOINT_RERUN_REQUIRED=false
+```
+
+GitHub Actions may be used only when the user explicitly asks for an additional hosted run. Existing automatic CI may run, but it is not a mandatory scientific approval Gate after local validation.
+
+The following workflow is therefore prohibited as a normal requirement:
+
+```text
+LOCAL_VALIDATION_PASS
+-> GitHub Actions executes the same science again
+-> wait for hosted result
+-> only then call the round complete
+```
+
+Use instead:
+
+```text
+LOCAL_VALIDATION_PASS
+-> commit/push validated state
+-> remote SHA read-back
+-> REMOTE_COMMIT_VERIFIED
+```
+
+## 4. Connector-first repository writes
+
+For persistence, use the available writer in this order:
 
 1. connected GitHub connector/app;
 2. configured local MCP Git writer;
-3. authenticated Git and GitHub CLI;
-4. local commit plus clean patch/bundle only when all remote writers actually fail.
+3. authenticated Git/GitHub CLI;
+4. local commit + patch/bundle only when all remote writers fail.
 
-A failure of local `git fetch`, `curl`, DNS, `gh`, or a tunnel does not prove the GitHub connector is unavailable. Discover and invoke the connector before reporting `GITHUB_WRITER_NOT_EXPOSED`.
+A local DNS or shell Git failure does not prove the connected writer is unavailable.
 
-## 4. Infrastructure failure is not a session stop condition
+## 5. Infrastructure failure is not scientific evidence
 
-Missing GPU, package, outbound DNS, checkpoint cache, or local writer is an infrastructure fact, not a scientific rejection.
+Missing GPU, package, DNS, checkpoint cache, or target hardware is an infrastructure fact.
 
-Do not end the entire round at the first environment Gate. Instead:
+- continue all local theory/search/testing that remains possible;
+- record unavailable target measurements as `NOT TESTED`;
+- never fabricate a run;
+- never convert non-execution into a scientific rejection.
 
-- continue all theory, sandbox search, static validation, and code review that remain possible;
-- use available connectors for repository reads/writes;
-- commit pinned dependencies and hosted workflows only when hosted execution is actually needed;
-- record device-only metrics as `NOT TESTED`;
-- leave an executable next Gate when meaningful repository work exists.
+## 6. Branch and history policy
 
-Never fabricate a run. Never treat non-execution as scientific evidence.
-
-## 5. Branch and history policy
-
-- Never push directly to `main` or the default branch.
+- Never push directly to `main`/default branch.
 - Never force-push or rewrite another research branch.
-- Start from a verified remote branch or commit SHA.
-- Create or use a descriptive `research/*` branch.
-- Preserve prior negative evidence and provenance.
-- Do not cite reconstructed local SHAs as remote history.
-- Do not delete failed evidence merely to make the tree clean.
-- Do not commit secrets, private checkpoint data, credentials, or large upstream model weights.
+- Start from a verified remote branch/commit SHA.
+- Use descriptive `research/*` branches.
+- Preserve prior positive and negative evidence.
+- Do not commit secrets, credentials, private checkpoint data, or large upstream weights.
 
-## 6. Required startup sequence
+## 7. Startup sequence
 
-Before proposing a new mechanism:
+Before new research:
 
-1. verify repository, base branch, base SHA, active branch, PRs, workflow state, and write permissions;
+1. verify repository, active branch, remote head SHA, latest open PR, and write access;
 2. read `AGENTS.md`;
 3. read `MISSION_AND_WORKING_PRINCIPLES.md`;
-4. read `README.md` and assess whether it is current;
-5. read `docs/research/VORTEX_RESEARCH_HANDOFF.md`;
-6. read all root research ledgers required by `AGENTS.md`;
-7. inspect the active experiment, tests, workflow, raw results, and PR discussion;
-8. identify whether the proposed mechanism is already closed;
-9. perform the cheapest sandbox Gate;
-10. freeze a remote experiment only for the survivor or reusable result.
+4. read `README.md` and check freshness;
+5. read `docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md`;
+6. read `docs/research/VORTEX_RESEARCH_HANDOFF.md`;
+7. read root research ledgers required by `AGENTS.md`;
+8. inspect active experiment source/config/result/checksum files;
+9. identify closed mechanism families;
+10. start with the cheapest local Gate.
 
-Conversation memory and a reconstructed bundle are not authoritative.
+Conversation memory is not authoritative.
 
-## 7. Required commit sequence
+## 8. Commit contents
 
-Use atomic commits when the round contains distinct phases. A typical sequence is:
-
-```text
-docs: update mission/workflow/handoff
-test: establish independent reference and controls
-feat: implement the surviving executor mechanism
-research: record exactness and resource verdict
-```
-
-A smaller round may use one meaningful commit. An empty commit, whitespace-only change, or unrelated edit does not satisfy the mandate.
-
-Negative research must also be committed when it changes the reusable project state.
-
-## 8. Mandatory state and README updates
-
-Update every canonical file whose truth changed, including as applicable:
+After local validation, the commit should include every artifact needed to understand and resume the round, as applicable:
 
 ```text
-README.md
-MISSION_AND_WORKING_PRINCIPLES.md
-RESEARCH_STATE.md
-NEXT_EXPERIMENT.md
-DECISION_LOG.md
-FAILED_APPROACHES.md
-FAILED_APPROACHES_RECENT.md
-ASSUMPTION_REGISTER.md
-VALIDATION_MATRIX.md
-ARCHITECTURE.md
-HARDWARE_VALIDATION_PLAN.md
-REPRODUCIBILITY.md
-docs/research/VORTEX_RESEARCH_HANDOFF.md
+source
+config/dependency pins
+focused tests
+raw evidence
+processed result
+logs
+checksums
+scientific decision
+claim boundary
+README
+canonical ledgers
 ```
 
-Do not mechanically touch every file.
+A smaller documentation/governance round may use one atomic commit.
 
-`NEXT_EXPERIMENT.md` must contain one highest-information next Gate rather than a loose list.
+Negative research is committed when it changes reusable project state.
 
-### README freshness is mandatory
+## 9. README freshness
 
-Review `README.md` during every meaningful repository round. Update it in the same round if any of these changed:
+Review `README.md` during every meaningful repository round. Update it in the same commit when any of these changed:
 
-- fixed mission or acceptance target;
-- mandatory workflow or governance;
+- mission/acceptance target;
+- mandatory workflow/governance;
 - latest authoritative completed Gate;
-- active frontier, branch, or PR;
-- quick-start command or dependency;
+- active frontier;
+- quick start/dependencies;
 - repository layout;
-- an advertised capability, status, or numeric test count.
+- advertised capability/status/test count.
 
-Do not leave stale active-experiment text or unregenerated test counts.
-
-The final report must contain one of:
+Final report uses one of:
 
 ```text
 README_CURRENT=true
-README_UPDATED=<sections or commit>
+README_UPDATED=<sections>
 ```
 
 or:
@@ -192,73 +186,67 @@ README_CURRENT=true
 README_UNCHANGED_REASON=<specific reason>
 ```
 
-`README_CURRENT=false` prevents round completion when a remote writer is available.
+## 10. Validation before commit
 
-## 9. Validation before commit
-
-Run every validation available in the actual environment:
+Run every validation available in the actual local environment:
 
 - focused unit/property tests;
-- independent reference comparison;
-- deterministic result regeneration;
+- independent reference comparison where applicable;
+- deterministic regeneration;
 - syntax/compile checks;
-- generated-artifact checksum verification;
-- diff and link review;
-- full repository tests when feasible.
+- checksum verification;
+- diff/link review;
+- full repository tests when feasible;
+- public checkpoint execution when the round requires it and the environment supports it.
 
-For documentation-only governance changes, validate Markdown structure, internal paths, required status tokens, and the remote diff. Record tests that were not run.
+For documentation-only governance changes, validate the changed Markdown and cross-file consistency.
 
-## 10. Remote verification after commit
+## 11. Remote verification after commit
 
-After every final commit:
+After the final push:
 
 1. read the branch from the remote;
-2. verify that its head SHA equals the produced commit SHA;
+2. verify its head SHA equals the produced commit SHA;
 3. fetch commit metadata or changed files;
-4. create or update a PR when appropriate;
-5. inspect CI/check status when a workflow should run;
-6. read back `README.md` and the mission contract when either changed.
+4. update/read the PR if one exists;
+5. read back README and mission contract when changed.
 
-Do not say `committed`, `pushed`, `PR created`, `CI running`, or `merged` before reading the corresponding remote object.
+No GitHub Actions run is required by this step.
 
-## 11. Final-report Git table
+## 12. Final-report table
 
 Every repository-changing final report begins with:
 
 | Field | Actual value |
 |---|---|
 | Repository | |
-| Base branch | |
-| Base SHA | |
+| Base branch/SHA | |
 | Working branch | |
-| Commit SHA(s) | |
-| Commit message(s) | |
+| Commit SHA | |
+| Commit message | |
+| Local validation | PASS/FAIL/NOT TESTED |
 | Remote SHA verified | PASS/FAIL |
 | Pull request | number/state or none |
-| CI/checks | actual state |
-| README | updated/current or exact reason |
+| GitHub Actions | not required / explicitly requested state |
+| README | updated/current |
 | Uncommitted remainder | none or exact description |
 
-Then list changed files, validations, result hashes, scientific verdict, and `NOT TESTED` items.
-
-## 12. Fail-closed end-of-round Gate
-
-Before a user-facing completion report, evaluate:
+## 13. Fail-closed completion Gate
 
 ```text
-HAS_MEANINGFUL_CHANGE
-HAS_COMMIT
-REMOTE_CONTAINS_COMMIT
-RESEARCH_STATE_CURRENT
-NEXT_GATE_CURRENT
-VALIDATION_RECORDED
-README_CURRENT
-PROVENANCE_TRUTHFUL
+HAS_MEANINGFUL_CHANGE=true
+LOCAL_VALIDATION_RECORDED=true
+HAS_COMMIT=true
+REMOTE_CONTAINS_COMMIT=true
+RESEARCH_STATE_CURRENT=true
+NEXT_GATE_CURRENT=true
+README_CURRENT=true
+PROVENANCE_TRUTHFUL=true
 ```
 
-When remote writing is available, all must be true.
+When all are true, the normal round is complete even if no GitHub workflow ran.
 
-If every remote writer actually fails, preserve the local commit, patch, bundle, base SHA, exact errors, hashes, and apply verification, then report:
+If every remote writer fails:
 
 ```text
 BLOCKED_REMOTE_WRITE
@@ -266,41 +254,20 @@ LOCAL_COMMIT_ONLY
 ROUND_NOT_COMPLETE
 ```
 
-Do not report a completed research round in that state.
-
-## 13. Status vocabulary
-
-Use as applicable:
+## 14. Status vocabulary
 
 ```text
-SANDBOX_RESEARCH
-SANDBOX_GATE
-SOURCE_COMMIT_PUSHED
-WORKFLOW_RUNNING
-WORKFLOW_FAILED
-RESULT_COMMIT_PUSHED
+LOCAL_RESEARCH
+LOCAL_VALIDATION_PASS
+LOCAL_VALIDATION_FAILED
+COMMIT_PUSHED
 REMOTE_COMMIT_VERIFIED
 BLOCKED_REMOTE_WRITE
 NOT_TESTED
 ```
 
-The current constructive focus is always obtained from the latest remote PR, authoritative results, `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`, and `docs/research/VORTEX_RESEARCH_HANDOFF.md`; do not hard-code a long-lived frontier here.
+`WORKFLOW_RUNNING` and `WORKFLOW_FAILED` are reserved for user-requested exceptional GitHub Actions runs.
 
-<!-- REALITY-FIRST-EXECUTION:START -->
-## Reality-first authoritative execution
+## Reality-first execution
 
-Every new core Gate has one authoritative arm: `REAL_EXECUTOR_ONLY`.
-Future target tokens or hidden states, perfect selectors, free `N/A`, free transforms,
-free metadata/workspace, free repair/fallback, unmeasured compression, and peak
-throughput presented as sustained throughput are forbidden from satisfying a
-promotion threshold. Synthetic or target-seeing calculations may appear only as
-non-authoritative debugging diagnostics.
-
-The authoritative arm must execute a finite-word causal path and charge candidate
-generation, every target position, verification, mismatch repair, rollback,
-fallback, transforms, packing, metadata, storage/host/device bytes, KV/cache,
-workspace, fragmentation, and measured wall time. Missing quantities remain
-`NOT TESTED`; they are never replaced by an ideal grant.
-
-Normative detail: [`docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md`](docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md).
-<!-- REALITY-FIRST-EXECUTION:END -->
+Every core Gate has one authoritative `REAL_EXECUTOR_ONLY` arm. Future target tokens/states, perfect selectors, free runtime work, unmeasured compression, or hidden/remote compute cannot satisfy promotion. Charge the implemented finite-word causal path and mark missing target measurements `NOT TESTED`.
