@@ -1,10 +1,12 @@
 from functools import lru_cache
+from itertools import permutations
 
 from experiments.exp_101a.run_experiment import build_oracles
 from vortex_runtime.structured_direct_sum import (
     MultiplicationOracle,
     UniformScheme,
     bilinear_rank_lower_bound,
+    canonical_shape,
     catalog_schemes,
     ceil_div,
     triple_cyclic_rank,
@@ -22,6 +24,12 @@ def test_bilinear_flattening_lower_bound() -> None:
         classical = shape[0] * shape[1] * shape[2]
         assert 0 < lower <= classical
     assert bilinear_rank_lower_bound(1, 7, 11) == 1 * 7 * 11
+
+
+def test_canonical_shape_covers_all_tensor_permutations() -> None:
+    expected = (5, 7, 11)
+    for shape in permutations(expected):
+        assert canonical_shape(shape) == expected
 
 
 def test_classical_fallback_is_never_exceeded() -> None:
@@ -89,6 +97,10 @@ def test_catalog_orientation_and_safe_dominance() -> None:
         for row in schemes
     )
     assert not any(row.source == "bad" for row in schemes)
+    signatures = {(row.a, row.b, row.c, row.rank) for row in schemes}
+    for row in schemes:
+        for oriented in set(permutations((row.a, row.b, row.c))):
+            assert (*oriented, row.rank) in signatures
 
 
 def _brute_cost(
@@ -163,6 +175,35 @@ def test_exact_branch_and_bound_matches_unpruned_reference() -> None:
             structured=True,
         )
     assert oracle.cache_info()["pruned_action_count"] > 0
+
+
+def test_permutation_quotient_matches_unpruned_cost_and_reuses_cache() -> None:
+    schemes = catalog_schemes(
+        [
+            {
+                "status": "eligible",
+                "shape": [2, 2, 3],
+                "rank": 11,
+                "key": "rect",
+            }
+        ]
+    )
+    oracle = MultiplicationOracle(
+        schemes,
+        maximum_depth=3,
+        structured_enabled=True,
+        state_limit=100_000,
+    )
+    expected = _brute_cost(
+        (12, 9, 7), schemes, depth=3, structured=True
+    )
+    first = oracle.cost(12, 9, 7)
+    states = oracle.cache_info()["state_count"]
+    assert first == expected
+    for shape in permutations((12, 9, 7)):
+        assert oracle.cost(*shape) == expected
+    assert oracle.cache_info()["state_count"] == states
+    assert oracle.cache_info()["permutation_cache_hits"] > 0
 
 
 def test_weighted_ratio_counts_repetition() -> None:
