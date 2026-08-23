@@ -1,0 +1,250 @@
+{
+  "aggregate": {
+    "build": {
+      "cross_prompt": {
+        "certificate_fraction": 1.0,
+        "certified": 24,
+        "infeasible": 0,
+        "l1_p50": 1.7639359540494426,
+        "l1_p95": 11.408916406368258,
+        "linf_p50": 0.5780922419290719,
+        "linf_p95": 1.6815164999348156,
+        "minimum_certified_margin": 9.535708448865264e-07,
+        "support_p50": 6.5,
+        "support_p95": 18.699999999999996,
+        "total": 24
+      },
+      "same": {
+        "certificate_fraction": 1.0,
+        "certified": 24,
+        "infeasible": 0,
+        "l1_p50": 0.7460410023798365,
+        "l1_p95": 2.12855697191825,
+        "linf_p50": 0.37942349564840555,
+        "linf_p95": 0.6975471986765203,
+        "minimum_certified_margin": 9.536695311132492e-07,
+        "support_p50": 3.0,
+        "support_p95": 9.849999999999998,
+        "total": 24
+      },
+      "vocab_permuted": {
+        "certificate_fraction": 1.0,
+        "certified": 24,
+        "infeasible": 0,
+        "l1_p50": 2.5337336247442166,
+        "l1_p95": 8.475903181719795,
+        "linf_p50": 0.696054374240951,
+        "linf_p95": 1.615080594364292,
+        "minimum_certified_margin": 9.536119216467065e-07,
+        "support_p50": 8.5,
+        "support_p95": 17.0,
+        "total": 24
+      }
+    },
+    "holdout": {
+      "cross_prompt": {
+        "certificate_fraction": 1.0,
+        "certified": 24,
+        "infeasible": 0,
+        "l1_p50": 1.0399409455441027,
+        "l1_p95": 4.744448973030837,
+        "linf_p50": 0.562631968325422,
+        "linf_p95": 0.986434549846442,
+        "minimum_certified_margin": 9.508127772214998e-07,
+        "support_p50": 5.5,
+        "support_p95": 14.849999999999998,
+        "total": 24
+      },
+      "same": {
+        "certificate_fraction": 1.0,
+        "certified": 24,
+        "infeasible": 0,
+        "l1_p50": 0.9076383996996851,
+        "l1_p95": 3.831871688116445,
+        "linf_p50": 0.4593528687021118,
+        "linf_p95": 0.9871747667783372,
+        "minimum_certified_margin": 9.53658633909085e-07,
+        "support_p50": 4.5,
+        "support_p95": 13.849999999999998,
+        "total": 24
+      },
+      "vocab_permuted": {
+        "certificate_fraction": 1.0,
+        "certified": 24,
+        "infeasible": 0,
+        "l1_p50": 2.8658957284330246,
+        "l1_p95": 7.20327861954318,
+        "linf_p50": 0.7574813754629011,
+        "linf_p95": 1.4919916856610713,
+        "minimum_certified_margin": 9.536474799366636e-07,
+        "support_p50": 9.5,
+        "support_p95": 17.0,
+        "total": 24
+      }
+    }
+  },
+  "all_banks_frozen_before_any_target": true,
+  "authoritative_decision": "REJECT_UNBOUNDED_RESIDUAL_MARGIN_CAPACITY_AS_MODEL_SPECIFIC_SOURCE",
+  "bank_meta": {
+    "build_code": {
+      "bank_bytes": 50331648,
+      "bank_completed_ns": 85599415146,
+      "bank_sha256": "98867db01bd6d3acbce583d8ae67db2a2264144b3d853c5c8f3f923c68b21649",
+      "case_id": "build_code",
+      "family": "code",
+      "fine_sweep_target_information_used": 0,
+      "prompt_sha256": "6136d681e8d056ccf9d5d8029ed4d8adb256d33854599d5c18186c0238ab250b",
+      "seed_manifest": {
+        "block_length": 128,
+        "boundary_token": 198,
+        "mode": "prompt_suffix_cycle_16",
+        "prompt_length": 33,
+        "token_sha256": "b351a460bb41558af403c1022a88d1e350a2d635fd4d54536d10c33cc8f2b5b2"
+      },
+      "split": "build"
+    },
+    "build_english": {
+      "bank_bytes": 50331648,
+      "bank_completed_ns": 83592298002,
+      "bank_sha256": "6c347e669c0be410f2abc7b9af46d284bdde6999a2fa011027528f33fddc0b3c",
+      "case_id": "build_english",
+      "family": "english",
+      "fine_sweep_target_information_used": 0,
+      "prompt_sha256": "be79ff2a4fb50b9f53636f07bb521144a0ac561ed1357c9b321bc49c5886e1c8",
+      "seed_manifest": {
+        "block_length": 128,
+        "boundary_token": 198,
+        "mode": "prompt_suffix_cycle_16",
+        "prompt_length": 42,
+        "token_sha256": "a167ebcb5c3bfd00b817e9f07730a30bbc3977c085b9557a690ffdd21938d56e"
+      },
+      "split": "build"
+    },
+    "build_korean": {
+      "bank_bytes": 50331648,
+      "bank_completed_ns": 84723595735,
+      "bank_sha256": "87b621076cff1a640b9694ee75430a8602898161c0e72bbb5c8c7848ade76b78",
+      "case_id": "build_korean",
+      "family": "korean",
+      "fine_sweep_target_information_used": 0,
+      "prompt_sha256": "ed53c1e66e623d662121d268097d37da40de3c38112d85ee13e41cab46154571",
+      "seed_manifest": {
+        "block_length": 128,
+        "boundary_token": 198,
+        "mode": "prompt_suffix_cycle_16",
+        "prompt_length": 249,
+        "token_sha256": "972f9b3f4e596b0d97ef5cee31c6e82d2c41ab38164ac60d8b57218cb66c75d3"
+      },
+      "split": "build"
+    },
+    "holdout_math": {
+      "bank_bytes": 50331648,
+      "bank_completed_ns": 86479297377,
+      "bank_sha256": "497ecc0ed7b8c8e560f3974febc310e37d7761747d1bcdac956f31aeb611538e",
+      "case_id": "holdout_math",
+      "family": "mathematics",
+      "fine_sweep_target_information_used": 0,
+      "prompt_sha256": "278a7051a73baeb550c582cc91995abf7c1c841dafe548fcb3408bd53aab61ac",
+      "seed_manifest": {
+        "block_length": 128,
+        "boundary_token": 198,
+        "mode": "prompt_suffix_cycle_16",
+        "prompt_length": 40,
+        "token_sha256": "ac91547a688aa2765d5d2094a543bb727765a6f8cd39f6e508944d7b3f654a79"
+      },
+      "split": "holdout"
+    },
+    "holdout_repeated": {
+      "bank_bytes": 50331648,
+      "bank_completed_ns": 88230913925,
+      "bank_sha256": "454b0f4720251d62787db78e7aa0775066dbda3f39bbe91429f6eecc8bbf2902",
+      "case_id": "holdout_repeated",
+      "family": "repeated_pattern",
+      "fine_sweep_target_information_used": 0,
+      "prompt_sha256": "59dbe5394356cb558bd7e7cd0be4387f97b3fb3207d338fba7d7e599263770eb",
+      "seed_manifest": {
+        "block_length": 128,
+        "boundary_token": 198,
+        "mode": "prompt_suffix_cycle_16",
+        "prompt_length": 38,
+        "token_sha256": "87d24eab9f311dd581cc5e6bf3fab06c0d1c5194e5b9cd5832c2670f1d62c379"
+      },
+      "split": "holdout"
+    },
+    "holdout_structured": {
+      "bank_bytes": 50331648,
+      "bank_completed_ns": 87361343414,
+      "bank_sha256": "e7bf47ed74a05e246db707c3a2a4251c51a04e0212f1500a697887acd182a29b",
+      "case_id": "holdout_structured",
+      "family": "structured_json",
+      "fine_sweep_target_information_used": 0,
+      "prompt_sha256": "9672ef86ef746c499970b8cd4c992a7d83b43f5db7c0a11e2225211a0c464565",
+      "seed_manifest": {
+        "block_length": 128,
+        "boundary_token": 198,
+        "mode": "prompt_suffix_cycle_16",
+        "prompt_length": 46,
+        "token_sha256": "39c1c512718da9309b92ba7ca7ab7fe196985cc2bc66ecd71537081a836fa8b6"
+      },
+      "split": "holdout"
+    }
+  },
+  "checkpoint": {
+    "checkpoint_tensor_sha256": "ee567358e6d45900612a1a276fd068d1c5fd999a451cd67bae55cb2c01446308",
+    "config_sha256": "041b84dee11829cc1cb0d903729657f809186dc41b551596b6c8d7e878930846",
+    "model_class": "LlamaForCausalLM",
+    "model_id": "HuggingFaceTB/SmolLM2-135M",
+    "requested_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+    "resolved_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+    "tokenizer": {
+      "class": "GPT2TokenizerFast",
+      "model_max_length": 8192,
+      "name_or_path": "HuggingFaceTB/SmolLM2-135M",
+      "sha256": "391f221dea2ad9f45eacb7fe9b612956fdc69dce559e5040d36db076ed6314d4",
+      "special_tokens_map": {
+        "additional_special_tokens": [
+          "<|endoftext|>",
+          "<|im_start|>",
+          "<|im_end|>",
+          "<repo_name>",
+          "<reponame>",
+          "<file_sep>",
+          "<filename>",
+          "<gh_stars>",
+          "<issue_start>",
+          "<issue_comment>",
+          "<issue_closed>",
+          "<jupyter_start>",
+          "<jupyter_text>",
+          "<jupyter_code>",
+          "<jupyter_output>",
+          "<jupyter_script>",
+          "<empty_output>"
+        ],
+        "bos_token": "<|endoftext|>",
+        "eos_token": "<|endoftext|>",
+        "unk_token": "<|endoftext|>"
+      },
+      "vocab_size": 49152
+    }
+  },
+  "config_sha256": "280ed0ea453c0ca88bd36abb45edf770b7bef024a456c1860ce1c131eeb20a43",
+  "integrity_failures": [],
+  "matched_controls": [
+    "cross_prompt",
+    "vocab_permuted"
+  ],
+  "sample_positions": [
+    0,
+    16,
+    32,
+    48,
+    64,
+    80,
+    96,
+    127
+  ],
+  "schema": "exp-097a-residual-bank-specificity-v1",
+  "vocabulary_permutation_seed": 9701,
+  "vocabulary_permutation_sha256": "8ac144d54ded554167a9813c5f00363e1729003145744565b57026ff3964ce8e"
+}
