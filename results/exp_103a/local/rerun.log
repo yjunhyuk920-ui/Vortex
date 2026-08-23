@@ -1,0 +1,5 @@
+{
+  "decision": "REJECT_HIERARCHICAL_NATIVE_ROUNDING_PAGE_CERTIFICATES_AS_UNIVERSAL_10X_CORE",
+  "integrity_failures": [],
+  "deterministic_core": "d912ff35377f34d76926c9ca1a887a92c51eb0f69899b8621340650b67b7c363"
+}

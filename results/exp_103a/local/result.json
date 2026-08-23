@@ -1,0 +1,51 @@
+{
+  "accumulator_abi": "separate BF16xBF16->FP32 multiply then RNE FP32 add, fixed left-to-right order",
+  "adversarial_all_ones": {
+    "1024": {"candidate_bits":1182793728,"exact_match":true,"page_count":16,"page_read_fraction":1.0,"pages_read":16,"pages_skipped":0,"reference_bits":1182793728,"term_execution_fraction":1.0},
+    "128": {"candidate_bits":1182793728,"exact_match":true,"page_count":128,"page_read_fraction":1.0,"pages_read":128,"pages_skipped":0,"reference_bits":1182793728,"term_execution_fraction":1.0},
+    "256": {"candidate_bits":1182793728,"exact_match":true,"page_count":64,"page_read_fraction":1.0,"pages_read":64,"pages_skipped":0,"reference_bits":1182793728,"term_execution_fraction":1.0},
+    "32": {"candidate_bits":1182793728,"exact_match":true,"page_count":512,"page_read_fraction":1.0,"pages_read":512,"pages_skipped":0,"reference_bits":1182793728,"term_execution_fraction":1.0},
+    "512": {"candidate_bits":1182793728,"exact_match":true,"page_count":32,"page_read_fraction":1.0,"pages_read":32,"pages_skipped":0,"reference_bits":1182793728,"term_execution_fraction":1.0},
+    "64": {"candidate_bits":1182793728,"exact_match":true,"page_count":256,"page_read_fraction":1.0,"pages_read":256,"pages_skipped":0,"reference_bits":1182793728,"term_execution_fraction":1.0}
+  },
+  "authoritative_arm": "REAL_EXECUTOR_ONLY_FINITE_WORD_PRIMITIVE",
+  "claim_boundary": {"native_kernel":"NOT_TESTED","physical_8gib":"NOT_TESTED","public_checkpoint_execution":"NOT_TESTED","reason_no_model_run":"universal finite-word adversarial byte Gate is already decisive","target_405b_execution":"NOT_TESTED"},
+  "decision": "REJECT_HIERARCHICAL_NATIVE_ROUNDING_PAGE_CERTIFICATES_AS_UNIVERSAL_10X_CORE",
+  "deterministic_core": "d912ff35377f34d76926c9ca1a887a92c51eb0f69899b8621340650b67b7c363",
+  "gaussian_dense_summary": {
+    "1024":{"exact_all":true,"page_read_fraction_max":1.0,"page_read_fraction_p50":1.0,"page_read_fraction_p95":1.0,"row_count":64,"term_execution_fraction_p50":1.0},
+    "128":{"exact_all":true,"page_read_fraction_max":1.0,"page_read_fraction_p50":1.0,"page_read_fraction_p95":1.0,"row_count":64,"term_execution_fraction_p50":1.0},
+    "256":{"exact_all":true,"page_read_fraction_max":1.0,"page_read_fraction_p50":1.0,"page_read_fraction_p95":1.0,"row_count":64,"term_execution_fraction_p50":1.0},
+    "32":{"exact_all":true,"page_read_fraction_max":1.0,"page_read_fraction_p50":1.0,"page_read_fraction_p95":1.0,"row_count":64,"term_execution_fraction_p50":1.0},
+    "512":{"exact_all":true,"page_read_fraction_max":1.0,"page_read_fraction_p50":1.0,"page_read_fraction_p95":1.0,"row_count":64,"term_execution_fraction_p50":1.0},
+    "64":{"exact_all":true,"page_read_fraction_max":1.0,"page_read_fraction_p50":1.0,"page_read_fraction_p95":1.0,"row_count":64,"term_execution_fraction_p50":1.0}
+  },
+  "integrity_failures": [],
+  "metadata_abi": "one maximum absolute BF16 exponent code byte per output-row/input-page",
+  "next_gate": "derive a cross-page or cross-matrix exact computation that changes values, not merely certifies native no-ops; it must expose a fully charged sub-dense decoder before implementation",
+  "positive_control": {
+    "1024":{"candidate_bits":1266679808,"exact_match":true,"page_count":5,"page_read_fraction":0.2,"pages_read":1,"pages_skipped":4,"reference_bits":1266679808,"term_execution_fraction":0.2499389797412741},
+    "128":{"candidate_bits":1266679808,"exact_match":true,"page_count":33,"page_read_fraction":0.030303030303030304,"pages_read":1,"pages_skipped":32,"reference_bits":1266679808,"term_execution_fraction":0.031242372467659263},
+    "256":{"candidate_bits":1266679808,"exact_match":true,"page_count":17,"page_read_fraction":0.058823529411764705,"pages_read":1,"pages_skipped":16,"reference_bits":1266679808,"term_execution_fraction":0.062484744935318526},
+    "32":{"candidate_bits":1266679808,"exact_match":true,"page_count":129,"page_read_fraction":0.007751937984496124,"pages_read":1,"pages_skipped":128,"reference_bits":1266679808,"term_execution_fraction":0.007810593116914816},
+    "512":{"candidate_bits":1266679808,"exact_match":true,"page_count":9,"page_read_fraction":0.1111111111111111,"pages_read":1,"pages_skipped":8,"reference_bits":1266679808,"term_execution_fraction":0.12496948987063705},
+    "64":{"candidate_bits":1266679808,"exact_match":true,"page_count":65,"page_read_fraction":0.015384615384615385,"pages_read":1,"pages_skipped":64,"reference_bits":1266679808,"term_execution_fraction":0.015621186233829631}
+  },
+  "schema": "exp-103a-native-rounding-page-certificate-v1",
+  "soundness_control": {"cases":200000,"certified_pages":53676,"mismatches":0},
+  "target_fraction": 0.011851851851851851,
+  "three_principles_screened": [
+    {"name":"hierarchical_native_rounding_page_certificate","premise_flip":"a weight product need not be evaluated when native rounding proves its addition is a no-op","status":"implemented_and_rejected_as_universal_core"},
+    {"name":"prefix_transition_monoid_binary_lifting","premise_flip":"compose token transitions instead of evaluating them sequentially","status":"rejected_before_implementation_as_closed_self_contained_transition_table_family"},
+    {"name":"deferred_mismatch_state_closure","premise_flip":"materialize correction state in the next sweep rather than a separate repair call","status":"retained_auxiliary_only"}
+  ],
+  "traffic_rows": [
+    {"maximum_full_page_read_fraction":0.0,"metadata_bytes_per_page":1,"metadata_fraction":0.015625,"page_size":32,"required_skip_fraction":1.0},
+    {"maximum_full_page_read_fraction":0.004039351851851851,"metadata_bytes_per_page":1,"metadata_fraction":0.0078125,"page_size":64,"required_skip_fraction":0.9959606481481481},
+    {"maximum_full_page_read_fraction":0.007945601851851851,"metadata_bytes_per_page":1,"metadata_fraction":0.00390625,"page_size":128,"required_skip_fraction":0.9920543981481481},
+    {"maximum_full_page_read_fraction":0.009898726851851851,"metadata_bytes_per_page":1,"metadata_fraction":0.001953125,"page_size":256,"required_skip_fraction":0.9901012731481481},
+    {"maximum_full_page_read_fraction":0.010875289351851851,"metadata_bytes_per_page":1,"metadata_fraction":0.0009765625,"page_size":512,"required_skip_fraction":0.9891247106481481},
+    {"maximum_full_page_read_fraction":0.011363570601851851,"metadata_bytes_per_page":1,"metadata_fraction":0.00048828125,"page_size":1024,"required_skip_fraction":0.9886364293981481}
+  ],
+  "weight_format": "BF16"
+}

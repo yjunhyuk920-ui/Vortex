@@ -1,0 +1,20 @@
+{
+  "schema": "exp-103a-native-rounding-page-certificate-v1",
+  "target_fraction": 0.011851851851851851,
+  "page_sizes": [32, 64, 128, 256, 512, 1024],
+  "metadata_bytes_per_page": 1,
+  "random_seed": 103001,
+  "soundness_cases": 200000,
+  "gaussian_rows": 64,
+  "gaussian_width": 4096,
+  "adversarial_width": 16384,
+  "authoritative_arm": "REAL_EXECUTOR_ONLY_FINITE_WORD_PRIMITIVE",
+  "forbidden_grants": [
+    "future_target_tokens",
+    "perfect_selector",
+    "free_metadata",
+    "free_weight_reads",
+    "unmeasured_compression",
+    "changed_reduction_order"
+  ]
+}
