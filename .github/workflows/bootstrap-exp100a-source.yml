@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: bootstrap-exp100a-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   materialize-source:
     if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[exp100a-bootstrap]') }}
@@ -22,16 +26,28 @@ jobs:
         with:
           python-version: "3.11.10"
           cache: pip
-      - name: Validate and extract source bundle
+      - name: Reassemble, verify, and extract source bundle
         shell: bash
         run: |
           set -euo pipefail
-          test -f .bootstrap/exp100a_bundle.tar.gz
+          parts=(
+            .bootstrap/exp100a_part_00
+            .bootstrap/exp100a_part_01
+            .bootstrap/exp100a_part_02
+            .bootstrap/exp100a_part_03_0
+            .bootstrap/exp100a_part_03_1
+            .bootstrap/exp100a_part_04
+          )
+          for part in "${parts[@]}"; do
+            test -f "$part"
+          done
+          cat "${parts[@]}" > /tmp/exp100a_bundle.tar.gz
+          echo "217ba74d8466c82bc531ea73485c217c114f177d77e72bff28fed856e4fcc142  /tmp/exp100a_bundle.tar.gz" | sha256sum -c -
           python - <<'PY'
           import tarfile
           from pathlib import Path
 
-          archive = Path('.bootstrap/exp100a_bundle.tar.gz')
+          archive = Path('/tmp/exp100a_bundle.tar.gz')
           with tarfile.open(archive, 'r:gz') as handle:
               members = handle.getmembers()
               for member in members:
@@ -41,12 +57,11 @@ jobs:
               handle.extractall('.')
           print(f'extracted {len(members)} members')
           PY
-          # The production workflow is added by the authenticated connector only
-          # after this source commit is read back. This avoids a partial-source
-          # push triggering the full scientific Gate.
+          # Add the scientific workflow only after this complete source commit is
+          # read back. That keeps a partial bootstrap from running the Gate.
           rm -f .github/workflows/exp-100a-explicit-rectangular-fmm.yml
-          rm -f .bootstrap/exp100a_bundle.tar.gz
-          rmdir .bootstrap 2>/dev/null || true
+          rm -rf .bootstrap
+          rm -f .github/workflows/bootstrap-exp100a-source.yml
       - name: Install minimal source-test runtime
         run: python -m pip install --disable-pip-version-check numpy==2.1.3 pytest==8.3.3
       - name: Validate materialized source
