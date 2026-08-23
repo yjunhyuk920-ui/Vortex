@@ -784,6 +784,36 @@ def evaluate_blocks(
     return block_rows, selected_rows
 
 
+def search_coverage_diagnostics(
+    searches: Mapping[tuple[int, int, int], SearchResult],
+) -> dict[str, Any]:
+    """Record resource-empty frontiers without invalidating controls."""
+
+    empty_direct: list[dict[str, Any]] = []
+    empty_oracle: list[dict[str, Any]] = []
+    for (block_length, rows, columns), result in sorted(searches.items()):
+        identity = {
+            "block_length": int(block_length),
+            "rows": int(rows),
+            "columns": int(columns),
+            "state_count_by_depth": list(result.state_count_by_depth),
+        }
+        if not result.direct_structural_plans:
+            empty_direct.append(identity)
+        if not result.oracle_structural_plans:
+            empty_oracle.append(identity)
+    return {
+        "search_count": len(searches),
+        "empty_direct_count": len(empty_direct),
+        "empty_oracle_count": len(empty_oracle),
+        "empty_direct": empty_direct,
+        "empty_oracle": empty_oracle,
+        "empty_frontier_interpretation": (
+            "resource_or_bounded-search infeasibility; not a control failure"
+        ),
+    }
+
+
 def summarize_prior(
     exp080: Mapping[str, Any], exp099: Mapping[str, Any]
 ) -> dict[str, Any]:
@@ -868,10 +898,15 @@ def execute(config_path: Path, output_dir: Path) -> dict[str, Any]:
         integrity_failures.append("no_eligible_catalog_factorization")
     if not schemes:
         integrity_failures.append("no_pareto_orientation")
-    if any(not result.direct_structural_plans for result in searches.values()):
-        integrity_failures.append("empty_direct_shape_search")
-    if any(not result.oracle_structural_plans for result in searches.values()):
-        integrity_failures.append("empty_oracle_shape_search")
+
+    # An empty plan set for one registered shape/block after the frozen
+    # 8-GiB filter is negative resource evidence, not an integrity failure.
+    search_coverage = search_coverage_diagnostics(searches)
+    expected_search_count = len(config["search"]["block_lengths"]) * len(
+        {(family.rows, family.columns) for family in families}
+    )
+    if len(searches) != expected_search_count:
+        integrity_failures.append("incomplete_shape_block_search_population")
 
     direct_passes = [
         row
@@ -971,6 +1006,7 @@ def execute(config_path: Path, output_dir: Path) -> dict[str, Any]:
         },
         "scheme_rows": scheme_rows,
         "search_rows": search_rows,
+        "search_coverage": search_coverage,
         "block_rows": block_rows,
         "integrity_failures": integrity_failures,
         "direct_ten_x_pass_blocks": [row["block_length"] for row in direct_passes],

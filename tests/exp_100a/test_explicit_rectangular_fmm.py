@@ -365,3 +365,27 @@ def test_ledger_updater_is_idempotent_and_marks_every_required_file(tmp_path) ->
     for text in second.values():
         assert text.count(updater.START) == 1
         assert text.count(updater.END) == 1
+
+
+def test_resource_empty_shape_frontier_is_diagnostic_not_integrity_failure() -> None:
+    from experiments.exp_100a.run_experiment import (
+        SearchResult,
+        search_coverage_diagnostics,
+    )
+
+    empty = SearchResult(
+        block_length=16384,
+        rows=128256,
+        columns=16384,
+        state_count_by_depth=(96, 96, 96, 96, 0),
+        direct_structural_plans=(),
+        oracle_structural_plans=(),
+    )
+    diagnostics = search_coverage_diagnostics(
+        {(16384, 128256, 16384): empty}
+    )
+    assert diagnostics["search_count"] == 1
+    assert diagnostics["empty_direct_count"] == 1
+    assert diagnostics["empty_oracle_count"] == 1
+    assert diagnostics["empty_direct"][0]["rows"] == 128256
+    assert "not a control failure" in diagnostics["empty_frontier_interpretation"]
