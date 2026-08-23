@@ -1,0 +1,7 @@
+{
+  "decision": "REJECT_ACTIVATION_ORDERED_EXACT_RESIDUAL_BOUND_HEAD_INDEX_WITH_COMPLETE_LAYER_AS_P50_CORE",
+  "integrity_failures": [],
+  "deterministic_core": "17cebccb51a2fbdadf871767151962b47e462bd14caeba1707cd66a64a468598",
+  "best_random_head_fraction": 1.0427389705882353,
+  "best_target_late_decision_bytes": 2815515648.0
+}
