@@ -285,3 +285,22 @@ NOT_TESTED
 ```
 
 The current constructive focus is always obtained from the latest remote PR, authoritative results, `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`, and `docs/research/VORTEX_RESEARCH_HANDOFF.md`; do not hard-code a long-lived frontier here.
+
+<!-- REALITY-FIRST-EXECUTION:START -->
+## Reality-first authoritative execution
+
+Every new core Gate has one authoritative arm: `REAL_EXECUTOR_ONLY`.
+Future target tokens or hidden states, perfect selectors, free `N/A`, free transforms,
+free metadata/workspace, free repair/fallback, unmeasured compression, and peak
+throughput presented as sustained throughput are forbidden from satisfying a
+promotion threshold. Synthetic or target-seeing calculations may appear only as
+non-authoritative debugging diagnostics.
+
+The authoritative arm must execute a finite-word causal path and charge candidate
+generation, every target position, verification, mismatch repair, rollback,
+fallback, transforms, packing, metadata, storage/host/device bytes, KV/cache,
+workspace, fragmentation, and measured wall time. Missing quantities remain
+`NOT TESTED`; they are never replaced by an ideal grant.
+
+Normative detail: [`docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md`](docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md).
+<!-- REALITY-FIRST-EXECUTION:END -->

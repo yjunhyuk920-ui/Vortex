@@ -1,6 +1,6 @@
 # VORTEX
 
-VORTEX is a proof-first research runtime for executing very large, publicly released Hugging Face dense Transformers under a small GPU-memory budget **without changing the model’s meaning**.
+VORTEX is a proof-first research runtime for executing very large, publicly released Hugging Face dense Transformers under a small GPU-memory budget **without changing the model's meaning**.
 
 > **Current truth:** the final 405B-on-one-8-GiB-GPU-at-4B-class-latency target has not yet been achieved. This repository contains executable runtime prototypes, exactness/resource auditors, falsification Gates, raw evidence, and an active constructive research program.
 
@@ -41,6 +41,24 @@ The canonical goal and working-principles answer is in [`MISSION_AND_WORKING_PRI
 - Meaningful positive and negative results are preserved in a verified remote commit.
 - README freshness is part of round completion.
 
+## Reality-first authoritative execution
+
+Every new core Gate has exactly one authoritative arm:
+
+```text
+REAL_EXECUTOR_ONLY
+```
+
+The authoritative result cannot be promoted using:
+
+- future target tokens or hidden states;
+- a perfect target-seeing selector or perfect accepted block;
+- free `N/A`, transform, addition, packing, metadata, workspace, repair, rollback, verification, or fallback;
+- unmeasured compression or ideal peak throughput represented as measurement;
+- an unimplemented arithmetic instruction or hidden/remote execution omitted from the ledger.
+
+Oracle calculations remain useful as diagnostic controls, but they are `DIAGNOSTIC_ONLY` and cannot authorize a backend or count as deployable progress. See [`docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md`](docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md).
+
 ## Research workflow: sandbox first, GitHub last
 
 \[
@@ -60,11 +78,9 @@ SANDBOX_RESEARCH
 -> REMOTE_COMMIT_VERIFIED
 ```
 
-Use the sandbox for derivations, search, cost models, prototypes, counterexamples, and focused tests. Do **not** turn each research iteration into a GitHub Actions run.
+Use the sandbox for derivations, search, cost models, prototypes, counterexamples, and focused tests. Do **not** turn each hypothesis iteration into a GitHub Actions run.
 
 Use GitHub for frozen source/config, independent reproduction, public-checkpoint or long hosted runs, immutable artifacts, checksums, PR discussion, and cross-session handoff.
-
-A sandbox result is useful research but is not a completed repository round until the meaningful result is committed, pushed, and read back remotely.
 
 ## Resource objective
 
@@ -102,35 +118,36 @@ same-machine native-4B p50/p95 acceptance: NOT TESTED
 
 EXP-100A tested catalogued small-coefficient rectangular fast-matrix-multiplication programs with fully charged transforms, moves, cold bytes, workspace, and native-order repair.
 
-Authoritative decision:
-
 ```text
-REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE
-```
-
-Recorded best results:
-
-```text
+Decision: REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE
 best fully charged explicit arithmetic fraction   38.251649686367%
 best free-transform rank-oracle fraction           13.010262621991%
 required first-core boundary                       10%
 ```
 
-The result rejects the frozen published catalog/recursion family as a 10× core; it does not reject all future exact arithmetic programs.
+EXP-101A was subsequently closed as `DIAGNOSTIC_ONLY`, because its multiplication-only Gate granted future blocks and zero-cost runtime components. Its artifact may inform algebraic work, but it cannot establish deployable progress.
 
-### Active frontier
-
-The active stacked research PR is:
+### Active frontier — EXP-102A
 
 ```text
-PR #111
-research/exp-101a-structured-direct-sum-gate
-EXP-101A structured direct-sum composition Gate
+Branch: research/exp-102a-causal-segment-delta-reality-gate
+Gate:   EXP-102A reality-first causal draft/verify
 ```
 
-EXP-101A tests an exact structured tensor source outside the prior AlphaTensor catalog. Until its authoritative result commit exists, it is an active Gate, not a scientific result.
+EXP-102A executes real public draft and target checkpoints. Its authoritative arm charges:
 
-For current truth, read the remote PR/workflow and these files:
+- draft prefill and autoregressive generation;
+- cross-tokenizer decode/retokenization bridge;
+- every target candidate position, argmax, and comparison;
+- measured `N/A`;
+- mismatch repair;
+- real same-tokenizer cache crop/replay or cross-tokenizer state rebuild;
+- model/cache/RSS bytes and wall time;
+- exact token and complete terminal target-KV equality.
+
+No compression credit is used. Target prompt prefill is excluded symmetrically as the declared warm-prefix boundary. Until a remote result commit exists, EXP-102A is an active Gate, not a scientific result.
+
+For current truth, read the remote branch/PR/workflow and:
 
 1. [`RESEARCH_STATE.md`](RESEARCH_STATE.md)
 2. [`NEXT_EXPERIMENT.md`](NEXT_EXPERIMENT.md)
@@ -140,26 +157,21 @@ For current truth, read the remote PR/workflow and these files:
 
 Conversation memory is not authoritative.
 
-## What the repository contains
+## Repository map
 
 - `vortex_runtime/` — runtime primitives, exactness/resource helpers, and experiment mechanisms.
 - `experiments/` — frozen experiment runners and configs.
 - `tests/` — focused, property, regression, and control tests.
 - `results/` — committed processed/raw evidence and checksum ledgers.
-- `docs/research/` — preregistrations, latest-result summaries, and research handoff.
-- `.github/workflows/` — clean hosted reproductions and artifact production.
+- `docs/research/` — preregistrations, latest-result summaries, contracts, and handoff.
+- `.github/workflows/` — clean hosted reproduction and artifact production.
 - root ledgers — current state, decisions, failures, assumptions, architecture, validation, hardware plan, and reproducibility.
-- [`AGENTS.md`](AGENTS.md) — mandatory session contract.
-- [`MISSION_AND_WORKING_PRINCIPLES.md`](MISSION_AND_WORKING_PRINCIPLES.md) — canonical compact mission/workflow answer.
-
-The repository also retains an executable first-stage streamed-Llama/progressive-certification prototype. A working primitive is not evidence that the final 405B latency target has passed.
 
 ## Quick start
 
 ```bash
 git clone https://github.com/yjunhyuk920-ui/Vortex.git
 cd Vortex
-
 python -m venv .venv
 
 # Linux/macOS
@@ -197,23 +209,46 @@ Read in this order:
 2. [`MISSION_AND_WORKING_PRINCIPLES.md`](MISSION_AND_WORKING_PRINCIPLES.md)
 3. this README
 4. [`docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md`](docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md)
-5. [`docs/research/VORTEX_RESEARCH_HANDOFF.md`](docs/research/VORTEX_RESEARCH_HANDOFF.md)
-6. [`RESEARCH_STATE.md`](RESEARCH_STATE.md)
-7. [`FAILED_APPROACHES.md`](FAILED_APPROACHES.md)
-8. [`DECISION_LOG.md`](DECISION_LOG.md)
-9. [`ASSUMPTION_REGISTER.md`](ASSUMPTION_REGISTER.md)
-10. [`VALIDATION_MATRIX.md`](VALIDATION_MATRIX.md)
-11. [`NEXT_EXPERIMENT.md`](NEXT_EXPERIMENT.md)
-12. the active experiment, PR, workflow, raw result, and checksum files
+5. [`docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md`](docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md)
+6. [`docs/research/VORTEX_RESEARCH_HANDOFF.md`](docs/research/VORTEX_RESEARCH_HANDOFF.md)
+7. [`RESEARCH_STATE.md`](RESEARCH_STATE.md)
+8. [`FAILED_APPROACHES.md`](FAILED_APPROACHES.md)
+9. [`DECISION_LOG.md`](DECISION_LOG.md)
+10. [`ASSUMPTION_REGISTER.md`](ASSUMPTION_REGISTER.md)
+11. [`VALIDATION_MATRIX.md`](VALIDATION_MATRIX.md)
+12. [`NEXT_EXPERIMENT.md`](NEXT_EXPERIMENT.md)
+13. the active experiment, PR, workflow, raw result, and checksum files
 
 Then verify the actual remote branch/head before proposing another mechanism.
 
 ## README freshness contract
 
-This file must be reviewed during every meaningful repository round. Update it when the mission, mandatory workflow, active frontier, latest authoritative result, quick start, repository map, or advertised capability changes.
-
-Do not leave stale experiment narratives or unregenerated test counts here. When no update is required, the round report must record a specific `README_UNCHANGED_REASON`.
+Review this file during every meaningful repository round. Update it when the mission, mandatory workflow, active frontier, latest authoritative result, quick start, repository map, or advertised capability changes. When no update is required, record a specific `README_UNCHANGED_REASON`.
 
 ## Claim boundary
 
 Only a real target-hardware Phase-D/E6/E7 run can establish actual 405B execution, physical peak VRAM, target traffic, or same-machine 4B-class p50/p95. Until then, those claims remain `NOT TESTED`.
+
+```text
+README_CURRENT=true
+README_UPDATED=reality-first contract, EXP-101A diagnostic closure, EXP-102A active frontier
+```
+
+<!-- REALITY-FIRST-EXECUTION:START -->
+## Reality-first authoritative execution
+
+Every new core Gate has one authoritative arm: `REAL_EXECUTOR_ONLY`.
+Future target tokens or hidden states, perfect selectors, free `N/A`, free transforms,
+free metadata/workspace, free repair/fallback, unmeasured compression, and peak
+throughput presented as sustained throughput are forbidden from satisfying a
+promotion threshold. Synthetic or target-seeing calculations may appear only as
+non-authoritative debugging diagnostics.
+
+The authoritative arm must execute a finite-word causal path and charge candidate
+generation, every target position, verification, mismatch repair, rollback,
+fallback, transforms, packing, metadata, storage/host/device bytes, KV/cache,
+workspace, fragmentation, and measured wall time. Missing quantities remain
+`NOT TESTED`; they are never replaced by an ideal grant.
+
+Normative detail: [`docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md`](docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md).
+<!-- REALITY-FIRST-EXECUTION:END -->
