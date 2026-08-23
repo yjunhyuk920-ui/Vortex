@@ -1,0 +1,6 @@
+a98bdf357b2fc747e4e90a4d95cd2cdd1afe078984696a3c10782dbcb8e7bf78  ./artifacts/deterministic_core.json
+c6f18e485ff087e6a7600c662d6cf4ee6710d6089e1c3c2549d932599d2026ba  ./host.txt
+9fc02a67a7978679316ee59f48c91a477c75538a5a7df3907ca2cb08e9dc6a5c  ./raw/layer_state_rows.json
+b61b3036f9c64a2b2daab4ef1d4f201faf7203ef59be98f07ed962841892de44  ./raw/projection_rows.json
+1c4e72db32f61c5a8cf87d3597ebb3d03fb4148b1a5422fcb95f4f963349b125  ./result.json
+653016ee8ca2fbebd0533915bae11516d179ac97d6a2eacdf6672b6e5c4e5f5c  ./run.log

@@ -1,0 +1,161 @@
+name: exp-098a-q4-rounding-cell-oracle
+
+on:
+  push:
+    branches:
+      - research/exp-098a-q4-rounding-cell-oracle-gate
+  pull_request:
+    branches:
+      - research/exp-097a-causal-residual-codebook-gate
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exp-098a-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONHASHSEED: "0"
+  TOKENIZERS_PARALLELISM: "false"
+  OMP_NUM_THREADS: "1"
+  MKL_NUM_THREADS: "1"
+  OPENBLAS_NUM_THREADS: "1"
+
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install frozen public-checkpoint runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Verify numerical/runtime pins
+        run: |
+          python - <<'PY'
+          import numpy, scipy, torch, transformers
+          assert torch.__version__ == "2.5.1+cpu", torch.__version__
+          assert transformers.__version__ == "4.46.3", transformers.__version__
+          assert numpy.__version__ == "2.1.3", numpy.__version__
+          assert scipy.__version__ == "1.14.1", scipy.__version__
+          PY
+      - name: Syntax and frozen-config checks
+        run: |
+          python -m py_compile experiments/exp_098a/run_experiment.py
+          python - <<'PY'
+          import json
+          from experiments.exp_098a.run_experiment import validate_config
+          cfg=json.load(open('experiments/exp_098a/config.json'))
+          validate_config(cfg)
+          assert cfg['first_gate']['maximum_bf16_repair_fraction_p50'] == 0.10
+          assert cfg['first_gate']['maximum_bf16_repair_fraction_p95'] == 0.10
+          print('EXP-098A contract: PASS')
+          PY
+
+  public-checkpoint-gate:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[exp098a-results]') }}
+    needs: contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install frozen public-checkpoint runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Record host
+        run: |
+          mkdir -p results/exp_098a/${GITHUB_SHA}
+          {
+            uname -a
+            lscpu
+            free -b
+            df -B1 .
+            python --version
+          } | tee results/exp_098a/${GITHUB_SHA}/host.txt
+      - name: Execute Q4/BF16 oracle row-lock Gate
+        shell: bash
+        run: |
+          set -o pipefail
+          python -m experiments.exp_098a.run_experiment \
+            --config experiments/exp_098a/config.json \
+            --output-dir results/exp_098a/${GITHUB_SHA} \
+            2>&1 | tee results/exp_098a/${GITHUB_SHA}/run.log
+      - name: Write latest-result handoff
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          sha=os.environ['GITHUB_SHA']
+          r=json.loads((Path('results/exp_098a')/sha/'result.json').read_text())
+          h=r['holdout']
+          lines=[
+            '# EXP-098A latest result — Q4/BF16 Rounding-Cell Oracle Gate', '',
+            f'- source commit: `{sha}`',
+            f'- decision: `{r["authoritative_decision"]}`',
+            f'- deterministic core: `{r["deterministic_core_sha256"]}`',
+            f'- holdout oracle original-BF16 repair p50: `{h["oracle_bf16_repair_fraction_p50"]:.12%}`',
+            f'- holdout oracle original-BF16 repair p95: `{h["oracle_bf16_repair_fraction_p95"]:.12%}`',
+            f'- holdout oracle original-BF16 repair min/max: `{h["oracle_bf16_repair_fraction_min"]:.12%} / {h["oracle_bf16_repair_fraction_max"]:.12%}`',
+            f'- maximum holdout role repair p95: `{r["maximum_holdout_role_repair_fraction_p95"]:.12%}`',
+            f'- integrity failures: `{r["integrity_failures"]}`', '',
+            '## Holdout role repair fractions', '',
+          ]
+          for role, s in h['role_stats'].items():
+            lines += [f'- `{role}`: p50 `{s["repair_fraction_p50"]:.12%}`, p95 `{s["repair_fraction_p95"]:.12%}`']
+          lines += ['', '## Claim boundary', '',
+            'The match selector is a perfect oracle. A sound BF16 rounding-cell certificate,',
+            'packed Q4 plus exact repair kernel, TARGET-W, physical 8-GiB execution, exact',
+            'complete successor-state integration, and same-machine 4B latency remain `NOT TESTED`.', '']
+          Path('docs/research/EXP_098A_LATEST_RESULT.md').write_text('\n'.join(lines), encoding='utf-8')
+          PY
+      - name: Refresh evidence checksums
+        run: |
+          cd results/exp_098a/${GITHUB_SHA}
+          find . -type f ! -name checksums.sha256 -print0 | sort -z | xargs -0 sha256sum > checksums.sha256
+      - name: Upload immutable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-098a-${{ github.sha }}
+          path: results/exp_098a/${{ github.sha }}/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit result and handoff
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/exp_098a/${GITHUB_SHA}/ docs/research/EXP_098A_LATEST_RESULT.md
+          if git diff --cached --quiet; then
+            echo 'No result delta'
+            exit 0
+          fi
+          git commit -m "research: record EXP-098A Q4 rounding-cell oracle Gate [exp098a-results] [skip ci]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+      - name: Publish summary
+        if: always()
+        run: |
+          if test -f results/exp_098a/${GITHUB_SHA}/result.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          r=json.loads((Path('results/exp_098a')/os.environ['GITHUB_SHA']/'result.json').read_text())
+          h=r['holdout']
+          print('## EXP-098A Q4/BF16 oracle row-lock Gate')
+          print(f"- decision: `{r['authoritative_decision']}`")
+          print(f"- holdout repair p50: `{h['oracle_bf16_repair_fraction_p50']:.9%}`")
+          print(f"- holdout repair p95: `{h['oracle_bf16_repair_fraction_p95']:.9%}`")
+          print(f"- max role p95: `{r['maximum_holdout_role_repair_fraction_p95']:.9%}`")
+          PY
+          fi

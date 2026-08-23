@@ -1,0 +1,32 @@
+{
+  "schema": "exp-098a-q4-rounding-cell-oracle-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "dtype": "bfloat16",
+  "attention_implementation": "eager",
+  "torch_num_threads": 2,
+  "layer_indices": [0, 15, 29],
+  "projection_roles": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+  "decode_positions_per_prompt": 4,
+  "q4": {
+    "scheme": "rowwise_symmetric_int4",
+    "minimum": -8,
+    "maximum": 7,
+    "scale_dtype": "bfloat16"
+  },
+  "first_gate": {
+    "maximum_bf16_repair_fraction_p50": 0.10,
+    "maximum_bf16_repair_fraction_p95": 0.10,
+    "maximum_role_repair_fraction_p95": 0.25
+  },
+  "prompts": [
+    {"id": "english_explanation", "split": "build", "family": "english", "prompt": "Explain why the sky can look red at sunset in three concise paragraphs.\n"},
+    {"id": "korean_reasoning", "split": "build", "family": "korean", "prompt": "다음 문제를 단계별로 설명해줘. 17개의 사과를 5명이 최대한 공평하게 나누면 어떻게 되는가?\n"},
+    {"id": "code_generation", "split": "build", "family": "code", "prompt": "Write a Python function for stable topological sorting with cycle detection. Return code only.\n"},
+    {"id": "structured_json", "split": "holdout", "family": "structured_json", "prompt": "Return JSON with keys name, version, enabled, and tags for a fictional compiler.\n"},
+    {"id": "mathematics", "split": "holdout", "family": "math", "prompt": "Compute the derivative of x^3 sin(x) and simplify the result.\n"},
+    {"id": "repeated_pattern", "split": "holdout", "family": "repeated_token", "prompt": "A B A B A B A B A B A B. Continue the pattern and explain it briefly.\n"}
+  ],
+  "stop_rule": "This is a favorable perfect-oracle row-lock Gate. On failure, do not sweep Q4 range, layers, prompts, positions, equality tolerance, or thresholds. A different continuation must change the predictor information source or the repair unit. On survival, build the sound BF16 rounding-cell certificate and fully charge Q4 predictor bytes/operations plus exact repairs before any 405B claim."
+}
