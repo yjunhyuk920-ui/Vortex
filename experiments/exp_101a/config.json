@@ -1,0 +1,49 @@
+{
+  "schema": "exp-101a-structured-direct-sum-v1",
+  "frozen_before_results": true,
+  "relation": {
+    "paper": "Exploiting the Structure in Tensor Decompositions for Matrix Multiplication",
+    "arxiv": "2602.11041v3",
+    "repository": "mkauers/matrix-multiplication",
+    "commit": "12c26b29a5458e173813911fb4f2c2865fba841e",
+    "path": "structured/666.exp",
+    "url": "https://raw.githubusercontent.com/mkauers/matrix-multiplication/12c26b29a5458e173813911fb4f2c2865fba841e/structured/666.exp",
+    "git_blob_sha1": "9e940a8308d6faf5784967ec160d6429e5d1f563",
+    "line_count": 153,
+    "base_shape": [6, 6, 6],
+    "unit_multiplicity": 137,
+    "double_multiplicity": 8,
+    "reported_triple_cyclic_rank": 3581065
+  },
+  "registered_inputs": {
+    "target_shapes": {
+      "path": "results/exp_071/raw/tensor_rows.jsonl",
+      "git_blob_sha1": "e7d1d3af15a5f30a2c041e6af195e8549ed47a64"
+    },
+    "catalog_rows": {
+      "path": "results/exp_100a/0348e87fa385630a84043727ddb9a34c032df4ac/raw/catalog_rows.json",
+      "git_blob_sha1": "4358614a493d7fe9f44fdb4626ca01a422fa2dd2"
+    },
+    "exp_100a_result": {
+      "path": "results/exp_100a/0348e87fa385630a84043727ddb9a34c032df4ac/result.json",
+      "git_blob_sha1": "3b85c5ddfca14170aec823c94b6a21ca927c350e"
+    }
+  },
+  "search": {
+    "block_lengths": [32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384],
+    "maximum_depth": 12,
+    "state_limit_per_oracle": 2000000,
+    "exclude_tensor_families": ["embedding"]
+  },
+  "target_contract": {
+    "first_core_reduction_fraction": 0.1,
+    "p50_target_fraction": 0.011851851851851851,
+    "p95_target_fraction": 0.014814814814814815
+  },
+  "decisions": {
+    "promotion": "PROMOTE_STRUCTURED_DIRECT_SUM_COMPOSITION_TO_EXPLICIT_TRANSFORM_CIRCUIT_GATE",
+    "scientific_rejection": "REJECT_PUBLISHED_666_STRUCTURED_DIRECT_SUM_COMPOSITION_AS_10X_CORE",
+    "control_failure": "INVALID_STRUCTURED_DIRECT_SUM_CONTROL_FAILURE"
+  },
+  "claim_boundary": "Multiplication-only favorable oracle over exact integral AlphaTensor catalog schemes composed with the published 6x6x6 structured direct-sum relation. All additions, transforms, bytes, workspace, native-order repair, causal block construction, and N/A are free. A pass is not an executor; a failure closes only this frozen tensor source and composition language."
+}
