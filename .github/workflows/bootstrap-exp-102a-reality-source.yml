@@ -31,15 +31,19 @@ jobs:
           set -euo pipefail
           parts=(
             .bootstrap/exp102a_part_00
-            .bootstrap/exp102a_part_01
-            .bootstrap/exp102a_part_02
+            .bootstrap/exp102a_part_01_0
+            .bootstrap/exp102a_part_01_1
+            .bootstrap/exp102a_part_02_0
+            .bootstrap/exp102a_part_02_1
             .bootstrap/exp102a_part_03
           )
           for part in "${parts[@]}"; do test -f "$part"; done
           cat <<'SUMS' | sha256sum -c -
           074a3cfc05eb134653e4910931eda599451b9fc439cd4d681d09936fb68516b1  .bootstrap/exp102a_part_00
-          d9e7a003d91289cf0af52b533ffef39d0ad09f3b086e7f53fa9ed99f9daea123  .bootstrap/exp102a_part_01
-          b7698aa35b9fd9e8ec9ac3b48b5a4c2d0d26696c96058fe858aa253460105879  .bootstrap/exp102a_part_02
+          a782184ddfc8ea6d15c4cb75c8bfdf187d3c6c67b80ebe0bb0277051711ca9f9  .bootstrap/exp102a_part_01_0
+          a94d10094a86a649607cf2c972f654d748af14ee563b9a760acf6d93aa974f71  .bootstrap/exp102a_part_01_1
+          2b1547f1f3ec376767b1c9f4931d3ab33f9424a3f111725e8bbf7e1e12eacd1e  .bootstrap/exp102a_part_02_0
+          1ece0d2b34f58cd618f2af64932c33c36aa5b507530180d618e1267c6f732afb  .bootstrap/exp102a_part_02_1
           9c0ead84eb0910b0dbc52932f3697ee953461b90b6e0dfd822d1eed6317c1123  .bootstrap/exp102a_part_03
           SUMS
           cat "${parts[@]}" > /tmp/exp102a_source.tar.gz
