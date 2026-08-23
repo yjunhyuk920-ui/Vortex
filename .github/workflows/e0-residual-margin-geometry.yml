@@ -1,0 +1,54 @@
+name: e0-residual-margin-random-geometry
+
+on:
+  push:
+    branches:
+      - research/exp-097a-causal-residual-codebook-gate
+  pull_request:
+    branches:
+      - research/exp-096a-residual-margin-certificate-gate
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  geometry-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+      - name: Install frozen numerical dependencies
+        run: python -m pip install --disable-pip-version-check numpy==2.3.5 scipy==1.17.0
+      - name: Reproduce full-vocabulary geometry audit
+        run: |
+          python experiments/e0_residual_margin_geometry/run_audit.py \
+            --output /tmp/e0-residual-margin-geometry.json
+      - name: Verify frozen scientific invariants
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          expected = json.loads(Path('results/e0_residual_margin_geometry/summary.json').read_text())
+          actual = json.loads(Path('/tmp/e0-residual-margin-geometry.json').read_text())
+          keys = [
+              'schema', 'vocabulary_size', 'required_unique_margin',
+              'k128_trials', 'k128_certified', 'k128_support_p50',
+              'k128_support_p95', 'k128_l1_p50', 'k128_l1_p95', 'decision'
+          ]
+          for key in keys:
+              assert actual[key] == expected[key], (key, actual[key], expected[key])
+          assert actual['k128_certified'] == actual['k128_trials'] == 6
+          assert actual['rows'][6]['k'] == 8 and not actual['rows'][6]['success']
+          assert actual['rows'][7]['k'] == 16 and actual['rows'][7]['success']
+          for row in actual['rows']:
+              if row['success']:
+                  assert row['argmax'] == row['target']
+                  assert row['achieved_margin'] > 0.0
+          print('scientific invariants: PASS')
+          PY
+      - name: Syntax check
+        run: python -m py_compile experiments/e0_residual_margin_geometry/run_audit.py
