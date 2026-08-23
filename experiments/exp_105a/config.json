@@ -1,0 +1,36 @@
+{
+  "schema": "exp-105a-progressive-head-tournament-v1",
+  "authoritative_arm": "REAL_EXECUTOR_ONLY_EXACT_Q4_DRAFT_HEAD",
+  "random_seed": 105001,
+  "simulation": {
+    "vocab_size": 4096,
+    "dimension": 2048,
+    "queries": 12,
+    "block_sizes": [
+      64,
+      128,
+      256,
+      512,
+      1024,
+      2048
+    ]
+  },
+  "target": {
+    "vocab_size": 128256,
+    "dimension": 16384,
+    "real_q4_head_bytes": 1116340224,
+    "real_q4_one_layer_bytes": 1693450240,
+    "p50_budget_bytes": 2400000000,
+    "reserve_bytes": 1517133824,
+    "vram_bytes": 8589934592
+  },
+  "forbidden_grants": [
+    "future_target_state",
+    "static_topk_without_exact_certificate",
+    "free_selector_state",
+    "free_head_metadata",
+    "free_hbm_scan",
+    "unmeasured_compression",
+    "configured_block_reported_as_accepted_tokens"
+  ]
+}
