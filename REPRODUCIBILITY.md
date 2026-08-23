@@ -2002,5 +2002,5 @@ python experiments/exp_102a/run_experiment.py \
   --output-dir results/exp_102a/<source-commit>
 ```
 
-Verify `checksums.sha256` before using the processed result. Source commit: `e156d519e4fe20838de4b83bc8c1534d78735365`.
+Verify `checksums.sha256` before using the processed result. Source commit: `8fef54bcd80932616adb8c682b55d420fc9faadd`.
 <!-- EXP-102A:END -->
