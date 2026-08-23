@@ -75,7 +75,14 @@ exists, it is an active Gate, not a scientific result.
 """
     if old in text:
         text = text.replace(old, new, 1)
-    elif "EXP-102A reality-first causal draft/verify Gate" not in text:
+    elif not any(
+        marker in text
+        for marker in (
+            "EXP-102A reality-first causal draft/verify Gate",
+            "Active frontier — EXP-102A",
+            "research/exp-102a-causal-segment-delta-reality-gate",
+        )
+    ):
         raise RuntimeError("README active-frontier block changed unexpectedly")
     path.write_text(text, encoding="utf-8")
     if START in text or "## Reality-first authoritative execution" not in text:
