@@ -25,76 +25,47 @@ jobs:
         with:
           python-version: "3.11.10"
           cache: pip
-      - name: Apply classification-only repair
+      - name: Apply classification-only repair robustly
         run: |
           python - <<'PY'
           from pathlib import Path
 
-          runner = Path('experiments/exp_100a/run_experiment.py')
-          text = runner.read_text(encoding='utf-8')
-          old = '''    integrity_failures: list[str] = []
-          if control_mismatches:
-              integrity_failures.append("synthetic_factorization_execution_mismatch")
-          if not any(row.get("status") == "eligible" for row in catalog_rows):
-              integrity_failures.append("no_eligible_catalog_factorization")
-          if not schemes:
-              integrity_failures.append("no_pareto_orientation")
-          if any(not result.direct_structural_plans for result in searches.values()):
-              integrity_failures.append("empty_direct_shape_search")
-          if any(not result.oracle_structural_plans for result in searches.values()):
-              integrity_failures.append("empty_oracle_shape_search")
+          runner = Path("experiments/exp_100a/run_experiment.py")
+          text = runner.read_text(encoding="utf-8")
+          lines = text.splitlines()
 
-          direct_passes = [
-          '''
-          new = '''    integrity_failures: list[str] = []
-          if control_mismatches:
-              integrity_failures.append("synthetic_factorization_execution_mismatch")
-          if not any(row.get("status") == "eligible" for row in catalog_rows):
-              integrity_failures.append("no_eligible_catalog_factorization")
-          if not schemes:
-              integrity_failures.append("no_pareto_orientation")
+          # Remove only the two incorrect integrity classifications. An empty
+          # shape/block frontier after the frozen 8-GiB filter is negative
+          # scientific evidence, not a tensor-identity/control failure.
+          for condition, append_line in (
+              (
+                  "    if any(not result.direct_structural_plans for result in searches.values()):",
+                  '        integrity_failures.append("empty_direct_shape_search")',
+              ),
+              (
+                  "    if any(not result.oracle_structural_plans for result in searches.values()):",
+                  '        integrity_failures.append("empty_oracle_shape_search")',
+              ),
+          ):
+              if condition in lines:
+                  index = lines.index(condition)
+                  if index + 1 >= len(lines) or lines[index + 1] != append_line:
+                      raise SystemExit(f"unexpected classification body after: {condition}")
+                  del lines[index : index + 2]
 
-          # A shape/block pair can legitimately have no explicit plan after the frozen
-          # 8-GiB workspace filter. That is negative resource evidence, not a broken
-          # tensor identity or control. Preserve the frozen search and record empty
-          # frontiers diagnostically.
-          search_coverage = search_coverage_diagnostics(searches)
-          expected_search_count = len(config["search"]["block_lengths"]) * len(
-              {(family.rows, family.columns) for family in families}
-          )
-          if len(searches) != expected_search_count:
-              integrity_failures.append("incomplete_shape_block_search_population")
+          text = "\n".join(lines) + "\n"
 
-          direct_passes = [
-          '''
-          if old not in text:
-              raise SystemExit('runner integrity block not found')
-          text = text.replace(old, new)
-
-          old_core = '''        "scheme_rows": scheme_rows,
-          "search_rows": search_rows,
-          "block_rows": block_rows,
-          '''
-          new_core = '''        "scheme_rows": scheme_rows,
-          "search_rows": search_rows,
-          "search_coverage": search_coverage,
-          "block_rows": block_rows,
-          '''
-          if old_core not in text:
-              raise SystemExit('runner core block not found')
-          text = text.replace(old_core, new_core)
-
-          marker = '''def summarize_prior(
-          exp080: Mapping[str, Any], exp099: Mapping[str, Any]
+          if "def search_coverage_diagnostics(" not in text:
+              marker = "def summarize_prior(\n"
+              if marker not in text:
+                  raise SystemExit("summarize_prior marker not found")
+              helper = '''def search_coverage_diagnostics(
+              searches: Mapping[tuple[int, int, int], SearchResult],
           ) -> dict[str, Any]:
-          '''
-          helper = '''def search_coverage_diagnostics(
-          searches: Mapping[tuple[int, int, int], SearchResult],
-          ) -> dict[str, Any]:
-              """Separate legitimate resource-empty frontiers from integrity failures."""
+              """Record resource-empty search frontiers without invalidating controls."""
 
-              empty_direct = []
-              empty_oracle = []
+              empty_direct: list[dict[str, Any]] = []
+              empty_oracle: list[dict[str, Any]] = []
               for (block_length, rows, columns), result in sorted(searches.items()):
                   identity = {
                       "block_length": int(block_length),
@@ -119,26 +90,64 @@ jobs:
 
 
           '''
-          if marker not in text:
-              raise SystemExit('runner helper marker not found')
-          text = text.replace(marker, helper + marker)
-          runner.write_text(text, encoding='utf-8')
+              # Normalize indentation that YAML contributes inside this literal.
+              helper = "\n".join(
+                  line[10:] if line.startswith("          ") else line
+                  for line in helper.splitlines()
+              ) + "\n"
+              text = text.replace(marker, helper + marker, 1)
 
-          test = Path('tests/exp_100a/test_explicit_rectangular_fmm.py')
-          text = test.read_text(encoding='utf-8')
-          old_import = 'from experiments.exp_100a.run_experiment import load_catalog, validate_config\n'
-          new_import = '''from experiments.exp_100a.run_experiment import (
-              SearchResult,
-              load_catalog,
-              search_coverage_diagnostics,
-              validate_config,
-          )
+          if "search_coverage = search_coverage_diagnostics(searches)" not in text:
+              anchor = '    if not schemes:\n        integrity_failures.append("no_pareto_orientation")\n'
+              if anchor not in text:
+                  raise SystemExit("no_pareto_orientation anchor not found")
+              addition = '''
+
+              # Preserve the frozen search and classify resource-empty frontiers
+              # diagnostically. Only an incomplete registered search population is
+              # an integrity failure.
+              search_coverage = search_coverage_diagnostics(searches)
+              expected_search_count = len(config["search"]["block_lengths"]) * len(
+                  {(family.rows, family.columns) for family in families}
+              )
+              if len(searches) != expected_search_count:
+                  integrity_failures.append("incomplete_shape_block_search_population")
           '''
-          if old_import not in text:
-              raise SystemExit('test import not found')
-          text = text.replace(old_import, new_import)
-          test_marker = 'def test_ledger_updater_is_idempotent_and_marks_every_required_file(tmp_path) -> None:\n'
-          test_case = '''def test_resource_empty_shape_frontier_is_diagnostic_not_integrity_failure() -> None:
+              addition = "\n".join(
+                  line[10:] if line.startswith("          ") else line
+                  for line in addition.splitlines()
+              )
+              text = text.replace(anchor, anchor + addition, 1)
+
+          if '"search_coverage": search_coverage,' not in text:
+              lines = text.splitlines()
+              indexes = [
+                  index
+                  for index, line in enumerate(lines)
+                  if '"search_rows": search_rows,' in line
+              ]
+              if len(indexes) != 1:
+                  raise SystemExit(f"expected one search_rows field, found {len(indexes)}")
+              index = indexes[0]
+              indentation = lines[index][: len(lines[index]) - len(lines[index].lstrip())]
+              lines.insert(index + 1, indentation + '"search_coverage": search_coverage,')
+              text = "\n".join(lines) + "\n"
+
+          runner.write_text(text, encoding="utf-8")
+
+          test = Path("tests/exp_100a/test_explicit_rectangular_fmm.py")
+          test_text = test.read_text(encoding="utf-8")
+          test_name = "test_resource_empty_shape_frontier_is_diagnostic_not_integrity_failure"
+          if test_name not in test_text:
+              test_text = test_text.rstrip() + '''
+
+
+def test_resource_empty_shape_frontier_is_diagnostic_not_integrity_failure() -> None:
+              from experiments.exp_100a.run_experiment import (
+                  SearchResult,
+                  search_coverage_diagnostics,
+              )
+
               empty = SearchResult(
                   block_length=16384,
                   rows=128256,
@@ -155,13 +164,14 @@ jobs:
               assert diagnostics["empty_oracle_count"] == 1
               assert diagnostics["empty_direct"][0]["rows"] == 128256
               assert "not a control failure" in diagnostics["empty_frontier_interpretation"]
-
-
           '''
-          if test_marker not in text:
-              raise SystemExit('test insertion marker not found')
-          text = text.replace(test_marker, test_case + test_marker)
-          test.write_text(text, encoding='utf-8')
+              test_text = "\n".join(
+                  line[10:] if line.startswith("          ") else line
+                  for line in test_text.splitlines()
+              ) + "\n"
+              test.write_text(test_text, encoding="utf-8")
+
+          print("EXP-100A classification repair materialized")
           PY
       - name: Install focused runtime and verify repair
         run: |
@@ -175,6 +185,7 @@ jobs:
         run: |
           set -euo pipefail
           rm -f .github/workflows/repair-exp100a-control-classification.yml
+          rm -f .exp100a-control-repair-trigger
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
