@@ -1,0 +1,234 @@
+{
+  "authoritative_decision": "RETAIN_LOSSLESS_OFFLOAD_AND_OVERLAP_AS_AUXILIARY_REQUIRE_FINE_DENSE_ARITHMETIC_REDUCTION_FOR_CORE",
+  "claim_boundary": {
+    "actual_native_4b_baseline": "NOT_TESTED",
+    "draft_attention_kv_sync_cost": "GRANTED_FREE",
+    "equation_kind": "optimistic lower bound",
+    "exact_successor_state_integration": "NOT_TESTED",
+    "perfect_io_compute_overlap": true,
+    "target_405b_execution": "NOT_TESTED"
+  },
+  "conditional_native_4b_rows": [
+    {
+      "maximum_fine_dense_arithmetic_fraction_for_exact_chain": 0.12714080611852405,
+      "maximum_verified_nodes_per_accepted_token": 0.12714080611852405,
+      "minimum_accepted_tokens_for_io": 2819,
+      "native_4b_p50_ms": 20.0,
+      "p50_target_allowance_ms": 24.0,
+      "unreduced_dense_chain_semantically_feasible": false
+    },
+    {
+      "maximum_fine_dense_arithmetic_fraction_for_exact_chain": 0.31785201529631013,
+      "maximum_verified_nodes_per_accepted_token": 0.31785201529631013,
+      "minimum_accepted_tokens_for_io": 1128,
+      "native_4b_p50_ms": 50.0,
+      "p50_target_allowance_ms": 60.0,
+      "unreduced_dense_chain_semantically_feasible": false
+    },
+    {
+      "maximum_fine_dense_arithmetic_fraction_for_exact_chain": 0.6357040305926203,
+      "maximum_verified_nodes_per_accepted_token": 0.6357040305926203,
+      "minimum_accepted_tokens_for_io": 564,
+      "native_4b_p50_ms": 100.0,
+      "p50_target_allowance_ms": 120.0,
+      "unreduced_dense_chain_semantically_feasible": false
+    },
+    {
+      "maximum_fine_dense_arithmetic_fraction_for_exact_chain": 1.0,
+      "maximum_verified_nodes_per_accepted_token": 1.0,
+      "minimum_accepted_tokens_for_io": 359,
+      "native_4b_p50_ms": 157.30590839069768,
+      "p50_target_allowance_ms": 188.7670900688372,
+      "unreduced_dense_chain_semantically_feasible": true
+    },
+    {
+      "maximum_fine_dense_arithmetic_fraction_for_exact_chain": 1.0,
+      "maximum_verified_nodes_per_accepted_token": 1.2714080611852405,
+      "minimum_accepted_tokens_for_io": 282,
+      "native_4b_p50_ms": 200.0,
+      "p50_target_allowance_ms": 240.0,
+      "unreduced_dense_chain_semantically_feasible": true
+    },
+    {
+      "maximum_fine_dense_arithmetic_fraction_for_exact_chain": 1.0,
+      "maximum_verified_nodes_per_accepted_token": 1.9071120917778608,
+      "minimum_accepted_tokens_for_io": 188,
+      "native_4b_p50_ms": 300.0,
+      "p50_target_allowance_ms": 360.0,
+      "unreduced_dense_chain_semantically_feasible": true
+    }
+  ],
+  "deterministic_core_sha256": "6e7ac2353ff26cc5df7a3d7790314aa726227204fc71f554c7f08ccb1b2069f3",
+  "diagnostic_scenarios": [
+    {
+      "accepted_tokens": 128.0,
+      "classification": "oracle",
+      "cycle_floor_s": 67.64136445386949,
+      "dense_compute_cycle_s": 24.162187528811163,
+      "dominant_floor": "io",
+      "id": "perfect_chain_128",
+      "note": "One exact dense candidate column per committed token; perfect K=128 future chain.",
+      "per_accepted_token_floor_s": 0.5284481597958554,
+      "required_native_4b_p50_ms": 440.37346649654614,
+      "required_native_4b_p95_ms": 352.2987731972369,
+      "target_sweep_io_s": 67.64136445386949,
+      "verified_nodes": 128.0,
+      "verified_nodes_per_accepted_token": 1.0
+    },
+    {
+      "accepted_tokens": 85.0,
+      "classification": "repository_threshold",
+      "cycle_floor_s": 67.64136445386949,
+      "dense_compute_cycle_s": 24.162187528811163,
+      "dominant_floor": "io",
+      "id": "exp091_raw_first_sweep_threshold",
+      "note": "Raw first-sweep release threshold retained from EXP-091A accounting.",
+      "per_accepted_token_floor_s": 0.7957807582808175,
+      "required_native_4b_p50_ms": 663.1506319006812,
+      "required_native_4b_p95_ms": 530.5205055205449,
+      "target_sweep_io_s": 67.64136445386949,
+      "verified_nodes": 128.0,
+      "verified_nodes_per_accepted_token": 1.5058823529411764
+    },
+    {
+      "accepted_tokens": 67.0,
+      "classification": "repository_threshold",
+      "cycle_floor_s": 67.64136445386949,
+      "dense_compute_cycle_s": 24.162187528811163,
+      "dominant_floor": "io",
+      "id": "exp091_compressed_first_sweep_threshold",
+      "note": "Compressed first-sweep release threshold retained from EXP-091A accounting.",
+      "per_accepted_token_floor_s": 1.0095726037890969,
+      "required_native_4b_p50_ms": 841.3105031575807,
+      "required_native_4b_p95_ms": 673.0484025260646,
+      "target_sweep_io_s": 67.64136445386949,
+      "verified_nodes": 128.0,
+      "verified_nodes_per_accepted_token": 1.9104477611940298
+    },
+    {
+      "accepted_tokens": 27.08,
+      "classification": "cross_system_literature_diagnostic",
+      "cycle_floor_s": 67.64136445386949,
+      "dense_compute_cycle_s": 54.364921939825116,
+      "dominant_floor": "io",
+      "id": "subspec_qwen25_7b_mtbench_diagnostic",
+      "note": "SubSpec reports 288 verified draft tokens and tau=27.08 in its Qwen2.5-7B MT-Bench temperature study; this row is not a 405B measurement.",
+      "per_accepted_token_floor_s": 2.4978347287248703,
+      "required_native_4b_p50_ms": 2081.528940604059,
+      "required_native_4b_p95_ms": 1665.2231524832468,
+      "target_sweep_io_s": 67.64136445386949,
+      "verified_nodes": 288.0,
+      "verified_nodes_per_accepted_token": 10.635155096011818
+    },
+    {
+      "accepted_tokens": 3.052,
+      "classification": "cross_system_literature_diagnostic",
+      "cycle_floor_s": 67.64136445386949,
+      "dense_compute_cycle_s": 0.943835450344186,
+      "dominant_floor": "io",
+      "id": "cats_vicuna7b_mtbench_greedy_favorable_minimum",
+      "note": "CATS uses five draft steps and reports tau=3.052 on Vicuna-7B MT-Bench greedy; actual correction-tree nodes can exceed five.",
+      "per_accepted_token_floor_s": 22.162963451464446,
+      "required_native_4b_p50_ms": 18469.136209553708,
+      "required_native_4b_p95_ms": 14775.308967642964,
+      "target_sweep_io_s": 67.64136445386949,
+      "verified_nodes": 5.0,
+      "verified_nodes_per_accepted_token": 1.6382699868938402
+    },
+    {
+      "accepted_tokens": 12.93,
+      "classification": "cross_system_literature_diagnostic",
+      "cycle_floor_s": 193.2975002304893,
+      "dense_compute_cycle_s": 193.2975002304893,
+      "dominant_floor": "compute",
+      "id": "specexec_budget_1024_diagnostic",
+      "note": "SpecExec budget/tau row reproduced in the SubSpec related-work experiment; this is not a 405B measurement.",
+      "per_accepted_token_floor_s": 14.949535980702963,
+      "required_native_4b_p50_ms": 12457.946650585804,
+      "required_native_4b_p95_ms": 9966.357320468642,
+      "target_sweep_io_s": 67.64136445386949,
+      "verified_nodes": 1024.0,
+      "verified_nodes_per_accepted_token": 79.19566898685228
+    },
+    {
+      "accepted_tokens": 359.0,
+      "classification": "derived_oracle",
+      "cycle_floor_s": 67.76738533471256,
+      "dense_compute_cycle_s": 67.76738533471256,
+      "dominant_floor": "compute",
+      "id": "perfect_chain_at_io_compute_crossover",
+      "note": "Shortest integer perfect chain whose optimistic dense compute time reaches the compressed target-sweep I/O floor.",
+      "per_accepted_token_floor_s": 0.1887670900688372,
+      "required_native_4b_p50_ms": 157.30590839069768,
+      "required_native_4b_p95_ms": 125.84472671255814,
+      "target_sweep_io_s": 67.64136445386949,
+      "verified_nodes": 359.0,
+      "verified_nodes_per_accepted_token": 1.0
+    }
+  ],
+  "draft_residency_floor": {
+    "full_model_four_bit_substitute_gib": 188.98828125,
+    "full_model_one_bit_substitute_fits_8gib": false,
+    "full_model_one_bit_substitute_gib": 47.2470703125,
+    "maximum_whole_model_bits_per_parameter_in_8gib": 0.16932266798950002
+  },
+  "literature": [
+    {
+      "admissible_role": "training-free offload drafting and candidate generation shell",
+      "name": "SubSpec",
+      "primary_source": "arXiv:2509.18344 / NeurIPS 2025"
+    },
+    {
+      "admissible_role": "offload/draft placement and transfer-compute overlap shell",
+      "name": "SpecOffload",
+      "primary_source": "arXiv:2505.10259"
+    },
+    {
+      "admissible_role": "memory-limited cascaded verification evidence only; trained adapters violate the fixed mission",
+      "name": "CATS",
+      "primary_source": "arXiv:2605.11186"
+    },
+    {
+      "admissible_role": "lossless compressed exact-weight kernel shell",
+      "name": "ZipServ",
+      "primary_source": "arXiv:2603.17435 / ASPLOS 2026"
+    },
+    {
+      "admissible_role": "favorable exact BF16 compression-ratio bound",
+      "name": "Shannon-bound lossless compression",
+      "primary_source": "arXiv:2606.15789"
+    }
+  ],
+  "mission_inputs": {
+    "exact_weight_bits_per_parameter": 16.0,
+    "favorable_device_peak_ops_per_s": 4300000000000.0,
+    "favorable_lossless_compression_ratio": 1.5,
+    "gpu_hot_budget_gib": 8.0,
+    "model_parameters": 405849243648,
+    "p50_relative_multiplier": 1.2,
+    "p95_relative_multiplier": 1.5,
+    "registered_host_free_storage_gib": 97.6183,
+    "registered_host_to_device_bandwidth_gib_per_s": 7.4506
+  },
+  "promotion_requirements": [
+    "causal checkpoint-derived source available before target continuation",
+    "exact token and successor-state equivalence under the frozen ABI",
+    "measured accepted tokens A and target-verified nodes N",
+    "compressed sweep condition S/(B*A) within the native-4B allowance",
+    "fine arithmetic condition r*(N/A)*(2P/F) within the native-4B allowance",
+    "complete 8-GiB hot-state and local-source-storage ledger",
+    "no training, changed checkpoint, hidden compute, or uncharged fallback"
+  ],
+  "schema_version": 1,
+  "target_floor": {
+    "compressed_exact_weight_gib": 503.96875,
+    "compressed_target_sweep_io_s": 67.64136445386949,
+    "critical_native_4b_p50_ms_for_unreduced_dense_chain": 157.30590839069768,
+    "critical_native_4b_p95_ms_for_unreduced_dense_chain": 125.84472671255814,
+    "crossover_perfect_chain_tokens": 359,
+    "dense_candidate_floor_s": 0.1887670900688372,
+    "io_compute_crossover_verified_nodes": 358.3324001509102,
+    "raw_exact_weight_gib": 755.953125,
+    "registered_host_storage_deficit_gib": 406.35045
+  }
+}
