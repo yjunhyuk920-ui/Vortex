@@ -1,0 +1,154 @@
+name: exp-100a-explicit-rectangular-fmm
+
+on:
+  push:
+    branches:
+      - research/exp-100a-explicit-rectangular-fmm-gate
+  pull_request:
+    branches:
+      - research/exp-099a-dyadic-reassociation-lock-gate
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exp-100a-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONHASHSEED: "0"
+  OMP_NUM_THREADS: "1"
+  MKL_NUM_THREADS: "1"
+  OPENBLAS_NUM_THREADS: "1"
+
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Verify frozen contract
+        run: |
+          python - <<'PY'
+          import json
+          import numpy
+          from experiments.exp_100a.run_experiment import validate_config
+
+          assert numpy.__version__ == "2.1.3", numpy.__version__
+          config = json.load(open("experiments/exp_100a/config.json", encoding="utf-8"))
+          validate_config(config)
+          assert config["catalog"]["commit"] == "1949163da3bef7e3eb268a3ac015fd1c2dbfc767"
+          assert config["catalog"]["git_blob_sha1"] == "5ff45960f86da6237f105f78aaa82d29cb18c30e"
+          assert config["target_contract"]["first_core_reduction_fraction"] == 0.10
+          assert config["target_contract"]["peak_vram_bytes"] == 8 * 2**30
+          print("EXP-100A contract: PASS")
+          PY
+      - name: Run focused exact-factorization and cost controls
+        run: python -m pytest -q tests/exp_100a
+      - name: Syntax checks
+        run: |
+          python -m py_compile \
+            vortex_runtime/explicit_rectangular_fmm.py \
+            experiments/exp_100a/run_experiment.py \
+            experiments/exp_100a/update_ledgers.py
+
+  catalogued-fmm-gate:
+    if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[exp100a-results]') }}
+    needs: contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Record host
+        run: |
+          mkdir -p results/exp_100a/${GITHUB_SHA}
+          {
+            uname -a
+            lscpu
+            free -b
+            df -B1 .
+            python --version
+          } | tee results/exp_100a/${GITHUB_SHA}/host.txt
+      - name: Execute pinned AlphaTensor rectangular FMM Gate
+        shell: bash
+        run: |
+          set -o pipefail
+          python experiments/exp_100a/run_experiment.py \
+            --config experiments/exp_100a/config.json \
+            --output-dir results/exp_100a/${GITHUB_SHA} \
+            2>&1 | tee results/exp_100a/${GITHUB_SHA}/run.log
+      - name: Update canonical research ledgers
+        run: |
+          python experiments/exp_100a/update_ledgers.py \
+            --result results/exp_100a/${GITHUB_SHA}/result.json \
+            --source-commit ${GITHUB_SHA}
+      - name: Refresh complete result checksums
+        run: |
+          cd results/exp_100a/${GITHUB_SHA}
+          find . -type f ! -name checksums.sha256 -print0 | sort -z | \
+            xargs -0 sha256sum > checksums.sha256
+      - name: Upload immutable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-100a-${{ github.sha }}
+          path: results/exp_100a/${{ github.sha }}/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit result, handoff, and canonical ledgers
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            results/exp_100a/${GITHUB_SHA}/ \
+            docs/research/EXP_100A_LATEST_RESULT.md \
+            docs/research/VORTEX_RESEARCH_HANDOFF.md \
+            RESEARCH_STATE.md NEXT_EXPERIMENT.md DECISION_LOG.md \
+            FAILED_APPROACHES.md FAILED_APPROACHES_RECENT.md \
+            ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md ARCHITECTURE.md \
+            HARDWARE_VALIDATION_PLAN.md REPRODUCIBILITY.md
+          if git diff --cached --quiet; then
+            echo "No EXP-100A result delta"
+            exit 0
+          fi
+          git commit -m "research: record EXP-100A explicit rectangular FMM Gate [exp100a-results] [skip ci]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+      - name: Publish summary
+        if: always()
+        run: |
+          if test -f results/exp_100a/${GITHUB_SHA}/result.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+
+          path = Path("results/exp_100a") / os.environ["GITHUB_SHA"] / "result.json"
+          result = json.loads(path.read_text())
+          direct = result.get("best_direct_row")
+          oracle = result.get("best_free_transform_oracle_row")
+          print("## EXP-100A explicit rectangular FMM")
+          print(f"- decision: `{result['authoritative_decision']}`")
+          print(f"- eligible exact catalog factorizations: `{result['catalog_summary']['eligible_factorization_count']}`")
+          print(f"- retained orientations: `{result['catalog_summary']['pareto_orientation_count']}`")
+          if direct:
+              print(f"- best explicit arithmetic / I/O: `{direct['direct']['arithmetic_ratio']:.9%} / {direct['direct']['io_fraction']:.9%}` at K=`{direct['block_length']}`")
+          if oracle:
+              print(f"- best free-transform arithmetic / I/O: `{oracle['free_transform_oracle']['arithmetic_ratio']:.9%} / {oracle['free_transform_oracle']['io_fraction']:.9%}` at K=`{oracle['block_length']}`")
+          print(f"- integrity failures: `{result['integrity_failures']}`")
+          PY
+          fi
