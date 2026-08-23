@@ -1,8 +1,12 @@
+from functools import lru_cache
+
 from experiments.exp_101a.run_experiment import build_oracles
 from vortex_runtime.structured_direct_sum import (
     MultiplicationOracle,
     UniformScheme,
+    bilinear_rank_lower_bound,
     catalog_schemes,
+    ceil_div,
     triple_cyclic_rank,
     weighted_ratio,
 )
@@ -10,6 +14,14 @@ from vortex_runtime.structured_direct_sum import (
 
 def test_published_triple_cyclic_rank_identity() -> None:
     assert triple_cyclic_rank(137, 8, 7) == 3_581_065
+
+
+def test_bilinear_flattening_lower_bound() -> None:
+    for shape in ((1, 7, 11), (5, 7, 11), (64, 64, 64)):
+        lower = bilinear_rank_lower_bound(*shape)
+        classical = shape[0] * shape[1] * shape[2]
+        assert 0 < lower <= classical
+    assert bilinear_rank_lower_bound(1, 7, 11) == 1 * 7 * 11
 
 
 def test_classical_fallback_is_never_exceeded() -> None:
@@ -77,6 +89,80 @@ def test_catalog_orientation_and_safe_dominance() -> None:
         for row in schemes
     )
     assert not any(row.source == "bad" for row in schemes)
+
+
+def _brute_cost(
+    shape: tuple[int, int, int],
+    schemes: tuple[UniformScheme, ...],
+    *,
+    depth: int,
+    structured: bool,
+) -> int:
+    """Unpruned reference recurrence used only by the focused control."""
+
+    @lru_cache(maxsize=None)
+    def solve(m: int, k: int, n: int, remaining: int) -> int:
+        best = m * k * n
+        if remaining <= 0 or best == 1:
+            return best
+        for scheme in schemes:
+            child = (
+                ceil_div(m, scheme.a),
+                ceil_div(k, scheme.b),
+                ceil_div(n, scheme.c),
+            )
+            if child != (m, k, n):
+                best = min(
+                    best,
+                    scheme.rank * solve(*child, remaining - 1),
+                )
+        if structured:
+            base = (ceil_div(m, 6), ceil_div(k, 6), ceil_div(n, 6))
+            if base != (m, k, n):
+                for axis in range(3):
+                    doubled = list(base)
+                    doubled[axis] *= 2
+                    best = min(
+                        best,
+                        137 * solve(*base, remaining - 1)
+                        + 8 * solve(*tuple(doubled), remaining - 1),
+                    )
+        return best
+
+    return solve(*shape, depth)
+
+
+def test_exact_branch_and_bound_matches_unpruned_reference() -> None:
+    schemes = catalog_schemes(
+        [
+            {
+                "status": "eligible",
+                "shape": [2, 2, 2],
+                "rank": 7,
+                "key": "strassen",
+            },
+            {
+                "status": "eligible",
+                "shape": [2, 2, 3],
+                "rank": 11,
+                "key": "rect",
+            },
+        ]
+    )
+    oracle = MultiplicationOracle(
+        schemes,
+        maximum_depth=3,
+        structured_enabled=True,
+        state_limit=100_000,
+    )
+    for shape in ((5, 7, 11), (12, 9, 7), (18, 20, 16)):
+        assert oracle.cost(*shape) == _brute_cost(
+            shape,
+            schemes,
+            depth=3,
+            structured=True,
+        )
+    assert oracle.cache_info()["pruned_action_count"] > 0
 
 
 def test_weighted_ratio_counts_repetition() -> None:
