@@ -1865,3 +1865,13 @@ and successor-state contract, one GPU with peak VRAM at most 8 GiB, and
 same-machine native-4B-Q4 p50/p95 limits. Do not describe a structural FMM ratio
 as measured latency.
 <!-- EXP-100A:END -->
+
+<!-- EXP-102A:START -->
+## EXP-102A handoff
+
+Current decision: `REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE`.
+
+Close the frozen greedy external-draft block source. Do not sweep K, prompts, sampling, model revisions, or thresholds. The next core principle must change the causal information source or execution dependency and remain fully executable and charged.
+
+Every next core Gate remains subject to `docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md`.
+<!-- EXP-102A:END -->

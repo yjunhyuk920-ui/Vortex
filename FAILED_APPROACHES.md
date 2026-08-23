@@ -477,3 +477,11 @@ depth at most 12; registered 405B projection population; explicit transform,
 write, cold-byte, workspace, and role-p95 repair ledger; perfect `N/A=1` future
 block grant.
 <!-- EXP-100A:END -->
+
+<!-- EXP-102A:START -->
+## EXP-102A — real causal greedy draft block
+
+The frozen real causal draft/verify source failed the raw A, N/A, latency, or exact-state Gate even before 405B scaling. Reopening requires a materially different causal source.
+
+Frozen scope: pinned SmolLM2-360M target; same-family SmolLM2-135M and cross-family TinyStories-33M drafts; K `64,96`; build-only K selection; raw no-compression traffic threshold; exact terminal KV; all online work charged.
+<!-- EXP-102A:END -->

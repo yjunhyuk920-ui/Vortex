@@ -1990,3 +1990,17 @@ Catalog commit: `1949163da3bef7e3eb268a3ac015fd1c2dbfc767`; Git blob:
 `5ff45960f86da6237f105f78aaa82d29cb18c30e`. Verify the result directory's
 `checksums.sha256` before using summaries.
 <!-- EXP-100A:END -->
+
+<!-- EXP-102A:START -->
+## EXP-102A reproduction
+
+```bash
+python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+python -m pytest -q tests/exp_102a
+python experiments/exp_102a/run_experiment.py \
+  --config experiments/exp_102a/config.json \
+  --output-dir results/exp_102a/<source-commit>
+```
+
+Verify `checksums.sha256` before using the processed result. Source commit: `8fef54bcd80932616adb8c682b55d420fc9faadd`.
+<!-- EXP-102A:END -->

@@ -1304,3 +1304,9 @@ conditional on `REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE`
 finite-word closure, a causal block, exact successor state, and existing-ISA
 lowering pass, the production executor architecture remains unchanged.
 <!-- EXP-100A:END -->
+
+<!-- EXP-102A:START -->
+## EXP-102A architecture status
+
+The only evaluated component is a real causal draft/verify loop. Architecture promotion follows `REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE`. No multiplication oracle, free future activation block, or unimplemented transform circuit is an accepted runtime component.
+<!-- EXP-102A:END -->
