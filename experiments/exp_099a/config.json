@@ -1,0 +1,26 @@
+{
+  "schema": "exp-099a-dyadic-reassociation-lock-v1",
+  "frozen_before_results": true,
+  "model_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "dtype": "bfloat16",
+  "attention_implementation": "eager",
+  "torch_num_threads": 2,
+  "layer_indices": [0, 15, 29],
+  "projection_roles": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+  "decode_positions_per_prompt": 4,
+  "first_gate": {
+    "maximum_native_order_repair_fraction_p50": 0.10,
+    "maximum_native_order_repair_fraction_p95": 0.10,
+    "maximum_role_repair_fraction_p95": 0.25
+  },
+  "prompts": [
+    {"id": "english_explanation", "split": "build", "family": "english", "prompt": "Explain why the sky can look red at sunset in three concise paragraphs.\n"},
+    {"id": "korean_reasoning", "split": "build", "family": "korean", "prompt": "다음 문제를 단계별로 설명해줘. 17개의 사과를 5명이 최대한 공평하게 나누면 어떻게 되는가?\n"},
+    {"id": "code_generation", "split": "build", "family": "code", "prompt": "Write a Python function for stable topological sorting with cycle detection. Return code only.\n"},
+    {"id": "structured_json", "split": "holdout", "family": "structured_json", "prompt": "Return JSON with keys name, version, enabled, and tags for a fictional compiler.\n"},
+    {"id": "mathematics", "split": "holdout", "family": "math", "prompt": "Compute the derivative of x^3 sin(x) and simplify the result.\n"},
+    {"id": "repeated_pattern", "split": "holdout", "family": "repeated_token", "prompt": "A B A B A B A B A B A B. Continue the pattern and explain it briefly.\n"}
+  ],
+  "stop_rule": "On failure, do not sweep layers, prompts, positions, BF16 cell tolerance, or thresholds. This Gate addresses only whether exact-real/reassociated dot products can share the official BF16 output word with sparse native-order repair. A pass authorizes an explicit rectangular bilinear-scheme search with all additions, workspace, causal block generation and repair charged; it does not revive standard Strassen."
+}
