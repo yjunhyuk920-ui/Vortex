@@ -85,7 +85,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          python experiments/exp_097a/run_experiment.py \
+          python -m experiments.exp_097a.run_experiment \
             --config experiments/exp_097a/config.json \
             --output-dir results/exp_097a/${GITHUB_SHA} \
             2>&1 | tee results/exp_097a/${GITHUB_SHA}/run.log
