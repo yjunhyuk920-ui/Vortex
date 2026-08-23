@@ -1,0 +1,117 @@
+{
+  "authoritative_arm": "REAL_EXECUTOR_ONLY_EXACT_Q4_DRAFT_HEAD",
+  "causal_single_scan_gate": {
+    "conclusion": "without guessed branches or a precompiled transition operator, token t+1 cannot enter layer0 before token t head selection",
+    "layers": 4,
+    "longest_dependency_path_nodes": 48,
+    "minimum_serial_weight_stages": 40,
+    "tokens": 8,
+    "weight_bearing_stages_per_token": 5
+  },
+  "claim_boundary": {
+    "physical_8gib": "DERIVED_STATIC_LEDGER_ONLY",
+    "public_checkpoint_head_test": "NOT_TESTED_BECAUSE_UNIVERSAL_REGISTERED_ALGORITHM_GATE_IS_DECISIVE",
+    "target_405b_execution": "NOT_TESTED",
+    "target_latency": "NOT_TESTED"
+  },
+  "config": {
+    "authoritative_arm": "REAL_EXECUTOR_ONLY_EXACT_Q4_DRAFT_HEAD",
+    "forbidden_grants": [
+      "future_target_state",
+      "static_topk_without_exact_certificate",
+      "free_selector_state",
+      "free_head_metadata",
+      "free_hbm_scan",
+      "unmeasured_compression",
+      "configured_block_reported_as_accepted_tokens"
+    ],
+    "random_seed": 105001,
+    "schema": "exp-105a-progressive-head-tournament-v1",
+    "simulation": {
+      "block_sizes": [64, 128, 256, 512, 1024, 2048],
+      "dimension": 2048,
+      "queries": 12,
+      "vocab_size": 4096
+    },
+    "target": {
+      "dimension": 16384,
+      "p50_budget_bytes": 2400000000,
+      "real_q4_head_bytes": 1116340224,
+      "real_q4_one_layer_bytes": 1693450240,
+      "reserve_bytes": 1517133824,
+      "vocab_size": 128256,
+      "vram_bytes": 8589934592
+    }
+  },
+  "decision": "REJECT_ACTIVATION_ORDERED_EXACT_RESIDUAL_BOUND_HEAD_INDEX_WITH_COMPLETE_LAYER_AS_P50_CORE",
+  "deterministic_core": "17cebccb51a2fbdadf871767151962b47e462bd14caeba1707cd66a64a468598",
+  "environment": {
+    "numpy": "2.3.5",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "python": "3.13.5"
+  },
+  "exact_head_abi": {
+    "accumulator": "exact int64 dot product",
+    "activation": "signed Q8 integers",
+    "selector": "activation dimensions descending by absolute value; Cauchy tail bound with exact ceil integer sqrt",
+    "tie_break": "lowest token id",
+    "weights": "signed Q4 integers [-8,7] with group-128 FP16 scale+zero bytes charged"
+  },
+  "integrity_failures": [],
+  "late_decision_finite_word_control": {
+    "1024": {"activation_and_order_bytes":10240.0,"active_fraction_by_stage":[1.0,1.0],"block_size":1024,"dimension":2048,"exact":true,"full_q4_head_bytes":2228224.0,"head_query_fraction":1.078125,"q4_payload_bytes":2097152.0,"q4_scale_zero_bytes":131072.0,"reference_winner":1999,"row_norm_bytes":16384.0,"row_state_bytes":147456.0,"stage_count":2,"stages_executed":2,"stopped_early":true,"total_head_query_bytes":2402304.0,"vocab_size":2048,"weight_element_fraction":1.0,"winner":1999},
+    "128": {"activation_and_order_bytes":10240.0,"active_fraction_by_stage":[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],"block_size":128,"dimension":2048,"exact":true,"full_q4_head_bytes":2228224.0,"head_query_fraction":1.541360294117647,"q4_payload_bytes":2097152.0,"q4_scale_zero_bytes":131072.0,"reference_winner":1999,"row_norm_bytes":16384.0,"row_state_bytes":1179648.0,"stage_count":16,"stages_executed":16,"stopped_early":true,"total_head_query_bytes":3434496.0,"vocab_size":2048,"weight_element_fraction":1.0,"winner":1999},
+    "2048": {"activation_and_order_bytes":10240.0,"active_fraction_by_stage":[1.0],"block_size":2048,"dimension":2048,"exact":true,"full_q4_head_bytes":2228224.0,"head_query_fraction":1.0450367647058822,"q4_payload_bytes":2097152.0,"q4_scale_zero_bytes":131072.0,"reference_winner":1999,"row_norm_bytes":16384.0,"row_state_bytes":73728.0,"stage_count":1,"stages_executed":1,"stopped_early":true,"total_head_query_bytes":2328576.0,"vocab_size":2048,"weight_element_fraction":1.0,"winner":1999},
+    "256": {"activation_and_order_bytes":10240.0,"active_fraction_by_stage":[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],"block_size":256,"dimension":2048,"exact":true,"full_q4_head_bytes":2228224.0,"head_query_fraction":1.2766544117647058,"q4_payload_bytes":2097152.0,"q4_scale_zero_bytes":131072.0,"reference_winner":1999,"row_norm_bytes":16384.0,"row_state_bytes":589824.0,"stage_count":8,"stages_executed":8,"stopped_early":true,"total_head_query_bytes":2844672.0,"vocab_size":2048,"weight_element_fraction":1.0,"winner":1999},
+    "512": {"activation_and_order_bytes":10240.0,"active_fraction_by_stage":[1.0,1.0,1.0,1.0],"block_size":512,"dimension":2048,"exact":true,"full_q4_head_bytes":2228224.0,"head_query_fraction":1.1443014705882353,"q4_payload_bytes":2097152.0,"q4_scale_zero_bytes":131072.0,"reference_winner":1999,"row_norm_bytes":16384.0,"row_state_bytes":294912.0,"stage_count":4,"stages_executed":4,"stopped_early":true,"total_head_query_bytes":2549760.0,"vocab_size":2048,"weight_element_fraction":1.0,"winner":1999},
+    "64": {"activation_and_order_bytes":10240.0,"active_fraction_by_stage":[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],"block_size":64,"dimension":2048,"exact":true,"full_q4_head_bytes":2228224.0,"head_query_fraction":2.0707720588235294,"q4_payload_bytes":2097152.0,"q4_scale_zero_bytes":131072.0,"reference_winner":1999,"row_norm_bytes":16384.0,"row_state_bytes":2359296.0,"stage_count":32,"stages_executed":32,"stopped_early":true,"total_head_query_bytes":4614144.0,"vocab_size":2048,"weight_element_fraction":1.0,"winner":1999}
+  },
+  "next_gate": "EXP-106A depth-complete width-thin checkpoint surrogate: derive a training-free target-native causal state source cheaper than one complete layer, freeze full bytes/operations, then require real public-checkpoint A>=339 before any backend",
+  "principles": [
+    {"name":"activation_ordered_exact_residual_bound_head_index","premise_flip":"score only query-relevant head columns/rows until exact residual bounds certify the winner","status":"implemented_and_rejected_with_minimum_complete_layer"},
+    {"name":"single_scan_multi_token_resident_transducer","premise_flip":"one resident scan emits multiple causally ordered tokens","status":"rejected_before_backend_by_causal_dependency_gate"},
+    {"closed_family":"self-contained exact program requires checkpoint information; query-time version must expose charged probes","name":"cross_matrix_decision_bit_program","premise_flip":"compile winner bits across all projections instead of materializing matrices","status":"not_reopened_without_new_information_source"}
+  ],
+  "random_dense_control": {
+    "best_p50_block_size": 2048,
+    "best_p50_head_query_fraction": 1.0427389705882353,
+    "projected_target_ratio_to_p50_budget": 1.1906257066666666,
+    "projected_target_total_bytes_per_token": 2857501696.0,
+    "provenance": "MEASURED small finite-word control; target bytes are PROJECTED",
+    "queries": 12,
+    "shape": [4096,2048],
+    "summary": {
+      "1024":{"early_before_final_count":0,"exact_all":true,"head_query_fraction":{"maximum":1.075827205882353,"p50":1.075827205882353,"p95":1.075827205882353},"queries":12,"stages_executed":{"maximum":2.0,"p50":2.0,"p95":2.0},"weight_element_fraction":{"maximum":1.0,"p50":1.0,"p95":1.0}},
+      "128":{"early_before_final_count":2,"exact_all":true,"head_query_fraction":{"maximum":1.3244969985064339,"p50":1.297805337344899,"p95":1.3168575062471277},"queries":12,"stages_executed":{"maximum":16.0,"p50":16.0,"p95":16.0},"weight_element_fraction":{"maximum":0.854095458984375,"p50":0.8359451293945312,"p95":0.8489006042480469}},
+      "2048":{"early_before_final_count":0,"exact_all":true,"head_query_fraction":{"maximum":1.0427389705882353,"p50":1.0427389705882353,"p95":1.0427389705882353},"queries":12,"stages_executed":{"maximum":1.0,"p50":1.0,"p95":1.0},"weight_element_fraction":{"maximum":1.0,"p50":1.0,"p95":1.0}},
+      "256":{"early_before_final_count":0,"exact_all":true,"head_query_fraction":{"maximum":1.1316070556640625,"p50":1.1235109217026653,"p95":1.1292591768152573},"queries":12,"stages_executed":{"maximum":8.0,"p50":8.0,"p95":8.0},"weight_element_fraction":{"maximum":0.881622314453125,"p50":0.874908447265625,"p95":0.87967529296875}},
+      "512":{"early_before_final_count":0,"exact_all":true,"head_query_fraction":{"maximum":1.1412174000459558,"p50":1.1376791561351103,"p95":1.1408209856818703},"queries":12,"stages_executed":{"maximum":4.0,"p50":4.0,"p95":4.0},"weight_element_fraction":{"maximum":0.999267578125,"p50":0.9959716796875,"p95":0.9988983154296875}},
+      "64":{"early_before_final_count":9,"exact_all":true,"head_query_fraction":{"maximum":1.7465443330652572,"p50":1.711288900936351,"p95":1.7365406709558822},"queries":12,"stages_executed":{"maximum":32.0,"p50":31.0,"p95":32.0},"weight_element_fraction":{"maximum":0.8390350341796875,"p50":0.8214073181152344,"p95":0.834033203125}}
+    }
+  },
+  "round_decision": "NO_REGISTERED_EXP_105A_PRINCIPLE_SURVIVES_COMPLETE_EXECUTOR_GATE",
+  "schema": "exp-105a-progressive-head-tournament-v1",
+  "static_resident_ledger": {"bytes":4330597376,"fits":true,"meaning":"capacity passes; per-token scan traffic fails","vram_bytes":8589934592},
+  "structured_positive_control": {
+    "128":{"activation_and_order_bytes":5120.0,"active_fraction_by_stage":[1.0],"block_size":128,"dimension":1024,"exact":true,"expected_winner":0,"full_q4_head_bytes":1114112.0,"head_query_fraction":0.2104779411764706,"q4_payload_bytes":131072.0,"q4_scale_zero_bytes":8192.0,"reference_winner":0,"row_norm_bytes":16384.0,"row_state_bytes":73728.0,"stage_count":8,"stages_executed":1,"stopped_early":true,"total_head_query_bytes":234496.0,"vocab_size":2048,"weight_element_fraction":0.125,"winner":0},
+    "256":{"activation_and_order_bytes":5120.0,"active_fraction_by_stage":[1.0],"block_size":256,"dimension":1024,"exact":true,"expected_winner":0,"full_q4_head_bytes":1114112.0,"head_query_fraction":0.33547794117647056,"q4_payload_bytes":262144.0,"q4_scale_zero_bytes":16384.0,"reference_winner":0,"row_norm_bytes":16384.0,"row_state_bytes":73728.0,"stage_count":4,"stages_executed":1,"stopped_early":true,"total_head_query_bytes":373760.0,"vocab_size":2048,"weight_element_fraction":0.25,"winner":0},
+    "32":{"activation_and_order_bytes":5120.0,"active_fraction_by_stage":[1.0,1.0],"block_size":32,"dimension":1024,"exact":true,"expected_winner":0,"full_q4_head_bytes":1114112.0,"head_query_fraction":0.21783088235294118,"q4_payload_bytes":65536.0,"q4_scale_zero_bytes":8192.0,"reference_winner":0,"row_norm_bytes":16384.0,"row_state_bytes":147456.0,"stage_count":32,"stages_executed":2,"stopped_early":true,"total_head_query_bytes":242688.0,"vocab_size":2048,"weight_element_fraction":0.0625,"winner":0},
+    "64":{"activation_and_order_bytes":5120.0,"active_fraction_by_stage":[1.0],"block_size":64,"dimension":1024,"exact":true,"expected_winner":0,"full_q4_head_bytes":1114112.0,"head_query_fraction":0.15165441176470587,"q4_payload_bytes":65536.0,"q4_scale_zero_bytes":8192.0,"reference_winner":0,"row_norm_bytes":16384.0,"row_state_bytes":73728.0,"stage_count":16,"stages_executed":1,"stopped_early":true,"total_head_query_bytes":168960.0,"vocab_size":2048,"weight_element_fraction":0.0625,"winner":0}
+  },
+  "target_scale_late_decision_ledger": {
+    "best": {"block_size":16384,"head_query_bytes":1122065408.0,"passes_p50":false,"ratio_to_p50_budget":1.17313152,"stages":1,"total_draft_bytes_per_token":2815515648.0},
+    "head_only_fits_p50_byte_budget": true,
+    "head_only_not_promoted_reason": "no implemented causal state source with measured A>=339; adding the minimum complete target-width layer exceeds p50",
+    "provenance": "DERIVED exact bytes for a legal late-decision Q4 head/query under this algorithm",
+    "rows": [
+      {"block_size":128,"head_query_bytes":1708451840.0,"passes_p50":false,"ratio_to_p50_budget":1.4174592,"stages":128,"total_draft_bytes_per_token":3401902080.0},
+      {"block_size":256,"head_query_bytes":1412950016.0,"passes_p50":false,"ratio_to_p50_budget":1.29433344,"stages":64,"total_draft_bytes_per_token":3106400256.0},
+      {"block_size":512,"head_query_bytes":1265199104.0,"passes_p50":false,"ratio_to_p50_budget":1.23277056,"stages":32,"total_draft_bytes_per_token":2958649344.0},
+      {"block_size":1024,"head_query_bytes":1191323648.0,"passes_p50":false,"ratio_to_p50_budget":1.20198912,"stages":16,"total_draft_bytes_per_token":2884773888.0},
+      {"block_size":2048,"head_query_bytes":1154385920.0,"passes_p50":false,"ratio_to_p50_budget":1.1865984,"stages":8,"total_draft_bytes_per_token":2847836160.0},
+      {"block_size":4096,"head_query_bytes":1135917056.0,"passes_p50":false,"ratio_to_p50_budget":1.17890304,"stages":4,"total_draft_bytes_per_token":2829367296.0},
+      {"block_size":8192,"head_query_bytes":1126682624.0,"passes_p50":false,"ratio_to_p50_budget":1.17505536,"stages":2,"total_draft_bytes_per_token":2820132864.0},
+      {"block_size":16384,"head_query_bytes":1122065408.0,"passes_p50":false,"ratio_to_p50_budget":1.17313152,"stages":1,"total_draft_bytes_per_token":2815515648.0}
+    ]
+  }
+}
