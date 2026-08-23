@@ -1,0 +1,80 @@
+name: bootstrap-exp101a-source
+
+on:
+  push:
+    branches:
+      - research/exp-101a-shared-input-bundle-fmm-gate
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bootstrap-exp101a-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  materialize-source:
+    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[exp101a-bootstrap]') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Reassemble, verify, and extract EXP-101A source
+        shell: bash
+        run: |
+          set -euo pipefail
+          parts=(
+            .bootstrap/part_00
+            .bootstrap/part_01
+            .bootstrap/p02_00
+            .bootstrap/p02_01
+            .bootstrap/p02_02
+            .bootstrap/p02_03
+            .bootstrap/p03_00
+            .bootstrap/p03_01
+            .bootstrap/p03_02
+            .bootstrap/p03_03
+          )
+          for part in "${parts[@]}"; do test -f "$part"; done
+          cat "${parts[@]}" > /tmp/exp101a_bundle.tar.gz
+          echo "7ee41fff6585d3b4eac01d8fd8b7602a58af694e97478915c56549e9ed6df7e2  /tmp/exp101a_bundle.tar.gz" | sha256sum -c -
+          python - <<'PY'
+          import tarfile
+          from pathlib import Path
+
+          archive = Path('/tmp/exp101a_bundle.tar.gz')
+          with tarfile.open(archive, 'r:gz') as handle:
+              members = handle.getmembers()
+              for member in members:
+                  path = Path(member.name)
+                  if path.is_absolute() or '..' in path.parts:
+                      raise SystemExit(f'unsafe archive member: {member.name}')
+              handle.extractall('.')
+          print(f'extracted {len(members)} members')
+          PY
+          rm -rf .bootstrap
+          rm -f .github/workflows/bootstrap-exp101a-source.yml
+      - name: Install focused source-test runtime
+        run: python -m pip install --disable-pip-version-check numpy==2.1.3 pytest==8.3.3
+      - name: Validate materialized source
+        run: |
+          python -m pytest -q tests/exp_101a
+          python -m py_compile \
+            vortex_runtime/shared_input_bundle_fmm.py \
+            experiments/exp_101a/run_experiment.py \
+            experiments/exp_101a/update_ledgers.py
+      - name: Commit and push EXP-101A preregistration
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "research: preregister EXP-101A shared-input bundle FMM Gate"
+          git push origin HEAD:${GITHUB_REF_NAME}
