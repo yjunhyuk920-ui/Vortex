@@ -1789,3 +1789,11 @@ ratio `38.251649686367%` and best free-transform oracle ratio
 were jointly screened. This decision is scoped to the frozen catalog, integral
 coefficient cap, bounded search, and perfect-future-block grants.
 <!-- EXP-100A:END -->
+
+<!-- EXP-102A:START -->
+## EXP-102A decision
+
+`REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE`
+
+The authoritative arm executed real causal draft prefill/generation, tokenizer bridge, real target block verification, mismatch repair, real draft-cache crop/replay or rebuild, exact terminal target KV comparison, and same-run latency/N/A accounting. No impossible promotion grant was used.
+<!-- EXP-102A:END -->

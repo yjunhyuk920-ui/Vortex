@@ -1308,3 +1308,13 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - Bounded beam search is not an exhaustive tensor-rank or algorithm search.
 - A static-transformed plan must retain/read original BF16 repair rows; those bytes are charged.
 <!-- EXP-100A:END -->
+
+<!-- EXP-102A:START -->
+## EXP-102A reality assumptions
+
+- `MEASURED`: public-checkpoint CPU wall time, accepted/committed tokens, target positions, N/A, cache bytes, RSS, token equality, terminal KV equality.
+- `DERIVED`: raw one-sweep p50/p95 minimum A = `85 / 68`.
+- `PROJECTED`: none used for promotion.
+- `UNVERIFIED`: 405B scaling, target SSD/H2D, target GPU kernels, physical 8-GiB plan, native 4B-Q4 p50/p95.
+- No compression ratio, peak utilization, perfect selector, future block, or zero-cost component is granted.
+<!-- EXP-102A:END -->

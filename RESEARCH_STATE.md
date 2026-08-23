@@ -2120,3 +2120,18 @@ repair work, and original-row side-stream bytes. The rank oracle grants factor
 transforms and packing free. Both arms grant a perfect future block with `N/A=1`;
 therefore neither is a causal executor or target-hardware measurement.
 <!-- EXP-100A:END -->
+
+<!-- EXP-102A:START -->
+## EXP-102A — Reality-First causal block
+
+- decision: `REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE`
+- source: `e156d519e4fe20838de4b83bc8c1534d78735365`
+- result: `results/exp_102a/e156d519e4fe20838de4b83bc8c1534d78735365/result.json`
+- deterministic core: `6c2c3427b51fe21096f6bb76a84199231dcd4a554b503e098b5618e0ebbfb9b5`
+- integrity failures: `[]`
+
+- `cross_family_text_bridge`: K `96`, minimum A `1`, latency p50/p95 `13.010097 / 17.150279`, N/A p95 `17.000000`, exact token+state `True`, pass `False`
+- `same_family`: K `96`, minimum A `2`, latency p50/p95 `73.612330 / 85.856907`, N/A p95 `48.500000`, exact token+state `True`, pass `False`
+
+The result uses no future target tokens, perfect selector, free repair, free fallback, free N/A, or unmeasured compression in the authoritative arm.
+<!-- EXP-102A:END -->

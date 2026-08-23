@@ -1388,3 +1388,14 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 | Existing-ISA finite-word kernel | exact words and fully charged bytes/instructions | `NOT TESTED` | — |
 | TARGET-W / physical 8 GiB / 4B-class p50/p95 | complete final contract | `NOT TESTED` | — |
 <!-- EXP-100A:END -->
+
+<!-- EXP-102A:START -->
+## EXP-102A validation row
+
+| Boundary | Contract | Result | Evidence |
+|---|---|---|---|
+| Causal candidate | no target continuation observed | `REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE` | E2/E3 CPU |
+| Exact commitment | tokens + complete terminal target KV | see raw result | E2 |
+| Runtime cost | draft + bridge + verify + repair + rebuild + N/A + RSS | measured | E2 |
+| 405B / 8 GiB / same-machine 4B | complete target contract | `NOT TESTED` | — |
+<!-- EXP-102A:END -->

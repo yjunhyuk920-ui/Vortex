@@ -252,3 +252,18 @@ workspace, fragmentation, and measured wall time. Missing quantities remain
 
 Normative detail: [`docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md`](docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md).
 <!-- REALITY-FIRST-EXECUTION:END -->
+
+<!-- EXP-102A:START -->
+## EXP-102A reality-first result
+
+Authoritative decision:
+
+```text
+REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE
+```
+
+The Gate used real public draft and target checkpoints and charged draft generation, bridge, target candidate positions, N/A, mismatch repair, draft-state rebuild, cache bytes, RSS, and same-run wall time. No compression or impossible oracle credit was used. See `docs/research/EXP_102A_LATEST_RESULT.md`.
+
+`README_CURRENT=true`  
+`README_UPDATED=latest authoritative Gate, active handoff, reality-first contract`
+<!-- EXP-102A:END -->

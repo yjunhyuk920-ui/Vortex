@@ -320,3 +320,13 @@ Do not reinterpret this as a causal executor, 405B run, 8-GiB physical result,
 or measured latency. The perfect future block and repair selector are oracle
 grants and must be removed at the next applicable Gate.
 <!-- EXP-100A:END -->
+
+<!-- EXP-102A:START -->
+## EXP-102A current handoff
+
+- decision: `REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE`
+- result: `results/exp_102a/e156d519e4fe20838de4b83bc8c1534d78735365/result.json`
+- source: `e156d519e4fe20838de4b83bc8c1534d78735365`
+- next: Close the frozen greedy external-draft block source. Do not sweep K, prompts, sampling, model revisions, or thresholds. The next core principle must change the causal information source or execution dependency and remain fully executable and charged.
+- reality contract: `docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md`
+<!-- EXP-102A:END -->
