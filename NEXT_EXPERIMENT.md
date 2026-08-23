@@ -1850,3 +1850,18 @@ Freeze the finite FP64 coefficient/certificate ABI and construct a causal checkp
 
 The favorable hot ledger is `7.554739 GiB`; fine target arithmetic remains `100%`, and target hardware remains `NOT TESTED`.
 <!-- EXP-096A:END -->
+
+<!-- EXP-100A:START -->
+## Active next gate after EXP-100A
+
+### EXP-101A — new-information exact dense-arithmetic replacement Gate
+
+Current decision: `REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE`.
+
+Do not sweep AlphaTensor catalog entries, recursion depth, beam width, block length, coefficient cap, padding, transformed word width, or compression grant. Generate three new principles that change the information source or verification unit. The first admissible Gate must present an explicit existing-ISA path to at least 10× complete-population arithmetic reduction and charge exact successor state, checkpoint bytes, metadata, and fallback.
+
+The frozen target remains arbitrary public unmodified Dense 405B, exact output
+and successor-state contract, one GPU with peak VRAM at most 8 GiB, and
+same-machine native-4B-Q4 p50/p95 limits. Do not describe a structural FMM ratio
+as measured latency.
+<!-- EXP-100A:END -->

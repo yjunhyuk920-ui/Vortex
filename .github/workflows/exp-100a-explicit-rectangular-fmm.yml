@@ -1,0 +1,321 @@
+name: exp-100a-explicit-rectangular-fmm
+
+on:
+  push:
+    branches:
+      - research/exp-100a-explicit-rectangular-fmm-gate
+  pull_request:
+    branches:
+      - research/exp-099a-dyadic-reassociation-lock-gate
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exp-100a-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHONHASHSEED: "0"
+  OMP_NUM_THREADS: "1"
+  MKL_NUM_THREADS: "1"
+  OPENBLAS_NUM_THREADS: "1"
+
+jobs:
+  source-repair:
+    if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[exp100a-control-repair]') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Reclassify resource-empty frontier without changing frozen search
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          runner = Path('experiments/exp_100a/run_experiment.py')
+          text = runner.read_text(encoding='utf-8')
+          old = '''    integrity_failures: list[str] = []
+          if control_mismatches:
+              integrity_failures.append("synthetic_factorization_execution_mismatch")
+          if not any(row.get("status") == "eligible" for row in catalog_rows):
+              integrity_failures.append("no_eligible_catalog_factorization")
+          if not schemes:
+              integrity_failures.append("no_pareto_orientation")
+          if any(not result.direct_structural_plans for result in searches.values()):
+              integrity_failures.append("empty_direct_shape_search")
+          if any(not result.oracle_structural_plans for result in searches.values()):
+              integrity_failures.append("empty_oracle_shape_search")
+
+          direct_passes = [
+          '''
+          new = '''    integrity_failures: list[str] = []
+          if control_mismatches:
+              integrity_failures.append("synthetic_factorization_execution_mismatch")
+          if not any(row.get("status") == "eligible" for row in catalog_rows):
+              integrity_failures.append("no_eligible_catalog_factorization")
+          if not schemes:
+              integrity_failures.append("no_pareto_orientation")
+
+          # A shape/block pair can legitimately have no plan after the frozen
+          # 8-GiB workspace filter. This is negative resource evidence, not a
+          # tensor-identity or deterministic-control failure.
+          search_coverage = search_coverage_diagnostics(searches)
+          expected_search_count = len(config["search"]["block_lengths"]) * len(
+              {(family.rows, family.columns) for family in families}
+          )
+          if len(searches) != expected_search_count:
+              integrity_failures.append("incomplete_shape_block_search_population")
+
+          direct_passes = [
+          '''
+          if old not in text:
+              raise SystemExit('runner integrity block not found')
+          text = text.replace(old, new)
+
+          old_core = '''        "scheme_rows": scheme_rows,
+          "search_rows": search_rows,
+          "block_rows": block_rows,
+          '''
+          new_core = '''        "scheme_rows": scheme_rows,
+          "search_rows": search_rows,
+          "search_coverage": search_coverage,
+          "block_rows": block_rows,
+          '''
+          if old_core not in text:
+              raise SystemExit('runner core block not found')
+          text = text.replace(old_core, new_core)
+
+          marker = '''def summarize_prior(
+          exp080: Mapping[str, Any], exp099: Mapping[str, Any]
+          ) -> dict[str, Any]:
+          '''
+          helper = '''def search_coverage_diagnostics(
+          searches: Mapping[tuple[int, int, int], SearchResult],
+          ) -> dict[str, Any]:
+              """Separate legitimate resource-empty frontiers from integrity failures."""
+
+              empty_direct = []
+              empty_oracle = []
+              for (block_length, rows, columns), result in sorted(searches.items()):
+                  identity = {
+                      "block_length": int(block_length),
+                      "rows": int(rows),
+                      "columns": int(columns),
+                      "state_count_by_depth": list(result.state_count_by_depth),
+                  }
+                  if not result.direct_structural_plans:
+                      empty_direct.append(identity)
+                  if not result.oracle_structural_plans:
+                      empty_oracle.append(identity)
+              return {
+                  "search_count": len(searches),
+                  "empty_direct_count": len(empty_direct),
+                  "empty_oracle_count": len(empty_oracle),
+                  "empty_direct": empty_direct,
+                  "empty_oracle": empty_oracle,
+                  "empty_frontier_interpretation": (
+                      "resource_or_bounded-search infeasibility; not a control failure"
+                  ),
+              }
+
+
+          '''
+          if marker not in text:
+              raise SystemExit('runner helper marker not found')
+          text = text.replace(marker, helper + marker)
+          runner.write_text(text, encoding='utf-8')
+
+          test = Path('tests/exp_100a/test_explicit_rectangular_fmm.py')
+          text = test.read_text(encoding='utf-8')
+          old_import = 'from experiments.exp_100a.run_experiment import load_catalog, validate_config\n'
+          new_import = '''from experiments.exp_100a.run_experiment import (
+              SearchResult,
+              load_catalog,
+              search_coverage_diagnostics,
+              validate_config,
+          )
+          '''
+          if old_import not in text:
+              raise SystemExit('test import not found')
+          text = text.replace(old_import, new_import)
+          marker = 'def test_ledger_updater_is_idempotent_and_marks_every_required_file(tmp_path) -> None:\n'
+          case = '''def test_resource_empty_shape_frontier_is_diagnostic_not_integrity_failure() -> None:
+              empty = SearchResult(
+                  block_length=16384,
+                  rows=128256,
+                  columns=16384,
+                  state_count_by_depth=(96, 96, 96, 96, 0),
+                  direct_structural_plans=(),
+                  oracle_structural_plans=(),
+              )
+              diagnostics = search_coverage_diagnostics(
+                  {(16384, 128256, 16384): empty}
+              )
+              assert diagnostics["search_count"] == 1
+              assert diagnostics["empty_direct_count"] == 1
+              assert diagnostics["empty_oracle_count"] == 1
+              assert diagnostics["empty_direct"][0]["rows"] == 128256
+              assert "not a control failure" in diagnostics["empty_frontier_interpretation"]
+
+
+          '''
+          if marker not in text:
+              raise SystemExit('test insertion marker not found')
+          text = text.replace(marker, case + marker)
+          test.write_text(text, encoding='utf-8')
+          PY
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Verify classification repair
+        run: |
+          python -m pip install --disable-pip-version-check numpy==2.1.3 pytest==8.3.3
+          python -m pytest -q tests/exp_100a
+          python -m py_compile \
+            experiments/exp_100a/run_experiment.py \
+            experiments/exp_100a/update_ledgers.py \
+            vortex_runtime/explicit_rectangular_fmm.py
+      - name: Commit repaired scientific classifier
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/repair-exp100a-control-classification.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "research: classify EXP-100A resource-empty frontier scientifically"
+          git push origin HEAD:${GITHUB_REF_NAME}
+
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Verify frozen contract
+        run: |
+          python - <<'PY'
+          import json
+          import numpy
+          from experiments.exp_100a.run_experiment import validate_config
+
+          assert numpy.__version__ == "2.1.3", numpy.__version__
+          config = json.load(open("experiments/exp_100a/config.json", encoding="utf-8"))
+          validate_config(config)
+          assert config["catalog"]["commit"] == "1949163da3bef7e3eb268a3ac015fd1c2dbfc767"
+          assert config["catalog"]["git_blob_sha1"] == "5ff45960f86da6237f105f78aaa82d29cb18c30e"
+          assert config["target_contract"]["first_core_reduction_fraction"] == 0.10
+          assert config["target_contract"]["peak_vram_bytes"] == 8 * 2**30
+          print("EXP-100A contract: PASS")
+          PY
+      - name: Run focused exact-factorization and cost controls
+        run: python -m pytest -q tests/exp_100a
+      - name: Syntax checks
+        run: |
+          python -m py_compile \
+            vortex_runtime/explicit_rectangular_fmm.py \
+            experiments/exp_100a/run_experiment.py \
+            experiments/exp_100a/update_ledgers.py
+
+  catalogued-fmm-gate:
+    if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[exp100a-results]') }}
+    needs: contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.10"
+          cache: pip
+      - name: Install pinned runtime
+        run: python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
+      - name: Record host
+        run: |
+          mkdir -p results/exp_100a/${GITHUB_SHA}
+          {
+            uname -a
+            lscpu
+            free -b
+            df -B1 .
+            python --version
+          } | tee results/exp_100a/${GITHUB_SHA}/host.txt
+      - name: Execute pinned AlphaTensor rectangular FMM Gate
+        shell: bash
+        run: |
+          set -o pipefail
+          python experiments/exp_100a/run_experiment.py \
+            --config experiments/exp_100a/config.json \
+            --output-dir results/exp_100a/${GITHUB_SHA} \
+            2>&1 | tee results/exp_100a/${GITHUB_SHA}/run.log
+      - name: Update canonical research ledgers
+        run: |
+          python experiments/exp_100a/update_ledgers.py \
+            --result results/exp_100a/${GITHUB_SHA}/result.json \
+            --source-commit ${GITHUB_SHA}
+      - name: Refresh complete result checksums
+        run: |
+          cd results/exp_100a/${GITHUB_SHA}
+          find . -type f ! -name checksums.sha256 -print0 | sort -z | \
+            xargs -0 sha256sum > checksums.sha256
+      - name: Upload immutable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp-100a-${{ github.sha }}
+          path: results/exp_100a/${{ github.sha }}/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit result, handoff, and canonical ledgers
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            results/exp_100a/${GITHUB_SHA}/ \
+            docs/research/EXP_100A_LATEST_RESULT.md \
+            docs/research/VORTEX_RESEARCH_HANDOFF.md \
+            RESEARCH_STATE.md NEXT_EXPERIMENT.md DECISION_LOG.md \
+            FAILED_APPROACHES.md FAILED_APPROACHES_RECENT.md \
+            ASSUMPTION_REGISTER.md VALIDATION_MATRIX.md ARCHITECTURE.md \
+            HARDWARE_VALIDATION_PLAN.md REPRODUCIBILITY.md
+          if git diff --cached --quiet; then
+            echo "No EXP-100A result delta"
+            exit 0
+          fi
+          git commit -m "research: record EXP-100A explicit rectangular FMM Gate [exp100a-results] [skip ci]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+      - name: Publish summary
+        if: always()
+        run: |
+          if test -f results/exp_100a/${GITHUB_SHA}/result.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+
+          path = Path("results/exp_100a") / os.environ["GITHUB_SHA"] / "result.json"
+          result = json.loads(path.read_text())
+          direct = result.get("best_direct_row")
+          oracle = result.get("best_free_transform_oracle_row")
+          print("## EXP-100A explicit rectangular FMM")
+          print(f"- decision: `{result['authoritative_decision']}`")
+          print(f"- eligible exact catalog factorizations: `{result['catalog_summary']['eligible_factorization_count']}`")
+          print(f"- retained orientations: `{result['catalog_summary']['pareto_orientation_count']}`")
+          if direct:
+              print(f"- best explicit arithmetic / I/O: `{direct['direct']['arithmetic_ratio']:.9%} / {direct['direct']['io_fraction']:.9%}` at K=`{direct['block_length']}`")
+          if oracle:
+              print(f"- best free-transform arithmetic / I/O: `{oracle['free_transform_oracle']['arithmetic_ratio']:.9%} / {oracle['free_transform_oracle']['io_fraction']:.9%}` at K=`{oracle['block_length']}`")
+          print(f"- integrity failures: `{result['integrity_failures']}`")
+          PY
+          fi

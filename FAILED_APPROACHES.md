@@ -465,3 +465,15 @@ EXP-096A did not reject the residual-margin capacity source. No failed-family cl
 
 Frozen fingerprint: one K=128 fine guessed sweep; official one-layer/Q4 coarse path; complete float64 residual bank; target-seeing minimum-L1 FP64 coefficients; unique `2^-20` margin; HiGHS dual-simplex active set plus full fallback; complete-vocabulary `gamma_(2K+4)` roundoff certificate; cheapest-kill-first build and untouched holdout.
 <!-- EXP-096A:END -->
+
+<!-- EXP-100A:START -->
+## EXP-100A — catalogued explicit rectangular FMM
+
+The pinned catalogued small-coefficient mixed-recursion language failed the first 10x complete-population Gate even under a perfect future block, perfect native-repair selector, favorable 1.5x compression, and bounded 8-GiB FMM-workspace grant. The frozen catalog/search family is closed; nearby recursion or beam sweeps are prohibited.
+
+Frozen fingerprint: pinned AlphaTensor real-arithmetic catalog; integral
+coefficients with absolute value at most two; six factor-space orientations;
+depth at most 12; registered 405B projection population; explicit transform,
+write, cold-byte, workspace, and role-p95 repair ledger; perfect `N/A=1` future
+block grant.
+<!-- EXP-100A:END -->

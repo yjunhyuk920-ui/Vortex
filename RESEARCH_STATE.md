@@ -2097,3 +2097,26 @@ One current-block target sweep generated the complete online deep-residual bank.
 
 One K=128 online residual bank was compiled with target-seeing minimum-L1 FP64 coefficients. Accepted rows exclude the complete vocabulary under a conservative FP64 roundoff margin. This is capacity evidence, not a causal executor.
 <!-- EXP-096A:END -->
+
+<!-- EXP-100A:START -->
+## EXP-100A — explicit rectangular FMM Gate
+
+- decision: `REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE`
+- source commit: `c0432cfd5a8e05600e0550e952eb5c091dc0d8b7`
+- evidence: `/home/runner/work/Vortex/Vortex/results/exp_100a/c0432cfd5a8e05600e0550e952eb5c091dc0d8b7/result.json`
+- deterministic core: `b529c817367795f44ee56d38884d3d46d8197ca02553963d79f2396eb3520dbf`
+- eligible exact catalog factorizations: `59`
+- retained orientations: `128`
+- deterministic control mismatches: `0`
+- best explicit arithmetic / I/O: `38.251649686367% / 1.184508591014%` at `K=8192`
+- best free-transform oracle arithmetic / I/O: `13.010262621991% / 0.016276041667%` at `K=4096`
+- direct 10x joint-pass blocks: `[]`
+- direct final-p50 arithmetic-pass blocks: `[]`
+- favorable FMM workspace at best direct plan: `6.121550854 GiB`
+
+The direct arm charges all catalogued leaf operations, factor additions/scales,
+form writes, transformed-checkpoint stream expansion, role-p95 native-order
+repair work, and original-row side-stream bytes. The rank oracle grants factor
+transforms and packing free. Both arms grant a perfect future block with `N/A=1`;
+therefore neither is a causal executor or target-hardware measurement.
+<!-- EXP-100A:END -->

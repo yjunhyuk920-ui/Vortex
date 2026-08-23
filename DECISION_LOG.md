@@ -1775,3 +1775,17 @@ The frozen causal affine source produced holdout prefixes `[1, 1, 1]` and rank p
 
 The frozen target-seeing compiler certified `384/384` build positions and `384/384` untouched holdout positions before cheapest-kill termination. Explicit infeasible cases were `[]` and `[]`.
 <!-- EXP-096A:END -->
+
+<!-- EXP-100A:START -->
+## EXP-100A decision
+
+`REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE`
+
+The pinned AlphaTensor standard-arithmetic catalog was checked by Git blob,
+complete integer tensor reconstruction, and deterministic matrix-product
+controls. The bounded mixed-recursion search produced best explicit arithmetic
+ratio `38.251649686367%` and best free-transform oracle ratio
+`13.010262621991%`. Cold bytes and favorable FMM workspace
+were jointly screened. This decision is scoped to the frozen catalog, integral
+coefficient cap, bounded search, and perfect-future-block grants.
+<!-- EXP-100A:END -->
