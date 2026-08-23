@@ -16,12 +16,7 @@ import sys
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from vortex_runtime.structured_direct_sum import (
-    MultiplicationOracle,
-    catalog_schemes,
-    triple_cyclic_rank,
-    weighted_ratio,
-)
+from vortex_runtime.structured_direct_sum import MultiplicationOracle, catalog_schemes, triple_cyclic_rank, weighted_ratio
 
 
 def git_blob_sha1(data: bytes) -> str:
@@ -68,92 +63,95 @@ def rss_bytes() -> int:
 
 
 def main() -> None:
-    p = argparse.ArgumentParser()
-    p.add_argument("--config", type=Path, required=True)
-    p.add_argument("--output-dir", type=Path, required=True)
-    a = p.parse_args()
-    c = json.loads(a.config.read_text())
-    validate_config(c)
-    out = a.output_dir
-    out.mkdir(parents=True, exist_ok=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    args = parser.parse_args()
+    config = json.loads(args.config.read_text())
+    validate_config(config)
+    output_dir = args.output_dir
+    output_dir.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter_ns()
 
     identities = {}
     for key in ("catalog_rows", "exp_100a_result"):
-        reg = c["registered_inputs"][key]
-        identities[key] = verify_blob(ROOT / reg["path"], reg["git_blob_sha1"])
-    catalog = json.loads((ROOT / c["registered_inputs"]["catalog_rows"]["path"]).read_text())
-    prior = json.loads((ROOT / c["registered_inputs"]["exp_100a_result"]["path"]).read_text())
+        row = config["registered_inputs"][key]
+        identities[key] = verify_blob(ROOT / row["path"], row["git_blob_sha1"])
+    catalog = json.loads((ROOT / config["registered_inputs"]["catalog_rows"]["path"]).read_text())
+    prior = json.loads((ROOT / config["registered_inputs"]["exp_100a_result"]["path"]).read_text())
     schemes = catalog_schemes(catalog)
-    families = load_families(c)
+    families = load_families(config)
 
-    req = urllib.request.Request(c["relation"]["url"], headers={"User-Agent": "Vortex-EXP-101A/1.0"})
-    source = urllib.request.urlopen(req, timeout=90).read()
+    request = urllib.request.Request(config["relation"]["url"], headers={"User-Agent": "Vortex-EXP-101A/1.0"})
+    source = urllib.request.urlopen(request, timeout=90).read()
     source_blob = git_blob_sha1(source)
     source_lines = len([line for line in source.decode("utf-8").splitlines() if line.strip()])
-    integrity = []
-    if source_blob != c["relation"]["git_blob_sha1"]:
+    integrity: list[str] = []
+    if source_blob != config["relation"]["git_blob_sha1"]:
         integrity.append("structured_source_blob_mismatch")
-    if source_lines != int(c["relation"]["line_count"]):
+    if source_lines != int(config["relation"]["line_count"]):
         integrity.append("structured_source_line_count_mismatch")
     cyclic = triple_cyclic_rank(137, 8, 7)
-    if cyclic != int(c["relation"]["reported_triple_cyclic_rank"]):
+    if cyclic != int(config["relation"]["reported_triple_cyclic_rank"]):
         integrity.append("triple_cyclic_rank_identity_failure")
     if prior["catalog_summary"]["synthetic_control_mismatch_count"] != 0:
         integrity.append("exp100_exact_factorization_control_failure")
 
+    maximum_depth = int(config["search"]["maximum_depth"])
+    state_limit = int(config["search"]["state_limit_per_oracle"])
+    # Reuse each exact dynamic-programming cache across every registered block
+    # and projection shape. This changes only evaluation order, not the frozen
+    # recurrence or candidate language.
+    oracles = {
+        "catalog_only": MultiplicationOracle(schemes, maximum_depth=maximum_depth, structured_enabled=False, state_limit=state_limit),
+        "structured_only": MultiplicationOracle((), maximum_depth=maximum_depth, structured_enabled=True, state_limit=state_limit),
+        "catalog_plus_structured": MultiplicationOracle(schemes, maximum_depth=maximum_depth, structured_enabled=True, state_limit=state_limit),
+    }
     block_rows = []
-    max_depth = int(c["search"]["maximum_depth"])
-    state_limit = int(c["search"]["state_limit_per_oracle"])
-    for K in c["search"]["block_lengths"]:
-        population = [(int(K), int(f["columns"]), int(f["rows"]), int(f["count"])) for f in families]
+    for block_length in config["search"]["block_lengths"]:
+        population = [(int(block_length), int(f["columns"]), int(f["rows"]), int(f["count"])) for f in families]
         results = {}
-        for name, rows, structured in (
-            ("catalog_only", schemes, False),
-            ("structured_only", (), True),
-            ("catalog_plus_structured", schemes, True),
-        ):
-            oracle = MultiplicationOracle(rows, maximum_depth=max_depth, structured_enabled=structured, state_limit=state_limit)
+        for name, oracle in oracles.items():
             ratio, candidate, baseline = weighted_ratio(population, oracle)
             results[name] = {"multiplication_ratio": ratio, "multiplications": candidate, "baseline_multiplications": baseline, "cache": oracle.cache_info()}
-        row = {"block_length": int(K), **results}
+        row = {"block_length": int(block_length), **results}
         block_rows.append(row)
-        print(json.dumps({"K": K, "catalog": results["catalog_only"]["multiplication_ratio"], "structured": results["structured_only"]["multiplication_ratio"], "composed": results["catalog_plus_structured"]["multiplication_ratio"]}), flush=True)
+        print(json.dumps({"K": block_length, "catalog": results["catalog_only"]["multiplication_ratio"], "structured": results["structured_only"]["multiplication_ratio"], "composed": results["catalog_plus_structured"]["multiplication_ratio"]}), flush=True)
 
-    best = min(block_rows, key=lambda r: r["catalog_plus_structured"]["multiplication_ratio"])
-    gate = float(c["target_contract"]["first_core_reduction_fraction"])
+    best = min(block_rows, key=lambda row: row["catalog_plus_structured"]["multiplication_ratio"])
+    gate = float(config["target_contract"]["first_core_reduction_fraction"])
     if integrity:
-        decision = c["decisions"]["control_failure"]
+        decision = config["decisions"]["control_failure"]
     elif best["catalog_plus_structured"]["multiplication_ratio"] <= gate:
-        decision = c["decisions"]["promotion"]
+        decision = config["decisions"]["promotion"]
     else:
-        decision = c["decisions"]["scientific_rejection"]
+        decision = config["decisions"]["scientific_rejection"]
 
     core = {
-        "schema": c["schema"],
+        "schema": config["schema"],
         "mechanism_fingerprint": "pinned-structured-666-r153/direct-sum-137-unit-plus-8-doubled/cyclic-axis-choice/exact-integral-alphatensor-uniform-composition/classical-fallback/multiplication-only-free-transform-free-byte-free-workspace-oracle",
-        "source_identity": {"repository": c["relation"]["repository"], "commit": c["relation"]["commit"], "path": c["relation"]["path"], "git_blob_sha1": source_blob, "sha256": hashlib.sha256(source).hexdigest(), "nonempty_lines": source_lines},
+        "source_identity": {"repository": config["relation"]["repository"], "commit": config["relation"]["commit"], "path": config["relation"]["path"], "git_blob_sha1": source_blob, "sha256": hashlib.sha256(source).hexdigest(), "nonempty_lines": source_lines},
         "triple_cyclic_rank": cyclic,
         "registered_identities": identities,
-        "catalog": {"eligible_rows": sum(r.get("status") == "eligible" for r in catalog), "pareto_uniform_orientations": len(schemes), "schemes": [s.manifest() for s in schemes]},
+        "catalog": {"eligible_rows": sum(row.get("status") == "eligible" for row in catalog), "pareto_uniform_orientations": len(schemes), "schemes": [scheme.manifest() for scheme in schemes]},
         "families": families,
         "block_rows": block_rows,
         "best_composed_row": best,
         "ten_x_multiplication_gate": gate,
         "integrity_failures": integrity,
         "authoritative_decision": decision,
-        "claim_boundary": c["claim_boundary"],
-        "prior_exp100_reclassification": {"recorded_decision": prior["authoritative_decision"], "actual_integrity_except_resource_empty_frontier": prior["catalog_summary"]["synthetic_control_mismatch_count"] == 0, "best_direct_arithmetic_ratio": prior["best_direct_row"]["direct"]["arithmetic_ratio"], "correct_scientific_interpretation": "REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE"}
+        "claim_boundary": config["claim_boundary"],
+        "prior_exp100_reclassification": {"recorded_decision": prior["authoritative_decision"], "actual_integrity_except_resource_empty_frontier": prior["catalog_summary"]["synthetic_control_mismatch_count"] == 0, "best_direct_arithmetic_ratio": prior["best_direct_row"]["direct"]["arithmetic_ratio"], "correct_scientific_interpretation": "REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE"},
     }
     result = {**core, "deterministic_core_sha256": hashlib.sha256(json.dumps(core, sort_keys=True, separators=(",", ":")).encode()).hexdigest(), "environment": {"python": platform.python_version(), "platform": platform.platform(), "peak_rss_bytes": rss_bytes(), "wall_ns": time.perf_counter_ns() - started, "source_commit": subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()}}
-    write_json(out / "artifacts/deterministic_core.json", core)
-    write_json(out / "raw/block_rows.json", block_rows)
-    write_json(out / "result.json", result)
+    write_json(output_dir / "artifacts/deterministic_core.json", core)
+    write_json(output_dir / "raw/block_rows.json", block_rows)
+    write_json(output_dir / "result.json", result)
     checks = []
-    for path in sorted(out.rglob("*")):
+    for path in sorted(output_dir.rglob("*")):
         if path.is_file() and path.name != "checksums.sha256":
-            checks.append(f"{hashlib.sha256(path.read_bytes()).hexdigest()}  {path.relative_to(out).as_posix()}")
-    (out / "checksums.sha256").write_text("\n".join(checks) + "\n")
+            checks.append(f"{hashlib.sha256(path.read_bytes()).hexdigest()}  {path.relative_to(output_dir).as_posix()}")
+    (output_dir / "checksums.sha256").write_text("\n".join(checks) + "\n")
     print(json.dumps({"decision": decision, "best_K": best["block_length"], "best_ratio": best["catalog_plus_structured"]["multiplication_ratio"], "integrity": integrity}, indent=2))
 
 
