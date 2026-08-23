@@ -1,61 +1,158 @@
 # VORTEX
 
-VORTEX is a research runtime for executing very large Hugging Face models under a small GPU-memory budget while preserving the behavior of the original model.
+VORTEX is a proof-first research runtime for executing very large, publicly released Hugging Face dense Transformers under a small GPU-memory budget **without changing the model’s meaning**.
 
-## Non-negotiable target
+> **Current truth:** the final 405B-on-one-8-GiB-GPU-at-4B-class-latency target has not yet been achieved. This repository contains executable runtime prototypes, exactness/resource auditors, falsification Gates, raw evidence, and an active constructive research program.
 
-The project target is fixed:
+## Fixed mission
 
-> Run an arbitrary Hugging Face model—including a 405B-class dense model—on an 8GB VRAM machine with no user-side training, distillation, fine-tuning, calibration workflow, or model-specific manual conversion, while preserving the original model's quality and approaching the wall-clock experience of running a native 4B model on the same machine.
+Run an arbitrary public, unmodified Hugging Face dense 405B-class model by replacing only the executor, with:
 
-The intended user experience is eventually:
+- peak GPU VRAM `<= 8 GiB`;
+- no retraining, fine-tuning, distillation, LoRA, semantic weight modification, or user-authored model-specific adapter;
+- the declared original output and required successor-state contract preserved;
+- warm p50 time/token `<= 1.2x` a native 4B Q4 baseline on the same machine;
+- warm p95 `<= 1.5x` that baseline;
+- independently reproducible evidence from pinned code and checkpoint hashes.
 
-```bash
-vortex run meta-llama/Llama-3.1-405B-Instruct
-```
+The target is not “make 405B run slowly with offload.” It is:
 
-Everything else—graph inspection, shard discovery, runtime-format generation, tiling, progressive execution, certification, fallback, and caching—must be automatic.
+\[
+\boxed{
+\text{exact 405B behavior}
++
+\text{single 8 GiB GPU}
++
+\text{same-machine 4B-class latency}
+}
+\]
 
-## Repository status
+The canonical goal and working-principles answer is in [`MISSION_AND_WORKING_PRINCIPLES.md`](MISSION_AND_WORKING_PRINCIPLES.md).
 
-This repository contains an **executable first-stage prototype**, not only a design document.
+## Non-negotiable research rules
 
-Implemented and tested:
+- Arbitrary public dense checkpoints, not a cherry-picked model or prompt.
+- Executor-only: no training or semantic checkpoint modification.
+- Exact/fail-closed output and successor-state behavior under the declared ABI.
+- Full accounting of GPU/CPU/SSD/PCIe/HBM traffic, KV/state, metadata, decompression, packing, verification, repair, synchronization, candidate count, committed tokens, and fallback.
+- `MEASURED`, `DERIVED`, `PROJECTED`, and `UNVERIFIED` are kept separate.
+- A closed mechanism is not reopened by only changing seed, rank, threshold, tile, or block length.
+- Every core round begins with three materially different execution principles and implements only the strongest candidate with a credible `>=10x` path.
+- Meaningful positive and negative results are preserved in a verified remote commit.
+- README freshness is part of round completion.
 
-- Hugging Face `config.json` and safetensors shard/index auto-discovery.
-- Individual tensor, tensor-slice, and layer loading without constructing the full model.
-- Byte-accurate LRU budgeting for a fixed tensor/VRAM tile window.
-- A dependency-light, layer-streamed Llama reference decoder with KV caching.
-- Automatic first-use conversion of a linear matrix into a low-bit base plus lossless residual tiles.
-- Exact progressive greedy-token certification: unread residual tiles are skipped only when bounds prove they cannot change the dense argmax.
-- Disk-backed residual refinement using safetensors slices.
-- Exact causal Jacobi block decoding with equality checks against sequential greedy decoding.
-- A Llama 3.1 405B memory planner based on its published tensor dimensions.
-- Seven automated tests covering cache bounds, streamed generation, progressive bounds, disk refinement, and Jacobi equality.
+## Research workflow: sandbox first, GitHub last
 
-Current verified checkpoint:
+\[
+\boxed{
+\textbf{Fast computation and iteration in the sandbox first;}
+\quad
+\textbf{persistent evidence and final reproduction in GitHub last.}
+}
+\]
 
 ```text
-7 tests passed
-Progressive LM-head exact certification: 100% in the recorded synthetic runs
-Disk-backed progressive LM-head exact certification: 100% in the recorded tiny-checkpoint runs
-Jacobi output equality against sequential greedy: 100% in the recorded tiny-checkpoint runs
+SANDBOX_RESEARCH
+-> SANDBOX_GATE
+-> SOURCE_COMMIT_PUSHED
+-> WORKFLOW_RUNNING       # only when hosted reproduction adds value
+-> RESULT_COMMIT_PUSHED
+-> REMOTE_COMMIT_VERIFIED
 ```
 
-The latest recorded measurements are in [`validation_results.json`](validation_results.json) and are explained in [`VALIDATION.md`](VALIDATION.md).
+Use the sandbox for derivations, search, cost models, prototypes, counterexamples, and focused tests. Do **not** turn each research iteration into a GitHub Actions run.
 
-## What is not completed yet
+Use GitHub for frozen source/config, independent reproduction, public-checkpoint or long hosted runs, immutable artifacts, checksums, PR discussion, and cross-session handoff.
 
-The runtime does **not yet** achieve the final 405B-on-8GB-at-4B-speed target.
-The current research barrier is exact internal dense projection information:
-the surviving executor must determine the Bilinear Cross Residual `r^T W u`
-without a dense scan. Trace-built linear unions and exact-field nonlinear
-branching are now closed as distinct primary mechanisms. The next proof-first
-frontier is a concrete bounded-word discontinuous source with every table,
-address, probe, byte, operation, verification, miss, and fallback charged
-before any new model or hardware experiment.
+A sandbox result is useful research but is not a completed repository round until the meaningful result is committed, pushed, and read back remotely.
 
-This distinction must remain explicit in every future session: working primitives are recorded as working; the final target is only declared achieved after the wall-clock acceptance gates in [`docs/VALIDATION_PROTOCOL.md`](docs/VALIDATION_PROTOCOL.md) pass on real hardware.
+## Resource objective
+
+At minimum, the core must confront the dual roofline:
+
+\[
+T_{\rm token}
+\ge
+\max\left(
+\frac{S_c}{B A},
+\;
+r\frac{N}{A}\frac{2P}{F}
+\right).
+\]
+
+The project must jointly obtain:
+
+\[
+A\gg1,\qquad N/A\rightarrow1,\qquad r\ll1.
+\]
+
+Large accepted blocks alone do not solve the target when the exact target still performs `r = 1` dense arithmetic per committed token.
+
+## Current research status
+
+### Final target
+
+```text
+405B target execution:                     NOT TESTED / NOT ACHIEVED
+physical complete 8-GiB allocation:        NOT TESTED
+same-machine native-4B p50/p95 acceptance: NOT TESTED
+```
+
+### Latest completed arithmetic Gate
+
+EXP-100A tested catalogued small-coefficient rectangular fast-matrix-multiplication programs with fully charged transforms, moves, cold bytes, workspace, and native-order repair.
+
+Authoritative decision:
+
+```text
+REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE
+```
+
+Recorded best results:
+
+```text
+best fully charged explicit arithmetic fraction   38.251649686367%
+best free-transform rank-oracle fraction           13.010262621991%
+required first-core boundary                       10%
+```
+
+The result rejects the frozen published catalog/recursion family as a 10× core; it does not reject all future exact arithmetic programs.
+
+### Active frontier
+
+The active stacked research PR is:
+
+```text
+PR #111
+research/exp-101a-structured-direct-sum-gate
+EXP-101A structured direct-sum composition Gate
+```
+
+EXP-101A tests an exact structured tensor source outside the prior AlphaTensor catalog. Until its authoritative result commit exists, it is an active Gate, not a scientific result.
+
+For current truth, read the remote PR/workflow and these files:
+
+1. [`RESEARCH_STATE.md`](RESEARCH_STATE.md)
+2. [`NEXT_EXPERIMENT.md`](NEXT_EXPERIMENT.md)
+3. [`docs/research/VORTEX_RESEARCH_HANDOFF.md`](docs/research/VORTEX_RESEARCH_HANDOFF.md)
+4. raw `results/exp_*` evidence and checksums
+5. [`DECISION_LOG.md`](DECISION_LOG.md) and [`FAILED_APPROACHES.md`](FAILED_APPROACHES.md)
+
+Conversation memory is not authoritative.
+
+## What the repository contains
+
+- `vortex_runtime/` — runtime primitives, exactness/resource helpers, and experiment mechanisms.
+- `experiments/` — frozen experiment runners and configs.
+- `tests/` — focused, property, regression, and control tests.
+- `results/` — committed processed/raw evidence and checksum ledgers.
+- `docs/research/` — preregistrations, latest-result summaries, and research handoff.
+- `.github/workflows/` — clean hosted reproductions and artifact production.
+- root ledgers — current state, decisions, failures, assumptions, architecture, validation, hardware plan, and reproducibility.
+- [`AGENTS.md`](AGENTS.md) — mandatory session contract.
+- [`MISSION_AND_WORKING_PRINCIPLES.md`](MISSION_AND_WORKING_PRINCIPLES.md) — canonical compact mission/workflow answer.
+
+The repository also retains an executable first-stage streamed-Llama/progressive-certification prototype. A working primitive is not evidence that the final 405B latency target has passed.
 
 ## Quick start
 
@@ -64,16 +161,24 @@ git clone https://github.com/yjunhyuk920-ui/Vortex.git
 cd Vortex
 
 python -m venv .venv
+
 # Linux/macOS
 source .venv/bin/activate
+
 # Windows PowerShell
 # .venv\Scripts\Activate.ps1
 
-pip install -e .
-pip install pytest
-
+python -m pip install -e .
+python -m pip install pytest
 python -m pytest -q
-python scripts/run_validation.py
+```
+
+Some frozen experiments use additional pinned requirements. Follow the active experiment README/workflow rather than silently installing newer dependencies.
+
+Inspect a local Hugging Face safetensors model:
+
+```bash
+python -m vortex_runtime.cli inspect /path/to/model
 ```
 
 Run the tiny streamed-Llama demo:
@@ -82,59 +187,33 @@ Run the tiny streamed-Llama demo:
 python -m vortex_runtime.cli demo --tokens 8 --budget-mb 2
 ```
 
-Inspect a local Hugging Face safetensors model:
-
-```bash
-python -m vortex_runtime.cli inspect /path/to/model
-```
-
-Benchmark in-memory progressive LM-head certification:
-
-```bash
-python -m vortex_runtime.cli certify \
-  --vocab 4096 \
-  --hidden 1024 \
-  --trials 32 \
-  --base-bits 6
-```
-
-## Repository map
-
-```text
-vortex_runtime/
-  hf_loader.py       HF config/shard discovery and tensor slicing
-  tile_cache.py      byte-budgeted LRU tensor cache
-  llama.py           streamed Llama reference runtime and Jacobi decoder
-  progressive.py     in-memory progressive linear operator and certificates
-  vtx_linear.py      disk-backed VTX linear format and refinement
-  planner.py         large-model tensor and memory planning
-  toy_model.py       deterministic tiny HF checkpoint generator
-  cli.py             prototype CLI
-
-scripts/
-  run_validation.py  reproducible validation suite and JSON report
-
-tests/               automated unit/integration tests
-docs/                project context, architecture, roadmap, protocol, handoff
-AGENTS.md             mandatory context for future AI coding sessions
-```
+These commands exercise prototypes; they do not constitute final target validation.
 
 ## Start here in a new session
 
-Read these files in order:
+Read in this order:
 
 1. [`AGENTS.md`](AGENTS.md)
-2. [`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md)
-3. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
-4. [`docs/SESSION_HANDOFF.md`](docs/SESSION_HANDOFF.md)
-5. [`docs/ROADMAP.md`](docs/ROADMAP.md)
-6. [`docs/VALIDATION_PROTOCOL.md`](docs/VALIDATION_PROTOCOL.md)
+2. [`MISSION_AND_WORKING_PRINCIPLES.md`](MISSION_AND_WORKING_PRINCIPLES.md)
+3. this README
+4. [`docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md`](docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md)
+5. [`docs/research/VORTEX_RESEARCH_HANDOFF.md`](docs/research/VORTEX_RESEARCH_HANDOFF.md)
+6. [`RESEARCH_STATE.md`](RESEARCH_STATE.md)
+7. [`FAILED_APPROACHES.md`](FAILED_APPROACHES.md)
+8. [`DECISION_LOG.md`](DECISION_LOG.md)
+9. [`ASSUMPTION_REGISTER.md`](ASSUMPTION_REGISTER.md)
+10. [`VALIDATION_MATRIX.md`](VALIDATION_MATRIX.md)
+11. [`NEXT_EXPERIMENT.md`](NEXT_EXPERIMENT.md)
+12. the active experiment, PR, workflow, raw result, and checksum files
 
-Then run:
+Then verify the actual remote branch/head before proposing another mechanism.
 
-```bash
-python -m pytest -q
-python scripts/run_validation.py
-```
+## README freshness contract
 
-Do not replace the fixed target with a smaller model, model retraining, distillation, or a manual per-model preparation workflow. Those are outside the project definition.
+This file must be reviewed during every meaningful repository round. Update it when the mission, mandatory workflow, active frontier, latest authoritative result, quick start, repository map, or advertised capability changes.
+
+Do not leave stale experiment narratives or unregenerated test counts here. When no update is required, the round report must record a specific `README_UNCHANGED_REASON`.
+
+## Claim boundary
+
+Only a real target-hardware Phase-D/E6/E7 run can establish actual 405B execution, physical peak VRAM, target traffic, or same-machine 4B-class p50/p95. Until then, those claims remain `NOT TESTED`.
