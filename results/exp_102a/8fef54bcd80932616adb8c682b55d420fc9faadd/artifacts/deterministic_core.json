@@ -1,0 +1,222 @@
+{
+  "arms": {
+    "cross_family_text_bridge": {
+      "build_rows": [
+        {
+          "accepted_draft_tokens": 0,
+          "baseline_decode_ns": 256908487,
+          "block_length": 96,
+          "bridge_ns": 341567,
+          "candidate_ratio": 2.0,
+          "case_id": "build_english",
+          "committed_tokens": 1,
+          "draft_decode_ns": 14664368,
+          "draft_prefill_ns": 48217584,
+          "draft_rollback_ns": 46639696,
+          "exact_terminal_state_match": true,
+          "exact_token_match": true,
+          "latency_ratio": 2.4175694592759793,
+          "speculative_ns": 621094112,
+          "target_positions_evaluated": 2,
+          "target_repair_ns": 255505018,
+          "target_verify_ns": 255725879
+        },
+        {
+          "accepted_draft_tokens": 1,
+          "baseline_decode_ns": 503135054,
+          "block_length": 96,
+          "bridge_ns": 1952741,
+          "candidate_ratio": 22.5,
+          "case_id": "build_code",
+          "committed_tokens": 2,
+          "draft_decode_ns": 658231115,
+          "draft_prefill_ns": 52708794,
+          "draft_rollback_ns": 55444972,
+          "exact_terminal_state_match": true,
+          "exact_token_match": true,
+          "latency_ratio": 22.370377608394584,
+          "speculative_ns": 11255321146,
+          "target_positions_evaluated": 45,
+          "target_repair_ns": 250082282,
+          "target_verify_ns": 10236901242
+        },
+        {
+          "accepted_draft_tokens": 1,
+          "baseline_decode_ns": 503411272,
+          "block_length": 96,
+          "bridge_ns": 387607,
+          "candidate_ratio": 6.0,
+          "case_id": "build_repetition",
+          "committed_tokens": 2,
+          "draft_decode_ns": 177307058,
+          "draft_prefill_ns": 46479994,
+          "draft_rollback_ns": 53135971,
+          "exact_terminal_state_match": true,
+          "exact_token_match": true,
+          "latency_ratio": 6.1888678785881455,
+          "speculative_ns": 3115545851,
+          "target_positions_evaluated": 12,
+          "target_repair_ns": 272274289,
+          "target_verify_ns": 2565960932
+        }
+      ],
+      "draft_identity": {
+        "dtype": "float32",
+        "load_wall_ns": 5695045695,
+        "model_class": "GPTNeoForCausalLM",
+        "model_id": "roneneldan/TinyStories-33M",
+        "parameter_bytes": 274056192,
+        "requested_revision": "72da9b32b3fda7cb82db29b75f88ae5ea0d980e8",
+        "resolved_revision": "72da9b32b3fda7cb82db29b75f88ae5ea0d980e8",
+        "tokenizer_id": "EleutherAI/gpt-neo-125m",
+        "tokenizer_revision": "6cb0d322a3a484e99667e7cb240e22f1ac036b99",
+        "tokenizer_sha256": "f414fa24ae973d17400261ccab352e66800932e6a3f94f5ecb9673941905099f",
+        "vocab_size": 50257
+      },
+      "holdout_gate": {
+        "candidate_ratio_p95": 17.0,
+        "case_count": 3,
+        "committed_tokens_p50": 2.0,
+        "committed_tokens_p95": 2.0,
+        "exact_token_and_state": true,
+        "gate_passed": false,
+        "latency_ratio_p50": 12.944473322843313,
+        "latency_ratio_p95": 17.076776423681,
+        "minimum_committed_tokens": 1
+      },
+      "selected_block_length_from_build_only": 96
+    },
+    "same_family": {
+      "build_rows": [
+        {
+          "accepted_draft_tokens": 4,
+          "baseline_decode_ns": 1258225611,
+          "block_length": 96,
+          "bridge_ns": 3486,
+          "candidate_ratio": 19.4,
+          "case_id": "build_english",
+          "committed_tokens": 5,
+          "draft_decode_ns": 10132732155,
+          "draft_prefill_ns": 1666058816,
+          "draft_rollback_ns": 103889928,
+          "exact_terminal_state_match": true,
+          "exact_token_match": true,
+          "latency_ratio": 27.550458250845445,
+          "speculative_ns": 34664692166,
+          "target_positions_evaluated": 97,
+          "target_repair_ns": 251402668,
+          "target_verify_ns": 22510605113
+        },
+        {
+          "accepted_draft_tokens": 1,
+          "baseline_decode_ns": 501739693,
+          "block_length": 96,
+          "bridge_ns": 3827,
+          "candidate_ratio": 48.5,
+          "case_id": "build_code",
+          "committed_tokens": 2,
+          "draft_decode_ns": 10072967471,
+          "draft_prefill_ns": 2183962900,
+          "draft_rollback_ns": 104480516,
+          "exact_terminal_state_match": true,
+          "exact_token_match": true,
+          "latency_ratio": 70.005708826788,
+          "speculative_ns": 35124642855,
+          "target_positions_evaluated": 97,
+          "target_repair_ns": 251354401,
+          "target_verify_ns": 22511873740
+        },
+        {
+          "accepted_draft_tokens": 2,
+          "baseline_decode_ns": 752178157,
+          "block_length": 96,
+          "bridge_ns": 3617,
+          "candidate_ratio": 32.333333333333336,
+          "case_id": "build_repetition",
+          "committed_tokens": 3,
+          "draft_decode_ns": 10040604438,
+          "draft_prefill_ns": 1657797372,
+          "draft_rollback_ns": 103730365,
+          "exact_terminal_state_match": true,
+          "exact_token_match": true,
+          "latency_ratio": 45.87590135909783,
+          "speculative_ns": 34506850935,
+          "target_positions_evaluated": 97,
+          "target_repair_ns": 250973905,
+          "target_verify_ns": 22453741238
+        }
+      ],
+      "draft_identity": {
+        "dtype": "bfloat16",
+        "load_wall_ns": 9183632782,
+        "model_class": "LlamaForCausalLM",
+        "model_id": "HuggingFaceTB/SmolLM2-135M",
+        "parameter_bytes": 269030016,
+        "requested_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+        "resolved_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+        "tokenizer_id": "HuggingFaceTB/SmolLM2-135M",
+        "tokenizer_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+        "tokenizer_sha256": "398673cf3d058706d1921aee99a4df2b70ae0748445ff1a1efa86f00978be894",
+        "vocab_size": 49152
+      },
+      "holdout_gate": {
+        "candidate_ratio_p95": 48.5,
+        "case_count": 3,
+        "committed_tokens_p50": 2.0,
+        "committed_tokens_p95": 2.0,
+        "exact_token_and_state": true,
+        "gate_passed": false,
+        "latency_ratio_p50": 72.81297626014494,
+        "latency_ratio_p95": 85.34594270581184,
+        "minimum_committed_tokens": 2
+      },
+      "selected_block_length_from_build_only": 96
+    }
+  },
+  "authoritative_arm": "REAL_EXECUTOR_ONLY",
+  "authoritative_decision": "REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE",
+  "claim_boundary": "Executable E2/E3 CPU Gate using real public unmodified draft and target checkpoints. Draft prefill/decode, tokenizer bridge, every target verification position, argmax/comparison, mismatch repair, real same-tokenizer cache crop/replay or cross-tokenizer rebuild, N/A, wall time, cache bytes, resident parameter bytes, RSS, and exact terminal-state comparison are recorded. Target prompt prefill is excluded symmetrically as the warm-prefix boundary. No compression credit is used for promotion. A pass authorizes only a larger-ratio and target-hardware rung; it is not 405B/8-GiB/4B-latency evidence.",
+  "forbidden_grants": [
+    "future_target_tokens",
+    "perfect_selector",
+    "free_transforms",
+    "free_metadata",
+    "free_workspace",
+    "free_repair",
+    "free_fallback",
+    "free_N_over_A",
+    "unmeasured_compression",
+    "peak_throughput_as_measurement"
+  ],
+  "integrity_failures": [],
+  "mechanism_fingerprint": "real-causal-greedy-draft/real-target-block-verification/charged-draft-prefill-and-decode/charged-cross-tokenizer-bridge/charged-target-N-over-A/charged-mismatch-repair/charged-real-draft-cache-crop-or-rebuild/raw-no-compression-traffic-gate/exact-token-plus-terminal-KV/same-and-cross-family-arms",
+  "requirements": {
+    "candidate_ratio_p95": 1.5,
+    "latency_p50_ratio": 1.2,
+    "latency_p95_ratio": 1.5,
+    "raw_p50": {
+      "compression_ratio": 1.0,
+      "minimum_committed_tokens": 85,
+      "target_fraction": 0.011851851851851851
+    },
+    "raw_p95": {
+      "compression_ratio": 1.0,
+      "minimum_committed_tokens": 68,
+      "target_fraction": 0.014814814814814815
+    }
+  },
+  "schema": "exp-102a-reality-first-causal-block-v1",
+  "target_identity": {
+    "dtype": "bfloat16",
+    "load_wall_ns": 15688690193,
+    "model_class": "LlamaForCausalLM",
+    "model_id": "HuggingFaceTB/SmolLM2-360M",
+    "parameter_bytes": 723642240,
+    "requested_revision": "f8027fd0eaeea54caa13c31d31b9fdc459c38b49",
+    "resolved_revision": "f8027fd0eaeea54caa13c31d31b9fdc459c38b49",
+    "tokenizer_id": "HuggingFaceTB/SmolLM2-360M",
+    "tokenizer_revision": "f8027fd0eaeea54caa13c31d31b9fdc459c38b49",
+    "tokenizer_sha256": "398673cf3d058706d1921aee99a4df2b70ae0748445ff1a1efa86f00978be894",
+    "vocab_size": 49152
+  }
+}

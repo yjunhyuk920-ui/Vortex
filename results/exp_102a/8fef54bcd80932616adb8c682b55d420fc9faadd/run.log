@@ -1,0 +1,38 @@
+{"arm": "same_family", "split": "build", "case": "build_english", "K": 96, "committed": 5, "accepted": 4, "N_over_A": 19.4, "latency_ratio": 27.550458250845445, "exact_token": true, "exact_state": true}
+{"arm": "same_family", "split": "build", "case": "build_code", "K": 96, "committed": 2, "accepted": 1, "N_over_A": 48.5, "latency_ratio": 70.005708826788, "exact_token": true, "exact_state": true}
+{"arm": "same_family", "split": "build", "case": "build_repetition", "K": 96, "committed": 3, "accepted": 2, "N_over_A": 32.333333333333336, "latency_ratio": 45.87590135909783, "exact_token": true, "exact_state": true}
+{"arm": "same_family", "split": "holdout", "case": "holdout_math", "K": 96, "committed": 2, "accepted": 1, "N_over_A": 48.5, "latency_ratio": 72.81297626014494, "exact_token": true, "exact_state": true}
+{"arm": "same_family", "split": "holdout", "case": "holdout_structured", "K": 96, "committed": 2, "accepted": 1, "N_over_A": 48.5, "latency_ratio": 69.34894837785173, "exact_token": true, "exact_state": true}
+{"arm": "same_family", "split": "holdout", "case": "holdout_korean", "K": 96, "committed": 2, "accepted": 1, "N_over_A": 48.5, "latency_ratio": 86.73849453310815, "exact_token": true, "exact_state": true}
+{"arm": "cross_family_text_bridge", "split": "build", "case": "build_english", "K": 96, "committed": 1, "accepted": 0, "N_over_A": 2.0, "latency_ratio": 2.4175694592759793, "exact_token": true, "exact_state": true}
+{"arm": "cross_family_text_bridge", "split": "build", "case": "build_code", "K": 96, "committed": 2, "accepted": 1, "N_over_A": 22.5, "latency_ratio": 22.370377608394584, "exact_token": true, "exact_state": true}
+{"arm": "cross_family_text_bridge", "split": "build", "case": "build_repetition", "K": 96, "committed": 2, "accepted": 1, "N_over_A": 6.0, "latency_ratio": 6.1888678785881455, "exact_token": true, "exact_state": true}
+{"arm": "cross_family_text_bridge", "split": "holdout", "case": "holdout_math", "K": 96, "committed": 2, "accepted": 1, "N_over_A": 17.5, "latency_ratio": 17.535921212662966, "exact_token": true, "exact_state": true}
+{"arm": "cross_family_text_bridge", "split": "holdout", "case": "holdout_structured", "K": 96, "committed": 1, "accepted": 0, "N_over_A": 2.0, "latency_ratio": 2.4679503126531745, "exact_token": true, "exact_state": true}
+{"arm": "cross_family_text_bridge", "split": "holdout", "case": "holdout_korean", "K": 96, "committed": 2, "accepted": 1, "N_over_A": 12.5, "latency_ratio": 12.944473322843313, "exact_token": true, "exact_state": true}
+{
+  "cross_family_text_bridge": {
+    "candidate_ratio_p95": 17.0,
+    "case_count": 3,
+    "committed_tokens_p50": 2.0,
+    "committed_tokens_p95": 2.0,
+    "exact_token_and_state": true,
+    "gate_passed": false,
+    "latency_ratio_p50": 12.944473322843313,
+    "latency_ratio_p95": 17.076776423681,
+    "minimum_committed_tokens": 1
+  },
+  "decision": "REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE",
+  "integrity_failures": [],
+  "same_family": {
+    "candidate_ratio_p95": 48.5,
+    "case_count": 3,
+    "committed_tokens_p50": 2.0,
+    "committed_tokens_p95": 2.0,
+    "exact_token_and_state": true,
+    "gate_passed": false,
+    "latency_ratio_p50": 72.81297626014494,
+    "latency_ratio_p95": 85.34594270581184,
+    "minimum_committed_tokens": 2
+  }
+}

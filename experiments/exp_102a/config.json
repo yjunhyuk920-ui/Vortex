@@ -1,0 +1,103 @@
+{
+  "schema": "exp-102a-reality-first-causal-block-v1",
+  "frozen_before_results": true,
+  "authoritative_arm": "REAL_EXECUTOR_ONLY",
+  "forbidden_grants": [
+    "future_target_tokens",
+    "perfect_selector",
+    "free_transforms",
+    "free_metadata",
+    "free_workspace",
+    "free_repair",
+    "free_fallback",
+    "free_N_over_A",
+    "unmeasured_compression",
+    "peak_throughput_as_measurement"
+  ],
+  "target": {
+    "model_id": "HuggingFaceTB/SmolLM2-360M",
+    "revision": "f8027fd0eaeea54caa13c31d31b9fdc459c38b49",
+    "dtype": "bfloat16",
+    "attention_implementation": "eager"
+  },
+  "draft_arms": [
+    {
+      "name": "same_family",
+      "model_id": "HuggingFaceTB/SmolLM2-135M",
+      "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+      "dtype": "bfloat16",
+      "attention_implementation": "eager",
+      "direct_token_ids": true,
+      "draft_generation_multiplier": 1
+    },
+    {
+      "name": "cross_family_text_bridge",
+      "model_id": "roneneldan/TinyStories-33M",
+      "revision": "72da9b32b3fda7cb82db29b75f88ae5ea0d980e8",
+      "tokenizer_id": "EleutherAI/gpt-neo-125m",
+      "tokenizer_revision": "6cb0d322a3a484e99667e7cb240e22f1ac036b99",
+      "dtype": "float32",
+      "direct_token_ids": false,
+      "draft_generation_multiplier": 2
+    }
+  ],
+  "block_lengths": [
+    96
+  ],
+  "runtime": {
+    "torch_threads": 2,
+    "timing_boundary": "warm_target_prefix_cache; draft prefill is charged for the measured one-block case"
+  },
+  "target_contract": {
+    "raw_p50_fraction": 0.011851851851851851,
+    "raw_p95_fraction": 0.014814814814814815,
+    "p50_latency_ratio": 1.2,
+    "p95_latency_ratio": 1.5,
+    "p95_candidate_ratio": 1.5
+  },
+  "prompts": [
+    {
+      "id": "build_english",
+      "split": "build",
+      "family": "english",
+      "prompt": "Explain why a metal bridge expands on a hot afternoon, then give one practical engineering consequence.\n"
+    },
+    {
+      "id": "build_code",
+      "split": "build",
+      "family": "code",
+      "prompt": "Write a Python function that performs a stable topological sort and raises an exception when a cycle is found. Return code only.\n"
+    },
+    {
+      "id": "build_repetition",
+      "split": "build",
+      "family": "repeated_pattern",
+      "prompt": "alpha beta gamma alpha beta gamma alpha beta gamma. Continue the pattern and then explain it.\n"
+    },
+    {
+      "id": "holdout_math",
+      "split": "holdout",
+      "family": "math",
+      "prompt": "Derive the closed form of a_n = 3 a_{n-1} - 2 a_{n-2}, with a_0=1 and a_1=4.\n"
+    },
+    {
+      "id": "holdout_structured",
+      "split": "holdout",
+      "family": "structured_json",
+      "prompt": "Return valid JSON with keys project, assumptions, risks, and next_action for an exact model-runtime experiment.\n"
+    },
+    {
+      "id": "holdout_korean",
+      "split": "holdout",
+      "family": "korean",
+      "prompt": "정확한 상태 전이를 유지하는 실행기에서 계산량과 검증 비용을 모두 측정해야 하는 이유를 설명해 주세요.\n"
+    }
+  ],
+  "decisions": {
+    "promotion": "PROMOTE_REAL_CAUSAL_DRAFT_BLOCK_TO_LARGER_SCALE_FULLY_CHARGED_GATE",
+    "restricted_auxiliary": "RETAIN_SAME_FAMILY_CAUSAL_DRAFT_AS_RESTRICTED_AUXILIARY_NOT_UNIVERSAL",
+    "scientific_rejection": "REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE",
+    "control_failure": "INVALID_REALITY_FIRST_CAUSAL_BLOCK_CONTROL_FAILURE"
+  },
+  "claim_boundary": "Executable E2/E3 CPU Gate using real public unmodified draft and target checkpoints. Draft prefill/decode, tokenizer bridge, every target verification position, argmax/comparison, mismatch repair, real same-tokenizer cache crop/replay or cross-tokenizer rebuild, N/A, wall time, cache bytes, resident parameter bytes, RSS, and exact terminal-state comparison are recorded. Target prompt prefill is excluded symmetrically as the warm-prefix boundary. No compression credit is used for promotion. A pass authorizes only a larger-ratio and target-hardware rung; it is not 405B/8-GiB/4B-latency evidence."
+}

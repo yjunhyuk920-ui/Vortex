@@ -789,3 +789,9 @@ complete VRAM measurement. KV, allocator reserve, decompression buffers,
 concurrent streams, packing, repair selection, PCIe/SSD/HBM throughput, TTFT,
 and p50/p95 are `NOT TESTED`.
 <!-- EXP-100A:END -->
+
+<!-- EXP-102A:START -->
+## EXP-102A hardware status
+
+The run is CPU E2/E3 evidence. Quadro M5000 execution, target storage, H2D, CUDA/SASS, physical peak VRAM, power, thermal state, 405B, and same-machine native 4B-Q4 latency remain `NOT TESTED`.
+<!-- EXP-102A:END -->
