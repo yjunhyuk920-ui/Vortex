@@ -20,10 +20,10 @@ latency (`p50<=1.2x`, `p95<=1.5x`).
 
 ## Research selection: no homework-mode experiments
 
-Every core round still starts by inventing three materially different principles,
-but **none is implemented merely because the process requires three ideas**.
-Before a new EXP number or implementation, each principle receives a pre-result
-technical prior:
+Every core round starts by inventing three materially different principles, but
+none is implemented merely because the process requires three ideas. Before a
+new EXP number or implementation, each principle receives a pre-result technical
+prior:
 
 ```text
 PRIOR=<HIGH|MEDIUM|LOW>
@@ -51,16 +51,34 @@ that cannot reach a 10× core effect even under success, leave the dominant cost
 unchanged, already have a simple arbitrary-dense counterexample, or merely
 retune a closed family are killed before implementation.
 
-A low-prior moonshot is still eligible as `CHEAP_KILL_ONLY` when success would
-remove a governing cost term and falsification is cheap. Conversely, a highly
-likely 10–20% auxiliary optimization has low priority for the core target.
+A low-prior moonshot is eligible as `CHEAP_KILL_ONLY` when success would remove a
+governing cost term and falsification is cheap. But `CHEAP_KILL_ONLY` is not a
+research result: it means the cheapest Gate must be run immediately in the same
+round.
+
+```text
+CHEAP_KILL_ONLY
+-> run CHEAPEST_KILL now
+-> FAIL: extract failure premise and return to ideation
+-> PASS: continue to next decisive validation
+```
+
+Likewise `GO` means only “worth implementing/testing.” It is not a round exit.
+
+```text
+GO
+-> implement minimum decisive mechanism
+-> run frozen local validation now
+-> FAIL: extract failure premise and return to ideation
+-> PASS: VALIDATED_SURVIVOR for this Gate
+```
 
 ### Three ideas are the minimum batch, not the end of the search
 
-If all three candidates are `NO_GO`, the round does **not** end. Extract the
-common premise that killed them, invert/remove that premise, and generate a new
-batch of three materially different principles. Repeat until at least one
-candidate is `GO` or `CHEAP_KILL_ONLY`.
+If all three candidates are `NO_GO`, or every candidate that entered validation
+fails, the round does **not** end. Extract the common premise that killed them,
+invert/remove that premise, and generate a new batch of three materially
+different principles.
 
 A new batch is valid only when it materially changes at least one of the
 information source, computation order, verification unit, state representation,
@@ -68,9 +86,47 @@ weight-access dependency, causal schedule, or cross-token/cross-layer sharing
 mechanism. Parameter sweeps, renames, and nearby variants of a closed family do
 not count.
 
-The search may stop without a survivor only if a separately recorded structural
-result closes the remaining admissible design space under the fixed mission.
-“Three ideas all failed” is never a stopping theorem.
+### Failed validation returns to ideation immediately
+
+The mandatory closed loop is:
+
+```text
+IDEATE
+-> PRIOR SCREEN
+-> TEST
+-> FAIL: IDEATE AGAIN IN THE SAME ROUND
+-> PASS: NEXT DECISIVE VALIDATION
+```
+
+Do not discover a `CHEAP_KILL_ONLY` or `GO` candidate, postpone its actual Gate
+to the next EXP, and end the current research round. A promising question is not
+a validated result.
+
+### Only two valid core-round exit conditions
+
+A core research round may end only as:
+
+```text
+VALIDATED_SURVIVOR
+STRUCTURAL_CLOSURE
+```
+
+`VALIDATED_SURVIVOR` means a candidate actually passed the frozen decisive Gate
+for the current rung with required exactness and fully charged accounting.
+
+`STRUCTURAL_CLOSURE` means a separately recorded theorem, finite lower bound,
+information argument, or exhaustive structural result closes the remaining
+admissible design space under the fixed mission.
+
+The following are not valid exits:
+
+```text
+three ideas failed
+a promising paper was found
+CHEAP_KILL_ONLY was found
+GO was assigned
+the next EXP will test it
+```
 
 Normative detail:
 [`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`](docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md).
@@ -117,9 +173,9 @@ weight traffic, arithmetic, nonlinear cells, KV/state, workspace, actual `N/A`,
 and target verification. Ordinary batching receives no credit.
 
 Before any EXP-107A implementation, candidate batches must pass the research-
-prioritization screen. If the first three all fail, generate another genuinely
-new batch rather than ending the round or implementing a weak candidate merely
-to advance the experiment number.
+prioritization screen. Any `CHEAP_KILL_ONLY` Gate or `GO` validation found in that
+search must be executed in the same round; if it fails, the round returns to a
+new principle batch rather than deferring the test to a future EXP.
 
 Read `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`,
 `docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`, and
@@ -132,5 +188,5 @@ target SSD/PCIe/HBM behavior, and final same-machine p50/p95 remain `NOT_TESTED`
 
 ```text
 README_CURRENT=true
-README_UPDATED=iterative principle-search continuity; EXP-107A must keep generating batches until GO/CHEAP_KILL_ONLY or a structural closure result
+README_UPDATED=mandatory validation-return loop; CHEAP_KILL_ONLY/GO are non-terminal; round exits only on VALIDATED_SURVIVOR or STRUCTURAL_CLOSURE
 ```
