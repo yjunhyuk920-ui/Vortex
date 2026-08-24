@@ -1,0 +1,50 @@
+name: Temporary model-prefix transport
+
+on:
+  push:
+    branches:
+      - tmp/model-fetch-bootstrap-20260825
+
+permissions:
+  contents: read
+
+env:
+  SOURCE_URL: https://raw.githubusercontent.com/maddiedreese/gbc-transformer/28c443c1b0cb3d4536f4575bcdfd647a3ec8ad73/stories260K.bin
+  SOURCE_SHA256: b0a507e7ad0f626624f17112325e66691f9076d622e1d3274d103d00299f2696
+  PREFIX_BYTES: '148764'
+
+jobs:
+  export-prefix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch pinned public checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 5 --output stories260K.bin "$SOURCE_URL"
+          echo "$SOURCE_SHA256  stories260K.bin" | sha256sum --check --strict
+          test "$(stat -c %s stories260K.bin)" -eq 1056540
+      - name: Extract immutable prefix
+        shell: bash
+        run: |
+          set -euo pipefail
+          head -c "$PREFIX_BYTES" stories260K.bin > stories260K.prefix.bin
+          test "$(stat -c %s stories260K.prefix.bin)" -eq "$PREFIX_BYTES"
+          sha256sum stories260K.prefix.bin > stories260K.prefix.sha256
+          printf '%s\n' \
+            'source_repo=maddiedreese/gbc-transformer' \
+            'source_commit=28c443c1b0cb3d4536f4575bcdfd647a3ec8ad73' \
+            'source_blob=cfebf5a594edee35c18c88b12ef45de3b6d9aaa9' \
+            'source_sha256=b0a507e7ad0f626624f17112325e66691f9076d622e1d3274d103d00299f2696' \
+            'prefix_bytes=148764' > provenance.txt
+      - name: Upload transport artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: stories260K-prefix-148764
+          path: |
+            stories260K.prefix.bin
+            stories260K.prefix.sha256
+            provenance.txt
+          if-no-files-found: error
+          retention-days: 1
