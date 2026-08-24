@@ -1,0 +1,18 @@
+{
+  "schema": "exp-107a-current-fmm-envelope-v1",
+  "source_commit": "a326999bae25ae6169aa306c499e61f24acf9a09",
+  "catalog": {
+    "repository": "dronperminov/FastMatrixMultiplication",
+    "commit": "98ba522db92b74f1f8c561a78038ff3091356d73",
+    "scheme_count": 680,
+    "schemes_below_strassen": 52,
+    "best_reported_normalized_omega": 2.79248125
+  },
+  "target": {
+    "first_core_fraction": 0.1,
+    "peak_vram_bytes": 8589934592,
+    "block_lengths": [32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384]
+  },
+  "authoritative_arm": "REAL_EXECUTOR_ONLY_PREIMPLEMENTATION_AND_EXACT_ARITHMETIC_GATE",
+  "github_actions_required": false
+}
