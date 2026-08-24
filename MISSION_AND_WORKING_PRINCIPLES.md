@@ -88,6 +88,34 @@ DECISION=<GO|NO_GO|CHEAP_KILL_ONLY>
 
 반대로 성공 가능성이 높더라도 10~20% 수준의 작은 개선만 예상되면 현재 VORTEX core에서는 우선순위를 낮춘다.
 
+### 새 원리 3개는 최소 배치이지 종료 조건이 아니다
+
+첫 batch의 세 후보가 모두 `NO_GO`이면 핵심 연구 회차를 끝내지 않는다. 세 후보를 죽인 **공통 실패 전제**를 추출하고, 그 전제를 뒤집거나 제거한 서로 다른 새 원리 3개를 다시 만든다.
+
+```text
+새 원리 3개
+-> 사전판단
+-> 전부 NO_GO
+-> 공통 실패 전제 추출
+-> 그 전제를 뒤집는 새 원리 3개
+-> 사전판단 반복
+-> GO 또는 CHEAP_KILL_ONLY 최소 1개 확보
+```
+
+새 batch는 다음 중 최소 하나를 실질적으로 바꿔야 한다.
+
+- information source;
+- computation order;
+- verification unit;
+- state representation;
+- weight-access dependency;
+- causal schedule;
+- cross-token 또는 cross-layer sharing mechanism.
+
+이미 닫힌 family의 이름변경, threshold·rank·tile·block sweep, 근접 decomposition은 새 원리로 세지 않는다.
+
+여러 batch가 실패하더라도 그 사실만으로 멈추지 않는다. 생존 후보 없이 멈추려면 현재 고정 mission 아래 남은 admissible design space 자체를 닫는 **별도의 구조적 결과**가 기록되어야 한다. “아이디어 3개가 전부 실패했다”는 종료 정리가 아니다.
+
 상세 규칙은 [`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`](docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md)를 따른다.
 
 ## 연구·검증·GitHub 운영 원칙
