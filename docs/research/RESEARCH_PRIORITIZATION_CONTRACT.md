@@ -123,13 +123,48 @@ Every core round starts with a comparison table equivalent to:
 
 Only `GO` proceeds to implementation. `CHEAP_KILL_ONLY` receives only the minimal falsification. `NO_GO` is documented briefly and receives no EXP implementation merely to fill a research sequence.
 
-## 9. Pre-result timestamp/provenance
+## 9. Three principles are a minimum batch, not a stopping condition
+
+The requirement to invent three materially different principles defines the **minimum batch size for one search iteration**. It is not permission to end a core research round after producing three bad ideas.
+
+If all three candidates are `NO_GO`, do not create an EXP merely to preserve sequence continuity. Instead:
+
+```text
+3 new principles
+-> prior screen
+-> all NO_GO
+-> extract their common failure premise
+-> invert or remove that premise
+-> generate a new batch of 3 materially different principles
+-> prior screen again
+-> repeat until at least one candidate is GO or CHEAP_KILL_ONLY
+```
+
+The search loop therefore continues until at least one candidate survives as `GO` or qualifies for the moonshot `CHEAP_KILL_ONLY` Gate.
+
+A new batch counts as new only when it materially changes at least one of:
+
+- information source;
+- computation order;
+- verification unit;
+- state representation;
+- weight-access dependency;
+- causal schedule;
+- cross-token or cross-layer sharing mechanism.
+
+A rename, threshold change, rank/tile/block sweep, nearby decomposition, or another member of the same decisively closed mechanism family does **not** count as a new principle.
+
+When an entire batch fails, the next batch should be generated from the **common reason for failure**, not by random topic substitution. The objective is to invert the shared hidden premise that killed the previous batch.
+
+Do not stop merely because many batches fail. A round may stop without a survivor only when a separately recorded structural result establishes that the remaining admissible design space itself is closed under the current mission/constraints. “We tried three ideas” is never such a result.
+
+## 10. Pre-result timestamp/provenance
 
 The prior judgment must be written before the authoritative result is observed. When committed together with the result after local validation, the experiment document must clearly mark the prior section as `PRE_RESULT_PRIOR` and state that it was frozen before the result run.
 
 This prevents hindsight from turning every result into something that supposedly looked obvious afterward.
 
-## 10. Integration with existing VORTEX rules
+## 11. Integration with existing VORTEX rules
 
 This contract does not weaken:
 
@@ -149,6 +184,8 @@ It adds a stricter rule before all of them:
 \rightarrow
 \textbf{Kill low-value ideas before implementation.}
 \rightarrow
-\textbf{Spend experiments only on high-value survivors.}
+\textbf{If a whole batch dies, invert the common failure premise and generate another batch.}
+\rightarrow
+\textbf{Spend experiments only on GO or CHEAP\_KILL\_ONLY survivors.}
 }
 \]
