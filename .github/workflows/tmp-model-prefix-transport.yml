@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - tmp/model-fetch-bootstrap-20260825
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
