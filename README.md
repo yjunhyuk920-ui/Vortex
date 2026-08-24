@@ -11,6 +11,7 @@ VORTEX researches an executor-only path for arbitrary public, unmodified dense H
 - three ideas are a minimum batch, not a round exit;
 - `CHEAP_KILL_ONLY` and `GO` require immediate validation in the same round;
 - a failed Gate returns immediately to new principle generation;
+- `PARTIAL_PROGRESS`, `PROMISING_SIGNAL`, `IDEALIZED_PASS`, a literature lead, or a next-candidate list never ends an explicit research turn;
 - README freshness is part of completion.
 
 ## Closed-loop research continuity
@@ -53,8 +54,34 @@ COVERAGE_ARGUMENT=<why every legal remaining class is covered>
 
 The bare `STRUCTURAL_CLOSURE` label is deprecated for round exit. A promising paper, a `GO`/`CHEAP_KILL_ONLY` candidate, one or more family closures, or “the next EXP will test it” never ends the round.
 
+### Research response-exit guard
+
+For explicit requests such as `연구 시작해`, `계속 진행해`, `다음 연구 진행해`, or `목표달성을 위한 추론 시작해`, the assistant does not treat an intermediate state as a completed response boundary.
+
+```text
+ROUND_EXIT_REASON=NONE
+-> CONTINUE_RESEARCH
+```
+
+These are non-terminal:
+
+```text
+PARTIAL_PROGRESS
+PROMISING_SIGNAL
+IDEALIZED_PASS
+LITERATURE_LEAD
+NEXT_CANDIDATE_IDENTIFIED
+GO
+CHEAP_KILL_ONLY
+PARTIAL_FAMILY_CLOSURE
+```
+
+`IDEALIZED_PASS` is only a signal until the finite exact fully charged Gate passes. A real tool/runtime/platform boundary is recorded as `EXECUTION_INTERRUPTED` with `ROUND_EXIT_REASON=NONE`, an exact resume checkpoint, and the next required action; it is never called research completion.
+
 Normative detail:
-[`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`](docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md).
+
+- [`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`](docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md)
+- [`docs/research/RESEARCH_RESPONSE_EXIT_GUARD.md`](docs/research/RESEARCH_RESPONSE_EXIT_GUARD.md)
 
 ## Workflow
 
@@ -96,7 +123,7 @@ The Gate must turn the 2026 asymptotic direct-sum speedup framework into one exp
 
 The causal accepted-token source, `N/A`, exact verification and successor state remain separately mandatory even if arithmetic survives.
 
-Read `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`, `docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`, and `docs/research/VORTEX_RESEARCH_HANDOFF.md` before continuing.
+Read `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`, `docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`, `docs/research/RESEARCH_RESPONSE_EXIT_GUARD.md`, and `docs/research/VORTEX_RESEARCH_HANDOFF.md` before continuing.
 
 ## Claim boundary
 
@@ -104,5 +131,5 @@ Complete 405B execution, physical complete 8-GiB allocation, target CUDA/SASS, S
 
 ```text
 README_CURRENT=true
-README_UPDATED=partial-family closure is non-terminal; active research continues until VALIDATED_SURVIVOR or FULL_DESIGN_SPACE_STRUCTURAL_CLOSURE
+README_UPDATED=research response-exit guard; ideal/promising intermediate states are non-terminal; interruptions resume from exact checkpoint
 ```
