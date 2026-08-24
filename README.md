@@ -8,8 +8,53 @@ VORTEX researches an executor-only path for arbitrary public, unmodified dense H
 - `REAL_EXECUTOR_ONLY` is authoritative;
 - all storage, traffic, arithmetic, KV/state, metadata, verification, repair, fallback, packing and synchronization are charged;
 - research and validation are local; GitHub stores the validated commit and handoff;
-- three ideas are only a minimum batch. If all are `NO_GO`, invert their common failure premise and generate another batch until `GO` or `CHEAP_KILL_ONLY`;
+- three ideas are a minimum batch, not a round exit;
+- `CHEAP_KILL_ONLY` and `GO` require immediate validation in the same round;
+- a failed Gate returns immediately to new principle generation;
 - README freshness is part of completion.
+
+## Closed-loop research continuity
+
+```text
+IDEATE
+-> PRIOR SCREEN
+-> TEST
+-> FAIL: IDEATE AGAIN IN THE SAME ROUND
+-> PASS: NEXT DECISIVE VALIDATION
+```
+
+A decisive result against one mechanism family is recorded as:
+
+```text
+PARTIAL_FAMILY_CLOSURE
+CLOSED_FAMILY=<precise scope>
+CLOSURE_EVIDENCE=<proof/result>
+OPEN_CLASSES=<still-admissible classes>
+ROUND_ACTION=CONTINUE_IDEATION
+```
+
+`PARTIAL_FAMILY_CLOSURE` is permanent evidence, but it is not a research-round exit. Closing several families is still non-terminal unless a separate coverage argument proves that their union contains every remaining legal executor/design class.
+
+A core round may end only as:
+
+```text
+VALIDATED_SURVIVOR
+FULL_DESIGN_SPACE_STRUCTURAL_CLOSURE
+```
+
+A valid full closure must state:
+
+```text
+CLOSED_DESIGN_SPACE=ALL_REMAINING_ADMISSIBLE_DESIGN_SPACE_UNDER_FIXED_MISSION
+OPEN_CLASSES=[]
+UNRESOLVED_CLASSES=[]
+COVERAGE_ARGUMENT=<why every legal remaining class is covered>
+```
+
+The bare `STRUCTURAL_CLOSURE` label is deprecated for round exit. A promising paper, a `GO`/`CHEAP_KILL_ONLY` candidate, one or more family closures, or “the next EXP will test it” never ends the round.
+
+Normative detail:
+[`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`](docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md).
 
 ## Workflow
 
@@ -39,13 +84,15 @@ See:
 - `docs/research/EXP_107A_LATEST_RESULT.md`
 - `results/exp_107a/local/result.json`
 
-## Active frontier — EXP-108A
+## Active frontier — EXP-108A remains open
 
 ```text
 FINITE_STRASSEN_CALCULUS_DIRECT_SUM_EXTRACTION_CHEAP_KILL_ONLY
 ```
 
-The next Gate must turn the 2026 asymptotic direct-sum speedup framework into one explicit finite exact target-size schedule. Every multiplication, addition, extraction/interpolation operation, coefficient word, transform and workspace byte is charged. No kernel is built unless the complete projection inventory crosses `10%` arithmetic.
+This candidate must be tested immediately rather than treated as a round result. If its concrete finite bridge or charged schedule fails, the result is a partial family closure and the same research round must generate and test a genuinely different principle batch.
+
+The Gate must turn the 2026 asymptotic direct-sum speedup framework into one explicit finite exact target-size schedule. Every multiplication, addition, extraction/interpolation operation, coefficient word, transform and workspace byte is charged. No kernel is built unless the complete projection inventory crosses `10%` arithmetic.
 
 The causal accepted-token source, `N/A`, exact verification and successor state remain separately mandatory even if arithmetic survives.
 
@@ -57,5 +104,5 @@ Complete 405B execution, physical complete 8-GiB allocation, target CUDA/SASS, S
 
 ```text
 README_CURRENT=true
-README_UPDATED=EXP-107A prior batches and arithmetic envelope; EXP-108A finite direct-sum frontier
+README_UPDATED=partial-family closure is non-terminal; active research continues until VALIDATED_SURVIVOR or FULL_DESIGN_SPACE_STRUCTURAL_CLOSURE
 ```
