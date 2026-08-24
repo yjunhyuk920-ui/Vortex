@@ -1,79 +1,15 @@
 # VORTEX
 
-VORTEX researches an executor-only path for arbitrary public, unmodified dense
-Hugging Face 405B-class models on one 8-GiB GPU while preserving exact declared
-output/successor-state behavior and approaching same-machine native-4B-Q4
-latency (`p50<=1.2x`, `p95<=1.5x`).
+VORTEX researches an executor-only path for arbitrary public, unmodified dense Hugging Face 405B-class models on one 8-GiB GPU while preserving exact output and successor-state behavior and approaching same-machine native-4B-Q4 latency (`p50<=1.2x`, `p95<=1.5x`).
 
-## Non-negotiable rules
+## Research rules
 
-- no retraining, fine-tuning, distillation, LoRA, or semantic target-weight modification;
+- no retraining, fine-tuning, distillation, LoRA or semantic target-weight change;
 - `REAL_EXECUTOR_ONLY` is authoritative;
-- all storage, traffic, arithmetic, KV/state, metadata, verification, repair,
-  fallback, packing, and synchronization are charged;
-- future target state, perfect selectors, free transforms/workspace, unmeasured
-  compression, hidden compute, and configured `K` reported as accepted `A`
-  cannot promote a mechanism;
-- research and validation are local first, followed by commit/push and remote-SHA
-  verification; duplicate GitHub Actions execution is not required;
-- README freshness is part of round completion.
-
-## Research selection: no homework-mode experiments
-
-Every core round still starts by inventing three materially different principles,
-but **none is implemented merely because the process requires three ideas**.
-Before a new EXP number or implementation, each principle receives a pre-result
-technical prior:
-
-```text
-PRIOR=<HIGH|MEDIUM|LOW>
-WHY_IT_MIGHT_WORK
-WHY_IT_MIGHT_FAIL
-DOMINANT_TERM_CHANGED
-MAX_IMPACT_IF_TRUE
-ARBITRARY_CHECKPOINT_ARGUMENT
-CHEAPEST_KILL
-FALSIFICATION_COST
-IMPLEMENTATION_COST
-DECISION=<GO|NO_GO|CHEAP_KILL_ONLY>
-```
-
-Research priority follows the heuristic
-
-\[
-\text{Research Value}\propto
-\frac{P(\text{works})\times\text{impact if true}}
-{\text{cost to falsify}}.
-\]
-
-This is an ordering heuristic, not a claim of measured probability. Candidates
-that cannot reach a 10× core effect even under success, leave the dominant cost
-unchanged, already have a simple arbitrary-dense counterexample, or merely
-retune a closed family are killed before implementation.
-
-A low-prior moonshot is still eligible as `CHEAP_KILL_ONLY` when success would
-remove a governing cost term and falsification is cheap. Conversely, a highly
-likely 10–20% auxiliary optimization has low priority for the core target.
-
-### Three ideas are the minimum batch, not the end of the search
-
-If all three candidates are `NO_GO`, the round does **not** end. Extract the
-common premise that killed them, invert/remove that premise, and generate a new
-batch of three materially different principles. Repeat until at least one
-candidate is `GO` or `CHEAP_KILL_ONLY`.
-
-A new batch is valid only when it materially changes at least one of the
-information source, computation order, verification unit, state representation,
-weight-access dependency, causal schedule, or cross-token/cross-layer sharing
-mechanism. Parameter sweeps, renames, and nearby variants of a closed family do
-not count.
-
-The search may stop without a survivor only if a separately recorded structural
-result closes the remaining admissible design space under the fixed mission.
-“Three ideas all failed” is never a stopping theorem.
-
-Normative detail:
-[`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`](docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md).
+- all storage, traffic, arithmetic, KV/state, metadata, verification, repair, fallback, packing and synchronization are charged;
+- research and validation are local; GitHub stores the validated commit and handoff;
+- three ideas are only a minimum batch. If all are `NO_GO`, invert their common failure premise and generate another batch until `GO` or `CHEAP_KILL_ONLY`;
+- README freshness is part of completion.
 
 ## Workflow
 
@@ -84,53 +20,42 @@ LOCAL_RESEARCH
 -> REMOTE_COMMIT_VERIFIED
 ```
 
-Research, checkpoint execution, tests, measurements, and evidence generation
-happen locally. GitHub stores the validated source/results and handoff. Duplicate
-GitHub Actions execution is not required unless explicitly requested.
+GitHub Actions reexecution is not required unless explicitly requested.
 
-## Latest authoritative result — EXP-106A
+## Latest authoritative result — EXP-107A
 
 ```text
-REJECT_DEPTH_COMPLETE_WIDTH_THIN_LINEAR_AND_BIT_SLICED_SURROGATES_AS_UNIVERSAL_CAUSAL_CORE
+REJECT_CURRENT_680_EXPLICIT_FMM_CATALOG_COMPOSITIONS_AS_10X_CORE
+REJECT_REGISTERED_NAIVE_RANK46_APA_INTERPOLATION_EXACTIFICATION
 ```
 
-A concrete all-126-layer Q4 width-thin surrogate was fully charged. Widths up to
-1,664 can fit the resident and scan-alone budgets, but every resource-feasible
-linear bridge has a nonzero kernel. Exact finite-word controls found distinct
-states with byte-identical narrow codes and different target decisions. A dense
-flat-spectrum operator also retains relative operator-norm error 1 under every
-rank-deficient approximation.
+The pinned 2026 catalog contains 680 small-format schemes, including 52 with normalized exponent below Strassen. Its best displayed exponent is `2.792481250`. Even granting that exponent to every registered 405B projection shape with unit constant and zero transform/ABI/byte cost leaves `12.515087006%` multiplication at `K=16384`. The first-core requirement is `10%`, corresponding to exponent `2.7700683089152998`.
 
-Full width removes the collision but requires `202.377974 GiB` resident and
-`214.493273 GB` per proposed token. A single checkpoint bitplane costs
-`47.247070312 GiB`, so the bit-sliced all-layer arm also fails.
+Rank-46 `4x4` APA has zero-overhead headroom, but the registered generic 22-evaluation exact interpolation plan exceeds classical work. This rejects that exactification plan, not every border-rank/direct-sum extraction.
 
-Previous EXP-105A rejected the activation-ordered exact residual-bound head
-index when combined with the minimum complete target-width layer.
+See:
 
-## Active frontier — EXP-107A
+- `docs/research/EXPERIMENT_107A_RESEARCH_PRIOR_AND_CURRENT_FMM_ENVELOPE_GATE.md`
+- `docs/research/EXP_107A_LATEST_RESULT.md`
+- `results/exp_107a/local/result.json`
 
-`Exact Distinct-State Shared-Weight-Sweep Gate` asks whether distinct causal
-states can share one value-changing coded weight computation before nonlinear
-separation. It must fully charge branch matrices, exact encoding/decoding,
-weight traffic, arithmetic, nonlinear cells, KV/state, workspace, actual `N/A`,
-and target verification. Ordinary batching receives no credit.
+## Active frontier — EXP-108A
 
-Before any EXP-107A implementation, candidate batches must pass the research-
-prioritization screen. If the first three all fail, generate another genuinely
-new batch rather than ending the round or implementing a weak candidate merely
-to advance the experiment number.
+```text
+FINITE_STRASSEN_CALCULUS_DIRECT_SUM_EXTRACTION_CHEAP_KILL_ONLY
+```
 
-Read `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`,
-`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`, and
-`docs/research/VORTEX_RESEARCH_HANDOFF.md` before continuing.
+The next Gate must turn the 2026 asymptotic direct-sum speedup framework into one explicit finite exact target-size schedule. Every multiplication, addition, extraction/interpolation operation, coefficient word, transform and workspace byte is charged. No kernel is built unless the complete projection inventory crosses `10%` arithmetic.
+
+The causal accepted-token source, `N/A`, exact verification and successor state remain separately mandatory even if arithmetic survives.
+
+Read `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`, `docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`, and `docs/research/VORTEX_RESEARCH_HANDOFF.md` before continuing.
 
 ## Claim boundary
 
-Complete 405B execution, physical complete 8-GiB allocation, target CUDA/SASS,
-target SSD/PCIe/HBM behavior, and final same-machine p50/p95 remain `NOT_TESTED`.
+Complete 405B execution, physical complete 8-GiB allocation, target CUDA/SASS, SSD/PCIe/HBM behavior and final same-machine p50/p95 remain `NOT_TESTED`.
 
 ```text
 README_CURRENT=true
-README_UPDATED=iterative principle-search continuity; EXP-107A must keep generating batches until GO/CHEAP_KILL_ONLY or a structural closure result
+README_UPDATED=EXP-107A prior batches and arithmetic envelope; EXP-108A finite direct-sum frontier
 ```
