@@ -102,21 +102,54 @@ Do not discover a `CHEAP_KILL_ONLY` or `GO` candidate, postpone its actual Gate
 to the next EXP, and end the current research round. A promising question is not
 a validated result.
 
+### Partial family closure is non-terminal
+
+A theorem, exact resource equation, adversarial counterexample family, or
+exhaustive search may decisively close one mechanism family. That is valuable
+permanent evidence, but it is recorded as:
+
+```text
+PARTIAL_FAMILY_CLOSURE
+CLOSED_FAMILY=<precise scope>
+CLOSURE_EVIDENCE=<proof/result>
+OPEN_CLASSES=<still-admissible classes>
+ROUND_ACTION=CONTINUE_IDEATION
+```
+
+If any legal mechanism class remains outside the proved scope, the research
+round must continue. Closing several families does not become a full closure
+unless a separate coverage argument proves that their union covers every
+remaining admissible executor/design class under the fixed mission.
+
 ### Only two valid core-round exit conditions
 
 A core research round may end only as:
 
 ```text
 VALIDATED_SURVIVOR
-STRUCTURAL_CLOSURE
+FULL_DESIGN_SPACE_STRUCTURAL_CLOSURE
 ```
 
 `VALIDATED_SURVIVOR` means a candidate actually passed the frozen decisive Gate
 for the current rung with required exactness and fully charged accounting.
 
-`STRUCTURAL_CLOSURE` means a separately recorded theorem, finite lower bound,
-information argument, or exhaustive structural result closes the remaining
-admissible design space under the fixed mission.
+`FULL_DESIGN_SPACE_STRUCTURAL_CLOSURE` is intentionally stronger than the old
+ambiguous `STRUCTURAL_CLOSURE` label. It requires a theorem, finite lower bound,
+information argument, or exhaustive structural result whose quantified scope
+covers **all remaining admissible design classes under the fixed mission**.
+A valid full-closure report must include:
+
+```text
+CLOSED_DESIGN_SPACE=ALL_REMAINING_ADMISSIBLE_DESIGN_SPACE_UNDER_FIXED_MISSION
+OPEN_CLASSES=[]
+UNRESOLVED_CLASSES=[]
+COVERAGE_ARGUMENT=<why every legal remaining class is covered>
+```
+
+If even one still-open legal information source, computation order, verification
+unit, state representation, weight-access dependency, causal schedule, or
+cross-token/cross-layer sharing mechanism can be named, full closure is invalid
+and the required action is `PARTIAL_FAMILY_CLOSURE -> CONTINUE_IDEATION`.
 
 The following are not valid exits:
 
@@ -126,7 +159,12 @@ a promising paper was found
 CHEAP_KILL_ONLY was found
 GO was assigned
 the next EXP will test it
+one mechanism family was closed
+several families were closed but open classes remain
+PARTIAL_FAMILY_CLOSURE
 ```
+
+The bare `STRUCTURAL_CLOSURE` label is deprecated for round exit.
 
 Normative detail:
 [`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`](docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md).
@@ -175,7 +213,9 @@ and target verification. Ordinary batching receives no credit.
 Before any EXP-107A implementation, candidate batches must pass the research-
 prioritization screen. Any `CHEAP_KILL_ONLY` Gate or `GO` validation found in that
 search must be executed in the same round; if it fails, the round returns to a
-new principle batch rather than deferring the test to a future EXP.
+new principle batch rather than deferring the test to a future EXP. A
+family-specific closure from that search is non-terminal unless it closes the
+entire remaining admissible design space.
 
 Read `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`,
 `docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`, and
@@ -188,5 +228,5 @@ target SSD/PCIe/HBM behavior, and final same-machine p50/p95 remain `NOT_TESTED`
 
 ```text
 README_CURRENT=true
-README_UPDATED=mandatory validation-return loop; CHEAP_KILL_ONLY/GO are non-terminal; round exits only on VALIDATED_SURVIVOR or STRUCTURAL_CLOSURE
+README_UPDATED=partial-family closure is non-terminal; round exit requires VALIDATED_SURVIVOR or FULL_DESIGN_SPACE_STRUCTURAL_CLOSURE
 ```
