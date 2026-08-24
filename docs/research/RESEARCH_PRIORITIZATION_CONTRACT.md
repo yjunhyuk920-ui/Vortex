@@ -328,3 +328,46 @@ It adds a stricter closed loop before repository handoff:
 \textbf{Exit only on VALIDATED\_SURVIVOR or FULL\_DESIGN\_SPACE\_STRUCTURAL\_CLOSURE.}
 }
 \]
+
+## 16. Response-exit guard for explicit research-turn requests
+
+A scientific round remaining open and a chat response ending are not separate loopholes. When the user explicitly asks to start or continue the fixed mission, `ROUND_EXIT_REASON=NONE` means **continue research**, not “report the current promising intermediate state and stop.”
+
+The following are non-terminal states:
+
+```text
+PARTIAL_PROGRESS
+PROMISING_SIGNAL
+IDEALIZED_PASS
+LITERATURE_LEAD
+NEXT_CANDIDATE_IDENTIFIED
+GO
+CHEAP_KILL_ONLY
+PARTIAL_FAMILY_CLOSURE
+ROUND_EXIT_REASON=NONE
+```
+
+In particular:
+
+\[
+\boxed{\text{IDEALIZED\_PASS} \neq \text{VALIDATED\_SURVIVOR}}
+\]
+
+An asymptotic, idealized, zero-transform-cost, free-byte, or otherwise favorable envelope that crosses a threshold is only a `PROMISING_SIGNAL` until the registered finite exact fully charged Gate also passes.
+
+For explicit research-turn requests, the assistant must not voluntarily end the research turn merely because it has found a promising paper/equation, identified a `GO`/`CHEAP_KILL_ONLY`, closed a mechanism family, or named the next candidate batch. It must execute the next required Gate or return to ideation after failure.
+
+A real runtime/tool/platform boundary may force execution to stop. That is not a research-round exit. Record it only as:
+
+```text
+EXECUTION_INTERRUPTED
+ROUND_EXIT_REASON=NONE
+ROUND_ACTION=RESUME_FROM_EXACT_CHECKPOINT
+INTERRUPTION_REASON=<concrete external/runtime/tool reason>
+RESUME_CHECKPOINT=<exact branch/commit/result/Gate state>
+NEXT_REQUIRED_ACTION=<first action on resume>
+```
+
+Do not invent `EXECUTION_INTERRUPTED` merely to shorten a turn. It is valid only when an actual execution boundary prevents continued work.
+
+Normative detail: [`docs/research/RESEARCH_RESPONSE_EXIT_GUARD.md`](RESEARCH_RESPONSE_EXIT_GUARD.md).
