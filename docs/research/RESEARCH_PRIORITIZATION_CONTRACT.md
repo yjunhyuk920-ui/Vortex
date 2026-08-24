@@ -72,18 +72,41 @@ A candidate is `NO_GO` before coding when any of the following is already clear:
 
 Do not build 500 lines of code to reconfirm a five-line decisive bound.
 
-## 5. `CHEAP_KILL_ONLY` exception
+## 5. `CHEAP_KILL_ONLY` is an action state, never a stopping state
 
 A mechanism with a LOW prior may still be worth testing when both are true:
 
 1. success would radically change the governing equation, e.g. eliminate an original dense sweep, make one weight scan serve many exact causal states/tokens, or reduce `r` by an order of magnitude; and
 2. the decisive falsification is very cheap.
 
-In that case run only the cheapest Gate first. Do not build a backend, kernel, public-checkpoint suite, or large infrastructure until the cheap Gate survives.
+In that case `CHEAP_KILL_ONLY` means **run the cheapest Gate now in the same research round**. It does not mean “save this idea as the next experiment and stop.”
+
+```text
+CHEAP_KILL_ONLY
+-> execute CHEAPEST_KILL immediately
+-> FAIL: record the failure premise and return to principle generation
+-> PASS: promote only to a validation survivor and continue to the next required Gate
+```
+
+Do not build a backend, kernel, public-checkpoint suite, or large infrastructure until the cheap Gate survives. But also do not postpone the cheap Gate merely by assigning a new EXP number.
 
 This is the moonshot exception: low probability can be acceptable when impact is transformative and falsification is inexpensive.
 
-## 6. Impact means changing the dominant equation
+## 6. `GO` is also not a stopping state
+
+`GO` means that a candidate is worth implementation/validation. It is not evidence that the mechanism works.
+
+```text
+GO
+-> implement the minimum decisive mechanism
+-> run the frozen local validation
+-> FAIL: record the failure premise and return to principle generation
+-> PASS: mark the candidate VALIDATED_SURVIVOR for that Gate
+```
+
+A research report must never present `GO`, `CHEAP_KILL_ONLY`, a literature lead, or a promising equation as the completed scientific result of the round.
+
+## 7. Impact means changing the dominant equation
 
 The minimum accounting frame remains
 
@@ -101,7 +124,7 @@ A high-impact mechanism must credibly change at least one dominant quantity:
 
 A mechanism that predictably yields only a small constant-factor improvement receives low priority even if it is likely to work.
 
-## 7. Arbitrary-checkpoint prior
+## 8. Arbitrary-checkpoint prior
 
 Before implementation ask:
 
@@ -109,9 +132,9 @@ Before implementation ask:
 
 If the answer is only “real LLMs may happen to be structured,” classify the mechanism as restricted/empirical rather than a universal core unless the project goal is explicitly changed.
 
-Construct the strongest legal counterexample you can think of before the positive experiment. If that counterexample is already decisive, stop.
+Construct the strongest legal counterexample you can think of before the positive experiment. If that counterexample is already decisive, stop that candidate and return to ideation.
 
-## 8. Required round selection table
+## 9. Required round selection table
 
 Every core round starts with a comparison table equivalent to:
 
@@ -121,26 +144,26 @@ Every core round starts with a comparison table equivalent to:
 | B | | | | | | | | |
 | C | | | | | | | | |
 
-Only `GO` proceeds to implementation. `CHEAP_KILL_ONLY` receives only the minimal falsification. `NO_GO` is documented briefly and receives no EXP implementation merely to fill a research sequence.
+`NO_GO` is documented briefly and receives no EXP implementation merely to fill a research sequence. `CHEAP_KILL_ONLY` immediately executes its minimal falsification. `GO` immediately enters minimum decisive implementation/validation.
 
-## 9. Three principles are a minimum batch, not a stopping condition
+## 10. Three principles are a minimum batch, not a stopping condition
 
 The requirement to invent three materially different principles defines the **minimum batch size for one search iteration**. It is not permission to end a core research round after producing three bad ideas.
 
-If all three candidates are `NO_GO`, do not create an EXP merely to preserve sequence continuity. Instead:
+If all three candidates are `NO_GO`, or if all candidates that entered validation fail, do not create a new EXP merely to preserve sequence continuity. Instead:
 
 ```text
 3 new principles
 -> prior screen
--> all NO_GO
--> extract their common failure premise
+-> NO_GO candidates discarded
+-> CHEAP_KILL_ONLY candidates tested immediately
+-> GO candidates minimally validated immediately
+-> no validated survivor
+-> extract the common failure premise
 -> invert or remove that premise
 -> generate a new batch of 3 materially different principles
--> prior screen again
--> repeat until at least one candidate is GO or CHEAP_KILL_ONLY
+-> repeat
 ```
-
-The search loop therefore continues until at least one candidate survives as `GO` or qualifies for the moonshot `CHEAP_KILL_ONLY` Gate.
 
 A new batch counts as new only when it materially changes at least one of:
 
@@ -156,15 +179,84 @@ A rename, threshold change, rank/tile/block sweep, nearby decomposition, or anot
 
 When an entire batch fails, the next batch should be generated from the **common reason for failure**, not by random topic substitution. The objective is to invert the shared hidden premise that killed the previous batch.
 
-Do not stop merely because many batches fail. A round may stop without a survivor only when a separately recorded structural result establishes that the remaining admissible design space itself is closed under the current mission/constraints. “We tried three ideas” is never such a result.
+## 11. Mandatory validation-return loop
 
-## 10. Pre-result timestamp/provenance
+Every failed Gate returns control to ideation in the same research round.
+
+\[
+\boxed{
+\text{IDEATE}
+\rightarrow
+\text{PRIOR SCREEN}
+\rightarrow
+\text{TEST}
+\rightarrow
+\begin{cases}
+\text{FAIL}\rightarrow\text{IDEATE AGAIN}\\
+\text{PASS}\rightarrow\text{NEXT DECISIVE VALIDATION}
+\end{cases}
+}
+\]
+
+The following behavior is forbidden:
+
+```text
+find CHEAP_KILL_ONLY
+-> describe why it might work
+-> assign the actual test to EXP-(n+1)
+-> end the current research round
+```
+
+The required behavior is:
+
+```text
+find CHEAP_KILL_ONLY
+-> run CHEAPEST_KILL now
+-> if it fails, generate the next batch now
+-> continue until a real round-exit condition exists
+```
+
+Likewise, a failed `GO` implementation does not justify ending the round. Extract the failure premise and return to the principle-generation loop.
+
+## 12. The only core-round exit conditions
+
+A core research round may end only with one of these two recorded states:
+
+### `VALIDATED_SURVIVOR`
+
+At least one candidate has actually passed the frozen decisive Gate for the current rung with the required exactness and fully charged accounting. A prior-screen pass, literature lead, asymptotic possibility, or unexecuted cheapest Gate is not sufficient.
+
+The final report must identify:
+
+```text
+ROUND_EXIT_REASON=VALIDATED_SURVIVOR
+SURVIVOR=<mechanism>
+SURVIVOR_GATE=<actual Gate passed>
+SURVIVOR_EVIDENCE=<result/log/checksum paths>
+NEXT_UNTESTED_RUNG=<next validation boundary>
+```
+
+### `STRUCTURAL_CLOSURE`
+
+A separately recorded theorem, finite lower bound, information argument, or exhaustive structural result closes the remaining admissible design space under the fixed mission/constraints.
+
+The final report must identify:
+
+```text
+ROUND_EXIT_REASON=STRUCTURAL_CLOSURE
+CLOSED_DESIGN_SPACE=<precise class closed>
+CLOSURE_EVIDENCE=<proof/result paths>
+```
+
+“Three ideas failed,” “we found a promising paper,” “we found a CHEAP_KILL_ONLY candidate,” or “the next EXP will test it” are **not** valid round-exit reasons.
+
+## 13. Pre-result timestamp/provenance
 
 The prior judgment must be written before the authoritative result is observed. When committed together with the result after local validation, the experiment document must clearly mark the prior section as `PRE_RESULT_PRIOR` and state that it was frozen before the result run.
 
 This prevents hindsight from turning every result into something that supposedly looked obvious afterward.
 
-## 11. Integration with existing VORTEX rules
+## 14. Integration with existing VORTEX rules
 
 This contract does not weaken:
 
@@ -176,16 +268,16 @@ This contract does not weaken:
 - README freshness;
 - permanent closure of decisively rejected mechanism families.
 
-It adds a stricter rule before all of them:
+It adds a stricter closed loop before repository handoff:
 
 \[
 \boxed{
 \textbf{Think first about whether the idea is worth testing.}
 \rightarrow
-\textbf{Kill low-value ideas before implementation.}
+\textbf{Test every GO/CHEAP\_KILL\_ONLY candidate now.}
 \rightarrow
-\textbf{If a whole batch dies, invert the common failure premise and generate another batch.}
+\textbf{On failure, immediately return to ideation.}
 \rightarrow
-\textbf{Spend experiments only on GO or CHEAP\_KILL\_ONLY survivors.}
+\textbf{Exit only on VALIDATED\_SURVIVOR or STRUCTURAL\_CLOSURE.}
 }
 \]
