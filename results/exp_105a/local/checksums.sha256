@@ -1,4 +1,6 @@
-20c69e4536dcea9481ea49433a594c6a08d17f3a31bcaa1998a8b94c2031f08d  result.json
+# Local raw result.json SHA-256 before compact remote serialization: 20c69e4536dcea9481ea49433a594c6a08d17f3a31bcaa1998a8b94c2031f08d
+# Remote compact result.json Git blob SHA-1: 0f0a286de1119a9933933714f106d51a4f6d7438; size=13018
+# Scientific semantic identity: deterministic_core=17cebccb51a2fbdadf871767151962b47e462bd14caeba1707cd66a64a468598
 58745d8011883213acd6d3ad00c73a2860f68e432f60fc956b8cb2a8bb6d8181  tests.log
 1b46abfba19f7473c3382143e565017f24db56c7b59657005a33e713ee0cda1e  run.log
 1b46abfba19f7473c3382143e565017f24db56c7b59657005a33e713ee0cda1e  rerun.log
