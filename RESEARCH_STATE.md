@@ -2,9 +2,7 @@
 
 ## Fixed target
 
-Arbitrary public, unmodified Hugging Face dense 405B-class checkpoint;
-executor-only; one 8-GiB GPU; exact declared output and required successor
-state; same-machine native-4B-Q4 warm latency `p50<=1.2x`, `p95<=1.5x`.
+Arbitrary public unmodified dense 405B-class checkpoint; executor-only; one 8-GiB GPU; exact output and successor state; same-machine native-4B-Q4 warm latency `p50<=1.2x`, `p95<=1.5x`.
 
 ## Operating mode
 
@@ -17,56 +15,32 @@ LOCAL_RESEARCH
 
 Duplicate GitHub Actions execution is not required unless explicitly requested.
 
-## Latest authoritative completed Gate — EXP-106A
+## Latest authoritative result — EXP-107A
 
 ```text
-REJECT_DEPTH_COMPLETE_WIDTH_THIN_LINEAR_AND_BIT_SLICED_SURROGATES_AS_UNIVERSAL_CAUSAL_CORE
+REJECT_CURRENT_680_EXPLICIT_FMM_CATALOG_COMPOSITIONS_AS_10X_CORE
+REJECT_REGISTERED_NAIVE_RANK46_APA_INTERPOLATION_EXACTIFICATION
 ```
 
-A concrete training-free all-layer Q4 width-thin surrogate was fully charged.
-Widths 128 through 1,664 fit 8 GiB and keep the draft scan below 2.4 GB/token,
-but every such bridge has a nonzero kernel. Exact finite-word controls produced
-collided narrow states that a legal target head distinguishes at the first
-token. A dense flat-spectrum Hadamard control shows even the best rank-deficient
-linear approximation has relative operator-norm error 1.
+The first EXP-107A branch-sharing batch was entirely `NO_GO`; it shared weight reads but not the value-changing arithmetic/state of distinct branches. The second batch attacked arithmetic directly.
 
-Restoring full width removes the kernel but costs
-`202.377974 GiB` resident and
-`214.493273 GB` per proposed token. One
-all-checkpoint bitplane alone costs `47.247070312 GiB`.
+For the pinned 680-entry 2026 small-format FMM catalog, granting the best normalized exponent `2.792481250` to every target aspect ratio with unit constant and no transforms/additions/ABI/byte costs still leaves `12.515087006%` model-weighted multiplication at `K=16384`. The first-core line requires `10%`, equivalent to normalized exponent `2.7700683089152998`.
 
-Local validation:
+Smirnov rank-46 APA has zero-overhead algebraic headroom, but the registered 22-evaluation tensor-power interpolation plan raises the model indicator above `200%`; only that naive exactification is rejected.
+
+## Active survivor — EXP-108A
 
 ```text
-8 focused tests passed
-exact dense-encoder collision confirmed
-512-step positive/negative full-depth controls
-flat-spectrum dense operator control
-byte-identical deterministic rerun
-SHA-256 ledger PASS
-GitHub Actions not run
+FINITE_STRASSEN_CALCULUS_DIRECT_SUM_EXTRACTION_CHEAP_KILL_ONLY
 ```
 
-## Previous authoritative Gate — EXP-105A
+Derive an explicit finite exact target-size schedule from nontrivial direct-sum asymptotic-rank speedups. An asymptotic exponent statement is insufficient. Before backend work the schedule must cross `10%` after all arithmetic, exactification, coefficient, transform, native-ABI and workspace costs.
 
-```text
-REJECT_ACTIVATION_ORDERED_EXACT_RESIDUAL_BOUND_HEAD_INDEX_WITH_COMPLETE_LAYER_AS_P50_CORE
-NO_REGISTERED_EXP_105A_PRINCIPLE_SURVIVES_COMPLETE_EXECUTOR_GATE
-```
+The causal `A`, `N/A`, exact verification and successor-state source remains an independent mandatory Gate after arithmetic survival.
 
-## Active next Gate — EXP-107A
-
-`Exact Distinct-State Shared-Weight-Sweep Gate`.
-
-The next mechanism must share a value-changing weight computation among distinct
-causal states rather than compressing state identity. It must charge the branch
-matrix, weight-tile reads, arithmetic, nonlinear separation, KV/state,
-workspace, actual `N/A`, and exact target verification.
-
-## NOT TESTED
+## Not tested
 
 - complete 405B target execution;
-- physical complete 8-GiB target allocation;
-- target SSD/PCIe/HBM throughput;
-- target CUDA/SASS;
-- same-machine native-4B-Q4 final p50/p95 acceptance.
+- physical complete 8-GiB allocation;
+- target CUDA/SASS and storage/PCIe/HBM behavior;
+- same-machine native-4B-Q4 p50/p95 acceptance.
