@@ -84,22 +84,47 @@ DECISION=<GO|NO_GO|CHEAP_KILL_ONLY>
 
 ### `CHEAP_KILL_ONLY` 문샷 예외
 
-성공 확률이 낮아 보여도 **성공하면 지배항 자체를 없애고**, 반증이 매우 싸다면 최소 Gate만 먼저 실행할 수 있다. 예를 들어 한 weight sweep으로 여러 exact causal state/token을 전진시키거나, 원본 dense sweep을 제거하거나, \(r\)을 order-of-magnitude로 줄이는 원리는 낮은 prior라도 연구 가치가 있다.
+성공 확률이 낮아 보여도 **성공하면 지배항 자체를 없애고**, 반증이 매우 싸다면 최소 Gate를 먼저 실행할 수 있다. 예를 들어 한 weight sweep으로 여러 exact causal state/token을 전진시키거나, 원본 dense sweep을 제거하거나, \(r\)을 order-of-magnitude로 줄이는 원리는 낮은 prior라도 연구 가치가 있다.
+
+그러나 `CHEAP_KILL_ONLY`는 생존자나 종료 상태가 아니다.
+
+```text
+CHEAP_KILL_ONLY
+-> CHEAPEST_KILL 즉시 실행
+-> FAIL이면 실패 전제 기록 후 새 원리 생성으로 복귀
+-> PASS이면 다음 decisive validation으로 이동
+```
+
+`CHEAP_KILL_ONLY`를 찾았다는 이유만으로 “다음 EXP에서 검증”이라고 넘기고 현재 회차를 끝내지 않는다.
+
+### `GO`도 종료 상태가 아니다
+
+`GO`는 구현/검증할 가치가 있다는 뜻일 뿐, 작동이 확인됐다는 뜻이 아니다.
+
+```text
+GO
+-> 최소 decisive mechanism 구현
+-> frozen local validation 실행
+-> FAIL이면 실패 전제 추출 후 새 원리 생성으로 복귀
+-> PASS이면 해당 Gate의 VALIDATED_SURVIVOR
+```
 
 반대로 성공 가능성이 높더라도 10~20% 수준의 작은 개선만 예상되면 현재 VORTEX core에서는 우선순위를 낮춘다.
 
-### 새 원리 3개는 최소 배치이지 종료 조건이 아니다
+## 3개는 최소 batch이며 검증까지 닫힌 루프로 반복한다
 
-첫 batch의 세 후보가 모두 `NO_GO`이면 핵심 연구 회차를 끝내지 않는다. 세 후보를 죽인 **공통 실패 전제**를 추출하고, 그 전제를 뒤집거나 제거한 서로 다른 새 원리 3개를 다시 만든다.
+첫 batch의 세 원리가 전부 `NO_GO`이거나, `GO`/`CHEAP_KILL_ONLY`로 들어간 후보가 실제 Gate에서 전부 실패하면 연구 회차를 종료하지 않는다. 공통 실패 전제를 추출하고, 그 전제를 뒤집거나 제거한 새 원리 3개를 다시 만든다.
 
 ```text
 새 원리 3개
 -> 사전판단
--> 전부 NO_GO
+-> NO_GO 폐기
+-> CHEAP_KILL_ONLY 즉시 cheapest Gate
+-> GO 즉시 최소 decisive validation
+-> 실제 생존자 없음
 -> 공통 실패 전제 추출
 -> 그 전제를 뒤집는 새 원리 3개
--> 사전판단 반복
--> GO 또는 CHEAP_KILL_ONLY 최소 1개 확보
+-> 반복
 ```
 
 새 batch는 다음 중 최소 하나를 실질적으로 바꿔야 한다.
@@ -114,7 +139,61 @@ DECISION=<GO|NO_GO|CHEAP_KILL_ONLY>
 
 이미 닫힌 family의 이름변경, threshold·rank·tile·block sweep, 근접 decomposition은 새 원리로 세지 않는다.
 
-여러 batch가 실패하더라도 그 사실만으로 멈추지 않는다. 생존 후보 없이 멈추려면 현재 고정 mission 아래 남은 admissible design space 자체를 닫는 **별도의 구조적 결과**가 기록되어야 한다. “아이디어 3개가 전부 실패했다”는 종료 정리가 아니다.
+## 검증 실패는 즉시 새 원리 생성으로 복귀한다
+
+\[
+\boxed{
+\text{IDEATE}
+\rightarrow
+\text{PRIOR}
+\rightarrow
+\text{TEST}
+\rightarrow
+\begin{cases}
+\text{FAIL}\rightarrow\text{IDEATE AGAIN}\\
+\text{PASS}\rightarrow\text{NEXT DECISIVE VALIDATION}
+\end{cases}
+}
+\]
+
+즉 “검증할 가치가 있는 질문을 찾았다”와 “이번 회차의 검증된 결과를 찾았다”를 구분한다.
+
+다음 흐름은 금지한다.
+
+```text
+CHEAP_KILL_ONLY 발견
+-> 가능성 설명
+-> 실제 검증은 다음 EXP로 넘김
+-> 현재 연구 종료
+```
+
+## 연구 회차를 끝낼 수 있는 유일한 두 상태
+
+### `VALIDATED_SURVIVOR`
+
+최소 한 후보가 현재 rung에서 사전 고정된 decisive Gate를 **실제로 통과**해야 한다. Literature lead, prior screen pass, asymptotic possibility, unexecuted cheap Gate는 여기에 해당하지 않는다.
+
+최종 보고에는 반드시 다음을 남긴다.
+
+```text
+ROUND_EXIT_REASON=VALIDATED_SURVIVOR
+SURVIVOR=<mechanism>
+SURVIVOR_GATE=<실제로 통과한 Gate>
+SURVIVOR_EVIDENCE=<result/log/checksum>
+NEXT_UNTESTED_RUNG=<다음 검증 경계>
+```
+
+### `STRUCTURAL_CLOSURE`
+
+현재 mission 아래 남은 admissible design space를 닫는 별도의 theorem, finite lower bound, information argument 또는 exhaustive structural result가 있어야 한다.
+
+```text
+ROUND_EXIT_REASON=STRUCTURAL_CLOSURE
+CLOSED_DESIGN_SPACE=<정확히 닫힌 class>
+CLOSURE_EVIDENCE=<proof/result>
+```
+
+“아이디어 3개 실패”, “유망한 논문 발견”, “CHEAP_KILL_ONLY 발견”, “다음 EXP에서 검증 예정”은 종료 조건이 아니다.
 
 상세 규칙은 [`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`](docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md)를 따른다.
 
@@ -195,6 +274,11 @@ README_UNCHANGED_REASON=<specific reason>
 ## 상태 용어
 
 ```text
+NO_GO
+CHEAP_KILL_ONLY
+GO
+VALIDATED_SURVIVOR
+STRUCTURAL_CLOSURE
 LOCAL_RESEARCH
 LOCAL_VALIDATION_PASS
 LOCAL_VALIDATION_FAILED
