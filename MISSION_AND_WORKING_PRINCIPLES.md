@@ -211,7 +211,55 @@ GO 판정
 PARTIAL_FAMILY_CLOSURE
 ```
 
-상세 규칙은 [`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`](docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md)를 따른다.
+## 연구 응답 종료 가드
+
+사용자가 `연구 시작해`, `계속 진행해`, `다음 연구 진행해`, `목표달성을 위한 추론 시작해`처럼 현재 mission의 연구 실행을 명시적으로 요청한 경우, **연구 회차가 열려 있으면 채팅 응답 종료를 연구 루프의 탈출구로 사용하지 않는다.**
+
+다음 상태는 전부 비종료 상태다.
+
+```text
+PARTIAL_PROGRESS
+PROMISING_SIGNAL
+IDEALIZED_PASS
+LITERATURE_LEAD
+NEXT_CANDIDATE_IDENTIFIED
+GO
+CHEAP_KILL_ONLY
+PARTIAL_FAMILY_CLOSURE
+ROUND_EXIT_REASON=NONE
+```
+
+특히:
+
+\[
+\boxed{\text{IDEALIZED\_PASS} \neq \text{VALIDATED\_SURVIVOR}}
+\]
+
+이상적/asymptotic/free-transform/free-byte envelope가 threshold를 넘더라도 finite exact fully charged Gate가 통과하기 전에는 `PROMISING_SIGNAL`일 뿐이다. 그 신호를 발견하면 **즉시 첫 non-ideal decisive Gate를 실행**한다.
+
+정상 흐름:
+
+```text
+PROMISING_SIGNAL / IDEALIZED_PASS
+-> finite exact fully-charged Gate 즉시 실행
+-> FAIL: 증거 보존 + 새 원리 batch + 같은 회차 연구 계속
+-> PASS: 다음 mandatory validation으로 계속
+```
+
+실제 runtime/tool/platform 경계 때문에 같은 turn에서 더 진행할 수 없는 경우만 예외다. 그때도 연구 종료가 아니라 다음 상태로 기록한다.
+
+```text
+EXECUTION_INTERRUPTED
+ROUND_EXIT_REASON=NONE
+ROUND_ACTION=RESUME_FROM_EXACT_CHECKPOINT
+INTERRUPTION_REASON=<실제 외부/도구/실행 경계>
+RESUME_CHECKPOINT=<branch/commit/result/Gate의 정확한 위치>
+NEXT_REQUIRED_ACTION=<재개 시 첫 실행 작업>
+```
+
+`EXECUTION_INTERRUPTED`를 단지 답변을 빨리 끝내기 위한 명목으로 사용하지 않는다.
+
+상세 규칙은 [`docs/research/RESEARCH_RESPONSE_EXIT_GUARD.md`](docs/research/RESEARCH_RESPONSE_EXIT_GUARD.md)와 [`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`](docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md)를 따른다.
 
 ## Core resource objective
 
@@ -281,10 +329,17 @@ README_UNCHANGED_REASON=<specific reason>
 NO_GO
 CHEAP_KILL_ONLY
 GO
+PARTIAL_PROGRESS
+PROMISING_SIGNAL
+IDEALIZED_PASS
+LITERATURE_LEAD
+NEXT_CANDIDATE_IDENTIFIED
 VALIDATED_SURVIVOR
 PARTIAL_FAMILY_CLOSURE
 FULL_DESIGN_SPACE_STRUCTURAL_CLOSURE
 CONTINUE_IDEATION
+EXECUTION_INTERRUPTED
+RESUME_FROM_EXACT_CHECKPOINT
 LOCAL_RESEARCH
 LOCAL_VALIDATION_PASS
 LOCAL_VALIDATION_FAILED
