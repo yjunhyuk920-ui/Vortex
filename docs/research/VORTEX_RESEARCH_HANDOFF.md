@@ -1,61 +1,50 @@
 # VORTEX Research Handoff
 
-## Latest completed local Gate — EXP-106A
+## Current authoritative local result
+
+EXP-107A froze three prior-screen batches and executed the two cheapest arithmetic kills.
 
 ```text
-REJECT_DEPTH_COMPLETE_WIDTH_THIN_LINEAR_AND_BIT_SLICED_SURROGATES_AS_UNIVERSAL_CAUSAL_CORE
+REJECT_CURRENT_680_EXPLICIT_FMM_CATALOG_COMPOSITIONS_AS_10X_CORE
+REJECT_REGISTERED_NAIVE_RANK46_APA_INTERPOLATION_EXACTIFICATION
+FINITE_STRASSEN_CALCULUS_DIRECT_SUM_EXTRACTION_CHEAP_KILL_ONLY
 ```
 
 Evidence:
 
 ```text
-results/exp_106a/local/result.json
-results/exp_106a/local/checksums.sha256
-docs/research/EXP_106A_LATEST_RESULT.md
+experiments/exp_107a/reproduce.py
+experiments/exp_107a/config.json
+results/exp_107a/local/result.json
+results/exp_107a/local/checksums.sha256
+docs/research/EXPERIMENT_107A_RESEARCH_PRIOR_AND_CURRENT_FMM_ENVELOPE_GATE.md
+docs/research/EXP_107A_LATEST_RESULT.md
 ```
 
 Deterministic core:
 
 ```text
-9399769c602659bc2c52c0bb7fe2435aef679063bde85fb34523d01d58ef081b
+8401542be0615e32d25600fd35499535bf9f5a5e834bc43e65dbfc5614399c6e
 ```
 
 Validation:
 
 ```text
-8 focused tests passed
-resource frontier widths 128..16,384
-exact dense linear-encoder collision: PASS
-full-depth 512-step retained-channel positive control: 512/512
-omitted-channel negative control: first mismatch 1, matches 0/512
-flat-spectrum dense Hadamard control: PASS
+canonical reproduce.py self-test PASS
+6 independent focused tests passed
 byte-identical deterministic rerun
-SHA-256 verification: PASS
-GitHub Actions: not run
+Python compile PASS
+SHA-256 ledger PASS
+integrity failures []
+GitHub Actions not run
 ```
 
-Interpretation: a fixed width-thin linear state can be cheap, but every cheap
-width is noninjective and an arbitrary legal checkpoint can distinguish its
-collisions. Full width and even one all-parameter bitplane restore resource
-failure. Do not reopen by changing `m`, SVD rank, coordinate ordering, bridge
-rotation, bitplane count, or Q4 group size. Reopening requires a nonlinear
-cold-backed injective code with an explicit sub-dense decoder or shared
-value-changing computation across distinct states.
+## Scientific interpretation
+
+The current 680-scheme exact FMM catalog cannot be rescued by pure Kronecker/mixed recursion or independent partitioning: an unrealistically favorable unit-constant envelope already retains `12.515087006%` arithmetic. The complete target needs normalized exponent `<=2.7700683089`, while the current catalog minimum is `2.792481250`.
+
+Rank-46 APA is algebraically strong enough only before exactification. Generic 22-evaluation interpolation is rejected, but finite nontrivial direct-sum extraction remains open.
 
 ## Next action
 
-Run EXP-107A locally: exact distinct-state shared-weight sweep. The first Gate
-must prove that branch coding removes real operations/bytes rather than merely
-batching `N` branches, and must fully charge `N/A`, branch matrices, nonlinear
-separation, KV/state, and workspace.
-
-## Operating rule
-
-```text
-LOCAL_RESEARCH
--> LOCAL_VALIDATION_PASS
--> COMMIT_PUSHED
--> REMOTE_COMMIT_VERIFIED
-```
-
-No duplicate GitHub Actions run unless explicitly requested.
+Run EXP-108A locally. Produce one finite exact Strassen-calculus/direct-sum schedule and count all operations and constants. Do not build a kernel unless it crosses the `10%` model-wide arithmetic line. If it fails, continue the repeated three-principle batch loop rather than ending with no survivor.
