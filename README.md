@@ -55,6 +55,23 @@ A low-prior moonshot is still eligible as `CHEAP_KILL_ONLY` when success would
 remove a governing cost term and falsification is cheap. Conversely, a highly
 likely 10–20% auxiliary optimization has low priority for the core target.
 
+### Three ideas are the minimum batch, not the end of the search
+
+If all three candidates are `NO_GO`, the round does **not** end. Extract the
+common premise that killed them, invert/remove that premise, and generate a new
+batch of three materially different principles. Repeat until at least one
+candidate is `GO` or `CHEAP_KILL_ONLY`.
+
+A new batch is valid only when it materially changes at least one of the
+information source, computation order, verification unit, state representation,
+weight-access dependency, causal schedule, or cross-token/cross-layer sharing
+mechanism. Parameter sweeps, renames, and nearby variants of a closed family do
+not count.
+
+The search may stop without a survivor only if a separately recorded structural
+result closes the remaining admissible design space under the fixed mission.
+“Three ideas all failed” is never a stopping theorem.
+
 Normative detail:
 [`docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`](docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md).
 
@@ -99,10 +116,10 @@ separation. It must fully charge branch matrices, exact encoding/decoding,
 weight traffic, arithmetic, nonlinear cells, KV/state, workspace, actual `N/A`,
 and target verification. Ordinary batching receives no credit.
 
-Before any EXP-107A implementation, the three candidate principles must first
-pass the new research-prioritization screen. If the selected idea already has a
-decisive cheap counterexample or cannot move the dominant equation enough, it is
-killed before code is written.
+Before any EXP-107A implementation, candidate batches must pass the research-
+prioritization screen. If the first three all fail, generate another genuinely
+new batch rather than ending the round or implementing a weak candidate merely
+to advance the experiment number.
 
 Read `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`,
 `docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`, and
@@ -115,5 +132,5 @@ target SSD/PCIe/HBM behavior, and final same-machine p50/p95 remain `NOT_TESTED`
 
 ```text
 README_CURRENT=true
-README_UPDATED=research-prioritization/intuition screen; EXP-107A must pass prior screen before implementation
+README_UPDATED=iterative principle-search continuity; EXP-107A must keep generating batches until GO/CHEAP_KILL_ONLY or a structural closure result
 ```
