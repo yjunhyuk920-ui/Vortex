@@ -1,0 +1,17 @@
+LOCAL_VALIDATION_PASS
+
+Concise canonical reproduce.py self-test: PASS
+Independent focused pytest controls: 6 passed in 0.06s
+Python compile: PASS
+Deterministic rerun: byte-identical
+Integrity failures: []
+GitHub Actions: not run
+
+Authoritative decisions:
+REJECT_CURRENT_680_EXPLICIT_FMM_CATALOG_COMPOSITIONS_AS_10X_CORE
+REJECT_REGISTERED_NAIVE_RANK46_APA_INTERPOLATION_EXACTIFICATION
+FINITE_STRASSEN_CALCULUS_DIRECT_SUM_EXTRACTION_CHEAP_KILL_ONLY
+
+Best ideal catalog fraction: 0.125150870059609
+Required omega: 2.7700683089152998
+Deterministic core: 8401542be0615e32d25600fd35499535bf9f5a5e834bc43e65dbfc5614399c6e
