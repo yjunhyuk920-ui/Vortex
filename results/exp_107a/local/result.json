@@ -1,0 +1,69 @@
+{
+  "apa": {
+    "border_rank": 46,
+    "decision": "REJECT_REGISTERED_NAIVE_RANK46_APA_INTERPOLATION_EXACTIFICATION",
+    "format": "4x4x4",
+    "generic_interpolation_model_indicator": 2.02487552016714,
+    "maximum_exactification_multiplier": 1.0864865410681663,
+    "normalized_omega": 2.7617809780285065,
+    "registered_generic_degree": 21,
+    "registered_generic_evaluations": 22,
+    "registered_tensor_power": 7,
+    "reported_polynomial_order": 3,
+    "scope": "not a lower bound on every border-rank exactification",
+    "zero_overhead_model_fraction": 0.09203979637123363
+  },
+  "best_catalog_row": {
+    "block_length": 16384,
+    "ideal_fraction": 0.125150870059609
+  },
+  "catalog": {
+    "below_strassen_count": 52,
+    "best_displayed_normalized_omega": 2.79248125,
+    "commit": "98ba522db92b74f1f8c561a78038ff3091356d73",
+    "repository": "dronperminov/FastMatrixMultiplication",
+    "scheme_count": 680
+  },
+  "catalog_ideal_envelope": [
+    {"block_length": 32, "ideal_fraction": 0.19268236952642318},
+    {"block_length": 64, "ideal_fraction": 0.18366180815471705},
+    {"block_length": 128, "ideal_fraction": 0.17506355074190816},
+    {"block_length": 256, "ideal_fraction": 0.16686782682955714},
+    {"block_length": 512, "ideal_fraction": 0.15905579152721552},
+    {"block_length": 1024, "ideal_fraction": 0.15160948218130627},
+    {"block_length": 2048, "ideal_fraction": 0.14451177707258062},
+    {"block_length": 4096, "ideal_fraction": 0.13774635604718286},
+    {"block_length": 8192, "ideal_fraction": 0.13129766299079973},
+    {"block_length": 16384, "ideal_fraction": 0.125150870059609}
+  ],
+  "claim_boundary": {
+    "405b": "NOT_TESTED",
+    "8gib": "NOT_TESTED",
+    "causal_A_N_over_A": "NOT_TESTED",
+    "cuda": "NOT_TESTED",
+    "final_latency": "NOT_TESTED"
+  },
+  "decision": "REJECT_CURRENT_680_EXPLICIT_FMM_CATALOG_COMPOSITIONS_AS_10X_CORE",
+  "deterministic_core": "8401542be0615e32d25600fd35499535bf9f5a5e834bc43e65dbfc5614399c6e",
+  "integrity_failures": [],
+  "lupanov_indicator": {
+    "bf16_independent_bitplanes_over_log2_16384": 1.1428571428571428,
+    "q4_independent_bitplanes_over_log2_16384": 0.2857142857142857,
+    "scope": "optimistic construction indicator, not a circuit lower bound"
+  },
+  "next_survivor": "FINITE_STRASSEN_CALCULUS_DIRECT_SUM_EXTRACTION_CHEAP_KILL_ONLY",
+  "omega_gap": 0.022412941084700044,
+  "required_model_weighted_omega": 2.7700683089152998,
+  "schema": "exp-107a-current-fmm-envelope-v1",
+  "source_commit": "a326999bae25ae6169aa306c499e61f24acf9a09",
+  "target_families": [
+    {"count":126,"input":16384,"name":"q","output":16384},
+    {"count":126,"input":16384,"name":"k","output":1024},
+    {"count":126,"input":16384,"name":"v","output":1024},
+    {"count":126,"input":16384,"name":"o","output":16384},
+    {"count":126,"input":16384,"name":"gate","output":53248},
+    {"count":126,"input":16384,"name":"up","output":53248},
+    {"count":126,"input":53248,"name":"down","output":16384},
+    {"count":1,"input":16384,"name":"lm_head","output":128256}
+  ]
+}
