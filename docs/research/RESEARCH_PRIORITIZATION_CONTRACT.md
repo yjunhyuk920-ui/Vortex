@@ -218,7 +218,34 @@ find CHEAP_KILL_ONLY
 
 Likewise, a failed `GO` implementation does not justify ending the round. Extract the failure premise and return to the principle-generation loop.
 
-## 12. The only core-round exit conditions
+## 12. Partial family closure is evidence, never a round exit
+
+A theorem, finite bound, counterexample family, exact resource calculation, or exhaustive search may decisively close one mechanism family while other admissible mechanisms remain open. Record that as:
+
+```text
+PARTIAL_FAMILY_CLOSURE
+CLOSED_FAMILY=<precisely quantified class>
+CLOSURE_EVIDENCE=<proof/result paths>
+OPEN_CLASSES=<known still-admissible classes>
+ROUND_ACTION=CONTINUE_IDEATION
+```
+
+`PARTIAL_FAMILY_CLOSURE` is valuable permanent negative evidence. It prevents the same family from being reopened by renaming, threshold/rank/tile/block tuning, or nearby variants. But it **cannot** terminate the core research round.
+
+The mandatory transition is:
+
+```text
+PARTIAL_FAMILY_CLOSURE
+-> preserve the closure
+-> list what remains outside its quantified scope
+-> extract the premise that caused the closure
+-> generate a new materially different principle batch
+-> continue PRIOR/TEST loop in the same round
+```
+
+Closing many families one after another still does not become a full closure by accumulation unless the union of the proved scopes is shown to cover **every remaining legal executor/design class under the fixed mission**.
+
+## 13. The only core-round exit conditions
 
 A core research round may end only with one of these two recorded states:
 
@@ -236,27 +263,45 @@ SURVIVOR_EVIDENCE=<result/log/checksum paths>
 NEXT_UNTESTED_RUNG=<next validation boundary>
 ```
 
-### `STRUCTURAL_CLOSURE`
+### `FULL_DESIGN_SPACE_STRUCTURAL_CLOSURE`
 
-A separately recorded theorem, finite lower bound, information argument, or exhaustive structural result closes the remaining admissible design space under the fixed mission/constraints.
+This name is deliberately stronger than the old ambiguous `STRUCTURAL_CLOSURE` label. It is valid only when a separately recorded theorem, finite lower bound, information argument, or exhaustive structural result covers **all remaining admissible executor/design classes under the fixed mission and constraints**.
 
-The final report must identify:
+Before using this exit, the report must provide:
 
 ```text
-ROUND_EXIT_REASON=STRUCTURAL_CLOSURE
-CLOSED_DESIGN_SPACE=<precise class closed>
+ROUND_EXIT_REASON=FULL_DESIGN_SPACE_STRUCTURAL_CLOSURE
+CLOSED_DESIGN_SPACE=ALL_REMAINING_ADMISSIBLE_DESIGN_SPACE_UNDER_FIXED_MISSION
 CLOSURE_EVIDENCE=<proof/result paths>
+OPEN_CLASSES=[]
+UNRESOLVED_CLASSES=[]
+COVERAGE_ARGUMENT=<why every legal remaining class is inside the proved scope>
 ```
 
-“Three ideas failed,” “we found a promising paper,” “we found a CHEAP_KILL_ONLY candidate,” or “the next EXP will test it” are **not** valid round-exit reasons.
+If the report can name even one still-open legal mechanism family, information source, computation order, verification unit, state representation, weight-access dependency, causal schedule, or cross-token/cross-layer sharing mechanism, then `FULL_DESIGN_SPACE_STRUCTURAL_CLOSURE` is invalid and the required state is `PARTIAL_FAMILY_CLOSURE -> CONTINUE_IDEATION`.
 
-## 13. Pre-result timestamp/provenance
+The bare label `STRUCTURAL_CLOSURE` is deprecated for round exit because it allowed a partial family theorem to be mistaken for closure of the whole remaining design space.
+
+The following are **not** valid round exits:
+
+```text
+three ideas failed
+a promising paper was found
+CHEAP_KILL_ONLY was found
+GO was assigned
+the next EXP will test it
+one mechanism family was proved impossible
+several mechanism families were proved impossible but open classes remain
+PARTIAL_FAMILY_CLOSURE
+```
+
+## 14. Pre-result timestamp/provenance
 
 The prior judgment must be written before the authoritative result is observed. When committed together with the result after local validation, the experiment document must clearly mark the prior section as `PRE_RESULT_PRIOR` and state that it was frozen before the result run.
 
 This prevents hindsight from turning every result into something that supposedly looked obvious afterward.
 
-## 14. Integration with existing VORTEX rules
+## 15. Integration with existing VORTEX rules
 
 This contract does not weaken:
 
@@ -278,6 +323,8 @@ It adds a stricter closed loop before repository handoff:
 \rightarrow
 \textbf{On failure, immediately return to ideation.}
 \rightarrow
-\textbf{Exit only on VALIDATED\_SURVIVOR or STRUCTURAL\_CLOSURE.}
+\textbf{Treat family-specific proofs as PARTIAL\_FAMILY\_CLOSURE and keep searching.}
+\rightarrow
+\textbf{Exit only on VALIDATED\_SURVIVOR or FULL\_DESIGN\_SPACE\_STRUCTURAL\_CLOSURE.}
 }
 \]
