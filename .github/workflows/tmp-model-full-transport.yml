@@ -1,0 +1,45 @@
+name: Temporary full public checkpoint transport
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/tmp-model-full-transport.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export-model:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch pinned public checkpoint assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 5 --output stories260K.bin \
+            https://raw.githubusercontent.com/maddiedreese/gbc-transformer/28c443c1b0cb3d4536f4575bcdfd647a3ec8ad73/stories260K.bin
+          curl --fail --location --retry 5 --output tok512.bin \
+            https://raw.githubusercontent.com/maddiedreese/gbc-transformer/28c443c1b0cb3d4536f4575bcdfd647a3ec8ad73/tok512.bin
+          echo 'b0a507e7ad0f626624f17112325e66691f9076d622e1d3274d103d00299f2696  stories260K.bin' | sha256sum --check --strict
+          test "$(stat -c %s stories260K.bin)" -eq 1056540
+          test "$(stat -c %s tok512.bin)" -eq 6227
+          sha256sum stories260K.bin tok512.bin > checksums.sha256
+          printf '%s\n' \
+            'source_repo=maddiedreese/gbc-transformer' \
+            'source_commit=28c443c1b0cb3d4536f4575bcdfd647a3ec8ad73' \
+            'model_blob=cfebf5a594edee35c18c88b12ef45de3b6d9aaa9' \
+            'tokenizer_blob=be175e5ee3902928bcbaa538d4a62e462fe56414' \
+            'model_sha256=b0a507e7ad0f626624f17112325e66691f9076d622e1d3274d103d00299f2696' > provenance.txt
+      - name: Upload transport artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: stories260K-full-pinned
+          path: |
+            stories260K.bin
+            tok512.bin
+            checksums.sha256
+            provenance.txt
+          if-no-files-found: error
+          retention-days: 1
