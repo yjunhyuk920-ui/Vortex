@@ -1,57 +1,61 @@
-# Next Experiment — EXP-107A
+# Next Experiment — EXP-108A
 
-## Exact Distinct-State Shared-Weight-Sweep Gate
+## Finite Strassen-Calculus Direct-Sum Extraction Gate
 
-### Why this is next
-
-EXP-106A closes fixed-width linear/coordinate/low-rank all-layer surrogates as
-the arbitrary-checkpoint causal core. Resource-feasible narrow bridges collide
-states; full-width bridges restore the original resource problem. The next
-mechanism must therefore share **value-changing computation across distinct
-states**, not assume that the states are equal or compressible.
-
-### Three materially different principles
-
-1. **Coded exact branch-superposition linear front end — selected first.** Pack
-   several distinct causal branch states into a coded matrix, stream each target
-   weight tile once, compute exact linear outputs, and decode every branch before
-   the first nonlinearity. Charge the branch matrix, encoding/decoding,
-   matrix-matrix MAC/adds, weight reads, output writes, and every evaluated
-   branch `N`.
-2. **Finite-word nonlinear-cell coalescence.** Merge work only when branches
-   share an exactly identical RMSNorm/SiLU/rounding control cell. Charge cell
-   discovery, normalization statistics, coefficients, split points,
-   intermediates, and post-cell branch separation. Sign-pattern or hash equality
-   is insufficient.
-3. **Symbolic token-embedding contribution DAG.** Share checkpoint-static
-   token-dependent subexpressions while prefix-dependent terms remain explicit.
-   Charge program bytes, cold probes, online execution, nonlinear barriers,
-   fallback, and exact target verification. It must differ from the rejected
-   self-contained artifact/table family through a concrete cold-backed decoder.
-
-### Cheapest local Gate
-
-Before public-checkpoint execution, implement an exact finite-word branch-matrix
-control and record:
+### PRE_RESULT_PRIOR
 
 ```text
-actual distinct branches N
-useful committed tokens A
-N/A
-weight-tile bytes
-branch activation/input/output bytes
-MAC/add/encode/decode operations
-nonlinear separation point and cell count
-per-branch KV/state bytes
-peak workspace <= 8 GiB
-p50-equivalent byte and arithmetic roofline
+PRIOR=LOW
+WHY_IT_MIGHT_WORK=2026 asymptotic-rank speedup theorems prove that nontrivial direct-sum degenerations can outperform naive use of border rank
+WHY_IT_MIGHT_FAIL=the theorem is asymptotic and may require tensor powers, extraction multiplicity, coefficient growth or constants far beyond target size
+DOMINANT_TERM_CHANGED=exact bilinear rank plus the exactification overhead that destroyed naive rank-46 APA
+MAX_IMPACT_IF_TRUE=effective model-weighted arithmetic <=10%, enabling a real finite-word kernel Gate
+ARBITRARY_CHECKPOINT_ARGUMENT=tensor identities are independent of checkpoint values
+CHEAPEST_KILL=construct one finite h<=target schedule and fully count it before kernel/checkpoint work
+FALSIFICATION_COST=MEDIUM
+IMPLEMENTATION_COST=HIGH
+DECISION=CHEAP_KILL_ONLY
 ```
 
-Batching alone is not progress: reject if arithmetic remains proportional to
-all branches and `N/A` cannot be <=1.5. A coded computation survives only if it
-removes real branch-equivalent work before nonlinear separation while preserving
-exact finite-word outputs.
+### Required output
 
-After local validation, commit source, config, result, logs, checksums, README,
-and handoff; do not duplicate the experiment in GitHub Actions unless explicitly
-requested.
+One explicit finite exact arithmetic schedule for target-relevant rectangular projection shapes. A symbolic asymptotic exponent or existence theorem does not count.
+
+The schedule must state:
+
+```text
+base degeneration/direct-sum tensors
+finite tensor power h
+which direct-sum components are extracted
+number and shapes of exact matrix products
+all scalar multiplications/additions
+coefficient and word growth
+interpolation/extraction implementation
+transforms, packing, output writes
+peak workspace
+native finite-word exactness/repair
+```
+
+### First promotion Gate
+
+Across the complete registered non-embedding 405B projection inventory at one real block length:
+
+```text
+model-weighted exact arithmetic fraction <= 10%
+peak workspace <= 8 GiB
+zero exactness/control failure
+no future target state
+no free transform/interpolation/coefficient work
+```
+
+Passing this Gate authorizes only a finite-word kernel and causal-source Gate. It does not establish final latency.
+
+### Stop rule and repeated-batch rule
+
+If no explicit finite schedule crosses `10%` before positive runtime costs:
+
+1. reject the instantiated direct-sum extraction, not all asymptotic rank theory;
+2. do not tune tensor power, epsilon, degree or block size nearby merely to keep the EXP sequence moving;
+3. extract the common failure premise—most likely finite exactification overhead or unavailable causal block—and generate another batch of three principles that materially changes information source, computation order, verification unit, state representation, weight-access dependency, causal schedule, or cross-token/cross-layer sharing.
+
+No GitHub Actions rerun is required after local validation.
