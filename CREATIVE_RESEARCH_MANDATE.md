@@ -163,7 +163,35 @@ GO 판정
 PARTIAL_FAMILY_CLOSURE
 ```
 
-상세 규칙: `docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`.
+## 연구 응답 종료도 같은 종료 조건을 따른다
+
+사용자가 현재 mission의 연구를 시작/계속하라고 명시한 turn에서는 다음 상태 역시 응답 종료 사유가 아니다.
+
+```text
+PARTIAL_PROGRESS
+PROMISING_SIGNAL
+IDEALIZED_PASS
+LITERATURE_LEAD
+NEXT_CANDIDATE_IDENTIFIED
+ROUND_EXIT_REASON=NONE
+```
+
+`IDEALIZED_PASS`는 finite exact fully-charged Gate를 통과하기 전까지 `VALIDATED_SURVIVOR`가 아니다. favorable envelope를 발견하면 즉시 non-ideal decisive Gate를 실행하고, 실패하면 같은 회차에서 새 원리 batch로 복귀한다.
+
+실제 tool/runtime/platform 경계만 예외다. 그 경우에도 연구는 끝난 것이 아니므로 다음으로 기록한다.
+
+```text
+EXECUTION_INTERRUPTED
+ROUND_EXIT_REASON=NONE
+ROUND_ACTION=RESUME_FROM_EXACT_CHECKPOINT
+INTERRUPTION_REASON=<실제 경계>
+RESUME_CHECKPOINT=<정확한 branch/commit/result/Gate>
+NEXT_REQUIRED_ACTION=<재개 시 첫 작업>
+```
+
+`EXECUTION_INTERRUPTED`를 단순한 응답 종료 편의를 위해 사용하지 않는다.
+
+상세 규칙: `docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`, `docs/research/RESEARCH_RESPONSE_EXIT_GUARD.md`.
 
 연구 운영은 `로컬 연구·로컬 검증·GitHub 커밋 인계`로 고정한다. 수식·탐색·프로토타입·반례·단위시험·public checkpoint 실행·raw evidence·checksum 생성까지 로컬/샌드박스에서 완료한다. 로컬 검증이 끝난 회차는 GitHub에서 같은 실험을 다시 돌리지 않는다. GitHub는 source/config/result/log/checksum/docs/README를 commit·push하고 원격 SHA를 읽어 다른 세션으로 인계하는 용도로만 사용한다.
 
