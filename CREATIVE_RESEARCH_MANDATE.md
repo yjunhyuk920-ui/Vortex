@@ -45,6 +45,26 @@ DECISION=<GO|NO_GO|CHEAP_KILL_ONLY>
 
 반대로 성공 확률이 높아 보여도 최대 효과가 작은 constant-factor 개선뿐이면 VORTEX core에서는 우선순위를 낮춘다.
 
+## 3개는 최소 batch이며 생존 후보가 나올 때까지 반복한다
+
+첫 batch의 세 원리가 전부 `NO_GO`이면 연구 회차를 종료하지 않는다. 그 세 원리를 공통으로 죽인 숨은 전제를 추출하고, 그 전제를 뒤집거나 제거하는 새 원리 3개를 다시 만든다.
+
+```text
+3개 생성
+-> prior screen
+-> 전부 NO_GO
+-> 공통 실패 전제 추출
+-> 전제를 뒤집은 새 3개 생성
+-> prior screen 반복
+-> GO 또는 CHEAP_KILL_ONLY 최소 하나 확보
+```
+
+새 batch는 information source, computation order, verification unit, state representation, weight-access dependency, causal schedule, cross-token/cross-layer sharing mechanism 중 최소 하나를 실질적으로 바꿔야 한다.
+
+Threshold·seed·rank·tile·block 변경, 이름변경, 같은 닫힌 family의 근접변형은 새 원리로 인정하지 않는다.
+
+여러 batch가 실패해도 그 사실만으로 멈추지 않는다. 생존 후보 없이 멈추려면 현재 mission 아래 남은 admissible design space 전체를 닫는 별도의 구조적 결과가 필요하다. “세 아이디어가 모두 실패했다”는 종료 정리가 아니다.
+
 상세 규칙: `docs/research/RESEARCH_PRIORITIZATION_CONTRACT.md`.
 
 연구 운영은 `로컬 연구·로컬 검증·GitHub 커밋 인계`로 고정한다. 수식·탐색·프로토타입·반례·단위시험·public checkpoint 실행·raw evidence·checksum 생성까지 로컬/샌드박스에서 완료한다. 로컬 검증이 끝난 회차는 GitHub에서 같은 실험을 다시 돌리지 않는다. GitHub는 source/config/result/log/checksum/docs/README를 commit·push하고 원격 SHA를 읽어 다른 세션으로 인계하는 용도로만 사용한다.
