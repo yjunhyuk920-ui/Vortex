@@ -1,62 +1,57 @@
-# Next Experiment — EXP-106A
+# Next Experiment — EXP-107A
 
-## Depth-Complete Width-Thin Checkpoint Surrogate Reality Gate
+## Exact Distinct-State Shared-Weight-Sweep Gate
 
 ### Why this is next
 
-EXP-104A showed that a full-vocabulary head plus one complete target-width layer is already above the p50 scan budget. EXP-105A showed that an exact activation-ordered residual-bound head index cannot rescue that complete-layer path: on a legal late-decision head the combined charged traffic is `2,815,515,648` bytes/token versus a `2,400,000,000` limit. A head without a state source is incomplete.
-
-The next Gate must therefore replace **one full-width layer per draft token** with a causal checkpoint-derived state source that is materially cheaper while still observing the target's full depth.
+EXP-106A closes fixed-width linear/coordinate/low-rank all-layer surrogates as
+the arbitrary-checkpoint causal core. Resource-feasible narrow bridges collide
+states; full-width bridges restore the original resource problem. The next
+mechanism must therefore share **value-changing computation across distinct
+states**, not assume that the states are equal or compressible.
 
 ### Three materially different principles
 
-1. **Depth-complete width-thin checkpoint surrogate — selected.** For every target layer, derive a narrow draft-only state and narrow checkpoint-static operators without training. The unchanged target remains authoritative. The draft must include explicit input/output bridges and a charged sub-full-head decision path.
-2. **Bit-sliced all-layer state transducer.** Propagate only registered finite-word state bits through every layer. Reject before implementation if total bitplanes, nonlinear metadata, and head state cannot fit the 8-GiB and p50 ledgers.
-3. **Cold-probe exact vocabulary decision index.** Keep bounded resident metadata and adaptively probe exact cold head rows/bitplanes. It is eligible only with a concrete causal state source and a measured exact fallback rate; a stronger index, not another Cauchy/block-size variant, is required.
+1. **Coded exact branch-superposition linear front end — selected first.** Pack
+   several distinct causal branch states into a coded matrix, stream each target
+   weight tile once, compute exact linear outputs, and decode every branch before
+   the first nonlinearity. Charge the branch matrix, encoding/decoding,
+   matrix-matrix MAC/adds, weight reads, output writes, and every evaluated
+   branch `N`.
+2. **Finite-word nonlinear-cell coalescence.** Merge work only when branches
+   share an exactly identical RMSNorm/SiLU/rounding control cell. Charge cell
+   discovery, normalization statistics, coefficients, split points,
+   intermediates, and post-cell branch separation. Sign-pattern or hash equality
+   is insufficient.
+3. **Symbolic token-embedding contribution DAG.** Share checkpoint-static
+   token-dependent subexpressions while prefix-dependent terms remain explicit.
+   Charge program bytes, cold probes, online execution, nonlinear barriers,
+   fallback, and exact target verification. It must differ from the rejected
+   self-contained artifact/table family through a concrete cold-backed decoder.
 
-### Selected representation must be concrete
+### Cheapest local Gate
 
-Freeze before any checkpoint experiment:
-
-```text
-narrow state width m
-all layer/operator shapes
-checkpoint-derived compilation algorithm
-input embedding bridge bytes
-per-layer narrow weight bytes
-nonlinear/normalization implementation
-KV/state bytes
-output-head or exact index bytes
-workspace/fragmentation
-per-token arithmetic and traffic
-fallback and target verification path
-```
-
-No training, future target state, target-seeing selector, free bridge, free head, free HBM scan, unmeasured compression, or projected acceptance.
-
-### First local Gate
-
-The complete draft path must satisfy all of:
+Before public-checkpoint execution, implement an exact finite-word branch-matrix
+control and record:
 
 ```text
-resident bytes <= 8 GiB
-per-token draft traffic/operation route <= 2.4 GB-equivalent p50 budget
-no complete target-width layer scan per proposed token
-causal finite-word execution exists
-exact target verifier and fail-closed fallback exist
+actual distinct branches N
+useful committed tokens A
+N/A
+weight-tile bytes
+branch activation/input/output bytes
+MAC/add/encode/decode operations
+nonlinear separation point and cell count
+per-branch KV/state bytes
+peak workspace <= 8 GiB
+p50-equivalent byte and arithmetic roofline
 ```
 
-If this static Gate passes, run an unchanged public checkpoint locally. Measure actual accepted prefix `A`, `N/A`, draft/verify/rebuild/repair time, and exact token plus terminal target state. With raw BF16 target sweeps, promotion still requires actual `A>=339` unless exact sweep bytes are measurably reduced.
+Batching alone is not progress: reject if arithmetic remains proportional to
+all branches and `N/A` cannot be <=1.5. A coded computation survives only if it
+removes real branch-equivalent work before nonlinear separation while preserving
+exact finite-word outputs.
 
-### Stop rule
-
-Reject immediately when:
-
-- the narrow representation is merely a trained/distilled model;
-- bridge/head bytes restore a full-width scan;
-- a layer uses unavailable future hidden state;
-- width is selected after holdout results;
-- target-scale cost exceeds the p50 budget;
-- real accepted prefix does not approach the registered floor.
-
-Do not run GitHub Actions after local validation. Commit source, config, raw result, logs, checksums, ledgers, README, and handoff, then verify the remote SHA.
+After local validation, commit source, config, result, logs, checksums, README,
+and handoff; do not duplicate the experiment in GitHub Actions unless explicitly
+requested.

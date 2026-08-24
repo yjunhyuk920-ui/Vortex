@@ -1,56 +1,53 @@
 # VORTEX Research Handoff
 
-## Latest completed local Gate
-
-**EXP-105A — Activation-Ordered Exact Residual-Bound Head Tournament**
+## Latest completed local Gate — EXP-106A
 
 ```text
-REJECT_ACTIVATION_ORDERED_EXACT_RESIDUAL_BOUND_HEAD_INDEX_WITH_COMPLETE_LAYER_AS_P50_CORE
-NO_REGISTERED_EXP_105A_PRINCIPLE_SURVIVES_COMPLETE_EXECUTOR_GATE
+REJECT_DEPTH_COMPLETE_WIDTH_THIN_LINEAR_AND_BIT_SLICED_SURROGATES_AS_UNIVERSAL_CAUSAL_CORE
 ```
 
 Evidence:
 
 ```text
-results/exp_105a/local/result.json
-results/exp_105a/local/checksums.sha256
-docs/research/EXPERIMENT_105A_ACTIVATION_ORDERED_EXACT_HEAD_TOURNAMENT_GATE.md
-docs/research/EXP_105A_LATEST_RESULT.md
+results/exp_106a/local/result.json
+results/exp_106a/local/checksums.sha256
+docs/research/EXP_106A_LATEST_RESULT.md
 ```
 
 Deterministic core:
 
 ```text
-17cebccb51a2fbdadf871767151962b47e462bd14caeba1707cd66a64a468598
+9399769c602659bc2c52c0bb7fe2435aef679063bde85fb34523d01d58ef081b
 ```
 
 Validation:
 
 ```text
-8 focused tests PASS
-12 random Q4/Q8 queries x 6 block sizes, zero mismatch
-runtime winner independent of dense reference helper
-structured early-pruning positive control PASS
-late-decision exact control reads 100% of head
-byte-identical rerun PASS
-SHA-256 ledger PASS
-GitHub Actions not run
+8 focused tests passed
+resource frontier widths 128..16,384
+exact dense linear-encoder collision: PASS
+full-depth 512-step retained-channel positive control: 512/512
+omitted-channel negative control: first mismatch 1, matches 0/512
+flat-spectrum dense Hadamard control: PASS
+byte-identical deterministic rerun
+SHA-256 verification: PASS
+GitHub Actions: not run
 ```
 
-Interpretation:
-
-- query-adaptive exact row elimination is possible on structured heads;
-- dense random controls saved some weight payload, but selector state erased the saving;
-- a legal late-decision head forces complete head reads;
-- adding the minimum complete 405B-width layer yields `2.815515648 GB/token`, above the `2.4 GB/token` p50 budget;
-- head-only bytes are not a complete executor because no causal state source or `A>=339` continuation was implemented;
-- no-guess autoregressive dependencies serialize one weight-bearing traversal per token unless a transition operator or branches are supplied.
-
-Do not reopen by changing only block size, activation ordering, residual-norm threshold, state-byte accounting, or the synthetic distribution.
+Interpretation: a fixed width-thin linear state can be cheap, but every cheap
+width is noninjective and an arbitrary legal checkpoint can distinguish its
+collisions. Full width and even one all-parameter bitplane restore resource
+failure. Do not reopen by changing `m`, SVD rank, coordinate ordering, bridge
+rotation, bitplane count, or Q4 group size. Reopening requires a nonlinear
+cold-backed injective code with an explicit sub-dense decoder or shared
+value-changing computation across distinct states.
 
 ## Next action
 
-Run EXP-106A locally: depth-complete width-thin checkpoint surrogate. Freeze a complete training-free narrow representation and cost ledger first. Only then run a public checkpoint and measure actual accepted prefix plus exact target state.
+Run EXP-107A locally: exact distinct-state shared-weight sweep. The first Gate
+must prove that branch coding removes real operations/bytes rather than merely
+batching `N` branches, and must fully charge `N/A`, branch matrices, nonlinear
+separation, KV/state, and workspace.
 
 ## Operating rule
 
@@ -61,4 +58,4 @@ LOCAL_RESEARCH
 -> REMOTE_COMMIT_VERIFIED
 ```
 
-Do not duplicate the locally validated experiment in GitHub Actions unless explicitly requested.
+No duplicate GitHub Actions run unless explicitly requested.

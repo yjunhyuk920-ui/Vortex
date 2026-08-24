@@ -1,17 +1,24 @@
 # VORTEX
 
-VORTEX is a proof-first project for executing arbitrary public, unmodified dense Hugging Face Transformers by replacing only the executor.
+VORTEX researches an executor-only path for arbitrary public, unmodified dense
+Hugging Face 405B-class models on one 8-GiB GPU while preserving exact declared
+output/successor-state behavior and approaching same-machine native-4B-Q4
+latency (`p50<=1.2x`, `p95<=1.5x`).
 
-## Fixed mission
+## Non-negotiable rules
 
-- arbitrary public dense 405B-class checkpoint;
-- one 8-GiB GPU;
 - no retraining, fine-tuning, distillation, LoRA, or semantic target-weight modification;
-- exact declared output and required successor-state contract;
-- same-machine native-4B-Q4 warm latency `p50 <=1.2x`, `p95 <=1.5x`;
-- full accounting of storage, traffic, arithmetic, KV/state, metadata, packing, verification, repair, fallback, and synchronization.
+- `REAL_EXECUTOR_ONLY` is authoritative;
+- all storage, traffic, arithmetic, KV/state, metadata, verification, repair,
+  fallback, packing, and synchronization are charged;
+- future target state, perfect selectors, free transforms/workspace, unmeasured
+  compression, hidden compute, and configured `K` reported as accepted `A`
+  cannot promote a mechanism;
+- every core round starts with three materially different principles;
+- research and validation are local first, followed by commit/push and remote-SHA
+  verification; duplicate GitHub Actions execution is not required.
 
-## Local-first workflow
+## Workflow
 
 ```text
 LOCAL_RESEARCH
@@ -20,76 +27,45 @@ LOCAL_RESEARCH
 -> REMOTE_COMMIT_VERIFIED
 ```
 
-Research, checkpoint execution, tests, measurements, and evidence generation happen locally. GitHub stores the validated source/results and handoff. Duplicate GitHub Actions execution is not required unless explicitly requested.
-
-## Reality-first rule
-
-`REAL_EXECUTOR_ONLY` is authoritative. Future target state, perfect selectors, free `N/A`, free transforms/workspace/repair/fallback, unmeasured compression, hidden compute, and free HBM scans cannot promote a mechanism.
-
-## Resource objective
-
-\[
-T_{\rm token}\ge\max\left(\frac{S_c}{BA},\;r\frac{N}{A}\frac{2P}{F}\right),
-\qquad A\gg1,\quad N/A\to1,\quad r\ll1.
-\]
-
-## Latest authoritative results
-
-### EXP-104A — complete-layer resident slice
+## Latest authoritative result — EXP-106A
 
 ```text
-REJECT_FULL_VOCABULARY_FULL_LAYER_RESIDENT_SLICE_AS_P50_CORE
+REJECT_DEPTH_COMPLETE_WIDTH_THIN_LINEAR_AND_BIT_SLICED_SURROGATES_AS_UNIVERSAL_CAUSAL_CORE
 ```
 
-### EXP-105A — exact progressive vocabulary tournament
+A concrete all-126-layer Q4 width-thin surrogate was fully charged. Widths up to
+1,664 can fit the resident and scan-alone budgets, but every resource-feasible
+linear bridge has a nonzero kernel. Exact finite-word controls found distinct
+states with byte-identical narrow codes and different target decisions. A dense
+flat-spectrum operator also retains relative operator-norm error 1 under every
+rank-deficient approximation.
 
-```text
-REJECT_ACTIVATION_ORDERED_EXACT_RESIDUAL_BOUND_HEAD_INDEX_WITH_COMPLETE_LAYER_AS_P50_CORE
-NO_REGISTERED_EXP_105A_PRINCIPLE_SURVIVES_COMPLETE_EXECUTOR_GATE
-```
+Full width removes the collision but requires
+`202.377974 GiB` resident and
+`214.493273 GB` per proposed token. A single
+checkpoint bitplane costs `47.247070312 GiB`, so the bit-sliced
+all-layer arm also fails.
 
-EXP-105A implemented an exact Q4/Q8 query-dependent head tournament. It processed activation dimensions in descending magnitude and eliminated rows using exact Cauchy tail bounds. Eight focused tests, 72 random finite-word executions, positive/negative controls, a deterministic rerun, and checksums passed.
+Previous EXP-105A rejected the activation-ordered exact residual-bound head
+index when combined with the minimum complete target-width layer.
 
-Key result:
+## Active frontier — EXP-107A
 
-```text
-best legal target-scale late-decision head query   1,122,065,408 bytes/token
-one complete realistic-Q4 target-width layer      1,693,450,240 bytes/token
-combined                                           2,815,515,648 bytes/token
-p50 budget                                         2,400,000,000 bytes/token
-combined / budget                                  1.17313152x
-```
+`Exact Distinct-State Shared-Weight-Sweep Gate` asks whether distinct causal
+states can share one value-changing coded weight computation before nonlinear
+separation. It must fully charge branch matrices, exact encoding/decoding,
+weight traffic, arithmetic, nonlinear cells, KV/state, workspace, actual `N/A`,
+and target verification. Ordinary batching receives no credit.
 
-Capacity fits (`4,330,597,376` resident bytes in the registered ledger), but per-token traffic does not. The head alone is not promoted because it lacks a concrete causal state source and measured `A>=339` continuation.
+Read `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`, and
+`docs/research/VORTEX_RESEARCH_HANDOFF.md` before continuing.
 
-See:
+## Claim boundary
 
-- `docs/research/EXPERIMENT_105A_ACTIVATION_ORDERED_EXACT_HEAD_TOURNAMENT_GATE.md`
-- `docs/research/EXP_105A_LATEST_RESULT.md`
-- `results/exp_105a/local/result.json`
-
-## Active frontier — EXP-106A
-
-`Depth-Complete Width-Thin Checkpoint Surrogate Reality Gate`.
-
-Instead of a few complete target-width layers, the next candidate derives a narrow training-free draft-only state through every target layer. The full bridge, narrow operators, nonlinear state, head/index, KV, workspace, and per-token traffic must fit the 8-GiB and 2.4-GB-equivalent p50 Gates before public-checkpoint execution. Actual accepted prefix, not configured width or K, is authoritative.
-
-Read `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`, and `docs/research/VORTEX_RESEARCH_HANDOFF.md` before continuing.
-
-## Quick start
-
-```bash
-git clone https://github.com/yjunhyuk920-ui/Vortex.git
-cd Vortex
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\Activate.ps1
-python -m pip install -e . pytest
-python -m pytest -q
-```
-
-Complete 405B execution, physical 8-GiB target allocation, target CUDA/SASS, storage/H2D throughput, and final same-machine latency remain `NOT TESTED`.
+Complete 405B execution, physical complete 8-GiB allocation, target CUDA/SASS,
+target SSD/PCIe/HBM behavior, and final same-machine p50/p95 remain `NOT_TESTED`.
 
 ```text
 README_CURRENT=true
-README_UPDATED=EXP-105A authoritative result; EXP-106A active frontier; local-commit-only workflow retained
+README_UPDATED=EXP-106A result; EXP-107A frontier; local-validation/commit-only workflow retained
 ```

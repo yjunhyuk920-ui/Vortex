@@ -1,0 +1,5 @@
+{
+  "decision": "REJECT_DEPTH_COMPLETE_WIDTH_THIN_LINEAR_AND_BIT_SLICED_SURROGATES_AS_UNIVERSAL_CAUSAL_CORE",
+  "integrity_failures": [],
+  "deterministic_core": "9399769c602659bc2c52c0bb7fe2435aef679063bde85fb34523d01d58ef081b"
+}
