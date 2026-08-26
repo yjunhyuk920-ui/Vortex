@@ -1,0 +1,9 @@
+E0 ROUTE/PROOF/REACH local validation
+base=f5a432a5152ee6d9e1399583a4829a39aacdf5e0
+python experiments/e0_route_proof_reach_validation/run_validation.py > results/e0_route_proof_reach_validation/summary.json
+elapsed_seconds=5.24
+python -m pytest -q tests/e0_route_proof_reach_validation/test_validation.py
+result=5 passed in 4.60s
+decision=NO_ROUTE_PROOF_REACH_CORE_PROMOTED
+checkpoint_run=false
+target_hardware=false

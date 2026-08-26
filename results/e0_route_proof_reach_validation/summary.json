@@ -1,0 +1,352 @@
+{
+  "base_ref": "f5a432a5152ee6d9e1399583a4829a39aacdf5e0",
+  "claim_boundary": {
+    "405b_execution": "NOT_TESTED",
+    "actual_transformer_operation_replacement": "NOT_TESTED",
+    "general_adaptive_nonlinear_cell_probe_impossibility": "NOT_ESTABLISHED",
+    "native_q4_bf16_fp32_lift": "NOT_TESTED",
+    "physical_8gib_allocation": "NOT_TESTED",
+    "same_machine_4b_latency": "NOT_TESTED"
+  },
+  "date": "2026-08-26 Asia/Seoul",
+  "deterministic_core_sha256": "ab149d78b9e04e504a1c46e1a40cd928e9d9d9c518ad14197cfe9637e7861587",
+  "overall": {
+    "checkpoint_run_performed": false,
+    "decision": "NO_ROUTE_PROOF_REACH_CORE_PROMOTED",
+    "next_gate": "NON_ENTRYWISE_GLOBAL_ROUTE_GRAMMAR_WITH_TWO_SCALE_EXACT_DECODER_AND_NATIVE_LIFT_PREREQUISITE",
+    "numbered_experiment_authorized": false,
+    "proofwave": "rejected as standalone source; proof checker remains auxiliary",
+    "reachquotient": "valid state contract; no compressed checkpoint-specific quotient or transition compiler",
+    "routecell": "registered uniform grammar rejected; unrestricted adaptive nonlinear cold source remains open without constructor",
+    "target_hardware_performed": false
+  },
+  "proofwave": {
+    "accounting": {
+      "checker_cannot_remove_generator_work": true,
+      "equation": "total = local_generator + proof_emission + independent_checker + state_update + fallback",
+      "nonnegative_terms": true
+    },
+    "candidate": "PROOFWAVE",
+    "claim_boundary": [
+      "does not reject every SAT/SMT/bit-vector proof search on a named checkpoint",
+      "parity is a diagnostic control, not the primary scientific result",
+      "a future candidate must specify and charge the causal local proof generator itself"
+    ],
+    "controls": {
+      "balanced_dense_margin": {
+        "histogram": {
+          "10": 840,
+          "11": 924,
+          "12": 924,
+          "6": 64,
+          "7": 224,
+          "8": 448,
+          "9": 672
+        },
+        "mean": 10.0673828125,
+        "p50": 10,
+        "p50_fraction": 0.8333333333333334,
+        "p95": 12,
+        "p95_fraction": 1.0,
+        "worst": 12
+      },
+      "easy_or_certificate": {
+        "histogram": {
+          "1": 2048,
+          "10": 4,
+          "11": 2,
+          "12": 2,
+          "2": 1024,
+          "3": 512,
+          "4": 256,
+          "5": 128,
+          "6": 64,
+          "7": 32,
+          "8": 16,
+          "9": 8
+        },
+        "mean": 1.99951171875,
+        "p50": 1,
+        "p50_fraction": 0.08333333333333333,
+        "p95": 5,
+        "p95_fraction": 0.4166666666666667,
+        "worst": 12
+      },
+      "one_coordinate": {
+        "histogram": {
+          "1": 4096
+        },
+        "mean": 1.0,
+        "p50": 1,
+        "p50_fraction": 0.08333333333333333,
+        "p95": 1,
+        "p95_fraction": 0.08333333333333333,
+        "worst": 1
+      },
+      "parity_diagnostic_only": {
+        "histogram": {
+          "12": 4096
+        },
+        "mean": 12.0,
+        "p50": 12,
+        "p50_fraction": 1.0,
+        "p95": 12,
+        "p95_fraction": 1.0,
+        "worst": 12
+      }
+    },
+    "decision": "REJECT_PROOFWAVE_AS_STANDALONE_NEW_INFORMATION_SOURCE_RETAIN_CHECKER_AUXILIARY",
+    "real_checkpoint_evidence": {
+      "causal_coefficient_generator": "NOT_CONSTRUCTED",
+      "checkpoint": "HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+      "fine_dense_arithmetic_percent": 100.0,
+      "holdout_coefficient_support_p50": 5.0,
+      "holdout_coefficient_support_p95": 13.0,
+      "perfect_block_compressed_traffic_percent": 0.619070788,
+      "projected_hot_state_gib": 7.554739,
+      "projected_residual_scoring_fraction_percent": 0.004085191,
+      "source_blob_sha": "fe9247a2173e95a4ad64912913a34b38eb3403bf",
+      "source_path": "docs/research/EXP_096A_LATEST_RESULT.md",
+      "source_ref": "f5a432a5152ee6d9e1399583a4829a39aacdf5e0",
+      "target_seeing_certificates_build": [
+        384,
+        384
+      ],
+      "target_seeing_certificates_holdout": [
+        384,
+        384
+      ]
+    },
+    "registered_scope": {
+      "balanced_control": "sign of an equal-magnitude 12-contribution logit difference",
+      "control_semantics": "zero-error adaptive source reads; free logic between reads",
+      "finite_control_bits": 12,
+      "positive_control": "one-coordinate and OR certificates"
+    },
+    "results": {
+      "balanced_margin_miss_factor_p50": 70.3125,
+      "balanced_margin_miss_factor_p95": 84.375,
+      "balanced_margin_p50_fraction": 0.8333333333333334,
+      "balanced_margin_p95_fraction": 1.0,
+      "local_causal_proof_generator_specified": false,
+      "symbolic_successor_transition_program_specified": false
+    }
+  },
+  "reachquotient": {
+    "candidate": "REACHQUOTIENT",
+    "claim_boundary": [
+      "does not prove every pretrained Transformer has a trivial quotient",
+      "does prove that exact quotienting can be either powerful or completely vacuous",
+      "the existing real-checkpoint witness is identity prefix replay, not a compressed executor"
+    ],
+    "contract_weakening_control": {
+      "all_legal_suffix_classes": 3,
+      "fixed_zero_only_classes": 2,
+      "weaker_contract_merges_more": true
+    },
+    "decision": "VALID_BISIMULATION_INTERFACE_NO_COMPRESSED_REACHABLE_QUOTIENT_CONSTRUCTOR",
+    "positive_control": {
+      "class_fraction": 0.25,
+      "classes": 8,
+      "states": 32
+    },
+    "random_machines": [
+      {
+        "full_quotient_fraction": 0.7,
+        "maximum_refinement_rounds": 7,
+        "minimum_classes": 13,
+        "p50_class_fraction": 1.0,
+        "p50_classes": 16.0,
+        "p95_classes": 16,
+        "samples": 100,
+        "states": 16
+      },
+      {
+        "full_quotient_fraction": 0.73,
+        "maximum_refinement_rounds": 6,
+        "minimum_classes": 29,
+        "p50_class_fraction": 1.0,
+        "p50_classes": 32.0,
+        "p95_classes": 32,
+        "samples": 100,
+        "states": 32
+      },
+      {
+        "full_quotient_fraction": 0.83,
+        "maximum_refinement_rounds": 6,
+        "minimum_classes": 61,
+        "p50_class_fraction": 1.0,
+        "p50_classes": 64.0,
+        "p95_classes": 64,
+        "samples": 100,
+        "states": 64
+      },
+      {
+        "full_quotient_fraction": 0.83,
+        "maximum_refinement_rounds": 5,
+        "minimum_classes": 126,
+        "p50_class_fraction": 1.0,
+        "p50_classes": 128.0,
+        "p95_classes": 128,
+        "samples": 100,
+        "states": 128
+      }
+    ],
+    "real_checkpoint_evidence": {
+      "cache_byte_or_digest_mismatches": 0,
+      "checkpoint": "HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+      "compiled_state": "exact prompt/generated token prefix + exact RNG bytes",
+      "identity_replay_is_fast_executor": false,
+      "logits_byte_mismatches": 0,
+      "reference_target_calls": 68,
+      "replay_target_calls": 612,
+      "replayed_token_positions": 3791,
+      "rng_state_mismatches": 0,
+      "source_blob_sha": "aed26836718caf953949599361c0df66cd7a1709",
+      "source_path": "docs/research/EXP_089A_LATEST_RESULT.md",
+      "source_ref": "f5a432a5152ee6d9e1399583a4829a39aacdf5e0",
+      "token_mismatches": 0,
+      "transitions": 64
+    },
+    "registered_scope": {
+      "algorithm": "exact partition refinement",
+      "equivalence": "exact Moore/bisimulation equivalence under every legal future input symbol",
+      "random_population": "100 deterministic machines at each of 16/32/64/128 states"
+    },
+    "results": {
+      "all_suffix_congruence_proof_constructed": false,
+      "checkpoint_specific_H_lambda_delta_constructed": false,
+      "random_p50_class_fraction_all_sizes": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shift_register_cases": 7,
+      "shift_register_full_class_cases": 7
+    },
+    "shift_register_adversary": [
+      {
+        "class_fraction": 1.0,
+        "classes": 4,
+        "refinement_rounds": 2,
+        "states": 4,
+        "width": 2
+      },
+      {
+        "class_fraction": 1.0,
+        "classes": 8,
+        "refinement_rounds": 3,
+        "states": 8,
+        "width": 3
+      },
+      {
+        "class_fraction": 1.0,
+        "classes": 16,
+        "refinement_rounds": 4,
+        "states": 16,
+        "width": 4
+      },
+      {
+        "class_fraction": 1.0,
+        "classes": 32,
+        "refinement_rounds": 5,
+        "states": 32,
+        "width": 5
+      },
+      {
+        "class_fraction": 1.0,
+        "classes": 64,
+        "refinement_rounds": 6,
+        "states": 64,
+        "width": 6
+      },
+      {
+        "class_fraction": 1.0,
+        "classes": 128,
+        "refinement_rounds": 7,
+        "states": 128,
+        "width": 7
+      },
+      {
+        "class_fraction": 1.0,
+        "classes": 256,
+        "refinement_rounds": 8,
+        "states": 256,
+        "width": 8
+      }
+    ]
+  },
+  "routecell": {
+    "candidate": "ROUTECELL",
+    "claim_boundary": [
+      "does not reject non-affine/multiword/global adaptive nonlinear cold encodings",
+      "does not construct or reject the 25x108/50-word/two-probe frontier object",
+      "does not test native Q4/BF16/FP32 partial reductions or physical I/O"
+    ],
+    "decision": "REJECT_REGISTERED_AFFINE_FEISTEL_SINGLE_TAG_ROUTECELL_GRAMMAR",
+    "integrity": {
+      "complete_encoder_tag_pairs": 3474432,
+      "offset_invariance_failures": 0,
+      "positive_one_coordinate_depth": 1,
+      "positive_two_coordinate_parity_depth": 2
+    },
+    "registered_scope": {
+      "affine_offsets_covered": 8,
+      "decoder": "arbitrary exact deterministic adaptive decision tree",
+      "encoder": "3+3 Feistel; repeated identical affine 3-bit round; 1/2/3 rounds",
+      "linear_round_maps": 512,
+      "probe_budget": 2,
+      "query_family": "all 21 nonzero GF(2) rank-one parities",
+      "redundancy": "one extra route tag bit",
+      "route_encoders": 1536,
+      "source": "all 2x3 binary matrices",
+      "tag_grammar": "every Boolean function of any <=3 encoded bits",
+      "unique_tag_partitions": 2262
+    },
+    "results": {
+      "best_encoder_linear_code": 0,
+      "best_encoder_rounds": 1,
+      "best_exact_depth_histogram": {
+        "1": 7,
+        "2": 9,
+        "3": 2,
+        "4": 2,
+        "5": 1
+      },
+      "best_tag_input_coordinates": [
+        0,
+        1,
+        2
+      ],
+      "best_tag_truth_table": 60,
+      "best_two_probe_coverage": 16,
+      "best_two_probe_fraction": 0.7619047619047619,
+      "best_worst_query_depth": 5,
+      "full_two_probe_encoders": 0,
+      "per_encoder_best_coverage_histogram": {
+        "10": 187,
+        "11": 274,
+        "12": 279,
+        "13": 248,
+        "14": 168,
+        "15": 102,
+        "16": 54,
+        "4": 6,
+        "5": 6,
+        "6": 24,
+        "7": 72,
+        "8": 26,
+        "9": 90
+      },
+      "raw_coordinate_coverage": 15,
+      "raw_coordinate_fraction": 0.7142857142857143
+    }
+  },
+  "schema": "e0-route-proof-reach-validation-v1",
+  "target_fraction": {
+    "decimal": 0.011851851851851851,
+    "exact": "8/675",
+    "percent": 1.1851851851851851
+  }
+}
