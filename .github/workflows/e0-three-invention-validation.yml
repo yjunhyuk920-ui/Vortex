@@ -1,0 +1,34 @@
+name: E0 three-invention validation
+
+on:
+  pull_request:
+    paths:
+      - "experiments/e0_three_invention_validation/**"
+      - "tests/e0_three_invention_validation/**"
+      - "results/e0_three_invention_validation/**"
+      - "docs/research/E0_THREE_INVENTION_VALIDATION.md"
+      - ".github/workflows/e0-three-invention-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install test dependency
+        run: python -m pip install --disable-pip-version-check pytest==8.3.5
+      - name: Rebuild deterministic result
+        run: |
+          python experiments/e0_three_invention_validation/run_validation.py > /tmp/summary.json
+          cmp /tmp/summary.json results/e0_three_invention_validation/summary.json
+      - name: Run focused controls
+        run: pytest -q tests/e0_three_invention_validation/test_validation.py
+      - name: Verify committed checksums
+        run: sha256sum -c results/e0_three_invention_validation/checksums.sha256
