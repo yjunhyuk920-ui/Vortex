@@ -1,0 +1,188 @@
+{
+  "claim_boundary": {
+    "405b_execution": false,
+    "evidence_level": "E0 finite proof plus reuse of E1/E2 committed evidence",
+    "new_checkpoint_forward": false,
+    "new_hardware_measurement": false,
+    "universal_impossibility": false
+  },
+  "cspe": {
+    "decision": "REJECT_CURRENT_CSPE_AS_UNIVERSAL_CORE_KEEP_ONLY_CONCRETE_DISTRIBUTION_SPECIFIC_NONLINEAR_CODE_GATE_OPEN",
+    "identity_valid": true,
+    "restricted_real_checkpoint_evidence": {
+      "down_residual_nonzero_p50": 0.8935469980314961,
+      "input_residual_nonzero_p50": 0.8006342957130359,
+      "operation_fraction_p50": 0.20239988251214963,
+      "operation_miss_factor": 17.077490086962626,
+      "reconstruction_mismatches": 0,
+      "temporal_exact_replay_hits": 0,
+      "temporal_span_mandatory_operation_p50": 1.0,
+      "weight_fraction_p50": 0.006348049854281639
+    },
+    "scope": "Rejects the stated fixed-dictionary sparse-code core and its registered linear/state-axis realizations. It does not prove that every checkpoint-specific nonlinear implicit code is impossible.",
+    "universal_binary_counting_gate": {
+      "ambient_information_bits": 16384,
+      "best_coordinate_residual_support": 0,
+      "best_dictionary_support": 194,
+      "best_support_split_under_cap": {
+        "dictionary": 194,
+        "residual": 0
+      },
+      "coverage_information_fraction_upper": 0.23495481851490213,
+      "favorable_8gib_one_bit_atom_cap": 33554432,
+      "gate_pass": false,
+      "maximum_covered_information_bits_under_cap": 3849.4997465481565,
+      "minimum_atom_count_scientific_notation": "2^89.610826",
+      "minimum_log2_atom_count_lower_bound": 89.61082604872084
+    }
+  },
+  "deterministic_core_sha256": "9024a1ccb8da797dbf2567dcfd5c059507debe7733b41a090fdbfe9cb4e11e27",
+  "evidence": {
+    "exp_049": {
+      "blob_sha": "fb004723629f99893748c7e6b9545a234b26d49a",
+      "oracle_max_matching_prefix_after_four_passes": 6.0,
+      "oracle_p50_matching_prefix_after_four_passes": 4.5,
+      "path": "results/exp_049/summary.json",
+      "triangular_one_position_per_round_barrier": true,
+      "triangular_transcript_indistinguishability": true
+    },
+    "exp_069": {
+      "blob_sha": "1462229e99377d63ad7f32e7b76e80edd51abb5d",
+      "p50_mandatory_operation_fraction": 1.0,
+      "p90_mandatory_operation_fraction": 1.0,
+      "path": "results/exp_069/summary.json",
+      "verified_exact_replay_hits": 0
+    },
+    "exp_080a": {
+      "best_constructive_arithmetic_fraction": 0.3611157967135951,
+      "best_constructive_block_length": 16384,
+      "blob_sha": "83e278b76d4348754b728ac3e0fb908441855d37",
+      "constructive_joint_pass_count": 0,
+      "path": "results/exp_080a/summary.json"
+    },
+    "exp_086a": {
+      "blob_sha": "9d902bd0331afd0f7d3bd94d06b397fd422882fe",
+      "coordinate_k128_down_residual_nonzero_p50": 0.8935469980314961,
+      "coordinate_k128_input_residual_nonzero_p50": 0.8006342957130359,
+      "coordinate_k128_operation_fraction_p50": 0.20239988251214963,
+      "coordinate_k128_weight_fraction_p50": 0.006348049854281639,
+      "path": "results/exp_086a/fe457a464e465ecd561e352b7af637a90e17ced9/result.json",
+      "reconstruction_mismatches": 0
+    },
+    "native_shortcut": {
+      "best_combined_local_elimination_upper": 0.08677455357142855,
+      "blob_sha": "f8bbf7181ef1e71c3f7999094ad97e3082b6b2f1",
+      "path": "results/e0_native_exact_shortcut_frontier/summary.json",
+      "unique_product_fraction_p50": 0.9782366071428571,
+      "unlimited_same_coordinate_history_hit_fraction": 0.029854910714285716
+    }
+  },
+  "nrm": {
+    "decision": "REJECT_NRM_EXACT_PATTERN_MACROS_AS_CORE",
+    "exact_macro_semantics_valid_on_hit": true,
+    "favorable_table_bound": {
+      "average_size1_values_per_coordinate": 16.0,
+      "bf16_value_count": 65536,
+      "bytes_per_bf16_partial_vector": 32768,
+      "maximum_macros_if_all_8gib_given_to_one_matrix": 262144,
+      "output_width": 16384
+    },
+    "real_checkpoint_free_oracle_upper": {
+      "best_combined_local_elimination_upper": 0.08677455357142855,
+      "best_combined_local_miss_factor": 77.05339704241072,
+      "best_combined_local_remaining_fraction_lower": 0.9132254464285714,
+      "same_position_macro_miss_factor": 81.85599190848215,
+      "same_position_macro_remaining_fraction_lower": 0.9701450892857143,
+      "unique_product_fraction_p50": 0.9782366071428571,
+      "unlimited_scalar_history_elimination_upper": 0.029854910714285716
+    },
+    "same_position_macro_coverage_lemma_control": {
+      "macro_cover_subset_of_scalar_hits": true,
+      "macro_covered_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scalar_history_hit_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "scope": "Rejects same-position exact native subtree-pattern macros. Cross-position algebraic transforms are a different mechanism."
+  },
+  "overall": {
+    "decision": "NO_THREE_INVENTION_CORE_SURVIVES_E0_EVIDENCE_AUDIT",
+    "next_requirement": "A new candidate must provide a concrete causal information source, a finite-word executable operation, complete successor-state semantics, and a fully charged path below the target before another model run.",
+    "surviving_core_candidate_count": 0
+  },
+  "schema": "vortex-e0-three-invention-validation-v1",
+  "stc": {
+    "causal_real_checkpoint_evidence": {
+      "oracle_max_prefix_after_four_passes": 6.0,
+      "oracle_p50_prefix_after_four_passes": 4.5,
+      "triangular_one_position_per_round_barrier": true,
+      "triangular_transcript_indistinguishability": true
+    },
+    "decision": "REJECT_CURRENT_STC_AS_REORDERING_NOT_SUBDENSE_EXECUTOR_RETAIN_FACTOR_GRAPH_REFERENCE_ONLY",
+    "perfect_future_constructive_arithmetic": {
+      "best_fraction": 0.3611157967135951,
+      "block_length": 16384,
+      "joint_pass_count": 0,
+      "miss_factor": 30.46914534770959
+    },
+    "pointer_chasing_controls": [
+      {
+        "common_sequential_queries": 1,
+        "different_kth_state": true,
+        "k": 2,
+        "same_transcript_before_final_query": true,
+        "universal_queries_required": 2
+      },
+      {
+        "common_sequential_queries": 3,
+        "different_kth_state": true,
+        "k": 4,
+        "same_transcript_before_final_query": true,
+        "universal_queries_required": 4
+      },
+      {
+        "common_sequential_queries": 7,
+        "different_kth_state": true,
+        "k": 8,
+        "same_transcript_before_final_query": true,
+        "universal_queries_required": 8
+      },
+      {
+        "common_sequential_queries": 15,
+        "different_kth_state": true,
+        "k": 16,
+        "same_transcript_before_final_query": true,
+        "universal_queries_required": 16
+      },
+      {
+        "common_sequential_queries": 84,
+        "different_kth_state": true,
+        "k": 85,
+        "same_transcript_before_final_query": true,
+        "universal_queries_required": 85
+      }
+    ],
+    "relation_formulation_valid": true,
+    "scope": "Rejects the current variable-elimination description as a core: it supplies neither a compact causal path source nor a constructive subdense contraction. It does not reject a future explicit algorithm with a new information source."
+  },
+  "target": {
+    "maximum_query_terms_before_all_overhead": 194,
+    "p50_fraction": 0.011851851851851851,
+    "registered_hidden_width": 16384,
+    "required_elimination_fraction": 0.9881481481481481
+  }
+}
