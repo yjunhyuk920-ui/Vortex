@@ -1,0 +1,54 @@
+{
+  "base_ref": "f5a432a5152ee6d9e1399583a4829a39aacdf5e0",
+  "sources": [
+    {
+      "path": "docs/research/E0_ADAPTIVE_NONLINEAR_PROBE_DEGREE_GATE.md",
+      "git_blob_sha1": "380d43c5646e212d8161517fc94f981f007d4760",
+      "used_for": [
+        "fully non-systematic 2x3/7-bit/two-probe seed remains unresolved",
+        "25x108/50-word/two-probe target-scale capacity survivor is not a constructor"
+      ]
+    },
+    {
+      "path": "docs/research/E0_NONLINEAR_RECURSIVE_LIFT_GATE.md",
+      "git_blob_sha1": "1fa7319b90fd57726fd0dded6466b4dada232d79",
+      "used_for": [
+        "free entrywise nonlinear recursion is rejected",
+        "charged cross-child correlations or a non-entrywise global encoding are required"
+      ]
+    },
+    {
+      "path": "docs/research/E0_GENERAL_FINITE_WORD_RANK_ONE_PROBE_BARRIER.md",
+      "git_blob_sha1": "2652d6f292950a87a1e2b9c97c4eac9baa748876",
+      "used_for": [
+        "general nonlinear adaptive finite-word cold execution is neither constructed nor ruled out at target scale"
+      ]
+    },
+    {
+      "path": "docs/research/EXP_096A_LATEST_RESULT.md",
+      "git_blob_sha1": "fe9247a2173e95a4ad64912913a34b38eb3403bf",
+      "used_for": [
+        "target-seeing residual certificates cover 384/384 build and holdout rows",
+        "holdout support p50/p95 is 5/13",
+        "fine dense arithmetic remains 100%",
+        "causal coefficient generator is not constructed"
+      ]
+    },
+    {
+      "path": "docs/research/EXP_089A_LATEST_RESULT.md",
+      "git_blob_sha1": "aed26836718caf953949599361c0df66cd7a1709",
+      "used_for": [
+        "64 exact prefix-state replay transitions with zero token/logit/cache/RNG mismatch",
+        "68 reference calls, 612 replay calls, and 3791 replayed positions",
+        "identity prefix replay is not an efficient quotient executor"
+      ]
+    },
+    {
+      "path": "docs/research/E0_THREE_INVENTION_VALIDATION.md",
+      "git_blob_sha1": "99b99db9b840bd15d22ef585828c3e35517bbb6d",
+      "used_for": [
+        "CSPE, STC, and NRM predecessor candidates are already rejected under their registered scopes"
+      ]
+    }
+  ]
+}
