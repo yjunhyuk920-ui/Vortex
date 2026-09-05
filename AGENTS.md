@@ -1,231 +1,66 @@
 # AGENTS.md — VORTEX mandatory session contract
 
-This is the first file every AI or human session must read.
+Version: CTC-2026-09-05. Read this first in every session.
 
 ## Fixed mission
 
-Build a universal runtime that executes an arbitrary publicly released, unmodified Hugging Face dense Transformer by replacing only the executor.
+Build a universal executor for arbitrary publicly released, unmodified Hugging Face dense Transformers. The flagship target is a real 405B-class checkpoint, batch size one, a single GPU with total peak VRAM <=8 GiB, original output/RNG and required successor state preserved, and warm time/token p50 <=1.2x and p95 <=1.5x native 4B Q4 on the same machine. Preserve the existing TTFT requirement and freeze any still-unspecified evaluation details before acceptance.
 
-Flagship acceptance target:
+No retraining, fine-tuning, distillation, LoRA, semantic weight modification, manual model-specific adapter, hidden remote compute, free precomputation or uncharged fallback. Do not silently narrow the model/input domain. All CPU/RAM/SSD/PCIe/HBM/GPU/KV/cache/metadata/workspace/verification/repair costs count.
 
-- real 405B-class dense model;
-- peak GPU VRAM <=8 GiB;
-- no retraining, distillation, fine-tuning, LoRA, or model-specific user-authored adapter;
-- original-model ability and declared output contract preserved;
-- p50 warm time/token <=1.2x a native 4B Q4 baseline on the same target machine;
-- p95 <=1.5x that baseline;
-- independent reproduction from pinned code and checkpoint hashes.
+## Governing objective
 
-The target may not be silently reduced.
+The primary deliverable is a complete constructive execution theory, not a collection of small proofs, rejections, tests or commits. Read the [canonical mission](MISSION_AND_WORKING_PRINCIPLES.md) and [Constructive Theory Contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md). The latter controls theory acceptance, architecture neutrality, research priorities and scientific completion when older directives conflict. Recorded scientific evidence and fixed constraints are not overwritten.
 
-## Current-environment truth
+Every core round begins with the final theorem and O1-O6 obligation ledger, compares three materially different premise-reversing principles, and concentrates on the strongest credible >=10x route. Do not start from mere combinations/minor variations or rename rejected families. Use the cheapest decisive test, then construct the missing causal/native/state/cost procedure. A rejected candidate stops; the mission does not automatically end with it.
 
-The current primary environment is GitHub plus limited GitHub Actions CPU runners.
+No undefined perfect selector, free certificate, unproved compression/reuse or unlimited search. Lower bounds and optimistic rooflines reject candidates; only a complete algorithm with sufficient upper bounds can establish theory acceptance. Block-verification variables are not universal architecture requirements.
 
-Currently unavailable:
+## Startup
 
-- target 8 GiB GPU measurement;
-- 405B checkpoint download/storage/execution;
-- CUDA profiling;
-- PCIe and target SSD profiling;
-- real 405B TTFT or tokens/second;
-- real target peak VRAM.
+Verify the actual remote repository, branch/head SHA, active PR and latest committed evidence. Then read:
 
-All Phase D claims are therefore **NOT TESTED** until actual hardware evidence exists. Never imitate or infer a Phase D measurement from GitHub Actions.
+1. This file, `MISSION_AND_WORKING_PRINCIPLES.md`, `docs/CONSTRUCTIVE_THEORY_CONTRACT.md`, and `README.md`.
+2. `docs/PROOF_FIRST_CONTRACT.md`, `docs/RESEARCH_EFFICIENCY_CONTRACT.md`, `docs/WORK_SESSION_PROTOCOL.md`, `docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md` and `CREATIVE_RESEARCH_MANDATE.md`.
+3. Current `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`, `VALIDATION_MATRIX.md`, `FAILED_APPROACHES.md`, `FAILED_APPROACHES_RECENT.md`, `DECISION_LOG.md`, `ASSUMPTION_REGISTER.md`, `ARCHITECTURE.md`, `HARDWARE_VALIDATION_PLAN.md`, and `REPRODUCIBILITY.md`.
+4. Active source/config/raw result/log/checksum and PR discussions; branch-specific reality-first/handoff documents where present.
 
-## Mandatory startup order
+An old 'next experiment' or historical policy section does not supersede the current contract. Resolve remote branch differences; never assume main contains every draft experiment. Conversation memory is not evidence.
 
-Read before proposing or editing:
-
-1. `AGENTS.md`
-2. `RESEARCH_STATE.md`
-3. `FAILED_APPROACHES.md`
-4. `DECISION_LOG.md`
-5. `ASSUMPTION_REGISTER.md`
-6. `VALIDATION_MATRIX.md`
-7. `NEXT_EXPERIMENT.md`
-8. `ARCHITECTURE.md`
-9. `HARDWARE_VALIDATION_PLAN.md`
-10. `REPRODUCIBILITY.md`
-11. `docs/PROOF_FIRST_CONTRACT.md`
-12. `docs/RESEARCH_EFFICIENCY_CONTRACT.md`
-13. `docs/WORK_SESSION_PROTOCOL.md`
-14. active experiment files, workflow, PR comments, logs, and result JSON.
-
-Then verify branch, head commit, PR state, workflow conclusion, and authoritative raw evidence. Conversation memory is not authoritative.
-
-## Validation phases
-
-Every experiment declares one or more phases.
-
-### Phase A — theory and structure
-
-Permitted claims: mathematical validity, correctness conditions, failure conditions, causal logic, lower bounds, resource equations, and strongest counterexamples.
-
-Required wording:
-
-> Structurally valid conditions were established. Large-model performance remains unverified.
-
-### Phase B — synthetic/reference
-
-Required: independent reference implementation, randomized/property tests, boundary cases, fault injection, deterministic replay, and scaling trends.
-
-Synthetic success is not LLM success.
-
-### Phase C — small real-model falsification
-
-Use only available unmodified small checkpoints. Required measurements include held-out prompts, future-information audit, forward/layer calls, token/logit agreement, fallback, CPU time, RAM, and size trend.
-
-Purpose:
-
-> Falsify the proposed execution principle early on real Transformer checkpoints.
-
-Small-model evidence is never 405B performance evidence.
-
-### Phase D — target hardware
-
-Requires a real 8 GiB GPU, target storage, 70B/405B checkpoints, baseline runtime, and hardware profilers. Only this phase can validate actual target VRAM, TTFT, tokens/second, PCIe, SSD, and original 405B quality.
-
-Current status: **NOT TESTED**.
-
-## Evidence levels
-
-Use exactly:
-
-- E0: idea or equation;
-- E1: synthetic/reference validation;
-- E2: real small-model operation replacement;
-- E3: held-out generalization with measured causal coverage;
-- E4: measured improvement on accessible representative hardware;
-- E5: medium/large model scaling validation;
-- E6: target model runs under 8 GiB VRAM;
-- E7: 405B meets the declared 4B-class performance target.
-
-E0–E3 may not be described as E6/E7 feasibility or success.
-
-## Provenance labels
-
-Every metric and claim must be separated into:
-
-- `MEASURED` — produced by an actual run in the declared environment;
-- `DERIVED` — exact formula or calculation from measured inputs;
-- `PROJECTED` — extrapolation to another model or machine;
-- `UNVERIFIED` — not tested in the current environment.
-
-Never present PROJECTED or UNVERIFIED values as MEASURED.
-
-## Core-research filter
-
-Core research must directly answer all twelve questions in `RESEARCH_STATE.md`, including:
-
-- the original operation skipped or replaced;
-- causal selector without future tokens;
-- selector cost;
-- wrong-skip detection;
-- exact/specified fallback;
-- worst-case output contract;
-- scaling trend;
-- reason all weights need not be read;
-- RAM/SSD/VRAM movement;
-- 405B minimum bandwidth/compute;
-- distance from the 4B target;
-- strongest falsification.
-
-Token-path storage, response replay, file compression, or bounded grammar memorization are auxiliary unless attached to a new causal operation-skipping principle.
-
-## Research-efficiency and candidate-selection Gate
-
-`docs/RESEARCH_EFFICIENCY_CONTRACT.md` is mandatory and has the same authority as the proof-first contract.
-
-Before opening an experiment branch, a proposed core candidate must pass E0 triage:
-
-- show a credible optimistic path to at least an order-of-magnitude reduction and toward the final target-equivalent fraction;
-- identify a materially new mechanism or new evidence rather than a nearby variant of a rejected family;
-- explain why the effect should survive or improve with model scale;
-- include selector, metadata, intermediate, verification, correction, fallback, RAM, SSD, PCIe, and VRAM costs;
-- define the cheapest decisive falsification before backend or kernel work;
-- preserve the fixed arbitrary-model, unmodified-checkpoint, runtime-only, fail-closed mission.
-
-Do not run experiments merely because a mathematical decomposition or optimization has not yet appeared in the sequence. Do not complete a taxonomy for its own sake.
-
-An optimization whose favorable ceiling is only a few tens of percent is auxiliary unless an independently justified composition closes the remaining orders-of-magnitude gap. Population-level p50/p90 behavior controls promotion; an isolated best matrix, prompt, row, head, or synthetic fragment does not.
-
-Repeated negative evidence closes a mechanism family. Reopening it requires a new information source, asymptotic mechanism, execution dependency, or measured fact that invalidates the prior rejection premise. Parameter sweeps, mode-order variants, rank changes, and renamed decompositions are not sufficient.
-
-Use the cheapest-kill-first order:
+## Local-first validation and repository handoff
 
 ```text
-resource/information bound
--> exact certificate or favorable oracle upper bound
--> pinned small-real-checkpoint measurement
--> minimal operation replacement
--> backend/kernel
--> target hardware
+LOCAL_RESEARCH -> LOCAL_VALIDATION_PASS -> COMMIT_PUSHED -> REMOTE_COMMIT_VERIFIED
+GITHUB_ACTIONS_REQUIRED=false
+GITHUB_REEXECUTION_REQUIRED=false
 ```
 
-No model-wide backend, physical kernel, or broad rescue search may start before the cheaper Gate survives.
+Freeze hypotheses, input hashes and thresholds locally before examining results, and persist the preregistration with the evidence. Do not require a remote commit before the local experiment or duplicate research on Actions. GitHub is persistence/handoff after local validation; explicitly user-requested Actions is the exception. Do not bypass branch protection.
 
-Default research prioritization is approximately 70% high-upside new execution paradigms, 20% cheap falsification and certificates, and 10% auxiliary engineering. This is a prioritization rule, not fabricated time accounting.
+Use available local theory/reference/property/adversarial/checkpoint tests, deterministic regeneration and checksums as applicable. For documentation-only changes, validate Markdown, local links, unchanged constraints, precedence and cross-file consistency; do not claim runtime tests were run. Missing hardware or packages are infrastructure facts, not scientific rejection. Target execution, complete VRAM, CUDA/PCIe/SSD behavior, TTFT and baseline latency stay NOT TESTED until actually measured.
 
-## Mandatory proof-first loop
+Before reporting repository work: preserve positive/negative evidence, update every affected ledger and README, commit to a descriptive research branch, push, and read back the remote SHA and changed files. Never force-push, directly push main, or merge unrelated experimental work. A local bundle alone is not a completed handoff. Use the connected GitHub writer even when shell Git is unavailable.
 
-Before a model-wide backend is built:
+## Exactness and evidence
 
-1. read previous state, failures, decisions, assumptions, and the efficiency contract;
-2. select one falsifiable high-upside core hypothesis that passed E0 candidate triage;
-3. define success and rejection thresholds plus the optimistic target-scale ceiling;
-4. derive correctness, memory, traffic, compute, and fallback equations;
-5. identify all unverified assumptions;
-6. implement an independent reference;
-7. implement only the minimum candidate required by the cheapest decisive Gate;
-8. run the strongest current-environment falsification;
-9. stop immediately when a decisive rejection bound is established;
-10. save raw logs, processed results, and checksums;
-11. update all required root documents and experiment files;
-12. commit before reporting progress.
+Empirical promotion uses `REAL_EXECUTOR_ONLY`: no future target token/state, oracle selector, free runtime work, speculative compression or peak-as-sustained throughput. A model theorem uses an explicit executable specification, not an oracle; it is not measured runtime evidence.
 
-Do not increase experiment numbers without eliminating a real assumption or testing a new mechanism. Do not build an optimized implementation to reconfirm a decisive negative theorem, lower bound, or oracle ceiling.
+Prove original finite-word reduction/rounding semantics, RNG consumption and an inductive correspondence for every required successor state. A compressed state needs a proved exact continuation relation; token agreement on samples is insufficient. If the original interface exposes logits, preserve that interface too. Probabilistic certificates must disclose and union-account error and cannot silently replace deterministic exactness. Failed certificates exact-fallback or abort, never silently approximate; safety behavior is not mission success.
 
-## Safety and correctness
+Keep Phase A theory, B synthetic/reference, C small-real falsification and D target hardware distinct. Keep E0 idea, E1 reference, E2 real operation replacement, E3 held-out causal generalization, E4 representative hardware, E5 scaling, E6 target <=8 GiB and E7 final target distinct. Separate MEASURED, DERIVED, PROJECTED, UNVERIFIED.
 
-- Future generated tokens are forbidden unless the experiment is explicitly labeled a non-deployable oracle upper bound.
-- A failed or unavailable certificate must trigger exact fallback or abort, never silent approximation.
-- Probabilistic certification must declare and union-account its error budget; it is not deterministic exactness.
-- Missing files, checkpoint download failures, and runner timeouts are infrastructure failures, not scientific evidence.
-- Failed hypotheses are permanent project data.
-
-## Required repository state
-
-Maintain on every meaningful session:
+Report three independent axes:
 
 ```text
-RESEARCH_STATE.md
-NEXT_EXPERIMENT.md
-DECISION_LOG.md
-FAILED_APPROACHES.md
-ARCHITECTURE.md
-ASSUMPTION_REGISTER.md
-VALIDATION_MATRIX.md
-HARDWARE_VALIDATION_PLAN.md
-REPRODUCIBILITY.md
+THEORY_STATUS=NOT_ESTABLISHED|CONDITIONAL|VERIFIED_IN_MODEL
+HARDWARE_STATUS=NOT_TESTED|PARTIAL|E7_VERIFIED
+HANDOFF_STATUS=IN_PROGRESS|REMOTE_COMMIT_VERIFIED|BLOCKED_REMOTE_WRITE
 ```
 
-Experiment layout:
+A commit completes persistence, not the theory. A verified model theorem does not complete E7. A session boundary does not authorize false success or an asynchronous promise.
 
-```text
-docs/research/EXPERIMENT_XXX_<NAME>.md
-experiments/exp_xxx/
-results/exp_xxx/
-tests/exp_xxx/
-.github/workflows/exp_xxx_gate.yml
-```
+## Durable state and reporting
 
-Before a user-facing progress response after repository work, commit the current state. If writing or validation fails, say so explicitly.
+Update files whose truth changes, not all files mechanically. Review README every meaningful round and state `README_CURRENT=true` with changed sections or a concrete unchanged reason. Preserve prior snapshots when consolidating policy/history.
 
-## Active frontier
-
-Read `NEXT_EXPERIMENT.md`.
-
-EXP-066 Tensor-Train/MPO is authorized only as a bounded cheap-kill bond-rank certificate Gate. Exact MPO reconstruction, runtime integration, kernels, and broad factorization rescue searches are prohibited unless the lower-bound Gate survives.
-
-If EXP-066 fails, close exact classical single-matrix tensor factorization as the primary direction for the measured population. The next core candidate must change execution class and pass E0 efficiency triage, prioritizing high-upside joint multi-operator arithmetic compilation or certificate-guided demand-driven execution rather than another adjacent decomposition.
+Report the execution method, proved obligations, paid budget and remaining decisive gap before test counts/commit logistics. A useful rejection is not evidence of greater feasibility. The active frontier is in the current remote state and next-obligation ledger, not a hard-coded old experiment in this file.
