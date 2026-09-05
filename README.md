@@ -1,41 +1,24 @@
 # VORTEX
 
-Proof-first research for arbitrary public, unmodified Hugging Face dense
-Transformers. **The 405B / single total-8-GiB GPU / native-4B-class latency mission
-is not achieved, and a complete constructive theory is not established.**
+Proof-first research for arbitrary public, unmodified Hugging Face dense models.
+The fixed mission remains **405B / one total-8-GiB GPU / original output, RNG
+and successor-state contract / same-machine native-4B-Q4 p50 <=1.2x,
+p95 <=1.5x and the existing TTFT requirement**. It is not achieved.
 
-## Fixed mission and current contract
+## Current frontier — 2026-09-05, latest-source/native-observation audit
 
-Executor replacement only; no retraining, weight changes, hidden remote compute,
-free precomputation or uncharged fallback. Batch one, original output/RNG and
-required successor state; warm p50 <=1.2x and p95 <=1.5x native 4B Q4 on the same
-machine, with the existing TTFT requirement. Every construction, storage,
-CPU/RAM/SSD/GPU/KV/transfer/metadata/verification/repair cost counts.
+[Research, source links, three candidate constructions, proofs and costs](docs/research/LATEST_RESEARCH_NATIVE_OBSERVATIONS.md).
+Eleven primary-source records include 2026 lossless codecs, low-bit engines,
+recent speculative work, and native arithmetic models; latest included submission
+is 2 September. Paper measurements are not local reproductions.
 
-Read [AGENTS.md](AGENTS.md), [the canonical mission](MISSION_AND_WORKING_PRINCIPLES.md)
-and [the constructive contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md).
-Full-theory acceptance requires O1-O6, not a scoped lemma, test suite or commit.
-Local validation precedes research-branch persistence and remote hash read-back;
-GitHub Actions is not required unless explicitly requested.
-
-## Latest scoped work — native ordered transfers, 2026-09-05
-
-[Construction, proofs and cost ledger](docs/research/NATIVE_TRANSFER_CONSTRUCTION.md)
-provide an exact guarded two-phase summary of ordered binary32 FMAs, a causal
-suffix-synchronization reference and a direct rounding-cell inverse constructor.
-These preserve the declared **serial-fmaf** ABI in their proved scopes, not an
-unverified replacement for arbitrary Torch/cuBLAS reduction order.
-
-The principal unresolved construction remains cheap exact query-dependent
-information generation and complete state/cost closure. The phase constructor
-still reads all terms. On 36 ordinary synthetic suffix cases none certified
-early; all weights were read and FMA work was 2.75x–2.99609375x the reference.
-The synchronizing positive control is not a target speedup. No core was promoted.
-
-20 focused tests pass. Independent native/integer controls and direct-inverse
-checks pass; scientific JSON/JSONL regeneration is byte-identical. No public
-checkpoint forward, layer replacement, full-repository suite, GPU allocation,
-TTFT or same-machine latency measurement was performed.
+A causal weight-prefix source now constructs an exact stored BF16 result for a
+declared normal eight-product native-style block, without consulting unknown
+mantissa bits. Its **9-bit-per-weight header floor and paid refinement reject
+it as a 10x core**. The new contribution is a scoped source/cut certificate,
+not a fast full Transformer. Exact real products can still give different
+native-model stored results; dead private register bits need not be preserved
+when all actual live-out/state/RNG boundaries are preserved.
 
 ```text
 THEORY_STATUS=NOT_ESTABLISHED
@@ -43,43 +26,38 @@ HARDWARE_STATUS=NOT_TESTED
 CORE_ADMISSION=false
 ```
 
-Remote persistence status is established by the actual post-commit receipt,
-not by this snapshot. Previous PR #119's five-bit minimum remains scoped E1;
-its 2x3 solver UNKNOWN and earlier failures are unchanged. Separate
-EXP-103A..108A branches are not merged or superseded.
+256 model blocks: zero mismatches; 254 early certificates but 90.9332% mean
+logical weight-bit reads. 65,536 exhaustive stored-bound controls and 4,096
+rounding controls passed. These are CPU reference checks, not LLM or GPU tests.
+12 focused unit tests passed. No checkpoint/GPU/8-GiB/4B latency measured.
 
-## Reproduce
-
-Python standard library and Linux libm `fmaf` with nearest-even rounding are
-required; pytest is optional because the focused tests use unittest.
+## Reproduce this scoped reference
 
 ```bash
-python experiments/native_transfer/audit.py
-python experiments/native_transfer/audit_inverse.py
-python -m unittest discover -s tests/native_transfer -v
-python -m pytest -q tests/native_transfer
-python experiments/native_transfer/evidence_codec.py --out results/native_transfer/decoded
-sha256sum -c results/native_transfer/checksums.sha256
+python -m pip install -r experiments/native_observable/requirements.txt
+python experiments/native_observable/audit.py
+python -m unittest discover -s tests/native_observable -v
 ```
 
-The two large inverse captures are losslessly integer-predictor/residual encoded
-with original byte hashes in `results/native_transfer/inverse_recording.json`.
-Decoding uses an exact integer IEEE reference, not native fmaf and not a new
-hardware test. See the research note for provenance and literal-capture hashes.
+[Exact recorded summary and lossless case capture](results/native_observable/summary.json),
+[local validation](results/native_observable/validation.json),
+[current state](RESEARCH_STATE.md), [next research gate](NEXT_EXPERIMENT.md),
+[validation matrix](VALIDATION_MATRIX.md).
 
-Current [state](RESEARCH_STATE.md), [next construction](NEXT_EXPERIMENT.md),
-[validation matrix](VALIDATION_MATRIX.md), and
-[additive decision/assumption ledger](docs/research/NATIVE_TRANSFER_LEDGER.md).
-Historical root snapshots are preserved byte-for-byte as Git blobs under
-`docs/research/history/pre_native_transfer_20260905/`. Older anti-repetition and
-scientific ledgers remain binding in their recorded scopes.
+## Governance and continuity
 
-`vortex_runtime/` retains prior prototypes; `experiments/`, `tests/`, `results/`
-and `docs/research/` contain research and evidence. No existing executable module
-was changed in this round. The wider repository setup remains experiment-specific;
-this isolated reference does not certify its full dependency environment.
+Read [AGENTS](AGENTS.md), [mission](MISSION_AND_WORKING_PRINCIPLES.md),
+[constructive contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md),
+[research efficiency](docs/RESEARCH_EFFICIENCY_CONTRACT.md),
+[work protocol](docs/WORK_SESSION_PROTOCOL.md) and
+[commit/handoff mandate](docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md).
+Policies are unchanged. GitHub Actions is not a required duplicate laboratory.
 
-```text
-README_CURRENT=true
-README_UPDATED=native construction; failed charged core screen; remaining O1-O6; reproduction and evidence
-```
+This branch starts from the real PR #122 head, not an unpushed reconstruction.
+[Previous README](docs/research/history/pre_frontier_20260905/README.md) and
+three prior root ledgers are preserved by their original Git blobs.
+Earlier scientific outcomes remain valid in their stated scope.
+The later local-only causal-source ZIP is context, not silently added to the
+remote lineage. Its provenance is recorded separately. No unrelated PR is merged.
+Remote recording status is established by the post-commit branch/tree receipt,
+not by a self-referential claim inside this snapshot.

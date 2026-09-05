@@ -1,45 +1,41 @@
-# Next work — close a paid information-source construction, not another toy size
+# Next gate — a paid native-observation information source
 
-Read AGENTS, the constructive contract, current state, prior failure registers
-and [native-transfer proof/cost ledger](docs/research/NATIVE_TRANSFER_CONSTRUCTION.md).
-The fixed 405B / one total-8-GiB / original-contract / native-4B p50,p95,TTFT
-objective is unchanged. Full-mission O1-O6 remain OPEN.
+Read AGENTS, the constructive contract, current state, failure records and
+[the latest-source/native-observation ledger](docs/research/LATEST_RESEARCH_NATIVE_OBSERVATIONS.md).
+Mission and O1-O6 remain unchanged. No candidate in this round is promoted.
 
-## What must actually be constructed
+## Construct, rather than assume, the missing source
 
-A finite checkpoint-derived and query-causal mechanism that generates the exact
-necessary native transfer/decision/state information without first performing
-or reading essentially all original dense work. Provide its constructor,
-address/selection, numerical execution, state update, termination and complete
-upper bound, not an ideal compressed-transducer or suffix-coverage assumption.
+Specify a finite checkpoint constructor E and causal program G such that
+`G(E(W), current input, current exact state)` produces a complete native
+output/state cut. Pay preparation, hot/cold storage, all indexes/headers/code,
+input processing, arithmetic, verification, RNG and future state maintenance.
+Show a >=10x route that does not scan a per-weight literal header, then prove
+full sufficient target bounds. A >=10x screen is not the final latency proof.
 
-Compare with global cold coding and exact state-demand alternatives using the
-existing failures; no candidate is admitted merely because another was rejected.
-A surviving high-upside candidate needs a fully charged >=10x route before a
-backend, then full O1-O6 closure rather than that screening ratio as acceptance.
+Compare encoded native actions, exact state-fragment sources and actual-cut
+execution. Prefer a new causal source or dependency that invalidates an old
+rejection premise; do not rename LUT, approximate residual or ideal draft work.
+No GPU backend is admitted without this source and a native/scaling lift.
 
-| ID | Remaining complete-mission construction |
-|---|---|
-| O1 | uniform native checkpoint constructor with bounded preparation/storage |
-| O2 | full causal prefill/decode/state program, not one serial dot primitive |
-| O3 | actual original ABI/RNG and all-continuation state correspondence |
-| O4 | constructor, all movement/arithmetic, metadata, state and repair upper bounds |
-| O5 | total <=8 GiB plus sufficient same-model baseline/latency/TTFT closure |
-| O6 | independently checkable artifacts closing all preceding obligations |
+## Do not repeat
 
-The guarded phase and inverse constructors are exact scoped tools; their
-query-dependent products are not free. More synthetic widths, longer SMT runs,
-suffix-threshold tuning, favorable initial accumulators or primitive inverse
-timing alone are not core progress. The ordinary suffix screen failed all
-36 rows, so do not optimize it as an admitted whole-model engine.
+The new prefix source has a proved 9P-bit logical header floor for P BF16
+weights. More seeds, widths, threshold tuning or a CUDA rewrite cannot turn
+that same source into a 10x traffic solution. A compressed/global header code
+would be a different constructor whose query/index/decode costs need a new
+proof, not an automatic exception.
 
-Before a claimed original Transformer substitution, pin and reproduce the
-actual numerical reduction/conversion graph. Before any latency ratio, freeze
-the model, machine service guarantees, baseline and population; prove a valid
-coupled ratio or sufficient VORTEX upper bound against a baseline lower bound.
-Do not weaken the unchanged TTFT requirement or omit failing/short sessions.
+Do not assume equality of real products implies equality of native TC results.
+Pin the operand alignment, kernel K-walk, conversion and live-out graph before
+claiming native substitution. Do not insert BF16 cuts inside native FP32
+accumulation. Preserve every external output, required KV/state and RNG action.
 
-Validate locally, preserve raw/encoded evidence, update affected ledgers and
-README, commit a research branch, and read back remote SHA and file hashes.
-No Actions or target allocation is authorized by this plan alone. A scientific
-session boundary is not a theory or E7 success.
+Latest paper figures are scoped: 62x RSR is not arbitrary-BF16 GPU inference;
+10x mixed-format entropy is not measured BF16 compression; increased batch
+throughput is not B=1 latency; a draft-side gain is not free target verification.
+No literal combination of these headline numbers proves our target.
+
+Record locally reproducible evidence and remaining obligations. Then commit a
+new research branch from an observed SHA and verify the remote branch/tree.
+No main push/merge, no unrequested Actions, no fictitious target measurement.

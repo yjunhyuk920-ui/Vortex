@@ -1,0 +1,9 @@
+{
+  "classification": "DERIVED illustration, not measurement or universal memory lower bound",
+  "parameters": 405000000000,
+  "GPU_capacity_bytes": 8589934592,
+  "raw_16bit_GiB": 754.3712854385376,
+  "illustrative_11bit_GiB": 518.6302587389946,
+  "maximum_fully_resident_bits_per_weight_before_state": 0.16967772033580247,
+  "logical_header_scan_bytes": 455625000000.0
+}

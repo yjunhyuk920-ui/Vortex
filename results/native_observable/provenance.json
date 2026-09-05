@@ -1,0 +1,24 @@
+{
+  "base_commit": "d4ae2ce79de49b90c1fc0188f212ba7d8b92550c",
+  "base_tree": "768511cbd58e4f43a43d2ddf2cccf28c0fe04e9a",
+  "latest_model_source_check": {
+    "result": "Normal BF16/FP32 eight-product, 24 fractional alignment bits and toward-zero rounding retained. v3 originally inspected; v4 checked before recording. No experimental thresholds changed.",
+    "revision_date": "2026-06-11",
+    "section": "4.1.2",
+    "version": "2512.07004v4"
+  },
+  "network": "shell Git failed DNS; GitHub connector reads/writes available; Chat On Steroids read failed tunnel_client_not_seen",
+  "numpy": "2.3.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "prior_local_causal_bundle_remote_status": "NOT_IN_OBSERVED_BASE",
+  "prior_local_causal_bundle_sha256": "81d1221a99a4732023fc61cd632669d18e64c998850065f1940bacd3ac5f8709",
+  "prior_root_blobs": {
+    "NEXT_EXPERIMENT.md": "cb75c60c518875a192dce669985d253f12939292",
+    "README.md": "a9d8e74e4d16176f58eac49254ac9a9efe3b28d4",
+    "RESEARCH_STATE.md": "b0a4341d3baddf269f365c58da1169743bfb32cf",
+    "VALIDATION_MATRIX.md": "2628ee8cb628db23f69c391d7c9f57b3982baea2"
+  },
+  "python": "3.13.5",
+  "scope_amendment": "Guard unsupported operand/accumulator ranges in reference; unchanged registered [-3,3] inputs, seed, sizes and acceptance criteria. This is not a hardware model correction.",
+  "upstream_model_blob": "a8bd8af19589671099f31f0c0d8c58642c3398c1"
+}

@@ -1,0 +1,17 @@
+test_cell_straddles_tie (test_reference.ReferenceTests.test_cell_straddles_tie) ... ok
+test_different_internal_same_store (test_reference.ReferenceTests.test_different_internal_same_store) ... ok
+test_even_tie (test_reference.ReferenceTests.test_even_tie) ... ok
+test_guarded_domain (test_reference.ReferenceTests.test_guarded_domain) ... ok
+test_mixed_sign (test_reference.ReferenceTests.test_mixed_sign) ... ok
+test_negative_tie (test_reference.ReferenceTests.test_negative_tie) ... ok
+test_no_inserted_rounding_contract (test_reference.ReferenceTests.test_no_inserted_rounding_contract) ... ok
+test_odd_tie (test_reference.ReferenceTests.test_odd_tie) ... ok
+test_prefix_signed (test_reference.ReferenceTests.test_prefix_signed) ... ok
+test_reversed_interval (test_reference.ReferenceTests.test_reversed_interval) ... ok
+test_source_counted_headers (test_reference.ReferenceTests.test_source_counted_headers) ... ok
+test_source_reveal_cap (test_reference.ReferenceTests.test_source_reveal_cap) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.008s
+
+OK

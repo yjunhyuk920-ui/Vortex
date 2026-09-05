@@ -1,23 +1,20 @@
-# VORTEX Research State — 2026-09-05 native-transfer continuation
+# Research state — 2026-09-05 latest-source continuation
 
-Base: `947b307da98b75f7843babbed691c70bd3caa964` on the PR #119 lineage.
-Mission and CTC-2026-09-05 unchanged: arbitrary public unmodified dense 405B,
-executor only, one total <=8-GiB GPU, original output/RNG/successor state,
-same-machine native 4B Q4 p50 <=1.2x / p95 <=1.5x and existing TTFT requirement.
+Base: `d4ae2ce79de49b90c1fc0188f212ba7d8b92550c` (PR #122 lineage).
+Mission and CTC-2026-09-05 unchanged. The full 405B / one total-8-GiB / original
+output, RNG, required successor state / native-4B-Q4 latency/TTFT objective is
+not established. This is not a hardware-only validation gap.
 
-## Actual result
+[Current source audit, constructive source, proof and cost ledger](docs/research/LATEST_RESEARCH_NATIVE_OBSERVATIONS.md).
+The finite source reads checkpoint headers and progressively reveals mantissa
+bits until a complete native-model store is fixed. It does not use a completed
+reference output. The declared model is not a complete cuBLAS kernel or public
+Transformer backend. Its normal-range/store-placement guards are essential.
 
-Finite native numerical subroutines now exist: guarded parity-phase ordered-FMA
-composition; causal suffix erasure only on equal native interval endpoints;
-exact direct rounding-cell preimages with explicit signed-zero handling.
-[Proof, finite costs, scope and handoff](docs/research/NATIVE_TRANSFER_CONSTRUCTION.md).
-
-This is **scoped E1 constructive discovery, not a promoted core**. Summary
-construction remains linear in products/reads. Ordinary synthetic suffix rows
-(36/36) failed early certification and paid all weights plus 2.75x–2.99609375x
-FMA work. Direct inverse construction removes searches at nonzero boundaries,
-but does not provide free products, target outputs or certificate coverage.
-No actual public Transformer numerical ABI or successor-state path was replaced.
+The scope-specific source is correct and finite; its resource floor prevents
+core admission. Mean logical reads remain 90.9332% of raw weights on the
+registered blocks despite 254/256 early certificates. No new inference engine,
+10x dense-work removal or target-budget proof was obtained.
 
 ```text
 THEORY_STATUS=NOT_ESTABLISHED
@@ -26,23 +23,12 @@ FULL_MISSION_O1_O6=OPEN
 CORE_ADMISSION=false
 ```
 
-All target hardware, complete physical 8-GiB fit and same-machine latency remain
-NOT TESTED. The missing piece is an algorithmic information/cost construction,
-not just hardware validation. No impossibility theorem or feasibility increase
-is claimed. Remote handoff needs actual post-commit SHA/file read-back.
+Next work must construct a paid code/query source that avoids per-coefficient
+access, not grow or tune this rejected literal-header source. A complete-cut
+exactness theorem does not itself create the cheap information source.
 
-## Evidence and continuity
-
-[Summary](results/native_transfer/summary.json),
-[inverse summary](results/native_transfer/inverse_summary.json),
-[decision/assumptions](docs/research/NATIVE_TRANSFER_LEDGER.md),
-[validation](VALIDATION_MATRIX.md), [next work](NEXT_EXPERIMENT.md).
-20 focused tests passed under pytest and unittest; five scientific captures
-regenerated identically. Full-repository and checkpoint tests were not run.
-No Actions dispatched and no target host or checkpoint download was used.
-
-The prior [root state](docs/research/history/pre_native_transfer_20260905/RESEARCH_STATE.md)
-is preserved as its original blob. Its scoped 2x2 proof, unresolved 2x3 problem,
-PR #118 rejection and EXP-102A scientific decision are unchanged. Separate
-EXP-103A..108A branches remain separate. Historical root decision/failure/assumption
-ledgers are preserved; this round's new entries are additive in the linked ledger.
+[Validation](VALIDATION_MATRIX.md), [next gate](NEXT_EXPERIMENT.md),
+[evidence](results/native_observable/summary.json),
+[prior state preserved unchanged](docs/research/history/pre_frontier_20260905/RESEARCH_STATE.md).
+No target allocation, model download or Actions dispatch. The local-only
+causal-source bundle remains separately identified in provenance.

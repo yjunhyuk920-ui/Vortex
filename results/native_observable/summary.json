@@ -1,0 +1,46 @@
+{
+  "CORE_ADMISSION": false,
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "all_headers_traffic_floor_fraction": 0.5625,
+  "capture_b64": "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",
+  "capture_encoding": "little endian per case: uint16 stored BF16, uint32 lower FP32, uint32 upper FP32, uint24 eight 3-bit known-prefix lengths. Input generation is pinned in audit.py/preregistration; not a compressed model.",
+  "decoded_cases_sha256": "10c2b8cd793b5a695195bf66e31730fed4ae4e74142a18f9794bbd6ef021fc40",
+  "early_certificate_blocks": 254,
+  "endpoint_products_mean": 104.7890625,
+  "exhaustive_completions": 65536,
+  "header_only_maximum_logical_reduction": 1.7777777777777777,
+  "limitations": [
+    "No GPU timing or hardware fidelity established",
+    "No extra BF16 cut may be inserted inside native FP32 accumulation",
+    "Signed zero/NaN/Inf/subnormal hardware behavior not modeled",
+    "No general cheap source or target-scale cost closure"
+  ],
+  "logical_weight_bits_mean": 116.39453125,
+  "mismatches": [],
+  "native_weight_bits": 128,
+  "not_run": [
+    "actual GPU",
+    "public checkpoint inference",
+    "405B",
+    "8GiB allocation",
+    "same-machine 4B latency",
+    "full repository suite"
+  ],
+  "operand_witness": {
+    "native_model_A": "9469953/4194304",
+    "native_model_B": "289/128",
+    "stored_A": "145/64",
+    "stored_A_bits": "0x4011",
+    "stored_B": "9/4",
+    "stored_B_bits": "0x4010"
+  },
+  "prefix_bits_max": 56,
+  "prefix_bits_mean": 44.39453125,
+  "prefix_bits_min": 26,
+  "private_difference_erased_at_store": true,
+  "random_blocks": 256,
+  "rounding_controls": 4096,
+  "scope": "Declared normal BF16 eight-product block and actual final BF16 store; no real GPU or whole-kernel validation",
+  "weight_input_sha256": "09b25d057d2a9d96eef0f35aad1de11cfb2a387e4fb7d572caba9ee897935bab"
+}
