@@ -1,0 +1,26 @@
+{
+  "README_CURRENT": true,
+  "byte_identical_replay": [
+    "summary.json",
+    "witnesses.json",
+    "observations.json"
+  ],
+  "changed_markdown_files": 5,
+  "full_repository_tests": "NOT_RUN",
+  "github_actions": "NOT_RUN",
+  "hardware_checkpoint_latency": "NOT_TESTED",
+  "hashes": {
+    "observations.json": "d14a9b6b06d062aef99cc65db2420e1e5df48a636801891f99f80761daa9371d",
+    "run.log": "2d8b16e5f2d32b5119db435c580faa43446ac495f67e8d9abd374553fff21e91",
+    "summary.json": "035f30f2a6b2ebf65b00f0ea5a30443dd912f2d350d84c375a8a95b4d0b4dad1",
+    "witnesses.json": "d615ee34ececaca062e904e0335ad07e17c07f85271281abc0d9294ed4ce9fae"
+  },
+  "input_threshold_changes": false,
+  "kind": "scoped proof checks and documentation, not full theory completion",
+  "local_or_remote_verified_links": 23,
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "raw_format_note": "recorded two BF16 observations per preregistered pair; losslessly reconstruct full witness table with known inputs and suffix constructor; no changed cases or thresholds",
+  "raw_observation_decode_matches_all_pairs": 752,
+  "source_code_compiles": true
+}

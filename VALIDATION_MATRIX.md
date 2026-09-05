@@ -1,26 +1,19 @@
-# Validation — latest-source/native-observation continuation, 2026-09-05
+# Validation matrix — theory-closure/native coding
 
-[Proof, cost and source scope](docs/research/LATEST_RESEARCH_NATIVE_OBSERVATIONS.md).
-[Previous matrix](docs/research/history/pre_frontier_20260905/VALIDATION_MATRIX.md)
-is preserved unchanged. Prior serial-fmaf proofs remain scoped, not GPU ABI proofs.
+2026-09-05. [Detailed scope and proofs](docs/research/THEORY_CLOSURE_NATIVE_CODING.md).
 
-| Claim | Evidence | Status |
-|---|---|---|
-| New literature supplies a full VORTEX solution | Eleven source records scoped by precision/hardware/baseline | Not established |
-| Prefix source generates the exact declared normal block store | Containment/termination proof; 256 independent integer-reference comparisons | Scoped, zero mismatches |
-| Prefix-box stored-value enclosure | All 65,536 completions of one registered prefix box | Passed, not all hardware inputs |
-| FP32-RZ and BF16-RNE reference handling | 4,096 independent host/bit-level controls plus focused tie/guard tests | Passed in stated domain |
-| Same real products suffice for native-model stored equivalence | Locally reproduced raw-operand witness gives BF16 0x4011 vs 0x4010 | False in model |
-| Different private FP32 values may have identical actual stored cuts | Exact cast example plus cut-placement counterexample and induction rule | Sufficient conditional rule |
-| Literal header/refinement source gives >=10x | Header read floor 9/16; observed reads 90.9332%; endpoint work counted | REJECT CORE / RETAIN AUXILIARY |
-| Complete public Transformer state/RNG/ABI mapping | No actual checkpoint or complete native kernel executed | OPEN |
-| 405B, total 8 GiB, same-machine p50/p95/TTFT | No target execution or sufficient full-theory bound | NOT TESTED / NOT ESTABLISHED |
+| Item | Status and exact meaning |
+|---|---|
+| RN32 nonadditivity/permutation witness | DERIVED and reproduced, not all GPU reduction topologies |
+| Finite-state continuation separation | Written proof in declared gradual-underflow addition API |
+| Registered independent checks | 752 pairs, 3,000 libm.fmaf-versus-integer additions, zero mismatches |
+| BF16 store and invalid input checks | Passed within the same reference scope |
+| Input/result format | Seed/edge list plus recorded uint16 output pairs; full witnesses regenerated and hashed |
+| Full O1-O6 theory | NOT ESTABLISHED; no cheap universal generator |
+| Public checkpoint / full KV/RNG backend | NOT TESTED |
+| 405B / total 8 GiB / GPU / baseline latency / TTFT | NOT TESTED |
+| Full repository tests / GitHub Actions | NOT RUN |
 
-Twelve focused unit tests passed. Deterministic captures are regenerated and
-compared in local validation. The compact capture is a lossless encoding of
-test records, not compressed model weights. No full repository tests or GPU
-measurements are implied. Source guards added for unsupported numerical ranges
-do not alter the preregistered input distribution or acceptance threshold.
-
-THEORY_STATUS=NOT_ESTABLISHED; HARDWARE_STATUS=NOT_TESTED; CORE_ADMISSION=false.
-Repository persistence is verified independently after the commit exists.
+[Summary](results/theory_closure/summary.json), [raw observations](results/theory_closure/observations.json), [replay and environment](results/theory_closure/validation.json).
+The mathematical proof is not inferred from finite test counts. Persistence does not promote scientific status.
+[Previous matrix preserved unchanged](docs/research/history/pre_theory_closure_20260905/VALIDATION_MATRIX.md).

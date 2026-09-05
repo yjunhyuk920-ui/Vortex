@@ -1,41 +1,11 @@
-# Next gate — a paid native-observation information source
+# Next obligation — construct the source, not another closure audit
 
-Read AGENTS, the constructive contract, current state, failure records and
-[the latest-source/native-observation ledger](docs/research/LATEST_RESEARCH_NATIVE_OBSERVATIONS.md).
-Mission and O1-O6 remain unchanged. No candidate in this round is promoted.
+The fixed mission and CTC-2026-09-05 remain unchanged. Read [current analysis](docs/research/THEORY_CLOSURE_NATIVE_CODING.md) and the [preserved previous gate](docs/research/history/pre_theory_closure_20260905/NEXT_EXPERIMENT.md).
 
-## Construct, rather than assume, the missing source
+No candidate is promoted. Do not enlarge the native separator corpus, build full transition truth tables, or treat a source audit as the primary research frontier.
 
-Specify a finite checkpoint constructor E and causal program G such that
-`G(E(W), current input, current exact state)` produces a complete native
-output/state cut. Pay preparation, hot/cold storage, all indexes/headers/code,
-input processing, arithmetic, verification, RNG and future state maintenance.
-Show a >=10x route that does not scan a per-weight literal header, then prove
-full sufficient target bounds. A >=10x screen is not the final latency proof.
+A qualifying construction must automatically obtain exact native outputs and required successor state from a checkpoint/current causal state without doing nearly all original coefficient work. Give an executable constructor/query program and paid finite construction, memory, transfer, arithmetic, state, certification and repair bounds. Then close the actual 405B/8-GiB/baseline quantile/TTFT budget, not just the >=10x entry gate.
 
-Compare encoded native actions, exact state-fragment sources and actual-cut
-execution. Prefer a new causal source or dependency that invalidates an old
-rejection premise; do not rename LUT, approximate residual or ideal draft work.
-No GPU backend is admitted without this source and a native/scaling lift.
+An error-correcting reduction is usable only after constructing its fast weak solver and proving the solver's required success on the transformed distribution. Native rounding defects and nonzero algorithmic error cannot be ignored. A structural tree needs a proved small parameter over the unchanged domain and a native lift. A coded state needs exact continuation, including all side information and recomputation cost.
 
-## Do not repeat
-
-The new prefix source has a proved 9P-bit logical header floor for P BF16
-weights. More seeds, widths, threshold tuning or a CUDA rewrite cannot turn
-that same source into a 10x traffic solution. A compressed/global header code
-would be a different constructor whose query/index/decode costs need a new
-proof, not an automatic exception.
-
-Do not assume equality of real products implies equality of native TC results.
-Pin the operand alignment, kernel K-walk, conversion and live-out graph before
-claiming native substitution. Do not insert BF16 cuts inside native FP32
-accumulation. Preserve every external output, required KV/state and RNG action.
-
-Latest paper figures are scoped: 62x RSR is not arbitrary-BF16 GPU inference;
-10x mixed-format entropy is not measured BF16 compression; increased batch
-throughput is not B=1 latency; a draft-side gain is not free target verification.
-No literal combination of these headline numbers proves our target.
-
-Record locally reproducible evidence and remaining obligations. Then commit a
-new research branch from an observed SHA and verify the remote branch/tree.
-No main push/merge, no unrequested Actions, no fictitious target measurement.
+Do not claim the scoped no-side-information state bound proves the full goal impossible. Do not assume it supplies the missing generator either. Preserve raw evidence, validate locally, then commit a research branch and verify remote SHA; no direct main push/merge or unrequested Actions.
