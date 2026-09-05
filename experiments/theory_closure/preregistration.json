@@ -1,0 +1,11 @@
+{
+  "kind": "bounded proof checks, not a core performance experiment",
+  "base_commit": "ab08dbb0f6665e6207c4a1d14a0d0677146f4542",
+  "scope": "RN-even binary32 addition with gradual underflow, followed by RN-even BF16 store; no claim about a complete GPU kernel",
+  "checks": ["nonadditivity and permutation collision", "constructive two-addend continuation separation", "independent integer rounding versus libm.fmaf with multiplier one", "fixed-length state counting under no correlated side-information"],
+  "random_seed": 2026090504,
+  "random_pairs": 512,
+  "edge_words": ["00000000", "80000000", "00000001", "80000001", "00008000", "00008001", "007fffff", "00800000", "00800001", "3f7fffff", "3f800000", "3f800001", "4b800000", "4b800001", "7f7fffff", "ff7fffff"],
+  "success": "all registered exact comparisons agree; this cannot set full theory or core admission to PASS",
+  "no_claims": ["speedup", "arbitrary HF state reachability", "405B inference", "8 GiB fitting", "GPU or baseline latency"]
+}

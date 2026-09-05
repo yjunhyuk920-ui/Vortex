@@ -1,0 +1,51 @@
+{
+  "CORE_ADMISSION": false,
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "base_commit": "ab08dbb0f6665e6207c4a1d14a0d0677146f4542",
+  "checks": {
+    "fma_add_comparisons": 3000,
+    "input_rejection_checks": 3,
+    "mismatches": 0,
+    "separator_pairs": 752
+  },
+  "immediate_store_collision": {
+    "a": "00000001",
+    "b": "00000002",
+    "future_bf16": [
+      "0000",
+      "0001"
+    ],
+    "immediate_bf16_both": "0000",
+    "suffix": [
+      "80000001",
+      "00008000"
+    ]
+  },
+  "minimum_fixed_bits_no_correlated_side_information": {
+    "1": 32,
+    "121": 3872,
+    "16384": 524196,
+    "8": 256
+  },
+  "nonadditivity": {
+    "F_x_plus_F_y": 1,
+    "F_x_plus_y": 0
+  },
+  "permutation_collision": {
+    "exact_integer_sum_both": 1,
+    "native_bf16_bits": [
+      "0000",
+      "3f80"
+    ],
+    "native_fp32_bits": [
+      "00000000",
+      "3f800000"
+    ]
+  },
+  "preregistration_sha256": "c57d065bd4dda7c06a8e03360987ab2b85b3168f1f2361935246c986f0d1f8f1",
+  "scope": "RN-even binary32 addition with gradual underflow, followed by RN-even BF16 store; no claim about a complete GPU kernel",
+  "unrestricted_state_count": 4278190080,
+  "warning": "These checks support scoped proofs, not a cheap generator, not target impossibility, and not full O1-O6 closure.",
+  "witnesses_sha256": "d615ee34ececaca062e904e0335ad07e17c07f85271281abc0d9294ed4ce9fae"
+}
