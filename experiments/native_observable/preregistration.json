@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-05",
+  "base_commit": "d4ae2ce79de49b90c1fc0188f212ba7d8b92550c",
+  "scope": "Literature-to-contract screening plus a bounded native-observable information-source reference; not a promoted fast core.",
+  "model": "Eight-product normal finite BF16 block, raw input exponent alignment E, 24 fractional alignment bits, truncation toward zero, final FP32 toward-zero, then an explicitly present BF16 nearest-even store. This is a declared model, NOT a hardware validation or complete cuBLAS kernel.",
+  "hypotheses": [
+    "Equal real products need not determine the published raw-exponent-aligned block model output.",
+    "A correctly enclosed pre-store output lying in one BF16 rounding cell permits exact stored output without preserving all private FP32 bits.",
+    "A prefix-reveal source can generate a certified stored output without consulting undisclosed mantissa bits, but literal 9-bit headers per BF16 coefficient alone rule out a 10x logical traffic reduction for this source."
+  ],
+  "controls": {
+    "seed": 20260905,
+    "random_blocks": 256,
+    "block_size": 8,
+    "weight_and_input_exponents": [-3, 3],
+    "weight_and_input_mantissa_bits": 7,
+    "initial_accumulator": 0,
+    "enumeration_unknown_bits_per_operand": 2,
+    "enumeration_operand_count": 8,
+    "rounding_cases": 4096
+  },
+  "hand_derived_witness_before_execution": {
+    "first_product_case_A": "1.5 * 1.5",
+    "first_product_case_B": "1 * 2.25",
+    "other_products": "four copies of 2^-12 * 2^-12 plus three zero products",
+    "accumulator": "2^-7",
+    "predicted_stored_A": "2.265625",
+    "predicted_stored_B": "2.25"
+  },
+  "success_criterion": "Zero mismatches of returned certificates against independent exact-rational block evaluation; exhaustive suffix enclosure; ties/negative values/rejection controls. No goal success inferred from these controls.",
+  "rejection_criterion": "No core admission without paid >=10x route and complete O1-O6. Literal-header source fails by the predetermined 9/16 information-read floor, irrespective of favorable controls.",
+  "unexecuted": ["actual GPU", "public checkpoint inference", "405B", "8GiB allocation", "same-machine 4B latency", "full repository suite"],
+  "provenance": "Protocol frozen before running this new reference. Literature and hand calculations preceded registration. No claim of preregistered literature search or blind discovery."
+}

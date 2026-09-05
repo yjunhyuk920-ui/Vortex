@@ -1,0 +1,45 @@
+{
+  "scope": "Declared normal BF16 eight-product block and actual final BF16 store; no real GPU or whole-kernel validation",
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "CORE_ADMISSION": false,
+  "random_blocks": 256,
+  "mismatches": [],
+  "weight_input_sha256": "09b25d057d2a9d96eef0f35aad1de11cfb2a387e4fb7d572caba9ee897935bab",
+  "prefix_bits_min": 26,
+  "prefix_bits_max": 56,
+  "prefix_bits_mean": 44.39453125,
+  "logical_weight_bits_mean": 116.39453125,
+  "native_weight_bits": 128,
+  "endpoint_products_mean": 104.7890625,
+  "early_certificate_blocks": 254,
+  "all_headers_traffic_floor_fraction": 0.5625,
+  "header_only_maximum_logical_reduction": 1.7777777777777777,
+  "exhaustive_completions": 65536,
+  "rounding_controls": 4096,
+  "operand_witness": {
+    "native_model_A": "9469953/4194304",
+    "native_model_B": "289/128",
+    "stored_A": "145/64",
+    "stored_B": "9/4",
+    "stored_A_bits": "0x4011",
+    "stored_B_bits": "0x4010"
+  },
+  "private_difference_erased_at_store": true,
+  "capture_encoding": "little endian per case: uint16 stored BF16, uint32 lower FP32, uint32 upper FP32, uint24 eight 3-bit known-prefix lengths. Input generation is pinned in audit.py/preregistration; not a compressed model.",
+  "decoded_cases_sha256": "10c2b8cd793b5a695195bf66e31730fed4ae4e74142a18f9794bbd6ef021fc40",
+  "not_run": [
+    "actual GPU",
+    "public checkpoint inference",
+    "405B",
+    "8GiB allocation",
+    "same-machine 4B latency",
+    "full repository suite"
+  ],
+  "limitations": [
+    "No GPU timing or hardware fidelity established",
+    "No extra BF16 cut may be inserted inside native FP32 accumulation",
+    "Signed zero/NaN/Inf/subnormal hardware behavior not modeled",
+    "No general cheap source or target-scale cost closure"
+  ]
+}

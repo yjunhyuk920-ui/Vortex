@@ -1,0 +1,158 @@
+{
+  "CORE_ADMISSION": false,
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "active_markdown_files": 5,
+  "commands": [
+    {
+      "command": "python experiments/native_observable/audit.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s tests/native_observable -v",
+      "exit_code": 0,
+      "tests": 12
+    },
+    {
+      "command": "python -m compileall -q experiments/native_observable tests/native_observable",
+      "exit_code": 0
+    }
+  ],
+  "deterministic_regeneration": {
+    "hashes": {
+      "results/native_observable/cases.jsonl": "10c2b8cd793b5a695195bf66e31730fed4ae4e74142a18f9794bbd6ef021fc40",
+      "results/native_observable/summary.json": "ab337f4379f037fe781f408ad6dfb2d6358cc07a6d736722e86652125f685ee8"
+    },
+    "run_logs_equal": true,
+    "summary_and_cases_equal": true
+  },
+  "link_scope": "Active entry points only; historical documents are preserved verbatim, not rewritten for their archival directory.",
+  "links": [
+    {
+      "basis": "local",
+      "from": "README.md",
+      "to": "docs/research/LATEST_RESEARCH_NATIVE_OBSERVATIONS.md"
+    },
+    {
+      "basis": "local",
+      "from": "README.md",
+      "to": "results/native_observable/summary.json"
+    },
+    {
+      "basis": "self-generated validation report",
+      "from": "README.md",
+      "to": "results/native_observable/validation.json"
+    },
+    {
+      "basis": "local",
+      "from": "README.md",
+      "to": "RESEARCH_STATE.md"
+    },
+    {
+      "basis": "local",
+      "from": "README.md",
+      "to": "NEXT_EXPERIMENT.md"
+    },
+    {
+      "basis": "local",
+      "from": "README.md",
+      "to": "VALIDATION_MATRIX.md"
+    },
+    {
+      "basis": "observed pinned remote base",
+      "from": "README.md",
+      "to": "AGENTS.md"
+    },
+    {
+      "basis": "observed pinned remote base",
+      "from": "README.md",
+      "to": "MISSION_AND_WORKING_PRINCIPLES.md"
+    },
+    {
+      "basis": "observed pinned remote base",
+      "from": "README.md",
+      "to": "docs/CONSTRUCTIVE_THEORY_CONTRACT.md"
+    },
+    {
+      "basis": "observed pinned remote base",
+      "from": "README.md",
+      "to": "docs/RESEARCH_EFFICIENCY_CONTRACT.md"
+    },
+    {
+      "basis": "observed pinned remote base",
+      "from": "README.md",
+      "to": "docs/WORK_SESSION_PROTOCOL.md"
+    },
+    {
+      "basis": "observed pinned remote base",
+      "from": "README.md",
+      "to": "docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md"
+    },
+    {
+      "basis": "local",
+      "from": "README.md",
+      "to": "docs/research/history/pre_frontier_20260905/README.md"
+    },
+    {
+      "basis": "local",
+      "from": "RESEARCH_STATE.md",
+      "to": "docs/research/LATEST_RESEARCH_NATIVE_OBSERVATIONS.md"
+    },
+    {
+      "basis": "local",
+      "from": "RESEARCH_STATE.md",
+      "to": "VALIDATION_MATRIX.md"
+    },
+    {
+      "basis": "local",
+      "from": "RESEARCH_STATE.md",
+      "to": "NEXT_EXPERIMENT.md"
+    },
+    {
+      "basis": "local",
+      "from": "RESEARCH_STATE.md",
+      "to": "results/native_observable/summary.json"
+    },
+    {
+      "basis": "local",
+      "from": "RESEARCH_STATE.md",
+      "to": "docs/research/history/pre_frontier_20260905/RESEARCH_STATE.md"
+    },
+    {
+      "basis": "local",
+      "from": "NEXT_EXPERIMENT.md",
+      "to": "docs/research/LATEST_RESEARCH_NATIVE_OBSERVATIONS.md"
+    },
+    {
+      "basis": "local",
+      "from": "VALIDATION_MATRIX.md",
+      "to": "docs/research/LATEST_RESEARCH_NATIVE_OBSERVATIONS.md"
+    },
+    {
+      "basis": "local",
+      "from": "VALIDATION_MATRIX.md",
+      "to": "docs/research/history/pre_frontier_20260905/VALIDATION_MATRIX.md"
+    }
+  ],
+  "local_links_checked": 21,
+  "not_run": [
+    "full repository suite",
+    "upstream MATLAB model",
+    "real public checkpoint",
+    "GPU",
+    "405B",
+    "8-GiB peak allocation",
+    "same-machine native 4B latency",
+    "GitHub Actions"
+  ],
+  "preregistration_sha256": "a994044ec8ac6a5f6777a9645c54d6b1686e9441656dd81e0e9caedc452c8c82",
+  "previous_root_blobs_unchanged": {
+    "NEXT_EXPERIMENT.md": "cb75c60c518875a192dce669985d253f12939292",
+    "README.md": "a9d8e74e4d16176f58eac49254ac9a9efe3b28d4",
+    "RESEARCH_STATE.md": "b0a4341d3baddf269f365c58da1169743bfb32cf",
+    "VALIDATION_MATRIX.md": "2628ee8cb628db23f69c391d7c9f57b3982baea2"
+  },
+  "scope": "New reference and five active Markdown documents only. Not full repository or hardware validation.",
+  "source_version_check": "Accurate Models latest v4, 2026-06-11, verified before publication; declaration and original test distribution unchanged.",
+  "status": "LOCAL_VALIDATION_PASS"
+}
