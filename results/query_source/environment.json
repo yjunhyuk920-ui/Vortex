@@ -1,0 +1,14 @@
+{
+  "actions_dispatched": false,
+  "base_commit": "d4ae2ce79de49b90c1fc0188f212ba7d8b92550c",
+  "dependency_git_blob": "43be63155ae3be6496e2838c536b4bd09c99d41e",
+  "full_repository_suite_run": false,
+  "libc": [
+    "glibc",
+    "2.41"
+  ],
+  "machine": "x86_64",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "run_kind": "local CPU synthetic; no hardware performance measurements"
+}

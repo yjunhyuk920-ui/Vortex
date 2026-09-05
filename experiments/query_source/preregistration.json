@@ -1,0 +1,16 @@
+{
+  "version": "query-source-20260905-v1",
+  "scope": "Inspect a finite query-dependent native-state partition source, not admit a 405B core.",
+  "mission_unchanged": true,
+  "obligations": ["O1 scoped column index", "O2 scoped causal full-row generator", "O3 scoped ordered-FMA invariant", "O4 explicit index and selection accounting"],
+  "native_abi": "binary32 words passed through the pinned libm fmaf wrapper; round-to-nearest; fixed serial column order; no floating-point flags in the observed interface",
+  "sizes": [16, 64],
+  "populations": ["engineered_absorption_positive_control", "ordinary_dyadic", "unique_column_adversary"],
+  "queries_per_case": 4,
+  "seed": 20260905,
+  "claims": {"positive_control_is_feasibility_evidence": false, "synthetic_is_transformer": false, "logical_bytes_are_physical_traffic": false},
+  "reject_universal_core_if": "A legal family retains all mn bucket FMAs or selection/index cost exceeds the budget; no timing optimization after that conclusion.",
+  "known_before_execution": "The partition algorithm has an O(n*m*m*ceil(m/64)) bitmap-selection upper bound and an O(n*m*ceil(m/64)) indexed-word storage upper bound. No universal 10x or target-budget theorem is available.",
+  "not_authorized": ["backend", "CUDA", "model-wide compiler", "Actions", "405B performance promotion"],
+  "purpose_of_reference": "Make the examined source constructor, selector, native transition and costs executable rather than leave a perfect selector as an undefined subroutine."
+}
