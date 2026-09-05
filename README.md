@@ -17,3 +17,7 @@ python experiments/theory_closure/verify.py --output results/theory_closure
 
 Read [AGENTS](AGENTS.md), [mission](MISSION_AND_WORKING_PRINCIPLES.md) and [constructive contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md). No policies/runtime were changed. No Actions or hardware/checkpoint inference was run.
 [Previous README, preserved unchanged](docs/research/history/pre_theory_closure_20260905/README.md). Parent is verified PR #124 commit ab08dbb0f6665e6207c4a1d14a0d0677146f4542; local-only radix code was read as context, not silently merged.
+
+## Subsequent full-contract construction attempt — 2026-09-05
+
+[Full-contract attempt and explicit remaining construction](docs/research/FULL_CONTRACT_CONSTRUCTION_ATTEMPT.md). No all-conditions algorithm was obtained; no new executable or core is promoted. This is an incomplete analytical attempt, not another achieved theory, runtime experiment or hardware result. The existing scientific statuses and next construction obligation remain unchanged.
