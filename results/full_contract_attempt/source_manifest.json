@@ -1,0 +1,16 @@
+{
+  "baseline_commit": "8799b14ff59cc4618314c05ffd40a345a5129caa",
+  "readme_original_blob_sha": "408c61b86386759316a1112d66bce87296696f99",
+  "files": {
+    "README.md": {
+      "bytes": 1929,
+      "sha256": "d099ae280aabc8ee9a21b6a627dfc0cd6f3c9a854dd2d0775192aaef17606df2",
+      "git_blob_sha": "c7efa7455358cc9f4cf688a78701736ea6a208b7"
+    },
+    "docs/research/FULL_CONTRACT_CONSTRUCTION_ATTEMPT.md": {
+      "bytes": 8810,
+      "sha256": "6c31f8a7d0a66e69f3e42d77c246e129f847705de62d9eb696c09c2d6b559a2b",
+      "git_blob_sha": "f32c7c632b36960e33caa8e43d24e464f2cb6311"
+    }
+  }
+}

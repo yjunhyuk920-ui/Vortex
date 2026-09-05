@@ -1,0 +1,19 @@
+{
+  "kind": "documentation_only",
+  "checks": {
+    "previous_readme_bytes_preserved_as_prefix": true,
+    "new_readme_link_resolves_locally": true,
+    "explicit_nonachievement": true,
+    "no_new_runtime_experiment_claim": true,
+    "obligations_remain_open": true,
+    "no_impossibility_claim": true,
+    "latency_not_silently_strengthened": true,
+    "totalization_not_free_reachability_oracle": true,
+    "balanced_code_fences": true,
+    "no_trailing_whitespace": true
+  },
+  "new_algorithm_validated": false,
+  "new_runtime_tests_run": false,
+  "full_repository_tests_run": false,
+  "gpu_tests_run": false
+}
