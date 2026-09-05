@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "parent_commit": "e913c9b980a71b63468c7ba9fa9ac2ba65555e6c",
+  "validation_scope": "documentation_only",
+  "source_readme_git_blob_sha": "c7efa7455358cc9f4cf688a78701736ea6a208b7",
+  "checks": {
+    "previous_readme_unchanged_prefix": true,
+    "added_readme_link_resolves": true,
+    "utf8_and_no_trailing_whitespace": true,
+    "balanced_markdown_fences": true,
+    "explicit_no_promotion_and_no_runtime_test_claims": true
+  },
+  "scientific_status_changed": false,
+  "runtime_tests_run": false,
+  "model_inference_run": false,
+  "gpu_tests_run": false,
+  "actions_dispatched": false,
+  "files": {
+    "README.md": {
+      "sha256": "52a4b3191289c403496d5ddeda7f57fbf3f987e5eaa98e36a8b58ca429170fbd",
+      "git_blob_sha": "c24b99beeae848337e5737123366e44504da3440",
+      "bytes": 2291
+    },
+    "docs/research/ADDITIONAL_CONSTRUCTION_SEARCH_20260905.md": {
+      "sha256": "3431179a49f1e68df816b9d5d0eea32fb6f7b0f8afea802a07fc0f94f798b0b3",
+      "git_blob_sha": "67d76c294aecf5f048a04aa34f5824ebbcdc81e8",
+      "bytes": 5897
+    }
+  }
+}

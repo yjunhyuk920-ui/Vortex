@@ -21,3 +21,8 @@ Read [AGENTS](AGENTS.md), [mission](MISSION_AND_WORKING_PRINCIPLES.md) and [cons
 ## Subsequent full-contract construction attempt — 2026-09-05
 
 [Full-contract attempt and explicit remaining construction](docs/research/FULL_CONTRACT_CONSTRUCTION_ATTEMPT.md). No all-conditions algorithm was obtained; no new executable or core is promoted. This is an incomplete analytical attempt, not another achieved theory, runtime experiment or hardware result. The existing scientific statuses and next construction obligation remain unchanged.
+
+
+## Additional construction search — no new core
+
+[Search outcome and source scope](docs/research/ADDITIONAL_CONSTRUCTION_SEARCH_20260905.md). No all-conditions algorithm, new qualifying core, completed theory or runtime result was obtained. This documentation-only record does not change the scientific status, fixed mission or next construction obligation.
