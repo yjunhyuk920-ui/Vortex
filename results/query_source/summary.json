@@ -1,0 +1,210 @@
+{
+  "cases": [
+    {
+      "bucket_fmas_each": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dense_fmas": 256,
+      "index_bytes": 3116,
+      "intersections_each": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "logical_index_bytes_each": [
+        224,
+        224,
+        224,
+        224
+      ],
+      "mismatches": 0,
+      "n": 16,
+      "original_bytes": 1024,
+      "population": "engineered_absorption_positive_control",
+      "queries": 4,
+      "total_fmas_each": [
+        32,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "bucket_fmas_each": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dense_fmas": 4096,
+      "index_bytes": 48296,
+      "intersections_each": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "logical_index_bytes_each": [
+        800,
+        800,
+        800,
+        800
+      ],
+      "mismatches": 0,
+      "n": 64,
+      "original_bytes": 16384,
+      "population": "engineered_absorption_positive_control",
+      "queries": 4,
+      "total_fmas_each": [
+        128,
+        128,
+        128,
+        128
+      ]
+    },
+    {
+      "bucket_fmas_each": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "dense_fmas": 256,
+      "index_bytes": 3284,
+      "intersections_each": [
+        3839,
+        3839,
+        3839,
+        3839
+      ],
+      "logical_index_bytes_each": [
+        3284,
+        3284,
+        3284,
+        3284
+      ],
+      "mismatches": 0,
+      "n": 16,
+      "original_bytes": 1024,
+      "population": "ordinary_dyadic",
+      "queries": 4,
+      "total_fmas_each": [
+        735,
+        735,
+        735,
+        735
+      ]
+    },
+    {
+      "bucket_fmas_each": [
+        4095,
+        4095,
+        4095,
+        4095
+      ],
+      "dense_fmas": 4096,
+      "index_bytes": 49040,
+      "intersections_each": [
+        253249,
+        253249,
+        253249,
+        253249
+      ],
+      "logical_index_bytes_each": [
+        49040,
+        49040,
+        49040,
+        49040
+      ],
+      "mismatches": 0,
+      "n": 64,
+      "original_bytes": 16384,
+      "population": "ordinary_dyadic",
+      "queries": 4,
+      "total_fmas_each": [
+        12159,
+        12159,
+        12159,
+        12159
+      ]
+    },
+    {
+      "bucket_fmas_each": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "dense_fmas": 256,
+      "index_bytes": 3296,
+      "intersections_each": [
+        3856,
+        3856,
+        3856,
+        3856
+      ],
+      "logical_index_bytes_each": [
+        3296,
+        3296,
+        3296,
+        3296
+      ],
+      "mismatches": 0,
+      "n": 16,
+      "original_bytes": 1024,
+      "population": "unique_column_adversary",
+      "queries": 4,
+      "total_fmas_each": [
+        738,
+        738,
+        738,
+        738
+      ]
+    },
+    {
+      "bucket_fmas_each": [
+        4096,
+        4096,
+        4096,
+        4096
+      ],
+      "dense_fmas": 4096,
+      "index_bytes": 49952,
+      "intersections_each": [
+        258112,
+        258112,
+        258112,
+        258112
+      ],
+      "logical_index_bytes_each": [
+        49952,
+        49952,
+        49952,
+        49952
+      ],
+      "mismatches": 0,
+      "n": 64,
+      "original_bytes": 16384,
+      "population": "unique_column_adversary",
+      "queries": 4,
+      "total_fmas_each": [
+        12162,
+        12162,
+        12162,
+        12162
+      ]
+    }
+  ],
+  "core_admission": false,
+  "hardware_status": "NOT_TESTED",
+  "logical_metrics_not_hardware": true,
+  "preregistration_sha256": "7b36b4f54436087d71236d335b91b2beeb570e92e3b618e349be620d329e1d51",
+  "raw_encoding": "gzip.compress with mtime=0; no research algorithm compression claim",
+  "raw_json_sha256": "9d798ca1969d07a6aa4a9665aa35fcd9fe9e1d8c2423f9002891cf32783a7e7d",
+  "status": "NO_UNIVERSAL_CHEAP_SOURCE_CONSTRUCTED",
+  "theory_status": "NOT_ESTABLISHED"
+}

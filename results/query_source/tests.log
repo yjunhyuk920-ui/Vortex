@@ -1,0 +1,10 @@
+test_encoded_index_roundtrip (test_partition_source.SourceTests.test_encoded_index_roundtrip) ... ok
+test_rectangular_all_outputs (test_partition_source.SourceTests.test_rectangular_all_outputs) ... ok
+test_signed_zero_and_subnormal_words (test_partition_source.SourceTests.test_signed_zero_and_subnormal_words) ... ok
+test_state_continuation (test_partition_source.SourceTests.test_state_continuation) ... ok
+test_validation_errors (test_partition_source.SourceTests.test_validation_errors) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.008s
+
+OK
