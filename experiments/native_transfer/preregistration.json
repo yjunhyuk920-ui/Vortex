@@ -1,0 +1,36 @@
+{
+  "version": "NTC-2026-09-05-v1",
+  "base_commit": "947b307da98b75f7843babbed691c70bd3caa964",
+  "mission": "Arbitrary public unmodified HF dense 405B; executor only; batch 1; one GPU peak <=8 GiB; original output, RNG and successor state; same-machine native 4B Q4 warm p50 <=1.2x, p95 <=1.5x; existing TTFT requirement unchanged.",
+  "final_theorem": "Construct a finite uniform executor and state relation for every admitted checkpoint, legal prompt/context and RNG state, preserving the frozen original ABI and proving complete initialization, memory and latency upper bounds relative to the same frozen baseline population.",
+  "mission_abi_baseline_workload": "NOT YET FROZEN; no full mission or quantile acceptance possible in this study",
+  "primitive_abi": "IEEE binary32 fmaf, round-to-nearest-ties-even, gradual underflow, exact input bit patterns, specified serial reduction order. Not claimed equivalent to arbitrary torch/cuBLAS/TensorCore reduction.",
+  "principles": [
+    {"id":"A", "name":"guarded native rounding-phase composition", "reversal":"compose exact state transitions instead of reassociating numerical sums", "route":"A reusable length-k summary evaluates with constant integer work; >=10x only after fully charging summary construction, guards and reuse", "risk":"product-dependent constructor reads all terms; binade crossings invalidate an unguarded summary"},
+    {"id":"B", "name":"causal suffix synchronization", "reversal":"evaluate a short suffix over a certified incoming interval and erase an uncomputed prefix only when native endpoints coalesce", "route":"geometric suffix evaluator uses <4k endpoint FMAs on a success at k and k distinct weights; need k far below n/40 plus all metadata and movement costs", "risk":"signed ordinary reductions preserve a wide incoming interval; all late native work and repeated operand loads count"},
+    {"id":"C", "name":"backward native rounding-preimage program", "reversal":"pull an exact output-word interval backward through native FMA, rather than enumerate all 2^32 accumulator states", "route":"a bounded monotone inverse constructs a reusable exact incoming-state certificate; long prefix can be omitted only when its paid bound lies inside it", "risk":"up to 64 native calls per inverse stage and query-dependent products; no free reuse or future target output"}
+  ],
+  "relationship_to_previous_failures": "Not a reopening of local zero-product absorption or exact result reassociation. A retains ordered rounding, B/C exploit whole-suffix state forgetting. No target-wide information reduction is assumed. Existing global-decoder and state-quotient alternatives remain unpromoted.",
+  "primary_obligations": ["O2: explicit causal native reduction program", "O3: exact native word result and state-substitution induction", "O4: paid constructor/guards/endpoints/repair/bytes"],
+  "mission_obligations_initial": {"O1":"OPEN", "O2":"OPEN", "O3":"OPEN", "O4":"OPEN", "O5":"OPEN", "O6":"OPEN"},
+  "datasets": {
+    "seed": 20260905,
+    "random_cases_per_width": 12,
+    "widths": [256,1024,16384],
+    "suffix_initial_width": 32,
+    "random_distribution": "independent signs, significand integers 128..255, exponents -4..4, exact BF16-representable operands; synthetic not checkpoint traces",
+    "positive_control": "1024 terms; 1022 unit products followed by +2^80 and -2^80",
+    "negative_control": "1024 alternating +1,-1 products",
+    "phase_cases": 600,
+    "native_oracle_cases": 4000,
+    "inverse_cases": 80
+  },
+  "acceptance": {
+    "correctness": "zero bit mismatches on declared controls; mathematical proof separately required for admitted domains",
+    "core_gate": "At least 10x fully charged operation AND movement route, original native/state lift, and target-scale sufficient upper bounds; positive controls alone cannot pass",
+    "theory": "VERIFIED_IN_MODEL only if full O1-O6 closed; a scoped native theorem is not full theory acceptance",
+    "target_hardware": "NOT TESTED",
+    "full_repository_suite": "NOT RUN; partial workspace only",
+    "actions": "do not dispatch"
+  }
+}

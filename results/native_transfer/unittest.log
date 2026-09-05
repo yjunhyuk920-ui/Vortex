@@ -1,0 +1,25 @@
+test_direct_midpoint_tie_parity (test_native_transfer.NativeTransferTests.test_direct_midpoint_tie_parity) ... ok
+test_direct_preimage_entire_interval_matches_native_search (test_native_transfer.NativeTransferTests.test_direct_preimage_entire_interval_matches_native_search) ... ok
+test_even_translation_not_odd (test_native_transfer.NativeTransferTests.test_even_translation_not_odd) ... ok
+test_integer_ties_both_signs (test_native_transfer.NativeTransferTests.test_integer_ties_both_signs) ... ok
+test_invalid_inputs_fail_explicitly (test_native_transfer.NativeTransferTests.test_invalid_inputs_fail_explicitly) ... ok
+test_inverse_suffix_accepts_only_its_own_preimage (test_native_transfer.NativeTransferTests.test_inverse_suffix_accepts_only_its_own_preimage) ... ok
+test_no_erasure_pays_all_retries (test_native_transfer.NativeTransferTests.test_no_erasure_pays_all_retries) ... ok
+test_oracle_fma_not_separate_product (test_native_transfer.NativeTransferTests.test_oracle_fma_not_separate_product) ... ok
+test_oracle_signed_zero_and_subnormal (test_native_transfer.NativeTransferTests.test_oracle_signed_zero_and_subnormal) ... ok
+test_overflow_bound_falls_back_without_false_acceptance (test_native_transfer.NativeTransferTests.test_overflow_bound_falls_back_without_false_acceptance) ... ok
+test_phase_associativity_and_identity (test_native_transfer.NativeTransferTests.test_phase_associativity_and_identity) ... ok
+test_phase_constructor_normalizes_binary32 (test_native_transfer.NativeTransferTests.test_phase_constructor_normalizes_binary32) ... ok
+test_phase_full_prefix_guard (test_native_transfer.NativeTransferTests.test_phase_full_prefix_guard) ... ok
+test_phase_leaf_all_small_quarters (test_native_transfer.NativeTransferTests.test_phase_leaf_all_small_quarters) ... ok
+test_phase_native_both_signs (test_native_transfer.NativeTransferTests.test_phase_native_both_signs) ... ok
+test_phase_reject_boundaries_and_bad_exponents (test_native_transfer.NativeTransferTests.test_phase_reject_boundaries_and_bad_exponents) ... ok
+test_positive_suffix_and_charged_inputs (test_native_transfer.NativeTransferTests.test_positive_suffix_and_charged_inputs) ... ok
+test_prefix_radius_bounds_actual_prefix (test_native_transfer.NativeTransferTests.test_prefix_radius_bounds_actual_prefix) ... ok
+test_suffix_non_power_two_and_empty (test_native_transfer.NativeTransferTests.test_suffix_non_power_two_and_empty) ... ok
+test_total_order_including_signed_zero (test_native_transfer.NativeTransferTests.test_total_order_including_signed_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.035s
+
+OK

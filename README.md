@@ -1,110 +1,85 @@
 # VORTEX
 
-A proof-first research runtime for public, unmodified Hugging Face dense
-Transformers. **The final 405B / single 8 GiB / 4B-class latency target has not
-been achieved.** This repository contains experiments and evidence, not a
-finished 405B executor.
+Proof-first research for arbitrary public, unmodified Hugging Face dense
+Transformers. **The 405B / single total-8-GiB GPU / native-4B-class latency mission
+is not achieved, and a complete constructive theory is not established.**
 
-## Constructive-theory-first governance — 2026-09-05
+## Fixed mission and current contract
 
-Read the [Constructive Theory Contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md).
-The primary deliverable is a complete execution algorithm with exactness/state
-proofs and sufficient total-cost upper bounds, organized by O1-O6. Small proofs,
-rejected candidates and commits are auxiliary or handoff, not goal completion.
-Theory, hardware and persistence have independent status. The policy decision
-and local document-validation scope are in
-[the governance record](docs/governance/CTC_20260905_DECISION.md).
-No new theorem, executor result or runtime test was produced by this policy edit.
+Executor replacement only; no retraining, weight changes, hidden remote compute,
+free precomputation or uncharged fallback. Batch one, original output/RNG and
+required successor state; warm p50 <=1.2x and p95 <=1.5x native 4B Q4 on the same
+machine, with the existing TTFT requirement. Every construction, storage,
+CPU/RAM/SSD/GPU/KV/transfer/metadata/verification/repair cost counts.
 
-## Fixed mission and rules
+Read [AGENTS.md](AGENTS.md), [the canonical mission](MISSION_AND_WORKING_PRINCIPLES.md)
+and [the constructive contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md).
+Full-theory acceptance requires O1-O6, not a scoped lemma, test suite or commit.
+Local validation precedes research-branch persistence and remote hash read-back;
+GitHub Actions is not required unless explicitly requested.
 
-Replace only the executor: no retraining, fine-tuning, distillation, LoRA,
-semantic weight changes, user-authored model adapters, or hidden remote compute.
-Preserve the declared original output/RNG and exact or proven-bisimilar successor
-state. Use one GPU with total peak VRAM <=8 GiB. On the SAME target machine,
-warm time/token must satisfy p50 <=1.2x and p95 <=1.5x native 4B Q4.
+## Latest scoped work — native ordered transfers, 2026-09-05
 
-All construction, checkpoint storage, CPU/RAM/SSD/PCIe/HBM traffic, decoding,
-metadata, KV/workspace, verification, repair, fallback and synchronization count.
-Every core round compares three materially different principles and a
-credible >=10x route, then concentrates on the strongest surviving construction;
-failed families are not reopened by parameter changes.
+[Construction, proofs and cost ledger](docs/research/NATIVE_TRANSFER_CONSTRUCTION.md)
+provide an exact guarded two-phase summary of ordered binary32 FMAs, a causal
+suffix-synchronization reference and a direct rounding-cell inverse constructor.
+These preserve the declared **serial-fmaf** ABI in their proved scopes, not an
+unverified replacement for arbitrary Torch/cuBLAS reduction order.
 
-Read [AGENTS.md](AGENTS.md) and
-[MISSION_AND_WORKING_PRINCIPLES.md](MISSION_AND_WORKING_PRINCIPLES.md) first.
-The [commit mandate](docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md),
-[reality-first contract](docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md),
-[proof-first contract](docs/PROOF_FIRST_CONTRACT.md), and
-[efficiency contract](docs/RESEARCH_EFFICIENCY_CONTRACT.md) remain in force.
+The principal unresolved construction remains cheap exact query-dependent
+information generation and complete state/cost closure. The phase constructor
+still reads all terms. On 36 ordinary synthetic suffix cases none certified
+early; all weights were read and FMA work was 2.75x–2.99609375x the reference.
+The synchronizing positive control is not a target speedup. No core was promoted.
 
-## Workflow
+20 focused tests pass. Independent native/integer controls and direct-inverse
+checks pass; scientific JSON/JSONL regeneration is byte-identical. No public
+checkpoint forward, layer replacement, full-repository suite, GPU allocation,
+TTFT or same-machine latency measurement was performed.
 
-`LOCAL_RESEARCH -> LOCAL_VALIDATION_PASS -> COMMIT_PUSHED -> REMOTE_COMMIT_VERIFIED`
-
-GitHub persists already locally validated work. Do not rerun the same research
-on Actions unless explicitly requested. Missing hardware measurements stay
-`NOT TESTED`. Push only a research branch, preserve evidence, and read back its
-remote commit SHA. README freshness is part of the handoff.
-
-## Last scientific branch snapshot — 2026-09-05 (unchanged by policy edit)
-
-This snapshot extends PR #118 / `ff70c1ebbca943161684f33e6afa1dc169fa8f4c`.
-It does not merge or replace the separate EXP-103A through EXP-108A branches.
-
-The latest auxiliary result is the
-[E0 global-decoder kernel audit](docs/research/E0_GLOBAL_DECODER_KERNEL_AUDIT.md):
-
-- A proof establishes the exact five-bit minimum for all 2x2 binary rank-one
-  parity queries with two adaptive bit reads, even with arbitrary nonlinear
-  encoders. It is NOT a 405B or general word-probe lower bound.
-- 18 focused tests pass. The general 2x3/seven-bit synthesis remains unresolved:
-  the bounded solver returned `unknown`, not `unsat`.
-- Native/parity, rounding-order, corruption and toy successor-state checks prevent
-  a synthetic success from being mislabeled as a native Transformer executor.
-
-Decision: `SCOPED_2X2_MINIMUM_PROVED_NO_EXECUTOR_PROMOTED` (ceiling E1).
-The existing PR #118 decision remains `NO_ROUTE_PROOF_REACH_CORE_PROMOTED`.
-EXP-102A remains the latest numbered completed real-model Gate on this lineage;
-its frozen causal external-draft mechanism was rejected. No result here changes
-that decision or establishes complete target execution, physical 8-GiB fit,
-CUDA/PCIe performance, or same-machine 4B latency.
-
-Current [state](RESEARCH_STATE.md), [next gate](NEXT_EXPERIMENT.md),
-[validation](VALIDATION_MATRIX.md), and
-[new decision/handoff](docs/research/E0_GLOBAL_DECODER_KERNEL_AUDIT.md#7-decision-assumptions-and-next-handoff).
-
-## Reproduce this auxiliary result
-
-```bash
-python experiments/e0_global_decoder/audit.py --output results/e0_global_decoder/summary.json
-python -m pytest -q tests/e0_global_decoder/test_audit.py
-python -m unittest discover -s tests/e0_global_decoder -v
-python experiments/e0_global_decoder/synthesis.py
-sha256sum -c results/e0_global_decoder/checksums.sha256
+```text
+THEORY_STATUS=NOT_ESTABLISHED
+HARDWARE_STATUS=NOT_TESTED
+CORE_ADMISSION=false
 ```
 
-The audit uses the Python standard library. Optional bounded synthesis needs
-local libz3; the recorded search used 4.13.3.0. The default synthesis command only
-prints the reproducible formula hash. Solver timeout is not a scientific result.
+Remote persistence status is established by the actual post-commit receipt,
+not by this snapshot. Previous PR #119's five-bit minimum remains scoped E1;
+its 2x3 solver UNKNOWN and earlier failures are unchanged. Separate
+EXP-103A..108A branches are not merged or superseded.
 
-## Repository map and broader setup
+## Reproduce
 
-`vortex_runtime/` contains existing runtime prototypes; `experiments/` runners;
-`tests/` controls; `results/` evidence; `docs/research/` research and handoffs.
-The root decision/failure/assumption/architecture/hardware/reproducibility ledgers
-remain available and their older evidence is not erased.
+Python standard library and Linux libm `fmaf` with nearest-even rounding are
+required; pytest is optional because the focused tests use unittest.
 
-For the wider repository, use a virtual environment, install the project with
-`python -m pip install -e .` and its experiment-specific pinned dependencies,
-then run appropriate tests. The last scientific round recorded above ran its
-new focused suite only, not the full repository suite or a public-checkpoint
-forward. This governance edit ran document validation only.
+```bash
+python experiments/native_transfer/audit.py
+python experiments/native_transfer/audit_inverse.py
+python -m unittest discover -s tests/native_transfer -v
+python -m pytest -q tests/native_transfer
+python experiments/native_transfer/evidence_codec.py --out results/native_transfer/decoded
+sha256sum -c results/native_transfer/checksums.sha256
+```
 
-Previous root snapshots are preserved byte-for-byte under
-`docs/research/history/pre_global_decoder_20260905/`. Historical status headings
-must not override committed newer evidence.
+The two large inverse captures are losslessly integer-predictor/residual encoded
+with original byte hashes in `results/native_transfer/inverse_recording.json`.
+Decoding uses an exact integer IEEE reference, not native fmaf and not a new
+hardware test. See the research note for provenance and literal-capture hashes.
+
+Current [state](RESEARCH_STATE.md), [next construction](NEXT_EXPERIMENT.md),
+[validation matrix](VALIDATION_MATRIX.md), and
+[additive decision/assumption ledger](docs/research/NATIVE_TRANSFER_LEDGER.md).
+Historical root snapshots are preserved byte-for-byte as Git blobs under
+`docs/research/history/pre_native_transfer_20260905/`. Older anti-repetition and
+scientific ledgers remain binding in their recorded scopes.
+
+`vortex_runtime/` retains prior prototypes; `experiments/`, `tests/`, `results/`
+and `docs/research/` contain research and evidence. No existing executable module
+was changed in this round. The wider repository setup remains experiment-specific;
+this isolated reference does not certify its full dependency environment.
 
 ```text
 README_CURRENT=true
-README_UPDATED=constructive-theory governance; separate completion axes; theorem-first next work
+README_UPDATED=native construction; failed charged core screen; remaining O1-O6; reproduction and evidence
 ```

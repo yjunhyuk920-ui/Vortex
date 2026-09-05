@@ -1,0 +1,12 @@
+{
+  "base_commit": "947b307da98b75f7843babbed691c70bd3caa964",
+  "base_tree": "21d53f1c18ebee2a7fa6da7148b8e7062c2d56bb",
+  "history_prefix": "docs/research/history/pre_native_transfer_20260905/",
+  "preserved_blobs": {
+    "NEXT_EXPERIMENT.md": "466f5eb321bbe4846f79c2b3145cebb42b949872",
+    "README.md": "949b1739829b948d0a8f09b1ff28a165d80533e9",
+    "RESEARCH_STATE.md": "aa4109a07fd3ba353f486b969be2428c1545e968",
+    "VALIDATION_MATRIX.md": "66181b05811524669e3fa83139710e1687b99356"
+  },
+  "scope": "Partial new-work package, not a complete repository checkout. Old root blobs are preserved in the remote tree by exact SHA."
+}

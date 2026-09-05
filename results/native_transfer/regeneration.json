@@ -1,0 +1,22 @@
+{
+  "inverse_rows.json": {
+    "equal": true,
+    "sha256": "f2632bcbe4c19e1cfeb9a6ad090a96af13e1f2f44ffc916dd1973ef72970ada9"
+  },
+  "inverse_suffix_rows.json": {
+    "equal": true,
+    "sha256": "03048857b7b5ba32044d0e1e923e5085a05ce855146e423e614ca37509dfa140"
+  },
+  "inverse_summary.json": {
+    "equal": true,
+    "sha256": "c13b0715024b7e66844b904672cc5e06020e19830276c6b56785e67796a31c81"
+  },
+  "rows.jsonl": {
+    "equal": true,
+    "sha256": "ba630bdfbd86a99ee102f8aa09afee8dad4e728f83d5906a421d9cb4a14e8fb9"
+  },
+  "summary.json": {
+    "equal": true,
+    "sha256": "f86b5a7137275441bb07e7c66b7788708b4ef582342f428f491a24dbdf96c31c"
+  }
+}

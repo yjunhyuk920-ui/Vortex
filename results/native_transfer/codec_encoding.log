@@ -1,0 +1,22 @@
+{
+  "codec": "integer-IEEE-predictor-plus-literal-record-residual-v1",
+  "dependencies": {
+    "experiments/native_transfer/audit_inverse.py": "668e3fe8cfda2e129b2a7d3cb3c3a7d157273f7aba4b81406c44610aed1f30bd",
+    "experiments/native_transfer/continuation.json": "1c63b8960c232844456565a7bc9a54beee90f3e95bb08843709b789c67d26af8",
+    "experiments/native_transfer/evidence_codec.py": "64856bb45065a228923c0297918a4f039d33483a6dc412cc38bee6b256d8f293",
+    "experiments/native_transfer/native_transfer.py": "ab194d2b37332a2314bbbdaf188986ac93e8aada9bd2cbff9781c1207ca82db7"
+  },
+  "files": {
+    "inverse_rows.json": {
+      "literal_residuals": {},
+      "records": 1328,
+      "sha256": "f2632bcbe4c19e1cfeb9a6ad090a96af13e1f2f44ffc916dd1973ef72970ada9"
+    },
+    "inverse_suffix_rows.json": {
+      "literal_residuals": {},
+      "records": 100,
+      "sha256": "03048857b7b5ba32044d0e1e923e5085a05ce855146e423e614ca37509dfa140"
+    }
+  },
+  "meaning": "Lossless encoding of the previously captured native records. Decode is not a new native run."
+}
