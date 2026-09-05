@@ -1,0 +1,23 @@
+test_all_kernel_integrity_controls (test_audit.AuditTests.test_all_kernel_integrity_controls) ... ok
+test_capacity_boundary_is_diagnostic (test_audit.AuditTests.test_capacity_boundary_is_diagnostic) ... ok
+test_faults_detected_for_every_cell (test_audit.AuditTests.test_faults_detected_for_every_cell) ... ok
+test_five_bit_positive_and_nontrivial_state (test_audit.AuditTests.test_five_bit_positive_and_nontrivial_state) ... ok
+test_injective_five_bit_code (test_audit.AuditTests.test_injective_five_bit_code) ... ok
+test_invalid_input_fails_closed (test_audit.AuditTests.test_invalid_input_fails_closed) ... ok
+test_kernel_obstruction_exact (test_audit.AuditTests.test_kernel_obstruction_exact) ... ok
+test_native_order_cannot_be_reassociated (test_audit.AuditTests.test_native_order_cannot_be_reassociated) ... ok
+test_native_partial_does_not_equal_parity (test_audit.AuditTests.test_native_partial_does_not_equal_parity) ... ok
+test_no_hardware_or_checkpoint_promotion (test_audit.AuditTests.test_no_hardware_or_checkpoint_promotion) ... ok
+test_proof_must_not_reject_redundancy_words_or_restricted_domain (test_audit.AuditTests.test_proof_must_not_reject_redundancy_words_or_restricted_domain) ... ok
+test_query_masks_against_explicit_rectangles (test_audit.AuditTests.test_query_masks_against_explicit_rectangles) ... ok
+test_rank_against_row_span_enumeration (test_audit.AuditTests.test_rank_against_row_span_enumeration) ... ok
+test_result_regeneration (test_audit.AuditTests.test_result_regeneration) ... ok
+test_exact_formula_hash_matches_original_run (test_audit.SynthesisGrammarTests.test_exact_formula_hash_matches_original_run) ... ok
+test_packed_formula_against_branch_execution (test_audit.SynthesisGrammarTests.test_packed_formula_against_branch_execution) ... ok
+test_positive_solver_control_was_satisfiable (test_audit.SynthesisGrammarTests.test_positive_solver_control_was_satisfiable) ... ok
+test_solver_unknown_is_not_unsat (test_audit.SynthesisGrammarTests.test_solver_unknown_is_not_unsat) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.572s
+
+OK

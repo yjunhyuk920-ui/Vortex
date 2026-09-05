@@ -1,0 +1,8 @@
+{
+  "classification": "REQUIRES_INDEPENDENT_WITNESS_OR_PROOF_REVIEW",
+  "elapsed_seconds": 0.012508407000041188,
+  "formula_sha256": "7fd561e9aa0a948dfabf8b8394a70c6b1938be891feed2a32f65cffc02409046",
+  "raw_stdout": "sat\n(:reason-unknown \"\")\n",
+  "result": "sat",
+  "solver_version": "4.13.3.0"
+}

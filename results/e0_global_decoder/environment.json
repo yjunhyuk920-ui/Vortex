@@ -1,0 +1,10 @@
+{
+  "execution": "local sandbox CPU",
+  "full_repository_suite": "NOT_RUN: no complete local checkout; only new isolated files tested",
+  "network": "no checkpoint downloaded",
+  "pytest": "9.0.2",
+  "python": "3.13.5",
+  "scientific_dependencies": "Python standard library; optional local libz3 for search",
+  "target_gpu_executed": false,
+  "z3_shared_library": "4.13.3.0"
+}

@@ -1,0 +1,92 @@
+{
+  "base_commit": "ff70c1ebbca943161684f33e6afa1dc169fa8f4c",
+  "base_tree": "91977b1633b910e278647222cdc68148bee448d9",
+  "files": {
+    "NEXT_EXPERIMENT.md": {
+      "bytes": 2942,
+      "git_blob_sha": "41b6b2fbd3d5694c2484b8c1591ee3990440e593",
+      "sha256": "69d58dccfc9a448ad6f5eea31ab8d3fe5330808d807bf0b41bddebd929b54f86"
+    },
+    "README.md": {
+      "bytes": 4806,
+      "git_blob_sha": "78cf75384374ee77c0f3b52f3e47215dfc0ffff6",
+      "sha256": "de1e3905ddd04b93ebabdd5f4069ad9c7f1c7b3f9705410a059eb23a3a45c798"
+    },
+    "RESEARCH_STATE.md": {
+      "bytes": 2710,
+      "git_blob_sha": "13d8c463f25720b608f91f747c5137ab30f66a54",
+      "sha256": "1cd41bbba378908a543ff1f1daf70b17437d756c7fd44c7e93dc6941ce72d7bb"
+    },
+    "VALIDATION_MATRIX.md": {
+      "bytes": 2125,
+      "git_blob_sha": "bcfe93895a608952e10f21353c0472bb0ca998f5",
+      "sha256": "2c7f77fe7f70a45cc7a0ffa7c3465e6b019de0d0d441dae4b8ad6b27064abc96"
+    },
+    "docs/research/E0_GLOBAL_DECODER_KERNEL_AUDIT.md": {
+      "bytes": 15167,
+      "git_blob_sha": "890adbacbf70ecd8f6f42eae476d22c99b3362fb",
+      "sha256": "1a47366b627d9b7ca94438db5c7390bb1ebc21feb268018e2dfa763caa4ac8ef"
+    },
+    "experiments/e0_global_decoder/audit.py": {
+      "bytes": 12582,
+      "git_blob_sha": "5d34cfa8b10b4117e6829d706f3783f4c9834c6a",
+      "sha256": "ec9585a9f81ae6e5df34ee2d2feba7c2e3c842848bd9ee7ef1edd3255888f536"
+    },
+    "experiments/e0_global_decoder/config.json": {
+      "bytes": 754,
+      "git_blob_sha": "d076f7d2e53cf3854aae45a36d351d3efeef17a7",
+      "sha256": "23af1883423821b9b96955fab2511673c9c54c4b052c7fc191a3e842909306c7"
+    },
+    "experiments/e0_global_decoder/synthesis.py": {
+      "bytes": 4796,
+      "git_blob_sha": "eeee8ac5715cdad733576fb6702c637f26ed35de",
+      "sha256": "7ea0a57680bf508565804556c14e6b1cc44de21b99e34b64e79d0efc38635bea"
+    },
+    "results/e0_global_decoder/environment.json": {
+      "bytes": 377,
+      "git_blob_sha": "2298267e48fb39480e4c24c982ada3422a5e563a",
+      "sha256": "305ddde560e0acafdd51ef692f3f14885b55a3b71f2083a3d13c4f85981dd3ed"
+    },
+    "results/e0_global_decoder/local_tests.txt": {
+      "bytes": 99,
+      "git_blob_sha": "3b49da7e63a7323c7d53ec8041373b6ef90a44d4",
+      "sha256": "833eefb8382f3e966f9d6e5c10e9d6b30b8f8723cb81f3fd6c42045d8fc3972c"
+    },
+    "results/e0_global_decoder/solver_positive.json": {
+      "bytes": 302,
+      "git_blob_sha": "6889be3c604521255e1e7af8f7ba8c22fa2495d4",
+      "sha256": "839dde9a0a96503c0f163e20de05f9f5f41eda37e866f591fe70ec27cc9383b1"
+    },
+    "results/e0_global_decoder/solver_seven_bit.json": {
+      "bytes": 529,
+      "git_blob_sha": "50e76a7b06600cc391166b3200bf304370684677",
+      "sha256": "131965268f38ca1e53fc2f203e72dbc4665d6551083eba47ab7aaba1209dcaae"
+    },
+    "results/e0_global_decoder/summary.json": {
+      "bytes": 4467,
+      "git_blob_sha": "c3b4680f1ca9c741b835adf833ab20ca497402e3",
+      "sha256": "baa1dfb800d7ce444c11d7aa10dfa910403061114d5f5eac048bdc8e161adcc6"
+    },
+    "results/e0_global_decoder/unittest.log": {
+      "bytes": 2119,
+      "git_blob_sha": "864cce97d8e95386b16bdd572cb92c0c964c0828",
+      "sha256": "4ead7229c1c9511981755dcb55d2bced632a64b18f2978cc244a77693bc87b52"
+    },
+    "tests/e0_global_decoder/test_audit.py": {
+      "bytes": 6683,
+      "git_blob_sha": "72ad773cc05d53788417e07a50b543f0d1e9ebb4",
+      "sha256": "510a027716df4f28fa5d87ebbddcedde8cf806476ac67f8caa5fefd406348a0d"
+    }
+  },
+  "history_copies": {
+    "docs/research/history/pre_global_decoder_20260905/NEXT_EXPERIMENT.md": "5ed329d17bf0603d64433ed25ceb552c53f80e50",
+    "docs/research/history/pre_global_decoder_20260905/README.md": "9b730ef793c7042740e048a0b6607acaa648ffd8",
+    "docs/research/history/pre_global_decoder_20260905/RESEARCH_STATE.md": "e8f2bdf581bb6ccbf597ede4cce953a6b9d147dd",
+    "docs/research/history/pre_global_decoder_20260905/VALIDATION_MATRIX.md": "94be44ac57c31d456c5a1e6058110e0cf80211b9"
+  },
+  "history_copy_policy": "identical existing Git blobs; not available as local archived files",
+  "planned_branch": "research/e0-global-decoder-kernel-20260905",
+  "repository": "yjunhyuk920-ui/Vortex",
+  "scope": "new isolated auxiliary code and current docs; no existing executable module changed",
+  "validation": "18 pytest and 18 unittest tests; deterministic summary; full repository suite not run"
+}
