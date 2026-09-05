@@ -1,0 +1,12 @@
+{
+  "inverse_rows.json": {
+    "byte_identical": true,
+    "bytes": 482482,
+    "sha256": "f2632bcbe4c19e1cfeb9a6ad090a96af13e1f2f44ffc916dd1973ef72970ada9"
+  },
+  "inverse_suffix_rows.json": {
+    "byte_identical": true,
+    "bytes": 52208,
+    "sha256": "03048857b7b5ba32044d0e1e923e5085a05ce855146e423e614ca37509dfa140"
+  }
+}

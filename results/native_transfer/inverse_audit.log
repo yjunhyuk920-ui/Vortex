@@ -1,0 +1,13 @@
+{
+  "continuation_sha256": "1c63b8960c232844456565a7bc9a54beee90f3e95bb08843709b789c67d26af8",
+  "cost": "Nonzero-boundary inverse uses bounded exact dyadic arithmetic and no native search. Zero boundaries retain <=64 native calls/stage. Products and verification remain charged.",
+  "full_mission_status": "NOT_ESTABLISHED",
+  "interval_cases": 1328,
+  "interval_mismatches": 0,
+  "nonempty_direct_intervals": 1312,
+  "nonempty_native_zero_intervals": 7,
+  "scope": "Exact native inverse primitive; known test outputs are oracle controls, not a deployment selector.",
+  "suffix_cases": 100,
+  "suffix_mismatches": 0,
+  "version": "NTC-2026-09-05-inverse-v1"
+}

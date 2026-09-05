@@ -1,0 +1,18 @@
+{
+  "README_CURRENT": true,
+  "focused_tests": 20,
+  "full_repository_suite": "NOT RUN",
+  "governance_changed": false,
+  "gpu_latency": "NOT TESTED",
+  "history_links": "remote SHA preservation entries; not local checkout files",
+  "initial_fixture_failure_preserved": true,
+  "integer_only_capture_decode": "two captures / 534690 bytes match original hashes",
+  "markdown_files": 6,
+  "old_root_blobs_to_preserve": 4,
+  "public_checkpoint_forward": "NOT PERFORMED",
+  "pytest": "PASS",
+  "regeneration": "five scientific captures byte-identical",
+  "source_and_results_scope": "E1 native scalar references; full mission O1-O6 OPEN",
+  "syntax_files": 5,
+  "unittest": "PASS"
+}

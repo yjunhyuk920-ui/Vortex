@@ -1,69 +1,48 @@
-# VORTEX Research State
+# VORTEX Research State — 2026-09-05 native-transfer continuation
 
-Snapshot: 2026-09-05, on the PR #118 lineage based at
-`ff70c1ebbca943161684f33e6afa1dc169fa8f4c`.
+Base: `947b307da98b75f7843babbed691c70bd3caa964` on the PR #119 lineage.
+Mission and CTC-2026-09-05 unchanged: arbitrary public unmodified dense 405B,
+executor only, one total <=8-GiB GPU, original output/RNG/successor state,
+same-machine native 4B Q4 p50 <=1.2x / p95 <=1.5x and existing TTFT requirement.
 
-## Mission unchanged
+## Actual result
 
-Arbitrary public unmodified dense 405B; executor replacement only; single 8 GiB
-GPU; original output/RNG and exact or proven-bisimilar successor state;
-same-machine native-4B-Q4 warm p50 <=1.2x and p95 <=1.5x. Full costs count.
+Finite native numerical subroutines now exist: guarded parity-phase ordered-FMA
+composition; causal suffix erasure only on equal native interval endpoints;
+exact direct rounding-cell preimages with explicit signed-zero handling.
+[Proof, finite costs, scope and handoff](docs/research/NATIVE_TRANSFER_CONSTRUCTION.md).
 
-## Latest recorded scientific result (not rerun for this policy edit)
-
-`SCOPED_2X2_MINIMUM_PROVED_NO_EXECUTOR_PROMOTED`.
-
-[Proof, decision, assumptions and handoff](docs/research/E0_GLOBAL_DECODER_KERNEL_AUDIT.md)
-with [raw/processed evidence](results/e0_global_decoder/summary.json).
-A two-probe exact decoder for all 2x2 binary rank-one queries needs at least five
-stored bits, even under arbitrary nonlinear encoding. Five bits suffice. The
-proof does not apply to redundant seven-bit encoders, arbitrary word probes,
-restricted public checkpoints or native Transformer states.
-
-Prior research validation: 18 tests passed; independent unittest run also passed; exact
-summary regeneration. E1 ceiling. The bounded general seven-bit 2x3 solver
-returned UNKNOWN/timeout; no existence/nonexistence conclusion.
-
-The inherited PR #118 decision remains `NO_ROUTE_PROOF_REACH_CORE_PROMOTED`.
-EXP-102A is the latest completed numbered real-model Gate on this lineage;
-its frozen causal external-draft source is rejected. Separate EXP-103A..108A
-branches are not merged or superseded by this snapshot. The EXP-103A and
-EXP-108A state snapshots were cross-checked.
-
-## Active constructive requirement — superseded by CTC-2026-09-05
-
-Start from the final goal theorem and O1-O6 ledger in
-[NEXT_EXPERIMENT.md](NEXT_EXPERIMENT.md), compare three materially different
-principles, and close the strongest survivor's missing causal/native/state/cost
-construction. The global-code route is one candidate, not the mandated architecture.
-An isolated parity result or a larger timeout is not a core completion.
-
-[Governance decision](docs/governance/CTC_20260905_DECISION.md): policy-only;
-prior scientific evidence and classifications above are unchanged.
+This is **scoped E1 constructive discovery, not a promoted core**. Summary
+construction remains linear in products/reads. Ordinary synthetic suffix rows
+(36/36) failed early certification and paid all weights plus 2.75x–2.99609375x
+FMA work. Direct inverse construction removes searches at nonzero boundaries,
+but does not provide free products, target outputs or certificate coverage.
+No actual public Transformer numerical ABI or successor-state path was replaced.
 
 ```text
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
+FULL_MISSION_O1_O6=OPEN
+CORE_ADMISSION=false
 ```
 
-These are full-mission statuses, not denial of the scoped auxiliary theorem.
-Remote handoff status must be established by actual post-commit read-back.
+All target hardware, complete physical 8-GiB fit and same-machine latency remain
+NOT TESTED. The missing piece is an algorithmic information/cost construction,
+not just hardware validation. No impossibility theorem or feasibility increase
+is claimed. Remote handoff needs actual post-commit SHA/file read-back.
 
-## Acceptance truth
+## Evidence and continuity
 
-| Item | Status |
-|---|---|
-| Complete 405B execution | NOT TESTED / NOT ACHIEVED |
-| Complete physical peak allocation <=8 GiB | NOT TESTED |
-| Same-machine native-4B p50/p95 | NOT TESTED |
-| Public Transformer layer replacement in this round | NOT PERFORMED |
-| General nonlinear word-probe impossibility | NOT ESTABLISHED |
-| Seven-bit 2x3 encoder | UNRESOLVED |
-| Native numerical/state lift | NOT CONSTRUCTED |
+[Summary](results/native_transfer/summary.json),
+[inverse summary](results/native_transfer/inverse_summary.json),
+[decision/assumptions](docs/research/NATIVE_TRANSFER_LEDGER.md),
+[validation](VALIDATION_MATRIX.md), [next work](NEXT_EXPERIMENT.md).
+20 focused tests passed under pytest and unittest; five scientific captures
+regenerated identically. Full-repository and checkpoint tests were not run.
+No Actions dispatched and no target host or checkpoint download was used.
 
-The local CPU sandbox did not have a complete repository checkout or a cached
-public checkpoint; no target machine was modified. Full repository regression
-and target hardware were not run. No Actions job was dispatched.
-
-Historical [full state ledger](docs/research/history/pre_global_decoder_20260905/RESEARCH_STATE.md)
-is preserved as its original Git blob, not overwritten or summarized away.
+The prior [root state](docs/research/history/pre_native_transfer_20260905/RESEARCH_STATE.md)
+is preserved as its original blob. Its scoped 2x2 proof, unresolved 2x3 problem,
+PR #118 rejection and EXP-102A scientific decision are unchanged. Separate
+EXP-103A..108A branches remain separate. Historical root decision/failure/assumption
+ledgers are preserved; this round's new entries are additive in the linked ledger.

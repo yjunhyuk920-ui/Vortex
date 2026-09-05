@@ -1,0 +1,19 @@
+F...................                                                     [100%]
+=================================== FAILURES ===================================
+_____________ NativeTransferTests.test_direct_midpoint_tie_parity ______________
+
+self = <test_native_transfer.NativeTransferTests testMethod=test_direct_midpoint_tie_parity>
+
+    def test_direct_midpoint_tie_parity(self):
+        for word in (0x3f800000,0x3f800001,0xbf800000,0xbf800001):
+            r=rank_word(word)
+            slow=preimage(2**-24,1.,r,r)
+            fast=preimage_direct(2**-24,1.,r,r)
+>           self.assertEqual(slow[:2],fast[:2])
+                             ^^^^^^^^
+E           TypeError: 'NoneType' object is not subscriptable
+
+tests/native_transfer/test_native_transfer.py:150: TypeError
+=========================== short test summary info ============================
+FAILED tests/native_transfer/test_native_transfer.py::NativeTransferTests::test_direct_midpoint_tie_parity - TypeError: 'NoneType' object is not subscriptable
+1 failed, 19 passed in 0.15s

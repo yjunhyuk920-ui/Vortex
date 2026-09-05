@@ -1,0 +1,9 @@
+{
+  "version": "NTC-2026-09-05-inverse-v1",
+  "reason": "Continue the constructive native inverse after the suffix evaluator failed its synthetic core screen; do not stop at that rejection.",
+  "construction": "Pull an output interval back through the exact rounding-cell endpoints, subtract the exact dyadic product, then select the first/last representable finite input with exact directed boundary conversion. Zero-word endpoints use the prior bounded native search.",
+  "proof_scope": "Native IEEE binary32 fmaf with finite operands and finite output intervals under RN-even; exceptional zero endpoints explicitly dispatched, not silently excluded.",
+  "tests": {"seed": 20260906, "random_finite_cases": 1500, "suffix_inverse_cases": 100},
+  "acceptance": "Exact agreement of the entire returned input interval with the independent two-search native oracle; bitwise endpoint checks and excluded-neighbor checks; zero mismatch. No claim of a cheap product source or of target-wide prefix erasure.",
+  "full_mission_status": "O1-O6 remain open; no model or hardware acceptance"
+}
