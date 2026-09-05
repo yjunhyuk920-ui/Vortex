@@ -1,0 +1,12 @@
+{
+  "schema": "e0-global-decoder-as-executed-config-v1",
+  "base_sha": "ff70c1ebbca943161684f33e6afa1dc169fa8f4c",
+  "purpose": "finite auxiliary prerequisite; no numbered core promotion",
+  "evidence_ceiling": "E1",
+  "kernel_shapes": [[2, 2], [2, 3]],
+  "new_theorem_scope": {"rows": 2, "cols": 2, "stored_bits": 4, "cell_bits": 1, "probes": 2, "checkpoint_advice_bits": 0, "fixed_decoder_independent_of_matrix": true},
+  "positive_construction": {"rows": 2, "cols": 2, "stored_bits": 5, "probes": 2, "state_steps_per_initial_state": 128},
+  "synthesis": {"rows": 2, "cols": 3, "stored_bits": 7, "probes": 2, "seed": 0, "timeout_ms": 30000, "unknown_policy": "INCONCLUSIVE"},
+  "hardware_and_checkpoints": "not executed",
+  "actions_dispatch": false
+}

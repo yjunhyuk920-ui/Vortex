@@ -1,328 +1,66 @@
 # AGENTS.md — VORTEX mandatory session contract
 
-This is the first file every AI or human session must read.
+Version: CTC-2026-09-05. Read this first in every session.
 
 ## Fixed mission
 
-Build a universal runtime that executes an arbitrary publicly released, unmodified Hugging Face dense Transformer by replacing only the executor.
+Build a universal executor for arbitrary publicly released, unmodified Hugging Face dense Transformers. The flagship target is a real 405B-class checkpoint, batch size one, a single GPU with total peak VRAM <=8 GiB, original output/RNG and required successor state preserved, and warm time/token p50 <=1.2x and p95 <=1.5x native 4B Q4 on the same machine. Preserve the existing TTFT requirement and freeze any still-unspecified evaluation details before acceptance.
 
-Flagship acceptance target:
+No retraining, fine-tuning, distillation, LoRA, semantic weight modification, manual model-specific adapter, hidden remote compute, free precomputation or uncharged fallback. Do not silently narrow the model/input domain. All CPU/RAM/SSD/PCIe/HBM/GPU/KV/cache/metadata/workspace/verification/repair costs count.
 
-- real 405B-class dense model;
-- peak GPU VRAM `<= 8 GiB`;
-- no retraining, distillation, fine-tuning, LoRA, semantic weight modification, or user-authored model-specific adapter;
-- original-model output and required successor-state contract preserved;
-- p50 warm time/token `<= 1.2x` a native 4B Q4 baseline on the same target machine;
-- p95 `<= 1.5x` that baseline;
-- reproducible evidence from pinned code, inputs, configs, results, and hashes.
+## Governing objective
 
-The target may not be silently reduced.
+The primary deliverable is a complete constructive execution theory, not a collection of small proofs, rejections, tests or commits. Read the [canonical mission](MISSION_AND_WORKING_PRINCIPLES.md) and [Constructive Theory Contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md). The latter controls theory acceptance, architecture neutrality, research priorities and scientific completion when older directives conflict. Recorded scientific evidence and fixed constraints are not overwritten.
 
-The canonical compact answer is [`MISSION_AND_WORKING_PRINCIPLES.md`](MISSION_AND_WORKING_PRINCIPLES.md). When the user asks “우리의 목표와 작업 원칙은?”, answer from that file and current remote research state.
+Every core round begins with the final theorem and O1-O6 obligation ledger, compares three materially different premise-reversing principles, and concentrates on the strongest credible >=10x route. Do not start from mere combinations/minor variations or rename rejected families. Use the cheapest decisive test, then construct the missing causal/native/state/cost procedure. A rejected candidate stops; the mission does not automatically end with it.
 
-## Canonical answer contract
+No undefined perfect selector, free certificate, unproved compression/reuse or unlimited search. Lower bounds and optimistic rooflines reject candidates; only a complete algorithm with sufficient upper bounds can establish theory acceptance. Block-verification variables are not universal architecture requirements.
 
-A correct answer includes:
+## Startup
 
-1. arbitrary public unmodified dense 405B-class checkpoint;
-2. executor replacement only;
-3. single `8 GiB` GPU;
-4. exact original output and required successor state;
-5. same-machine native 4B Q4 targets `p50 <=1.2x`, `p95 <=1.5x`;
-6. full accounting of fallback, storage, traffic, state, verification, repair, packing, metadata, and cache;
-7. three materially different new principles and cheapest-kill-first;
-8. local/sandbox research and validation first;
-9. GitHub commit/push/read-back only after local validation;
-10. mandatory README freshness.
+Verify the actual remote repository, branch/head SHA, active PR and latest committed evidence. Then read:
 
-## Current-environment truth
+1. This file, `MISSION_AND_WORKING_PRINCIPLES.md`, `docs/CONSTRUCTIVE_THEORY_CONTRACT.md`, and `README.md`.
+2. `docs/PROOF_FIRST_CONTRACT.md`, `docs/RESEARCH_EFFICIENCY_CONTRACT.md`, `docs/WORK_SESSION_PROTOCOL.md`, `docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md` and `CREATIVE_RESEARCH_MANDATE.md`.
+3. Current `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`, `VALIDATION_MATRIX.md`, `FAILED_APPROACHES.md`, `FAILED_APPROACHES_RECENT.md`, `DECISION_LOG.md`, `ASSUMPTION_REGISTER.md`, `ARCHITECTURE.md`, `HARDWARE_VALIDATION_PLAN.md`, and `REPRODUCIBILITY.md`.
+4. Active source/config/raw result/log/checksum and PR discussions; branch-specific reality-first/handoff documents where present.
 
-Local/sandbox work is authoritative for research and validation when the required experiment can actually be executed there. Missing hardware-dependent quantities stay `NOT TESTED`.
+An old 'next experiment' or historical policy section does not supersede the current contract. Resolve remote branch differences; never assume main contains every draft experiment. Conversation memory is not evidence.
 
-Unless actual target evidence exists, do not claim:
-
-- complete 405B target execution;
-- physical complete 8-GiB target allocation;
-- target CUDA/SASS behavior;
-- target SSD/PCIe/HBM/decompression throughput;
-- actual 405B TTFT/tokens-per-second;
-- same-machine native 4B Q4 p50/p95 acceptance.
-
-Never infer target hardware measurements from unrelated hardware.
-
-## Mandatory local-first, commit-only workflow
-
-The default research loop is now:
+## Local-first validation and repository handoff
 
 ```text
-LOCAL_RESEARCH
--> LOCAL_VALIDATION_PASS
--> COMMIT_PUSHED
--> REMOTE_COMMIT_VERIFIED
-```
-
-### `LOCAL_RESEARCH`
-
-Use the local/sandbox environment for:
-
-- derivations, cost equations, exact calculators;
-- combinatorial/tensor/circuit/program search;
-- prototype implementation and rapid repair;
-- exhaustive/random/adversarial controls;
-- focused unit/property/regression tests;
-- available public-checkpoint experiments;
-- raw evidence, logs, and checksums.
-
-### `LOCAL_VALIDATION_PASS`
-
-Before committing, validate every item the current environment can honestly validate:
-
-- exactness and fail-closed behavior;
-- causal information availability;
-- measured candidate/commit counts and fallback;
-- implemented arithmetic, traffic, cache, metadata, repair, and workspace cost;
-- target-scale equations and 8-GiB accounting;
-- deterministic regeneration where applicable;
-- focused/full test suite as feasible.
-
-Anything unavailable locally remains `NOT TESTED`; do not replace it with an idealized grant.
-
-### GitHub is persistence and handoff, not a second laboratory
-
-After local validation passes, GitHub is used to:
-
-- commit/push source, configs, results, logs, checksums, and docs;
-- preserve negative evidence and provenance;
-- update README and canonical ledgers;
-- let later sessions resume from an exact SHA;
-- read back the remote branch head to verify persistence.
-
-**Do not rerun the same validated research on GitHub Actions.** A separate hosted reproduction, public-checkpoint rerun, Actions approval step, or artifact reproduction is not required for normal round completion.
-
-Default policy:
-
-```text
+LOCAL_RESEARCH -> LOCAL_VALIDATION_PASS -> COMMIT_PUSHED -> REMOTE_COMMIT_VERIFIED
 GITHUB_ACTIONS_REQUIRED=false
 GITHUB_REEXECUTION_REQUIRED=false
 ```
 
-Use GitHub Actions only when the user explicitly asks for it. Existing automatic CI may run, but its conclusion is not a mandatory scientific approval after `LOCAL_VALIDATION_PASS`.
+Freeze hypotheses, input hashes and thresholds locally before examining results, and persist the preregistration with the evidence. Do not require a remote commit before the local experiment or duplicate research on Actions. GitHub is persistence/handoff after local validation; explicitly user-requested Actions is the exception. Do not bypass branch protection.
 
-## Mandatory startup order
+Use available local theory/reference/property/adversarial/checkpoint tests, deterministic regeneration and checksums as applicable. For documentation-only changes, validate Markdown, local links, unchanged constraints, precedence and cross-file consistency; do not claim runtime tests were run. Missing hardware or packages are infrastructure facts, not scientific rejection. Target execution, complete VRAM, CUDA/PCIe/SSD behavior, TTFT and baseline latency stay NOT TESTED until actually measured.
 
-Read before proposing or editing:
+Before reporting repository work: preserve positive/negative evidence, update every affected ledger and README, commit to a descriptive research branch, push, and read back the remote SHA and changed files. Never force-push, directly push main, or merge unrelated experimental work. A local bundle alone is not a completed handoff. Use the connected GitHub writer even when shell Git is unavailable.
 
-1. `AGENTS.md`
-2. `MISSION_AND_WORKING_PRINCIPLES.md`
-3. `README.md`
-4. `docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md`
-5. `docs/research/REALITY_FIRST_EXECUTION_CONTRACT.md`
-6. `docs/research/VORTEX_RESEARCH_HANDOFF.md`
-7. `RESEARCH_STATE.md`
-8. `FAILED_APPROACHES.md`
-9. `FAILED_APPROACHES_RECENT.md`
-10. `DECISION_LOG.md`
-11. `ASSUMPTION_REGISTER.md`
-12. `VALIDATION_MATRIX.md`
-13. `NEXT_EXPERIMENT.md`
-14. `ARCHITECTURE.md`
-15. `HARDWARE_VALIDATION_PLAN.md`
-16. `REPRODUCIBILITY.md`
-17. `docs/PROOF_FIRST_CONTRACT.md`
-18. `docs/RESEARCH_EFFICIENCY_CONTRACT.md`
-19. active experiment source/config/result/checksum files and PR discussion.
+## Exactness and evidence
 
-Then verify repository, branch, remote head SHA, latest authoritative result, and README freshness. Conversation memory is not authoritative.
+Empirical promotion uses `REAL_EXECUTOR_ONLY`: no future target token/state, oracle selector, free runtime work, speculative compression or peak-as-sustained throughput. A model theorem uses an explicit executable specification, not an oracle; it is not measured runtime evidence.
 
-## Validation phases
+Prove original finite-word reduction/rounding semantics, RNG consumption and an inductive correspondence for every required successor state. A compressed state needs a proved exact continuation relation; token agreement on samples is insufficient. If the original interface exposes logits, preserve that interface too. Probabilistic certificates must disclose and union-account error and cannot silently replace deterministic exactness. Failed certificates exact-fallback or abort, never silently approximate; safety behavior is not mission success.
 
-### Phase A — theory and structure
+Keep Phase A theory, B synthetic/reference, C small-real falsification and D target hardware distinct. Keep E0 idea, E1 reference, E2 real operation replacement, E3 held-out causal generalization, E4 representative hardware, E5 scaling, E6 target <=8 GiB and E7 final target distinct. Separate MEASURED, DERIVED, PROJECTED, UNVERIFIED.
 
-Permitted claims: mathematical validity, correctness/failure conditions, causal logic, lower bounds, resource equations, counterexamples.
-
-### Phase B — synthetic/reference
-
-Require independent reference code, randomized/property tests, boundary cases, fault injection, deterministic replay, and scaling trends. Synthetic success is not LLM success.
-
-### Phase C — small real-model falsification
-
-Use unmodified public checkpoints where available. Measure held-out prompts, future-information use, forward/layer calls, token/logit/state agreement, fallback, time, RAM, and size trend.
-
-Purpose: falsify the principle early on a real Transformer checkpoint.
-
-### Phase D — target hardware
-
-Requires the actual target 8-GiB GPU, target storage, target checkpoint, same-machine baseline, and hardware profilers. Only this phase can validate final hardware acceptance.
-
-## Evidence levels and provenance
-
-- E0: idea/equation;
-- E1: synthetic/reference validation;
-- E2: real small-model operation replacement;
-- E3: held-out generalization with measured causal coverage;
-- E4: measured improvement on accessible representative hardware;
-- E5: medium/large-model scaling validation;
-- E6: target model runs under 8 GiB;
-- E7: 405B meets the declared 4B-class target.
-
-Separate metrics into `MEASURED`, `DERIVED`, `PROJECTED`, `UNVERIFIED`. Never present projected or unavailable values as measured.
-
-## Reality-first authoritative execution
-
-Every new core Gate has one authoritative arm:
+Report three independent axes:
 
 ```text
-REAL_EXECUTOR_ONLY
+THEORY_STATUS=NOT_ESTABLISHED|CONDITIONAL|VERIFIED_IN_MODEL
+HARDWARE_STATUS=NOT_TESTED|PARTIAL|E7_VERIFIED
+HANDOFF_STATUS=IN_PROGRESS|REMOTE_COMMIT_VERIFIED|BLOCKED_REMOTE_WRITE
 ```
 
-Future target tokens/hidden states, perfect selectors, free `N/A`, free transforms, free metadata/workspace, free repair/fallback, unmeasured compression, and peak throughput presented as sustained throughput cannot satisfy promotion.
+A commit completes persistence, not the theory. A verified model theorem does not complete E7. A session boundary does not authorize false success or an asynchronous promise.
 
-The authoritative arm charges the finite-word causal path that actually exists: candidate generation, target positions, verification, mismatch repair, rollback, fallback, transforms, packing, metadata, storage/host/device bytes, KV/cache, workspace, fragmentation, and measured wall time where available.
+## Durable state and reporting
 
-Synthetic/oracle calculations may be debugging diagnostics only.
+Update files whose truth changes, not all files mechanically. Review README every meaningful round and state `README_CURRENT=true` with changed sections or a concrete unchanged reason. Preserve prior snapshots when consolidating policy/history.
 
-## Core resource and candidate Gate
-
-At minimum:
-
-\[
-T_{\rm token}\ge\max\left(\frac{S_c}{BA},\;r\frac{N}{A}\frac{2P}{F}\right).
-\]
-
-A credible core route must jointly improve:
-
-\[
-A\gg1,\qquad N/A\rightarrow1,\qquad r\ll1.
-\]
-
-Before implementation, a core candidate must:
-
-- identify the original operation/weight movement eliminated;
-- show a credible route to at least 10× reduction;
-- define a causal information source without future leakage;
-- charge selector, metadata, intermediate, verification, correction, fallback, RAM, SSD, PCIe, HBM, VRAM;
-- explain scaling behavior;
-- define the cheapest decisive falsification;
-- differ materially from closed families.
-
-Accepted length alone receives no core credit when `r=1`.
-
-## Creative-research mandate
-
-Before choosing a core experiment, invent three materially different execution principles. Each must reverse at least one hidden premise, computation order, information flow, or verification unit. Compare them by:
-
-- exactness equation;
-- fully charged realistic resource equation;
-- explicit `>=10x` route;
-- strongest counterexample;
-- cheapest decisive Gate.
-
-Do not use impossible favorable grants to promote a candidate. Implement only the strongest realistic survivor.
-
-Repeated negative evidence closes a family. Reopening requires a new information source, asymptotic mechanism, execution dependency, or measured fact—not a parameter sweep or rename.
-
-## Mandatory proof-first loop
-
-1. Verify remote repository, branch/head SHA, active PR, latest committed evidence.
-2. Read mission, failures, decisions, assumptions, efficiency contract, and handoff.
-3. Generate three materially different principles.
-4. Freeze success/rejection thresholds and target-scale ceiling.
-5. Derive correctness, state, memory, traffic, compute, fallback, and scaling equations.
-6. Run the cheapest local falsification first.
-7. Stop immediately on a decisive negative result.
-8. For a survivor, implement reference/prototype and tests locally.
-9. Run the required local public-checkpoint/real-model validation if available.
-10. Save raw evidence, processed result, logs, checksums locally.
-11. Update canonical ledgers and README.
-12. Commit/push the already validated state to a research branch.
-13. Read back the remote SHA.
-14. Report `REMOTE_COMMIT_VERIFIED` and all `NOT TESTED` boundaries.
-
-There is **no mandatory GitHub Actions/reproduction step between 12 and 13**.
-
-## Safety and exactness
-
-- Future target tokens/states are forbidden for authoritative execution.
-- Failed/unavailable certificate must exact-fallback or abort, never silently approximate.
-- Probabilistic certification declares and union-accounts its error budget.
-- Different floating reduction order is not bitwise equality until the ABI proves it.
-- Missing files/checkpoints/hardware are infrastructure facts, not scientific evidence.
-- Failed hypotheses are permanent project data.
-- Remote/hidden compute may not be used to claim single-machine performance.
-
-## Required repository state
-
-Maintain as applicable:
-
-```text
-README.md
-MISSION_AND_WORKING_PRINCIPLES.md
-RESEARCH_STATE.md
-NEXT_EXPERIMENT.md
-DECISION_LOG.md
-FAILED_APPROACHES.md
-FAILED_APPROACHES_RECENT.md
-ARCHITECTURE.md
-ASSUMPTION_REGISTER.md
-VALIDATION_MATRIX.md
-HARDWARE_VALIDATION_PLAN.md
-REPRODUCIBILITY.md
-docs/research/VORTEX_RESEARCH_HANDOFF.md
-```
-
-Update every file whose truth changed; do not mechanically touch every file.
-
-## README freshness Gate
-
-Review `README.md` every meaningful round. Update it in the same commit when mission, governance, active frontier, latest authoritative result, quick start, dependencies, repository map, or advertised capabilities change.
-
-Final report must contain either:
-
-```text
-README_CURRENT=true
-README_UPDATED=<sections>
-```
-
-or:
-
-```text
-README_CURRENT=true
-README_UNCHANGED_REASON=<specific reason>
-```
-
-## Repository completion Gate
-
-Every repository-changing round must satisfy:
-
-```text
-HAS_MEANINGFUL_CHANGE=true
-LOCAL_VALIDATION_RECORDED=true
-HAS_COMMIT=true
-REMOTE_CONTAINS_COMMIT=true
-RESEARCH_STATE_CURRENT=true
-NEXT_GATE_CURRENT=true
-README_CURRENT=true
-PROVENANCE_TRUTHFUL=true
-```
-
-A local-only result is not a completed repository handoff. Once the locally validated result is committed/pushed and the remote SHA is read back, the round is complete; a hosted rerun is not required.
-
-## Status vocabulary
-
-Use as applicable:
-
-```text
-LOCAL_RESEARCH
-LOCAL_VALIDATION_PASS
-LOCAL_VALIDATION_FAILED
-COMMIT_PUSHED
-REMOTE_COMMIT_VERIFIED
-BLOCKED_REMOTE_WRITE
-NOT_TESTED
-```
-
-Use `WORKFLOW_RUNNING`/`WORKFLOW_FAILED` only in the exceptional case where the user explicitly requests GitHub Actions.
-
-## Active frontier
-
-Do not hard-code a long-lived frontier here. Read the latest remote branch, committed raw result/checksums, `RESEARCH_STATE.md`, `NEXT_EXPERIMENT.md`, and `docs/research/VORTEX_RESEARCH_HANDOFF.md`.
+Report the execution method, proved obligations, paid budget and remaining decisive gap before test counts/commit logistics. A useful rejection is not evidence of greater feasibility. The active frontier is in the current remote state and next-obligation ledger, not a hard-coded old experiment in this file.

@@ -1,0 +1,182 @@
+{
+  "base_sha": "ff70c1ebbca943161684f33e6afa1dc169fa8f4c",
+  "budget": {
+    "conditional_one_additional_byte_fraction": "17/1350",
+    "conditional_one_additional_byte_over_budget_factor": "17/16",
+    "encoded_cold_bytes": 400,
+    "favorable_q4_denominator_bytes": 1350,
+    "nominal_budget_slack_bytes": 0,
+    "nominal_fraction": "8/675",
+    "not_asserted": "one extra physical byte is NOT proved mandatory; native lifting cost unknown",
+    "scope": "INHERITED_DIAGNOSTIC_ONLY_NOT_NATIVE_EXECUTOR",
+    "source": "25x108 binary matrix; 50 64-bit cells; two logical word probes",
+    "target_ssd_pcie_latency": "NOT_TESTED",
+    "two_word_bytes": 16
+  },
+  "date": "2026-09-05",
+  "deterministic_core_sha256": "e21f7c4e3aad75727d31b6cb318feabf9fc572e7a4d92106dca4b538522ef7eb",
+  "evidence_ceiling": "E1",
+  "inherited_degree_check_2x3_six_bits": {
+    "all_rank_at_most_two": 64,
+    "degree_at_most_four_capacity": 57,
+    "status": "ALREADY_REJECTED_BY_PRIOR_RANK_AMPLIFIED_DEGREE_GATE_NOT_NEW"
+  },
+  "kernel_controls": [
+    {
+      "hamming_kernel_values": [
+        10,
+        2,
+        -2,
+        -2,
+        2
+      ],
+      "low_degree_nonconstant_dimension": 10,
+      "matrices": 16,
+      "ordered_pair_kernel_checks": 256,
+      "orthogonality_pairs": 181,
+      "rank_histogram": {
+        "0": 1,
+        "1": 9,
+        "2": 6
+      },
+      "rank_kernel_values": [
+        9,
+        1,
+        -3
+      ],
+      "rank_one_queries": 9,
+      "shape": [
+        2,
+        2
+      ]
+    },
+    {
+      "hamming_kernel_values": [
+        21,
+        9,
+        1,
+        -3,
+        -3,
+        1,
+        9
+      ],
+      "low_degree_nonconstant_dimension": 21,
+      "matrices": 64,
+      "ordered_pair_kernel_checks": 4096,
+      "orthogonality_pairs": 882,
+      "rank_histogram": {
+        "0": 1,
+        "1": 21,
+        "2": 42
+      },
+      "rank_kernel_values": [
+        21,
+        5,
+        -3
+      ],
+      "rank_one_queries": 21,
+      "shape": [
+        2,
+        3
+      ]
+    }
+  ],
+  "native_boundary": {
+    "full_native_q4_bf16_transformer_lift": "NOT_CONSTRUCTED",
+    "note": "binary subcase agreement is one-way only; parity output is not a numerical dot",
+    "parity_does_not_determine_native_sum": {
+      "different_sums": [
+        0,
+        2
+      ],
+      "left": 3,
+      "matrices": [
+        0,
+        9
+      ],
+      "right": 3,
+      "same_parities": [
+        0,
+        0
+      ]
+    },
+    "reassociation_counterexample": {
+      "bf16_representable_terms": [
+        16777216,
+        1,
+        -16777216
+      ],
+      "left_fp32": 0.0,
+      "right_fp32": 1.0
+    },
+    "small_binary_ordered_float32_cases": 1488
+  },
+  "new_result": {
+    "complement_dimension": 1,
+    "complement_pointwise_square": 1,
+    "conclusion": "MINIMUM_2X2_STORAGE_IS_FIVE_BITS_FOR_TWO_ADAPTIVE_BIT_PROBES",
+    "encoded_non_diagonal_kernel": [
+      -2,
+      2
+    ],
+    "forced_constant_contradicts_zero_mean": true,
+    "permutations_enumerated": 0,
+    "possible_complement_products": [
+      -3,
+      1,
+      5
+    ],
+    "proof_kind": "DERIVED; exact kernel checks support, not replace, the proof",
+    "source_non_diagonal_kernel": [
+      -3,
+      1
+    ],
+    "unit_magnitude_compatible_products": [
+      1
+    ]
+  },
+  "overall": {
+    "405b_execution": "NOT_TESTED",
+    "decision": "SCOPED_2X2_MINIMUM_PROVED_NO_EXECUTOR_PROMOTED",
+    "general_impossibility": "NOT_ESTABLISHED",
+    "next_gate": "NON_ENTRYWISE_REDUNDANT_GLOBAL_CODE_WITH_NATIVE_SUCCESSOR_STATE_AND_PAID_COSTS",
+    "physical_8gib": "NOT_TESTED",
+    "same_machine_4b_latency": "NOT_TESTED",
+    "seven_bit_2x3_problem": "UNRESOLVED"
+  },
+  "positive_and_fault_controls": {
+    "dynamic_gf2_state_transitions": 8192,
+    "exact_query_cases": 144,
+    "fault_injection_witnesses": [
+      {
+        "cell": 0,
+        "query": 1
+      },
+      {
+        "cell": 1,
+        "query": 2
+      },
+      {
+        "cell": 2,
+        "query": 4
+      },
+      {
+        "cell": 3,
+        "query": 8
+      },
+      {
+        "cell": 4,
+        "query": 15
+      }
+    ],
+    "logical_bit_reads": 208,
+    "physical_speedup": "NOT_MEASURED; both small encodings fit one byte",
+    "raw_bits": 4,
+    "scope": "TOY_CONSTRUCTION; no Transformer or BF16 capability",
+    "state_mismatches": 0,
+    "storage_expansion": "5/4",
+    "stored_bits": 5,
+    "worst_query_probes": 2
+  },
+  "schema": "vortex-global-decoder-kernel-audit-v1"
+}

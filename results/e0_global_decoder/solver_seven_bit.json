@@ -1,0 +1,18 @@
+{
+  "claim": "No existence or nonexistence conclusion; no parameter sweep or increased timeout authorized.",
+  "classification": "INCONCLUSIVE",
+  "elapsed_seconds": "NOT_RECORDED_FOR_ORIGINAL_CALL",
+  "formula_sha256": "5e4e91eb824519b2569b6b9249b245369db21194c5dbf5add679de6f0033c4be",
+  "probes": 2,
+  "raw_stdout": "unknown\n(:reason-unknown \"timeout\")\n",
+  "reason": "timeout",
+  "result": "unknown",
+  "seed": 0,
+  "shape": [
+    2,
+    3
+  ],
+  "solver_version": "4.13.3.0",
+  "stored_bits": 7,
+  "timeout_ms": 30000
+}
