@@ -1,0 +1,23 @@
+{
+  "version": "CTC-2026-09-05",
+  "validation_scope": "policy_format_links_guard_clauses_only",
+  "status": "PASS",
+  "policy_files": 10,
+  "local_markdown_links_checked": 11,
+  "errors": [],
+  "sha256": {
+    "AGENTS.md": "bc270a438e70393dddd8a0372930ae6f465643587975f479fcb5801a76850f5b",
+    "MISSION_AND_WORKING_PRINCIPLES.md": "d9f12dde83364d6c9f83f437aa5291cd1c17e83c200c0c19011ccb9649df9317",
+    "CREATIVE_RESEARCH_MANDATE.md": "7a487055943bc6696c7e7e47639ddf26ceb674cdd9c5f0966c68773c27fbfcff",
+    "docs/CONSTRUCTIVE_THEORY_CONTRACT.md": "63e7797e50cc8fa0e1e4c10293d999ec9e8078c321a53b701eb609730e088f8f",
+    "docs/PROOF_FIRST_CONTRACT.md": "b6fe2cebc5610da90f8a2e2ed73bb67c8e532f4ec0e4cb83b534ba3d74b56bcd",
+    "docs/RESEARCH_EFFICIENCY_CONTRACT.md": "6599a41f32bc15081ed30b5bfa079b866de6f962189bf8eaf70ac03d84ae3b09",
+    "docs/WORK_SESSION_PROTOCOL.md": "8dd5dc85b3b2b322c1da8aa93a224ab455e68cdde416fa0609b8433f54f37fac",
+    "docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md": "e649d79c5833316b27f079910c18ffb73ef54127f08ec9622b47557715741ab6",
+    "docs/governance/CTC_20260905_DECISION.md": "e72bbcf7c677819a93124e4a90f4c7499d92388e6f48a593377d6bdaaccd4e93",
+    "NEXT_EXPERIMENT.md": "5858a2a980c9525dc37f85d0959ee44e77ff249362852ed644686971cf66b5c9"
+  },
+  "proves_research_theory": false,
+  "runtime_tests_run": false,
+  "target_hardware_tests_run": false
+}
