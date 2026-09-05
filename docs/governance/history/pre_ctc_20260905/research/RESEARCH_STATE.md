@@ -9,7 +9,7 @@ Arbitrary public unmodified dense 405B; executor replacement only; single 8 GiB
 GPU; original output/RNG and exact or proven-bisimilar successor state;
 same-machine native-4B-Q4 warm p50 <=1.2x and p95 <=1.5x. Full costs count.
 
-## Latest recorded scientific result (not rerun for this policy edit)
+## Current result
 
 `SCOPED_2X2_MINIMUM_PROVED_NO_EXECUTOR_PROMOTED`.
 
@@ -20,7 +20,7 @@ stored bits, even under arbitrary nonlinear encoding. Five bits suffice. The
 proof does not apply to redundant seven-bit encoders, arbitrary word probes,
 restricted public checkpoints or native Transformer states.
 
-Prior research validation: 18 tests passed; independent unittest run also passed; exact
+Local validation: 18 tests passed; independent unittest run also passed; exact
 summary regeneration. E1 ceiling. The bounded general seven-bit 2x3 solver
 returned UNKNOWN/timeout; no existence/nonexistence conclusion.
 
@@ -30,24 +30,13 @@ its frozen causal external-draft source is rejected. Separate EXP-103A..108A
 branches are not merged or superseded by this snapshot. The EXP-103A and
 EXP-108A state snapshots were cross-checked.
 
-## Active constructive requirement — superseded by CTC-2026-09-05
+## Active constructive requirement
 
-Start from the final goal theorem and O1-O6 ledger in
-[NEXT_EXPERIMENT.md](NEXT_EXPERIMENT.md), compare three materially different
-principles, and close the strongest survivor's missing causal/native/state/cost
-construction. The global-code route is one candidate, not the mandated architecture.
-An isolated parity result or a larger timeout is not a core completion.
-
-[Governance decision](docs/governance/CTC_20260905_DECISION.md): policy-only;
-prior scientific evidence and classifications above are unchanged.
-
-```text
-THEORY_STATUS=NOT_ESTABLISHED
-HARDWARE_STATUS=NOT_TESTED
-```
-
-These are full-mission statuses, not denial of the scoped auxiliary theorem.
-Remote handoff status must be established by actual post-commit read-back.
+A non-entrywise redundant global encoding with an explicit causal decoder,
+nontrivial native successor-state path, two-scale same-grammar validation, and
+fully charged construction/storage/physical-query/compute/verification costs.
+See [NEXT_EXPERIMENT.md](NEXT_EXPERIMENT.md). More tiny negative tests or a larger
+SMT timeout are not the next authorized core task.
 
 ## Acceptance truth
 

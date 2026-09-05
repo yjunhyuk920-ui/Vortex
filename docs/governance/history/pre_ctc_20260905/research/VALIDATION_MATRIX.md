@@ -23,11 +23,3 @@ Reproduction and evidence: [research note](docs/research/E0_GLOBAL_DECODER_KERNE
 18 pytest tests and 18 unittest tests passed locally. Full-repository regression
 was NOT run. No existing executable module was edited and no Actions job was
 dispatched. `LOCAL_VALIDATION_PASS` applies only to the declared auxiliary scope.
-
-## Governance-only amendment — CTC-2026-09-05
-
-[Constructive theory acceptance](docs/CONSTRUCTIVE_THEORY_CONTRACT.md) adds a
-separate O1-O6 proof track; it does not upgrade the empirical rows above.
-`THEORY_STATUS=NOT_ESTABLISHED`; `HARDWARE_STATUS=NOT_TESTED`.
-Document validation checks policy/link consistency only. Historical 18-test
-counts above belong to the previous research run and were not rerun here.
