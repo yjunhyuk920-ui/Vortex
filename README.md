@@ -1,133 +1,81 @@
 # VORTEX
 
-VORTEX is a research runtime for executing very large Hugging Face models under a small GPU-memory budget while preserving the behavior of the original model.
+A research runtime for public, unmodified Hugging Face dense Transformers.
+The fixed mission is a real dense 405B, executor replacement only, original
+output/RNG and required successor state, one GPU with total peak <=8 GiB,
+and same-machine native 4B Q4 warm p50 <=1.2x and p95 <=1.5x.
+The final target has not been achieved.
 
-## Non-negotiable target
+## Constructive-theory-first governance — 2026-09-05
 
-The project target is fixed:
+Read [AGENTS.md](AGENTS.md), [the canonical mission](MISSION_AND_WORKING_PRINCIPLES.md)
+and [Constructive Theory Contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md) first.
+The primary deliverable is a finite execution algorithm with original-contract
+proofs and sufficient full-cost upper bounds that close the final theorem.
+Organize work by O1-O6 and compare three materially different principles before
+concentrating on the strongest credible >=10x construction. A small lemma,
+rejection, test pass or commit is not scientific completion.
 
-> Run an arbitrary Hugging Face model—including a 405B-class dense model—on an 8GB VRAM machine with no user-side training, distillation, fine-tuning, calibration workflow, or model-specific manual conversion, while preserving the original model's quality and approaching the wall-clock experience of running a native 4B model on the same machine.
+Theory acceptance (`VERIFIED_IN_MODEL`), actual hardware acceptance (`E7_VERIFIED`)
+and repository persistence (`REMOTE_COMMIT_VERIFIED`) are independent. This
+policy update establishes no new theory, model run or performance result.
+See [the decision record](docs/governance/CTC_20260905_DECISION.md) and
+[the theorem-first next work](NEXT_EXPERIMENT.md).
 
-The intended user experience is eventually:
+## Branch and evidence scope
 
-```bash
-vortex run meta-llama/Llama-3.1-405B-Instruct
-```
+This is a policy-only update to main, based at
+`fc780350f1284f4aea3146fa1d79f6b4ed046142`. It does not merge the unmerged
+experimental lineage or its code/results. Main's unchanged scientific ledgers
+remain historical branch evidence, not the newest research-wide frontier.
+Before research, resolve the actual remote branches, PRs and committed evidence.
 
-Everything else—graph inspection, shard discovery, runtime-format generation, tiling, progressive execution, certification, fallback, and caching—must be automatic.
+The latest branch inspected for this update was
+[PR #119](https://github.com/yjunhyuk920-ui/Vortex/pull/119), pinned at
+`3b6eb2bc7bddeb00e658a0d265ff9b751461ea55`. Its scoped nonlinear-decoder result
+is E1 auxiliary, not an implemented 405B fast executor. Its tests were not rerun
+for this governance-only change. The updated research branch retains its own
+scientific entry points and evidence.
 
-## Repository status
+Older main prototype descriptions, exact reported test counts and command
+examples are retained without alteration in
+[the original main README](docs/governance/history/pre_ctc_20260905/main/README.md).
+They are historical evidence, not fresh validation or full-goal achievement.
 
-This repository contains an **executable first-stage prototype**, not only a design document.
-
-Implemented and tested:
-
-- Hugging Face `config.json` and safetensors shard/index auto-discovery.
-- Individual tensor, tensor-slice, and layer loading without constructing the full model.
-- Byte-accurate LRU budgeting for a fixed tensor/VRAM tile window.
-- A dependency-light, layer-streamed Llama reference decoder with KV caching.
-- Automatic first-use conversion of a linear matrix into a low-bit base plus lossless residual tiles.
-- Exact progressive greedy-token certification: unread residual tiles are skipped only when bounds prove they cannot change the dense argmax.
-- Disk-backed residual refinement using safetensors slices.
-- Exact causal Jacobi block decoding with equality checks against sequential greedy decoding.
-- A Llama 3.1 405B memory planner based on its published tensor dimensions.
-- Seven automated tests covering cache bounds, streamed generation, progressive bounds, disk refinement, and Jacobi equality.
-
-Current verified checkpoint:
+## Local-first work and basic setup
 
 ```text
-7 tests passed
-Progressive LM-head exact certification: 100% in the recorded synthetic runs
-Disk-backed progressive LM-head exact certification: 100% in the recorded tiny-checkpoint runs
-Jacobi output equality against sequential greedy: 100% in the recorded tiny-checkpoint runs
+LOCAL_RESEARCH -> LOCAL_VALIDATION_PASS -> COMMIT_PUSHED -> REMOTE_COMMIT_VERIFIED
+GITHUB_ACTIONS_REQUIRED=false
+GITHUB_REEXECUTION_REQUIRED=false
 ```
 
-The latest recorded measurements are in [`validation_results.json`](validation_results.json) and are explained in [`VALIDATION.md`](VALIDATION.md).
+Research and applicable validation run locally. Actions is only used when
+explicitly requested; branch protection is not bypassed. Persist complete
+evidence to a research branch and read back the remote SHA. Do not directly push
+main, force-push, or merge unrelated experiments. Missing hardware remains
+NOT TESTED. Review README and affected ledgers on every meaningful round.
 
-## What is not completed yet
-
-The runtime does **not yet** achieve the final 405B-on-8GB-at-4B-speed target. The current bottleneck is internal Transformer execution: Q/K/V/O and gate/up/down projections still require exact streamed evaluation. The next milestone is to extend progressive, decision-directed refinement from the LM head into those internal projections and measure how much target weight traffic and compute can actually be skipped.
-
-This distinction must remain explicit in every future session: working primitives are recorded as working; the final target is only declared achieved after the wall-clock acceptance gates in [`docs/VALIDATION_PROTOCOL.md`](docs/VALIDATION_PROTOCOL.md) pass on real hardware.
-
-## Quick start
+Existing prototype setup (not a claim these runtime checks were run in this edit):
 
 ```bash
-git clone https://github.com/yjunhyuk920-ui/Vortex.git
-cd Vortex
-
 python -m venv .venv
-# Linux/macOS
-source .venv/bin/activate
-# Windows PowerShell
-# .venv\Scripts\Activate.ps1
-
-pip install -e .
-pip install pytest
-
+# Activate .venv for your shell, then:
+python -m pip install -e .
+python -m pip install pytest
 python -m pytest -q
 python scripts/run_validation.py
 ```
 
-Run the tiny streamed-Llama demo:
-
-```bash
-python -m vortex_runtime.cli demo --tokens 8 --budget-mb 2
-```
-
-Inspect a local Hugging Face safetensors model:
-
-```bash
-python -m vortex_runtime.cli inspect /path/to/model
-```
-
-Benchmark in-memory progressive LM-head certification:
-
-```bash
-python -m vortex_runtime.cli certify \
-  --vocab 4096 \
-  --hidden 1024 \
-  --trials 32 \
-  --base-bits 6
-```
-
-## Repository map
+`vortex_runtime/` contains prototype runtime code, `experiments/` experiments,
+`tests/` tests, `results/` evidence, and `docs/` contracts/research/handoffs.
+Unchanged runtime and experimental trees are not promoted by the policy update.
+The new governance validation is scoped to Markdown, links, policy consistency
+and source/content hashes; no public-checkpoint or hardware benchmark ran.
 
 ```text
-vortex_runtime/
-  hf_loader.py       HF config/shard discovery and tensor slicing
-  tile_cache.py      byte-budgeted LRU tensor cache
-  llama.py           streamed Llama reference runtime and Jacobi decoder
-  progressive.py     in-memory progressive linear operator and certificates
-  vtx_linear.py      disk-backed VTX linear format and refinement
-  planner.py         large-model tensor and memory planning
-  toy_model.py       deterministic tiny HF checkpoint generator
-  cli.py             prototype CLI
-
-scripts/
-  run_validation.py  reproducible validation suite and JSON report
-
-tests/               automated unit/integration tests
-docs/                project context, architecture, roadmap, protocol, handoff
-AGENTS.md             mandatory context for future AI coding sessions
+THEORY_STATUS=NOT_ESTABLISHED
+HARDWARE_STATUS=NOT_TESTED
+README_CURRENT=true
+README_UPDATED=constructive theory contract; branch/evidence scope; next work; local-first policy
 ```
-
-## Start here in a new session
-
-Read these files in order:
-
-1. [`AGENTS.md`](AGENTS.md)
-2. [`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md)
-3. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
-4. [`docs/SESSION_HANDOFF.md`](docs/SESSION_HANDOFF.md)
-5. [`docs/ROADMAP.md`](docs/ROADMAP.md)
-6. [`docs/VALIDATION_PROTOCOL.md`](docs/VALIDATION_PROTOCOL.md)
-
-Then run:
-
-```bash
-python -m pytest -q
-python scripts/run_validation.py
-```
-
-Do not replace the fixed target with a smaller model, model retraining, distillation, or a manual per-model preparation workflow. Those are outside the project definition.

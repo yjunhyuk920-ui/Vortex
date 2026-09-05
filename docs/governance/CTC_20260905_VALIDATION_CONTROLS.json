@@ -1,0 +1,27 @@
+{
+  "scope": "documentation_validator_negative_controls_only",
+  "controls": [
+    {
+      "control": "missing_theory_guard",
+      "correctly_rejected": true,
+      "errors": [
+        "docs/CONSTRUCTIVE_THEORY_CONTRACT.md: missing guard baseline lower bound"
+      ]
+    },
+    {
+      "control": "broken_relative_link",
+      "correctly_rejected": true,
+      "errors": [
+        "AGENTS.md: missing link MISSING_POLICY.md"
+      ]
+    },
+    {
+      "control": "unbalanced_fence",
+      "correctly_rejected": true,
+      "errors": [
+        "NEXT_EXPERIMENT.md: unbalanced fence"
+      ]
+    }
+  ],
+  "all_expected_failures_detected": true
+}
