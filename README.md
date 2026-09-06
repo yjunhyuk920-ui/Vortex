@@ -51,3 +51,15 @@ python -m unittest discover -s tests -v
 ```
 
 Sources, tests, preregistration, losslessly packed full observations and regeneration hashes are recorded. Generated VRC1 binaries can be regenerated and checked against the manifest. [Handoff and O1-O6](experiments/input_routed_20260906/HANDOFF.md). Scientific statuses remain unchanged. No public checkpoint, full state/RNG, GPU, 405B or baseline/TTFT experiment; no requested Actions or full-repository suite. README_CURRENT=true; earlier README bytes preserved.
+
+## Joint source-size/query budget screen — 2026-09-06
+
+[Scoped derivations and full caveats](experiments/source_budget_20260906/docs/REPORT_KO.md). Three proposed representations were screened before building another backend. For unshared explicit FP32 subtree tables, `R=4N/b` and `S=R*Q^b`; balanced block sizes minimize S at fixed R. The independent-sign interval certifier also has a derived near-full-read example. These are class-specific E0 results, not a new executor, an arbitrary-compression lower bound, or measured 405B performance. No qualifying core was obtained.
+
+```bash
+cd experiments/source_budget_20260906
+python src/analyze.py --out regenerated_results
+python -m unittest discover -s tests -v
+```
+
+Twelve local arithmetic/proof checks and three deterministic result-file regenerations passed. No table materialization, model inference, GPU, full state/RNG, baseline/TTFT or Actions. Scientific statuses unchanged; README_CURRENT=true. Earlier README bytes preserved.

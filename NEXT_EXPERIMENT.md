@@ -21,3 +21,9 @@ A reopening must provide a concrete source or dependency defeating these failure
 [Actual decoder and paid code expansion](experiments/input_routed_20260906/docs/REPORT_KO.md). Input-selected code paths remove the compulsory whole-code scan of the prior bitplane source, but the tested representation is not small or cheap enough to promote. Do not reopen by increasing BDD caps, sweeping more orders/seeds, or exporting the same graph to GPU. Small-shape root overhead is not a target inference lower bound.
 
 A new source must control both total native program size and visited-code/address work without assuming shared cofactors; preserve every required continuation and charge the constructor and memo. Residue or inverse-constraint proposals still need their actual cheap generators. The full constructive obligation remains open; a local suite or remote commit is not scientific completion.
+
+## Additional scoped source-budget exclusions — 2026-09-06
+
+[Explicit-format and interval gates](experiments/source_budget_20260906/docs/REPORT_KO.md). Do not build the rejected independent full-input subtree tables: mixing block lengths cannot remove their exponential storage at fixed entry-read budget. Do not call an affine coefficient decoder fast merely because its code is compact. Do not extrapolate the independent-sign interval bound to arbitrary joint/coded evaluators or actual LLM latency.
+
+The primary next obligation is unchanged: construct the missing native causal source with finite paid initialization, small representation AND query work, and exact successor state. More variants of these screens are not the primary research deliverable. No checkpoint run, BDD cap sweep or Actions is authorized by this note.

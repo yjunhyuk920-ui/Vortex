@@ -1,0 +1,16 @@
+{
+  "date": "2026-09-06",
+  "parent": "4a6d16487002c2756785378b0d0f5a1d73d3fca2",
+  "stage": "E0_ANALYTICAL_SCREEN_NOT_AN_EXECUTOR_EXPERIMENT",
+  "goal": "Find a finite exact source controlling BOTH representation size and query work; retain all VORTEX O1-O6 obligations.",
+  "candidates": [
+    "A: share arithmetic residuals up to an explicit offset transport rather than identical Boolean cofactors",
+    "B: replace a whole native reduction subtree by one input-addressed action; bound its storage and cache before building it",
+    "C: store an attainable output interval instead of enumerating branches, and stop only inside one native rounding cell"
+  ],
+  "no_novelty_or_core_admission_claim": true,
+  "parameters": {"coefficient_count": 405000000000, "weight_bytes": 2, "entry_bytes": 4, "hot_bytes": 8589934592, "alphabets": [2,16,65280], "block_sizes": [1,2,4,8,16,20,32], "interval_n": [16,64,256,1024,16384]},
+  "gates": {"entry_read_fraction": "1/10", "must_charge": ["constructor", "storage", "hot/cold placement", "addressing", "native internal precision", "query arithmetic", "KV/RNG", "TTFT"], "forbidden": ["allocate full subtree/transition truth tables", "raise old BDD caps", "claim scalar probes are byte or latency reductions", "claim conditional rejection is a universal lower bound", "claim tests are target inference"]},
+  "verification": ["exact-integer cost ledger", "exhaustive small integer partition minimization", "independent dyadic RNE and struct-based native witnesses", "rounding-cell endpoint checks", "deterministic regeneration"],
+  "decision_rule": "If all three explicit mechanisms fail their cost/native gate, do NOT build or scale a backend. Preserve the derivations, report no qualifying source. This is partial research, not completion of the primary constructive task."
+}
