@@ -32,3 +32,18 @@ The mathematical proof is not inferred from finite test counts. Persistence does
 | Whole mission / hardware / checkpoint / full KV-RNG | NOT ESTABLISHED / NOT TESTED |
 
 [Results](experiments/block_transport_20260906/results/summary.json), [validation](experiments/block_transport_20260906/results/validation.json), [raw words, gzip](experiments/block_transport_20260906/results/raw.jsonl.gz). These checks include detection of failed candidates; PASS counts do not establish a successful executor. No full-repository suite or Actions was run.
+
+## Additive scope — input-routed BF16-output source, 2026-09-06
+
+| Item | Actual evidence and limit |
+|---|---|
+| Symbolic source, not truth-table construction | Ripple-carry constant circuits plus native BF16 RNE, reduced BDD and actual VRC1 bytes |
+| Restricted native proof | Exact bounded integer BF16 inputs/weights; not arbitrary exponents or CUDA reductions |
+| Frozen builds | 6 complete / 26 node-cap refusals; no caps hidden as fast successes |
+| Completed output checks | 1,160 queries / 4,640 output words / 0 mismatches against two references |
+| Separate rounding check | All 8,192 signed 13-bit integers; not full FP32/BF16-state enumeration |
+| Local unit/regeneration | 15 tests, 10 byte-identical deterministic result/program files |
+| Paid code reads | Recorded fields, sparse memo and logical address-block diagnostics; not hardware latency |
+| Full O1-O6 / model / state-RNG / target hardware | OPEN / NOT TESTED |
+
+[Report](experiments/input_routed_20260906/docs/REPORT_KO.md), [raw evidence decoder](experiments/input_routed_20260906/src/evidence.py), [manifest](experiments/input_routed_20260906/results/EVIDENCE_PARTS.json). Small-n pointer floors preclude treating the toy read ratios as target-scale conclusions. All earlier evidence remains unchanged.

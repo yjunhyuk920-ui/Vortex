@@ -15,3 +15,9 @@ Do not claim the scoped no-side-information state bound proves the full goal imp
 [Whole-block constructions and paid gates](experiments/block_transport_20260906/docs/REPORT_KO.md). Do not scale the explicit quadratic tensor while leaving H(x) undefined or directly dense; do not rename a dyadic exponent/power-list program as a cheap core while hiding its code, exp/log, native reduction correction and up/down work; do not replace projected KV with hidden history using real associativity alone. The small gate-recast match is not a native theorem.
 
 A reopening must provide a concrete source or dependency defeating these failures, not larger synthetic corpora, new names or a GPU port. The primary next obligation above is unchanged: construct a qualifying low-cost native source and close its full causal/state/budget chain. No candidate from this round is admitted.
+
+## Input-routed source evidence — 2026-09-06
+
+[Actual decoder and paid code expansion](experiments/input_routed_20260906/docs/REPORT_KO.md). Input-selected code paths remove the compulsory whole-code scan of the prior bitplane source, but the tested representation is not small or cheap enough to promote. Do not reopen by increasing BDD caps, sweeping more orders/seeds, or exporting the same graph to GPU. Small-shape root overhead is not a target inference lower bound.
+
+A new source must control both total native program size and visited-code/address work without assuming shared cofactors; preserve every required continuation and charge the constructor and memo. Residue or inverse-constraint proposals still need their actual cheap generators. The full constructive obligation remains open; a local suite or remote commit is not scientific completion.
