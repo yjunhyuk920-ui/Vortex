@@ -1,0 +1,11 @@
+{
+  "unit_tests": 12,
+  "unit_tests_passed": 12,
+  "deterministic_files": {
+    "raw.jsonl": true,
+    "summary.json": true,
+    "environment.json": true,
+    "serialized_programs.json": true
+  },
+  "model_accuracy_or_speed_claim": false
+}

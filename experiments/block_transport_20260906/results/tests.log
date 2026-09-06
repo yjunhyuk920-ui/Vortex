@@ -1,0 +1,17 @@
+test_actual_packed_program_roundtrip (test_research.TestResearch.test_actual_packed_program_roundtrip) ... ok
+test_exact_quadratic_compiler (test_research.TestResearch.test_exact_quadratic_compiler) ... ok
+test_exact_zero_quadratic_nonzero_output (test_research.TestResearch.test_exact_zero_quadratic_nonzero_output) ... ok
+test_full_tensor_scale_already_exceeds_memory (test_research.TestResearch.test_full_tensor_scale_already_exceeds_memory) ... ok
+test_independent_accumulation_rounding (test_research.TestResearch.test_independent_accumulation_rounding) ... ok
+test_independent_attention_key_rounding (test_research.TestResearch.test_independent_attention_key_rounding) ... ok
+test_monomial_real_projection_on_dyadic_example (test_research.TestResearch.test_monomial_real_projection_on_dyadic_example) ... ok
+test_no_fast_monomial_count_claim (test_research.TestResearch.test_no_fast_monomial_count_claim) ... ok
+test_packed_program_rejects_corruption (test_research.TestResearch.test_packed_program_rejects_corruption) ... ok
+test_preregistration_unchanged (test_research.TestResearch.test_preregistration_unchanged) ... ok
+test_projection_cast_counterexample (test_research.TestResearch.test_projection_cast_counterexample) ... ok
+test_scope_not_promoted_after_sample_pass (test_research.TestResearch.test_scope_not_promoted_after_sample_pass) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.003s
+
+OK

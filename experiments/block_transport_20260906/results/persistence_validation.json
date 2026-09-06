@@ -1,0 +1,28 @@
+{
+  "root_prefix_checks": {
+    "README.md": {
+      "old_blob": "c24b99beeae848337e5737123366e44504da3440",
+      "new_blob": "146a6d8781b12badfd664d720de0ed90a612cd47",
+      "old_prefix_preserved": true
+    },
+    "RESEARCH_STATE.md": {
+      "old_blob": "7083f3e60e71c14dc70cc76e0a095e9936b458c4",
+      "new_blob": "2573d0f8bec7353469a25b8c11b7f0fff0c2a200",
+      "old_prefix_preserved": true
+    },
+    "NEXT_EXPERIMENT.md": {
+      "old_blob": "f02806bd238cd2dee3012ef23487de1ba8d914d7",
+      "new_blob": "3200593a81a6876a8ac13d112b4aff646e72e6b9",
+      "old_prefix_preserved": true
+    },
+    "VALIDATION_MATRIX.md": {
+      "old_blob": "91e2aec811c520e360e406e36cd3c145cfe6f9bc",
+      "new_blob": "7ce5d0eb481889a3d2ff5e4ab9a0108a2482ebfe",
+      "old_prefix_preserved": true
+    }
+  },
+  "raw_gzip_round_trip": true,
+  "source_syntax": true,
+  "full_repository_suite": "NOT_RUN",
+  "root_changes": "additive only; no policy/mission changes"
+}

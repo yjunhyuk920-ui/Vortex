@@ -26,3 +26,15 @@ Read [AGENTS](AGENTS.md), [mission](MISSION_AND_WORKING_PRINCIPLES.md) and [cons
 ## Additional construction search — no new core
 
 [Search outcome and source scope](docs/research/ADDITIONAL_CONSTRUCTION_SEARCH_20260905.md). No all-conditions algorithm, new qualifying core, completed theory or runtime result was obtained. This documentation-only record does not change the scientific status, fixed mission or next construction obligation.
+
+## Whole-block transport constructions — 2026-09-06
+
+[Report, proofs, explicit programs and paid gates](experiments/block_transport_20260906/docs/REPORT_KO.md). Exact quadratic compilation, an actually serialized dyadic-power program, and attention-query transport were constructed and checked. None supplies a qualifying >=10x native whole-model route; no new core or completed theory is promoted. The three representations are not claimed as three materially new admitted principles.
+
+```bash
+cd experiments/block_transport_20260906
+python src/research.py --out results
+python -m unittest discover -s tests -v
+```
+
+The declared CPU reference ran 12 unit tests and four byte-identical regeneration checks. Raw input/output words are preserved in `results/raw.jsonl.gz`; reproduction emits `raw.jsonl`. No public checkpoint, full state/RNG executor, GPU, 405B, baseline latency or TTFT was tested. [Scope and handoff](experiments/block_transport_20260906/HANDOFF.md). All previous README bytes and scientific constraints are preserved.
