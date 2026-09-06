@@ -1,17 +1,31 @@
 # VORTEX
 
-Fixed mission: arbitrary public unmodified HF dense 405B, batch one, one total-8-GiB GPU, original output/RNG/required successor state, same-machine native 4B Q4 p50 <=1.2x, p95 <=1.5x, and the existing TTFT requirement. **Not achieved.** All preparation, original/transformed storage, movement, arithmetic, metadata and state costs count.
+Fixed mission: arbitrary public unmodified HF dense405B; batch one; single total8GiB
+GPU; original output/RNG/required successor state; same-machine native4BQ4 p50<=1.2x,
+p95<=1.5x and existing TTFT. **Not achieved.** All preparation/storage/movement/work
+and state costs count. No weights/training/mission are changed.
 
-## Current bounded construction — 2026-09-07
+## Current bounded record — 2026-09-07
 
-[Native signed-orbit compiler and C executor](experiments/signed_orbit_20260907/REPORT.md). It shares original ordered rounded subtrees and their sign-mirrored evaluations, preserving signed zero and local nonfinite exceptions in a declared BF16-input/FP32-tree CPU ABI. It does not assume sparse residuals or small input changes. It is not a verified Hugging Face/CUDA replacement.
+[Boundary-generated exact convolution and native-BF16 certificate](experiments/boundary_convolution_20260907/REPORT.md).
+A streaming source constructor and exact signed/absolute integer convolutions replace
+per-coefficient runtime access on exact Toeplitz controls. Native rounding is certified,
+not ignored. Generic/perturbed matrices are rejected; some whole vectors are unresolved.
+The prior signed-orbit mechanism and its evidence remain in history.
 
-Deliberately structured dense full-rank 2048 Walsh controls use 2.442% code bytes and at most about 6.11% logical code/data traffic relative to original BF16 weight payload. This is not latency. General BF16 controls do not obtain these reductions, and integer/address work prevents a certified whole-work 10x claim. No core engine is admitted.
+32 constructors,16 supported;128 queries,86 complete/42 unresolved;53916 certified
+coordinates match. Source files can be small on planted structures, but no full-work
+10x or405B/8GiB/4B latency bound is proved.15 unit tests and435-file reproduction pass.
+No public model, Transformer state/RNG or target hardware was executed.
 
-192 C queries / 87,040 output coordinates match FP32/BF16 references. Twenty unit tests pass; 188 generated evidence files and two manifests reproduce byte-exactly. The checked capsule contains all sources, tests, preregistrations, raw text observations, hashes and full Korean report; binary arrays are regenerated and hash-checked. See the report for commands and scope.
+`THEORY_STATUS=NOT_ESTABLISHED`, `HARDWARE_STATUS=NOT_TESTED`, `CORE_ADMISSION=false`,
+`FULL_MISSION_O1_O6=OPEN`, `THREE_QUALIFYING_NEW_PRINCIPLES=false`, `README_CURRENT=true`.
 
-`THEORY_STATUS=NOT_ESTABLISHED`, `HARDWARE_STATUS=NOT_TESTED`, `CORE_ADMISSION=false`, `FULL_MISSION_O1_O6=OPEN`, `THREE_QUALIFYING_NEW_PRINCIPLES=false`, `README_CURRENT=true`.
+[State](RESEARCH_STATE.md), [next](NEXT_EXPERIMENT.md), [validation](VALIDATION_MATRIX.md),
+[AGENTS](AGENTS.md), [mission](MISSION_AND_WORKING_PRINCIPLES.md),
+[contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md).
 
-[State](RESEARCH_STATE.md), [next obligation](NEXT_EXPERIMENT.md), [validation](VALIDATION_MATRIX.md), [AGENTS](AGENTS.md), [mission](MISSION_AND_WORKING_PRINCIPLES.md), [constructive contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md).
-
-[Previous README preserved byte-for-byte](docs/research/history/pre_signed_orbit_20260907/README.md). Historical relative links retain their original root meaning. Prior policies, experiments and negative evidence are unchanged. Parent: PR #131 head `8262178842ec4699a45093f3c29a669cfc158481`. A remote commit records evidence; it does not complete the theory or hardware mission.
+[Previous README preserved byte-for-byte](docs/research/history/pre_boundary_convolution_20260907/README.md).
+Historical relative links retain original root meaning. Root decision/assumption/failure
+ledgers are unchanged; the report contains their explicitly linked current addendum.
+Parent PR132 head2c9ae1d3dc6c29d3da9b7da436df4eabc287e7f9. Remote handoff is independent.
