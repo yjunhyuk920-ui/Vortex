@@ -1,36 +1,21 @@
-# Research state — native-coding theory-closure audit
+# Research state — 2026-09-07
 
-2026-09-05. Parent: ab08dbb0f6665e6207c4a1d14a0d0677146f4542 (PR #124).
+The fixed mission and CTC-2026-09-05 remain unchanged. No universal cheap checkpoint-derived native source, whole state/RNG executor or sufficient 405B/8-GiB/baseline bound was constructed. This is not a hardware-only gap.
 
-The user requested a completed theory. **It was not completed.** No universal cheap checkpoint-derived source, full native/RNG/state executor or sufficient 405B/8-GiB/baseline upper bound was constructed. This is not a hardware-only gap. Full O1-O6 remain OPEN.
-
-[Proofs, exact scope, source record and obligation ledger](docs/research/THEORY_CLOSURE_NATIVE_CODING.md).
-The native nonadditivity witness and constructive continuation separator are bounded auxiliary results only. The separator's state-information bound assumes an unrestricted transducer interface with no correlated side information; it is not a lower bound on actual HF reachable states or inference time.
-
-```text
+```
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
 CORE_ADMISSION=false
 FULL_MISSION_O1_O6=OPEN
+THREE_QUALIFYING_NEW_PRINCIPLES=false
 ```
 
-[Next obligation](NEXT_EXPERIMENT.md), [validation](VALIDATION_MATRIX.md), [unchanged previous state](docs/research/history/pre_theory_closure_20260905/RESEARCH_STATE.md).
-Remote persistence is reported by post-commit read-back, not inferred from this file. Prior failure evidence and policy remain unchanged.
+[Actual algorithm, scope, cost and reproduction](experiments/joint_energy_20260907/REPORT.md): four-moment <=2-coordinate recovery plus exact Gram energy verification; subsequent five-moment nonnegative annihilator with no Gram/residual file. Conditional correctness is proved in the guarded integer-to-native reference domain. The source does not assume a perfect selector or silently use a dense fallback.
 
-## Additive round — 2026-09-06 whole-block transport
+Energy verification pays a dense n-by-n Gram. The positive path needs R>=0 and x>=0; on strictly positive dense inputs its s<=2 success requires rank(W)<=3. Signed decomposition can destroy sparsity, and general post-rounding source generation is not supplied. Large int64 moment overflow is refused, not hidden.
 
-[Detailed report and O1-O6 ledger](experiments/block_transport_20260906/docs/REPORT_KO.md). A finite rational quadratic constructor and a serialized dyadic monomial constructor were implemented. Their real-algebra identities do not provide cheap native SwiGLU execution. The omitted nonlinear term remains essential; direct tensor materialization increases storage, and the tested power programs increase code and arithmetic. Attention pullback changes a declared rounded consumer output.
+27/71 registered queries return exact outputs (2,368 coordinates); the remaining 44 return no output. Deliberately favorable controls are not public-model evidence. Both ordinary dense groups return no results. Twenty-one unit tests and 63 manifest-listed deterministic artifacts validate limited code, not the fixed mission.
 
-`THREE_QUALIFYING_NEW_PRINCIPLES=false`; all earlier THEORY/HARDWARE/CORE/FULL_MISSION fields remain unchanged. The 12 passed tests validate scoped constructors and rejection detection, not a fast native model. Prior local event/contraction bundles were context only, not merged or retrospectively declared remotely verified. No impossibility theorem is claimed.
+All O1-O6 remain OPEN at mission scope. A detailed sub-obligation ledger and full Korean proof report are preserved in the checked archive. No public checkpoint, Transformer/KV/RNG, GPU, 405B, 4B baseline, TTFT, full-repository suite or Actions was executed.
 
-## Additive bounded source attempt — input-routed outputs, 2026-09-06
-
-[Report](experiments/input_routed_20260906/docs/REPORT_KO.md) and [obligations/handoff](experiments/input_routed_20260906/HANDOFF.md). Concrete Boolean constructor, native RNE output circuit, compact VRC1 serializer and sparse-memo query interpreter were implemented. Native proof is limited to exactly represented bounded integer inputs/weights, not arbitrary BF16 or a full Transformer. Six completed builds produce 0/4,640 observed output mismatches; 26 are refused at the fixed constructor cap. This does not establish a cheap source or a lower bound against all representations.
-
-The small pilot's root-pointer floor makes its all-cases 10% gate unsuitable as a target-scale verdict. No scale extrapolation is made. Bounded auxiliary E1 only; THREE_QUALIFYING_NEW_PRINCIPLES=false. Full THEORY/HARDWARE/CORE/O1-O6 fields above remain unchanged. Earlier local bundles were read as context only.
-
-## Additive E0 source-budget attempt — 2026-09-06
-
-[Proofs, cost ledger and O1-O6](experiments/source_budget_20260906/docs/REPORT_KO.md). Affine-offset sharing, native subtree tabulation and independent attainable-interval certification were compared; no qualifying source was constructed. The fixed-format mixed-block storage minimum and a scoped interval necessary condition were derived and checked. These remove neither the general generator obligation nor the full native/state/budget gap.
-
-This was E0 analytical screening, not an E1 executor or a model experiment. No full subtree/transition table was built. THREE_QUALIFYING_NEW_PRINCIPLES=false; THEORY_STATUS=NOT_ESTABLISHED; CORE_ADMISSION=false; HARDWARE_STATUS=NOT_TESTED; full O1-O6=OPEN. Persistence is separate from scientific completion.
+[Previous state preserved byte-for-byte](docs/research/history/pre_joint_energy_20260907/RESEARCH_STATE.md). Prior policies and all historical evidence are unchanged. Remote handoff is reported only after actual branch/commit read-back.
