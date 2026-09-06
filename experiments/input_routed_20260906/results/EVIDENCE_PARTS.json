@@ -1,0 +1,31 @@
+{
+  "compression": "gzip, concatenate parts in order",
+  "gzip_sha256": "b7950ca7609965dcd45174c805ef6c699273fcd1a903415aabfe92248c3fd299",
+  "parts": [
+    {
+      "path": "results/evidence.part00",
+      "bytes": 8192,
+      "blob_sha": "1e2ff0157b7c04bc3e3b18a13c496817a8738cad"
+    },
+    {
+      "path": "results/evidence.part01",
+      "bytes": 4096,
+      "blob_sha": "10c7537b854d307e4bd1650b6dc67beae40eb645"
+    },
+    {
+      "path": "results/evidence.part02",
+      "bytes": 4096,
+      "blob_sha": "0c916b746d11217c9a8d415e82551ea814e314c4"
+    },
+    {
+      "path": "results/evidence.part03",
+      "bytes": 4096,
+      "blob_sha": "44bbc8c728fa7ac6cd4e7c477eceae350c5923dc"
+    },
+    {
+      "path": "results/evidence.part04",
+      "bytes": 2553,
+      "blob_sha": "817bb449d20fc7d55610c01ea85b2d08100913d9"
+    }
+  ]
+}

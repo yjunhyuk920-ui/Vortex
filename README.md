@@ -38,3 +38,16 @@ python -m unittest discover -s tests -v
 ```
 
 The declared CPU reference ran 12 unit tests and four byte-identical regeneration checks. Raw input/output words are preserved in `results/raw.jsonl.gz`; reproduction emits `raw.jsonl`. No public checkpoint, full state/RNG executor, GPU, 405B, baseline latency or TTFT was tested. [Scope and handoff](experiments/block_transport_20260906/HANDOFF.md). All previous README bytes and scientific constraints are preserved.
+
+## Input-routed output compiler — 2026-09-06
+
+[Construction, exact domain, complete accounting and caveats](experiments/input_routed_20260906/docs/REPORT_KO.md). A serialized input-selected Boolean program was built for a bounded integer slice of native BF16 projections; query objects hold no weights. Of 32 preregistered builds, 6 completed and 26 reached the node cap. The 4,640 observed output words agree, but code traffic expands and no core is admitted. Small-shape root overhead alone precludes the toy 10% gate; those ratios are not a target-scale impossibility result.
+
+```bash
+cd experiments/input_routed_20260906
+python src/evidence.py unpack results recorded_results
+python src/experiment.py --out regenerated_results
+python -m unittest discover -s tests -v
+```
+
+Sources, tests, preregistration, losslessly packed full observations and regeneration hashes are recorded. Generated VRC1 binaries can be regenerated and checked against the manifest. [Handoff and O1-O6](experiments/input_routed_20260906/HANDOFF.md). Scientific statuses remain unchanged. No public checkpoint, full state/RNG, GPU, 405B or baseline/TTFT experiment; no requested Actions or full-repository suite. README_CURRENT=true; earlier README bytes preserved.
