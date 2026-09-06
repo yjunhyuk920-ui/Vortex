@@ -1,22 +1,24 @@
 # Validation matrix — 2026-09-07
 
-[Previous matrix preserved byte-for-byte](docs/research/history/pre_signed_orbit_20260907/VALIDATION_MATRIX.md). No historical gate is promoted. [Current report](experiments/signed_orbit_20260907/REPORT.md).
+[Previous matrix retained byte-for-byte](docs/research/history/pre_boundary_convolution_20260907/VALIDATION_MATRIX.md).
+[Current algorithm/proof/cost/evidence](experiments/boundary_convolution_20260907/REPORT.md).
 
-| Item | Evidence and exact limit |
+| Item | Evidence and exact scope |
 |---|---|
-| Finite constructor/query | Magnitude leaves, ordered signed-orbit DAG, SORB1 file and Python/C execution; W not retained by query, information remains in code |
-| Native proof | Structural induction for separate FP32 multiply + balanced adjacent FP32 RNE tree + final BF16 RNE; not actual HF/CUDA/FMA ABI |
-| Zero/nonfinite refinement | Exact mirror-zero rule; local mirrored add for nonfinite nodes; fixed CPU NaN semantics only |
-| Original registered suite | 24 cases, 22 executions / 2 preflight cost refusals; 176 queries / 54,272 coordinates match |
-| C follow-on | Same old queries plus 16 new; 192 queries / 87,040 coordinates match; four separate adversarial cases |
-| Independent arithmetic | 16,000 integer-oracle primitive comparisons and 72 small whole outputs match |
-| Favorable controls | Planted Walsh / row-sign permutations, dense and full-rank; not public learned models |
-| Costs | 2048 code 2.442%, logical data at most about 6.11%; word+FP envelope about 18.85%; no complete 10x or latency proof |
-| Generic controls | Many distinct magnitude leaves; no comparable savings; 256 cases refused early |
-| Local tests | 20 pass, including 200 C fuzz cases and non-Transformer recurrent state/RNG smoke; initial wrong node-count failure preserved |
-| Reproduction | 188 files and both manifests regenerate byte-identically; 34 capsule text files restore; restored C build and 20 tests pass |
-| Full mission O1-O6 | OPEN; core not admitted |
-| Public HF / Transformer KV / CUDA / GPU / 405B / <=8 GiB / native4BQ4 / TTFT | NOT TESTED |
-| Full repository / Actions | NOT RUN |
+| Constructor/source | Exact diagonal equality, streaming BF16 file, BCV1 packed signed+absolute polynomials;16/32 constructed |
+| Runtime | Current input only; no original matrix; exact integer convolution, rational certificate; no fallback |
+| Numeric theorem | Finite nonzero normal bounded BF16, separate FP32 products, adjacent balanced RNE tree, BF16 store; certified nonzero words only |
+| Queries |128 designed-structure queries;86 full vectors,42 unresolved |
+| Coordinates |53916/54272 certified with0 false certificates; all FP32 references inside enclosure |
+| Inexact accumulation |53937 FP32 sums differ from exact real sums; not integer-only exact-island tests |
+| Generality |8 generic+8 individually perturbed matrices rejected; low displacement not proved for original checkpoints |
+| Costs | Actual source bytes/operand bits/partial ledger, not physical traffic or latency; no complete10x bound |
+| Independent checks |65278 BF16 roundtrips,1000 FP32 rational cases,100 small trees, signed pack/convolution and adversarial tests |
+| Unit/reproduction |15 pass;435 generated files+manifest byte-identical |
+| Whole mission O1-O6 |OPEN; no core promotion |
+| Public HF/Transformer KV/RNG/GPU/405B/4B/TTFT |NOT TESTED |
+| Repository suite/Actions |NOT RUN |
 
-Capsules contain exact source, preregistration, logs, per-query text records, full report and hashes. Binary arrays/program files are deterministically regenerated and hash-checked, not all embedded remotely. Logical byte/word counts are not physical traffic, peak VRAM or latency. Remote commit verification is a separate persistence axis.
+Capsule contains14 complete text files and hashes. Large binary/per-coordinate data
+are regenerated against the recorded manifest, not all stored in capsule. Archival
+XZ is not an inference codec. Remote commit verification is a separate status.

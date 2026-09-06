@@ -1,0 +1,16 @@
+{
+  "contents": "all source/tests/report/prereg, raw per-query records and file hashes; generated binary/coordinate files are not embedded",
+  "files": 14,
+  "format": "VBC-text-capsule-1",
+  "part_characters": [
+    8192,
+    8192,
+    8192,
+    8192,
+    8192,
+    7968
+  ],
+  "parts": 6,
+  "text_sha256": "51f443bc4cd18736aa29319290604d050fa98622343aa84d5b28b44661f92600",
+  "xz_sha256": "f5e9594d42182d349d5d1311f18042292ec6131c244d5487366c8e8bbfee4e04"
+}

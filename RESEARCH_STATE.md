@@ -1,6 +1,6 @@
 # Research state — 2026-09-07
 
-The fixed mission and CTC-2026-09-05 remain unchanged. No universal cheap checkpoint-derived source, whole-state/RNG executor or sufficient 405B/8-GiB/native4BQ4 bound was constructed. This is not a hardware-only gap.
+Fixed mission and CTC-2026-09-05 unchanged. [Current bounded source/proof/budget](experiments/boundary_convolution_20260907/REPORT.md).
 
 ```
 THEORY_STATUS=NOT_ESTABLISHED
@@ -10,12 +10,24 @@ FULL_MISSION_O1_O6=OPEN
 THREE_QUALIFYING_NEW_PRINCIPLES=false
 ```
 
-[Current bounded algorithm, proof, budget and reproduction](experiments/signed_orbit_20260907/REPORT.md): finite BF16 -> ordered FP32 rounded-tree signed-orbit compiler, two-slot reference and optimized C zero/nonfinite mirror rules. Exactness is independent of sparse residual/rank/small input change; small graph size is not guaranteed. This remains auxiliary E1, not a new universal computation principle.
+Constructed streaming exact-Toeplitz BCV1 source, signed/absolute polynomial query,
+and rational enclosure of original balanced FP32 tree followed by BF16 store.
+No original matrix at query time; information remains in packed source and its costs.
+This differs from same-input-position sign/dyadic subtree sharing, but uses known
+structured/Kronecker tools and is NOT a new universal execution principle.
 
-C returns 87,040 matching coordinates over 192 registered queries. Four structured 2048 controls have small code/logical traffic; generic BF16 controls fail the leaf budget, including two 256 cases refused before full construction. Conservative integer/address accounting does not certify complete work <=10%. Logical access is not measured memory traffic or latency.
+32 builders:16 constructed,16 refused.128 structured queries:86 exact vectors,42
+unresolved;53916/54272 certified coordinates match. All native FP32 sums enclosed;
+53937 are not exact real sums. Planted1024 source files are1.7583%-2.1487% of raw
+weights, NOT traffic/speed. Ordinary1024 whole-query success is0/16. Generic rank
+minors rule out the specific64-bit generator budget, not all representations.
 
-Preparation retains full W/refs and several scans; magnitude leaves, code addresses, scratch and local exception work are paid. Original CUDA/FMA ABI, Transformer/KV/RNG continuation and target resource closure remain OPEN. A small non-Transformer state/RNG smoke test is not full-state validation.
+Uniform construction, full native/state/RNG continuation, all-work resource upper
+bounds and405B closure remain OPEN, not just unmeasured hardware. Bigint products,
+packing, certificate work, failures and preparation are paid, never unit-cost/free.
+15 unit tests;435 output files plus manifest reproduce. No public HF, Transformer,
+GPU,405B,4B baseline,TTFT,full-repo suite or Actions was run.
 
-Twenty unit tests and exact regeneration of 188 files plus two manifests validate the bounded code. Initial incorrect graph-count test failure and subsequent preregistered refinement are preserved. No public checkpoint, GPU, 405B, 4B baseline, TTFT, full-repository suite or Actions was run.
-
-[Previous state preserved byte-for-byte](docs/research/history/pre_signed_orbit_20260907/RESEARCH_STATE.md). Architecture is not promoted; historical ledgers/policies remain unchanged. Report remote handoff only after branch/commit read-back.
+[Previous state retained byte-for-byte](docs/research/history/pre_boundary_convolution_20260907/RESEARCH_STATE.md).
+Architecture is not promoted. New decision/assumption/failure addendum is in the report;
+old root ledgers and policies remain unchanged. Verify remote SHA before handoff claim.

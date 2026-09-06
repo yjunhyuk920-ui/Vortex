@@ -1,13 +1,25 @@
 # Next constructive obligation — 2026-09-07
 
-Start from the actual latest remote head and CTC-2026-09-05; do not assume main contains these draft rounds. Fixed mission and O1-O6 remain OPEN.
+Start from the verified latest remote, CTC-2026-09-05 and unchanged O1-O6.
+[Current exact source and its limits](experiments/boundary_convolution_20260907/REPORT.md).
 
-The signed-orbit round constructed a native ordered-tree numeric sharing rule, but not a cheap universal information source. A source/key for every distinct (column, weight magnitude) already exceeds budget on generic controls. Structured Walsh inputs/checkpoints cannot replace the original mission. [Algorithm and paid scope](experiments/signed_orbit_20260907/REPORT.md).
+Boundary convolution supplies a concrete collective exact sum and error-norm source
+on Toeplitz matrices. It does not supply a small generator for arbitrary original
+weights, or guarantee every BF16 coordinate's certificate. Whole vectors fail even
+when most coordinates certify. Do not label safe abort as exact fast execution.
 
-The next primary construction must obtain the collective effect of many differing weight magnitudes from current input without a per-coefficient leaf scan, a dense correction/Gram, or an unproved small circuit/recurrence. Name its original Transformer operation, constructor/address rule, exact native/state equation, actual stored bytes and full paid schedule. Compare materially different premise reversals and admit a core only with a credible >=10x path, then close remaining native/causal/state/full-cost obligations. A conditional fast path is not full theory acceptance.
+The next core must construct a cheap collective native information source from the
+actual original checkpoint without assuming ordinary/displacement rank, scalar
+histogram sufficiency, coefficient-leaf reuse or free dense correction. Define the
+constructor, runtime address rule, original numeric/state equation and complete
+byte/work schedule. Confront the general-weight information source before enlarging
+structured demonstrations. Preserve the three-principle comparison and>=10x entry
+criterion, but never mark three known reformulations as three qualifying inventions.
 
-Do not substitute DAG-cap/variable-order expansion, CSE renaming, larger Walsh tests, low-bit conversion, small residual/nonnegative assumptions or GPU porting for that missing construction. The simple real gate form SiLU(Ax)=B SiLU(x)+Cx permits only signed permutations for invertible A; this narrow classification does not exclude more general conjugated gates. A new representation must supply the latter rather than assume it.
+Do not merely expand Toeplitz/Walsh matrices, shift/basis searches or bigint radix,
+port this prototype to GPU, or repair uncertain rows for free. Removing a numerical
+certificate gap alone is not a universal source. Report all coordinate AND vector
+outcomes, construction, temporary memory, failure tails and original state costs.
 
-Preserve initial negative tests and favorable-control labels. Use cheapest decisive tests, but do not fill the core track with rejection-only reports. Prepare independent native and successor-state proofs and target-scale upper bounds, not favorable rooflines alone. Remote recording and hardware verification remain independent.
-
-[Previous next-experiment record preserved byte-for-byte](docs/research/history/pre_signed_orbit_20260907/NEXT_EXPERIMENT.md).
+[Prior next record unchanged](docs/research/history/pre_boundary_convolution_20260907/NEXT_EXPERIMENT.md).
+One failed candidate is not a global impossibility proof or a solution to the mission.
