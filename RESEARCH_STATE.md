@@ -28,3 +28,9 @@ Remote persistence is reported by post-commit read-back, not inferred from this 
 [Report](experiments/input_routed_20260906/docs/REPORT_KO.md) and [obligations/handoff](experiments/input_routed_20260906/HANDOFF.md). Concrete Boolean constructor, native RNE output circuit, compact VRC1 serializer and sparse-memo query interpreter were implemented. Native proof is limited to exactly represented bounded integer inputs/weights, not arbitrary BF16 or a full Transformer. Six completed builds produce 0/4,640 observed output mismatches; 26 are refused at the fixed constructor cap. This does not establish a cheap source or a lower bound against all representations.
 
 The small pilot's root-pointer floor makes its all-cases 10% gate unsuitable as a target-scale verdict. No scale extrapolation is made. Bounded auxiliary E1 only; THREE_QUALIFYING_NEW_PRINCIPLES=false. Full THEORY/HARDWARE/CORE/O1-O6 fields above remain unchanged. Earlier local bundles were read as context only.
+
+## Additive E0 source-budget attempt — 2026-09-06
+
+[Proofs, cost ledger and O1-O6](experiments/source_budget_20260906/docs/REPORT_KO.md). Affine-offset sharing, native subtree tabulation and independent attainable-interval certification were compared; no qualifying source was constructed. The fixed-format mixed-block storage minimum and a scoped interval necessary condition were derived and checked. These remove neither the general generator obligation nor the full native/state/budget gap.
+
+This was E0 analytical screening, not an E1 executor or a model experiment. No full subtree/transition table was built. THREE_QUALIFYING_NEW_PRINCIPLES=false; THEORY_STATUS=NOT_ESTABLISHED; CORE_ADMISSION=false; HARDWARE_STATUS=NOT_TESTED; full O1-O6=OPEN. Persistence is separate from scientific completion.
