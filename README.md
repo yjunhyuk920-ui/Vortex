@@ -1,26 +1,17 @@
 # VORTEX
 
-The fixed mission remains arbitrary public unmodified HF dense 405B, one total-8-GiB GPU, batch one, original output/RNG/required successor state, same-machine native 4B Q4 p50 <=1.2x, p95 <=1.5x and the existing TTFT requirement. **Not achieved.**
+Fixed mission: arbitrary public unmodified HF dense 405B, batch one, one total-8-GiB GPU, original output/RNG/required successor state, same-machine native 4B Q4 p50 <=1.2x, p95 <=1.5x, and the existing TTFT requirement. **Not achieved.** All preparation, original/transformed storage, movement, arithmetic, metadata and state costs count.
 
 ## Current bounded construction — 2026-09-07
 
-[Joint moments, exact energy verification and a five-moment positive certificate](experiments/joint_energy_20260907/REPORT.md).
+[Native signed-orbit compiler and C executor](experiments/signed_orbit_20260907/REPORT.md). It shares original ordered rounded subtrees and their sign-mirrored evaluations, preserving signed zero and local nonfinite exceptions in a declared BF16-input/FP32-tree CPU ABI. It does not assume sparse residuals or small input changes. It is not a verified Hugging Face/CUDA replacement.
 
-A finite <=2-residual constructor/query program was implemented. A follow-on nonnegative annihilator removes the dense Gram verifier, but its strictly positive dense-input success implies rank(W)<=3 in this representation. Arbitrary native rounding, general residual complexity, full successor state and the target budget remain unresolved. This is auxiliary E1, not an admitted core or a closed theory.
+Deliberately structured dense full-rank 2048 Walsh controls use 2.442% code bytes and at most about 6.11% logical code/data traffic relative to original BF16 weight payload. This is not latency. General BF16 controls do not obtain these reductions, and integer/address work prevents a certified whole-work 10x claim. No core engine is admitted.
 
-There are 27 exact returns among 71 registered queries and 44 unresolved/unsupported cases. All 2,368 returned coordinates match. Ordinary dense control groups have no successful returns; favorable controls were deliberately constructed. Twenty-one local tests pass and 63 manifest-listed files reproduce; no model, GPU, KV/RNG, latency or Actions test was run.
+192 C queries / 87,040 output coordinates match FP32/BF16 references. Twenty unit tests pass; 188 generated evidence files and two manifests reproduce byte-exactly. The checked capsule contains all sources, tests, preregistrations, raw text observations, hashes and full Korean report; binary arrays are regenerated and hash-checked. See the report for commands and scope.
 
-```
-python experiments/joint_energy_20260907/restore.py --out /tmp/vortex-joint-energy
-cd /tmp/vortex-joint-energy
-python -m unittest discover -s tests -v
-python src/run.py --out results/reproduced
-```
+`THEORY_STATUS=NOT_ESTABLISHED`, `HARDWARE_STATUS=NOT_TESTED`, `CORE_ADMISSION=false`, `FULL_MISSION_O1_O6=OPEN`, `THREE_QUALIFYING_NEW_PRINCIPLES=false`, `README_CURRENT=true`.
 
-The checked archive preserves all sources, tests, frozen inputs, raw observations, actual packets and full Korean report. Its compression is archival, not an inference claim.
+[State](RESEARCH_STATE.md), [next obligation](NEXT_EXPERIMENT.md), [validation](VALIDATION_MATRIX.md), [AGENTS](AGENTS.md), [mission](MISSION_AND_WORKING_PRINCIPLES.md), [constructive contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md).
 
-`THEORY_STATUS=NOT_ESTABLISHED`, `HARDWARE_STATUS=NOT_TESTED`, `CORE_ADMISSION=false`, `FULL_MISSION_O1_O6=OPEN`, `README_CURRENT=true`.
-
-[State](RESEARCH_STATE.md), [next construction](NEXT_EXPERIMENT.md), [validation](VALIDATION_MATRIX.md), [AGENTS](AGENTS.md), [mission](MISSION_AND_WORKING_PRINCIPLES.md), [constructive contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md).
-
-The complete previous README is [preserved byte-for-byte](docs/research/history/pre_joint_energy_20260907/README.md). Historical relative links in that snapshot are interpreted from their original repository-root location. All earlier files, failed evidence and policies remain unchanged. Parent: verified PR #130 head `e5d7c9ecde971def1245beb1edf2e84c12443dba`. Remote persistence is separate from scientific completion.
+[Previous README preserved byte-for-byte](docs/research/history/pre_signed_orbit_20260907/README.md). Historical relative links retain their original root meaning. Prior policies, experiments and negative evidence are unchanged. Parent: PR #131 head `8262178842ec4699a45093f3c29a669cfc158481`. A remote commit records evidence; it does not complete the theory or hardware mission.
