@@ -1,6 +1,6 @@
 # Research state — 2026-09-07
 
-The fixed mission and CTC-2026-09-05 remain unchanged. No universal cheap checkpoint-derived native source, whole state/RNG executor or sufficient 405B/8-GiB/baseline bound was constructed. This is not a hardware-only gap.
+The fixed mission and CTC-2026-09-05 remain unchanged. No universal cheap checkpoint-derived source, whole-state/RNG executor or sufficient 405B/8-GiB/native4BQ4 bound was constructed. This is not a hardware-only gap.
 
 ```
 THEORY_STATUS=NOT_ESTABLISHED
@@ -10,12 +10,12 @@ FULL_MISSION_O1_O6=OPEN
 THREE_QUALIFYING_NEW_PRINCIPLES=false
 ```
 
-[Actual algorithm, scope, cost and reproduction](experiments/joint_energy_20260907/REPORT.md): four-moment <=2-coordinate recovery plus exact Gram energy verification; subsequent five-moment nonnegative annihilator with no Gram/residual file. Conditional correctness is proved in the guarded integer-to-native reference domain. The source does not assume a perfect selector or silently use a dense fallback.
+[Current bounded algorithm, proof, budget and reproduction](experiments/signed_orbit_20260907/REPORT.md): finite BF16 -> ordered FP32 rounded-tree signed-orbit compiler, two-slot reference and optimized C zero/nonfinite mirror rules. Exactness is independent of sparse residual/rank/small input change; small graph size is not guaranteed. This remains auxiliary E1, not a new universal computation principle.
 
-Energy verification pays a dense n-by-n Gram. The positive path needs R>=0 and x>=0; on strictly positive dense inputs its s<=2 success requires rank(W)<=3. Signed decomposition can destroy sparsity, and general post-rounding source generation is not supplied. Large int64 moment overflow is refused, not hidden.
+C returns 87,040 matching coordinates over 192 registered queries. Four structured 2048 controls have small code/logical traffic; generic BF16 controls fail the leaf budget, including two 256 cases refused before full construction. Conservative integer/address accounting does not certify complete work <=10%. Logical access is not measured memory traffic or latency.
 
-27/71 registered queries return exact outputs (2,368 coordinates); the remaining 44 return no output. Deliberately favorable controls are not public-model evidence. Both ordinary dense groups return no results. Twenty-one unit tests and 63 manifest-listed deterministic artifacts validate limited code, not the fixed mission.
+Preparation retains full W/refs and several scans; magnitude leaves, code addresses, scratch and local exception work are paid. Original CUDA/FMA ABI, Transformer/KV/RNG continuation and target resource closure remain OPEN. A small non-Transformer state/RNG smoke test is not full-state validation.
 
-All O1-O6 remain OPEN at mission scope. A detailed sub-obligation ledger and full Korean proof report are preserved in the checked archive. No public checkpoint, Transformer/KV/RNG, GPU, 405B, 4B baseline, TTFT, full-repository suite or Actions was executed.
+Twenty unit tests and exact regeneration of 188 files plus two manifests validate the bounded code. Initial incorrect graph-count test failure and subsequent preregistered refinement are preserved. No public checkpoint, GPU, 405B, 4B baseline, TTFT, full-repository suite or Actions was run.
 
-[Previous state preserved byte-for-byte](docs/research/history/pre_joint_energy_20260907/RESEARCH_STATE.md). Prior policies and all historical evidence are unchanged. Remote handoff is reported only after actual branch/commit read-back.
+[Previous state preserved byte-for-byte](docs/research/history/pre_signed_orbit_20260907/RESEARCH_STATE.md). Architecture is not promoted; historical ledgers/policies remain unchanged. Report remote handoff only after branch/commit read-back.
