@@ -1,0 +1,66 @@
+{
+  "date": "2026-09-06",
+  "base_commit": "cfb28c0a803ce16e9eaf6fbefab0ad40a8aa0c76",
+  "mission": "Unmodified arbitrary public HF dense405B; batch1; total single-GPU VRAM<=8GiB; original output/RNG/successor-state; same-machine4BQ4 p50<=1.2,p95<=1.5; existing TTFT; every cost charged.",
+  "scope": "Constructive whole-operator algebra and cheapest native/cost gates, not a target executor or broad separator corpus.",
+  "hypotheses": [
+    {
+      "id": "A",
+      "principle": "Eliminate hidden channels by compiling the quadratic even component of the entire SwiGLU block; derive the remaining odd component explicitly.",
+      "equations": "F(x)=1/2 D[(Gx)*(Ux)] + 1/2 D[(Gx)*(Ux)*tanh(Gx/2)]",
+      "tenfold_route": "Would require both components to have a complete native executable representation with <=0.1 original dominant traffic/work. A short formula or free odd residual does not qualify.",
+      "decisive_tests": "Exact quadratic compiler; nonzero odd component when quadratic tensor is zero; full symmetric tensor size; BF16 native rewrite.",
+      "novelty": "Extends prior consumer symmetry to the actual standard whole block; not asserted a new fundamental principle."
+    },
+    {
+      "id": "B",
+      "principle": "Transport an additive fixed projection into multiplicative monomials before nonlinear activation; compile dyadic weights into exponent programs.",
+      "equations": "W_ij=2^-q_j A_ij; z_j=exp(2^-q_j x_j); exp((Wx)_i)=product_j z_j^A_ij.",
+      "tenfold_route": "Requires a short simultaneously evaluable monomial program, bit-exact native lift and charged code traffic. Count an explicit binary-power program before backend work.",
+      "decisive_tests": "Integer power instruction counts and full-block native gate replacements; retain native up/down cost.",
+      "novelty": "A concrete alternative representation, not claimed new to mathematics or accepted as a core."
+    },
+    {
+      "id": "C",
+      "principle": "Transport attention queries back through key projection and store latent histories rather than materialized projected keys.",
+      "equations": "q^T(W_K h)=(W_K^Tq)^T h in real arithmetic.",
+      "tenfold_route": "Must remove more projection traffic than new transformed-query work/history traffic, preserve rounded key effect and all continuation state.",
+      "decisive_tests": "Native two-key attention counterexample and latent history width/traffic formulas; no full decoder unless the gate passes.",
+      "novelty": "Classic duality used as a concrete whole-operation candidate, not counted as an unprecedented principle."
+    }
+  ],
+  "seeds": [
+    7,
+    29,
+    101,
+    509
+  ],
+  "synthetic_shape": {
+    "d": 8,
+    "hidden": 16,
+    "out": 8
+  },
+  "inputs_per_seed": 16,
+  "abi": "CPU torch BF16 operands, explicit FP32 multiply and balanced add tree, BF16 projection output; SiLU BF16 primitive; BF16 elementwise product; same down reduction. Real identities separate.",
+  "exact_compiler_shape": {
+    "d": 3,
+    "hidden": 4,
+    "out": 2
+  },
+  "exact_input_grid": [
+    -2,
+    -1,
+    0,
+    1,
+    2
+  ],
+  "scale_example": {
+    "d": 16384,
+    "hidden": 53248,
+    "out": 16384,
+    "label": "Declared illustrative large-model dimensions, not downloaded checkpoint measurement"
+  },
+  "reject": "Any uncorrected native mismatch rejects that rewrite; >=10x entry gate separate from mission; no zero residual, free primitive, oracle state, or rank/compressibility assumption.",
+  "O1_O6": "All remain OPEN unless a mission-wide construction independently closes them; scoped algebra cannot close them.",
+  "prohibited_extensions": "No enlarged complete transition truth tables, no automatic reopening of failed rank/state families, no GPU performance claims, no full backend after rejection."
+}

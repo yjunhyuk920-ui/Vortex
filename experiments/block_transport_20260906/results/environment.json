@@ -1,0 +1,9 @@
+{
+  "ABI": "CPU torch BF16 operands, explicit FP32 multiply and balanced add tree, BF16 projection output; SiLU BF16 primitive; BF16 elementwise product; same down reduction. Real identities separate.",
+  "cuda_available": false,
+  "numpy": "2.3.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "torch": "2.10.0+cpu",
+  "torch_threads": 1
+}

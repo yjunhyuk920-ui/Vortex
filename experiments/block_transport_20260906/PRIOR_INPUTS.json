@@ -1,0 +1,12 @@
+[
+  {
+    "filename": "vortex_native_event_research_20260906.zip",
+    "sha256": "1fba790942d6cdd4149c5a4483d0d69907db64509f28e54fbd68245292727f6d",
+    "role": "Local prior-round context; not merged as current work"
+  },
+  {
+    "filename": "vortex_native_contraction_20260906.zip",
+    "sha256": "dd84eb16b178604bab3171601912e91b70616d7d34b404758b6b8535c633be5b",
+    "role": "Local prior-round context; not merged as current work"
+  }
+]

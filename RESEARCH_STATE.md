@@ -16,3 +16,9 @@ FULL_MISSION_O1_O6=OPEN
 
 [Next obligation](NEXT_EXPERIMENT.md), [validation](VALIDATION_MATRIX.md), [unchanged previous state](docs/research/history/pre_theory_closure_20260905/RESEARCH_STATE.md).
 Remote persistence is reported by post-commit read-back, not inferred from this file. Prior failure evidence and policy remain unchanged.
+
+## Additive round — 2026-09-06 whole-block transport
+
+[Detailed report and O1-O6 ledger](experiments/block_transport_20260906/docs/REPORT_KO.md). A finite rational quadratic constructor and a serialized dyadic monomial constructor were implemented. Their real-algebra identities do not provide cheap native SwiGLU execution. The omitted nonlinear term remains essential; direct tensor materialization increases storage, and the tested power programs increase code and arithmetic. Attention pullback changes a declared rounded consumer output.
+
+`THREE_QUALIFYING_NEW_PRINCIPLES=false`; all earlier THEORY/HARDWARE/CORE/FULL_MISSION fields remain unchanged. The 12 passed tests validate scoped constructors and rejection detection, not a fast native model. Prior local event/contraction bundles were context only, not merged or retrospectively declared remotely verified. No impossibility theorem is claimed.

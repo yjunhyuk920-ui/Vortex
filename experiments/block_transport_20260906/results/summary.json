@@ -1,0 +1,285 @@
+{
+  "attention_transport_counterexample": {
+    "Wk": [
+      [
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        2.0
+      ]
+    ],
+    "history": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        256.0
+      ]
+    ],
+    "native_output": [
+      0.5
+    ],
+    "native_scores": [
+      0.0,
+      0.0
+    ],
+    "native_words": [
+      16128
+    ],
+    "projected_keys": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        256.0,
+        512.0
+      ]
+    ],
+    "pulled_query": [
+      1.0,
+      0.0
+    ],
+    "query": [
+      2.0,
+      -1.0
+    ],
+    "scope": "One explicit rounded attention operation, not a full HF decoder or RNG/state test",
+    "transported_output": [
+      0.66796875
+    ],
+    "transported_scores": [
+      0.0,
+      1.0
+    ],
+    "transported_words": [
+      16171
+    ]
+  },
+  "compared_output_words": 512,
+  "decision": "Do not enlarge these three unqualified routes. No fast residual/word-corrector has been constructed.",
+  "exact_rational_quadratic_outputs_checked": 250,
+  "float64_identity_max_absolute_error": 8.881784197001252e-16,
+  "full_block_inputs": 64,
+  "mission": {
+    "CORE_ADMISSION": false,
+    "HARDWARE_STATUS": "NOT_TESTED",
+    "O1_O6": "OPEN",
+    "THEORY_STATUS": "NOT_ESTABLISHED",
+    "public_checkpoint_tested": false,
+    "three_qualifying_new_principles_constructed": false
+  },
+  "monomial_direct_errors": 0,
+  "monomial_direct_mismatches": 232,
+  "monomial_gate_rounded_errors": 0,
+  "monomial_gate_rounded_mismatches": 0,
+  "monomial_programs": [
+    {
+      "binary_power_and_product_multiplications": 626,
+      "divisions": 16,
+      "exp_evaluations": 8,
+      "log_evaluations": 16,
+      "original_weight_bytes": 256,
+      "packed_program_bytes": 1306,
+      "power_references": 561,
+      "power_table_fp64_bytes": 840,
+      "reference_projection_additions": 112,
+      "reference_projection_multiplications": 128,
+      "seed": 7
+    },
+    {
+      "binary_power_and_product_multiplications": 624,
+      "divisions": 16,
+      "exp_evaluations": 8,
+      "log_evaluations": 16,
+      "original_weight_bytes": 256,
+      "packed_program_bytes": 1296,
+      "power_references": 556,
+      "power_table_fp64_bytes": 864,
+      "reference_projection_additions": 112,
+      "reference_projection_multiplications": 128,
+      "seed": 29
+    },
+    {
+      "binary_power_and_product_multiplications": 610,
+      "divisions": 16,
+      "exp_evaluations": 8,
+      "log_evaluations": 16,
+      "original_weight_bytes": 256,
+      "packed_program_bytes": 1284,
+      "power_references": 550,
+      "power_table_fp64_bytes": 800,
+      "reference_projection_additions": 112,
+      "reference_projection_multiplications": 128,
+      "seed": 101
+    },
+    {
+      "binary_power_and_product_multiplications": 626,
+      "divisions": 16,
+      "exp_evaluations": 8,
+      "log_evaluations": 16,
+      "original_weight_bytes": 256,
+      "packed_program_bytes": 1292,
+      "power_references": 554,
+      "power_table_fp64_bytes": 896,
+      "reference_projection_additions": 112,
+      "reference_projection_multiplications": 128,
+      "seed": 509
+    }
+  ],
+  "native_accumulation_counterexample": {
+    "W": [
+      [
+        16777216.0,
+        1.0,
+        -16777216.0,
+        1.0
+      ]
+    ],
+    "exact_rational_sum": "2",
+    "native_balanced_FP32_then_BF16": [
+      1.0
+    ],
+    "x": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "native_monomial_counterexample": {
+    "D": [
+      [
+        1.0
+      ]
+    ],
+    "G": [
+      [
+        1.0,
+        0.00390625
+      ]
+    ],
+    "U": [
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "native_gate": [
+      1.0
+    ],
+    "native_output": [
+      0.73046875
+    ],
+    "native_words": [
+      16187
+    ],
+    "real_gate_exact": "257/256",
+    "transported_output": [
+      0.734375
+    ],
+    "transported_words": [
+      16188
+    ],
+    "x": [
+      1.0,
+      1.0
+    ]
+  },
+  "native_parity_rewrite_mismatches": 309,
+  "performance": "All counts are logical/derived; no native4B baseline, GPU VRAM, TTFT or latency measurement",
+  "preregistration_sha256": "90e5da2d8b06f07d057f7d4fb0b86dbf010ee0f9e12b000718907947ea6c5679",
+  "scale": {
+    "coefficient_ratio": 840.2564102564103,
+    "dense_constructor_scalar_multiply_upper_bound": 702561541869797376,
+    "dimensions": {
+      "hidden": 53248,
+      "input": 16384,
+      "output": 16384
+    },
+    "exact_tensor_coefficient_format": "arbitrary dyadic rational; two-byte assumption above is optimistic, NOT exact encoding",
+    "odd_direct_branch_alone_vs_original_projection_reads": 1.0,
+    "odd_direct_projection_coefficient_reads": 2617245696,
+    "optimistic_two_bytes_per_tensor_coefficient_GiB": 4096.25,
+    "original_BF16_projection_payload_GiB": 4.875,
+    "original_projection_coefficients": 2617245696,
+    "source": "Declared illustrative scale, not a loaded checkpoint",
+    "symmetric_quadratic_coefficients": 2199157473280,
+    "tensor_query_scalar_multiply_count": 2199291699200
+  },
+  "scope": "E0/E1 scoped construction and cheapest rejection gates; no new mission core",
+  "seed_count": 4,
+  "zero_quadratic_nonzero_output": {
+    "D": [
+      [
+        -1.0,
+        0.5,
+        0.125,
+        -0.0625
+      ]
+    ],
+    "G": [
+      [
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        2.0
+      ],
+      [
+        1.0,
+        -2.0
+      ]
+    ],
+    "U": [
+      [
+        2.0,
+        2.0
+      ],
+      [
+        4.0,
+        -4.0
+      ],
+      [
+        8.0,
+        16.0
+      ],
+      [
+        16.0,
+        -32.0
+      ]
+    ],
+    "all_weight_entries_nonzero": true,
+    "exact_zero_quadratic": true,
+    "native_minus_input_output": [
+      -7.78125
+    ],
+    "native_output": [
+      7.875
+    ],
+    "native_words": [
+      16636
+    ],
+    "quadratic_coefficients": [
+      [
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "scope": "Explicit synthetic standard SwiGLU block; refutes retaining only its quadratic even summary",
+    "x": [
+      1.0,
+      2.0
+    ]
+  }
+}
