@@ -1,25 +1,23 @@
-# Next constructive obligation — 2026-09-07
+# Next constructive obligation - 2026-09-07
 
-Start from the verified latest remote, CTC-2026-09-05 and unchanged O1-O6.
-[Current exact source and its limits](experiments/boundary_convolution_20260907/REPORT.md).
+Start from verified current remote plus explicitly uncommitted local records.
+Fixed mission and CTC-2026-09-05/O1-O6 unchanged.
+[Current causal source and exact limits](experiments/causal_cut_20260907/REPORT.md).
 
-Boundary convolution supplies a concrete collective exact sum and error-norm source
-on Toeplitz matrices. It does not supply a small generator for arbitrary original
-weights, or guarantee every BF16 coordinate's certificate. Whole vectors fail even
-when most coordinates certify. Do not label safe abort as exact fast execution.
+Token-ID lookup closes runtime source generation only before the first history
+interaction; it removes less than0.1% of full-scale projection work. Do not enlarge
+the vocabulary table, enumerate more branches or substitute lazy KV handles for
+a cheap producer of consumed values. A current-token/position-only second-layer
+lookup fails on recorded equal-address/different-value witnesses.
 
-The next core must construct a cheap collective native information source from the
-actual original checkpoint without assuming ordinary/displacement rank, scalar
-histogram sufficiency, coefficient-leaf reuse or free dense correction. Define the
-constructor, runtime address rule, original numeric/state equation and complete
-byte/work schedule. Confront the general-weight information source before enlarging
-structured demonstrations. Preserve the three-principle comparison and>=10x entry
-criterion, but never mark three known reformulations as three qualifying inventions.
+Construct the actual history-dependent native information source, not an unnamed
+compressed context or rule. Give the automatic constructor, runtime address/value
+procedure, successor-state/RNG equation and paid construction/byte/work schedule.
+Do not assume sparse residuals, structured weights, free verification or cheap
+input-specific rule generation. Compare materially distinct premises and require
+a credible>=10x whole-work route before a core backend; tests on a tiny cut cannot
+replace that gate. A safe abort or measured side lemma is not mission completion.
 
-Do not merely expand Toeplitz/Walsh matrices, shift/basis searches or bigint radix,
-port this prototype to GPU, or repair uncertain rows for free. Removing a numerical
-certificate gap alone is not a universal source. Report all coordinate AND vector
-outcomes, construction, temporary memory, failure tails and original state costs.
-
-[Prior next record unchanged](docs/research/history/pre_boundary_convolution_20260907/NEXT_EXPERIMENT.md).
-One failed candidate is not a global impossibility proof or a solution to the mission.
+All possible context encodings or universal algorithms are NOT ruled out by this
+bounded result. Keep architectural neutrality and search for the missing source.
+[Prior next unchanged](docs/research/history/pre_causal_cut_20260907/NEXT_EXPERIMENT.md).

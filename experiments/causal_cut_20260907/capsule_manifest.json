@@ -1,0 +1,31 @@
+{
+  "file_count": 17,
+  "capsule_sha256": "b81e265342be73e0fc62d26fe9255c80bffc19547a1b0d4238b89f06ab859e36",
+  "names": [
+    "HANDOFF.md",
+    "PREREGISTRATION.json",
+    "README.md",
+    "docs/REPORT_KO.md",
+    "results/manifest.json",
+    "results/run/dependencies.json",
+    "results/run/history_witnesses.json",
+    "results/run/scale.json",
+    "results/run/summary.json",
+    "results/tests.txt",
+    "results/validation.json",
+    "sources/PRIMARY_SOURCES.json",
+    "sources/PRIOR_LOCAL.json",
+    "src/analyze.py",
+    "src/causal_cut.py",
+    "src/check_reproduction.py",
+    "tests/test_cut.py"
+  ],
+  "generated_manifest_count": 32,
+  "raw_trace_and_binary_storage": "Generated from preserved source and checked against original32-file hashes; full originals in local user ZIP",
+  "parts": [
+    "capsule.part0.b64",
+    "capsule.part1.b64",
+    "capsule.part2.b64",
+    "capsule.part3.b64"
+  ]
+}
