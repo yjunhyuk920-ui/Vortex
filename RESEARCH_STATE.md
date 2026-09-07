@@ -1,7 +1,7 @@
-# Research state - 2026-09-07
+# Research state — 2026-09-07
 
 Fixed mission/CTC-2026-09-05 unchanged.
-[Current algorithm, proof, costs and evidence](experiments/causal_cut_20260907/REPORT.md).
+[Current source, proofs, costs and evidence](experiments/context_response_20260907/REPORT.md).
 
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
@@ -9,20 +9,21 @@ CORE_ADMISSION=false
 FULL_MISSION_O1_O6=OPEN
 THREE_QUALIFYING_NEW_PRINCIPLES=false
 
-Constructed finite-vocabulary native-prefix table, checkpoint/ABI binding and
-pread-only query, with first Q/K/V/norm arrays removed from the synthetic runner.
-48 IDs/2528 coordinates match;160 independent causal steps preserve logits/KV/RNG.
-This discharges a bounded replacement lemma only. The same token/position has
-different second-layer values after different histories. Generic weight structure
-at this small cut does not imply a universal cheap history-dependent source.
+Constructed checked native-zero response index with real append, addresses,
+serialization and raw-KV reconstruction. Deferred zero-sign tags preserve original
+balanced FP32 PV order without visiting every zero leaf. Explicit sign-code Q/K
+geometry and matching query are required; no weight/input modification or fallback.
+640 conditional queries/10240 coordinates match;16 generic/perturbed keys reject.
+The source closes a bounded attention-state lemma, not all HF/native/RNG obligations.
 
-Official405B scale calculation removes0.0747966466% of projection MAC, with4.4033GiB
-extra table and38732015075328 construction MAC. Not a latency or VRAM measurement.
-Exhaustive next branches and lazy KV also lack a whole-work10x route; stopped before
-large backends. Partial evaluation is known; no claim of three new principles.
-20 tests/32-file reproduction passed. No public HF/CUDA/405B/4B/TTFT/Actions/full-repo
-suite. Prototype has whole small model and temporary copies, not a target memory bound.
+High response rank/state information does not force every-query full-state traffic:
+identity family admits indexed row retrieval. But the tested scheme leaves all
+Q/K/V/O/FFN dense projections. Whole-work10x is not established. At context4096,
+even free QK/PV leaves95.98% of counted405B MAC. Query p50 gains are not GPU latency;
+p95, online update, cold preparation and adverse repetitions are disclosed.
 
-[Previous state unchanged](docs/research/history/pre_causal_cut_20260907/RESEARCH_STATE.md).
-Report contains new decision/assumption/failure addendum; old root ledgers unchanged.
-Remote receipt is established by ref/PR/content read-back, not by this status file.
+16 tests; both241-file stages hash-reproduce and capsule restore/replay passes.
+Public model, full Transformer/RNG, CUDA/GPU/405B/4B/TTFT/Actions/full suite NOT TESTED.
+[Previous state unchanged](docs/research/history/pre_context_response_20260907/RESEARCH_STATE.md).
+Current decision/assumption/failure addendum is in the report; old root ledgers remain.
+Remote handoff is established by read-back, not by this status text.

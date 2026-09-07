@@ -1,0 +1,41 @@
+{
+  "expected_generated_manifest_sha256": {
+    "eager": "7a9e891a695d5f9e9210b2028c0c1120df6f73a7bce02b8086029ab2955fdd97",
+    "final": "6dd602321e3a7482b0e85e80792cdfbc048318e6e5f77e223609d210c60987d5"
+  },
+  "file_sha256": {
+    "HANDOFF.md": "36abf6a88f458629f81627a1fbd87f913507e2ec5f70ef09b5b49cf530bccbd6",
+    "PREREGISTRATION.json": "2b9759057212555a7beb2f8451244dc131c05701428cf44e207ce6096b57dd46",
+    "README.md": "b5b83bbe515c6b8cc0b70a1a65454dc60f0e9a09c1216299764f9c6b278d3cb9",
+    "SECOND_STAGE_REGISTRATION.json": "6290e5755196236a994f469b252cb97ddc4586e9c349b60b435d960448ac2d50",
+    "docs/REPORT_KO.md": "47b686c2ed8e1510d5c8517d41075902bad3762e9fde1d5406c8e23dd40fa3c1",
+    "requirements.txt": "7bd6b8946940b79948c548c8048e545684b91c8edc9444d8dfc0c8f76a97c0a7",
+    "results/eager_zero/summary.json": "37b916612fd0ad4b0c5b63c01719c672c6b7b7df0a2abef2bff0a73124370ec4",
+    "results/expected_manifest_hashes.json": "cd4a2df260cbeee35dc0bc9fd75f129d8744b0b86089dc48e250e5db9f3d2bde",
+    "results/run/interleaving.json": "10e017a1c7c6616ed4866976d894c2b0d9cb9a150a3944762e0e633a819a5107",
+    "results/run/rank.json": "ff5fe1e40472cd853957c649c15ffd2a02f2187f856111dc793415e07968a9d1",
+    "results/run/rejections.json": "66115f418fc5cb19ebf675460b2c95787dc9c9fc0db8f41bbde8c57e83e15f78",
+    "results/run/scale.json": "e76f35dd4b3e9d69a89c3f428d736e458e4270501190caf982ed49fca95ff5af",
+    "results/run/summary.json": "054a4d3b1dd1d105fef9154aa5b0e39fb6362c09303f9010ad363da3e553111a",
+    "results/validation.json": "4573da3dbcb598562f20e05adfcba7ec29e3b22ae1b4f9154fb59ee23b92f3f1",
+    "src/eager_zero_engine.py": "4c76bc0885f36a499d48952b319592f16df702c79a6325dd77ae0278f3df733d",
+    "src/engine.py": "6ff65a099124484d64db22275ba45f3d8c50d6d83365d0437b290bb27a4f3a6f",
+    "src/oracle.py": "af36f58f7842a0720113c014301e6be2ef9ef381783918c9da66208ea346ad6a",
+    "src/replay_eager.py": "efdf2a6017d05eb3db5d019a291b3f95d25ee4cc535d0160558a0f6723f8dc09",
+    "src/run.py": "c813084a44fa98ed011d005e6a10c465be2435503391caecabc5df4a94ee7f14",
+    "tests/test_engine.py": "084cedd894ca05cc746140765e16f21d59507d616ac388a80136c65aebea3c72"
+  },
+  "format": "UTF8_JSON_XZ_BASE64_V1",
+  "json_sha256": "b5fe468913d42f3db5fe466bae7d95bb6daed7bdf34de1f917bbb7e2e6ba4201",
+  "omitted_binaries": "All original NPY/bin/per-query traces are in user ZIP; regenerate both241-file sets and compare entire manifest SHA to anchors. No claim all binary bytes embedded remotely.",
+  "parts": [
+    "capsule.part00.b64",
+    "capsule.part01.b64",
+    "capsule.part02.b64",
+    "capsule.part03.b64",
+    "capsule.part04.b64",
+    "capsule.part05.b64"
+  ],
+  "scientific_status": "bounded auxiliary, no core admission; full O1-O6 OPEN; hardware NOT_TESTED",
+  "xz_sha256": "99692d21f088922960b527a6bb30a5009501579ff90794d08406211cd5633678"
+}
