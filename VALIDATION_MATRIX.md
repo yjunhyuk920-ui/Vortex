@@ -1,25 +1,24 @@
 # Validation matrix — 2026-09-07
 
-[Current report](experiments/residual_absorption_20260907/REPORT.md).
-[Replay instructions](experiments/residual_absorption_20260907/README.md).
-[Prior matrix unchanged](docs/research/history/pre_residual_absorption_20260907/VALIDATION_MATRIX.md).
+[Report](experiments/native_decision_geometry_20260907/REPORT.md).
+[Replay](experiments/native_decision_geometry_20260907/README.md).
+[Prior matrix unchanged](docs/research/history/pre_native_decision_geometry_20260907/VALIDATION_MATRIX.md).
 
-| Item | Evidence and boundary |
+| Item | Evidence and scope |
 |---|---|
-| Constructor |Exact dyadic L1 scan; scalar metadata; original hashes preserved; native endpoint tests|
-| Conditional source |Whole branch erased before matrix read, not approximate then replay|
-| Causal state |K/V writers preserved; global erasure permits token KV/logit table; induction context<=32|
-| Numerical trust |Fraction/C independent endpoint/projection checks; BF16 SiLU range exhaustive; stable exp an explicit ABI assumption|
-| Replay |8 synthetic models,256 guarded steps/8192 logits,128 table steps/4096 logits; raw KV and own RNG equal|
-| Coverage |4 high-scale favorable models qualify,4 do not; ordinary exact identities0; midscale true identities but proof misses|
-| Query |Favorable source read7.001%/MAC6.383%; table192B vs96896B source, not measured latency|
-| Full costs |Startup/precompute/KV actual FP32 storage separated;32-query bytes >=15.9% of selected source budget; target tables96.20GiB|
-| Source restoration |7 exact code/test/replay files;19 tests;455 run files+2 derivations repeat original manifest|
-| Universal theory |O1-O6 OPEN; CORE_ADMISSION=false; no3 qualifying universal principles|
-| Public model/full HF/RoPE/CUDA/405B/8GiB/4BQ4/TTFT |NOT TESTED / not constructed|
-| Actions/full repository suite |NOT RUN|
+| Constructor | Exact affine upper hulls/interval tree; no input-response enumeration; coefficient guard |
+| Numerical | Exact BF16 product domain; monotone FP32 thenBF16 rounding; earliest numeric tie; raw signedzero |
+| Selection | 9matrices67328queries: ID andselectedscore match C/NumPy; Fraction checks |
+| Causal | 256scalarsteps output/state/ownLCG match;2historypairs differ; NOT TransformerKV |
+| Storage/query | V4096 source~13.24x; p95logicalfields~2.7%; no physicaltraffic/latency claim |
+| Cold budget | Originalread+sourcewrite+reload+8queryfields~3.46x; build arithmetic/temp costs additional |
+| Whole-model | Freehead leaves99.47954% counted405B projections; core gate FAIL |
+| Counterexamples | Realwinner/native tie; multidim native rounding; sampler coupling; current-output quotient |
+| Replay | 13tests;51sciencefiles hash-identical;22textcapsule restored from emptyfolder |
+| Full mission | O1-O6OPEN;CORE_ADMISSION=false;3qualifyinguniversalprinciplesfalse |
+| Publicmodel/fullHF/logitAPI/softmaxsampler/fullKV/CUDA/405B/8GiB/4BQ4/TTFT | NOT TESTED / NOT CONSTRUCTED |
+| Actions/fullrepositorysuite | NOT RUN |
 
-Remote sources/reports/manifest persist; scientific raw files regenerate to original
-hashes. Complete raw binaries and development logs are in the user ZIP, not all
-embedded in Git. Source archival compression is not inference compression. Commit,
-scientific theorem and target hardware success are separate statuses.
+Independent C reference compilation is local, not GPU proof. Source archival XZ is
+not inference compression. Raw binaries regenerate to preserved manifest and are
+in userZIP. Remote commit, theory, and target hardware remain independent axes.

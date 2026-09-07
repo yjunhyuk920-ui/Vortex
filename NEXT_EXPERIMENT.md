@@ -1,22 +1,19 @@
 # Next constructive obligation — 2026-09-07
 
-Start from verified remote branch/SHA, not assumed main. Fixed mission/CTC/O1-O6 unchanged.
-[Current conditional source](experiments/residual_absorption_20260907/REPORT.md).
+Start from verified remote branch/SHA. Fixed mission/CTC/O1-O6 unchanged.
+[Current auxiliary evidence](experiments/native_decision_geometry_20260907/REPORT.md).
 
-A whole residual branch may be erased before weight reads if its native output
-fiber is proved. A global erasure certificate makes all-depth KV/logits token-indexed
-without history enumeration, but qualifying models are already context-blind over
-that domain. This does not recover meaningful context dependence cheaply.
+Scalar native-decision geometry avoids a score scan, including BF16 ties, but it
+neither generates the high-dimensional context state nor removes the wide body.
+Do not promote low query-field bytes while omitting index/preparation costs.
+Do not enlarge scalar examples, assume a cheap native high-dimensional support
+oracle, switch to a different same-distribution sampler, or drop full logits/KV.
+Current output cells are not automatically exact continuation equivalence classes.
 
 A qualifying continuation must construct a cheap NONIDENTITY context-dependent
-transition for ordinary inputs, preserving native state and charging preparation.
-Do not merely raise embedding magnitudes, fit away changes, enlarge token/response
-tables, extend solver budgets, or present high-scale favorable checkpoints as public
-LLMs. Tighter guards can reduce false negatives, not remove actual nonidentity.
-Cheap generation of nonlocal effects remains open; do not replace it with a perfect
-selector, free interval/certificate, uncharged fallback, or full code scan.
-
-Compare materially different new premises with constructor/selector/native/state/
-paid-schedule equations before backend work. Three qualifying universal principles
-and full O1-O6 remain OPEN. The bounded failures do not prove mission impossibility.
-[Previous next unchanged](docs/research/history/pre_residual_absorption_20260907/NEXT_EXPERIMENT.md).
+source through the wide projection/nonlinear body, including native rounding and
+required state, with finite automatic construction and complete paid schedule.
+Compare materially different principles before backend work; free head upper benefit
+and rejected candidates are not progress toward universal theory. Bounded geometric,
+probability and state counterexamples do not prove mission impossibility.
+[Previous next unchanged](docs/research/history/pre_native_decision_geometry_20260907/NEXT_EXPERIMENT.md).
