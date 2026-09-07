@@ -1,8 +1,7 @@
 # Research state — 2026-09-07
 
 Fixed mission / CTC-2026-09-05 unchanged.
-[Current auxiliary source](experiments/native_decision_geometry_20260907/REPORT.md).
-[Scoped obligations](experiments/native_decision_geometry_20260907/LEDGER.md).
+[Current bounded source, obligations, decisions and cost](experiments/dense_residue_20260907/docs/REPORT_KO.md).
 
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
@@ -10,19 +9,11 @@ CORE_ADMISSION=false
 FULL_MISSION_O1_O6=OPEN
 THREE_QUALIFYING_NEW_PRINCIPLES=false
 
-Constructed an interval upper-envelope index for scalar affine scores with exact
-BF16->FP32 product domain, monotone double rounding and first-index native ties.
-Produces ID and selected score bits, not all logits or same-seed softmax sampling.
-Coefficient domain[-1,1] on2^-16 grid; all finiteBF16 input. Original coefficients
-are not modified, domain restriction is auxiliary not a relaxed mission.
+Constructed dense integer correction by interval/residue lift, plus a finite serialized bitplane source from W and current input. No sparse correction-support assumption or free residue oracle. Strict integer BF16/ternary input and positive-row guard; exact FP32 intermediate bound; final BF16 RNE. This is not general native floating arithmetic or a Transformer executor.
 
-9 synthetic matrices67328queries match; separate scalar causal256steps plus2history
-pairs retain context. No fullTransformer/KV/publiccheckpoint/CUDA/target execution.
-V4096 queryfields p95~2.7% but source~13.24x and cold+8 lower byteaccount~3.46x.
-Free head leaves99.47954% of counted405B projections. No whole-body speed construction.
-State quotient and same-distribution sampling substitutions have explicit counterexamples.
+18 matrices288queries19968coordinates match exact integer/C references.91 queries have nonzero correction at every output.12 nonconstant matrices have full modular rank. Dense128 source51.60–51.70% BF16, but117.94–118.16% of signed-bitpacked original payload. Small-residual and constant-row controls are separately labelled. Every residual plane is read. The coefficient-recovery proof is not a universal memory-probe lower bound.
 
-13tests and51scientificfiles regenerate; archived22texts contain source, proofs,
-preregistration, fixed results/manifests and retained logs/history. Full binaries
-are in userZIP and regenerate, not all embedded inGit. Persistence is independent.
-[Prior state unchanged](docs/research/history/pre_native_decision_geometry_20260907/RESEARCH_STATE.md).
+Residue-only state fails ReLU/SiLU witnesses. Restricted syndrome-only decoding cannot distinguish an arbitrary ternary error cube with the tested short code; this does not constrain decoders with extra input-dependent computation.
+
+16 tests/111 generated science files reproduce to a frozen manifest. Code, preregistration, expected hash, proof and summary are stored directly; raw inputs/programs/traces and local history/logs are in the user ZIP and regenerate, not all embedded in Git. Full mission and target measurements remain open.
+[Prior state unchanged](docs/research/history/pre_dense_residue_20260907/RESEARCH_STATE.md).

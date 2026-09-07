@@ -1,0 +1,13 @@
+{
+  "CORE_ADMISSION": false,
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "all_scientific_hashes_match": true,
+  "manifest_sha256": "a581cff06d5d8247db16c3dc9bc37f98a71ebae60e5cc6a15a81a1ba727769a9",
+  "numpy": "2.3.5",
+  "python": "3.13.5",
+  "reference": "C FP32 separate products balanced sum -> BF16 RNE + independent exact integer conversion",
+  "scientific_files": 111,
+  "scope": "bounded auxiliary only; not full model/native general floats/KV/RNG/GPU/performance",
+  "tests_passed": 16
+}
