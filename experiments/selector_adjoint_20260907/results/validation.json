@@ -1,0 +1,21 @@
+{
+  "tests": 16,
+  "tests_passed": true,
+  "generated_scientific_files": 84,
+  "frozen_manifest_sha256": "b3a1f11efec95418855c985478e9dbb58ff10b7003528e0444345389d3b6c96e",
+  "regeneration_match": true,
+  "native_words": 331776,
+  "native_mismatches": 0,
+  "preserved_raw_state_words": 331776,
+  "state_mismatches": 0,
+  "independent_fraction_checks": 512,
+  "gf2_matrix_queries": 2048,
+  "gf2_matrix_output_bits": 122880,
+  "random_boolean_inputs": 3072,
+  "random_boolean_output_bits": 49152,
+  "CORE_ADMISSION": false,
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "full_model_KV_RNG_tested": false,
+  "preregistration_sha256": "a83f2cb5a509f93a5d4929fb0d9be75728ab7bba7afacd36374f331b1186b2cb"
+}
