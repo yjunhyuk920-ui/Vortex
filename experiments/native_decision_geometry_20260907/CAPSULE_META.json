@@ -1,0 +1,16 @@
+{
+  "format": "base64(XZ(UTF8 JSON path->text))",
+  "purpose": "research archival NOT inference weight compression",
+  "text_files": 22,
+  "text_json_sha256": "c449bd20a07b9fcbccdfdd9dd08cd265c468703a01841885a7eceffbfd3581df",
+  "xz_sha256": "49a5f41c1b42444d6be793016eb65f8cb50ddf0f406796051f28bf54e9763a47",
+  "scientific_manifest_sha256": "2c19e62c6d751a99cdd5c2c2eef8710d72344decd07da93a1d60edfe3ccb7023",
+  "base_commit": "404c80b35f6feffc52bfd215d2a7b0cfd0751c50",
+  "raw_binary_policy": "regenerate with run.py; compare complete original manifest; user ZIP includes original raw arrays and sources",
+  "chunks": [
+    "SOURCE_0.b64",
+    "SOURCE_1.b64",
+    "SOURCE_2.b64",
+    "SOURCE_3.b64"
+  ]
+}
