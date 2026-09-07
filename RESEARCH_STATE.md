@@ -1,7 +1,7 @@
 # Research state — 2026-09-07
 
-Fixed mission/CTC-2026-09-05 unchanged.
-[Current source, proofs, costs and evidence](experiments/context_response_20260907/REPORT.md).
+Fixed mission and CTC-2026-09-05 unchanged.
+[Current constructor, native proof, costs and evidence](experiments/native_response_code_20260907/REPORT.md).
 
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
@@ -9,21 +9,21 @@ CORE_ADMISSION=false
 FULL_MISSION_O1_O6=OPEN
 THREE_QUALIFYING_NEW_PRINCIPLES=false
 
-Constructed checked native-zero response index with real append, addresses,
-serialization and raw-KV reconstruction. Deferred zero-sign tags preserve original
-balanced FP32 PV order without visiting every zero leaf. Explicit sign-code Q/K
-geometry and matching query are required; no weight/input modification or fallback.
-640 conditional queries/10240 coordinates match;16 generic/perturbed keys reject.
-The source closes a bounded attention-state lemma, not all HF/native/RNG obligations.
+A loaded-file GF(2) response program replaces a whole declared small native SwiGLU
+on explicit finite Cartesian BF16 input domains. It has real constructors, address
+decoding, bit outputs and C execution without model weights/SiLU at query time.
+148000 queries/592000 coordinates match;544 independent scalar input checks and826
+SiLU singleton checks. Numeric primitive and finite domain are explicit, not HF/CUDA.
 
-High response rank/state information does not force every-query full-state traffic:
-identity family admits indexed row retrieval. But the tested scheme leaves all
-Q/K/V/O/FFN dense projections. Whole-work10x is not established. At context4096,
-even free QK/PV leaves95.98% of counted405B MAC. Query p50 gains are not GPU latency;
-p95, online update, cold preparation and adverse repetitions are disclosed.
+The source is built by Q^n native evaluations. Large response atoms remain. Generic
+fixtures read one atom even at high rank; high rank is not a universal traffic bound.
+Mobius coefficients and constant-run alternatives also fail the paid source gate.
+Naive additive stitching of input chunks has a native counterexample. Whole causal
+state/RNG, arbitrary-input construction and target cost remain open.
 
-16 tests; both241-file stages hash-reproduce and capsule restore/replay passes.
-Public model, full Transformer/RNG, CUDA/GPU/405B/4B/TTFT/Actions/full suite NOT TESTED.
-[Previous state unchanged](docs/research/history/pre_context_response_20260907/RESEARCH_STATE.md).
-Current decision/assumption/failure addendum is in the report; old root ledgers remain.
-Remote handoff is established by read-back, not by this status text.
+20 tests;171 generated files reproduce exactly. Source/reports/validation persist;
+full binary evidence regenerates and is included in the user archive, not all encoded
+in Git. Public model/full Transformer/GPU/405B/4B/TTFT/Actions/full suite NOT TESTED.
+[Prior state unchanged](docs/research/history/pre_native_response_code_20260907/RESEARCH_STATE.md).
+The report contains the new decision/assumption/failure/architecture addendum; original
+root ledgers and hardware plans remain. Handoff is established by read-back separately.

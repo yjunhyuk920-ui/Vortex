@@ -1,0 +1,26 @@
+{
+  "all_generated_file_hashes_match": true,
+  "checks_not_run": [
+    "public_checkpoint",
+    "full_Transformer_KV_RNG",
+    "CUDA",
+    "405B",
+    "8GiB_peak",
+    "native_4B_Q4_latency",
+    "TTFT",
+    "repository_full_suite",
+    "GitHub_Actions"
+  ],
+  "generated_manifest_sha256": "6e1a51ce614b19c09e966d591014d28a3d0afc75499673a74577bd1d3ae2a815",
+  "independent_scalar_inputs": 544,
+  "main_c_mismatches": 0,
+  "main_output_coordinates": 592000,
+  "main_python_mismatches": 0,
+  "main_queries": 148000,
+  "preregistration_sha256": "96b3ecdb74195c2811f99ca3b28828db9b9e68d40695e9fa2b389407b58a5fd6",
+  "reproducible_file_count": 171,
+  "silu_singleton_checks": 826,
+  "silu_singleton_mismatches": 0,
+  "unit_tests": 20,
+  "unit_tests_passed": 20
+}

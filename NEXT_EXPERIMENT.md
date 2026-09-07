@@ -1,22 +1,22 @@
 # Next constructive obligation — 2026-09-07
 
-Start from actual verified remote and distinguish uncommitted historical artifacts.
-Fixed mission and CTC-2026-09-05/O1-O6 unchanged.
-[Current scoped result](experiments/context_response_20260907/REPORT.md).
+Begin from actual verified remote SHA and distinguish local-only historical records.
+Fixed mission/CTC-2026-09-05/O1-O6 unchanged.
+[Current bounded native response construction](experiments/native_response_code_20260907/REPORT.md).
 
-A finite-geometry response index can preserve history and original reduction while
-reading selected values. It does not replace costly dense projections or support
-general Q/K geometry. Do not turn the sign-code guard into a new mission domain.
-Do not enlarge attention code tables, feature rank, contexts or GPU backend as a
-substitute for a concrete>=10x whole-work route. Unordered bucket means lose native
-position/rounding; preserve the recorded collision and eager-zero costs.
+Finite-word output bits can be generated without original dense operations at query
+ time by explicitly compiling a response code. This removes the smooth-function
+restriction but not source construction or storage. The tested constructor enumerates
+Q^n inputs; source rank cannot be assumed small. High rank is NOT per-query full-read
+necessity: original pivot rows yield one-atom queries even at full rank.
 
-The next core construction must obtain current-input-dependent projection effects
-without full original/transformed weight scans, and specify constructor, selector,
-values, native rounding, successor-state relation and total paid schedule. Neither
-small residuals/structured weights/free certificates nor an unknown compact decoder
-may be assumed. Compare materially different premise reversals before admission.
-High rank or information-bearing state alone is NOT a per-query full-read lower bound;
-do not reuse this result to claim universal impossibility. All full O1-O6 are OPEN.
+Do not enlarge truth tables, rank samples, address-order sweeps or lookup GPU kernels
+as the next core result. Do not simply add small independent chunk outputs: the native
+SwiGLU stitching witness differs. A new principle must construct the current native
+projection/whole-block effects and successor information without exhaustive input
+responses or full transformed-weight scans. Specify the finite constructor, current
+selector, values, native ABI, state relation and total paid schedule with a credible
+>=10x whole-work path before large implementation. Three qualifying principles and
+all full mission O1-O6 remain unestablished; preserve the recorded scopes of failures.
 
-[Previous next unchanged](docs/research/history/pre_context_response_20260907/NEXT_EXPERIMENT.md).
+[Previous next unchanged](docs/research/history/pre_native_response_code_20260907/NEXT_EXPERIMENT.md).
