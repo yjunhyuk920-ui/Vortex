@@ -1,19 +1,9 @@
 # Next constructive obligation — 2026-09-07
 
 Start from verified remote branch/SHA. Fixed mission/CTC/O1-O6 unchanged.
-[Current auxiliary evidence](experiments/native_decision_geometry_20260907/REPORT.md).
+[Current auxiliary source and gate](experiments/dense_residue_20260907/docs/REPORT_KO.md).
 
-Scalar native-decision geometry avoids a score scan, including BF16 ties, but it
-neither generates the high-dimensional context state nor removes the wide body.
-Do not promote low query-field bytes while omitting index/preparation costs.
-Do not enlarge scalar examples, assume a cheap native high-dimensional support
-oracle, switch to a different same-distribution sampler, or drop full logits/KV.
-Current output cells are not automatically exact continuation equivalence classes.
+Dense errors can be decoded from certified intervals and residues, but a cheap decoder is not a cheap residue source. Under the implemented row-L1 certificate the modulus encodes full residual coefficient information and the source reads every plane. Do not grow modulus counts, residue tables, CRT engines or synthetic sizes as if this removed the source bottleneck. Do not replace native rounding with a correctly rounded exact sum, or pass residue-only states across non-congruent nonlinear operations. The restricted joint decoder counting gate is not a universal executor lower bound.
 
-A qualifying continuation must construct a cheap NONIDENTITY context-dependent
-source through the wide projection/nonlinear body, including native rounding and
-required state, with finite automatic construction and complete paid schedule.
-Compare materially different principles before backend work; free head upper benefit
-and rejected candidates are not progress toward universal theory. Bounded geometric,
-probability and state counterexamples do not prove mission impossibility.
-[Previous next unchanged](docs/research/history/pre_native_decision_geometry_20260907/NEXT_EXPERIMENT.md).
+A qualifying continuation must construct a cheap NONIDENTITY input/context-dependent source through the wide projection/nonlinear body with native rounding, required state and fully paid finite construction/execution. Narrow output intervals, cheap predictors or residue generators are obligations, not free assumptions. Compare materially different principles and require a new source/complexity mechanism before reopening rejected families. No three qualifying >=10x universal principles were established this round. Stop candidate expansion, not the mission.
+[Previous next unchanged](docs/research/history/pre_dense_residue_20260907/NEXT_EXPERIMENT.md).

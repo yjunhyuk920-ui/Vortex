@@ -1,0 +1,58 @@
+{
+  "name": "dense_interval_residue",
+  "date": "2026-09-07",
+  "base_pr": 140,
+  "base_sha": "58632111980c7b271f0e7bd276fb489560c14a66",
+  "fixed_mission": "unchanged; arbitrary public unmodified HF dense 405B, 8GiB, original outputs/RNG/successor state and same machine native4B Q4 ratios; no target claims",
+  "primary_question": "Can dense (not sparse-support) exact corrections be sourced by few residue bits without reading all residual information?",
+  "comparison": [
+    "A: interval-plus-residue lifting: no assumption of sparse output error",
+    "B: carry congruence state through nonlinear body, avoiding intermediate reconstruction",
+    "C: use joint vector syndromes rather than one remainder per coordinate"
+  ],
+  "core_gate": "construction, stored information, per-query source, state and native arithmetic must have a credible >=10x whole-body path; fail before large backend",
+  "classification": "bounded auxiliary only if gate fails; THREE_QUALIFYING_NEW_PRINCIPLES=false until three qualifying constructions actually exist",
+  "fixtures": {
+    "widths": [
+      16,
+      64,
+      128
+    ],
+    "seeds": [
+      1701,
+      1702
+    ],
+    "groups": [
+      "dense_uniform",
+      "dense_small_residual",
+      "constant_rows"
+    ],
+    "inputs_per_matrix": 16,
+    "x_values": [
+      -1,
+      0,
+      1
+    ],
+    "weights_integer_range": [
+      -63,
+      63
+    ]
+  },
+  "exact_abi": "finite integer BF16 weights, integer ternary inputs, every row has a positive coefficient, separate FP32 products balanced sum then BF16 RNE; declared absolute sum bound <2^24; no FTZ/reference CUDA assumption",
+  "preparation": "choose median per row as cheap base; store min signed bit planes of residual, row L1 bound, and coarse base; no oracle, no unseen output lookup",
+  "queries": "bits from current x select pos/neg masks. Generate each residue from serialized planes then interval lift. Exact row sums derived independently. Runtime not given original W. Compare to signed-bitpacked original, not only BF16.",
+  "prohibitions": [
+    "do not equate less coefficient bytes with latency speedup",
+    "do not say modular integer equality implies arbitrary native BF16 equality",
+    "do not promote synthetic row residual regularity to arbitrary checkpoint",
+    "include header/row metadata, preparation pass, workspace, input parsing, each residue operation; hardware traffic/latency NOT_TESTED"
+  ],
+  "scope_checks": [
+    "all dense error support counted",
+    "fixed interval alias at length>=modulus",
+    "signed negative remainder",
+    "nonlinear states same residue but different future",
+    "vector syndrome collision when decoder only receives syndrome and fixed side info"
+  ],
+  "reproducibility": "preregister hashes before running fixtures; deterministic results JSON and input hashes; unit tests, C or independent native reference; raw fixtures/output retained"
+}

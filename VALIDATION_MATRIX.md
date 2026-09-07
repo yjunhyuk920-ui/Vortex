@@ -1,24 +1,20 @@
 # Validation matrix — 2026-09-07
 
-[Report](experiments/native_decision_geometry_20260907/REPORT.md).
-[Replay](experiments/native_decision_geometry_20260907/README.md).
-[Prior matrix unchanged](docs/research/history/pre_native_decision_geometry_20260907/VALIDATION_MATRIX.md).
+[Report](experiments/dense_residue_20260907/docs/REPORT_KO.md), [replay](experiments/dense_residue_20260907/README.md), [fixed results](experiments/dense_residue_20260907/RESULTS.md).
+[Prior matrix unchanged](docs/research/history/pre_dense_residue_20260907/VALIDATION_MATRIX.md).
 
 | Item | Evidence and scope |
 |---|---|
-| Constructor | Exact affine upper hulls/interval tree; no input-response enumeration; coefficient guard |
-| Numerical | Exact BF16 product domain; monotone FP32 thenBF16 rounding; earliest numeric tie; raw signedzero |
-| Selection | 9matrices67328queries: ID andselectedscore match C/NumPy; Fraction checks |
-| Causal | 256scalarsteps output/state/ownLCG match;2historypairs differ; NOT TransformerKV |
-| Storage/query | V4096 source~13.24x; p95logicalfields~2.7%; no physicaltraffic/latency claim |
-| Cold budget | Originalread+sourcewrite+reload+8queryfields~3.46x; build arithmetic/temp costs additional |
-| Whole-model | Freehead leaves99.47954% counted405B projections; core gate FAIL |
-| Counterexamples | Realwinner/native tie; multidim native rounding; sampler coupling; current-output quotient |
-| Replay | 13tests;51sciencefiles hash-identical;22textcapsule restored from emptyfolder |
-| Full mission | O1-O6OPEN;CORE_ADMISSION=false;3qualifyinguniversalprinciplesfalse |
-| Publicmodel/fullHF/logitAPI/softmaxsampler/fullKV/CUDA/405B/8GiB/4BQ4/TTFT | NOT TESTED / NOT CONSTRUCTED |
-| Actions/fullrepositorysuite | NOT RUN |
+| Constructor/source | Explicit row base,L1 bound,signed bitplanes; finite; every original coefficient read in preparation; no oracle |
+| Decoder | Unique integer in certified interval of width<modulus; works with dense error support |
+| Native scope | Integer BF16 weights,ternary integer inputs,positive coefficient per row,absolute sums<2^24; general floats excluded |
+| Experiments |18matrices288queries19968coordinates:0 mismatch integer/C FP32->BF16;91dense-correction queries |
+| Cost | Dense128 source51.60–51.70% of BF16;117.94–118.16% of bitpacked original; source traverses allplanes; not latency |
+| Structural gate | L1 modulus uniquely encodes each residual coefficient; not a general query-read lower bound |
+| State/decoder scope | Explicit nonlinear congruence and restricted syndrome-only collisions |
+| Replay |16tests;111scientificfile manifest a581cff06d5d8247db16c3dc9bc37f98a71ebae60e5cc6a15a81a1ba727769a9 |
+| Full mission |O1-O6OPEN;CORE_ADMISSION=false;3qualifyingnewprinciplesfalse |
+| HF/fullKV/RNG/CUDA/405B/8GiB/4BQ4/TTFT/latency |NOT TESTED / NOT CONSTRUCTED |
+| Actions/fullrepositorysuite |NOT RUN |
 
-Independent C reference compilation is local, not GPU proof. Source archival XZ is
-not inference compression. Raw binaries regenerate to preserved manifest and are
-in userZIP. Remote commit, theory, and target hardware remain independent axes.
+Original inputs/programs/traces regenerate from committed code to the fixed aggregate manifest hash and are in the user ZIP. Remote persistence, conditional correctness and target performance remain independent.
