@@ -1,7 +1,7 @@
 # Research state — 2026-09-07
 
 Fixed mission / CTC-2026-09-05 unchanged.
-[Current bounded source, obligations, decisions and cost](experiments/dense_residue_20260907/docs/REPORT_KO.md).
+[Current bounded construction, obligations and source-cost gate](experiments/selector_adjoint_20260907/REPORT.md).
 
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
@@ -9,11 +9,11 @@ CORE_ADMISSION=false
 FULL_MISSION_O1_O6=OPEN
 THREE_QUALIFYING_NEW_PRINCIPLES=false
 
-Constructed dense integer correction by interval/residue lift, plus a finite serialized bitplane source from W and current input. No sparse correction-support assumption or free residue oracle. Strict integer BF16/ternary input and positive-row guard; exact FP32 intermediate bound; final BF16 RNE. This is not general native floating arithmetic or a Transformer executor.
+Constructed selector-linear scalar extraction over F2: explicit coefficient/linear-node types, finite serialization, forward coefficient sweep and reverse extraction. No derivative through rounded real arithmetic or selector-bearing Boolean-idempotence substitution. No cheap universal native scalar source was constructed.
 
-18 matrices288queries19968coordinates match exact integer/C references.91 queries have nonzero correction at every output.12 nonconstant matrices have full modular rank. Dense128 source51.60–51.70% BF16, but117.94–118.16% of signed-bitpacked original payload. Small-residual and constant-row controls are separately labelled. Every residual plane is read. The coefficient-recovery proof is not a universal memory-probe lower bound.
+331776 FP32 rawword->BF16 conversion plus raw-state-copy cases match independent C;512 Fraction checks. This is a primitive, not a full checkpoint/state executor.225 direct coefficient gates ->463 extraction operations.8 GF2 matrices/2048queries/122880bits match;128wide representation ~65.7x bitpacked original.12Boolean circuits/3072inputs/49152bits match. Costs count topology and extraction, not just scalar output.
 
-Residue-only state fails ReLU/SiLU witnesses. Restricted syndrome-only decoding cannot distinguish an arbitrary ternary error cube with the tested short code; this does not constrain decoders with extra input-dependent computation.
+Unique zero-energy solution need not be reachable by greedy one-bit descent; directional expectation is not a finite exact answer. Fixed linear-frame rank gate is not a lower bound on all decoders. Original state/raw outputs are preserved in the limited primitive only.
 
-16 tests/111 generated science files reproduce to a frozen manifest. Code, preregistration, expected hash, proof and summary are stored directly; raw inputs/programs/traces and local history/logs are in the user ZIP and regenerate, not all embedded in Git. Full mission and target measurements remain open.
-[Prior state unchanged](docs/research/history/pre_dense_residue_20260907/RESEARCH_STATE.md).
+16tests/84scientific files reproduce from source to frozen manifest b3a1f11efec95418855c985478e9dbb58ff10b7003528e0444345389d3b6c96e. Raw binaries and detailed Korean report/logs are in the user ZIP; raw science files regenerate, not all embedded in Git. All target/model/hardware obligations remain open.
+[Prior state unchanged](docs/research/history/pre_selector_adjoint_20260907/RESEARCH_STATE.md).

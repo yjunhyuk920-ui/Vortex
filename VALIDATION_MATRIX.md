@@ -1,20 +1,21 @@
 # Validation matrix — 2026-09-07
 
-[Report](experiments/dense_residue_20260907/docs/REPORT_KO.md), [replay](experiments/dense_residue_20260907/README.md), [fixed results](experiments/dense_residue_20260907/RESULTS.md).
-[Prior matrix unchanged](docs/research/history/pre_dense_residue_20260907/VALIDATION_MATRIX.md).
+[Report](experiments/selector_adjoint_20260907/REPORT.md), [replay](experiments/selector_adjoint_20260907/README.md), [fixed validation](experiments/selector_adjoint_20260907/results/validation.json).
+[Prior matrix unchanged](docs/research/history/pre_selector_adjoint_20260907/VALIDATION_MATRIX.md).
 
-| Item | Evidence and scope |
+| Item | Evidence and exact scope |
 |---|---|
-| Constructor/source | Explicit row base,L1 bound,signed bitplanes; finite; every original coefficient read in preparation; no oracle |
-| Decoder | Unique integer in certified interval of width<modulus; works with dense error support |
-| Native scope | Integer BF16 weights,ternary integer inputs,positive coefficient per row,absolute sums<2^24; general floats excluded |
-| Experiments |18matrices288queries19968coordinates:0 mismatch integer/C FP32->BF16;91dense-correction queries |
-| Cost | Dense128 source51.60–51.70% of BF16;117.94–118.16% of bitpacked original; source traverses allplanes; not latency |
-| Structural gate | L1 modulus uniquely encodes each residual coefficient; not a general query-read lower bound |
-| State/decoder scope | Explicit nonlinear congruence and restricted syndrome-only collisions |
-| Replay |16tests;111scientificfile manifest a581cff06d5d8247db16c3dc9bc37f98a71ebae60e5cc6a15a81a1ba727769a9 |
-| Full mission |O1-O6OPEN;CORE_ADMISSION=false;3qualifyingnewprinciplesfalse |
+| Constructor/extractor | Typed coefficient/selector DAG; no selector-bearing products; finite source/serialization/forward+reverse execution |
+| Proof | Reverse path coefficient induction over F2; NOT real differentiation through native rounding |
+| Native scope | FP32 word->BF16 RNE plus unchanged raw32bit state; canonical NaN ABI; not a neural layer |
+| Native cases |331776inputs,0output/state mismatch vs independent C;512Fraction checks; not all2^32words |
+| Source work |225direct Boolean gates ->463extraction bit operations;6472B file; no latency claim |
+| GF2 |8matrices/2048queries/122880bits match;128x128 file134584–134680B vs2048B bitpacked original |
+| Boolean checks |12circuits/3072inputs/49152outputbits match direct evaluation and selector probes |
+| Alternative gates |Unique-energy greedy trap; exact fixed-frame rank; neither is a universal no-go theorem |
+| Replay |16tests,84sciencefiles; manifest b3a1f11efec95418855c985478e9dbb58ff10b7003528e0444345389d3b6c96e |
+| Full mission |O1-O6OPEN;CORE_ADMISSION=false;threequalifyingnewprinciplesfalse |
 | HF/fullKV/RNG/CUDA/405B/8GiB/4BQ4/TTFT/latency |NOT TESTED / NOT CONSTRUCTED |
 | Actions/fullrepositorysuite |NOT RUN |
 
-Original inputs/programs/traces regenerate from committed code to the fixed aggregate manifest hash and are in the user ZIP. Remote persistence, conditional correctness and target performance remain independent.
+Code, preregistration, bounded proof, fixed validation and expected manifest are committed; raw binary inputs/programs/outputs regenerate and are in the user ZIP. Some detailed Korean prose/development logs are ZIP-only, not falsely described as Git-embedded. Remote persistence and scientific acceptance remain independent.
