@@ -1,0 +1,23 @@
+{
+  "GPU": "NOT_TESTED",
+  "additional_derived_files_reproduced": 2,
+  "core_admission": false,
+  "full_HF_ABI": "NOT_CONSTRUCTED",
+  "full_reference_steps": 256,
+  "global_quotient_models": 4,
+  "guarded_logit_coordinates": 8192,
+  "initial_failure": "unittest class attribute run shadowed its method; corrected; initial source/log preserved in history",
+  "manifest_sha256": "8c69ee23d48aa311c1c4880df1b61584f15bde040bda1b4f9637b1e3fc9f95ff",
+  "models_checked": 8,
+  "original_checkpoint_hashes_verified": true,
+  "public_model": "NOT_RUN",
+  "raw_KV_equality": true,
+  "run_files_reproduced": 455,
+  "same_rng_state": true,
+  "scope": "Conditional proof and declared synthetic ABI, not full mission.",
+  "table_logit_coordinates": 4096,
+  "target_405B_8GiB_4BQ4": "NOT_TESTED",
+  "test_status": "PASS",
+  "theory_status": "NOT_ESTABLISHED",
+  "unit_tests": 19
+}

@@ -1,7 +1,8 @@
 # Research state — 2026-09-07
 
 Fixed mission / CTC-2026-09-05 unchanged.
-[Bounded source construction, proof, costs](experiments/symbolic_source_20260907/REPORT.md).
+[Constructive conditional residual/state source](experiments/residual_absorption_20260907/REPORT.md).
+[Scoped obligations, failures and assumptions](experiments/residual_absorption_20260907/LEDGER.md).
 
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
@@ -9,20 +10,21 @@ CORE_ADMISSION=false
 FULL_MISSION_O1_O6=OPEN
 THREE_QUALIFYING_NEW_PRINCIPLES=false
 
-Small source expressions are compiled without Q^n response enumeration using a
-finite candidate grammar and IEEE SMT miters over all finite BF16 inputs. Only
-UNSAT promotes; two UNKNOWN cases retain baseline. 28678 C replays match, including
-unchanged programs. State erasure, signed zero and overflow counterexamples persist.
-A follow-on exact-product lemma yields constant-only guards for local FMA/same-input
-rewrites. 448 vectors,1664 FP32 and1664 BF16 coordinates match independent Fraction
-arithmetic. The BF16 intermediate-store witness x_bits3 gives1 vs2 in subnormal units.
+Exact L1 envelopes and native endpoint guards can erase whole residual branches
+without reading their matrices. Live K/V are still generated. If all token/layer
+residuals certify over the context bound, token-indexed KV/logit tables preserve
+complete declared state. No V^T histories or Q^h input responses are enumerated.
+Coverage is restrictive:4/8 synthetic models globally qualify, all high-scale
+favorable controls already context-blind in their original finite arithmetic.
+Ordinary-scale controls have no native residual identities. Midscale native
+identities are missed by conservative certificates; these are different failures.
 
-These are bounded compiler/native proof auxiliaries. Weight literals stay, FMA keeps
-multiply+add work, and generated code exceeds source tensor size. No >=10x general
-route; F-040 universal hot-core synthesis is not reopened. SMT search is paid,
-version-dependent and not an independently checked proof certificate. Full HF/causal
-state/target memory/latency remain open. No public model/GPU/4BQ4/TTFT test.
+256 guarded/reference steps,8192 logit values;128 table steps,4096 logit values;
+raw KV and own RNG match. No-RoPE custom reference, declared exp ABI assumption;
+not a general HF/CUDA equivalence theorem or a formal proof-assistant result.
+Query192B does not include cold preparation or state traffic. Derived target
+geometry tables96.20GiB and current build~8.12e14 MAC. Universal budgets OPEN.
 
-22 tests,56 scientific file hashes,11-file source capsule freshly restored/replayed.
-All originals/history/logs in user archive; source regenerates scientific data, not
-all traces embedded remotely. [Prior state unchanged](docs/research/history/pre_symbolic_source_20260907/RESEARCH_STATE.md).
+19 tests;455 run files and2 cost/witness files regenerate exactly. Source capsule
+and manifest are persistent; full raw data/development logs are in user archive.
+[Prior state unchanged](docs/research/history/pre_residual_absorption_20260907/RESEARCH_STATE.md).
