@@ -1,9 +1,11 @@
 # Next constructive obligation — 2026-09-07
 
 Start from verified remote branch/SHA. Fixed mission/CTC/O1-O6 unchanged.
-[Current auxiliary extraction/source gate](experiments/selector_adjoint_20260907/REPORT.md).
+[Current precision-dependent source gate](experiments/precision_rank_20260907/REPORT.md).
 
-A scalar value, the existence of a scalar expression, and a cheaply constructible scalar program are different. Typed reverse extraction is exact, but wrapping the original native output circuit keeps all its source work. No next core round should merely enlarge AD wrappers, GF2 topology, energy-state search or directional samples. The recorded format and fixed-linear-decoder gates are not universal lower bounds.
+Tiny rank at insufficient numeric precision, one unbounded integer message, and a small query interface are not cheap native producers. A qualifying new source must keep sufficient precision and pay for its construction and execution. Do not merely increase samples/moduli, repack the same dense factors, or assume a sparse/structured Av blackbox that already solves the missing problem.
 
-A qualifying continuation must construct a cheap NONIDENTITY context-dependent source through the wide native projection/nonlinear body, preserving required state and charging construction, all read/write/address work, arithmetic, finite precision and short-session costs. It may use a different principle; scalar/AD/optimization is not fixed as the solution. Require a new information/complexity mechanism before reopening a rejected family. Compare materially different principles; no three universal >=10x principles were established here. Stop rejected candidates, not the mission.
-[Previous next unchanged](docs/research/history/pre_selector_adjoint_20260907/NEXT_EXPERIMENT.md).
+The inner-rank statement only restricts modular two-factor representations; FWHT on the same full-rank controls is an explicit faster counterexample outside that shape. It does not prohibit other nonlinear or structured exact programs. Variable-W border rank and code-only message counting do not impose universal fixed-checkpoint bounds.
+
+Continue toward a cheap NONIDENTITY context-dependent producer through the wide native projection/nonlinear body, preserving required successor state and including every initialization, storage, read/write/address, arithmetic, finite-precision and short-session cost. Compare materially different mechanisms; three qualifying universal >=10x principles were not established here. Stop failed candidates, not the mission.
+[Previous next unchanged](docs/research/history/pre_precision_rank_20260907/NEXT_EXPERIMENT.md).
