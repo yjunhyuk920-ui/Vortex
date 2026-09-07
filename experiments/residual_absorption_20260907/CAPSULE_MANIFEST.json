@@ -1,0 +1,19 @@
+{
+  "derived_files": 2,
+  "expected_run_files": 455,
+  "file_sha256": {
+    "analyze.py": "a4d9ffb948ce0a707bd5f0bd07346de604c225785d770a1482c2470fcff62f78",
+    "run.py": "19cdf450b6393ef54d33e8050baa52e74b137dafd84cf976df331d458f8229c6",
+    "src/check.c": "7a03ef6e50b513c3c727ecc2b1678e1ede7b81760802146c08fe913c44c7aafb",
+    "src/engine.py": "2156397cc797a9cf68f6614f061f6fc4f14f43029d3471790c1dd84940278909",
+    "src/numeric.py": "82fb77742a317c1c694b57a8887a7245e1ecfb9241257f33ff41de1a649b8603",
+    "tests/test_core.py": "8a6b28d92e5b90c330160a6b1d81aeba1d8641fb8eb2dc839775f2f55f507d18",
+    "verify.py": "8751e6d8ff3ad4beeca2800505dafcbed8b79bae7d0017c49894b48bfc69e662"
+  },
+  "format": "base64/xz UTF-8 source JSON; archival only, NOT inference compression",
+  "replayed_run_manifest_sha256": "8c69ee23d48aa311c1c4880df1b61584f15bde040bda1b4f9637b1e3fc9f95ff",
+  "source_count": 7,
+  "source_json_sha256": "4a44e923a22473c3004958c0edf32c02d56060a57dd847698ee065a282932ec5",
+  "test_count": 19,
+  "xz_sha256": "44a30753cf5499105794f32ce1e94121b687e5618717eca4b45e57130e352570"
+}

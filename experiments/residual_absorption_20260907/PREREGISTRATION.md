@@ -1,0 +1,27 @@
+# Residual absorption / KV-live transition — preregistration, 2026-09-07
+Base: yjunhyuk920-ui/Vortex PR138, 91904a016f360eb007ca6ffe238ab174451384d2.
+This document is frozen before executing the experiment. No universal/core pass is presumed.
+
+## Intended theorem and immutable mission
+For every original public HF dense checkpoint and legal continuation, the desired executor must preserve exposed outputs, RNG and required successor state, total peak <=8GiB, same-machine 4B Q4 p50<=1.2 and p95<=1.5 and original TTFT; all preprocessing/storage/transfers/proofs/ordinary paths paid. O1-O6 remain OPEN until universally constructed and bounded. This round addresses the nonlocal source and O2/O3 through an exact conditional transducer, not full acceptance.
+
+## Three distinct proposed premise reversals
+A. Do not reconstruct an unobservable branch: if the entire possible branch contribution lies in the input residual's *native* rounding fiber, emit the input verbatim and execute only live K/V state writers. Constructor scans original weights for rigorous row-absolute-sum envelopes; selector consumes normalized input, residual bits and live-state maxima, not target branch outputs. Native interval monotonicity proves equality. Cost is guard O(width) plus mandatory KV and final head when certified, otherwise original branch once. If all residual branches erase, retained flagship projection work about 1-2%, a credible conditional >10x route; margin coverage is the decisive unknown. Test original-width arithmetic proof then whole causal synthetic execution. This is interval/dead-code reasoning, not a claim to invent those fields.
+B. Let RNG select the observation fiber before computing logits: same-path reference inverse CDF/exponential race, not only equal distribution. Removing an observation-only head leaves nearly all upstream state/projection work. Cheap dependency/MAC bound rejects this as stand-alone core before implementing a sampler; no claims about every stochastic executor.
+C. Fuse consecutive residual writes before rounding: seek cancellation across multiple blocks rather than individual small updates. Native intermediate rounding survives even when real residuals cancel. Derive a concrete two-step counterexample first; no library/solver/time-limit expansion. A different native transfer algebra would be required before core promotion.
+
+A is selected for a bounded construction because a nonlocal branch can disappear *without reading its weights at query time* and a whole-model conditional paid schedule can be written, not because favorable coverage has been measured. Three qualifying universal principles are NOT established.
+
+## Frozen reference
+CPU, NumPy float32 separate operations, BF16 RNE stores, signed zero checked. Projection sequential FP32 sum, final BF16. RMSNorm is explicit FP32 square/sum/div/sqrt and BF16 store. SiLU finite BF16 input is a precomputed CPU truth map (65,280 entries verified for |out|<=2|in|); the table defines the declared ABI, not all GPU library behavior. GQA causal attention with stable FP32 exp and BF16 probabilities/values. No RoPE in the initial synthetic reference: this is explicitly not a complete HF architecture. No dropout. Separate equal PRNG states select tokens from each model's own logits. No future token injection. Uncertified nodes execute native once, never approximate then replay.
+
+## Frozen controls and gates
+Seeds 71, 109. h=32, f=96, heads=4, KV heads=1, head_dim=8, L=4, vocabulary=32. Dense nonzero random dyadic BF16 weights; no planted low-rank/repeated rows. Embedding magnitudes uniformly in [1,2), random signs, scaled by 2^s; s in [0,16,32,48]. These are separate deliberately favorable/ordinary synthetic checkpoints, NOT modified public models or allowed restrictions of the mission. 2 independently generated sequences of length16 per model. Prompts length4. All inputs, checkpoints, actual outputs/state digests and projection accesses saved. No cherry-picking scales/seed after results. Compare full logits, every current KV bit and RNG at every step.
+
+Acceptance only for conditional branch theorem: exact envelope proof, no false skip, direct bytecode/metadata load, deterministic replay. Report true all-coordinate erasure separately from guard conservatism. A wrong output invalidates the candidate until corrected and raw failures preserved. Core requires ordinary/mixed unrestricted coverage and full O1-O6: favorable fixture counts never suffice.
+
+## Cost and falsification
+Charge original checkpoint one full preprocessing read, metadata writes, RMSNorm, finite-domain table construction, all current K/V, cache maxima, guard input reads, non-skipped matrix reads, final projection, state storage, sampling, Python/object overhead separately. MAC and logical bytes are NOT measured latency. If every branch skips in flagship dims h16384 f53248 k1024 L126 V128256, calculate remaining KV+head and the residual BF16 weight bytes, keeping KV/metadata/workspaces extra. No free 405B preparation or huge table implied. Any minimum above8GiB is a layout-specific gate, not global impossibility.
+
+## Public checkpoint audit attempt
+Attempt a read-only small original checkpoint falsification if available. Container lacks transformers and HF network DNS failed before this preregistration. Do not label infrastructure failure as a scientific rejection or pretend a public model ran.
