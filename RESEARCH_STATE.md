@@ -1,7 +1,7 @@
 # Research state — 2026-09-07
 
 Fixed mission / CTC-2026-09-05 unchanged.
-[Current bounded construction, obligations and source-cost gate](experiments/selector_adjoint_20260907/REPORT.md).
+[Current bounded construction and precision-source gate](experiments/precision_rank_20260907/REPORT.md).
 
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
@@ -9,11 +9,11 @@ CORE_ADMISSION=false
 FULL_MISSION_O1_O6=OPEN
 THREE_QUALIFYING_NEW_PRINCIPLES=false
 
-Constructed selector-linear scalar extraction over F2: explicit coefficient/linear-node types, finite serialization, forward coefficient sweep and reverse extraction. No derivative through rounded real arithmetic or selector-bearing Boolean-idempotence substitution. No cheap universal native scalar source was constructed.
+Constructed W=LDR modulo2^K with paid dense transformations, serialized U,V and source-only Python/C evaluation. Strict Q>2B centered lift reconstructs full signed outputs on integer BF16 coefficients/inputs with FP32-exact partial sums and declared zero-sign metadata. Not general native BF16/Transformer/state execution.
 
-331776 FP32 rawword->BF16 conversion plus raw-state-copy cases match independent C;512 Fraction checks. This is a primitive, not a full checkpoint/state executor.225 direct coefficient gates ->463 extraction operations.8 GF2 matrices/2048queries/122880bits match;128wide representation ~65.7x bitpacked original.12Boolean circuits/3072inputs/49152bits match. Costs count topology and extraction, not just scalar output.
+40matrices/320queries/15872coordinates match. At128 random signs/odd r1=1, but rK=128; full factor source65584/98352B versus32768B original BF16,32768 products versus16384. Original tightly encoded signs/odd values2048/16384B. Dense cubic preparation and other address/temporary/modular costs are charged; no measured speedup.
 
-Unique zero-energy solution need not be reachable by greedy one-bit descent; directional expectation is not a finite exact answer. Fixed linear-frame rank gate is not a lower bound on all decoders. Original state/raw outputs are preserved in the limited primitive only.
+Proved rK minimum only for two-factor modular linear representation. Actual FWHT on same Sylvester controls uses896 add/sub slots despite rK=128: not a universal cost lower bound. Dense-code bit capacity and variable-W border-rank gates do not lower-bound arbitrary fixed-checkpoint algorithms.
 
-16tests/84scientific files reproduce from source to frozen manifest b3a1f11efec95418855c985478e9dbb58ff10b7003528e0444345389d3b6c96e. Raw binaries and detailed Korean report/logs are in the user ZIP; raw science files regenerate, not all embedded in Git. All target/model/hardware obligations remain open.
-[Prior state unchanged](docs/research/history/pre_selector_adjoint_20260907/RESEARCH_STATE.md).
+18tests/603scientific files regenerate to b502d79e20c4f10f791737ca43581dfa5ea5f92dbc1f1c49b25253b22d8b8bb3. First Fortran/C-boundary failure and pre-guard/cost-correction evidence preserved in userZIP; final source/test/expected results are in remote capsule. No target hardware or full neural state test.
+[Prior state unchanged](docs/research/history/pre_precision_rank_20260907/RESEARCH_STATE.md).

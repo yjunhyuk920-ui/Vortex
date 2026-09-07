@@ -1,0 +1,15 @@
+{
+  "CORE_ADMISSION": false,
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "fresh_C_compile": true,
+  "full_neural_state_tested": false,
+  "generated_science_files": 603,
+  "local_tests": 18,
+  "manifest_sha256": "b502d79e20c4f10f791737ca43581dfa5ea5f92dbc1f1c49b25253b22d8b8bb3",
+  "matrices": 40,
+  "native_mismatches": 0,
+  "output_coordinates": 15872,
+  "queries": 320,
+  "target_hardware_tested": false
+}
