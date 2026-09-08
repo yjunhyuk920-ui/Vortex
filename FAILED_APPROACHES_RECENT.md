@@ -2,6 +2,29 @@
 
 Continuation of `FAILED_APPROACHES.md`. This is a permanent anti-repetition register. Revisit an entry only with a mechanism that directly addresses the recorded failure and a stronger preregistered falsification.
 
+## BOOLEAN-MATVEC-LIFT-20260909 — indirect exact parity from Boolean-semiring products
+
+Do not reopen a succinct Boolean-semiring MatVec structure as the exact numerical
+source by adding an unspecified parity/count decoder. In the declared black-box
+model, compare `R0=1_T` with each one-deletion `Ri=1_(T\{i})`. A Boolean subset
+query distinguishes the pair iff its intersection with `T` is exactly `{i}`;
+one query isolates at most one opposite-parity witness. Exact deterministic
+conversion therefore needs at least `|T|` complete Boolean products (`n` for
+full support). All 37,067 distinct `<n` query sets at `n<=5` confirm the finite
+control with zero false determination.
+
+Do not reopen the same route by independently preprocessing rows and queries into
+arbitrary nonlinear Boolean features and claiming one OR/AND product computes
+parity. The complete `d`-bit GF(2) inner-product truth matrix has exact Boolean
+rank `2^d-1`: every all-one rectangle has at most `2^(d-1)` entries, while the
+matrix has `(2^d-1)2^(d-1)` ones, and one rectangle per nonzero row meets the
+bound. At `d=216` the feature representation is exponentially beyond the source.
+
+Scope: these entries reject the black-box Boolean lift and the one-shot Boolean
+feature factorization, **not** every direct GF(2) or nonlinear adaptive
+data structure. Revisit only with an explicit direct representation/address/
+decoder that pays its own side data, raw probes and native finite-word lift.
+
 ## CAUSAL-GLOBAL-20260908 — literal dynamic response-column delta summary
 
 The new standard-causal sign/delta compiler provides legal batch-1 traces whose

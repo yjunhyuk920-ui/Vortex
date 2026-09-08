@@ -31,6 +31,20 @@ The sign/delta compiler should be used as an adversarial causal input source:
 successive legal right factors can differ densely, so simple response-column
 updates are no longer an admissible hidden assumption.
 
+### Post-persistence Boolean lift result
+
+Read `BOOLEAN_MATVEC_LIFT_RESULT.md` before trying Boolean-semiring MatVec again.
+Exact new gates:
+
+```text
+adaptive black-box Boolean Mv -> F2 Mv:  >= |supp(v)| Boolean calls
+one-shot arbitrary nonlinear Boolean feature lift: exact Boolean rank 2^d-1
+```
+
+Therefore do not relabel Larsen--Williams/CKL Boolean OR witnesses as exact
+parities or signed/native sums. A surviving route must directly construct a
+GF(2)/native data structure or a different nonlinear global producer.
+
 ## Focused replay
 
 From:

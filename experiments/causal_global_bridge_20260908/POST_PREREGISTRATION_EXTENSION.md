@@ -179,3 +179,24 @@ matrix-vector producer of Principle B, not a free temporal update rule.
 
 No finite arbitrary-checkpoint `Z_{t+1}=Update(Z_t,input_t)` law satisfying the
 mission costs was found in this round.
+
+## Post-persistence Principle-B lift gate
+
+After the first causal/global result had been committed and remotely verified,
+the deterministic Larsen--Williams succinct Boolean-semiring MatVec structure
+was revisited only at the unresolved algebraic lift boundary. The exact result
+is in `BOOLEAN_MATVEC_LIFT_RESULT.md`.
+
+Two routes are now closed:
+
+1. A deterministic adaptive black-box conversion from complete Boolean `Mv`
+   answers to `F2` `Mv` needs at least `|supp(v)|` Boolean products on an exact
+   deletion-witness family. Full support needs `n` calls.
+2. Even arbitrary nonlinear row/query feature maps that try to make **one**
+   Boolean product equal GF(2) inner product require exactly `2^d-1` Boolean
+   features, by an exact Boolean-rank/rectangle proof.
+
+These results strengthen F-052 without changing the claim boundary: direct GF(2)
+data structures, direct nonlinear access to globally mixed checkpoint advice and
+native finite-word producers remain open. No Boolean OR witness is promoted as
+a numerical source.

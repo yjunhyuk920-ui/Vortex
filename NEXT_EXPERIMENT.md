@@ -1,4 +1,4 @@
-# Next constructive obligation — 2026-09-08
+# Next constructive obligation — 2026-09-09
 
 Verify actual remote head and fixed mission/CTC/O1-O6. [Current frontier](experiments/causal_global_bridge_20260908/REPORT.md).
 
@@ -22,9 +22,20 @@ words = Read(G, addresses)                          paid physical payload
 It must work for arbitrary unchanged checkpoint matrices, allow globally mixed
 advice without an assumed per-matrix direct sum, and produce the exact ordered
 Q4/BF16/FP32 dense effect and required successor state while closing the 8 GiB
-and native-4B-Q4 traffic/arithmetic line. Boolean-semiring randomized MatVec,
-bitset full scans, response catalogs and undefined compression/decoders are not
-this object.
+and native-4B-Q4 traffic/arithmetic line. Boolean-semiring MatVec is now more
+sharply excluded as an indirect source: exact deterministic black-box lifting
+to GF(2) needs `|supp(v)|` complete Boolean products, while a one-shot arbitrary
+nonlinear Boolean feature lift needs `2^d-1` features. Randomized Boolean
+answers, bitset full scans, response catalogs and undefined compression/decoders
+are also not this object.
+
+The next acceptable Principle-B candidate must therefore **directly** construct
+a GF(2) or native finite-word representation/address/decoder. If it reuses the
+internal redundancy of a Boolean data structure, spell out exactly which stored
+bits are probed and how they compute parity/native ordered sums without factoring
+through either rejected Boolean lift. Do not cite the existing systematic GF(2)
+cell-probe lower bound as mission closure: its asymptotic tradeoff and hidden
+constants do not currently close the VORTEX target with substantial side data.
 
 For a dynamic alternative, use the new sign/delta causal compiler as the
 adversary: successive legal right factors may differ in every coordinate. Any

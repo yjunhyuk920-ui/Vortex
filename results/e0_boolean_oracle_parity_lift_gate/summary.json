@@ -1,0 +1,127 @@
+{
+  "claim_boundary": {
+    "adaptive_deterministic_boolean_oracle_lift": "REJECTED",
+    "direct_gf2_data_structure": "OPEN",
+    "direct_probe_of_boolean_index_internals": "OPEN",
+    "global_cross_matrix_advice": "OPEN",
+    "native_q4_bf16_fp32_lift": "OPEN",
+    "target_hardware": "NOT_TESTED",
+    "whole_mission": "OPEN"
+  },
+  "classification": "E0_BOOLEAN_ORACLE_PARITY_LIFT_GATE",
+  "decision": "REJECT_BLACK_BOX_BOOLEAN_TO_F2_LIFT_AS_SUBDENSE_CORE",
+  "literature_context": {
+    "chakraborty_kamma_larsen": "STOC 2018 / arXiv:1711.04467 gives a faster randomized succinct Boolean upper bound and Boolean/F2 systematic lower bounds.",
+    "larsen_williams": "Deterministic systematic Boolean-semiring MatVec cell-probe query O(n^(7/4)/sqrt(w)); SODA 2017 / arXiv:1605.01695."
+  },
+  "small_exhaustive_controls": [
+    {
+      "canonical_determines_family": true,
+      "canonical_queries": 1,
+      "false_short_determinations": 0,
+      "short_query_sets_checked": 1,
+      "width": 1
+    },
+    {
+      "canonical_determines_family": true,
+      "canonical_queries": 2,
+      "false_short_determinations": 0,
+      "short_query_sets_checked": 4,
+      "width": 2
+    },
+    {
+      "canonical_determines_family": true,
+      "canonical_queries": 3,
+      "false_short_determinations": 0,
+      "short_query_sets_checked": 29,
+      "width": 3
+    },
+    {
+      "canonical_determines_family": true,
+      "canonical_queries": 4,
+      "false_short_determinations": 0,
+      "short_query_sets_checked": 576,
+      "width": 4
+    },
+    {
+      "canonical_determines_family": true,
+      "canonical_queries": 5,
+      "false_short_determinations": 0,
+      "short_query_sets_checked": 36457,
+      "width": 5
+    }
+  ],
+  "theorem": {
+    "full_support_minimum_calls": "n",
+    "proof_core": "For R0=1_T and Ri=1_(T\\{i}), a Boolean subset query S distinguishes the pair iff S intersect T={i}; each query isolates at most one i while target parity flips for every i.",
+    "statement": "A deterministic exact black-box lift from complete Boolean-semiring MatVec responses to GF(2) Mv requires at least |supp(v)| Boolean product queries on the deletion-witness family."
+  },
+  "width_projections": [
+    {
+      "binary_source_matrix_bits": 16,
+      "complete_boolean_response_bits": 16,
+      "complete_response_over_source_bits": 1.0,
+      "complete_response_words": 4,
+      "direct_binary_dense_exponent": 2.0,
+      "lw_black_box_composed_exponent": 2.75,
+      "required_boolean_product_calls": 4,
+      "width": 4,
+      "word_bits": 64
+    },
+    {
+      "binary_source_matrix_bits": 64,
+      "complete_boolean_response_bits": 64,
+      "complete_response_over_source_bits": 1.0,
+      "complete_response_words": 8,
+      "direct_binary_dense_exponent": 2.0,
+      "lw_black_box_composed_exponent": 2.75,
+      "required_boolean_product_calls": 8,
+      "width": 8,
+      "word_bits": 64
+    },
+    {
+      "binary_source_matrix_bits": 625,
+      "complete_boolean_response_bits": 625,
+      "complete_response_over_source_bits": 1.0,
+      "complete_response_words": 25,
+      "direct_binary_dense_exponent": 2.0,
+      "lw_black_box_composed_exponent": 2.75,
+      "required_boolean_product_calls": 25,
+      "width": 25,
+      "word_bits": 64
+    },
+    {
+      "binary_source_matrix_bits": 11664,
+      "complete_boolean_response_bits": 11664,
+      "complete_response_over_source_bits": 1.0,
+      "complete_response_words": 216,
+      "direct_binary_dense_exponent": 2.0,
+      "lw_black_box_composed_exponent": 2.75,
+      "required_boolean_product_calls": 108,
+      "width": 108,
+      "word_bits": 64
+    },
+    {
+      "binary_source_matrix_bits": 46656,
+      "complete_boolean_response_bits": 46656,
+      "complete_response_over_source_bits": 1.0,
+      "complete_response_words": 864,
+      "direct_binary_dense_exponent": 2.0,
+      "lw_black_box_composed_exponent": 2.75,
+      "required_boolean_product_calls": 216,
+      "width": 216,
+      "word_bits": 64
+    },
+    {
+      "binary_source_matrix_bits": 268435456,
+      "complete_boolean_response_bits": 268435456,
+      "complete_response_over_source_bits": 1.0,
+      "complete_response_words": 4194304,
+      "direct_binary_dense_exponent": 2.0,
+      "lw_black_box_composed_exponent": 2.75,
+      "required_boolean_product_calls": 16384,
+      "width": 16384,
+      "word_bits": 64
+    }
+  ]
+}

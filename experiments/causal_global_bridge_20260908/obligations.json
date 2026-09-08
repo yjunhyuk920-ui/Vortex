@@ -31,12 +31,14 @@
     "Native HF DynamicCache exposes arbitrary binary v_proj columns exactly in the declared family.",
     "A finite no-dense basis-column producer is bit-exact for the declared family and removes >90% of variable-v_proj full-read payload.",
     "A standard-causal sign/delta compiler carried 32 independently selected right factors at width 8 with exhaustive binary-row parity decoding.",
-    "The exact area-5400 25x216 shape passed a four-query native finite-word trace."
+    "The exact area-5400 25x216 shape passed a four-query native finite-word trace.",
+    "An exact deterministic black-box Boolean-MatVec to F2 lift needs at least |supp(v)| Boolean products on the deletion adversary.",
+    "A one-shot arbitrary nonlinear Boolean feature lift of d-bit GF2 inner product needs exactly 2^d-1 features."
   ],
   "still_open": [
     "area-5400 32-query native finite-word trace",
     "global nonlinear 8 GiB advice/direct-sum accounting",
-    "arbitrary finite-word zero-error matrix-vector producer",
+    "direct arbitrary GF2/native finite-word zero-error matrix-vector producer not factoring through the rejected Boolean lifts",
     "arbitrary-checkpoint dynamic exact summary",
     "whole-model native state/RNG proof",
     "target hardware and latency closure"

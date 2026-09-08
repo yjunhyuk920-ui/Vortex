@@ -2,6 +2,27 @@
 
 No unverified assumption may be used as a success condition.
 
+## A-BOOLEAN-MATVEC-LIFT-20260909
+
+Assumption: a deterministic fast Boolean-semiring MatVec data structure can be
+used as a black-box exact GF(2) producer with only a few Boolean product calls.
+CONTRADICTED in the declared black-box model: the exact deletion adversary forces
+at least `|supp(v)|` complete Boolean products, hence `n` for full support.
+
+Assumption: arbitrary nonlinear preprocessing of a checkpoint row and query can
+make one Boolean OR/AND product equal GF(2) inner product with polynomial feature
+dimension. CONTRADICTED: the complete `d`-bit inner-product truth matrix has
+exact Boolean rank `2^d-1`.
+
+Assumption: published systematic GF(2) cell-probe lower bounds already prove the
+fixed VORTEX target impossible. UNVERIFIED AND FORBIDDEN AS A SUCCESS/FAILURE
+PREMISE. Their asymptotic tradeoffs do not currently provide the fully paid
+finite target closure required by O4/O5.
+
+Direct GF(2)/native finite-word data structures and globally mixed nonlinear
+advice remain OPEN. No 405B/CUDA/8GiB/native4BQ4/TTFT evidence is supplied by
+this E0 gate.
+
 ## A-CAUSAL-GLOBAL-BRIDGE-20260908
 
 Assumption: legal batch-1 Llama causal states are too restricted to expose

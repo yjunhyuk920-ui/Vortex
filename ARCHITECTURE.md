@@ -37,6 +37,14 @@ It must preserve native ordered Q4/BF16/FP32 behavior, avoid full scans under
 dense right-factor changes, account globally mixed advice without an assumed
 per-matrix split, and close all whole-model memory/traffic/arithmetic costs.
 
+The producer may not be implemented indirectly as a Boolean-semiring oracle plus
+an unspecified exact lift. The post-persistence Boolean gate proves that a
+deterministic black-box Boolean `Mv` -> GF(2) conversion needs at least
+`|supp(v)|` complete products, and that one arbitrary-nonlinear Boolean feature
+product needs exact feature dimension `2^d-1`. A surviving architecture must
+probe/construct a direct GF(2)/native representation or exploit a materially
+different global nonlinear source, with those internal bits and costs explicit.
+
 ## Current bounded native-global construction — 2026-09-08
 
 See experiments/native_global_transition_20260908/REPORT.md. A/C retain original

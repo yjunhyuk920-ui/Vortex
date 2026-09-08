@@ -8,11 +8,20 @@
     "results/e1_causal_rank_one_trace_25x108_q2.json",
     "results/e1_causal_rank_one_trace_25x216_q4.json"
   ],
+  "post_persistence_artifacts": [
+    "experiments/causal_global_bridge_20260908/BOOLEAN_MATVEC_LIFT_PREREGISTRATION.md",
+    "experiments/causal_global_bridge_20260908/BOOLEAN_MATVEC_LIFT_RESULT.md",
+    "results/e0_boolean_oracle_parity_lift_gate_v2/summary.json"
+  ],
   "scientific_authority": "experiments/causal_global_bridge_20260908/REPORT.md",
+  "post_persistence_authority": "experiments/causal_global_bridge_20260908/BOOLEAN_MATVEC_LIFT_RESULT.md",
   "status": {
     "theory": "NOT_ESTABLISHED",
     "hardware": "NOT_TESTED",
     "area5400_32_query_native_trace": "NOT_EXECUTED",
-    "global_arbitrary_checkpoint_producer": "OPEN"
+    "global_arbitrary_checkpoint_producer": "OPEN",
+    "boolean_to_f2_black_box_lift": "REJECTED",
+    "one_shot_boolean_feature_lift": "REJECTED_EXPONENTIAL_FEATURES",
+    "direct_gf2_or_native_producer": "OPEN"
   }
 }

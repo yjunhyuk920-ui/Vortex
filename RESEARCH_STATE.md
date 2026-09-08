@@ -1,4 +1,4 @@
-# Research state — 2026-09-08
+# Research state — 2026-09-09
 
 Fixed mission and CTC unchanged. [Current frontier](experiments/causal_global_bridge_20260908/REPORT.md).
 THEORY_STATUS=NOT_ESTABLISHED
@@ -31,6 +31,9 @@ area-5,400 causal source                  25x216, 4 native queries, 0 decode mis
 area-5,400 32-query native trace          NOT EXECUTED
 global nonlinear 8 GiB advice/direct-sum OPEN
 arbitrary finite-word native producer     OPEN
+Boolean Mv black-box -> F2 exact lift      REJECTED: >= |supp(v)| calls
+one-shot nonlinear Boolean feature lift   REJECTED: exact rank 2^d-1
+direct GF2/native global data structure    OPEN
 ```
 
 The restricted producer is a genuine finite encoder/address/decoder, but its
@@ -47,6 +50,17 @@ The previous nonlinear-router theorem remains authoritative E0 evidence:
 32-query interface forces 2,048 bits=`64/675`, eight times target. The new
 causal compiler narrows its reachability gap but does not yet prove the exact
 area-5,400 32-query native/global-advice statement.
+
+Principle B was then narrowed further without changing the mission. A
+deterministic exact lift that treats a fast Boolean-semiring MatVec structure as
+a black-box complete-product oracle needs at least one Boolean product per
+target-support coordinate on an exact deletion adversary. Hiding parity in one
+transformed Boolean product does not rescue the route: arbitrary nonlinear
+row/query feature maps have exact Boolean rank `2^d-1` for the complete GF(2)
+inner-product function. At `d=216` this is exponentially beyond the source.
+These are scoped algebraic rejections only; direct GF(2), globally nonlinear
+advice and native finite-word data structures remain the active construction
+frontier.
 
 O1-O5 remain OPEN. O6 is partial reproducible E0/E1 evidence only.
 405B/CUDA/<=8GiB/native4BQ4 p50/p95/TTFT remain NOT TESTED.

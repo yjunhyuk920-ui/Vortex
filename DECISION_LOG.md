@@ -2,6 +2,37 @@
 
 Append-only decisions. Authoritative run identities are read from committed result JSON.
 
+## D-BOOLEAN-MATVEC-LIFT-20260909 — close indirect Boolean-to-parity lifts; retain direct GF2 producer frontier
+
+Authority:
+`experiments/causal_global_bridge_20260908/BOOLEAN_MATVEC_LIFT_RESULT.md` and
+`results/e0_boolean_oracle_parity_lift_gate_v2/summary.json`.
+
+The deterministic succinct Boolean-semiring MatVec direction was tested only at
+the unresolved exact-algebra lift, after preregistering the black-box interface.
+Two exact results close the indirect route. First, on the deletion family
+`R0=1_T`, `Ri=1_(T\{i})`, one Boolean subset query can distinguish at most one
+opposite-parity deletion witness. Any deterministic exact black-box conversion
+therefore needs at least `|T|` complete Boolean products, or `n` at full support.
+Second, even arbitrary nonlinear feature maps attempting to make one Boolean
+OR/AND product equal `d`-bit GF(2) inner product require exactly `2^d-1`
+features by a matching all-one-rectangle lower bound and row-wise upper cover.
+
+Decision:
+
+```text
+REJECT_BLACK_BOX_BOOLEAN_TO_F2_LIFT_AS_SUBDENSE_CORE
+REJECT_SINGLE_BOOLEAN_PRODUCT_NONLINEAR_FEATURE_LIFT
+KEEP_DIRECT_GF2_DATA_STRUCTURE_OPEN
+KEEP_GLOBAL_NONLINEAR_NATIVE_PRODUCER_OPEN
+THEORY_STATUS=NOT_ESTABLISHED
+HARDWARE_STATUS=NOT_TESTED
+```
+
+This strengthens F-052 but is not a general adaptive/nonlinear cell-probe lower
+bound. Existing systematic GF(2) lower bounds are supporting context only and
+are not promoted into a finite VORTEX target certificate.
+
 ## D-CAUSAL-GLOBAL-BRIDGE-20260908 — retain causal bridge and restricted producer; keep arbitrary producer open
 
 See `experiments/causal_global_bridge_20260908/REPORT.md` and

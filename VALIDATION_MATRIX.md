@@ -1,4 +1,4 @@
-# Validation matrix — 2026-09-08
+# Validation matrix — 2026-09-09
 
 [Current causal/global proof/code/result](experiments/causal_global_bridge_20260908/REPORT.md).
 [Prior nonlinear router proof/code/result](experiments/nonlinear_router_frontier_20260908/REPORT.md).
@@ -19,6 +19,17 @@
 |Related/standard validation|28/28 nonlinear/geometry regression PASS; `scripts/run_validation.py` exit0; complete tests directory attempted but BLOCKED by missing pytest/SciPy and Windows-incompatible historical test dependencies, so no full-suite PASS claim|
 |OPEN|Area-5400 32-query native lift, globally nonlinear <=8GiB advice/direct-sum, arbitrary native finite-word MatVec producer, complete causal state, O1-O5, whole-theory O6|
 |Not tested|405B weights/execution, CUDA, <=8GiB physical GPU, PCIe/SSD/HBM schedule, native4BQ4 p50/p95, TTFT|
+
+|Post-persistence Principle-B E0 item|Actual evidence and scope|
+|---|---|
+|Adaptive Boolean-Mv black-box lift|Exact deletion-witness theorem: deterministic exact Boolean-semiring `Mv` -> GF(2) `Mv` requires >=`|supp(v)|` complete Boolean products; full support >=`n`|
+|Finite transcript controls|All 37,067 distinct `<n` query sets for `n<=5` checked; false parity determinations `0`; canonical `n` isolating queries are tight on the witness family|
+|One-shot nonlinear Boolean feature lift|For arbitrary nonlinear `E,Phi`, representing GF(2) inner product as one Boolean OR/AND product has exact Boolean rank `2^d-1`|
+|Rectangle controls|All nonempty left subsets for `d<=4` checked; maximum all-one rectangle sizes `1,2,4,8`, exactly `2^(d-1)`|
+|Area-5400 storage projection|`25x216`: minimum one-shot row features `25*(2^216-1)` bits, about `4.8755691e62x` the binary source before DS/query/native state|
+|Validation|11/11 tests PASS; canonical v2 SHA `2d8a91800d574d32ec7611da6af6046d37cd4230a8c897f5c33ff268238695f6`|
+|OPEN|Direct GF(2) or native finite-word data structure, Boolean-index internal reinterpretation that becomes such a direct source, global cross-matrix advice, native arithmetic/state, O1-O5|
+|Not claimed|No universal nonlinear cell-probe impossibility; no target hardware/latency result|
 
 |Latest E0 item|Actual evidence and scope|
 |---|---|

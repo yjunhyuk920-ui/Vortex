@@ -94,6 +94,32 @@ are the applicable passing local gates for this round.
 The old native-global 3,510-file replay was intentionally not rerun because no
 native-global artifact changed.
 
+## Post-persistence Boolean lift gate
+
+```powershell
+$env:PYTHONPATH=(Resolve-Path '.').Path
+& '.\experiments\native_global_transition_20260908\.venv\Scripts\python.exe' `
+  -m unittest tests.test_boolean_oracle_parity_lift_gate -v
+```
+
+Final observed after the feature-lift extension:
+
+```text
+Ran 11 tests
+OK
+```
+
+The exhaustive controls include all 37,067 distinct `<n` query sets for the
+full-support deletion adversary at `n<=5` and every nonempty left subset of the
+complete inner-product matrix at `d<=4` for the maximum-one-rectangle check.
+
+Canonical Boolean lift result:
+
+```text
+results/e0_boolean_oracle_parity_lift_gate_v2/summary.json
+SHA-256 2d8a91800d574d32ec7611da6af6046d37cd4230a8c897f5c33ff268238695f6
+```
+
 ## Not tested
 
 ```text

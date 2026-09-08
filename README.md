@@ -2,7 +2,7 @@
 
 Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total peak<=8GiB, original output/RNG/required successor state; same-machine native4BQ4 p50<=1.2x,p95<=1.5x and existing TTFT. **Not achieved.** No training/weight/mission change; every preparation, storage, movement, arithmetic and state cost counts.
 
-## Current research frontier — 2026-09-08
+## Current research frontier — 2026-09-09
 
 [Causal/global producer frontier](experiments/causal_global_bridge_20260908/REPORT.md)
 compared the frozen legal-causal exposure, global nonlinear producer, and paid
@@ -27,6 +27,17 @@ queries with zero row/left-mask mismatch. The **area-5,400 32-query native trace
 has not been executed**, and globally mixed 8 GiB advice is not a proved direct
 sum. Literal `y'=y+W(s'-s)` column-delta summaries return to full dense effect
 when legal successive right factors differ in every coordinate.
+
+A post-persistence [Boolean-MatVec exact-lift Gate](experiments/causal_global_bridge_20260908/BOOLEAN_MATVEC_LIFT_RESULT.md)
+now closes two tempting Principle-B detours without overclaiming a general
+cell-probe impossibility. Any deterministic adaptive black-box conversion from
+complete Boolean-semiring `Mv` answers to exact GF(2) `Mv` needs at least
+`|supp(v)|` Boolean products; full-support queries need `n`. A stronger one-shot
+escape that permits arbitrary nonlinear row/query feature maps still needs
+exactly `2^d-1` Boolean features to realize `d`-bit GF(2) inner product. At the
+`25x216` area-5,400 bridge this alone is about `4.8755691e62x` source storage.
+Direct GF(2)/native globally mixed data structures remain OPEN; these theorems
+must not be promoted into a universal arbitrary-data-structure lower bound.
 
 The previous [nonlinear adaptive router Gate](experiments/nonlinear_router_frontier_20260908/REPORT.md)
 remains authoritative: `25x108`/two-probe and all side<=128 local routes are

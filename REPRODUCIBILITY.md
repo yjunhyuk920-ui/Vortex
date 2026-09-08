@@ -64,6 +64,46 @@ single <=8 GiB target GPU, PCIe/SSD/HBM physical schedule, native 4B Q4 p50/p95
 or TTFT run occurred. The old native-global 3,510-file replay was intentionally
 not rerun because that experiment was not modified.
 
+## Post-persistence Boolean-MatVec exact-lift gate — 2026-09-09
+
+Authority:
+
+```text
+experiments/causal_global_bridge_20260908/BOOLEAN_MATVEC_LIFT_PREREGISTRATION.md
+experiments/causal_global_bridge_20260908/BOOLEAN_MATVEC_LIFT_RESULT.md
+vortex_runtime/boolean_oracle_parity_lift_gate.py
+tests/test_boolean_oracle_parity_lift_gate.py
+results/e0_boolean_oracle_parity_lift_gate_v2/summary.json
+```
+
+The black-box criterion was committed and remotely verified before the
+implementation. Final focused replay:
+
+```powershell
+$env:PYTHONPATH=(Resolve-Path '.').Path
+& '.\experiments\native_global_transition_20260908\.venv\Scripts\python.exe' `
+  -m unittest tests.test_boolean_oracle_parity_lift_gate -v
+```
+
+Observed: `11/11 PASS`.
+
+The transcript control exhausts 37,067 distinct `<n` query sets for `n<=5`;
+the one-rectangle control exhausts every nonempty left subset for `d<=4`.
+Canonical v2 result:
+
+```text
+SHA-256 2d8a91800d574d32ec7611da6af6046d37cd4230a8c897f5c33ff268238695f6
+```
+
+Intermediate pre-feature-lift v1 is intentionally retained:
+
+```text
+SHA-256 753d06b2dac202c297cbad3fedda172c6aa415e021590a3bc04997c5592f5ff8
+```
+
+This gate is E0 algebra/data-structure evidence only. It does not run 405B,
+CUDA, <=8GiB target hardware, native 4B Q4 p50/p95 or TTFT.
+
 ## Native global transition — 2026-09-08
 
 See experiments/native_global_transition_20260908/HANDOFF.md. Actual pinned original
