@@ -400,6 +400,16 @@ products of rank-one characters force exact determinantal capacity at degree
 advice-bit/two-probe seed. It does not construct or reject the fully
 non-systematic seven-bit seed, the `25 x 108` nonlinear-word capacity point,
 global mixed cells, or native arithmetic.
+F-090 closes that `25 x 108` nonlinear-word capacity point without restoring
+linearity. Largest-fiber recursion plus exact Segre intersections applies to
+arbitrary nonlinear stored words, arbitrary deterministic value-adaptive
+addresses at every depth, and arbitrary final Boolean logic. It closes all
+target-feasible side-128 local 64-bit word cases. The new first local unclosed
+points are `24 x 225` and `25 x 216`, 99 words/four probes; their nonadaptive
+and one-value-stage adaptive submodels are also closed. A stronger independent
+32-query union Gate also forces `64/675`, exactly 8x target, on some abstract
+query tuple. The legal batch-1 Transformer reachability of that tuple plus
+global nonlinear/native lifts remain open.
 Read that continuation and each scope boundary before reopening a family.
 
 <!-- EXP-088B:START -->

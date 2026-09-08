@@ -2,7 +2,27 @@
 
 Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total peak<=8GiB, original output/RNG/required successor state; same-machine native4BQ4 p50<=1.2x,p95<=1.5x and existing TTFT. **Not achieved.** No training/weight/mission change; every preparation, storage, movement, arithmetic and state cost counts.
 
-## Current bounded record — 2026-09-08
+## Current research frontier — 2026-09-08
+
+[Nonlinear adaptive router cover Gate](experiments/nonlinear_router_frontier_20260908/REPORT.md)
+now closes the previous `25x108`,50-word,two-probe arbitrary-nonlinear local
+capacity survivor. The theorem allows every stored word to be an arbitrary
+checkpoint function, every later address to depend on prior returned values,
+and arbitrary deterministic final decoding; exact largest-fiber plus Segre
+geometry still limits one route's query span to `t*w`.
+
+All 8,256 target-feasible side<=128 64-bit local rectangles are rejected. The
+first local points not rejected by the fully adaptive Gate are `24x225` and
+`25x216`,99 words/four probes at favorable traffic `8/675`. They are **not
+constructions**. Fixed four-word supports and one-value-stage adaptive routing
+are also rejected. A stronger independently-selectable 32-query Gate forces a
+`64/675` encoded-word union on some abstract tuple—exactly 8x the registered
+`8/675` line—even with fully nonlinear/value-adaptive words. The missing bridge
+is now causal: that adversarial tuple has not been proved reachable along one
+legal batch-1 Transformer continuation. Global cross-matrix encoding and native
+numerical/state lifting remain open.
+
+## Prior bounded native record — 2026-09-08
 [Native whole-state transition constructors](experiments/native_global_transition_20260908/REPORT.md)
 actually load pinned original SmolLM2-135M and execute HF generation using each
 candidate's own logits, complete30-layer KV and original sampler/RNG. A exports

@@ -1156,6 +1156,36 @@ advice-bit seed is exactly impossible at two probes; the fully non-systematic
 seven-bit case remains unresolved after an explicitly inconclusive SMT
 timeout. Global mixed cells, native arithmetic, and joint batches stay open.
 
+## A-087 -- Fully nonlinear value-adaptive words evade all linear-subspace locality
+
+Assumption: once stored cells are arbitrary nonlinear checkpoint functions and
+every later address may depend on returned values, no linear-subspace geometry
+can constrain the query family.
+
+Status: CONTRADICTED for deterministic exact block-local binary query routers.
+Largest-fiber recursion preserves at least `2^(D-(t-1)w)` sources before the
+final word. The joint answers on that retained set take at most `2^w` values.
+Comparing this with exact fibers of the query-span projection yields
+
+```text
+dim(span queries on one final route) <= t*w.
+```
+
+There are at most `S^t` routes. Exact Segre intersections then reject the old
+`25x108`,50-word,two-probe survivor and every target-feasible side<=128 64-bit
+local word case.
+
+### A-087 closure
+
+The first local shapes not rejected by the fully adaptive union bound are
+`24x225` and `25x216`,99 words/four probes. Their nonadaptive and one-value-
+Under the strong independently-selectable 32-query interface, source
+identification forces some source to activate at least 84 words overall and
+some 32-query tuple to touch at least 32 distinct words, giving `64/675=8x`
+the registered target. What remains open is whether that hard tuple is reachable
+by a legal batch-1 Transformer continuation, plus global cross-matrix advice,
+native finite-word arithmetic/state, and randomized-error variants.
+
 <!-- FIXED_PUBLIC_DYNAMIC_EXECUTOR_RESULT:3b9534800671e17eaef74869cf792186e683d6de -->
 ## Fixed-public dynamic executor assumption audit
 

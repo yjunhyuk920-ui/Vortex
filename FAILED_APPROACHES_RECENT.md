@@ -1090,6 +1090,36 @@ non-systematic seven-bit SMT timeout is inconclusive and must not be cited as
 a rejection. Authority:
 `docs/research/E0_ADAPTIVE_NONLINEAR_PROBE_DEGREE_GATE.md`.
 
+## F-090 -- Treating arbitrary nonlinear adaptive words as unrestricted query locality
+
+F-089's smallest side-128 capacity survivor is now closed. For an arbitrary
+binary source, choose a largest returned-word fiber at each of the first
+`t-1` adaptive depths. A final route retains at least
+`2^(D-(t-1)w)` sources, while all query answers on it factor through one final
+`w`-bit word. If those query masks span dimension `r`, exact linear projection
+fibers force `r<=tw`. Therefore every deterministic exact `S`-cell adaptive
+router covers its linear query family by at most `S^t` subspaces of dimension
+at most `tw`, even when every cell, address rule and final decoder is nonlinear.
+
+Exact Segre intersection geometry gives coverage only
+`7.45058081896844e-05` at the old `25x108`, 50-word, two-probe point. All 8,256
+target-feasible side<=128 rectangles are closed. The first local unclosed area
+is 5,400 (`24x225` and `25x216`,99 words,4 probes), but fixed four-word support
+and a one-value-stage dispatcher are also rejected. Any surviving local route
+must use multiple successive value-dependent routing stages.
+
+Under the stronger independently-selectable 32-query service interface, even
+that remaining multi-stage local route misses the target. Source-identification
+forces some area-5,400 source to activate at least 84 of 99 words across the
+complete rank-one family; a greedy 32-query tuple touches at least 32 distinct
+words = 2,048 bits = `64/675`, exactly 8x the registered `8/675` line.
+
+Do **not** generalize F-090 to global cross-matrix advice, native Q4/BF16/FP32
+semantics, randomized error, or the complete VORTEX state machine. In
+particular, the adversarial independently-selected 32-query tuple is not yet
+proved reachable along one legal batch-1 Transformer continuation. Authority:
+`experiments/nonlinear_router_frontier_20260908/REPORT.md`.
+
 <!-- FIXED_PUBLIC_DYNAMIC_EXECUTOR_RESULT:3b9534800671e17eaef74869cf792186e683d6de -->
 ## Actual-checkpoint mechanism rejection evidence
 

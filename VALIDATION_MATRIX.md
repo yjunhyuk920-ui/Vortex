@@ -1,7 +1,22 @@
 # Validation matrix — 2026-09-08
 
-[Current native proof/code/replay](experiments/native_global_transition_20260908/REPORT.md).
+[Current nonlinear router proof/code/result](experiments/nonlinear_router_frontier_20260908/REPORT.md).
+[Prior native proof/code/replay](experiments/native_global_transition_20260908/REPORT.md).
 [Pre-native-global matrix unchanged](docs/research/history/pre_native_global_transition_20260908/VALIDATION_MATRIX.md).
+
+|Latest E0 item|Actual evidence and scope|
+|---|---|
+|Three-principle screen|Checkpoint-space nonlinear words selected; joint restriction and native transition maps not promoted with undefined generators|
+|General theorem|Arbitrary nonlinear `S` stored `w`-bit cells + fully value-adaptive deterministic `t` probes imply <=`S^t` query subspaces of dimension <=`tw`|
+|Exact geometry|Independent deficit DP + closed binary Segre/simplex-product intersection formula; matches prior small exact controls and 24x225,d256 direct DP|
+|Old nonlinear survivor|25x108,50 words,2 probes: exact coverage upper `7.45058081896844e-05`; REJECTED|
+|Complete local scan|8,256 normalized side<=128 rectangles: 2,316 zero-probe-budget, 5,940 cover-rejected, 0 unclosed|
+|New local frontier|First single-query area 5,400: 24x225 and25x216,99 padded words,4 probes,traffic8/675; no constructor|
+|Routing refinement|Nonadaptive ratios `0.2243743/0.1121872`; one-value-stage adaptive `0.8974972/0.4487486`; all REJECTED|
+|Strong independent-32 union|Some source needs >=84 active words over all rank-one queries; some 32-query tuple touches >=32 words=2048 bits=`64/675`=8x target; causal Transformer reachability NOT PROVED|
+|Validation|15 focused tests PASS; 28 related tests PASS; authoritative summary SHA `af113c03b561827fc4ac93b1beb7216eb9de9cc9de17c95e6660b681c66f03d2`|
+|OPEN|Legal-causal reachability bridge or causal-specific escape, global nonlinear cross-matrix producer, native arithmetic/state, O1-O5, whole-theory O6, target hardware|
+|Not tested|405B weights/execution, CUDA, <=8GiB physical GPU, PCIe/SSD schedule, native4BQ4 p50/p95, TTFT|
 
 |Current item|Actual evidence and scope|
 |---|---|

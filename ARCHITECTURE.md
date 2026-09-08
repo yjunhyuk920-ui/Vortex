@@ -1320,3 +1320,33 @@ lowering pass, the production executor architecture remains unchanged.
 
 The only evaluated component is a real causal draft/verify loop. Architecture promotion follows `REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE`. No multiplication oracle, free future activation block, or unimplemented transform circuit is an accepted runtime component.
 <!-- EXP-102A:END -->
+
+## Nonlinear adaptive word-router architecture boundary — 2026-09-08
+
+No local `NonlinearWordRouter` is admitted. The exact largest-fiber/Segre Gate
+now covers arbitrary nonlinear word contents and arbitrary deterministic
+value-adaptive addresses. It rejects the former `25x108`,50-word,two-probe
+capacity point and every target-feasible side<=128 64-bit local rectangle.
+
+The first single-query local interface not rejected by the cover Gate is:
+
+```text
+source block       24x225 or 25x216 binary coefficients
+encoded storage    99 padded 64-bit words
+query budget       4 word probes = 8/675 of four-lane source bytes
+required routing   multiple successive value-dependent address stages
+encoder            OPEN
+address generator  OPEN
+decoder            OPEN
+native lift        OPEN
+```
+
+Nonadaptive four-word support and a one-value-stage dispatcher are already
+rejected. More importantly, the complete rank-one service forces a worst-source
+all-query union of at least 84 words, hence some independently-selectable
+32-query tuple uses at least 32 distinct words = `64/675`, 8x target. Therefore
+this local interface is not admitted even if a four-probe single-query encoder
+were found. The unresolved architecture boundary is a legal-causal restriction
+or global cross-matrix/nonlocal producer; no placeholder selector, implicit
+catalog, free decoder, or response bank may enter. Architecture promotion
+remains `False`.

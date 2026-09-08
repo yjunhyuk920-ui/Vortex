@@ -1675,6 +1675,40 @@ Authorities:
 `docs/research/E0_ADAPTIVE_NONLINEAR_PROBE_DEGREE_GATE.md` and
 `results/e0_nonlinear_systematic_advice_toy_gate/summary.json`.
 
+## D-109 -- Convert fully nonlinear adaptive word routing into a Segre cover
+
+For arbitrary nonlinear stored words, repeated largest-fiber selection across
+the first `t-1` probes leaves at least `2^(D-(t-1)w)` sources on one route.
+The final `w`-bit word permits at most `2^w` joint parity patterns there. If the
+route's query masks span dimension `r`, exact linear projection fiber size
+forces `r<=tw`. At most `S^t` final routes exist.
+
+Combining this theorem with exact binary Segre/simplex-product intersection
+geometry rejects the former `25x108`,50-word,two-probe capacity survivor at
+coverage `7.45058081896844e-05` and closes all 8,256 target-feasible side<=128
+64-bit rectangles. The first unclosed local shapes are `24x225` and `25x216`,
+99 words/four probes. Nonadaptive four-probe and one-value-stage adaptive
+versions of both are separately rejected. Although a single-query multi-stage
+route is not excluded by that cover count, the stronger independently-
+selectable 32-query interface forces at least 32 distinct words = `64/675`,
+exactly 8x the registered target, on some query tuple.
+
+Decision:
+
+```text
+PROMOTE_LARGEST_FIBER_SEGRE_COVER_AS_MANDATORY_DETERMINISTIC_LOCAL_WORD_GATE
+REJECT_25x108_50WORD_TWO_PROBE_FULLY_NONLINEAR_ADAPTIVE_ROUTER
+REJECT_ALL_TARGET_FEASIBLE_SIDE_LE128_64BIT_LOCAL_WORD_ROUTERS
+REJECT_AREA5400_NONADAPTIVE_AND_ONE_VALUE_STAGE_FOUR_PROBE_SUBMODELS
+REJECT_AREA5400_MULTI_STAGE_ROUTE_UNDER_STRONG_INDEPENDENT_32_QUERY_UNION
+KEEP_LEGAL_CAUSAL_REACHABILITY_OF_HARD_32_QUERY_TUPLE_OPEN
+KEEP_GLOBAL_CROSS_MATRIX_AND_NATIVE_NUMERICAL_LIFTS_OPEN
+KEEP_NO_SURVIVING_CORE_CANDIDATE
+```
+
+Authority: `experiments/nonlinear_router_frontier_20260908/REPORT.md` and
+`results/e0_nonlinear_router_cover_gate_v3/summary.json`.
+
 <!-- FIXED_PUBLIC_DYNAMIC_EXECUTOR_RESULT:3b9534800671e17eaef74869cf792186e683d6de -->
 ## Decision: fixed-public executor constructor gate
 

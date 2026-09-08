@@ -2030,3 +2030,52 @@ python experiments/exp_102a/run_experiment.py \
 
 Verify `checksums.sha256` before using the processed result. Source commit: `8fef54bcd80932616adb8c682b55d420fc9faadd`.
 <!-- EXP-102A:END -->
+
+## E0 nonlinear adaptive word-router cover Gate — 2026-09-08
+
+Authoritative interpreter in this worktree:
+
+```powershell
+$env:PYTHONPATH=(Resolve-Path '.').Path
+& '.\experiments\native_global_transition_20260908\.venv\Scripts\python.exe' `
+  -m unittest tests.test_nonlinear_router_cover_gate -v
+
+& '.\experiments\native_global_transition_20260908\.venv\Scripts\python.exe' `
+  scripts\derive_nonlinear_router_cover_gate.py `
+  --output-dir results\e0_nonlinear_router_cover_gate_replay
+```
+
+The replay output directory must be absent or empty. The system `python` and
+the older `.deps/exp076-venv` path were not present in this worktree; the pinned
+native-global Python 3.12.10 environment was reused. Two earlier launch attempts
+failed at PowerShell executable-path resolution before scientific execution and
+are not scientific failures.
+
+Observed validation:
+
+```text
+focused nonlinear-router tests                     15 / 15 PASS
+router + adaptive-degree + joint-Segre regression 28 / 28 PASS
+model forward calls                                 0
+hardware actions                                    0
+native-global 3,510-file replay                     NOT RERUN
+```
+
+Authoritative result:
+
+```text
+results/e0_nonlinear_router_cover_gate_v5/summary.json
+SHA-256 af113c03b561827fc4ac93b1beb7216eb9de9cc9de17c95e6660b681c66f03d2
+```
+
+The earlier weaker outputs remain intentionally preserved:
+
+```text
+e0_nonlinear_router_cover_gate     a69d0e2950c94001a7bbbeaeefbdec50473e8535387503013de721530f8a8dd2
+e0_nonlinear_router_cover_gate_v2  7f98edc8a7c18cde7f09e18c5261651e1207d5c0dc665f24cf3a539350a25415
+e0_nonlinear_router_cover_gate_v3  d3a49ae6487f79ec17848feac949741ca01c14493a65baa0b7b103bd06cbd581
+e0_nonlinear_router_cover_gate_v4  0e82591f0e4748852644abecac2b33c5cca7683917e2e4cd9bf8c9d057bdf981
+```
+
+The result is exact integer/rational E0 evidence. 405B, CUDA, physical <=8 GiB
+GPU allocation, PCIe/SSD, native4BQ4 p50/p95 and TTFT remain `NOT TESTED`.

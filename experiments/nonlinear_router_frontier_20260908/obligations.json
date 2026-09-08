@@ -1,0 +1,57 @@
+{
+  "experiment": "nonlinear_router_frontier_20260908",
+  "theory_status": "NOT_ESTABLISHED",
+  "hardware_status": "NOT_TESTED",
+  "core_admission": false,
+  "full_mission_o1_o6": "OPEN",
+  "three_qualifying_new_principles": false,
+  "O1": {
+    "status": "OPEN",
+    "reason": "No arbitrary-checkpoint native producer constructor; the local word route fails the strong independent-query screen and no causal/global replacement has been constructed."
+  },
+  "O2": {
+    "status": "OPEN",
+    "reason": "The theorem is a binary source Gate, not a full loading/prefill/decode/successor-state program."
+  },
+  "O3": {
+    "status": "OPEN",
+    "reason": "Exact GF(2) parity closure does not establish native Q4/BF16/FP32 logits, RNG, KV or inductive continuation equivalence."
+  },
+  "O4": {
+    "status": "OPEN",
+    "reason": "No sufficient whole-model constructor/storage/movement/arithmetic/state upper bound exists."
+  },
+  "O5": {
+    "status": "OPEN",
+    "reason": "405B, one-GPU <=8 GiB, CUDA/PCIe/SSD, native4BQ4 p50/p95 and TTFT were not executed."
+  },
+  "O6": {
+    "status": "PARTIAL_E0_ONLY",
+    "reason": "The new cover theorem, exact scans, source, tests and deterministic result are reproducible; there is no complete constructive theory."
+  },
+  "closed_scope": {
+    "fully_nonlinear_adaptive_25x108_50word_2probe": true,
+    "all_target_feasible_side_le_128_64bit_word_routers": true,
+    "area5400_nonadaptive_99word_4probe": true,
+    "area5400_one_value_stage_adaptive_99word_4probe": true,
+    "area5400_multistage_under_strong_independent_32_query_interface": true
+  },
+  "new_frontier": {
+    "area_bits": 5400,
+    "shapes": [[24, 225], [25, 216]],
+    "padded_words": 99,
+    "word_bits": 64,
+    "maximum_target_probes": 4,
+    "traffic_fraction": "8/675",
+    "single_query_constructor": "CAPACITY_NOT_REJECTED_BUT_STRONG_32_QUERY_TARGET_REJECTED",
+    "necessary_address_structure": "multiple successive value-dependent routing stages",
+    "forced_worst_source_all_query_union_cells": 84,
+    "forced_independent_32_query_distinct_cells": 32,
+    "forced_independent_32_query_payload_bits": 2048,
+    "forced_independent_32_query_fraction": "64/675",
+    "registered_fraction": "8/675",
+    "target_multiple": 8,
+    "ordinary_transformer_causal_reachability_of_hard_tuple": "OPEN",
+    "global_cross_matrix_nonlinear_producer": "OPEN"
+  }
+}
