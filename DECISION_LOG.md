@@ -2062,3 +2062,12 @@ full mission theorem was delivered. O1-O5 OPEN; O6 PARTIAL; target NOT_TESTED.
 The user reports hardware unavailable. Original shared checkout was left
 untouched after a concurrent-head guard; work was isolated on the same remote
 research branch. [Authority](experiments/codex_gauge_transport_20260909/REPORT.md).
+
+## 2026-09-09 — Preserve native fibers in encoded-rank proposals
+
+Continued the rank-normal candidate's O3 native lift after restoring c9ce7ff.
+The explicit I+11^T collision family and node-level rounding proof exclude its
+conversion to an injective full-copy map using only bijective encodings.
+Preserved the later binary corollary as proof-only, separate from frozen tests.
+No new target-admitted principle or universal impossibility is claimed.
+Current hardware remains unavailable. [Artifacts](experiments/codex_native_fiber_20260909/REPORT.md).

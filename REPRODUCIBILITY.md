@@ -1,5 +1,15 @@
 # Reproducibility
 
+## Native-fiber reproducibility
+
+[Experiment](experiments/codex_native_fiber_20260909/REPORT.md), [validation](experiments/codex_native_fiber_20260909/VALIDATION.json),
+[canonical result](experiments/codex_native_fiber_20260909/results/summary.json).
+From its directory, `python run.py --output-dir <new-directory>` regenerates
+the CPU controls; `python verify_bytes.py` verifies stored bytes. The output
+uses explicit LF bytes with package-local Git attributes. The 16384 controls
+use a proved positive-zero pruning rule and are not full dense or GPU runs.
+Canonical SHA-256: 8b20bfcaca5d88b044b0bbaefd0d4b8b35f2a3801e073b2b768b956bc0f140e8.
+
 ## Independent native-gauge package — 2026-09-09
 
 From `experiments/codex_gauge_transport_20260909` with Python 3.10+ standard library:

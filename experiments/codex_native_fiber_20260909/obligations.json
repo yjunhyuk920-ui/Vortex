@@ -1,0 +1,89 @@
+{
+  "CORE_ADMISSION": false,
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "O1": {
+    "artifact": "REPORT.md sections 4-5",
+    "dependencies": [
+      "native ABI",
+      "global representation"
+    ],
+    "next_action": "Construct arbitrary paid dense producer",
+    "open_assumptions": [
+      "no target-feasible universal producer"
+    ],
+    "statement": "Uniform finite automatic checkpoint construction",
+    "status": "OPEN"
+  },
+  "O2": {
+    "artifact": "REPORT.md sections 4-5",
+    "dependencies": [
+      "O1",
+      "whole graph"
+    ],
+    "next_action": "Supply full program including state/cache/sampler",
+    "open_assumptions": [
+      "no full executor"
+    ],
+    "statement": "Complete causal loading/prefill/output/successor program",
+    "status": "OPEN"
+  },
+  "O3": {
+    "artifact": "REPORT.md sections 1-3; run.py; INDEPENDENT_REVIEW.md",
+    "dependencies": [
+      "O2",
+      "exact native ABI"
+    ],
+    "local_result": "Bijective relabelings preserve fibers; full-rank native map is not injective",
+    "next_action": "Construct noninjective native operator/side-state relation without hidden dense replay",
+    "open_assumptions": [
+      "no HF activation reachability or full continuation proof"
+    ],
+    "statement": "Exact native outputs/RNG and inductive continuation-state correspondence",
+    "status": "OPEN"
+  },
+  "O4": {
+    "artifact": "REPORT.md section 4; results/summary.json",
+    "dependencies": [
+      "O1",
+      "O2",
+      "declared physical machine"
+    ],
+    "next_action": "Cost full surviving program, including init/verify/fallback",
+    "open_assumptions": [
+      "only witness/reference costs known"
+    ],
+    "statement": "Complete construction/storage/movement/arithmetic/state and auxiliary upper bounds",
+    "status": "OPEN"
+  },
+  "O5": {
+    "artifact": "REPORT.md sections 4-5",
+    "dependencies": [
+      "O4",
+      "baseline",
+      "evaluation population"
+    ],
+    "next_action": "Establish model bounds then obtain actual target/baseline evidence",
+    "open_assumptions": [
+      "no sufficient bound",
+      "target hardware unavailable"
+    ],
+    "statement": "Target memory/latency closure against same-machine baseline and population",
+    "status": "OPEN"
+  },
+  "O6": {
+    "artifact": "PREREGISTRATION.md; REPORT.md; run.py; VALIDATION.json; CHECKSUMS.sha256",
+    "dependencies": [
+      "whole-theory proof artifacts"
+    ],
+    "next_action": "Preserve and check next genuine core construction, not duplicate toy runs",
+    "open_assumptions": [
+      "O1-O5 unclosed"
+    ],
+    "statement": "Independently checkable proof/algorithm artifacts and reproducibility",
+    "status": "PARTIAL"
+  },
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "side_state_bound_is_not_native_KV_bound": true,
+  "three_qualifying_new_principles": false,
+  "witness_HF_activation_reachability_proved": false
+}

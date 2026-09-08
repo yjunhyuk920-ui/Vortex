@@ -1,5 +1,16 @@
 # Next constructive obligation — 2026-09-09
 
+## Native injectivity condition for the next constructor
+
+[The full-rank fiber witness](experiments/codex_native_fiber_20260909/REPORT.md) rules out inferring an injective
+native copy from algebraic rank. An encoded route must specify the actual
+possibly noninjective native operator and exact continuation relation, or retain
+and charge side state. A free inverse, lost-state certificate, or dense replay
+inside the decoder does not supply the missing producer. Global cross-wire
+co-design remains OPEN; the local side-state count cannot be added per matrix.
+Do not rerun this collision box or call it three new qualifying principles.
+Continue the current core comparison below with a concrete paid native map.
+
 ## Independent native-gauge obligation update
 
 [Audit and constructed gate](experiments/codex_gauge_transport_20260909/REPORT.md) require original logical

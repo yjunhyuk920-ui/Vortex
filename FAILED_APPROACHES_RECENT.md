@@ -1,5 +1,16 @@
 # Recent Failed and Demoted Approaches
 
+## Native full-rank pure-copy lift — local rejection
+
+[Proof and fixed native controls](experiments/codex_native_fiber_20260909/REPORT.md): the all-nonzero full-rank
+I+11^T BF16 family has a native collision set of size 256^(n-1). Arbitrary
+bijective input/output encodings cannot turn it into an injective full-coordinate
+copy. A binary full-rank proof-only corollary has the same obstruction.
+Rejected premise: algebraic full rank implies native bijectivity. Not rejected:
+global cross-wire state, nonbijective continuation encodings, different native
+operators, or side-state lifts with their actual paid cost. Not a universal
+impossibility proof, and no HF activation reachability is inferred.
+
 ## CODEX-GAUGE-TRANSPORT-20260909 — native schedule and rejection scope
 
 Do not claim a native-exact dense column permutation from `W'=Pout W Pin^-1`

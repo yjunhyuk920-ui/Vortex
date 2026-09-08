@@ -1,5 +1,23 @@
 # Research state — 2026-09-09
 
+## Native fiber obstruction — 2026-09-09
+
+[Native proof and controls](experiments/codex_native_fiber_20260909/REPORT.md) show that algebraic full rank does
+not imply native injectivity. A dense BF16 matrix with diagonal 2/off-diagonal 1
+sends at least `256^(n-1)` distinct inputs to one FP32 output under the declared
+balanced RNE ABI, for `2<=n<=16384`. Bijective input/output encodings preserve
+fiber sizes, so this native map cannot become an injective full-coordinate copy.
+A later proof-only binary full-rank corollary preserves the source alphabet.
+
+This closes only a local O3 premise, not the general encoded-graph route.
+Cross-wire/side-state encodings and nonbijective continuation representations
+remain open. The `8(n-1)`-bit term is only for an optional reversible lift, not
+a native KV-memory bound or a summable per-matrix resource lower bound.
+No arbitrary dense-work reduction or full HF/native-state proof is supplied.
+O1-O5 OPEN, O6 PARTIAL; THEORY_STATUS=NOT_ESTABLISHED,
+HARDWARE_STATUS=NOT_TESTED, CORE_ADMISSION=false. Target hardware remains
+unavailable, and the persistent goal remains active and unachieved.
+
 ## Independent native-gauge construction — 2026-09-09
 
 [Scoped report](experiments/codex_gauge_transport_20260909/REPORT.md): an actual layout compiler now transports the

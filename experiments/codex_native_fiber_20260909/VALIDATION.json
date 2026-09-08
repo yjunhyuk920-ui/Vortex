@@ -1,0 +1,18 @@
+{
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "README_CURRENT": true,
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "command": "python run.py --output-dir <fresh directory>",
+  "command_output": "{\"vectors\": 65536, \"mismatches\": 0, \"large_pruned_vectors\": 2, \"summary_sha256\": \"8b20bfcaca5d88b044b0bbaefd0d4b8b35f2a3801e073b2b768b956bc0f140e8\"}",
+  "exit_code": 0,
+  "full_dense_16384_executed": false,
+  "hardware_plan_unchanged_reason": "No target hardware available or execution performed; prior hardware limitation is unchanged",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "regenerated_files_byte_identical": 2,
+  "source_sha256": {
+    "run.py": "3fcf8ed2e1c73f166714cb3c3a79379998929d6059473ff2e447ccf2eb6e8d09",
+    "verify_bytes.py": "c191319da83555290b3a5cc4119d384a5bbb00fb85b47cee2753f7fdda7e0d0e"
+  },
+  "target_hardware_executed": false,
+  "whole_repository_suite_rerun": false
+}

@@ -1,5 +1,14 @@
 # VORTEX Architecture
 
+## Native maps with collisions
+
+[Native fiber theorem](experiments/codex_native_fiber_20260909/REPORT.md): exact input/output relabeling preserves
+the fibers of the native map. Full-rank algebraic rank-normal form is therefore
+not enough to implement an injective native coordinate copy. A constructive
+encoded architecture needs a noninjective operator or explicit side state plus
+a continuation proof, all paid. This adds an O3 constraint; it does not reject
+general joint graph encodings or establish any target resource closure.
+
 ## Implicit checkpoint-program carrier frontier — 2026-09-09
 
 See `experiments/implicit_program_carrier_20260909/REPORT.md`.

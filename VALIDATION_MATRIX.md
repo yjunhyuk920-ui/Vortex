@@ -1,5 +1,19 @@
 # Validation matrix — 2026-09-09
 
+## Native-fiber evidence — scoped CPU/proof only
+
+| Item | Evidence and boundary |
+|---|---|
+| Native dense collision | 65536 n=3 vectors / 196608 FP32 words; zero mismatch |
+| Positive-zero pruning | 16 full-tree comparisons at n=2,3,16,64; zero mismatch |
+| Width 16384 | Two restricted pruned-tree controls; not full dense/hardware execution |
+| Proof | Native node induction; invariant under bijections; later binary corollary is proof-only |
+| OPEN | Whole O1-O5, full HF reachable-state/RNG/KV proof, native4BQ4/8GiB/TTFT and target hardware |
+
+[Report](experiments/codex_native_fiber_20260909/REPORT.md), [raw summary](experiments/codex_native_fiber_20260909/results/summary.json).
+This audit does not rerun or claim ownership of the preceding carrier's 11-test
+receipt or earlier suites; their recorded provenance remains unchanged below.
+
 ## Independent native-gauge validation — 2026-09-09
 
 | Item | Actual evidence and scope |

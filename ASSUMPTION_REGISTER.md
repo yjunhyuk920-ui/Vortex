@@ -1524,3 +1524,12 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
   not a model/latency test. Complete theory and hardware goals remain open.
 
 [Proof and costs](experiments/codex_gauge_transport_20260909/REPORT.md).
+
+## 2026-09-09 — Algebraic rank does not certify native injectivity
+
+[Finite native witness](experiments/codex_native_fiber_20260909/REPORT.md) disproves that premise even for a
+full-rank dense BF16 matrix and normal finite inputs. Independent bijective
+word encodings preserve the collision fibers. An injective side-state lift
+must distinguish them, but native KV does not inherit this optional demand.
+Full HF activation reachability is unproved; global nonbijective continuation
+representations and joint encodings remain OPEN. O1-O5 remain OPEN.

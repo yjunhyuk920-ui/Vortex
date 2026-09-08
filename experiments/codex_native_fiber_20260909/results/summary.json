@@ -1,0 +1,203 @@
+{
+  "BF16_values_checked": 1024,
+  "CORE_ADMISSION": false,
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "O1": "OPEN",
+  "O2": "OPEN",
+  "O3": "OPEN",
+  "O4": "OPEN",
+  "O5": "OPEN",
+  "O6": "PARTIAL",
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "abi": "BF16 operands, separate FP32 RNE products, fixed padded balanced FP32 RNE additions, FP32 output",
+  "exact_cost_and_proof_ledgers": [
+    {
+      "bound_ratio_to_half_ulp": "255/1024",
+      "delta_exponent": -35,
+      "family_compiler_coefficient_writes": 4,
+      "fiber_log2_cardinality": 8,
+      "full_matrix_BF16_payload_bytes": 8,
+      "half_ulp_at_one": "1/16777216",
+      "is_universal_dense_executor": false,
+      "max_tiny_integer_coefficient": 510,
+      "n": 2,
+      "native_reference_padded_additions_per_vector": 2,
+      "native_reference_products_per_vector": 4,
+      "real_determinant": 3,
+      "reversible_side_state_information_lower_bits_only": 8,
+      "tiny_sum_bound": "255/17179869184"
+    },
+    {
+      "bound_ratio_to_half_ulp": "765/4096",
+      "delta_exponent": -36,
+      "family_compiler_coefficient_writes": 9,
+      "fiber_log2_cardinality": 16,
+      "full_matrix_BF16_payload_bytes": 18,
+      "half_ulp_at_one": "1/16777216",
+      "is_universal_dense_executor": false,
+      "max_tiny_integer_coefficient": 765,
+      "n": 3,
+      "native_reference_padded_additions_per_vector": 9,
+      "native_reference_products_per_vector": 9,
+      "real_determinant": 4,
+      "reversible_side_state_information_lower_bits_only": 16,
+      "tiny_sum_bound": "765/68719476736"
+    },
+    {
+      "bound_ratio_to_half_ulp": "255/1024",
+      "delta_exponent": -38,
+      "family_compiler_coefficient_writes": 256,
+      "fiber_log2_cardinality": 120,
+      "full_matrix_BF16_payload_bytes": 512,
+      "half_ulp_at_one": "1/16777216",
+      "is_universal_dense_executor": false,
+      "max_tiny_integer_coefficient": 4080,
+      "n": 16,
+      "native_reference_padded_additions_per_vector": 240,
+      "native_reference_products_per_vector": 256,
+      "real_determinant": 17,
+      "reversible_side_state_information_lower_bits_only": 120,
+      "tiny_sum_bound": "255/17179869184"
+    },
+    {
+      "bound_ratio_to_half_ulp": "255/1024",
+      "delta_exponent": -48,
+      "family_compiler_coefficient_writes": 268435456,
+      "fiber_log2_cardinality": 131064,
+      "full_matrix_BF16_payload_bytes": 536870912,
+      "half_ulp_at_one": "1/16777216",
+      "is_universal_dense_executor": false,
+      "max_tiny_integer_coefficient": 4177920,
+      "n": 16384,
+      "native_reference_padded_additions_per_vector": 268419072,
+      "native_reference_products_per_vector": 268435456,
+      "real_determinant": 16385,
+      "reversible_side_state_information_lower_bits_only": 131064,
+      "tiny_sum_bound": "255/17179869184"
+    }
+  ],
+  "exhaustive_mismatches": 0,
+  "exhaustive_n3_output_words": 196608,
+  "exhaustive_n3_vectors": 65536,
+  "exhaustive_record_sha256": "1ffb9a59b8171ed00e3067c8a13e054d496d687e3b7e0366e538c2fb36a1c3a4",
+  "kind": "SCOPED_NATIVE_FULL_RANK_NONINJECTIVITY_WITNESS",
+  "large_pruned_controls": [
+    {
+      "execution": "proved positive-zero pruned tree, not a full dense/hardware run",
+      "n": 16384,
+      "nonzero_input_pattern": 0,
+      "output_words": 16384,
+      "sha256_little_endian_FP32_output_words": "fd5b49780abc38b5943d58cb608ea74217922e25976e93ed9c98fc413ad47cc8"
+    },
+    {
+      "execution": "proved positive-zero pruned tree, not a full dense/hardware run",
+      "n": 16384,
+      "nonzero_input_pattern": 255,
+      "output_words": 16384,
+      "sha256_little_endian_FP32_output_words": "fd5b49780abc38b5943d58cb608ea74217922e25976e93ed9c98fc413ad47cc8"
+    }
+  ],
+  "native_HF_RNG_KV_tested": false,
+  "new_qualifying_principles": 0,
+  "pruned_vs_full_controls": [
+    {
+      "a": 0,
+      "mismatches": 0,
+      "n": 2,
+      "words_checked": 2
+    },
+    {
+      "a": 1,
+      "mismatches": 0,
+      "n": 2,
+      "words_checked": 2
+    },
+    {
+      "a": 127,
+      "mismatches": 0,
+      "n": 2,
+      "words_checked": 2
+    },
+    {
+      "a": 255,
+      "mismatches": 0,
+      "n": 2,
+      "words_checked": 2
+    },
+    {
+      "a": 0,
+      "mismatches": 0,
+      "n": 3,
+      "words_checked": 3
+    },
+    {
+      "a": 1,
+      "mismatches": 0,
+      "n": 3,
+      "words_checked": 3
+    },
+    {
+      "a": 127,
+      "mismatches": 0,
+      "n": 3,
+      "words_checked": 3
+    },
+    {
+      "a": 255,
+      "mismatches": 0,
+      "n": 3,
+      "words_checked": 3
+    },
+    {
+      "a": 0,
+      "mismatches": 0,
+      "n": 16,
+      "words_checked": 16
+    },
+    {
+      "a": 1,
+      "mismatches": 0,
+      "n": 16,
+      "words_checked": 16
+    },
+    {
+      "a": 127,
+      "mismatches": 0,
+      "n": 16,
+      "words_checked": 16
+    },
+    {
+      "a": 255,
+      "mismatches": 0,
+      "n": 16,
+      "words_checked": 16
+    },
+    {
+      "a": 0,
+      "mismatches": 0,
+      "n": 64,
+      "words_checked": 64
+    },
+    {
+      "a": 1,
+      "mismatches": 0,
+      "n": 64,
+      "words_checked": 64
+    },
+    {
+      "a": 127,
+      "mismatches": 0,
+      "n": 64,
+      "words_checked": 64
+    },
+    {
+      "a": 255,
+      "mismatches": 0,
+      "n": 64,
+      "words_checked": 64
+    }
+  ],
+  "python_rng_state_unchanged": true,
+  "target_hardware_tested": false,
+  "witness_HF_activation_reachability_proved": false
+}
