@@ -2,6 +2,18 @@
 
 Continuation of `FAILED_APPROACHES.md`. This is a permanent anti-repetition register. Revisit an entry only with a mechanism that directly addresses the recorded failure and a stronger preregistered falsification.
 
+## OUTPUT-ENVELOPE-20260908 — fixed-packet identical-output broadcast
+
+Scope: original SmolLM2-135M revision93efa2f097d58c2a74874c7e644dbc9b0cee75a2,
+layers0/15/29 q/gate/up/down;packet256contiguous;8frozen synthetic BF16 inputs/matrix;
+declared separateFP32 products/balanced reduction/BF16 output, not official HF ABI.
+12matrices/96queries/101376outputs agree, but0of432packets share actual output words.
+Thus0accepted_groups and0oracle_broadcastable_groups;original reads100%,extra
+coefficient/FPwork0.78%-1.04%. Even exact packet range cannot broadcast unequal
+outputs. Do not vary packet/seed/tensor or refine the same certificate as core.
+Different heterogeneous output encodings and actual causal inputs are not excluded.
+Report/constructor/raw evidence: experiments/output_envelope_20260908/.
+
 <!-- EXP-066-AUTHORITATIVE-FINAL -->
 ## F-034 — Exact classical TT/MPO bond-rank core
 

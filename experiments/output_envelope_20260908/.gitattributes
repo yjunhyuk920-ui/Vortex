@@ -1,0 +1,2 @@
+# Preserve frozen evidence bytes, including original Windows JSON/log line endings.
+* -text

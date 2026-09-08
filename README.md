@@ -3,15 +3,26 @@
 Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total peak<=8GiB, original output/RNG/required successor state; same-machine native4BQ4 p50<=1.2x,p95<=1.5x and existing TTFT. **Not achieved.** No training/weight/mission change; every preparation, storage, movement, arithmetic and state cost counts.
 
 ## Current bounded record — 2026-09-08
-[Native row-frontier producer](experiments/native_row_frontier_20260908/REPORT.md) automatically generates a lossless row-edit itinerary and preserves the original declared BF16/FP32 balanced reduction tree. No previous-query similarity, input-response bank or error-retry. Unstructured matrices are handled correctly but nearly all work remains.
+[Native output-envelope screen](experiments/output_envelope_20260908/docs/REPORT_KO.md)
+constructs a shared BF16-output certificate from row-packet extrema in the original
+declared FP32 tree. Uncertified rows are actually read and calculated; the whole
+vector is returned in the declared numerical domain.
 
-18 synthetic matrices/360queries/80640output coordinates match separate C/NumPy,378Fraction checks. At512: intentionally coherent controls have1.48-1.72%source and1.26-1.36%FPwork;1%mantissa perturbations retain5.95-6.02%source and8.14-8.21%FPwork. Random controls have~200%source and~99.86%FPwork. Source ratios are not total memory traffic.
+Pinned original SmolLM2-135M weights:12matrices,96syntheticinputs,101376outputs,
+0mismatch,36independent Fractiondots. All432packets had different actual outputs;
+0certified/broadcastable. Original reads100%, coefficient/FPwork100.78%-101.04% plus
+other overhead. This fails the fixed broadcast format, not every algorithm or
+the checkpoint's reachable activation population. No HF forward or CUDA ran.
 
-A post-hoc current-CPU batch1 diagnostic against handwritten fixed-order C measured~20x/~7.7x for the two favorable families and1.59-1.62x slowdown for random data. Compilation/loading excluded; this is NOT optimized BLAS/HF/GPU/native4BQ4 or full-model performance. Preparation uses full W and O(m^2 N) comparisons; first8complete costs not closed.
-
-14tests/147deterministic sciencefiles replay to a fixed manifest. Source/C/tests/prereg/CPUsummary/verification are in a checked capsule; raw science regenerates. Korean detailed report, all initial CPU samples and available logs are in user ZIP. FullHF/KV/RNG/CUDA/405B/8GiB/4BQ4/TTFT not tested.
+[Reproduction](experiments/output_envelope_20260908/README.md):12tests,
+38numerical files regenerate. Raw upstream weights and derived min/max payloads
+are ignored; code, hashes, inputs, outputs and traces are retained. No latency claim.
+[Prior row-frontier evidence](experiments/native_row_frontier_20260908/REPORT.md)
+remains unchanged. Concurrent PR147 correlation-source is committed on another
+branch; [combined frontier](experiments/output_envelope_20260908/FRONTIER_SYNC.md)
+records both failures without importing or overwriting that work.
 
 THEORY_STATUS=NOT_ESTABLISHED; CORE_ADMISSION=false; TARGET_HARDWARE_STATUS=NOT_TESTED; FULL_MISSION_O1_O6=OPEN; THREE_QUALIFYING_NEW_PRINCIPLES=false; README_CURRENT=true.
 
 [State](RESEARCH_STATE.md), [next](NEXT_EXPERIMENT.md), [validation](VALIDATION_MATRIX.md), [AGENTS](AGENTS.md), [contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md).
-[Prior README unchanged](docs/research/history/pre_native_row_frontier_20260908/README.md).
+[Prior README unchanged](docs/research/history/pre_output_envelope_20260908/README.md).

@@ -1,0 +1,8 @@
+{
+  "PREREGISTRATION.md": "b5bedd383842d1b08ee4fae554b3b09d64036a89042d528493c80987869af8df",
+  "run.py": "bbd13e9fc3df615d6e4ff2f5e7d671affa60eac453deed7d4f6414fc69458ecd",
+  "src/envelope.py": "7b349197a44f595e21aa92e999ce7b35621b6d079eae03bae1780ee766832c89",
+  "src/oracle.py": "bce32d0b756aef0da4bb6c6ab489e99e1a40ee73bb375fe37d56c3ff9bf48c5f",
+  "tests/test_envelope.py": "29c5c26475f3c92a42fc8965de4ecc4dfc0d98c836c81fc39d6e574911605018",
+  "verify.py": "99e91adf41ef1042937c5636fa46c527ca5440e896fafab2e9dcf766d05b60a0"
+}

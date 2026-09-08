@@ -1,0 +1,174 @@
+{
+  "model": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "tensors": [
+    {
+      "bytes": 663552,
+      "data_offsets": [
+        62818560,
+        63482112
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.0.self_attn.q_proj.weight",
+      "sha256": "93c3ba528349d3e08acdfc1e4ee9258e9153b710710f8f61b10cd0ced8f05df2",
+      "shape": [
+        576,
+        576
+      ]
+    },
+    {
+      "bytes": 1769472,
+      "data_offsets": [
+        58393728,
+        60163200
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.0.mlp.gate_proj.weight",
+      "sha256": "b3257bec2c20bcfef046fcd8dfe99cac5a1f70822bd83ca683de0d1e6933120c",
+      "shape": [
+        1536,
+        576
+      ]
+    },
+    {
+      "bytes": 1769472,
+      "data_offsets": [
+        60163200,
+        61932672
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.0.mlp.up_proj.weight",
+      "sha256": "d713739db7950d6c3dfe8d82f036591fc3667a7d1a5f688264221dd253fc814f",
+      "shape": [
+        1536,
+        576
+      ]
+    },
+    {
+      "bytes": 1769472,
+      "data_offsets": [
+        56624256,
+        58393728
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.0.mlp.down_proj.weight",
+      "sha256": "cd82c901faa31baba56e78a44a7defc4cb8295084678bad85a3919860b560e74",
+      "shape": [
+        576,
+        1536
+      ]
+    },
+    {
+      "bytes": 663552,
+      "data_offsets": [
+        112379904,
+        113043456
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.15.self_attn.q_proj.weight",
+      "sha256": "96b5e969321d09bad5acf08889311fbea51fe12e1294d24c90ac45724811cd3c",
+      "shape": [
+        576,
+        576
+      ]
+    },
+    {
+      "bytes": 1769472,
+      "data_offsets": [
+        107955072,
+        109724544
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.15.mlp.gate_proj.weight",
+      "sha256": "e791f0d34b2b58f0352e9636c2eb3c7fd4cf0de37d53cec1d383328ff6d0a2d7",
+      "shape": [
+        1536,
+        576
+      ]
+    },
+    {
+      "bytes": 1769472,
+      "data_offsets": [
+        109724544,
+        111494016
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.15.mlp.up_proj.weight",
+      "sha256": "491ffe9e229579b6f6d23d36c6fa45f615b9173428fe049db09fc1bae77e3999",
+      "shape": [
+        1536,
+        576
+      ]
+    },
+    {
+      "bytes": 1769472,
+      "data_offsets": [
+        106185600,
+        107955072
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.15.mlp.down_proj.weight",
+      "sha256": "a24d5af3ca8776833d6b142b2e84f451e0ea916f9b4fc5c742ee0a74fbea705b",
+      "shape": [
+        576,
+        1536
+      ]
+    },
+    {
+      "bytes": 663552,
+      "data_offsets": [
+        218582784,
+        219246336
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.29.self_attn.q_proj.weight",
+      "sha256": "a6457c2adf57abdcc29e94a9c46468aba2c33317568275c49f30f82dcadc2899",
+      "shape": [
+        576,
+        576
+      ]
+    },
+    {
+      "bytes": 1769472,
+      "data_offsets": [
+        214157952,
+        215927424
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.29.mlp.gate_proj.weight",
+      "sha256": "9a87adf6363fb089c8ec1560a8b3c8d0f1f626f49eb140aa62781cb37915642c",
+      "shape": [
+        1536,
+        576
+      ]
+    },
+    {
+      "bytes": 1769472,
+      "data_offsets": [
+        215927424,
+        217696896
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.29.mlp.up_proj.weight",
+      "sha256": "2bb8e915d6b18a066ec463032d7d469c00fe984ebed63f87139a0666803ef04d",
+      "shape": [
+        1536,
+        576
+      ]
+    },
+    {
+      "bytes": 1769472,
+      "data_offsets": [
+        212388480,
+        214157952
+      ],
+      "dtype": "BF16",
+      "name": "model.layers.29.mlp.down_proj.weight",
+      "sha256": "0717578a87721ed5a7a0d838e8c0bfc05572e466a598973bb917b9d4bb9f6356",
+      "shape": [
+        576,
+        1536
+      ]
+    }
+  ]
+}

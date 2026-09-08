@@ -1,0 +1,56 @@
+{
+  "captured_utc": "2026-09-08T08:42:25.305708+00:00",
+  "numpy": "2.4.4",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "runtime_diagnostic_not_latency_benchmark": [
+    {
+      "acquire_and_build_seconds_observed": 5.128635900000063,
+      "name": "model.layers.0.self_attn.q_proj.weight"
+    },
+    {
+      "acquire_and_build_seconds_observed": 2.200565500000266,
+      "name": "model.layers.0.mlp.gate_proj.weight"
+    },
+    {
+      "acquire_and_build_seconds_observed": 1.9278659000001426,
+      "name": "model.layers.0.mlp.up_proj.weight"
+    },
+    {
+      "acquire_and_build_seconds_observed": 1.9364943999999014,
+      "name": "model.layers.0.mlp.down_proj.weight"
+    },
+    {
+      "acquire_and_build_seconds_observed": 1.8141007999997782,
+      "name": "model.layers.15.self_attn.q_proj.weight"
+    },
+    {
+      "acquire_and_build_seconds_observed": 1.9304802999999993,
+      "name": "model.layers.15.mlp.gate_proj.weight"
+    },
+    {
+      "acquire_and_build_seconds_observed": 2.2170725000000857,
+      "name": "model.layers.15.mlp.up_proj.weight"
+    },
+    {
+      "acquire_and_build_seconds_observed": 2.15340630000037,
+      "name": "model.layers.15.mlp.down_proj.weight"
+    },
+    {
+      "acquire_and_build_seconds_observed": 2.071542600000157,
+      "name": "model.layers.29.self_attn.q_proj.weight"
+    },
+    {
+      "acquire_and_build_seconds_observed": 2.2282862999995814,
+      "name": "model.layers.29.mlp.gate_proj.weight"
+    },
+    {
+      "acquire_and_build_seconds_observed": 2.216389500000332,
+      "name": "model.layers.29.mlp.up_proj.weight"
+    },
+    {
+      "acquire_and_build_seconds_observed": 2.127547599999616,
+      "name": "model.layers.29.mlp.down_proj.weight"
+    }
+  ]
+}
