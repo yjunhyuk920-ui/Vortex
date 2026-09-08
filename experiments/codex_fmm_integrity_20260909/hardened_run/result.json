@@ -1,0 +1,6601 @@
+{
+  "authoritative_decision": "REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE",
+  "authoritative_decision_scope": "only programs retained/evaluated by the frozen catalog, orientation, beam, cut, family and I/O-bin search; no universal FMM or native impossibility",
+  "best_direct_row": {
+    "block_length": 8192,
+    "candidate_nodes": 8192,
+    "candidate_ratio_N_over_A": 1.0,
+    "committed_tokens_grant": 8192,
+    "direct": {
+      "arithmetic_ratio": 0.3825164968636731,
+      "io_fraction": 0.011845085910137866,
+      "maximum_workspace_bytes": 6572965180,
+      "p50_arithmetic_pass": false,
+      "p50_io_pass": true,
+      "p95_arithmetic_pass": false,
+      "ten_x_arithmetic_pass": false,
+      "total_compiled_static_bytes": 117532135092756.0,
+      "workspace_pass": true
+    },
+    "direct_selection": {
+      "missing_families": [],
+      "scope": "retained family candidates and frozen conservative I/O bins only",
+      "status": "SELECTED"
+    },
+    "free_transform_oracle": {
+      "arithmetic_ratio": 0.13245534182072066,
+      "io_fraction": 8.138020833333333e-05,
+      "maximum_workspace_bytes": 2369960998,
+      "p50_arithmetic_pass": false,
+      "p50_io_pass": true,
+      "p95_arithmetic_pass": false,
+      "ten_x_arithmetic_pass": false,
+      "total_compiled_static_bytes": 807495794688.0,
+      "workspace_pass": true
+    },
+    "oracle_selection": {
+      "missing_families": [],
+      "scope": "retained family candidates and frozen conservative I/O bins only",
+      "status": "SELECTED"
+    }
+  },
+  "best_free_transform_oracle_row": {
+    "block_length": 4096,
+    "candidate_nodes": 4096,
+    "candidate_ratio_N_over_A": 1.0,
+    "committed_tokens_grant": 4096,
+    "direct": {
+      "arithmetic_ratio": 0.42738395058909895,
+      "io_fraction": 0.011845248668663473,
+      "maximum_workspace_bytes": 3286424200,
+      "p50_arithmetic_pass": false,
+      "p50_io_pass": true,
+      "p95_arithmetic_pass": false,
+      "ten_x_arithmetic_pass": false,
+      "total_compiled_static_bytes": 58766460801580.0,
+      "workspace_pass": true
+    },
+    "direct_selection": {
+      "missing_families": [],
+      "scope": "retained family candidates and frozen conservative I/O bins only",
+      "status": "SELECTED"
+    },
+    "free_transform_oracle": {
+      "arithmetic_ratio": 0.13010262621990515,
+      "io_fraction": 0.00016276041666666666,
+      "maximum_workspace_bytes": 1185070118,
+      "p50_arithmetic_pass": false,
+      "p50_io_pass": true,
+      "p95_arithmetic_pass": false,
+      "ten_x_arithmetic_pass": false,
+      "total_compiled_static_bytes": 807495794688.0,
+      "workspace_pass": true
+    },
+    "oracle_selection": {
+      "missing_families": [],
+      "scope": "retained family candidates and frozen conservative I/O bins only",
+      "status": "SELECTED"
+    }
+  },
+  "block_rows": [
+    {
+      "block_length": 32,
+      "candidate_nodes": 32,
+      "candidate_ratio_N_over_A": 1.0,
+      "committed_tokens_grant": 32,
+      "direct": null,
+      "direct_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "NO_PLAN_IN_FROZEN_IO_BIN_DP"
+      },
+      "free_transform_oracle": null,
+      "oracle_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "NO_PLAN_IN_FROZEN_IO_BIN_DP"
+      }
+    },
+    {
+      "block_length": 64,
+      "candidate_nodes": 64,
+      "candidate_ratio_N_over_A": 1.0,
+      "committed_tokens_grant": 64,
+      "direct": {
+        "arithmetic_ratio": 0.820388817782887,
+        "io_fraction": 0.01165152047987754,
+        "maximum_workspace_bytes": 1768430388,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 903213867424.0,
+        "workspace_pass": true
+      },
+      "direct_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      },
+      "free_transform_oracle": {
+        "arithmetic_ratio": 0.42977385121063194,
+        "io_fraction": 0.010416666666666666,
+        "maximum_workspace_bytes": 18614552,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 807495794688.0,
+        "workspace_pass": true
+      },
+      "oracle_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      }
+    },
+    {
+      "block_length": 128,
+      "candidate_nodes": 128,
+      "candidate_ratio_N_over_A": 1.0,
+      "committed_tokens_grant": 128,
+      "direct": {
+        "arithmetic_ratio": 0.7142356941303158,
+        "io_fraction": 0.01184093425406346,
+        "maximum_workspace_bytes": 4307134340,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 1835369401728.0,
+        "workspace_pass": true
+      },
+      "direct_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      },
+      "free_transform_oracle": {
+        "arithmetic_ratio": 0.42977385121063194,
+        "io_fraction": 0.005208333333333333,
+        "maximum_workspace_bytes": 37128472,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 807495794688.0,
+        "workspace_pass": true
+      },
+      "oracle_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      }
+    },
+    {
+      "block_length": 256,
+      "candidate_nodes": 256,
+      "candidate_ratio_N_over_A": 1.0,
+      "committed_tokens_grant": 256,
+      "direct": {
+        "arithmetic_ratio": 0.6691234905039083,
+        "io_fraction": 0.011830001652460431,
+        "maximum_workspace_bytes": 237474204,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 3667399346416.0,
+        "workspace_pass": true
+      },
+      "direct_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      },
+      "free_transform_oracle": {
+        "arithmetic_ratio": 0.30167981214801526,
+        "io_fraction": 0.0026041666666666665,
+        "maximum_workspace_bytes": 74130224,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 807495794688.0,
+        "workspace_pass": true
+      },
+      "oracle_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      }
+    },
+    {
+      "block_length": 512,
+      "candidate_nodes": 512,
+      "candidate_ratio_N_over_A": 1.0,
+      "committed_tokens_grant": 512,
+      "direct": {
+        "arithmetic_ratio": 0.5723856818230989,
+        "io_fraction": 0.01184730348316547,
+        "maximum_workspace_bytes": 411133800,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 7346357002704.0,
+        "workspace_pass": true
+      },
+      "direct_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      },
+      "free_transform_oracle": {
+        "arithmetic_ratio": 0.28480875012605017,
+        "io_fraction": 0.0013020833333333333,
+        "maximum_workspace_bytes": 148219192,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 807495794688.0,
+        "workspace_pass": true
+      },
+      "oracle_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      }
+    },
+    {
+      "block_length": 1024,
+      "candidate_nodes": 1024,
+      "candidate_ratio_N_over_A": 1.0,
+      "committed_tokens_grant": 1024,
+      "direct": {
+        "arithmetic_ratio": 0.48914320587337423,
+        "io_fraction": 0.01184327545672729,
+        "maximum_workspace_bytes": 1958112364,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 14688928133760.002,
+        "workspace_pass": true
+      },
+      "direct_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      },
+      "free_transform_oracle": {
+        "arithmetic_ratio": 0.26698586934071467,
+        "io_fraction": 0.0006510416666666666,
+        "maximum_workspace_bytes": 296369138,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 807495794688.0,
+        "workspace_pass": true
+      },
+      "oracle_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      }
+    },
+    {
+      "block_length": 2048,
+      "candidate_nodes": 2048,
+      "candidate_ratio_N_over_A": 1.0,
+      "committed_tokens_grant": 2048,
+      "direct": {
+        "arithmetic_ratio": 0.44991893129411703,
+        "io_fraction": 0.011697968598961665,
+        "maximum_workspace_bytes": 1685413414,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 29017469240144.0,
+        "workspace_pass": true
+      },
+      "direct_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      },
+      "free_transform_oracle": {
+        "arithmetic_ratio": 0.1578120379364566,
+        "io_fraction": 0.0003255208333333333,
+        "maximum_workspace_bytes": 592591858,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 807495794688.0,
+        "workspace_pass": true
+      },
+      "oracle_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      }
+    },
+    {
+      "block_length": 4096,
+      "candidate_nodes": 4096,
+      "candidate_ratio_N_over_A": 1.0,
+      "committed_tokens_grant": 4096,
+      "direct": {
+        "arithmetic_ratio": 0.42738395058909895,
+        "io_fraction": 0.011845248668663473,
+        "maximum_workspace_bytes": 3286424200,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 58766460801580.0,
+        "workspace_pass": true
+      },
+      "direct_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      },
+      "free_transform_oracle": {
+        "arithmetic_ratio": 0.13010262621990515,
+        "io_fraction": 0.00016276041666666666,
+        "maximum_workspace_bytes": 1185070118,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 807495794688.0,
+        "workspace_pass": true
+      },
+      "oracle_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      }
+    },
+    {
+      "block_length": 8192,
+      "candidate_nodes": 8192,
+      "candidate_ratio_N_over_A": 1.0,
+      "committed_tokens_grant": 8192,
+      "direct": {
+        "arithmetic_ratio": 0.3825164968636731,
+        "io_fraction": 0.011845085910137866,
+        "maximum_workspace_bytes": 6572965180,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 117532135092756.0,
+        "workspace_pass": true
+      },
+      "direct_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      },
+      "free_transform_oracle": {
+        "arithmetic_ratio": 0.13245534182072066,
+        "io_fraction": 8.138020833333333e-05,
+        "maximum_workspace_bytes": 2369960998,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 807495794688.0,
+        "workspace_pass": true
+      },
+      "oracle_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      }
+    },
+    {
+      "block_length": 16384,
+      "candidate_nodes": 16384,
+      "candidate_ratio_N_over_A": 1.0,
+      "committed_tokens_grant": 16384,
+      "direct": null,
+      "direct_selection": {
+        "missing_families": [
+          "lm_head"
+        ],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "MISSING_FAMILY_CANDIDATE"
+      },
+      "free_transform_oracle": {
+        "arithmetic_ratio": 0.14320528654637393,
+        "io_fraction": 4.0690104166666664e-05,
+        "maximum_workspace_bytes": 4739708759,
+        "p50_arithmetic_pass": false,
+        "p50_io_pass": true,
+        "p95_arithmetic_pass": false,
+        "ten_x_arithmetic_pass": false,
+        "total_compiled_static_bytes": 807495794688.0,
+        "workspace_pass": true
+      },
+      "oracle_selection": {
+        "missing_families": [],
+        "scope": "retained family candidates and frozen conservative I/O bins only",
+        "status": "SELECTED"
+      }
+    }
+  ],
+  "catalog_identity": {
+    "bytes": 746206,
+    "commit": "1949163da3bef7e3eb268a3ac015fd1c2dbfc767",
+    "git_blob_sha1": "5ff45960f86da6237f105f78aaa82d29cb18c30e",
+    "path": "algorithms/factorizations_r.npz",
+    "repository": "google-deepmind/alphatensor",
+    "sha256": "4d59571a2537a9472e8229176d5ebe2925f3e041ad403c095b41853026caec33",
+    "url": "https://raw.githubusercontent.com/google-deepmind/alphatensor/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/algorithms/factorizations_r.npz"
+  },
+  "catalog_summary": {
+    "catalog_key_count": 93,
+    "eligible_factorization_count": 59,
+    "pareto_orientation_count": 128,
+    "raw_orientation_count": 354,
+    "synthetic_control_count": 132,
+    "synthetic_control_mismatch_count": 0
+  },
+  "config_sha256": "d351c0321a233db3211255edeb48ae261d75059c341d4777781323d14748e416",
+  "deterministic_core_sha256": "258355f0e1364b918aedb1a5261559d5f902982d8a0516f733a86f19347047e4",
+  "direct_final_p50_pass_blocks": [],
+  "direct_ten_x_pass_blocks": [],
+  "environment": {
+    "cpu_count": 12,
+    "numpy": "2.3.5",
+    "peak_rss_bytes": null,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.14",
+    "wall_ns": 20418219500
+  },
+  "free_transform_ten_x_pass_blocks": [],
+  "integrity_failures": [],
+  "mechanism_fingerprint": "official-alphatensor-integral-small-coefficient-catalog/six-tensor-triangle-orientations/bounded-mixed-recursion-beam/explicit-leaf-multiply-add-plus-staged-left-weight-output-add-scale-move-ledger/cut-depth-static-weight-form-stream/original-bf16-or-ideal2-fp32-form-bytes/exp099-role-p95-native-repair-with-original-row-side-stream/perfect-N-over-A-one-block-grant",
+  "prior_evidence": {
+    "exp_080a": {
+      "best_block_length": 16384,
+      "best_constructive_ratio": 0.3611157967135951,
+      "best_workspace_bytes": 8095006720,
+      "decision": "REJECT_STANDARD_STRASSEN_HYPERBLOCK_AS_CORE_RETAIN_COST_MODEL_AUXILIARY",
+      "first_omega_oracle_pass_K": 512
+    },
+    "exp_099a": {
+      "decision": "PROMOTE_DYADIC_REASSOCIATION_LOCK_TO_EXPLICIT_RECTANGULAR_FMM_GATE",
+      "holdout_native_order_repair_p50": 0.0,
+      "holdout_native_order_repair_p95": 0.0005967881944444445,
+      "maximum_holdout_role_repair_p95": 0.001736111111111111
+    }
+  },
+  "prior_identities": {
+    "exp_080a": {
+      "bytes": 23074,
+      "git_blob_sha1": "83e278b76d4348754b728ac3e0fb908441855d37",
+      "path": "results\\exp_080a\\summary.json",
+      "sha256": "0debbb96f0a31b1ef2ffc1e662109687aed3b2cedaaf89ac1c013bf9a94c1d83",
+      "transport_normalization": "none",
+      "worktree_bytes": 23074
+    },
+    "exp_099a": {
+      "bytes": 454133,
+      "git_blob_sha1": "c46680e8ea6f74ec5d442f55a17bda3bced7b880",
+      "path": "results\\exp_099a\\4fbd6699fda885fbedbe7d2158e7ae7cb3c30d3f\\result.json",
+      "sha256": "571a0dd8e9d050e0fb4c6404ba54b5f481f5c83af72fcaff4ef35848f4986a9a",
+      "transport_normalization": "CRLF_to_registered_LF_blob",
+      "worktree_bytes": 466409
+    }
+  },
+  "provenance": {
+    "derived": [
+      "mixed recursive split/rank products",
+      "leaf multiply/add counts",
+      "staged transform add/scale/move counts",
+      "cut-depth transformed-checkpoint byte expansion",
+      "native-repair original-row side stream",
+      "favorable one-pass transform workspace",
+      "role-weighted native-order repair",
+      "joint p50 I/O-bin dynamic program"
+    ],
+    "measured": [
+      "pinned AlphaTensor catalog bytes and Git blob identity",
+      "exact integral tensor reconstruction for every eligible source factorization",
+      "deterministic integer execution controls",
+      "registered EXP-080A and EXP-099A committed evidence identities"
+    ],
+    "projected": [
+      "405B inventory arithmetic and BF16 checkpoint stream",
+      "same lossless ratio for checkpoint-static transformed forms",
+      "8-GiB favorable workspace screen"
+    ],
+    "unverified": [
+      "causal future activation block",
+      "finite-word exact transformed-weight representation",
+      "sound selector for native-order repairs",
+      "actual packed CPU/GPU kernel",
+      "decompression and PCIe/HBM overlap",
+      "TARGET-W checkpoint execution",
+      "physical 8-GiB allocation including KV and allocator fragmentation",
+      "same-machine native 4B Q4 p50/p95"
+    ]
+  },
+  "schema": "exp-100a-explicit-rectangular-fmm-v1",
+  "scheme_rows": [
+    {
+      "classical_rank": 1056,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 4329,
+      "left_scales": 10,
+      "max_abs_coefficient": 2,
+      "output_additions": 5736,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 691,
+      "rank_ratio": 0.6543560606060606,
+      "scheme_id": "8,11,12:p102",
+      "shape": [
+        11,
+        8,
+        12
+      ],
+      "source_key": "8,11,12",
+      "transform_proxy": 15252,
+      "weight_additions": 5161,
+      "weight_scales": 16
+    },
+    {
+      "classical_rank": 1056,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 5161,
+      "left_scales": 16,
+      "max_abs_coefficient": 2,
+      "output_additions": 5736,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 691,
+      "rank_ratio": 0.6543560606060606,
+      "scheme_id": "8,11,12:p201",
+      "shape": [
+        12,
+        8,
+        11
+      ],
+      "source_key": "8,11,12",
+      "transform_proxy": 15252,
+      "weight_additions": 4329,
+      "weight_scales": 10
+    },
+    {
+      "classical_rank": 1056,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 4329,
+      "left_scales": 10,
+      "max_abs_coefficient": 2,
+      "output_additions": 5756,
+      "output_scales": 16,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 691,
+      "rank_ratio": 0.6543560606060606,
+      "scheme_id": "8,11,12:p012",
+      "shape": [
+        8,
+        11,
+        12
+      ],
+      "source_key": "8,11,12",
+      "transform_proxy": 15288,
+      "weight_additions": 5177,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 1056,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 5177,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 5756,
+      "output_scales": 16,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 691,
+      "rank_ratio": 0.6543560606060606,
+      "scheme_id": "8,11,12:p210",
+      "shape": [
+        12,
+        11,
+        8
+      ],
+      "source_key": "8,11,12",
+      "transform_proxy": 15288,
+      "weight_additions": 4329,
+      "weight_scales": 10
+    },
+    {
+      "classical_rank": 1056,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 5161,
+      "left_scales": 16,
+      "max_abs_coefficient": 2,
+      "output_additions": 4932,
+      "output_scales": 10,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 691,
+      "rank_ratio": 0.6543560606060606,
+      "scheme_id": "8,11,12:p021",
+      "shape": [
+        8,
+        12,
+        11
+      ],
+      "source_key": "8,11,12",
+      "transform_proxy": 15296,
+      "weight_additions": 5177,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 1056,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 5177,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 4932,
+      "output_scales": 10,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 691,
+      "rank_ratio": 0.6543560606060606,
+      "scheme_id": "8,11,12:p120",
+      "shape": [
+        11,
+        12,
+        8
+      ],
+      "source_key": "8,11,12",
+      "transform_proxy": 15296,
+      "weight_additions": 5161,
+      "weight_scales": 16
+    },
+    {
+      "classical_rank": 960,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 3404,
+      "left_scales": 20,
+      "max_abs_coefficient": 2,
+      "output_additions": 4452,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 636,
+      "rank_ratio": 0.6625,
+      "scheme_id": "8,10,12:p102",
+      "shape": [
+        10,
+        8,
+        12
+      ],
+      "source_key": "8,10,12",
+      "transform_proxy": 11743,
+      "weight_additions": 3821,
+      "weight_scales": 46
+    },
+    {
+      "classical_rank": 960,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 3821,
+      "left_scales": 46,
+      "max_abs_coefficient": 2,
+      "output_additions": 4452,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 636,
+      "rank_ratio": 0.6625,
+      "scheme_id": "8,10,12:p201",
+      "shape": [
+        12,
+        8,
+        10
+      ],
+      "source_key": "8,10,12",
+      "transform_proxy": 11743,
+      "weight_additions": 3404,
+      "weight_scales": 20
+    },
+    {
+      "classical_rank": 960,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 3404,
+      "left_scales": 20,
+      "max_abs_coefficient": 2,
+      "output_additions": 4361,
+      "output_scales": 46,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 636,
+      "rank_ratio": 0.6625,
+      "scheme_id": "8,10,12:p012",
+      "shape": [
+        8,
+        10,
+        12
+      ],
+      "source_key": "8,10,12",
+      "transform_proxy": 11767,
+      "weight_additions": 3936,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 960,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 3936,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 4361,
+      "output_scales": 46,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 636,
+      "rank_ratio": 0.6625,
+      "scheme_id": "8,10,12:p210",
+      "shape": [
+        12,
+        10,
+        8
+      ],
+      "source_key": "8,10,12",
+      "transform_proxy": 11767,
+      "weight_additions": 3404,
+      "weight_scales": 20
+    },
+    {
+      "classical_rank": 960,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 3821,
+      "left_scales": 46,
+      "max_abs_coefficient": 2,
+      "output_additions": 3960,
+      "output_scales": 20,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 636,
+      "rank_ratio": 0.6625,
+      "scheme_id": "8,10,12:p021",
+      "shape": [
+        8,
+        12,
+        10
+      ],
+      "source_key": "8,10,12",
+      "transform_proxy": 11783,
+      "weight_additions": 3936,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 960,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 3936,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 3960,
+      "output_scales": 20,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 636,
+      "rank_ratio": 0.6625,
+      "scheme_id": "8,10,12:p120",
+      "shape": [
+        10,
+        12,
+        8
+      ],
+      "source_key": "8,10,12",
+      "transform_proxy": 11783,
+      "weight_additions": 3821,
+      "weight_scales": 46
+    },
+    {
+      "classical_rank": 800,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 2982,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 3140,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 532,
+      "rank_ratio": 0.665,
+      "scheme_id": "8,10,10:p102",
+      "shape": [
+        10,
+        8,
+        10
+      ],
+      "source_key": "8,10,10",
+      "transform_proxy": 8390,
+      "weight_additions": 2268,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 800,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 2268,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 3140,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 532,
+      "rank_ratio": 0.665,
+      "scheme_id": "8,10,10:p201",
+      "shape": [
+        10,
+        8,
+        10
+      ],
+      "source_key": "8,10,10",
+      "transform_proxy": 8390,
+      "weight_additions": 2982,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 800,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 2982,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 2720,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 532,
+      "rank_ratio": 0.665,
+      "scheme_id": "8,10,10:p012",
+      "shape": [
+        8,
+        10,
+        10
+      ],
+      "source_key": "8,10,10",
+      "transform_proxy": 8410,
+      "weight_additions": 2708,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 800,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 2268,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 3434,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 532,
+      "rank_ratio": 0.665,
+      "scheme_id": "8,10,10:p021",
+      "shape": [
+        8,
+        10,
+        10
+      ],
+      "source_key": "8,10,10",
+      "transform_proxy": 8410,
+      "weight_additions": 2708,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 800,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 2708,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 3434,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 532,
+      "rank_ratio": 0.665,
+      "scheme_id": "8,10,10:p120",
+      "shape": [
+        10,
+        10,
+        8
+      ],
+      "source_key": "8,10,10",
+      "transform_proxy": 8410,
+      "weight_additions": 2268,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 800,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 2708,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 2720,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 532,
+      "rank_ratio": 0.665,
+      "scheme_id": "8,10,10:p210",
+      "shape": [
+        10,
+        10,
+        8
+      ],
+      "source_key": "8,10,10",
+      "transform_proxy": 8410,
+      "weight_additions": 2982,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 968,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 3822,
+      "left_scales": 16,
+      "max_abs_coefficient": 2,
+      "output_additions": 4794,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 649,
+      "rank_ratio": 0.6704545454545454,
+      "scheme_id": "8,11,11:p102",
+      "shape": [
+        11,
+        8,
+        11
+      ],
+      "source_key": "8,11,11",
+      "transform_proxy": 12967,
+      "weight_additions": 4311,
+      "weight_scales": 24
+    },
+    {
+      "classical_rank": 968,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 4311,
+      "left_scales": 24,
+      "max_abs_coefficient": 2,
+      "output_additions": 4794,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 649,
+      "rank_ratio": 0.6704545454545454,
+      "scheme_id": "8,11,11:p201",
+      "shape": [
+        11,
+        8,
+        11
+      ],
+      "source_key": "8,11,11",
+      "transform_proxy": 12967,
+      "weight_additions": 3822,
+      "weight_scales": 16
+    },
+    {
+      "classical_rank": 968,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 3822,
+      "left_scales": 16,
+      "max_abs_coefficient": 2,
+      "output_additions": 4872,
+      "output_scales": 24,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 649,
+      "rank_ratio": 0.6704545454545454,
+      "scheme_id": "8,11,11:p012",
+      "shape": [
+        8,
+        11,
+        11
+      ],
+      "source_key": "8,11,11",
+      "transform_proxy": 13000,
+      "weight_additions": 4266,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 968,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 4311,
+      "left_scales": 24,
+      "max_abs_coefficient": 2,
+      "output_additions": 4383,
+      "output_scales": 16,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 649,
+      "rank_ratio": 0.6704545454545454,
+      "scheme_id": "8,11,11:p021",
+      "shape": [
+        8,
+        11,
+        11
+      ],
+      "source_key": "8,11,11",
+      "transform_proxy": 13000,
+      "weight_additions": 4266,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 968,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 4266,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 4383,
+      "output_scales": 16,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 649,
+      "rank_ratio": 0.6704545454545454,
+      "scheme_id": "8,11,11:p120",
+      "shape": [
+        11,
+        11,
+        8
+      ],
+      "source_key": "8,11,11",
+      "transform_proxy": 13000,
+      "weight_additions": 4311,
+      "weight_scales": 24
+    },
+    {
+      "classical_rank": 968,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 4266,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 4872,
+      "output_scales": 24,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 649,
+      "rank_ratio": 0.6704545454545454,
+      "scheme_id": "8,11,11:p210",
+      "shape": [
+        11,
+        11,
+        8
+      ],
+      "source_key": "8,11,11",
+      "transform_proxy": 13000,
+      "weight_additions": 3822,
+      "weight_scales": 16
+    },
+    {
+      "classical_rank": 900,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 2644,
+      "left_scales": 64,
+      "max_abs_coefficient": 2,
+      "output_additions": 3424,
+      "output_scales": 100,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 606,
+      "rank_ratio": 0.6733333333333333,
+      "scheme_id": "9,10,10:p102",
+      "shape": [
+        10,
+        9,
+        10
+      ],
+      "source_key": "9,10,10",
+      "transform_proxy": 8812,
+      "weight_additions": 2544,
+      "weight_scales": 36
+    },
+    {
+      "classical_rank": 900,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 2544,
+      "left_scales": 36,
+      "max_abs_coefficient": 2,
+      "output_additions": 3424,
+      "output_scales": 100,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 606,
+      "rank_ratio": 0.6733333333333333,
+      "scheme_id": "9,10,10:p201",
+      "shape": [
+        10,
+        9,
+        10
+      ],
+      "source_key": "9,10,10",
+      "transform_proxy": 8812,
+      "weight_additions": 2644,
+      "weight_scales": 64
+    },
+    {
+      "classical_rank": 900,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 2644,
+      "left_scales": 64,
+      "max_abs_coefficient": 2,
+      "output_additions": 3060,
+      "output_scales": 36,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 606,
+      "rank_ratio": 0.6733333333333333,
+      "scheme_id": "9,10,10:p012",
+      "shape": [
+        9,
+        10,
+        10
+      ],
+      "source_key": "9,10,10",
+      "transform_proxy": 8822,
+      "weight_additions": 2918,
+      "weight_scales": 100
+    },
+    {
+      "classical_rank": 900,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 2544,
+      "left_scales": 36,
+      "max_abs_coefficient": 2,
+      "output_additions": 3160,
+      "output_scales": 64,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 606,
+      "rank_ratio": 0.6733333333333333,
+      "scheme_id": "9,10,10:p021",
+      "shape": [
+        9,
+        10,
+        10
+      ],
+      "source_key": "9,10,10",
+      "transform_proxy": 8822,
+      "weight_additions": 2918,
+      "weight_scales": 100
+    },
+    {
+      "classical_rank": 900,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 2918,
+      "left_scales": 100,
+      "max_abs_coefficient": 2,
+      "output_additions": 3160,
+      "output_scales": 64,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 606,
+      "rank_ratio": 0.6733333333333333,
+      "scheme_id": "9,10,10:p120",
+      "shape": [
+        10,
+        10,
+        9
+      ],
+      "source_key": "9,10,10",
+      "transform_proxy": 8822,
+      "weight_additions": 2544,
+      "weight_scales": 36
+    },
+    {
+      "classical_rank": 900,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 2918,
+      "left_scales": 100,
+      "max_abs_coefficient": 2,
+      "output_additions": 3060,
+      "output_scales": 36,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 606,
+      "rank_ratio": 0.6733333333333333,
+      "scheme_id": "9,10,10:p210",
+      "shape": [
+        10,
+        10,
+        9
+      ],
+      "source_key": "9,10,10",
+      "transform_proxy": 8822,
+      "weight_additions": 2644,
+      "weight_scales": 64
+    },
+    {
+      "classical_rank": 880,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 3039,
+      "left_scales": 20,
+      "max_abs_coefficient": 2,
+      "output_additions": 3772,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 596,
+      "rank_ratio": 0.6772727272727272,
+      "scheme_id": "8,10,11:p102",
+      "shape": [
+        10,
+        8,
+        11
+      ],
+      "source_key": "8,10,11",
+      "transform_proxy": 10544,
+      "weight_additions": 3671,
+      "weight_scales": 42
+    },
+    {
+      "classical_rank": 880,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 3671,
+      "left_scales": 42,
+      "max_abs_coefficient": 2,
+      "output_additions": 3772,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 596,
+      "rank_ratio": 0.6772727272727272,
+      "scheme_id": "8,10,11:p201",
+      "shape": [
+        11,
+        8,
+        10
+      ],
+      "source_key": "8,10,11",
+      "transform_proxy": 10544,
+      "weight_additions": 3039,
+      "weight_scales": 20
+    },
+    {
+      "classical_rank": 880,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 3039,
+      "left_scales": 20,
+      "max_abs_coefficient": 2,
+      "output_additions": 4179,
+      "output_scales": 42,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 596,
+      "rank_ratio": 0.6772727272727272,
+      "scheme_id": "8,10,11:p012",
+      "shape": [
+        8,
+        10,
+        11
+      ],
+      "source_key": "8,10,11",
+      "transform_proxy": 10566,
+      "weight_additions": 3286,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 880,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 3286,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 4179,
+      "output_scales": 42,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 596,
+      "rank_ratio": 0.6772727272727272,
+      "scheme_id": "8,10,11:p210",
+      "shape": [
+        11,
+        10,
+        8
+      ],
+      "source_key": "8,10,11",
+      "transform_proxy": 10566,
+      "weight_additions": 3039,
+      "weight_scales": 20
+    },
+    {
+      "classical_rank": 880,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 3671,
+      "left_scales": 42,
+      "max_abs_coefficient": 2,
+      "output_additions": 3555,
+      "output_scales": 20,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 596,
+      "rank_ratio": 0.6772727272727272,
+      "scheme_id": "8,10,11:p021",
+      "shape": [
+        8,
+        11,
+        10
+      ],
+      "source_key": "8,10,11",
+      "transform_proxy": 10574,
+      "weight_additions": 3286,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 880,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 3286,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 3555,
+      "output_scales": 20,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 596,
+      "rank_ratio": 0.6772727272727272,
+      "scheme_id": "8,10,11:p120",
+      "shape": [
+        10,
+        11,
+        8
+      ],
+      "source_key": "8,10,11",
+      "transform_proxy": 10574,
+      "weight_additions": 3671,
+      "weight_scales": 42
+    },
+    {
+      "classical_rank": 1210,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 4043,
+      "left_scales": 40,
+      "max_abs_coefficient": 2,
+      "output_additions": 5079,
+      "output_scales": 57,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 821,
+      "rank_ratio": 0.6785123966942149,
+      "scheme_id": "10,11,11:p102",
+      "shape": [
+        11,
+        10,
+        11
+      ],
+      "source_key": "10,11,11",
+      "transform_proxy": 14125,
+      "weight_additions": 4881,
+      "weight_scales": 25
+    },
+    {
+      "classical_rank": 1210,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 4881,
+      "left_scales": 25,
+      "max_abs_coefficient": 2,
+      "output_additions": 5079,
+      "output_scales": 57,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 821,
+      "rank_ratio": 0.6785123966942149,
+      "scheme_id": "10,11,11:p201",
+      "shape": [
+        11,
+        10,
+        11
+      ],
+      "source_key": "10,11,11",
+      "transform_proxy": 14125,
+      "weight_additions": 4043,
+      "weight_scales": 40
+    },
+    {
+      "classical_rank": 1210,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 4043,
+      "left_scales": 40,
+      "max_abs_coefficient": 2,
+      "output_additions": 5592,
+      "output_scales": 25,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 821,
+      "rank_ratio": 0.6785123966942149,
+      "scheme_id": "10,11,11:p012",
+      "shape": [
+        10,
+        11,
+        11
+      ],
+      "source_key": "10,11,11",
+      "transform_proxy": 14136,
+      "weight_additions": 4379,
+      "weight_scales": 57
+    },
+    {
+      "classical_rank": 1210,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 4881,
+      "left_scales": 25,
+      "max_abs_coefficient": 2,
+      "output_additions": 4754,
+      "output_scales": 40,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 821,
+      "rank_ratio": 0.6785123966942149,
+      "scheme_id": "10,11,11:p021",
+      "shape": [
+        10,
+        11,
+        11
+      ],
+      "source_key": "10,11,11",
+      "transform_proxy": 14136,
+      "weight_additions": 4379,
+      "weight_scales": 57
+    },
+    {
+      "classical_rank": 1210,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 4379,
+      "left_scales": 57,
+      "max_abs_coefficient": 2,
+      "output_additions": 4754,
+      "output_scales": 40,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 821,
+      "rank_ratio": 0.6785123966942149,
+      "scheme_id": "10,11,11:p120",
+      "shape": [
+        11,
+        11,
+        10
+      ],
+      "source_key": "10,11,11",
+      "transform_proxy": 14136,
+      "weight_additions": 4881,
+      "weight_scales": 25
+    },
+    {
+      "classical_rank": 1210,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 4379,
+      "left_scales": 57,
+      "max_abs_coefficient": 2,
+      "output_additions": 5592,
+      "output_scales": 25,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 821,
+      "rank_ratio": 0.6785123966942149,
+      "scheme_id": "10,11,11:p210",
+      "shape": [
+        11,
+        11,
+        10
+      ],
+      "source_key": "10,11,11",
+      "transform_proxy": 14136,
+      "weight_additions": 4043,
+      "weight_scales": 40
+    },
+    {
+      "classical_rank": 720,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 2205,
+      "left_scales": 14,
+      "max_abs_coefficient": 2,
+      "output_additions": 2610,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6791666666666667,
+      "scheme_id": "8,9,10:p102",
+      "shape": [
+        9,
+        8,
+        10
+      ],
+      "source_key": "8,9,10",
+      "transform_proxy": 7180,
+      "weight_additions": 2263,
+      "weight_scales": 88
+    },
+    {
+      "classical_rank": 720,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 2263,
+      "left_scales": 88,
+      "max_abs_coefficient": 2,
+      "output_additions": 2610,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6791666666666667,
+      "scheme_id": "8,9,10:p201",
+      "shape": [
+        10,
+        8,
+        9
+      ],
+      "source_key": "8,9,10",
+      "transform_proxy": 7180,
+      "weight_additions": 2205,
+      "weight_scales": 14
+    },
+    {
+      "classical_rank": 720,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 2205,
+      "left_scales": 14,
+      "max_abs_coefficient": 2,
+      "output_additions": 2672,
+      "output_scales": 88,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6791666666666667,
+      "scheme_id": "8,9,10:p012",
+      "shape": [
+        8,
+        9,
+        10
+      ],
+      "source_key": "8,9,10",
+      "transform_proxy": 7190,
+      "weight_additions": 2211,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 720,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 2211,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2672,
+      "output_scales": 88,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6791666666666667,
+      "scheme_id": "8,9,10:p210",
+      "shape": [
+        10,
+        9,
+        8
+      ],
+      "source_key": "8,9,10",
+      "transform_proxy": 7190,
+      "weight_additions": 2205,
+      "weight_scales": 14
+    },
+    {
+      "classical_rank": 720,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 2263,
+      "left_scales": 88,
+      "max_abs_coefficient": 2,
+      "output_additions": 2622,
+      "output_scales": 14,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6791666666666667,
+      "scheme_id": "8,9,10:p021",
+      "shape": [
+        8,
+        10,
+        9
+      ],
+      "source_key": "8,9,10",
+      "transform_proxy": 7198,
+      "weight_additions": 2211,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 720,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 2211,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2622,
+      "output_scales": 14,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6791666666666667,
+      "scheme_id": "8,9,10:p120",
+      "shape": [
+        9,
+        10,
+        8
+      ],
+      "source_key": "8,9,10",
+      "transform_proxy": 7198,
+      "weight_additions": 2263,
+      "weight_scales": 88
+    },
+    {
+      "classical_rank": 1000,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 2980,
+      "left_scales": 40,
+      "max_abs_coefficient": 2,
+      "output_additions": 4178,
+      "output_scales": 79,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 682,
+      "rank_ratio": 0.682,
+      "scheme_id": "10,10,10:p012",
+      "shape": [
+        10,
+        10,
+        10
+      ],
+      "source_key": "10,10,10",
+      "transform_proxy": 11051,
+      "weight_additions": 3704,
+      "weight_scales": 70
+    },
+    {
+      "classical_rank": 1000,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 3596,
+      "left_scales": 79,
+      "max_abs_coefficient": 2,
+      "output_additions": 3562,
+      "output_scales": 40,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 682,
+      "rank_ratio": 0.682,
+      "scheme_id": "10,10,10:p021",
+      "shape": [
+        10,
+        10,
+        10
+      ],
+      "source_key": "10,10,10",
+      "transform_proxy": 11051,
+      "weight_additions": 3704,
+      "weight_scales": 70
+    },
+    {
+      "classical_rank": 1000,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 2980,
+      "left_scales": 40,
+      "max_abs_coefficient": 2,
+      "output_additions": 4286,
+      "output_scales": 70,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 682,
+      "rank_ratio": 0.682,
+      "scheme_id": "10,10,10:p102",
+      "shape": [
+        10,
+        10,
+        10
+      ],
+      "source_key": "10,10,10",
+      "transform_proxy": 11051,
+      "weight_additions": 3596,
+      "weight_scales": 79
+    },
+    {
+      "classical_rank": 1000,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 3704,
+      "left_scales": 70,
+      "max_abs_coefficient": 2,
+      "output_additions": 3562,
+      "output_scales": 40,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 682,
+      "rank_ratio": 0.682,
+      "scheme_id": "10,10,10:p120",
+      "shape": [
+        10,
+        10,
+        10
+      ],
+      "source_key": "10,10,10",
+      "transform_proxy": 11051,
+      "weight_additions": 3596,
+      "weight_scales": 79
+    },
+    {
+      "classical_rank": 1000,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 3596,
+      "left_scales": 79,
+      "max_abs_coefficient": 2,
+      "output_additions": 4286,
+      "output_scales": 70,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 682,
+      "rank_ratio": 0.682,
+      "scheme_id": "10,10,10:p201",
+      "shape": [
+        10,
+        10,
+        10
+      ],
+      "source_key": "10,10,10",
+      "transform_proxy": 11051,
+      "weight_additions": 2980,
+      "weight_scales": 40
+    },
+    {
+      "classical_rank": 1000,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 3704,
+      "left_scales": 70,
+      "max_abs_coefficient": 2,
+      "output_additions": 4178,
+      "output_scales": 79,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 682,
+      "rank_ratio": 0.682,
+      "scheme_id": "10,10,10:p210",
+      "shape": [
+        10,
+        10,
+        10
+      ],
+      "source_key": "10,10,10",
+      "transform_proxy": 11051,
+      "weight_additions": 2980,
+      "weight_scales": 40
+    },
+    {
+      "classical_rank": 700,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 2386,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 2670,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 478,
+      "rank_ratio": 0.6828571428571428,
+      "scheme_id": "7,10,10:p102",
+      "shape": [
+        10,
+        7,
+        10
+      ],
+      "source_key": "7,10,10",
+      "transform_proxy": 6978,
+      "weight_additions": 1922,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 700,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1922,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 2670,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 478,
+      "rank_ratio": 0.6828571428571428,
+      "scheme_id": "7,10,10:p201",
+      "shape": [
+        10,
+        7,
+        10
+      ],
+      "source_key": "7,10,10",
+      "transform_proxy": 6978,
+      "weight_additions": 2386,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 700,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 2386,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 2330,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 478,
+      "rank_ratio": 0.6828571428571428,
+      "scheme_id": "7,10,10:p012",
+      "shape": [
+        7,
+        10,
+        10
+      ],
+      "source_key": "7,10,10",
+      "transform_proxy": 7008,
+      "weight_additions": 2292,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 700,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 1922,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 2794,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 478,
+      "rank_ratio": 0.6828571428571428,
+      "scheme_id": "7,10,10:p021",
+      "shape": [
+        7,
+        10,
+        10
+      ],
+      "source_key": "7,10,10",
+      "transform_proxy": 7008,
+      "weight_additions": 2292,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 700,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 2292,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 2794,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 478,
+      "rank_ratio": 0.6828571428571428,
+      "scheme_id": "7,10,10:p120",
+      "shape": [
+        10,
+        10,
+        7
+      ],
+      "source_key": "7,10,10",
+      "transform_proxy": 7008,
+      "weight_additions": 1922,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 700,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 2292,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 2330,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 478,
+      "rank_ratio": 0.6828571428571428,
+      "scheme_id": "7,10,10:p210",
+      "shape": [
+        10,
+        10,
+        7
+      ],
+      "source_key": "7,10,10",
+      "transform_proxy": 7008,
+      "weight_additions": 2386,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 480,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 1687,
+      "left_scales": 42,
+      "max_abs_coefficient": 2,
+      "output_additions": 1740,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 329,
+      "rank_ratio": 0.6854166666666667,
+      "scheme_id": "6,8,10:p102",
+      "shape": [
+        8,
+        6,
+        10
+      ],
+      "source_key": "6,8,10",
+      "transform_proxy": 4700,
+      "weight_additions": 1207,
+      "weight_scales": 24
+    },
+    {
+      "classical_rank": 480,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1207,
+      "left_scales": 24,
+      "max_abs_coefficient": 2,
+      "output_additions": 1740,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 329,
+      "rank_ratio": 0.6854166666666667,
+      "scheme_id": "6,8,10:p201",
+      "shape": [
+        10,
+        6,
+        8
+      ],
+      "source_key": "6,8,10",
+      "transform_proxy": 4700,
+      "weight_additions": 1687,
+      "weight_scales": 42
+    },
+    {
+      "classical_rank": 480,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 1687,
+      "left_scales": 42,
+      "max_abs_coefficient": 2,
+      "output_additions": 1476,
+      "output_scales": 24,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 329,
+      "rank_ratio": 0.6854166666666667,
+      "scheme_id": "6,8,10:p012",
+      "shape": [
+        6,
+        8,
+        10
+      ],
+      "source_key": "6,8,10",
+      "transform_proxy": 4720,
+      "weight_additions": 1491,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 480,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 1491,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 1476,
+      "output_scales": 24,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 329,
+      "rank_ratio": 0.6854166666666667,
+      "scheme_id": "6,8,10:p210",
+      "shape": [
+        10,
+        8,
+        6
+      ],
+      "source_key": "6,8,10",
+      "transform_proxy": 4720,
+      "weight_additions": 1687,
+      "weight_scales": 42
+    },
+    {
+      "classical_rank": 480,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 1207,
+      "left_scales": 24,
+      "max_abs_coefficient": 2,
+      "output_additions": 1968,
+      "output_scales": 42,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 329,
+      "rank_ratio": 0.6854166666666667,
+      "scheme_id": "6,8,10:p021",
+      "shape": [
+        6,
+        10,
+        8
+      ],
+      "source_key": "6,8,10",
+      "transform_proxy": 4732,
+      "weight_additions": 1491,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 480,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 1491,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 1968,
+      "output_scales": 42,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 329,
+      "rank_ratio": 0.6854166666666667,
+      "scheme_id": "6,8,10:p120",
+      "shape": [
+        8,
+        10,
+        6
+      ],
+      "source_key": "6,8,10",
+      "transform_proxy": 4732,
+      "weight_additions": 1207,
+      "weight_scales": 24
+    },
+    {
+      "classical_rank": 672,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 1746,
+      "left_scales": 12,
+      "max_abs_coefficient": 2,
+      "output_additions": 2487,
+      "output_scales": 22,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 462,
+      "rank_ratio": 0.6875,
+      "scheme_id": "7,8,12:p102",
+      "shape": [
+        8,
+        7,
+        12
+      ],
+      "source_key": "7,8,12",
+      "transform_proxy": 6233,
+      "weight_additions": 1966,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 672,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1966,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2487,
+      "output_scales": 22,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 462,
+      "rank_ratio": 0.6875,
+      "scheme_id": "7,8,12:p201",
+      "shape": [
+        12,
+        7,
+        8
+      ],
+      "source_key": "7,8,12",
+      "transform_proxy": 6233,
+      "weight_additions": 1746,
+      "weight_scales": 12
+    },
+    {
+      "classical_rank": 672,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 1746,
+      "left_scales": 12,
+      "max_abs_coefficient": 2,
+      "output_additions": 2344,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 462,
+      "rank_ratio": 0.6875,
+      "scheme_id": "7,8,12:p012",
+      "shape": [
+        7,
+        8,
+        12
+      ],
+      "source_key": "7,8,12",
+      "transform_proxy": 6245,
+      "weight_additions": 2121,
+      "weight_scales": 22
+    },
+    {
+      "classical_rank": 672,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 2121,
+      "left_scales": 22,
+      "max_abs_coefficient": 2,
+      "output_additions": 2344,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 462,
+      "rank_ratio": 0.6875,
+      "scheme_id": "7,8,12:p210",
+      "shape": [
+        12,
+        8,
+        7
+      ],
+      "source_key": "7,8,12",
+      "transform_proxy": 6245,
+      "weight_additions": 1746,
+      "weight_scales": 12
+    },
+    {
+      "classical_rank": 672,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 1966,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2152,
+      "output_scales": 12,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 462,
+      "rank_ratio": 0.6875,
+      "scheme_id": "7,8,12:p021",
+      "shape": [
+        7,
+        12,
+        8
+      ],
+      "source_key": "7,8,12",
+      "transform_proxy": 6273,
+      "weight_additions": 2121,
+      "weight_scales": 22
+    },
+    {
+      "classical_rank": 672,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 2121,
+      "left_scales": 22,
+      "max_abs_coefficient": 2,
+      "output_additions": 2152,
+      "output_scales": 12,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 462,
+      "rank_ratio": 0.6875,
+      "scheme_id": "7,8,12:p120",
+      "shape": [
+        8,
+        12,
+        7
+      ],
+      "source_key": "7,8,12",
+      "transform_proxy": 6273,
+      "weight_additions": 1966,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 640,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 2569,
+      "left_scales": 14,
+      "max_abs_coefficient": 2,
+      "output_additions": 2314,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 441,
+      "rank_ratio": 0.6890625,
+      "scheme_id": "8,8,10:p012",
+      "shape": [
+        8,
+        8,
+        10
+      ],
+      "source_key": "8,8,10",
+      "transform_proxy": 7718,
+      "weight_additions": 2821,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 640,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 2569,
+      "left_scales": 14,
+      "max_abs_coefficient": 2,
+      "output_additions": 3182,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 441,
+      "rank_ratio": 0.6890625,
+      "scheme_id": "8,8,10:p102",
+      "shape": [
+        8,
+        8,
+        10
+      ],
+      "source_key": "8,8,10",
+      "transform_proxy": 7718,
+      "weight_additions": 1953,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 640,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1953,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 3182,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 441,
+      "rank_ratio": 0.6890625,
+      "scheme_id": "8,8,10:p201",
+      "shape": [
+        10,
+        8,
+        8
+      ],
+      "source_key": "8,8,10",
+      "transform_proxy": 7718,
+      "weight_additions": 2569,
+      "weight_scales": 14
+    },
+    {
+      "classical_rank": 640,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 2821,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2314,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 441,
+      "rank_ratio": 0.6890625,
+      "scheme_id": "8,8,10:p210",
+      "shape": [
+        10,
+        8,
+        8
+      ],
+      "source_key": "8,8,10",
+      "transform_proxy": 7718,
+      "weight_additions": 2569,
+      "weight_scales": 14
+    },
+    {
+      "classical_rank": 640,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 1953,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2946,
+      "output_scales": 14,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 441,
+      "rank_ratio": 0.6890625,
+      "scheme_id": "8,8,10:p021",
+      "shape": [
+        8,
+        10,
+        8
+      ],
+      "source_key": "8,8,10",
+      "transform_proxy": 7734,
+      "weight_additions": 2821,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 640,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 2821,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2946,
+      "output_scales": 14,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 441,
+      "rank_ratio": 0.6890625,
+      "scheme_id": "8,8,10:p120",
+      "shape": [
+        8,
+        10,
+        8
+      ],
+      "source_key": "8,8,10",
+      "transform_proxy": 7734,
+      "weight_additions": 1953,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 540,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 1747,
+      "left_scales": 18,
+      "max_abs_coefficient": 2,
+      "output_additions": 1996,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 373,
+      "rank_ratio": 0.6907407407407408,
+      "scheme_id": "6,9,10:p102",
+      "shape": [
+        9,
+        6,
+        10
+      ],
+      "source_key": "6,9,10",
+      "transform_proxy": 5158,
+      "weight_additions": 1387,
+      "weight_scales": 10
+    },
+    {
+      "classical_rank": 540,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1387,
+      "left_scales": 10,
+      "max_abs_coefficient": 2,
+      "output_additions": 1996,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 373,
+      "rank_ratio": 0.6907407407407408,
+      "scheme_id": "6,9,10:p201",
+      "shape": [
+        10,
+        6,
+        9
+      ],
+      "source_key": "6,9,10",
+      "transform_proxy": 5158,
+      "weight_additions": 1747,
+      "weight_scales": 18
+    },
+    {
+      "classical_rank": 540,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 1747,
+      "left_scales": 18,
+      "max_abs_coefficient": 2,
+      "output_additions": 1700,
+      "output_scales": 10,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 373,
+      "rank_ratio": 0.6907407407407408,
+      "scheme_id": "6,9,10:p012",
+      "shape": [
+        6,
+        9,
+        10
+      ],
+      "source_key": "6,9,10",
+      "transform_proxy": 5188,
+      "weight_additions": 1713,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 540,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 1713,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 1700,
+      "output_scales": 10,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 373,
+      "rank_ratio": 0.6907407407407408,
+      "scheme_id": "6,9,10:p210",
+      "shape": [
+        10,
+        9,
+        6
+      ],
+      "source_key": "6,9,10",
+      "transform_proxy": 5188,
+      "weight_additions": 1747,
+      "weight_scales": 18
+    },
+    {
+      "classical_rank": 540,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 1387,
+      "left_scales": 10,
+      "max_abs_coefficient": 2,
+      "output_additions": 2066,
+      "output_scales": 18,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 373,
+      "rank_ratio": 0.6907407407407408,
+      "scheme_id": "6,9,10:p021",
+      "shape": [
+        6,
+        10,
+        9
+      ],
+      "source_key": "6,9,10",
+      "transform_proxy": 5194,
+      "weight_additions": 1713,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 540,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 1713,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2066,
+      "output_scales": 18,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 373,
+      "rank_ratio": 0.6907407407407408,
+      "scheme_id": "6,9,10:p120",
+      "shape": [
+        9,
+        10,
+        6
+      ],
+      "source_key": "6,9,10",
+      "transform_proxy": 5194,
+      "weight_additions": 1387,
+      "weight_scales": 10
+    },
+    {
+      "classical_rank": 594,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 1684,
+      "left_scales": 36,
+      "max_abs_coefficient": 2,
+      "output_additions": 2303,
+      "output_scales": 96,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 411,
+      "rank_ratio": 0.6919191919191919,
+      "scheme_id": "6,9,11:p102",
+      "shape": [
+        9,
+        6,
+        11
+      ],
+      "source_key": "6,9,11",
+      "transform_proxy": 5994,
+      "weight_additions": 1867,
+      "weight_scales": 8
+    },
+    {
+      "classical_rank": 594,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1867,
+      "left_scales": 8,
+      "max_abs_coefficient": 2,
+      "output_additions": 2303,
+      "output_scales": 96,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 411,
+      "rank_ratio": 0.6919191919191919,
+      "scheme_id": "6,9,11:p201",
+      "shape": [
+        11,
+        6,
+        9
+      ],
+      "source_key": "6,9,11",
+      "transform_proxy": 5994,
+      "weight_additions": 1684,
+      "weight_scales": 36
+    },
+    {
+      "classical_rank": 594,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 1684,
+      "left_scales": 36,
+      "max_abs_coefficient": 2,
+      "output_additions": 2212,
+      "output_scales": 8,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 411,
+      "rank_ratio": 0.6919191919191919,
+      "scheme_id": "6,9,11:p012",
+      "shape": [
+        6,
+        9,
+        11
+      ],
+      "source_key": "6,9,11",
+      "transform_proxy": 6027,
+      "weight_additions": 1991,
+      "weight_scales": 96
+    },
+    {
+      "classical_rank": 594,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 1991,
+      "left_scales": 96,
+      "max_abs_coefficient": 2,
+      "output_additions": 2212,
+      "output_scales": 8,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 411,
+      "rank_ratio": 0.6919191919191919,
+      "scheme_id": "6,9,11:p210",
+      "shape": [
+        11,
+        9,
+        6
+      ],
+      "source_key": "6,9,11",
+      "transform_proxy": 6027,
+      "weight_additions": 1684,
+      "weight_scales": 36
+    },
+    {
+      "classical_rank": 594,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 1867,
+      "left_scales": 8,
+      "max_abs_coefficient": 2,
+      "output_additions": 2041,
+      "output_scales": 36,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 411,
+      "rank_ratio": 0.6919191919191919,
+      "scheme_id": "6,9,11:p021",
+      "shape": [
+        6,
+        11,
+        9
+      ],
+      "source_key": "6,9,11",
+      "transform_proxy": 6039,
+      "weight_additions": 1991,
+      "weight_scales": 96
+    },
+    {
+      "classical_rank": 594,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 1991,
+      "left_scales": 96,
+      "max_abs_coefficient": 2,
+      "output_additions": 2041,
+      "output_scales": 36,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 411,
+      "rank_ratio": 0.6919191919191919,
+      "scheme_id": "6,9,11:p120",
+      "shape": [
+        9,
+        11,
+        6
+      ],
+      "source_key": "6,9,11",
+      "transform_proxy": 6039,
+      "weight_additions": 1867,
+      "weight_scales": 8
+    },
+    {
+      "classical_rank": 528,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 1284,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 2008,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 366,
+      "rank_ratio": 0.6931818181818182,
+      "scheme_id": "4,11,12:p102",
+      "shape": [
+        11,
+        4,
+        12
+      ],
+      "source_key": "4,11,12",
+      "transform_proxy": 4780,
+      "weight_additions": 1488,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 528,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1488,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 2008,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 366,
+      "rank_ratio": 0.6931818181818182,
+      "scheme_id": "4,11,12:p201",
+      "shape": [
+        12,
+        4,
+        11
+      ],
+      "source_key": "4,11,12",
+      "transform_proxy": 4780,
+      "weight_additions": 1284,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 528,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 1284,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 1806,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 366,
+      "rank_ratio": 0.6931818181818182,
+      "scheme_id": "4,11,12:p012",
+      "shape": [
+        4,
+        11,
+        12
+      ],
+      "source_key": "4,11,12",
+      "transform_proxy": 4864,
+      "weight_additions": 1774,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 528,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 1774,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 1806,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 366,
+      "rank_ratio": 0.6931818181818182,
+      "scheme_id": "4,11,12:p210",
+      "shape": [
+        12,
+        11,
+        4
+      ],
+      "source_key": "4,11,12",
+      "transform_proxy": 4864,
+      "weight_additions": 1284,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 528,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 1488,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 1606,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 366,
+      "rank_ratio": 0.6931818181818182,
+      "scheme_id": "4,11,12:p021",
+      "shape": [
+        4,
+        12,
+        11
+      ],
+      "source_key": "4,11,12",
+      "transform_proxy": 4868,
+      "weight_additions": 1774,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 528,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 1774,
+      "left_scales": 0,
+      "max_abs_coefficient": 1,
+      "output_additions": 1606,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 366,
+      "rank_ratio": 0.6931818181818182,
+      "scheme_id": "4,11,12:p120",
+      "shape": [
+        11,
+        12,
+        4
+      ],
+      "source_key": "4,11,12",
+      "transform_proxy": 4868,
+      "weight_additions": 1488,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 704,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 1908,
+      "left_scales": 17,
+      "max_abs_coefficient": 2,
+      "output_additions": 2728,
+      "output_scales": 57,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6946022727272727,
+      "scheme_id": "8,8,11:p012",
+      "shape": [
+        8,
+        8,
+        11
+      ],
+      "source_key": "8,8,11",
+      "transform_proxy": 6855,
+      "weight_additions": 2145,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 704,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 1908,
+      "left_scales": 17,
+      "max_abs_coefficient": 2,
+      "output_additions": 2546,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6946022727272727,
+      "scheme_id": "8,8,11:p102",
+      "shape": [
+        8,
+        8,
+        11
+      ],
+      "source_key": "8,8,11",
+      "transform_proxy": 6855,
+      "weight_additions": 2327,
+      "weight_scales": 57
+    },
+    {
+      "classical_rank": 704,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 2327,
+      "left_scales": 57,
+      "max_abs_coefficient": 2,
+      "output_additions": 2546,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6946022727272727,
+      "scheme_id": "8,8,11:p201",
+      "shape": [
+        11,
+        8,
+        8
+      ],
+      "source_key": "8,8,11",
+      "transform_proxy": 6855,
+      "weight_additions": 1908,
+      "weight_scales": 17
+    },
+    {
+      "classical_rank": 704,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 2145,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2728,
+      "output_scales": 57,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6946022727272727,
+      "scheme_id": "8,8,11:p210",
+      "shape": [
+        11,
+        8,
+        8
+      ],
+      "source_key": "8,8,11",
+      "transform_proxy": 6855,
+      "weight_additions": 1908,
+      "weight_scales": 17
+    },
+    {
+      "classical_rank": 704,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 2327,
+      "left_scales": 57,
+      "max_abs_coefficient": 2,
+      "output_additions": 2333,
+      "output_scales": 17,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6946022727272727,
+      "scheme_id": "8,8,11:p021",
+      "shape": [
+        8,
+        11,
+        8
+      ],
+      "source_key": "8,8,11",
+      "transform_proxy": 6879,
+      "weight_additions": 2145,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 704,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 2145,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2333,
+      "output_scales": 17,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 489,
+      "rank_ratio": 0.6946022727272727,
+      "scheme_id": "8,8,11:p120",
+      "shape": [
+        8,
+        11,
+        8
+      ],
+      "source_key": "8,8,11",
+      "transform_proxy": 6879,
+      "weight_additions": 2327,
+      "weight_scales": 57
+    },
+    {
+      "classical_rank": 630,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 1919,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2480,
+      "output_scales": 55,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 441,
+      "rank_ratio": 0.7,
+      "scheme_id": "7,9,10:p102",
+      "shape": [
+        9,
+        7,
+        10
+      ],
+      "source_key": "7,9,10",
+      "transform_proxy": 5905,
+      "weight_additions": 1435,
+      "weight_scales": 16
+    },
+    {
+      "classical_rank": 630,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1435,
+      "left_scales": 16,
+      "max_abs_coefficient": 2,
+      "output_additions": 2480,
+      "output_scales": 55,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 441,
+      "rank_ratio": 0.7,
+      "scheme_id": "7,9,10:p201",
+      "shape": [
+        10,
+        7,
+        9
+      ],
+      "source_key": "7,9,10",
+      "transform_proxy": 5905,
+      "weight_additions": 1919,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 630,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 1919,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 1806,
+      "output_scales": 16,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 441,
+      "rank_ratio": 0.7,
+      "scheme_id": "7,9,10:p012",
+      "shape": [
+        7,
+        9,
+        10
+      ],
+      "source_key": "7,9,10",
+      "transform_proxy": 5925,
+      "weight_additions": 2129,
+      "weight_scales": 55
+    },
+    {
+      "classical_rank": 630,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 2129,
+      "left_scales": 55,
+      "max_abs_coefficient": 2,
+      "output_additions": 1806,
+      "output_scales": 16,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 441,
+      "rank_ratio": 0.7,
+      "scheme_id": "7,9,10:p210",
+      "shape": [
+        10,
+        9,
+        7
+      ],
+      "source_key": "7,9,10",
+      "transform_proxy": 5925,
+      "weight_additions": 1919,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 630,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 1435,
+      "left_scales": 16,
+      "max_abs_coefficient": 2,
+      "output_additions": 2297,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 441,
+      "rank_ratio": 0.7,
+      "scheme_id": "7,9,10:p021",
+      "shape": [
+        7,
+        10,
+        9
+      ],
+      "source_key": "7,9,10",
+      "transform_proxy": 5932,
+      "weight_additions": 2129,
+      "weight_scales": 55
+    },
+    {
+      "classical_rank": 630,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 2129,
+      "left_scales": 55,
+      "max_abs_coefficient": 2,
+      "output_additions": 2297,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 441,
+      "rank_ratio": 0.7,
+      "scheme_id": "7,9,10:p120",
+      "shape": [
+        9,
+        10,
+        7
+      ],
+      "source_key": "7,9,10",
+      "transform_proxy": 5932,
+      "weight_additions": 1435,
+      "weight_scales": 16
+    },
+    {
+      "classical_rank": 616,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 1599,
+      "left_scales": 9,
+      "max_abs_coefficient": 2,
+      "output_additions": 2427,
+      "output_scales": 37,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 432,
+      "rank_ratio": 0.7012987012987013,
+      "scheme_id": "7,8,11:p102",
+      "shape": [
+        8,
+        7,
+        11
+      ],
+      "source_key": "7,8,11",
+      "transform_proxy": 5907,
+      "weight_additions": 1835,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 616,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1835,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2427,
+      "output_scales": 37,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 432,
+      "rank_ratio": 0.7012987012987013,
+      "scheme_id": "7,8,11:p201",
+      "shape": [
+        11,
+        7,
+        8
+      ],
+      "source_key": "7,8,11",
+      "transform_proxy": 5907,
+      "weight_additions": 1599,
+      "weight_scales": 9
+    },
+    {
+      "classical_rank": 616,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 1599,
+      "left_scales": 9,
+      "max_abs_coefficient": 2,
+      "output_additions": 2190,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 432,
+      "rank_ratio": 0.7012987012987013,
+      "scheme_id": "7,8,11:p012",
+      "shape": [
+        7,
+        8,
+        11
+      ],
+      "source_key": "7,8,11",
+      "transform_proxy": 5918,
+      "weight_additions": 2083,
+      "weight_scales": 37
+    },
+    {
+      "classical_rank": 616,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 2083,
+      "left_scales": 37,
+      "max_abs_coefficient": 2,
+      "output_additions": 2190,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 432,
+      "rank_ratio": 0.7012987012987013,
+      "scheme_id": "7,8,11:p210",
+      "shape": [
+        11,
+        8,
+        7
+      ],
+      "source_key": "7,8,11",
+      "transform_proxy": 5918,
+      "weight_additions": 1599,
+      "weight_scales": 9
+    },
+    {
+      "classical_rank": 616,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 1835,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 1975,
+      "output_scales": 9,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 432,
+      "rank_ratio": 0.7012987012987013,
+      "scheme_id": "7,8,11:p021",
+      "shape": [
+        7,
+        11,
+        8
+      ],
+      "source_key": "7,8,11",
+      "transform_proxy": 5939,
+      "weight_additions": 2083,
+      "weight_scales": 37
+    },
+    {
+      "classical_rank": 616,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 2083,
+      "left_scales": 37,
+      "max_abs_coefficient": 2,
+      "output_additions": 1975,
+      "output_scales": 9,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 432,
+      "rank_ratio": 0.7012987012987013,
+      "scheme_id": "7,8,11:p120",
+      "shape": [
+        8,
+        11,
+        7
+      ],
+      "source_key": "7,8,11",
+      "transform_proxy": 5939,
+      "weight_additions": 1835,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 560,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 2106,
+      "left_scales": 24,
+      "max_abs_coefficient": 2,
+      "output_additions": 2358,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 393,
+      "rank_ratio": 0.7017857142857142,
+      "scheme_id": "7,8,10:p102",
+      "shape": [
+        8,
+        7,
+        10
+      ],
+      "source_key": "7,8,10",
+      "transform_proxy": 6096,
+      "weight_additions": 1598,
+      "weight_scales": 10
+    },
+    {
+      "classical_rank": 560,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1598,
+      "left_scales": 10,
+      "max_abs_coefficient": 2,
+      "output_additions": 2358,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 393,
+      "rank_ratio": 0.7017857142857142,
+      "scheme_id": "7,8,10:p201",
+      "shape": [
+        10,
+        7,
+        8
+      ],
+      "source_key": "7,8,10",
+      "transform_proxy": 6096,
+      "weight_additions": 2106,
+      "weight_scales": 24
+    },
+    {
+      "classical_rank": 560,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 2106,
+      "left_scales": 24,
+      "max_abs_coefficient": 2,
+      "output_additions": 1921,
+      "output_scales": 10,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 393,
+      "rank_ratio": 0.7017857142857142,
+      "scheme_id": "7,8,10:p012",
+      "shape": [
+        7,
+        8,
+        10
+      ],
+      "source_key": "7,8,10",
+      "transform_proxy": 6106,
+      "weight_additions": 2045,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 560,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 2045,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 1921,
+      "output_scales": 10,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 393,
+      "rank_ratio": 0.7017857142857142,
+      "scheme_id": "7,8,10:p210",
+      "shape": [
+        10,
+        8,
+        7
+      ],
+      "source_key": "7,8,10",
+      "transform_proxy": 6106,
+      "weight_additions": 2106,
+      "weight_scales": 24
+    },
+    {
+      "classical_rank": 560,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 1598,
+      "left_scales": 10,
+      "max_abs_coefficient": 2,
+      "output_additions": 2443,
+      "output_scales": 24,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 393,
+      "rank_ratio": 0.7017857142857142,
+      "scheme_id": "7,8,10:p021",
+      "shape": [
+        7,
+        10,
+        8
+      ],
+      "source_key": "7,8,10",
+      "transform_proxy": 6120,
+      "weight_additions": 2045,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 560,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 2045,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 2443,
+      "output_scales": 24,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 393,
+      "rank_ratio": 0.7017857142857142,
+      "scheme_id": "7,8,10:p120",
+      "shape": [
+        8,
+        10,
+        7
+      ],
+      "source_key": "7,8,10",
+      "transform_proxy": 6120,
+      "weight_additions": 1598,
+      "weight_scales": 10
+    },
+    {
+      "classical_rank": 504,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 1258,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 1995,
+      "output_scales": 33,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 354,
+      "rank_ratio": 0.7023809523809523,
+      "scheme_id": "7,8,9:p102",
+      "shape": [
+        8,
+        7,
+        9
+      ],
+      "source_key": "7,8,9",
+      "transform_proxy": 4660,
+      "weight_additions": 1374,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 504,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1374,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 1995,
+      "output_scales": 33,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 354,
+      "rank_ratio": 0.7023809523809523,
+      "scheme_id": "7,8,9:p201",
+      "shape": [
+        9,
+        7,
+        8
+      ],
+      "source_key": "7,8,9",
+      "transform_proxy": 4660,
+      "weight_additions": 1258,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 504,
+      "factor_assignment": {
+        "left": "u",
+        "output": "w",
+        "weight": "v"
+      },
+      "left_additions": 1258,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 1665,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "rank": 354,
+      "rank_ratio": 0.7023809523809523,
+      "scheme_id": "7,8,9:p012",
+      "shape": [
+        7,
+        8,
+        9
+      ],
+      "source_key": "7,8,9",
+      "transform_proxy": 4669,
+      "weight_additions": 1713,
+      "weight_scales": 33
+    },
+    {
+      "classical_rank": 504,
+      "factor_assignment": {
+        "left": "v",
+        "output": "w",
+        "weight": "u"
+      },
+      "left_additions": 1713,
+      "left_scales": 33,
+      "max_abs_coefficient": 2,
+      "output_additions": 1665,
+      "output_scales": 0,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "rank": 354,
+      "rank_ratio": 0.7023809523809523,
+      "scheme_id": "7,8,9:p210",
+      "shape": [
+        9,
+        8,
+        7
+      ],
+      "source_key": "7,8,9",
+      "transform_proxy": 4669,
+      "weight_additions": 1258,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 504,
+      "factor_assignment": {
+        "left": "w",
+        "output": "u",
+        "weight": "v"
+      },
+      "left_additions": 1374,
+      "left_scales": 0,
+      "max_abs_coefficient": 2,
+      "output_additions": 1556,
+      "output_scales": 0,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "rank": 354,
+      "rank_ratio": 0.7023809523809523,
+      "scheme_id": "7,8,9:p021",
+      "shape": [
+        7,
+        9,
+        8
+      ],
+      "source_key": "7,8,9",
+      "transform_proxy": 4676,
+      "weight_additions": 1713,
+      "weight_scales": 33
+    },
+    {
+      "classical_rank": 504,
+      "factor_assignment": {
+        "left": "v",
+        "output": "u",
+        "weight": "w"
+      },
+      "left_additions": 1713,
+      "left_scales": 33,
+      "max_abs_coefficient": 2,
+      "output_additions": 1556,
+      "output_scales": 0,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "rank": 354,
+      "rank_ratio": 0.7023809523809523,
+      "scheme_id": "7,8,9:p120",
+      "shape": [
+        8,
+        9,
+        7
+      ],
+      "source_key": "7,8,9",
+      "transform_proxy": 4676,
+      "weight_additions": 1374,
+      "weight_scales": 0
+    },
+    {
+      "classical_rank": 486,
+      "factor_assignment": {
+        "left": "u",
+        "output": "v",
+        "weight": "w"
+      },
+      "left_additions": 1622,
+      "left_scales": 22,
+      "max_abs_coefficient": 2,
+      "output_additions": 1698,
+      "output_scales": 2,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "rank": 342,
+      "rank_ratio": 0.7037037037037037,
+      "scheme_id": "6,9,9:p102",
+      "shape": [
+        9,
+        6,
+        9
+      ],
+      "source_key": "6,9,9",
+      "transform_proxy": 4608,
+      "weight_additions": 1250,
+      "weight_scales": 14
+    },
+    {
+      "classical_rank": 486,
+      "factor_assignment": {
+        "left": "w",
+        "output": "v",
+        "weight": "u"
+      },
+      "left_additions": 1250,
+      "left_scales": 14,
+      "max_abs_coefficient": 2,
+      "output_additions": 1698,
+      "output_scales": 2,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "rank": 342,
+      "rank_ratio": 0.7037037037037037,
+      "scheme_id": "6,9,9:p201",
+      "shape": [
+        9,
+        6,
+        9
+      ],
+      "source_key": "6,9,9",
+      "transform_proxy": 4608,
+      "weight_additions": 1622,
+      "weight_scales": 22
+    }
+  ],
+  "search_contract": {
+    "accumulator_bytes": 4,
+    "activation_bytes": 2,
+    "beam_width": 192,
+    "block_lengths": [
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024,
+      2048,
+      4096,
+      8192,
+      16384
+    ],
+    "bounded_search_not_exhaustive": true,
+    "candidate_nodes_N": "equal to block length",
+    "candidate_source": "non-deployable perfect future block",
+    "committed_tokens_A_grant": "equal to block length",
+    "exclude_tensor_families": [
+      "embedding"
+    ],
+    "finite_word_transform_exactness": "not established; 2-byte and 4-byte transformed-word modes are favorable capacity screens",
+    "joint_io_bins": 8192,
+    "lossless_compression": "same favorable ratio granted to transformed forms and repair rows",
+    "lossless_ratio_grant": 1.5,
+    "maximum_coefficient_absolute_value": 2,
+    "maximum_depth": 12,
+    "maximum_family_candidates": 80,
+    "maximum_oracle_plans_per_shape": 64,
+    "maximum_orientations": 128,
+    "maximum_padding_multiplier": 2.0,
+    "maximum_structural_plans_per_shape": 160,
+    "minimum_depth": 1,
+    "native_repair_selector": "perfect EXP-099-style oracle; repaired operations and transformed-checkpoint original-row side stream charged",
+    "offline_static_weight_transform": "free construction; compiled bytes and cold stream charged",
+    "output_bytes": 2,
+    "per_split_survivors": 2,
+    "static_scalar_bytes": [
+      2,
+      4
+    ]
+  },
+  "search_rows": [
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 803,
+        "evaluated_oracle_plan_count": 197,
+        "minimum_generated_workspace_bytes": 1286336,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 1286336,
+          "scheme_ids": [
+            "4,11,12:p012",
+            "4,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 803,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.5882752338450985,
+      "best_oracle_ratio_without_repair": 0.46920415654946285,
+      "block_length": 32,
+      "columns": 16384,
+      "direct_structural_plan_count": 9,
+      "oracle_structural_plan_count": 64,
+      "rows": 1024,
+      "state_count_by_depth": [
+        96,
+        96,
+        5,
+        0
+      ],
+      "wall_ns": 61435900
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 810,
+        "evaluated_oracle_plan_count": 198,
+        "minimum_generated_workspace_bytes": 4264552,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 4264552,
+          "scheme_ids": [
+            "4,11,12:p012",
+            "4,11,12:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 810,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.47563109614863863,
+      "best_oracle_ratio_without_repair": 0.45448264059346816,
+      "block_length": 32,
+      "columns": 16384,
+      "direct_structural_plan_count": 5,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        6,
+        0
+      ],
+      "wall_ns": 57159700
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 810,
+        "evaluated_oracle_plan_count": 198,
+        "minimum_generated_workspace_bytes": 6695828,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 6695828,
+          "scheme_ids": [
+            "4,11,12:p012",
+            "4,11,12:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 810,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.46887026650283564,
+      "best_oracle_ratio_without_repair": 0.4549259985482235,
+      "block_length": 32,
+      "columns": 53248,
+      "direct_structural_plan_count": 7,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        6,
+        0
+      ],
+      "wall_ns": 59744900
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 810,
+        "evaluated_oracle_plan_count": 198,
+        "minimum_generated_workspace_bytes": 11412072,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 11412072,
+          "scheme_ids": [
+            "4,11,12:p012",
+            "4,11,12:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 810,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.46739896189703567,
+      "best_oracle_ratio_without_repair": 0.4534543993251572,
+      "block_length": 32,
+      "columns": 16384,
+      "direct_structural_plan_count": 7,
+      "oracle_structural_plan_count": 64,
+      "rows": 53248,
+      "state_count_by_depth": [
+        96,
+        96,
+        6,
+        0
+      ],
+      "wall_ns": 61684300
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 810,
+        "evaluated_oracle_plan_count": 198,
+        "minimum_generated_workspace_bytes": 25950888,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 25950888,
+          "scheme_ids": [
+            "4,11,12:p021",
+            "4,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 810,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.46456424711161687,
+      "best_oracle_ratio_without_repair": 0.45250825316808857,
+      "block_length": 32,
+      "columns": 16384,
+      "direct_structural_plan_count": 6,
+      "oracle_structural_plan_count": 64,
+      "rows": 128256,
+      "state_count_by_depth": [
+        96,
+        96,
+        6,
+        0
+      ],
+      "wall_ns": 61852500
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 824,
+        "evaluated_oracle_plan_count": 200,
+        "minimum_generated_workspace_bytes": 2538514,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 2538514,
+          "scheme_ids": [
+            "6,8,10:p120",
+            "8,9,10:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 824,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.5571388907983654,
+      "best_oracle_ratio_without_repair": 0.44292359586841373,
+      "block_length": 64,
+      "columns": 16384,
+      "direct_structural_plan_count": 7,
+      "oracle_structural_plan_count": 64,
+      "rows": 1024,
+      "state_count_by_depth": [
+        96,
+        96,
+        8,
+        0
+      ],
+      "wall_ns": 106695500
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2
+        ],
+        "evaluated_direct_plan_count": 768,
+        "evaluated_oracle_plan_count": 192,
+        "minimum_generated_workspace_bytes": 8503878,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 8503878,
+          "scheme_ids": [
+            "8,10,10:p012",
+            "8,10,11:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 768,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.45872839440081986,
+      "best_oracle_ratio_without_repair": 0.4290266456968395,
+      "block_length": 64,
+      "columns": 16384,
+      "direct_structural_plan_count": 5,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 89150300
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2
+        ],
+        "evaluated_direct_plan_count": 768,
+        "evaluated_oracle_plan_count": 192,
+        "minimum_generated_workspace_bytes": 13310095,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 13310095,
+          "scheme_ids": [
+            "8,10,12:p021",
+            "8,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 768,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.4496341627054614,
+      "best_oracle_ratio_without_repair": 0.42944517076068645,
+      "block_length": 64,
+      "columns": 53248,
+      "direct_structural_plan_count": 5,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 93341300
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2
+        ],
+        "evaluated_direct_plan_count": 768,
+        "evaluated_oracle_plan_count": 192,
+        "minimum_generated_workspace_bytes": 22753051,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 22753051,
+          "scheme_ids": [
+            "8,10,12:p012",
+            "8,11,12:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 768,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.44824541567897513,
+      "best_oracle_ratio_without_repair": 0.4280559971771634,
+      "block_length": 64,
+      "columns": 16384,
+      "direct_structural_plan_count": 6,
+      "oracle_structural_plan_count": 64,
+      "rows": 53248,
+      "state_count_by_depth": [
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 92043500
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2
+        ],
+        "evaluated_direct_plan_count": 768,
+        "evaluated_oracle_plan_count": 192,
+        "minimum_generated_workspace_bytes": 51691248,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 51691248,
+          "scheme_ids": [
+            "8,11,12:p021",
+            "8,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 768,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.44456270337618375,
+      "best_oracle_ratio_without_repair": 0.4271628455452858,
+      "block_length": 64,
+      "columns": 16384,
+      "direct_structural_plan_count": 5,
+      "oracle_structural_plan_count": 64,
+      "rows": 128256,
+      "state_count_by_depth": [
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 98651300
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1443,
+        "evaluated_oracle_plan_count": 289,
+        "minimum_generated_workspace_bytes": 5030050,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 5030050,
+          "scheme_ids": [
+            "6,8,10:p120",
+            "8,9,10:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1443,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.5571388907983654,
+      "best_oracle_ratio_without_repair": 0.44292359586841373,
+      "block_length": 128,
+      "columns": 16384,
+      "direct_structural_plan_count": 7,
+      "oracle_structural_plan_count": 64,
+      "rows": 1024,
+      "state_count_by_depth": [
+        97,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 129765400
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 16894678,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 16894678,
+          "scheme_ids": [
+            "8,10,10:p012",
+            "8,10,11:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.45872839440081986,
+      "best_oracle_ratio_without_repair": 0.4290266456968395,
+      "block_length": 128,
+      "columns": 16384,
+      "direct_structural_plan_count": 5,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 135000900
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 26420311,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 26420311,
+          "scheme_ids": [
+            "8,10,12:p021",
+            "8,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.4496341627054614,
+      "best_oracle_ratio_without_repair": 0.42944517076068645,
+      "block_length": 128,
+      "columns": 53248,
+      "direct_structural_plan_count": 5,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 123618600
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 45306223,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 45306223,
+          "scheme_ids": [
+            "8,10,12:p012",
+            "8,11,12:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.44824541567897513,
+      "best_oracle_ratio_without_repair": 0.4280559971771634,
+      "block_length": 128,
+      "columns": 16384,
+      "direct_structural_plan_count": 6,
+      "oracle_structural_plan_count": 64,
+      "rows": 53248,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 122168800
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 103040184,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 103040184,
+          "scheme_ids": [
+            "8,11,12:p021",
+            "8,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.44456270337618375,
+      "best_oracle_ratio_without_repair": 0.4271628455452858,
+      "block_length": 128,
+      "columns": 16384,
+      "direct_structural_plan_count": 5,
+      "oracle_structural_plan_count": 64,
+      "rows": 128256,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 121405600
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 10013122,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 10013122,
+          "scheme_ids": [
+            "6,8,10:p120",
+            "8,9,10:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.5571388907983654,
+      "best_oracle_ratio_without_repair": 0.32460942682968297,
+      "block_length": 256,
+      "columns": 16384,
+      "direct_structural_plan_count": 8,
+      "oracle_structural_plan_count": 64,
+      "rows": 1024,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 128296200
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 33671344,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 33671344,
+          "scheme_ids": [
+            "6,8,10:p120",
+            "8,11,12:p012",
+            "4,11,12:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.42580840432415057,
+      "best_oracle_ratio_without_repair": 0.3052550008016324,
+      "block_length": 256,
+      "columns": 16384,
+      "direct_structural_plan_count": 8,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 135775900
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 52547014,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 52547014,
+          "scheme_ids": [
+            "6,8,10:p120",
+            "8,11,12:p012",
+            "4,11,12:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.3776285508176106,
+      "best_oracle_ratio_without_repair": 0.30326848957167973,
+      "block_length": 256,
+      "columns": 53248,
+      "direct_structural_plan_count": 8,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 129772700
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 90295654,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 90295654,
+          "scheme_ids": [
+            "6,8,10:p102",
+            "8,11,12:p012",
+            "4,11,12:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.37502855625591086,
+      "best_oracle_ratio_without_repair": 0.2974881072868159,
+      "block_length": 256,
+      "columns": 16384,
+      "direct_structural_plan_count": 9,
+      "oracle_structural_plan_count": 64,
+      "rows": 53248,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 144335600
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 205481580,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 205481580,
+          "scheme_ids": [
+            "6,8,10:p102",
+            "8,11,12:p021",
+            "4,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.35636742646592734,
+      "best_oracle_ratio_without_repair": 0.2987664232975914,
+      "block_length": 256,
+      "columns": 16384,
+      "direct_structural_plan_count": 8,
+      "oracle_structural_plan_count": 64,
+      "rows": 128256,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 147836000
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 19979266,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 19979266,
+          "scheme_ids": [
+            "6,8,10:p120",
+            "8,9,10:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.5571388907983654,
+      "best_oracle_ratio_without_repair": 0.30345195370132,
+      "block_length": 512,
+      "columns": 16384,
+      "direct_structural_plan_count": 10,
+      "oracle_structural_plan_count": 64,
+      "rows": 1024,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 189064700
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 67239478,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 67239478,
+          "scheme_ids": [
+            "8,10,10:p012",
+            "8,10,11:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.4056775633073011,
+      "best_oracle_ratio_without_repair": 0.2881573846365137,
+      "block_length": 512,
+      "columns": 16384,
+      "direct_structural_plan_count": 7,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 183060800
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 105031025,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 105031025,
+          "scheme_ids": [
+            "6,8,10:p120",
+            "8,11,12:p012",
+            "8,10,12:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.3682437233087787,
+      "best_oracle_ratio_without_repair": 0.2862821397459436,
+      "block_length": 512,
+      "columns": 53248,
+      "direct_structural_plan_count": 8,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 183647700
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 180518174,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 180518174,
+          "scheme_ids": [
+            "6,8,10:p120",
+            "8,11,12:p012",
+            "8,10,10:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.36554377192591175,
+      "best_oracle_ratio_without_repair": 0.280825522042609,
+      "block_length": 512,
+      "columns": 16384,
+      "direct_structural_plan_count": 8,
+      "oracle_structural_plan_count": 64,
+      "rows": 53248,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 187109300
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 410905386,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 410905386,
+          "scheme_ids": [
+            "8,10,10:p012",
+            "8,11,12:p021",
+            "8,10,11:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.3457184938390579,
+      "best_oracle_ratio_without_repair": 0.2820322383861143,
+      "block_length": 512,
+      "columns": 16384,
+      "direct_structural_plan_count": 10,
+      "oracle_structural_plan_count": 64,
+      "rows": 128256,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 196503300
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 40048292,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 40048292,
+          "scheme_ids": [
+            "8,10,10:p012",
+            "8,10,10:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.5660511631188104,
+      "best_oracle_ratio_without_repair": 0.2976309818246052,
+      "block_length": 1024,
+      "columns": 16384,
+      "direct_structural_plan_count": 4,
+      "oracle_structural_plan_count": 64,
+      "rows": 1024,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 196234800
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 134368134,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 134368134,
+          "scheme_ids": [
+            "8,10,10:p012",
+            "8,11,11:p012"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.41319427251539304,
+      "best_oracle_ratio_without_repair": 0.2881573846365137,
+      "block_length": 1024,
+      "columns": 16384,
+      "direct_structural_plan_count": 7,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 236706000
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 209954357,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 209954357,
+          "scheme_ids": [
+            "8,10,12:p012",
+            "8,11,12:p012",
+            "6,8,10:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.36866165347891605,
+      "best_oracle_ratio_without_repair": 0.2862821397459436,
+      "block_length": 1024,
+      "columns": 53248,
+      "direct_structural_plan_count": 9,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 233085800
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 360938842,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 360938842,
+          "scheme_ids": [
+            "8,10,10:p012",
+            "8,11,12:p012",
+            "6,8,10:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.36653679528239264,
+      "best_oracle_ratio_without_repair": 0.248836651779874,
+      "block_length": 1024,
+      "columns": 16384,
+      "direct_structural_plan_count": 9,
+      "oracle_structural_plan_count": 64,
+      "rows": 53248,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 232815500
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 821696704,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 821696704,
+          "scheme_ids": [
+            "8,11,12:p021",
+            "8,11,12:p021",
+            "6,8,10:p102"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2289,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 15
+      },
+      "best_direct_ratio_without_repair": 0.3465930121234569,
+      "best_oracle_ratio_without_repair": 0.21604015663134216,
+      "block_length": 1024,
+      "columns": 16384,
+      "direct_structural_plan_count": 9,
+      "oracle_structural_plan_count": 64,
+      "rows": 128256,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 238821400
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3
+        ],
+        "evaluated_direct_plan_count": 1440,
+        "evaluated_oracle_plan_count": 288,
+        "minimum_generated_workspace_bytes": 79789709,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 79789709,
+          "scheme_ids": [
+            "8,10,12:p210",
+            "8,9,10:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1440,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.5288097776135363,
+      "best_oracle_ratio_without_repair": 0.2976865696252915,
+      "block_length": 2048,
+      "columns": 16384,
+      "direct_structural_plan_count": 7,
+      "oracle_structural_plan_count": 64,
+      "rows": 1024,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 192639100
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 268622044,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 268622044,
+          "scheme_ids": [
+            "8,10,10:p012",
+            "8,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.41319427251539304,
+      "best_oracle_ratio_without_repair": 0.1556579489607099,
+      "block_length": 2048,
+      "columns": 16384,
+      "direct_structural_plan_count": 10,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 251365100
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 419726791,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 419726791,
+          "scheme_ids": [
+            "8,10,12:p021",
+            "8,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.3702992024827582,
+      "best_oracle_ratio_without_repair": 0.21772747011810206,
+      "block_length": 2048,
+      "columns": 53248,
+      "direct_structural_plan_count": 9,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 326545200
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 721780178,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 721780178,
+          "scheme_ids": [
+            "8,10,10:p012",
+            "8,11,12:p012",
+            "6,8,10:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.36836478860573196,
+      "best_oracle_ratio_without_repair": 0.124418325889937,
+      "block_length": 2048,
+      "columns": 16384,
+      "direct_structural_plan_count": 9,
+      "oracle_structural_plan_count": 64,
+      "rows": 53248,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 347103000
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 1643272536,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 1643272536,
+          "scheme_ids": [
+            "8,11,12:p021",
+            "8,11,12:p021",
+            "6,8,10:p102"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2296,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 8
+      },
+      "best_direct_ratio_without_repair": 0.3465930121234569,
+      "best_oracle_ratio_without_repair": 0.10802007831567108,
+      "block_length": 2048,
+      "columns": 16384,
+      "direct_structural_plan_count": 11,
+      "oracle_structural_plan_count": 64,
+      "rows": 128256,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 308944100
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 1602,
+        "evaluated_oracle_plan_count": 306,
+        "minimum_generated_workspace_bytes": 159489596,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 159489596,
+          "scheme_ids": [
+            "8,10,10:p120",
+            "8,10,10:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1602,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.5477296556978094,
+      "best_oracle_ratio_without_repair": 0.2960052799908582,
+      "block_length": 4096,
+      "columns": 16384,
+      "direct_structural_plan_count": 3,
+      "oracle_structural_plan_count": 64,
+      "rows": 1024,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        18,
+        0
+      ],
+      "wall_ns": 270409100
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 537121991,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 537121991,
+          "scheme_ids": [
+            "8,10,12:p021",
+            "8,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.4022824490158021,
+      "best_oracle_ratio_without_repair": 0.10854734067139483,
+      "block_length": 4096,
+      "columns": 16384,
+      "direct_structural_plan_count": 11,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 373990100
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 839253703,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 839253703,
+          "scheme_ids": [
+            "8,10,12:p021",
+            "8,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.3702992024827582,
+      "best_oracle_ratio_without_repair": 0.1806862685281775,
+      "block_length": 4096,
+      "columns": 53248,
+      "direct_structural_plan_count": 10,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 358524500
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 1443462850,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 1443462850,
+          "scheme_ids": [
+            "8,10,10:p012",
+            "8,11,12:p012",
+            "6,8,10:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.36836478860573196,
+      "best_oracle_ratio_without_repair": 0.10664639823734853,
+      "block_length": 4096,
+      "columns": 16384,
+      "direct_structural_plan_count": 9,
+      "oracle_structural_plan_count": 64,
+      "rows": 53248,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 366461600
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 3286424200,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 3286424200,
+          "scheme_ids": [
+            "8,11,12:p021",
+            "8,11,12:p021",
+            "6,8,10:p102"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.34265610010831477,
+      "best_oracle_ratio_without_repair": 0.10098073215451056,
+      "block_length": 4096,
+      "columns": 16384,
+      "direct_structural_plan_count": 10,
+      "oracle_structural_plan_count": 64,
+      "rows": 128256,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 399761300
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 318916428,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 318916428,
+          "scheme_ids": [
+            "8,10,10:p120",
+            "8,10,10:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.5477296556978094,
+      "best_oracle_ratio_without_repair": 0.2888688843516656,
+      "block_length": 8192,
+      "columns": 16384,
+      "direct_structural_plan_count": 3,
+      "oracle_structural_plan_count": 64,
+      "rows": 1024,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 296619200
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 1074120391,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 1074120391,
+          "scheme_ids": [
+            "8,10,12:p021",
+            "8,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.3875600250962707,
+      "best_oracle_ratio_without_repair": 0.11193255087725174,
+      "block_length": 8192,
+      "columns": 16384,
+      "direct_structural_plan_count": 14,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 362984900
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 1678307527,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 1678307527,
+          "scheme_ids": [
+            "8,10,12:p021",
+            "8,11,12:p021"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.3557678318506698,
+      "best_oracle_ratio_without_repair": 0.1806862685281775,
+      "block_length": 8192,
+      "columns": 53248,
+      "direct_structural_plan_count": 10,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 418024700
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 2886828194,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 2886828194,
+          "scheme_ids": [
+            "8,10,10:p012",
+            "8,11,12:p012",
+            "6,8,10:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.3547462059304804,
+      "best_oracle_ratio_without_repair": 0.11006277636270083,
+      "block_length": 8192,
+      "columns": 16384,
+      "direct_structural_plan_count": 11,
+      "oracle_structural_plan_count": 64,
+      "rows": 53248,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 437683800
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 6572727528,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 6572727528,
+          "scheme_ids": [
+            "8,11,12:p021",
+            "8,11,12:p021",
+            "6,8,10:p102"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 1920,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 384
+      },
+      "best_direct_ratio_without_repair": 0.337738754751859,
+      "best_oracle_ratio_without_repair": 0.10098073215451056,
+      "block_length": 8192,
+      "columns": 16384,
+      "direct_structural_plan_count": 12,
+      "oracle_structural_plan_count": 64,
+      "rows": 128256,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 412518800
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 637719995,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 637719995,
+          "scheme_ids": [
+            "8,10,12:p120",
+            "8,11,12:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.5503865061933501,
+      "best_oracle_ratio_without_repair": 0.2881573846365137,
+      "block_length": 16384,
+      "columns": 16384,
+      "direct_structural_plan_count": 4,
+      "oracle_structural_plan_count": 64,
+      "rows": 1024,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 314604200
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 2148092795,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 2148092795,
+          "scheme_ids": [
+            "8,10,12:p120",
+            "8,11,12:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.3771204017183438,
+      "best_oracle_ratio_without_repair": 0.16845318434381557,
+      "block_length": 16384,
+      "columns": 16384,
+      "direct_structural_plan_count": 18,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 408960300
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 3356335995,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 3356335995,
+          "scheme_ids": [
+            "8,10,12:p120",
+            "8,11,12:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.3500534645508889,
+      "best_oracle_ratio_without_repair": 0.1806862685281775,
+      "block_length": 16384,
+      "columns": 53248,
+      "direct_structural_plan_count": 13,
+      "oracle_structural_plan_count": 64,
+      "rows": 16384,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 451808600
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 5772987515,
+        "minimum_workspace_witness": {
+          "cut_depth": 2,
+          "favorable_workspace_bytes": 5772987515,
+          "scheme_ids": [
+            "8,10,12:p120",
+            "8,11,12:p120"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 2304,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 0
+      },
+      "best_direct_ratio_without_repair": 0.3487267985841926,
+      "best_oracle_ratio_without_repair": 0.11190946724126963,
+      "block_length": 16384,
+      "columns": 16384,
+      "direct_structural_plan_count": 12,
+      "oracle_structural_plan_count": 64,
+      "rows": 53248,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 374099900
+    },
+    {
+      "accounting": {
+        "completed_evaluated_depths": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "evaluated_direct_plan_count": 2304,
+        "evaluated_oracle_plan_count": 384,
+        "minimum_generated_workspace_bytes": 13145334184,
+        "minimum_workspace_witness": {
+          "cut_depth": 3,
+          "favorable_workspace_bytes": 13145334184,
+          "scheme_ids": [
+            "8,11,12:p021",
+            "8,11,12:p021",
+            "6,8,10:p102"
+          ],
+          "static_scalar_bytes": 2
+        },
+        "retained_search_completed": true,
+        "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+        "termination": "beam_exhausted",
+        "workspace_admissible_count": 0,
+        "workspace_limit_bytes": 8589934592,
+        "workspace_rejected_count": 2304
+      },
+      "best_direct_ratio_without_repair": null,
+      "best_oracle_ratio_without_repair": 0.1551975941361653,
+      "block_length": 16384,
+      "columns": 16384,
+      "direct_structural_plan_count": 0,
+      "oracle_structural_plan_count": 64,
+      "rows": 128256,
+      "state_count_by_depth": [
+        96,
+        96,
+        96,
+        96,
+        0
+      ],
+      "wall_ns": 408450400
+    }
+  ],
+  "source_commit": "8affea0634005600df0c77f8997e0457b43a23d7",
+  "target_families": [
+    {
+      "columns": 16384,
+      "count": 126,
+      "name": "q_proj",
+      "parameters": 33822867456,
+      "raw_bf16_bytes": 67645734912,
+      "repair_fraction_p95": 0.0,
+      "rows": 16384
+    },
+    {
+      "columns": 16384,
+      "count": 126,
+      "name": "k_proj",
+      "parameters": 2113929216,
+      "raw_bf16_bytes": 4227858432,
+      "repair_fraction_p95": 0.0,
+      "rows": 1024
+    },
+    {
+      "columns": 16384,
+      "count": 126,
+      "name": "v_proj",
+      "parameters": 2113929216,
+      "raw_bf16_bytes": 4227858432,
+      "repair_fraction_p95": 0.0,
+      "rows": 1024
+    },
+    {
+      "columns": 16384,
+      "count": 126,
+      "name": "o_proj",
+      "parameters": 33822867456,
+      "raw_bf16_bytes": 67645734912,
+      "repair_fraction_p95": 0.001736111111111111,
+      "rows": 16384
+    },
+    {
+      "columns": 16384,
+      "count": 126,
+      "name": "gate_proj",
+      "parameters": 109924319232,
+      "raw_bf16_bytes": 219848638464,
+      "repair_fraction_p95": 0.0008138020833333333,
+      "rows": 53248
+    },
+    {
+      "columns": 16384,
+      "count": 126,
+      "name": "up_proj",
+      "parameters": 109924319232,
+      "raw_bf16_bytes": 219848638464,
+      "repair_fraction_p95": 0.0006510416666666666,
+      "rows": 53248
+    },
+    {
+      "columns": 53248,
+      "count": 126,
+      "name": "down_proj",
+      "parameters": 109924319232,
+      "raw_bf16_bytes": 219848638464,
+      "repair_fraction_p95": 0.001736111111111111,
+      "rows": 16384
+    },
+    {
+      "columns": 16384,
+      "count": 1,
+      "name": "lm_head",
+      "parameters": 2101346304,
+      "raw_bf16_bytes": 4202692608,
+      "repair_fraction_p95": 0.001736111111111111,
+      "rows": 128256
+    }
+  ]
+}

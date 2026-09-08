@@ -1,0 +1,2107 @@
+[
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 803,
+      "evaluated_oracle_plan_count": 197,
+      "minimum_generated_workspace_bytes": 1286336,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 1286336,
+        "scheme_ids": [
+          "4,11,12:p012",
+          "4,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 803,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.5882752338450985,
+    "best_oracle_ratio_without_repair": 0.46920415654946285,
+    "block_length": 32,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      5,
+      0
+    ],
+    "wall_ns": 61435900
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 810,
+      "evaluated_oracle_plan_count": 198,
+      "minimum_generated_workspace_bytes": 4264552,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 4264552,
+        "scheme_ids": [
+          "4,11,12:p012",
+          "4,11,12:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 810,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.47563109614863863,
+    "best_oracle_ratio_without_repair": 0.45448264059346816,
+    "block_length": 32,
+    "columns": 16384,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      6,
+      0
+    ],
+    "wall_ns": 57159700
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 810,
+      "evaluated_oracle_plan_count": 198,
+      "minimum_generated_workspace_bytes": 6695828,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 6695828,
+        "scheme_ids": [
+          "4,11,12:p012",
+          "4,11,12:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 810,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.46887026650283564,
+    "best_oracle_ratio_without_repair": 0.4549259985482235,
+    "block_length": 32,
+    "columns": 53248,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      6,
+      0
+    ],
+    "wall_ns": 59744900
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 810,
+      "evaluated_oracle_plan_count": 198,
+      "minimum_generated_workspace_bytes": 11412072,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 11412072,
+        "scheme_ids": [
+          "4,11,12:p012",
+          "4,11,12:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 810,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.46739896189703567,
+    "best_oracle_ratio_without_repair": 0.4534543993251572,
+    "block_length": 32,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      6,
+      0
+    ],
+    "wall_ns": 61684300
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 810,
+      "evaluated_oracle_plan_count": 198,
+      "minimum_generated_workspace_bytes": 25950888,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 25950888,
+        "scheme_ids": [
+          "4,11,12:p021",
+          "4,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 810,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.46456424711161687,
+    "best_oracle_ratio_without_repair": 0.45250825316808857,
+    "block_length": 32,
+    "columns": 16384,
+    "direct_structural_plan_count": 6,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      6,
+      0
+    ],
+    "wall_ns": 61852500
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 824,
+      "evaluated_oracle_plan_count": 200,
+      "minimum_generated_workspace_bytes": 2538514,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 2538514,
+        "scheme_ids": [
+          "6,8,10:p120",
+          "8,9,10:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 824,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.5571388907983654,
+    "best_oracle_ratio_without_repair": 0.44292359586841373,
+    "block_length": 64,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      8,
+      0
+    ],
+    "wall_ns": 106695500
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2
+      ],
+      "evaluated_direct_plan_count": 768,
+      "evaluated_oracle_plan_count": 192,
+      "minimum_generated_workspace_bytes": 8503878,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 8503878,
+        "scheme_ids": [
+          "8,10,10:p012",
+          "8,10,11:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 768,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.45872839440081986,
+    "best_oracle_ratio_without_repair": 0.4290266456968395,
+    "block_length": 64,
+    "columns": 16384,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 89150300
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2
+      ],
+      "evaluated_direct_plan_count": 768,
+      "evaluated_oracle_plan_count": 192,
+      "minimum_generated_workspace_bytes": 13310095,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 13310095,
+        "scheme_ids": [
+          "8,10,12:p021",
+          "8,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 768,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.4496341627054614,
+    "best_oracle_ratio_without_repair": 0.42944517076068645,
+    "block_length": 64,
+    "columns": 53248,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 93341300
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2
+      ],
+      "evaluated_direct_plan_count": 768,
+      "evaluated_oracle_plan_count": 192,
+      "minimum_generated_workspace_bytes": 22753051,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 22753051,
+        "scheme_ids": [
+          "8,10,12:p012",
+          "8,11,12:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 768,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.44824541567897513,
+    "best_oracle_ratio_without_repair": 0.4280559971771634,
+    "block_length": 64,
+    "columns": 16384,
+    "direct_structural_plan_count": 6,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 92043500
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2
+      ],
+      "evaluated_direct_plan_count": 768,
+      "evaluated_oracle_plan_count": 192,
+      "minimum_generated_workspace_bytes": 51691248,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 51691248,
+        "scheme_ids": [
+          "8,11,12:p021",
+          "8,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 768,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.44456270337618375,
+    "best_oracle_ratio_without_repair": 0.4271628455452858,
+    "block_length": 64,
+    "columns": 16384,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 98651300
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1443,
+      "evaluated_oracle_plan_count": 289,
+      "minimum_generated_workspace_bytes": 5030050,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 5030050,
+        "scheme_ids": [
+          "6,8,10:p120",
+          "8,9,10:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1443,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.5571388907983654,
+    "best_oracle_ratio_without_repair": 0.44292359586841373,
+    "block_length": 128,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      97,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 129765400
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 16894678,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 16894678,
+        "scheme_ids": [
+          "8,10,10:p012",
+          "8,10,11:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.45872839440081986,
+    "best_oracle_ratio_without_repair": 0.4290266456968395,
+    "block_length": 128,
+    "columns": 16384,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 135000900
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 26420311,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 26420311,
+        "scheme_ids": [
+          "8,10,12:p021",
+          "8,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.4496341627054614,
+    "best_oracle_ratio_without_repair": 0.42944517076068645,
+    "block_length": 128,
+    "columns": 53248,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 123618600
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 45306223,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 45306223,
+        "scheme_ids": [
+          "8,10,12:p012",
+          "8,11,12:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.44824541567897513,
+    "best_oracle_ratio_without_repair": 0.4280559971771634,
+    "block_length": 128,
+    "columns": 16384,
+    "direct_structural_plan_count": 6,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 122168800
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 103040184,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 103040184,
+        "scheme_ids": [
+          "8,11,12:p021",
+          "8,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.44456270337618375,
+    "best_oracle_ratio_without_repair": 0.4271628455452858,
+    "block_length": 128,
+    "columns": 16384,
+    "direct_structural_plan_count": 5,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 121405600
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 10013122,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 10013122,
+        "scheme_ids": [
+          "6,8,10:p120",
+          "8,9,10:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.5571388907983654,
+    "best_oracle_ratio_without_repair": 0.32460942682968297,
+    "block_length": 256,
+    "columns": 16384,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 128296200
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 33671344,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 33671344,
+        "scheme_ids": [
+          "6,8,10:p120",
+          "8,11,12:p012",
+          "4,11,12:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.42580840432415057,
+    "best_oracle_ratio_without_repair": 0.3052550008016324,
+    "block_length": 256,
+    "columns": 16384,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 135775900
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 52547014,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 52547014,
+        "scheme_ids": [
+          "6,8,10:p120",
+          "8,11,12:p012",
+          "4,11,12:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.3776285508176106,
+    "best_oracle_ratio_without_repair": 0.30326848957167973,
+    "block_length": 256,
+    "columns": 53248,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 129772700
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 90295654,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 90295654,
+        "scheme_ids": [
+          "6,8,10:p102",
+          "8,11,12:p012",
+          "4,11,12:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.37502855625591086,
+    "best_oracle_ratio_without_repair": 0.2974881072868159,
+    "block_length": 256,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 144335600
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 205481580,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 205481580,
+        "scheme_ids": [
+          "6,8,10:p102",
+          "8,11,12:p021",
+          "4,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.35636742646592734,
+    "best_oracle_ratio_without_repair": 0.2987664232975914,
+    "block_length": 256,
+    "columns": 16384,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 147836000
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 19979266,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 19979266,
+        "scheme_ids": [
+          "6,8,10:p120",
+          "8,9,10:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.5571388907983654,
+    "best_oracle_ratio_without_repair": 0.30345195370132,
+    "block_length": 512,
+    "columns": 16384,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 189064700
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 67239478,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 67239478,
+        "scheme_ids": [
+          "8,10,10:p012",
+          "8,10,11:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.4056775633073011,
+    "best_oracle_ratio_without_repair": 0.2881573846365137,
+    "block_length": 512,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 183060800
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 105031025,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 105031025,
+        "scheme_ids": [
+          "6,8,10:p120",
+          "8,11,12:p012",
+          "8,10,12:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.3682437233087787,
+    "best_oracle_ratio_without_repair": 0.2862821397459436,
+    "block_length": 512,
+    "columns": 53248,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 183647700
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 180518174,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 180518174,
+        "scheme_ids": [
+          "6,8,10:p120",
+          "8,11,12:p012",
+          "8,10,10:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.36554377192591175,
+    "best_oracle_ratio_without_repair": 0.280825522042609,
+    "block_length": 512,
+    "columns": 16384,
+    "direct_structural_plan_count": 8,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 187109300
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 410905386,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 410905386,
+        "scheme_ids": [
+          "8,10,10:p012",
+          "8,11,12:p021",
+          "8,10,11:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.3457184938390579,
+    "best_oracle_ratio_without_repair": 0.2820322383861143,
+    "block_length": 512,
+    "columns": 16384,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 196503300
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 40048292,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 40048292,
+        "scheme_ids": [
+          "8,10,10:p012",
+          "8,10,10:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.5660511631188104,
+    "best_oracle_ratio_without_repair": 0.2976309818246052,
+    "block_length": 1024,
+    "columns": 16384,
+    "direct_structural_plan_count": 4,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 196234800
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 134368134,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 134368134,
+        "scheme_ids": [
+          "8,10,10:p012",
+          "8,11,11:p012"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.41319427251539304,
+    "best_oracle_ratio_without_repair": 0.2881573846365137,
+    "block_length": 1024,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 236706000
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 209954357,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 209954357,
+        "scheme_ids": [
+          "8,10,12:p012",
+          "8,11,12:p012",
+          "6,8,10:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.36866165347891605,
+    "best_oracle_ratio_without_repair": 0.2862821397459436,
+    "block_length": 1024,
+    "columns": 53248,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 233085800
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 360938842,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 360938842,
+        "scheme_ids": [
+          "8,10,10:p012",
+          "8,11,12:p012",
+          "6,8,10:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.36653679528239264,
+    "best_oracle_ratio_without_repair": 0.248836651779874,
+    "block_length": 1024,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 232815500
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 821696704,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 821696704,
+        "scheme_ids": [
+          "8,11,12:p021",
+          "8,11,12:p021",
+          "6,8,10:p102"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2289,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 15
+    },
+    "best_direct_ratio_without_repair": 0.3465930121234569,
+    "best_oracle_ratio_without_repair": 0.21604015663134216,
+    "block_length": 1024,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 238821400
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3
+      ],
+      "evaluated_direct_plan_count": 1440,
+      "evaluated_oracle_plan_count": 288,
+      "minimum_generated_workspace_bytes": 79789709,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 79789709,
+        "scheme_ids": [
+          "8,10,12:p210",
+          "8,9,10:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1440,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.5288097776135363,
+    "best_oracle_ratio_without_repair": 0.2976865696252915,
+    "block_length": 2048,
+    "columns": 16384,
+    "direct_structural_plan_count": 7,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 192639100
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 268622044,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 268622044,
+        "scheme_ids": [
+          "8,10,10:p012",
+          "8,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.41319427251539304,
+    "best_oracle_ratio_without_repair": 0.1556579489607099,
+    "block_length": 2048,
+    "columns": 16384,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 251365100
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 419726791,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 419726791,
+        "scheme_ids": [
+          "8,10,12:p021",
+          "8,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.3702992024827582,
+    "best_oracle_ratio_without_repair": 0.21772747011810206,
+    "block_length": 2048,
+    "columns": 53248,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 326545200
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 721780178,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 721780178,
+        "scheme_ids": [
+          "8,10,10:p012",
+          "8,11,12:p012",
+          "6,8,10:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.36836478860573196,
+    "best_oracle_ratio_without_repair": 0.124418325889937,
+    "block_length": 2048,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 347103000
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 1643272536,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 1643272536,
+        "scheme_ids": [
+          "8,11,12:p021",
+          "8,11,12:p021",
+          "6,8,10:p102"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2296,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 8
+    },
+    "best_direct_ratio_without_repair": 0.3465930121234569,
+    "best_oracle_ratio_without_repair": 0.10802007831567108,
+    "block_length": 2048,
+    "columns": 16384,
+    "direct_structural_plan_count": 11,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 308944100
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 1602,
+      "evaluated_oracle_plan_count": 306,
+      "minimum_generated_workspace_bytes": 159489596,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 159489596,
+        "scheme_ids": [
+          "8,10,10:p120",
+          "8,10,10:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1602,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.5477296556978094,
+    "best_oracle_ratio_without_repair": 0.2960052799908582,
+    "block_length": 4096,
+    "columns": 16384,
+    "direct_structural_plan_count": 3,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      18,
+      0
+    ],
+    "wall_ns": 270409100
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 537121991,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 537121991,
+        "scheme_ids": [
+          "8,10,12:p021",
+          "8,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.4022824490158021,
+    "best_oracle_ratio_without_repair": 0.10854734067139483,
+    "block_length": 4096,
+    "columns": 16384,
+    "direct_structural_plan_count": 11,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 373990100
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 839253703,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 839253703,
+        "scheme_ids": [
+          "8,10,12:p021",
+          "8,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.3702992024827582,
+    "best_oracle_ratio_without_repair": 0.1806862685281775,
+    "block_length": 4096,
+    "columns": 53248,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 358524500
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 1443462850,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 1443462850,
+        "scheme_ids": [
+          "8,10,10:p012",
+          "8,11,12:p012",
+          "6,8,10:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.36836478860573196,
+    "best_oracle_ratio_without_repair": 0.10664639823734853,
+    "block_length": 4096,
+    "columns": 16384,
+    "direct_structural_plan_count": 9,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 366461600
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 3286424200,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 3286424200,
+        "scheme_ids": [
+          "8,11,12:p021",
+          "8,11,12:p021",
+          "6,8,10:p102"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.34265610010831477,
+    "best_oracle_ratio_without_repair": 0.10098073215451056,
+    "block_length": 4096,
+    "columns": 16384,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 399761300
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 318916428,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 318916428,
+        "scheme_ids": [
+          "8,10,10:p120",
+          "8,10,10:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.5477296556978094,
+    "best_oracle_ratio_without_repair": 0.2888688843516656,
+    "block_length": 8192,
+    "columns": 16384,
+    "direct_structural_plan_count": 3,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 296619200
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 1074120391,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 1074120391,
+        "scheme_ids": [
+          "8,10,12:p021",
+          "8,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.3875600250962707,
+    "best_oracle_ratio_without_repair": 0.11193255087725174,
+    "block_length": 8192,
+    "columns": 16384,
+    "direct_structural_plan_count": 14,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 362984900
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 1678307527,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 1678307527,
+        "scheme_ids": [
+          "8,10,12:p021",
+          "8,11,12:p021"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.3557678318506698,
+    "best_oracle_ratio_without_repair": 0.1806862685281775,
+    "block_length": 8192,
+    "columns": 53248,
+    "direct_structural_plan_count": 10,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 418024700
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 2886828194,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 2886828194,
+        "scheme_ids": [
+          "8,10,10:p012",
+          "8,11,12:p012",
+          "6,8,10:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.3547462059304804,
+    "best_oracle_ratio_without_repair": 0.11006277636270083,
+    "block_length": 8192,
+    "columns": 16384,
+    "direct_structural_plan_count": 11,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 437683800
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 6572727528,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 6572727528,
+        "scheme_ids": [
+          "8,11,12:p021",
+          "8,11,12:p021",
+          "6,8,10:p102"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 1920,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 384
+    },
+    "best_direct_ratio_without_repair": 0.337738754751859,
+    "best_oracle_ratio_without_repair": 0.10098073215451056,
+    "block_length": 8192,
+    "columns": 16384,
+    "direct_structural_plan_count": 12,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 412518800
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 637719995,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 637719995,
+        "scheme_ids": [
+          "8,10,12:p120",
+          "8,11,12:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.5503865061933501,
+    "best_oracle_ratio_without_repair": 0.2881573846365137,
+    "block_length": 16384,
+    "columns": 16384,
+    "direct_structural_plan_count": 4,
+    "oracle_structural_plan_count": 64,
+    "rows": 1024,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 314604200
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 2148092795,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 2148092795,
+        "scheme_ids": [
+          "8,10,12:p120",
+          "8,11,12:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.3771204017183438,
+    "best_oracle_ratio_without_repair": 0.16845318434381557,
+    "block_length": 16384,
+    "columns": 16384,
+    "direct_structural_plan_count": 18,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 408960300
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 3356335995,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 3356335995,
+        "scheme_ids": [
+          "8,10,12:p120",
+          "8,11,12:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.3500534645508889,
+    "best_oracle_ratio_without_repair": 0.1806862685281775,
+    "block_length": 16384,
+    "columns": 53248,
+    "direct_structural_plan_count": 13,
+    "oracle_structural_plan_count": 64,
+    "rows": 16384,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 451808600
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 5772987515,
+      "minimum_workspace_witness": {
+        "cut_depth": 2,
+        "favorable_workspace_bytes": 5772987515,
+        "scheme_ids": [
+          "8,10,12:p120",
+          "8,11,12:p120"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 2304,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 0
+    },
+    "best_direct_ratio_without_repair": 0.3487267985841926,
+    "best_oracle_ratio_without_repair": 0.11190946724126963,
+    "block_length": 16384,
+    "columns": 16384,
+    "direct_structural_plan_count": 12,
+    "oracle_structural_plan_count": 64,
+    "rows": 53248,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 374099900
+  },
+  {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "evaluated_oracle_plan_count": 384,
+      "minimum_generated_workspace_bytes": 13145334184,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 13145334184,
+        "scheme_ids": [
+          "8,11,12:p021",
+          "8,11,12:p021",
+          "6,8,10:p102"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 0,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 2304
+    },
+    "best_direct_ratio_without_repair": null,
+    "best_oracle_ratio_without_repair": 0.1551975941361653,
+    "block_length": 16384,
+    "columns": 16384,
+    "direct_structural_plan_count": 0,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 408450400
+  }
+]

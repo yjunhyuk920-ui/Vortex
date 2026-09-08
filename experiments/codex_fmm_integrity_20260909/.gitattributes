@@ -1,0 +1,9 @@
+* text eol=lf
+portable_only_runner.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+executed_sources/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+hardened_sources/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve raw unittest output, including its emitted trailing space.
+post_review_red.log -text whitespace=-blank-at-eol

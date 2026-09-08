@@ -1,0 +1,20 @@
+{
+  "base": "8affea0634005600df0c77f8997e0457b43a23d7",
+  "config_sha256": "d351c0321a233db3211255edeb48ae261d75059c341d4777781323d14748e416",
+  "core_scope": "same frozen EXP100 bounded optimistic tensor program gate, not three new mechanisms or native405B executor",
+  "cost_module_sha256": "17e8f6ccda8bff69aa71d82fab6a5d1dd983d32b01390e54964a3c9c6e5c9a5a",
+  "hypotheses": [
+    "budget-pruned emptiness wrongly treated as integrity failure",
+    "unintended plan loss/incomplete search",
+    "pinned input/catalog mismatch"
+  ],
+  "initial_current_failure": "ModuleNotFoundError: No module named resource",
+  "original_runner_sha256": "20925e8494521d05a892ad393926f5395470935b078c980d5a4fc18b4f65bf13",
+  "portable_runner_sha256": "2b360c95b716fbdf8665fa5dd30b38c7bfc0710cd616ca72e1dd067fcd2c25ee",
+  "registered_input_transport": "two raw worktree CRLF identities differ; canonical LF payloads must match pinned Git blob digests exactly",
+  "status": {
+    "CORE_ADMISSION": false,
+    "HARDWARE_STATUS": "NOT_TESTED",
+    "THEORY_STATUS": "NOT_ESTABLISHED"
+  }
+}

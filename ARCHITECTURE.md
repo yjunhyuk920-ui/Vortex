@@ -1536,13 +1536,12 @@ The FP64 margin certificate is an offline target-seeing capacity object. It ente
 <!-- EXP-096A:END -->
 
 <!-- EXP-100A:START -->
-## EXP-100A architecture status
+## EXP-100A architecture after repair
 
-The mixed rectangular tensor sequence and cut-depth transformed-weight plan are
-research descriptors, not production opcodes. Architecture promotion is
-conditional on `INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE` and the active next Gate `EXP-100A control repair`. Until
-finite-word closure, a causal block, exact successor state, and existing-ISA
-lowering pass, the production executor architecture remains unchanged.
+The actual full gate rejects the frozen retained/evaluated descriptor programs
+as a10x core. No production opcode or architecture promotion. Native rounding,
+causal block, next KV/RNG and complete physical costs remain OPEN. See
+[the corrected gate](experiments/codex_fmm_integrity_20260909/REPORT.md).
 <!-- EXP-100A:END -->
 
 <!-- EXP-102A:START -->

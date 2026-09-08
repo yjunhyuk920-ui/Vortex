@@ -41,3 +41,6 @@ results/exp_083b/** text eol=lf
 experiments/exp_083b/** text eol=lf
 results/exp_083b/raw/static_arrays.npz -text
 results/exp_083b/raw/prompt_arrays/*.npz -text
+
+# Preserve source bytes bound by the EXP-100A execution manifest.
+experiments/exp_100a/run_experiment.py text eol=lf

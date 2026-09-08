@@ -2304,22 +2304,11 @@ Checkpoint: `HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2
 <!-- EXP-096A:END -->
 
 <!-- EXP-100A:START -->
-## EXP-100A reproduction
+## EXP-100A reproduction after repair
 
-```bash
-python -m pip install --disable-pip-version-check -r requirements/fixed-public-dynamic-executor.txt
-pytest -q tests/exp_100a
-python experiments/exp_100a/run_experiment.py \
-  --config experiments/exp_100a/config.json \
-  --output-dir results/exp_100a/<source-commit>
-python experiments/exp_100a/update_ledgers.py \
-  --result results/exp_100a/<source-commit>/result.json \
-  --source-commit <source-commit>
-```
-
-Catalog commit: `1949163da3bef7e3eb268a3ac015fd1c2dbfc767`; Git blob:
-`5ff45960f86da6237f105f78aaa82d29cb18c30e`. Verify the result directory's
-`checksums.sha256` before using summaries.
+Follow [the source-bound CPU instructions](experiments/codex_fmm_integrity_20260909/REPRODUCE.md).
+Preserve old/red/corrected artifacts, verify checksums and use fresh outputs.
+Do not run historical update_ledgers.py wholesale on the newer global frontier.
 <!-- EXP-100A:END -->
 
 <!-- EXP-102A:START -->

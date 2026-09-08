@@ -1424,13 +1424,16 @@ Frozen fingerprint: one K=128 fine guessed sweep; official one-layer/Q4 coarse p
 <!-- EXP-100A:START -->
 ## EXP-100A — catalogued explicit rectangular FMM
 
-No scientific failure is registered because the run was invalid. Repair only the recorded integrity fault and rerun the unchanged contract.
+The old hosted run remains INVALID. The repaired actual full run at
+experiments/codex_fmm_integrity_20260909/hardened_run now rejects only programs
+retained/evaluated by the frozen catalog/orientation/beam/cut/family/IO-bin search.
+Direct arithmetic38.25165%, free-transform oracle13.01026% both miss10%.
+The only empty direct cell is fully accounted:2,304 workspace rejections,
+minimum12.24255GiB. Completed no-plan had been mislabeled as corruption.
 
-Frozen fingerprint: pinned AlphaTensor real-arithmetic catalog; integral
-coefficients with absolute value at most two; six factor-space orientations;
-depth at most 12; registered 405B projection population; explicit transform,
-write, cold-byte, workspace, and role-p95 repair ledger; perfect `N/A=1` future
-block grant.
+Pinned coefficient-cap2 catalog, depth<=12, bounded search and perfect N/A=1
+future/repair/offline grants remain. No general FMM/native impossibility.
+Revisit only with a materially different paid construction.
 <!-- EXP-100A:END -->
 
 <!-- EXP-102A:START -->

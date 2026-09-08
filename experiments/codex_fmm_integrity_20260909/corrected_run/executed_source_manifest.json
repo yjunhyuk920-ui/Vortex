@@ -1,0 +1,19 @@
+{
+  "GPU_executed": false,
+  "invocation": [
+    "run_full_gate.py",
+    "--output-dir",
+    "experiments/codex_fmm_integrity_20260909/corrected_run"
+  ],
+  "numpy": "2.3.5",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "source_commit_field_is_base_revision": "executed working sources are separately hashed; no clean-base source claim",
+  "sources": {
+    "experiments/codex_fmm_integrity_20260909/PREREGISTRATION.md": "7d017b05c59d296828c39c3316a72fb13c458a8479e5c0b27431c907519a6924",
+    "experiments/exp_100a/config.json": "d351c0321a233db3211255edeb48ae261d75059c341d4777781323d14748e416",
+    "experiments/exp_100a/run_experiment.py": "260bc874ddab93637d21b6fed99a69396ca9ecdcfcfe6b5da579573960f3e65d",
+    "vortex_runtime/explicit_rectangular_fmm.py": "17e8f6ccda8bff69aa71d82fab6a5d1dd983d32b01390e54964a3c9c6e5c9a5a"
+  }
+}

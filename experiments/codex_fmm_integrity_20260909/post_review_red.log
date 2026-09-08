@@ -1,0 +1,42 @@
+test_paired_undercount_partial_depth_and_oracle_are_invalid (test_search_integrity.WorkspaceIntegrityTests.test_paired_undercount_partial_depth_and_oracle_are_invalid) ... 
+  test_paired_undercount_partial_depth_and_oracle_are_invalid (test_search_integrity.WorkspaceIntegrityTests.test_paired_undercount_partial_depth_and_oracle_are_invalid) (change={'evaluated_direct_plan_count': 15, 'workspace_rejected_count': 15}) ... FAIL
+  test_paired_undercount_partial_depth_and_oracle_are_invalid (test_search_integrity.WorkspaceIntegrityTests.test_paired_undercount_partial_depth_and_oracle_are_invalid) (change={'completed_evaluated_depths': [1]}) ... FAIL
+  test_paired_undercount_partial_depth_and_oracle_are_invalid (test_search_integrity.WorkspaceIntegrityTests.test_paired_undercount_partial_depth_and_oracle_are_invalid) (change={'termination': 'unexplained'}) ... FAIL
+  test_paired_undercount_partial_depth_and_oracle_are_invalid (test_search_integrity.WorkspaceIntegrityTests.test_paired_undercount_partial_depth_and_oracle_are_invalid) (change={'evaluated_oracle_plan_count': 0}) ... FAIL
+
+======================================================================
+FAIL: test_paired_undercount_partial_depth_and_oracle_are_invalid (test_search_integrity.WorkspaceIntegrityTests.test_paired_undercount_partial_depth_and_oracle_are_invalid) (change={'evaluated_direct_plan_count': 15, 'workspace_rejected_count': 15})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\dinc2\Documents\Codex\2026-09-09\vortex-vortex-o1-o6-gpt-5\vortex-independent-audit\tests\exp_100a\test_search_integrity.py", line 72, in test_paired_undercount_partial_depth_and_oracle_are_invalid
+    self.assertIn('incomplete_or_inconsistent_shape_search_accounting',
+AssertionError: 'incomplete_or_inconsistent_shape_search_accounting' not found in []
+
+======================================================================
+FAIL: test_paired_undercount_partial_depth_and_oracle_are_invalid (test_search_integrity.WorkspaceIntegrityTests.test_paired_undercount_partial_depth_and_oracle_are_invalid) (change={'completed_evaluated_depths': [1]})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\dinc2\Documents\Codex\2026-09-09\vortex-vortex-o1-o6-gpt-5\vortex-independent-audit\tests\exp_100a\test_search_integrity.py", line 72, in test_paired_undercount_partial_depth_and_oracle_are_invalid
+    self.assertIn('incomplete_or_inconsistent_shape_search_accounting',
+AssertionError: 'incomplete_or_inconsistent_shape_search_accounting' not found in []
+
+======================================================================
+FAIL: test_paired_undercount_partial_depth_and_oracle_are_invalid (test_search_integrity.WorkspaceIntegrityTests.test_paired_undercount_partial_depth_and_oracle_are_invalid) (change={'termination': 'unexplained'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\dinc2\Documents\Codex\2026-09-09\vortex-vortex-o1-o6-gpt-5\vortex-independent-audit\tests\exp_100a\test_search_integrity.py", line 72, in test_paired_undercount_partial_depth_and_oracle_are_invalid
+    self.assertIn('incomplete_or_inconsistent_shape_search_accounting',
+AssertionError: 'incomplete_or_inconsistent_shape_search_accounting' not found in []
+
+======================================================================
+FAIL: test_paired_undercount_partial_depth_and_oracle_are_invalid (test_search_integrity.WorkspaceIntegrityTests.test_paired_undercount_partial_depth_and_oracle_are_invalid) (change={'evaluated_oracle_plan_count': 0})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\dinc2\Documents\Codex\2026-09-09\vortex-vortex-o1-o6-gpt-5\vortex-independent-audit\tests\exp_100a\test_search_integrity.py", line 72, in test_paired_undercount_partial_depth_and_oracle_are_invalid
+    self.assertIn('incomplete_or_inconsistent_shape_search_accounting',
+AssertionError: 'incomplete_or_inconsistent_shape_search_accounting' not found in []
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+FAILED (failures=4)

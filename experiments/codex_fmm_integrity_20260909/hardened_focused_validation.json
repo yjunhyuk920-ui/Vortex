@@ -1,0 +1,19 @@
+{
+  "legacy_count": 11,
+  "legacy_test_functions_passed": [
+    "test_all_six_tensor_orientations_are_exposed",
+    "test_beam_can_compose_mixed_exact_schemes",
+    "test_config_contract",
+    "test_cut_depth_trades_static_stream_for_online_weight_transform",
+    "test_git_blob_identity_matches_git_object_contract",
+    "test_joint_dp_respects_io_budget_and_picks_lower_arithmetic",
+    "test_ledger_updater_is_idempotent_and_marks_every_required_file",
+    "test_runner_parses_official_style_npz_object_values",
+    "test_static_transform_repair_charges_original_row_side_stream",
+    "test_strassen_tensor_and_execution_are_exact",
+    "test_two_level_staged_counts_match_strassen_recurrence"
+  ],
+  "method": "existing plain test functions directly invoked, explicit TemporaryDirectory for tmp_path; new tests via unittest; pytest unavailable in bundled environment",
+  "new_unittest_count": 6,
+  "runner_sha256": "68d8276323cf96f86ef22de661644d318f30dc9da37bd5e2a55bfa8a180fc56d"
+}

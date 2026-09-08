@@ -1,5 +1,13 @@
 # Validation status
 
+## EXP-100A current CPU validation
+
+[Actual validation](experiments/codex_fmm_integrity_20260909/VALIDATION.md):
+full red, first-corrected and hardened gates,50 cells/132 controls,11 existing functions plus6
+unittest regressions; exact old-field comparison and independent workspace sum.
+This was not pytest or a repository-wide suite. Windows RSS unavailable/null.
+No native405B/GPU/baseline/TTFT run; O1-O5 OPEN/O6 PARTIAL.
+
 ## Restricted BF16 producer extension — 2026-09-09
 
 Current focused evidence is [experiments/codex_native_sparse_extension_20260909/VALIDATION.json](experiments/codex_native_sparse_extension_20260909/VALIDATION.json).

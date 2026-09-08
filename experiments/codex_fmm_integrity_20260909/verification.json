@@ -1,0 +1,82 @@
+{
+  "CORE_ADMISSION": false,
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "O1": "OPEN",
+  "O2": "OPEN",
+  "O3": "OPEN",
+  "O4": "OPEN",
+  "O5": "OPEN",
+  "O6": "PARTIAL",
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "byte_equal_raw": {
+    "catalog_rows.json": "e7d12590c5972f3a458b92c42f613db4ba4a5e71a441fe45f5bf1e59ca3c1505",
+    "factorization_control_rows.json": "ebfc5f14a978f623a9f9aff0a486943d466b3cd197f52378c2c39bf5a9369b1b",
+    "selected_plan_rows.json": "ea7042d5f5a621c171ee9a109fb181b069ca625384a03df986097d28fd17836f"
+  },
+  "corrected_result_sha256": "ee810b7edb2c7e907d05dbb48359e99b587bd8b177e6c578f72c59854d22fd9e",
+  "empty_direct_cell": {
+    "accounting": {
+      "completed_evaluated_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "evaluated_direct_plan_count": 2304,
+      "minimum_generated_workspace_bytes": 13145334184,
+      "minimum_workspace_witness": {
+        "cut_depth": 3,
+        "favorable_workspace_bytes": 13145334184,
+        "scheme_ids": [
+          "8,11,12:p021",
+          "8,11,12:p021",
+          "6,8,10:p102"
+        ],
+        "static_scalar_bytes": 2
+      },
+      "retained_search_completed": true,
+      "scope": "generated retained-beam plans only; no exhaustive catalog or global architecture bound",
+      "termination": "beam_exhausted",
+      "workspace_admissible_count": 0,
+      "workspace_limit_bytes": 8589934592,
+      "workspace_rejected_count": 2304
+    },
+    "best_direct_ratio_without_repair": null,
+    "best_oracle_ratio_without_repair": 0.1551975941361653,
+    "block_length": 16384,
+    "columns": 16384,
+    "direct_structural_plan_count": 0,
+    "oracle_structural_plan_count": 64,
+    "rows": 128256,
+    "state_count_by_depth": [
+      96,
+      96,
+      96,
+      96,
+      0
+    ],
+    "wall_ns": 280414800
+  },
+  "historical_boundary": "red/corrected current numerical outputs compare exactly; no assertion of byte identity with old hosted run",
+  "independent_witness": {
+    "budget_bytes": 8589934592,
+    "budget_multiple": 1.5303183095529675,
+    "components": {
+      "activation_buffer": 536870912,
+      "factor_metadata": 116844,
+      "local_output_workspace": 8405647360,
+      "local_weight_workspace": 4028,
+      "one_left_form": 2432,
+      "output_buffer": 4202692608
+    },
+    "excess_bytes": 4555399592,
+    "method": "integer component formulas from saved orientation/catalog rows; no call to evaluate_sequence",
+    "total_GiB": 12.24254647642374,
+    "total_bytes": 13145334184
+  },
+  "red_result_sha256": "1569b67448fb5465c1cfa3fb3ac34b1a214bc856c5fb74e45d67c0f9d02ee0b6",
+  "scientific_old_fields_equal": true,
+  "scope": "finite retained/evaluated EXP100 search only; no full native or physical GPU conclusion",
+  "shape_count": 50,
+  "source_and_run_checksums_verified": true
+}

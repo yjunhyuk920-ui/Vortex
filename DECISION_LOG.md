@@ -2083,3 +2083,22 @@ arbitrary dense/native/all-continuation or physical 405B acceptance.
 O1-O5 OPEN, O6 PARTIAL, persistent goal unachieved; hardware unavailable by user
 report. Next core returns to finite arbitrary-dense global/dynamic construction.
 Requested Terra/medium and Sol/high; actual model selection metadata unavailable.
+
+## D-CODEX-FMM-INTEGRITY-20260909 — completed no-plan is not corruption
+
+Authority: experiments/codex_fmm_integrity_20260909/corrected_run/result.json,
+SHA256 ee810b7edb2c7e907d05dbb48359e99b587bd8b177e6c578f72c59854d22fd9e. Preserve the historical INVALID entry. Actual full red replay
+repeated it; new accounting proves2,304 generated plans in the empty cell all
+exceed8GiB. Narrow repair plus actual full rerun gives bounded retained-search
+rejection, with exactly unchanged current costs/selection. No native/global
+impossibility or three-principle construction. O1-O5 OPEN/O6 PARTIAL.
+
+## D-CODEX-FMM-COUNT-HARDENING-20260909 — independent expected evaluations
+
+The initial correction's self-consistent undercount gap was actually reproduced
+in four mutation subcases and fixed using state/cut/width-derived expected
+counts, exact depth/termination and raw oracle accounting. Final full replay
+has84,712 direct and15,608 oracle evaluations, all matched, with unchanged costs.
+Authority: experiments/codex_fmm_integrity_20260909/hardened_run/result.json,
+SHA256 375a4f4a9d5055429664f0c042c02f2d128fbf2cd8196b1fcdc6ffa87980a121. The first corrected run and both review records remain preserved.
+Six regressions plus11 legacy functions pass; no native/mission closure.

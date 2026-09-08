@@ -1,5 +1,13 @@
 # Assumption Register
 
+## EXP-100A repaired classifier boundary
+
+Generated/admissible/rejected counts and completion distinguish all-over-budget
+no-plan from missing work. Lost feasible frontier, incomplete or unexplained
+empty-oracle work remains INVALID. No exhaustive-search assumption was added.
+All free future/repair/offline/compression grants remain; see
+[the bound and audit](experiments/codex_fmm_integrity_20260909/REPORT.md).
+
 ## Restricted BF16 producer extension — 2026-09-09
 
 [experiments/codex_native_sparse_extension_20260909](experiments/codex_native_sparse_extension_20260909/REPORT.md) establishes a restricted scalar theorem, not arbitrary

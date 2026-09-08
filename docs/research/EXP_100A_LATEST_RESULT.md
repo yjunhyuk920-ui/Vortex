@@ -1,62 +1,24 @@
-# EXP-100A latest result — Explicit Rectangular FMM Gate
+# EXP-100A latest result — repaired CPU gate
 
-## Identity
+[Corrected result](../../experiments/codex_fmm_integrity_20260909/hardened_run/result.json)
+SHA256 375a4f4a9d5055429664f0c042c02f2d128fbf2cd8196b1fcdc6ffa87980a121. [Report](../../experiments/codex_fmm_integrity_20260909/REPORT.md).
 
-- source commit: `0348e87fa385630a84043727ddb9a34c032df4ac`
-- raw result: `/home/runner/work/Vortex/Vortex/results/exp_100a/0348e87fa385630a84043727ddb9a34c032df4ac/result.json`
-- AlphaTensor catalog commit: `1949163da3bef7e3eb268a3ac015fd1c2dbfc767`
-- AlphaTensor catalog Git blob: `5ff45960f86da6237f105f78aaa82d29cb18c30e`
-- deterministic core: `e72ec22a41216b3b3a91c3989c5327ee7492bfb356bf4d799c2af1b97cd2ab1e`
+REJECT_CATALOGUED_SMALL_COEFFICIENT_RECTANGULAR_FMM_AS_10X_CORE is authoritative
+only for programs retained/evaluated by the frozen bounded search.
+93 keys,59 eligible,128 retained orientations,132 exact controls/zero mismatch,
+50 cells. The empty cell's2,304 plans all exceed workspace; minimum12.24255GiB.
+Best direct0.3825164968636731 atK8192; oracle0.13010262621990515 atK4096;
+both miss0.1. Current red/green old scientific fields are exactly equal.
 
-## Authoritative decision
+Executed working sources are hash-bound in hardened_run/executed_source_manifest.json.
+source_commit names pre-edit base8affea0, not clean executed code.
+The hosted results/exp_100a/0348e87fa385630a84043727ddb9a34c032df4ac artifact
+remains immutable and INVALID. Its requested repair has now actually completed.
 
-`INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE`
+No native finite-word/causal-next-state/405B/GPU8GiB/native4B latency claim.
+Free future, repair, offline and compression grants remain. Continue a materially
+different global producer, not a same-contract rerun.
 
-## Integrity and catalog
-
-- catalog keys inspected: `93`
-- eligible exact integral small-coefficient factorizations: `59`
-- retained tensor orientations: `128`
-- deterministic integer controls: `132`
-- control mismatches: `0`
-- integrity failures: `['empty_direct_shape_search']`
-
-## Best explicit staged-transform plan
-
-- block length: `8192`
-- arithmetic ratio: `38.251649686367%`
-- cold-byte fraction/token: `1.184508591014%`
-- favorable FMM workspace: `6.121550854 GiB`
-- compiled static representation: `109460.330654640 GiB`
-- first 10x arithmetic Gate: `False`
-- final p50-equivalent arithmetic Gate: `False`
-- p50 cold-byte Gate: `True`
-- favorable workspace screen: `True`
-- all direct 10x joint-pass blocks: `[]`
-- all direct final-p50 pass blocks: `[]`
-
-## Best free-transform rank oracle
-
-- block length: `4096`
-- arithmetic ratio: `13.010262621991%`
-- cold-byte fraction/token: `0.016276041667%`
-- favorable workspace: `1.103682553 GiB`
-- first 10x arithmetic Gate: `False`
-- all oracle 10x joint-pass blocks: `[]`
-
-The oracle grants every factor transform, packing operation, and transform scratch
-for free. It is algebraic headroom, not an executor result.
-
-## Next gate
-
-### EXP-100A control repair
-
-Repair only the recorded identity, tensor-reconstruction, registered-input, or deterministic-control failure. Do not interpret an invalid run scientifically and do not change the frozen search or thresholds while repairing infrastructure.
-
-## Claim boundary
-
-The run verifies the pinned public factorization catalog and derives a bounded
-405B-shape resource ledger. A causal future block, finite-word transformed-weight
-closure, sound native-repair selector, existing-ISA packed kernel, complete
-successor state, TARGET-W execution, physical 8-GiB allocation, and same-machine
-4B p50/p95 remain `NOT TESTED`.
+Final hardening independently reconciles84,712 direct and15,608 raw oracle
+evaluations and rejects paired undercounts/partial depths. The full gate ran
+again after17 focused checks passed; selected costs remain unchanged.

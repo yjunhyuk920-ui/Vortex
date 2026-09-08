@@ -1,0 +1,18 @@
+{
+  "experiments/codex_fmm_integrity_20260909/PREREGISTRATION.md": {
+    "sha256": "7d017b05c59d296828c39c3316a72fb13c458a8479e5c0b27431c907519a6924",
+    "snapshot": "executed_sources/experiments__codex_fmm_integrity_20260909__PREREGISTRATION.md"
+  },
+  "experiments/exp_100a/config.json": {
+    "sha256": "d351c0321a233db3211255edeb48ae261d75059c341d4777781323d14748e416",
+    "snapshot": "executed_sources/experiments__exp_100a__config.json"
+  },
+  "experiments/exp_100a/run_experiment.py": {
+    "sha256": "260bc874ddab93637d21b6fed99a69396ca9ecdcfcfe6b5da579573960f3e65d",
+    "snapshot": "executed_sources/experiments__exp_100a__run_experiment.py"
+  },
+  "vortex_runtime/explicit_rectangular_fmm.py": {
+    "sha256": "17e8f6ccda8bff69aa71d82fab6a5d1dd983d32b01390e54964a3c9c6e5c9a5a",
+    "snapshot": "executed_sources/vortex_runtime__explicit_rectangular_fmm.py"
+  }
+}

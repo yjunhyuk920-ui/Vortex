@@ -1,5 +1,19 @@
 # VORTEX
 
+## EXP-100A repaired full gate — 2026-09-09
+
+[Actual CPU replay](experiments/codex_fmm_integrity_20260909/REPORT.md) replaces the
+old false invalidity with a bounded retained-search rejection. All50 cells and
+132 exact integer controls ran again. Old scientific fields and selected costs
+match the current red run exactly. Direct arithmetic38.25165%, free-transform
+oracle13.01026%: both miss10%. The empty cell accounts for2,304 workspace
+rejections, minimum12.24255GiB. The original historical INVALID is preserved.
+
+This is not a new universal executor or three-principle round. Free future,
+native-repair and offline-transform grants remain. O1-O5 OPEN/O6 PARTIAL;
+THEORY_STATUS=NOT_ESTABLISHED, HARDWARE_STATUS=NOT_TESTED, CORE_ADMISSION=false.
+User has no405B hardware; available global construction research continues.
+
 ## Restricted BF16 producer extension — 2026-09-09
 
 [Constructed producer and native controls](experiments/codex_native_sparse_extension_20260909/REPORT.md) extend the surviving

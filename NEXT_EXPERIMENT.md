@@ -1,5 +1,18 @@
 # Next constructive obligation — 2026-09-09
 
+## EXP-100A repair complete; return to the global constructor
+
+[The actual repaired full gate](experiments/codex_fmm_integrity_20260909/REPORT.md)
+rejects only frozen retained/evaluated FMM programs. Do not repeat this catalog,
+widen thresholds, or treat its old false invalidity as unresolved.
+
+The requested three materially new arbitrary-dense principles remain undelivered
+by this repair. Construct finite Compile(checkpoint_all), causal Address with
+exact state, paid Read and native ordered Decode/next state, or an exact dynamic
+summary surviving all-coordinate changes. Do not grant a missing decoder.
+Preserve global nonlinear advice scope, native noninjectivity and prior failures.
+Hardware absence does not stop available theory or imply impossibility.
+
 ## Restricted BF16 producer extension — 2026-09-09
 
 [The source/right-factor E1 expansion](experiments/codex_native_sparse_extension_20260909/REPORT.md) is now executed for finite

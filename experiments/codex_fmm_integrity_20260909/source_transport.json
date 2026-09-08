@@ -1,0 +1,6 @@
+{
+  "change": "CRLF to LF transport only after execution; raw source snapshot preserved",
+  "AST_identical": true,
+  "executed_raw_sha256": "260bc874ddab93637d21b6fed99a69396ca9ecdcfcfe6b5da579573960f3e65d",
+  "tracked_LF_sha256": "e727de61c6438a4ddbb60bda191a15a73c4f5baa1e2d265f2f42d60cda1d9e6f"
+}
