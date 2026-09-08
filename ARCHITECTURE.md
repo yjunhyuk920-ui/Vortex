@@ -1,5 +1,46 @@
 # VORTEX Architecture
 
+## Direct global producer frontier — 2026-09-09
+
+See `experiments/direct_global_producer_20260909/REPORT.md`.
+
+The current architecture search now distinguishes three source paths:
+
+```text
+REJECTED reconstructive path
+  global code -> reconstruct most/all original weights -> original dense kernel
+
+REJECTED independent-witness path
+  exact mathematical sum -> supposedly cheap native rounding witness
+  (rounding gadget shows witness may contain arbitrary MatVec information)
+
+OPEN direct-query path
+  arbitrary checkpoint -> implicit globally nonlinear representation G
+  current causal factors -> adaptive bounded word probes
+  -> exact native ordered dense effects directly
+```
+
+The direct-query path has a new global guardrail. Arbitrary nonlinear cells may
+mix all 883 matrices; on a final route for simultaneous full-Mv tuples their
+component masks satisfy `sum_i m_i*k_i<=t*w`. This avoids the invalid operation
+of dividing 8 GiB advice per matrix. The registered lower bound is nevertheless
+far below the target and is not an execution architecture.
+
+An executable GF(2) control now exists:
+
+```text
+Compile(W) -> reduced R=E W + row-XOR program
+Query(v)   -> Rv -> reverse row-XOR program -> Wv
+```
+
+It proves that the missing producer can be stated as an actual finite program
+rather than a placeholder, but this implementation retains about 50% work on
+its frozen adversary and has adverse program traffic. It is therefore not
+admitted. The next architecture must make the direct-query representation
+implicit/nonlinear enough that its source-dependent program bits are not fetched
+at roughly one bit per original coefficient, while still providing a finite
+compiler and native decoder.
+
 ## Current causal/global frontier construction — 2026-09-08
 
 See `experiments/causal_global_bridge_20260908/REPORT.md`.

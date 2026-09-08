@@ -1,6 +1,7 @@
 # Validation matrix — 2026-09-09
 
-[Current causal/global proof/code/result](experiments/causal_global_bridge_20260908/REPORT.md).
+[Current direct-global producer proof/code/result](experiments/direct_global_producer_20260909/REPORT.md).
+[Prior causal/global proof/code/result](experiments/causal_global_bridge_20260908/REPORT.md).
 [Prior nonlinear router proof/code/result](experiments/nonlinear_router_frontier_20260908/REPORT.md).
 [Prior native proof/code/replay](experiments/native_global_transition_20260908/REPORT.md).
 [Pre-native-global matrix unchanged](docs/research/history/pre_native_global_transition_20260908/VALIDATION_MATRIX.md).
@@ -30,6 +31,21 @@
 |Validation|11/11 tests PASS; canonical v2 SHA `2d8a91800d574d32ec7611da6af6046d37cd4230a8c897f5c33ff268238695f6`|
 |OPEN|Direct GF(2) or native finite-word data structure, Boolean-index internal reinterpretation that becomes such a direct source, global cross-matrix advice, native arithmetic/state, O1-O5|
 |Not claimed|No universal nonlinear cell-probe impossibility; no target hardware/latency result|
+
+|Direct-global E0 item|Actual evidence and scope|
+|---|---|
+|Three-principle execution|P1 global reconstruction rejected; P2 exact-sum/witness reduced to direct MatVec by rounding gadget; P3 global nonlinear class remains open after explicit GF2 producer failure|
+|P1 information Gate|All 8 GiB can remove at most binary `17.020392%`, Q4 `4.255098%`, BF16 `1.063775%` of arbitrary reconstruct-all source bits; original dense arithmetic remains 100%|
+|P2 rounding Gate|Balanced IEEE-FP32 RNE 8-leaf gadget exact sum=0 but rounded result=`-b`; aligned gadgets return `-popcount(row&query)`; exhaustive widths<=5 pass|
+|P3 global route theorem|Arbitrary global nonlinear cells/value-adaptive addresses allowed; one final route has `sum_i m_i*k_i<=t*64`, no per-matrix advice split|
+|P3 registered bound|883 matrices; single simultaneous tuple >=312,468 words; proof-safe full route-cover >=578,619 words=4.4145 MiB|
+|P3 target relation|578,619 / 299,072,516 favorable words = `0.193471%`; theorem DOES NOT reject target and complete causal tuple reachability/native lift remain unproved|
+|Actual arbitrary-GF2 producer|Deterministic Gauss-Jordan compile `R=EW` + reverse row-XOR runtime; random rectangular/square controls exact|
+|GF2 producer cost rejection|n=16,384 frozen producer adversary: `134,225,920/268,435,456 = 16385/32768 = 50.0030518%` operations; row-op metadata lower `3,757,867,008` bits =447.97 MiB for one matrix|
+|Focused validation|10/10 new tests PASS; canonical SHA `a907cb1dbd40b9a7bf71b88a159cf0358c4d3b0656470e71e26f37e2c9185ffe`|
+|Deliberately not rerun|Prior 15/15, 28/28, 14/14, Boolean exhaustive and 3510-file native-global replay|
+|OPEN|Direct implicit nonlinear arbitrary-native producer, native ordered lift, complete causal logits/KV/RNG executor, O1-O5, whole-theory O6|
+|Not tested|405B, CUDA, <=8GiB physical GPU, PCIe/SSD/HBM, native4BQ4 p50/p95, TTFT|
 
 |Latest E0 item|Actual evidence and scope|
 |---|---|

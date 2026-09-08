@@ -1,0 +1,193 @@
+{
+  "P3_elimination_producer_registered_width_adversary": {
+    "compile_row_xors": 134209536,
+    "direct_dense_bit_products": 268435456,
+    "exact_operation_fraction": "16385/32768",
+    "program_metadata_bits_lower": 3757867008,
+    "removes_at_least_90_percent_operations": false,
+    "runtime_operation_fraction": 0.500030517578125,
+    "runtime_reduced_matrix_bit_products": 16384,
+    "runtime_reverse_row_xors": 134209536,
+    "runtime_total_bit_ops": 134225920,
+    "scope": "fixed Gauss-Jordan producer only; not a lower bound for this matrix family",
+    "width": 16384
+  },
+  "P3_explicit_arbitrary_gf2_elimination_producer_controls": [
+    {
+      "columns": 8,
+      "compile_row_xors": 28,
+      "direct_dense_bit_products": 64,
+      "program_metadata_bits_lower": 168,
+      "removes_at_least_90_percent_operations": false,
+      "rows": 8,
+      "runtime_operation_fraction": 0.5625,
+      "runtime_reduced_matrix_bit_products": 8,
+      "runtime_reverse_row_xors": 28,
+      "runtime_total_bit_ops": 36,
+      "width": 8
+    },
+    {
+      "columns": 16,
+      "compile_row_xors": 120,
+      "direct_dense_bit_products": 256,
+      "program_metadata_bits_lower": 960,
+      "removes_at_least_90_percent_operations": false,
+      "rows": 16,
+      "runtime_operation_fraction": 0.53125,
+      "runtime_reduced_matrix_bit_products": 16,
+      "runtime_reverse_row_xors": 120,
+      "runtime_total_bit_ops": 136,
+      "width": 16
+    },
+    {
+      "columns": 32,
+      "compile_row_xors": 496,
+      "direct_dense_bit_products": 1024,
+      "program_metadata_bits_lower": 4960,
+      "removes_at_least_90_percent_operations": false,
+      "rows": 32,
+      "runtime_operation_fraction": 0.515625,
+      "runtime_reduced_matrix_bit_products": 32,
+      "runtime_reverse_row_xors": 496,
+      "runtime_total_bit_ops": 528,
+      "width": 32
+    },
+    {
+      "columns": 64,
+      "compile_row_xors": 2016,
+      "direct_dense_bit_products": 4096,
+      "program_metadata_bits_lower": 24192,
+      "removes_at_least_90_percent_operations": false,
+      "rows": 64,
+      "runtime_operation_fraction": 0.5078125,
+      "runtime_reduced_matrix_bit_products": 64,
+      "runtime_reverse_row_xors": 2016,
+      "runtime_total_bit_ops": 2080,
+      "width": 64
+    }
+  ],
+  "claim_boundary": {
+    "arbitrary_binary_matrix_elimination_producer_constructed": true,
+    "arbitrary_checkpoint_native_producer_constructed": false,
+    "complete_simultaneous_tuple_causal_reachability": false,
+    "expanded_cold_sidecar_global_route_bound": false,
+    "global_nonlinear_route_lower_bound_proves_impossibility": false,
+    "native_cuda_reduction_abi_proved": false,
+    "target_405b_executed": false,
+    "target_hardware_executed": false
+  },
+  "classification": "E0_DIRECT_GLOBAL_PRODUCER_FRONTIER",
+  "decision": "REJECT_P1_RECONSTRUCTIVE_GLOBAL_CODE;REDUCE_P2_ROUNDING_WITNESS_TO_DIRECT_MATVEC;GLOBAL_P3_ROUTE_GATE_INSUFFICIENT_TO_REJECT_TARGET;EXPLICIT_GF2_ELIMINATION_PRODUCER_FAILS_90_PERCENT_GATE;KEEP_DIRECT_GLOBAL_NATIVE_PRODUCER_OPEN",
+  "obligations": {
+    "O1": "OPEN",
+    "O2": "OPEN",
+    "O3": "OPEN",
+    "O4": "OPEN",
+    "O5": "OPEN",
+    "O6": "PARTIAL_E0_REPRODUCIBLE"
+  },
+  "principle_P1_reconstructive_global_code": {
+    "bf16": {
+      "global_advice_bits": 68719476736,
+      "maximum_source_read_removed_fraction": "1024/96261",
+      "maximum_source_read_removed_fraction_decimal": 0.010637745296641422,
+      "minimum_source_read_fraction_decimal": 0.9893622547033586,
+      "minimum_worst_case_additional_source_bits": 6391246880768,
+      "original_dense_arithmetic_fraction_retained": 1.0,
+      "passes_90_percent_arithmetic_removal": false,
+      "passes_90_percent_read_removal": false,
+      "rejected_as_core": true,
+      "source_bits": 6459966357504,
+      "source_bits_per_coefficient": 16
+    },
+    "binary": {
+      "global_advice_bits": 68719476736,
+      "maximum_source_read_removed_fraction": "16384/96261",
+      "maximum_source_read_removed_fraction_decimal": 0.17020392474626275,
+      "minimum_source_read_fraction_decimal": 0.8297960752537372,
+      "minimum_worst_case_additional_source_bits": 335028420608,
+      "original_dense_arithmetic_fraction_retained": 1.0,
+      "passes_90_percent_arithmetic_removal": false,
+      "passes_90_percent_read_removal": false,
+      "rejected_as_core": true,
+      "source_bits": 403747897344,
+      "source_bits_per_coefficient": 1
+    },
+    "q4": {
+      "global_advice_bits": 68719476736,
+      "maximum_source_read_removed_fraction": "4096/96261",
+      "maximum_source_read_removed_fraction_decimal": 0.04255098118656569,
+      "minimum_source_read_fraction_decimal": 0.9574490188134344,
+      "minimum_worst_case_additional_source_bits": 1546272112640,
+      "original_dense_arithmetic_fraction_retained": 1.0,
+      "passes_90_percent_arithmetic_removal": false,
+      "passes_90_percent_read_removal": false,
+      "rejected_as_core": true,
+      "source_bits": 1614991589376,
+      "source_bits_per_coefficient": 4
+    }
+  },
+  "principle_P2_exact_sum_rounding_witness": {
+    "bit0": {
+      "balanced_fp32_result": 0.0,
+      "bit": 0,
+      "exact_integer_sum": 0,
+      "expected_result": 0,
+      "matches": true
+    },
+    "bit1": {
+      "balanced_fp32_result": -1.0,
+      "bit": 1,
+      "exact_integer_sum": 0,
+      "expected_result": -1,
+      "matches": true
+    },
+    "exact_sum_alone_determines_native_result": false,
+    "native_model": "explicit balanced IEEE-FP32 RNE tree only",
+    "rounding_witness_contains_arbitrary_binary_matvec": true
+  },
+  "principle_P3_global_nonlinear_route_gate": {
+    "canonical_cell_pool_scope": "binary source cells plus 8 GiB advice; expanded cold sidecars are outside this substitution",
+    "causal_reachability_of_complete_tuple_family_proved": false,
+    "cells": 7382302720,
+    "coverage_log2_upper_at_minimum": 19111944,
+    "coverage_log2_upper_before_minimum": 19111911,
+    "fully_value_adaptive_addresses_allowed": true,
+    "global_advice_bits": 68719476736,
+    "globally_mixed_nonlinear_cells_allowed": true,
+    "lower_probes_over_target_words": 0.0019347113794970048,
+    "matrix_blocks": 883,
+    "minimum_probe_count_is_only_count_feasible": true,
+    "minimum_route_cover_payload_bits": 37031616,
+    "minimum_route_cover_probes_favorable": 578619,
+    "model": "GLOBAL_NONLINEAR_ADAPTIVE_SIMULTANEOUS_FULL_MV_ROUTE_GATE",
+    "native_finite_word_lift_proved": false,
+    "previous_probe_count_is_proof_rejected": true,
+    "registered_target_payload_bits_fraction": "8/675",
+    "registered_target_words_floor": 299072516,
+    "rejects_registered_target": false,
+    "route_address_bits_upper_per_probe": 33,
+    "route_capacity_at_minimum": {
+      "allocated_extra_right_dimensions": 16634,
+      "feasible_nonempty_route": true,
+      "mandatory_span": 19997952,
+      "span_budget": 37031616,
+      "sum_right_dimensions_upper": 17517,
+      "unused_span_budget": 448
+    },
+    "route_capacity_before_minimum": {
+      "allocated_extra_right_dimensions": 16634,
+      "feasible_nonempty_route": true,
+      "mandatory_span": 19997952,
+      "span_budget": 37031552,
+      "sum_right_dimensions_upper": 17517,
+      "unused_span_budget": 384
+    },
+    "simultaneous_query_log2_strictly_greater_than": 19111935,
+    "single_tuple_minimum_probes": 312468,
+    "source_binary_bits": 403747897344,
+    "sum_input_columns": 19111936,
+    "sum_output_rows": 19997952,
+    "word_bits": 64
+  }
+}

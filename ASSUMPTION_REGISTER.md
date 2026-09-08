@@ -2,6 +2,34 @@
 
 No unverified assumption may be used as a success condition.
 
+## A-DIRECT-GLOBAL-PRODUCER-20260909
+
+Assumption: globally sharing the full 8 GiB advice can make reconstructing the
+whole arbitrary checkpoint a >=90% source shortcut. CONTRADICTED for the
+reconstruct-all interface. Exact information conservation leaves at least
+82.979608%/95.744902%/98.936225% of binary/Q4/BF16 source bits respectively,
+and the declared downstream dense arithmetic remains complete.
+
+Assumption: exact mathematical sums are sufficient statistics from which a
+small generic witness can recover native rounded reductions. CONTRADICTED for
+the declared balanced IEEE-FP32 RNE ABI. Zero-exact-sum gadgets can encode an
+arbitrary binary MatVec/count entirely in the rounded result. Other native
+reduction ABIs remain UNVERIFIED, not automatically rejected.
+
+Assumption: global nonlinear advice can only be bounded by first dividing it
+among matrices. CONTRADICTED as a proof-method premise. The new joint
+largest-fiber route theorem directly permits cells mixing all matrices and gives
+`sum_i m_i*k_i<=t*w` per final route. Its finite target-scale consequence is
+too weak, however: 578,619 words versus 299,072,516 favorable target words.
+
+Assumption: an explicit arbitrary-GF2 row-reduction representation supplies the
+missing cheap producer. CONTRADICTED for the implemented deterministic
+Gauss-Jordan program: exact output is obtained, but the fixed width-16,384
+adversary retains `50.0030518%` scalar bit work and large program metadata.
+
+Status: DIRECT IMPLICIT NONLINEAR GF2/NATIVE PRODUCER REMAINS OPEN AND
+UNCONSTRUCTED. 405B/CUDA/<=8GiB/native4BQ4/TTFT remain NOT TESTED.
+
 ## A-BOOLEAN-MATVEC-LIFT-20260909
 
 Assumption: a deterministic fast Boolean-semiring MatVec data structure can be

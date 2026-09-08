@@ -1,13 +1,14 @@
 # Next constructive obligation — 2026-09-09
 
-Verify actual remote head and fixed mission/CTC/O1-O6. [Current frontier](experiments/causal_global_bridge_20260908/REPORT.md).
+Verify actual remote head and fixed mission/CTC/O1-O6. [Current frontier](experiments/direct_global_producer_20260909/REPORT.md).
 
-The causal/global three-principle round is now executed. A real HF causal
-exposure compiler and a restricted exact basis-column producer exist; a
-standard-causal sign/delta compiler carries many independently chosen right
-factors. Principle B still lacks an arbitrary-checkpoint global
-encoder/address/decoder, while literal Principle-C response-column updating is
-closed by legal densely changing right factors.
+The direct-global three-principle round is now executed. Reconstruct-all global
+coding, exact-sum/rounding separation, and a concrete Gauss-Jordan direct GF(2)
+producer all fail their own >=90% routes. A new global nonlinear vector-route
+theorem correctly charges cross-matrix advice synergy but is about `516.87x`
+too weak to reject the favorable target. Therefore neither another lower-bound
+refinement nor another static row-operation program is the next constructive
+object.
 
 The next **constructive** obligation is the missing object itself, not another
 name for it:
@@ -22,20 +23,21 @@ words = Read(G, addresses)                          paid physical payload
 It must work for arbitrary unchanged checkpoint matrices, allow globally mixed
 advice without an assumed per-matrix direct sum, and produce the exact ordered
 Q4/BF16/FP32 dense effect and required successor state while closing the 8 GiB
-and native-4B-Q4 traffic/arithmetic line. Boolean-semiring MatVec is now more
-sharply excluded as an indirect source: exact deterministic black-box lifting
-to GF(2) needs `|supp(v)|` complete Boolean products, while a one-shot arbitrary
-nonlinear Boolean feature lift needs `2^d-1` features. Randomized Boolean
-answers, bitset full scans, response catalogs and undefined compression/decoders
-are also not this object.
+and native-4B-Q4 traffic/arithmetic line. It must **not** reconstruct most
+source words first (new P1 failure), compute a mathematical exact sum and leave
+rounding as an unspecified witness (new P2 gadget), or materialize/replay a
+quadratic static row-operation program (new P3 explicit failure). Boolean-
+semiring lifts, bitset full scans, response catalogs and undefined decoders also
+remain excluded.
 
-The next acceptable Principle-B candidate must therefore **directly** construct
-a GF(2) or native finite-word representation/address/decoder. If it reuses the
-internal redundancy of a Boolean data structure, spell out exactly which stored
-bits are probed and how they compute parity/native ordered sums without factoring
-through either rejected Boolean lift. Do not cite the existing systematic GF(2)
-cell-probe lower bound as mission closure: its asymptotic tradeoff and hidden
-constants do not currently close the VORTEX target with substantial side data.
+The next acceptable candidate must therefore **directly** construct a nonlinear
+implicit GF(2) or native finite-word representation/address/decoder whose source-
+dependent program bits are not fetched at roughly one bit per original weight.
+If it reuses a data-structure index, spell out which stored words are probed and
+how those words produce parity/native ordered sums. The new global vector-route
+Gate may be used as a guardrail because it allows global nonlinear mixing, but a
+candidate surviving its `578,619`-word necessity has proved nothing about the
+actual `299,072,516`-word favorable target ceiling.
 
 For a dynamic alternative, use the new sign/delta causal compiler as the
 adversary: successive legal right factors may differ in every coordinate. Any

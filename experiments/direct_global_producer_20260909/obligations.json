@@ -1,0 +1,48 @@
+{
+  "round": "direct_global_producer_20260909",
+  "theory_status": "NOT_ESTABLISHED",
+  "hardware_status": "NOT_TESTED",
+  "core_admission": false,
+  "O1": {
+    "status": "OPEN",
+    "reason": "A finite arbitrary-GF2 elimination producer exists, but no arbitrary-native-checkpoint producer meets the target cost."
+  },
+  "O2": {
+    "status": "OPEN",
+    "reason": "No complete arbitrary-checkpoint causal load/prefill/decode program uses a surviving direct producer."
+  },
+  "O3": {
+    "status": "OPEN",
+    "reason": "P2 native evidence is a declared balanced FP32 gadget and P3 producer exactness is GF2; arbitrary Q4/BF16/FP32 logits/KV/RNG correspondence is not established."
+  },
+  "O4": {
+    "status": "OPEN",
+    "reason": "All explicit candidates have finite cost bounds but fail; no surviving whole-model upper bound exists."
+  },
+  "O5": {
+    "status": "OPEN",
+    "reason": "405B, CUDA, <=8 GiB target GPU, PCIe/SSD/HBM, native 4B Q4 p50/p95 and TTFT were not executed."
+  },
+  "O6": {
+    "status": "PARTIAL_E0_REPRODUCIBLE",
+    "reason": "Preregistration, source, exact JSON/checksum, focused tests and reports are reproducible; the complete theory is not."
+  },
+  "established_scoped_results": [
+    "A reconstruct-all global code with only 8 GiB advice cannot remove >=90% of arbitrary binary/Q4/BF16 source reads and still retains the original dense arithmetic.",
+    "An eight-leaf balanced FP32 RNE gadget has exact sum zero but rounded output -b, and aligned gadgets encode arbitrary binary MatVec counts in rounding error.",
+    "For globally mixed nonlinear adaptive cells answering simultaneous full-Mv tuples, each final route has total coefficient span <= t*w; the registered proof-safe cover lower bound is 578619 64-bit probes.",
+    "A finite Gauss-Jordan row-operation producer computes Wv exactly for every GF2 matrix."
+  ],
+  "rejected_scoped_candidates": [
+    "P1 reconstructive global erasure/network coding as a >=90% core",
+    "P2 exact-sum plus supposedly cheap independent rounding witness",
+    "the implemented arbitrary-GF2 Gauss-Jordan producer as a >=90% core"
+  ],
+  "still_open": [
+    "explicit direct globally nonlinear GF2/native finite-word producer with target-feasible cells/address/decoder",
+    "native finite-word lift preserving ordered Q4/BF16/FP32 behavior",
+    "causal use of the producer for complete logits/KV/RNG successor state",
+    "global route accounting for any expanded cold sidecar beyond the canonical source-plus-8GiB cell pool",
+    "target hardware and latency closure"
+  ]
+}

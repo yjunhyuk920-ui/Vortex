@@ -2,6 +2,37 @@
 
 Continuation of `FAILED_APPROACHES.md`. This is a permanent anti-repetition register. Revisit an entry only with a mechanism that directly addresses the recorded failure and a stronger preregistered falsification.
 
+## DIRECT-GLOBAL-PRODUCER-20260909 — reconstructive code, exact-sum witness, and Gauss-Jordan producer
+
+Do not reopen a global erasure/network code whose runtime first reconstructs the
+arbitrary checkpoint and then executes the reference dense kernels. Giving the
+complete 8 GiB to information-bearing advice can replace at most `17.020392%`
+of the binary source, `4.255098%` of Q4, or `1.063775%` of BF16, while the
+declared downstream dense arithmetic remains `100%`.
+
+Do not treat a mathematical exact dot sum as though the remaining native
+rounding witness were automatically small. In the declared balanced IEEE-FP32
+RNE tree, `[2^24,b,-2^24,0,-b,0,0,0]` has exact sum zero and rounded output
+`-b`. Aligned gadgets encode arbitrary `-popcount(W_row&v)` entirely in
+rounding error, so a universal witness can inherit the direct MatVec problem.
+This scope is the declared balanced tree, not every CUDA reduction ABI.
+
+Do not reopen deterministic Gauss-Jordan/LU row-operation replay as a target
+producer while hiding its program. The implemented exact arbitrary-GF2
+producer reduces `W` to `R=EW`, computes `Rv`, and reverses the row XORs. On
+the fixed width-16,384 adversary this implementation costs exactly
+`16385/32768 = 50.0030518%` of dense scalar bit operations and the row-op
+metadata lower alone is `447.97 MiB` for one matrix. This rejects the explicit
+producer, not every linear circuit or GF(2) data structure.
+
+A new global nonlinear route theorem now permits arbitrary cross-matrix cells
+and fully adaptive addresses without dividing advice per matrix. Its registered
+necessary floor is only 578,619 words, `0.193471%` of the favorable target word
+allowance. Do **not** cite it as mission impossibility. Reopening the direct
+producer frontier requires an explicit implicit nonlinear cell compiler/address/
+decoder or native equivalent that beats both source reconstruction and quadratic
+program fetch. Authority: `experiments/direct_global_producer_20260909/REPORT.md`.
+
 ## BOOLEAN-MATVEC-LIFT-20260909 — indirect exact parity from Boolean-semiring products
 
 Do not reopen a succinct Boolean-semiring MatVec structure as the exact numerical

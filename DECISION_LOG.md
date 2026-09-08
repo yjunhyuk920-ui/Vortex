@@ -2,6 +2,42 @@
 
 Append-only decisions. Authoritative run identities are read from committed result JSON.
 
+## D-DIRECT-GLOBAL-PRODUCER-20260909 — exact arbitrary-GF2 producer constructed but target-cost source still open
+
+Authority: `experiments/direct_global_producer_20260909/REPORT.md` and
+`results/e0_direct_global_producer_gate_v5/summary.json`.
+
+Three materially different direct-producer principles were preregistered before
+execution. Global reconstructive coding fails the >=90% information and
+arithmetic routes. Exact mathematical summation does not isolate a cheap
+rounding correction because a zero-exact-sum balanced-FP32 gadget carries
+arbitrary binary MatVec counts in rounding error.
+
+A new largest-fiber theorem handles simultaneous full-Mv outputs with globally
+mixed nonlinear cells and adaptive addresses. It proves a registered
+`578,619`-word necessity without any per-matrix division of 8 GiB advice, but
+that is only `0.193471%` of the favorable target allowance and therefore does
+not establish impossibility.
+
+The round then constructed a deterministic arbitrary-GF2 Gauss-Jordan producer.
+Its exactness passed, but its width-16,384 frozen adversary requires
+`16385/32768` of dense scalar bit operations and at least `447.97 MiB` row-op
+metadata for one matrix, so that implementation is rejected as the core.
+
+Decision:
+
+```text
+REJECT_RECONSTRUCT_ALL_GLOBAL_CODE
+REJECT_EXACT_SUM_PLUS_UNSPECIFIED_CHEAP_ROUND_WITNESS
+RETAIN_GLOBAL_NONLINEAR_VECTOR_ROUTE_THEOREM_AS_AUXILIARY_GUARDRAIL
+REJECT_EXPLICIT_GAUSS_JORDAN_GF2_PRODUCER_AS_CORE
+KEEP_DIRECT_IMPLICIT_GLOBAL_NATIVE_PRODUCER_OPEN
+THEORY_STATUS=NOT_ESTABLISHED
+HARDWARE_STATUS=NOT_TESTED
+```
+
+Persistence and theorem achievement remain independent.
+
 ## D-BOOLEAN-MATVEC-LIFT-20260909 — close indirect Boolean-to-parity lifts; retain direct GF2 producer frontier
 
 Authority:

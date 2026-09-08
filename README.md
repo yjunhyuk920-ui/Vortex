@@ -4,6 +4,33 @@ Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total p
 
 ## Current research frontier — 2026-09-09
 
+[Direct global finite-word producer frontier](experiments/direct_global_producer_20260909/REPORT.md)
+now attacks the remaining direct GF(2)/native data-structure hole with three
+frozen principles. Global reconstructive coding is rejected: even giving all
+8 GiB to exact advice removes at most `4.255098%` of an arbitrary Q4 source and
+then leaves `100%` of dense arithmetic.
+
+Exact mathematical summation also does not make native rounding a small
+independent problem. An eight-leaf balanced-FP32 gadget has exact sum zero while
+its rounded result is `-b`; composing the gadget encodes arbitrary binary MatVec
+counts entirely in rounding error.
+
+The strongest new theorem is global rather than matrix-local. For arbitrary
+globally mixed nonlinear 64-bit cells and fully adaptive addresses, a final
+route answering simultaneous full-Mv tuples has total coefficient span
+`<=t*64`; no 8-GiB advice split by matrix is assumed. On all 883 registered
+non-embedding matrices the proof-safe route-cover floor is `578,619` words.
+That is only `0.193471%` of the favorable registered target allowance, so it is
+**far too weak to prove target impossibility**.
+
+The round also constructed a real finite producer for every GF(2) matrix:
+Gauss-Jordan compiles `R=E W` plus a row-XOR stream and runtime exactly recovers
+`Wv` by reverse replay. It is not fast enough. At width 16,384 the frozen
+producer adversary costs exactly `16385/32768 = 50.0030518%` of dense scalar
+bit operations and at least `447.97 MiB` of row-program metadata for that one
+matrix. The arbitrary-native globally nonlinear producer therefore remains
+OPEN rather than being renamed as this binary construction.
+
 [Causal/global producer frontier](experiments/causal_global_bridge_20260908/REPORT.md)
 compared the frozen legal-causal exposure, global nonlinear producer, and paid
 dynamic-summary principles. The ordinary `transformers.LlamaForCausalLM` bridge

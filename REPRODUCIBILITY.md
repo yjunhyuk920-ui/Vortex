@@ -6,6 +6,59 @@ An independent researcher or new session must determine exactly what ran, what d
 
 Every summary separates `MEASURED / DERIVED / PROJECTED / UNVERIFIED`. Missing target-hardware fields remain `NOT TESTED`.
 
+## Direct global finite-word producer frontier — 2026-09-09
+
+Authority:
+
+```text
+experiments/direct_global_producer_20260909/PREREGISTRATION.md
+experiments/direct_global_producer_20260909/REPORT.md
+experiments/direct_global_producer_20260909/VALIDATION.md
+results/e0_direct_global_producer_gate_v5/summary.json
+results/e0_direct_global_producer_gate_v5/checksums.sha256
+```
+
+Preregistration was committed and pushed before result generation at
+`a2d269c0aeee089be9859337813dfa195fa5b862`.
+
+Focused replay:
+
+```powershell
+$env:PYTHONPATH=(Resolve-Path '.').Path
+& '.\experiments\native_global_transition_20260908\.venv\Scripts\python.exe' `
+  -m unittest tests.test_direct_global_producer_gate -v
+```
+
+Observed final result: `10/10 PASS`.
+
+Canonical regeneration uses a fresh/empty directory:
+
+```powershell
+& '.\experiments\native_global_transition_20260908\.venv\Scripts\python.exe' `
+  scripts\derive_direct_global_producer_gate.py `
+  --output-dir results\e0_direct_global_producer_gate_v5
+```
+
+Canonical SHA-256:
+
+```text
+a907cb1dbd40b9a7bf71b88a159cf0358c4d3b0656470e71e26f37e2c9185ffe
+```
+
+Earlier v1--v4 result directories are retained as strengthening history. This
+round deliberately did not rerun the completed prior 15/15, 28/28, 14/14,
+Boolean-lift exhaustive suites or the native-global 3,510-file replay.
+
+The literature check used current public papers only to delimit the missing
+construction. Anand--van den Brand--McCarty 2025 gives structured/low-VC
+subquadratic MatVec, not arbitrary dense; Ko 2025 strengthens lower bounds but
+does not supply an upper producer; the Hirahara--Shimizu amplifier remains
+dependent on a charged fast approximate oracle already audited in the repo.
+
+No 405B, CUDA, <=8 GiB target GPU, PCIe/SSD/HBM, native4BQ4 p50/p95 or TTFT run
+occurred. The balanced FP32 gadget is an explicit E0 ABI, not a claim about
+actual target CUDA reduction order.
+
 ## Causal/global producer frontier — 2026-09-08
 
 Authority:

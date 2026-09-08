@@ -1,6 +1,6 @@
 # Research state — 2026-09-09
 
-Fixed mission and CTC unchanged. [Current frontier](experiments/causal_global_bridge_20260908/REPORT.md).
+Fixed mission and CTC unchanged. [Current frontier](experiments/direct_global_producer_20260909/REPORT.md).
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
 CORE_ADMISSION=false
@@ -8,10 +8,55 @@ FULL_MISSION_O1_O6=OPEN
 THREE_QUALIFYING_NEW_PRINCIPLES=false
 README_CURRENT=true
 
-HARDWARE_STATUS concerns the target; no latency benchmark in this round. Actual
-pinned BF16 HF CPU generation now ran under a guarded supported API.
+HARDWARE_STATUS concerns the target; no target latency benchmark ran in this
+round. The actual pinned BF16 HF CPU generation evidence belongs to the prior
+causal/global round and remains preserved below.
 
-## Latest constructive frontier — causal/global producer bridge
+## Latest constructive frontier — direct global finite-word producer
+
+Three new direct-producer principles were preregistered and executed from the
+clean remote causal/Boolean frontier:
+
+```text
+P1 global exact reconstruction code     REJECTED
+  binary max source-read removal          17.020392%
+  Q4 max source-read removal               4.255098%
+  BF16 max source-read removal             1.063775%
+  native dense arithmetic retained       100%
+
+P2 exact sum + rounding witness          REDUCES BACK TO DIRECT MATVEC
+  8-leaf balanced FP32 exact sum           0 for b=0 and b=1
+  rounded result                            -b
+  aligned row/query gadget                 -popcount(row & query)
+
+P3 global nonlinear adaptive router      GENERAL CLASS OPEN
+  globally mixed nonlinear cells           allowed
+  per-matrix advice split                   not used
+  registered single-tuple floor            312,468 x 64-bit words
+  registered route-cover floor             578,619 x 64-bit words
+  floor / favorable target                 0.193471%
+  target impossibility                     NOT PROVED
+
+explicit arbitrary-GF2 producer          CONSTRUCTED, THEN REJECTED AS CORE
+  algorithm                               Gauss-Jordan + reverse row-XOR replay
+  width-16,384 operation fraction         16385/32768 = 50.0030518%
+  row-program metadata lower              447.97 MiB for one matrix
+```
+
+The new route theorem is stronger in scope than the prior local nonlinear Gate:
+cells may mix all 883 matrices and advice is never divided per matrix. It is
+weak in magnitude, about 516.87x below the favorable target word allowance, so
+it cannot be converted into a mission impossibility claim.
+
+The Gauss-Jordan result is an actual finite encoder/representation/runtime/
+decoder for arbitrary binary matrices, but it fails the >=90% operation entry
+Gate and has adverse metadata. No arbitrary-native Q4/BF16/FP32 producer was
+constructed.
+
+O1-O5 remain OPEN. O6 is partial E0/E1 reproducibility only.
+405B/CUDA/<=8GiB/native4BQ4 p50/p95/TTFT remain NOT TESTED.
+
+## Prior constructive frontier — causal/global producer bridge
 
 The frozen round compared three materially different principles: (A) legal
 causal dense-information exposure, (B) globally nonlinear checkpoint advice,
