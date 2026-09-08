@@ -1,22 +1,25 @@
 # Validation matrix — 2026-09-08
 
-[Report](experiments/nonlinear_coordinates_20260908/REPORT.md), [replay](experiments/nonlinear_coordinates_20260908/README.md), [fixed validation](experiments/nonlinear_coordinates_20260908/results/validation.json).
-[Prior matrix unchanged](docs/research/history/pre_nonlinear_coordinates_20260908/VALIDATION_MATRIX.md).
+[Report/replay](experiments/deferred_state_20260908/REPORT.md).
+[Prior matrix unchanged](docs/research/history/pre_deferred_state_20260908/VALIDATION_MATRIX.md).
 
 | Item | Evidence and exact scope |
 |---|---|
-| Finite constructor | Actual T0 orbit, affine coefficient inference, all-state check; 24attempts/8accepted/16refused |
-| Direct constructor | Checks reversible primitive semantics/shared prefix/exact inverse suffix/original observer; zero state enumeration |
-| Runtime | Serialized-source Python/C step; no target future output; same-size bijective state |
-| Exhaustive |43520finite pairs and87040two-observer pairs;0mismatch |
-| Causal |6144steps; declared output/full-state relation/each run's LCG and input choice agree;8order-sensitive history witnesses |
-| Cost |12bit finite16424B/20488transition calls; direct328B equals compact original;216gate eliminations only with original O=E; O=id72decoder gates remain |
-| Preparation |Finite callcount2561x eight original calls; direct initial72gates,720primitive visits/648tuple-comparison upper bound plus all actual storage/address/code costs |
-| Scope |Synthetic reversible Boolean programs, not original BF16 neural computation; chart-switch counterexample; noncommuting/noninjective cheap countercontrols |
-| Numeric audit |65539FP32patterns around1.5;65537-to-one BF16 fiber;local17bit fixed side-info fact;12edge probes;not full neural bridge |
-| Replay |22tests/109sciencefiles;final manifest56c016845ebee52901283b15680f7460270f4a3ef9ecb0465a1bde1c4c3b728d |
-| Full mission |O1-O6OPEN;CORE_ADMISSION=false;threequalifyingnewprinciplesfalse |
-| HF/fullKV/RNG/CUDA/405B/8GiB/4BQ4/TTFT/latency |NOT TESTED / NOT CONSTRUCTED |
+| Source | Actual BF16 coefficient/norm generation; frozen CPU unary ABI; original G/U/D files retained |
+| Lazy runtime | Exact expression+sound native range; same one-word Bernoulli RNG rule; state-bit-only history deletion |
+| Initial corpus |18syntheticmodels/36runs/4608steps/86016statecoordinates;0token,RNG,statebound/exactstate mismatch |
+| Debt |F+Z+P=T; exact flushF+Z=T; tiny deferred128allreplayed; moderate/wide127/128body afterflush |
+| Tail |Example perdecision bodycount p50=0,p95=6,max9; not measured time/token |
+| Ablation |Tiny nonlinear contribution changes0/14336statecoordinates; moderate36;wide12743 |
+| Suffix |Verified invariant B then native endpoint transport;12initial modelsfirsttested16;6wide refuse B |
+| Continuation |12recovered states/384steps originalbodyC vs Python agree; not acceleration |
+| Active follow-on |6labeledposthocmodels,1536lazy steps; nonlinear effect14224/14336;5suffix successesat16,onefails through128 |
+| Suffix cost |Fullweightread/2xlinearproducts perintervalstep;attemptedlengths total255 plus2invariantpasses |
+| Memory |1703424Bshared unary/index payload; pending arrays8*n*P plus objects; rawweights remain; tracemallocpartial/nondeterministic |
+| Scope |Contraction with2nativefixedpoints; same-token/non-equivalentstate;literalappend-onlyprefix distinction only |
+| Replay |17tests/152deterministicfiles;manifest49098e4052a39dfa942c980696d838161f81b32bc87a4df1a57cffae61a43c21;freshZIP/C rebuild match |
+| Full mission |O1-O6OPEN;CORE_ADMISSION=false;THEORY_STATUS=NOT_ESTABLISHED;HARDWARE_STATUS=NOT_TESTED |
+| HF/KV/categorical sampler/CUDA/405B/8GiB/4BQ4/TTFT |NOT TESTED / NOT CONSTRUCTED |
 | Actions/fullrepositorysuite |NOT RUN |
 
-Source/tests/prereg/full Korean report/frozenmanifest are in a checksummed archival capsule. Raw scientific binary regenerates and is in userZIP; development history/logs are ZIP-only. The final manifest includes explicitly labeled added scope probes; previous manifest/run/scope files are preserved, not rewritten as if unchanged from first development.
+Originalprereg andlaterfollow-on/activeplans separated. Independent C covers arithmetic/order,not independently computed SiLU/sigmoid. Exact-force/replay is charged safety behavior, not target success. Source/fullKoreanreport/frozenmanifest are in checked capsule; rawscience/logs in userZIP and deterministic science regenerates.
