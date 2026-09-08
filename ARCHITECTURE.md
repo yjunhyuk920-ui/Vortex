@@ -1,21 +1,73 @@
 # VORTEX Architecture
 
-## Scoped native-gauge mechanisms — 2026-09-09
+## Implicit checkpoint-program carrier frontier — 2026-09-09
 
-See [experiments/codex_gauge_transport_20260909/REPORT.md](experiments/codex_gauge_transport_20260909/REPORT.md). Two finite reference mechanisms exist:
+See `experiments/implicit_program_carrier_20260909/REPORT.md`.
 
+The architecture search has now made three previously hidden program carriers
+explicit:
+
+```text
+P1 ADDRESS CARRIER
+  query -> checkpoint-independent local parity tables
+  fixed logical (row,block) reads
+  checkpoint -> alias translation relation
+  result: arithmetic cheap; explicit translation representation too large
+
+P2 QUERY-TIME PROGRAM SYNTHESIZER
+  checkpoint row-block patterns -> Patricia trie
+  query -> traverse shared checkpoint pattern structure
+  result: arithmetic/event count cheap; edge-label program traffic source-scale
+
+P3 FULLY PAID ENCODED GRAPH NODE
+  checkpoint W -> A W B = J_r
+  linear node -> rank-normal cheap map
+  nonlinear node -> explicit E_out N(E_in^-1 z)
+  result: literal transformed AND restores removed dense maps
 ```
+
+These failures tighten the open object. It is no longer enough to say “the
+selector is implicit,” “the program is structurally shared,” or “stay encoded.”
+The representation must reduce the checkpoint-dependent information **actually
+consumed per token**, including the route/program/nonlinear operator that tells
+the machine what to do.
+
+The next architecture axis is dynamic multi-query information sharing:
+
+```text
+G0 = Compile(checkpoint)
+(answer_t, G_{t+1}) = ExactUpdateQuery(G_t, causal_query_t)
+```
+
+where `G_t` is finite paid state and both the query and state update may change
+dense information. This is admissible only if arbitrary legal dense right-factor
+changes can update `G_t` subdensely. Literal `y'=y+W(s'-s)`, sparse-delta luck,
+response caches and repeated-query tables remain closed.
+
+### Concurrent native-gauge refinement
+
+See [experiments/codex_gauge_transport_20260909/REPORT.md](experiments/codex_gauge_transport_20260909/REPORT.md).
+The concurrent construction adds two finite mechanisms that narrow P3's scope:
+
+```text
 permuted dense layout + inverse-column leaf schedule -> original reduction tree
 opaque-word butterfly E -> E(native_mul(E^-1 z, E^-1 w))
 ```
 
-The first retains every original coefficient/product/addition. The second is
-a native Hadamard gate with three explicit transforms and n original products,
-plus all boundary transforms/copies/indices. It is not an arbitrary dense
-projection. A field-linear coordinatewise-gate automorphism lemma does not
-forbid all such bit encodings; its exact scope is monomial gauge triples.
-Per-output bilinear ranks cannot be summed against shared intermediate products.
-The whole-body native/KV/RNG compiler and sufficient target-cost bound remain absent.
+The first shows that native finite-word coordinate permutation must transport the
+original logical leaf/reduction schedule; naive physical reordering is not exact.
+It retains every original coefficient/product/addition. The second proves that a
+non-coordinatewise opaque-bit encoding can have an explicit exact transformed
+native Hadamard in `O(n log n)` XOR work plus `n` original products. Therefore
+the P3 failure above is specifically the **per-operator rank-normal + literal
+factorized transformed Hadamard** realization, not a quadratic lower bound for
+all transformed gates.
+
+The combined missing object is stricter: find a checkpoint-dependent encoding
+`E` with both a cheap exact transformed native graph and, crucially, a cheap
+arbitrary dense projection `E F_W E^-1` without executing `F_W` in full. Neither
+concurrent mechanism supplies that projection. Per-output bilinear ranks may not
+be summed as a lower bound when intermediate products are shared.
 
 ## Implicit nonlinear direct-query frontier — 2026-09-09
 

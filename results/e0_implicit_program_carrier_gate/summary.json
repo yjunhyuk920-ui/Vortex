@@ -1,0 +1,82 @@
+{
+  "claim_boundary": {
+    "arbitrary_gf2_alias_router_constructed": true,
+    "arbitrary_gf2_patricia_program_constructed": true,
+    "arbitrary_gf2_rank_normal_compiler_constructed": true,
+    "arbitrary_native_fast_producer_constructed": false,
+    "general_nonlinear_cell_probe_structure_rejected": false,
+    "target_405b_executed": false,
+    "target_hardware_executed": false
+  },
+  "classification": "E0_IMPLICIT_PROGRAM_CARRIER_FRONTIER",
+  "decision": "REJECT_ADDRESS_ONLY_ALIAS_ROUTER_IF_ROUTING_METADATA_IS_PAID;REJECT_PATRICIA_PATTERN_SYNTHESIZER_IF_EDGE_PROGRAM_TRAFFIC_IS_PAID;REJECT_PER_OPERATOR_RANK_NORMAL_GAUGE_WITH_LITERAL_TRANSFORMED_HADAMARD;KEEP_GENERAL_NONLINEAR_IMPLICIT_PROGRAM_SOURCE_OPEN",
+  "obligations": {
+    "O1": "OPEN",
+    "O2": "OPEN",
+    "O3": "OPEN",
+    "O4": "OPEN",
+    "O5": "OPEN",
+    "O6": "PARTIAL_E0_REPRODUCIBLE"
+  },
+  "principle_III_rank_normal_hadamard": {
+    "baseline_two_dense_plus_and_slots": 1073758208,
+    "claim_boundary": "RANK_NORMAL_PER_OPERATOR_PLUS_LITERAL_FACTORIZED_TRANSFORMED_HADAMARD",
+    "dense_maps_restored_inside_transformed_nonlinearity": 2,
+    "dimension": 16384,
+    "isolated_encoded_projection_effects": 32768,
+    "isolated_linear_effect_fraction": "1/16384",
+    "isolated_original_projection_coefficients": 536870912,
+    "isolated_removes_at_least_90_percent": true,
+    "literal_transformed_hadamard_slots": 1073790976,
+    "whole_micrograph_candidate_fraction": 1.0000305171124708,
+    "whole_micrograph_removes_at_least_90_percent": false
+  },
+  "principle_II_square": {
+    "baseline_leaf_plus_add_slots": 536870912,
+    "block_width": 64,
+    "blocks": 256,
+    "columns": 16384,
+    "edge_label_bits_one_64bit_word_each": 536838144,
+    "edge_label_mib_one_64bit_word_each": 63.99609375,
+    "edge_label_over_binary_source": 1.9998779296875,
+    "favorable_edge_plus_leaf_events": 12582400,
+    "favorable_event_fraction": 0.023436546325683594,
+    "leaf_contributions": 4194304,
+    "max_edge_evaluations": 8388096,
+    "max_edges_per_block": 32766,
+    "native_fast_path_proved": false,
+    "removes_at_least_90_percent_favorable_arithmetic": true,
+    "rows": 16384,
+    "topology_and_membership_bits_included": false
+  },
+  "principle_I_registered": {
+    "alias_count": 40365964800,
+    "claim_boundary": "EXPLICIT_64_BIT_ALIAS_DESCRIPTOR_REALIZATION_ONLY_FOR_RUNTIME_TRAFFIC",
+    "descriptor_bits_if_64_per_alias": 2583421747200,
+    "descriptor_gib_if_64_per_alias": 300.74987411499023,
+    "descriptor_over_source_if_64_per_alias": 6.398601117664475,
+    "fits_8gib_if_all_descriptors_hot": false,
+    "information_lower_bits": 403747897344,
+    "matrix_count": 883,
+    "query_table_ops": 1958871034,
+    "source_bits": 403747897344,
+    "source_gib": 47.00244140625
+  },
+  "principle_I_square": {
+    "alias_information_lower_bits": 268435456,
+    "alias_information_lower_over_source": 1.0,
+    "baseline_leaf_plus_add_slots": 536870912,
+    "blocks": 1638,
+    "candidate_operation_fraction": 0.053116608411073685,
+    "candidate_table_plus_row_xor_ops": 28516762,
+    "columns": 16384,
+    "descriptor_bits_if_64_per_alias": 1717567488,
+    "descriptor_gib_if_64_per_alias": 0.199951171875,
+    "descriptor_over_binary_source_if_64_per_alias": 6.3984375,
+    "logical_alias_reads": 26836992,
+    "native_fast_path_proved": false,
+    "query_table_ops": 1679770,
+    "removes_at_least_90_percent_favorable_arithmetic": true,
+    "rows": 16384
+  }
+}

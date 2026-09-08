@@ -2,6 +2,31 @@
 
 No unverified assumption may be used as a success condition.
 
+## A-IMPLICIT-PROGRAM-CARRIER-20260909
+
+Assumption: checkpoint selection information can be encoded in logical routing
+and therefore omitted from traffic/state accounting. CONTRADICTED for the
+explicit alias carrier. The mapping is lossless checkpoint information; the
+64-bit registered descriptor realization is `300.749874 GiB`, does not fit the
+8 GiB hot grant, and any translation cache/backing path is paid. Other nonlinear
+address encodings remain OPEN rather than rejected.
+
+Assumption: a query-time trie can share enough row-pattern work that only the
+small number of parity events matters. CONTRADICTED for the explicit word-label
+Patricia carrier. Its square event fraction is `2.34365%`, but checkpoint edge
+labels alone are about `1.99988x` source before topology/membership metadata.
+Succinct arbitrary-worst-case program encodings remain OPEN only with an actual
+decoder and cost.
+
+Assumption: dense state gauges become useful once the previous product-preserving
+restriction is removed, without needing to pay the resulting nonlinear operator.
+CONTRADICTED for per-operator rank-normal encoding with the literal exact
+transformed Hadamard. The two dense maps removed from the projections reappear
+inside the product. A jointly co-designed graph encoding is not ruled out.
+
+Status: GENERAL IMPLICIT NONLINEAR NATIVE PROGRAM SOURCE REMAINS OPEN.
+O1--O5 OPEN; O6 PARTIAL; 405B/CUDA/<=8GiB/native4BQ4/TTFT NOT TESTED.
+
 ## A-IMPLICIT-DIRECT-QUERY-20260909
 
 Assumption: query-derived addressing alone makes a complete precomputed image

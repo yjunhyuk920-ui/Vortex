@@ -1,0 +1,53 @@
+{
+  "round": "implicit_program_carrier_20260909",
+  "theory_status": "NOT_ESTABLISHED",
+  "hardware_status": "NOT_TESTED",
+  "core_admission": false,
+  "canonical_summary": "results/e0_implicit_program_carrier_gate/summary.json",
+  "canonical_sha256": "f6f911fce9383ab6b82a1ac4ad5ef79f354a8ca58d79d21ff71193000c8d5070",
+  "O1": {
+    "status": "OPEN",
+    "reason": "Three uniform GF2 constructors were built, but none yields a target-cheap arbitrary-native checkpoint executor."
+  },
+  "O2": {
+    "status": "OPEN",
+    "reason": "No surviving carrier is integrated through arbitrary checkpoint loading, prefill, decode, attention/MLP, KV/cache and sampling."
+  },
+  "O3": {
+    "status": "OPEN",
+    "reason": "GF2 exactness and encoded-state algebra were established only for the declared controls; arbitrary native ordered Q4/BF16/FP32 logits/KV/RNG successor correspondence is absent."
+  },
+  "O4": {
+    "status": "OPEN",
+    "reason": "Explicit routing descriptors, Patricia edge programs, or transformed nonlinear work make every current candidate adverse; no surviving whole-model upper bound exists."
+  },
+  "O5": {
+    "status": "OPEN",
+    "reason": "405B, CUDA, <=8 GiB physical GPU, PCIe/SSD/HBM, native4BQ4 p50/p95 and TTFT were not executed."
+  },
+  "O6": {
+    "status": "PARTIAL_E0_REPRODUCIBLE",
+    "reason": "Preregistration, executable algorithms, focused tests, JSON/checksum and reports are inspectable; whole theory remains incomplete."
+  },
+  "established_scoped_results": [
+    "An exact arbitrary-GF2 alias router can move checkpoint selectors entirely into an address relation and reduce the favorable square query-table plus row-XOR arithmetic to about 5.31% of leaf+add slots.",
+    "That alias relation losslessly carries the checkpoint; the explicit 64-bit-descriptor registered realization is about 300.75 GiB and cannot fit in the 8 GiB hot grant.",
+    "An exact arbitrary-GF2 Patricia pattern synthesizer can reduce favorable edge-plus-leaf event count to about 2.34% on the square control.",
+    "With the preregistered one-64-bit-label-per-edge representation, Patricia edge labels alone are about 1.99988x the binary source before topology/membership metadata.",
+    "Every arbitrary GF2 rectangular matrix has a finite rank-normal A W B = J compiler verified on controls.",
+    "Per-operator rank-normalization can reduce an isolated full-rank square map to 1/n effects, but the explicitly conjugated AND micrograph restores both dense maps and costs about 1.00003x the original graph in the frozen scalar-slot ledger."
+  ],
+  "rejected_scoped_candidates": [
+    "the explicit 64-bit descriptor address-only alias carrier",
+    "the explicit 64-bit-edge-label Patricia program carrier",
+    "per-operator rank-normal encoding with the literal factorized transformed Hadamard"
+  ],
+  "still_open": [
+    "general nonlinear implicit program/address source with target-cheap physical metadata",
+    "succinct exact query-time program synthesis outside the Patricia realization",
+    "globally co-designed encoded graph operators with explicitly cheap transformed nonlinearities",
+    "arbitrary native finite-word ordered lift",
+    "complete causal logits/KV/RNG successor-state executor",
+    "target hardware and latency closure"
+  ]
+}

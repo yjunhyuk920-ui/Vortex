@@ -18,13 +18,19 @@ cheap inverse AND target-feasible transformed native dense projection has been
 constructed. Existing source/advice/dense-delta constraints below remain binding.
 405B hardware is unavailable per user; theory remains OPEN independently.
 
-Verify actual remote head and fixed mission/CTC/O1-O6. [Current frontier](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md).
+Verify actual remote head and fixed mission/CTC/O1-O6. [Current frontier](experiments/implicit_program_carrier_20260909/REPORT.md).
 
-The implicit-direct-query three-principle round is now executed. It produced one
-real arbitrary-GF2 query-addressed image-frame compiler, but the registered
-representation is about 102.5x the binary source and the query payload is about
-8.44x the `8/675` line. Static/dynamic exact duplicate-transition sharing and
-product-preserving safe gauges are also closed in their declared scopes.
+The concurrent opaque-bit butterfly result is now a required guardrail: do not
+argue that every non-coordinatewise transformed gate must be quadratic. It gives
+an exact `O(n log n)` transformed native Hadamard, but it still executes the
+original dense projection in full if wrapped around `F_W`. The next candidate
+must therefore make **the arbitrary dense transformed projection itself** cheap,
+not merely its surrounding elementwise gate.
+
+The program-carrier three-principle round is now executed. Address-only routing,
+Patricia query-time program synthesis, and per-operator rank-normal encoding with
+an explicitly paid transformed Hadamard all have exact arbitrary-GF2
+constructions and all fail their own paid physical/program route.
 
 The next **constructive** obligation is the missing object itself, not another
 name for it:
@@ -43,8 +49,10 @@ and native-4B-Q4 traffic/arithmetic line. It must **not** reconstruct most sourc
 words first, materialize a complete one-sided image dictionary, compute a
 mathematical exact sum and leave rounding as an unspecified witness, replay a
 quadratic static row-operation program, rely on repeated finite-word values or
-identical accumulator transitions, or assume a coordinate gauge keeps nonlinear
-work cheap while making arbitrary dense maps sparse. Boolean-semiring lifts,
+identical accumulator transitions, assume a coordinate gauge keeps nonlinear
+work cheap while making arbitrary dense maps sparse, hide selector bits in
+address translation, stream a source-scale query-time trie program, or move the
+same dense maps into a conjugated nonlinear operator. Boolean-semiring lifts,
 bitset full scans, response catalogs and undefined decoders remain excluded.
 
 The next acceptable candidate must therefore **directly** construct a nonlinear
@@ -64,10 +72,13 @@ and is already closed. A valid dynamic summary must aggregate such arbitrary
 dense changes subdensely with a finite native-exact update rule.
 
 Three materially different principles are required before selecting a new core.
-They must be outside all three just-executed classes: one-sided complete linear
-image frames, duplicate transition sharing, and product-preserving coordinate
-gauges. At least one principle must attack the **decoder/program-generation**
-problem itself rather than moving it to cold storage.
+The next round should not merely choose a fifth static place to store the same
+checkpoint program. The active axis is now **multi-query/time information
+sharing**: maintain an exact dynamic nonlinear state that makes future dense
+effects cheap even when successive legal right factors change densely. Its
+update itself must be subdense and explicitly paid. Literal
+`y'=y+W(s'-s)`, response caches, sparse deltas and repeated-query luck remain
+closed.
 
 The area-5,400 `25x216` 32-query native trace remains a useful bounded bridge
 check, but running it is not a substitute for constructing the global producer.

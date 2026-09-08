@@ -24,6 +24,66 @@ An independent researcher or new session must determine exactly what ran, what d
 
 Every summary separates `MEASURED / DERIVED / PROJECTED / UNVERIFIED`. Missing target-hardware fields remain `NOT TESTED`.
 
+## Implicit checkpoint-program carrier frontier — 2026-09-09
+
+Authority:
+
+```text
+experiments/implicit_program_carrier_20260909/PREREGISTRATION.md
+experiments/implicit_program_carrier_20260909/REPORT.md
+experiments/implicit_program_carrier_20260909/VALIDATION.md
+results/e0_implicit_program_carrier_gate/summary.json
+results/e0_implicit_program_carrier_gate/checksums.sha256
+```
+
+The preregistration was committed and pushed before any implementation result
+was inspected:
+
+```text
+52facca89659224b8a101f75601ec275740c3e2f
+```
+
+Focused replay:
+
+```powershell
+$env:PYTHONPATH=(Resolve-Path '.').Path
+& '.\experiments\native_global_transition_20260908\.venv\Scripts\python.exe' `
+  -m unittest tests.test_implicit_program_carrier_gate -v
+```
+
+Observed:
+
+```text
+11/11 PASS
+```
+
+Generator:
+
+```powershell
+$env:PYTHONPATH=(Resolve-Path '.').Path
+& '.\experiments\native_global_transition_20260908\.venv\Scripts\python.exe' `
+  scripts\derive_implicit_program_carrier_gate.py `
+  --output-dir results\e0_implicit_program_carrier_gate
+```
+
+Canonical SHA-256:
+
+```text
+f6f911fce9383ab6b82a1ac4ad5ef79f354a8ca58d79d21ff71193000c8d5070
+```
+
+Current source implements the arbitrary-GF2 address-only alias compiler/runtime,
+arbitrary-GF2 Patricia query synthesizer, arbitrary rectangular GF2 rank-normal
+compiler, and exact literal transformed-Hadamard control.
+
+The previous implicit-direct `15/15`, direct-global `10/10`, nonlinear `15/15`,
+geometry `28/28`, causal-global `14/14`, Boolean exhaustive controls and
+native-global 3,510-file replay were deliberately not rerun.
+
+No 405B, CUDA, <=8 GiB target GPU, PCIe/SSD/HBM schedule, same-machine native
+4B Q4 p50/p95 or TTFT run occurred. No arbitrary-native causal producer is
+claimed.
+
 ## Implicit nonlinear direct-query frontier — 2026-09-09
 
 Authority:

@@ -2,6 +2,44 @@
 
 Append-only decisions. Authoritative run identities are read from committed result JSON.
 
+## D-IMPLICIT-PROGRAM-CARRIER-20260909 — three hidden program carriers made explicit and paid
+
+Authority: `experiments/implicit_program_carrier_20260909/REPORT.md` and
+`results/e0_implicit_program_carrier_gate/summary.json`.
+
+Preregistration was remotely fixed before result inspection at
+`52facca89659224b8a101f75601ec275740c3e2f`. All three principles were
+implemented and the focused suite passed `11/11`.
+
+P1 moved checkpoint selectors entirely into an address-only alias relation and
+obtained a real `5.31166%` arithmetic-slot route on the square GF2 control. The
+explicit physical carrier failed: model-wide 64-bit alias descriptors total
+`300.749874 GiB` (`6.398601x` binary source), so route metadata cannot be called
+free.
+
+P2 compiled exact row-pattern Patricia programs. The arithmetic/event route is
+`2.34365%`, but 64-bit edge labels alone are `1.99987793x` raw binary source on
+the frozen square maximum-edge realization before topology/memberships.
+
+P3 constructed arbitrary rectangular GF2 rank-normal encodings. Isolated dense
+maps shrink to `1/n`, but the explicitly paid transformed AND restores the two
+dense maps in the minimal two-projection graph and yields
+`1.0000305171x` baseline under the frozen ledger.
+
+Decision:
+
+```text
+REJECT_EXPLICIT_64BIT_ALIAS_DESCRIPTOR_CARRIER
+REJECT_EXPLICIT_WORD_LABEL_PATRICIA_CARRIER
+REJECT_PER_OPERATOR_RANK_NORMAL_PLUS_LITERAL_TRANSFORMED_HADAMARD
+KEEP_GENERAL_NONLINEAR_IMPLICIT_PROGRAM_SOURCE_OPEN
+THEORY_STATUS=NOT_ESTABLISHED
+HARDWARE_STATUS=NOT_TESTED
+```
+
+These are scoped implementation rejections. O1--O5 remain OPEN; O6 remains
+PARTIAL. Persistence is not theory success.
+
 ## D-IMPLICIT-DIRECT-QUERY-20260909 — query-addressed GF2 producer constructed; three implicit subfamilies narrowed
 
 Authority:

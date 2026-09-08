@@ -15,13 +15,16 @@ O1-O5 remain OPEN, O6 PARTIAL; THEORY_STATUS=NOT_ESTABLISHED,
 HARDWARE_STATUS=NOT_TESTED, CORE_ADMISSION=false. The user confirms that current
 405B-capable hardware is unavailable. The actual Codex persistent goal remains
 unachieved. This is a bounded independent audit of concurrent preregistration
-`dab5774`, not a completed new three-principle core round.
+`dab5774`, not a completed new three-principle core round. Its opaque-bit
+butterfly also establishes that exact transformed native Hadamard need not be
+quadratic; the arbitrary dense transformed projection remains missing.
 
-Fixed mission and CTC unchanged. [Current frontier](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md).
+Fixed mission and CTC unchanged. [Current frontier](experiments/implicit_program_carrier_20260909/REPORT.md).
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
 CORE_ADMISSION=false
-FULL_MISSION_O1_O6=OPEN
+FULL_MISSION_O1_O5=OPEN
+O6=PARTIAL
 THREE_QUALIFYING_NEW_PRINCIPLES=false
 README_CURRENT=true
 
@@ -29,7 +32,45 @@ HARDWARE_STATUS concerns the target; no target latency benchmark ran in this
 round. The actual pinned BF16 HF CPU generation evidence belongs to the prior
 causal/global round and remains preserved below.
 
-## Latest constructive frontier — implicit nonlinear direct-query representation
+## Latest constructive frontier — implicit checkpoint-program carriers
+
+Three newly preregistered carriers were actually compiled and executed:
+
+```text
+P1 address-only alias router             EXACT GF2 / EXPLICIT CARRIER REJECTED
+  square arithmetic fraction             0.053116608411073685
+  registered alias count                 40,365,964,800
+  registered 64-bit descriptors          300.74987411499023 GiB
+  descriptor/source ratio                6.398601117664475x
+
+P2 query-time Patricia synthesizer       EXACT GF2 / WORD-LABEL CARRIER REJECTED
+  square favorable event fraction        0.023436546325683594
+  frozen edge-label/source ratio         1.9998779296875x
+  topology/membership in that ratio      not included
+
+P3 rank-normal encoded state             EXACT GF2 / LITERAL NONLINEARITY REJECTED
+  arbitrary rectangular A W B = J_r      constructed
+  isolated full-rank linear fraction     1/n
+  two-projection+AND micrograph fraction 1.0000305171124708x
+```
+
+Canonical result:
+
+```text
+results/e0_implicit_program_carrier_gate/summary.json
+SHA-256 f6f911fce9383ab6b82a1ac4ad5ef79f354a8ca58d79d21ff71193000c8d5070
+focused validation 11/11 PASS
+```
+
+The result says that three explicit places for the missing program fail their
+own paid realization: routing metadata, query-time edge labels, or a conjugated
+nonlinearity. It does **not** reject every nonlinear address encoding, every
+succinct program synthesizer, or every globally co-designed encoded graph.
+
+O1-O5 remain OPEN. O6 is partial E0 reproducibility only.
+405B/CUDA/<=8GiB/native4BQ4 p50/p95/TTFT remain NOT TESTED.
+
+## Prior constructive frontier — implicit nonlinear direct-query representation
 
 The three preregistered implicit principles were executed from the clean
 direct-global scientific head. Current canonical result:

@@ -16,16 +16,36 @@
 explicitly added in the canonical bit-gauge v2 cost ledger; packed algorithmic
 word storage is not a measured physical Python/GPU peak.
 
-[Current implicit direct-query proof/code/result](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md).
+[Current implicit program-carrier proof/code/result](experiments/implicit_program_carrier_20260909/REPORT.md).
+[Prior implicit direct-query proof/code/result](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md).
 The implicit-direct-query rows below preserve the preceding `9259497` execution
 receipt. Its 15-test result and "deliberately not rerun" list belong to that
-execution, not to the independent audit above, which reran 10 older tests and
-its own 7 focused tests.
+execution. The concurrent native-gauge audit above independently reran its own
+7 focused tests and also replayed 10 older direct-global tests; this program-
+carrier round itself did not rerun those completed suites.
 [Prior direct-global producer proof/code/result](experiments/direct_global_producer_20260909/REPORT.md).
 [Prior causal/global proof/code/result](experiments/causal_global_bridge_20260908/REPORT.md).
 [Prior nonlinear router proof/code/result](experiments/nonlinear_router_frontier_20260908/REPORT.md).
 [Prior native proof/code/replay](experiments/native_global_transition_20260908/REPORT.md).
 [Pre-native-global matrix unchanged](docs/research/history/pre_native_global_transition_20260908/VALIDATION_MATRIX.md).
+
+|Implicit-program-carrier E0 item|Actual evidence and scope|
+|---|---|
+|Three-principle execution|P1 address-only routing, P2 Patricia synthesis and P3 rank-normal state with paid transformed AND all actually constructed|
+|P1 exactness|Arbitrary-GF2 alias compiler/runtime; exhaustive small-query equality; logical runtime addresses are fixed row/block pairs|
+|P1 square arithmetic|28,516,762 table+row-XOR ops / 536,870,912 leaf+add slots = `0.053116608411073685`|
+|P1 registered program carrier|40,365,964,800 aliases; explicit 64-bit descriptors `300.74987411499023 GiB`=`6.398601117664475x` binary source; does not fit 8 GiB|
+|P1 scope|Rejects explicit descriptor/page-routing carrier and free-routing premise, not all nonlinear address encodings|
+|P2 exactness|Arbitrary-GF2 compressed row-pattern program; exhaustive query controls incl. duplicate patterns|
+|P2 square arithmetic|12,582,400 edge+leaf events / 536,870,912 baseline = `0.023436546325683594`|
+|P2 program traffic|Preregistered one-64-bit-label/edge realization `536,838,144` bits=`1.9998779296875x` raw binary source before topology/memberships|
+|P2 scope|Rejects explicit word-label Patricia realization, not every succinct exact query-time program synthesizer|
+|P3 rank normal|Deterministic arbitrary rectangular GF2 `A W B=J_r` compiler verified; encoded query equality exact|
+|P3 transformed AND|Exhaustive 4-bit control exact; isolated full-rank map fraction `1/n`, but literal two-projection AND micrograph `1.0000305171124708x` baseline and restores both dense maps|
+|Focused validation|11/11 new tests PASS; canonical SHA `f6f911fce9383ab6b82a1ac4ad5ef79f354a8ca58d79d21ff71193000c8d5070`|
+|Deliberately not rerun|implicit-direct 15/15, direct-global 10/10, prior nonlinear 15/15, geometry 28/28, causal-global 14/14, Boolean exhaustive, native-global 3510-file replay|
+|OPEN|General nonlinear implicit program source, multi-query/time exact dynamic state, arbitrary native ordered lift, complete causal logits/KV/RNG executor, O1-O5, whole-theory O6|
+|Not tested|405B, CUDA, <=8GiB physical GPU, PCIe/SSD/HBM, native4BQ4 p50/p95, TTFT|
 
 |Implicit-direct-query E0 item|Actual evidence and scope|
 |---|---|

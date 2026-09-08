@@ -17,6 +17,39 @@ admitted new core. [Evidence](experiments/codex_gauge_transport_20260909/REPORT.
 
 Continuation of `FAILED_APPROACHES.md`. This is a permanent anti-repetition register. Revisit an entry only with a mechanism that directly addresses the recorded failure and a stronger preregistered falsification.
 
+## IMPLICIT-PROGRAM-CARRIER-20260909 — routing metadata, Patricia program, and paid rank-normal nonlinearity
+
+Do not reopen an address-only selector by claiming logical addresses are free.
+The implemented exact GF2 alias router does reduce the `16,384` square
+query-table plus row-XOR arithmetic to `5.3116608411%` of the favorable leaf+add
+slots, but its checkpoint is exactly the logical-alias-to-pattern relation. The
+current 64-bit descriptor realization needs `300.749874 GiB` across the 883
+registered matrices, `6.398601x` the raw binary source, and cannot live inside
+8 GiB. A new address carrier must actually beat that metadata/translation cost;
+renaming descriptor/page/TLB state as hardware does not remove it. This is not a
+general nonlinear-address lower bound.
+
+Do not reopen the word-label Patricia synthesizer by counting only its parity
+events. The exact arbitrary-GF2 program reaches a `2.3436546326%` favorable
+edge+leaf event fraction, but the preregistered one-64-bit-label-per-edge square
+realization reads `536,838,144` checkpoint label bits, `1.99987793x` the raw
+binary matrix, before topology and row memberships. A genuinely succinct trie
+must provide an arbitrary-worst-case encoding and paid decoder rather than assume
+checkpoint pattern compressibility.
+
+Do not claim that independently rank-normalizing dense operators solves encoded
+state once the transformed nonlinearity is charged. Deterministic elimination
+does construct `A W B=J_r` for every binary rectangular matrix and can reduce an
+isolated full-rank square map to `1/n` effects. But for
+`a=W1 x`, `b=W2 x`, `c=a AND b`, the maximally favorable encoded projections
+force the exact product to evaluate `(W1 z1) AND (W2 z2)`, restoring both dense
+maps. The literal frozen micrograph is `1.0000305171x` baseline. This rejects
+that per-operator rank-normal implementation, not every globally co-designed
+graph encoding.
+
+Authority: `experiments/implicit_program_carrier_20260909/REPORT.md` and
+`results/e0_implicit_program_carrier_gate/summary.json`.
+
 ## IMPLICIT-DIRECT-QUERY-20260909 — complete image frames, duplicate transitions, and product-safe gauges
 
 Do not reopen the complete one-sided query-image dictionary by merely changing

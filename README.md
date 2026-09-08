@@ -21,7 +21,29 @@ Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total p
 
 ## Current research frontier — 2026-09-09
 
-[Implicit nonlinear direct-query frontier](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md)
+[Implicit program-carrier frontier](experiments/implicit_program_carrier_20260909/REPORT.md)
+executes three new ways of carrying checkpoint-dependent program information.
+An exact arbitrary-GF2 address-only alias router reaches `5.31166%` of the
+favorable leaf+add arithmetic slots, but its explicit 64-bit routing descriptors
+total `300.749874 GiB` across the 883 registered matrices. An exact query-time
+Patricia synthesizer reaches a `2.34365%` event fraction, but its preregistered
+64-bit edge labels alone are `1.99988x` the raw binary source on the 16,384-square
+control, before topology or memberships.
+
+The third construction drops the prior safe-gauge restriction entirely:
+deterministic elimination builds `A W B = J_r` for every rectangular GF(2)
+matrix, so an isolated full-rank dense map shrinks to `1/n` coefficient effects.
+When the transformed Hadamard is actually constructed and paid, however, the
+minimal two-projection graph becomes `(W1 z1) AND (W2 z2)` and restores both
+dense maps; the frozen micrograph fraction is `1.0000305171x` baseline.
+
+Canonical result:
+`results/e0_implicit_program_carrier_gate/summary.json`, SHA-256
+`f6f911fce9383ab6b82a1ac4ad5ef79f354a8ca58d79d21ff71193000c8d5070`;
+focused new validation is `11/11 PASS`. These are scoped carrier failures, not a
+general nonlinear data-structure impossibility and not target-hardware evidence.
+
+[Prior implicit nonlinear direct-query frontier](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md)
 now executes the next three frozen principles rather than stopping at the prior
 global route theorem. P1 constructs a genuine exact producer for every GF(2)
 matrix whose **current query bits directly generate the addresses** of compiled
