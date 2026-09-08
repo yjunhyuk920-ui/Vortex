@@ -1,25 +1,21 @@
 # Validation matrix — 2026-09-08
 
-[Report/replay](experiments/deferred_state_20260908/REPORT.md).
-[Prior matrix unchanged](docs/research/history/pre_deferred_state_20260908/VALIDATION_MATRIX.md).
+[Current proof/code/replay](experiments/native_row_frontier_20260908/REPORT.md).
+[Prior matrix unchanged](docs/research/history/pre_native_row_frontier_20260908/VALIDATION_MATRIX.md).
 
-| Item | Evidence and exact scope |
+|Item|Evidence and scope|
 |---|---|
-| Source | Actual BF16 coefficient/norm generation; frozen CPU unary ABI; original G/U/D files retained |
-| Lazy runtime | Exact expression+sound native range; same one-word Bernoulli RNG rule; state-bit-only history deletion |
-| Initial corpus |18syntheticmodels/36runs/4608steps/86016statecoordinates;0token,RNG,statebound/exactstate mismatch |
-| Debt |F+Z+P=T; exact flushF+Z=T; tiny deferred128allreplayed; moderate/wide127/128body afterflush |
-| Tail |Example perdecision bodycount p50=0,p95=6,max9; not measured time/token |
-| Ablation |Tiny nonlinear contribution changes0/14336statecoordinates; moderate36;wide12743 |
-| Suffix |Verified invariant B then native endpoint transport;12initial modelsfirsttested16;6wide refuse B |
-| Continuation |12recovered states/384steps originalbodyC vs Python agree; not acceleration |
-| Active follow-on |6labeledposthocmodels,1536lazy steps; nonlinear effect14224/14336;5suffix successesat16,onefails through128 |
-| Suffix cost |Fullweightread/2xlinearproducts perintervalstep;attemptedlengths total255 plus2invariantpasses |
-| Memory |1703424Bshared unary/index payload; pending arrays8*n*P plus objects; rawweights remain; tracemallocpartial/nondeterministic |
-| Scope |Contraction with2nativefixedpoints; same-token/non-equivalentstate;literalappend-onlyprefix distinction only |
-| Replay |17tests/152deterministicfiles;manifest49098e4052a39dfa942c980696d838161f81b32bc87a4df1a57cffae61a43c21;freshZIP/C rebuild match |
-| Full mission |O1-O6OPEN;CORE_ADMISSION=false;THEORY_STATUS=NOT_ESTABLISHED;HARDWARE_STATUS=NOT_TESTED |
-| HF/KV/categorical sampler/CUDA/405B/8GiB/4BQ4/TTFT |NOT TESTED / NOT CONSTRUCTED |
-| Actions/fullrepositorysuite |NOT RUN |
+|Constructor|Exact subtree interning, paid O(m^2 N) MST, sorted BF16 edits; source replay equals original W|
+|Runtime|Independent C source parser; first row then changed leaves/ancestor union; no original matrix pointer or output bank|
+|Native proof|Induction for finite BF16/separate FP32RNE products/fixed balanced +0padding/canonicalNaN/finalBF16; not arbitrary CUDA ABI|
+|Corpus|18matrices;360queries;80640FP32/BF16coordinates all returned,0mismatch;76692finite;378Fractionchecks|
+|Scalar scope|65280finite scalar inputs at4weights; separate from full-vector corpus|
+|Tests|14passed including nonpower2/signedzero/subnormal/overflow/metric/MST/parser|
+|Costs|512coherent source1.48-1.72%,1%perturb5.95-6.02%,random~200%; hot heap/index/constructor charges separate|
+|CPU observation|Post-hoc batch1 vs handwritten C only; favorable~20x/~7.7x warm median; random~1.6x slower; compile/load excluded|
+|Reproduction|147sciencefiles; manifest e3018ea424d0e3e2b6b91f20bc3f579eabc33e3f1df6635762d2ad17081eec42; fresh capsule restore and C rebuild passed|
+|Remote evidence|Checked source capsule plus report/restore; deterministic raw science regenerates. Original raw CPU samples, Korean detailed report and available logs user-ZIP-only|
+|Whole mission|O1-O6OPEN;CORE_ADMISSION=false;THEORY_STATUS=NOT_ESTABLISHED;targetHARDWARE_STATUS=NOT_TESTED|
+|Not tested|Publiccheckpoint/HF/fullKV/RNG/CUDA/405B/8GiB/native4BQ4/TTFT/fullrepositorysuite|
 
-Originalprereg andlaterfollow-on/activeplans separated. Independent C covers arithmetic/order,not independently computed SiLU/sigmoid. Exact-force/replay is charged safety behavior, not target success. Source/fullKoreanreport/frozenmanifest are in checked capsule; rawscience/logs in userZIP and deterministic science regenerates.
+Scientific acceptance and persistence are independent. No claim of three new qualifying principles, no universal low-coherence assumption, no full-model speed inference.

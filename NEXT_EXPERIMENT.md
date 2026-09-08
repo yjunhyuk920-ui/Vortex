@@ -1,13 +1,12 @@
 # Next constructive obligation — 2026-09-08
 
-Start from verified remote branch/SHA. Fixed mission/CTC/O1-O6 unchanged.
-[Current deferred-state construction](experiments/deferred_state_20260908/REPORT.md).
+Verify actual remote head and fixed mission/CTC/O1-O6. [Current producer](experiments/native_row_frontier_20260908/REPORT.md).
 
-Do not equate a certified token with an exact materialized successor state or zero future work. Exact expressions preserve state only while original information remains; deferred debt and tails must be paid. Bit-singleton WHOLE-state certificates permit deletion, but the easy zero-body corpus had a silent nonlinear branch. Use actual nonidentity wide-body effects when screening a new producer.
+Row-frontier source is an explicit exact native projection procedure for every finite matrix in its format, but fast only with small rawword/subtree disagreement. Realistic1%perturbations were only SYNTHETIC controls, not measured checkpoint structure. Random controls remain nearly full arithmetic and larger source. Preserve the difference between source bytes, hot heap traffic, CPU warm observations and full-cost target latency.
 
-Native suffix coalescence was actually certified in5/6later active-positive synthetic controls at firsttested16, but the interval producer reads all original coefficients and uses2xlinear products perstep; no successful cheap online scheduling policy was built. All attempts sum255steps plus2invariant checks. Do not scale the toy/suffix search or assume resets universally occur. Real contraction does not imply native bit equality, as two distinct rounded fixed points show. Literal KV-prefix differences do not rule out all behavioral quotients.
+Do not scale planted matrices, tune MST order or port this conditional routine to CUDA as the next core result. Need a cheap original-wide-body exact-effect producer when diverse coefficients differ almost everywhere, or a materially different principle, with finite constructor, original output/RNG/required state, all preparation and same-machine target upper bounds. A real checkpoint screen could establish a checkpoint-specific measurement, not arbitrary-mission closure.
 
-The next essential construction is a cheap original-wide-body/KV-dependent exact-effect or whole-state certificate producer (or materially different executable principle), built from unmodified checkpoint/current causal data WITHOUT full dense regeneration, assumed observability loss or free preprocessing. Preserve full original observer/RNG and all required continuations. Exact-force safety is not the no-free-fallback target achievement.
+Uncorrected row-result subtraction and rounded prefix subtraction fail the recorded native witnesses. They do not rule out all correction/range algorithms. Hamming/twin-width literature uses explicit structural hypotheses; a high local metric is not a lower bound against all circuits. Cheap native projection substitution does not automatically prove original HF ABI or complete KV/causal closure.
 
-Compare three materially different principles and complete O1-O6, not a collection of bounded diagnostics. No genericHF/state/memory/latency closure is established. The previous local error-transport work remains separate, not silently included in this commit.
-[Previous next unchanged](docs/research/history/pre_deferred_state_20260908/NEXT_EXPERIMENT.md).
+Three qualifying new generic principles and O1-O6 closure remain absent. Compare materially different actual producers; do not rename a rejected family or end the mission because one candidate failed. Prior deferred work/state-tail debt and all original scopes remain binding. Previous local native_cover is separate, not silently included.
+[Previous next unchanged](docs/research/history/pre_native_row_frontier_20260908/NEXT_EXPERIMENT.md).
