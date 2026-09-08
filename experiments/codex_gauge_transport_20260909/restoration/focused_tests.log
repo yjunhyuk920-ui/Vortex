@@ -1,0 +1,15 @@
+test_arbitrary_gf2_elimination_producer_is_exact (tests.test_direct_global_producer_gate.DirectGlobalProducerGateTests.test_arbitrary_gf2_elimination_producer_is_exact) ... ok
+test_audit_keeps_mission_open (tests.test_direct_global_producer_gate.DirectGlobalProducerGateTests.test_audit_keeps_mission_open) ... ok
+test_elimination_constructive_control_fails_90_percent_on_frozen_family (tests.test_direct_global_producer_gate.DirectGlobalProducerGateTests.test_elimination_constructive_control_fails_90_percent_on_frozen_family) ... ok
+test_global_route_gate_does_not_overclaim_target_rejection (tests.test_direct_global_producer_gate.DirectGlobalProducerGateTests.test_global_route_gate_does_not_overclaim_target_rejection) ... ok
+test_p1_reconstructive_code_fails_90_percent_gate (tests.test_direct_global_producer_gate.DirectGlobalProducerGateTests.test_p1_reconstructive_code_fails_90_percent_gate) ... ok
+test_registered_global_vector_route_single_tuple_span (tests.test_direct_global_producer_gate.DirectGlobalProducerGateTests.test_registered_global_vector_route_single_tuple_span) ... ok
+test_rounding_gadget_embeds_arbitrary_small_matvec_rows (tests.test_direct_global_producer_gate.DirectGlobalProducerGateTests.test_rounding_gadget_embeds_arbitrary_small_matvec_rows) ... ok
+test_rounding_gadget_has_zero_exact_sum_and_bit_output (tests.test_direct_global_producer_gate.DirectGlobalProducerGateTests.test_rounding_gadget_has_zero_exact_sum_and_bit_output) ... ok
+test_route_capacity_greedy_matches_tiny_exhaustive_allocation (tests.test_direct_global_producer_gate.DirectGlobalProducerGateTests.test_route_capacity_greedy_matches_tiny_exhaustive_allocation) ... ok
+test_route_capacity_requires_one_right_dimension_per_block (tests.test_direct_global_producer_gate.DirectGlobalProducerGateTests.test_route_capacity_requires_one_right_dimension_per_block) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.095s
+
+OK

@@ -1,5 +1,23 @@
 # Next constructive obligation — 2026-09-09
 
+## Independent native-gauge obligation update
+
+[Audit and constructed gate](experiments/codex_gauge_transport_20260909/REPORT.md) require original logical
+leaf/reduction schedule transport for native column permutations. Independent
+field-linear gauges preserving raw Hadamard are common-permutation monomial
+triples, but this does not exclude non-coordinatewise opaque-bit encodings with
+explicit cheap conjugated gates. A butterfly native gate is now constructed;
+its plain-ABI encodes/decodes and every XOR/copy are paid, and it adds work to
+the original Hadamard gate.
+
+The actual missing core remains the arbitrary dense projection
+`E F_W E^-1` (or a distinct direct global producer), without first executing F_W
+in full. Do not count the new gate-only state proof, its replay, or a summed
+per-output rank as a whole-model shortcut. No checkpoint-dependent E with a
+cheap inverse AND target-feasible transformed native dense projection has been
+constructed. Existing source/advice/dense-delta constraints below remain binding.
+405B hardware is unavailable per user; theory remains OPEN independently.
+
 Verify actual remote head and fixed mission/CTC/O1-O6. [Current frontier](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md).
 
 The implicit-direct-query three-principle round is now executed. It produced one

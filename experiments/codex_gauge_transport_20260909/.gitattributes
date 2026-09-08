@@ -1,0 +1,2 @@
+# Preserve evidence bytes, including the explicit CRLF scientific JSON format.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -2009,3 +2009,18 @@ coefficient cap, bounded search, and perfect-future-block grants.
 
 The authoritative arm executed real causal draft prefill/generation, tokenizer bridge, real target block verification, mismatch repair, real draft-cache crop/replay or rebuild, exact terminal target KV comparison, and same-run latency/N/A accounting. No impossible promotion grant was used.
 <!-- EXP-102A:END -->
+
+## D-CODEX-GAUGE-TRANSPORT-20260909 — construct scoped exact native procedures
+
+Accept the stated field monomial-triple lemma with its finite coefficient
+proof/counterexample constructor. Require original native logical schedule
+transport for column permutations. Retain the explicit opaque-bit butterfly
+native Hadamard decoder as a bounded O3 reference, with every transform and
+plain-ABI boundary cost charged. Reject neither all nonmonomial encodings nor
+all shared decoders using a narrower automorphism/rank result.
+
+No arbitrary dense projection shortcut, three qualifying new principles or
+full mission theorem was delivered. O1-O5 OPEN; O6 PARTIAL; target NOT_TESTED.
+The user reports hardware unavailable. Original shared checkout was left
+untouched after a concurrent-head guard; work was isolated on the same remote
+research branch. [Authority](experiments/codex_gauge_transport_20260909/REPORT.md).

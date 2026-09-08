@@ -1482,3 +1482,20 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - `UNVERIFIED`: 405B scaling, target SSD/H2D, target GPU kernels, physical 8-GiB plan, native 4B-Q4 p50/p95.
 - No compression ratio, peak utilization, perfect selector, future block, or zero-cost component is granted.
 <!-- EXP-102A:END -->
+
+## A-CODEX-GAUGE-TRANSPORT-20260909
+
+- Native permutation alone preserves a dense result: FALSE without original
+  logical reduction/rounding schedule transport in the declared ABI.
+- Independent field gauges preserving raw Hadamard must be equal: FALSE over
+  general fields; they share a permutation but may have independent nonzero
+  diagonal scales. Over GF2 they are the same permutation.
+- Non-permutation encodings necessarily have quadratic transformed gates:
+  NOT ESTABLISHED and contradicted as a blanket claim by the explicit opaque-bit
+  butterfly gate. Its arbitrary native dense projection remains unconstructed.
+- Individual output bilinear ranks may be summed against shared products:
+  FALSE; the frozen GF2 control uses four shared products while ranks sum to 12.
+- Current 405B hardware availability: UNAVAILABLE_USER_REPORTED; inventory is
+  not a model/latency test. Complete theory and hardware goals remain open.
+
+[Proof and costs](experiments/codex_gauge_transport_20260909/REPORT.md).

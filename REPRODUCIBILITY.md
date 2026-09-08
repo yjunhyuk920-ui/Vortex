@@ -1,5 +1,23 @@
 # Reproducibility
 
+## Independent native-gauge package — 2026-09-09
+
+From `experiments/codex_gauge_transport_20260909` with Python 3.10+ standard library:
+
+```
+python -m unittest test_producer -v
+python run_audit.py --output-dir <new-empty-directory>
+python run_native_bit_gauge.py --output-dir <another-new-empty-directory>
+```
+
+Canonical results are `results/summary.json` and
+`bit_gauge_results_v2/summary.json` inside that experiment. Initial bit-gauge
+cost output is preserved separately; v2 adds boundary/copy accounting. Source,
+preregistrations, raw cases, independent review and checksums accompany the
+[scoped report](experiments/codex_gauge_transport_20260909/REPORT.md). Full target/HF validation was not performed.
+The original direct-global canonical JSON remains unchanged; its fresh replay
+is preserved under the experiment's `restoration/` subdirectory.
+
 ## Objective
 
 An independent researcher or new session must determine exactly what ran, what did not run, and how every result was produced from repository state and pinned external checkpoints.

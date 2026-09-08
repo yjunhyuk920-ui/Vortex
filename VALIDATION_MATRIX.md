@@ -1,6 +1,26 @@
 # Validation matrix — 2026-09-09
 
+## Independent native-gauge validation — 2026-09-09
+
+| Item | Actual evidence and scope |
+|---|---|
+| Distinct field gauges | Finite certificate/basis-witness constructor; 30,564 invertible A,B pairs, forced C, zero classification disagreement; universal proof separate |
+| Native schedule transport | 144 fixed cases / 288 output words, zero transported mismatch; naive permutation differs in 48 cases under declared balanced FP32 ABI |
+| Shared decoder | GF2 four-output control: per-output ranks sum 12, actual shared products 4 plus 8 XORs; 256 cases exact |
+| Native opaque-bit gate | 65,536 roundtrip vectors, 144 product vectors / 576 words, 8 known word controls, 20 gate-state steps; zero mismatch |
+| Focused tests | 7 tests PASS; no complete repository/HF/target suite claim |
+| Original frontier replay | Separately reran 10 direct-global tests and regenerated canonical a907cb1d... byte-identically before concurrent head advanced |
+| Full mission | O1-O5 OPEN, O6 PARTIAL; no arbitrary dense-work removal, full HF/KV/RNG, GPU, 405B, native4BQ4 latency or TTFT evidence |
+
+[Proof/source/raw results](experiments/codex_gauge_transport_20260909/REPORT.md). Plain-ABI boundary transforms are
+explicitly added in the canonical bit-gauge v2 cost ledger; packed algorithmic
+word storage is not a measured physical Python/GPU peak.
+
 [Current implicit direct-query proof/code/result](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md).
+The implicit-direct-query rows below preserve the preceding `9259497` execution
+receipt. Its 15-test result and "deliberately not rerun" list belong to that
+execution, not to the independent audit above, which reran 10 older tests and
+its own 7 focused tests.
 [Prior direct-global producer proof/code/result](experiments/direct_global_producer_20260909/REPORT.md).
 [Prior causal/global proof/code/result](experiments/causal_global_bridge_20260908/REPORT.md).
 [Prior nonlinear router proof/code/result](experiments/nonlinear_router_frontier_20260908/REPORT.md).

@@ -1,5 +1,22 @@
 # Research state — 2026-09-09
 
+## Independent native-gauge construction — 2026-09-09
+
+[Scoped report](experiments/codex_gauge_transport_20260909/REPORT.md): an actual layout compiler now transports the
+original product/reduction schedule through column permutations. A balanced
+FP32 witness returns 0 originally and 1 under naive permutation; transported
+schedule returns 0. An explicit opaque-word butterfly decoder also computes
+the original native Hadamard gate in encoded state with `3*n*log2(n)/2` XORs
+plus n native products. This limits an overbroad non-permutation-gauge no-go;
+it **does not remove arbitrary dense projection work**. All original dense
+coefficients/operations remain in the literal projection route.
+
+O1-O5 remain OPEN, O6 PARTIAL; THEORY_STATUS=NOT_ESTABLISHED,
+HARDWARE_STATUS=NOT_TESTED, CORE_ADMISSION=false. The user confirms that current
+405B-capable hardware is unavailable. The actual Codex persistent goal remains
+unachieved. This is a bounded independent audit of concurrent preregistration
+`dab5774`, not a completed new three-principle core round.
+
 Fixed mission and CTC unchanged. [Current frontier](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md).
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED

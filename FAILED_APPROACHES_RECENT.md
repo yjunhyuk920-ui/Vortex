@@ -1,5 +1,20 @@
 # Recent Failed and Demoted Approaches
 
+## CODEX-GAUGE-TRANSPORT-20260909 — native schedule and rejection scope
+
+Do not claim a native-exact dense column permutation from `W'=Pout W Pin^-1`
+alone: original logical leaves, tree/order and rounding points must move too.
+The declared balanced FP32 `[2^24,1,-2^24,0]` witness returns 0 originally and 1
+in a naive permuted tree. A finite transported-schedule reference fixes that
+specific defect but retains 100% original dense work.
+
+Do not infer a universal cheap-transformed-gate impossibility from the raw
+coordinatewise field automorphism lemma or summed individual output ranks.
+An explicit native opaque-bit butterfly conjugation has a paid O(n log n)
+gate decoder; the arbitrary native dense projection is still unconstructed.
+This is a scope correction, not a rejection of all global encodings or an
+admitted new core. [Evidence](experiments/codex_gauge_transport_20260909/REPORT.md).
+
 Continuation of `FAILED_APPROACHES.md`. This is a permanent anti-repetition register. Revisit an entry only with a mechanism that directly addresses the recorded failure and a stronger preregistered falsification.
 
 ## IMPLICIT-DIRECT-QUERY-20260909 — complete image frames, duplicate transitions, and product-safe gauges

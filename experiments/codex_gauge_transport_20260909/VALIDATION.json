@@ -1,0 +1,30 @@
+{
+  "README_CURRENT": true,
+  "added_local_links_checked": 18,
+  "canonical_audit_summary_sha256": "c16aad32b6749abc0a45a82f5fc3b4edbbede8326e602f0addbec12c62fae7d2",
+  "canonical_bit_gauge_v2_summary_sha256": "2d799869355efcb7d9607c4808590f1c3f1af27c3ff88b724880338026320ea2",
+  "focused_exit_code": 0,
+  "focused_tests": 7,
+  "full_HF_KV_RNG_executed": false,
+  "full_repository_suite_executed": false,
+  "git_byte_preservation": {
+    "after_fix": "PASS: raw and clean both fee3ce16377d7e15b499a5b1bce00c189446f9ff",
+    "before_fix": "FAIL: fee3ce16377d7e15b499a5b1bce00c189446f9ff != 067ace2b54f9e02b7fc4929411eccc3d5c5e2233",
+    "scope": "package-local -text; explicit CRLF generators; CR-at-EOL whitespace semantics"
+  },
+  "git_diff_check": "PASS",
+  "hardware_status": "NOT_TESTED",
+  "link_errors": [],
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "regenerated_files_byte_identical": 7,
+  "source_sha256": {
+    "native_bit_gauge.py": "c08a72fbd39d7219b8e3534b3e5173e32a75db3ddf7b26422543504dcdbf31fe",
+    "producer.py": "daa777f3b314f25244ecb19cc2999d475f68e4caeb944e42da879b83313c7ceb",
+    "run_audit.py": "1730281f29a7a7abb199ade4e2f56c3bb3626b25fadc1c1737c0e9f2e10f1214",
+    "run_native_bit_gauge.py": "8502491ef88bf44a76a61e39628b08ad337fdfa951e2dd27d5e79aa0f2d659c7",
+    "test_producer.py": "a0ffb9a1f4d8160da8c57b0da9636a3e0c6dd31145a106873a366179b8d7cab0",
+    "verify_bytes.py": "c191319da83555290b3a5cc4119d384a5bbb00fb85b47cee2753f7fdda7e0d0e"
+  },
+  "target_hardware_executed": false,
+  "theory_status": "NOT_ESTABLISHED"
+}

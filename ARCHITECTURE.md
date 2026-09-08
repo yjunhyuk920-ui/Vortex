@@ -1,5 +1,22 @@
 # VORTEX Architecture
 
+## Scoped native-gauge mechanisms — 2026-09-09
+
+See [experiments/codex_gauge_transport_20260909/REPORT.md](experiments/codex_gauge_transport_20260909/REPORT.md). Two finite reference mechanisms exist:
+
+```
+permuted dense layout + inverse-column leaf schedule -> original reduction tree
+opaque-word butterfly E -> E(native_mul(E^-1 z, E^-1 w))
+```
+
+The first retains every original coefficient/product/addition. The second is
+a native Hadamard gate with three explicit transforms and n original products,
+plus all boundary transforms/copies/indices. It is not an arbitrary dense
+projection. A field-linear coordinatewise-gate automorphism lemma does not
+forbid all such bit encodings; its exact scope is monomial gauge triples.
+Per-output bilinear ranks cannot be summed against shared intermediate products.
+The whole-body native/KV/RNG compiler and sufficient target-cost bound remain absent.
+
 ## Implicit nonlinear direct-query frontier — 2026-09-09
 
 See `experiments/implicit_nonlinear_direct_query_20260909/REPORT.md`.

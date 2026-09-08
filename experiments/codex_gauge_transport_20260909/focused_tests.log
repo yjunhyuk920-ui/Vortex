@@ -1,0 +1,12 @@
+test_bad_permutation_is_not_admitted (test_producer.GaugeAuditTests.test_bad_permutation_is_not_admitted) ... ok
+test_column_permutation_is_not_native_reassociation (test_producer.GaugeAuditTests.test_column_permutation_is_not_native_reassociation) ... ok
+test_cost_does_not_claim_native_arithmetic_removal (test_producer.GaugeAuditTests.test_cost_does_not_claim_native_arithmetic_removal) ... ok
+test_dense_gauge_returns_real_basis_witness (test_producer.GaugeAuditTests.test_dense_gauge_returns_real_basis_witness) ... ok
+test_original_tree_slots_survive_nonpower2_and_row_order (test_producer.GaugeAuditTests.test_original_tree_slots_survive_nonpower2_and_row_order) ... ok
+test_separate_diagonal_gauges_are_allowed (test_producer.GaugeAuditTests.test_separate_diagonal_gauges_are_allowed) ... ok
+test_signed_zero_storage_is_transportable_in_declared_abi (test_producer.GaugeAuditTests.test_signed_zero_storage_is_transportable_in_declared_abi) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

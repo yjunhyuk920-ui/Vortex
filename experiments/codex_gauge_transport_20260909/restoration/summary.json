@@ -1,0 +1,24 @@
+{
+  "kind": "RESTORATION_AND_REPLAY_NOT_A_NEW_CORE_EXPERIMENT",
+  "base_head": "9fad90e91bccc026db5dacd6286e6c17d58f9bc1",
+  "branch": "research/nonlinear-router-frontier-20260908",
+  "interpreter": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "tests": {
+    "suite": "tests.test_direct_global_producer_gate",
+    "count": 10,
+    "exit_code": 0
+  },
+  "canonical_sha256": "a907cb1dbd40b9a7bf71b88a159cf0358c4d3b0656470e71e26f37e2c9185ffe",
+  "regenerated_sha256": "a907cb1dbd40b9a7bf71b88a159cf0358c4d3b0656470e71e26f37e2c9185ffe",
+  "byte_identical": true,
+  "original_worktree_unchanged_during_replay": true,
+  "new_qualifying_principles": 0,
+  "new_producer_constructed": false,
+  "new_scientific_gate_executed": false,
+  "theory_status": "NOT_ESTABLISHED",
+  "hardware_status": "NOT_TESTED",
+  "target_hardware_availability": "UNAVAILABLE_USER_REPORTED",
+  "core_admission": false,
+  "O1_O5": "OPEN",
+  "O6": "PARTIAL"
+}

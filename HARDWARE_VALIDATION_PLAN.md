@@ -1,5 +1,14 @@
 # Hardware Validation Plan
 
+## User-confirmed target resource absence — 2026-09-09
+
+The user states there is currently no hardware able to host 405B. An older
+private-host identification below is not present target access or readiness.
+An inventory-only local query reports MX570 A, 2,048 MiB; no model or target
+CUDA/VRAM/latency run follows. The independent native-gauge work is CPU reference
+code only. Target hardware stays NOT_TESTED; continue theory without relaxing
+the mission. [Scope](experiments/codex_gauge_transport_20260909/REPORT.md).
+
 ## Status
 
 Phase D is **NOT TESTED**.
