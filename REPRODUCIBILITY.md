@@ -6,6 +6,18 @@ An independent researcher or new session must determine exactly what ran, what d
 
 Every summary separates `MEASURED / DERIVED / PROJECTED / UNVERIFIED`. Missing target-hardware fields remain `NOT TESTED`.
 
+## Native global transition — 2026-09-08
+
+See experiments/native_global_transition_20260908/HANDOFF.md. Actual pinned original
+SmolLM2 model is reacquired with upstream SHA verification; raw weights/venv are
+ignored. Python3.12,torch2.8.0+cpu,transformers4.55.4 are frozen. Run verify.py with
+a new --replay directory; original3510file manifest cannot be overwritten.
+14unit tests and full real-model replay passed. JSONbuild/load timing3fields are
+excluded from deterministichashes; original timing measurements remain preserved.
+Initial mask-tracing failure,source snapshots,run_v2,explicit-maskrun_v3 and the
+cross-protocol comparison are retained. No nativeGPU/405B/fullrepository suite ran.
+
+
 ## Output-envelope public-weight screen — 2026-09-08
 
 From experiments/output_envelope_20260908 run portable_replay.py --output with a

@@ -1,0 +1,27 @@
+{
+  "base": "35e0a2eb1d9d64b20d17bd6e0c4afba07d3d70d3",
+  "errors": [],
+  "frozen_science_count": 3510,
+  "history_comparison": "literal original Git blob bytes, no normalization",
+  "matrix_cost_and_root_claims_checked": true,
+  "policy_comparison": "unchanged Git-clean blob identities",
+  "policy_unchanged_sha256": {
+    "AGENTS.md": "bc270a438e70393dddd8a0372930ae6f465643587975f479fcb5801a76850f5b",
+    "CREATIVE_RESEARCH_MANDATE.md": "7a487055943bc6696c7e7e47639ddf26ceb674cdd9c5f0966c68773c27fbfcff",
+    "MISSION_AND_WORKING_PRINCIPLES.md": "d9f12dde83364d6c9f83f437aa5291cd1c17e83c200c0c19011ccb9649df9317",
+    "docs/CONSTRUCTIVE_THEORY_CONTRACT.md": "63e7797e50cc8fa0e1e4c10293d999ec9e8078c321a53b701eb609730e088f8f",
+    "docs/PROOF_FIRST_CONTRACT.md": "b6fe2cebc5610da90f8a2e2ed73bb67c8e532f4ec0e4cb83b534ba3d74b56bcd",
+    "docs/REPOSITORY_COMMIT_AND_HANDOFF_MANDATE.md": "e649d79c5833316b27f079910c18ffb73ef54127f08ec9622b47557715741ab6",
+    "docs/RESEARCH_EFFICIENCY_CONTRACT.md": "6599a41f32bc15081ed30b5bfa079b866de6f962189bf8eaf70ac03d84ae3b09",
+    "docs/WORK_SESSION_PROTOCOL.md": "8dd5dc85b3b2b322c1da8aa93a224ab455e68cdde416fa0609b8433f54f37fac"
+  },
+  "previous_entry_sha256": {
+    "NEXT_EXPERIMENT.md": "8853d1d846770ed90ea5c24848bd19ae8b83d55a6397d45d5991cee59a4094bb",
+    "README.md": "0a0fda569a7b12924fd2b9db8839fa6e4f3947ab458be82edd890dc3fabd0d70",
+    "RESEARCH_STATE.md": "4337921ce3392193d5881d96c1dae6147d058f1a286ac20b0b7b3c2a0d6f7ce0",
+    "VALIDATION_MATRIX.md": "538100406c49d80c4705be4ea8371940f542e2c67a0e7712d1668c84466ab488"
+  },
+  "relative_links_checked": 26,
+  "target_hardware": "NOT_TESTED",
+  "whole_repository_runtime_suite": "NOT_TESTED"
+}

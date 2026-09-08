@@ -1,6 +1,23 @@
 # Validation matrix — 2026-09-08
 
-[Current proof/code/replay](experiments/output_envelope_20260908/docs/REPORT_KO.md).
+[Current native proof/code/replay](experiments/native_global_transition_20260908/REPORT.md).
+[Pre-native-global matrix unchanged](docs/research/history/pre_native_global_transition_20260908/VALIDATION_MATRIX.md).
+
+|Current item|Actual evidence and scope|
+|---|---|
+|Original|Complete pinned SmolLM2-135M BF16 file269060552B, upstream LFS SHA verified; torch2.8.0+cpu/HF4.55.4|
+|A|Guarded make_fx graph, exact pure CSE/DCE,61live roots, serialized/reloaded original tensor-name bindings|
+|B|Actual byte/layout cache encoding and decoding; full original forward every step, costs charged|
+|C|Actual TOP/singleton root-demand evaluation,0backward narrowing,no supplied desired answers|
+|Generation|3fixed prefixes,12forward steps perarm; own native sampler;589824logits/760320KV coordinates allmatch|
+|Additional roots|Full prefill196608logits plus60KVroots match; shape/stride/offset/cachefields/RNG match|
+|Mask clarification|Explicitall-one mask/original auto-pad0 vs old automaticmask reference, unchanged outputs/RNG/sequences|
+|Costs|A/C100%matrixMACs; A5/C4captureforwards; B12fullforwards+5114880BmincodecRW; program11775553B+originalweights|
+|Scope witness|Direct nativeRoPE inverse fails144/211/263 of768keycoords at synthetic positions1/7/31; not allcharts|
+|Tests/replay|14tests;3510fixedsciencefiles replay;3volatiletimefields excluded, originaltimings retained|
+|OPEN|Universal O1-O6,alllegal masks/context/platforms,CUDA/405B/8GiB/native4BQ4/TTFT/fullrepositorysuite|
+
+## Prior packet screen (unchanged scope)
 [Prior matrix unchanged](docs/research/history/pre_output_envelope_20260908/VALIDATION_MATRIX.md).
 
 |Item|Evidence and scope|

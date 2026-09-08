@@ -1,0 +1,63 @@
+{
+  "does_not_reject_raw_key_preservation_or_all_state_encodings": true,
+  "native_inverse_chart": "REJECTED_IF_ANY_MISMATCH",
+  "rows": [
+    {
+      "key_coordinates": 768,
+      "native_inverse_mismatches": 0,
+      "native_orthogonal_score_mismatches": 0,
+      "position": 0,
+      "scope": "observed real keys/queries,synthetic repeated rotary position;not every chart rejected",
+      "score_coordinates": 144,
+      "witness": null
+    },
+    {
+      "key_coordinates": 768,
+      "native_inverse_mismatches": 144,
+      "native_orthogonal_score_mismatches": 30,
+      "position": 1,
+      "scope": "observed real keys/queries,synthetic repeated rotary position;not every chart rejected",
+      "score_coordinates": 144,
+      "witness": {
+        "flat_index": 0,
+        "inverse_key": -3.40625,
+        "inverse_word": 49242,
+        "raw_key": -3.421875,
+        "raw_word": 49243,
+        "rotated_key": -1.3671875
+      }
+    },
+    {
+      "key_coordinates": 768,
+      "native_inverse_mismatches": 211,
+      "native_orthogonal_score_mismatches": 21,
+      "position": 7,
+      "scope": "observed real keys/queries,synthetic repeated rotary position;not every chart rejected",
+      "score_coordinates": 144,
+      "witness": {
+        "flat_index": 0,
+        "inverse_key": -3.4375,
+        "inverse_word": 49244,
+        "raw_key": -3.421875,
+        "raw_word": 49243,
+        "rotated_key": -2.203125
+      }
+    },
+    {
+      "key_coordinates": 768,
+      "native_inverse_mismatches": 263,
+      "native_orthogonal_score_mismatches": 29,
+      "position": 31,
+      "scope": "observed real keys/queries,synthetic repeated rotary position;not every chart rejected",
+      "score_coordinates": 144,
+      "witness": {
+        "flat_index": 1,
+        "inverse_key": 0.357421875,
+        "inverse_word": 16055,
+        "raw_key": 0.35546875,
+        "raw_word": 16054,
+        "rotated_key": -0.033203125
+      }
+    }
+  ]
+}

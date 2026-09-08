@@ -1,0 +1,4075 @@
+{
+  "comparisons": [
+    {
+      "demand_errors": [],
+      "graph_errors": [],
+      "packed_state_errors": [],
+      "seed": 260908
+    },
+    {
+      "demand_errors": [],
+      "graph_errors": [],
+      "packed_state_errors": [],
+      "seed": 260909
+    },
+    {
+      "demand_errors": [],
+      "graph_errors": [],
+      "packed_state_errors": [],
+      "seed": 260910
+    }
+  ],
+  "core_admission": false,
+  "demand_constructor_original_forward_calls": 4,
+  "demand_constructor_seconds": 14.695511499999157,
+  "demand_records": [
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 4125,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3338,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 211,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 61,
+        "aten.clone.default": 180,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.ones.default": 30,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.scalar_tensor.default": 60,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.tril.default": 30,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574,
+        "aten.where.self": 30
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    },
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 3945,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3098,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 181,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 121,
+        "aten.clone.default": 60,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    },
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 3945,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3098,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 181,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 121,
+        "aten.clone.default": 60,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    },
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 3945,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3098,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 181,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 121,
+        "aten.clone.default": 60,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    },
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 4125,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3338,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 211,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 61,
+        "aten.clone.default": 180,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.ones.default": 30,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.scalar_tensor.default": 60,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.tril.default": 30,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574,
+        "aten.where.self": 30
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    },
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 3945,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3098,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 181,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 121,
+        "aten.clone.default": 60,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    },
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 3945,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3098,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 181,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 121,
+        "aten.clone.default": 60,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    },
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 3945,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3098,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 181,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 121,
+        "aten.clone.default": 60,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    },
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 4125,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3338,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 211,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 61,
+        "aten.clone.default": 180,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.ones.default": 30,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.scalar_tensor.default": 60,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.tril.default": 30,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574,
+        "aten.where.self": 30
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    },
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 3945,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3098,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 181,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 121,
+        "aten.clone.default": 60,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    },
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 3945,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3098,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 181,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 121,
+        "aten.clone.default": 60,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    },
+    {
+      "backward_narrowings": 0,
+      "demand_stack_visits": 3945,
+      "domain_kind": "TOP or exact native singleton",
+      "matrix_calls": 272,
+      "native_calls": 3098,
+      "operator_histogram": {
+        "aten._safe_softmax.default": 30,
+        "aten._to_copy.default": 245,
+        "aten._unsafe_view.default": 211,
+        "aten.add.Tensor": 181,
+        "aten.bmm.default": 61,
+        "aten.cat.default": 121,
+        "aten.clone.default": 60,
+        "aten.cos.default": 1,
+        "aten.embedding.default": 1,
+        "aten.expand.default": 183,
+        "aten.mean.dim": 61,
+        "aten.mm.default": 211,
+        "aten.mul.Scalar": 60,
+        "aten.mul.Tensor": 274,
+        "aten.neg.default": 60,
+        "aten.pow.Tensor_Scalar": 61,
+        "aten.rsqrt.default": 61,
+        "aten.silu.default": 30,
+        "aten.sin.default": 1,
+        "aten.slice.Tensor": 126,
+        "aten.t.default": 211,
+        "aten.transpose.int": 151,
+        "aten.unsqueeze.default": 123,
+        "aten.view.default": 574
+      },
+      "state_or_output_oracle": false,
+      "supplied_desired_output_bits": 0
+    }
+  ],
+  "full_prefill_logit_coordinates": 196608,
+  "graph_programs": [
+    {
+      "after": {
+        "calls": 3340,
+        "logical_last_use_peak_bytes": 57113088,
+        "logical_native_result_bytes": 284470384,
+        "matrix_calls": 272,
+        "matrix_macs": 538472576,
+        "matrix_rhs_payload_bytes": 269512720,
+        "nodes": 3616
+      },
+      "before": {
+        "calls": 3370,
+        "logical_last_use_peak_bytes": 57113088,
+        "logical_native_result_bytes": 284479024,
+        "matrix_calls": 272,
+        "matrix_macs": 538472576,
+        "matrix_rhs_payload_bytes": 269512720,
+        "nodes": 3646
+      },
+      "build_seconds": 3.169033899999704,
+      "capture_original_forward_calls": 1,
+      "index": 0,
+      "removed_cse": 0,
+      "removed_dead": 30,
+      "serialized_program_bytes": 1374313,
+      "signature": {
+        "const": {
+          "dict": [
+            [
+              "use_cache",
+              true
+            ],
+            [
+              "return_dict",
+              true
+            ]
+          ]
+        },
+        "mask_guard_input_bytes": 0,
+        "meta": [
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1,
+              4
+            ],
+            "storage_offset": 0,
+            "stride": [
+              4,
+              1
+            ]
+          }
+        ],
+        "names": [
+          "input_ids"
+        ],
+        "past_layers": 0
+      }
+    },
+    {
+      "after": {
+        "calls": 3338,
+        "logical_last_use_peak_bytes": 56814720,
+        "logical_native_result_bytes": 283870128,
+        "matrix_calls": 272,
+        "matrix_macs": 453537920,
+        "matrix_rhs_payload_bytes": 269512720,
+        "nodes": 3616
+      },
+      "before": {
+        "calls": 3368,
+        "logical_last_use_peak_bytes": 56814720,
+        "logical_native_result_bytes": 283878768,
+        "matrix_calls": 272,
+        "matrix_macs": 453537920,
+        "matrix_rhs_payload_bytes": 269512720,
+        "nodes": 3646
+      },
+      "build_seconds": 3.285936600000241,
+      "capture_original_forward_calls": 1,
+      "index": 1,
+      "removed_cse": 0,
+      "removed_dead": 30,
+      "serialized_program_bytes": 1373958,
+      "signature": {
+        "const": {
+          "dict": [
+            [
+              "inputs_embeds",
+              null
+            ],
+            [
+              "attention_mask",
+              null
+            ],
+            [
+              "logits_to_keep",
+              1
+            ],
+            [
+              "use_cache",
+              true
+            ],
+            [
+              "return_dict",
+              true
+            ]
+          ]
+        },
+        "mask_guard_input_bytes": 32,
+        "meta": [
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              4
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1,
+              4
+            ],
+            "storage_offset": 0,
+            "stride": [
+              4,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1,
+              4
+            ],
+            "storage_offset": 0,
+            "stride": [
+              4,
+              1
+            ]
+          }
+        ],
+        "names": [
+          "cache_position",
+          "input_ids",
+          "position_ids"
+        ],
+        "past_layers": 0
+      }
+    },
+    {
+      "after": {
+        "calls": 3098,
+        "logical_last_use_peak_bytes": 56837760,
+        "logical_native_result_bytes": 276547704,
+        "matrix_calls": 272,
+        "matrix_macs": 134652704,
+        "matrix_rhs_payload_bytes": 269650948,
+        "nodes": 3436
+      },
+      "before": {
+        "calls": 3128,
+        "logical_last_use_peak_bytes": 56837760,
+        "logical_native_result_bytes": 276550404,
+        "matrix_calls": 272,
+        "matrix_macs": 134652704,
+        "matrix_rhs_payload_bytes": 269650948,
+        "nodes": 3466
+      },
+      "build_seconds": 3.4318991999998616,
+      "capture_original_forward_calls": 1,
+      "index": 2,
+      "removed_cse": 0,
+      "removed_dead": 30,
+      "serialized_program_bytes": 1275554,
+      "signature": {
+        "const": {
+          "dict": [
+            [
+              "inputs_embeds",
+              null
+            ],
+            [
+              "attention_mask",
+              null
+            ],
+            [
+              "logits_to_keep",
+              1
+            ],
+            [
+              "use_cache",
+              true
+            ],
+            [
+              "return_dict",
+              true
+            ]
+          ]
+        },
+        "mask_guard_input_bytes": 40,
+        "meta": [
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1,
+              1
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1,
+              1
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              4,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              768,
+              64,
+              192,
+              1
+            ]
+          }
+        ],
+        "names": [
+          "cache_position",
+          "input_ids",
+          "position_ids"
+        ],
+        "past_layers": 30
+      }
+    },
+    {
+      "after": {
+        "calls": 3098,
+        "logical_last_use_peak_bytes": 56860800,
+        "logical_native_result_bytes": 277497744,
+        "matrix_calls": 272,
+        "matrix_macs": 134687264,
+        "matrix_rhs_payload_bytes": 269789188,
+        "nodes": 3436
+      },
+      "before": {
+        "calls": 3128,
+        "logical_last_use_peak_bytes": 56860800,
+        "logical_native_result_bytes": 277500984,
+        "matrix_calls": 272,
+        "matrix_macs": 134687264,
+        "matrix_rhs_payload_bytes": 269789188,
+        "nodes": 3466
+      },
+      "build_seconds": 3.232469499999752,
+      "capture_original_forward_calls": 1,
+      "index": 3,
+      "removed_cse": 0,
+      "removed_dead": 30,
+      "serialized_program_bytes": 1275554,
+      "signature": {
+        "const": {
+          "dict": [
+            [
+              "inputs_embeds",
+              null
+            ],
+            [
+              "attention_mask",
+              null
+            ],
+            [
+              "logits_to_keep",
+              1
+            ],
+            [
+              "use_cache",
+              true
+            ],
+            [
+              "return_dict",
+              true
+            ]
+          ]
+        },
+        "mask_guard_input_bytes": 48,
+        "meta": [
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1,
+              1
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1,
+              1
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              5,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              960,
+              320,
+              64,
+              1
+            ]
+          }
+        ],
+        "names": [
+          "cache_position",
+          "input_ids",
+          "position_ids"
+        ],
+        "past_layers": 30
+      }
+    },
+    {
+      "after": {
+        "calls": 3098,
+        "logical_last_use_peak_bytes": 56883840,
+        "logical_native_result_bytes": 278447784,
+        "matrix_calls": 272,
+        "matrix_macs": 134721824,
+        "matrix_rhs_payload_bytes": 269927428,
+        "nodes": 3436
+      },
+      "before": {
+        "calls": 3128,
+        "logical_last_use_peak_bytes": 56883840,
+        "logical_native_result_bytes": 278451564,
+        "matrix_calls": 272,
+        "matrix_macs": 134721824,
+        "matrix_rhs_payload_bytes": 269927428,
+        "nodes": 3466
+      },
+      "build_seconds": 3.2625050999995437,
+      "capture_original_forward_calls": 1,
+      "index": 4,
+      "removed_cse": 0,
+      "removed_dead": 30,
+      "serialized_program_bytes": 1275554,
+      "signature": {
+        "const": {
+          "dict": [
+            [
+              "inputs_embeds",
+              null
+            ],
+            [
+              "attention_mask",
+              null
+            ],
+            [
+              "logits_to_keep",
+              1
+            ],
+            [
+              "use_cache",
+              true
+            ],
+            [
+              "return_dict",
+              true
+            ]
+          ]
+        },
+        "mask_guard_input_bytes": 56,
+        "meta": [
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1,
+              1
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.int64",
+            "shape": [
+              1,
+              1
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          },
+          {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              1,
+              3,
+              6,
+              64
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1152,
+              384,
+              64,
+              1
+            ]
+          }
+        ],
+        "names": [
+          "cache_position",
+          "input_ids",
+          "position_ids"
+        ],
+        "past_layers": 30
+      }
+    }
+  ],
+  "load_seconds_observed": 0.13203560000056314,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "prefill_errors": [],
+  "proof_scope": "guarded pinned tensor semantics, finite observed sequences; arbitrary length/CUDA/other checkpoints OPEN",
+  "reference_decode_forward_steps": 12,
+  "reference_generation_logit_coordinates": 589824,
+  "reference_kv_coordinates": 760320,
+  "source_pin": "HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "storage_records": [
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 0,
+      "encode_payload_bytes": 92160,
+      "minimum_codec_read_write_bytes": 184320,
+      "original_full_forward_calls": 1
+    },
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 92160,
+      "encode_payload_bytes": 115200,
+      "minimum_codec_read_write_bytes": 414720,
+      "original_full_forward_calls": 1
+    },
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 115200,
+      "encode_payload_bytes": 138240,
+      "minimum_codec_read_write_bytes": 506880,
+      "original_full_forward_calls": 1
+    },
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 138240,
+      "encode_payload_bytes": 161280,
+      "minimum_codec_read_write_bytes": 599040,
+      "original_full_forward_calls": 1
+    },
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 0,
+      "encode_payload_bytes": 92160,
+      "minimum_codec_read_write_bytes": 184320,
+      "original_full_forward_calls": 1
+    },
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 92160,
+      "encode_payload_bytes": 115200,
+      "minimum_codec_read_write_bytes": 414720,
+      "original_full_forward_calls": 1
+    },
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 115200,
+      "encode_payload_bytes": 138240,
+      "minimum_codec_read_write_bytes": 506880,
+      "original_full_forward_calls": 1
+    },
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 138240,
+      "encode_payload_bytes": 161280,
+      "minimum_codec_read_write_bytes": 599040,
+      "original_full_forward_calls": 1
+    },
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 0,
+      "encode_payload_bytes": 92160,
+      "minimum_codec_read_write_bytes": 184320,
+      "original_full_forward_calls": 1
+    },
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 92160,
+      "encode_payload_bytes": 115200,
+      "minimum_codec_read_write_bytes": 414720,
+      "original_full_forward_calls": 1
+    },
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 115200,
+      "encode_payload_bytes": 138240,
+      "minimum_codec_read_write_bytes": 506880,
+      "original_full_forward_calls": 1
+    },
+    {
+      "allocation_metadata_contiguous_copy_extra": true,
+      "decode_payload_bytes": 138240,
+      "encode_payload_bytes": 161280,
+      "minimum_codec_read_write_bytes": 599040,
+      "original_full_forward_calls": 1
+    }
+  ],
+  "target_hardware": "NOT_TESTED",
+  "torch": "2.8.0+cpu",
+  "total_storage_codec_minimum_read_write_bytes": 5114880,
+  "transformers": "4.55.4",
+  "weights_after": "96c04987c93051ba2608b2e0905d67e36d299873bcf606ea2787cc01a77a93db",
+  "weights_before": "96c04987c93051ba2608b2e0905d67e36d299873bcf606ea2787cc01a77a93db",
+  "weights_unchanged": true
+}

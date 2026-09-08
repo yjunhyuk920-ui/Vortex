@@ -4,6 +4,12 @@
 
 Phase D is **NOT TESTED**.
 
+2026-09-08 native_global_transition executes a real135M BF16 HF model on the
+connected WindowsCPU only. It measures correctness and inventories native work;
+no latency benchmark or physical-memory profile was performed. A/Cretain100%
+matrixMACs and BaddsactualKVcodec tofullforward. These are not target promotion.
+
+
 A private Ubuntu host with an 8 GiB-class NVIDIA GPU has been identified outside this repository, but VORTEX has not inventoried or benchmarked it. Identification is not evidence. Connection details and private paths must not be committed or uploaded.
 
 No current result measures real 405B execution, total <=8 GiB GPU state, CUDA kernels, PCIe traffic, target SSD, TTFT, tokens/second, power, or physical skipped-layer traffic.

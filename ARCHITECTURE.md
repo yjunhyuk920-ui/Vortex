@@ -1,5 +1,15 @@
 # VORTEX Architecture
 
+## Current bounded native-global construction — 2026-09-08
+
+See experiments/native_global_transition_20260908/REPORT.md. A/C retain original
+ATen matrix kernels and checkpoint references; B calls original body between exact
+KV codec boundaries. These are real HF CPU reference bridges, not admitted core
+architecture. No whole-model compressed executor, tensor-free source, native-kernel
+oracle, or target-cost success is implied. All earlier architecture entries retain
+their historical scope; fixed mission and CTC govern acceptance.
+
+
 ## Mission boundary
 
 VORTEX is a runtime, not a retrained target model. It ingests an unmodified supported Hugging Face dense checkpoint and automatically constructs runtime state/metadata.

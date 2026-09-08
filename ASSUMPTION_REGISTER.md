@@ -2,6 +2,19 @@
 
 No unverified assumption may be used as a success condition.
 
+## A-NATIVE-GLOBAL-TRANSITION-20260908
+
+Guarded native dataflow and reversible byte-state representation are constructed
+for pinnedCPU HF4.55.4/torch2.8.0 and frozen unpadded batch1 traces. Arbitrary model,
+mask, context, target kernel and config mutation are NOT covered. All desired
+output domains in C startTOP, so no inverse narrowing is obtained for free.
+Cheapness assumption fails: A/C matrixMAC ratio1.0; B fullforward pluscodec. A
+small JSON graph is not resident modelcompression. Simple nativeRoPE inverse
+fails actual key coordinates; this is not a ban on every statechart.
+Original parameter hashes unchanged; same original sampler/RNG retained. Whole
+mission correctness and target budget remain OPEN despite zero observed mismatch.
+
+
 ## A-OUTPUT-ENVELOPE-20260908
 
 Assumption: many different rows have a common final BF16 output in each256-row

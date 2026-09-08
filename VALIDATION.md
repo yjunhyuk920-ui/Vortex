@@ -1,5 +1,13 @@
 # Validation status
 
+## Latest bounded record — 2026-09-08
+
+experiments/native_global_transition_20260908/results/validation.json records
+14unit checks and a3510science-file fresh real-model replay. Scope: guarded pinned
+HF CPU logits/KV/layout/RNG, not the full repository suite or target hardware.
+The historical commands and observations below are preserved, not claimed rerun.
+
+
 Date: 2026-08-02
 
 ## Reproduction

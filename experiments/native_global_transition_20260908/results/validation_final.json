@@ -1,0 +1,16 @@
+{
+  "changed": [],
+  "existing_science_hashes_match": true,
+  "extra": [],
+  "frozen_file_count": 3510,
+  "missing": [],
+  "replay_executed": true,
+  "replay_file_count": 3510,
+  "timings_not_claimed_reproducible": true,
+  "unit_tests_executed": true,
+  "volatile_fields": [
+    "build_seconds",
+    "demand_constructor_seconds",
+    "load_seconds_observed"
+  ]
+}

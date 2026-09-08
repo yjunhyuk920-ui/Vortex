@@ -2,6 +2,19 @@
 
 Append-only decisions. Authoritative run identities are read from committed result JSON.
 
+## D-NATIVE-GLOBAL-TRANSITION-20260908 — retain real native bridge, reject A/B/C as cores
+
+See experiments/native_global_transition_20260908/REPORT.md and results/run_v3/audit.json.
+Actual pinned BF16 HF generation preserves all observed logits/KV/layout/RNG under
+guarded graph generation A, exact byte-state codec B, and TOP/singleton demand C.
+A/C retain every matrixMAC; B retains each whole original forward plus codec.
+Constructors and original weights remain charged. No >=10x mission advancement.
+Explicit-mask rerun and original v2/v3 comparison pass without changing prefixes,
+seeds, temperature or thresholds.14tests/3510sciencefiles reproduce. Retain initial
+mask tracing error and earlier raw results. No CSE/codec/TOP/shape sweep as next core.
+This rejects these implementations, not all exact global/native state algorithms.
+
+
 ## D-OUTPUT-ENVELOPE-20260908 — reject fixed shared-output packets; preserve real-weight evidence
 
 See experiments/output_envelope_20260908/docs/REPORT_KO.md and frozen results.
