@@ -1,5 +1,20 @@
 # VORTEX Architecture
 
+## Restricted BF16 producer extension — 2026-09-09
+
+The restricted BF16 module [experiments/codex_native_sparse_extension_20260909/scalar_producer.py](experiments/codex_native_sparse_extension_20260909/scalar_producer.py)
+compiles columns and per-row zero-sign counts; a whole-input scan causally
+selects <=2 actual columns. Their FP32 products and one possible addition,
+followed by exact sign repair, produce the declared native scalar effect.
+The separate HF adapter validates a fixed synthetic checkpoint, compiles native
+norm/key metadata and appends K/V with native DynamicCache; its runtime holds
+no model and dense/model forwards are prohibited in verification.
+
+This is a bounded adapter with explicit refusal, not the universal architecture.
+The source copy, counts, control, input/output and quadratic DynamicCache copy
+traffic all count. General encoded/global/dynamic dense construction remains
+the active missing component; see [experiments/codex_native_sparse_extension_20260909/obligations.json](experiments/codex_native_sparse_extension_20260909/obligations.json).
+
 ## Native maps with collisions
 
 [Native fiber theorem](experiments/codex_native_fiber_20260909/REPORT.md): exact input/output relabeling preserves

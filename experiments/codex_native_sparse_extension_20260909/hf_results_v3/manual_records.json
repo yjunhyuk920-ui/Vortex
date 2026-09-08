@@ -1,0 +1,1082 @@
+[
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 0,
+    "token": 0
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 1,
+    "token": 1
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 2,
+    "token": 2
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 3,
+    "token": 3
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 4,
+    "token": 4
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 5,
+    "token": 5
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 6,
+    "token": 6
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 7,
+    "token": 7
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 8,
+    "token": 8
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 9,
+    "token": 9
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 10,
+    "token": 10
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 11,
+    "token": 11
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 12,
+    "token": 12
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 13,
+    "token": 13
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 14,
+    "token": 14
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 15,
+    "token": 15
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 16,
+    "token": 16
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 17,
+    "token": 17
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 18,
+    "token": 18
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 19,
+    "token": 19
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 20,
+    "token": 20
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 21,
+    "token": 21
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 22,
+    "token": 22
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 23,
+    "token": 23
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 24,
+    "token": 24
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 25,
+    "token": 25
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 26,
+    "token": 26
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 27,
+    "token": 27
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 28,
+    "token": 28
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 29,
+    "token": 29
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 30,
+    "token": 30
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 31,
+    "token": 31
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 32,
+    "token": 31
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 33,
+    "token": 0
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 34,
+    "token": 17
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 35,
+    "token": 17
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 36,
+    "token": 3
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 37,
+    "token": 25
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 38,
+    "token": 0
+  },
+  {
+    "cache_all_fields_exact": true,
+    "counts": [
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      },
+      {
+        "actual_additions": 16,
+        "actual_products": 32,
+        "column_word_reads": 32,
+        "input_scans": 32,
+        "metadata_reads": 16,
+        "output_words": 16,
+        "support": 2
+      }
+    ],
+    "exact": true,
+    "native_logits_dtype": "torch.bfloat16",
+    "step": 39,
+    "token": 31
+  }
+]

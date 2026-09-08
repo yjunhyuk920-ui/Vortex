@@ -1,0 +1,28 @@
+{
+  "cases": 124423,
+  "cost_m16384_n16384_k2": {
+    "actual_python_allocator_bytes": "paid, implementation-dependent, unclosed",
+    "allocator_kv_fallback_terms": "paid and unclosed; no free fallback",
+    "compile_matrix_reads": 268435456,
+    "compile_payload_copies": 268435456,
+    "compile_source_traversals": 1,
+    "compile_validation_reads": 268435456,
+    "original_plus_compiled_bf16_bytes": 1073741824,
+    "positive_control_index_terms": 268435456,
+    "row_positive_zero_count_bytes": 65536,
+    "runtime_additions_upper_bound": 16384,
+    "runtime_column_reads": 32768,
+    "runtime_input_scans": 16384,
+    "runtime_metadata_reads": 16384,
+    "runtime_mode": "two_sparse_column_producer",
+    "runtime_outputs": 16384,
+    "runtime_products": 32768,
+    "zero_sign_pattern_bytes": 2048
+  },
+  "first_failure": null,
+  "fp32_negative_zero_roots": 1068,
+  "nan_roots": 2592,
+  "nonzero_fp32_to_negative_bf16_zero": 1441,
+  "oracle": "integer significands, exact shifts/sums/products, explicit ties-to-even",
+  "scope": "frozen adversarial two-support boundary grid; not exhaustive operand pairs or native HF"
+}

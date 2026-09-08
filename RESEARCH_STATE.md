@@ -1,5 +1,23 @@
 # Research state — 2026-09-09
 
+## Restricted BF16 producer extension — 2026-09-09
+
+Current executed extension: [experiments/codex_native_sparse_extension_20260909/REPORT.md](experiments/codex_native_sparse_extension_20260909/REPORT.md).
+The finite BF16 / <=2-support scalar producer has a zero-sign proof, a paid
+compiler/address/read/decode implementation, 1,566,724 frozen scalar controls
+and a separate primary-run 124,423-case integer oracle. The final actual CPU HF
+run in hf_results_v5 preserves the frozen 40-step trace and eight generation
+samples, including logits, serialized cache fields/strides and CPU RNG states.
+Canonical summary SHA-256:
+7853685458d0b12de60cbdce613ab556e2444a0dc1d0e47fc094d2c781c2a5da.
+
+Scalar v1 defects were found by static review; old source bytes/red execution
+were not retained. HF v2 records the actual first-stride failure; v5 passes the
+same fixed fixture after a native view/transpose repair. No general dense
+producer, universal HF induction or closed physical 405B cost follows.
+O1-O5 OPEN/O6 PARTIAL; CORE_ADMISSION=false; theory NOT_ESTABLISHED;
+hardware NOT_TESTED. This is actual research progress, not goal completion.
+
 ## Native fiber obstruction — 2026-09-09
 
 [Native proof and controls](experiments/codex_native_fiber_20260909/REPORT.md) show that algebraic full rank does

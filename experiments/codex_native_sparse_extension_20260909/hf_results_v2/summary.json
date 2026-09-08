@@ -1,0 +1,243 @@
+{
+  "CORE_ADMISSION": false,
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "arbitrary_checkpoint_executor": false,
+  "arbitrary_dense_hidden_state": false,
+  "cache_all_fields_including_strides_exact": false,
+  "checkpoint_sha256_after": "4ebef0122256beb7bb571c3cabb8d65a4fdb870cdc3d6288330a70be5d8db23b",
+  "checkpoint_sha256_before": "4ebef0122256beb7bb571c3cabb8d65a4fdb870cdc3d6288330a70be5d8db23b",
+  "checkpoint_unchanged": true,
+  "compile_cost": {
+    "checkpoint_parameters_scanned": 14496,
+    "extra_paid": "full checkpoint hash/validation, native norm/RoPE initialization, allocations, Python objects, control and code",
+    "norm_words_verified": 2048,
+    "original_and_compiled_vproj_bytes": 4096,
+    "scale_bytes": 4,
+    "vproj_words_read_and_transposed": 1024,
+    "zero_key_template_bytes": 256,
+    "zero_sign_count_payload_bytes": 128
+  },
+  "deterministic_native_and_compiled_RNG_unchanged": true,
+  "device": "cpu",
+  "first_failure": {
+    "compiled_cache": {
+      "class": "DynamicCache",
+      "fields": {
+        "cache_processor": null,
+        "layer_classes": "transformers.cache_utils.DynamicLayer",
+        "layer_init_kwargs": {},
+        "layers": [
+          {
+            "class": "DynamicLayer",
+            "fields": {
+              "keys": {
+                "device": "cpu",
+                "dtype": "torch.bfloat16",
+                "layout": "torch.strided",
+                "requires_grad": false,
+                "shape": [
+                  1,
+                  8,
+                  1,
+                  2
+                ],
+                "stride": [
+                  16,
+                  2,
+                  2,
+                  1
+                ],
+                "words": "0000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "values": {
+                "device": "cpu",
+                "dtype": "torch.bfloat16",
+                "layout": "torch.strided",
+                "requires_grad": false,
+                "shape": [
+                  1,
+                  8,
+                  1,
+                  2
+                ],
+                "stride": [
+                  16,
+                  2,
+                  2,
+                  1
+                ],
+                "words": "06be40406dc246c10dc16044954496c283c118c4184070c10340c8c49442b0c2"
+              }
+            }
+          },
+          {
+            "class": "DynamicLayer",
+            "fields": {
+              "keys": {
+                "device": "cpu",
+                "dtype": "torch.bfloat16",
+                "layout": "torch.strided",
+                "requires_grad": false,
+                "shape": [
+                  1,
+                  8,
+                  1,
+                  2
+                ],
+                "stride": [
+                  16,
+                  2,
+                  2,
+                  1
+                ],
+                "words": "0000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "values": {
+                "device": "cpu",
+                "dtype": "torch.bfloat16",
+                "layout": "torch.strided",
+                "requires_grad": false,
+                "shape": [
+                  1,
+                  8,
+                  1,
+                  2
+                ],
+                "stride": [
+                  16,
+                  2,
+                  2,
+                  1
+                ],
+                "words": "97c3a3412843db40c444e4c1f4418fc4a4be9fc39bc31e3e0f4124c476401641"
+              }
+            }
+          }
+        ],
+        "num_hidden_layers": 1
+      }
+    },
+    "compiled_logits": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "native_cache": {
+      "class": "DynamicCache",
+      "fields": {
+        "cache_processor": null,
+        "layer_classes": "transformers.cache_utils.DynamicLayer",
+        "layer_init_kwargs": {},
+        "layers": [
+          {
+            "class": "DynamicLayer",
+            "fields": {
+              "keys": {
+                "device": "cpu",
+                "dtype": "torch.bfloat16",
+                "layout": "torch.strided",
+                "requires_grad": false,
+                "shape": [
+                  1,
+                  8,
+                  1,
+                  2
+                ],
+                "stride": [
+                  16,
+                  2,
+                  2,
+                  1
+                ],
+                "words": "0000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "values": {
+                "device": "cpu",
+                "dtype": "torch.bfloat16",
+                "layout": "torch.strided",
+                "requires_grad": false,
+                "shape": [
+                  1,
+                  8,
+                  1,
+                  2
+                ],
+                "stride": [
+                  16,
+                  2,
+                  16,
+                  1
+                ],
+                "words": "06be40406dc246c10dc16044954496c283c118c4184070c10340c8c49442b0c2"
+              }
+            }
+          },
+          {
+            "class": "DynamicLayer",
+            "fields": {
+              "keys": {
+                "device": "cpu",
+                "dtype": "torch.bfloat16",
+                "layout": "torch.strided",
+                "requires_grad": false,
+                "shape": [
+                  1,
+                  8,
+                  1,
+                  2
+                ],
+                "stride": [
+                  16,
+                  2,
+                  2,
+                  1
+                ],
+                "words": "0000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "values": {
+                "device": "cpu",
+                "dtype": "torch.bfloat16",
+                "layout": "torch.strided",
+                "requires_grad": false,
+                "shape": [
+                  1,
+                  8,
+                  1,
+                  2
+                ],
+                "stride": [
+                  16,
+                  2,
+                  16,
+                  1
+                ],
+                "words": "97c3a3412843db40c444e4c1f4418fc4a4be9fc39bc31e3e0f4124c476401641"
+              }
+            }
+          }
+        ],
+        "num_hidden_layers": 1
+      }
+    },
+    "native_logits": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "step": 0,
+    "token": 0
+  },
+  "generation": {},
+  "kind": "E1_RESTRICTED_TWO_SUPPORT_BF16_CAUSAL_PRODUCER",
+  "manual_all_logits_KV_exact": false,
+  "manual_steps": 1,
+  "native_full_prefill_incremental_cache_exact": false,
+  "runtime_cost_scope": {
+    "DynamicCache_update_existing_KV_copy_bytes_at_prior_T": "128 * T",
+    "extra_paid": "key-template reads/broadcast, tensor conversion, logits/sampler/RNG, cache copies, Python/control/allocator, full source storage and compilation",
+    "input_words_scanned_per_token": 64,
+    "native_full_vproj_words_per_token": 1024,
+    "new_KV_payload_bytes_per_token": 128,
+    "row_metadata_words_per_token": 32,
+    "vproj_source_words_per_token": 64
+  },
+  "scalar_domain_is_broader_than_HF_fixture": true,
+  "source_domain_HF": "generated bounded BF16 source [-8,8] exponents with fixed two-support embeddings and zero remaining dense paths",
+  "target_hardware_tested": false,
+  "threads": 1,
+  "torch": "2.8.0+cpu",
+  "transformers": "4.55.4"
+}

@@ -1,5 +1,20 @@
 # Validation status
 
+## Restricted BF16 producer extension — 2026-09-09
+
+Current focused evidence is [experiments/codex_native_sparse_extension_20260909/VALIDATION.json](experiments/codex_native_sparse_extension_20260909/VALIDATION.json).
+The scalar agent ran 1,566,724 frozen controls and five refusals; the primary
+ran an independent 124,423-case integer oracle and the actual final packaged
+CPU HF comparison. All 40 incremental logits/serialized cache states and eight
+sampled generation logits/probabilities/tokens/RNG states match. Full-prefill
+logits/KV values also match. HF v2's first-stride failure remains preserved.
+Scalar historical v1 source bytes were not retained; do not claim a v1 red run.
+
+Scope is Phase B native synthetic control and a declared scalar theorem.
+No full repository suite, real public checkpoint, CUDA, 405B, <=8-GiB peak,
+native4BQ4 latency ratio, TTFT or GitHub Actions ran this round. O1-O5 OPEN,
+O6 PARTIAL; THEORY_STATUS=NOT_ESTABLISHED; HARDWARE_STATUS=NOT_TESTED.
+
 ## Latest bounded record — 2026-09-08
 
 experiments/native_global_transition_20260908/results/validation.json records

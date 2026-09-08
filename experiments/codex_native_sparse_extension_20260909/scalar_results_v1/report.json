@@ -1,0 +1,51 @@
+{
+  "cost_m16384_n16384_k1": {
+    "allocator_kv_fallback_terms": "paid and unclosed; no free fallback",
+    "compile_matrix_reads": 268435456,
+    "compile_payload_copies": 268435456,
+    "compile_validation_reads": 268435456,
+    "compiled_metadata_words": 16384,
+    "compiled_payload_words": 268435456,
+    "positive_control_index_terms": 268435456,
+    "runtime_additions_upper_bound": 0,
+    "runtime_column_reads": 16384,
+    "runtime_input_scans": 16384,
+    "runtime_metadata_reads": 16384,
+    "runtime_outputs": 16384,
+    "runtime_products": 16384
+  },
+  "cost_m16384_n16384_k2": {
+    "allocator_kv_fallback_terms": "paid and unclosed; no free fallback",
+    "compile_matrix_reads": 268435456,
+    "compile_payload_copies": 268435456,
+    "compile_validation_reads": 268435456,
+    "compiled_metadata_words": 16384,
+    "compiled_payload_words": 268435456,
+    "positive_control_index_terms": 268435456,
+    "runtime_additions_upper_bound": 16384,
+    "runtime_column_reads": 32768,
+    "runtime_input_scans": 16384,
+    "runtime_metadata_reads": 16384,
+    "runtime_outputs": 16384,
+    "runtime_products": 32768
+  },
+  "cost_m16384_n16384_kn": {
+    "allocator_kv_fallback_terms": "paid and unclosed; no free fallback",
+    "compile_matrix_reads": 268435456,
+    "compile_payload_copies": 268435456,
+    "compile_validation_reads": 268435456,
+    "compiled_metadata_words": 16384,
+    "compiled_payload_words": 268435456,
+    "positive_control_index_terms": 268435456,
+    "runtime_additions_upper_bound": 268419072,
+    "runtime_column_reads": 268435456,
+    "runtime_input_scans": 16384,
+    "runtime_metadata_reads": 16384,
+    "runtime_outputs": 16384,
+    "runtime_products": 268435456
+  },
+  "enumerated_cases": 1566724,
+  "finite_bf16_count": 65280,
+  "negative_rejections": 4,
+  "random_search": "none"
+}

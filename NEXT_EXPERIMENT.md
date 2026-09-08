@@ -1,5 +1,23 @@
 # Next constructive obligation — 2026-09-09
 
+## Restricted BF16 producer extension — 2026-09-09
+
+[The source/right-factor E1 expansion](experiments/codex_native_sparse_extension_20260909/REPORT.md) is now executed for finite
+BF16 coefficients and <=2 active BF16 input coordinates. Do not rerun its
+fixture, scalar sweep or a trivial third-coordinate variation as core discovery.
+The paid signed-zero lemma is reusable only after proving sparse admission.
+There is no arbitrary-HF sparsity or all-coordinate dynamic-update theorem.
+
+Return to the current three-principle arbitrary dense global producer / exact
+dynamic state comparison below. Each next core needs a finite checkpoint
+compiler, causal addresses, physically read words, native ordered decoder and
+successor-state relation before an experiment. It must handle all-coordinate
+changes without full source replay, response catalogs, undefined witness/decoder
+or an unjustified per-matrix split of global advice. The sparse fallback reads
+and computes the whole matrix and does not close the target line.
+No new qualifying three-principle core round has been claimed by this extension.
+No 405B hardware is available; keep theory work active and hardware NOT_TESTED.
+
 ## Native injectivity condition for the next constructor
 
 [The full-rank fiber witness](experiments/codex_native_fiber_20260909/REPORT.md) rules out inferring an injective

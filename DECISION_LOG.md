@@ -2071,3 +2071,15 @@ conversion to an injective full-copy map using only bijective encodings.
 Preserved the later binary corollary as proof-only, separate from frozen tests.
 No new target-admitted principle or universal impossibility is claimed.
 Current hardware remains unavailable. [Artifacts](experiments/codex_native_fiber_20260909/REPORT.md).
+
+## 2026-09-09 — Restricted BF16 producer extension
+
+Executed the source/right-factor E1 expansion in [experiments/codex_native_sparse_extension_20260909/REPORT.md](experiments/codex_native_sparse_extension_20260909/REPORT.md).
+Accepted only the declared <=2-support scalar zero-sign theorem and measured
+synthetic CPU HF trace replacement. Retained the actual first V-stride failure
+and repaired it without changing source/trace/thresholds. Corrected the missing
+historical scalar source/red-run preservation claim. Do not promote this to
+arbitrary dense/native/all-continuation or physical 405B acceptance.
+O1-O5 OPEN, O6 PARTIAL, persistent goal unachieved; hardware unavailable by user
+report. Next core returns to finite arbitrary-dense global/dynamic construction.
+Requested Terra/medium and Sol/high; actual model selection metadata unavailable.

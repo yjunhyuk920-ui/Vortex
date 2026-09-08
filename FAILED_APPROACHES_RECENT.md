@@ -1,5 +1,20 @@
 # Recent Failed and Demoted Approaches
 
+## Restricted BF16 producer extension — 2026-09-09
+
+[experiments/codex_native_sparse_extension_20260909](experiments/codex_native_sparse_extension_20260909/REPORT.md): the selected-column BF16 producer survives only its
+declared <=2-support domain. Calling that domain arbitrary dense execution is
+unsupported; the separately paid dense reference returns to mn reads/products.
+This does not reject general nonlinear global advice or prove impossibility.
+
+Implemented scalar v1 retained per-row n-element initialization and accepted
+max_support=3 while using only two terms. Primary static review found both;
+v2 removes the allocation and refuses unsupported support. Only historical v1
+hashes/results remain, not runnable old source or a recorded pre-fix red test.
+Actual HF v2 exposed equal cache words but unequal first-V strides. Native
+view/transpose fixes it, with unchanged source/trace and preserved failure.
+Neither repaired bug is a new universal speedup or a completed mission.
+
 ## Native full-rank pure-copy lift — local rejection
 
 [Proof and fixed native controls](experiments/codex_native_fiber_20260909/REPORT.md): the all-nonzero full-rank

@@ -1,5 +1,15 @@
 # Reproducibility
 
+## Restricted BF16 producer extension — 2026-09-09
+
+Follow [experiments/codex_native_sparse_extension_20260909/REPRODUCE.md](experiments/codex_native_sparse_extension_20260909/REPRODUCE.md) for the fixed scalar sweep,
+independent integer oracle and real CPU HF replay. Canonical result is
+hf_results_v5/summary.json, SHA-256
+7853685458d0b12de60cbdce613ab556e2444a0dc1d0e47fc094d2c781c2a5da.
+Use fresh output directories and exact torch 2.8.0+cpu / transformers 4.55.4
+manifest. The historical failed HF v2 is intentionally not a passing result.
+No hardware installation or target execution is included.
+
 ## Native-fiber reproducibility
 
 [Experiment](experiments/codex_native_fiber_20260909/REPORT.md), [validation](experiments/codex_native_fiber_20260909/VALIDATION.json),

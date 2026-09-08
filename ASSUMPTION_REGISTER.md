@@ -1,5 +1,21 @@
 # Assumption Register
 
+## Restricted BF16 producer extension — 2026-09-09
+
+[experiments/codex_native_sparse_extension_20260909](experiments/codex_native_sparse_extension_20260909/REPORT.md) establishes a restricted scalar theorem, not arbitrary
+native sparsity. Preconditions: finite BF16 operands; <=2 nonzero coordinates;
+fixed inactive-zero signs; separate FP32 RNE products; declared balanced padded
+tree; total canonical NaN; gradual underflow; signed-zero repair before BF16
+store. Metadata is paid and Python counts do not wrap. The 4-byte numerical
+count budget is for n=16384, not arbitrary dimensions.
+
+The native CPU fixture has bounded V coefficients, specially constructed
+two-support embeddings, zero remaining dense paths and a 64-position key
+template. Trace agreement is MEASURED; native all-sequence induction and
+universal checkpoint/input admission are OPEN. Payload counts exclude actual
+Python object/allocator and target storage/transfer schedules, which remain
+paid and unclosed. No small pass changes O1-O5/O6 or hardware acceptance.
+
 No unverified assumption may be used as a success condition.
 
 ## A-IMPLICIT-PROGRAM-CARRIER-20260909

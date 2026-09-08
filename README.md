@@ -1,5 +1,23 @@
 # VORTEX
 
+## Restricted BF16 producer extension — 2026-09-09
+
+[Constructed producer and native controls](experiments/codex_native_sparse_extension_20260909/REPORT.md) extend the surviving
+binary/single-support E1 producer to arbitrary finite BF16 weights and at most
+two active input coordinates, with paid column reads and exact signed-zero
+repair under a declared balanced FP32 ABI. A frozen synthetic CPU HF fixture
+actually replaces V projections and preserves 40 steps of logits/serialized KV
+state plus eight native generate samples and their per-sample RNG states.
+The first V-cache stride defect was detected, preserved and repaired.
+
+This is restricted Phase B native synthetic evidence, not arbitrary unchanged
+HF405B or all-continuation correctness. Input support, zero paths and the
+64-position template are explicit limits. The small fixture's coefficient-only
+93.75% read reduction becomes 87.5% after charged row counts, before other work.
+No target memory/latency claim follows. O1-O5 OPEN, O6 PARTIAL,
+THEORY_STATUS=NOT_ESTABLISHED, HARDWARE_STATUS=NOT_TESTED, CORE_ADMISSION=false.
+The persistent goal stays active; 405B hardware is unavailable by user report.
+
 ## Native fiber obstruction — 2026-09-09
 
 [Native proof and controls](experiments/codex_native_fiber_20260909/REPORT.md) show that algebraic full rank does

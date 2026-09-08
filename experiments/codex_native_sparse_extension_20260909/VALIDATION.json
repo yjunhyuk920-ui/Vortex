@@ -1,0 +1,75 @@
+{
+  "CORE_ADMISSION": false,
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "README_CURRENT": true,
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "canonical_hf": "hf_results_v5/summary.json",
+  "canonical_hf_sha256": "7853685458d0b12de60cbdce613ab556e2444a0dc1d0e47fc094d2c781c2a5da",
+  "generation": {
+    "RNG_consumption_and_next_state_exact": true,
+    "compiled_dense_forward_prohibited": true,
+    "compiled_tokens": [
+      0,
+      7,
+      31,
+      31,
+      5,
+      11,
+      29,
+      29,
+      22,
+      1,
+      13
+    ],
+    "each_sample_logits_exact": true,
+    "each_sample_probability_RNG_exact": true,
+    "final_cache_exact": true,
+    "final_cache_serialized_fields_and_internal_aliases_exact": true,
+    "native_generate_executed": true,
+    "native_tokens": [
+      0,
+      7,
+      31,
+      31,
+      5,
+      11,
+      29,
+      29,
+      22,
+      1,
+      13
+    ],
+    "tokens_exact": true
+  },
+  "hf_flags": {
+    "CORE_ADMISSION": false,
+    "arbitrary_checkpoint_executor": false,
+    "arbitrary_dense_hidden_state": false,
+    "cache_serialized_fields_and_internal_aliases_exact": true,
+    "checkpoint_unchanged": true,
+    "deterministic_native_and_compiled_RNG_unchanged": true,
+    "manual_all_logits_KV_exact": true,
+    "native_full_prefill_incremental_KV_words_exact": true,
+    "native_full_prefill_logits_exact": true,
+    "scalar_domain_is_broader_than_HF_fixture": true,
+    "target_hardware_tested": false
+  },
+  "hf_manual_steps": 40,
+  "historical_failures": [
+    "scalar v1 static defects; only hash identities survive",
+    "HF v2 exact first V stride mismatch"
+  ],
+  "integer_first_failure": null,
+  "model_policy": {
+    "Sol": "requested gpt-5.6-sol / high",
+    "Terra": "requested gpt-5.6-terra / medium",
+    "selected_models_verified": false
+  },
+  "phase": "B_NATIVE_SYNTHETIC_CONTROL",
+  "primary_integer_cases": 124423,
+  "review_response": "REVIEW_RESPONSE.md",
+  "scalar_v2_cases": 1566724,
+  "scalar_v2_rejections": 5,
+  "target_execution": false,
+  "test_scope": "focused local scalar proof/oracle and actual synthetic CPU HF replacement; no full repository suite"
+}

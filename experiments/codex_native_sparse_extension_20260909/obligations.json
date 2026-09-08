@@ -1,0 +1,29 @@
+{
+  "CORE_ADMISSION": false,
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "O1": {
+    "local": "finite BF16 compiler only for <=2-support inputs; no universal source/input admission",
+    "status": "OPEN"
+  },
+  "O2": {
+    "local": "actual bounded scalar and HF token-step programs; no full arbitrary model API",
+    "status": "OPEN"
+  },
+  "O3": {
+    "local": "proved scalar ABI and measured specified native traces; universal native continuation relation missing",
+    "status": "OPEN"
+  },
+  "O4": {
+    "local": "finite scalar work/representation bounds and explicit payload counters; full physical mission bound missing",
+    "status": "OPEN"
+  },
+  "O5": {
+    "local": "no target hardware/latency; dense fallback full-cost",
+    "status": "OPEN"
+  },
+  "O6": {
+    "local": "code, preregistration, proofs, independent review, native records, first HF failure and hashes",
+    "status": "PARTIAL"
+  },
+  "THEORY_STATUS": "NOT_ESTABLISHED"
+}

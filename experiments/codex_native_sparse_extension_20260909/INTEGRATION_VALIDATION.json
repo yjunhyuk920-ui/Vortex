@@ -1,0 +1,29 @@
+{
+  "README_CURRENT": true,
+  "artifact_hash_entries_verified": 20,
+  "canonical_hf_sha256": "7853685458d0b12de60cbdce613ab556e2444a0dc1d0e47fc094d2c781c2a5da",
+  "checkpoint_unchanged": true,
+  "current_package_links_verified": 11,
+  "first_stride_failure_preserved": true,
+  "root_ledgers_updated": [
+    "ARCHITECTURE.md",
+    "ASSUMPTION_REGISTER.md",
+    "DECISION_LOG.md",
+    "FAILED_APPROACHES_RECENT.md",
+    "NEXT_EXPERIMENT.md",
+    "README.md",
+    "REPRODUCIBILITY.md",
+    "RESEARCH_STATE.md",
+    "VALIDATION.md",
+    "VALIDATION_MATRIX.md"
+  ],
+  "scalar_historical_source_bytes_retained": false,
+  "source_binding_verified": 3,
+  "status_unchanged": true,
+  "unmodified_reason": {
+    "CONTEXT.md": "definitions unchanged",
+    "HARDWARE_VALIDATION_PLAN.md": "user resource absence and no target test unchanged",
+    "MISSION_AND_WORKING_PRINCIPLES.md": "fixed mission unchanged",
+    "docs/CONSTRUCTIVE_THEORY_CONTRACT.md": "completion criteria unchanged"
+  }
+}
