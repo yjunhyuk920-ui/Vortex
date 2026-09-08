@@ -2,6 +2,34 @@
 
 No unverified assumption may be used as a success condition.
 
+## A-IMPLICIT-DIRECT-QUERY-20260909
+
+Assumption: query-derived addressing alone makes a complete precomputed image
+frame target-feasible. CONTRADICTED for the implemented arbitrary-GF2 frame and
+for the declared one-sided linear complete-image model. The 10/11-bit frame has
+about `102.5x` binary-source transformed storage and `8.4357x` the registered
+target query line. Increasing equal block width to meet `8/675` causes
+astronomical complete-table storage. General nonlinear cells remain OPEN.
+
+Assumption: repeated exact finite-word values can universally remove >=90% of
+dense work if products are shared. CONTRADICTED for the value-class ordered-leaf
+executor: even one value per column retains about 50% favorable scalar work due
+to ordered accumulation, high-distinctness retains 100%, and membership work is
+dense. Extending sharing to identical `(accumulator,weight)` states is also
+CONTRADICTED as a universal premise by the exact-FP32 integer distinct-state
+family. More general nonlinear aggregation remains OPEN.
+
+Assumption: a nonlinear encoded-state bijection can mix coordinates while
+preserving the original coordinatewise product primitive exactly and cheaply.
+CONTRADICTED over the Boolean necessary-condition algebra. Every meet-preserving
+bijection is a coordinate permutation. Even independent invertible linear
+gauges satisfying `C(x AND y)=A(x) AND B(y)` are one aligned coordinate
+permutation. A representation with an explicitly transformed nonlinear operator
+is not ruled out, but that operator must be constructed and paid.
+
+Status: GENERAL IMPLICIT NONLINEAR NATIVE DIRECT-QUERY REPRESENTATION REMAINS
+OPEN. O1--O5 OPEN; O6 PARTIAL; 405B/CUDA/<=8GiB/native4BQ4/TTFT NOT TESTED.
+
 ## A-DIRECT-GLOBAL-PRODUCER-20260909
 
 Assumption: globally sharing the full 8 GiB advice can make reconstructing the

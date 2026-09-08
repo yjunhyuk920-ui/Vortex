@@ -1,5 +1,56 @@
 # VORTEX Architecture
 
+## Implicit nonlinear direct-query frontier — 2026-09-09
+
+See `experiments/implicit_nonlinear_direct_query_20260909/REPORT.md`.
+
+The current architecture search now distinguishes the following executed paths:
+
+```text
+P1 query-addressed image source
+  checkpoint W -> all local linear images Y[B,p]
+  current right-factor block bits -> direct image addresses
+  selected images -> XOR -> exact GF2 Wv
+  status: exact arbitrary-GF2 construction, target storage/query traffic rejected
+
+P2 inverted exact-transition source
+  checkpoint column -> exact value classes
+  current x_j -> one leaf product/value
+  row members -> original ordered accumulators
+  strengthened: group by (accumulator,weight) online
+  status: exact declared ABI, universal >=90% route rejected
+
+P3 safe encoded coordinates
+  z=P h; W'=P_out W P_in^-1
+  keep elementwise/Hadamard primitive coordinatewise
+  status: only aligned coordinate permutations survive; dense support unchanged
+```
+
+P1 is important because it is the first current-frontier producer whose runtime
+does not fetch a checkpoint-dependent row/program stream: the **query is the
+address source**. Its failure moves the architecture boundary from “invent an
+implicit address rule” to a stricter object: the representation must avoid both
+a complete image dictionary and a quadratic source-dependent instruction stream.
+
+The open architecture is therefore:
+
+```text
+Compile(all arbitrary native checkpoint bytes)
+  -> compact/nonlocal finite representation G
+
+Address(G, current causal state/right factors, prior returned words)
+  -> subdense paid probes
+
+Decode(probes, current state)
+  -> exact native ordered dense effects
+  -> exact logits/KV/cache/RNG successor
+```
+
+It must not rely on duplicate value/state transitions or a gauge that leaves
+nonlinear operators free. If coordinates are transformed nontrivially, the
+conjugated nonlinear/residual/cache operators themselves are part of the core
+algorithm and their constructor/storage/arithmetic must be charged.
+
 ## Direct global producer frontier — 2026-09-09
 
 See `experiments/direct_global_producer_20260909/REPORT.md`.

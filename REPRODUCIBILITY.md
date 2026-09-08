@@ -6,6 +6,62 @@ An independent researcher or new session must determine exactly what ran, what d
 
 Every summary separates `MEASURED / DERIVED / PROJECTED / UNVERIFIED`. Missing target-hardware fields remain `NOT TESTED`.
 
+## Implicit nonlinear direct-query frontier — 2026-09-09
+
+Authority:
+
+```text
+experiments/implicit_nonlinear_direct_query_20260909/PREREGISTRATION.md
+experiments/implicit_nonlinear_direct_query_20260909/REPORT.md
+experiments/implicit_nonlinear_direct_query_20260909/VALIDATION.md
+results/e0_implicit_direct_query_gate_v3/summary.json
+results/e0_implicit_direct_query_gate_v3/checksums.sha256
+```
+
+The preregistration was committed and pushed before result inspection at:
+
+```text
+dab57747b690ecc4ba0562f3af39e781af01a836
+```
+
+Focused current-source replay:
+
+```powershell
+$env:PYTHONPATH=(Resolve-Path '.').Path
+& '.\experiments\native_global_transition_20260908\.venv\Scripts\python.exe' `
+  -m unittest tests.test_implicit_direct_query_gate -v
+```
+
+Observed final current-source result:
+
+```text
+15/15 PASS
+```
+
+Canonical result:
+
+```text
+results/e0_implicit_direct_query_gate_v3/summary.json
+SHA-256 78644fd5ef4b3e0131bf78867e8986718ed02faeaf37b4228fd1c37909a7af29
+```
+
+An independent PowerShell `Get-FileHash -Algorithm SHA256` readback matched the
+digest stored in `checksums.sha256`. Earlier v1/v2 output directories are
+retained as strengthening history and are not current-source authority.
+
+The current source implements the exact arbitrary-GF2 pattern-image producer,
+the exact ordered finite-word value-class executor, the stronger dynamic
+`(accumulator,weight)` coalescer/adversary, arbitrary Boolean meet-automorphism
+controls and independent linear Hadamard-isotopy controls.
+
+The completed direct-global `10/10`, prior nonlinear `15/15`, geometry `28/28`,
+causal-global `14/14`, Boolean exhaustive controls and native-global 3,510-file
+replay were deliberately not rerun.
+
+No 405B, CUDA, <=8 GiB target GPU, PCIe/SSD/HBM schedule, same-machine native
+4B Q4 p50/p95 or TTFT run occurred. No arbitrary-native Q4/BF16/FP32 causal
+producer is claimed.
+
 ## Direct global finite-word producer frontier — 2026-09-09
 
 Authority:

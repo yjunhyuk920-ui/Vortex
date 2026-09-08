@@ -4,32 +4,42 @@ Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total p
 
 ## Current research frontier — 2026-09-09
 
-[Direct global finite-word producer frontier](experiments/direct_global_producer_20260909/REPORT.md)
-now attacks the remaining direct GF(2)/native data-structure hole with three
-frozen principles. Global reconstructive coding is rejected: even giving all
-8 GiB to exact advice removes at most `4.255098%` of an arbitrary Q4 source and
-then leaves `100%` of dense arithmetic.
+[Implicit nonlinear direct-query frontier](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md)
+now executes the next three frozen principles rather than stopping at the prior
+global route theorem. P1 constructs a genuine exact producer for every GF(2)
+matrix whose **current query bits directly generate the addresses** of compiled
+output images. The registered 10/11-bit frame removes about 90% of raw binary
+source payload, but costs `4,817.8189 GiB` of transformed images and a worst
+simultaneous query payload of `4.6992 GiB`, `8.4357x` the registered `8/675`
+logical line. A general one-sided linear complete-image-frame count still forces
+large redundancy; that bound is not a general nonlinear cell-probe theorem.
 
-Exact mathematical summation also does not make native rounding a small
-independent problem. An eight-leaf balanced-FP32 gadget has exact sum zero while
-its rounded result is `-b`; composing the gadget encodes arbitrary binary MatVec
-counts entirely in rounding error.
+P2 implements exact finite-word leaf reuse while preserving original per-row
+addition order. Even one weight value per column retains
+`16385/32768 = 50.0030518%` of favorable scalar operations; high-distinctness
+restores 100%. A stronger online coalescer grouping identical
+`(accumulator,weight)` states is also defeated by an FP32-exact integer family
+whose row states remain distinct at every column, forcing a 1.0 update fraction.
 
-The strongest new theorem is global rather than matrix-local. For arbitrary
-globally mixed nonlinear 64-bit cells and fully adaptive addresses, a final
-route answering simultaneous full-Mv tuples has total coefficient span
-`<=t*64`; no 8-GiB advice split by matrix is assumed. On all 883 registered
-non-embedding matrices the proof-safe route-cover floor is `578,619` words.
-That is only `0.193471%` of the favorable registered target allowance, so it is
-**far too weak to prove target impossibility**.
+P3 asks whether encoded coordinates can make dense maps sparse while leaving
+Hadamard/elementwise work cheap. Every Boolean-cube bijection preserving
+coordinatewise AND is exactly a coordinate permutation, and even independent
+invertible linear input/output gauges satisfying
+`C(x AND y)=A(x) AND B(y)` collapse to one aligned permutation. Such safe gauges
+therefore preserve arbitrary dense support. Richer transformed nonlinear
+operators remain open only if they are explicitly constructed and paid.
 
-The round also constructed a real finite producer for every GF(2) matrix:
-Gauss-Jordan compiles `R=E W` plus a row-XOR stream and runtime exactly recovers
-`Wv` by reverse replay. It is not fast enough. At width 16,384 the frozen
-producer adversary costs exactly `16385/32768 = 50.0030518%` of dense scalar
-bit operations and at least `447.97 MiB` of row-program metadata for that one
-matrix. The arbitrary-native globally nonlinear producer therefore remains
-OPEN rather than being renamed as this binary construction.
+Current canonical E0 result:
+`results/e0_implicit_direct_query_gate_v3/summary.json`, SHA-256
+`78644fd5ef4b3e0131bf78867e8986718ed02faeaf37b4228fd1c37909a7af29`;
+the final focused current-source suite passed `15/15`. This is not an
+arbitrary-native producer and not target-hardware evidence.
+
+[Prior direct global finite-word producer frontier](experiments/direct_global_producer_20260909/REPORT.md)
+remains authoritative for reconstruct-all coding, the FP32 rounding-witness
+gadget, the globally mixed adaptive-route span guardrail, and the rejected
+Gauss-Jordan producer. Its `578,619`-word route-cover floor remains far too weak
+to prove target impossibility.
 
 [Causal/global producer frontier](experiments/causal_global_bridge_20260908/REPORT.md)
 compared the frozen legal-causal exposure, global nonlinear producer, and paid
@@ -108,7 +118,7 @@ remains unchanged. Concurrent PR147 correlation-source is committed on another
 branch; [combined frontier](experiments/output_envelope_20260908/FRONTIER_SYNC.md)
 records both failures without importing or overwriting that work.
 
-THEORY_STATUS=NOT_ESTABLISHED; CORE_ADMISSION=false; TARGET_HARDWARE_STATUS=NOT_TESTED; FULL_MISSION_O1_O6=OPEN; THREE_QUALIFYING_NEW_PRINCIPLES=false; README_CURRENT=true.
+THEORY_STATUS=NOT_ESTABLISHED; CORE_ADMISSION=false; TARGET_HARDWARE_STATUS=NOT_TESTED; FULL_MISSION_O1_O5=OPEN; O6=PARTIAL; THREE_QUALIFYING_NEW_PRINCIPLES=false; README_CURRENT=true.
 
 [State](RESEARCH_STATE.md), [next](NEXT_EXPERIMENT.md), [validation](VALIDATION_MATRIX.md), [AGENTS](AGENTS.md), [contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md).
 [Prior README unchanged](docs/research/history/pre_output_envelope_20260908/README.md).

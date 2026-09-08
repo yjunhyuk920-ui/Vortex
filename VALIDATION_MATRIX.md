@@ -1,10 +1,28 @@
 # Validation matrix — 2026-09-09
 
-[Current direct-global producer proof/code/result](experiments/direct_global_producer_20260909/REPORT.md).
+[Current implicit direct-query proof/code/result](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md).
+[Prior direct-global producer proof/code/result](experiments/direct_global_producer_20260909/REPORT.md).
 [Prior causal/global proof/code/result](experiments/causal_global_bridge_20260908/REPORT.md).
 [Prior nonlinear router proof/code/result](experiments/nonlinear_router_frontier_20260908/REPORT.md).
 [Prior native proof/code/replay](experiments/native_global_transition_20260908/REPORT.md).
 [Pre-native-global matrix unchanged](docs/research/history/pre_native_global_transition_20260908/VALIDATION_MATRIX.md).
+
+|Implicit-direct-query E0 item|Actual evidence and scope|
+|---|---|
+|Three-principle execution|P1 query-side complete image frame constructed; P2 exact value/state coalescing constructed then rejected at cost; P3 safe gauge rejected in product-preserving class|
+|P1 arbitrary-GF2 producer|Finite block-image compiler; current query block bits are the addresses; exhaustive small-query controls exact|
+|P1 registered cost|403,747,897,344 binary source bits -> 41,384,749,318,656 transformed image bits =4,817.8189 GiB; worst query 40,365,964,800 bits =4.6992 GiB|
+|P1 traffic gate|query/source `0.09997814246350742`, so >=90% raw binary source removal, but `8.435655770358439x` the registered `8/675` line and no native lift|
+|P1 general linear-frame bound|Complete one-sided linear image frames need >34x source storage even at 90% radius for registered widths; target-radius lower is ~1e23x; does not cover general nonlinear cells|
+|P2 static exactness/cost|Declared ordered finite-word leaf ABI exact; best square case `16385/32768=50.0030518%`; high distinctness 100%; memberships `mn`|
+|P2 dynamic coalescing adversary|FP32-exact integer family keeps all row accumulators distinct; `(accumulator,weight)` pair updates `268,435,456/268,435,456=1.0`|
+|P3 arbitrary nonlinear safe gauge|Every Boolean-cube meet-preserving bijection is a coordinate permutation; exhaustive all-bijection controls through n=3, 40,346 total checked|
+|P3 independent linear gauges|`C(x AND y)=A(x) AND B(y)` with invertible A/B/C forces one aligned coordinate permutation; n=2 exhaustive 216 triples, 2 survivors|
+|P3 dense support|Safe row/column coordinate permutations preserve all 268,435,456 nonzeros of the 16,384-square dense adversary|
+|Focused validation|15/15 current implicit tests PASS; canonical SHA `78644fd5ef4b3e0131bf78867e8986718ed02faeaf37b4228fd1c37909a7af29`|
+|Deliberately not rerun|direct-global 10/10, prior nonlinear 15/15, geometry 28/28, causal-global 14/14, Boolean exhaustive controls, native-global 3510-file replay|
+|OPEN|General implicit nonlinear finite-word direct-query source outside these three classes, arbitrary native ordered lift, complete causal logits/KV/RNG executor, O1-O5, whole-theory O6|
+|Not tested|405B, CUDA, <=8GiB physical GPU, PCIe/SSD/HBM, native4BQ4 p50/p95, TTFT|
 
 |Latest E1 causal/global item|Actual evidence and scope|
 |---|---|

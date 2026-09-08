@@ -1,0 +1,52 @@
+{
+  "round": "implicit_nonlinear_direct_query_20260909",
+  "theory_status": "NOT_ESTABLISHED",
+  "hardware_status": "NOT_TESTED",
+  "core_admission": false,
+  "canonical_summary": "results/e0_implicit_direct_query_gate_v3/summary.json",
+  "canonical_sha256": "78644fd5ef4b3e0131bf78867e8986718ed02faeaf37b4228fd1c37909a7af29",
+  "O1": {
+    "status": "OPEN",
+    "reason": "P1 is uniform for arbitrary GF2 matrices but has fatal transformed storage/query cost and no native lift; P2/P3 do not supply a target-cheap arbitrary-native compiler."
+  },
+  "O2": {
+    "status": "OPEN",
+    "reason": "No surviving implicit producer is integrated into a complete arbitrary-checkpoint load/prefill/decode causal executor."
+  },
+  "O3": {
+    "status": "OPEN",
+    "reason": "No arbitrary Q4/BF16/FP32 ordered dense-effect proof is lifted to exact logits, KV/cache, RNG and all successor state for every legal continuation."
+  },
+  "O4": {
+    "status": "OPEN",
+    "reason": "All three candidates have finite paid models but their storage, traffic or arithmetic bounds are adverse; no surviving whole-model sufficient upper bound exists."
+  },
+  "O5": {
+    "status": "OPEN",
+    "reason": "405B, CUDA, <=8 GiB target GPU, PCIe/SSD/HBM, same-machine native 4B Q4 p50/p95 and TTFT were not executed."
+  },
+  "O6": {
+    "status": "PARTIAL_E0_REPRODUCIBLE",
+    "reason": "Preregistration, source, tests, immutable v1/v2/v3 results, checksum and reports are inspectable; complete-theory reproducibility remains open with O1-O5."
+  },
+  "established_scoped_results": [
+    "A finite arbitrary-GF2 direct-query image-frame producer exists whose current query bits directly determine checkpoint-image addresses and which removes about 90% of raw binary source payload in the registered 10/11-bit construction.",
+    "The registered P1 construction costs about 4817.82 GiB transformed images and about 4.699 GiB worst simultaneous binary query payload; it is about 8.4357x the registered 8/675 line.",
+    "Any complete one-sided linear image frame representing every n-bit right factor with at most t atoms obeys the declared sparse-subset counting lower bound; this does not cover general nonlinear cells.",
+    "The value-class ordered-leaf executor is exact in the declared deterministic finite-word ABI, but even one value per column retains about 50% favorable scalar operations and high-distinctness restores 100%.",
+    "An exact FP32-integer adversary forces every row to occupy a distinct accumulator/weight transition in every column, so identical-transition state coalescing performs 100% of declared row updates.",
+    "Every Boolean-cube bijection preserving coordinatewise AND is a coordinate permutation; even independent invertible linear input/output gauges satisfying C(x AND y)=A(x) AND B(y) are one aligned coordinate permutation."
+  ],
+  "rejected_scoped_candidates": [
+    "complete one-sided linear query-image frames as a target-feasible native core",
+    "exact duplicate weight-value and identical accumulator/weight transition coalescing as a universal >=90% arithmetic-removal core",
+    "safe encoded-state gauges that keep coordinatewise Hadamard/AND cheap while sparsifying an arbitrary dense operator"
+  ],
+  "still_open": [
+    "general implicit nonlinear finite-word direct-query representation outside the three rejected mechanisms",
+    "uniform arbitrary-native compiler/address/read/decode with target-feasible total storage and runtime payload",
+    "exact native ordered Q4/BF16/FP32 lift",
+    "complete causal logits/KV/RNG successor-state executor",
+    "target-scale memory/latency closure"
+  ]
+}

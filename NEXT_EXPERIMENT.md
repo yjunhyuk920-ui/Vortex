@@ -1,14 +1,12 @@
 # Next constructive obligation — 2026-09-09
 
-Verify actual remote head and fixed mission/CTC/O1-O6. [Current frontier](experiments/direct_global_producer_20260909/REPORT.md).
+Verify actual remote head and fixed mission/CTC/O1-O6. [Current frontier](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md).
 
-The direct-global three-principle round is now executed. Reconstruct-all global
-coding, exact-sum/rounding separation, and a concrete Gauss-Jordan direct GF(2)
-producer all fail their own >=90% routes. A new global nonlinear vector-route
-theorem correctly charges cross-matrix advice synergy but is about `516.87x`
-too weak to reject the favorable target. Therefore neither another lower-bound
-refinement nor another static row-operation program is the next constructive
-object.
+The implicit-direct-query three-principle round is now executed. It produced one
+real arbitrary-GF2 query-addressed image-frame compiler, but the registered
+representation is about 102.5x the binary source and the query payload is about
+8.44x the `8/675` line. Static/dynamic exact duplicate-transition sharing and
+product-preserving safe gauges are also closed in their declared scopes.
 
 The next **constructive** obligation is the missing object itself, not another
 name for it:
@@ -23,16 +21,18 @@ words = Read(G, addresses)                          paid physical payload
 It must work for arbitrary unchanged checkpoint matrices, allow globally mixed
 advice without an assumed per-matrix direct sum, and produce the exact ordered
 Q4/BF16/FP32 dense effect and required successor state while closing the 8 GiB
-and native-4B-Q4 traffic/arithmetic line. It must **not** reconstruct most
-source words first (new P1 failure), compute a mathematical exact sum and leave
-rounding as an unspecified witness (new P2 gadget), or materialize/replay a
-quadratic static row-operation program (new P3 explicit failure). Boolean-
-semiring lifts, bitset full scans, response catalogs and undefined decoders also
-remain excluded.
+and native-4B-Q4 traffic/arithmetic line. It must **not** reconstruct most source
+words first, materialize a complete one-sided image dictionary, compute a
+mathematical exact sum and leave rounding as an unspecified witness, replay a
+quadratic static row-operation program, rely on repeated finite-word values or
+identical accumulator transitions, or assume a coordinate gauge keeps nonlinear
+work cheap while making arbitrary dense maps sparse. Boolean-semiring lifts,
+bitset full scans, response catalogs and undefined decoders remain excluded.
 
 The next acceptable candidate must therefore **directly** construct a nonlinear
 implicit GF(2) or native finite-word representation/address/decoder whose source-
-dependent program bits are not fetched at roughly one bit per original weight.
+dependent program bits are not fetched at roughly one bit per original weight
+and whose answer is not a complete stored image atom per query component.
 If it reuses a data-structure index, spell out which stored words are probed and
 how those words produce parity/native ordered sums. The new global vector-route
 Gate may be used as a guardrail because it allows global nonlinear mixing, but a
@@ -44,6 +44,12 @@ adversary: successive legal right factors may differ in every coordinate. Any
 update law that explicitly adds the changed source columns is full dense work
 and is already closed. A valid dynamic summary must aggregate such arbitrary
 dense changes subdensely with a finite native-exact update rule.
+
+Three materially different principles are required before selecting a new core.
+They must be outside all three just-executed classes: one-sided complete linear
+image frames, duplicate transition sharing, and product-preserving coordinate
+gauges. At least one principle must attack the **decoder/program-generation**
+problem itself rather than moving it to cold storage.
 
 The area-5,400 `25x216` 32-query native trace remains a useful bounded bridge
 check, but running it is not a substitute for constructing the global producer.
@@ -80,7 +86,7 @@ producer required here.
 The prior packet screen's real weights are not causal activation evidence. Current
 A/B/C separately establish only their actual pinned-CPU frozen HF protocol;
 declared balancedFP32 or a different platform is not automatically this ABI.
-Three qualifying principles and O1-O6 remain absent; fixed mission continues.
+O1-O5 remain OPEN and O6 remains PARTIAL; fixed mission continues.
 Preserve old failure scopes. PR147 correlation-source and local mantissa-source
 remain separate; incorporate [actual concurrent frontier](experiments/output_envelope_20260908/FRONTIER_SYNC.md).
 [Previous next unchanged](docs/research/history/pre_output_envelope_20260908/NEXT_EXPERIMENT.md).

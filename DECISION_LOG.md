@@ -2,6 +2,47 @@
 
 Append-only decisions. Authoritative run identities are read from committed result JSON.
 
+## D-IMPLICIT-DIRECT-QUERY-20260909 — query-addressed GF2 producer constructed; three implicit subfamilies narrowed
+
+Authority:
+`experiments/implicit_nonlinear_direct_query_20260909/REPORT.md` and
+`results/e0_implicit_direct_query_gate_v3/summary.json`.
+
+Three materially different implicit-direct-query principles were preregistered
+before result inspection and all executed. P1 produced a genuine finite exact
+arbitrary-GF2 block-image representation where the current query bits directly
+select stored output images and no checkpoint-dependent instruction stream is
+fetched. The registered 10/11-bit construction does remove about 90% of raw
+binary source payload, but transformed storage is `4,817.8189 GiB` and the
+worst simultaneous query payload is `4.6992 GiB`, about `8.4357x` the registered
+`8/675` line. The stronger sparse-subset bound rejects complete one-sided linear
+image frames at target radius, not general nonlinear data structures.
+
+P2 constructed an exact value-class ordered-leaf executor. Static best-case
+sharing still retains `16385/32768` favorable scalar operations; high-distinctness
+retains 100%. A runtime coalescer that additionally groups equal
+`(accumulator,weight)` states is forced to `mn` distinct state transitions by an
+explicit FP32-exact integer adversary.
+
+P3 proved that arbitrary meet-preserving Boolean-state bijections are coordinate
+permutations. Independent invertible linear input/output product gauges also
+collapse to one aligned coordinate permutation, so the declared safe-gauge
+route cannot sparsify arbitrary dense support while keeping Hadamard cheap.
+
+Decision:
+
+```text
+RETAIN_P1_AS_EXACT_ARBITRARY_GF2_DIRECT_QUERY_CONSTRUCTION
+REJECT_COMPLETE_ONE_SIDED_LINEAR_IMAGE_FRAME_AS_TARGET_CORE
+REJECT_DUPLICATE_WEIGHT_AND_IDENTICAL_STATE_TRANSITION_SHARING_AS_UNIVERSAL_CORE
+REJECT_PRODUCT_PRESERVING_SAFE_GAUGE_SPARSIFICATION
+KEEP_GENERAL_IMPLICIT_NONLINEAR_NATIVE_DIRECT_QUERY_SOURCE_OPEN
+THEORY_STATUS=NOT_ESTABLISHED
+HARDWARE_STATUS=NOT_TESTED
+```
+
+Persistence is not theory success. O1--O5 remain OPEN and O6 remains PARTIAL.
+
 ## D-DIRECT-GLOBAL-PRODUCER-20260909 — exact arbitrary-GF2 producer constructed but target-cost source still open
 
 Authority: `experiments/direct_global_producer_20260909/REPORT.md` and

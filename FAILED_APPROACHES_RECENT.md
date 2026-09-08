@@ -2,6 +2,41 @@
 
 Continuation of `FAILED_APPROACHES.md`. This is a permanent anti-repetition register. Revisit an entry only with a mechanism that directly addresses the recorded failure and a stronger preregistered falsification.
 
+## IMPLICIT-DIRECT-QUERY-20260909 — complete image frames, duplicate transitions, and product-safe gauges
+
+Do not reopen the complete one-sided query-image dictionary by merely changing
+block widths or atom layout. The implemented arbitrary-GF2 producer is exact and
+has checkpoint-independent query-derived addresses, but the registered 10/11-bit
+construction needs about `4,817.8189 GiB` transformed images and `4.6992 GiB`
+worst simultaneous query payload, `8.4357x` the registered `8/675` line. Moving
+to the first equal block width that meets `8/675` (`b=85`) makes the complete
+image-table storage ratio about `4.55e23x` source. More generally, a complete
+one-sided **linear** image frame with radius `t` can name at most
+`sum_{j<=t} C(S,j)` right factors; the registered target-radius lower is about
+`1e23x` source storage. This boundary does not cover arbitrary nonlinear cells.
+
+Do not reopen exact per-weight caching as though ordered row accumulation were
+free. The implemented value-class executor is exact for the declared finite-word
+ordered-leaf ABI, but even one distinct weight per column retains
+`16385/32768 = 50.0030518%` favorable scalar operations, high-distinctness
+retains 100%, and row membership visits remain `mn`. A stronger online grouping
+by identical `(accumulator,weight)` transition also has an explicit FP32-exact
+integer adversary: first-column weights `1..m`, later weights `1`, query all
+ones. Every row accumulator stays distinct, so all `mn` state transitions remain.
+This rejects duplicate transition sharing, not every nonlinear state machine.
+
+Do not claim an encoded-coordinate gauge sparsifies arbitrary dense maps while
+leaving coordinatewise Hadamard/AND cheap for free. Every bijection of the
+Boolean cube preserving meet/AND is a coordinate permutation. Even allowing
+independent invertible linear gauges on the two inputs and output of a product
+node, `C(x AND y)=A(x) AND B(y)` forces one aligned coordinate permutation.
+Coordinate permutations preserve dense support. A richer transformed nonlinear
+operator remains OPEN only if it is explicitly constructed and fully paid.
+
+Authority:
+`experiments/implicit_nonlinear_direct_query_20260909/REPORT.md` and
+`results/e0_implicit_direct_query_gate_v3/summary.json`.
+
 ## DIRECT-GLOBAL-PRODUCER-20260909 — reconstructive code, exact-sum witness, and Gauss-Jordan producer
 
 Do not reopen a global erasure/network code whose runtime first reconstructs the

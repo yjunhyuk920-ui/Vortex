@@ -1,6 +1,6 @@
 # Research state — 2026-09-09
 
-Fixed mission and CTC unchanged. [Current frontier](experiments/direct_global_producer_20260909/REPORT.md).
+Fixed mission and CTC unchanged. [Current frontier](experiments/implicit_nonlinear_direct_query_20260909/REPORT.md).
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
 CORE_ADMISSION=false
@@ -12,7 +12,51 @@ HARDWARE_STATUS concerns the target; no target latency benchmark ran in this
 round. The actual pinned BF16 HF CPU generation evidence belongs to the prior
 causal/global round and remains preserved below.
 
-## Latest constructive frontier — direct global finite-word producer
+## Latest constructive frontier — implicit nonlinear direct-query representation
+
+The three preregistered implicit principles were executed from the clean
+direct-global scientific head. Current canonical result:
+
+```text
+results/e0_implicit_direct_query_gate_v3/summary.json
+SHA-256 78644fd5ef4b3e0131bf78867e8986718ed02faeaf37b4228fd1c37909a7af29
+focused current-source validation 15/15 PASS
+```
+
+```text
+P1 query-side complete image frame       CONSTRUCTED / TARGET CORE REJECTED
+  arbitrary GF2 exact producer            yes
+  checkpoint-dependent runtime program    none; query block bits are addresses
+  registered query/source fraction        0.09997814246350742
+  registered transformed storage          4,817.8189106583595 GiB
+  registered query payload                4.699216783046722 GiB
+  registered 8/675 multiple               8.435655770358439x
+  one-sided linear frame target ratio     ~1e23x storage lower at registered widths
+
+P2 exact value/state coalescing          CONSTRUCTED / REJECTED
+  declared ordered finite-word ABI        exact
+  static best operation fraction          16385/32768 = 50.0030518%
+  high-distinctness fraction              1.0
+  dynamic state/weight adversary          1.0 update fraction
+
+P3 encoded-state safe gauge              REJECTED IN DECLARED SAFE CLASS
+  arbitrary meet-preserving bijection     coordinate permutation only
+  independent linear product isotopy      one aligned coordinate permutation only
+  arbitrary dense support after gauge     unchanged
+```
+
+P1 is a meaningful constructive advance because it is a finite arbitrary-GF2
+direct-query compiler/address/decoder with no checkpoint-dependent runtime
+instruction stream. It nevertheless misses storage and target query traffic by
+large factors and has no arbitrary-native lift. The one-sided frame lower bound
+does not close nonlinear cells. P2 closes only duplicate value/transition
+sharing. P3 closes only gauges that keep coordinatewise product cheap; a richer
+transformed nonlinear operator remains open if explicitly constructed and paid.
+
+O1-O5 remain OPEN. O6 is partial E0 reproducibility only.
+405B/CUDA/<=8GiB/native4BQ4 p50/p95/TTFT remain NOT TESTED.
+
+## Prior constructive frontier — direct global finite-word producer
 
 Three new direct-producer principles were preregistered and executed from the
 clean remote causal/Boolean frontier:
@@ -56,7 +100,7 @@ constructed.
 O1-O5 remain OPEN. O6 is partial E0/E1 reproducibility only.
 405B/CUDA/<=8GiB/native4BQ4 p50/p95/TTFT remain NOT TESTED.
 
-## Prior constructive frontier — causal/global producer bridge
+## Earlier constructive frontier — causal/global producer bridge
 
 The frozen round compared three materially different principles: (A) legal
 causal dense-information exposure, (B) globally nonlinear checkpoint advice,

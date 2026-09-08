@@ -1,0 +1,171 @@
+{
+  "claim_boundary": {
+    "arbitrary_gf2_direct_query_producer_constructed": true,
+    "arbitrary_native_fast_producer_constructed": false,
+    "full_hf_backend_abi_proved": false,
+    "general_nonlinear_cell_probe_structure_rejected": false,
+    "target_405b_executed": false,
+    "target_hardware_executed": false,
+    "value_class_exact_for_declared_ordered_leaf_abi": true
+  },
+  "classification": "E0_IMPLICIT_NONLINEAR_DIRECT_QUERY_FRONTIER",
+  "decision": "REJECT_EXPLICIT_PATTERN_IMAGE_FRAME_AS_NATIVE_CORE;REJECT_VALUE_CLASS_INVERTED_EXECUTOR_AT_ARITHMETIC_AND_INFORMATION_GATE;REJECT_SAFE_GAUGE_AS_DENSE_EFFECT_REMOVAL;KEEP_GENERAL_IMPLICIT_NONLINEAR_DIRECT_QUERY_REPRESENTATION_OPEN",
+  "obligations": {
+    "O1": "OPEN",
+    "O2": "OPEN",
+    "O3": "OPEN",
+    "O4": "OPEN",
+    "O5": "OPEN",
+    "O6": "PARTIAL_E0_REPRODUCIBLE"
+  },
+  "principle_III_dense_support_adversary": {
+    "arithmetic_fraction": 1.0,
+    "columns": 16384,
+    "dense_nonzeros": 268435456,
+    "nonzeros_after_any_row_column_permutation": 268435456,
+    "removes_at_least_90_percent": false,
+    "rows": 16384,
+    "source_read_fraction": 1.0
+  },
+  "principle_III_hadamard_automorphism_controls": [
+    {
+      "dimension": 1,
+      "invertible_maps": 1,
+      "product_preserving_maps": 1,
+      "product_preserving_nonpermutations": 0
+    },
+    {
+      "dimension": 2,
+      "invertible_maps": 6,
+      "product_preserving_maps": 2,
+      "product_preserving_nonpermutations": 0
+    },
+    {
+      "dimension": 3,
+      "invertible_maps": 168,
+      "product_preserving_maps": 6,
+      "product_preserving_nonpermutations": 0
+    }
+  ],
+  "principle_II_value_class_best_case": {
+    "baseline_adds_favorable": 268435456,
+    "baseline_multiplies": 268435456,
+    "candidate_adds": 268435456,
+    "candidate_multiplies": 16384,
+    "candidate_operation_fraction": "16385/32768",
+    "candidate_operation_fraction_decimal": 0.500030517578125,
+    "removes_at_least_90_percent_operations": false
+  },
+  "principle_II_value_class_high_distinctness": {
+    "baseline_adds_favorable": 268435456,
+    "baseline_multiplies": 268435456,
+    "candidate_adds": 268435456,
+    "candidate_multiplies": 268435456,
+    "candidate_operation_fraction": "1",
+    "candidate_operation_fraction_decimal": 1.0,
+    "removes_at_least_90_percent_operations": false
+  },
+  "principle_I_equal_block_target_tradeoff": {
+    "block_width": 85,
+    "passes_registered_target_fraction": true,
+    "query_fraction": "1/85",
+    "query_fraction_decimal": 0.011764705882352941,
+    "storage_ratio": "38685626227668133590597631/85",
+    "storage_ratio_decimal": 4.551250144431545e+23
+  },
+  "principle_I_sparse_image_frame": {
+    "matrix_rows": [
+      {
+        "blocks": 1638,
+        "columns": 16384,
+        "count": 126,
+        "name": "q_proj",
+        "patterns": 1679770,
+        "rows": 16384,
+        "storage_over_binary_source": 102.5250244140625,
+        "worst_query_fraction": 0.0999755859375
+      },
+      {
+        "blocks": 1638,
+        "columns": 16384,
+        "count": 126,
+        "name": "k_proj",
+        "patterns": 1679770,
+        "rows": 1024,
+        "storage_over_binary_source": 102.5250244140625,
+        "worst_query_fraction": 0.0999755859375
+      },
+      {
+        "blocks": 1638,
+        "columns": 16384,
+        "count": 126,
+        "name": "v_proj",
+        "patterns": 1679770,
+        "rows": 1024,
+        "storage_over_binary_source": 102.5250244140625,
+        "worst_query_fraction": 0.0999755859375
+      },
+      {
+        "blocks": 1638,
+        "columns": 16384,
+        "count": 126,
+        "name": "o_proj",
+        "patterns": 1679770,
+        "rows": 16384,
+        "storage_over_binary_source": 102.5250244140625,
+        "worst_query_fraction": 0.0999755859375
+      },
+      {
+        "blocks": 1638,
+        "columns": 16384,
+        "count": 126,
+        "name": "gate_proj",
+        "patterns": 1679770,
+        "rows": 53248,
+        "storage_over_binary_source": 102.5250244140625,
+        "worst_query_fraction": 0.0999755859375
+      },
+      {
+        "blocks": 1638,
+        "columns": 16384,
+        "count": 126,
+        "name": "up_proj",
+        "patterns": 1679770,
+        "rows": 53248,
+        "storage_over_binary_source": 102.5250244140625,
+        "worst_query_fraction": 0.0999755859375
+      },
+      {
+        "blocks": 5324,
+        "columns": 53248,
+        "count": 126,
+        "name": "down_proj",
+        "patterns": 5454644,
+        "rows": 16384,
+        "storage_over_binary_source": 102.4384765625,
+        "worst_query_fraction": 0.09998497596153846
+      },
+      {
+        "blocks": 1638,
+        "columns": 16384,
+        "count": 1,
+        "name": "lm_head",
+        "patterns": 1679770,
+        "rows": 128256,
+        "storage_over_binary_source": 102.5250244140625,
+        "worst_query_fraction": 0.0999755859375
+      }
+    ],
+    "native_universal_fast_path_proved": false,
+    "raw_binary_bits": 403747897344,
+    "removes_at_least_90_percent_binary_source": true,
+    "storage_over_binary_source": 102.50146091385213,
+    "target_multiple": 8.435655770358439,
+    "transformed_image_bits": 41384749318656,
+    "transformed_image_gib": 4817.8189106583595,
+    "worst_query_bits": 40365964800,
+    "worst_query_fraction": "26279925/262856704",
+    "worst_query_fraction_decimal": 0.09997814246350742,
+    "worst_query_gib": 4.699216783046722
+  }
+}
