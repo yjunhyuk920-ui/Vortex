@@ -1,0 +1,8 @@
+Preserved tool-observed invocation error, not a scientific experiment:
+py -3.12 experiments/correlation_source_20260908/verify.py
+exit_code=2
+verify.py: error: the following arguments are required: --results, --output
+
+The source was not changed to mask this error. The continuation read verify.py
+and reran with --results results --output independent_validation_continuation.json.
+That command exited 0; logs from the subsequent full replay are saved separately.

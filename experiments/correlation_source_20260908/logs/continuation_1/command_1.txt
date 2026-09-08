@@ -1,0 +1,2 @@
+{"mismatches": 0, "output_bits": 290304, "queries": 6144}
+

@@ -3,26 +3,6 @@
 Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total peak<=8GiB, original output/RNG/required successor state; same-machine native4BQ4 p50<=1.2x,p95<=1.5x and existing TTFT. **Not achieved.** No training/weight/mission change; every preparation, storage, movement, arithmetic and state cost counts.
 
 ## Current bounded record — 2026-09-08
-Latest continuation: [consumer-specialized joint source](experiments/correlation_source_20260908/CONTINUATION_REPORT.md).
-Recovered and independently revalidated the interrupted correlation-source work,
-then built an exact finite consumer-function basis generator and packed-plane
-query engine. The former per-query positional-ID histogram is not used by this
-specialized query. Its whole source generation and plane reads remain charged.
-Single-consumer example k32/N1024: file186B, named query references387B vs4096B
-original. Retaining all32 original-bit consumers changes rank1 to33, file4478B
-and references8807B. These are Boolean-source measurements, NOT native model
-inference or physical traffic/latency. Original FP ordering/full RNG/KV lift is OPEN.
-
-22 local tests and independent parsers/evaluators passed;102 science files replay
-to a fixed manifest while all26 initially hashed results remain unchanged.
-[Reproduction](experiments/correlation_source_20260908/finish_validation.py),
-[obligation ledger](experiments/correlation_source_20260908/obligations_continuation.json),
-[handoff](experiments/correlation_source_20260908/HANDOFF_CONTINUATION.md).
-THEORY_STATUS=NOT_ESTABLISHED;HARDWARE_STATUS=NOT_TESTED;FULL_MISSION_O1_O6=OPEN.
-No full mission obligation was newly closed; commit/persistence is independent.
-[Previous entry-point bytes](docs/research/history/pre_correlation_source_20260908/README.md).
-
-### Prior row-frontier record, unchanged evidence
 [Native row-frontier producer](experiments/native_row_frontier_20260908/REPORT.md) automatically generates a lossless row-edit itinerary and preserves the original declared BF16/FP32 balanced reduction tree. No previous-query similarity, input-response bank or error-retry. Unstructured matrices are handled correctly but nearly all work remains.
 
 18 synthetic matrices/360queries/80640output coordinates match separate C/NumPy,378Fraction checks. At512: intentionally coherent controls have1.48-1.72%source and1.26-1.36%FPwork;1%mantissa perturbations retain5.95-6.02%source and8.14-8.21%FPwork. Random controls have~200%source and~99.86%FPwork. Source ratios are not total memory traffic.

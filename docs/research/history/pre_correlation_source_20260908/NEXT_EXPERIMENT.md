@@ -1,29 +1,5 @@
 # Next constructive obligation — 2026-09-08
 
-## Latest continuation priority
-
-Read [continuation handoff](experiments/correlation_source_20260908/HANDOFF_CONTINUATION.md)
-and [O1-O6 ledger](experiments/correlation_source_20260908/obligations_continuation.json).
-The finite consumer-specialized source resolves a defined Boolean joint-query
-producer, but not the native input-dependent all-live-output producer. All O1-O6
-remain OPEN. Preserve the original correlation scan failure and the new
-retained-consumer/rank/cost evidence. No candidate currently qualifies as the core.
-
-The decisive next task is a concrete generation rule connecting original native
-operations and all output/RNG/successor consumers, without first materializing all
-W*x products or a truth table. It must retain exact ordering and prove full
-constructor/query/state/transfer bounds. Consumer rank small only after dropping
-future-required observations is not acceptable. Flow B needs a generated small
-relation-elimination schedule/representation; C needs a generated nonenumerative
-native state chart AND cheap original observer. Neither has been constructed.
-Compare these against a genuinely new source, not three names for the same gap.
-Do not spend the next main track increasing k, dictionary sizes, seeds, SMT
-timeouts, symbolic truth tables or benchmark counts of these rejected forms.
-
-[Previous NEXT bytes](docs/research/history/pre_correlation_source_20260908/NEXT_EXPERIMENT.md).
-
-## Preserved earlier directive and evidence
-
 Verify actual remote head and fixed mission/CTC/O1-O6. [Current producer](experiments/native_row_frontier_20260908/REPORT.md).
 
 Row-frontier source is an explicit exact native projection procedure for every finite matrix in its format, but fast only with small rawword/subtree disagreement. Realistic1%perturbations were only SYNTHETIC controls, not measured checkpoint structure. Random controls remain nearly full arithmetic and larger source. Preserve the difference between source bytes, hot heap traffic, CPU warm observations and full-cost target latency.

@@ -1,28 +1,5 @@
 # Research state — 2026-09-08
 
-## Latest continuation: correlation and required-consumer source
-
-THEORY_STATUS=NOT_ESTABLISHED;HARDWARE_STATUS=NOT_TESTED;CORE_ADMISSION=false;
-FULL_MISSION_O1_O6=OPEN;THREE_QUALIFYING_NEW_PRINCIPLES=false.
-See [report](experiments/correlation_source_20260908/CONTINUATION_REPORT.md) and
-[per-obligation dependencies](experiments/correlation_source_20260908/obligations_continuation.json).
-Actual interrupted source was preserved and extended, not replaced with a new
-claim. Static observed-function affine basis yields exact mask parity queries;
-no source arrays or current-query histogram are passed to the new query object.
-Native input-dependent products, ordered reductions, full causal state and
-same-machine sufficient timing bounds remain unconstructed.
-
-Current evidence:6,336 Boolean queries/292,288 bits, independent scalar parser/
-evaluation,22 local tests,102 frozen-result replays,26 initial hashes unchanged.
-The retained-consumer comparison is on the same original words, not a different
-checkpoint: k32 rank1 single-consumer versus rank33 full-bit+nonlinear family.
-Current-only read savings cannot be promoted to required-state/full-model savings.
-No public model, original RNG/KV, GPU/405B/8GiB/4BQ4/TTFT/full-repo suite ran.
-[Handoff](experiments/correlation_source_20260908/HANDOFF_CONTINUATION.md).
-[Prior state bytes](docs/research/history/pre_correlation_source_20260908/RESEARCH_STATE.md).
-
-## Historical row-frontier evidence below
-
 Fixed mission and CTC unchanged. [Current bounded construction](experiments/native_row_frontier_20260908/REPORT.md).
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
