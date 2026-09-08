@@ -1,0 +1,9 @@
+{
+  "C_recompiled": true,
+  "HF_CUDA_405B_8GiB_4BQ4_latency_tested": false,
+  "all_frozen_hashes_match": true,
+  "full_repository_suite": false,
+  "manifest_sha256": "56c016845ebee52901283b15680f7460270f4a3ef9ecb0465a1bde1c4c3b728d",
+  "scientific_files": 109,
+  "unit_tests": 22
+}
