@@ -1,0 +1,14 @@
+{
+  "canonical_manifest_entries": 3510,
+  "canonical_manifest_matches": true,
+  "canonical_missing": [],
+  "canonical_root": "results/run_v3",
+  "forbidden_staged": [],
+  "full_repository_runtime_suite": "NOT_TESTED",
+  "normalization": "BOM removed and CRLF converted to LF only in a separate replay file",
+  "original_observation_preserved": true,
+  "requirements_observed_sha256": "1a15613ad6ac6edc64cb37a5861e6cb4724cdbb52f8d01651abd3e9ee4dfdb23",
+  "requirements_replay_sha256": "78590de4236099d1df6f8c2243e5c95dde66b1e8832ae71a4fdb61471af0d8d3",
+  "staged_raw_output_binaries": 3362,
+  "staged_total_files_at_check": 7511
+}

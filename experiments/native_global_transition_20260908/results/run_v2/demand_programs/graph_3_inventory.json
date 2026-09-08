@@ -1,0 +1,9297 @@
+{
+  "after": {
+    "attention": [],
+    "calls": 3098,
+    "logical_last_use_peak_bytes": 56883840,
+    "logical_native_result_bytes": 278447784,
+    "matrices": [
+      {
+        "a": [
+          1,
+          32,
+          1
+        ],
+        "b": [
+          1,
+          1,
+          1
+        ],
+        "macs": 32,
+        "node": "bmm",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 4
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_1",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_2",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_1",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_2",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_3",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_4",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_5",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_6",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_7",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_8",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_9",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_3",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_4",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_10",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_11",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_12",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_13",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_14",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_15",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_16",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_5",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_6",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_17",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_18",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_19",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_20",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_21",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_22",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_23",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_7",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_8",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_24",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_25",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_26",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_27",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_28",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_29",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_30",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_9",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_10",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_31",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_32",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_33",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_34",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_35",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_36",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_37",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_11",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_12",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_38",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_39",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_40",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_41",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_42",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_43",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_44",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_13",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_14",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_45",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_46",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_47",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_48",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_49",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_50",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_51",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_15",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_16",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_52",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_53",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_54",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_55",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_56",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_57",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_58",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_17",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_18",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_59",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_60",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_61",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_62",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_63",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_64",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_65",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_19",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_20",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_66",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_67",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_68",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_69",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_70",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_71",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_72",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_21",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_22",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_73",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_74",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_75",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_76",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_77",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_78",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_79",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_23",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_24",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_80",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_81",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_82",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_83",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_84",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_85",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_86",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_25",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_26",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_87",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_88",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_89",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_90",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_91",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_92",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_93",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_27",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_28",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_94",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_95",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_96",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_97",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_98",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_99",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_100",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_29",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_30",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_101",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_102",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_103",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_104",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_105",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_106",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_107",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_31",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_32",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_108",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_109",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_110",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_111",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_112",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_113",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_114",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_33",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_34",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_115",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_116",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_117",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_118",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_119",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_120",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_121",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_35",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_36",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_122",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_123",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_124",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_125",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_126",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_127",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_128",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_37",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_38",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_129",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_130",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_131",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_132",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_133",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_134",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_135",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_39",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_40",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_136",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_137",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_138",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_139",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_140",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_141",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_142",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_41",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_42",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_143",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_144",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_145",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_146",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_147",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_148",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_149",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_43",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_44",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_150",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_151",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_152",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_153",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_154",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_155",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_156",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_45",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_46",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_157",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_158",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_159",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_160",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_161",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_162",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_163",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_47",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_48",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_164",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_165",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_166",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_167",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_168",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_169",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_170",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_49",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_50",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_171",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_172",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_173",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_174",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_175",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_176",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_177",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_51",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_52",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_178",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_179",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_180",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_181",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_182",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_183",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_184",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_53",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_54",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_185",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_186",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_187",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_188",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_189",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_190",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_191",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_55",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_56",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_192",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_193",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_194",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_195",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_196",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_197",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_198",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_57",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_58",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_199",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_200",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_201",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_202",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_203",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_204",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_205",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_59",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_60",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_206",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_207",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_208",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_209",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          49152
+        ],
+        "macs": 28311552,
+        "node": "mm_210",
+        "op": "aten.mm.default",
+        "rhs_bytes": 56623104
+      }
+    ],
+    "matrix_calls": 272,
+    "matrix_macs": 134721824,
+    "matrix_rhs_payload_bytes": 269927428,
+    "native_workspace_and_allocator_extra": true,
+    "nodes": 3436,
+    "operator_histogram": {
+      "aten._safe_softmax.default": 30,
+      "aten._to_copy.default": 245,
+      "aten._unsafe_view.default": 211,
+      "aten.add.Tensor": 181,
+      "aten.bmm.default": 61,
+      "aten.cat.default": 121,
+      "aten.clone.default": 60,
+      "aten.cos.default": 1,
+      "aten.embedding.default": 1,
+      "aten.expand.default": 183,
+      "aten.mean.dim": 61,
+      "aten.mm.default": 211,
+      "aten.mul.Scalar": 60,
+      "aten.mul.Tensor": 274,
+      "aten.neg.default": 60,
+      "aten.pow.Tensor_Scalar": 61,
+      "aten.rsqrt.default": 61,
+      "aten.silu.default": 30,
+      "aten.sin.default": 1,
+      "aten.slice.Tensor": 126,
+      "aten.t.default": 211,
+      "aten.transpose.int": 151,
+      "aten.unsqueeze.default": 123,
+      "aten.view.default": 574
+    },
+    "physical_memory_traffic": "NOT_MEASURED",
+    "root_names": [
+      "_unsafe_view_210",
+      "cat_3",
+      "cat_4",
+      "cat_7",
+      "cat_8",
+      "cat_11",
+      "cat_12",
+      "cat_15",
+      "cat_16",
+      "cat_19",
+      "cat_20",
+      "cat_23",
+      "cat_24",
+      "cat_27",
+      "cat_28",
+      "cat_31",
+      "cat_32",
+      "cat_35",
+      "cat_36",
+      "cat_39",
+      "cat_40",
+      "cat_43",
+      "cat_44",
+      "cat_47",
+      "cat_48",
+      "cat_51",
+      "cat_52",
+      "cat_55",
+      "cat_56",
+      "cat_59",
+      "cat_60",
+      "cat_63",
+      "cat_64",
+      "cat_67",
+      "cat_68",
+      "cat_71",
+      "cat_72",
+      "cat_75",
+      "cat_76",
+      "cat_79",
+      "cat_80",
+      "cat_83",
+      "cat_84",
+      "cat_87",
+      "cat_88",
+      "cat_91",
+      "cat_92",
+      "cat_95",
+      "cat_96",
+      "cat_99",
+      "cat_100",
+      "cat_103",
+      "cat_104",
+      "cat_107",
+      "cat_108",
+      "cat_111",
+      "cat_112",
+      "cat_115",
+      "cat_116",
+      "cat_119",
+      "cat_120"
+    ]
+  },
+  "before": {
+    "attention": [],
+    "calls": 3128,
+    "logical_last_use_peak_bytes": 56883840,
+    "logical_native_result_bytes": 278451564,
+    "matrices": [
+      {
+        "a": [
+          1,
+          32,
+          1
+        ],
+        "b": [
+          1,
+          1,
+          1
+        ],
+        "macs": 32,
+        "node": "bmm",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 4
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_1",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_2",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_1",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_2",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_3",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_4",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_5",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_6",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_7",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_8",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_9",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_3",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_4",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_10",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_11",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_12",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_13",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_14",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_15",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_16",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_5",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_6",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_17",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_18",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_19",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_20",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_21",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_22",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_23",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_7",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_8",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_24",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_25",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_26",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_27",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_28",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_29",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_30",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_9",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_10",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_31",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_32",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_33",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_34",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_35",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_36",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_37",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_11",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_12",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_38",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_39",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_40",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_41",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_42",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_43",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_44",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_13",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_14",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_45",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_46",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_47",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_48",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_49",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_50",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_51",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_15",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_16",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_52",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_53",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_54",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_55",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_56",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_57",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_58",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_17",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_18",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_59",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_60",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_61",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_62",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_63",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_64",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_65",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_19",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_20",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_66",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_67",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_68",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_69",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_70",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_71",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_72",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_21",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_22",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_73",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_74",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_75",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_76",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_77",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_78",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_79",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_23",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_24",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_80",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_81",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_82",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_83",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_84",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_85",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_86",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_25",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_26",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_87",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_88",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_89",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_90",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_91",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_92",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_93",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_27",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_28",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_94",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_95",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_96",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_97",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_98",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_99",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_100",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_29",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_30",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_101",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_102",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_103",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_104",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_105",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_106",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_107",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_31",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_32",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_108",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_109",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_110",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_111",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_112",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_113",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_114",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_33",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_34",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_115",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_116",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_117",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_118",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_119",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_120",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_121",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_35",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_36",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_122",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_123",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_124",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_125",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_126",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_127",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_128",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_37",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_38",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_129",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_130",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_131",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_132",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_133",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_134",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_135",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_39",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_40",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_136",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_137",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_138",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_139",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_140",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_141",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_142",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_41",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_42",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_143",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_144",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_145",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_146",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_147",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_148",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_149",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_43",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_44",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_150",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_151",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_152",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_153",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_154",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_155",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_156",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_45",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_46",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_157",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_158",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_159",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_160",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_161",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_162",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_163",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_47",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_48",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_164",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_165",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_166",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_167",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_168",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_169",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_170",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_49",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_50",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_171",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_172",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_173",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_174",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_175",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_176",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_177",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_51",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_52",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_178",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_179",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_180",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_181",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_182",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_183",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_184",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_53",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_54",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_185",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_186",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_187",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_188",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_189",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_190",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_191",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_55",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_56",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_192",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_193",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_194",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_195",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_196",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_197",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_198",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_57",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_58",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_199",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_200",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_201",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_202",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_203",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_204",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          192
+        ],
+        "macs": 110592,
+        "node": "mm_205",
+        "op": "aten.mm.default",
+        "rhs_bytes": 221184
+      },
+      {
+        "a": [
+          9,
+          1,
+          64
+        ],
+        "b": [
+          9,
+          64,
+          7
+        ],
+        "macs": 4032,
+        "node": "bmm_59",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          9,
+          1,
+          7
+        ],
+        "b": [
+          9,
+          7,
+          64
+        ],
+        "macs": 4032,
+        "node": "bmm_60",
+        "op": "aten.bmm.default",
+        "rhs_bytes": 16128
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          576
+        ],
+        "macs": 331776,
+        "node": "mm_206",
+        "op": "aten.mm.default",
+        "rhs_bytes": 663552
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_207",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          1536
+        ],
+        "macs": 884736,
+        "node": "mm_208",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          1536
+        ],
+        "b": [
+          1536,
+          576
+        ],
+        "macs": 884736,
+        "node": "mm_209",
+        "op": "aten.mm.default",
+        "rhs_bytes": 1769472
+      },
+      {
+        "a": [
+          1,
+          576
+        ],
+        "b": [
+          576,
+          49152
+        ],
+        "macs": 28311552,
+        "node": "mm_210",
+        "op": "aten.mm.default",
+        "rhs_bytes": 56623104
+      }
+    ],
+    "matrix_calls": 272,
+    "matrix_macs": 134721824,
+    "matrix_rhs_payload_bytes": 269927428,
+    "native_workspace_and_allocator_extra": true,
+    "nodes": 3466,
+    "operator_histogram": {
+      "aten._safe_softmax.default": 30,
+      "aten._to_copy.default": 275,
+      "aten._unsafe_view.default": 211,
+      "aten.add.Tensor": 181,
+      "aten.bmm.default": 61,
+      "aten.cat.default": 121,
+      "aten.clone.default": 60,
+      "aten.cos.default": 1,
+      "aten.embedding.default": 1,
+      "aten.expand.default": 183,
+      "aten.mean.dim": 61,
+      "aten.mm.default": 211,
+      "aten.mul.Scalar": 60,
+      "aten.mul.Tensor": 274,
+      "aten.neg.default": 60,
+      "aten.pow.Tensor_Scalar": 61,
+      "aten.rsqrt.default": 61,
+      "aten.silu.default": 30,
+      "aten.sin.default": 1,
+      "aten.slice.Tensor": 126,
+      "aten.t.default": 211,
+      "aten.transpose.int": 151,
+      "aten.unsqueeze.default": 123,
+      "aten.view.default": 574
+    },
+    "physical_memory_traffic": "NOT_MEASURED",
+    "root_names": [
+      "_unsafe_view_210",
+      "cat_3",
+      "cat_4",
+      "cat_7",
+      "cat_8",
+      "cat_11",
+      "cat_12",
+      "cat_15",
+      "cat_16",
+      "cat_19",
+      "cat_20",
+      "cat_23",
+      "cat_24",
+      "cat_27",
+      "cat_28",
+      "cat_31",
+      "cat_32",
+      "cat_35",
+      "cat_36",
+      "cat_39",
+      "cat_40",
+      "cat_43",
+      "cat_44",
+      "cat_47",
+      "cat_48",
+      "cat_51",
+      "cat_52",
+      "cat_55",
+      "cat_56",
+      "cat_59",
+      "cat_60",
+      "cat_63",
+      "cat_64",
+      "cat_67",
+      "cat_68",
+      "cat_71",
+      "cat_72",
+      "cat_75",
+      "cat_76",
+      "cat_79",
+      "cat_80",
+      "cat_83",
+      "cat_84",
+      "cat_87",
+      "cat_88",
+      "cat_91",
+      "cat_92",
+      "cat_95",
+      "cat_96",
+      "cat_99",
+      "cat_100",
+      "cat_103",
+      "cat_104",
+      "cat_107",
+      "cat_108",
+      "cat_111",
+      "cat_112",
+      "cat_115",
+      "cat_116",
+      "cat_119",
+      "cat_120"
+    ]
+  },
+  "build_seconds": 3.8343164999987494,
+  "capture_original_forward_calls": 1,
+  "checkpoint_load_and_graph_execution_extra": true,
+  "index": 3,
+  "serialized_program_bytes": 1275554,
+  "signature": {
+    "const": {
+      "dict": [
+        [
+          "inputs_embeds",
+          null
+        ],
+        [
+          "attention_mask",
+          null
+        ],
+        [
+          "logits_to_keep",
+          1
+        ],
+        [
+          "use_cache",
+          true
+        ],
+        [
+          "return_dict",
+          true
+        ]
+      ]
+    },
+    "mask_guard_input_bytes": 56,
+    "meta": [
+      {
+        "device": "cpu",
+        "dtype": "torch.int64",
+        "shape": [
+          1
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.int64",
+        "shape": [
+          1,
+          1
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.int64",
+        "shape": [
+          1,
+          1
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          1,
+          3,
+          6,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1152,
+          384,
+          64,
+          1
+        ]
+      }
+    ],
+    "names": [
+      "cache_position",
+      "input_ids",
+      "position_ids"
+    ],
+    "past_layers": 30
+  },
+  "transform": {
+    "cse": [],
+    "dead": [
+      {
+        "name": "_to_copy_269",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_260",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_251",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_242",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_233",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_224",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_215",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_206",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_197",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_188",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_179",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_170",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_161",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_152",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_143",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_134",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_125",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_116",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_107",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_98",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_89",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_80",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_71",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_62",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_53",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_44",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_35",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_26",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_17",
+        "op": "aten._to_copy.default"
+      },
+      {
+        "name": "_to_copy_8",
+        "op": "aten._to_copy.default"
+      }
+    ],
+    "guards": {
+      "fixed_shape_dtype_stride": true,
+      "frozen_checkpoint_required": true,
+      "no_mutable_native_ops": true,
+      "no_seeded_random_ops": true,
+      "unknown_native_ops_retained_and_charged": true
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "mission_changed": false,
+  "full_mission_O1_O6": "OPEN",
+  "core_admission": false,
+  "theory_status": "NOT_ESTABLISHED",
+  "target_hardware_status": "NOT_TESTED",
+  "three_qualifying_new_principles": false,
+  "O1": {"status":"OPEN","bounded_result":"Finite graph constructor, guarded original checkpoint layout; original model loaded; one checkpoint only","remaining":"Automatic fast constructor for every original target checkpoint"},
+  "O2": {"status":"OPEN","bounded_result":"All three implemented arms run original HF sampling with own logits and full next KV on fixed sequences","remaining":"Complete inexpensive load/prefill/all-legal-context program for unchanged mission"},
+  "O3": {"status":"OPEN","bounded_result":"Guarded native topology proof, exact codec inverse, TOP/singleton functional execution; observed full roots/RNG/layout match","remaining":"Every legal continuation/mask/model/native target ABI, not just pinned CPU corpus"},
+  "O4": {"status":"OPEN","bounded_result":"Actual capture/native matrix/codec costs explicit; dominant work not removed","remaining":"Substantially cheaper producer and sufficient all-resource upper bound"},
+  "O5": {"status":"OPEN","bounded_result":"No tenfold essential-work reduction; no target hardware measurement","remaining":"405B peak<=8GiB, native4BQ4 coupled latency and TTFT closure"},
+  "O6": {"status":"PARTIAL","bounded_result":"14tests, original pinned SHA, native programs/raw inputs/logits/KV/RNG,3510-file replay","remaining":"Independent proof and target-scale reproduction for a viable core"}
+}

@@ -1,0 +1,120 @@
+﻿experiments/native_global_transition_20260908/results/probe_graph/graph_0_after.txt:3620: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/probe_graph/graph_0_after.txt:3620: new blank line at EOF.
+experiments/native_global_transition_20260908/results/probe_graph/graph_0_before.txt:3650: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/probe_graph/graph_0_before.txt:3650: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run/programs/graph_0_after.txt:3620: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run/programs/graph_0_after.txt:3620: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run/programs/graph_0_before.txt:3650: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run/programs/graph_0_before.txt:3650: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_0_after.txt:3618: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_0_after.txt:3618: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_0_before.txt:3648: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_0_before.txt:3648: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_1_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_1_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_1_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_1_before.txt:3408: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_2_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_2_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_2_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_2_before.txt:3408: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_3_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_3_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_3_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/demand_programs/graph_3_before.txt:3408: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_0_after.txt:3620: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_0_after.txt:3620: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_0_before.txt:3650: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_0_before.txt:3650: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_1_after.txt:3618: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_1_after.txt:3618: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_1_before.txt:3648: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_1_before.txt:3648: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_2_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_2_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_2_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_2_before.txt:3408: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_3_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_3_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_3_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_3_before.txt:3408: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_4_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_4_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_4_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v2/programs/graph_4_before.txt:3408: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_0_after.txt:3618: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_0_after.txt:3618: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_0_before.txt:3648: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_0_before.txt:3648: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_1_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_1_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_1_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_1_before.txt:3408: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_2_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_2_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_2_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_2_before.txt:3408: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_3_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_3_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_3_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/demand_programs/graph_3_before.txt:3408: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_0_after.txt:3620: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_0_after.txt:3620: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_0_before.txt:3650: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_0_before.txt:3650: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_1_after.txt:3618: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_1_after.txt:3618: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_1_before.txt:3648: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_1_before.txt:3648: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_2_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_2_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_2_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_2_before.txt:3408: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_3_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_3_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_3_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_3_before.txt:3408: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_4_after.txt:3378: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_4_after.txt:3378: new blank line at EOF.
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_4_before.txt:3408: trailing whitespace.
++    
+experiments/native_global_transition_20260908/results/run_v3/programs/graph_4_before.txt:3408: new blank line at EOF.

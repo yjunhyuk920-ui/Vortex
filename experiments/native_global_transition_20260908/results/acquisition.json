@@ -1,0 +1,35 @@
+{
+  "files": [
+    {
+      "bytes": 704,
+      "downloaded_now": true,
+      "path": "config.json",
+      "pinned_git_blob": "ccf3dac2f33905d152adbdf3886b5e38a4eb7579",
+      "read_download_verify_seconds": 0.22319690000040282,
+      "sha256": "1d556eab73b69c7f11f64c557a2f9c6f440bd4c6b89bb2584a6b498c92603843",
+      "upstream_lfs_sha256": null
+    },
+    {
+      "bytes": 111,
+      "downloaded_now": true,
+      "path": "generation_config.json",
+      "pinned_git_blob": "0fce861c328ff24830f3037d91ce773254447bf7",
+      "read_download_verify_seconds": 0.27267310000024736,
+      "sha256": "2056c988e990b0d13670f63f2f3b87b3b6d07edaf7a3416998ba27dab2d8a059",
+      "upstream_lfs_sha256": null
+    },
+    {
+      "bytes": 269060552,
+      "downloaded_now": true,
+      "path": "model.safetensors",
+      "pinned_git_blob": "ed736e4e5f39dd99c5d435bf84c0d8c222839b1b",
+      "read_download_verify_seconds": 14.205580799999552,
+      "sha256": "80521b40281d6ce74e35c9282c22539e75aa0ac8578892b2a59955ef78d55da1",
+      "upstream_lfs_sha256": "80521b40281d6ce74e35c9282c22539e75aa0ac8578892b2a59955ef78d55da1"
+    }
+  ],
+  "model": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "trust_remote_code": false,
+  "weight_modified": false
+}

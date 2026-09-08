@@ -1,0 +1,1465 @@
+{
+  "input_keys": [
+    "attention_mask",
+    "cache_position",
+    "input_ids",
+    "inputs_embeds",
+    "logits_to_keep",
+    "past_key_values",
+    "position_ids",
+    "return_dict",
+    "use_cache"
+  ],
+  "observation": {
+    "cache_fields": [
+      "layers",
+      "layer_classes",
+      "layer_init_kwargs",
+      "num_hidden_layers",
+      "cache_processor"
+    ],
+    "cache_layers": 30,
+    "cache_length": 5,
+    "kv": [
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_00.bin",
+        "sha256": "28ff0e15bcc789573ea9d0b7d397dc6aa0728b1cd32b5fdc822c9859f7fcb6b5",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_01.bin",
+        "sha256": "7a0c32d60f4032f887482574e954b3bf11979b93b5f54ed0df652cd8c6cc1d7c",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_02.bin",
+        "sha256": "b381eb6b1a693c8183ecf0ab9021bf09b205b0614a879962db97fb58cf9badf9",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_03.bin",
+        "sha256": "5de403784754219ef62e002c30cd8c172af11959401723d7a75792021fec5bdd",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_04.bin",
+        "sha256": "ad02d89cf3d61758d59ad5d134d29767be6893406bd8ec73347f3071e7e1d5b1",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_05.bin",
+        "sha256": "2bd29e6731ae9a14b2dbe8228889125cc7ffae20ed5dcca1ec75a03854682361",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_06.bin",
+        "sha256": "7c8c2efcf4e1f2a45fccf02b5c2f3538a5eace562eb748cab71362cfa2998eaf",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_07.bin",
+        "sha256": "c246446ecd481ed361eb791c5bcd31a98502d13ee7150a10094af01fae38f1fa",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_08.bin",
+        "sha256": "dcc28b157751444882023106c2bc1757d36189319ec19c6e1f4e88878f37f465",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_09.bin",
+        "sha256": "c18c66a689a754fc55e36eb7b8fd721b937efd682d8d880f2acd62c5168de413",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_10.bin",
+        "sha256": "5ac0aebb84a773c19f7f81f4a95829eb04d640b312200b5fbd1d18751122e9c1",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_11.bin",
+        "sha256": "41a836adfffc2de48c57ff4a2599e125add1fdb289a954bed8e88ef9f13607db",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_12.bin",
+        "sha256": "268a36f68e8a32e732f47d42cf534cb32a4f392687ef1560aa279176b5681e56",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_13.bin",
+        "sha256": "7855d0ea77f9959c372bd519b2bdc7734c316829d5286facac2e19c868f5fb19",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_14.bin",
+        "sha256": "6fc961d3a71bbb9fc920407b441975786607dfe4aabfaa0b79f055c56c0539ef",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_15.bin",
+        "sha256": "9c111afc63cb351be139c5794172f288a02b406d20fd5d8fc725e6ba2f26df61",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_16.bin",
+        "sha256": "4f6b1f8c7f214f9c268db788b8cee5879e088094ab3ca0ad0a5ec322089a5189",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_17.bin",
+        "sha256": "543676412e17ee4f62b4e9cf1e918e7d9a029b4006d6afd3a166203a5a748751",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_18.bin",
+        "sha256": "0bfc26da81bc13241db41b53100000880ec058e905ac24c51c67a95d935940f4",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_19.bin",
+        "sha256": "3fca3e329f2cdaa071fd874c7581cb80428fbe5c369abd02d04af690974304ab",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_20.bin",
+        "sha256": "297652c3769accb35f1ebd0759e54060403b12c7b3004c030b8c7f2c6dc116bb",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_21.bin",
+        "sha256": "4307d6add8b0f742f3aee213fe24a0f9fbdd380e7c0973653cfe8eae9d565c65",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_22.bin",
+        "sha256": "1324f20894c498686442ae1e7f80897b97197a2f7293fb60772411fbeccd4c85",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_23.bin",
+        "sha256": "ae6fabfd849cb1c44b40b28682f392b5c5726a562be8ef6258f15adb7999eba4",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_24.bin",
+        "sha256": "f802de3a2884e49260613d28fc65b6ec0975f68230042cf94ecbf4d238a48956",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_25.bin",
+        "sha256": "e1d95455f8a2244eba457b49eb7326792aeb959f95638bfe22cf6d8171367ff5",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_26.bin",
+        "sha256": "7db357681a1779eb02f89dcec42e820e5ed139656a6c120622f5c80cd31533f6",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_27.bin",
+        "sha256": "2e70e7630cd082c8067bc93cfa29c1724ec650f85984ef0660cd2dbde7dcefe7",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_28.bin",
+        "sha256": "b9a3505820ec31f36b6b79e0b987d442925f5bc5aa47766acb5894abd9194c78",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_29.bin",
+        "sha256": "d3f673980960b850da9ec14f04d8fb29f1bf00d61488009a38d1fa668c5cac18",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_30.bin",
+        "sha256": "9781cde8656f7beedb3f614fffb166a811ee03bed1214a05593f0af2e1815a4c",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_31.bin",
+        "sha256": "bd810f6c88ee2653f5ccd60dfab943c26162ce1def904413d983f6f58f800bb7",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_32.bin",
+        "sha256": "67ec92b2cb13c4ed4367282fd0340c4b92b60506f52e901fa57df21553807df5",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_33.bin",
+        "sha256": "658a7867471467afc4b882a16505c619bdc4e111506b0e49aedf281e530aa366",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_34.bin",
+        "sha256": "393bd43841d68691f1ad29eadf8087664a8ebe4e228c1e13886050559bdc3714",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_35.bin",
+        "sha256": "e9adb140a2ba6209f3ec04dff2aeb5d987198c78982d6b91ee184e356759c28e",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_36.bin",
+        "sha256": "ed4c32a46e09094ce9ef52e026ff8548a84e71a793adc96116059ce9af69a7d2",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_37.bin",
+        "sha256": "ac7b2c7b8534e631457f03ce1bb7945592a9fb073f937a94d219c8d1a7c7d93e",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_38.bin",
+        "sha256": "3cf931dcdacaf5a1edeaf320f40477f58385c3cd3f377450917782a7b648f542",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_39.bin",
+        "sha256": "e82982c2204f7bb07e52f6adcffa2131f49d9ac94c170f7abda797d4e2a694cc",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_40.bin",
+        "sha256": "a8e4a55832f1198a69c068f87196bc04da35d426da5b462158b69efb39d1f82b",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_41.bin",
+        "sha256": "04adce3fbc4f740619612e25314df353d7170e06892924c7e485303149764cc9",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_42.bin",
+        "sha256": "26295f8614dc026dd38e9c60d0570682dda651e3e469fcc9a848a7828788a3b0",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_43.bin",
+        "sha256": "7e04e78178be0b5179f22891410576da860a02f8fc69dce833b84ff9047dcdff",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_44.bin",
+        "sha256": "eba9eb5c49e5216391ac09afe96e587411547f0ad39bb27941b81218c14e9060",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_45.bin",
+        "sha256": "650c3117ce74d7b067e622d9fd686ca5c9a854f85e371989912ad3a399158c9e",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_46.bin",
+        "sha256": "4b6349806cc9ebffd60f7d7b95840a6383cbee02e923b13bcc856b5c54283d07",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_47.bin",
+        "sha256": "9ca2d08c73c0071e7e902ae44bfac5801dc74532b1ca655b3d0634d85bbdbbfd",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_48.bin",
+        "sha256": "d348b68863f7b06b4a3eddf1ea9e285c191e97db8f9f17adc316d4d7ffc2a79c",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_49.bin",
+        "sha256": "0a91f8a3d95d31dcf5a6deefffb9f77ea332e67d346b8b1da12e7cc956e56de1",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_50.bin",
+        "sha256": "1e90ecc927226cfdd8de13735b7764b87d4a93a0e4eab93bce4b1475e034fc0e",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_51.bin",
+        "sha256": "a804fbba82f8aca566944887f48d72e0d8c59a46c27b8a154d2b9d6cc68e36b3",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_52.bin",
+        "sha256": "b17dd33beec71a7265790bc7db22a6a236c3e922db4ecf5e9fd26a18c8dd5d42",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_53.bin",
+        "sha256": "45944bc6588eb3fff2e6e14e40366e86c33567abd20c4f46a622f16042bcb017",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_54.bin",
+        "sha256": "c47a0ea66a6adf17328e399a4d892589e828af0eeaefd941a41abebdbc87faf1",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_55.bin",
+        "sha256": "942cb8ab7656c842bf3ad034f0111d93757613dd4e6ce78192959a8a662b2dd3",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_56.bin",
+        "sha256": "61c5d903c983a4b78c515cdd85f51d3255fcca893baf2d550fb29adb4e51e8e7",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_57.bin",
+        "sha256": "2764b2b29449a1ccf994c0b9a25a5e8911e36c5f56d1f26f69488e76751cc068",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_58.bin",
+        "sha256": "8f66f7b415babe2625a345669b6b2a29428d3e802f290dfe0dd57e7bbd09efb0",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      },
+      {
+        "bytes": 1920,
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "file": "kv_59.bin",
+        "sha256": "09829459c779edcfaf41eb26418cab14f1681a03cddc63406a54b9a8b0edda6c",
+        "shape": [
+          1,
+          3,
+          5,
+          64
+        ],
+        "storage_offset": 0,
+        "stride": [
+          960,
+          320,
+          64,
+          1
+        ]
+      }
+    ],
+    "layer_fields": [
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ],
+      [
+        "keys",
+        "values"
+      ]
+    ],
+    "logits": {
+      "bytes": 98304,
+      "device": "cpu",
+      "dtype": "torch.bfloat16",
+      "file": "logits.bin",
+      "sha256": "ee28b8e438b64598df9095bd4ffd19f32966c674637be70d4b84fdc63534f57f",
+      "shape": [
+        1,
+        1,
+        49152
+      ],
+      "storage_offset": 0,
+      "stride": [
+        49152,
+        49152,
+        1
+      ]
+    },
+    "observer_decoded_packed_state": false
+  },
+  "rng_after_forward": {
+    "bytes": 5056,
+    "device": "cpu",
+    "dtype": "torch.uint8",
+    "file": "rng_after_forward.bin",
+    "sha256": "bf9ec946b7c8f7227a52666c42075f8a74922139005b08d9caa309d33b99bcb6",
+    "shape": [
+      5056
+    ],
+    "storage_offset": 0,
+    "stride": [
+      1
+    ]
+  },
+  "rng_before": {
+    "bytes": 5056,
+    "device": "cpu",
+    "dtype": "torch.uint8",
+    "file": "rng_before.bin",
+    "sha256": "bf9ec946b7c8f7227a52666c42075f8a74922139005b08d9caa309d33b99bcb6",
+    "shape": [
+      5056
+    ],
+    "storage_offset": 0,
+    "stride": [
+      1
+    ]
+  },
+  "scalar_inputs": {
+    "inputs_embeds": "None",
+    "logits_to_keep": "1",
+    "return_dict": "True",
+    "use_cache": "True"
+  },
+  "tensor_inputs": {
+    "attention_mask": {
+      "bytes": 40,
+      "device": "cpu",
+      "dtype": "torch.int64",
+      "file": "in_attention_mask.bin",
+      "sha256": "00026c99bfe39e6f7afdfa71a85dfec6909cc9210d43d230b66bc82713bc2857",
+      "shape": [
+        1,
+        5
+      ],
+      "storage_offset": 0,
+      "stride": [
+        5,
+        1
+      ]
+    },
+    "cache_position": {
+      "bytes": 8,
+      "device": "cpu",
+      "dtype": "torch.int64",
+      "file": "in_cache_position.bin",
+      "sha256": "f0a0278e4372459cca6159cd5e71cfee638302a7b9ca9b05c34181ac0a65ac5d",
+      "shape": [
+        1
+      ],
+      "storage_offset": 0,
+      "stride": [
+        1
+      ]
+    },
+    "input_ids": {
+      "bytes": 8,
+      "device": "cpu",
+      "dtype": "torch.int64",
+      "file": "in_input_ids.bin",
+      "sha256": "834081da125888acfce2299df0a1ac4dec59aa447b2a5dae1b265af1cfb9a50f",
+      "shape": [
+        1,
+        1
+      ],
+      "storage_offset": 0,
+      "stride": [
+        1,
+        1
+      ]
+    },
+    "position_ids": {
+      "bytes": 8,
+      "device": "cpu",
+      "dtype": "torch.int64",
+      "file": "in_position_ids.bin",
+      "sha256": "f0a0278e4372459cca6159cd5e71cfee638302a7b9ca9b05c34181ac0a65ac5d",
+      "shape": [
+        1,
+        1
+      ],
+      "storage_offset": 0,
+      "stride": [
+        1,
+        1
+      ]
+    }
+  }
+}

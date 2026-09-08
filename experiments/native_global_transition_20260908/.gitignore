@@ -1,0 +1,10 @@
+.venv/
+.cache/
+__pycache__/
+*.pyc
+replay/
+captured_weights/
+results/replay_*/
+# Original canonical scientific bytes are evidence, not checkpoint weights.
+!results/run*/**/*.bin
+!results/probe/**/*.bin

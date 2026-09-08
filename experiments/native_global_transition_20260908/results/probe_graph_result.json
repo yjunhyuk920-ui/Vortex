@@ -1,0 +1,13 @@
+{
+  "roots": 61,
+  "bit_mismatches": 0,
+  "layout_mismatches": 0,
+  "graphs": [
+    {
+      "before": 3370,
+      "after": 3340,
+      "matrix_before": 538472576,
+      "matrix_after": 538472576
+    }
+  ]
+}

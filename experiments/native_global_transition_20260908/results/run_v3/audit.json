@@ -1,0 +1,175 @@
+{
+  "all_observed_logits_kv_rng_layout_match": true,
+  "all_three_core_admission": false,
+  "codec_minimum_read_write_bytes_B": 5114880,
+  "constructor_native_forward_calls_A": 5,
+  "constructor_native_forward_calls_C": 4,
+  "frozen_weight_tensor_hash": "96c04987c93051ba2608b2e0905d67e36d299873bcf606ea2787cc01a77a93db",
+  "implicit_vs_explicit_mask_controls": [
+    {
+      "same_logits_kv_rng_layout": true,
+      "same_sequence": true,
+      "seed": 260908
+    },
+    {
+      "same_logits_kv_rng_layout": true,
+      "same_sequence": true,
+      "seed": 260909
+    },
+    {
+      "same_logits_kv_rng_layout": true,
+      "same_sequence": true,
+      "seed": 260910
+    }
+  ],
+  "matrix_shapes": [
+    {
+      "after_macs": 538472576,
+      "before_macs": 538472576,
+      "calls_after": 3340,
+      "calls_before": 3370,
+      "index": 0,
+      "logical_peak_bytes": 57113088
+    },
+    {
+      "after_macs": 453537920,
+      "before_macs": 453537920,
+      "calls_after": 3338,
+      "calls_before": 3368,
+      "index": 1,
+      "logical_peak_bytes": 56814720
+    },
+    {
+      "after_macs": 134652704,
+      "before_macs": 134652704,
+      "calls_after": 3098,
+      "calls_before": 3128,
+      "index": 2,
+      "logical_peak_bytes": 56837760
+    },
+    {
+      "after_macs": 134687264,
+      "before_macs": 134687264,
+      "calls_after": 3098,
+      "calls_before": 3128,
+      "index": 3,
+      "logical_peak_bytes": 56860800
+    },
+    {
+      "after_macs": 134721824,
+      "before_macs": 134721824,
+      "calls_after": 3098,
+      "calls_before": 3128,
+      "index": 4,
+      "logical_peak_bytes": 56883840
+    }
+  ],
+  "native_rhs_bytes_are_logical_operands_not_physical_traffic": true,
+  "original_checkpoint_file_bytes": 269060552,
+  "original_checkpoint_parameter_bytes": 269030016,
+  "program_total_bytes": 11775553,
+  "programs": [
+    {
+      "checkpoint_references": 273,
+      "cse_operator_histogram": {},
+      "largest_literal_bytes": 0,
+      "literal_bytes": 0,
+      "matrix_mac_ratio": 1.0,
+      "native_call_ratio": 0.9910979228486647,
+      "path": "programs/graph_0.json",
+      "program_bytes": 1374313,
+      "root_count": 61
+    },
+    {
+      "checkpoint_references": 273,
+      "cse_operator_histogram": {},
+      "largest_literal_bytes": 0,
+      "literal_bytes": 0,
+      "matrix_mac_ratio": 1.0,
+      "native_call_ratio": 0.9910926365795725,
+      "path": "programs/graph_1.json",
+      "program_bytes": 1373958,
+      "root_count": 61
+    },
+    {
+      "checkpoint_references": 273,
+      "cse_operator_histogram": {},
+      "largest_literal_bytes": 0,
+      "literal_bytes": 0,
+      "matrix_mac_ratio": 1.0,
+      "native_call_ratio": 0.9904092071611253,
+      "path": "programs/graph_2.json",
+      "program_bytes": 1275554,
+      "root_count": 61
+    },
+    {
+      "checkpoint_references": 273,
+      "cse_operator_histogram": {},
+      "largest_literal_bytes": 0,
+      "literal_bytes": 0,
+      "matrix_mac_ratio": 1.0,
+      "native_call_ratio": 0.9904092071611253,
+      "path": "programs/graph_3.json",
+      "program_bytes": 1275554,
+      "root_count": 61
+    },
+    {
+      "checkpoint_references": 273,
+      "cse_operator_histogram": {},
+      "largest_literal_bytes": 0,
+      "literal_bytes": 0,
+      "matrix_mac_ratio": 1.0,
+      "native_call_ratio": 0.9904092071611253,
+      "path": "programs/graph_4.json",
+      "program_bytes": 1275554,
+      "root_count": 61
+    },
+    {
+      "checkpoint_references": 273,
+      "cse_operator_histogram": {},
+      "largest_literal_bytes": 0,
+      "literal_bytes": 0,
+      "matrix_mac_ratio": 1.0,
+      "native_call_ratio": 0.9910926365795725,
+      "path": "demand_programs/graph_0.json",
+      "program_bytes": 1373958,
+      "root_count": 61
+    },
+    {
+      "checkpoint_references": 273,
+      "cse_operator_histogram": {},
+      "largest_literal_bytes": 0,
+      "literal_bytes": 0,
+      "matrix_mac_ratio": 1.0,
+      "native_call_ratio": 0.9904092071611253,
+      "path": "demand_programs/graph_1.json",
+      "program_bytes": 1275554,
+      "root_count": 61
+    },
+    {
+      "checkpoint_references": 273,
+      "cse_operator_histogram": {},
+      "largest_literal_bytes": 0,
+      "literal_bytes": 0,
+      "matrix_mac_ratio": 1.0,
+      "native_call_ratio": 0.9904092071611253,
+      "path": "demand_programs/graph_2.json",
+      "program_bytes": 1275554,
+      "root_count": 61
+    },
+    {
+      "checkpoint_references": 273,
+      "cse_operator_histogram": {},
+      "largest_literal_bytes": 0,
+      "literal_bytes": 0,
+      "matrix_mac_ratio": 1.0,
+      "native_call_ratio": 0.9904092071611253,
+      "path": "demand_programs/graph_3.json",
+      "program_bytes": 1275554,
+      "root_count": 61
+    }
+  ],
+  "runtime_native_forward_calls_B": 12,
+  "source_pin": "HuggingFaceTB/SmolLM2-135M@93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "target_and_10x_not_established": true
+}

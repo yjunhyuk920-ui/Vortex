@@ -1,0 +1,9 @@
+# Preserve frozen Windows bytes; regard CR in CRLF as an end-of-line marker.
+* -text whitespace=cr-at-eol
+*.bin binary
+# Upstream/native-generated snapshots retain their original formatting and hashes.
+results/reference_sources/** -diff
+results/**/graphs/*.py -diff
+results/**/graph_*_before.txt -diff
+results/**/graph_*_after.txt -diff
+logs/** -diff
