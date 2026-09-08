@@ -1,20 +1,22 @@
-# Validation matrix — 2026-09-07
+# Validation matrix — 2026-09-08
 
-[Report](experiments/precision_rank_20260907/REPORT.md), [replay](experiments/precision_rank_20260907/README.md), [fixed validation](experiments/precision_rank_20260907/results/validation.json).
-[Prior matrix unchanged](docs/research/history/pre_precision_rank_20260907/VALIDATION_MATRIX.md).
+[Report](experiments/nonlinear_coordinates_20260908/REPORT.md), [replay](experiments/nonlinear_coordinates_20260908/README.md), [fixed validation](experiments/nonlinear_coordinates_20260908/results/validation.json).
+[Prior matrix unchanged](docs/research/history/pre_nonlinear_coordinates_20260908/VALIDATION_MATRIX.md).
 
 | Item | Evidence and exact scope |
 |---|---|
-| Constructor | Actual local-ring elimination, LDR reconstruction, mod2 transform invertibility, stored U/V |
-| Query | Source-only Python/C; centered residues with strict Q>2B; no dense W argument |
-| Native scope | Guarded nonzero integer BF16 W, integer inputs, FP32-exact products/partial sums, zero-sign flag; not generic BF16 |
-| Cases |40matrices/320queries/15872coordinates;0FP32/BF16 mismatch |
-| Precision cost |128generic r1=1 to rK=128;32768 products;65584/98352B source versus32768B originalBF16 |
-| Scope countercontrol |Same Sylvester matrices FWHT896add/sub despite full modular inner rank; no universal rank-cost theorem |
-| Other gates |2401dense vectors/12bit one-message;variable-W matrix-vector flatten rank12; separately scoped |
-| Replay |18tests/603sciencefiles;manifest b502d79e20c4f10f791737ca43581dfa5ea5f92dbc1f1c49b25253b22d8b8bb3 |
+| Finite constructor | Actual T0 orbit, affine coefficient inference, all-state check; 24attempts/8accepted/16refused |
+| Direct constructor | Checks reversible primitive semantics/shared prefix/exact inverse suffix/original observer; zero state enumeration |
+| Runtime | Serialized-source Python/C step; no target future output; same-size bijective state |
+| Exhaustive |43520finite pairs and87040two-observer pairs;0mismatch |
+| Causal |6144steps; declared output/full-state relation/each run's LCG and input choice agree;8order-sensitive history witnesses |
+| Cost |12bit finite16424B/20488transition calls; direct328B equals compact original;216gate eliminations only with original O=E; O=id72decoder gates remain |
+| Preparation |Finite callcount2561x eight original calls; direct initial72gates,720primitive visits/648tuple-comparison upper bound plus all actual storage/address/code costs |
+| Scope |Synthetic reversible Boolean programs, not original BF16 neural computation; chart-switch counterexample; noncommuting/noninjective cheap countercontrols |
+| Numeric audit |65539FP32patterns around1.5;65537-to-one BF16 fiber;local17bit fixed side-info fact;12edge probes;not full neural bridge |
+| Replay |22tests/109sciencefiles;final manifest56c016845ebee52901283b15680f7460270f4a3ef9ecb0465a1bde1c4c3b728d |
 | Full mission |O1-O6OPEN;CORE_ADMISSION=false;threequalifyingnewprinciplesfalse |
 | HF/fullKV/RNG/CUDA/405B/8GiB/4BQ4/TTFT/latency |NOT TESTED / NOT CONSTRUCTED |
 | Actions/fullrepositorysuite |NOT RUN |
 
-Source/tests/expected results are in a checksummed archive capsule; raw scientific files regenerate and are in userZIP. Direct remote report contains scoped proof and paid costs; detailed Korean prose/development logs are ZIP-only. Persistence is not scientific acceptance.
+Source/tests/prereg/full Korean report/frozenmanifest are in a checksummed archival capsule. Raw scientific binary regenerates and is in userZIP; development history/logs are ZIP-only. The final manifest includes explicitly labeled added scope probes; previous manifest/run/scope files are preserved, not rewritten as if unchanged from first development.

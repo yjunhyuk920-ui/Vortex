@@ -1,0 +1,13 @@
+{
+  "file_count": 15,
+  "final_science_manifest_sha256": "56c016845ebee52901283b15680f7460270f4a3ef9ecb0465a1bde1c4c3b728d",
+  "parts": [
+    "CODE_CAPSULE.0.txt",
+    "CODE_CAPSULE.1.txt",
+    "CODE_CAPSULE.2.txt",
+    "CODE_CAPSULE.3.txt"
+  ],
+  "scope": "Source/tests/preregistrations/report/frozen hashes. Raw science regenerates; raw data and development logs are in user ZIP.",
+  "source_json_sha256": "2c42e837afcda02df3b3911e5a1f9ebeda64ac400b5b6caa48663526fd4cd485",
+  "xz_sha256": "cee610cded07c6e130b60888811f1b6e7b2bb516e4d215772d331b65b2885386"
+}
