@@ -1,0 +1,62 @@
+{
+  "branch": "research/native-global-transition-20260908",
+  "connector_readbacks": [
+    "PR149 head_sha",
+    "REST branch ref",
+    "experiment directory at scientific commit",
+    "native_graph.py contents",
+    "raw REPORT.md"
+  ],
+  "draft_pr": 149,
+  "git_content_address_checks": {
+    "NEXT_EXPERIMENT.md": {
+      "bytes": 2389,
+      "git_blob": "7264fc7a8fec2716bc94324da07ee2297cfb9de2",
+      "sha256": "eeb9b2fc7a63fa9e8449dbc4a39df343b3c789a3c4e5d212cb8ca9afc88e1f2d"
+    },
+    "README.md": {
+      "bytes": 3207,
+      "git_blob": "7af8965135a97fd7fcfb435b84b31ee095c52159",
+      "sha256": "ae08bbc2d7cc870fd3e42108e56929d6ee010191998e76ec1b6e79f9d7176d7b"
+    },
+    "RESEARCH_STATE.md": {
+      "bytes": 2997,
+      "git_blob": "2bdbf7805a4f414610bea810cce6d9963a65c767",
+      "sha256": "0279dff2f71a44ee2f0433949c793c1995e84e322db702a5ba9b5d5c8c9ed471"
+    },
+    "experiments/native_global_transition_20260908/REPORT.md": {
+      "bytes": 13649,
+      "git_blob": "2678942b3f5a51b204a563563665f8151f373260",
+      "sha256": "4ae1c3284acad0dc0130ed510b3e2a3990d9aa53f48a10319ee0c0f8c40c31e0"
+    },
+    "experiments/native_global_transition_20260908/native_graph.py": {
+      "bytes": 18880,
+      "git_blob": "adec35a41d4b873a2144560032772096b2910be6",
+      "sha256": "0cc0cae4821b470af14cb0b5ff22191c8693176edbe7d22531b786418b9abd9f"
+    },
+    "experiments/native_global_transition_20260908/native_state.py": {
+      "bytes": 5780,
+      "git_blob": "2506d9089a910d96219c4a41d76219bcc843ce41",
+      "sha256": "ed4fa30f117e885b1d8400c25d4392328174f7005bb0a8ba79ef44337677c1ec"
+    },
+    "experiments/native_global_transition_20260908/results/validation_final.json": {
+      "bytes": 364,
+      "git_blob": "288eaf1a7391c07bdd6a6768d1b9efd626aae01a",
+      "sha256": "19753643e2ad39774571b5132dcdf7f994fb9095f392affc20ee023ba36247a5"
+    },
+    "experiments/native_global_transition_20260908/verify.py": {
+      "bytes": 3353,
+      "git_blob": "a53540b428700873bb2640cbe08bf77a2d550caa",
+      "sha256": "1303a079e41020af63f8f700546424745632d9dcb53f9dec71c1c9a1d14b604f"
+    }
+  },
+  "local_head": "59a5e106a1475fbe4eaa649bd2a392c989335286",
+  "observed_at_utc": "2026-09-08T10:57:24.571907+00:00",
+  "receipt_own_future_commit": null,
+  "remote_commit_verified": true,
+  "remote_ref": "59a5e106a1475fbe4eaa649bd2a392c989335286",
+  "repository": "yjunhyuk920-ui/Vortex",
+  "scientific_commit": "59a5e106a1475fbe4eaa649bd2a392c989335286",
+  "scientific_status": "NOT_ESTABLISHED",
+  "target_hardware": "NOT_TESTED"
+}
