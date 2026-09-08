@@ -1,0 +1,61 @@
+{
+  "full_mission_O1_O6": "OPEN",
+  "gate_decision": "REJECT_FIXED_PACKET_SHARED_OUTPUT_CORE_RETAIN_SCOPED_REFERENCE",
+  "general_equation": {
+    "certified_rows": "c",
+    "constructor_work_upper_order": "O(m*n) value scans/comparisons, O(g*n) output coefficients",
+    "current_constructor_memory_order": "O(m*n) host arrays, not an 8GiB streaming implementation",
+    "groups": "g=ceil(m/b)",
+    "runtime_coefficient_payload": "4*g*n+2*(m-c)*n",
+    "runtime_live_memory_order": "O(g*n+b*nextpow2(n)+m+n) arrays plus original file/OS caches",
+    "separate_FP_arithmetic": "(2*g+m-c)*(n+nextpow2(n)-1)"
+  },
+  "kind": "DERIVED_FROM_FROZEN_FORMAT_NOT_WALL_CLOCK",
+  "metadata_payload_bytes": 158976,
+  "original_storage_retained": true,
+  "previous_ratio_excludes": [
+    "initial_network_acquisition",
+    "summary_reload",
+    "header_bytes",
+    "constructor_extrema_comparisons",
+    "input_decode",
+    "output_encode",
+    "allocation",
+    "temporary_array_read_write",
+    "file_open_seek",
+    "cache_effects",
+    "independent_reference_validation"
+  ],
+  "previous_ratio_includes": [
+    "one_original_constructor_read",
+    "summary_payload_write",
+    "8_original_reads",
+    "8_summary_reads"
+  ],
+  "public_minimum_build_then_8_queries_ratio": 1.1349826388888888,
+  "public_raw_tensor_bytes": 17915904,
+  "public_runtime_weight_plus_envelope_payload_ratio": 1.0088734567901234,
+  "synthetic_405e9_coefficient_illustration": {
+    "MEASURED": false,
+    "all_matrices_assumed_full_packets": true,
+    "envelope_payload_GiB": 5.893525667488575,
+    "envelope_payload_bytes": 6328125000,
+    "not_a_405B_compressed_model": true,
+    "original_BF16_bytes": 810000000000,
+    "required_extra": [
+      "original weights",
+      "KV",
+      "code",
+      "metadata",
+      "buffers",
+      "allocator",
+      "certificate work"
+    ]
+  },
+  "target_latency": "NOT_TESTED",
+  "uniform_packet_256": {
+    "necessary_certified_row_fraction_for_10x": 0.9078125,
+    "ratio": "2/256+1-f",
+    "requires_all_other_costs_too": true
+  }
+}

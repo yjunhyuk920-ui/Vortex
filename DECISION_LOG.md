@@ -2,6 +2,25 @@
 
 Append-only decisions. Authoritative run identities are read from committed result JSON.
 
+## D-OUTPUT-ENVELOPE-20260908 — reject fixed shared-output packets; preserve real-weight evidence
+
+See experiments/output_envelope_20260908/docs/REPORT_KO.md and frozen results.
+Pinned SmolLM2-135M12unaltered BF16 matrices,96SYNTHETIC inputs,101376outputs:
+0mismatch;accepted_groups=0,oracle_broadcastable_groups=0 of432. Original reads100%,
+coefficient/FPwork1.0078125-1.0104167 before other costs. No packet/seed/tensor sweep.
+Certificate tightening cannot broadcast genuinely different values in these fixed
+packets. This is not an all-algorithm or reachable-activation impossibility claim.
+HF_FORWARD/FULL_KV_RNG/TARGET_405B=NOT_TESTED;THEORY_STATUS=NOT_ESTABLISHED;
+CORE_ADMISSION=false. Retain code and numerical proof, not a target engine.
+
+Concurrent frontier verification found PR147 head378fcd584330d17f9d144f64ccbc01721903ea6a
+on research/constructive-adaptive-word-20260908. That work's original positional
+scan and later retained-consumer source costs also leave native all-live output
+generation open. Its files are on a separate branch, not copied/merged or overwritten.
+Next main construction must address global native relation elimination, an actual
+native transformed-state constructor, and a distinct third flow; not revive the
+two rejected A implementations or relabel native multiplications.
+
 ## D-001 — Final target fixed
 
 Arbitrary public unmodified Hugging Face dense model; runtime only; real 405B; total GPU VRAM <=8 GiB; original contract preserved; 4B-class user experience; independent reproduction.

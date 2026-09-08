@@ -2,6 +2,19 @@
 
 No unverified assumption may be used as a success condition.
 
+## A-OUTPUT-ENVELOPE-20260908
+
+Assumption: many different rows have a common final BF16 output in each256-row
+packet. CONTRADICTED ON THE FROZEN REAL-WEIGHT/SYNTHETIC-INPUT CORPUS: all432packets
+have different actual output words. Does not characterize reachable HF activations.
+Monotone interval proof is conditional on the declared finite input, separate
+FP32RNE balanced tree, finalBF16 and observer boundaries; actualHF/CUDA equivalence
+remains UNVERIFIED. Final output0 singleton is not used because signed-zero bits
+cannot be proved from ordinary numeric inequalities alone.
+Source extremum arrays and original weights are BOTH stored/charged. A small
+metadata file is not model compression. Baseline-relative target latency and all
+full-state/RNG obligations remain OPEN. See experiment OBLIGATIONS.md.
+
 ## A-001 — Range-certified signed cancellation is broadly exploitable
 
 EXP-047/047R evaluated about 98–100% of contributions even under exact realized ranges.

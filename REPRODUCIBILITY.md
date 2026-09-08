@@ -6,6 +6,20 @@ An independent researcher or new session must determine exactly what ran, what d
 
 Every summary separates `MEASURED / DERIVED / PROJECTED / UNVERIFIED`. Missing target-hardware fields remain `NOT TESTED`.
 
+## Output-envelope public-weight screen — 2026-09-08
+
+From experiments/output_envelope_20260908 run portable_replay.py --output with a
+fresh path using Python3.12,NumPy,requests. Pin93efa2f097d58c2a74874c7e644dbc9b0cee75a2;
+Range206/Content-Range/length and tensor SHA256 recorded. About18MB of upstream
+data is reacquired/cached; weight payloads and derived plan arrays are not in Git.
+Frozen39-file manifest includes12plan arrays,12inputarrays,12fulltraceJSON,summary,
+weightmanifest,initialsourcehashes. Numerical replay compares38files; initial
+source snapshot is preserved but naturally changes when audit scripts are added.
+12unit tests pass;36Fraction dots independently verify complete rounded reductions.
+No candidate latency benchmark or HF/fullKV/RNG/CUDA/405B/8GiB/4BQ4/TTFT test.
+Initial logs are preserved; PowerShell renders unittest stderr as NativeCommandError
+messages even though exit0 and all12tests pass. No failed scientific test is hidden.
+
 ## Required layout
 
 ```text

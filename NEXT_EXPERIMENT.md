@@ -1,12 +1,19 @@
 # Next constructive obligation — 2026-09-08
 
-Verify actual remote head and fixed mission/CTC/O1-O6. [Current producer](experiments/native_row_frontier_20260908/REPORT.md).
+Verify actual remote head and fixed mission/CTC/O1-O6. [Current screen](experiments/output_envelope_20260908/docs/REPORT_KO.md).
 
-Row-frontier source is an explicit exact native projection procedure for every finite matrix in its format, but fast only with small rawword/subtree disagreement. Realistic1%perturbations were only SYNTHETIC controls, not measured checkpoint structure. Random controls remain nearly full arithmetic and larger source. Preserve the difference between source bytes, hot heap traffic, CPU warm observations and full-cost target latency.
+All432frozen packets on original SmolLM2 weights and synthetic inputs have distinct
+BF16 outputs. Tightening one common enclosure cannot make them broadcastable.
+Do not tune packets,seeds,selected tensors or planted dominance as next core work.
 
-Do not scale planted matrices, tune MST order or port this conditional routine to CUDA as the next core result. Need a cheap original-wide-body exact-effect producer when diverse coefficients differ almost everywhere, or a materially different principle, with finite constructor, original output/RNG/required state, all preparation and same-machine target upper bounds. A real checkpoint screen could establish a checkpoint-specific measurement, not arbitrary-mission closure.
+Construct a paid HETEROGENEOUS native effect producer or a different exact whole
+body/state computation. A shared pilot plus unspecified cheap correction merely
+renames the missing work. Delayed action must charge later forcing/observer state,
+preserving PR145 evidence. No viable new producer is supplied by this screen.
 
-Uncorrected row-result subtraction and rounded prefix subtraction fail the recorded native witnesses. They do not rule out all correction/range algorithms. Hamming/twin-width literature uses explicit structural hypotheses; a high local metric is not a lower bound against all circuits. Cheap native projection substitution does not automatically prove original HF ABI or complete KV/causal closure.
-
-Three qualifying new generic principles and O1-O6 closure remain absent. Compare materially different actual producers; do not rename a rejected family or end the mission because one candidate failed. Prior deferred work/state-tail debt and all original scopes remain binding. Previous local native_cover is separate, not silently included.
-[Previous next unchanged](docs/research/history/pre_native_row_frontier_20260908/NEXT_EXPERIMENT.md).
+Real weights are not actual HF activation/causal evidence. Declared balancedFP32
+is not automatically HF/CUDA ABI. Future causal screens need a new frozen protocol.
+Three qualifying principles and O1-O6 remain absent; fixed mission continues.
+Preserve old failure scopes. PR147 correlation-source and local mantissa-source
+remain separate; incorporate [actual concurrent frontier](experiments/output_envelope_20260908/FRONTIER_SYNC.md).
+[Previous next unchanged](docs/research/history/pre_output_envelope_20260908/NEXT_EXPERIMENT.md).

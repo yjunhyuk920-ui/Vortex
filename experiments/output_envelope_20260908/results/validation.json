@@ -1,0 +1,123 @@
+{
+  "CORE_ADMISSION": false,
+  "FULL_KV_RNG": "NOT_TESTED",
+  "HF_FORWARD": "NOT_TESTED",
+  "TARGET_405B": "NOT_TESTED",
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "captured_utc": "2026-09-08T09:07:30.239620+00:00",
+  "entrypoint_relative_links_checked": [
+    [
+      "README.md",
+      "experiments/output_envelope_20260908/docs/REPORT_KO.md"
+    ],
+    [
+      "README.md",
+      "experiments/output_envelope_20260908/README.md"
+    ],
+    [
+      "README.md",
+      "experiments/native_row_frontier_20260908/REPORT.md"
+    ],
+    [
+      "README.md",
+      "experiments/output_envelope_20260908/FRONTIER_SYNC.md"
+    ],
+    [
+      "README.md",
+      "RESEARCH_STATE.md"
+    ],
+    [
+      "README.md",
+      "NEXT_EXPERIMENT.md"
+    ],
+    [
+      "README.md",
+      "VALIDATION_MATRIX.md"
+    ],
+    [
+      "README.md",
+      "AGENTS.md"
+    ],
+    [
+      "README.md",
+      "docs/CONSTRUCTIVE_THEORY_CONTRACT.md"
+    ],
+    [
+      "README.md",
+      "docs/research/history/pre_output_envelope_20260908/README.md"
+    ],
+    [
+      "RESEARCH_STATE.md",
+      "experiments/output_envelope_20260908/docs/REPORT_KO.md"
+    ],
+    [
+      "RESEARCH_STATE.md",
+      "experiments/output_envelope_20260908/FRONTIER_SYNC.md"
+    ],
+    [
+      "RESEARCH_STATE.md",
+      "docs/research/history/pre_output_envelope_20260908/RESEARCH_STATE.md"
+    ],
+    [
+      "NEXT_EXPERIMENT.md",
+      "experiments/output_envelope_20260908/docs/REPORT_KO.md"
+    ],
+    [
+      "NEXT_EXPERIMENT.md",
+      "experiments/output_envelope_20260908/FRONTIER_SYNC.md"
+    ],
+    [
+      "NEXT_EXPERIMENT.md",
+      "docs/research/history/pre_output_envelope_20260908/NEXT_EXPERIMENT.md"
+    ],
+    [
+      "VALIDATION_MATRIX.md",
+      "experiments/output_envelope_20260908/docs/REPORT_KO.md"
+    ],
+    [
+      "VALIDATION_MATRIX.md",
+      "docs/research/history/pre_output_envelope_20260908/VALIDATION_MATRIX.md"
+    ]
+  ],
+  "fresh_replays": 2,
+  "full_repository_suite": "NOT_TESTED",
+  "initial_scientific_files_checked": 39,
+  "initial_source_hashes_unchanged": true,
+  "numerical_files_compared_per_replay": 38,
+  "prior_entrypoint_preservation": {
+    "NEXT_EXPERIMENT.md": {
+      "canonical_sha256": "4837f632c0b050c79e4a3dde80d11623df1326d836b573f72c8814e6331711bd",
+      "git_text_normalization_checked": true,
+      "local_archive_sha256": "b3956eb88299b391ea79107d6c18a2b8b5a3dc344d9735ad6cf21618169fcabe"
+    },
+    "README.md": {
+      "canonical_sha256": "938c68109d5dd9f45adad9bffeddd14183d1e9aebab2bd29ceb6a515866483ff",
+      "git_text_normalization_checked": true,
+      "local_archive_sha256": "4304d5d3468a7f8e87459e1c8c3e62596ba2900124f690f57fd189a1d869c739"
+    },
+    "RESEARCH_STATE.md": {
+      "canonical_sha256": "6f5b109a8a4c6ad8abfde7ed104184df847dab0060c3e8908d67ef16e2ed1d34",
+      "git_text_normalization_checked": true,
+      "local_archive_sha256": "34fc2e239812f71f1140b701a245b8d7a5d211b384c346e6079fb82e63faa56e"
+    },
+    "VALIDATION_MATRIX.md": {
+      "canonical_sha256": "9d4c16a1e8a9eff702a12360213e53021ec1a2b8bb142164fde0735363814467",
+      "git_text_normalization_checked": true,
+      "local_archive_sha256": "4fbb6370c696019257b85554acee52047af5dc9f1648be2fa9b9e9883b7e61d8"
+    }
+  },
+  "required_files_present": [
+    "docs/REPORT_KO.md",
+    "OBLIGATIONS.md",
+    "HANDOFF.md",
+    "README.md",
+    "PREREGISTRATION.md",
+    "results/costs.json",
+    "results/science/summary.json",
+    "results/science/manifest.json",
+    "logs/verify_replay.txt",
+    "logs/portable_replay.txt"
+  ],
+  "status": "PASS",
+  "unit_tests": 12
+}
