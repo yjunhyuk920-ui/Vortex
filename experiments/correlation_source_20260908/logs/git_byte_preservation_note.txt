@@ -1,0 +1,11 @@
+The first git diff --cached --check reported CR characters as trailing
+whitespace because scientific files are intentionally marked -text to preserve
+their first-run SHA256 bytes. Those bytes were not normalized or rewritten.
+
+A second check with core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+returned exit2 only for an extra blank line in four preserved command stdout/
+stderr logs (continuation_1 and continuation_2, command_1 and command_4).
+The raw command logs were retained verbatim rather than edited to manufacture a
+clean whitespace result. All102 staged scientific blobs matched their frozen
+hashes. This formatting observation is not a failed numerical test and is not
+reported as a full clean git diff check.

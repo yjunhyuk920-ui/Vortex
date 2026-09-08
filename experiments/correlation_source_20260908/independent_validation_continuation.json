@@ -1,0 +1,9 @@
+{
+  "cases": 24,
+  "independent_boolean_evaluator": true,
+  "independent_parser": true,
+  "mismatches": 0,
+  "native_reference_scope": "Integer four-term witness only; NOT full HF/CUDA",
+  "output_bits": 290304,
+  "queries": 6144
+}

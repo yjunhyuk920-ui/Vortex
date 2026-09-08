@@ -1,0 +1,9 @@
+{
+  "cases": 36,
+  "independent_parser": true,
+  "independent_scalar_boolean_reference": true,
+  "mismatches": 0,
+  "native_rng_state_validation": "NOT TESTED",
+  "output_bits": 292288,
+  "queries": 6336
+}

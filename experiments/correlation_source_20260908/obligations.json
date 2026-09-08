@@ -1,0 +1,18 @@
+{
+  "mission_version": "CTC-2026-09-05",
+  "parent_commit": "66c01825635a357f86f9dfa5369088d7a239c92d",
+  "theory_status": "NOT_ESTABLISHED",
+  "hardware_status": "NOT_TESTED",
+  "core_admission": false,
+  "three_qualifying_new_principles": false,
+  "newly_closed_full_mission_obligations": 0,
+  "obligations": [
+    {"id":"O1","status":"OPEN","statement":"Uniform finite automatic constructor for every unchanged mission checkpoint","local_evidence":"source.py constructs lossless joint-pattern files for bounded k-bit arrays","missing":"HF-to-cheap-native-query constructor, no favorable pattern assumption","next_decisive_action":"Construct a concrete global order-sensitive layout before extending experiments"},
+    {"id":"O2","status":"OPEN","statement":"Complete loading/prefill/causal output and successor program","local_evidence":"Finite mask-based current-query procedure and limited ordered witness evaluator","missing":"Whole-model native operations, causal KV and sampler integration","next_decisive_action":"Write a paid schedule spanning input, native block, output and live state; no hidden precomputed products"},
+    {"id":"O3","status":"OPEN","statement":"Exact original output/RNG and inductive state correspondence for all continuations","local_evidence":"Partition identity proof for all primitive inputs, independent Boolean checks, known order witness reproduced","missing":"Reference ABI pin and every native/RNG/state transition substituted exactly","next_decisive_action":"Prove an actual native replacement produces every live output with identical RNG consumption; do not infer this from parity correctness"},
+    {"id":"O4","status":"OPEN","statement":"Complete finite resource/time upper bounds","local_evidence":"Exact file sizes, paid constructor/query stages, logical byte counters, bit-work expressions in costs.json","missing":"Full executor, numerical allocator/service bounds and all state/transfer/arithmetic costs","next_decisive_action":"Reduce generation cost itself, then bound complete schedule under independently stated machine service limits"},
+    {"id":"O5","status":"OPEN","statement":"Target-scale 8GiB and baseline-relative p50/p95/TTFT closure","local_evidence":"This layout can retain 16-bit positional IDs and full selected-site scan; no target feasibility result","missing":"Baseline lower bound or coupled ratio, declared workload population and sufficient VORTEX upper bound","next_decisive_action":"Do not promote roofline/small source files/10x screens as final ratios"},
+    {"id":"O6","status":"OPEN","statement":"Checkable complete-theory artifacts and reproducibility","local_evidence":"Source, all primitive inputs/results, independent parser/evaluator, frozen manifests and replay","missing":"The O1-O5 proof/algorithm does not exist yet","next_decisive_action":"Retain local evidence and open dependencies; verify remote persistence separately"}
+  ],
+  "not_tested": ["public checkpoint", "HF forward", "complete KV", "original model RNG/sampling", "CUDA", "405B", "peak GPU <=8GiB", "same-machine native4BQ4 latency", "TTFT", "physical SSD/PCIe/HBM traffic", "full repository test suite"]
+}

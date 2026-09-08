@@ -1,0 +1,919 @@
+{
+  "cases": [
+    {
+      "file_bytes": 72,
+      "full_query_cost": {
+        "anf_monomials": 20,
+        "histogram_scan_entries": 4,
+        "histogram_updates": 16,
+        "id_bit_tests": 32,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 16,
+        "pattern_bytes": 4,
+        "selected_sites": 16
+      },
+      "id_width": 2,
+      "k": 2,
+      "mismatches": 0,
+      "name": "k2_s11_diverse",
+      "output_bits": 1024,
+      "patterns": 4,
+      "queries": 256,
+      "raw_bits_bytes": 4,
+      "totals": {
+        "anf_monomials": 2000,
+        "histogram_scan_entries": 1024,
+        "histogram_updates": 1024,
+        "id_bit_tests": 2048,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 1600,
+        "pattern_bytes": 400,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 65,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 1,
+        "histogram_updates": 16,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 0,
+      "k": 2,
+      "mismatches": 0,
+      "name": "k2_s11_repeated",
+      "output_bits": 1024,
+      "patterns": 1,
+      "queries": 256,
+      "raw_bits_bytes": 4,
+      "totals": {
+        "anf_monomials": 320,
+        "histogram_scan_entries": 256,
+        "histogram_updates": 1024,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 3072,
+        "output_xors": 256,
+        "pattern_bytes": 64,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 65,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 1,
+        "histogram_updates": 16,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 0,
+      "k": 2,
+      "mismatches": 0,
+      "name": "k2_s11_constant",
+      "output_bits": 1024,
+      "patterns": 1,
+      "queries": 256,
+      "raw_bits_bytes": 4,
+      "totals": {
+        "anf_monomials": 320,
+        "histogram_scan_entries": 256,
+        "histogram_updates": 1024,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 3072,
+        "output_xors": 256,
+        "pattern_bytes": 64,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 72,
+      "full_query_cost": {
+        "anf_monomials": 10,
+        "histogram_scan_entries": 4,
+        "histogram_updates": 16,
+        "id_bit_tests": 32,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 8,
+        "pattern_bytes": 2,
+        "selected_sites": 16
+      },
+      "id_width": 2,
+      "k": 2,
+      "mismatches": 0,
+      "name": "k2_s29_diverse",
+      "output_bits": 1024,
+      "patterns": 4,
+      "queries": 256,
+      "raw_bits_bytes": 4,
+      "totals": {
+        "anf_monomials": 2160,
+        "histogram_scan_entries": 1024,
+        "histogram_updates": 1024,
+        "id_bit_tests": 2048,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 1728,
+        "pattern_bytes": 432,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 68,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 2,
+        "histogram_updates": 16,
+        "id_bit_tests": 16,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 1,
+      "k": 2,
+      "mismatches": 0,
+      "name": "k2_s29_repeated",
+      "output_bits": 1024,
+      "patterns": 2,
+      "queries": 256,
+      "raw_bits_bytes": 4,
+      "totals": {
+        "anf_monomials": 640,
+        "histogram_scan_entries": 512,
+        "histogram_updates": 1024,
+        "id_bit_tests": 1024,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 512,
+        "pattern_bytes": 128,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 65,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 1,
+        "histogram_updates": 16,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 0,
+      "k": 2,
+      "mismatches": 0,
+      "name": "k2_s29_constant",
+      "output_bits": 1024,
+      "patterns": 1,
+      "queries": 256,
+      "raw_bits_bytes": 4,
+      "totals": {
+        "anf_monomials": 320,
+        "histogram_scan_entries": 256,
+        "histogram_updates": 1024,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 3072,
+        "output_xors": 256,
+        "pattern_bytes": 64,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 83,
+      "full_query_cost": {
+        "anf_monomials": 140,
+        "histogram_scan_entries": 11,
+        "histogram_updates": 16,
+        "id_bit_tests": 64,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 110,
+        "pattern_bytes": 10,
+        "selected_sites": 16
+      },
+      "id_width": 4,
+      "k": 4,
+      "mismatches": 0,
+      "name": "k4_s11_diverse",
+      "output_bits": 2816,
+      "patterns": 11,
+      "queries": 256,
+      "raw_bits_bytes": 8,
+      "totals": {
+        "anf_monomials": 11424,
+        "histogram_scan_entries": 2816,
+        "histogram_updates": 1024,
+        "id_bit_tests": 4096,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 8976,
+        "pattern_bytes": 816,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 65,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 1,
+        "histogram_updates": 16,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 0,
+      "k": 4,
+      "mismatches": 0,
+      "name": "k4_s11_repeated",
+      "output_bits": 2816,
+      "patterns": 1,
+      "queries": 256,
+      "raw_bits_bytes": 8,
+      "totals": {
+        "anf_monomials": 896,
+        "histogram_scan_entries": 256,
+        "histogram_updates": 1024,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 3072,
+        "output_xors": 704,
+        "pattern_bytes": 64,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 65,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 1,
+        "histogram_updates": 16,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 0,
+      "k": 4,
+      "mismatches": 0,
+      "name": "k4_s11_constant",
+      "output_bits": 2816,
+      "patterns": 1,
+      "queries": 256,
+      "raw_bits_bytes": 8,
+      "totals": {
+        "anf_monomials": 896,
+        "histogram_scan_entries": 256,
+        "histogram_updates": 1024,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 3072,
+        "output_xors": 704,
+        "pattern_bytes": 64,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 85,
+      "full_query_cost": {
+        "anf_monomials": 140,
+        "histogram_scan_entries": 13,
+        "histogram_updates": 16,
+        "id_bit_tests": 64,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 110,
+        "pattern_bytes": 10,
+        "selected_sites": 16
+      },
+      "id_width": 4,
+      "k": 4,
+      "mismatches": 0,
+      "name": "k4_s29_diverse",
+      "output_bits": 2816,
+      "patterns": 13,
+      "queries": 256,
+      "raw_bits_bytes": 8,
+      "totals": {
+        "anf_monomials": 12544,
+        "histogram_scan_entries": 3328,
+        "histogram_updates": 1024,
+        "id_bit_tests": 4096,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 9856,
+        "pattern_bytes": 896,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 68,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 2,
+        "histogram_updates": 16,
+        "id_bit_tests": 16,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 1,
+      "k": 4,
+      "mismatches": 0,
+      "name": "k4_s29_repeated",
+      "output_bits": 2816,
+      "patterns": 2,
+      "queries": 256,
+      "raw_bits_bytes": 8,
+      "totals": {
+        "anf_monomials": 1792,
+        "histogram_scan_entries": 512,
+        "histogram_updates": 1024,
+        "id_bit_tests": 1024,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 1408,
+        "pattern_bytes": 128,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 65,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 1,
+        "histogram_updates": 16,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 0,
+      "k": 4,
+      "mismatches": 0,
+      "name": "k4_s29_constant",
+      "output_bits": 2816,
+      "patterns": 1,
+      "queries": 256,
+      "raw_bits_bytes": 8,
+      "totals": {
+        "anf_monomials": 896,
+        "histogram_scan_entries": 256,
+        "histogram_updates": 1024,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 3072,
+        "output_xors": 704,
+        "pattern_bytes": 64,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 87,
+      "full_query_cost": {
+        "anf_monomials": 616,
+        "histogram_scan_entries": 15,
+        "histogram_updates": 16,
+        "id_bit_tests": 64,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 518,
+        "pattern_bytes": 14,
+        "selected_sites": 16
+      },
+      "id_width": 4,
+      "k": 8,
+      "mismatches": 0,
+      "name": "k8_s11_diverse",
+      "output_bits": 9472,
+      "patterns": 15,
+      "queries": 256,
+      "raw_bits_bytes": 16,
+      "totals": {
+        "anf_monomials": 42240,
+        "histogram_scan_entries": 3840,
+        "histogram_updates": 1024,
+        "id_bit_tests": 4096,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 35520,
+        "pattern_bytes": 960,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 68,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 2,
+        "histogram_updates": 16,
+        "id_bit_tests": 16,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 1,
+      "k": 8,
+      "mismatches": 0,
+      "name": "k8_s11_repeated",
+      "output_bits": 9472,
+      "patterns": 2,
+      "queries": 256,
+      "raw_bits_bytes": 16,
+      "totals": {
+        "anf_monomials": 5632,
+        "histogram_scan_entries": 512,
+        "histogram_updates": 1024,
+        "id_bit_tests": 1024,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 4736,
+        "pattern_bytes": 128,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 65,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 1,
+        "histogram_updates": 16,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 0,
+      "k": 8,
+      "mismatches": 0,
+      "name": "k8_s11_constant",
+      "output_bits": 9472,
+      "patterns": 1,
+      "queries": 256,
+      "raw_bits_bytes": 16,
+      "totals": {
+        "anf_monomials": 2816,
+        "histogram_scan_entries": 256,
+        "histogram_updates": 1024,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 3072,
+        "output_xors": 2368,
+        "pattern_bytes": 64,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 88,
+      "full_query_cost": {
+        "anf_monomials": 704,
+        "histogram_scan_entries": 16,
+        "histogram_updates": 16,
+        "id_bit_tests": 64,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 592,
+        "pattern_bytes": 16,
+        "selected_sites": 16
+      },
+      "id_width": 4,
+      "k": 8,
+      "mismatches": 0,
+      "name": "k8_s29_diverse",
+      "output_bits": 9472,
+      "patterns": 16,
+      "queries": 256,
+      "raw_bits_bytes": 16,
+      "totals": {
+        "anf_monomials": 45056,
+        "histogram_scan_entries": 4096,
+        "histogram_updates": 1024,
+        "id_bit_tests": 4096,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 37888,
+        "pattern_bytes": 1024,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 68,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 2,
+        "histogram_updates": 16,
+        "id_bit_tests": 16,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 1,
+      "k": 8,
+      "mismatches": 0,
+      "name": "k8_s29_repeated",
+      "output_bits": 9472,
+      "patterns": 2,
+      "queries": 256,
+      "raw_bits_bytes": 16,
+      "totals": {
+        "anf_monomials": 5632,
+        "histogram_scan_entries": 512,
+        "histogram_updates": 1024,
+        "id_bit_tests": 1024,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 4736,
+        "pattern_bytes": 128,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 65,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 1,
+        "histogram_updates": 16,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 0,
+      "k": 8,
+      "mismatches": 0,
+      "name": "k8_s29_constant",
+      "output_bits": 9472,
+      "patterns": 1,
+      "queries": 256,
+      "raw_bits_bytes": 16,
+      "totals": {
+        "anf_monomials": 2816,
+        "histogram_scan_entries": 256,
+        "histogram_updates": 1024,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 3072,
+        "output_xors": 2368,
+        "pattern_bytes": 64,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 104,
+      "full_query_cost": {
+        "anf_monomials": 2432,
+        "histogram_scan_entries": 16,
+        "histogram_updates": 16,
+        "id_bit_tests": 64,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 2192,
+        "pattern_bytes": 32,
+        "selected_sites": 16
+      },
+      "id_width": 4,
+      "k": 16,
+      "mismatches": 0,
+      "name": "k16_s11_diverse",
+      "output_bits": 35072,
+      "patterns": 16,
+      "queries": 256,
+      "raw_bits_bytes": 32,
+      "totals": {
+        "anf_monomials": 155648,
+        "histogram_scan_entries": 4096,
+        "histogram_updates": 1024,
+        "id_bit_tests": 4096,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 140288,
+        "pattern_bytes": 2048,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 70,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 2,
+        "histogram_updates": 16,
+        "id_bit_tests": 16,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 1,
+      "k": 16,
+      "mismatches": 0,
+      "name": "k16_s11_repeated",
+      "output_bits": 35072,
+      "patterns": 2,
+      "queries": 256,
+      "raw_bits_bytes": 32,
+      "totals": {
+        "anf_monomials": 19456,
+        "histogram_scan_entries": 512,
+        "histogram_updates": 1024,
+        "id_bit_tests": 1024,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 17536,
+        "pattern_bytes": 256,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 66,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 1,
+        "histogram_updates": 16,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 0,
+      "k": 16,
+      "mismatches": 0,
+      "name": "k16_s11_constant",
+      "output_bits": 35072,
+      "patterns": 1,
+      "queries": 256,
+      "raw_bits_bytes": 32,
+      "totals": {
+        "anf_monomials": 9728,
+        "histogram_scan_entries": 256,
+        "histogram_updates": 1024,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 3072,
+        "output_xors": 8768,
+        "pattern_bytes": 128,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 104,
+      "full_query_cost": {
+        "anf_monomials": 2432,
+        "histogram_scan_entries": 16,
+        "histogram_updates": 16,
+        "id_bit_tests": 64,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 2192,
+        "pattern_bytes": 32,
+        "selected_sites": 16
+      },
+      "id_width": 4,
+      "k": 16,
+      "mismatches": 0,
+      "name": "k16_s29_diverse",
+      "output_bits": 35072,
+      "patterns": 16,
+      "queries": 256,
+      "raw_bits_bytes": 32,
+      "totals": {
+        "anf_monomials": 155648,
+        "histogram_scan_entries": 4096,
+        "histogram_updates": 1024,
+        "id_bit_tests": 4096,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 140288,
+        "pattern_bytes": 2048,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 70,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 2,
+        "histogram_updates": 16,
+        "id_bit_tests": 16,
+        "id_bytes": 16,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 1,
+      "k": 16,
+      "mismatches": 0,
+      "name": "k16_s29_repeated",
+      "output_bits": 35072,
+      "patterns": 2,
+      "queries": 256,
+      "raw_bits_bytes": 32,
+      "totals": {
+        "anf_monomials": 19456,
+        "histogram_scan_entries": 512,
+        "histogram_updates": 1024,
+        "id_bit_tests": 1024,
+        "id_bytes": 1024,
+        "mask_bit_tests": 3072,
+        "output_xors": 17536,
+        "pattern_bytes": 256,
+        "selected_sites": 1024
+      }
+    },
+    {
+      "file_bytes": 66,
+      "full_query_cost": {
+        "anf_monomials": 0,
+        "histogram_scan_entries": 1,
+        "histogram_updates": 16,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 20,
+        "output_xors": 0,
+        "pattern_bytes": 0,
+        "selected_sites": 16
+      },
+      "id_width": 0,
+      "k": 16,
+      "mismatches": 0,
+      "name": "k16_s29_constant",
+      "output_bits": 35072,
+      "patterns": 1,
+      "queries": 256,
+      "raw_bits_bytes": 32,
+      "totals": {
+        "anf_monomials": 9728,
+        "histogram_scan_entries": 256,
+        "histogram_updates": 1024,
+        "id_bit_tests": 0,
+        "id_bytes": 0,
+        "mask_bit_tests": 3072,
+        "output_xors": 8768,
+        "pattern_bytes": 128,
+        "selected_sites": 1024
+      }
+    }
+  ],
+  "core_admission": false,
+  "hardware_status": "NOT_TESTED",
+  "joint_witness": [
+    {
+      "child_parities": [
+        1,
+        1
+      ],
+      "cost": {
+        "anf_monomials": 6,
+        "histogram_scan_entries": 2,
+        "histogram_updates": 2,
+        "id_bit_tests": 2,
+        "id_bytes": 2,
+        "mask_bit_tests": 3,
+        "output_xors": 6,
+        "pattern_bytes": 2,
+        "selected_sites": 2
+      },
+      "parent_and": 1,
+      "source": [
+        0,
+        3
+      ]
+    },
+    {
+      "child_parities": [
+        1,
+        1
+      ],
+      "cost": {
+        "anf_monomials": 6,
+        "histogram_scan_entries": 2,
+        "histogram_updates": 2,
+        "id_bit_tests": 2,
+        "id_bytes": 2,
+        "mask_bit_tests": 3,
+        "output_xors": 6,
+        "pattern_bytes": 2,
+        "selected_sites": 2
+      },
+      "parent_and": 0,
+      "source": [
+        1,
+        2
+      ]
+    }
+  ],
+  "native_witness": [
+    {
+      "cost": {
+        "anf_monomials": 0,
+        "fp32_additions": 3,
+        "histogram_scan_entries": 0,
+        "histogram_updates": 0,
+        "id_bit_tests": 8,
+        "id_bytes": 4,
+        "mask_bit_tests": 0,
+        "output_xors": 0,
+        "pattern_bytes": 16,
+        "selected_sites": 0
+      },
+      "exact_sum": 2,
+      "file_bytes": 77,
+      "histogram": [
+        2,
+        1,
+        1
+      ],
+      "native_result": 1.0,
+      "patterns": [
+        1065353216,
+        1266679808,
+        3414163456
+      ],
+      "terms": [
+        16777216,
+        1,
+        -16777216,
+        1
+      ]
+    },
+    {
+      "cost": {
+        "anf_monomials": 0,
+        "fp32_additions": 3,
+        "histogram_scan_entries": 0,
+        "histogram_updates": 0,
+        "id_bit_tests": 8,
+        "id_bytes": 4,
+        "mask_bit_tests": 0,
+        "output_xors": 0,
+        "pattern_bytes": 16,
+        "selected_sites": 0
+      },
+      "exact_sum": 2,
+      "file_bytes": 77,
+      "histogram": [
+        2,
+        1,
+        1
+      ],
+      "native_result": 2.0,
+      "patterns": [
+        1065353216,
+        1266679808,
+        3414163456
+      ],
+      "terms": [
+        16777216,
+        -16777216,
+        1,
+        1
+      ]
+    }
+  ],
+  "public_model": "NOT TESTED",
+  "theory_status": "NOT_ESTABLISHED",
+  "totals": {
+    "mismatches": 0,
+    "output_bits": 290304,
+    "queries": 6144
+  }
+}

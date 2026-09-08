@@ -1,0 +1,28 @@
+
+test_all_binary_functions_two_sites (test_consumer_source.ConsumerTests.test_all_binary_functions_two_sites) ... ok
+test_all_boolean_functions_rank (test_consumer_source.ConsumerTests.test_all_boolean_functions_rank) ... ok
+test_checksum_and_truncation (test_consumer_source.ConsumerTests.test_checksum_and_truncation) ... ok
+test_complements_share_plane (test_consumer_source.ConsumerTests.test_complements_share_plane) ... ok
+test_constant_without_payload (test_consumer_source.ConsumerTests.test_constant_without_payload) ... ok
+test_cost_and_file_size (test_consumer_source.ConsumerTests.test_cost_and_file_size) ... ok
+test_cross_information (test_consumer_source.ConsumerTests.test_cross_information) ... ok
+test_domain (test_consumer_source.ConsumerTests.test_domain) ... ok
+test_identity_consumers_require_rank (test_consumer_source.ConsumerTests.test_identity_consumers_require_rank) ... ok
+test_padding_rejected (test_consumer_source.ConsumerTests.test_padding_rejected) ... ok
+test_rank_one_cannot_preserve_later_consumer (test_consumer_source.ConsumerTests.test_rank_one_cannot_preserve_later_consumer) ... ok
+test_all_two_site_tuples (test_source.Tests.test_all_two_site_tuples) ... ok
+test_bad_checksum (test_source.Tests.test_bad_checksum) ... ok
+test_bad_length_with_valid_checksum (test_source.Tests.test_bad_length_with_valid_checksum) ... ok
+test_bad_query (test_source.Tests.test_bad_query) ... ok
+test_bit_packing (test_source.Tests.test_bit_packing) ... ok
+test_constant_has_no_id_payload (test_source.Tests.test_constant_has_no_id_payload) ... ok
+test_domain (test_source.Tests.test_domain) ... ok
+test_invalid_dimensions_and_functions (test_source.Tests.test_invalid_dimensions_and_functions) ... ok
+test_layout_matches_bytes (test_source.Tests.test_layout_matches_bytes) ... ok
+test_missing_cross_information_repaired (test_source.Tests.test_missing_cross_information_repaired) ... ok
+test_native_order_witness (test_source.Tests.test_native_order_witness) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.006s
+
+OK

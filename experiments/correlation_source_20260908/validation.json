@@ -1,0 +1,95 @@
+{
+  "commands": [
+    {
+      "command": [
+        "-m",
+        "unittest",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "logs/continuation_1/command_0.txt"
+    },
+    {
+      "command": [
+        "source.py",
+        "--output",
+        "results"
+      ],
+      "exit_code": 0,
+      "log": "logs/continuation_1/command_1.txt"
+    },
+    {
+      "command": [
+        "costs.py",
+        "--output",
+        "results/costs.json"
+      ],
+      "exit_code": 0,
+      "log": "logs/continuation_1/command_2.txt"
+    },
+    {
+      "command": [
+        "verify.py",
+        "--results",
+        "results",
+        "--output",
+        "independent.json"
+      ],
+      "exit_code": 0,
+      "log": "logs/continuation_1/command_3.txt"
+    },
+    {
+      "command": [
+        "consumer_source.py",
+        "--output",
+        "consumer_results",
+        "--old-results",
+        "results"
+      ],
+      "exit_code": 0,
+      "log": "logs/continuation_1/command_4.txt"
+    },
+    {
+      "command": [
+        "verify_consumer.py",
+        "--results",
+        "consumer_results",
+        "--output",
+        "consumer_independent.json"
+      ],
+      "exit_code": 0,
+      "log": "logs/continuation_1/command_5.txt"
+    }
+  ],
+  "continuation_manifest_sha256": "d3fb5f90518674a3ab5f609809f2ac3bfe4e08b73020bc8fe1560bd01a82797b",
+  "deterministic_result_files": 102,
+  "hardware_status": "NOT_TESTED",
+  "initial_manifest_sha256": "544de6f7b7a5cc23453c4f37a9c999554b88fb441e69dd80d65552fd353fc4b4",
+  "initial_science_unchanged": 26,
+  "newly_closed_full_mission_obligations": 0,
+  "not_tested": [
+    "public checkpoint",
+    "HF forward",
+    "full original RNG/KV",
+    "CUDA",
+    "405B",
+    "peak total8GiB",
+    "same-machine4BQ4 latency",
+    "TTFT",
+    "full repository tests"
+  ],
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "sources": {
+    "consumer_source.py": "57595f953e6193d78444d9d087ee80ff4d493262a389a17ee234a4250bf41df7",
+    "costs.py": "d058fd9d9689dac7bbf317c85632fb57422539cde641d7ca25da3af6e2175ea2",
+    "source.py": "aaaac13bc5ffac60f73e3eb24b878680af3eb010cd46222012e56f3274bcd087",
+    "test_consumer_source.py": "f5026d24f61ae87e5d9792bc9554e559ec0287ffad518b4a8fbf1f815684a96f",
+    "test_source.py": "d880137dae8b6e13c01c685f9133759aca05a62bc6d29e6a212c7f820af3036d",
+    "verify.py": "003ba239fa65412179016048d98b0a7c0c781bc07954658bbdc7f770e19996f2",
+    "verify_consumer.py": "f96b5f9e69d87beb6db2dfc16b09655c3fa10229fae71e10668b0bec89c1f116"
+  },
+  "status": "LOCAL_AUXILIARY_VALIDATION_PASS",
+  "test_count": 22,
+  "theory_status": "NOT_ESTABLISHED"
+}

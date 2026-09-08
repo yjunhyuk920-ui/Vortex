@@ -1,27 +1,5 @@
 # Validation matrix — 2026-09-08
 
-## Current correlation/consumer-source continuation
-
-|Item|Evidence and exact scope|
-|---|---|
-|Previous interrupted source|Actual original24 arrays/6,144 masks/290,304 bits independently checked; initial26 hashes preserved|
-|New constructor|Observed-pattern centered function matrix, paid exact F2 elimination, checked coefficients and packed bitplanes|
-|New query|Finite word-mask parity, no original array or histogram; every encoded plane word actually read|
-|Proof|All supported masks; affine quotient rank minimal only for this linear-XOR readout form|
-|Corpus|36 sources/6,336 queries/292,288 output bits; old24 cases are regression data, not new hidden tests|
-|Independent evidence|Separate file parser, scalar per-position ANF evaluation and pointwise compiler relations|
-|Replay|22 local tests;102 science files compared with a frozen manifest; initial26 files unchanged|
-|Native scope|Known four-term FP32 order witness only; Boolean accuracy does not close original numerical/RNG/state obligations|
-|Costs|r/k favorable only for restricted consumers; k32 rank1 becomes33 with retained bit functions; preparation/masks/code/state costs not free|
-|Whole mission|All O1-O6 OPEN;NOT_ESTABLISHED;CORE_ADMISSION=false|
-|NOT TESTED|Public checkpoint/HF/original RNG/KV/CUDA/405B/8GiB/4BQ4 latency/TTFT/physical transfers/full-repository suite|
-
-[Actual validation record](experiments/correlation_source_20260908/validation.json),
-[full ledger](experiments/correlation_source_20260908/obligations_continuation.json),
-[prior matrix bytes](docs/research/history/pre_correlation_source_20260908/VALIDATION_MATRIX.md).
-
-## Historical row-frontier evidence
-
 [Current proof/code/replay](experiments/native_row_frontier_20260908/REPORT.md).
 [Prior matrix unchanged](docs/research/history/pre_native_row_frontier_20260908/VALIDATION_MATRIX.md).
 

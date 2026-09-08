@@ -1,0 +1,14 @@
+This is a later replay of the unregistered duplicate exploration, not its initial timestamped log.
+The source is preserved as exploratory_linear_seed.py. No scientific promotion.
+2 22 0
+pairs 0 found None
+3 26 4
+pairs 0 found None
+4 26 4
+pairs 0 found None
+5 29 15
+pairs 0 found None
+6 29 15
+pairs 0 found None
+7 29 0
+pairs 0 found None
