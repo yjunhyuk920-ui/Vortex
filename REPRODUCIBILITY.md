@@ -6,6 +6,64 @@ An independent researcher or new session must determine exactly what ran, what d
 
 Every summary separates `MEASURED / DERIVED / PROJECTED / UNVERIFIED`. Missing target-hardware fields remain `NOT TESTED`.
 
+## Causal/global producer frontier — 2026-09-08
+
+Authority:
+
+```text
+experiments/causal_global_bridge_20260908/REPORT.md
+experiments/causal_global_bridge_20260908/POST_PREREGISTRATION_EXTENSION.md
+results/e1_causal_global_bridge_20260908/manifest.json
+results/e1_causal_global_bridge_20260908/checksums.sha256
+```
+
+Environment used by the native controls:
+
+```text
+Python 3.12.10
+torch 2.8.0+cpu
+transformers 4.55.4
+BF16 CPU, one thread, deterministic algorithms
+real transformers.LlamaForCausalLM / DynamicCache
+```
+
+Focused replay from `experiments/causal_global_bridge_20260908`:
+
+```powershell
+$env:PYTHONPATH=(Resolve-Path '.').Path
+& '..\native_global_transition_20260908\.venv\Scripts\python.exe' `
+  -m unittest `
+  test_causal_kv_exposure `
+  test_basis_column_producer `
+  test_causal_rank_one_trace -v
+```
+
+Final observed focused result: `14/14 PASS`.
+
+The related nonlinear/geometry regression passed `28/28`, and
+`scripts/run_validation.py` exited `0`. A full tests-directory attempt is not a
+PASS: the native-global venv lacks pytest (15 import errors in unittest
+discovery), while borrowing system pytest exposed pre-existing duplicate module
+basenames, missing SciPy, and Windows-incompatible `resource`/`libm` collection
+dependencies. Exact commands and errors are summarized in
+`experiments/causal_global_bridge_20260908/VALIDATION.md`.
+
+Canonical result SHA-256 values:
+
+```text
+9298afd76ed4d00bce9fa41d68b75049cd5142f1f30928eeb26d072142a5560d  e1_causal_kv_exposure_seed260908/summary.json
+bee286a38b9f57bcf99a6c7d4e7d2ae6f77500e520df972434721db36795eb4f  e1_causal_kv_exposure_gqa32x224/summary.json
+c934d55f6740bcf609976e70f097a6b141dc7575af735474ebeb2d4d1fdba328  e1_restricted_basis_column_producer_32x224.json
+ae0ff80827ccea9978be7b8521c9e73d2454ccad0acd7228aa3ff2a19af32a36  e1_causal_rank_one_trace_q32.json
+0421b3165c0b26867d4350275fce1be65b523997785d72040fa9826294718dae  e1_causal_rank_one_trace_25x108_q2.json
+da8b31b63ae0842510ced6b142989e2573409fcb35b7b48f1e478b87bdd99a06  e1_causal_rank_one_trace_25x216_q4.json
+```
+
+The area-5400 32-query native trace was not run. No 405B checkpoint, CUDA,
+single <=8 GiB target GPU, PCIe/SSD/HBM physical schedule, native 4B Q4 p50/p95
+or TTFT run occurred. The old native-global 3,510-file replay was intentionally
+not rerun because that experiment was not modified.
+
 ## Native global transition — 2026-09-08
 
 See experiments/native_global_transition_20260908/HANDOFF.md. Actual pinned original

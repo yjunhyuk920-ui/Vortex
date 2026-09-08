@@ -1,8 +1,24 @@
 # Validation matrix — 2026-09-08
 
-[Current nonlinear router proof/code/result](experiments/nonlinear_router_frontier_20260908/REPORT.md).
+[Current causal/global proof/code/result](experiments/causal_global_bridge_20260908/REPORT.md).
+[Prior nonlinear router proof/code/result](experiments/nonlinear_router_frontier_20260908/REPORT.md).
 [Prior native proof/code/replay](experiments/native_global_transition_20260908/REPORT.md).
 [Pre-native-global matrix unchanged](docs/research/history/pre_native_global_transition_20260908/VALIDATION_MATRIX.md).
+
+|Latest E1 causal/global item|Actual evidence and scope|
+|---|---|
+|Three-principle round|A legal-causal exposure constructed; B global nonlinear producer remained without arbitrary-checkpoint encoder/address/decoder; C literal column-delta summary rejected under dense legal right-factor changes|
+|Native square KV exposure|Actual BF16 `LlamaForCausalLM`/`DynamicCache`, 32x32x3 binary `v_proj` source, 3,072 source/cache coordinates, 0 mismatch, full/incremental cache bit equal|
+|Native rectangular GQA exposure|`v_proj=32x224`, head_dim2, Q112/KV16; 7,168 exact source/cache coordinates, 0 mismatch, checkpoint/RNG unchanged|
+|Restricted finite producer|64-bit binary column store + exact native RMSNorm/RoPE metadata; exact logits/K/V/RNG against native incremental path; 0 original dense `v_proj` calls|
+|Restricted producer cost|2-layer 32x224: 128 source payload bits/token vs 229,376 variable-vproj BF16 full-read bits/token; 99.944196% removed in this restricted source only; whole-model/latency not implied|
+|Standard-causal independent-right trace|n=8,r=4,K=32, legal sequence length536; 0 sign/common-magnitude failure; 0 full/incremental query-logit mismatch; RNG unchanged|
+|Exhaustive parity decoder|32 queries x all 256 binary output rows = 8,192 native BF16 row evaluations; 0 same-parity codebook collision, 0 row/scalar decode mismatch|
+|Area-5400 bridge|25x216 binary lm-head source, K=4, sequence length1516; 0 sign/common-magnitude, full/incremental, row-parity or left-mask mismatch; 32-query native trace NOT EXECUTED|
+|Focused validation|14/14 causal-global tests PASS at final source state; canonical raw-result hashes in `results/e1_causal_global_bridge_20260908/checksums.sha256`|
+|Related/standard validation|28/28 nonlinear/geometry regression PASS; `scripts/run_validation.py` exit0; complete tests directory attempted but BLOCKED by missing pytest/SciPy and Windows-incompatible historical test dependencies, so no full-suite PASS claim|
+|OPEN|Area-5400 32-query native lift, globally nonlinear <=8GiB advice/direct-sum, arbitrary native finite-word MatVec producer, complete causal state, O1-O5, whole-theory O6|
+|Not tested|405B weights/execution, CUDA, <=8GiB physical GPU, PCIe/SSD/HBM schedule, native4BQ4 p50/p95, TTFT|
 
 |Latest E0 item|Actual evidence and scope|
 |---|---|
@@ -13,7 +29,7 @@
 |Complete local scan|8,256 normalized side<=128 rectangles: 2,316 zero-probe-budget, 5,940 cover-rejected, 0 unclosed|
 |New local frontier|First single-query area 5,400: 24x225 and25x216,99 padded words,4 probes,traffic8/675; no constructor|
 |Routing refinement|Nonadaptive ratios `0.2243743/0.1121872`; one-value-stage adaptive `0.8974972/0.4487486`; all REJECTED|
-|Strong independent-32 union|Some source needs >=84 active words over all rank-one queries; some 32-query tuple touches >=32 words=2048 bits=`64/675`=8x target; causal Transformer reachability NOT PROVED|
+|Strong independent-32 union|Some source needs >=84 active words over all rank-one queries; some 32-query tuple touches >=32 words=2048 bits=`64/675`=8x target; newer causal trace narrows reachability but exact area-5400 32-query/native/global-advice transfer remains unproved|
 |Validation|15 focused tests PASS; 28 related tests PASS; authoritative summary SHA `af113c03b561827fc4ac93b1beb7216eb9de9cc9de17c95e6660b681c66f03d2`|
 |OPEN|Legal-causal reachability bridge or causal-specific escape, global nonlinear cross-matrix producer, native arithmetic/state, O1-O5, whole-theory O6, target hardware|
 |Not tested|405B weights/execution, CUDA, <=8GiB physical GPU, PCIe/SSD schedule, native4BQ4 p50/p95, TTFT|

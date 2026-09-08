@@ -1,0 +1,43 @@
+{
+  "checkpoint_sha256_after_native": "915d0cecc0e5c648c6996b2637823033ad5cf85eb886da531a0fe6c32feb9c95",
+  "checkpoint_sha256_before": "915d0cecc0e5c648c6996b2637823033ad5cf85eb886da531a0fe6c32feb9c95",
+  "checkpoint_unchanged": true,
+  "claim_boundary": {
+    "arbitrary_finite_word_weight_alphabet": false,
+    "arbitrary_public_checkpoint": false,
+    "complete_declared_logits_kv_rng_transition_constructed": true,
+    "finite_encoder_address_decoder_constructed": true,
+    "general_causal_hidden_state": false,
+    "mission_solution": false,
+    "removes_at_least_90pct_variable_vproj_read": true,
+    "whole_model_target_latency_closed": false
+  },
+  "classification": "E1_RESTRICTED_CAUSAL_BASIS_COLUMN_PRODUCER",
+  "compiled_runtime_rng_unchanged": true,
+  "cost": {
+    "bit_tests_to_decode_values_per_token": 64,
+    "compiled_auxiliary_bits": 14368,
+    "compiled_padded_source_bits": 28672,
+    "compiled_payload_over_native_variable_vproj_full_read": 0.0005580357142857143,
+    "dense_vproj_kernel_calls_in_compiled_runtime": 0,
+    "native_variable_vproj_bits_if_full_matrix_read_per_token": 229376,
+    "runtime_materialized_kv_bits_per_token": 2048,
+    "runtime_source_payload_bits_per_token": 128,
+    "runtime_value_coordinates_per_token": 64,
+    "source_binary_bits": 14336,
+    "variable_vproj_read_fraction_removed": 0.9994419642857143
+  },
+  "head_dim": 2,
+  "hidden_size": 224,
+  "layers": 2,
+  "native_public_logits_kv_bit_exact": true,
+  "token_ids": [
+    223,
+    0,
+    17,
+    91,
+    3,
+    44
+  ],
+  "value_size": 32
+}

@@ -1,0 +1,44 @@
+{
+  "round": "causal_global_bridge_20260908",
+  "theory_status": "NOT_ESTABLISHED",
+  "hardware_status": "NOT_TESTED",
+  "core_admission": false,
+  "O1": {
+    "status": "OPEN",
+    "reason": "No arbitrary-public-checkpoint finite native producer constructor."
+  },
+  "O2": {
+    "status": "OPEN",
+    "reason": "Complete causal transitions exist only for restricted constructed E1 families."
+  },
+  "O3": {
+    "status": "OPEN",
+    "reason": "Bit-exact logits/KV/RNG were established only in restricted BF16 controls, not arbitrary native Q4/BF16/FP32 semantics."
+  },
+  "O4": {
+    "status": "OPEN",
+    "reason": "No sufficient whole-model paid constructor/storage/movement/arithmetic bound."
+  },
+  "O5": {
+    "status": "OPEN",
+    "reason": "405B, CUDA, <=8 GiB target GPU, native 4B Q4 p50/p95 and TTFT were not executed."
+  },
+  "O6": {
+    "status": "PARTIAL_E1_REPRODUCIBLE",
+    "reason": "Causal exposure, restricted producer and bounded multi-right-factor trace have source, raw result files and focused tests."
+  },
+  "established_scoped_results": [
+    "Native HF DynamicCache exposes arbitrary binary v_proj columns exactly in the declared family.",
+    "A finite no-dense basis-column producer is bit-exact for the declared family and removes >90% of variable-v_proj full-read payload.",
+    "A standard-causal sign/delta compiler carried 32 independently selected right factors at width 8 with exhaustive binary-row parity decoding.",
+    "The exact area-5400 25x216 shape passed a four-query native finite-word trace."
+  ],
+  "still_open": [
+    "area-5400 32-query native finite-word trace",
+    "global nonlinear 8 GiB advice/direct-sum accounting",
+    "arbitrary finite-word zero-error matrix-vector producer",
+    "arbitrary-checkpoint dynamic exact summary",
+    "whole-model native state/RNG proof",
+    "target hardware and latency closure"
+  ]
+}

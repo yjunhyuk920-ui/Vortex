@@ -2,6 +2,37 @@
 
 No unverified assumption may be used as a success condition.
 
+## A-CAUSAL-GLOBAL-BRIDGE-20260908
+
+Assumption: legal batch-1 Llama causal states are too restricted to expose
+arbitrary dense checkpoint information. CONTRADICTED within the declared binary
+family: actual HF `DynamicCache.values` reconstructs every binary `v_proj` source
+coordinate, including a native GQA 32x224 source with 7,168/7,168 exact checks.
+This does not imply every native dense operator/query family is reachable.
+
+Assumption: independently selected right factors cannot coexist in one ordinary
+causal trace. CONTRADICTED on the bounded sign/delta construction: n=8,K=32
+native finite-word controls pass, and a 25x216 area-5400 source passes K=4. The
+area-5400 K=32 native execution is NOT TESTED, so no stronger interpolation is
+registered.
+
+Assumption: exposing arbitrary binary matrix bits already implies expensive
+runtime queries. CONTRADICTED for the special basis-column family by the exact
+packed-column producer. Its cheapness depends on coordinate queries, binary
+weights and zero paths; arbitrary finite-word right factors remain OPEN.
+
+Assumption: a dynamic exact summary may rely on sparse differences between
+successive causal right factors. CONTRADICTED as a universal premise: the legal
+sign/delta compiler admits Hamming-distance-n successive factors. Literal
+response-column delta maintenance then restores complete dense aggregation.
+
+Assumption: the full <=8 GiB nonlinear advice can be divided proportionally
+between matrices/layers. UNVERIFIED AND FORBIDDEN AS A SUCCESS PREMISE. The
+global cross-matrix encoder/direct-sum question remains OPEN.
+
+405B/CUDA/8GiB/native4BQ4/TTFT and arbitrary Q4/BF16/FP32 semantics are NOT
+TESTED by this E1 family.
+
 ## A-NATIVE-GLOBAL-TRANSITION-20260908
 
 Guarded native dataflow and reversible byte-state representation are constructed

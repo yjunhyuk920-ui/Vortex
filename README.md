@@ -4,23 +4,36 @@ Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total p
 
 ## Current research frontier — 2026-09-08
 
-[Nonlinear adaptive router cover Gate](experiments/nonlinear_router_frontier_20260908/REPORT.md)
-now closes the previous `25x108`,50-word,two-probe arbitrary-nonlinear local
-capacity survivor. The theorem allows every stored word to be an arbitrary
-checkpoint function, every later address to depend on prior returned values,
-and arbitrary deterministic final decoding; exact largest-fiber plus Segre
-geometry still limits one route's query span to `t*w`.
+[Causal/global producer frontier](experiments/causal_global_bridge_20260908/REPORT.md)
+compared the frozen legal-causal exposure, global nonlinear producer, and paid
+dynamic-summary principles. The ordinary `transformers.LlamaForCausalLM` bridge
+now exposes arbitrary binary `v_proj` information bit-exactly in required
+`DynamicCache.values`; a native GQA `32x224` control checked 7,168 source/cache
+coordinates with zero mismatch and exact full/incremental cache equality.
 
-All 8,256 target-feasible side<=128 64-bit local rectangles are rejected. The
-first local points not rejected by the fully adaptive Gate are `24x225` and
-`25x216`,99 words/four probes at favorable traffic `8/675`. They are **not
-constructions**. Fixed four-word supports and one-value-stage adaptive routing
-are also rejected. A stronger independently-selectable 32-query Gate forces a
-`64/675` encoded-word union on some abstract tuple—exactly 8x the registered
-`8/675` line—even with fully nonlinear/value-adaptive words. The missing bridge
-is now causal: that adversarial tuple has not been proved reachable along one
-legal batch-1 Transformer continuation. Global cross-matrix encoding and native
-numerical/state lifting remain open.
+The same restricted binary/basis family now has a **real finite producer**:
+lossless 64-bit column packing plus paid RMSNorm/RoPE metadata emits exact native
+logits/K/V/RNG successor state without calling an original dense `v_proj` kernel.
+For two `32x224` variable sources it reads 128 source bits/token versus 229,376
+bits for a full BF16 variable-`v_proj` read (`99.944%` removed). This is not an
+arbitrary-checkpoint constructor: binary weights, basis states and the declared
+zero paths are essential.
+
+A second standard-causal sign/delta compiler placed 32 independently selected
+right factors in one legal batch-1 trace at width 8. All 8,192 exhaustive binary
+output-row parity decodes, native full/incremental query logits and RNG controls
+matched. The exact `25x216` area-5,400 source passed four native right-factor
+queries with zero row/left-mask mismatch. The **area-5,400 32-query native trace
+has not been executed**, and globally mixed 8 GiB advice is not a proved direct
+sum. Literal `y'=y+W(s'-s)` column-delta summaries return to full dense effect
+when legal successive right factors differ in every coordinate.
+
+The previous [nonlinear adaptive router Gate](experiments/nonlinear_router_frontier_20260908/REPORT.md)
+remains authoritative: `25x108`/two-probe and all side<=128 local routes are
+closed, the first single-query survivors are area 5,400, and the abstract strong
+independent-32 interface is 8x over target. The remaining constructive hole is
+an explicit zero-error arbitrary finite-word matrix-vector producer with globally
+paid advice, native ordered arithmetic, and a complete causal state/cost lift.
 
 ## Prior bounded native record — 2026-09-08
 [Native whole-state transition constructors](experiments/native_global_transition_20260908/REPORT.md)

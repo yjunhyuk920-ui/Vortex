@@ -1,0 +1,18 @@
+{
+  "round": "causal_global_bridge_20260908",
+  "canonical_artifacts": [
+    "results/e1_causal_kv_exposure_seed260908/summary.json",
+    "results/e1_causal_kv_exposure_gqa32x224/summary.json",
+    "results/e1_restricted_basis_column_producer_32x224.json",
+    "results/e1_causal_rank_one_trace_q32.json",
+    "results/e1_causal_rank_one_trace_25x108_q2.json",
+    "results/e1_causal_rank_one_trace_25x216_q4.json"
+  ],
+  "scientific_authority": "experiments/causal_global_bridge_20260908/REPORT.md",
+  "status": {
+    "theory": "NOT_ESTABLISHED",
+    "hardware": "NOT_TESTED",
+    "area5400_32_query_native_trace": "NOT_EXECUTED",
+    "global_arbitrary_checkpoint_producer": "OPEN"
+  }
+}

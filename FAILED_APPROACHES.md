@@ -495,3 +495,18 @@ The frozen real causal draft/verify source failed the raw A, N/A, latency, or ex
 
 Frozen scope: pinned SmolLM2-360M target; same-family SmolLM2-135M and cross-family TinyStories-33M drafts; K `64,96`; build-only K selection; raw no-compression traffic threshold; exact terminal KV; all online work charged.
 <!-- EXP-102A:END -->
+
+## F-CAUSAL-GLOBAL-20260908 — literal exact response-column delta maintenance
+
+The standard-causal sign/delta compiler in
+`experiments/causal_global_bridge_20260908/` admits successive legal desired
+right factors with Hamming distance equal to the full right width. An exact
+state that maintains `y=W s` by explicitly applying the changed source columns
+therefore touches/aggregates all columns on that legal transition and restores
+the complete dense effect.
+
+Do not reopen the old response-column/time-axis transport as a "dynamic exact
+summary" unless a new finite subdense aggregate for arbitrary dense column
+changes is constructed and all representation/address/native-state costs are
+paid. This entry does not reject all dynamic summaries or all globally nonlinear
+matrix-vector data structures.

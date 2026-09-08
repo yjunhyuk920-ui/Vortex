@@ -2,6 +2,31 @@
 
 Continuation of `FAILED_APPROACHES.md`. This is a permanent anti-repetition register. Revisit an entry only with a mechanism that directly addresses the recorded failure and a stronger preregistered falsification.
 
+## CAUSAL-GLOBAL-20260908 — literal dynamic response-column delta summary
+
+The new standard-causal sign/delta compiler provides legal batch-1 traces whose
+successive desired right factors may differ in every coordinate. Therefore a
+summary that stores the current exact product `y=W s` and updates literally by
+
+```text
+y' = y + W(s' - s)
+```
+
+must aggregate every source column on a Hamming-distance-n transition. That is
+the previously rejected response-column/time-axis transport family under a new
+name, now with an explicit legal causal adversary rather than an abstract query
+sequence. Do not reopen by assuming adjacent causal right factors are sparse or
+by hiding the changed-column aggregation inside `Update`.
+
+This does **not** reject all dynamic exact summaries. Revisit only with a finite
+update law that aggregates arbitrary dense right-factor changes subdensely and
+pays its representation/address/decoder/native-state costs.
+
+Also do not promote randomized succinct Boolean-semiring MatVec as the missing
+exact producer: it permits error and computes a different algebra. This is an
+insufficient primitive, not a universal lower bound against all zero-error
+finite-word data structures.
+
 ## OUTPUT-ENVELOPE-20260908 — fixed-packet identical-output broadcast
 
 Scope: original SmolLM2-135M revision93efa2f097d58c2a74874c7e644dbc9b0cee75a2,

@@ -1,5 +1,42 @@
 # VORTEX Architecture
 
+## Current causal/global frontier construction — 2026-09-08
+
+See `experiments/causal_global_bridge_20260908/REPORT.md`.
+
+Three bounded modules now exist, none admitted as the universal core:
+
+```text
+ordinary HF Llama causal exposure
+    basis/GQA token -> native v_proj -> required DynamicCache.values
+
+restricted compiled producer
+    binary v_proj columns -> 64-bit packed source + RMSNorm/RoPE metadata
+    token address -> exact logits/K/V/RNG successor without dense v_proj call
+
+causal sign/delta adversary
+    legal signed-basis token blocks -> independently selected right factors
+    -> binary lm-head signed sums -> exact GF(2) row/left parity decoder
+```
+
+The restricted producer proves that causal exposure alone is not a runtime
+lower bound: special coordinate-query structure can be compiled cheaply. The
+sign/delta adversary proves the opposite temporal warning: a dynamic state may
+face densely changing legal right factors, so literal source-column delta
+maintenance is not a subdense architecture.
+
+The active missing interface is therefore stronger than either bounded module:
+
+```text
+Compile(all unchanged checkpoint bytes) -> globally paid representation G
+Address(G, current causal input/state) -> finite source-dependent addresses
+Decode(G[addresses], input, state) -> exact native dense effects + successor
+```
+
+It must preserve native ordered Q4/BF16/FP32 behavior, avoid full scans under
+dense right-factor changes, account globally mixed advice without an assumed
+per-matrix split, and close all whole-model memory/traffic/arithmetic costs.
+
 ## Current bounded native-global construction — 2026-09-08
 
 See experiments/native_global_transition_20260908/REPORT.md. A/C retain original

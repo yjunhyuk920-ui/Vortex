@@ -2,6 +2,44 @@
 
 Append-only decisions. Authoritative run identities are read from committed result JSON.
 
+## D-CAUSAL-GLOBAL-BRIDGE-20260908 — retain causal bridge and restricted producer; keep arbitrary producer open
+
+See `experiments/causal_global_bridge_20260908/REPORT.md` and
+`results/e1_causal_global_bridge_20260908/manifest.json`.
+
+The frozen three-principle round constructed an actual standard HF causal
+binary-`v_proj` -> `DynamicCache.values` exposure compiler, generalized it to
+native GQA, and then constructed a finite exact no-dense basis-column producer
+for that restricted family. The two-layer 32x224 producer matches native
+logits/K/V bits and RNG while reading 128 packed source bits/token versus
+229,376 variable-vproj BF16 full-read bits/token. This is a scoped positive
+construction, not an arbitrary-checkpoint engine.
+
+A second ordinary-causal sign/delta compiler carries independently selected
+right factors in one batch-1 trace. The n=8,K=32 control decoded all 8,192
+binary output rows without mismatch; the exact 25x216 area-5400 source passed
+four native right factors. The area-5400 32-query native trace and global 8 GiB
+advice/direct-sum statement remain OPEN and are not inferred.
+
+Literal dynamic `y'=y+W(s'-s)` response-column maintenance is rejected as a
+core: the legal compiler permits Hamming-distance-n successive right factors,
+forcing that implementation to aggregate all source columns. Any surviving
+dynamic summary requires a genuinely subdense arbitrary matrix-vector aggregate.
+
+Decision:
+
+```text
+RETAIN_CAUSAL_EXPOSURE_AS_BRIDGE
+RETAIN_RESTRICTED_BASIS_COLUMN_PRODUCER_AS_SCOPED_POSITIVE_CONSTRUCTION
+RETAIN_CAUSAL_SIGN_DELTA_COMPILER_AS_ADVERSARIAL_REACHABILITY_SOURCE
+REJECT_LITERAL_DYNAMIC_COLUMN_DELTA_SUMMARY
+KEEP_GLOBAL_ZERO_ERROR_ARBITRARY_FINITE_WORD_PRODUCER_OPEN
+THEORY_STATUS=NOT_ESTABLISHED
+HARDWARE_STATUS=NOT_TESTED
+```
+
+Status: ACTIVE FRONTIER / PARTIAL E1; not admitted as mission core.
+
 ## D-NATIVE-GLOBAL-TRANSITION-20260908 — retain real native bridge, reject A/B/C as cores
 
 See experiments/native_global_transition_20260908/REPORT.md and results/run_v3/audit.json.

@@ -1,6 +1,6 @@
 # Research state — 2026-09-08
 
-Fixed mission and CTC unchanged. [Current frontier theorem](experiments/nonlinear_router_frontier_20260908/REPORT.md).
+Fixed mission and CTC unchanged. [Current frontier](experiments/causal_global_bridge_20260908/REPORT.md).
 THEORY_STATUS=NOT_ESTABLISHED
 HARDWARE_STATUS=NOT_TESTED
 CORE_ADMISSION=false
@@ -11,41 +11,45 @@ README_CURRENT=true
 HARDWARE_STATUS concerns the target; no latency benchmark in this round. Actual
 pinned BF16 HF CPU generation now ran under a guarded supported API.
 
-## Latest constructive frontier — nonlinear adaptive word routing
+## Latest constructive frontier — causal/global producer bridge
 
-Three materially different information-flow principles were compared before
-selection: globally nonlinear checkpoint words, 32-query factor-envelope
-restriction generation, and exact native accumulator transition-map
-composition. The latter two still hide their generator if promoted. The first
-had a concrete old capacity target and was attacked directly.
+The frozen round compared three materially different principles: (A) legal
+causal dense-information exposure, (B) globally nonlinear checkpoint advice,
+and (C) a paid dynamic exact summary. A was constructed first; B/C were then
+continued rather than left as named primitives.
 
-A new exact largest-fiber/Segre cover Gate applies to **arbitrary nonlinear
-stored cells, arbitrary value-adaptive addresses at every probe depth, and an
-arbitrary deterministic final decoder**. Any depth-`t`, `S`-cell, `w`-bit exact
-linear-query router implies a cover by at most `S^t` coefficient subspaces of
-dimension at most `t*w`.
-
-Consequences now registered:
+Established scoped E1 facts:
 
 ```text
-25x108 / 50 words / 2 probes       REJECTED, coverage upper 0.000074505808...
-all side<=128 target 64-bit cases  8,256 checked, 0 unclosed
-first local unclosed area          5,400 bits
-first local shapes                 24x225, 25x216
-storage / target probes            99 padded words / 4 probes
-nonadaptive 4-probe                REJECTED on both shapes
-one-value-stage adaptive 4-probe   REJECTED on both shapes
-multi-stage / strong32 interface   REJECTED: >=32 distinct words, 64/675 = 8x target
-causal reachability of hard tuple  OPEN
+HF DynamicCache binary v_proj exposure   square + GQA, exact native BF16 words
+GQA source shape                         32x224, 7,168 coordinates, 0 mismatch
+restricted basis-column producer         exact logits/K/V/RNG, 0 dense v_proj calls
+producer source payload                   128 vs 229,376 bits/token on 2-layer control
+small causal independent-right trace      32 queries, 8-bit right factor
+exhaustive binary output rows             8,192 checked, 0 parity mismatch
+area-5,400 causal source                  25x216, 4 native queries, 0 decode mismatch
+area-5,400 32-query native trace          NOT EXECUTED
+global nonlinear 8 GiB advice/direct-sum OPEN
+arbitrary finite-word native producer     OPEN
 ```
 
-The 5,400-bit single-query points are **not constructions**. A stronger
-independently-selectable 32-query interface forces at least 32 distinct words
-on some tuple: 2,048 bits, `64/675`, exactly 8x the registered `8/675` line.
-This does not prove that one legal batch-1 Transformer continuation realizes
-that hard tuple. Global cross-matrix encoding and native numerical lifting also
-remain outside this Gate. O1-O5 remain OPEN; O6 is partial E0 evidence only.
-405B/CUDA/<=8GiB/native4BQ4/TTFT remain NOT TESTED.
+The restricted producer is a genuine finite encoder/address/decoder, but its
+binary source alphabet, basis-token states and zero q/k/MLP/lm-head paths prevent
+promotion to O1. The sign/delta causal compiler also closes a hidden assumption
+behind dynamic response-column maintenance: legal successive right factors can
+differ densely, so literal `W(s'-s)` updates regain the complete dense effect.
+Any successful dynamic summary now needs the same missing subdense arbitrary
+matrix-vector aggregate as the global static producer.
+
+The previous nonlinear-router theorem remains authoritative E0 evidence:
+`25x108`/two probes and all target-feasible side<=128 cases are closed; area
+5,400 is the first single-query local survivor; the independently selectable
+32-query interface forces 2,048 bits=`64/675`, eight times target. The new
+causal compiler narrows its reachability gap but does not yet prove the exact
+area-5,400 32-query native/global-advice statement.
+
+O1-O5 remain OPEN. O6 is partial reproducible E0/E1 evidence only.
+405B/CUDA/<=8GiB/native4BQ4 p50/p95/TTFT remain NOT TESTED.
 
 ## Prior bounded native execution evidence (unchanged)
 
