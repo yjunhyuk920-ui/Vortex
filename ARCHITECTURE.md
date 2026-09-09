@@ -1,5 +1,12 @@
 # VORTEX Architecture
 
+## Auxiliary residual lift is not an execution core
+
+The fixed augmented coefficient matrix and two adaptive inputs in
+[the residual lift](experiments/codex_native_residual_lift_20260909/PROOF.md)
+are an arithmetic reduction. They pay two dense calls and cannot replace the
+missing arbitrary-native producer. No runtime opcode or architecture promotion.
+
 ## Restricted BF16 producer extension — 2026-09-09
 
 The restricted BF16 module [experiments/codex_native_sparse_extension_20260909/scalar_producer.py](experiments/codex_native_sparse_extension_20260909/scalar_producer.py)

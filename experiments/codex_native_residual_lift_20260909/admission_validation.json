@@ -1,0 +1,52 @@
+{
+  "negative_zero_decoder": 0,
+  "refusals": [
+    {
+      "name": "n_zero",
+      "reason": "n must be in [1,16384]",
+      "refused": true
+    },
+    {
+      "name": "n_over",
+      "reason": "n must be in [1,16384]",
+      "refused": true
+    },
+    {
+      "name": "m_zero",
+      "reason": "B shape does not match n",
+      "refused": true
+    },
+    {
+      "name": "nonbinary_B",
+      "reason": "B and v must be binary",
+      "refused": true
+    },
+    {
+      "name": "nonbinary_v",
+      "reason": "B and v must be binary",
+      "refused": true
+    },
+    {
+      "name": "alpha_low",
+      "reason": "alpha unbiased exponent outside [-100,100]",
+      "refused": true
+    },
+    {
+      "name": "alpha_high",
+      "reason": "alpha unbiased exponent outside [-100,100]",
+      "refused": true
+    },
+    {
+      "name": "alpha_negative",
+      "reason": "alphas must be positive finite BF16 values",
+      "refused": true
+    },
+    {
+      "name": "alpha_not_BF16",
+      "reason": "alphas must already be BF16",
+      "refused": true
+    }
+  ],
+  "scope": "domain/refusal boundary only, not graceful allocation failure or a mission fast fallback",
+  "source_sha256": "27a674b12e7d649bbfd21fdf04c5aade7b5d3c8c3f57eae3f7c7c866bb223dc6"
+}

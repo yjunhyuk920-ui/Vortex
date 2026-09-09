@@ -1,5 +1,15 @@
 # Recent Failed and Demoted Approaches
 
+## Two-query residual lift — reject promotion, retain arithmetic lemma
+
+[New auxiliary record](experiments/codex_native_residual_lift_20260909/REPORT.md):
+exact counts/parity reduce to two native BF16 calls, with explicit bias bits and
+integer quotient/remainder rounding. It does not create a cheap native effect.
+Two full augmented projections remain; the structured registered-shape source
+has only1.0877GiB and fits the8GiB globally mixed state. Do not promote the
+arithmetic lemma to a fast core, target lower bound or legal HF continuation
+proof. This does not reject other nonlinear global constructors.
+
 ## Restricted BF16 producer extension — 2026-09-09
 
 [experiments/codex_native_sparse_extension_20260909](experiments/codex_native_sparse_extension_20260909/REPORT.md): the selected-column BF16 producer survives only its

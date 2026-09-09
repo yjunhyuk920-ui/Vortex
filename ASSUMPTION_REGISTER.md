@@ -1,5 +1,14 @@
 # Assumption Register
 
+## Native residual arithmetic assumptions
+
+[Proof](experiments/codex_native_residual_lift_20260909/PROOF.md) requires binary
+source/query entries, n<=16384, fixed row-private bias coefficients, positive
+normal BF16 common scales with exponent[-100,100], FP32-only intermediates and
+BF16RNE output. Query2 causally uses query1's actual output. Exact ratio decoding
+is a finite integer algorithm. No arbitrary hidden-state reachability, reduced-
+precision intermediate ABI, global lower bound or full resource guarantee.
+
 ## EXP-100A repaired classifier boundary
 
 Generated/admissible/rejected counts and completion distinguish all-over-budget

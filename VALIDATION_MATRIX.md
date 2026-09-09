@@ -1,5 +1,14 @@
 # Validation matrix — 2026-09-09
 
+## Native residual lift validation
+
+[Actual evidence](experiments/codex_native_residual_lift_20260909/REPORT.md):
+106 ordered FP32 cases,2,097,280 first integer pairs/16,768 residual pairs,
+nine domain refusals and24 small CPU torch linear/mv calls. The native output
+words and CPU RNG state match their declared checks. Incomplete source defects
+were actually reproduced and corrected. No full HF generation/KV/405B/CUDA/
+8GiB/latency measurement or whole-repository test run occurred.
+
 ## EXP-100A current CPU validation
 
 [Actual validation](experiments/codex_fmm_integrity_20260909/VALIDATION.md):

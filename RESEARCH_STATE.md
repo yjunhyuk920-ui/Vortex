@@ -1,5 +1,18 @@
 # Research state — 2026-09-09
 
+## Auxiliary native residual lift — 2026-09-09
+
+[Finite two-query decoder](experiments/codex_native_residual_lift_20260909/REPORT.md)
+recovers exact binary counts/parity under a declared FP32/BF16 ABI, including a
+real first-output collision256/257. It pays two full augmented MatVecs.
+This is a reduction TO native queries, not a fast native producer.
+
+The registered-shape embedding holds only1.0877GiB of independent binary source,
+which fits the global8GiB allowance. Thus no target lower-bound improvement or
+new universal core is admitted. No legal HF hidden-state/KV/generation theorem.
+O1-O5OPEN/O6PARTIAL, theory NOT_ESTABLISHED/hardware NOT_TESTED/corefalse.
+The user has no405B hardware; the three new universal principles remain open.
+
 ## EXP-100A repaired full gate — 2026-09-09
 
 [Actual CPU replay](experiments/codex_fmm_integrity_20260909/REPORT.md) replaces the

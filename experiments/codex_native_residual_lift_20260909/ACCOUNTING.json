@@ -1,0 +1,61 @@
+{
+  "scope": "complete categories; explicit logical algorithm counts; no physical-runtime upper-bound closure",
+  "definitions": {
+    "b": "ceil(log2(n+1))",
+    "D": "n+m*b",
+    "P": "next power of two >= D"
+  },
+  "construction": {
+    "binary_B_validation_and_copy_reads_in_actual_run_case": "5*m*n (two validations read B twice each, plus float32 conversion once)",
+    "historical_numeric_counter_note": "results cases compiler_source_binary_reads=m*n counts only conversion input; NOT total validation/source reads. This audit supplies the complete interpretation.",
+    "coefficient_writes": "m*D + m*n + m*b",
+    "other_work": "O(m*n+n) Boolean temporary writes/reads and validation reductions, n-bit domain, dimensions, bias shifts",
+    "actual_C_payload_bytes": "4*m*D in NumPy; 2*m*D in torch BF16",
+    "temporary_source_conversion_bytes": "4*m*n, plus uint8 B=m*n and v=n; domain-check Boolean temporary arrays also allocated"
+  },
+  "online": {
+    "native_calls": 2,
+    "matrix_reads": "2*m*D words",
+    "products": "2*m*D",
+    "padded_additions": "2*m*(P-1)",
+    "padding_zero_leaf_writes": "2*m*(P-D)",
+    "input_writes": "2*D+2*n+popcount(k0)",
+    "bias_tests": "m*b",
+    "exact_ratio_divmod_upper": "2*m",
+    "other_decode": "O(m*b+m) shifts, comparisons, clamps, signs and output/parity writes",
+    "relative_products_to_single_original_B_matvec": "2*D/n >=2, never<=0.1"
+  },
+  "storage_and_movement": {
+    "original": "binary B and original vector are retained for validation; no source bytes declared free",
+    "compiled": "dense C and native BF16 transfer/conversion are explicit; zeros do not disappear in this implementation",
+    "online_arrays": "x0,x1,y0,y1 plus padded scalar lists and Python integer/result objects",
+    "CPU_RAM": "array payloads explicitly counted; complete Python/NumPy/torch allocator/fragmentation peak NOT MEASURED",
+    "SSD": "only code/results persisted in this control; a deployment must also pay source and compiled checkpoint storage",
+    "PCIe_HBM_GPU": "none used; no GPU peak or transport measurement",
+    "metadata": "dimensions,bias layout,k0/bits,integer quotient/remainder,result records are paid; O(m*b+m)",
+    "KV_rng_state": "no HF KV state in arithmetic program; CPU torch RNG snapshots compared in the operator audit, not sampling-state proof"
+  },
+  "verification": {
+    "ground_truth": "m*n int64 products and m*(n-1) sums, 2*m*n int64 conversions; after both queries",
+    "exact_ratio_oracle": "2*m Fraction ratios/RNE calls, bounded finite integer operands; paid test-only work",
+    "full_integer_control_first_cases": 2097280,
+    "full_integer_control_second_cases": 16768,
+    "checksums": "linear in all serialized source/result bytes, not free execution work"
+  },
+  "initialization_recovery_fallback": {
+    "initialization": "all C/input construction, allocation, import and format setup costs remain",
+    "amortization": "C may be reused across finite pairs, but TWO full matrix reads/computations remain per pair",
+    "recovery": "no atomic recovery or allocation-failure guarantee implemented",
+    "fallback": "invalid input is refused; no cheap fallback or target-cost successful execution claimed"
+  },
+  "registered_shape_projection": {
+    "parameters": 403747897344,
+    "embedded_variable_bits": 9342985041,
+    "embedded_variable_GiB": 1.0876666103722528,
+    "global_8GiB_can_hold_variable_source": true,
+    "two_full_BF16_inventory_read_bytes": 1614991589376,
+    "status": "DERIVED logical counts, not a measured hardware/time bound or per-matrix advice allocation"
+  },
+  "O4": "OPEN",
+  "O5": "OPEN"
+}

@@ -1,5 +1,12 @@
 # Reproducibility
 
+## Auxiliary residual-lift reproduction
+
+[Instructions and immutable results](experiments/codex_native_residual_lift_20260909/REPRODUCE.md)
+separate the NumPy ordered arithmetic, integer enumeration and small CPU torch
+operator audit. The saved incomplete source is an intentional failure witness.
+No GPU or larger HF run is needed to repeat this already-bounded evidence.
+
 ## Restricted BF16 producer extension — 2026-09-09
 
 Follow [experiments/codex_native_sparse_extension_20260909/REPRODUCE.md](experiments/codex_native_sparse_extension_20260909/REPRODUCE.md) for the fixed scalar sweep,

@@ -2102,3 +2102,14 @@ has84,712 direct and15,608 oracle evaluations, all matched, with unchanged costs
 Authority: experiments/codex_fmm_integrity_20260909/hardened_run/result.json,
 SHA256 375a4f4a9d5055429664f0c042c02f2d128fbf2cd8196b1fcdc6ffa87980a121. The first corrected run and both review records remain preserved.
 Six regressions plus11 legacy functions pass; no native/mission closure.
+
+## D-CODEX-NATIVE-RESIDUAL-LIFT-20260909 — retain lemma, stop core promotion
+
+Constructed and proved two adaptive native BF16 queries that recover exact
+binary counts/parity in the declared FP32-intermediate ABI. Kept actual256/257
+collision, incomplete-source red failures, primary repaired run and small CPU
+operator controls. The costs retain two dense native calls. Registered-shape
+independent source9,342,985,041bits=1.0876666104GiB fits globally in8GiB.
+No universal decoder, stronger global target bound or HF causal-state proof
+follows; no new three-principle core round was delivered. Do not enlarge this
+auxiliary fixture as primary research. O1-O5OPEN/O6PARTIAL; mission stays active.

@@ -1,0 +1,629 @@
+{
+  "ABI_rule": "Agreement checks this CPU configuration; a mismatching operator is outside the declared FP32-intermediate ABI, not silently repaired.",
+  "cuda_executed": false,
+  "device": "cpu",
+  "mismatch_cases": [],
+  "native_call_count": 24,
+  "numpy": "2.2.6",
+  "operator_case_count": 12,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "rows": [
+    {
+      "D": 275,
+      "alpha0": 1.0,
+      "alpha1": 1.0,
+      "coefficient_payload_bytes": 1100,
+      "coefficient_sha256_before_and_after": "b15f8a6e7f784a530360caea57ccd3932dc354243b2c2c3c0c3e8a1050b620a5",
+      "counts": [
+        256,
+        257
+      ],
+      "decoded": [
+        256,
+        257
+      ],
+      "elapsed_control_ns": 13559000,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "4380",
+        "4380"
+      ],
+      "expected_y1_words": [
+        "0000",
+        "3f80"
+      ],
+      "k0": [
+        256,
+        256
+      ],
+      "m": 2,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 257,
+      "operator": "linear",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 2200,
+      "y0_words": [
+        "4380",
+        "4380"
+      ],
+      "y1_words": [
+        "0000",
+        "3f80"
+      ]
+    },
+    {
+      "D": 275,
+      "alpha0": 1.0,
+      "alpha1": 1.0,
+      "coefficient_payload_bytes": 1100,
+      "coefficient_sha256_before_and_after": "b15f8a6e7f784a530360caea57ccd3932dc354243b2c2c3c0c3e8a1050b620a5",
+      "counts": [
+        256,
+        257
+      ],
+      "decoded": [
+        256,
+        257
+      ],
+      "elapsed_control_ns": 2761800,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "4380",
+        "4380"
+      ],
+      "expected_y1_words": [
+        "0000",
+        "3f80"
+      ],
+      "k0": [
+        256,
+        256
+      ],
+      "m": 2,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 257,
+      "operator": "mv",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 2200,
+      "y0_words": [
+        "4380",
+        "4380"
+      ],
+      "y1_words": [
+        "0000",
+        "3f80"
+      ]
+    },
+    {
+      "D": 275,
+      "alpha0": 1.0078125,
+      "alpha1": 1.9921875,
+      "coefficient_payload_bytes": 1100,
+      "coefficient_sha256_before_and_after": "b15f8a6e7f784a530360caea57ccd3932dc354243b2c2c3c0c3e8a1050b620a5",
+      "counts": [
+        256,
+        257
+      ],
+      "decoded": [
+        256,
+        257
+      ],
+      "elapsed_control_ns": 309400,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "4381",
+        "4382"
+      ],
+      "expected_y1_words": [
+        "0000",
+        "0000"
+      ],
+      "k0": [
+        256,
+        257
+      ],
+      "m": 2,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 257,
+      "operator": "linear",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 2200,
+      "y0_words": [
+        "4381",
+        "4382"
+      ],
+      "y1_words": [
+        "0000",
+        "0000"
+      ]
+    },
+    {
+      "D": 275,
+      "alpha0": 1.0078125,
+      "alpha1": 1.9921875,
+      "coefficient_payload_bytes": 1100,
+      "coefficient_sha256_before_and_after": "b15f8a6e7f784a530360caea57ccd3932dc354243b2c2c3c0c3e8a1050b620a5",
+      "counts": [
+        256,
+        257
+      ],
+      "decoded": [
+        256,
+        257
+      ],
+      "elapsed_control_ns": 209000,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "4381",
+        "4382"
+      ],
+      "expected_y1_words": [
+        "0000",
+        "0000"
+      ],
+      "k0": [
+        256,
+        257
+      ],
+      "m": 2,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 257,
+      "operator": "mv",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 2200,
+      "y0_words": [
+        "4381",
+        "4382"
+      ],
+      "y1_words": [
+        "0000",
+        "0000"
+      ]
+    },
+    {
+      "D": 275,
+      "alpha0": 7.888609052210118e-31,
+      "alpha1": 2.5253976801421758e+30,
+      "coefficient_payload_bytes": 1100,
+      "coefficient_sha256_before_and_after": "b15f8a6e7f784a530360caea57ccd3932dc354243b2c2c3c0c3e8a1050b620a5",
+      "counts": [
+        256,
+        257
+      ],
+      "decoded": [
+        256,
+        257
+      ],
+      "elapsed_control_ns": 256900,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "1180",
+        "1180"
+      ],
+      "expected_y1_words": [
+        "0000",
+        "71ff"
+      ],
+      "k0": [
+        256,
+        256
+      ],
+      "m": 2,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 257,
+      "operator": "linear",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 2200,
+      "y0_words": [
+        "1180",
+        "1180"
+      ],
+      "y1_words": [
+        "0000",
+        "71ff"
+      ]
+    },
+    {
+      "D": 275,
+      "alpha0": 7.888609052210118e-31,
+      "alpha1": 2.5253976801421758e+30,
+      "coefficient_payload_bytes": 1100,
+      "coefficient_sha256_before_and_after": "b15f8a6e7f784a530360caea57ccd3932dc354243b2c2c3c0c3e8a1050b620a5",
+      "counts": [
+        256,
+        257
+      ],
+      "decoded": [
+        256,
+        257
+      ],
+      "elapsed_control_ns": 263800,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "1180",
+        "1180"
+      ],
+      "expected_y1_words": [
+        "0000",
+        "71ff"
+      ],
+      "k0": [
+        256,
+        256
+      ],
+      "m": 2,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 257,
+      "operator": "mv",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 2200,
+      "y0_words": [
+        "1180",
+        "1180"
+      ],
+      "y1_words": [
+        "0000",
+        "71ff"
+      ]
+    },
+    {
+      "D": 16444,
+      "alpha0": 1.0,
+      "alpha1": 1.0,
+      "coefficient_payload_bytes": 131552,
+      "coefficient_sha256_before_and_after": "5eeceb9018befed60858f79a372ee1a4642e94b05b3ab125984d278bcb21f56e",
+      "counts": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "decoded": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "elapsed_control_ns": 286600,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "467f",
+        "4680",
+        "4600",
+        "0000"
+      ],
+      "expected_y1_words": [
+        "0000",
+        "0000",
+        "3f80",
+        "0000"
+      ],
+      "k0": [
+        16320,
+        16384,
+        8192,
+        0
+      ],
+      "m": 4,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 16384,
+      "operator": "linear",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 263104,
+      "y0_words": [
+        "467f",
+        "4680",
+        "4600",
+        "0000"
+      ],
+      "y1_words": [
+        "0000",
+        "0000",
+        "3f80",
+        "0000"
+      ]
+    },
+    {
+      "D": 16444,
+      "alpha0": 1.0,
+      "alpha1": 1.0,
+      "coefficient_payload_bytes": 131552,
+      "coefficient_sha256_before_and_after": "5eeceb9018befed60858f79a372ee1a4642e94b05b3ab125984d278bcb21f56e",
+      "counts": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "decoded": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "elapsed_control_ns": 362900,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "467f",
+        "4680",
+        "4600",
+        "0000"
+      ],
+      "expected_y1_words": [
+        "0000",
+        "0000",
+        "3f80",
+        "0000"
+      ],
+      "k0": [
+        16320,
+        16384,
+        8192,
+        0
+      ],
+      "m": 4,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 16384,
+      "operator": "mv",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 263104,
+      "y0_words": [
+        "467f",
+        "4680",
+        "4600",
+        "0000"
+      ],
+      "y1_words": [
+        "0000",
+        "0000",
+        "3f80",
+        "0000"
+      ]
+    },
+    {
+      "D": 16444,
+      "alpha0": 1.0078125,
+      "alpha1": 1.9921875,
+      "coefficient_payload_bytes": 131552,
+      "coefficient_sha256_before_and_after": "5eeceb9018befed60858f79a372ee1a4642e94b05b3ab125984d278bcb21f56e",
+      "counts": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "decoded": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "elapsed_control_ns": 363000,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "4680",
+        "4681",
+        "4601",
+        "0000"
+      ],
+      "expected_y1_words": [
+        "42fb",
+        "0000",
+        "3fff",
+        "0000"
+      ],
+      "k0": [
+        16257,
+        16384,
+        8192,
+        0
+      ],
+      "m": 4,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 16384,
+      "operator": "linear",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 263104,
+      "y0_words": [
+        "4680",
+        "4681",
+        "4601",
+        "0000"
+      ],
+      "y1_words": [
+        "42fb",
+        "0000",
+        "3fff",
+        "0000"
+      ]
+    },
+    {
+      "D": 16444,
+      "alpha0": 1.0078125,
+      "alpha1": 1.9921875,
+      "coefficient_payload_bytes": 131552,
+      "coefficient_sha256_before_and_after": "5eeceb9018befed60858f79a372ee1a4642e94b05b3ab125984d278bcb21f56e",
+      "counts": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "decoded": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "elapsed_control_ns": 354300,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "4680",
+        "4681",
+        "4601",
+        "0000"
+      ],
+      "expected_y1_words": [
+        "42fb",
+        "0000",
+        "3fff",
+        "0000"
+      ],
+      "k0": [
+        16257,
+        16384,
+        8192,
+        0
+      ],
+      "m": 4,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 16384,
+      "operator": "mv",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 263104,
+      "y0_words": [
+        "4680",
+        "4681",
+        "4601",
+        "0000"
+      ],
+      "y1_words": [
+        "42fb",
+        "0000",
+        "3fff",
+        "0000"
+      ]
+    },
+    {
+      "D": 16444,
+      "alpha0": 7.888609052210118e-31,
+      "alpha1": 2.5253976801421758e+30,
+      "coefficient_payload_bytes": 131552,
+      "coefficient_sha256_before_and_after": "5eeceb9018befed60858f79a372ee1a4642e94b05b3ab125984d278bcb21f56e",
+      "counts": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "decoded": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "elapsed_control_ns": 382600,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "147f",
+        "1480",
+        "1400",
+        "0000"
+      ],
+      "expected_y1_words": [
+        "0000",
+        "0000",
+        "71ff",
+        "0000"
+      ],
+      "k0": [
+        16320,
+        16384,
+        8192,
+        0
+      ],
+      "m": 4,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 16384,
+      "operator": "linear",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 263104,
+      "y0_words": [
+        "147f",
+        "1480",
+        "1400",
+        "0000"
+      ],
+      "y1_words": [
+        "0000",
+        "0000",
+        "71ff",
+        "0000"
+      ]
+    },
+    {
+      "D": 16444,
+      "alpha0": 7.888609052210118e-31,
+      "alpha1": 2.5253976801421758e+30,
+      "coefficient_payload_bytes": 131552,
+      "coefficient_sha256_before_and_after": "5eeceb9018befed60858f79a372ee1a4642e94b05b3ab125984d278bcb21f56e",
+      "counts": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "decoded": [
+        16320,
+        16384,
+        8193,
+        0
+      ],
+      "elapsed_control_ns": 409900,
+      "exact_decode": true,
+      "expected_y0_words": [
+        "147f",
+        "1480",
+        "1400",
+        "0000"
+      ],
+      "expected_y1_words": [
+        "0000",
+        "0000",
+        "71ff",
+        "0000"
+      ],
+      "k0": [
+        16320,
+        16384,
+        8192,
+        0
+      ],
+      "m": 4,
+      "matches_declared_FP32_sum_then_BF16_store": true,
+      "n": 16384,
+      "operator": "mv",
+      "rng_preserved": true,
+      "timing_scope": "CPU harness incl input/decode; not a latency benchmark",
+      "two_full_matrix_reads_logical_bytes": 263104,
+      "y0_words": [
+        "147f",
+        "1480",
+        "1400",
+        "0000"
+      ],
+      "y1_words": [
+        "0000",
+        "0000",
+        "71ff",
+        "0000"
+      ]
+    }
+  ],
+  "scope": "actual small CPU operators only; not a full HF/RNG-generation/KV/causal-token/all-continuation lift",
+  "source_sha256": "d51a7a1d5800f263e8cdaf5b13b6c2342cb550e035e90894b1fc7c089d903e3e",
+  "threads": 10,
+  "torch": "2.8.0+cpu"
+}

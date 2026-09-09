@@ -1,0 +1,23 @@
+{
+  ".gitattributes": "6ecaca898cb7e9071225998af13e0832c27ded960f4516fe7a8950a16f5880cc",
+  "ACCOUNTING.json": "dfa24f98319ca02b19f3aa7d9e0556d44a3ddb92d9e79327b626a496ba40438d",
+  "ACTUAL_RED.json": "9d28aed03affa5af28a7cdcd2bec9a79e24269343bf1530e48d6ef0b9051ecdd",
+  "HANDOFF.md": "e110cb8d37809a49f75041aad4d555f1e5ccccf3fa67eadf982139ad61d5429e",
+  "INDEPENDENT_REVIEW.md": "2964e3c9bf453cb6663609d011f8cff767b3f9c4ad1019d3e085b3d665df28bd",
+  "PREREGISTRATION.md": "9ec03d1776a7bd67843a26e4bddd45503e09e384d0285bae0deacbce5d54a00c",
+  "PROOF.md": "d9fe53bd66093a652dd1627048295441ed8c237f5543a01b1548f72496816748",
+  "REPORT.md": "1311c56e0982b6063f71f67d477f86f4ca21d982ed1db99df594e2f7dbad43a0",
+  "REPORT_KO.md": "f606eca5680de7753d58a6edbae5fc619d50d321c86477d8ce786a10eefc41d4",
+  "REPRODUCE.md": "2755ae5425593c06d9308933aef27d0b70bc6a992cb8e8700d0a5fd3f92f99c9",
+  "admission_validation.json": "fb3a4362349c51e8a5f35937ed410f71c237ec8ba2c44de57ec33b3f1ae1e8a0",
+  "check_admission.py": "122d2d5dbe48cf35f78ce3c0b68f0ee796f9474ad71177b7cb40db69cd4f020a",
+  "integer_audit.json": "763dfe27b222455e0a09f44dafd53e200554ad17d160a4daeede858463dc8ab0",
+  "integer_audit.py": "f6892f893ec058ef345412b3d171609dd4e511c0fc105ea2065558a00ef6770b",
+  "lift.py": "27a674b12e7d649bbfd21fdf04c5aade7b5d3c8c3f57eae3f7c7c866bb223dc6",
+  "obligations.json": "29a9fa47bbf307889bf5599ec0126aad037073746dd747f1b6d21400fa5605b4",
+  "partial_source_v1.py": "1c97a565816375e3b38b40985da874637f8196d1d0c03cca2fe33426e15d7a8a",
+  "results.json": "476e04d9db6ed182feab6c4e7bb00de76a12b010765eea77fd9cc18a3b5c9bcf",
+  "torch_cpu_audit.py": "d51a7a1d5800f263e8cdaf5b13b6c2342cb550e035e90894b1fc7c089d903e3e",
+  "torch_cpu_results.json": "fa922f93f258a1595a2226a63f2d6c19f32a826723c88f0839886c654dffcd7e",
+  "verify_artifacts.py": "cde9a073a42d525f5817660bb118c07cd694752b3867d30963995c3c47fc50dd"
+}

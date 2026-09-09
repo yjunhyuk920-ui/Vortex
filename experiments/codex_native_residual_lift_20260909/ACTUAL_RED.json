@@ -1,0 +1,15 @@
+{
+  "source_sha256": "1c97a565816375e3b38b40985da874637f8196d1d0c03cca2fe33426e15d7a8a",
+  "incomplete_agent_output": true,
+  "old_agent_handles_absent": true,
+  "matching_python_process_absent": true,
+  "actual_compiled_bias_bits": 13,
+  "required_bias_bits": 14,
+  "uint8_truth_actual": 0,
+  "integer_truth": 8192,
+  "actual_red_exception": "two-query decode mismatch",
+  "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 10, in <module>\n  File \"REPOSITORY\\experiments\\codex_native_residual_lift_20260909\\partial_source_v1.py\", line 146, in run_case\n    raise AssertionError(\"two-query decode mismatch\")\nAssertionError: two-query decode mismatch\n",
+  "out_of_scope_alpha_wrongly_accepted": true,
+  "raw_record_sha256": "4faa9ac2a2aad46a796b7031ae78a21ee3e04dfc4c645994d21a9e2a58830b65",
+  "traceback_path_redacted": true
+}

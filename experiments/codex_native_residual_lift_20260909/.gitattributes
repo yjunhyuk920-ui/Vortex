@@ -1,0 +1,7 @@
+* text eol=lf
+# Preserve exact incomplete source bytes and executed scripts' final newlines.
+partial_source_v1.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+integer_audit.py whitespace=-blank-at-eof
+torch_cpu_audit.py whitespace=-blank-at-eof
+check_admission.py whitespace=-blank-at-eof
+PREREGISTRATION.md whitespace=-blank-at-eof

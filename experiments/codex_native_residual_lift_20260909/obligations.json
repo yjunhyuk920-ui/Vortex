@@ -1,0 +1,19 @@
+{
+  "THEORY_STATUS": "NOT_ESTABLISHED",
+  "HARDWARE_STATUS": "NOT_TESTED",
+  "CORE_ADMISSION": false,
+  "O1": "OPEN",
+  "O2": "OPEN",
+  "O3": "OPEN",
+  "O4": "OPEN",
+  "O5": "OPEN",
+  "O6": "PARTIAL",
+  "auxiliary_lemma": "VERIFIED_IN_DECLARED_ARITHMETIC_ABI",
+  "direction": "counts/parity -> two native queries, NOT cheap native execution",
+  "legal_HF_causal_state_lift": "OPEN",
+  "global_advice_bound_improvement": false,
+  "three_new_principles_delivered": false,
+  "complete": false,
+  "result_sha256": "476e04d9db6ed182feab6c4e7bb00de76a12b010765eea77fd9cc18a3b5c9bcf",
+  "native_operator_result_sha256": "fa922f93f258a1595a2226a63f2d6c19f32a826723c88f0839886c654dffcd7e"
+}

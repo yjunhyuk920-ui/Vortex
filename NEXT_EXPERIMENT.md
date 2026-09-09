@@ -1,5 +1,15 @@
 # Next constructive obligation — 2026-09-09
 
+## Stop expanding the auxiliary residual lift
+
+[The two-query arithmetic lemma](experiments/codex_native_residual_lift_20260909/REPORT.md)
+is now proved and executed in its declared scope. It invokes the missing native
+producer twice, and its packed structured source fits the global8GiB advice.
+Do not expand scalar n/seeds or run a larger HF model to substitute for the core.
+The requested three materially new global/dynamic execution principles remain
+unconstructed. The next work must build their actual paid arbitrary-native
+decoder/state update, not infer it from this reduction in the opposite direction.
+
 ## EXP-100A repair complete; return to the global constructor
 
 [The actual repaired full gate](experiments/codex_fmm_integrity_20260909/REPORT.md)
