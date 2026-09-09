@@ -2113,3 +2113,13 @@ independent source9,342,985,041bits=1.0876666104GiB fits globally in8GiB.
 No universal decoder, stronger global target bound or HF causal-state proof
 follows; no new three-principle core round was delivered. Do not enlarge this
 auxiliary fixture as primary research. O1-O5OPEN/O6PARTIAL; mission stays active.
+
+
+## 2026-09-09 — persistent goal operational impasse
+
+The actual goal tool confirmed BLOCKED after three consecutive discovery
+continuations without essential-obligation progress. Fixed mission unchanged;
+not complete. No405B target resources, no admitted executor/pending core run,
+and the three new principles are unconstructed. [Record](docs/research/goal_blocked_20260909/STATUS.md). This is an
+operational state change only, not a new theorem, test result or impossibility.
+Fresh user resumption starts a new blocked audit. Scientific O1-O6 unchanged.

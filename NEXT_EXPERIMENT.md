@@ -1,5 +1,15 @@
 # Next constructive obligation — 2026-09-09
 
+## Operational resumption condition
+
+The actual persistent goal is BLOCKED; [audit and resumption record](docs/research/goal_blocked_20260909/STATUS.md).
+All mathematical obligations below remain open. The current handoff contains
+no admitted target executor or pending core run; its pseudocode is the missing
+construction itself. Resume from a specific new mechanism with paid native/state
+and cost procedures, or actual authorized target access plus an eligible plan.
+Do not repeat completed auxiliary controls or infer that hardware availability
+would solve the open theory. The user-confirmed405B resource absence remains.
+
 ## Stop expanding the auxiliary residual lift
 
 [The two-query arithmetic lemma](experiments/codex_native_residual_lift_20260909/REPORT.md)

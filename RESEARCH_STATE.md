@@ -1,5 +1,15 @@
 # Research state — 2026-09-09
 
+## Current goal engine state — BLOCKED
+
+[Operational resumption record](docs/research/goal_blocked_20260909/STATUS.md): after three consecutive continuations
+without essential-obligation progress, the actual persistent goal is BLOCKED.
+The user has no405B hardware, and no admitted executor or pending core experiment
+was identified in the current handoffs. The primary has not constructed the
+missing three new principles. The fixed objective remains unachieved and intact.
+Theory NOT_ESTABLISHED, hardware NOT_TESTED, O1-O5 OPEN/O6 PARTIAL. This is not an
+impossibility result. Earlier ACTIVE references are historical session states.
+
 ## Auxiliary native residual lift — 2026-09-09
 
 [Finite two-query decoder](experiments/codex_native_residual_lift_20260909/REPORT.md)
