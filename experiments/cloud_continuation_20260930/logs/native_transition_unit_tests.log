@@ -1,0 +1,19 @@
+test_01_common_subexpression_really_eliminates_work_in_control (test_transition.Tests.test_01_common_subexpression_really_eliminates_work_in_control) ... ok
+test_02_distinct_external_allocations_are_not_merged (test_transition.Tests.test_02_distinct_external_allocations_are_not_merged) ... ok
+test_03_mutation_rejected (test_transition.Tests.test_03_mutation_rejected) ... ok
+test_04_random_kernel_rejected (test_transition.Tests.test_04_random_kernel_rejected) ... ok
+test_05_checkpoint_bound_program_reload (test_transition.Tests.test_05_checkpoint_bound_program_reload) ... ok
+test_06_format_fault_rejected (test_transition.Tests.test_06_format_fault_rejected) ... ok
+test_07_demand_interpreter_no_desired_answers (test_transition.Tests.test_07_demand_interpreter_no_desired_answers) ... ok
+test_08_packed_kv_layout_and_bits (test_transition.Tests.test_08_packed_kv_layout_and_bits) ... ok
+test_09_offset_and_negative_zero_payload (test_transition.Tests.test_09_offset_and_negative_zero_payload) ... ok
+test_10_packed_has_no_hidden_raw_kv_layers (test_transition.Tests.test_10_packed_has_no_hidden_raw_kv_layers) ... ok
+test_11_empty_cache (test_transition.Tests.test_11_empty_cache) ... ok
+test_12_literals_roundtrip_signed_zero (test_transition.Tests.test_12_literals_roundtrip_signed_zero) ... ok
+test_13_cache_adapter_roundtrip (test_transition.Tests.test_13_cache_adapter_roundtrip) ... ok
+test_14_live_state_root_is_retained (test_transition.Tests.test_14_live_state_root_is_retained) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.912s
+
+OK

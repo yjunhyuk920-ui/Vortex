@@ -2030,3 +2030,10 @@ python experiments/exp_102a/run_experiment.py \
 
 Verify `checksums.sha256` before using the processed result. Source commit: `8fef54bcd80932616adb8c682b55d420fc9faadd`.
 <!-- EXP-102A:END -->
+
+
+## 2026-09-30 cloud baseline
+
+The new package records a separate Linux environment, observed dependencies, acquisition and focused-test logs, and read-only frozen-file checks. Do not relabel it a byte-identical Windows model replay.
+
+[Evidence and boundaries](experiments/cloud_continuation_20260930/REPORT.md).

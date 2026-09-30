@@ -47,3 +47,10 @@ committed at PR147/378fcd584330d17f9d144f64ccbc01721903ea6a on another branch; s
 [frontier reconciliation](experiments/output_envelope_20260908/FRONTIER_SYNC.md).
 [Prior state](docs/research/history/pre_output_envelope_20260908/RESEARCH_STATE.md).
 [Pre-native-global state](docs/research/history/pre_native_global_transition_20260908/RESEARCH_STATE.md).
+
+
+## 2026-09-30 continuation audit
+
+Independent Linux CPU setup and EXP100A classification repair are recorded. Historical science is unchanged; the new metadata audit is not a rerun. O1–O6 remain open and CORE_ADMISSION=false.
+
+[Evidence and boundaries](experiments/cloud_continuation_20260930/REPORT.md).

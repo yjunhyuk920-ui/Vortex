@@ -36,3 +36,10 @@
 |Not tested|HF_FORWARD=NOT_TESTED;FULL_KV_RNG=NOT_TESTED;TARGET_405B=NOT_TESTED;realactivations/CUDA/8GiB/native4BQ4/TTFT/fullrepositorysuite|
 
 Scientific acceptance and persistence are independent. No claim of three new qualifying principles, no universal low-coherence assumption, no full-model speed inference.
+
+
+## 2026-09-30 supporting validation
+
+MEASURED: 14 unchanged native controls and 16 focused EXP100A tests pass; 3,510 canonical comparison hashes match. Metadata audit covers 50 recorded searches. NOT TESTED: new full-generation replay, full suite, target GPU, 405B latency/VRAM.
+
+[Evidence and boundaries](experiments/cloud_continuation_20260930/REPORT.md).

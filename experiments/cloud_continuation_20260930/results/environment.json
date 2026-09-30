@@ -1,0 +1,18 @@
+{
+  "python": "3.12.14",
+  "platform_system": "Linux",
+  "machine": "x86_64",
+  "cpu_affinity": 9,
+  "memory_total_kib": 10206504,
+  "disk_free_bytes": 30467252224,
+  "source_sha": "866e347540c6aff7595ac81c2d2c6c0cf5680196",
+  "packages": {
+    "torch": "2.8.0+cpu",
+    "transformers": "4.55.4",
+    "numpy": "2.2.6",
+    "safetensors": "0.6.2",
+    "pytest": "9.1.1"
+  },
+  "cuda_available": false,
+  "cuda_devices": 0
+}

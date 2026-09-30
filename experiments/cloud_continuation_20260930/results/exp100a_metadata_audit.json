@@ -1,0 +1,38 @@
+{
+  "historical_path": "results/exp_100a/0348e87fa385630a84043727ddb9a34c032df4ac/result.json",
+  "historical_sha256": "88dac098b83facedb56aa4875eadaba657a5f612b49984fe8f5ecb990d0c05de",
+  "historical_decision_preserved": "INVALID_EXPLICIT_RECTANGULAR_FMM_CONTROL_FAILURE",
+  "historical_integrity_failures_preserved": [
+    "empty_direct_shape_search"
+  ],
+  "audit_kind": "metadata_only_no_search_or_model_rerun",
+  "coverage": {
+    "search_count": 50,
+    "expected_search_count": 50,
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_result_keys": [],
+    "empty_direct": [
+      {
+        "block_length": 16384,
+        "rows": 128256,
+        "columns": 16384,
+        "state_count_by_depth": [
+          96,
+          96,
+          96,
+          96,
+          0
+        ]
+      }
+    ],
+    "empty_oracle": [],
+    "integrity_failures": [],
+    "empty_frontier_interpretation": "resource_or_bounded-search exhaustion; not by itself a control failure"
+  },
+  "recorded_direct_10x_pass_blocks": [],
+  "recorded_oracle_10x_pass_blocks": [],
+  "new_scientific_promotion": false,
+  "all_factorizations_independently_revalidated": false,
+  "universal_infeasibility_proved": false
+}

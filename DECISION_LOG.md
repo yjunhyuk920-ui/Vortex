@@ -1829,3 +1829,10 @@ coefficient cap, bounded search, and perfect-future-block grants.
 
 The authoritative arm executed real causal draft prefill/generation, tokenizer bridge, real target block verification, mismatch repair, real draft-cache crop/replay or rebuild, exact terminal target KV comparison, and same-run latency/N/A accounting. No impossible promotion grant was used.
 <!-- EXP-102A:END -->
+
+
+## 2026-09-30 — Repair resource-empty classification
+
+Apply the previously specified runner classification repair with exact population and result-identity checks. Preserve historical raw results and thresholds. No scientific promotion or new core admission follows. Local tests and receipts are linked below.
+
+[Evidence and boundaries](experiments/cloud_continuation_20260930/REPORT.md).

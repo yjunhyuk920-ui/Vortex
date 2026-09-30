@@ -34,3 +34,10 @@ Preserve old failure scopes. PR147 correlation-source and local mantissa-source
 remain separate; incorporate [actual concurrent frontier](experiments/output_envelope_20260908/FRONTIER_SYNC.md).
 [Previous next unchanged](docs/research/history/pre_output_envelope_20260908/NEXT_EXPERIMENT.md).
 [Pre-native-global next](docs/research/history/pre_native_global_transition_20260908/NEXT_EXPERIMENT.md).
+
+
+## Continuation prerequisite resolved
+
+The runner now separates resource-empty frontiers from coverage/identity errors. Do not rerun EXP100A merely to remove its old INVALID label. A constructive native producer and its paid 10x path remain the decisive next obligation.
+
+[Evidence and boundaries](experiments/cloud_continuation_20260930/REPORT.md).

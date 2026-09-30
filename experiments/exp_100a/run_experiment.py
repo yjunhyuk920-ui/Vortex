@@ -784,6 +784,45 @@ def evaluate_blocks(
     return block_rows, selected_rows
 
 
+def search_coverage_diagnostics(
+    searches: Mapping[tuple[int, int, int], SearchResult],
+    expected_keys: set[tuple[int, int, int]],
+) -> dict[str, Any]:
+    """Audit identities independently of resource-filtered frontier cardinality.
+
+    Empty frontiers alone do not establish universal infeasibility: the search
+    is bounded. Genuine missing, unexpected and mismatched identities fail closed.
+    """
+    actual_keys = set(searches)
+    missing = sorted(expected_keys - actual_keys)
+    unexpected = sorted(actual_keys - expected_keys)
+    mismatched = sorted(
+        key for key, result in searches.items()
+        if key != (result.block_length, result.rows, result.columns)
+    )
+    failures = []
+    if missing or unexpected:
+        failures.append("incomplete_shape_block_search_population")
+    if mismatched:
+        failures.append("search_result_identity_mismatch")
+    def empties(field: str) -> list[dict[str, Any]]:
+        return [
+            {"block_length": key[0], "rows": key[1], "columns": key[2],
+             "state_count_by_depth": list(result.state_count_by_depth)}
+            for key, result in sorted(searches.items()) if not getattr(result, field)
+        ]
+    return {
+        "search_count": len(searches), "expected_search_count": len(expected_keys),
+        "missing_keys": missing, "unexpected_keys": unexpected,
+        "mismatched_result_keys": mismatched,
+        "empty_direct": empties("direct_structural_plans"),
+        "empty_oracle": empties("oracle_structural_plans"),
+        "integrity_failures": failures,
+        "empty_frontier_interpretation":
+            "resource_or_bounded-search exhaustion; not by itself a control failure",
+    }
+
+
 def summarize_prior(
     exp080: Mapping[str, Any], exp099: Mapping[str, Any]
 ) -> dict[str, Any]:
@@ -868,10 +907,13 @@ def execute(config_path: Path, output_dir: Path) -> dict[str, Any]:
         integrity_failures.append("no_eligible_catalog_factorization")
     if not schemes:
         integrity_failures.append("no_pareto_orientation")
-    if any(not result.direct_structural_plans for result in searches.values()):
-        integrity_failures.append("empty_direct_shape_search")
-    if any(not result.oracle_structural_plans for result in searches.values()):
-        integrity_failures.append("empty_oracle_shape_search")
+    # Resource-empty frontiers are negative bounded-search evidence, not corrupt controls.
+    expected_search_keys = {
+        (int(block), int(family.rows), int(family.columns))
+        for block in config["search"]["block_lengths"] for family in families
+    }
+    search_coverage = search_coverage_diagnostics(searches, expected_search_keys)
+    integrity_failures.extend(search_coverage["integrity_failures"])
 
     direct_passes = [
         row
@@ -971,6 +1013,7 @@ def execute(config_path: Path, output_dir: Path) -> dict[str, Any]:
         },
         "scheme_rows": scheme_rows,
         "search_rows": search_rows,
+        "search_coverage": search_coverage,
         "block_rows": block_rows,
         "integrity_failures": integrity_failures,
         "direct_ten_x_pass_blocks": [row["block_length"] for row in direct_passes],

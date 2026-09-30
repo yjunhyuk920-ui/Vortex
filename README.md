@@ -2,6 +2,15 @@
 
 Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total peak<=8GiB, original output/RNG/required successor state; same-machine native4BQ4 p50<=1.2x,p95<=1.5x and existing TTFT. **Not achieved.** No training/weight/mission change; every preparation, storage, movement, arithmetic and state cost counts.
 
+## Cloud continuation — 2026-09-30
+
+[CPU environment and classification repair](experiments/cloud_continuation_20260930/REPORT.md): the existing 14 native
+controls and 16 focused EXP100A tests pass; 3,510 frozen file hashes are unchanged.
+The public model is downloaded/hash-verified, but no new full-generation replay or
+acceleration result is claimed. Resource-empty frontiers are now separated from
+missing/corrupt search coverage. Historical results remain intact. No qualifying
+new core, theory closure or target hardware result has been established.
+
 ## Current bounded record — 2026-09-08
 [Native whole-state transition constructors](experiments/native_global_transition_20260908/REPORT.md)
 actually load pinned original SmolLM2-135M and execute HF generation using each
