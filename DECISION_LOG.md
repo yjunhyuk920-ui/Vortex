@@ -1851,3 +1851,11 @@ Retain the executable complete scalar map as an auxiliary exact representation. 
 
 [Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
 [Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).
+
+
+## 2026-09-30 heterogeneous source construction and limits
+
+Retain suffix synchronization as a conditional, finite scalar algorithm; do not promote it. The anti-coalescence theorem and zero-suffix binary-MatVec reduction expose its missing coverage/source obligation without proving universal impossibility. Preserve original text and all audit corrections. The Alman–Yu theorem is additional primary background; its direct full-scan algebraic implementation does not reopen the native/cold-source core.
+
+[Suffix construction and proof review](experiments/heterogeneous_source_20260930/REPORT.md).
+[Static MatVec primary-source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md).

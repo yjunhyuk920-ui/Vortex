@@ -1352,3 +1352,11 @@ DERIVED: disjoint scalar charts over all non-NaN initial words, finite exact dya
 
 [Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
 [Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).
+
+
+## 2026-09-30 heterogeneous source construction and limits
+
+Suffix source assumes the declared finite-BF16-product, scalar FP32 RNE/gradual-underflow ABI and an internal skippable prefix. Exact fallback guarantees scalar correctness, not speed. Prefix norms and all input scans, bound arithmetic, metadata, endpoint work and failed full streams are charged. Sufficient cheap synchronization coverage, actual multi-register/kernel/state lift and all target budgets remain UNVERIFIED. Packed integer/field MatVec gives algebraic outputs; sequential native rounding cannot be recovered from the exact sum alone.
+
+[Suffix construction and proof review](experiments/heterogeneous_source_20260930/REPORT.md).
+[Static MatVec primary-source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md).

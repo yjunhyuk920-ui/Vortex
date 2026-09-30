@@ -74,3 +74,11 @@ The complete non-NaN scalar native-chart constructor is implemented and independ
 
 [Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
 [Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).
+
+
+## 2026-09-30 heterogeneous source construction and limits
+
+Constructed a conditional scalar source that certifies erasure of an uncomputed prefix by equal native suffix endpoint words, with explicit prefix-norm preparation, bounded-word enclosure and full fallback costs. Independent symbolic review corrected a signed-zero exception and conservative-budget wording. Broad norm intervals lack sufficient synchronization coverage; no core is admitted. Packed current-vector bit-column MatVec is a real algebraic mechanism, but the inspected construction retains full source scans and lacks native-order lifting. Whole-program causal source discovery remains active; no numerical/model/GPU experiment followed from these notes.
+
+[Suffix construction and proof review](experiments/heterogeneous_source_20260930/REPORT.md).
+[Static MatVec primary-source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md).

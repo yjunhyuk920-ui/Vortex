@@ -25,6 +25,12 @@ implemented and independently rechecked, including corrected inverse accounting.
 Every coefficient/product remains paid. This is a bounded representation theorem, **not** a 10x producer or mission
 completion. Target hardware and universal HF equivalence remain untested.
 
+## Heterogeneous source frontier — 2026-09-30
+
+[Suffix synchronization](experiments/heterogeneous_source_20260930/REPORT.md) gives a finite, causal scalar method: bound a skipped prefix, execute the original suffix on both endpoints, and accept only identical native words; otherwise pay full fallback. Its prefix bound and anti-coalescence screen were independently reviewed and corrected with original drafts preserved. Broad intervals fail the screen; a cheap narrow source and sufficient workload coverage are still missing. This is a conditional theory construction, not a runtime or core admission.
+
+[Packed MatVec source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md) distinguishes current-vector bit-column arithmetic from future-token batching. The inspected finite implementation still reads all matrix bits and does not preserve prescribed native accumulation. No target execution or new numerical experiment was performed in either source study.
+
 ## Current bounded record — 2026-09-08
 [Native whole-state transition constructors](experiments/native_global_transition_20260908/REPORT.md)
 actually load pinned original SmolLM2-135M and execute HF generation using each

@@ -1,0 +1,53 @@
+{
+  "revision": 2,
+  "validation_scope": "Document UTF-8, final-newline, fence balance, live local links, status markers, presence of signed-zero/budget/domain corrections, archived original manifest, and SHA-256 only. No numerical/model/backend/GPU validation.",
+  "live_markdown_files": [
+    "PREREGISTRATION.md",
+    "README.md",
+    "REPORT.md",
+    "REVISION_LOG.md"
+  ],
+  "relative_links": [
+    {
+      "file": "README.md",
+      "target": "REPORT.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "PREREGISTRATION.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "PREREGISTRATION.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "../../docs/CONSTRUCTIVE_THEORY_CONTRACT.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "../binade_transition_20260930/native_charts/REPORT.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "../../FAILED_APPROACHES_RECENT.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "../binade_transition_20260930/native_charts/REPORT.md",
+      "exists": true
+    }
+  ],
+  "original_manifest": "Verified in history/revision_01",
+  "runtime_tests": "NOT_RUN",
+  "model_tests": "NOT_RUN",
+  "gpu_tests": "NOT_RUN",
+  "publication": "NOT_PERFORMED",
+  "final_scope_precision": "Verified explicit +1 coefficients, +0 input words, and identity domain from +0 upward in binary witness"
+}

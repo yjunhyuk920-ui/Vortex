@@ -56,3 +56,11 @@ The previously missing scalar native-chart implementation and inverse-accounting
 
 [Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
 [Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).
+
+
+## 2026-09-30 heterogeneous source construction and limits
+
+Do not tune suffix length or grow scalar tests after this symbolic screen: a new paid narrow-enclosure source and whole-query coverage proof would be needed. Do not treat algebraic packed MatVec as native-exact or a cold-source reduction. Continue a materially different whole-program causal mechanism or a genuinely new source theorem, maintaining exact observable outputs, RNG and required state. No qualifying paid >=10x route has yet been established.
+
+[Suffix construction and proof review](experiments/heterogeneous_source_20260930/REPORT.md).
+[Static MatVec primary-source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md).

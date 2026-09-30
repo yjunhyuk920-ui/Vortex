@@ -63,3 +63,11 @@ Independent corrected rerun: 342,000 tiny prefix-word comparisons, 114 tiny iden
 
 [Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
 [Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).
+
+
+## 2026-09-30 heterogeneous source construction and limits
+
+These two source packages received symbolic proof/arithmetic/source/link checks only. No numerical, model or GPU tests were run. Independent suffix audit verified the first-overflow proof, bounded integer representation, signed-zero/infinity monotonicity, conservative inventories and b=256 anti-coalescence condition after disclosed corrections. This is a bounded manual audit, not a whole-theorem formal verification or target result.
+
+[Suffix construction and proof review](experiments/heterogeneous_source_20260930/REPORT.md).
+[Static MatVec primary-source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md).
