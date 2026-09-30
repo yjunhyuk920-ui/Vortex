@@ -1866,3 +1866,10 @@ Retain suffix synchronization as a conditional, finite scalar algorithm; do not 
 Retain the finite whole-program relation/witness construction as an explicit semantic baseline. Do not admit literal separator tables, enumerated behavioral-state tables or unqualified exact dirty-trace repair as a target core. Independent symbolic review tightened finite-control/primitive totality, per-assignment cost bounds, the actual allocated-message width argument and the non-token-specific witness scope. All original drafts remain preserved; no universal runtime lower bound is claimed.
 
 [Whole-program construction, scoped obstructions and audit](experiments/whole_program_causal_source_20260930/REPORT.md).
+
+
+## 2026-09-30 conditional field bridge and source attempt
+
+Retain the conditional grid/field bridge as auxiliary, with no source or core promotion. Correct the over-strong both-arithmetic-and-traffic entry wording and the ineligible-row norm representation. Preserve prior snapshots, charge constructor multiword work and fallback, and record the parent bounded review. This handoff records an unsuccessful dominant-cost construction attempt, not mission advancement.
+
+[Conditional native field bridge and corrections](experiments/causal_cost_construction_20260930/NATIVE_FIELD_WRAPPER.md).

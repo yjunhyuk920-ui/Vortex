@@ -71,3 +71,10 @@ Do not tune suffix length or grow scalar tests after this symbolic screen: a new
 The missing joint native-relation representation must be constructible and exactly evaluable before the original region is executed, with a causal reachable-state invariant when used and all preparation, source, address, movement, guard and fallback costs. Do not grow truth tables, elimination-order sweeps or dirty-trace tests from this round. A new core needs a materially new constructive source or dependency with an actual paid >=10x bound; no such next implementation has been selected.
 
 [Whole-program construction, scoped obstructions and audit](experiments/whole_program_causal_source_20260930/REPORT.md).
+
+
+## 2026-09-30 conditional field bridge and source attempt
+
+Any numeric coded source coupled to this bridge must supply its actual constructor, physical query probes and decoder, not GF(2) parity as an integer sum. Four-byte field cells impose the stated paid traffic condition, with every rejected row falling back. A purely static counterexample does not establish released-checkpoint reachability or a latency quantile. Do not implement the bridge alone as a new core, repeat screened absorption/stationary methods, or impose separate universal 90% arithmetic-and-traffic reduction gates. Continue only a genuinely new concrete information dependency or schedule toward the full bound.
+
+[Conditional native field bridge and corrections](experiments/causal_cost_construction_20260930/NATIVE_FIELD_WRAPPER.md).

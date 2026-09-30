@@ -89,3 +89,10 @@ Constructed a conditional scalar source that certifies erasure of an uncomputed 
 The whole-program round is complete at the bounded symbolic level. A finite supplied-program relation compiler can recover exposed outputs/RNG/required state without reconstructing hidden accumulators, but its literal table schedule has prohibitive separator allocation. Input-conditioned ordinary substitution retains dense work. Continuation minimization and exact trace repair provide no sufficient paid saving. No further credible qualifying route was identified from these mechanisms; no new model/backend run is admitted. This is a scientific source-construction blocker, not a proven universal impossibility or mission completion.
 
 [Whole-program construction, scoped obstructions and audit](experiments/whole_program_causal_source_20260930/REPORT.md).
+
+
+## 2026-09-30 conditional field bridge and source attempt
+
+A further constructive cost/source attempt produced only a conditional native grid/field bridge. Its finite guard and centered decoding have a bounded manual review, but no cheap query-adaptive numeric source or coverage theorem survived. No new model/backend run was admitted. Retained-arithmetic schedules are not rejected merely for retaining arithmetic: complete source, compute, movement and same-machine target bounds must still close. No full-mission obligation or measured performance improved.
+
+[Conditional native field bridge and corrections](experiments/causal_cost_construction_20260930/NATIVE_FIELD_WRAPPER.md).

@@ -1,0 +1,18 @@
+{
+  "scope": "text preservation, wording and local-link check only; no runtime or theorem verification",
+  "checks": {
+    "preserved_WORKING_NOTE.md": true,
+    "preserved_NATIVE_FIELD_WRAPPER.md": true,
+    "correction_link_exists": true,
+    "unqualified_BOTH_removed": true,
+    "candidate_specific_gate_labeled": true,
+    "retained_arithmetic_permitted": true,
+    "field_byte_gate_conditional": true
+  },
+  "all_pass": true,
+  "current_sha256": {
+    "WORKING_NOTE.md": "452ea57b4dbe28a55f23117a13607fcf7d482c90cec52293344467a9b5f09b57",
+    "NATIVE_FIELD_WRAPPER.md": "106c3141af1d9cc9161c71e6de070fe9aee364cca6e6f595c88b278dc1ec8c03",
+    "ARCHITECTURE_NEUTRALITY_CORRECTION.md": "d8965a8fc2c4317e52f8fab4d3219bb203b53c0da778c93e94492e5703c3096e"
+  }
+}

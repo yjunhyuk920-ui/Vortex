@@ -35,6 +35,10 @@ completion. Target hardware and universal HF equivalence remain untested.
 
 [Whole-program relational construction](experiments/whole_program_causal_source_20260930/REPORT.md) can generate exposed outputs and required successor state without reconstructing hidden accumulator values. Its explicit compiler pays prohibitive full-domain tables; ordinary input-conditioned substitution retains dense traversal. Continuation minimization and exact trace repair also supply no qualifying bound. Independent symbolic review preserves these narrow scopes: none is a universal impossibility result. This constructive round found no affordable source or qualified next implementation; the mission is still unresolved.
 
+## Additional source attempt — 2026-09-30
+
+[Conditional native field bridge](experiments/causal_cost_construction_20260930/NATIVE_FIELD_WRAPPER.md) gives a paid row guard and exact integer/field-to-native conversion on its accepted scalar domain. It does not supply the needed cheap numeric decoder or causal coverage. The additional constructive attempt therefore admits no new core, model run or target improvement. The full cost/time objective is controlling; separate tenfold reductions of both traffic and arithmetic are not imposed as a universal extra requirement. Original notes and parent-requested corrections are preserved.
+
 ## Current bounded record — 2026-09-08
 [Native whole-state transition constructors](experiments/native_global_transition_20260908/REPORT.md)
 actually load pinned original SmolLM2-135M and execute HF generation using each

@@ -1,0 +1,13 @@
+{
+  "scope": "snapshot and documentation checks only",
+  "checks": {
+    "snapshot_preserved": true,
+    "paid_constructor_scratch": true,
+    "unused_sentinel_explicit": true,
+    "flags_before_numeric_use": true,
+    "zero_input_valuation_unused": true,
+    "ineligible_fallback_explicit": true
+  },
+  "all_pass": true,
+  "current_sha256": "badf43b6239075f47b7148084603a98c84e218002103d6ddc20c82b2057cc1a6"
+}
