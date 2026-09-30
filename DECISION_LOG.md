@@ -1859,3 +1859,10 @@ Retain suffix synchronization as a conditional, finite scalar algorithm; do not 
 
 [Suffix construction and proof review](experiments/heterogeneous_source_20260930/REPORT.md).
 [Static MatVec primary-source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md).
+
+
+## 2026-09-30 whole-program source round
+
+Retain the finite whole-program relation/witness construction as an explicit semantic baseline. Do not admit literal separator tables, enumerated behavioral-state tables or unqualified exact dirty-trace repair as a target core. Independent symbolic review tightened finite-control/primitive totality, per-assignment cost bounds, the actual allocated-message width argument and the non-token-specific witness scope. All original drafts remain preserved; no universal runtime lower bound is claimed.
+
+[Whole-program construction, scoped obstructions and audit](experiments/whole_program_causal_source_20260930/REPORT.md).

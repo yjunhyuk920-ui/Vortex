@@ -31,6 +31,10 @@ completion. Target hardware and universal HF equivalence remain untested.
 
 [Packed MatVec source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md) distinguishes current-vector bit-column arithmetic from future-token batching. The inspected finite implementation still reads all matrix bits and does not preserve prescribed native accumulation. No target execution or new numerical experiment was performed in either source study.
 
+## Whole-program source boundary — 2026-09-30
+
+[Whole-program relational construction](experiments/whole_program_causal_source_20260930/REPORT.md) can generate exposed outputs and required successor state without reconstructing hidden accumulator values. Its explicit compiler pays prohibitive full-domain tables; ordinary input-conditioned substitution retains dense traversal. Continuation minimization and exact trace repair also supply no qualifying bound. Independent symbolic review preserves these narrow scopes: none is a universal impossibility result. This constructive round found no affordable source or qualified next implementation; the mission is still unresolved.
+
 ## Current bounded record — 2026-09-08
 [Native whole-state transition constructors](experiments/native_global_transition_20260908/REPORT.md)
 actually load pinned original SmolLM2-135M and execute HF generation using each

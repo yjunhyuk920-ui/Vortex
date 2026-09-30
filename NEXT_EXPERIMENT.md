@@ -64,3 +64,10 @@ Do not tune suffix length or grow scalar tests after this symbolic screen: a new
 
 [Suffix construction and proof review](experiments/heterogeneous_source_20260930/REPORT.md).
 [Static MatVec primary-source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md).
+
+
+## 2026-09-30 whole-program source round
+
+The missing joint native-relation representation must be constructible and exactly evaluable before the original region is executed, with a causal reachable-state invariant when used and all preparation, source, address, movement, guard and fallback costs. Do not grow truth tables, elimination-order sweeps or dirty-trace tests from this round. A new core needs a materially new constructive source or dependency with an actual paid >=10x bound; no such next implementation has been selected.
+
+[Whole-program construction, scoped obstructions and audit](experiments/whole_program_causal_source_20260930/REPORT.md).

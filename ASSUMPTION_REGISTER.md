@@ -1360,3 +1360,10 @@ Suffix source assumes the declared finite-BF16-product, scalar FP32 RNE/gradual-
 
 [Suffix construction and proof review](experiments/heterogeneous_source_20260930/REPORT.md).
 [Static MatVec primary-source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md).
+
+
+## 2026-09-30 whole-program source round
+
+Whole-program constructions require a supplied finite native program with explicit total guarded primitive relations, legal control bounds, effects and all observer/RNG/state roots. This is not a completed arbitrary-HF frontend. Literal-table width is a bound for that allocation procedure, not functional factors, circuits, semantic simplification or every executor. Dirty-vector witness is a legal scalar subprogram, not an established released-checkpoint token transition. The compact joint-relation source and every whole-mission O1–O6 obligation remain OPEN.
+
+[Whole-program construction, scoped obstructions and audit](experiments/whole_program_causal_source_20260930/REPORT.md).

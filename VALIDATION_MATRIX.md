@@ -71,3 +71,10 @@ These two source packages received symbolic proof/arithmetic/source/link checks 
 
 [Suffix construction and proof review](experiments/heterogeneous_source_20260930/REPORT.md).
 [Static MatVec primary-source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md).
+
+
+## 2026-09-30 whole-program source round
+
+Independent read-only symbolic review verified output-only reverse witness recovery, the K(N,N) minor and >=2^(16N)-bit allocated-message bound for the stated unsimplified full-domain word-table schedule, and the exact fully dirty scalar-DAG witness. Recursive hashes and local links pass. These are manual proofs/document checks only, with no formal checker, numerical/model/GPU run or target performance evidence.
+
+[Whole-program construction, scoped obstructions and audit](experiments/whole_program_causal_source_20260930/REPORT.md).

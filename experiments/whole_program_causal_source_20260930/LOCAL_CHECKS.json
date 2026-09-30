@@ -1,0 +1,111 @@
+{
+  "revision": 2,
+  "scope": "UTF-8, final newline, fence balance, whitespace, live local link existence, status statements, original archived manifest, and small exact integer inventory only; manual symbolic derivations are not a formal proof check. No numerical/model/runtime/GPU experiment.",
+  "local_head": "d94f1df60c8cfac37ba434cd87618f1980ebf43f",
+  "remote_read_head": "d94f1df60c8cfac37ba434cd87618f1980ebf43f",
+  "remote_pr_query": "Branch-scoped state=all returned []",
+  "markdown_files": [
+    {
+      "file": "README.md",
+      "bytes": 867,
+      "sha256": "223633989cd39226685dab053df28ebdf9748c34d9443eeac40020d5057c5cdd"
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 28811,
+      "sha256": "015839ef47e0c97859fcd13d780a3f4eeaddffbe87b7d4358dcb6b2d31dfa7f5"
+    },
+    {
+      "file": "RESEARCH_PLAN.md",
+      "bytes": 3260,
+      "sha256": "2689fcb31d69ca0946c1502148afa8ace99cbd150d110abbffba2675e65bc55e"
+    },
+    {
+      "file": "REVISION_LOG.md",
+      "bytes": 1921,
+      "sha256": "519282336b82876dc6c5ad7a5b74754daf9a4ac042a0c91b09f70a9ba8474ec1"
+    }
+  ],
+  "local_links": [
+    {
+      "file": "README.md",
+      "target": "REPORT.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "RESEARCH_PLAN.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "../../MISSION_AND_WORKING_PRINCIPLES.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "../../docs/CONSTRUCTIVE_THEORY_CONTRACT.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "RESEARCH_PLAN.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "../../docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "../binade_transition_20260930/native_charts/REPORT.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "../tree_grammar_source_accounting_20260930/REPORT.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "../heterogeneous_source_20260930/REPORT.md",
+      "exists": true
+    },
+    {
+      "file": "REPORT.md",
+      "target": "../static_matvec_literature_20260930/SOURCE_NOTE.md",
+      "exists": true
+    }
+  ],
+  "arithmetic": {
+    "registered_parameters": 405849243648,
+    "bf16_parameter_bytes": 811698487296,
+    "conditional_fp32_record_bytes": 1623396974592,
+    "square_width": 16384,
+    "one_square_fp32_trace_bytes": 1073741824,
+    "literal_separator_bit_count_exponent": 262144,
+    "strict_dirty_prefix_scaled_integer_upper_bound": 4194304
+  },
+  "input_source_sha256": {
+    "AGENTS.md": "bc270a438e70393dddd8a0372930ae6f465643587975f479fcb5801a76850f5b",
+    "MISSION_AND_WORKING_PRINCIPLES.md": "d9f12dde83364d6c9f83f437aa5291cd1c17e83c200c0c19011ccb9649df9317",
+    "docs/CONSTRUCTIVE_THEORY_CONTRACT.md": "63e7797e50cc8fa0e1e4c10293d999ec9e8078c321a53b701eb609730e088f8f",
+    "FAILED_APPROACHES.md": "da7e845113b8495d828f0206097209a7f8f26f25a94721e18b5ee16dc9489ea5",
+    "FAILED_APPROACHES_RECENT.md": "9b877a8c6f27c3e526b82eb061825399f3ea69118a6acac9ddc6827798ace7b7",
+    "experiments/binade_transition_20260930/native_charts/REPORT.md": "cdbb1588f50c4d32bea6652e2740df38a5e78a454564109fa711911c3ba22a43",
+    "experiments/tree_grammar_source_accounting_20260930/REPORT.md": "3087c93fd3f3f8a93b23f6e6299e7ae6bc7574b093ab22f23dd8fa6cca29ad23",
+    "experiments/heterogeneous_source_20260930/REPORT.md": "ec8eea5de2a55fd391f067a556e5922cfb4e7a586047a72724ac34f7a1593256",
+    "experiments/static_matvec_literature_20260930/SOURCE_NOTE.md": "8eb57a6809ef42240be61ad94019ba59e4df139bd7cbd7a0f265acb8191a4f5e",
+    "experiments/native_global_transition_20260908/REPORT.md": "4ae1c3284acad0dc0130ed510b3e2a3990d9aa53f48a10319ee0c0f8c40c31e0",
+    "docs/research/E0_NATIVE_EXACT_SHORTCUT_FRONTIER.md": "8805bd6156619a349fe09776ac385598a858336fc8d155a47064a63374c2b923"
+  },
+  "archived_original_manifest": "Verified under history/revision_01; relative links in archived documents retain their original root-package context",
+  "independent_manual_review": "Witness reversal, K(N,N) minor/message bound and exact positive-prefix witness reviewed; scope and sufficient-cost clarifications recorded in REVISION_LOG.md. Not a formal proof or target validation.",
+  "runtime_tests": "NOT_RUN",
+  "model_tests": "NOT_RUN",
+  "gpu_tests": "NOT_RUN",
+  "formal_proof_checker": "NOT_RUN",
+  "publication": "NOT_PERFORMED_BY_THIS_WORKER",
+  "root_ledger_edits": "NONE_BY_THIS_WORKER"
+}

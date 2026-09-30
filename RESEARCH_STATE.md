@@ -82,3 +82,10 @@ Constructed a conditional scalar source that certifies erasure of an uncomputed 
 
 [Suffix construction and proof review](experiments/heterogeneous_source_20260930/REPORT.md).
 [Static MatVec primary-source audit](experiments/static_matvec_literature_20260930/SOURCE_NOTE.md).
+
+
+## 2026-09-30 whole-program source round
+
+The whole-program round is complete at the bounded symbolic level. A finite supplied-program relation compiler can recover exposed outputs/RNG/required state without reconstructing hidden accumulators, but its literal table schedule has prohibitive separator allocation. Input-conditioned ordinary substitution retains dense work. Continuation minimization and exact trace repair provide no sufficient paid saving. No further credible qualifying route was identified from these mechanisms; no new model/backend run is admitted. This is a scientific source-construction blocker, not a proven universal impossibility or mission completion.
+
+[Whole-program construction, scoped obstructions and audit](experiments/whole_program_causal_source_20260930/REPORT.md).
