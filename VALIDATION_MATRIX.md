@@ -55,3 +55,11 @@ for numerical counts, raw replay archive and registration timing deviation.
 Parent rerun: 34,026 leaves, 77,274 ordered sequences, 8,748 composition cases, 38,420 escape cases, and66 FP32/BF16 edge witnesses; zero mismatches. Fixed-itinerary replay:3,375 itineraries,118,125 output checks,33,750 inverse checks. Scope is the declared scalar/dyadic reference; not GEMM/HF/target evidence.
 
 [Proof, costs and evidence](experiments/binade_transition_20260930/REPORT.md).
+
+
+## 2026-09-30 complete scalar constructor and source boundary
+
+Independent corrected rerun: 342,000 tiny prefix-word comparisons, 114 tiny identity checks, 3,520 FP32 identity/prefix comparisons, 192 BF16 wrapper comparisons, and six expected rejection checks; zero mismatches. Dynamic inverse-accounting audit covers 3,050 append steps with 164,931 calls and 347,198 level terms; zero accounting mismatches. FP32 subset totals are 52,281 inverse calls and 116,086 level terms. Earlier 47,515/105,036 counts covered intersections only and are explicitly superseded. Actual GEMM/HF ABI, target memory/latency and whole repository suite remain NOT TESTED.
+
+[Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
+[Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).

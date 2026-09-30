@@ -1843,3 +1843,11 @@ Apply the previously specified runner classification repair with exact populatio
 Accept the bounded guarded-map and fixed-itinerary representation results after code review and independent reruns. Do not promote them as a core: original coefficient traffic remains100%, products and guards are still paid. Continue the missing native constructor and heterogeneous producer obligations without changing the mission.
 
 [Proof, costs and evidence](experiments/binade_transition_20260930/REPORT.md).
+
+
+## 2026-09-30 complete scalar constructor and source boundary
+
+Retain the executable complete scalar map as an auxiliary exact representation. Correct and disclose the inverse-accounting defect rather than replacing earlier evidence. The supplied grammar guarantee does not establish a paid tenfold native source; this is insufficient construction, not a universal impossibility result. No core promotion or target claim follows.
+
+[Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
+[Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).

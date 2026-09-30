@@ -1,0 +1,87 @@
+{
+  "status": "UNDERCOUNT_CONFIRMED",
+  "per_stream": [
+    {
+      "steps": 0,
+      "recorded_inverse_calls": 0,
+      "recorded_inverse_terms": 0,
+      "actual_inverse_calls": 0,
+      "actual_inverse_terms": 0
+    },
+    {
+      "steps": 4,
+      "recorded_inverse_calls": 4080,
+      "recorded_inverse_terms": 8160,
+      "actual_inverse_calls": 4080,
+      "actual_inverse_terms": 8160
+    },
+    {
+      "steps": 3,
+      "recorded_inverse_calls": 4080,
+      "recorded_inverse_terms": 8160,
+      "actual_inverse_calls": 4082,
+      "actual_inverse_terms": 8164
+    },
+    {
+      "steps": 3,
+      "recorded_inverse_calls": 4206,
+      "recorded_inverse_terms": 8544,
+      "actual_inverse_calls": 4256,
+      "actual_inverse_terms": 8644
+    },
+    {
+      "steps": 4,
+      "recorded_inverse_calls": 5088,
+      "recorded_inverse_terms": 11040,
+      "actual_inverse_calls": 5964,
+      "actual_inverse_terms": 13020
+    },
+    {
+      "steps": 4,
+      "recorded_inverse_calls": 4852,
+      "recorded_inverse_terms": 11100,
+      "actual_inverse_calls": 5502,
+      "actual_inverse_terms": 12444
+    },
+    {
+      "steps": 3,
+      "recorded_inverse_calls": 1231,
+      "recorded_inverse_terms": 3064,
+      "actual_inverse_calls": 1279,
+      "actual_inverse_terms": 3160
+    },
+    {
+      "steps": 3,
+      "recorded_inverse_calls": 1231,
+      "recorded_inverse_terms": 3064,
+      "actual_inverse_calls": 1279,
+      "actual_inverse_terms": 3160
+    },
+    {
+      "steps": 8,
+      "recorded_inverse_calls": 9592,
+      "recorded_inverse_terms": 22400,
+      "actual_inverse_calls": 11138,
+      "actual_inverse_terms": 26118
+    },
+    {
+      "steps": 8,
+      "recorded_inverse_calls": 9592,
+      "recorded_inverse_terms": 22378,
+      "actual_inverse_calls": 11138,
+      "actual_inverse_terms": 26090
+    },
+    {
+      "steps": 4,
+      "recorded_inverse_calls": 3563,
+      "recorded_inverse_terms": 7126,
+      "actual_inverse_calls": 3563,
+      "actual_inverse_terms": 7126
+    }
+  ],
+  "recorded_calls": 47515,
+  "recorded_terms": 105036,
+  "actual_calls": 52281,
+  "actual_terms": 116086,
+  "constructor_sha256": "d26afa010bc289894c9cb6606a913af15e292a125ee973be82810c7705890dee"
+}

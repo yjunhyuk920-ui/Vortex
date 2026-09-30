@@ -1320,3 +1320,11 @@ lowering pass, the production executor architecture remains unchanged.
 
 The only evaluated component is a real causal draft/verify loop. Architecture promotion follows `REJECT_FROZEN_REAL_CAUSAL_EXTERNAL_DRAFTS_AS_85_TOKEN_AMORTIZATION_SOURCE`. No multiplication oracle, free future activation block, or unimplemented transform circuit is an accepted runtime component.
 <!-- EXP-102A:END -->
+
+
+## 2026-09-30 complete scalar constructor and source boundary
+
+The complete scalar chart constructor is auxiliary and does not replace any HF/GEMM production operation. Changing activations rebuilds the product stream and its charts; query lookup alone is not the full execution cost. The ordered tree grammar may preserve syntax but has no proved cheap heterogeneous native evaluator. Executor architecture and full-state obligations remain unchanged.
+
+[Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
+[Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).

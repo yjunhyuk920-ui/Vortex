@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "counts": {
+    "tiny_sequences": 1000,
+    "tiny_prefix_word_checks": 342000,
+    "tiny_identity_checks": 114,
+    "native_sequences": 11,
+    "native_prefix_word_checks": 3520,
+    "fma_wrapper_checks": 192,
+    "rejected_nan_checks": 1,
+    "rejected_nonfinite_product_checks": 1,
+    "mismatches": 0,
+    "rejected_invalid_word_checks": 3,
+    "rejected_nondyadic_checks": 1
+  },
+  "tiny_peak_chart_range": [
+    18,
+    35
+  ],
+  "native_totals": {
+    "steps": 44,
+    "supplied_addends": 44,
+    "exact_products": 0,
+    "coefficient_reads": 0,
+    "input_reads": 0,
+    "chart_visits": 23358,
+    "region_advances": 13243,
+    "region_intersections": 24499,
+    "inverse_calls": 47515,
+    "inverse_level_quotients": 105036,
+    "map_updates": 19829,
+    "scalar_round_calls": 10147,
+    "constant_steps": 6675,
+    "endpoint_evaluations": 73024,
+    "input_charts": 5654,
+    "peak_charts": 1019,
+    "final_charts": 5583,
+    "max_cut_bits": 25,
+    "max_level_numerator_bits": 129,
+    "max_level_denominator_bits": 150,
+    "constant_intervals_created": 11748,
+    "max_addend_numerator_bits": 256,
+    "max_addend_denominator_bits": 267,
+    "adjacent_merges": 4730,
+    "invariant_chart_checks": 28941,
+    "invariant_field_checks": 84808,
+    "query_calls": 3520,
+    "query_chart_comparisons": 29954,
+    "query_scalar_round_calls": 1832,
+    "query_word_checks": 1832
+  },
+  "elapsed_seconds": 18.4991303049992
+}

@@ -48,3 +48,11 @@ The runner now separates resource-empty frontiers from coverage/identity errors.
 Complete executable native chart intersections/zero/overflow handling without enumerating FP32 states, then independently audit the charged construction. This closes a native representation subroutine, not the coefficient-source gap. No model/backend run is justified until a genuinely sub-dominant source with a paid10x route exists.
 
 [Proof, costs and evidence](experiments/binade_transition_20260930/REPORT.md).
+
+
+## 2026-09-30 complete scalar constructor and source boundary
+
+The previously missing scalar native-chart implementation and inverse-accounting audit are complete. Do not enlarge the scalar test corpus as the primary track. Continue constructing a paid heterogeneous effect producer or another causal whole-state mechanism that removes dominant source work. Grammar compression alone retains the distinct dynamic coefficient/coordinate source requests. No model/backend run is admitted without the constructive paid >=10x route and unchanged O1–O6 obligations.
+
+[Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
+[Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).

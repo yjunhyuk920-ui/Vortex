@@ -66,3 +66,11 @@ for numerical counts, raw replay archive and registration timing deviation.
 Fixed-binade guarded transition maps and fixed-itinerary periodic maps are implemented and independently rechecked. Whole native chart construction remains derived, and the cheap heterogeneous producer remains missing. CORE_ADMISSION=false; full O1–O6 remain open.
 
 [Proof, costs and evidence](experiments/binade_transition_20260930/REPORT.md).
+
+
+## 2026-09-30 complete scalar constructor and source boundary
+
+The complete non-NaN scalar native-chart constructor is implemented and independently checked. Signed zeros, subnormals, crossings and overflow are explicit. An independent audit found omitted internal inverse counters; corrected evidence preserves the original sources/results. No scalar mismatch was found. This closes only the bounded representation subroutine: all coefficient/input pairs still require products. The grammar-source theorem supplies finite syntax construction, not a cheap native heterogeneous source. Whole-mission O1–O6 remain OPEN; CORE_ADMISSION=false.
+
+[Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
+[Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).

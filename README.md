@@ -19,9 +19,10 @@ new core, theory closure or target hardware result has been established.
 [Guarded native transition maps](experiments/binade_transition_20260930/REPORT.md) replace a literal accumulator lookup
 table by two offsets and parity intervals inside a fixed binade. A fixed dyadic
 itinerary has at most three periodic levels with constructive inverses. Independent
-local reruns pass the declared scalar checks. The general native crossing chart
-constructor is still DERIVED, not implemented; every coefficient/product remains
-paid. This is a bounded representation theorem, **not** a 10x producer or mission
+local reruns pass the declared scalar checks. The [complete scalar native-chart
+constructor](experiments/binade_transition_20260930/native_charts/REPORT.md) is now
+implemented and independently rechecked, including corrected inverse accounting.
+Every coefficient/product remains paid. This is a bounded representation theorem, **not** a 10x producer or mission
 completion. Target hardware and universal HF equivalence remain untested.
 
 ## Current bounded record — 2026-09-08

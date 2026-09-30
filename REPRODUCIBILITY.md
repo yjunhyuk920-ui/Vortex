@@ -2049,3 +2049,11 @@ for numerical counts, raw replay archive and registration timing deviation.
 Fresh parent_validation_01.json and parent_crossing_01.json independently rerun the sealed executable checks. Package SHA256SUMS includes original/revised source snapshots, validation receipts and proofs. No frozen earlier results were replaced.
 
 [Proof, costs and evidence](experiments/binade_transition_20260930/REPORT.md).
+
+
+## 2026-09-30 complete scalar constructor and source boundary
+
+Run the native_charts validator with a new output path; it refuses overwrite. validation_01/02 and source_02 preserve the pre-correction evidence; validation_03 and parent_validation_02 independently check the corrected counters. Both package manifests verify. The scalar dependencies remain unchanged. The separate grammar-source package records primary-source scope, arithmetic and local-link checks only, with no model execution.
+
+[Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
+[Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).

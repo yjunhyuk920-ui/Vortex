@@ -1344,3 +1344,11 @@ This Gate preserves exact weights on a small public checkpoint and uses perfect 
 - `UNVERIFIED`: 405B scaling, target SSD/H2D, target GPU kernels, physical 8-GiB plan, native 4B-Q4 p50/p95.
 - No compression ratio, peak utilization, perfect selector, future block, or zero-cost component is granted.
 <!-- EXP-102A:END -->
+
+
+## 2026-09-30 complete scalar constructor and source boundary
+
+DERIVED: disjoint scalar charts over all non-NaN initial words, finite exact dyadic addends, gradual underflow and RNE; K_j <= 514+514j and a conservative O(514*N^2*b^2) bit-cost bound. MEASURED: scoped reference tests and independent inverse instrumentation audit. UNVERIFIED: actual GEMM/reduction/FTZ/NaN ABI lift, cheap coefficient source, full Transformer/RNG/state and target hardware. All dynamic pair products and chart construction remain charged. The grammar log factors are illustrative theorem factors, not finite-instance speedups or lower bounds.
+
+[Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
+[Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).
