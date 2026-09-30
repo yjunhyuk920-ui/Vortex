@@ -41,3 +41,10 @@ remain separate; incorporate [actual concurrent frontier](experiments/output_env
 The runner now separates resource-empty frontiers from coverage/identity errors. Do not rerun EXP100A merely to remove its old INVALID label. A constructive native producer and its paid 10x path remain the decisive next obligation.
 
 [Evidence and boundaries](experiments/cloud_continuation_20260930/REPORT.md).
+
+
+## Native chart and source obligations
+
+Complete executable native chart intersections/zero/overflow handling without enumerating FP32 states, then independently audit the charged construction. This closes a native representation subroutine, not the coefficient-source gap. No model/backend run is justified until a genuinely sub-dominant source with a paid10x route exists.
+
+[Proof, costs and evidence](experiments/binade_transition_20260930/REPORT.md).

@@ -1836,3 +1836,10 @@ The authoritative arm executed real causal draft prefill/generation, tokenizer b
 Apply the previously specified runner classification repair with exact population and result-identity checks. Preserve historical raw results and thresholds. No scientific promotion or new core admission follows. Local tests and receipts are linked below.
 
 [Evidence and boundaries](experiments/cloud_continuation_20260930/REPORT.md).
+
+
+## 2026-09-30 — Retain constructive scalar maps as auxiliary
+
+Accept the bounded guarded-map and fixed-itinerary representation results after code review and independent reruns. Do not promote them as a core: original coefficient traffic remains100%, products and guards are still paid. Continue the missing native constructor and heterogeneous producer obligations without changing the mission.
+
+[Proof, costs and evidence](experiments/binade_transition_20260930/REPORT.md).

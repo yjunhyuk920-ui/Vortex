@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "counts": {
+    "single_leaf_cases": 34026,
+    "single_leaf_accepted": 7418,
+    "ordered_sequence_cases": 77274,
+    "ordered_sequence_accepted": 41626,
+    "composition_cases": 8748,
+    "escape_cases": 38420,
+    "native_edge_cases": 66,
+    "mismatches": 0
+  },
+  "escape_totals": {
+    "terms": 115248,
+    "leaves": 82040,
+    "compositions": 82040,
+    "guards": 82040,
+    "escapes": 37324,
+    "special_steps": 33208,
+    "decodes": 49658,
+    "accepted_terms": 44716,
+    "segments": 49658
+  },
+  "elapsed_seconds": 15.05446559200027
+}

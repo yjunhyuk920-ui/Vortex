@@ -2037,3 +2037,15 @@ Verify `checksums.sha256` before using the processed result. Source commit: `8fe
 The new package records a separate Linux environment, observed dependencies, acquisition and focused-test logs, and read-only frozen-file checks. Do not relabel it a byte-identical Windows model replay.
 
 [Evidence and boundaries](experiments/cloud_continuation_20260930/REPORT.md).
+
+Later full Linux replay was executed: within-runtime candidates match, but the
+frozen Windows comparator fails (3,064/3,510 files differ; genuine logits/KV
+bit differences). Original baseline remains untouched. See continuation report
+for numerical counts, raw replay archive and registration timing deviation.
+
+
+## Guarded native scalar reference package
+
+Fresh parent_validation_01.json and parent_crossing_01.json independently rerun the sealed executable checks. Package SHA256SUMS includes original/revised source snapshots, validation receipts and proofs. No frozen earlier results were replaced.
+
+[Proof, costs and evidence](experiments/binade_transition_20260930/REPORT.md).

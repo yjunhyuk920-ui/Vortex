@@ -1,0 +1,26 @@
+{
+  "counts": {
+    "equivariance_checks": 118125,
+    "inverse_checks": 33750,
+    "itineraries": 3375,
+    "max_levels": 3,
+    "value_checks": 118125,
+    "wide_period_checks": 17
+  },
+  "elapsed_seconds": 3.749422028000481,
+  "preregistration_sha256": "49215d046b99dc41361907e7137d1a316a4773d880e62ae53488f795c1cb4605",
+  "scope": "fixed itinerary dyadic-map algebra only; native chart constructor DERIVED, not implemented",
+  "status": "PASS",
+  "wide_period_bits": 255,
+  "witness": {
+    "cuts": [
+      0,
+      1
+    ],
+    "levels": [
+      "0",
+      "4"
+    ],
+    "period": 4
+  }
+}

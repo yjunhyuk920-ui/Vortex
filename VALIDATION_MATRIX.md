@@ -43,3 +43,15 @@ Scientific acceptance and persistence are independent. No claim of three new qua
 MEASURED: 14 unchanged native controls and 16 focused EXP100A tests pass; 3,510 canonical comparison hashes match. Metadata audit covers 50 recorded searches. NOT TESTED: new full-generation replay, full suite, target GPU, 405B latency/VRAM.
 
 [Evidence and boundaries](experiments/cloud_continuation_20260930/REPORT.md).
+
+Later full Linux replay was executed: within-runtime candidates match, but the
+frozen Windows comparator fails (3,064/3,510 files differ; genuine logits/KV
+bit differences). Original baseline remains untouched. See continuation report
+for numerical counts, raw replay archive and registration timing deviation.
+
+
+## Guarded scalar transition checks
+
+Parent rerun: 34,026 leaves, 77,274 ordered sequences, 8,748 composition cases, 38,420 escape cases, and66 FP32/BF16 edge witnesses; zero mismatches. Fixed-itinerary replay:3,375 itineraries,118,125 output checks,33,750 inverse checks. Scope is the declared scalar/dyadic reference; not GEMM/HF/target evidence.
+
+[Proof, costs and evidence](experiments/binade_transition_20260930/REPORT.md).

@@ -14,6 +14,16 @@ comparison; matching sampled tokens are insufficient. No acceleration is claimed
 missing/corrupt search coverage. Historical results remain intact. No qualifying
 new core, theory closure or target hardware result has been established.
 
+## Constructive scalar result — 2026-09-30
+
+[Guarded native transition maps](experiments/binade_transition_20260930/REPORT.md) replace a literal accumulator lookup
+table by two offsets and parity intervals inside a fixed binade. A fixed dyadic
+itinerary has at most three periodic levels with constructive inverses. Independent
+local reruns pass the declared scalar checks. The general native crossing chart
+constructor is still DERIVED, not implemented; every coefficient/product remains
+paid. This is a bounded representation theorem, **not** a 10x producer or mission
+completion. Target hardware and universal HF equivalence remain untested.
+
 ## Current bounded record — 2026-09-08
 [Native whole-state transition constructors](experiments/native_global_transition_20260908/REPORT.md)
 actually load pinned original SmolLM2-135M and execute HF generation using each

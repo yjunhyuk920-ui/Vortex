@@ -59,3 +59,10 @@ Later full Linux replay was executed: within-runtime candidates match, but the
 frozen Windows comparator fails (3,064/3,510 files differ; genuine logits/KV
 bit differences). Original baseline remains untouched. See continuation report
 for numerical counts, raw replay archive and registration timing deviation.
+
+
+## 2026-09-30 constructive scalar state
+
+Fixed-binade guarded transition maps and fixed-itinerary periodic maps are implemented and independently rechecked. Whole native chart construction remains derived, and the cheap heterogeneous producer remains missing. CORE_ADMISSION=false; full O1–O6 remain open.
+
+[Proof, costs and evidence](experiments/binade_transition_20260930/REPORT.md).
