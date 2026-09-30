@@ -4,10 +4,13 @@ Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total p
 
 ## Cloud continuation — 2026-09-30
 
+[Latest text-only result and evidence limits](experiments/cloud_continuation_20260930/PUBLIC_SUMMARY.md).
+
 [CPU environment and classification repair](experiments/cloud_continuation_20260930/REPORT.md): the existing 14 native
 controls and 16 focused EXP100A tests pass; 3,510 frozen file hashes are unchanged.
-The public model is downloaded/hash-verified, but no new full-generation replay or
-acceleration result is claimed. Resource-empty frontiers are now separated from
+The public model is downloaded/hash-verified. A later full Linux replay preserves
+within-runtime candidate equality but FAILS the original Windows frozen numerical
+comparison; matching sampled tokens are insufficient. No acceleration is claimed. Resource-empty frontiers are now separated from
 missing/corrupt search coverage. Historical results remain intact. No qualifying
 new core, theory closure or target hardware result has been established.
 

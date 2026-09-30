@@ -54,3 +54,8 @@ committed at PR147/378fcd584330d17f9d144f64ccbc01721903ea6a on another branch; s
 Independent Linux CPU setup and EXP100A classification repair are recorded. Historical science is unchanged; the new metadata audit is not a rerun. O1–O6 remain open and CORE_ADMISSION=false.
 
 [Evidence and boundaries](experiments/cloud_continuation_20260930/REPORT.md).
+
+Later full Linux replay was executed: within-runtime candidates match, but the
+frozen Windows comparator fails (3,064/3,510 files differ; genuine logits/KV
+bit differences). Original baseline remains untouched. See continuation report
+for numerical counts, raw replay archive and registration timing deviation.

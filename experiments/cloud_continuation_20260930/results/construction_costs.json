@@ -1,0 +1,8 @@
+{
+  "fp32_table_bytes": 17179869184,
+  "finite_bf16_pair_table_bytes": 17045913600,
+  "finite_bf16_pair_table_gib": 15.875244140625,
+  "prefix_count_through_two": 16449729793,
+  "naive_bf16_logits_bytes": 4219553088662016,
+  "scope": "cost of specified literal constructions, not universal lower bounds"
+}
