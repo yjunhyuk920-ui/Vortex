@@ -96,3 +96,17 @@ The whole-program round is complete at the bounded symbolic level. A finite supp
 A further constructive cost/source attempt produced only a conditional native grid/field bridge. Its finite guard and centered decoding have a bounded manual review, but no cheap query-adaptive numeric source or coverage theorem survived. No new model/backend run was admitted. Retained-arithmetic schedules are not rejected merely for retaining arithmetic: complete source, compute, movement and same-machine target bounds must still close. No full-mission obligation or measured performance improved.
 
 [Conditional native field bridge and corrections](experiments/causal_cost_construction_20260930/NATIVE_FIELD_WRAPPER.md).
+
+
+## 2026-10-01 nonlinear cell interface
+
+DERIVED: the modal address-fiber/rank bound rejects t<=4 for a full Cartesian
+25x108 binary source/query interface, S=50 nonlinear 64-bit cells, h=0 common
+advice. Five probes are only the first nonexcluded value. At t=2 this bound
+requires at least 1384 common advice bits; it supplies no decoder there. The
+native lift is an exposed dense W=1+X BF16 MatVec with binary inputs and exact
+row sums <=216. Released-HF reachability, whole-program state and global paid
+information remain open. No full-mission O1-O6 obligation closes; no performance
+gain or new execution core is claimed.
+
+[Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).

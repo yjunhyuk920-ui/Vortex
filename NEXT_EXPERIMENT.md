@@ -78,3 +78,18 @@ The missing joint native-relation representation must be constructible and exact
 Any numeric coded source coupled to this bridge must supply its actual constructor, physical query probes and decoder, not GF(2) parity as an integer sum. Four-byte field cells impose the stated paid traffic condition, with every rejected row falling back. A purely static counterexample does not establish released-checkpoint reachability or a latency quantile. Do not implement the bridge alone as a new core, repeat screened absorption/stationary methods, or impose separate universal 90% arithmetic-and-traffic reduction gates. Continue only a genuinely new concrete information dependency or schedule toward the full bound.
 
 [Conditional native field bridge and corrections](experiments/causal_cost_construction_20260930/NATIVE_FIELD_WRAPPER.md).
+
+
+## 2026-10-01 next source obligation after the cell bound
+
+Do not search the now-rejected isolated 25x108 / 50x64-bit / h=0 / t<=4
+interface or treat t=5 as a constructor. The remaining constructive question is
+a paid global encoding and causally maintained hot state: supply the initial
+constructor, current-input addresses/decoder and exact state-update recurrence,
+with complete preparation, source, native arithmetic and maintenance costs.
+Distinguish globally mixed cells, common static advice and checkpoint-dependent
+reachability. The latter needs a valid source/query relation; dividing global
+8 GiB advice among tiles is unjustified. No larger toy search or model/backend
+run is admitted by this finite rejection.
+
+[Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).

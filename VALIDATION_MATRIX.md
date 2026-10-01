@@ -78,3 +78,18 @@ These two source packages received symbolic proof/arithmetic/source/link checks 
 Independent read-only symbolic review verified output-only reverse witness recovery, the K(N,N) minor and >=2^(16N)-bit allocated-message bound for the stated unsimplified full-domain word-table schedule, and the exact fully dirty scalar-DAG witness. Recursive hashes and local links pass. These are manual proofs/document checks only, with no formal checker, numerical/model/GPU run or target performance evidence.
 
 [Whole-program construction, scoped obstructions and audit](experiments/whole_program_causal_source_20260930/REPORT.md).
+
+
+## 2026-10-01 nonlinear cell certificate
+
+DERIVED: independent manual proof review of the modal-tree/rank argument and
+greedy rank-one ruling bound. Exact integer checks reject t=0,...,4 and do not
+reject t=5 at S=50,w=64,h=0; t=2 rejects h=1383 and does not reject h=1384.
+With query-accessible original BF16 cells, S=725 rejects t<=2 but not t=3.
+The specified three-bit nonlinear bijection passes all 64 source/query integer
+checks. Fresh isolated regeneration leaves all six package files byte-identical;
+SHA-256 checks and relative links pass. These are certificate/document checks,
+not proof-assistant verification, HF execution or native kernel tests. Full
+repository suite and target hardware remain NOT TESTED.
+
+[Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).

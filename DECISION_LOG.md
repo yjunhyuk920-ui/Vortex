@@ -1873,3 +1873,18 @@ Retain the finite whole-program relation/witness construction as an explicit sem
 Retain the conditional grid/field bridge as auxiliary, with no source or core promotion. Correct the over-strong both-arithmetic-and-traffic entry wording and the ineligible-row norm representation. Preserve prior snapshots, charge constructor multiword work and fallback, and record the parent bounded review. This handoff records an unsuccessful dominant-cost construction attempt, not mission advancement.
 
 [Conditional native field bridge and corrections](experiments/causal_cost_construction_20260930/NATIVE_FIELD_WRAPPER.md).
+
+
+## 2026-10-01 — Close the scoped nonlinear cell frontier
+
+Retain the reviewed modal address-fiber theorem and exact finite certificate as
+auxiliary evidence. The formerly capacity-feasible F-089 25x108 / 50x64-bit /
+two-read point is rejected at h=0, as are three and four reads. Do not promote
+the five-read nonexclusion, the 1384-bit common-advice boundary or the tiny
+nonlinear constructor as a target solution. The small-integer native bridge is
+restricted to an exposed MatVec interface; public-HF reachability and complete
+paid global state remain unresolved. Preserve historical F-089 evidence and
+all unrelated replay artifacts. README reviewed and updated; mission constraints,
+THEORY_STATUS=NOT_ESTABLISHED and HARDWARE_STATUS=NOT_TESTED are unchanged.
+
+[Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).

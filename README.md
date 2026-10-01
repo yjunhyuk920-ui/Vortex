@@ -2,6 +2,16 @@
 
 Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total peak<=8GiB, original output/RNG/required successor state; same-machine native4BQ4 p50<=1.2x,p95<=1.5x and existing TTFT. **Not achieved.** No training/weight/mission change; every preparation, storage, movement, arithmetic and state cost counts.
 
+## Nonlinear cell bound — 2026-10-01
+
+A [reviewed address-fiber bound](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md)
+closes the isolated 25x108 binary-source interface with 50 nonlinear 64-bit cells:
+with no free source-dependent advice, exact worst-case decoding needs at least
+five probes. Five probes are not a construction. An exact small-integer bridge
+covers an exposed dense BF16 MatVec primitive only. Released-HF reachability,
+global paid state, full-mission O1-O6 and performance remain unresolved. This is
+an auxiliary lower bound, with no admitted core or target-hardware result.
+
 ## Cloud continuation — 2026-09-30
 
 [Latest text-only result and evidence limits](experiments/cloud_continuation_20260930/PUBLIC_SUMMARY.md).

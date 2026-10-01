@@ -485,3 +485,14 @@ The frozen real causal draft/verify source failed the raw A, N/A, latency, or ex
 
 Frozen scope: pinned SmolLM2-360M target; same-family SmolLM2-135M and cross-family TinyStories-33M drafts; K `64,96`; build-only K selection; raw no-compression traffic threshold; exact terminal KV; all online work charged.
 <!-- EXP-102A:END -->
+
+
+## 2026-10-01 scoped continuation of F-089
+
+[F-090](FAILED_APPROACHES_RECENT.md#f-090--no-advice-nonlinear-cells-at-the-former-25x108-frontier)
+now rejects the formerly open 25x108 / 50x64-bit nonlinear cell point through
+four worst-case probes when h=0. F-089's earlier record remains historical.
+Five-read construction, released-HF reachability and a paid global hot-state
+constructor remain open. No universal impossibility or performance claim follows.
+
+[Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).

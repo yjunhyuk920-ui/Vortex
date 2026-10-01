@@ -2057,3 +2057,20 @@ Run the native_charts validator with a new output path; it refuses overwrite. va
 
 [Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
 [Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).
+
+
+## 2026-10-01 nonlinear cell certificate
+
+Package: experiments/nonlinear_cell_address_fibers_20261001, exactly PLAN.md,
+REPORT.md, verify.py, certificate.json, validation.json and checksums.sha256.
+The plan explicitly discloses analytical exploration before registration.
+Use Python standard library only. First verify the package manifest. For a
+non-overwriting rerun, copy the six files to the same relative experiment path
+in a fresh temporary repository-shaped directory, provide its docs/research
+link targets from this repository, then run the copied verify.py. Compare all
+six final package files byte-for-byte; only certificate.json, validation.json
+and checksums.sha256 are regenerated. This repeats exact integer comparisons
+and the specified witness, not the manual theorem review or a native model run.
+Publication integration separately checks root links and unchanged constraints.
+
+[Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).

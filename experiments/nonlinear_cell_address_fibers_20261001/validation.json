@@ -1,0 +1,47 @@
+{
+  "utf8_and_fences_pass": true,
+  "relative_links_pass": true,
+  "checked_relative_links": [
+    {
+      "source": "REPORT.md",
+      "target": "verify.py"
+    },
+    {
+      "source": "REPORT.md",
+      "target": "../../docs/research/E0_ADAPTIVE_NONLINEAR_PROBE_DEGREE_GATE.md"
+    },
+    {
+      "source": "REPORT.md",
+      "target": "../../docs/research/E0_ADAPTIVE_PACKED_LINEAR_WORD_GATE.md"
+    },
+    {
+      "source": "REPORT.md",
+      "target": "../../docs/research/E0_GLOBAL_ADVICE_SYNERGY_FRONTIER.md"
+    },
+    {
+      "source": "REPORT.md",
+      "target": "../../docs/research/E0_GENERAL_FINITE_WORD_RANK_ONE_PROBE_BARRIER.md"
+    },
+    {
+      "source": "REPORT.md",
+      "target": "PLAN.md"
+    },
+    {
+      "source": "REPORT.md",
+      "target": "verify.py"
+    },
+    {
+      "source": "REPORT.md",
+      "target": "certificate.json"
+    },
+    {
+      "source": "REPORT.md",
+      "target": "validation.json"
+    }
+  ],
+  "exact_integer_certificate_pass": true,
+  "specific_witness_pass": true,
+  "runtime_tests": "NOT_RUN",
+  "full_repository_suite": "NOT_RUN",
+  "target_hardware": "NOT_TESTED"
+}

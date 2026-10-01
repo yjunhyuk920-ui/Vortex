@@ -1328,3 +1328,17 @@ The complete scalar chart constructor is auxiliary and does not replace any HF/G
 
 [Native construction and accounting correction](experiments/binade_transition_20260930/native_charts/REPORT.md).
 [Grammar-source accounting](experiments/tree_grammar_source_accounting_20260930/REPORT.md).
+
+
+## 2026-10-01 nonlinear address-fiber boundary
+
+The historical 25x108 / 50x64-bit / two-read capacity gap above is now closed
+for the no-advice static Cartesian interface; the reviewed bound also rejects
+three and four reads. It does not construct five reads or exclude all nonlinear
+encodings: an explicit tiny nonlinear bijection is retained as a scope witness.
+The dense W=1+X BF16 lift applies only to an exposed MatVec and exact sums <=216.
+No runtime architecture is admitted. A global mixed encoding or paid causal
+hot-state construction still needs original-output/RNG/state correspondence and
+a sufficient complete resource bound, without allocating global advice by fiat.
+
+[Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).

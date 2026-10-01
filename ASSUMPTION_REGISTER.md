@@ -1367,3 +1367,18 @@ Suffix source assumes the declared finite-BF16-product, scalar FP32 RNE/gradual-
 Whole-program constructions require a supplied finite native program with explicit total guarded primitive relations, legal control bounds, effects and all observer/RNG/state roots. This is not a completed arbitrary-HF frontend. Literal-table width is a bound for that allocation procedure, not functional factors, circuits, semantic simplification or every executor. Dirty-vector witness is a legal scalar subprogram, not an established released-checkpoint token transition. The compact joint-relation source and every whole-mission O1–O6 obligation remain OPEN.
 
 [Whole-program construction, scoped obstructions and audit](experiments/whole_program_causal_source_20260930/REPORT.md).
+
+
+## 2026-10-01 nonlinear address-fiber scope
+
+PROVED IN THE STATED INTERFACE: arbitrary nonlinear fixed-address cells and an
+adaptive deterministic exact uniform decoder obey |Q|<=S^t I_Q(h+t*w), with
+one shared query-independent h-bit source-dependent advice value. The no-advice
+25x108 / 50x64-bit point needs at least five worst-case probes. All accessible
+original cells count in S. Checkpoint-dependent code/layout/pointers and prior
+state count in E or H; they are not free advice. A source-dependent legal
+relation requires a proved Cartesian rectangle and its entropy deficiency.
+UNVERIFIED: such a reduction for released HF checkpoints/reachable states,
+full native/RNG/state induction and a target-fitting global paid constructor.
+
+[Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).

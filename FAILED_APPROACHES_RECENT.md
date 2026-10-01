@@ -1222,3 +1222,19 @@ The frozen real causal draft/verify source failed the raw A, N/A, latency, or ex
 
 Frozen scope: pinned SmolLM2-360M target; same-family SmolLM2-135M and cross-family TinyStories-33M drafts; K `64,96`; build-only K selection; raw no-compression traffic threshold; exact terminal KV; all online work charged.
 <!-- EXP-102A:END -->
+
+
+## F-090 — No-advice nonlinear cells at the former 25x108 frontier
+
+F-089's two-read nonlinear-word capacity point is now rejected in the exact
+static Cartesian binary source/query model. A modal address tree and rank-one
+subspace ruling bound prove at least five worst-case probes for S=50,w=64,h=0,
+including arbitrary nonlinear contents and adaptive decoding. Five reads are
+not constructed. At two reads, the same bound requires at least 1384 bits of
+common free advice, without constructing a decoder. An exposed dense BF16
+W=1+X MatVec lift has exact row sums <=216. This is not a released-HF or global
+hot-state lower bound. Source-dependent reachability, complete global paid
+information and full-mission O1-O6 remain open. Reopening needs a different
+budget or a justified source/state dependency, not a faster selector alone.
+
+[Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).
