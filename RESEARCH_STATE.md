@@ -110,3 +110,18 @@ information remain open. No full-mission O1-O6 obligation closes; no performance
 gain or new execution core is claimed.
 
 [Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).
+
+
+## 2026-10-01 paid Krylov-feedback construction
+
+A bounded synthetic source-to-source construction now supplies a paid reachable
+basis, causal hot update and exact output/RNG/state induction for arbitrary
+binary A with one rank-one nonlinear feedback injection, n<=64 and initial s=0.
+The declared original native primitive explicitly reduces exact small-integer
+dots to parity. Its serialized hot record is 52 bytes, with mutable state,
+decoder K, original source and workspace charged separately. Requested readback
+costs r basis-word reads. This improves the bounded constructive record; no
+original HF innovation/observer constructor, measured speedup, core admission
+or full-mission O1-O6 closure follows.
+
+[Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).

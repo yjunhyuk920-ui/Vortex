@@ -93,3 +93,18 @@ reachability. The latter needs a valid source/query relation; dividing global
 run is admitted by this finite rejection.
 
 [Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).
+
+
+## 2026-10-01 native obligation after the paid synthetic source
+
+Do not enlarge the parity toy or repeat its random/native controls. The next
+useful construction must obtain an exact original-native innovation and its
+required observers before the dense work they replace, on a justified reachable
+state relation with complete paid construction and maintenance. The synthetic
+Krylov recurrence supplies this only for its original parity ABI. Calling new
+KV a low-rank innovation while computing it with the original full forward
+supplies no cheap source. The [native extension gate](experiments/paid_krylov_feedback_20261001/NATIVE_EXTENSION_GATE.md)
+records the source-dependent obstruction and required producer. No further
+model/backend run is admitted by this bounded result.
+
+[Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).

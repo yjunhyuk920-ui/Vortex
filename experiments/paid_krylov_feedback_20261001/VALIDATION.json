@@ -1,0 +1,34 @@
+{
+  "GPU": "NOT_TESTED",
+  "HF": "NOT_TESTED",
+  "counter_audit_science_files_unchanged": 32,
+  "final_portable_review_replay": "PASS",
+  "fixed_word_cost_bound": "DERIVED_AND_MANUALLY_REVIEWED",
+  "fresh_replay_science_files_equal": 32,
+  "full_repository_suite": "NOT_TESTED",
+  "independent_algebra_review": "PASS_WITH_COST_SCOPE_CORRECTIONS",
+  "independent_native_edge_cases": [
+    {
+      "n": 64,
+      "name": "rank64",
+      "pass": true,
+      "r": 64,
+      "steps": 256
+    },
+    {
+      "n": 64,
+      "name": "maxsum64",
+      "pass": true,
+      "r": 1,
+      "steps": 256
+    }
+  ],
+  "independent_small_exhaustive_compiles": 4128,
+  "independent_small_exhaustive_transitions": 20576,
+  "latency": "NOT_TESTED",
+  "publication": "PARENT_OWNED",
+  "python_syntax": "PASS",
+  "relative_markdown_links": "PASS",
+  "scoped_reference": "PASS",
+  "source_pins": "PASS"
+}

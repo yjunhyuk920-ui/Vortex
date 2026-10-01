@@ -1888,3 +1888,18 @@ all unrelated replay artifacts. README reviewed and updated; mission constraints
 THEORY_STATUS=NOT_ESTABLISHED and HARDWARE_STATUS=NOT_TESTED are unchanged.
 
 [Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).
+
+
+## 2026-10-01 — Retain the paid reachable-state source as bounded evidence
+
+Retain the explicit Krylov compiler and active nonlinear-feedback update as a
+constructive synthetic result. Unlike a supplied inverse chart, its basis is
+derived from arbitrary binary A; it exploits temporal reachability and a small
+observer/feedback boundary. It does not answer independent arbitrary MatVec
+queries and does not contradict the static address-fiber bound. Charge source
+retention, compilation, mutable state, decoder/readbacks and all external
+services. Preserve the original partial-counter audit and corrected evidence.
+README updated; no HF speedup, target cost closure or core promotion is claimed.
+THEORY_STATUS=NOT_ESTABLISHED; HARDWARE_STATUS=NOT_TESTED; FULL_MISSION_O1_O6=OPEN.
+
+[Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).

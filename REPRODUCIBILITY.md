@@ -2074,3 +2074,20 @@ and the specified witness, not the manual theorem review or a native model run.
 Publication integration separately checks root links and unchanged constraints.
 
 [Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).
+
+
+## 2026-10-01 paid Krylov-feedback package
+
+Run the package verify.py with --out set to a fresh directory; Python 3 and a
+C11 compiler are required. The separate C reference uses -ffp-contract=off.
+CHECKSUMS.sha256 covers 32 reproducible synthetic scientific files, including
+binary source/hot/decoder/input files that are generated locally and excluded
+from publication. The text PUBLICATION_MANIFEST.json pins the 36 published
+source/report/trace/history files; the manifest itself is also published.
+Compare deterministic scientific files, accounting separately for environment
+and path fields in summary.json. Use review_independent.py with a fresh --out
+for the portable audit. Historical counter sources/receipts remain preserved;
+regeneration must not silently mix historical and current source revisions.
+No raw HF weights, replay archives or compiled executable are included.
+
+[Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).

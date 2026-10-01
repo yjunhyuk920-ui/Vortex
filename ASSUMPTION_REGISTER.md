@@ -1382,3 +1382,19 @@ UNVERIFIED: such a reduction for released HF checkpoints/reachable states,
 full native/RNG/state induction and a target-fitting global paid constructor.
 
 [Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).
+
+
+## 2026-10-01 paid Krylov-feedback scope
+
+The proved construction requires the declared F2 transition with arbitrary
+fixed A, one b-injection, two scalar feedback projections, one scalar observer,
+a current input bit, initial s=0 and n<=64. Its unchanged native program uses
+W=1+A, exact integer partial sums <=128, then explicit subtraction/parity;
+ordinary rounded BF16/HF algebra is not granted this law. Original RNG and all
+legal input continuations are preserved under s=Kz. Imported original states
+need a paid domain test/solve; full-state readback needs paid K access. The
+52-byte hot serialization is not total memory. Fixed-array instruction/byte
+bounds exclude separately charged external services and Python overhead.
+A cheap native HF innovation/observer source and target O5 remain UNVERIFIED.
+
+[Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).

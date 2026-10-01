@@ -1,0 +1,191 @@
+{
+  "policy": "Only listed text source/report/test evidence; no binary, executable, archive, upstream checkpoint or unrelated dirty file",
+  "files": [
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/.gitignore",
+      "bytes": 52,
+      "sha256": "2e6bdce0db057920467e8bb19a2d9be335ed035afb409aa00698583fcc849b01"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/CHECKSUMS.sha256",
+      "bytes": 3092,
+      "sha256": "db7702afd1a3cf3428fd1e6f4403eba7341e17155fb137d5727f27cd7c7e0cfa"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/COST_INDEPENDENT_ADDENDUM.md",
+      "bytes": 3452,
+      "sha256": "b72e95af3c94150762359dfb10a34b1a23c577d3c2250a69827a6451a3a658ab"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/COST_MODEL.md",
+      "bytes": 4860,
+      "sha256": "1523a8db2ebcaf3c78b125b26a8350eff6b4fe9be18afe3f1a7efbb90128d068"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/INDEPENDENT_REVIEW.md",
+      "bytes": 8753,
+      "sha256": "91f4b59851dcd0ec77b996142788d892e67617eb0d1797d2f3755eac7e3e4753"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/NATIVE_EXTENSION_GATE.md",
+      "bytes": 3758,
+      "sha256": "fbc1f62cde4ca0c21b4a8343947ee095102e07d1015168e18a278c0184b1a9d0"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/PLAN.md",
+      "bytes": 4890,
+      "sha256": "d5761ed08f9f5c17287c4d5266c40c6ff26a90ea2f55cd78b790957622c89e17"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/README.md",
+      "bytes": 735,
+      "sha256": "62686a675770b86b1ec4220f17b0677bcfae9e1097e7d6da05f4abd68c7ddec0"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/REPORT.md",
+      "bytes": 20735,
+      "sha256": "cd9297f75ab9c0ed5df383850e797530f2eaa0490412ec8c63d7714764599671"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/REVISION_LOG.md",
+      "bytes": 1457,
+      "sha256": "14894f7a05e437162e159260b8939fbf1fec6edee38d76b00294b4b9c6a79341"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/VALIDATION.json",
+      "bytes": 883,
+      "sha256": "fe1b265bb073c58db2bb648fefd8ab45310fa8c9f531c6975d5b2197f51e3dda"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/history/initial_counter_inventory/independent_review.json",
+      "bytes": 689,
+      "sha256": "373754781292eadd91c87cc38f939d0c9504eb88f9dac477309d587f7dcb7cbc"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/history/initial_counter_inventory/review_independent.py",
+      "bytes": 3329,
+      "sha256": "14bb80fb1837ac4f67a7405e2e2031a1ff38021788bbec1d4f924c774de7eedc"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/history/initial_counter_inventory/summary.json",
+      "bytes": 7628,
+      "sha256": "a287c91030e399b16225b7794ab2a913ca7672f019dc0156f0fd1e5d03e82954"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/history/initial_counter_inventory/verify.py",
+      "bytes": 8388,
+      "sha256": "cb7bb422116b8e24487ace672a227b6e78709a63f98452f30d406e6d53add654"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/independent_review.json",
+      "bytes": 689,
+      "sha256": "1e86051ccd60a9e95cf7bb120bc3d0ea7628edff3436d3920247cff6238331a4"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/native_reference.c",
+      "bytes": 2211,
+      "sha256": "1219f1a953c9ac9374db95131f1e5c0e7e9741cc5a44f54691b2cd8d21120337"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/identity64.candidate0.json",
+      "bytes": 58687,
+      "sha256": "e46f2bbb6054e4c88310c877eb894e657dfe7627bcd6d3c331ad3c5b757392ea"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/identity64.candidate1.json",
+      "bytes": 57052,
+      "sha256": "9195a0a236b6b13eeef529e8b045d55df0ad933a2ca58749de0df8031d597b58"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/identity64.native0.csv",
+      "bytes": 25360,
+      "sha256": "712e46176d50f5b40d12fc2e75c57b5e329784207c7bc04a273b311093b95cd1"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/identity64.native1.csv",
+      "bytes": 25360,
+      "sha256": "f5dceb2da3a02137d3f8f3ca11c635313b8b9459aaba33562b2cf6bbc235f8ca"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/random32.candidate0.json",
+      "bytes": 61802,
+      "sha256": "5f2b56616cdc617ff2579ded96d03d55a20cec7a02d079c295fc87ae24a228df"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/random32.candidate1.json",
+      "bytes": 61785,
+      "sha256": "a12755d7c54d9011de7a330c4a473f04d3a503f7dfaa21258aa2acb21bd7b83f"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/random32.native0.csv",
+      "bytes": 25360,
+      "sha256": "d8237b4dba192e65c87421f9fc773bef432d14120ed9c18af02fac0b5610fa90"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/random32.native1.csv",
+      "bytes": 25360,
+      "sha256": "f3a4ddb3c2376750f62b898880910b68494aa2957178a45d860cddc5e0f1d883"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/random64.candidate0.json",
+      "bytes": 69820,
+      "sha256": "feac80c9911f31644043c889e5fef5c706b2a2d63fadcfeeb384ebef796370f4"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/random64.candidate1.json",
+      "bytes": 69748,
+      "sha256": "cc1ac1285fc39a14b4649e4eeb773964bacaebc4484ed57cabe57dbadc3ae78a"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/random64.native0.csv",
+      "bytes": 25360,
+      "sha256": "fc9845266716809b9027ec33dabd20ef8c4e19b0c43272bbbe4df1c8b96797ba"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/random64.native1.csv",
+      "bytes": 25360,
+      "sha256": "1d1991b66b87095b7d992298f19f9f5ee317a6777ea6622a806ad16453513691"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/summary.json",
+      "bytes": 10635,
+      "sha256": "95511f47f69468454853f6cb25ae19d9236e723f34b99fc714606e063d9b4f44"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/zero_input64.candidate0.json",
+      "bytes": 55057,
+      "sha256": "d014efb6b8a08d392e0e497e8fb0144d2f875ecf8d04c5e06cf63ecc7a53c22c"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/zero_input64.candidate1.json",
+      "bytes": 55057,
+      "sha256": "d297a2bf40cd8248eae1d128e47f2874a01dd3c4ac181b3126a8a20f7688b515"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/zero_input64.native0.csv",
+      "bytes": 25360,
+      "sha256": "4f35ecaa720edd86d42c892026a43c8c8d61af05e29a1b518fe6cdd4ffa08b92"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/results/zero_input64.native1.csv",
+      "bytes": 25360,
+      "sha256": "b62a6d496a2bda830119d4254c385a2b96c7bdd261e31de3cbae553ff33a4ed7"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/review_independent.py",
+      "bytes": 3358,
+      "sha256": "e52292e9d417feaf305bcd6d6cf6c05e949dacba7f31dfbc54923e2686ac971b"
+    },
+    {
+      "path": "experiments/paid_krylov_feedback_20261001/verify.py",
+      "bytes": 8902,
+      "sha256": "7a5abcb7fca8678681254f2ce30ec2b0f139e2f2161e2797785efa5d80ff4206"
+    }
+  ],
+  "generated_excluded": [
+    "results/*.bin",
+    "results/native_reference",
+    "**/__pycache__/**"
+  ],
+  "root_ledgers": "parent_single_writer"
+}

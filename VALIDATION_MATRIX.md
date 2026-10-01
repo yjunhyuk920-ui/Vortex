@@ -93,3 +93,20 @@ not proof-assistant verification, HF execution or native kernel tests. Full
 repository suite and target hardware remain NOT TESTED.
 
 [Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).
+
+
+## 2026-10-01 paid Krylov-feedback reference
+
+The registered four synthetic sources have ranks 29,63,1,0. Their separate
+native C reference and serialized-record executor match across 4,096 causal
+steps, including decoded state, BF16 output words, inputs, tokens and RNG.
+Independent review reproduced 32 scientific files and added 4,128 small
+compiles / 20,576 transitions plus rank-64 and native-boundary checks. These
+extra checks are disclosed as post-registration audit work. Earlier incomplete
+counters and their corrected successor are preserved. The fixed-array word-RAM
+cost bound is derived/manual-reviewed; Python timing, service latency, HF,
+GPU and full repository suite remain NOT TESTED. Publication checks separately
+verify the 36-file text manifest, Python/C syntax, links and cost constants;
+no new numerical or model run was performed by the integrating writer.
+
+[Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).

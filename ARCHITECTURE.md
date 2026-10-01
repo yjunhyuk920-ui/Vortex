@@ -1342,3 +1342,18 @@ hot-state construction still needs original-output/RNG/state correspondence and
 a sufficient complete resource bound, without allocating global advice by fiat.
 
 [Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).
+
+
+## 2026-10-01 bounded temporal source construction
+
+The synthetic Krylov-feedback executor transports a repeated arbitrary binary
+A into a source-derived companion recurrence, with one nonlinear injection and
+three fixed transported projections. Its hot step reads no original A or K;
+requested original-state reconstruction explicitly reads K and is paid. This
+is exact continuation for the declared n<=64 native parity circuit, not a
+production HF architecture. A large reachable rank or low innovation rank
+alone guarantees no cheap original-native observer/update. Original-source
+retention, initialization, compilation, all state and readback requirements
+remain in the budget; no target or runtime-core admission changes.
+
+[Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).

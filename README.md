@@ -2,6 +2,18 @@
 
 Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total peak<=8GiB, original output/RNG/required successor state; same-machine native4BQ4 p50<=1.2x,p95<=1.5x and existing TTFT. **Not achieved.** No training/weight/mission change; every preparation, storage, movement, arithmetic and state cost counts.
 
+## Paid reachable-state construction — 2026-10-01
+
+A [synthetic Krylov-feedback constructor](experiments/paid_krylov_feedback_20261001/REPORT.md)
+derives a reachable basis for arbitrary binary A and a rank-one nonlinear
+feedback port. Its causal encoded update preserves the declared output, RNG
+and successor-state relation without rereading A at each hot step. Original
+source, construction, records and requested full-state readback remain paid.
+This works for a specific n<=64 BF16/FP32 circuit whose original program reduces
+exact small integer dots to parity. It is not an HF operation replacement or
+performance result; a cheap original-native innovation/observer source remains
+missing. Full-mission O1-O6 and target hardware remain unresolved.
+
 ## Nonlinear cell bound — 2026-10-01
 
 A [reviewed address-fiber bound](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md)

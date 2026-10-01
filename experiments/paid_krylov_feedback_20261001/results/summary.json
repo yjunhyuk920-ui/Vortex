@@ -1,0 +1,312 @@
+{
+  "cases": [
+    {
+      "candidate_dense_matrix_probes_per_step": 0,
+      "corruption_witness": {
+        "first_state_mismatch_step": 29
+      },
+      "counts": {
+        "basis_column_writes": 29,
+        "decoder_bytes_written": 244,
+        "fixed_array_build_word_instruction_upper": 350912,
+        "hot_bytes_written": 52,
+        "matrix_calls": 29,
+        "matrix_row_reads": 928,
+        "matrix_word_ops": 4640,
+        "observer_column_reads": 87,
+        "observer_word_ops": 435,
+        "pivot_pair_reads": 225,
+        "pivot_pair_writes": 29,
+        "pivot_slots_checked": 960,
+        "pivot_xors": 450,
+        "postcheck_decoder_bit_tests": 841,
+        "postcheck_decoder_column_reads": 841,
+        "postcheck_decoder_xors": 42,
+        "postcheck_input_equality_tests": 1,
+        "postcheck_matrix_equality_tests": 29,
+        "postcheck_matrix_row_reads": 928,
+        "postcheck_matrix_word_ops": 4640,
+        "postcheck_observer_column_reads": 87,
+        "postcheck_observer_word_ops": 522,
+        "source_bf16_reads": 1152,
+        "source_bytes_read": 2312,
+        "source_pack_bit_steps": 1152
+      },
+      "decoder_bytes": 244,
+      "feedback_hex": "0xb66069d",
+      "hot_bytes": 52,
+      "n": 32,
+      "name": "random32",
+      "native_products_per_step": 1120,
+      "packed_dense_matrix_row_probes_per_step": 32,
+      "r": 29,
+      "runs": [
+        {
+          "ablation_differing_steps": 507,
+          "fixed_array_query_all_word_instruction_upper": 49152,
+          "gate_ones": 132,
+          "matches": true,
+          "mode": "external",
+          "query_arithmetic_word_upper": 16384,
+          "separate_readback_column_reads": 14848,
+          "separate_readback_xors": 7158,
+          "steps": 512,
+          "trace_sha256": "5f2b56616cdc617ff2579ded96d03d55a20cec7a02d079c295fc87ae24a228df"
+        },
+        {
+          "ablation_differing_steps": 502,
+          "fixed_array_query_all_word_instruction_upper": 49152,
+          "gate_ones": 126,
+          "matches": true,
+          "mode": "own_output",
+          "query_arithmetic_word_upper": 16384,
+          "separate_readback_column_reads": 14848,
+          "separate_readback_xors": 7346,
+          "steps": 512,
+          "trace_sha256": "a12755d7c54d9011de7a330c4a473f04d3a503f7dfaa21258aa2acb21bd7b83f"
+        }
+      ],
+      "separate_readback_basis_word_reads_per_step": 29,
+      "source_bytes": 2312,
+      "source_sha256": "e3e6f3b9387703c35e8433da0821bb7ec328fa40b72af45b3af7167951ef49c9",
+      "transported_observers_hex": [
+        "0x158ec346",
+        "0x1dff0623",
+        "0x1fb62f81"
+      ]
+    },
+    {
+      "candidate_dense_matrix_probes_per_step": 0,
+      "corruption_witness": {
+        "first_state_mismatch_step": 63
+      },
+      "counts": {
+        "basis_column_writes": 63,
+        "decoder_bytes_written": 516,
+        "fixed_array_build_word_instruction_upper": 1396160,
+        "hot_bytes_written": 52,
+        "matrix_calls": 63,
+        "matrix_row_reads": 4032,
+        "matrix_word_ops": 20160,
+        "observer_column_reads": 189,
+        "observer_word_ops": 945,
+        "pivot_pair_reads": 1028,
+        "pivot_pair_writes": 63,
+        "pivot_slots_checked": 4096,
+        "pivot_xors": 2056,
+        "postcheck_decoder_bit_tests": 3969,
+        "postcheck_decoder_column_reads": 3969,
+        "postcheck_decoder_xors": 93,
+        "postcheck_input_equality_tests": 1,
+        "postcheck_matrix_equality_tests": 63,
+        "postcheck_matrix_row_reads": 4032,
+        "postcheck_matrix_word_ops": 20160,
+        "postcheck_observer_column_reads": 189,
+        "postcheck_observer_word_ops": 1134,
+        "source_bf16_reads": 4352,
+        "source_bytes_read": 8712,
+        "source_pack_bit_steps": 4352
+      },
+      "decoder_bytes": 516,
+      "feedback_hex": "0x3e2b1d66bca6a680",
+      "hot_bytes": 52,
+      "n": 64,
+      "name": "random64",
+      "native_products_per_step": 4288,
+      "packed_dense_matrix_row_probes_per_step": 64,
+      "r": 63,
+      "runs": [
+        {
+          "ablation_differing_steps": 510,
+          "fixed_array_query_all_word_instruction_upper": 49152,
+          "gate_ones": 130,
+          "matches": true,
+          "mode": "external",
+          "query_arithmetic_word_upper": 16384,
+          "separate_readback_column_reads": 32256,
+          "separate_readback_xors": 15168,
+          "steps": 512,
+          "trace_sha256": "feac80c9911f31644043c889e5fef5c706b2a2d63fadcfeeb384ebef796370f4"
+        },
+        {
+          "ablation_differing_steps": 507,
+          "fixed_array_query_all_word_instruction_upper": 49152,
+          "gate_ones": 117,
+          "matches": true,
+          "mode": "own_output",
+          "query_arithmetic_word_upper": 16384,
+          "separate_readback_column_reads": 32256,
+          "separate_readback_xors": 15038,
+          "steps": 512,
+          "trace_sha256": "cc1ac1285fc39a14b4649e4eeb773964bacaebc4484ed57cabe57dbadc3ae78a"
+        }
+      ],
+      "separate_readback_basis_word_reads_per_step": 63,
+      "source_bytes": 8712,
+      "source_sha256": "46955d13499a71db5c054c4c1461c7609ee50a0831a779d8583a19fe4fe0bf65",
+      "transported_observers_hex": [
+        "0x3887bd9a3576d53",
+        "0x111f1327ce0911ea",
+        "0x22a6efa9b05b1b78"
+      ]
+    },
+    {
+      "candidate_dense_matrix_probes_per_step": 0,
+      "corruption_witness": {
+        "first_state_mismatch_step": 1
+      },
+      "counts": {
+        "basis_column_writes": 1,
+        "decoder_bytes_written": 20,
+        "fixed_array_build_word_instruction_upper": 340672,
+        "hot_bytes_written": 52,
+        "matrix_calls": 1,
+        "matrix_row_reads": 64,
+        "matrix_word_ops": 320,
+        "observer_column_reads": 3,
+        "observer_word_ops": 15,
+        "pivot_pair_reads": 1,
+        "pivot_pair_writes": 1,
+        "pivot_slots_checked": 128,
+        "pivot_xors": 2,
+        "postcheck_decoder_bit_tests": 1,
+        "postcheck_decoder_column_reads": 1,
+        "postcheck_decoder_xors": 1,
+        "postcheck_input_equality_tests": 1,
+        "postcheck_matrix_equality_tests": 1,
+        "postcheck_matrix_row_reads": 64,
+        "postcheck_matrix_word_ops": 320,
+        "postcheck_observer_column_reads": 3,
+        "postcheck_observer_word_ops": 18,
+        "source_bf16_reads": 4352,
+        "source_bytes_read": 8712,
+        "source_pack_bit_steps": 4352
+      },
+      "decoder_bytes": 20,
+      "feedback_hex": "0x1",
+      "hot_bytes": 52,
+      "n": 64,
+      "name": "identity64",
+      "native_products_per_step": 4288,
+      "packed_dense_matrix_row_probes_per_step": 64,
+      "r": 1,
+      "runs": [
+        {
+          "ablation_differing_steps": 256,
+          "fixed_array_query_all_word_instruction_upper": 49152,
+          "gate_ones": 242,
+          "matches": true,
+          "mode": "external",
+          "query_arithmetic_word_upper": 16384,
+          "separate_readback_column_reads": 512,
+          "separate_readback_xors": 242,
+          "steps": 512,
+          "trace_sha256": "e46f2bbb6054e4c88310c877eb894e657dfe7627bcd6d3c331ad3c5b757392ea"
+        },
+        {
+          "ablation_differing_steps": 272,
+          "fixed_array_query_all_word_instruction_upper": 49152,
+          "gate_ones": 133,
+          "matches": true,
+          "mode": "own_output",
+          "query_arithmetic_word_upper": 16384,
+          "separate_readback_column_reads": 512,
+          "separate_readback_xors": 133,
+          "steps": 512,
+          "trace_sha256": "9195a0a236b6b13eeef529e8b045d55df0ad933a2ca58749de0df8031d597b58"
+        }
+      ],
+      "separate_readback_basis_word_reads_per_step": 1,
+      "source_bytes": 8712,
+      "source_sha256": "6539e3ca4cdb46442227f631343e140eabf07f54e32f2f19f97ae9844fb7695e",
+      "transported_observers_hex": [
+        "0x1",
+        "0x1",
+        "0x0"
+      ]
+    },
+    {
+      "candidate_dense_matrix_probes_per_step": 0,
+      "corruption_witness": null,
+      "counts": {
+        "decoder_bytes_written": 12,
+        "fixed_array_build_word_instruction_upper": 327680,
+        "hot_bytes_written": 52,
+        "matrix_word_ops": 0,
+        "pivot_slots_checked": 64,
+        "postcheck_input_equality_tests": 1,
+        "postcheck_matrix_equality_tests": 0,
+        "postcheck_matrix_row_reads": 0,
+        "postcheck_matrix_word_ops": 0,
+        "source_bf16_reads": 4352,
+        "source_bytes_read": 8712,
+        "source_pack_bit_steps": 4352
+      },
+      "decoder_bytes": 12,
+      "feedback_hex": "0x0",
+      "hot_bytes": 52,
+      "n": 64,
+      "name": "zero_input64",
+      "native_products_per_step": 4288,
+      "packed_dense_matrix_row_probes_per_step": 64,
+      "r": 0,
+      "runs": [
+        {
+          "ablation_differing_steps": 0,
+          "fixed_array_query_all_word_instruction_upper": 49152,
+          "gate_ones": 0,
+          "matches": true,
+          "mode": "external",
+          "query_arithmetic_word_upper": 16384,
+          "separate_readback_column_reads": 0,
+          "separate_readback_xors": 0,
+          "steps": 512,
+          "trace_sha256": "d014efb6b8a08d392e0e497e8fb0144d2f875ecf8d04c5e06cf63ecc7a53c22c"
+        },
+        {
+          "ablation_differing_steps": 0,
+          "fixed_array_query_all_word_instruction_upper": 49152,
+          "gate_ones": 0,
+          "matches": true,
+          "mode": "own_output",
+          "query_arithmetic_word_upper": 16384,
+          "separate_readback_column_reads": 0,
+          "separate_readback_xors": 0,
+          "steps": 512,
+          "trace_sha256": "d297a2bf40cd8248eae1d128e47f2874a01dd3c4ac181b3126a8a20f7688b515"
+        }
+      ],
+      "separate_readback_basis_word_reads_per_step": 0,
+      "source_bytes": 8712,
+      "source_sha256": "2d8f7b5ca67a6abfabd97ac074096ee53d398d6028d51b249b4b393eaceee319",
+      "transported_observers_hex": [
+        "0x0",
+        "0x0",
+        "0x0"
+      ]
+    }
+  ],
+  "compile_command": [
+    "cc",
+    "-std=c11",
+    "-O2",
+    "-ffp-contract=off",
+    "/workspace/scratch/7aabc61ec4f6/vortex/experiments/paid_krylov_feedback_20261001/native_reference.c",
+    "-o",
+    "/tmp/vortex-krylov-counter-audit/native_reference"
+  ],
+  "core_admission": false,
+  "environment": {
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python": "3.12.14"
+  },
+  "full_mission_theory": "NOT_ESTABLISHED",
+  "hardware": "NOT_TESTED",
+  "rounding_witness": {
+    "bf16_value": 256.0,
+    "bf16_word": "0x4380",
+    "exact_sum": 257
+  },
+  "status": "SCOPED_REFERENCE_PASS",
+  "validation_scope": "Declared native primitive only; no HF/GPU/latency/full-repository tests"
+}

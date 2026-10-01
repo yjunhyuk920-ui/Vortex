@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "exhaustive_compilers": 4128,
+  "exhaustive_state_input_transitions": 20576,
+  "rank_histogram": {
+    "(1, 0)": 16,
+    "(1, 1)": 16,
+    "(2, 0)": 1024,
+    "(2, 1)": 1536,
+    "(2, 2)": 1536
+  },
+  "native_extra_cases": [
+    {
+      "name": "rank64",
+      "n": 64,
+      "r": 64,
+      "steps": 256,
+      "pass": true
+    },
+    {
+      "name": "maxsum64",
+      "n": 64,
+      "r": 1,
+      "steps": 256,
+      "pass": true
+    }
+  ],
+  "rerun_exact_science_files": 32,
+  "reviewed_verify_sha256": "7a5abcb7fca8678681254f2ce30ec2b0f139e2f2161e2797785efa5d80ff4206",
+  "reviewed_c_sha256": "1219f1a953c9ac9374db95131f1e5c0e7e9741cc5a44f54691b2cd8d21120337"
+}
