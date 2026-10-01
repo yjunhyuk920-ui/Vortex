@@ -125,3 +125,18 @@ original HF innovation/observer constructor, measured speedup, core admission
 or full-mission O1-O6 closure follows.
 
 [Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).
+
+
+## 2026-10-01 native product-cut innovation boundary
+
+DERIVED: for m independent BF16 product lanes on the declared finite-operand,
+signed-zero-preserving ABI, the exact legal second-difference span has rank 15m
+when every product output is preserved. A fixed bit-affine backbone and fixed
+nonlinear injection therefore require rank(B)>=15m; sign XOR supplies the
+matching upper bound. The certificate uses 15 scalar rectangles and a symbolic
+direct sum, with no width sweep or native/backend run. This closes only the
+narrow fixed-port hypothesis for that exposed primitive. HF joint reachability,
+composition through the down projection, cheap native source construction and
+full-mission O1-O6 remain open; no acceleration or core admission follows.
+
+[Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).

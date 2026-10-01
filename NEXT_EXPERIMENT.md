@@ -108,3 +108,17 @@ records the source-dependent obstruction and required producer. No further
 model/backend run is admitted by this bounded result.
 
 [Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).
+
+
+## 2026-10-01 source obligation after the exposed-product bound
+
+Do not repeat the 15 rectangles, expand the lane width or rerun the HF graph to
+retest this fixed-port exclusion. A useful next producer must justify the actual
+reachable domain or a composed/nonlinear observer-state representation, then
+construct its causal source and total paid cost. Independent legal product
+operands are not proven jointly reachable HF states. A wide structured innovation
+may be cheap; rank 15m alone does not reject it. Neither a new coordinate label
+nor hiding the product in an unpriced nonlinear observer supplies the missing
+native producer. No new model/backend experiment follows from this proof.
+
+[Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).

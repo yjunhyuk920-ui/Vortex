@@ -1,0 +1,38 @@
+{
+  "format": "vortex-local-artifact-manifest-v1",
+  "self_excluded": true,
+  "files": {
+    "INDEPENDENT_REVIEW.md": {
+      "bytes": 1304,
+      "sha256": "f3a6dfbcd9b4cb7646f5db2026c38e40250877c44817eb4633f507e27dde6f51"
+    },
+    "PLAN.md": {
+      "bytes": 3720,
+      "sha256": "61ca98f5766b50557c73c0d760fc7e3833356a7a34e1e8a24aa40064e773ccd8"
+    },
+    "REPORT.md": {
+      "bytes": 15377,
+      "sha256": "c89ce20508b4cde127dec8fb58d6f399093e45545f9cc8501d49bedf0267645c"
+    },
+    "certificate.json": {
+      "bytes": 9290,
+      "sha256": "00d478fc72c609dcc2831fec67416fc7a2aecd15fbd1e97bdc0a23ebd2f499cc"
+    },
+    "initial_git_status.txt": {
+      "bytes": 1194,
+      "sha256": "3104a1a22cf383052644387781428efa0f0692de1a927dd367e605283b239e1b"
+    },
+    "validation.json": {
+      "bytes": 447,
+      "sha256": "61d28daeb8664fd430e580e93980f5c149783c81c92943b7f213fad4fdde8cd4"
+    },
+    "validation.log": {
+      "bytes": 83,
+      "sha256": "feaca3369dcd815cc2f959a9b1721b6ca542fcb7732b76bf0f8a6d8f47e11c61"
+    },
+    "verify.py": {
+      "bytes": 4115,
+      "sha256": "f6101034059bcf2355d5ae1aecda64f021327150e8650fc8ff6d7277a44b23ac"
+    }
+  }
+}

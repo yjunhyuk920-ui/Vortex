@@ -1398,3 +1398,19 @@ bounds exclude separately charged external services and Python overhead.
 A cheap native HF innovation/observer source and target O5 remain UNVERIFIED.
 
 [Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).
+
+
+## 2026-10-01 native product-cut rank scope
+
+PROVED in the explicit standalone ABI: independently legal finite BF16 operands,
+BF16 RNE products preserving product sign including signed zero, nontrapping
+arithmetic and no exposed FP flags. The lower witnesses need only nonnegative
+normal/zero exact products; the matching upper bound uses the ABI sign rule.
+Every product output is included alongside unchanged state/RNG roots. Fixed
+source-derived c,L,B are allowed and eta is unrestricted; arbitrary nonlinear
+coordinates/observers, query-dependent images and multiple charts are outside
+this representation. UNVERIFIED: actual HF witness reachability, preservation
+through its composed suffix, cross-platform ABI conformance and any cost lower
+bound or target-fitting source. Rank alone supplies no such conclusion.
+
+[Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).

@@ -1,0 +1,10 @@
+{
+  "exact_word_certificate": "PASS",
+  "python_compile": "PASS",
+  "relative_links": "PASS",
+  "relative_link_count": 10,
+  "full_repository_tests": "NOT RUN",
+  "model_backend_or_hardware_run": "NOT RUN",
+  "independent_review": "PASS: independent parent symbolic review and separately written 15-rectangle exact certificate; no native backend check",
+  "certificate_sha256": "00d478fc72c609dcc2831fec67416fc7a2aecd15fbd1e97bdc0a23ebd2f499cc"
+}

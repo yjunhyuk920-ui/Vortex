@@ -496,3 +496,15 @@ Five-read construction, released-HF reachability and a paid global hot-state
 constructor remain open. No universal impossibility or performance claim follows.
 
 [Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).
+
+
+## 2026-10-01 exposed-product fixed-port boundary
+
+The independently legal BF16 product ABI now excludes a sublinear-rank fixed
+additive innovation when all product words are exposed: the exact rank is 15m.
+This is a scoped continuation of the paid-Krylov native-extension question,
+not a general HF, nonlinear-coordinate or latency impossibility result.
+The [detailed failure scope](FAILED_APPROACHES_RECENT.md) preserves the reachable-
+domain, composed-observer and cheap structured-wide-innovation escapes.
+
+[Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).

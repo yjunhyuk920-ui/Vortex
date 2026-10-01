@@ -110,3 +110,18 @@ verify the 36-file text manifest, Python/C syntax, links and cost constants;
 no new numerical or model run was performed by the integrating writer.
 
 [Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).
+
+
+## 2026-10-01 native BF16 product-cut certificate
+
+Exact integers/Fraction verify 15 legal scalar affine rectangles, exact
+normal/zero product representability and 15 independent output magnitude bits.
+Parent independently reviewed the proof and checked the rectangles with separate
+code. The 15m width extension and sign upper bound are symbolic under the stated
+ABI. Existing graph/source hashes are pinned; their inspection is not a new HF
+execution. The plan discloses symbolic discovery before registration. Publication
+checks verify the eight-file manifest plus manifest file, source pins, Python
+syntax, JSON and relative links. No native floating backend, SiLU, model, GPU,
+latency or full repository test was run for this result.
+
+[Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).

@@ -1,0 +1,543 @@
+{
+  "kind": "exact rational/bit certificate, not native runtime measurement",
+  "word_format": "BF16",
+  "scalar_quadruples": 15,
+  "scalar_second_difference_rank": 15,
+  "width_extension": "DERIVED: direct sum gives 15*m for every positive integer m",
+  "witness_rounding": "none: each nonnegative normal/zero product is exact",
+  "sign_upper_bound": "symbolic IEEE sign-XOR proof in REPORT.md; not an exhaustive runtime test",
+  "native_model_or_backend_run": false,
+  "source_sha256": {
+    "experiments/native_global_transition_20260908/results/probe_graph/graph_0_before.txt": "921a9cc9fb635102d7daf62ecd8cee203b6ffb8814a63f4327fa081e6e64dfe0",
+    "experiments/native_global_transition_20260908/results/probe_graph/graph_0.json": "c6093a0487502550fc32da888e2e7bef8203689c3d3ea79e48ec308e27903631",
+    "experiments/paid_krylov_feedback_20261001/NATIVE_EXTENSION_GATE.md": "fbc1f62cde4ca0c21b4a8343947ee095102e07d1015168e18a278c0184b1a9d0",
+    "experiments/paid_krylov_feedback_20261001/REPORT.md": "cd9297f75ab9c0ed5df383850e797530f2eaa0490412ec8c63d7714764599671"
+  },
+  "witnesses": [
+    {
+      "bit": 0,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4001"
+        ],
+        [
+          "3f80",
+          "4001"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4001"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "129/64"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0001"
+    },
+    {
+      "bit": 1,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4002"
+        ],
+        [
+          "3f80",
+          "4002"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4002"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "65/32"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0002"
+    },
+    {
+      "bit": 2,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4004"
+        ],
+        [
+          "3f80",
+          "4004"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4004"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "33/16"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0004"
+    },
+    {
+      "bit": 3,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4008"
+        ],
+        [
+          "3f80",
+          "4008"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4008"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "17/8"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0008"
+    },
+    {
+      "bit": 4,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4010"
+        ],
+        [
+          "3f80",
+          "4010"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4010"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "9/4"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0010"
+    },
+    {
+      "bit": 5,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4020"
+        ],
+        [
+          "3f80",
+          "4020"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4020"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "5/2"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0020"
+    },
+    {
+      "bit": 6,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4040"
+        ],
+        [
+          "3f80",
+          "4040"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4040"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "3"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0040"
+    },
+    {
+      "bit": 7,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4080"
+        ],
+        [
+          "3f80",
+          "4080"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4080"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "4"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0080"
+    },
+    {
+      "bit": 8,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4100"
+        ],
+        [
+          "3f80",
+          "4100"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4100"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "8"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0100"
+    },
+    {
+      "bit": 9,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4200"
+        ],
+        [
+          "3f80",
+          "4200"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4200"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "32"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0200"
+    },
+    {
+      "bit": 10,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4400"
+        ],
+        [
+          "3f80",
+          "4400"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4400"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "512"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0400"
+    },
+    {
+      "bit": 11,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "4800"
+        ],
+        [
+          "3f80",
+          "4800"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "4800"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "131072"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "0800"
+    },
+    {
+      "bit": 12,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "5000"
+        ],
+        [
+          "3f80",
+          "5000"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "5000"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "8589934592"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "1000"
+    },
+    {
+      "bit": 13,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "6000"
+        ],
+        [
+          "3f80",
+          "6000"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "6000"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "36893488147419103232"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "2000"
+    },
+    {
+      "bit": 14,
+      "inputs_hex": [
+        [
+          "0000",
+          "4000"
+        ],
+        [
+          "3f80",
+          "4000"
+        ],
+        [
+          "0000",
+          "0000"
+        ],
+        [
+          "3f80",
+          "0000"
+        ]
+      ],
+      "output_hex": [
+        "0000",
+        "4000",
+        "0000",
+        "0000"
+      ],
+      "exact_product_values": [
+        "0",
+        "2",
+        "0",
+        "0"
+      ],
+      "input_xor_hex": "00000000",
+      "second_difference_hex": "4000"
+    }
+  ]
+}

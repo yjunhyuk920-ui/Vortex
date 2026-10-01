@@ -1238,3 +1238,17 @@ information and full-mission O1-O6 remain open. Reopening needs a different
 budget or a justified source/state dependency, not a faster selector alone.
 
 [Proof, exact certificate and scope](experiments/nonlinear_cell_address_fibers_20261001/REPORT.md).
+
+
+## 2026-10-01 — Narrow fixed additive port for exposed BF16 products
+
+A constant-rank or o(m)-rank fixed nonlinear injection cannot represent m
+independent native BF16 products on the declared finite-input ABI when every
+product word is preserved in the joint bit-affine observer/state map. The exact
+minimum injection rank is 15m. Merely changing fixed affine coordinates cannot
+reduce it. This rejects that representation, not arbitrary nonlinear encodings,
+composed HF execution or cheap high-rank structured computation. Reopening needs
+a justified smaller reachable domain or different observer/representation plus
+an actual paid producer. No width/seed sweep or repeated native run is warranted.
+
+[Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).

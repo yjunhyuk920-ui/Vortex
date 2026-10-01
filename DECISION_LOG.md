@@ -1903,3 +1903,18 @@ README updated; no HF speedup, target cost closure or core promotion is claimed.
 THEORY_STATUS=NOT_ESTABLISHED; HARDWARE_STATUS=NOT_TESTED; FULL_MISSION_O1_O6=OPEN.
 
 [Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).
+
+
+## 2026-10-01 — Record the exposed BF16 product fixed-port boundary
+
+Retain the exact 15m innovation-rank proof as bounded hypothesis falsification.
+It concerns independently legal finite product operands with all product words
+exposed and a fixed bit-affine joint observer/state representation. Do not apply
+it to jointly reachable HF states or through the composed down-projection graph
+without another argument. Do not convert rank into a storage, dense-work or
+latency lower bound: the matching sparse-injection baseline retains m ordinary
+products and provides no saved producer. README updated; no core promotion or
+full-mission obligation closure. THEORY_STATUS=NOT_ESTABLISHED;
+HARDWARE_STATUS=NOT_TESTED; FULL_MISSION_O1_O6=OPEN.
+
+[Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).

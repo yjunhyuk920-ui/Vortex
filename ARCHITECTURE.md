@@ -1357,3 +1357,18 @@ retention, initialization, compilation, all state and readback requirements
 remain in the budget; no target or runtime-core admission changes.
 
 [Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).
+
+
+## 2026-10-01 exposed native product-cut boundary
+
+The BF16 product cut cannot have a sublinear-rank fixed additive innovation on
+its full independent-operand ABI while retaining every product word in a joint
+bit-affine output/state representation: its exact rank is 15m. The matching
+canonical magnitude injection is sparse and simply retains the original m
+products, showing why rank is not a dense-work lower bound. The whole HF graph
+need not expose this cut, and its reachable operands are not independent by
+assumption. Nonlinear/composed observers or justified reachable invariants remain
+outside this exclusion and still need a paid producer. No runtime architecture
+or target claim is admitted.
+
+[Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).

@@ -2091,3 +2091,19 @@ regeneration must not silently mix historical and current source revisions.
 No raw HF weights, replay archives or compiled executable are included.
 
 [Construction, proof, costs and evidence](experiments/paid_krylov_feedback_20261001/REPORT.md).
+
+
+## 2026-10-01 native gate innovation certificate
+
+Package experiments/native_gate_innovation_rank_20261001 contains nine text
+files including manifest.json, which hashes its other eight files. verify.py
+uses only Python integers/Fraction and the pinned existing graph/Krylov sources.
+It writes certificate.json beside itself. To preserve frozen evidence, copy the
+package to the same relative path in a fresh repository-shaped directory, make
+the pinned source paths available there, run the copied verifier and compare
+the certificate bytes. This checks 15 exact scalar rectangles; universal width
+and sign claims remain symbolic. No native/kernel/model run is implied. The
+initial Git status is provenance only and does not include any listed raw
+archive contents. Existing dirty replay artifacts remain outside this change.
+
+[Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).

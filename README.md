@@ -2,6 +2,16 @@
 
 Fixed mission: arbitrary public unmodified HF dense405B, batch1, one GPU total peak<=8GiB, original output/RNG/required successor state; same-machine native4BQ4 p50<=1.2x,p95<=1.5x and existing TTFT. **Not achieved.** No training/weight/mission change; every preparation, storage, movement, arithmetic and state cost counts.
 
+## Native product-cut boundary — 2026-10-01
+
+An [exact symbolic BF16 product-cut result](experiments/native_gate_innovation_rank_20261001/REPORT.md)
+shows fixed bit-affine representations need nonlinear injection rank 15m for
+m independent product lanes when every product word is exposed under the declared
+signed-zero-preserving ABI. Fifteen exact scalar rectangles prove the result
+without a native/model run. This excludes a narrow fixed additive port on that
+standalone domain; it proves no HF joint reachability, composed-graph rank or
+latency lower bound. High rank alone does not imply expensive computation.
+
 ## Paid reachable-state construction — 2026-10-01
 
 A [synthetic Krylov-feedback constructor](experiments/paid_krylov_feedback_20261001/REPORT.md)

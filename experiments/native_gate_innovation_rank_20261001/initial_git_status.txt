@@ -1,0 +1,24 @@
+ M ARCHITECTURE.md
+ M ASSUMPTION_REGISTER.md
+ M DECISION_LOG.md
+ M FAILED_APPROACHES.md
+ M FAILED_APPROACHES_RECENT.md
+ M NEXT_EXPERIMENT.md
+ M README.md
+ M REPRODUCIBILITY.md
+ M RESEARCH_STATE.md
+ M VALIDATION_MATRIX.md
+ M experiments/cloud_continuation_20260930/PREREGISTRATION.md
+ M experiments/cloud_continuation_20260930/REPORT.md
+?? experiments/cloud_continuation_20260930/logs/full_replay.log
+?? experiments/cloud_continuation_20260930/logs/replay_registration_deviation.txt
+?? experiments/cloud_continuation_20260930/results/archive_status.json
+?? experiments/cloud_continuation_20260930/results/cross_platform_numeric_audit.json
+?? experiments/cloud_continuation_20260930/results/evidence_parts.json
+?? experiments/cloud_continuation_20260930/results/full_replay_receipt.json
+?? experiments/cloud_continuation_20260930/results/linux_replay_content_addressed.tar.gz
+?? experiments/cloud_continuation_20260930/results/linux_replay_evidence.tar.gz
+?? experiments/cloud_continuation_20260930/results/replay_diagnostics_compressed.json
+?? experiments/native_gate_innovation_rank_20261001/
+?? experiments/nonlinear_cell_address_fibers_20261001/
+?? experiments/paid_krylov_feedback_20261001/
