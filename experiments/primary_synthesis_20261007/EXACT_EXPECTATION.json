@@ -1,0 +1,16 @@
+{
+  "sqrt3_nearest_bits": "0x3fddb3d7",
+  "division_nearest_bits": "0x3fddb3d8",
+  "sqrt_midpoint_squared_proofs": [
+    true,
+    true
+  ],
+  "division_midpoint_proofs": [
+    true,
+    true
+  ],
+  "ties": 0,
+  "exact_fraction_proof": true,
+  "models": 0,
+  "gpu": 0
+}

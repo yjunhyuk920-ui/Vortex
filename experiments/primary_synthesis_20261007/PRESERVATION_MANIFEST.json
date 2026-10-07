@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "scope": "Text-only public-constant experiment plus primary-source review; no target model/tensor/GPU/user-computer experiment.",
+  "self_excluded": true,
+  "excluded_local_files": [
+    "check_stenso",
+    "MANIFEST.json"
+  ],
+  "files": {
+    "COMMANDS.txt": {
+      "bytes": 201,
+      "sha256": "532fc9ab5df04019bdd9a7f26375ad7b3fb4f825812aebd9fb1f40702626cf3e"
+    },
+    "EXACT_EXPECTATION.json": {
+      "bytes": 270,
+      "sha256": "868de1104e65618e498b222fcf46c5bee150f88ce6d2de93860ed495c6546833"
+    },
+    "LITERATURE_SUPPLEMENT.md": {
+      "bytes": 4084,
+      "sha256": "90a5fe1ba7397d9d924b5a92338778e132aabf0d0ac785e4a63948eba1242a98"
+    },
+    "PREEXECUTION.sha256": {
+      "bytes": 480,
+      "sha256": "8636e9b0471278e6f0aa979ed9c20bc22e518e40df68c8358839aca9ab4f6f1d"
+    },
+    "PREREGISTRATION.json": {
+      "bytes": 1301,
+      "sha256": "963454bf18417e38305f4a46ae0ccf27923c002b240903ecfd8374b55654c9c4"
+    },
+    "PROVENANCE.md": {
+      "bytes": 1416,
+      "sha256": "2ee1b8007116669c32822af3917070541a90e53e4892caeffc2850251e5a7a85"
+    },
+    "REPORT.md": {
+      "bytes": 8859,
+      "sha256": "e0fc6a0cf900bad0cae40339a813cd867edd6b1978a466c4b2009735fb120f53"
+    },
+    "RUN.json": {
+      "bytes": 252,
+      "sha256": "5b1ce9f5ac9161af57628851f9bf77cedd067fe2b311f61b18d4ce60acaa7f16"
+    },
+    "build.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "check_stenso.c": {
+      "bytes": 1791,
+      "sha256": "9d0da133a337b715649e8c2bbae5a5d171fefb9d9b296851cd1d3f3d7739cecb"
+    },
+    "prove_expectation.py": {
+      "bytes": 984,
+      "sha256": "01606c545ff2aef64942592309c1a8656f8f9deb85fe3f78726b909cfcbde497"
+    },
+    "run.end": {
+      "bytes": 31,
+      "sha256": "6b3dc791bb2f6b404a140461b42b7571986f3c802387ba0e1a31ca7e17adee59"
+    },
+    "run.exit": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "run.start": {
+      "bytes": 31,
+      "sha256": "3c600a945d693d76ceab3ce1dbdb416c4f46564039419bc4bf1614c8092ec548"
+    },
+    "run.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

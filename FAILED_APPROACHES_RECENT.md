@@ -1252,3 +1252,13 @@ a justified smaller reachable domain or different observer/representation plus
 an actual paid producer. No width/seed sweep or repeated native run is warranted.
 
 [Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).
+
+
+## STENSO unguarded square root rewrite October 7 2026
+
+At positive finite FP32 x=3, x/RN32(sqrt(x)) is 0x3fddb3d8 and RN32(sqrt(x))
+is 0x3fddb3d7. x=4 matches. Four exact Fraction midpoint inequalities and one
+strict GCC/libm CPU process agree. This excludes that displayed unguarded rule
+under exact Vortex semantics, not all STENSO programs or native optimization.
+Reopening needs a sufficient domain guard, paid cost and actual source coverage.
+[Evidence](experiments/primary_synthesis_20261007/REPORT.md).

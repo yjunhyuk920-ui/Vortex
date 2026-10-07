@@ -1,0 +1,2 @@
+gcc -std=c11 -O2 -frounding-math -fno-fast-math -ffp-contract=off -fno-builtin-sqrtf -Wall -Wextra -Werror -Wno-unknown-pragmas check_stenso.c -lm -o check_stenso
+timeout 10s nice -n 19 ./check_stenso

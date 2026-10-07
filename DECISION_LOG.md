@@ -1918,3 +1918,14 @@ full-mission obligation closure. THEORY_STATUS=NOT_ESTABLISHED;
 HARDWARE_STATUS=NOT_TESTED; FULL_MISSION_O1_O6=OPEN.
 
 [Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).
+
+
+## October 7 2026 retain source review as auxiliary
+
+Preserve the STENSO counterexample without promoting it to acceleration. The
+reviewed papers have distinct numerical or resource contracts and supply no
+fully costed original-native effect source. Do not reopen excluded CSE/codec,
+scalar or quotient families through new terminology. Continue source discovery;
+the verified soft-gate manuscript remains an unread causal-constructor lead.
+Full-mission O1-O6 remain OPEN.
+[Review](experiments/primary_synthesis_20261007/REPORT.md).

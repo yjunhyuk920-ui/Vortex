@@ -125,3 +125,14 @@ syntax, JSON and relative links. No native floating backend, SiLU, model, GPU,
 latency or full repository test was run for this result.
 
 [Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).
+
+
+## October 7 2026 public constant compatibility
+
+STENSO displayed rule: x=3 differs by one FP32 ULP; x=4 matches. Four Fraction
+midpoint inequalities pass, no ties. One strict-FP GCC14.2/libm cloud CPU process,
+exit0, empty build/run stderr, original preregistration/source/expectation hashes
+unchanged. C FE_ALL_EXCEPT flags match for these inputs; fenv API restoration
+success is not full raw x87/MXCSR comparison. Target model/tensor/GPU, user
+computer and performance tests NOT RUN.
+[Evidence](experiments/primary_synthesis_20261007/REPORT.md).

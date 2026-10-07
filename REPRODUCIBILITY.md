@@ -2107,3 +2107,15 @@ initial Git status is provenance only and does not include any listed raw
 archive contents. Existing dirty replay artifacts remain outside this change.
 
 [Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).
+
+
+## October 7 2026 text only source review package
+
+[The package](experiments/primary_synthesis_20261007/REPORT.md) preserves source,
+original preregistration, Fraction proof, raw result, command/timestamp/log files,
+provenance and a self-excluding preservation manifest. The compiled executable
+and local-only manifest are excluded. No denied model replay, weights or third-
+party source tree is included. Rebuild the small C harness with its recorded
+strict flags and existing libm, then compare registered words and flags.
+Planning timestamp and filesystem chronology are separately disclosed.
+No full native/model/state or target-hardware certificate is implied.

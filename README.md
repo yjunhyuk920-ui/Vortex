@@ -111,3 +111,14 @@ THEORY_STATUS=NOT_ESTABLISHED; CORE_ADMISSION=false; TARGET_HARDWARE_STATUS=NOT_
 [State](RESEARCH_STATE.md), [next](NEXT_EXPERIMENT.md), [validation](VALIDATION_MATRIX.md), [AGENTS](AGENTS.md), [contract](docs/CONSTRUCTIVE_THEORY_CONTRACT.md).
 [Prior README unchanged](docs/research/history/pre_output_envelope_20260908/README.md).
 [Pre-native-global README unchanged](docs/research/history/pre_native_global_transition_20260908/README.md).
+
+
+## Primary source review October 7 2026
+
+[New review and public-constant evidence](experiments/primary_synthesis_20261007/REPORT.md):
+STENSO's displayed unguarded x/sqrt(x) rewrite differs by one FP32 ULP at x=3.
+This is an auxiliary compatibility counterexample, not a new acceleration method.
+[Follow-on review](experiments/primary_synthesis_20261007/LITERATURE_SUPPLEMENT.md)
+keeps a verified soft-gate manuscript as an unread source-construction lead.
+No qualifying new producer, target run, speedup or O1-O6 closure. Existing CSE,
+codec, scalar and quotient exclusions and fixed mission remain.

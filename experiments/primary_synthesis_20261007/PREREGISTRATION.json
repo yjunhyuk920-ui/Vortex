@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "created_utc": "2026-10-07T23:37:46Z",
+  "scope": "Public-constant FP32 compatibility check of the specific STENSO x/sqrt(x) -> sqrt(x) example. Not a Vortex model benchmark.",
+  "source": "https://alexanderb14.github.io/papers/stenso.pdf",
+  "source_section": "VII-D, page 9, algebraic simplification example",
+  "hypothesis": "The unguarded displayed transformation is bitwise equivalent for all positive finite binary32 x.",
+  "test_input_bits": "0x40400000",
+  "test_input_value": 3,
+  "expected_original_bits": "0x3fddb3d8",
+  "expected_rewritten_bits": "0x3fddb3d7",
+  "expected_decision": "REJECT_UNGUARDED_RULE_FOR_VORTEX_EXACT_CONTRACT",
+  "control_input_bits": "0x40800000",
+  "control_expected_bits": "0x40000000",
+  "rounding": "FE_TONEAREST",
+  "environment_policy": "Save and restore caller fenv. No persistent system setting changes.",
+  "limits": {"cpu_processes": 1, "seconds": 10, "target_model_runs": 0, "gpu_runs": 0, "target_tensor_reads": 0, "pc_commands": 0},
+  "independent_expectation": "Python Fraction exact nearest-neighbor proof for sqrt(3) and 3/RN32(sqrt(3)). No numerical library oracle in that proof.",
+  "failure_scope": "Only the displayed unguarded rewrite's exact-value suitability, not all STENSO outputs or all possible Vortex algorithms."
+}

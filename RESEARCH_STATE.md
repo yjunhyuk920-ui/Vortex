@@ -140,3 +140,14 @@ composition through the down projection, cheap native source construction and
 full-mission O1-O6 remain open; no acceleration or core admission follows.
 
 [Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).
+
+
+## Auxiliary review October 7 2026
+
+One public-constant cloud CPU process confirmed a one-ULP STENSO rule mismatch.
+No target model, original tensor, GPU or user-computer command ran. Successful
+fenv API restoration is not full raw-state verification. Newly reviewed methods
+supply no admitted native-effect source; the soft-gate manuscript is unread after
+browser verification. THEORY_STATUS=NOT_ESTABLISHED, CORE_ADMISSION=false;
+O1-O6 remain OPEN. No new model experiment is reported running.
+[Evidence](experiments/primary_synthesis_20261007/REPORT.md).

@@ -122,3 +122,15 @@ nor hiding the product in an unpriced nonlinear observer supplies the missing
 native producer. No new model/backend experiment follows from this proof.
 
 [Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).
+
+
+## October 7 2026 source inspection lead
+
+Inspect the verified TMLR soft-gate manuscript linked in the
+[follow-on review](experiments/primary_synthesis_20261007/LITERATURE_SUPPLEMENT.md).
+Determine whether producing its input-dependent effective matrix requires the
+original dense projections and fully charge matrix formation, state, recognition
+and fallback. Its abstract supplies no native bit/state or cheapness certificate.
+Browser verification prevented full-text inspection; no challenge, sign-in or
+agreement was acted on. No solver/model launch follows from an unread paper.
+The next core retains the three-principle comparison and fully paid >=10x gate.
