@@ -1929,3 +1929,8 @@ scalar or quotient families through new terminology. Continue source discovery;
 the verified soft-gate manuscript remains an unread causal-constructor lead.
 Full-mission O1-O6 remain OPEN.
 [Review](experiments/primary_synthesis_20261007/REPORT.md).
+
+
+## 2026-10-08 new public-source information, no core promotion
+
+Reviewed three different information-dependence principles without converting excluded families into new candidates. Archive-word exactness, real-algebra equivalence, binary-sign exactness and model-quality preservation do not establish original native logits/RNG/successor-state equivalence. The new source evidence supplies specific producer-cost and contract failure conditions, not a general impossibility theorem. No empirical approximate sparsity result, clock-gating power claim or tolerant compiler speedup was promoted to Vortex performance. Fulltext access limitations were retained rather than bypassed. See [detailed review](experiments/source_frontier_20261008/REPORT.md).

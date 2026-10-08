@@ -134,3 +134,10 @@ and fallback. Its abstract supplies no native bit/state or cheapness certificate
 Browser verification prevented full-text inspection; no challenge, sign-in or
 agreement was acted on. No solver/model launch follows from an unread paper.
 The next core retains the three-principle comparison and fully paid >=10x gate.
+
+
+## 2026-10-08 admission screen after independent source review
+
+No executable new experiment is selected. First require a genuinely new, finite native-effect constructor with original legal input/state domain and rounded-reduction/state proof, before any further target or toy execution. For a specified charged work or traffic partition, necessary tenfold accounting is f+p+(1−f)r≤0.1: unchanged share f, charged extra producer/certificate/maintenance share p, retained replaced share r. This is a scoped necessary cost screen, not a sufficient algorithm bound or universal impossibility claim. Arithmetic and traffic are assessed separately, with no invented requirement that both independently shrink tenfold.
+
+[Source review](experiments/source_frontier_20261008/REPORT.md) records actual producer dependencies and cheap paper/code admission checks. Existing codec/graph/low-rank/replay/scalar/repair exclusions remain. Soft-gate fulltext verification/copyright-gated paths stay on hold; their unread status does not stop independent public research. No model download or new scalar compatibility expansion is authorized merely by these reviews.

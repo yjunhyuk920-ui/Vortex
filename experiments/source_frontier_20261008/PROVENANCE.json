@@ -1,0 +1,37 @@
+{
+  "review_date_utc": "2026-10-08",
+  "artifact_kind": "primary-source and public-code review",
+  "prior_verified_commit": "2dc337cf1e87faa755638272e6d042dbf65b4d18",
+  "contract_changed": false,
+  "core_admitted": false,
+  "new_numerical_experiments": 0,
+  "new_solver_runs": 0,
+  "new_model_runs": 0,
+  "new_gpu_runs": 0,
+  "downloaded_checkpoints": 0,
+  "reviewed_third_party_code_executed": false,
+  "brevis_inspected_commit": "d8d25085605d23faf1c6784a30c0cc4b4fcaa34e",
+  "brevis_inspected_paths": [
+    "README.md",
+    "src/interpreter.zig",
+    "src/tensor_archive.zig",
+    "docs/research/benchmark-runbook.md"
+  ],
+  "independent_soft_gate_metadata_attempts": [
+    {
+      "url": "https://zenodo.org/api/records/22959811",
+      "method": "public web open",
+      "result": "Internal Error: URL is not accessible via this tool",
+      "body_recovered": false
+    },
+    {
+      "url": "https://api.datacite.org/dois/10.5281/zenodo.22959811",
+      "method": "public web open",
+      "result": "Internal Error: URL is not accessible via this tool",
+      "body_recovered": false
+    }
+  ],
+  "verification_challenge_or_copyright_acceptance_performed": false,
+  "preservation_is_acceleration": false,
+  "o1_to_o6": "OPEN"
+}

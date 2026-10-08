@@ -151,3 +151,10 @@ supply no admitted native-effect source; the soft-gate manuscript is unread afte
 browser verification. THEORY_STATUS=NOT_ESTABLISHED, CORE_ADMISSION=false;
 O1-O6 remain OPEN. No new model experiment is reported running.
 [Evidence](experiments/primary_synthesis_20261007/REPORT.md).
+
+
+## 2026-10-08 source-constructor review
+
+Public primary sources and pinned Brevis code were reviewed across weight-word generation, symbolic whole-program rearrangement, and causal input-dependent certificates. No new core is admitted, no prior excluded family is reopened, and no numerical/solver/model/GPU experiment was run. Brevis is archival reconstruction; EquiForge uses real-arithmetic rewrites and tolerance checking; binary/sign and ReLU early-exit procedures have narrower contracts or uncharged target costs; LoPA obtains a cheaper gate through model changes. Soft-gate TMLR body/matching code remain unread after permitted independent public metadata attempts.
+
+See [review and explicit producer-cost screen](experiments/source_frontier_20261008/REPORT.md) and [provenance](experiments/source_frontier_20261008/PROVENANCE.json). O1–O6 remain OPEN. Repository preservation is not an acceleration result.

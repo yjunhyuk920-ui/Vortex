@@ -1,0 +1,18 @@
+{
+  "schema": "vortex-public-source-review-manifest-v1",
+  "manifest_self_excluded": true,
+  "payload_files": [
+    {
+      "path": "REPORT.md",
+      "bytes": 9872,
+      "sha256": "ffcdcca3f3f809aad00e19d6aa0ee08271347a7eb3618eaede237f3beea5287a"
+    },
+    {
+      "path": "PROVENANCE.json",
+      "bytes": 1234,
+      "sha256": "3315de5c88477787d7e1c84c307a5d753d58b0c00aa8e36b2593f81120a963c6"
+    }
+  ],
+  "new_experiments": 0,
+  "core_admission": false
+}

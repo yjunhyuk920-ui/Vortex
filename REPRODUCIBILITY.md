@@ -2119,3 +2119,8 @@ party source tree is included. Rebuild the small C harness with its recorded
 strict flags and existing libm, then compare registered words and flags.
 Planning timestamp and filesystem chronology are separately disclosed.
 No full native/model/state or target-hardware certificate is implied.
+
+
+## 2026-10-08 public source-review supplement
+
+Added [REPORT](experiments/source_frontier_20261008/REPORT.md), [PROVENANCE](experiments/source_frontier_20261008/PROVENANCE.json), and [self-excluded payload manifest](experiments/source_frontier_20261008/PRESERVATION_MANIFEST.json). The manifest hashes the two reviewed artifacts. Third-party source code was read at pinned Brevis commit d8d25085605d23faf1c6784a30c0cc4b4fcaa34e, not installed or executed. This supplement has zero new experiments, zero solvers, zero model/GPU runs and no downloaded checkpoint. Primary URLs and exact inspected sections/functions are embedded in the report. Publication readback is recorded separately; scientific O1–O6 status stays OPEN.
