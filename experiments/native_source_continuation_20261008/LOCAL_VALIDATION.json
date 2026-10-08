@@ -1,0 +1,308 @@
+{
+  "schema": "vortex-documentation-validation-v1",
+  "timestamp_utc": "2026-10-08T01:40:06.425133+00:00",
+  "base_commit": "ddb626aadc9fde8a9b1971967747c62196c90a96",
+  "scope": "documentation/JSON/link/append/blob identity and bounded manual-source review; no numerical/model/solver/GPU/full-suite execution",
+  "checks": [
+    {
+      "name": "base_blob_README.md",
+      "passed": true,
+      "detail": "ce729952cec75c62d46b03c59ae1e136b01a040d"
+    },
+    {
+      "name": "unchanged_prefix_README.md",
+      "passed": true,
+      "detail": {
+        "original_bytes": 9663,
+        "new_bytes": 10551
+      }
+    },
+    {
+      "name": "base_blob_RESEARCH_STATE.md",
+      "passed": true,
+      "detail": "80574154ffbc72cb7e803f2b296fa78098d8101c"
+    },
+    {
+      "name": "unchanged_prefix_RESEARCH_STATE.md",
+      "passed": true,
+      "detail": {
+        "original_bytes": 11149,
+        "new_bytes": 12165
+      }
+    },
+    {
+      "name": "base_blob_NEXT_EXPERIMENT.md",
+      "passed": true,
+      "detail": "2d345ac73e0ce358a0c49251e7777187a2036d2b"
+    },
+    {
+      "name": "unchanged_prefix_NEXT_EXPERIMENT.md",
+      "passed": true,
+      "detail": {
+        "original_bytes": 10479,
+        "new_bytes": 11515
+      }
+    },
+    {
+      "name": "base_blob_DECISION_LOG.md",
+      "passed": true,
+      "detail": "f0df66d2c1e3a3f63a93ef26b4a2f1c731b7c51a"
+    },
+    {
+      "name": "unchanged_prefix_DECISION_LOG.md",
+      "passed": true,
+      "detail": {
+        "original_bytes": 102008,
+        "new_bytes": 103082
+      }
+    },
+    {
+      "name": "base_blob_ASSUMPTION_REGISTER.md",
+      "passed": true,
+      "detail": "60c60d9a30d1b096c5522e0e7d9c1ecac0db22eb"
+    },
+    {
+      "name": "unchanged_prefix_ASSUMPTION_REGISTER.md",
+      "passed": true,
+      "detail": {
+        "original_bytes": 79048,
+        "new_bytes": 80502
+      }
+    },
+    {
+      "name": "base_blob_VALIDATION_MATRIX.md",
+      "passed": true,
+      "detail": "9071e183bc3db8e9b497fc77c2a100ad95d5fa6f"
+    },
+    {
+      "name": "unchanged_prefix_VALIDATION_MATRIX.md",
+      "passed": true,
+      "detail": {
+        "original_bytes": 9657,
+        "new_bytes": 10588
+      }
+    },
+    {
+      "name": "package_path_new",
+      "passed": true,
+      "detail": "experiments/native_source_continuation_20261008/"
+    },
+    {
+      "name": "UTF8",
+      "passed": true,
+      "detail": [
+        "README.md",
+        "RESEARCH_STATE.md",
+        "NEXT_EXPERIMENT.md",
+        "DECISION_LOG.md",
+        "ASSUMPTION_REGISTER.md",
+        "VALIDATION_MATRIX.md",
+        "experiments/native_source_continuation_20261008/REPORT.md",
+        "experiments/native_source_continuation_20261008/PROVENANCE.json"
+      ]
+    },
+    {
+      "name": "no_experiment_claim",
+      "passed": true,
+      "detail": {
+        "new_numerical_experiments": 0,
+        "reviewed_third_party_program_runs": 0,
+        "models": 0,
+        "checkpoints_downloaded": 0,
+        "solvers": 0,
+        "gpu": 0,
+        "user_pc_commands": 0
+      }
+    },
+    {
+      "name": "mission_unchanged",
+      "passed": true,
+      "detail": "ddb626aadc9fde8a9b1971967747c62196c90a96"
+    },
+    {
+      "name": "required_status_THEORY_STATUS=NOT_ESTABLISHED",
+      "passed": true,
+      "detail": "THEORY_STATUS=NOT_ESTABLISHED"
+    },
+    {
+      "name": "required_status_HARDWARE_STATUS=NOT_TESTED",
+      "passed": true,
+      "detail": "HARDWARE_STATUS=NOT_TESTED"
+    },
+    {
+      "name": "required_status_CORE_ADMISSION=false",
+      "passed": true,
+      "detail": "CORE_ADMISSION=false"
+    },
+    {
+      "name": "required_status_FULL_MISSION_O1_O6=OPEN",
+      "passed": true,
+      "detail": "FULL_MISSION_O1_O6=OPEN"
+    },
+    {
+      "name": "required_status_NEW_NUMERICAL_EXPERIMENTS=0",
+      "passed": true,
+      "detail": "NEW_NUMERICAL_EXPERIMENTS=0"
+    },
+    {
+      "name": "Markdown_fences",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "relative_link_experiments/native_source_continuation_20261008/REPORT.md",
+      "passed": true,
+      "detail": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "name": "relative_link_experiments/source_frontier_20261008/REPORT.md",
+      "passed": true,
+      "detail": "experiments/source_frontier_20261008/REPORT.md"
+    },
+    {
+      "name": "relative_link_experiments/native_source_continuation_20261008/REPORT.md",
+      "passed": true,
+      "detail": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "name": "relative_link_experiments/native_source_continuation_20261008/REPORT.md",
+      "passed": true,
+      "detail": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "name": "relative_link_experiments/native_source_continuation_20261008/REPORT.md",
+      "passed": true,
+      "detail": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "name": "relative_link_experiments/native_source_continuation_20261008/REPORT.md",
+      "passed": true,
+      "detail": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "name": "relative_link_experiments/native_source_continuation_20261008/REPORT.md",
+      "passed": true,
+      "detail": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "name": "relative_link_experiments/source_frontier_20261008/REPORT.md",
+      "passed": true,
+      "detail": "experiments/source_frontier_20261008/REPORT.md"
+    },
+    {
+      "name": "README_updated",
+      "passed": true,
+      "detail": "New current frontier link; prior content preserved."
+    },
+    {
+      "name": "soundness_anchor",
+      "passed": true,
+      "detail": "Conclusion and separate real-equation definition linked."
+    }
+  ],
+  "corrected_prepublication_checks": [
+    {
+      "check": "unchanged_prefix_README.md",
+      "initial_result": "FAIL",
+      "cause": "A broad spacing replacement altered an existing local historical prefix.",
+      "correction": "Rebuilt all six after files from exact pinned before bytes plus append-only new sections; final prefix/blob checks below pass."
+    }
+  ],
+  "relative_links": [
+    {
+      "from": "README.md",
+      "target": "experiments/native_source_continuation_20261008/REPORT.md",
+      "resolved": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "from": "README.md",
+      "target": "experiments/source_frontier_20261008/REPORT.md",
+      "resolved": "experiments/source_frontier_20261008/REPORT.md"
+    },
+    {
+      "from": "RESEARCH_STATE.md",
+      "target": "experiments/native_source_continuation_20261008/REPORT.md",
+      "resolved": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "from": "NEXT_EXPERIMENT.md",
+      "target": "experiments/native_source_continuation_20261008/REPORT.md",
+      "resolved": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "from": "DECISION_LOG.md",
+      "target": "experiments/native_source_continuation_20261008/REPORT.md",
+      "resolved": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "from": "ASSUMPTION_REGISTER.md",
+      "target": "experiments/native_source_continuation_20261008/REPORT.md",
+      "resolved": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "from": "VALIDATION_MATRIX.md",
+      "target": "experiments/native_source_continuation_20261008/REPORT.md",
+      "resolved": "experiments/native_source_continuation_20261008/REPORT.md"
+    },
+    {
+      "from": "experiments/native_source_continuation_20261008/REPORT.md",
+      "target": "../source_frontier_20261008/REPORT.md",
+      "resolved": "experiments/source_frontier_20261008/REPORT.md"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "README.md",
+      "bytes": 10551,
+      "sha256": "ddd575ec96ea541d1767ee2a8fba12f811d91f3575d46edac9927eb44bb5978e",
+      "git_blob_sha": "249dab0da3d2ea12cc94ea9aac8943461ee36182"
+    },
+    {
+      "path": "RESEARCH_STATE.md",
+      "bytes": 12165,
+      "sha256": "bde9d74181754ecf191fe4789558d601f701ae700a6aff6ba2acb1fac45de7a3",
+      "git_blob_sha": "51f1cf43a8c0c9525fe973d2cab4011ac768cba1"
+    },
+    {
+      "path": "NEXT_EXPERIMENT.md",
+      "bytes": 11515,
+      "sha256": "f00868599a7dd426224f80db85c8aa1c29c8937842b332358e685564c888dbbc",
+      "git_blob_sha": "e7b907b87b68fcf97fbc08b6ce4a4e877ad05370"
+    },
+    {
+      "path": "DECISION_LOG.md",
+      "bytes": 103082,
+      "sha256": "889fe682f19bf04b752ca209f15b94d742ec8a94af081752f9fee2bd762569a5",
+      "git_blob_sha": "50c1c7527ce8172bab4292f6d2e398cee74901e7"
+    },
+    {
+      "path": "ASSUMPTION_REGISTER.md",
+      "bytes": 80502,
+      "sha256": "9fcd51114df6eb36ea6ca608fb47755de5cd29d9730927be47167c83049d0a3a",
+      "git_blob_sha": "8340d309efca7654a5a20c2ec086b0cb36be9982"
+    },
+    {
+      "path": "VALIDATION_MATRIX.md",
+      "bytes": 10588,
+      "sha256": "6bf24bc3b456418f478746f1696a1dca057b7b237be975cd12df8291e1c084f5",
+      "git_blob_sha": "4c78c2f65384f65cf921081b46c8605ade92eaf7"
+    },
+    {
+      "path": "experiments/native_source_continuation_20261008/REPORT.md",
+      "bytes": 17542,
+      "sha256": "95992235e5fa3cb41f2c986ef774a416da2ac48b67fedfa2f2a07aeb017261d0",
+      "git_blob_sha": "769e21d3a9e2765babdca179d88cf425b6726c6b"
+    },
+    {
+      "path": "experiments/native_source_continuation_20261008/PROVENANCE.json",
+      "bytes": 5785,
+      "sha256": "e0ba26e52040a21c3929121348f2a55db5c5c0250c9ad56c1330f3d720121844",
+      "git_blob_sha": "931147e2afb37a8cb52dc517c9848d6ec3acaa61"
+    }
+  ],
+  "independent_source_review": {
+    "result": "BOUNDED_PASS",
+    "reviewed_report_sha256_before_optional_spacing_edits": "fb7f2570acd68dc0b1a6f28867ef95af1cf8ca7cedc1fe8216c4a400db5636a1",
+    "changes_after_review": "Spacing only; source claims and corrected soundness anchors unchanged."
+  }
+}

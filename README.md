@@ -122,3 +122,7 @@ This is an auxiliary compatibility counterexample, not a new acceleration method
 keeps a verified soft-gate manuscript as an unread source-construction lead.
 No qualifying new producer, target run, speedup or O1-O6 closure. Existing CSE,
 codec, scalar and quotient exclusions and fixed mission remain.
+
+## Native producer continuation — 2026-10-08
+
+[Public primary/code audit](experiments/native_source_continuation_20261008/REPORT.md) compares native reachability slicing, compact observer-state execution and original-native surrogate certification. The inspected interval producer retains dense gate coefficient work and proves real enclosures; a pinned CAP certifier omits the paper's recursive residual check; certified attention distinguishes its custom unquantized reference from the original SDPA arithmetic path. These are scoped source/manual findings, not universal impossibility or new core evidence. The missing causal native producer and complete paid target upper bound remain open. No new numerical, solver, model or GPU run. [Prior source review](experiments/source_frontier_20261008/REPORT.md) remains unchanged. README_CURRENT=true; O1–O6 OPEN; CORE_ADMISSION=false.

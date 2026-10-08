@@ -1,0 +1,131 @@
+{
+  "schema": "vortex-public-native-source-review-v1",
+  "review_date_utc": "2026-10-08",
+  "base_commit": "ddb626aadc9fde8a9b1971967747c62196c90a96",
+  "branch": "research/cloud-continuation-20260930",
+  "artifact_kind": "public primary-source/pinned-code review with bounded manual derivations",
+  "mission_changed": false,
+  "contract_changed": false,
+  "core_admitted": false,
+  "essential_O1_O6_closed": [],
+  "execution_counts": {
+    "new_numerical_experiments": 0,
+    "reviewed_third_party_program_runs": 0,
+    "models": 0,
+    "checkpoints_downloaded": 0,
+    "solvers": 0,
+    "gpu": 0,
+    "user_pc_commands": 0
+  },
+  "validation_scope": "documentation, JSON, links, content identity, unchanged canonical prefixes and manual source/proof-cost checks; no runtime/hardware/full-repository suite",
+  "sources": [
+    {
+      "url": "https://arxiv.org/html/2510.23389v1",
+      "kind": "primary manuscript",
+      "disposition": "READ; no verifier run"
+    },
+    {
+      "url": "https://github.com/emanino/plain_c_nn_benchmark/blob/92901329b63d2efcb3b06305c7c3cf0d4192eae3/benchmarks/activation_functions/safety_properties/glu/glu_0_safe.c",
+      "kind": "pinned code",
+      "disposition": "READ"
+    },
+    {
+      "url": "https://github.com/emanino/plain_c_nn_benchmark/blob/92901329b63d2efcb3b06305c7c3cf0d4192eae3/benchmarks/neural_layers/safety_properties/linear/linear_0_safe.c",
+      "kind": "pinned code",
+      "disposition": "READ"
+    },
+    {
+      "url": "https://github.com/lean-dojo/TorchLean/blob/f0bd983dfc107e1f776d56f3492932ef570cce16/NN/MLTheory/CROWN/Core.lean",
+      "kind": "pinned code",
+      "disposition": "READ; displayed operation inventory manual"
+    },
+    {
+      "url": "https://github.com/lean-dojo/TorchLean/blob/f0bd983dfc107e1f776d56f3492932ef570cce16/NN/MLTheory/CROWN/Extras/BoundOpsIEEE32Exec.lean",
+      "kind": "pinned code",
+      "disposition": "READ"
+    },
+    {
+      "url": "https://github.com/lean-dojo/TorchLean/blob/f0bd983dfc107e1f776d56f3492932ef570cce16/NN/MLTheory/CROWN/Proofs/DirectedIBPFullSoundness.lean",
+      "kind": "pinned theorem source",
+      "disposition": "READ; Lean not run"
+    },
+    {
+      "url": "https://github.com/pytorch/pytorch/blob/302f29e957bd44cd3ac34cbbddf4de25381d99ac/aten/src/ATen/native/cuda/ActivationSiluKernel.cu",
+      "kind": "pinned code example",
+      "disposition": "READ; not frozen Vortex ABI validation"
+    },
+    {
+      "url": "https://github.com/pytorch/pytorch/blob/302f29e957bd44cd3ac34cbbddf4de25381d99ac/aten/src/ATen/OpMathType.h",
+      "kind": "pinned code example",
+      "disposition": "READ"
+    },
+    {
+      "url": "https://github.com/huggingface/transformers/blob/cb33194ad6152bd9fad6305378d92db385dd7b32/src/transformers/models/llama/modeling_llama.py",
+      "kind": "pinned code example",
+      "disposition": "READ"
+    },
+    {
+      "url": "https://arxiv.org/html/2602.14537v1",
+      "kind": "primary manuscript",
+      "disposition": "READ; Algorithm1/2 and separate lifting obligation"
+    },
+    {
+      "url": "https://github.com/soc-ucsd/Existence-of-accurate-Koopman-linear-embedding/blob/0dc3f85ee6652f1e2e3984fb46100ce563fd9422/utility.py",
+      "kind": "pinned code",
+      "disposition": "READ; static residual witness manually audited; not executed"
+    },
+    {
+      "url": "https://github.com/soc-ucsd/Existence-of-accurate-Koopman-linear-embedding/blob/0dc3f85ee6652f1e2e3984fb46100ce563fd9422/main.py",
+      "kind": "pinned code",
+      "disposition": "READ; driver success path"
+    },
+    {
+      "url": "https://github.com/soc-ucsd/Existence-of-accurate-Koopman-linear-embedding/blob/0dc3f85ee6652f1e2e3984fb46100ce563fd9422/README.md",
+      "kind": "pinned matching README",
+      "disposition": "READ; independent repository identification"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.36334v1",
+      "kind": "primary manuscript",
+      "disposition": "READ"
+    },
+    {
+      "url": "https://github.com/WentaoTang-Pack/KoopmanLuenbergerObserver/blob/a0cd9ceb26b80dd513b2c98d280c251e761cb0cb/luenberger_observer.py",
+      "kind": "pinned code",
+      "disposition": "READ; original plant measurement/vector-field dependence"
+    },
+    {
+      "url": "https://arxiv.org/html/2507.23632v1",
+      "kind": "primary manuscript",
+      "disposition": "READ"
+    },
+    {
+      "url": "https://github.com/gmongaras/On-the-Expressiveness-of-Softmax-Attention-A-Recurrent-Neural-Network-Perspective/blob/295c4da34b7e07a2f2ae838bb3dc5590ee593143/GPT_Trainer/LlamaDecoderLayer.py",
+      "kind": "pinned code",
+      "disposition": "READ; 80-term branch only; not executed"
+    },
+    {
+      "url": "https://arxiv.org/html/2605.20868v1",
+      "kind": "primary manuscript",
+      "disposition": "READ; custom versus original reference"
+    },
+    {
+      "url": "https://github.com/DeanoC/certified-quantized-attention",
+      "kind": "claimed code resource",
+      "disposition": "UNAVAILABLE:404; not replaced with unrelated code"
+    },
+    {
+      "url": "https://doi.org/10.5281/zenodo.19915933",
+      "kind": "claimed archived resource",
+      "disposition": "UNAVAILABLE: public read tool retrieval failure"
+    }
+  ],
+  "claims": {
+    "torchlean_counts": "DERIVED displayed-source counts only; not compiled instructions or performance",
+    "cap_witness": "DERIVED static reusable-code-path witness; paper theorem and HF reachability not rejected",
+    "target_performance": "NOT_MEASURED",
+    "native_abi": "UNVERIFIED; upstream example pins do not replace frozen reference",
+    "soft_gate_prior_lead": "Still unread from prior review; access-gated routes not retried or bypassed"
+  },
+  "handoff_snapshot": "IN_PROGRESS; final commit/readback captured after preservation, not self-certified here"
+}

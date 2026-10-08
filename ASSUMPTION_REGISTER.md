@@ -1414,3 +1414,13 @@ through its composed suffix, cross-platform ABI conformance and any cost lower
 bound or target-fitting source. Rank alone supplies no such conclusion.
 
 [Proof, exact-word certificate and scope](experiments/native_gate_innovation_rank_20261001/REPORT.md).
+
+## 2026-10-08 native producer source assumptions
+
+DERIVED/MANUALLY AUDITED: displayed TorchLean M×D interval source has 4MD directed product calls, 2MD accumulation calls and 2MD endpoint selections; every gate coefficient remains requested. Its soundness assumes real node equations, and its executable sigmoid fallback returns [0,1]. This is not a native HF saturation/state certificate or measured latency. The one-third screen is logical coefficient inventory for three equal-sized FFN projection streams, not physical cache traffic or a whole-system bound.
+
+DERIVED/MANUALLY AUDITED: the pinned public SCD(Phi,B) CAP path omits paper residual Γ and accepts a hand-derived two-state case with non-affine three-step control dependence. This scopes implementation eligibility only; the paper's residual-carrying algorithm and native HF reachability are not rejected. Operator approximation, external plant measurements, infinite softmax moments, or bounds against custom O_ref provide no granted native closure/source.
+
+UNVERIFIED: finite native legal-state invariant, compact innovation/observer source, original activation/reduction/RNG/state correspondence, constructor and guard coverage, complete paid target upper bounds, actual 8 GiB and same-machine native 4B Q4/TTFT. All remain open. No scalar/model/solver/GPU execution was performed.
+
+[Source pins, costs and exact boundaries](experiments/native_source_continuation_20261008/REPORT.md).

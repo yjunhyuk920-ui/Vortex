@@ -158,3 +158,9 @@ O1-O6 remain OPEN. No new model experiment is reported running.
 Public primary sources and pinned Brevis code were reviewed across weight-word generation, symbolic whole-program rearrangement, and causal input-dependent certificates. No new core is admitted, no prior excluded family is reopened, and no numerical/solver/model/GPU experiment was run. Brevis is archival reconstruction; EquiForge uses real-arithmetic rewrites and tolerance checking; binary/sign and ReLU early-exit procedures have narrower contracts or uncharged target costs; LoPA obtains a cheaper gate through model changes. Soft-gate TMLR body/matching code remain unread after permitted independent public metadata attempts.
 
 See [review and explicit producer-cost screen](experiments/source_frontier_20261008/REPORT.md) and [provenance](experiments/source_frontier_20261008/PROVENANCE.json). O1–O6 remain OPEN. Repository preservation is not an acceleration result.
+
+## 2026-10-08 native producer continuation
+
+Public primary manuscripts and pinned code were compared across native reachability slicing, compact observer-state execution and original-native surrogate acceptance. No qualified core or new numerical/solver/model/GPU experiment is admitted. The displayed TorchLean interval algorithm retains every gate coefficient request and concludes real enclosure; the CAP implementation's missing residual check has a narrowly scoped hand-derived witness; observer and recurrent-attention implementations retain original measurement/projection dependencies; attention certification retains a custom-reference/original-native path gap. None closes full-mission O1–O6. The next decisive object is still a finite causal native producer, legal-state induction and sufficient paid target upper bounds.
+
+[Detailed comparison and source pins](experiments/native_source_continuation_20261008/REPORT.md). THEORY_STATUS=NOT_ESTABLISHED; HARDWARE_STATUS=NOT_TESTED; CORE_ADMISSION=false.

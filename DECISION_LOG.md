@@ -1934,3 +1934,9 @@ Full-mission O1-O6 remain OPEN.
 ## 2026-10-08 new public-source information, no core promotion
 
 Reviewed three different information-dependence principles without converting excluded families into new candidates. Archive-word exactness, real-algebra equivalence, binary-sign exactness and model-quality preservation do not establish original native logits/RNG/successor-state equivalence. The new source evidence supplies specific producer-cost and contract failure conditions, not a general impossibility theorem. No empirical approximate sparsity result, clock-gating power claim or tolerant compiler speedup was promoted to Vortex performance. Fulltext access limitations were retained rather than bypassed. See [detailed review](experiments/source_frontier_20261008/REPORT.md).
+
+## 2026-10-08 — Retain native source/code audit as auxiliary
+
+Preserve the public source-level producer comparison without claiming a new core or an essential O1–O6 closure. TorchLean's actual displayed interval source retains dense coefficient work and real-equation semantics. The public CAP implementation drops a recursive residual required by its paper; its hand-derived two-state witness rejects only that reusable acceptance path, not the paper theorem or native HF execution. Measured-plant observer corrections, infinite real softmax moments and custom-reference error certificates do not supply the missing original-native effect before removed work. No reviewed code, solver, numerical harness, model or GPU was run. No upstream modification or communication was sent. Existing failures, original checkpoints, mission and target thresholds remain unchanged. Continue only a genuinely new finite causal producer with exact state relation and sufficient paid upper bounds.
+
+[Report and claim scopes](experiments/native_source_continuation_20261008/REPORT.md).

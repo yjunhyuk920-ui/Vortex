@@ -1,0 +1,71 @@
+{
+  "schema": "vortex-public-source-preservation-manifest-v1",
+  "base_commit": "ddb626aadc9fde8a9b1971967747c62196c90a96",
+  "self_excluded": true,
+  "payload_files": [
+    {
+      "path": "README.md",
+      "bytes": 10551,
+      "sha256": "ddd575ec96ea541d1767ee2a8fba12f811d91f3575d46edac9927eb44bb5978e",
+      "git_blob_sha": "249dab0da3d2ea12cc94ea9aac8943461ee36182"
+    },
+    {
+      "path": "RESEARCH_STATE.md",
+      "bytes": 12165,
+      "sha256": "bde9d74181754ecf191fe4789558d601f701ae700a6aff6ba2acb1fac45de7a3",
+      "git_blob_sha": "51f1cf43a8c0c9525fe973d2cab4011ac768cba1"
+    },
+    {
+      "path": "NEXT_EXPERIMENT.md",
+      "bytes": 11515,
+      "sha256": "f00868599a7dd426224f80db85c8aa1c29c8937842b332358e685564c888dbbc",
+      "git_blob_sha": "e7b907b87b68fcf97fbc08b6ce4a4e877ad05370"
+    },
+    {
+      "path": "DECISION_LOG.md",
+      "bytes": 103082,
+      "sha256": "889fe682f19bf04b752ca209f15b94d742ec8a94af081752f9fee2bd762569a5",
+      "git_blob_sha": "50c1c7527ce8172bab4292f6d2e398cee74901e7"
+    },
+    {
+      "path": "ASSUMPTION_REGISTER.md",
+      "bytes": 80502,
+      "sha256": "9fcd51114df6eb36ea6ca608fb47755de5cd29d9730927be47167c83049d0a3a",
+      "git_blob_sha": "8340d309efca7654a5a20c2ec086b0cb36be9982"
+    },
+    {
+      "path": "VALIDATION_MATRIX.md",
+      "bytes": 10588,
+      "sha256": "6bf24bc3b456418f478746f1696a1dca057b7b237be975cd12df8291e1c084f5",
+      "git_blob_sha": "4c78c2f65384f65cf921081b46c8605ade92eaf7"
+    },
+    {
+      "path": "experiments/native_source_continuation_20261008/REPORT.md",
+      "bytes": 17542,
+      "sha256": "95992235e5fa3cb41f2c986ef774a416da2ac48b67fedfa2f2a07aeb017261d0",
+      "git_blob_sha": "769e21d3a9e2765babdca179d88cf425b6726c6b"
+    },
+    {
+      "path": "experiments/native_source_continuation_20261008/PROVENANCE.json",
+      "bytes": 5785,
+      "sha256": "e0ba26e52040a21c3929121348f2a55db5c5c0250c9ad56c1330f3d720121844",
+      "git_blob_sha": "931147e2afb37a8cb52dc517c9848d6ec3acaa61"
+    },
+    {
+      "path": "experiments/native_source_continuation_20261008/LOCAL_VALIDATION.json",
+      "bytes": 9950,
+      "sha256": "403b3931eaf3a8c333d282adc649d6fffd134263697bd8febb45b9a54dca46b8",
+      "git_blob_sha": "680bcffd9e9428ed4093cb65aa9ede38d59e0960"
+    }
+  ],
+  "validation": "LOCAL_VALIDATION.json",
+  "exclusions": [
+    "original checkpoint weights",
+    "third-party source trees",
+    "executables",
+    "private notes",
+    "customer material",
+    "user-computer files",
+    "historical evidence changes"
+  ]
+}

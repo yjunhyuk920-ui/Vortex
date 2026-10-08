@@ -136,3 +136,9 @@ unchanged. C FE_ALL_EXCEPT flags match for these inputs; fenv API restoration
 success is not full raw x87/MXCSR comparison. Target model/tensor/GPU, user
 computer and performance tests NOT RUN.
 [Evidence](experiments/primary_synthesis_20261007/REPORT.md).
+
+## 2026-10-08 source/manual checks only
+
+Pinned public files and primary sections were read; TorchLean's displayed operation inventory, [0,1] fallback and real-node theorem scope were independently rechecked. The CAP residual omission and direct three-step witness received two independent source/manual readings. Observer original-plant calls, recurrent branch full-QK/unnormalized return, and attention custom-reference versus production-native distinction were inspected. These are source/manual findings, not executed third-party code, formal-verifier certificates, numerical experiments or latency measurements. Documentation, JSON, local links, unchanged canonical prefixes and content hashes are checked in the package's LOCAL_VALIDATION.json. Full repository suite, original model/solver/GPU/user-computer and target hardware tests NOT RUN.
+
+[Detailed evidence](experiments/native_source_continuation_20261008/REPORT.md).
